@@ -272,7 +272,8 @@ textarea {
 .leaflet-container {
   height: 100%;
   width: 100%;
-  background: #d7d0c4;
+  overflow: hidden;
+  background: #f2f3f0;
   font-family: var(--font-sans);
   z-index: 0;
 }
@@ -280,9 +281,20 @@ textarea {
 .map-frame {
   position: relative;
   isolation: isolate;
+  overflow: hidden;
   border: 2px solid #181818;
-  background: #d7d0c4;
+  background: #f2f3f0;
   min-height: 280px;
+}
+
+.leaflet-control-attribution {
+  background: rgb(238 227 214 / 92%);
+  color: #181818;
+  max-width: min(100%, 18rem);
+}
+
+.leaflet-control-attribution a {
+  color: #141f4d;
 }
 
 .gusto-pin-wrap {

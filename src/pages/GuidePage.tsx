@@ -135,6 +135,7 @@ export function GuidePage({
   })
 
   const activeGuide = guide
+  const mobileMap = !desktop && pane === 'map'
   function move(placeId: string, direction: -1 | 1) {
     const index = activeGuide.placeIds.indexOf(placeId)
     const target = activeGuide.placeIds[index + direction]
@@ -142,7 +143,13 @@ export function GuidePage({
   }
 
   return (
-    <main id="main" tabIndex={-1} className="mx-auto max-w-6xl px-4 pt-24 pb-16 outline-none">
+    <main
+      id="main"
+      tabIndex={-1}
+      className={`mx-auto max-w-6xl px-4 outline-none ${mobileMap ? 'flex h-dvh max-h-dvh flex-col overflow-hidden pt-20 pb-3' : 'pt-24 pb-16'}`}
+    >
+      <div className={mobileMap ? 'flex min-h-0 flex-1 flex-col' : 'lg:grid lg:grid-cols-[minmax(0,1fr)_400px] lg:items-start lg:gap-6'}>
+      <div className={mobileMap ? 'shrink-0' : undefined}>
       <Link to={city.slug === 'seattle' ? '/' : `/city/${city.slug}`} className="text-sm font-bold">
         ← {city.name}
       </Link>
@@ -172,12 +179,12 @@ export function GuidePage({
       ) : (
         <h1 className="mt-1 font-serif text-5xl italic leading-none sm:text-7xl">{guide.title}</h1>
       )}
-      <p className="note mt-4 max-w-2xl">{guide.dek}</p>
-      <p className="mt-3 text-sm font-bold">
+      <p className={`note mt-4 max-w-2xl ${mobileMap ? 'hidden' : ''}`}>{guide.dek}</p>
+      <p className={`mt-3 text-sm font-bold ${mobileMap ? 'hidden' : ''}`}>
         {spotLabel(members.length)}
         {editable ? ' · drag or use the arrows to reorder' : ' · ranked by rating'}
       </p>
-      <details className="mt-4 max-w-2xl border-2 border-ink p-4">
+      <details className={`mt-4 max-w-2xl border-2 border-ink p-4 ${mobileMap ? 'hidden' : ''}`}>
         <summary className="cursor-pointer font-bold">What the ratings mean</summary>
         <p className="mt-2 text-sm">
           Scores are Gusto's, from 10 (cross town tonight) down to 0. Every ranked place has one. The number on the
@@ -238,8 +245,7 @@ export function GuidePage({
         </button>
       </div>
 
-      <div className="mt-4 grid items-start gap-4 lg:grid-cols-[minmax(0,1fr)_400px]">
-        <div className={pane === 'map' && !desktop ? 'hidden' : ''} >
+      <div className={`mt-4 ${pane === 'map' && !desktop ? 'hidden' : ''}`}>
           <h2 id="spots" className="font-serif text-4xl italic">
             The spots
           </h2>
@@ -323,8 +329,15 @@ export function GuidePage({
               {existingMatches.length === 0 ? <p className="mt-2 text-sm">Every matching place is already on this list.</p> : null}
             </section>
           ) : null}
-        </div>
-        <div className={`lg:sticky lg:top-20 lg:h-[calc(100dvh-6rem)] ${pane === 'list' && !desktop ? 'hidden' : ''}`}>
+      </div>
+      </div>
+        <div
+          className={
+            mobileMap
+              ? 'mt-3 min-h-0 flex-1'
+              : `lg:sticky lg:top-20 lg:h-[calc(100dvh-5rem-1.5rem)] ${pane === 'list' ? 'hidden lg:block' : ''}`
+          }
+        >
           {(desktop || pane === 'map') && <GuideMap places={shown} statuses={statuses} />}
         </div>
       </div>

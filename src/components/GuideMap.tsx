@@ -1,10 +1,38 @@
 import { useEffect, useRef } from 'react'
-import { MapContainer, TileLayer, useMap } from 'react-leaflet'
-import { divIcon, latLngBounds, marker, type MarkerClusterGroup } from 'leaflet'
+import { MapContainer, useMap, ZoomControl } from 'react-leaflet'
+import { divIcon, latLngBounds, marker, type Layer, type MarkerClusterGroup } from 'leaflet'
 import '../lib/setup-leaflet.ts'
 import 'leaflet.markercluster'
 import { escapeHtml } from '../lib/format.ts'
 import type { Place, VisitStatus } from '../types.ts'
+
+const BASEMAP_STYLE = 'https://tiles.openfreemap.org/styles/positron'
+
+function Basemap() {
+  const map = useMap()
+
+  useEffect(() => {
+    let layer: Layer | null = null
+    let cancelled = false
+
+    void (async () => {
+      await import('../lib/setup-maplibre.ts')
+      await import('maplibre-gl/dist/maplibre-gl.css')
+      const { maplibreGL } = await import('@maplibre/maplibre-gl-leaflet')
+      if (cancelled) return
+      layer = maplibreGL({ style: BASEMAP_STYLE }).addTo(map)
+      map.invalidateSize()
+    })()
+
+    return () => {
+      cancelled = true
+      if (!layer) return
+      map.removeLayer(layer)
+    }
+  }, [map])
+
+  return null
+}
 
 const COLORS: Record<VisitStatus | 'none', string> = {
   togo: '#FF5330',
@@ -64,12 +92,12 @@ function FitPins({
     }
 
     map.addLayer(group)
-    const shouldFit = seenIds.current !== idKey
     let cancelled = false
-    const frame = window.requestAnimationFrame(() => {
+    const fit = () => {
       if (cancelled) return
       map.invalidateSize()
-      if (!shouldFit) return
+      if (map.getSize().y < 40) return
+      if (seenIds.current === idKey) return
       seenIds.current = idKey
       if (places.length === 1) {
         map.setView([places[0].lat, places[0].lng], 15)
@@ -79,11 +107,14 @@ function FitPins({
           maxZoom: 15,
         })
       }
-    })
+    }
+    const frame = window.requestAnimationFrame(fit)
+    const timer = window.setTimeout(fit, 250)
 
     return () => {
       cancelled = true
       window.cancelAnimationFrame(frame)
+      window.clearTimeout(timer)
       map.removeLayer(group)
     }
     // Refit when the place set changes. Color changes rebuild pins without a new dependency split
@@ -103,7 +134,7 @@ export function GuideMap({
 }) {
   if (!places.length) {
     return (
-      <div className="map-frame grid h-full min-h-72 place-items-center p-6 text-center">
+      <div className="map-frame grid h-full min-h-0 place-items-center p-6 text-center">
         <p className="font-serif text-2xl italic">No pins in this view.</p>
       </div>
     )
@@ -111,7 +142,7 @@ export function GuideMap({
 
   const first = places[0]
   return (
-    <div className="map-frame h-full min-h-72">
+    <div className="map-frame h-full min-h-0">
       <p className="sr-only">
         Map of {places.length} places. Pins cluster when zoomed out. Coral means to go, green means been, navy means
         unmarked.
@@ -119,14 +150,14 @@ export function GuideMap({
       <MapContainer
         center={[first.lat, first.lng]}
         zoom={12}
+        minZoom={1}
+        maxZoom={18}
+        zoomControl={false}
         scrollWheelZoom
         className="h-full w-full"
       >
-        <TileLayer
-          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>'
-          url="https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png"
-          subdomains="abcd"
-        />
+        <ZoomControl position="topright" />
+        <Basemap />
         <FitPins places={places} statuses={statuses} />
       </MapContainer>
       <div className="map-legend">

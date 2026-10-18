@@ -46,7 +46,7 @@ The app is a fully static Vite build. Routing is in the URL hash (`#/guide/top-1
 1. Build locally or in Actions with `npm run build`.
 2. Publish the `dist/` directory (for project pages, the relative `base` in `vite.config.ts` is already `./`).
 
-No environment variables or API keys are required. Geocoding for new places calls the public [Nominatim](https://nominatim.openstreetmap.org/) service from the browser (about one request a second). If that is blocked, type latitude and longitude by hand. Maps use OpenStreetMap data through CARTO tiles.
+No environment variables or API keys are required. Geocoding for new places calls the public [Nominatim](https://nominatim.openstreetmap.org/) service from the browser (about one request a second). If that is blocked, type latitude and longitude by hand. Maps use the [OpenFreeMap](https://openfreemap.org) Positron style (OpenStreetMap data, no API key, no usage cap).
 
 ## Accounts later
 

@@ -33,7 +33,11 @@ export function Footer() {
       <div className="border-t border-cream/20 px-4 py-4 text-sm text-cream">
         <div className="mx-auto flex max-w-6xl flex-wrap justify-between gap-2">
           <p>Seattle first. Los Angeles when the tacos are ready.</p>
-          <p>Maps © OpenStreetMap contributors © CARTO</p>
+          <p>
+            Maps ©{' '}
+            <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors ©{' '}
+            <a href="https://openfreemap.org">OpenFreeMap</a>
+          </p>
         </div>
       </div>
     </footer>
