@@ -5281,7 +5281,9 @@
   "duplicate_of": null,
   "closed_note": null,
   "notes": null,
-  "location_count_in_list": 2
+  "location_count_in_list": 2,
+  "hidden_reason": "other location of Aroom Coffee Waterfront (Waterfront)",
+  "hidden_kept_muid": "17553945507727273379"
  },
  {
   "order": 109,
@@ -10170,7 +10172,9 @@
   "duplicate_of": null,
   "closed_note": null,
   "notes": null,
-  "location_count_in_list": 2
+  "location_count_in_list": 2,
+  "hidden_reason": "other location of Macrina Bakery & Cafe (Belltown)",
+  "hidden_kept_muid": "16849046781803007956"
  },
  {
   "order": 209,
@@ -10856,7 +10860,9 @@
   "duplicate_of": null,
   "closed_note": null,
   "notes": null,
-  "location_count_in_list": 2
+  "location_count_in_list": 2,
+  "hidden_reason": "other location of Anchorhead Coffee (Downtown)",
+  "hidden_kept_muid": "13473445896964517333"
  },
  {
   "order": 223,
@@ -10956,7 +10962,9 @@
   "duplicate_of": null,
   "closed_note": null,
   "notes": null,
-  "location_count_in_list": 2
+  "location_count_in_list": 2,
+  "hidden_reason": "other location of Biscuit Bitch (Pike Place Market)",
+  "hidden_kept_muid": "12168389389315212224"
  },
  {
   "order": 225,
@@ -12724,7 +12732,9 @@
   "duplicate_of": null,
   "closed_note": null,
   "notes": null,
-  "location_count_in_list": 4
+  "location_count_in_list": 4,
+  "hidden_reason": "other location of Ph\u1edf B\u1eafc (Chinatown-International District)",
+  "hidden_kept_muid": "16851193675340595274"
  },
  {
   "order": 261,
@@ -16064,7 +16074,9 @@
   "duplicate_of": null,
   "closed_note": null,
   "notes": null,
-  "location_count_in_list": 2
+  "location_count_in_list": 2,
+  "hidden_reason": "other location of Flatstick Pub (South Lake Union)",
+  "hidden_kept_muid": "13367358326046017667"
  },
  {
   "order": 329,
@@ -16721,7 +16733,9 @@
   "duplicate_of": null,
   "closed_note": null,
   "notes": null,
-  "location_count_in_list": 4
+  "location_count_in_list": 4,
+  "hidden_reason": "other location of Dick's Drive-In (Capitol Hill)",
+  "hidden_kept_muid": "686502997151555412"
  },
  {
   "order": 343,
@@ -16966,7 +16980,9 @@
   "duplicate_of": null,
   "closed_note": null,
   "notes": null,
-  "location_count_in_list": 3
+  "location_count_in_list": 3,
+  "hidden_reason": "other location of Caf\u00e9 Hagen (South Lake Union)",
+  "hidden_kept_muid": "4886821166896344991"
  },
  {
   "order": 348,
@@ -17507,7 +17523,9 @@
   "duplicate_of": null,
   "closed_note": null,
   "notes": null,
-  "location_count_in_list": 2
+  "location_count_in_list": 2,
+  "hidden_reason": "other location of Buckley's (Belltown)",
+  "hidden_kept_muid": "14214881350053651862"
  },
  {
   "order": 359,
@@ -19865,7 +19883,9 @@
   "duplicate_of": null,
   "closed_note": null,
   "notes": null,
-  "location_count_in_list": 2
+  "location_count_in_list": 2,
+  "hidden_reason": "other location of Dog in the Park (Downtown)",
+  "hidden_kept_muid": "1380070990651770123"
  },
  {
   "order": 407,
@@ -19963,7 +19983,9 @@
   "duplicate_of": null,
   "closed_note": null,
   "notes": null,
-  "location_count_in_list": 3
+  "location_count_in_list": 3,
+  "hidden_reason": "other location of Salt & Straw (Ballard)",
+  "hidden_kept_muid": "2380202281305197537"
  },
  {
   "order": 409,
@@ -22864,7 +22886,9 @@
   "duplicate_of": null,
   "closed_note": null,
   "notes": null,
-  "location_count_in_list": 2
+  "location_count_in_list": 2,
+  "hidden_reason": "other location of Monorail Espresso (Denny Triangle)",
+  "hidden_kept_muid": "3656657692973100104"
  },
  {
   "order": 468,
@@ -25273,7 +25297,9 @@
   "duplicate_of": null,
   "closed_note": null,
   "notes": null,
-  "location_count_in_list": 3
+  "location_count_in_list": 3,
+  "hidden_reason": "other location of DOCE Donut Co. (Wallingford)",
+  "hidden_kept_muid": "723085791753725342"
  },
  {
   "order": 517,
@@ -27631,7 +27657,9 @@
   "duplicate_of": null,
   "closed_note": null,
   "notes": null,
-  "location_count_in_list": 2
+  "location_count_in_list": 2,
+  "hidden_reason": "other location of Storyville Coffee Company (Pike Place Market)",
+  "hidden_kept_muid": "7222727945962740261"
  },
  {
   "order": 565,
@@ -27829,7 +27857,9 @@
   "duplicate_of": null,
   "closed_note": null,
   "notes": null,
-  "location_count_in_list": 2
+  "location_count_in_list": 2,
+  "hidden_reason": "other location of Tacos Chukis (Capitol Hill)",
+  "hidden_kept_muid": "6196237579898239313"
  },
  {
   "order": 569,
@@ -28025,7 +28055,9 @@
   "duplicate_of": null,
   "closed_note": null,
   "notes": null,
-  "location_count_in_list": 3
+  "location_count_in_list": 3,
+  "hidden_reason": "other location of Daniel's Broiler (South Lake Union)",
+  "hidden_kept_muid": "15006826891916160458"
  },
  {
   "order": 573,
@@ -28737,7 +28769,9 @@
   "duplicate_of": null,
   "closed_note": null,
   "notes": null,
-  "location_count_in_list": 3
+  "location_count_in_list": 3,
+  "hidden_reason": "other location of Duke's Seafood South Lake Union (South Lake Union)",
+  "hidden_kept_muid": "11129900601241869507"
  },
  {
   "order": 588,
@@ -28933,7 +28967,9 @@
   "duplicate_of": null,
   "closed_note": null,
   "notes": null,
-  "location_count_in_list": 4
+  "location_count_in_list": 4,
+  "hidden_reason": "other location of Dick's Drive-In (Capitol Hill)",
+  "hidden_kept_muid": "686502997151555412"
  },
  {
   "order": 592,
@@ -31907,7 +31943,9 @@
   "duplicate_of": null,
   "closed_note": null,
   "notes": null,
-  "location_count_in_list": 3
+  "location_count_in_list": 3,
+  "hidden_reason": "other location of Momiji SLU (Denny Triangle)",
+  "hidden_kept_muid": "16573495846741917788"
  },
  {
   "order": 653,

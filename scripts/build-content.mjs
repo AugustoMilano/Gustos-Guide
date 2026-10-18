@@ -11,7 +11,7 @@ function previousWikimedia() {
     const prev = JSON.parse(readFileSync(join(root, 'src/content/places.json'), 'utf8'))
     for (const place of Object.values(prev)) {
       const photos = (place.photos ?? []).filter((photo) => photo.source === 'wikimedia' && photo.url)
-      if (photos.length) map.set(place.id, photos)
+      if (photos.length) map.set(place.muid ? `muid:${place.muid}` : place.id, photos)
     }
   } catch {
     // First build has no catalog yet.
@@ -137,8 +137,28 @@ function isLaunch(place) {
     !place.outside_seattle &&
     !place.duplicate_of &&
     Boolean(place.name) &&
+    !place.hidden_reason &&
     !shutteredNames.has(normName(place.name))
   )
+}
+
+// One location per brand. A place saved at several locations keeps the location with the most
+// ratings (ties go to the earliest save); the others carry hidden_reason "other location of …"
+// in data/places_categorized.json and stay out of the catalog, guides, map, and search.
+const BRAND_SUFFIXES = ['drive in', 'company', 'co', 'kitchen', 'and chowder', 'slu', 'waterfront', 'south lake union', 'coffee', 'espresso', 'seafood', 'donut', 'bakery and cafe', 'pub']
+function brandKey(name) {
+  let key = normName(name).replace(/^the /, '')
+  let changed = true
+  while (changed) {
+    changed = false
+    for (const suffix of BRAND_SUFFIXES) {
+      if (key.endsWith(` ${suffix}`) && key.length > suffix.length + 1) {
+        key = key.slice(0, -(suffix.length + 1)).trim()
+        changed = true
+      }
+    }
+  }
+  return key
 }
 
 function isHidden(place) {
@@ -542,7 +562,7 @@ const launch = rawPlaces.filter(isLaunch).map((place) => {
     oneLiner: '',
     review: '',
     photos: [
-      ...(wikiById.get(id) ?? []),
+      ...(wikiById.get(`muid:${place.muid}`) ?? []),
       {
         source: 'illustration',
         isIllustration: true,
@@ -596,6 +616,15 @@ for (const place of launch) {
   const list = byNorm.get(key) ?? []
   list.push(place)
   byNorm.set(key, list)
+}
+
+const launchByMuid = new Map(launch.map((place) => [place.muid, place]))
+for (const source of rawPlaces) {
+  if (!source?.hidden_reason || !source.name) continue
+  const kept = launchByMuid.get(String(source.hidden_kept_muid))
+  if (!kept) throw new Error(`${source.name} (${source.neighborhood}) is hidden as another location, but its kept location ${source.hidden_kept_muid} is not live`)
+  const key = normName(source.name)
+  if (!byNorm.has(key)) byNorm.set(key, [kept])
 }
 
 const unmatched = []
@@ -966,7 +995,7 @@ const sourceByMuid = new Map(rawPlaces.filter((place) => place?.muid).map((place
 const leaks = []
 for (const place of Object.values(full)) {
   const source = sourceByMuid.get(place.muid)
-  if (!source || source.closed || source.excluded || source.outside_seattle || source.duplicate_of || source.hours_type === 'PERMANENT_CLOSURE' || shutteredNames.has(normName(place.name))) {
+  if (!source || source.closed || source.excluded || source.outside_seattle || source.duplicate_of || source.hidden_reason || source.hours_type === 'PERMANENT_CLOSURE' || shutteredNames.has(normName(place.name))) {
     leaks.push(place.name)
   }
 }
@@ -976,7 +1005,25 @@ for (const guide of guides) {
   }
 }
 if (leaks.length) {
-  throw new Error(`Closed, excluded, outside-Seattle, or duplicate places leaked: ${leaks.slice(0, 12).join(', ')}`)
+  throw new Error(`Closed, excluded, outside-Seattle, duplicate, or other-location places leaked: ${leaks.slice(0, 12).join(', ')}`)
+}
+const byBrand = new Map()
+for (const place of Object.values(full)) {
+  const key = brandKey(place.name)
+  byBrand.set(key, [...(byBrand.get(key) ?? []), place])
+}
+const sharedBrands = [...byBrand.values()].filter((list) => list.length > 1)
+if (sharedBrands.length) {
+  throw new Error(
+    `Live places share a brand; keep one location and mark the others with hidden_reason: ${sharedBrands
+      .slice(0, 12)
+      .map((list) => list.map((place) => `${place.name} (${place.neighborhood})`).join(' / '))
+      .join('; ')}`,
+  )
+}
+for (const guide of guides) {
+  const ids = guide.entries.map((entry) => entry.placeId)
+  if (new Set(ids).size !== ids.length) throw new Error(`Guide ${guide.slug} lists a place twice`)
 }
 const badRatings = Object.values(full).filter((place) => place.publicRating && place.publicRating.source !== 'Yelp' && place.publicRating.source !== 'OpenTable')
 if (badRatings.length) {
@@ -996,6 +1043,7 @@ const shortReviews = Object.values(full).filter((place) => place.review.split('\
 console.log(JSON.stringify({
   launch: slim.length,
   hidden: hidden.length,
+  otherLocations: rawPlaces.filter((place) => place?.hidden_reason).length,
   guides: guides.length,
   byGroup: guides.reduce((acc, guide) => ({ ...acc, [guide.group]: (acc[guide.group] ?? 0) + 1 }), {}),
   blurbMin: Math.min(...blurbs),
