@@ -35,7 +35,7 @@ export function FeedPage() {
                 <p className="mt-1">{activity.text}</p>
                 {place ? (
                   <Link className="mt-2 flex items-center gap-3" to={`/place/${place.id}`}>
-                    <span className="h-16 w-20 shrink-0 overflow-hidden border-2 border-ink bg-navy [&_.place-art]:aspect-auto [&_.place-art]:h-full">
+                    <span className="h-28 w-36 shrink-0 overflow-hidden border-2 border-ink bg-navy [&_.place-art]:aspect-auto [&_.place-art]:h-full">
                       <PlaceThumb place={place} uploads={app.photos} />
                     </span>
                     <span className="font-serif text-2xl italic leading-none">{place.name}</span>
@@ -47,11 +47,18 @@ export function FeedPage() {
                     Like
                   </button>
                 </div>
-                <ul className="mt-3 space-y-1 text-sm">
-                  {app.comments.filter((comment) => comment.activityId === activity.id).map((comment) => (
-                    <li key={comment.id}><strong>{names.get(comment.userId) ?? 'You'}:</strong> {comment.text}</li>
-                  ))}
-                </ul>
+                <section className="mt-3" aria-label="Comments">
+                  <h2 className="text-sm font-bold">Comments · {app.comments.filter((comment) => comment.activityId === activity.id).length}</h2>
+                  <ul className="mt-2 space-y-2 text-sm">
+                    {app.comments.filter((comment) => comment.activityId === activity.id).map((comment) => (
+                      <li key={comment.id} className="border-l-2 border-ink pl-2">
+                        <strong>{names.get(comment.userId) ?? 'You'}</strong>
+                        {app.demoUsers.some((user) => user.id === comment.userId) ? ' · Demo' : ''}
+                        <span className="mt-1 block">{comment.text}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </section>
                 <form
                   className="mt-2 flex gap-2"
                   onSubmit={(event) => {

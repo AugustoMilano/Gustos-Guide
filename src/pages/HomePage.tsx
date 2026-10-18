@@ -1,7 +1,10 @@
 import { Link } from 'react-router-dom'
+import { GuideMap } from '../components/GuideMap.tsx'
 import { ParticleHero } from '../components/ParticleHero.tsx'
 import { PlaceThumb } from '../components/PlaceThumb.tsx'
-import { catalog } from '../content/load.ts'
+import { ScoreBadge } from '../components/ScoreBadge.tsx'
+import { catalog, slimById } from '../content/load.ts'
+import { isOpen } from '../lib/hours.ts'
 import { usePageMeta } from '../lib/meta.ts'
 import { useApp } from '../state/AppState.tsx'
 import type { GuideGroup, SlimPlace } from '../types.ts'
@@ -26,12 +29,44 @@ function hitList(): SlimPlace[] {
 }
 
 const TICKER = ['Pizza', 'Oysters', 'Capitol Hill', 'Ballard', 'Date night', 'Cheap eats', 'Cocktail bars', 'Brunch', 'Georgetown', 'Fremont', 'Late night', 'Seafood']
+const OCCASIONS = ['date-night', 'cheap-eats', 'brunch', 'late-night', 'happy-hour', 'bring-the-parents']
+const EDITORIAL = ['delancey', 'spinasse', 'paseo', 'tacos-chukis', 'the-walrus-and-the-carpenter', 'canlis']
+
+function diverse(places: SlimPlace[], limit: number): SlimPlace[] {
+  const picked: SlimPlace[] = []
+  const hoods = new Set<string>()
+  const ranked = places.slice().sort((a, b) => (b.publicRating?.value ?? 0) - (a.publicRating?.value ?? 0))
+  for (const place of ranked) {
+    if (hoods.has(place.neighborhood)) continue
+    hoods.add(place.neighborhood)
+    picked.push(place)
+    if (picked.length === limit) break
+  }
+  return picked
+}
+
+function rightNow(): { places: SlimPlace[]; open: boolean } {
+  const open = diverse(catalog.places.filter((place) => isOpen(place.periods)), 6)
+  if (open.length >= 3) return { places: open, open: true }
+  const editorial = EDITORIAL.map((id) => slimById(id)).filter((place): place is SlimPlace => place != null)
+  return { places: editorial, open: false }
+}
 
 export function HomePage() {
-  usePageMeta("Gusto's Guide", 'Eat your way through Seattle: pizza, oysters, coffee, neighborhood dinners, and the bars worth the hill.')
-  const { photos } = useApp()
+  usePageMeta("Gusto's Guide", 'Eat your way through Seattle: pizza, oysters, coffee, neighborhood dinners, and the bars worth the hill.', './og/og.svg')
+  const app = useApp()
+  const { photos } = app
   const featured = FEATURED.map((slug) => catalog.guides.find((guide) => guide.slug === slug)).filter((guide) => guide != null)
+  const occasions = OCCASIONS.map((slug) => catalog.guides.find((guide) => guide.slug === slug)).filter((guide) => guide != null)
   const hits = hitList()
+  const now = rightNow()
+  const hoodPins = diverse(catalog.places, 18)
+  const neighborhoods = catalog.guides.filter((guide) => guide.group === 'Neighborhoods').slice(0, 8)
+  const toGo = Object.values(app.statuses).filter((status) => status === 'togo').length
+  const recent = Object.entries(app.scores)
+    .map(([id, score]) => ({ place: slimById(id), score: score.score }))
+    .filter((row) => row.place)
+    .slice(0, 4)
   return (
     <main id="main" tabIndex={-1} className="outline-none">
       <section className="hero on-navy relative overflow-hidden">
@@ -60,7 +95,80 @@ export function HomePage() {
         </div>
       </div>
       <div className="mx-auto max-w-6xl px-4 py-10">
-        <section>
+        <section aria-labelledby="right-now">
+          <h2 id="right-now" className="font-serif text-4xl italic">Where to eat right now</h2>
+          <p className="mt-2 max-w-xl">
+            {now.open
+              ? 'Open at this hour, spread across neighborhoods.'
+              : "Editor's picks for the next time you are hungry. Nothing on the list is open at this hour, so these are not a live open-now claim."}
+          </p>
+          <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+            {now.places.map((place) => (
+              <Link key={place.id} to={`/place/${place.id}`} className="hit-card">
+                <div className="h-32 overflow-hidden bg-navy [&_.place-art]:aspect-auto [&_.place-art]:h-full">
+                  <PlaceThumb place={place} uploads={photos} eager />
+                </div>
+                <div className="p-3">
+                  <ScoreBadge score={app.gustoScore(place.id)} size="sm" />
+                  <h3 className="mt-2 font-serif text-2xl italic leading-none">{place.name}</h3>
+                  <p className="mt-2 text-sm">{place.neighborhood} · {place.cuisine[0]}</p>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </section>
+        <section className="mt-10" aria-labelledby="occasions">
+          <h2 id="occasions" className="font-serif text-4xl italic">Guides by occasion</h2>
+          <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+            {occasions.map((guide) => (
+              <Link key={guide.slug} to={`/guide/${guide.slug}`} className="guide-card">
+                <p className="text-xs font-bold tracking-[0.14em] uppercase">{guide.count} places</p>
+                <h3 className="mt-2 font-serif text-3xl italic leading-none">{guide.title}</h3>
+                <p className="mt-2 text-sm">{guide.dek}</p>
+              </Link>
+            ))}
+          </div>
+        </section>
+        {app.user ? (
+          <section className="mt-10 border-2 border-ink bg-navy p-5 text-cream" aria-labelledby="your-seattle">
+            <h2 id="your-seattle" className="font-serif text-4xl italic">Your Seattle</h2>
+            <p className="mt-2">{toGo} on your To go list.</p>
+            <h3 className="mt-4 font-serif text-2xl italic">Recently rated</h3>
+            {recent.length ? (
+              <ul className="mt-2 space-y-1">
+                {recent.map((row) => (
+                  <li key={row.place!.id}>
+                    <Link className="font-bold text-cream underline" to={`/place/${row.place!.id}`}>{row.place!.name}</Link>
+                    {' '}· {row.score.toFixed(1)}
+                  </li>
+                ))}
+              </ul>
+            ) : <p className="mt-2">Rank a place and it will land here.</p>}
+            <h3 className="mt-4 font-serif text-2xl italic">Plans</h3>
+            <ul className="mt-2 space-y-1">
+              {app.plans.slice(0, 3).map((plan) => (
+                <li key={plan.id}><Link className="font-bold text-cream underline" to={`/plan/${plan.id}`}>{plan.title}</Link>{plan.locked ? ' · locked in' : ''}</li>
+              ))}
+            </ul>
+            <Link to="/plans/wizard" className="btn btn-coral mt-4">Plan dinner</Link>
+          </section>
+        ) : null}
+        <section className="mt-10" aria-labelledby="hood-teaser">
+          <div className="flex items-end justify-between gap-3">
+            <h2 id="hood-teaser" className="font-serif text-4xl italic">Neighborhoods</h2>
+            <Link to="/explore" className="text-sm font-bold">Open the map</Link>
+          </div>
+          <p className="mt-2 max-w-xl">One pin per neighborhood. The full list, all {catalog.places.length} places, is on the explore map.</p>
+          <div className="mt-4 h-80">
+            <GuideMap places={hoodPins} statuses={app.statuses} />
+          </div>
+          <ul className="mt-4 flex flex-wrap gap-2">
+            {neighborhoods.map((guide) => (
+              <li key={guide.slug}><Link className="chip inline-flex items-center" to={`/guide/${guide.slug}`}>{guide.title}</Link></li>
+            ))}
+          </ul>
+        </section>
+        <section className="mt-10">
           <div className="flex items-end justify-between gap-3">
             <h2 className="font-serif text-4xl italic">Featured guides</h2>
             <Link to="/guides" className="text-sm font-bold">All guides</Link>

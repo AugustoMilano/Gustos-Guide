@@ -23,6 +23,7 @@ export function PlaceThumb({
       alt=""
       className="h-full w-full object-cover"
       loading={eager ? 'eager' : 'lazy'}
+      decoding="async"
       onError={() => setFailed(true)}
     />
   )

@@ -10,6 +10,12 @@ import './index.css'
 void loadPlaces()
 void loadGuides()
 
+if (import.meta.env.PROD && 'serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    void navigator.serviceWorker.register('./sw.js')
+  })
+}
+
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <AppProvider>

@@ -8,6 +8,8 @@ import type { VisitStatus } from '../types.ts'
 
 type MapPlace = { id: string; name: string; neighborhood: string; lat: number; lng: number }
 
+export type MapBounds = { south: number; north: number; west: number; east: number }
+
 const BASEMAP_STYLE = 'https://tiles.openfreemap.org/styles/positron'
 
 function Basemap() {
@@ -127,12 +129,41 @@ function FitPins({
   return null
 }
 
+function WatchBounds({ onMoveEnd }: { onMoveEnd?: (box: MapBounds) => void }) {
+  const map = useMap()
+  const callback = useRef(onMoveEnd)
+
+  useEffect(() => {
+    callback.current = onMoveEnd
+  })
+
+  useEffect(() => {
+    const report = () => {
+      const bounds = map.getBounds()
+      callback.current?.({
+        south: bounds.getSouth(),
+        north: bounds.getNorth(),
+        west: bounds.getWest(),
+        east: bounds.getEast(),
+      })
+    }
+    map.on('moveend', report)
+    return () => {
+      map.off('moveend', report)
+    }
+  }, [map])
+
+  return null
+}
+
 export function GuideMap({
   places,
   statuses,
+  onMoveEnd,
 }: {
   places: MapPlace[]
   statuses: Record<string, VisitStatus>
+  onMoveEnd?: (box: MapBounds) => void
 }) {
   if (!places.length) {
     return (
@@ -161,6 +192,7 @@ export function GuideMap({
         <ZoomControl position="topright" />
         <Basemap />
         <FitPins places={places} statuses={statuses} />
+        <WatchBounds onMoveEnd={onMoveEnd} />
       </MapContainer>
       <div className="map-legend">
         <span>

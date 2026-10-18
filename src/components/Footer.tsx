@@ -13,6 +13,7 @@ export function Footer() {
         <div>
           <p className="text-xs font-bold tracking-[0.14em] uppercase">Around the guide</p>
           <ul className="mt-3 space-y-2">
+            <li><Link to="/explore" className="font-serif text-2xl italic">Explore the map</Link></li>
             <li><Link to="/guides" className="font-serif text-2xl italic">All guides</Link></li>
             <li><Link to="/feed" className="font-serif text-2xl italic">Friend feed</Link></li>
             <li><Link to="/rank" className="font-serif text-2xl italic">Rank a place</Link></li>

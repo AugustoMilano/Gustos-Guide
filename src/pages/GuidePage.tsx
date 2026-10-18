@@ -53,7 +53,11 @@ export function GuidePage() {
     }
   }, [slug])
 
-  usePageMeta(guide ? `${guide.title} · Gusto's Guide` : "Guide · Gusto's Guide", guide?.dek ?? 'A Seattle guide from Gusto.')
+  usePageMeta(
+    guide ? `${guide.title} · Gusto's Guide` : "Guide · Gusto's Guide",
+    guide?.dek ?? 'A Seattle guide from Gusto.',
+    guide ? `./og/guides/${guide.slug}.svg` : './og/og.svg',
+  )
 
   const rows = useMemo(() => {
     if (!guide) return []

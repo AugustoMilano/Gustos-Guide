@@ -383,7 +383,7 @@ textarea {
 }
 
 .public-ref {
-  color: #6b6560;
+  color: #4a453f;
   font-size: 0.8rem;
   font-weight: 500;
 }
@@ -703,5 +703,74 @@ textarea {
 @media (max-width: 420px) {
   .hero-sticker-late {
     display: none;
+  }
+}
+
+.explore-shell {
+  position: fixed;
+  z-index: 30;
+  top: 4.75rem;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  background: #eee3d6;
+}
+
+.explore-list {
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+  background: #eee3d6;
+  min-height: 0;
+}
+
+.explore-map {
+  position: relative;
+  flex: 1;
+  min-width: 0;
+  min-height: 0;
+}
+
+.explore-map .map-frame {
+  height: 100%;
+  min-height: 0;
+  border: 0;
+}
+
+.search-area {
+  position: absolute;
+  z-index: 800;
+  left: 50%;
+  bottom: 5.25rem;
+  transform: translateX(-50%);
+  white-space: nowrap;
+}
+
+@media (max-width: 767px) {
+  .explore-list {
+    position: absolute;
+    z-index: 900;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    max-height: 70%;
+    border-top: 2px solid #181818;
+  }
+
+  .explore-list.is-peek {
+    max-height: 4.25rem;
+    overflow: hidden;
+  }
+}
+
+@media (min-width: 768px) {
+  .explore-list {
+    width: 22.5rem;
+    border-right: 2px solid #181818;
+  }
+
+  .search-area {
+    bottom: 1.25rem;
   }
 }

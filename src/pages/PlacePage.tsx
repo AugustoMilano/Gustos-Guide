@@ -10,6 +10,7 @@ import { ScoreBadge } from '../components/ScoreBadge.tsx'
 import { formatPeriods, hoursPhrase } from '../lib/hours.ts'
 import { milesBetween, priceLabel, publicReference, shareUrl, yelpBizUrl } from '../lib/format.ts'
 import { usePageMeta } from '../lib/meta.ts'
+import { howToGetIn } from '../lib/visit.ts'
 import { useApp } from '../state/AppState.tsx'
 import type { Place } from '../types.ts'
 
@@ -38,7 +39,11 @@ export function PlacePage() {
 
   const place = full ?? slim
 
-  usePageMeta(place ? `${place.name} · Gusto's Guide` : "Place · Gusto's Guide", place?.oneLiner ?? 'A Seattle restaurant.')
+  usePageMeta(
+    place ? `${place.name} · Gusto's Guide` : "Place · Gusto's Guide",
+    place?.oneLiner ?? 'A Seattle restaurant.',
+    './og/place.svg',
+  )
 
   const photos = useMemo(() => (place ? displayPhotos(place, app.photos) : []), [place, app.photos])
   const similar = useMemo(() => {
@@ -87,8 +92,8 @@ export function PlacePage() {
           <PhotoFrame photo={current} priority compact={Boolean(current?.illustration || !current?.url)} />
           <div className="mt-2 flex gap-2 overflow-auto">
             {photos.map((photo, index) => (
-              <button key={photo.key} type="button" className={`h-16 w-24 shrink-0 border-2 ${index === active ? 'border-coral' : 'border-ink'}`} onClick={() => setActive(index)}>
-                {photo.url && !photo.illustration ? <img src={photo.url} alt="" className="h-full w-full object-cover" /> : <span className="text-xs font-bold">Illustration</span>}
+              <button key={photo.key} type="button" className={`h-16 w-24 shrink-0 border-2 ${index === active ? 'border-coral' : 'border-ink'}`} aria-label={`Photo ${index + 1} of ${photos.length}`} onClick={() => setActive(index)}>
+                {photo.url && !photo.illustration ? <img src={photo.url} alt="" decoding="async" className="h-full w-full object-cover" /> : <span className="text-xs font-bold">Illustration</span>}
               </button>
             ))}
           </div>
@@ -111,7 +116,7 @@ export function PlacePage() {
         <div>
           <p className="text-xs font-bold tracking-[0.14em] uppercase">{place.cuisine.join(' · ')} · {place.neighborhood}</p>
           <h1 className="mt-1 font-serif text-5xl italic leading-none sm:text-6xl">{place.name}</h1>
-          <blockquote className="entry-quote mt-4 border-2 border-ink bg-[#fffaf3] px-4 py-3">“{place.oneLiner}”</blockquote>
+          <p className="review-headline mt-4 border-2 border-ink bg-[#fffaf3] px-4 py-3 font-serif text-2xl italic leading-snug">“{place.oneLiner}”</p>
           <div className="mt-3"><ScoreBadge score={app.gustoScore(place.id)} /></div>
           {app.user && !app.user.isOwner && app.scores[place.id] ? <p className="mt-2 text-sm">Your score {app.scores[place.id].score.toFixed(1)}</p> : null}
           {reference ? <p className="public-ref mt-2">{reference}</p> : null}
@@ -139,7 +144,17 @@ export function PlacePage() {
       </div>
       <div className="mt-8 grid gap-8 lg:grid-cols-[minmax(0,1fr)_320px]">
         <article>
-          {full ? full.review.split('\n\n').map((paragraph) => <p key={paragraph.slice(0, 32)} className="mt-4 max-w-2xl text-lg">{paragraph}</p>) : <p className="mt-4 max-w-2xl text-lg">{place.oneLiner}</p>}
+          <h2 className="font-serif text-3xl italic">The review</h2>
+          {full ? full.review.split('\n\n').map((paragraph) => <p key={paragraph.slice(0, 40)} className="mt-4 max-w-2xl text-lg">{paragraph}</p>) : <p className="mt-4 max-w-2xl text-lg">{place.oneLiner}</p>}
+          {howToGetIn(place) ? (
+            <section className="mt-6">
+              <h2 className="font-serif text-3xl italic">How to get in</h2>
+              <p className="mt-2 max-w-2xl">{howToGetIn(place)}</p>
+            </section>
+          ) : null}
+          {app.user ? (
+            <FriendsBeen placeId={place.id} />
+          ) : null}
           {full?.orderThis.length ? (
             <section className="mt-6">
               <h2 className="font-serif text-3xl italic">What to order</h2>
@@ -160,7 +175,7 @@ export function PlacePage() {
             </ul>
           </section>
           <section className="mt-6">
-            <h2 className="font-serif text-3xl italic">Similar places</h2>
+            <h2 className="font-serif text-3xl italic">Similar places nearby</h2>
             <div className="mt-3 grid grid-cols-2 gap-3">
               {similar.map((item) => (
                 <Link key={item.id} to={`/place/${item.id}`} className="hit-card">
@@ -183,5 +198,24 @@ export function PlacePage() {
       </div>
       <SignInSheet open={signIn} onClose={() => setSignIn(false)} />
     </main>
+  )
+}
+
+function FriendsBeen({ placeId }: { placeId: string }) {
+  const app = useApp()
+  const people = app.demoUsers.filter((person) => person.been.includes(placeId) || person.scores[placeId] !== undefined)
+  if (!people.length) return null
+  return (
+    <section className="mt-6">
+      <h2 className="font-serif text-3xl italic">Friends who've been</h2>
+      <ul className="mt-2 space-y-1">
+        {people.map((person) => (
+          <li key={person.id}>
+            <Link className="font-bold" to={`/u/${person.handle}`}>{person.name}</Link>
+            <span> · Demo{person.scores[placeId] !== undefined ? ` · ${person.scores[placeId].toFixed(1)}` : ''}</span>
+          </li>
+        ))}
+      </ul>
+    </section>
   )
 }

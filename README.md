@@ -42,4 +42,4 @@ Leave `VITE_SUPABASE_URL` and `VITE_SUPABASE_ANON_KEY` unset to stay local. When
 
 ## Deploy
 
-Framework preset Vite. Build command `npm run build`. Output directory `dist`. No environment variables are required for the local/demo mode.
+See `DEPLOY.md`. Framework preset Vite. Build command `npm run build`. Output directory `dist`. No environment variables are required for the local demo. Do not deploy from a cloud-agent session unless you mean to publish.

@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "node scripts/lint-copy.mjs && tsc -b && vite build",
+    "build": "node scripts/lint-copy.mjs && node scripts/write-sitemap.mjs && tsc -b && vite build",
     "lint": "oxlint && node scripts/lint-copy.mjs",
     "content": "node scripts/build-content.mjs",
     "photos": "node scripts/fetch-photos.mjs",

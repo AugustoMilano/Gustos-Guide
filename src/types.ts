@@ -87,6 +87,11 @@ export type UserGuide = {
   placeIds: string[]
   shared: boolean
   collaboratorIds: string[]
+  ownerId?: string
+  demo?: boolean
+  isPublic?: boolean
+  coverPlaceId?: string
+  inviteToken?: string
 }
 
 export type Activity = {
@@ -111,6 +116,17 @@ export type Plan = {
   votes: Record<string, { placeId?: string; date?: string }>
   rsvps: Record<string, 'yes' | 'no' | 'maybe'>
   inviteIds: string[]
+  locked?: boolean
+  vibe?: string
+  inviteToken?: string
+}
+
+export type Notice = {
+  id: string
+  text: string
+  href: string
+  read: boolean
+  createdAt: string
 }
 
 export type Comment = {

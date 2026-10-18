@@ -4,7 +4,7 @@ import { catalog } from '../content/load.ts'
 import { compressToWebp, readPhotos, removePhoto, savePhoto, type StoredPhoto } from '../lib/photos.ts'
 import { rescore } from '../lib/rank.ts'
 import { supabaseClient, uploadPlacePhoto } from '../social/supabase.ts'
-import type { Activity, Bucket, Comment, Plan, RankScore, SessionUser, UserGuide, VisitStatus } from '../types.ts'
+import type { Activity, Bucket, Comment, Notice, Plan, RankScore, SessionUser, UserGuide, VisitStatus } from '../types.ts'
 
 type DemoUser = {
   id: string
@@ -47,6 +47,7 @@ type Doc = {
   likes: string[]
   comments: Comment[]
   plans: Plan[]
+  notices: Notice[]
   order: Record<Bucket, string[]>
   scores: Record<string, RankScore>
 }
@@ -68,7 +69,11 @@ type AppValue = {
   addToGuide: (guideId: string, placeId: string) => void
   removeFromGuide: (guideId: string, placeId: string) => void
   moveInGuide: (guideId: string, placeId: string, direction: -1 | 1) => void
+  reorderGuide: (guideId: string, placeIds: string[]) => void
+  setGuidePublic: (guideId: string, isPublic: boolean) => void
+  setGuideCover: (guideId: string, placeId: string) => void
   shareGuide: (guideId: string, collaboratorId: string) => void
+  inviteLink: (kind: 'guide' | 'plan', id: string) => string
   following: string[]
   toggleFollow: (userId: string) => void
   activities: Activity[]
@@ -77,9 +82,13 @@ type AppValue = {
   comments: Comment[]
   addComment: (activityId: string, text: string) => void
   plans: Plan[]
-  createPlan: (title: string, placeIds: string[], dates: string[]) => string
+  createPlan: (title: string, placeIds: string[], dates: string[], options?: { vibe?: string; votePlaceId?: string; locked?: boolean }) => string
   votePlan: (planId: string, placeId: string, date: string) => void
   rsvpPlan: (planId: string, rsvp: 'yes' | 'no' | 'maybe') => void
+  lockPlan: (planId: string) => void
+  joinInvite: (token: string) => 'guide' | 'plan' | null
+  notices: Notice[]
+  markNoticesRead: () => void
   scores: Record<string, RankScore>
   order: Record<Bucket, string[]>
   compare: Compare | null
@@ -106,6 +115,7 @@ function emptyDoc(): Doc {
     likes: [],
     comments: [],
     plans: [],
+    notices: [],
     order: { loved: [], liked: [], fine: [], didnt: [] },
     scores: {},
   }
@@ -124,7 +134,12 @@ function loadDoc(id: string): Doc {
   const raw = localStorage.getItem(`gusto.doc.v1.${id}`)
   if (!raw) return emptyDoc()
   const parsed = JSON.parse(raw) as Doc
-  return { ...emptyDoc(), ...parsed, order: { ...emptyDoc().order, ...parsed.order } }
+  return {
+    ...emptyDoc(),
+    ...parsed,
+    order: { ...emptyDoc().order, ...parsed.order },
+    notices: parsed.notices ?? [],
+  }
 }
 
 export function AppProvider({ children }: { children: ReactNode }) {
@@ -259,7 +274,16 @@ export function AppProvider({ children }: { children: ReactNode }) {
 
   function createGuide(title: string) {
     if (!user) return
-    const guide: UserGuide = { id: crypto.randomUUID(), title: title.trim() || 'Untitled list', placeIds: [], shared: false, collaboratorIds: [] }
+    const guide: UserGuide = {
+      id: crypto.randomUUID(),
+      title: title.trim() || 'Untitled list',
+      placeIds: [],
+      shared: false,
+      collaboratorIds: [],
+      ownerId: user.id,
+      isPublic: false,
+      inviteToken: crypto.randomUUID().slice(0, 8),
+    }
     const next = { ...doc, guides: [guide, ...doc.guides] }
     pushActivity(next, { id: crypto.randomUUID(), userId: user.id, type: 'list', listId: guide.id, listTitle: guide.title, text: `Started ${guide.title}.`, createdAt: new Date().toISOString() }, user)
     persist(next)
@@ -305,6 +329,30 @@ export function AppProvider({ children }: { children: ReactNode }) {
     })
   }
 
+  function reorderGuide(guideId: string, placeIds: string[]) {
+    if (!user) return
+    persist({
+      ...doc,
+      guides: doc.guides.map((guide) => (guide.id === guideId ? { ...guide, placeIds } : guide)),
+    })
+  }
+
+  function setGuidePublic(guideId: string, isPublic: boolean) {
+    if (!user) return
+    persist({
+      ...doc,
+      guides: doc.guides.map((guide) => (guide.id === guideId ? { ...guide, isPublic } : guide)),
+    })
+  }
+
+  function setGuideCover(guideId: string, placeId: string) {
+    if (!user) return
+    persist({
+      ...doc,
+      guides: doc.guides.map((guide) => (guide.id === guideId ? { ...guide, coverPlaceId: placeId } : guide)),
+    })
+  }
+
   function shareGuide(guideId: string, collaboratorId: string) {
     if (!user) return
     const next = {
@@ -338,11 +386,23 @@ export function AppProvider({ children }: { children: ReactNode }) {
   function addComment(activityId: string, text: string) {
     if (!user || !text.trim()) return
     const comment: Comment = { id: crypto.randomUUID(), activityId, userId: user.id, text: text.trim(), createdAt: new Date().toISOString() }
-    persist({ ...doc, comments: [...doc.comments, comment] })
+    const notice: Notice = {
+      id: crypto.randomUUID(),
+      text: 'A comment was posted on the feed.',
+      href: '/feed',
+      read: false,
+      createdAt: comment.createdAt,
+    }
+    persist({ ...doc, comments: [...doc.comments, comment], notices: [notice, ...doc.notices].slice(0, 40) })
     if (remote) void remote.from('activity_comments').insert({ id: comment.id, activity_id: activityId, user_id: user.id, body: comment.text })
   }
 
-  function createPlan(title: string, placeIds: string[], dates: string[]) {
+  function createPlan(
+    title: string,
+    placeIds: string[],
+    dates: string[],
+    options?: { vibe?: string; votePlaceId?: string; locked?: boolean },
+  ) {
     if (!user) return ''
     const plan: Plan = {
       id: crypto.randomUUID(),
@@ -350,12 +410,75 @@ export function AppProvider({ children }: { children: ReactNode }) {
       hostId: user.id,
       placeIds,
       dates,
-      votes: {},
+      votes: options?.votePlaceId ? { [user.id]: { placeId: options.votePlaceId, date: dates[0] } } : {},
       rsvps: { [user.id]: 'yes' },
       inviteIds: demo.users.map((person) => person.id),
+      locked: Boolean(options?.locked),
+      vibe: options?.vibe,
+      inviteToken: crypto.randomUUID().slice(0, 8),
     }
-    persist({ ...doc, plans: [plan, ...doc.plans] })
+    const notice: Notice = {
+      id: crypto.randomUUID(),
+      text: `Plan started: ${plan.title}.`,
+      href: `/plan/${plan.id}`,
+      read: false,
+      createdAt: new Date().toISOString(),
+    }
+    persist({ ...doc, plans: [plan, ...doc.plans], notices: [notice, ...doc.notices].slice(0, 40) })
     return plan.id
+  }
+
+  function lockPlan(planId: string) {
+    if (!user) return
+    const plan = doc.plans.find((item) => item.id === planId)
+    const notice: Notice = {
+      id: crypto.randomUUID(),
+      text: plan ? `Locked in ${plan.title}.` : 'A dinner plan was locked in.',
+      href: `/plan/${planId}`,
+      read: false,
+      createdAt: new Date().toISOString(),
+    }
+    persist({
+      ...doc,
+      plans: doc.plans.map((item) => (item.id === planId ? { ...item, locked: true } : item)),
+      notices: [notice, ...doc.notices].slice(0, 40),
+    })
+  }
+
+  function inviteLink(kind: 'guide' | 'plan', id: string) {
+    if (kind === 'plan') {
+      const plan = doc.plans.find((item) => item.id === id)
+      const token = plan?.inviteToken || plan?.id || id
+      return `${window.location.origin}${window.location.pathname}#/join/${token}`
+    }
+    const guide = [...doc.guides, ...demo.lists].find((item) => item.id === id)
+    const token = guide?.inviteToken || guide?.id || id
+    return `${window.location.origin}${window.location.pathname}#/join/${token}`
+  }
+
+  function markNoticesRead() {
+    persist({ ...doc, notices: doc.notices.map((notice) => ({ ...notice, read: true })) })
+  }
+
+  function joinInvite(token: string): 'guide' | 'plan' | null {
+    if (!user) return null
+    const guide = [...doc.guides, ...demo.lists].find((item) => item.inviteToken === token || item.id === token)
+    if (guide) {
+      const base = doc.guides.find((item) => item.id === guide.id) ?? guide
+      const nextGuide: UserGuide = {
+        ...base,
+        shared: true,
+        collaboratorIds: base.collaboratorIds.includes(user.id) ? base.collaboratorIds : [...base.collaboratorIds, user.id],
+      }
+      persist({ ...doc, guides: [nextGuide, ...doc.guides.filter((item) => item.id !== guide.id)] })
+      return 'guide'
+    }
+    const plan = [...doc.plans, ...demo.plans].find((item) => item.inviteToken === token || item.id === token)
+    if (!plan) return null
+    const base = doc.plans.find((item) => item.id === plan.id) ?? plan
+    const nextPlan: Plan = { ...base, rsvps: { ...base.rsvps, [user.id]: 'yes' } }
+    persist({ ...doc, plans: [nextPlan, ...doc.plans.filter((item) => item.id !== plan.id)] })
+    return 'plan'
   }
 
   function votePlan(planId: string, placeId: string, date: string) {
@@ -490,8 +613,14 @@ export function AppProvider({ children }: { children: ReactNode }) {
     return [...doc.activities, ...demo.activities].sort((a, b) => b.createdAt.localeCompare(a.createdAt))
   }, [doc.activities])
 
-  const plans = useMemo(() => [...doc.plans, ...demo.plans], [doc.plans])
-  const guides = useMemo(() => [...doc.guides, ...demo.lists], [doc.guides])
+  const plans = useMemo(() => {
+    const ids = new Set(doc.plans.map((plan) => plan.id))
+    return [...doc.plans, ...demo.plans.filter((plan) => !ids.has(plan.id))]
+  }, [doc.plans])
+  const guides = useMemo(() => {
+    const ids = new Set(doc.guides.map((guide) => guide.id))
+    return [...doc.guides, ...demo.lists.filter((guide) => !ids.has(guide.id))]
+  }, [doc.guides])
 
   function friendScore(placeId: string) {
     if (!user || remote) return { average: null, loved: 0, count: 0, demo: false }
@@ -547,7 +676,11 @@ export function AppProvider({ children }: { children: ReactNode }) {
     addToGuide,
     removeFromGuide,
     moveInGuide,
+    reorderGuide,
+    setGuidePublic,
+    setGuideCover,
     shareGuide,
+    inviteLink,
     following: doc.following,
     toggleFollow,
     activities,
@@ -559,6 +692,10 @@ export function AppProvider({ children }: { children: ReactNode }) {
     createPlan,
     votePlan,
     rsvpPlan,
+    lockPlan,
+    joinInvite,
+    notices: doc.notices,
+    markNoticesRead,
     scores: doc.scores,
     order: doc.order,
     compare,
