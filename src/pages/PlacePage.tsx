@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { GuideMap } from '../components/GuideMap.tsx'
 import { PhotoFrame } from '../components/PhotoFrame.tsx'
+import { PlaceThumb } from '../components/PlaceThumb.tsx'
 import { SignInSheet } from '../components/SignInSheet.tsx'
 import { catalog, loadPlace, slimById } from '../content/load.ts'
 import { displayPhotos } from '../lib/gallery.ts'
@@ -22,6 +23,7 @@ export function PlacePage() {
   const [busy, setBusy] = useState(false)
 
   useEffect(() => {
+    window.scrollTo(0, 0)
     let cancelled = false
     setFull(null)
     setActive(0)
@@ -107,7 +109,7 @@ export function PlacePage() {
         <div>
           <p className="text-xs font-bold tracking-[0.14em] uppercase">{place.cuisine.join(' · ')} · {place.neighborhood}</p>
           <h1 className="mt-1 font-serif text-5xl italic leading-none sm:text-6xl">{place.name}</h1>
-          <p className="mt-3 font-serif text-2xl italic">“{place.oneLiner}”</p>
+          <blockquote className="entry-quote mt-4 border-2 border-ink bg-[#fffaf3] px-4 py-3">“{place.oneLiner}”</blockquote>
           <p className="score-pill mt-3">Not yet rated</p>
           {app.scores[place.id] ? <p className="mt-2 text-sm">Your score {app.scores[place.id].score.toFixed(1)}</p> : null}
           {place.publicRating ? <p className="mt-2 text-sm">{place.publicRating.value.toFixed(1)} from {place.publicRating.count} on {place.publicRating.source}</p> : null}
@@ -151,9 +153,19 @@ export function PlacePage() {
           </section>
           <section className="mt-6">
             <h2 className="font-serif text-3xl italic">Similar places</h2>
-            <ul className="mt-2 space-y-1">
-              {similar.map((item) => <li key={item.id}><Link to={`/place/${item.id}`} className="font-bold">{item.name}</Link> · {item.neighborhood}</li>)}
-            </ul>
+            <div className="mt-3 grid grid-cols-2 gap-3">
+              {similar.map((item) => (
+                <Link key={item.id} to={`/place/${item.id}`} className="hit-card">
+                  <div className="h-24 overflow-hidden bg-navy [&_.place-art]:aspect-auto [&_.place-art]:h-full">
+                    <PlaceThumb place={item} uploads={app.photos} />
+                  </div>
+                  <div className="p-2">
+                    <h3 className="font-serif text-xl italic leading-none">{item.name}</h3>
+                    <p className="mt-1 text-xs font-bold tracking-wide uppercase">{item.neighborhood}</p>
+                  </div>
+                </Link>
+              ))}
+            </div>
           </section>
         </article>
         <div className="h-80 lg:sticky lg:top-24">

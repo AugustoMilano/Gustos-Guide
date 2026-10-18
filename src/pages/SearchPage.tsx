@@ -1,5 +1,6 @@
 import { useMemo, useState } from 'react'
 import { Link, useSearchParams } from 'react-router-dom'
+import { PlaceThumb } from '../components/PlaceThumb.tsx'
 import { catalog } from '../content/load.ts'
 import { milesBetween, priceLabel } from '../lib/format.ts'
 import { readPosition } from '../lib/geo.ts'
@@ -63,8 +64,17 @@ export function SearchPage() {
         <ul className="mt-3 space-y-3">
           {places.slice(0, 40).map((place) => (
             <li key={place.id}>
-              <Link to={`/place/${place.id}`} className="font-serif text-2xl italic">{place.name}</Link>
-              <p className="text-sm">{place.cuisine.join(' · ')} · {place.neighborhood} · {priceLabel(place.price)}{origin ? ` · ${milesBetween(origin, place).toFixed(1)} mi` : ''}</p>
+              <Link to={`/place/${place.id}`} className="hit-card min-w-0">
+                <span className="flex items-center gap-3">
+                  <span className="h-16 w-16 shrink-0 overflow-hidden bg-navy [&_.place-art]:aspect-auto [&_.place-art]:h-full">
+                    <PlaceThumb place={place} />
+                  </span>
+                  <span className="min-w-0 py-2 pr-3">
+                    <span className="block font-serif text-2xl italic leading-none">{place.name}</span>
+                    <span className="mt-1 block text-sm">{place.cuisine.join(' · ')} · {place.neighborhood} · {priceLabel(place.price)}{origin ? ` · ${milesBetween(origin, place).toFixed(1)} mi` : ''}</span>
+                  </span>
+                </span>
+              </Link>
             </li>
           ))}
         </ul>

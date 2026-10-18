@@ -1,5 +1,6 @@
 import { useMemo, useState } from 'react'
 import { Link } from 'react-router-dom'
+import { PlaceThumb } from '../components/PlaceThumb.tsx'
 import { catalog } from '../content/load.ts'
 import { BUCKETS } from '../lib/rank.ts'
 import { usePageMeta } from '../lib/meta.ts'
@@ -28,7 +29,12 @@ export function RankPage() {
       <ul className="mt-4 space-y-4">
         {matches.map((place) => (
           <li key={place.id} className="border-2 border-ink p-3">
-            <Link to={`/place/${place.id}`} className="font-serif text-2xl italic">{place.name}</Link>
+            <Link to={`/place/${place.id}`} className="flex items-center gap-3">
+              <span className="h-14 w-16 shrink-0 overflow-hidden border-2 border-ink bg-navy [&_.place-art]:aspect-auto [&_.place-art]:h-full">
+                <PlaceThumb place={place} uploads={app.photos} />
+              </span>
+              <span className="font-serif text-2xl italic leading-none">{place.name}</span>
+            </Link>
             {app.scores[place.id] ? <p className="text-sm">Your score {app.scores[place.id].score.toFixed(1)}</p> : <p className="score-pill mt-1">Not yet rated</p>}
             <div className="mt-2 flex flex-wrap gap-2">
               {BUCKETS.map((bucket) => (

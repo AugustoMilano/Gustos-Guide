@@ -206,8 +206,87 @@ textarea {
   padding: 1rem;
 }
 
-.guide-card:hover {
-  transform: translateY(-2px);
+.guide-card,
+.hit-card,
+.toc-card {
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+.guide-card:hover,
+.hit-card:hover,
+.toc-card:hover,
+.toc-card:focus-within {
+  transform: translateY(-4px);
+  box-shadow: 6px 6px 0 #181818;
+}
+
+.toc-card:active {
+  transform: translateY(-1px);
+}
+
+.toc-shot img,
+.guide-shot img,
+.hit-card img {
+  transition: transform 420ms ease;
+}
+
+.toc-card:hover .toc-shot img,
+.guide-entry:hover .guide-shot img,
+.hit-card:hover img {
+  transform: scale(1.05);
+}
+
+.btn-mini {
+  min-height: 32px;
+  padding: 0.15rem 0.55rem;
+  font-size: 0.75rem;
+}
+
+.strip-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: #181818 #eee3d6;
+}
+
+.guide-note summary {
+  cursor: pointer;
+  font-size: 0.875rem;
+  font-weight: 700;
+}
+
+.guide-note p {
+  margin-top: 0.6rem;
+  max-width: 42rem;
+}
+
+.hit-card {
+  display: block;
+  border: 2px solid #181818;
+  background: #fffaf3;
+  overflow: hidden;
+}
+
+.entry-quote {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: clamp(1.6rem, 3vw, 2.4rem);
+  line-height: 1.15;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .guide-card,
+  .hit-card,
+  .toc-card,
+  .toc-shot img,
+  .guide-shot img,
+  .hit-card img {
+    transition: none;
+  }
+
+  .toc-card:hover .toc-shot img,
+  .guide-entry:hover .guide-shot img,
+  .hit-card:hover img {
+    transform: none;
+  }
 }
 
 .tag {

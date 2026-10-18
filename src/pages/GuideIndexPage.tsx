@@ -18,9 +18,14 @@ export function GuideIndexPage() {
           <div className="mt-4 grid gap-3 sm:grid-cols-2">
             {catalog.guides.filter((guide) => guide.group === group).map((guide) => (
               <Link key={guide.slug} to={`/guide/${guide.slug}`} className="guide-card">
-                <p className="text-xs font-bold tracking-[0.14em] uppercase">{guide.count} places · Updated {guide.updatedAt}</p>
-                <h3 className="mt-2 font-serif text-3xl italic leading-none">{guide.title}</h3>
-                <p className="mt-2 text-sm">{guide.dek}</p>
+                <span className="flex items-start justify-between gap-3">
+                  <span className="min-w-0">
+                    <p className="text-xs font-bold tracking-[0.14em] uppercase">Updated {guide.updatedAt}</p>
+                    <h3 className="mt-2 font-serif text-3xl italic leading-none">{guide.title}</h3>
+                    <p className="mt-2 text-sm">{guide.dek}</p>
+                  </span>
+                  <span className="sticker shrink-0">{guide.count}</span>
+                </span>
               </Link>
             ))}
           </div>

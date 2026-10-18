@@ -1,7 +1,9 @@
 import { Link } from 'react-router-dom'
 import { ParticleHero } from '../components/ParticleHero.tsx'
+import { PlaceThumb } from '../components/PlaceThumb.tsx'
 import { catalog } from '../content/load.ts'
 import { usePageMeta } from '../lib/meta.ts'
+import { useApp } from '../state/AppState.tsx'
 import type { GuideGroup, SlimPlace } from '../types.ts'
 
 const GROUPS: GuideGroup[] = ['Best of', 'Cuisine', 'Occasion', 'Neighborhoods', 'Drinks']
@@ -23,8 +25,11 @@ function hitList(): SlimPlace[] {
   return picked
 }
 
+const TICKER = ['Pizza', 'Oysters', 'Capitol Hill', 'Ballard', 'Date night', 'Cheap eats', 'Cocktail bars', 'Brunch', 'Georgetown', 'Fremont', 'Late night', 'Seafood']
+
 export function HomePage() {
   usePageMeta("Gusto's Guide", 'Eat your way through Seattle: pizza, oysters, coffee, neighborhood dinners, and the bars worth the hill.')
+  const { photos } = useApp()
   const featured = FEATURED.map((slug) => catalog.guides.find((guide) => guide.slug === slug)).filter((guide) => guide != null)
   const hits = hitList()
   return (
@@ -43,6 +48,17 @@ export function HomePage() {
           </div>
         </div>
       </section>
+      <div className="marquee" aria-hidden="true">
+        <div className="marquee-track">
+          {[0, 1].map((copy) => (
+            <div key={copy} className="marquee-group">
+              {TICKER.map((item) => (
+                <span key={`${copy}-${item}`} className="font-serif text-xl italic">{item} ·</span>
+              ))}
+            </div>
+          ))}
+        </div>
+      </div>
       <div className="mx-auto max-w-6xl px-4 py-10">
         <section>
           <div className="flex items-end justify-between gap-3">
@@ -52,9 +68,14 @@ export function HomePage() {
           <div className="mt-4 flex gap-3 overflow-x-auto pb-2">
             {featured.map((guide) => (
               <Link key={guide.slug} to={`/guide/${guide.slug}`} className="guide-card w-72 shrink-0">
-                <p className="text-xs font-bold tracking-[0.14em] uppercase">{guide.group} · {guide.count} places</p>
-                <h3 className="mt-2 font-serif text-3xl italic leading-none">{guide.title}</h3>
-                <p className="mt-2 text-sm">{guide.dek}</p>
+                <span className="flex items-start justify-between gap-3">
+                  <span>
+                    <p className="text-xs font-bold tracking-[0.14em] uppercase">{guide.group}</p>
+                    <h3 className="mt-2 font-serif text-3xl italic leading-none">{guide.title}</h3>
+                    <p className="mt-2 text-sm">{guide.dek}</p>
+                  </span>
+                  <span className="sticker shrink-0">{guide.count}</span>
+                </span>
               </Link>
             ))}
           </div>
@@ -63,11 +84,16 @@ export function HomePage() {
           <h2 className="font-serif text-4xl italic">The hit list</h2>
           <p className="mt-2 max-w-xl">The rooms people already cross town for, one neighborhood at a time.</p>
           <div className="mt-4 flex gap-3 overflow-x-auto pb-2">
-            {hits.map((place) => (
-              <Link key={place.id} to={`/place/${place.id}`} className="w-56 shrink-0 border-2 border-ink bg-cream p-3">
-                <p className="text-xs font-bold tracking-[0.14em] uppercase">{place.neighborhood}</p>
-                <h3 className="mt-1 font-serif text-2xl italic leading-none">{place.name}</h3>
-                <p className="mt-2 text-sm">{place.cuisine[0]}</p>
+            {hits.map((place, index) => (
+              <Link key={place.id} to={`/place/${place.id}`} className="hit-card w-56 shrink-0">
+                <div className="h-28 overflow-hidden bg-navy [&_.place-art]:aspect-auto [&_.place-art]:h-full">
+                  <PlaceThumb place={place} uploads={photos} eager={index < 4} />
+                </div>
+                <div className="p-3">
+                  <p className="text-xs font-bold tracking-[0.14em] uppercase">{place.neighborhood}</p>
+                  <h3 className="mt-1 font-serif text-2xl italic leading-none">{place.name}</h3>
+                  <p className="mt-2 text-sm">{place.cuisine[0]}</p>
+                </div>
               </Link>
             ))}
           </div>

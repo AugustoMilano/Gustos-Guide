@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
+import { PlaceThumb } from '../components/PlaceThumb.tsx'
 import { SignInSheet } from '../components/SignInSheet.tsx'
 import { catalog } from '../content/load.ts'
 import { usePageMeta } from '../lib/meta.ts'
@@ -32,7 +33,14 @@ export function FeedPage() {
                   {person?.demo ? ' · Demo' : ''}
                 </p>
                 <p className="mt-1">{activity.text}</p>
-                {place ? <Link className="font-serif text-2xl italic" to={`/place/${place.id}`}>{place.name}</Link> : null}
+                {place ? (
+                  <Link className="mt-2 flex items-center gap-3" to={`/place/${place.id}`}>
+                    <span className="h-16 w-20 shrink-0 overflow-hidden border-2 border-ink bg-navy [&_.place-art]:aspect-auto [&_.place-art]:h-full">
+                      <PlaceThumb place={place} uploads={app.photos} />
+                    </span>
+                    <span className="font-serif text-2xl italic leading-none">{place.name}</span>
+                  </Link>
+                ) : null}
                 {activity.score ? <p className="text-sm">Their score {activity.score.toFixed(1)}</p> : null}
                 <div className="mt-3 flex flex-wrap gap-2">
                   <button type="button" className={`btn text-sm ${app.likes.includes(activity.id) ? 'btn-coral' : ''}`} onClick={() => (app.user ? app.toggleLike(activity.id) : setSignIn(true))}>
@@ -67,10 +75,13 @@ export function FeedPage() {
       <aside>
         <h2 className="font-serif text-3xl italic">Leaderboard</h2>
         <ol className="mt-3 space-y-2">
-          {board.map((row) => (
-            <li key={row.id}>
-              <Link to={row.demo ? `/u/${row.id.replace('demo-', '')}` : '/my'} className="font-bold">{row.name}</Link>
-              {row.demo ? ' · Demo' : ''} · {row.count} ranked · streak {row.streak}
+          {board.map((row, index) => (
+            <li key={row.id} className="flex items-center gap-2">
+              <span className="grid h-8 w-8 shrink-0 place-items-center border-2 border-ink bg-coral text-sm font-bold">{index + 1}</span>
+              <span>
+                <Link to={row.demo ? `/u/${row.id.replace('demo-', '')}` : '/my'} className="font-bold">{row.name}</Link>
+                {row.demo ? ' · Demo' : ''} · {row.count} ranked · streak {row.streak}
+              </span>
             </li>
           ))}
         </ol>
