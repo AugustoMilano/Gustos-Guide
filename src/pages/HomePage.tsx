@@ -156,7 +156,7 @@ export function HomePage() {
                   </li>
                 ))}
               </ul>
-            ) : <p className="mt-2">Rank a place and it will land here.</p>}
+            ) : <p className="mt-2">Nothing ranked yet. <Link className="font-bold text-cream underline" to="/rank">Rank a place</Link> and it will land here.</p>}
             <h3 className="mt-4 font-serif text-2xl italic">Plans</h3>
             <ul className="mt-2 space-y-1">
               {app.plans.slice(0, 3).map((plan) => (

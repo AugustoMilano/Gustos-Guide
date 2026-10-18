@@ -26,6 +26,15 @@ export function SearchPage() {
     return list.slice().sort((a, b) => milesBetween(origin, a) - milesBetween(origin, b))
   }, [query, origin])
   const guides = catalog.guides.filter((guide) => !query || `${guide.title} ${guide.dek} ${guide.group}`.toLowerCase().includes(query))
+  const guideByTitle = new Map(catalog.guides.map((guide) => [guide.title.toLowerCase(), guide.slug]))
+  const hoodGuide: Record<string, string> = {
+    'queen anne': 'queen-anne-incl-lower-queen-anne',
+    'lower queen anne': 'queen-anne-incl-lower-queen-anne',
+    'south lake union': 'south-lake-union-incl-denny-triangle',
+    'denny triangle': 'south-lake-union-incl-denny-triangle',
+    georgetown: 'georgetown-sodo',
+    sodo: 'georgetown-sodo',
+  }
   const neighborhoods = [...new Set(catalog.places.map((place) => place.neighborhood))].filter((name) => !query || name.toLowerCase().includes(query))
   const cuisines = [...new Set(catalog.places.flatMap((place) => place.cuisine))].filter((name) => !query || name.toLowerCase().includes(query))
 
@@ -56,7 +65,10 @@ export function SearchPage() {
       </section>
       <section className="mt-6">
         <h2 className="font-serif text-3xl italic">Neighborhoods</h2>
-        <p className="mt-2 flex flex-wrap gap-x-3 gap-y-1">{neighborhoods.slice(0, 16).map((name) => <Link key={name} className="font-bold" to={`/search?q=${encodeURIComponent(name)}`}>{name}</Link>)}</p>
+        <p className="mt-2 flex flex-wrap gap-2">{neighborhoods.slice(0, 16).map((name) => {
+          const slug = guideByTitle.get(name.toLowerCase()) ?? hoodGuide[name.toLowerCase()]
+          return <Link key={name} className="chip inline-flex items-center" to={slug ? `/guide/${slug}` : `/search?q=${encodeURIComponent(name)}`}>{name}</Link>
+        })}</p>
       </section>
       <section className="mt-6">
         <h2 className="font-serif text-3xl italic">Cuisines</h2>
@@ -64,6 +76,9 @@ export function SearchPage() {
       </section>
       <section className="mt-6">
         <h2 className="font-serif text-3xl italic">{places.length} places</h2>
+        {query && places.length === 0 && guides.length === 0 ? (
+          <p className="mt-3">Nothing matches “{q}”. <Link className="font-bold" to="/guides">Browse the guides</Link> or <Link className="font-bold" to="/explore">open the map</Link>.</p>
+        ) : null}
         <ul className="mt-3 space-y-3">
           {places.slice(0, 40).map((place) => (
             <li key={place.id}>

@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { PlaceThumb } from '../components/PlaceThumb.tsx'
+import { SignInSheet } from '../components/SignInSheet.tsx'
 import { catalog, slimById } from '../content/load.ts'
 import { usePageMeta } from '../lib/meta.ts'
 import { useApp } from '../state/AppState.tsx'
@@ -11,6 +12,7 @@ export function MyGuidesPage() {
   const [title, setTitle] = useState('')
   const [query, setQuery] = useState('')
   const [copied, setCopied] = useState('')
+  const [signIn, setSignIn] = useState(false)
   usePageMeta("My guides · Gusto's Guide", 'Lists you make, plus shared demo lists.', './og/og.svg')
   const mine = app.guides.filter((guide) => !guide.demo)
   const shared = app.guides.filter((guide) => guide.demo)
@@ -32,7 +34,12 @@ export function MyGuidesPage() {
           <input id="new-list" className="min-h-11 flex-1 border-2 border-ink bg-cream px-3" value={title} onChange={(event) => setTitle(event.target.value)} placeholder="New list" />
           <button className="btn btn-coral" type="submit">Create</button>
         </form>
-      ) : <p className="mt-4">Sign in to make a list.</p>}
+      ) : (
+        <div className="mt-4">
+          <p>Sign in to make a list. It stays in this browser.</p>
+          <button type="button" className="btn btn-coral mt-3" onClick={() => setSignIn(true)}>Sign in</button>
+        </div>
+      )}
       {mine.map((guide) => (
         <GuideEditor
           key={guide.id}
@@ -44,6 +51,7 @@ export function MyGuidesPage() {
           onCopy={() => void copyLink(guide)}
         />
       ))}
+      <SignInSheet open={signIn} onClose={() => setSignIn(false)} />
       <h2 className="mt-10 font-serif text-4xl italic">Shared</h2>
       <ul className="mt-3 space-y-3">
         {shared.map((guide) => (

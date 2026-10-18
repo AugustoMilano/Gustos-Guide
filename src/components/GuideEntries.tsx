@@ -154,14 +154,16 @@ export function GuideEntryCard({
   const image = (
     <div className="relative min-w-0">
       <span className="absolute top-3 left-3 z-10 grid h-12 min-w-12 -rotate-6 place-items-center border-2 border-ink bg-coral px-2 font-serif text-2xl italic shadow-[3px_3px_0_#181818]">{number}</span>
-      <Shot place={place} photo={photo} tall={layout === 0} />
+      <Link to={`/place/${place.id}`} className="block" aria-label={place.name}>
+        <Shot place={place} photo={photo} tall={layout === 0} />
+      </Link>
       {shots.length > 1 ? (
         <div className="absolute right-3 bottom-10 flex gap-1">
           {shots.slice(0, 4).map((shot, shotIndex) => (
             <button
               key={shot.key}
               type="button"
-              className={`h-10 w-14 overflow-hidden border-2 ${shotIndex === active ? 'border-coral' : 'border-ink'} bg-cream`}
+              className={`h-11 min-h-11 w-16 min-w-11 overflow-hidden border-2 ${shotIndex === active ? 'border-coral' : 'border-ink'} bg-cream`}
               onClick={() => setActive(shotIndex)}
               aria-label={`Photo ${shotIndex + 1} of ${place.name}`}
             >
@@ -225,9 +227,11 @@ export function GuideEntryCard({
       {title}
       <div className="mt-3 flex items-start gap-3">
         <figure className="w-24 shrink-0">
-          <div className="h-24 w-24 overflow-hidden border-2 border-ink bg-navy [&_.place-art]:aspect-auto [&_.place-art]:h-full">
-            <PlaceArt id={place.id} cuisine={place.cuisine[0] ?? 'Seattle'} neighborhood={place.neighborhood} />
-          </div>
+          <Link to={`/place/${place.id}`} className="block" aria-label={place.name}>
+            <div className="h-24 w-24 overflow-hidden border-2 border-ink bg-navy [&_.place-art]:aspect-auto [&_.place-art]:h-full">
+              <PlaceArt id={place.id} cuisine={place.cuisine[0] ?? 'Seattle'} neighborhood={place.neighborhood} />
+            </div>
+          </Link>
           <figcaption className="mt-1 text-[10px] font-bold tracking-wide uppercase">Illustration</figcaption>
         </figure>
         <blockquote className="entry-quote min-w-0 flex-1 border-l-4 border-coral pl-3">“{entry.pullQuote}”</blockquote>

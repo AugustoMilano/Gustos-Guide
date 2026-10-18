@@ -142,18 +142,18 @@ export function ExplorePage() {
           {area ? (
             <p className="px-3 pb-2 text-sm">
               Searching this area.{' '}
-              <button type="button" className="font-bold underline" onClick={resetArea}>Clear</button>
+              <button type="button" className="inline-flex min-h-11 items-center font-bold underline" onClick={resetArea}>Clear</button>
             </p>
           ) : null}
           <ul className="space-y-2 px-3 pb-4">
             {rows.map((place) => (
               <li
                 key={place.id}
-                className={`explore-card border-2 bg-[#fffaf3] p-2 ${activeId === place.id ? 'border-coral' : 'border-ink'}`}
+                className={`explore-card relative border-2 bg-[#fffaf3] p-2 ${activeId === place.id ? 'border-coral' : 'border-ink'}`}
                 onMouseEnter={() => setActiveId(place.id)}
                 onMouseLeave={() => setActiveId((current) => (current === place.id ? null : current))}
               >
-                <Link to={`/place/${place.id}`} className="flex items-center gap-3">
+                <Link to={`/place/${place.id}`} className="flex items-center gap-3 after:absolute after:inset-0">
                   <span className="h-20 w-24 shrink-0 overflow-hidden bg-navy [&_.place-art]:aspect-auto [&_.place-art]:h-full">
                     <PlaceThumb place={place} uploads={app.photos} />
                   </span>
@@ -165,14 +165,33 @@ export function ExplorePage() {
                     </span>
                   </span>
                 </Link>
-                <div className="mt-2 flex flex-wrap gap-2">
+                <div className="relative z-10 mt-2 flex flex-wrap gap-2">
                   <MapLinks place={place} />
                 </div>
               </li>
             ))}
           </ul>
           {listed.length > rows.length ? <p className="px-3 pb-4 text-sm">Showing {rows.length} of {listed.length}. Zoom in and search this area to narrow it.</p> : null}
-          {listed.length === 0 ? <p className="px-3 pb-6 font-serif text-2xl italic">Nothing in this view. Loosen a filter.</p> : null}
+          {listed.length === 0 ? (
+            <div className="px-3 pb-6">
+              <p className="font-serif text-2xl italic">Nothing in this view.</p>
+              <button
+                type="button"
+                className="btn mt-3"
+                onClick={() => {
+                  setCuisine('any')
+                  setNeighborhood('any')
+                  setPrice('any')
+                  setBand('any')
+                  setVisit('any')
+                  setOpenNow(false)
+                  resetArea()
+                }}
+              >
+                Clear filters
+              </button>
+            </div>
+          ) : null}
         </div>
       </section>
       <div className="explore-map">

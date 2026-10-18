@@ -86,8 +86,13 @@ export function hostOf(url: string): string {
 }
 
 export function shareUrl(slug: string): string {
+  return pageShareUrl(`/place/${slug}`)
+}
+
+export function pageShareUrl(hashPath: string): string {
   const url = new URL(window.location.href)
-  url.hash = `#/place/${slug}`
+  const path = hashPath.startsWith('#') ? hashPath : `#${hashPath.startsWith('/') ? hashPath : `/${hashPath}`}`
+  url.hash = path
   return url.toString()
 }
 

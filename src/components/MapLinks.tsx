@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { appleDirectionsUrl, applePlaceUrl, googleMapsUrl, prefersAppleMaps } from '../lib/maps.ts'
+import { appleDirectionsUrl, applePlaceUrl, googleDirectionsUrl, googleMapsUrl, prefersAppleMaps } from '../lib/maps.ts'
 
 type MapPlace = { id: string; name: string; address?: string; lat: number; lng: number }
 
@@ -21,8 +21,13 @@ export function MapLinks({ place }: { place: MapPlace }) {
     )
   }
   return (
-    <a className="btn text-sm" href={googleMapsUrl(place)}>
-      Open in Google Maps
-    </a>
+    <>
+      <a className="btn text-sm" href={googleMapsUrl(place)}>
+        Open in Google Maps
+      </a>
+      <a className="btn text-sm" href={googleDirectionsUrl(place)}>
+        Directions
+      </a>
+    </>
   )
 }

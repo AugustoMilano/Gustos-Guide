@@ -9,6 +9,7 @@ import { displayPhotos } from '../lib/gallery.ts'
 import { ScoreBadge } from '../components/ScoreBadge.tsx'
 import { formatPeriods, hoursPhrase } from '../lib/hours.ts'
 import { MapLinks } from '../components/MapLinks.tsx'
+import { ShareButton } from '../components/ShareButton.tsx'
 import { milesBetween, priceLabel, publicReference, shareUrl, yelpBizUrl } from '../lib/format.ts'
 import { usePageMeta } from '../lib/meta.ts'
 import { howToGetIn } from '../lib/visit.ts'
@@ -26,7 +27,6 @@ export function PlacePage() {
   const [busy, setBusy] = useState(false)
 
   useEffect(() => {
-    window.scrollTo(0, 0)
     let cancelled = false
     setFull(null)
     setActive(0)
@@ -139,7 +139,7 @@ export function PlacePage() {
             {place.phone ? <a className="btn text-sm" href={`tel:${place.phone}`}>Call</a> : null}
             <button type="button" className={`btn text-sm ${app.statuses[place.id] === 'togo' ? 'btn-coral' : ''}`} onClick={() => (app.user ? app.setStatus(place.id, 'togo') : setSignIn(true))}>To go</button>
             <button type="button" className={`btn text-sm ${been ? 'btn-leaf' : ''}`} onClick={() => (app.user ? app.setStatus(place.id, 'been') : setSignIn(true))}>Been</button>
-            <button type="button" className="btn text-sm" onClick={() => void navigator.clipboard.writeText(shareUrl(place.id))}>Share</button>
+            <ShareButton title={place.name} url={shareUrl(place.id)} />
           </div>
         </div>
       </div>

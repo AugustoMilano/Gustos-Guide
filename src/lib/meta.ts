@@ -19,6 +19,8 @@ export function usePageMeta(title: string, description: string, image?: string) 
     const picture = image ? new URL(image, window.location.href).href : ''
     upsert('property', 'og:title', title)
     upsert('property', 'og:description', description)
+    upsert('property', 'og:type', 'website')
+    upsert('property', 'og:url', window.location.href)
     upsert('name', 'twitter:title', title)
     upsert('name', 'twitter:description', description)
     if (picture) {

@@ -49,8 +49,12 @@ async function networkFirst(request) {
     const cached = await caches.match(request)
     if (cached) return cached
     if (request.mode === 'navigate') {
-      const shell = await caches.match('./index.html')
+      const shell = (await caches.match('./index.html')) || (await caches.match('./'))
       if (shell) return shell
+      return new Response(
+        '<!doctype html><title>Offline · Gusto&#39;s Guide</title><body style="margin:0;min-height:100vh;display:grid;place-items:center;background:#141f4d;color:#fffaf3;font-family:Georgia,serif;padding:2rem"><main><h1 style="font-size:3rem;font-style:italic;font-weight:400">You are offline.</h1><p>Open Gusto&#39;s Guide once while you are online. After that, the last pages stay on this phone.</p></main></body>',
+        { headers: { 'Content-Type': 'text/html; charset=utf-8' } },
+      )
     }
     return Response.error()
   }

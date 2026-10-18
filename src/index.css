@@ -1347,3 +1347,149 @@ textarea {
   color: #fffaf3;
   border-color: transparent;
 }
+
+/* Navy glass while the home hero sits behind the bar. Cream glass over navy reads as a lavender band. */
+.site-header.on-hero {
+  background: #141f4d;
+  color: #fffaf3;
+  border-bottom-color: rgb(255 255 255 / 22%);
+  box-shadow: none;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+
+.site-header.on-hero :focus-visible {
+  outline-color: #fffaf3;
+}
+
+.site-header.on-hero a,
+.site-header.on-hero button {
+  color: #fffaf3;
+}
+
+.site-header.on-hero .glass-icon,
+.site-header.on-hero .glass-input {
+  background: rgb(255 250 243 / 14%);
+  color: #fffaf3;
+  border-color: rgb(255 255 255 / 32%);
+}
+
+.site-header.on-hero .btn-coral {
+  background: #ff5330;
+  color: #181818;
+}
+
+/* The menu sits on the navy hero. Translucent cream over navy turns lavender and fails contrast. */
+.site-header.on-hero .menu-sheet {
+  background: #fffaf3;
+  color: #181818;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+
+.site-header.on-hero .menu-sheet a,
+.site-header.on-hero .menu-sheet button:not(.btn-coral) {
+  color: #181818;
+}
+
+.site-header.on-hero .menu-sheet .glass-input {
+  background: #fff;
+  color: #181818;
+  border-color: rgb(24 24 24 / 35%);
+}
+
+.chip,
+.sort-chip,
+.btn-mini,
+.guide-note summary {
+  min-height: 44px;
+}
+
+.menu-sheet a,
+.menu-sheet button {
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+}
+
+.gusto-pin-wrap {
+  display: grid !important;
+  place-items: center;
+}
+
+.gusto-cluster span {
+  width: 44px;
+  height: 44px;
+}
+
+.leaflet-bar a,
+.leaflet-bar a:first-child,
+.leaflet-bar a:last-child {
+  width: 44px;
+  height: 44px;
+  line-height: 44px;
+}
+
+.map-zoom {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.map-zoom button {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  border: 1px solid rgb(255 255 255 / 72%);
+  background: rgb(255 250 243 / 92%);
+  color: #181818;
+  font-size: 1.4rem;
+  font-weight: 700;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.back-to-top {
+  position: fixed;
+  right: 1rem;
+  bottom: 1rem;
+  z-index: 30;
+  min-width: 44px;
+  min-height: 44px;
+  border: 0;
+  border-radius: 999px;
+  background: rgb(20 31 77 / 88%);
+  color: #fffaf3;
+  padding: 0 0.9rem;
+  font-weight: 700;
+  box-shadow: 0 10px 24px rgb(20 31 77 / 24%);
+}
+
+.offline-banner {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 60;
+  background: #141f4d;
+  color: #fffaf3;
+  padding: 0.45rem 1rem;
+  text-align: center;
+  font-size: 0.85rem;
+}
+
+.skeleton {
+  border-radius: 20px;
+  background: linear-gradient(90deg, #e7e0d6, #fffaf3 45%, #e7e0d6);
+  background-size: 200% 100%;
+  animation: skeleton-sheen 1.2s ease-in-out infinite;
+}
+
+@keyframes skeleton-sheen {
+  from { background-position: 100% 0; }
+  to { background-position: -100% 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .skeleton { animation: none; }
+}

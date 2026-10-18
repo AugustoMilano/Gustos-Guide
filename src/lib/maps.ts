@@ -16,6 +16,10 @@ export function googleMapsUrl(place: { name: string; address?: string }): string
   return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(query)}`
 }
 
+export function googleDirectionsUrl(place: { lat: number; lng: number }): string {
+  return `https://www.google.com/maps/dir/?api=1&destination=${place.lat},${place.lng}`
+}
+
 export function prefersAppleMaps(): boolean {
   if (typeof navigator === 'undefined') return false
   const ua = navigator.userAgent

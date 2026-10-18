@@ -2,8 +2,10 @@ import { useEffect, useMemo, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { GuideEntryCard, GuideStrip } from '../components/GuideEntries.tsx'
 import { GuideMap } from '../components/GuideMap.tsx'
+import { ShareButton } from '../components/ShareButton.tsx'
 import { SignInSheet } from '../components/SignInSheet.tsx'
 import { catalog, loadGuide } from '../content/load.ts'
+import { pageShareUrl } from '../lib/format.ts'
 import { isOpen } from '../lib/hours.ts'
 import { usePageMeta } from '../lib/meta.ts'
 import { useApp } from '../state/AppState.tsx'
@@ -33,7 +35,6 @@ export function GuidePage() {
   }, [])
 
   useEffect(() => {
-    window.scrollTo(0, 0)
     let cancelled = false
     setGuide(null)
     setMissing(false)
@@ -107,7 +108,7 @@ export function GuidePage() {
         <p className="mt-2 max-w-2xl font-serif text-xl italic">{summary?.dek}</p>
         <div className="mt-4 flex gap-3 overflow-hidden" aria-hidden="true">
           {Array.from({ length: 4 }, (_, index) => (
-            <div key={index} className="h-52 w-52 shrink-0 border-2 border-ink bg-[#fffaf3] sm:w-60" />
+            <div key={index} className="skeleton h-52 w-52 shrink-0 sm:w-60" />
           ))}
         </div>
       </main>
@@ -133,6 +134,7 @@ export function GuidePage() {
           <Link to="/guides" className="text-sm font-bold">← All guides</Link>
           <div className="flex flex-wrap items-center gap-2">
             <p className="text-xs font-bold tracking-[0.14em] uppercase">{guide.group} · Updated {guide.updatedAt}</p>
+            <ShareButton title={guide.title} url={pageShareUrl(`/guide/${guide.slug}`)} />
             <div role="group" aria-label="Sort this guide" className="flex gap-1">
               <button type="button" className="sort-chip" aria-pressed={sort === 'guide'} onClick={() => setSort('guide')}>Guide order</button>
               <button type="button" className="sort-chip" aria-pressed={sort === 'score'} onClick={() => setSort('score')}>Gusto's Score</button>

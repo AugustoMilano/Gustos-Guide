@@ -1,4 +1,4 @@
-import { lazy, Suspense } from 'react'
+import { lazy, Suspense, useEffect, useRef, useState } from 'react'
 import { Route, Routes, useLocation } from 'react-router-dom'
 import { Footer } from './components/Footer.tsx'
 import { Header } from './components/Header.tsx'
@@ -21,11 +21,95 @@ const PlanWizardPage = lazy(() => import('./pages/PlanPage.tsx').then((module) =
 const ListPage = lazy(() => import('./pages/ListPage.tsx').then((module) => ({ default: module.ListPage })))
 const JoinPage = lazy(() => import('./pages/JoinPage.tsx').then((module) => ({ default: module.JoinPage })))
 
+function ScrollManager() {
+  const location = useLocation()
+  const positions = useRef(new Map<string, number>())
+  useEffect(() => {
+    if ('scrollRestoration' in history) history.scrollRestoration = 'manual'
+  }, [])
+  useEffect(() => {
+    const key = location.key
+    const saved = positions.current.get(key) ?? 0
+    let last = saved
+    window.scrollTo(0, saved)
+    const save = () => {
+      last = window.scrollY
+      positions.current.set(key, last)
+    }
+    window.addEventListener('scroll', save, { passive: true })
+    document.addEventListener('scroll', save, { passive: true })
+    return () => {
+      // WebKit can jump back to 0 before cleanup, without a scroll event.
+      const y = window.scrollY
+      positions.current.set(key, y > 0 ? y : last)
+      window.removeEventListener('scroll', save)
+      document.removeEventListener('scroll', save)
+    }
+  }, [location.key])
+  return null
+}
+
+function BackToTop() {
+  const { pathname } = useLocation()
+  const [show, setShow] = useState(false)
+  useEffect(() => {
+    const onScroll = () => setShow(window.scrollY > 700)
+    onScroll()
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [pathname])
+  if (!show || pathname === '/explore') return null
+  return (
+    <button
+      type="button"
+      className="back-to-top"
+      onClick={() => {
+        const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+        window.scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' })
+      }}
+    >
+      Top
+    </button>
+  )
+}
+
+function OfflineBanner() {
+  const [offline, setOffline] = useState(() => typeof navigator !== 'undefined' && !navigator.onLine)
+  useEffect(() => {
+    const on = () => setOffline(false)
+    const off = () => setOffline(true)
+    window.addEventListener('online', on)
+    window.addEventListener('offline', off)
+    return () => {
+      window.removeEventListener('online', on)
+      window.removeEventListener('offline', off)
+    }
+  }, [])
+  if (!offline) return null
+  return <p className="offline-banner" role="status">You are offline. Pages you already opened still work. New ones wait for a connection.</p>
+}
+
+function PageSkeleton() {
+  return (
+    <main id="main" className="mx-auto max-w-6xl px-4 pt-24" aria-busy="true" aria-live="polite">
+      <p className="sr-only">Loading</p>
+      <div className="skeleton h-12 w-2/3 max-w-md" />
+      <div className="skeleton mt-4 h-6 w-1/2 max-w-sm" />
+      <div className="mt-6 grid gap-3 sm:grid-cols-2">
+        <div className="skeleton h-40" />
+        <div className="skeleton h-40" />
+      </div>
+    </main>
+  )
+}
+
 function Shell() {
   const { announcement } = useApp()
   const { pathname } = useLocation()
   return (
     <>
+      <ScrollManager />
+      <OfflineBanner />
       <button
         type="button"
         className="skip"
@@ -38,7 +122,7 @@ function Shell() {
         Skip to content
       </button>
       <Header />
-      <Suspense fallback={<main className="px-4 pt-28">Loading…</main>}>
+      <Suspense fallback={<PageSkeleton />}>
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/explore" element={<ExplorePage />} />
@@ -59,6 +143,7 @@ function Shell() {
         </Routes>
       </Suspense>
       {pathname === '/explore' ? null : <Footer />}
+      <BackToTop />
       <div className="sr-only" aria-live="polite">{announcement}</div>
     </>
   )

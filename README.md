@@ -14,8 +14,11 @@ The dev server is http://127.0.0.1:4179 .
 ```bash
 npm run build
 npm run lint
+npm run test:e2e
 npm run preview
 ```
+
+`npm run test:e2e` runs the Playwright smoke suite in Chromium at 1440×900 and WebKit at 390×844. It expects the dev server on port 4179 and will reuse one that is already running.
 
 `npm run build` writes a static `dist/` folder. Routes use the URL hash (`#/guides`), so static hosts do not need SPA rewrites.
 

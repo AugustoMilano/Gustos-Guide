@@ -1,10 +1,10 @@
 import { useEffect, useRef } from 'react'
-import { MapContainer, useMap, ZoomControl } from 'react-leaflet'
+import { MapContainer, useMap } from 'react-leaflet'
 import { divIcon, latLngBounds, marker, type Layer, type MarkerClusterGroup } from 'leaflet'
 import '../lib/setup-leaflet.ts'
 import 'leaflet.markercluster'
 import { escapeHtml } from '../lib/format.ts'
-import { appleDirectionsUrl, applePlaceUrl, googleMapsUrl, prefersAppleMaps } from '../lib/maps.ts'
+import { appleDirectionsUrl, applePlaceUrl, googleDirectionsUrl, googleMapsUrl, prefersAppleMaps } from '../lib/maps.ts'
 import type { VisitStatus } from '../types.ts'
 
 type MapPlace = { id: string; name: string; neighborhood: string; lat: number; lng: number; address?: string }
@@ -17,6 +17,18 @@ const SEATTLE = latLngBounds(
 export type MapBounds = { south: number; north: number; west: number; east: number }
 
 const BASEMAP_STYLE = 'https://tiles.openfreemap.org/styles/positron'
+
+function ZoomButtons() {
+  const map = useMap()
+  return (
+    <div className="leaflet-top leaflet-right">
+      <div className="leaflet-control map-zoom">
+        <button type="button" aria-label="Zoom in" onClick={() => map.zoomIn()}>+</button>
+        <button type="button" aria-label="Zoom out" onClick={() => map.zoomOut()}>−</button>
+      </div>
+    </div>
+  )
+}
 
 function Basemap() {
   const map = useMap()
@@ -54,7 +66,11 @@ function Basemap() {
       cancelled = true
       observer.disconnect()
       if (!layer) return
-      map.removeLayer(layer)
+      try {
+        map.removeLayer(layer)
+      } catch {
+        // The map can already be gone when the route changes.
+      }
     }
   }, [map])
 
@@ -71,8 +87,8 @@ function pinIcon(color: string, hot = false) {
   return divIcon({
     className: `gusto-pin-wrap${hot ? ' is-hot' : ''}`,
     html: `<span class="gusto-pin${hot ? ' is-hot' : ''}" style="background:${color}"></span>`,
-    iconSize: hot ? [26, 26] : [18, 18],
-    iconAnchor: hot ? [13, 13] : [9, 9],
+    iconSize: [44, 44],
+    iconAnchor: [22, 22],
   })
 }
 
@@ -81,7 +97,7 @@ function popupHtml(place: MapPlace): string {
   const placeUrl = applePlaceUrl(place.id)
   const links = apple
     ? `${placeUrl ? `<a href="${escapeHtml(placeUrl)}">Open in Apple Maps</a><br/>` : ''}<a href="${escapeHtml(appleDirectionsUrl(place))}">Directions</a>`
-    : `<a href="${escapeHtml(googleMapsUrl(place))}">Open in Google Maps</a>`
+    : `<a href="${escapeHtml(googleMapsUrl(place))}">Open in Google Maps</a><br/><a href="${escapeHtml(googleDirectionsUrl(place))}">Directions</a>`
   const href = `#/place/${place.id}`
   return `<strong>${escapeHtml(place.name)}</strong><br/><span>${escapeHtml(place.neighborhood)}</span><br/><a href="${href}">Open ${escapeHtml(place.name)}</a><br/>${links}`
 }
@@ -115,8 +131,8 @@ function FitPins({
         divIcon({
           className: 'gusto-cluster',
           html: `<span>${cluster.getChildCount()}</span>`,
-          iconSize: [36, 36],
-          iconAnchor: [18, 18],
+          iconSize: [44, 44],
+          iconAnchor: [22, 22],
         }),
     })
     markers.current = new Map()
@@ -168,12 +184,16 @@ function FitPins({
 
     return () => {
       cancelled = true
-      map.off('resize', fit)
       window.cancelAnimationFrame(frame)
       window.clearTimeout(timer)
       markers.current.clear()
       groupRef.current = null
-      map.removeLayer(group)
+      try {
+        map.off('resize', fit)
+        map.removeLayer(group)
+      } catch {
+        // The map can already be gone when the route changes.
+      }
     }
     // Refit when the place set changes. Color changes rebuild pins without a new dependency split
     // because both keys are listed; fitBounds on a color change stays at street-or-city zoom.
@@ -217,7 +237,11 @@ function WatchBounds({ onMoveEnd }: { onMoveEnd?: (box: MapBounds) => void }) {
     }
     map.on('moveend', report)
     return () => {
-      map.off('moveend', report)
+      try {
+        map.off('moveend', report)
+      } catch {
+        // The map can already be gone when the route changes.
+      }
     }
   }, [map])
 
@@ -262,7 +286,7 @@ export function GuideMap({
         scrollWheelZoom
         className="h-full w-full"
       >
-        <ZoomControl position="topright" />
+        <ZoomButtons />
         <Basemap />
         <FitPins places={places} statuses={statuses} activeId={activeId} onHover={onHover} />
         <WatchBounds onMoveEnd={onMoveEnd} />

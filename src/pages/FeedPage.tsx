@@ -10,7 +10,7 @@ export function FeedPage() {
   const app = useApp()
   const [drafts, setDrafts] = useState<Record<string, string>>({})
   const [signIn, setSignIn] = useState(false)
-  usePageMeta("Feed · Gusto's Guide", 'What demo friends and you have saved, ranked, and photographed in Seattle.')
+  usePageMeta("Feed · Gusto's Guide", 'What demo friends and you have saved, ranked, and photographed in Seattle.', './og/og.svg')
   const names = new Map([[app.user?.id ?? '', app.user?.name ?? ''], ...app.demoUsers.map((user) => [user.id, user.name] as const)])
   const board = [
     ...app.demoUsers.map((user) => ({ id: user.id, name: user.name, count: user.been.length, streak: user.streak, demo: true })),

@@ -69,14 +69,26 @@ export function Header() {
   const [menuRefs] = useState(() => [menuPanel, menuButton])
   const reduceMotion = useReducedMotion()
   const [scrolled, setScrolled] = useState(false)
+  const [onHero, setOnHero] = useState(() => location.pathname === '/')
   const press = reduceMotion ? undefined : { scale: 0.97 }
   const route = `${location.pathname}${location.search}`
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 12)
+    const onScroll = () => {
+      const hero = document.querySelector('.hero')
+      const bar = document.querySelector('.site-header')
+      const heroBottom = hero?.getBoundingClientRect().bottom ?? 0
+      const barHeight = bar?.getBoundingClientRect().height ?? 0
+      setOnHero(heroBottom > barHeight * 0.45)
+      setScrolled(window.scrollY > 12)
+    }
     onScroll()
     window.addEventListener('scroll', onScroll, { passive: true })
-    return () => window.removeEventListener('scroll', onScroll)
+    window.addEventListener('resize', onScroll)
+    return () => {
+      window.removeEventListener('scroll', onScroll)
+      window.removeEventListener('resize', onScroll)
+    }
   }, [route])
 
   useDismiss(bell, () => setBell(false), bellRefs, true)
@@ -103,7 +115,7 @@ export function Header() {
   }
 
   return (
-    <header className={scrolled ? 'site-header is-scrolled' : 'site-header'}>
+    <header key={onHero ? 'hero' : 'page'} className={`site-header${onHero ? ' on-hero' : ''}${scrolled && !onHero ? ' is-scrolled' : ''}`}>
       <div className="mx-auto flex max-w-6xl items-center gap-3 px-4 py-3">
         <Link to="/" className="font-serif text-3xl italic leading-none">
           Gusto's Guide
