@@ -1,6 +1,6 @@
+import { motion, useReducedMotion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { GuideMap } from '../components/GuideMap.tsx'
-import { ParticleHero } from '../components/ParticleHero.tsx'
 import { PlaceThumb } from '../components/PlaceThumb.tsx'
 import { ScoreBadge } from '../components/ScoreBadge.tsx'
 import { catalog, slimById } from '../content/load.ts'
@@ -63,6 +63,8 @@ function rightNow(): { places: SlimPlace[]; open: boolean } {
 export function HomePage() {
   usePageMeta("Gusto's Guide", 'Eat your way through Seattle: pizza, oysters, coffee, neighborhood dinners, and the bars worth the hill.', './og/og.svg')
   const app = useApp()
+  const reduceMotion = useReducedMotion()
+  const press = reduceMotion ? undefined : { scale: 0.97 }
   const { photos } = app
   const featured = FEATURED.map((slug) => catalog.guides.find((guide) => guide.slug === slug)).filter((guide) => guide != null)
   const occasions = OCCASIONS.map((slug) => catalog.guides.find((guide) => guide.slug === slug)).filter((guide) => guide != null)
@@ -78,16 +80,19 @@ export function HomePage() {
   return (
     <main id="main" tabIndex={-1} className="outline-none">
       <section className="hero on-navy relative overflow-hidden">
-        <ParticleHero />
-        <div className="relative z-10 mx-auto max-w-6xl px-4 pt-28 pb-12 sm:pt-32">
-          <p className="font-serif text-5xl italic leading-[1.12] text-cream sm:text-7xl sm:leading-[1.08] lg:text-8xl">Gusto's Guide</p>
-          <h1 className="mt-4 max-w-3xl font-serif text-4xl italic leading-tight sm:text-5xl">Eat your way through Seattle.</h1>
-          <p className="mt-3 max-w-xl text-lg text-cream">
+        <div className="hero-mesh" aria-hidden="true" />
+        <div className="hero-copy relative z-10 mx-auto max-w-6xl px-4 pt-28 pb-14 sm:pt-32">
+          <h1 className="max-w-3xl font-serif text-5xl italic leading-[1.05] text-cream sm:text-7xl">Eat your way through Seattle.</h1>
+          <p className="hero-dek">
             From a 7am bun to the last good stool on Pike. Pizza, oysters, teriyaki, and the bars worth the hill.
           </p>
           <div className="mt-6 flex flex-wrap gap-3">
-            <Link to="/guides" className="btn btn-coral">Browse the guides</Link>
-            <Link to="/search" className="btn">Search the list</Link>
+            <motion.div whileTap={press} whileHover={reduceMotion ? undefined : { y: -1 }}>
+              <Link to="/guides" className="btn btn-coral">Browse the guides</Link>
+            </motion.div>
+            <motion.div whileTap={press} whileHover={reduceMotion ? undefined : { y: -1 }}>
+              <Link to="/search" className="btn">Search the list</Link>
+            </motion.div>
           </div>
         </div>
       </section>
@@ -138,7 +143,7 @@ export function HomePage() {
           </div>
         </section>
         {app.user ? (
-          <section className="mt-10 border-2 border-ink bg-navy p-5 text-cream" aria-labelledby="your-seattle">
+          <section className="glass glass-dark mt-10 p-5" aria-labelledby="your-seattle">
             <h2 id="your-seattle" className="font-serif text-4xl italic">Your Seattle</h2>
             <p className="mt-2">{toGo} on your To go list.</p>
             <h3 className="mt-4 font-serif text-2xl italic">Recently rated</h3>

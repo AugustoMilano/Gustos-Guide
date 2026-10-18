@@ -1,4 +1,5 @@
 import { useEffect, useId, useRef, type ReactNode, type RefObject } from 'react'
+import { motion, useReducedMotion } from 'framer-motion'
 
 const FOCUSABLE =
   'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])'
@@ -34,6 +35,7 @@ export function Modal({
   wide?: boolean
 }) {
   const reactId = useId()
+  const reduceMotion = useReducedMotion()
   const panelRef = useRef<HTMLDivElement>(null)
   const onCloseRef = useRef(onClose)
 
@@ -102,20 +104,23 @@ export function Modal({
     <div className="fixed inset-0 z-50 flex items-end justify-center sm:items-center sm:p-4">
       <button
         type="button"
-        className="absolute inset-0 bg-ink/60"
+        className="modal-backdrop absolute inset-0"
         aria-label="Close dialog"
         onClick={onClose}
       />
-      <div
+      <motion.div
         ref={panelRef}
         role="dialog"
         aria-modal="true"
         aria-label={labelId ? undefined : label}
         aria-labelledby={labelId}
-        className={`relative max-h-[100dvh] w-full overflow-y-auto border-ink bg-cream text-ink shadow-[8px_8px_0_#181818] sm:max-h-[90dvh] sm:border-2 ${wide ? 'sm:max-w-3xl' : 'sm:max-w-lg'} ${className}`}
+        className={`glass modal-panel relative max-h-[100dvh] w-full overflow-y-auto text-ink sm:max-h-[90dvh] ${wide ? 'sm:max-w-3xl' : 'sm:max-w-lg'} ${className}`}
+        initial={reduceMotion ? false : { opacity: 0, y: 16, scale: 0.98 }}
+        animate={{ opacity: 1, y: 0, scale: 1 }}
+        transition={{ type: 'spring', stiffness: 380, damping: 32 }}
       >
         {children}
-      </div>
+      </motion.div>
     </div>
   )
 }

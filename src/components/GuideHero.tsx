@@ -76,7 +76,7 @@ export function GuideHero({
     if (photos.length === 3) break
   }
   return (
-    <div className="relative mt-4 overflow-hidden border-2 border-ink bg-navy text-cream">
+    <div className="guide-hero relative mt-4 overflow-hidden bg-navy text-cream">
       {photos.length >= 2 ? (
         <div className="grid h-64 grid-cols-3 sm:h-80">
           <img src={photos[0].url} alt="" className="col-span-2 h-full w-full object-cover" />
@@ -88,10 +88,10 @@ export function GuideHero({
       ) : (
         <CuisineMark cuisine={places[0]?.cuisine[0] ?? 'Seattle'} />
       )}
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-navy via-navy/25 to-transparent" />
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-navy via-navy/40 to-transparent" />
       <div className="absolute inset-x-0 bottom-0 p-4 sm:p-6">
-        <p className="text-xs font-bold tracking-[0.16em] uppercase">Seattle</p>
-        <h1 className="mt-1 max-w-4xl font-serif text-4xl italic leading-none sm:text-6xl">{title}</h1>
+        <p className="text-xs font-bold tracking-[0.16em] uppercase text-white">Seattle</p>
+        <h1 className="mt-1 max-w-4xl font-serif text-4xl italic leading-none text-white sm:text-6xl">{title}</h1>
       </div>
     </div>
   )

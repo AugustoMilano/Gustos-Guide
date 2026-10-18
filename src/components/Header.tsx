@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState, type FormEvent, type RefObject } from 'react'
+import { motion, useReducedMotion } from 'framer-motion'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { SignInSheet } from './SignInSheet.tsx'
 import { useApp } from '../state/AppState.tsx'
@@ -66,12 +67,22 @@ export function Header() {
   const menuButton = useRef<HTMLButtonElement>(null)
   const [bellRefs] = useState(() => [bellPanel, bellDesktop, bellMobile])
   const [menuRefs] = useState(() => [menuPanel, menuButton])
+  const reduceMotion = useReducedMotion()
+  const [scrolled, setScrolled] = useState(false)
+  const press = reduceMotion ? undefined : { scale: 0.97 }
+  const route = `${location.pathname}${location.search}`
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 12)
+    onScroll()
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [route])
 
   useDismiss(bell, () => setBell(false), bellRefs, true)
   useDismiss(menu, () => setMenu(false), menuRefs)
 
   // Close both popovers when the route changes (adjusting state during render, not in an effect).
-  const route = `${location.pathname}${location.search}`
   const [lastRoute, setLastRoute] = useState(route)
   if (route !== lastRoute) {
     setLastRoute(route)
@@ -92,7 +103,7 @@ export function Header() {
   }
 
   return (
-    <header className="site-header">
+    <header className={scrolled ? 'site-header is-scrolled' : 'site-header'}>
       <div className="mx-auto flex max-w-6xl items-center gap-3 px-4 py-3">
         <Link to="/" className="font-serif text-3xl italic leading-none">
           Gusto's Guide
@@ -106,7 +117,7 @@ export function Header() {
             value={query}
             onChange={(event) => setQuery(event.target.value)}
             placeholder="Places, guides, neighborhoods"
-            className="w-full border-2 border-ink bg-cream px-3 py-2"
+            className="glass-input w-full px-3 py-2"
           />
         </form>
         <nav className="ml-auto hidden items-center gap-3 text-sm font-bold md:flex" aria-label="Primary">
@@ -138,10 +149,11 @@ export function Header() {
             </button>
           )}
         </nav>
-        <button
+        <motion.button
           type="button"
           ref={bellMobile}
-          className="relative ml-auto inline-flex min-h-11 min-w-11 items-center justify-center border-2 border-ink bg-cream px-2 md:hidden"
+          whileTap={press}
+          className="glass-icon relative ml-auto inline-flex min-h-11 min-w-11 items-center justify-center px-2 md:hidden"
           aria-label={unread ? `Notifications, ${unread} unread` : 'Notifications'}
           aria-expanded={bell}
           aria-controls="notifications-panel"
@@ -149,11 +161,12 @@ export function Header() {
         >
           <BellIcon />
           {unread ? <span className="absolute -top-1.5 -right-1.5 min-w-5 rounded-full bg-coral px-1 text-center text-xs font-bold leading-5">{unread}</span> : null}
-        </button>
-        <button
+        </motion.button>
+        <motion.button
           type="button"
           ref={menuButton}
-          className="inline-flex min-h-11 items-center border-2 border-ink bg-cream px-3 text-sm font-bold md:hidden"
+          whileTap={press}
+          className="glass-icon inline-flex min-h-11 items-center px-3 text-sm font-bold md:hidden"
           aria-expanded={menu}
           onClick={() => {
             setBell(false)
@@ -161,12 +174,19 @@ export function Header() {
           }}
         >
           {menu ? 'Close' : 'Menu'}
-        </button>
+        </motion.button>
       </div>
       {menu ? (
-        <nav ref={menuPanel} className="grid max-h-[calc(100dvh-4.5rem)] gap-2 overflow-y-auto border-t-2 border-ink px-4 py-3 text-sm font-bold md:hidden" aria-label="Mobile">
+        <motion.nav
+          ref={menuPanel}
+          className="menu-sheet glass grid max-h-[calc(100dvh-5.5rem)] gap-2 overflow-y-auto text-sm font-bold md:hidden"
+          aria-label="Mobile"
+          initial={reduceMotion ? false : { opacity: 0, y: -8 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ type: 'spring', stiffness: 420, damping: 32 }}
+        >
           <form onSubmit={search}>
-            <input aria-label="Search" value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Search" className="w-full border-2 border-ink bg-cream px-3 py-2" />
+            <input aria-label="Search" value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Search" className="glass-input w-full px-3 py-2" />
           </form>
           <Link to="/explore" onClick={() => setMenu(false)} onFocus={() => prefetch('/explore')}>Explore</Link>
           <Link to="/guides" onClick={() => setMenu(false)}>Guides</Link>
@@ -185,15 +205,18 @@ export function Header() {
           ) : (
             <button type="button" className="btn btn-coral" onClick={() => { setMenu(false); setOpen(true) }}>Sign in</button>
           )}
-        </nav>
+        </motion.nav>
       ) : null}
       {bell ? (
-        <div
+        <motion.div
           ref={bellPanel}
           id="notifications-panel"
-          className="absolute top-full right-2 z-50 mt-1 w-80 max-w-[calc(100vw-1rem)] max-h-[calc(100dvh-5rem)] overflow-y-auto border-2 border-ink bg-cream p-3 shadow-[4px_4px_0_#181818] md:right-4"
+          className="glass absolute top-full right-2 z-50 mt-2 w-80 max-w-[calc(100vw-1rem)] max-h-[calc(100dvh-5rem)] overflow-y-auto p-3 md:right-4"
           role="region"
           aria-label="Notifications"
+          initial={reduceMotion ? false : { opacity: 0, y: -6 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ type: 'spring', stiffness: 420, damping: 32 }}
         >
           <div className="mb-2 flex items-center justify-between gap-2">
             <p className="text-sm font-bold">Notifications</p>
@@ -215,7 +238,7 @@ export function Header() {
               ))}
             </ul>
           )}
-        </div>
+        </motion.div>
       ) : null}
       <SignInSheet open={open} onClose={() => setOpen(false)} />
     </header>
