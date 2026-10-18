@@ -7,7 +7,7 @@ import { SignInSheet } from '../components/SignInSheet.tsx'
 import { catalog, loadPlace, slimById } from '../content/load.ts'
 import { displayPhotos } from '../lib/gallery.ts'
 import { formatPeriods, isOpen } from '../lib/hours.ts'
-import { milesBetween, priceLabel, shareUrl } from '../lib/format.ts'
+import { milesBetween, priceLabel, publicReference, shareUrl, yelpBizUrl } from '../lib/format.ts'
 import { usePageMeta } from '../lib/meta.ts'
 import { useApp } from '../state/AppState.tsx'
 import type { Place } from '../types.ts'
@@ -59,6 +59,7 @@ export function PlacePage() {
     )
   }
 
+  const reference = publicReference(place)
   const guides = catalog.guides.filter((guide) => place.guideSlugs.includes(guide.slug))
   const friends = app.friendScore(place.id)
   const been = app.statuses[place.id] === 'been'
@@ -112,8 +113,7 @@ export function PlacePage() {
           <blockquote className="entry-quote mt-4 border-2 border-ink bg-[#fffaf3] px-4 py-3">“{place.oneLiner}”</blockquote>
           <p className="score-pill mt-3">Not yet rated</p>
           {app.scores[place.id] ? <p className="mt-2 text-sm">Your score {app.scores[place.id].score.toFixed(1)}</p> : null}
-          {place.publicRating ? <p className="mt-2 text-sm">{place.publicRating.value.toFixed(1)} from {place.publicRating.count} on {place.publicRating.source}</p> : null}
-          {place.appleRating ? <p className="text-sm">Apple Maps {place.appleRating.percent}%{place.appleRating.count ? ` · ${place.appleRating.count} ratings` : ''}</p> : null}
+          {reference ? <p className="mt-2 text-sm">{reference}</p> : null}
           {friends.count ? <p className="mt-2 text-sm">{friends.loved ? `${friends.loved} ${friends.loved === 1 ? 'friend loved' : 'friends loved'} this. ` : ''}Friend score {friends.average}.</p> : null}
           <p className="mt-2 font-bold">{priceLabel(place.price)} · {isOpen(place.periods) ? 'Open now' : 'Closed now, or hours unknown'}</p>
           <div className="mt-3 flex flex-wrap gap-2">
@@ -121,6 +121,7 @@ export function PlacePage() {
           </div>
           <div className="mt-4 flex flex-wrap gap-2">
             {place.website ? <a className="btn text-sm" href={place.website}>Website</a> : null}
+            {place.yelpSlug ? <a className="btn text-sm" href={yelpBizUrl(place.yelpSlug)}>Yelp</a> : null}
             <a className="btn text-sm" href={place.appleMapsUrl}>Directions</a>
             {place.phone ? <a className="btn text-sm" href={`tel:${place.phone}`}>Call</a> : null}
             <button type="button" className={`btn text-sm ${app.statuses[place.id] === 'togo' ? 'btn-coral' : ''}`} onClick={() => (app.user ? app.setStatus(place.id, 'togo') : setSignIn(true))}>To go</button>

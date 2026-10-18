@@ -4,7 +4,7 @@ import { PlaceArt } from './PlaceArt.tsx'
 import { PlaceThumb } from './PlaceThumb.tsx'
 import { Reveal } from './Reveal.tsx'
 import { displayPhotos, type DisplayPhoto, type LivePhoto } from '../lib/gallery.ts'
-import { priceLabel } from '../lib/format.ts'
+import { priceLabel, publicReference, yelpBizUrl } from '../lib/format.ts'
 import type { GuideEntry, SlimPlace, VisitStatus } from '../types.ts'
 
 function scrollToEntry(placeId: string) {
@@ -137,6 +137,7 @@ export function GuideEntryCard({
   signedIn: boolean
 }) {
   const shots = displayPhotos(place, uploads)
+  const reference = publicReference(place)
   const [active, setActive] = useState(0)
   const photo = shots[Math.min(active, shots.length - 1)]
   const layout = index % 3
@@ -184,11 +185,11 @@ export function GuideEntryCard({
       <div className="mt-4 flex flex-wrap gap-2">
         {place.perfectFor.map((tag) => <span key={tag} className="tag">{tag}</span>)}
       </div>
-      {place.publicRating ? <p className="mt-3 text-sm">{place.publicRating.value.toFixed(1)} on {place.publicRating.source}</p> : null}
-      {place.appleRating ? <p className="text-sm">Apple Maps {place.appleRating.percent}%</p> : null}
+      {reference ? <p className="mt-3 text-sm">{reference}</p> : null}
       {friends.count ? <p className="text-sm">{friends.loved ? `${friends.loved} ${friends.loved === 1 ? 'friend loved' : 'friends loved'} this. ` : ''}Friend score {friends.average}.</p> : null}
       <div className="mt-4 flex flex-wrap gap-2">
         {place.website ? <a className="btn text-sm" href={place.website}>Website</a> : null}
+        {place.yelpSlug ? <a className="btn text-sm" href={yelpBizUrl(place.yelpSlug)}>Yelp</a> : null}
         <a className="btn text-sm" href={place.appleMapsUrl}>Directions</a>
         {place.phone ? <a className="btn text-sm" href={`tel:${place.phone}`}>Call</a> : null}
         <button type="button" className={`btn text-sm ${status === 'togo' ? 'btn-coral' : ''}`} onClick={() => (signedIn ? onToggle('togo') : onNeedSignIn())}>To go</button>

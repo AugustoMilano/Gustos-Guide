@@ -3,6 +3,22 @@ import { dirname, join } from 'node:path'
 import { fileURLToPath } from 'node:url'
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..')
+
+function previousWikimedia() {
+  const map = new Map()
+  try {
+    const prev = JSON.parse(readFileSync(join(root, 'src/content/places.json'), 'utf8'))
+    for (const place of Object.values(prev)) {
+      const photos = (place.photos ?? []).filter((photo) => photo.source === 'wikimedia' && photo.url)
+      if (photos.length) map.set(place.id, photos)
+    }
+  } catch {
+    // First build has no catalog yet.
+  }
+  return map
+}
+
+const wikiById = previousWikimedia()
 const rawPlaces = JSON.parse(readFileSync(join(root, 'data/places_categorized.json'), 'utf8'))
 const themes = JSON.parse(readFileSync(join(root, 'data/guide_themes.json'), 'utf8'))
 const providerIds = JSON.parse(readFileSync(join(root, 'data/apple_page_provider_ids.json'), 'utf8'))
@@ -482,8 +498,10 @@ const launch = rawPlaces.filter(isLaunch).map((place) => {
     .map((part) => part.replace(/\(.*\)/, '').trim())
     .filter(Boolean)
     .slice(0, 2)
-  const ids = providerIds[place.muid] ?? {}
+  const ids = providerIds[String(place.muid)] ?? providerIds[place.muid] ?? {}
   const applePercent = typeof place.apple_rating === 'string' ? Number(place.apple_rating.replace('%', '')) : null
+  const yelpSlug = typeof ids.yelp_ids?.[0] === 'string' ? ids.yelp_ids[0].trim() : ''
+  const ratingSource = place.user_rating_source
   const next = {
     id,
     muid: String(place.muid),
@@ -503,18 +521,20 @@ const launch = rawPlaces.filter(isLaunch).map((place) => {
     appleMapsUrl: `https://maps.apple.com/?daddr=${place.lat},${place.lng}&q=${encodeURIComponent(place.name)}`,
     appleRating: Number.isFinite(applePercent) ? { percent: applePercent, count: place.apple_rating_count ?? undefined } : undefined,
     publicRating:
-      typeof place.user_rating === 'number'
-        ? { value: place.user_rating, count: place.user_rating_count ?? 0, source: place.user_rating_source || 'Public' }
+      typeof place.user_rating === 'number' && (ratingSource === 'Yelp' || ratingSource === 'OpenTable')
+        ? { value: place.user_rating, count: place.user_rating_count ?? 0, source: ratingSource }
         : undefined,
+    yelpSlug: yelpSlug || undefined,
     ids: {
       fsq: ids.fsq_ids?.[0],
-      yelp: ids.yelp_ids?.[0],
+      yelp: yelpSlug || undefined,
     },
     copySource: 'draft',
     updatedAt: UPDATED,
     chain: place.chain_group || null,
     orderThis: orderFor(place.name),
     photos: [
+      ...(wikiById.get(id) ?? []),
       {
         source: 'illustration',
         isIllustration: true,
@@ -796,6 +816,7 @@ const slim = launch.map((place) => ({
   website: place.website,
   phone: place.phone,
   appleMapsUrl: place.appleMapsUrl,
+  yelpSlug: place.yelpSlug,
   guideSlugs: guideSlugsByPlace.get(place.id) ?? [],
 }))
 
@@ -908,6 +929,10 @@ for (const guide of guides) {
 }
 if (leaks.length) {
   throw new Error(`Closed, excluded, outside-Seattle, or duplicate places leaked: ${leaks.slice(0, 12).join(', ')}`)
+}
+const badRatings = Object.values(full).filter((place) => place.publicRating && place.publicRating.source !== 'Yelp' && place.publicRating.source !== 'OpenTable')
+if (badRatings.length) {
+  throw new Error(`Tripadvisor or other ratings leaked: ${badRatings.slice(0, 8).map((place) => `${place.name} (${place.publicRating.source})`).join(', ')}`)
 }
 const banned = /draft|augusto|census|borrowed from|gusto's score|not yet rated|this file|entries in this|saved list|saved places|no speech/i
 const spoken = [

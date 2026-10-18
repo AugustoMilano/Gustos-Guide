@@ -30,6 +30,27 @@ export function formatRating(rating: number): string {
   return rating.toFixed(1)
 }
 
+const PUBLIC_SOURCES = new Set(['Yelp', 'OpenTable'])
+
+export function publicReference(place: {
+  publicRating?: { value: number; count: number; source: string }
+  appleRating?: { percent: number; count?: number }
+}): string | null {
+  const rating = place.publicRating
+  if (rating && PUBLIC_SOURCES.has(rating.source)) {
+    const count = rating.count > 0 ? ` (${rating.count.toLocaleString('en-US')})` : ''
+    return `${rating.value.toFixed(1)} on ${rating.source}${count}`
+  }
+  if (place.appleRating && Number.isFinite(place.appleRating.percent)) {
+    return `${place.appleRating.percent}% on Apple Maps`
+  }
+  return null
+}
+
+export function yelpBizUrl(slug: string): string {
+  return `https://www.yelp.com/biz/${encodeURIComponent(slug)}`
+}
+
 export function spotLabel(count: number): string {
   return `${count} ${count === 1 ? 'spot' : 'spots'}`
 }
