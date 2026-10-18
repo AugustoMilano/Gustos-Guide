@@ -10,7 +10,7 @@ import { useApp } from '../state/AppState.tsx'
 import type { GuideGroup, SlimPlace } from '../types.ts'
 
 const GROUPS: GuideGroup[] = ['Best of', 'Cuisine', 'Occasion', 'Neighborhoods', 'Drinks']
-const FEATURED = ['best-pizza', 'date-night', 'capitol-hill', 'cheap-eats', 'cocktail-bars', 'seafood', 'brunch', 'ballard']
+const FEATURED = ['best-pizza', 'date-night', 'capitol-hill', 'cheap-eats', 'cocktail-bars', 'fun-dive-bars', 'seafood', 'brunch', 'ballard']
 
 function hitList(): SlimPlace[] {
   const ranked = catalog.places
@@ -28,8 +28,8 @@ function hitList(): SlimPlace[] {
   return picked
 }
 
-const TICKER = ['Pizza', 'Oysters', 'Capitol Hill', 'Ballard', 'Date night', 'Cheap eats', 'Cocktail bars', 'Brunch', 'Georgetown', 'Fremont', 'Late night', 'Seafood']
-const OCCASIONS = ['date-night', 'cheap-eats', 'brunch', 'late-night', 'happy-hour', 'bring-the-parents']
+const TICKER = ['Pizza', 'Oysters', 'Capitol Hill', 'Ballard', 'Date night', 'Cheap eats', 'Cocktail bars', 'Fun & dive bars', 'Brunch', 'Georgetown', 'Fremont', 'Late night', 'Seafood']
+const OCCASIONS = ['date-night', 'cheap-eats', 'brunch', 'late-night', 'happy-hour', 'fun-dive-bars', 'bring-the-parents']
 const EDITORIAL = ['delancey', 'spinasse', 'paseo', 'tacos-chukis', 'the-walrus-and-the-carpenter', 'canlis']
 
 function diverse(places: SlimPlace[], limit: number): SlimPlace[] {

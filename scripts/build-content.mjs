@@ -1,6 +1,7 @@
 import { readFileSync, writeFileSync, mkdirSync } from 'node:fs'
 import { dirname, join } from 'node:path'
 import { fileURLToPath } from 'node:url'
+import { assertCopy } from './lint-copy.mjs'
 import { createVoice } from './voice.mjs'
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..')
@@ -898,6 +899,30 @@ filterGuide('walk-in', 'Walk-In Friendly', 'Counters, cafes, bakeries, and other
 filterGuide('bring-the-parents', 'Bring The Parents', 'The spendier dining rooms, when the visit needs a tablecloth mood.', 'Occasion', false, 'date', (place) => place.price >= 3 && /restaurant|steak|sushi/.test(place.placeType))
 filterGuide('the-bar-list', 'The Bar List', 'Cocktails, wine, and the dives worth standing in.', 'Drinks', false, 'drinks', (place) => place.placeType.includes('bar') || place.placeType === 'pub' || place.cuisine[0] === 'Cocktails' || place.cuisine[0] === 'Wine')
 
+const funDive = JSON.parse(readFileSync(join(root, 'data/fun-dive-bars.json'), 'utf8'))
+const funDiveEntries = []
+for (const item of funDive.entries) {
+  const hits = byNorm.get(normName(item.name)) ?? []
+  if (hits.length !== 1) throw new Error(`Fun & dive bars expected one live place for ${item.name}, found ${hits.length}`)
+  funDiveEntries.push({
+    placeId: hits[0].id,
+    pullQuote: item.pullQuote,
+    blurb: item.blurb,
+    vibe: item.vibe,
+    copySource: 'draft',
+  })
+}
+guides.push({
+  slug: funDive.slug,
+  title: funDive.title,
+  dek: funDive.dek,
+  group: funDive.group,
+  intro: funDive.intro,
+  updatedAt: UPDATED,
+  ranked: false,
+  entries: funDiveEntries,
+})
+
 const gustoPool = diversify(
   sortDraft(launch.filter((place) => /restaurant|sushi|steak|seafood/.test(place.placeType) && place.price >= 2)),
   25,
@@ -1017,6 +1042,10 @@ const demo = {
 }
 
 const copyCheck = voice.assert()
+assertCopy({
+  lines: [...launch.map((place) => place.oneLiner), ...guides.flatMap((guide) => guide.entries.map((entry) => entry.pullQuote))],
+  blurbs: guides.flatMap((guide) => guide.entries.map((entry) => entry.blurb)),
+})
 
 mkdirSync(join(root, 'src/content'), { recursive: true })
 const index = {

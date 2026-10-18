@@ -127,7 +127,7 @@ function matchesVibe(place: SlimPlace, vibe: string): boolean {
   if (vibe === 'date') return guides.includes('date-night')
   if (vibe === 'cheap') return place.price <= 2 || guides.includes('cheap-eats')
   if (vibe === 'late') return guides.includes('late-night')
-  if (vibe === 'drinks') return guides.some((slug) => slug === 'cocktail-bars' || slug === 'wine-bars' || slug === 'beer' || slug === 'the-bar-list' || slug === 'happy-hour')
+  if (vibe === 'drinks') return guides.some((slug) => slug === 'cocktail-bars' || slug === 'wine-bars' || slug === 'beer' || slug === 'the-bar-list' || slug === 'happy-hour' || slug === 'fun-dive-bars')
   return place.price <= 3
 }
 

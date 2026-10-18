@@ -66,11 +66,11 @@ export function GuidePage() {
       .filter((row): row is { entry: Guide['entries'][number]; number: number; place: SlimPlace } => Boolean(row.place))
   }, [guide])
 
-  const shown = rows.filter(({ place }) => {
+  const shown = rows.filter(({ place, entry }) => {
     if (neighborhood && place.neighborhood !== neighborhood) return false
     if (cuisine && !place.cuisine.includes(cuisine)) return false
     if (price && place.price !== price) return false
-    if (tag && !place.perfectFor.includes(tag)) return false
+    if (tag && !place.perfectFor.includes(tag) && entry.vibe !== tag) return false
     if (openNow && !isOpen(place.periods)) return false
     return true
   })
@@ -116,7 +116,7 @@ export function GuidePage() {
 
   const neighborhoods = [...new Set(rows.map((row) => row.place.neighborhood))].sort()
   const cuisines = [...new Set(rows.flatMap((row) => row.place.cuisine))].sort()
-  const tags = [...new Set(rows.flatMap((row) => row.place.perfectFor))].sort()
+  const tags = [...new Set(rows.flatMap((row) => [row.entry.vibe, ...row.place.perfectFor].filter((item): item is string => Boolean(item))))].sort()
   const mobileMap = !desktop && pane === 'map'
   const activeFilters = [
     neighborhood,
@@ -221,7 +221,7 @@ export function GuidePage() {
         ) : null}
         {!mobileMap ? (
           <div className="mt-4">
-            <GuideStrip rows={ordered.map(({ place, number }) => ({ place, number, score: gustoScore(place.id) }))} uploads={photos} statuses={statuses} onToggle={onToggle} />
+            <GuideStrip rows={ordered.map(({ place, number, entry }) => ({ place, number, score: gustoScore(place.id), vibe: entry.vibe }))} uploads={photos} statuses={statuses} onToggle={onToggle} />
           </div>
         ) : null}
       </div>

@@ -1,0 +1,99 @@
+{
+  "slug": "fun-dive-bars",
+  "title": "Best Fun & Dive Bars",
+  "dek": "Dives, pinball, mini golf, karaoke, and the bars that would rather be loud.",
+  "group": "Drinks",
+  "intro": "Cocktail rooms with a leather menu live on the other drinks list. This page is for sticky floors, a game you can lose, and a mic nobody booked. The 5 Point Cafe has been pouring in Belltown since 1929. Blue Moon still wears its band stickers. Add-a-Ball, Unicorn, and Flatstick Pub are where the night keeps score.\n\nSing at Finn Maccools or Marco Polo when the room is already loud. Eat the tavern burger at Loretta's Northwesterner, on the back patio if South Park is warm. At White Horse Tavern, Bulls Blood is port cut with dry champagne, written in marker on cardboard.",
+  "entries": [
+    {
+      "name": "The 5 Point Cafe",
+      "vibe": "Dive",
+      "pullQuote": "Open since 1929, and still pouring when Belltown has gone home.",
+      "blurb": "The 5 Point Cafe faces the five-way at Tilikum Place, and the doors have been open since 1929. It is the oldest bar in Belltown and also a cafe that can serve breakfast as a nightcap. The city already filed it under dive: a long counter, regulars who do not surrender a stool, and no interest in a redesign. Eat something that can survive a second beer. Then stay later than the plan you walked in with."
+    },
+    {
+      "name": "Blue Moon",
+      "vibe": "Dive",
+      "pullQuote": "Band stickers, sunk leather stools, and cheap beer when a band is loading in.",
+      "blurb": "Blue Moon Tavern is the U District bar for cheap beer and whatever band is hauling amps through the door. Stickers from old shows cover the walls, the stools have collapsed into their leather, and the booths look sawed from a backyard tree. Sit down if you like a room that remembers its own concerts. Walk on if you wanted a host stand. The Ave has plenty of those, and none of them have this many stickers."
+    },
+    {
+      "name": "White Horse Tavern",
+      "vibe": "Dive",
+      "pullQuote": "Post Alley hides the sofa, the Spam birdcage, and a cardboard drinks list.",
+      "blurb": "White Horse Tavern sits in Post Alley, which is why market crowds walk past it. The ceiling holds photos, paintings, umbrellas, and a birdcage with a can of Spam inside. Drinks are listed in marker on cardboard. Order Bulls Blood if you want port mixed with dry champagne, then take the red velvet sofa. Three friends on a weekend is the right headcount. A party of twelve will not fit, and should not try."
+    },
+    {
+      "name": "The Roanoke",
+      "vibe": "Dive",
+      "pullQuote": "A Capitol Hill pub that stays open until 2 and skips the cocktail lecture.",
+      "blurb": "The Roanoke is a Capitol Hill pub with a dive's closing time and a screen somewhere if the game is on. It runs until 2, the lights stay low, and the order is a beer rather than a ten-ingredient drink. Take a stool if you came alone. Let the table get loud if you did not. It is the neighborhood tavern for a night that needs neither a reservation nor an occasion."
+    },
+    {
+      "name": "Pacific Inn Pub",
+      "vibe": "Dive",
+      "pullQuote": "Fremont fish and chips in a pub that never pretended to be a dining room.",
+      "blurb": "Pacific Inn Pub is the Fremont stop when dinner should be fish and chips and the room should stay a pub. Fried fish and a pint are the whole idea, eaten at a seat that is not auditioning to be a dining room. Finish the crust there. It will not be the same fish after a walk to the ship canal. Fremont has prettier patios. This room has been doing the plain job longer."
+    },
+    {
+      "name": "Loretta's Northwesterner",
+      "vibe": "Dive",
+      "pullQuote": "South Park's double tavern burger, charred, and better at the bar than in the car.",
+      "blurb": "Loretta's Northwesterner is the South Park dive organized around a double tavern burger: charred, stacked, special sauce, pickles, cheese, onion, and nothing clever after that. Fries and a beer at the bar are the indoor plan. The back patio is the move when the weather remembers the south end. Carry one out only if you are walking a short block. The sear loses the argument inside a car."
+    },
+    {
+      "name": "Bait Shop",
+      "vibe": "Tiki",
+      "pullQuote": "Pineapple on the fried fish, a painkiller, and a booth big enough for Uno.",
+      "blurb": "Bait Shop cannot pick between a nautical dive and a tiki shack, so the Capitol Hill room does both. Pineapple or bacon can land on the fried fish, and the fries have their own local following. Frozen drinks change by the day. Learn the painkiller by name: rum, pineapple, coconut, orange, nutmeg, and cinnamon. Take a big booth, deal a hand of Uno, and leave the amaro lecture for a different door on the hill."
+    },
+    {
+      "name": "King's Hardware",
+      "vibe": "Games",
+      "pullQuote": "Skee-ball, buffalo wings, and a mango slushie if the machine is kind.",
+      "blurb": "King's Hardware is a dim Ballard bar with taxidermy on the walls, baskets of buffalo wings, and two Skee-Ball lanes that turn a round into a score. Slushies rotate. Hope for mango lemonade, then roll anyway. Weekends fill the room without tipping into a shout. Play a game before the second basket arrives, and leave the coaster lecture to a lounge that scheduled its lighting."
+    },
+    {
+      "name": "Add-a-Ball",
+      "vibe": "Games",
+      "pullQuote": "Pinball, a fair well drink, and four-player Pac-Man in Fremont.",
+      "blurb": "Add-a-Ball is a Fremont arcade for people 21 and over. Beer is priced like a neighborhood bar, and the wells do not taste like melted ice. Four-player Pac-Man has settled nights here. Killer Queen will unsettle them if anyone actually knows the rules. On Saturday evenings, Good Shape parks a pizza pop-up beside the machines, so dinner never requires a coat. Stay until the last ball drains."
+    },
+    {
+      "name": "Unicorn",
+      "vibe": "Games",
+      "pullQuote": "Capitol Hill's late arcade bar, for people who will actually take a turn.",
+      "blurb": "Unicorn is Capitol Hill's arcade bar, open late and meant to be played in rather than admired. Cocktails and bar food share the floor with the games, and the room belongs to the hill's queer night as much as to anyone who only wanted pinball. Bring people who will take a turn. A hushed date will feel like it opened the wrong door. Something fried helps. A speech about amaro does not."
+    },
+    {
+      "name": "Flatstick Pub",
+      "vibe": "Games",
+      "pullQuote": "Eight dollars, a putter, and thirty-two taps in South Lake Union.",
+      "blurb": "Flatstick Pub built a mini-golf course into a South Lake Union bar. A round costs eight dollars, the floor is big enough for a group that cannot choose a restaurant, and 32 taps end the argument about beer. Order the brick-oven pizza instead of stopping at onion rings. Keep the putter away from anyone's face. The person who loses can buy the next round without a meeting about it."
+    },
+    {
+      "name": "Rhein Haus",
+      "vibe": "Games",
+      "pullQuote": "Bocce, a boot of lager, and bratwurst in a Capitol Hill hall.",
+      "blurb": "Rhein Haus is a Capitol Hill beer hall of long wooden tables, bratwurst, and bocce played hard enough to sour a friendship. Lager arrives by the liter in a glass boot. Pretzels come with beer cheese, and warm months set the slushie machines spinning. The bathroom line can outlast a sitcom episode. The crowd is young and loud, which is the recommendation. Claim a lane before the hall claims your whole night."
+    },
+    {
+      "name": "Ozzie's",
+      "vibe": "Karaoke",
+      "pullQuote": "Lower Queen Anne karaoke, priced like a dive, and open until 2.",
+      "blurb": "Ozzie's is a Lower Queen Anne dive with karaoke and an American kitchen, and the lights stay on until 2. Prices sit at the cheap end on purpose. Pick a song you can finish, stand where people will clap, and skip the night if nobody in the group will sing. A plainer pub can sell you a beer anywhere on Queen Anne. This room only earns the walk once the microphone is switched on."
+    },
+    {
+      "name": "Marco Polo Bar & Grill",
+      "vibe": "Karaoke",
+      "pullQuote": "Georgetown since 1950, Cougar flags on the wall, and broasted chicken.",
+      "blurb": "Marco Polo Bar & Grill has poured in Georgetown since 1950, under enough Washington State memorabilia to stock a small museum. Cornmeal-dusted pickles and a cold beer make a complete snack. The plate to get is the broasted chicken, pressure-fried, with salty skin and pieces large enough that the bouncer may be holding a drumstick at the door. Karaoke shares the same room. Stay for one song you did not pick."
+    },
+    {
+      "name": "Finn Maccools",
+      "vibe": "Karaoke",
+      "pullQuote": "Beer pong, trivia, and a karaoke contest for anyone pretending to attend UW.",
+      "blurb": "Finn Maccools is the Irish pub on the Ave where a night arrives with a student activity sheet: strong wells, beer pong, trivia, and a karaoke contest. The crowd is mostly collegiate, plus anyone willing to blend in. Walk past it on University Way after dark and you missed the block's loudest room. Pizza can wait on the table. The contest is why that stool is still warm."
+    }
+  ]
+}

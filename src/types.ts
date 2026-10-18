@@ -59,6 +59,7 @@ export type GuideEntry = {
   pullQuote: string
   blurb: string
   copySource: 'draft'
+  vibe?: string
 }
 
 export type Guide = {

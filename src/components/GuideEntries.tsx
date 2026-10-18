@@ -44,7 +44,7 @@ export function GuideStrip({
   statuses,
   onToggle,
 }: {
-  rows: { place: SlimPlace; number: number; score: number | null }[]
+  rows: { place: SlimPlace; number: number; score: number | null; vibe?: string }[]
   uploads: LivePhoto[]
   statuses: Record<string, VisitStatus>
   onToggle: (placeId: string, status: VisitStatus) => void
@@ -56,7 +56,7 @@ export function GuideStrip({
         <p className="text-xs font-bold tracking-[0.14em] uppercase">{rows.length} places</p>
       </div>
       <div className="strip-scroll mt-3 flex snap-x items-stretch gap-3 overflow-x-auto pb-3">
-        {rows.map(({ place, number, score }, index) => {
+        {rows.map(({ place, number, score, vibe }, index) => {
           return (
             <article key={place.id} className="toc-card flex w-52 shrink-0 snap-start flex-col border-2 border-ink bg-[#fffaf3] sm:w-60">
               <a
@@ -79,7 +79,7 @@ export function GuideStrip({
                   <p className="mt-1 line-clamp-2 min-h-[2rem] text-[11px] font-bold tracking-wide uppercase">
                     {place.neighborhood} · {place.cuisine[0]} · {priceLabel(place.price)}
                   </p>
-                  <span className="tag mt-1.5 min-h-6">{place.perfectFor[0] ?? 'Seattle'}</span>
+                  <span className={`tag mt-1.5 min-h-6 ${vibe ? 'tag-vibe' : ''}`}>{vibe ?? place.perfectFor[0] ?? 'Seattle'}</span>
                 </div>
               </a>
               <div className="mt-auto px-2.5 pt-2 pb-2.5">
@@ -193,6 +193,7 @@ export function GuideEntryCard({
       </blockquote>
       <p className="mt-4 max-w-2xl text-lg leading-relaxed">{entry.blurb}</p>
       <div className="mt-4 flex flex-wrap gap-2">
+        {entry.vibe ? <span className="tag tag-vibe">{entry.vibe}</span> : null}
         {place.perfectFor.map((tag) => <span key={tag} className="tag">{tag}</span>)}
       </div>
       {reference ? <p className="public-ref mt-3">{reference}</p> : null}
@@ -233,6 +234,7 @@ export function GuideEntryCard({
       </div>
       <p className="mt-4 max-w-2xl text-lg leading-relaxed">{entry.blurb}</p>
       <div className="mt-4 flex flex-wrap gap-2">
+        {entry.vibe ? <span className="tag tag-vibe">{entry.vibe}</span> : null}
         {place.perfectFor.map((tag) => <span key={tag} className="tag">{tag}</span>)}
       </div>
       {reference ? <p className="public-ref mt-3">{reference}</p> : null}
