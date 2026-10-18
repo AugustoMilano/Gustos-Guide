@@ -4,7 +4,7 @@ import { fileURLToPath } from 'node:url'
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..')
 const index = JSON.parse(readFileSync(join(root, 'src/content/index.json'), 'utf8'))
-const site = (process.env.SITE_URL || 'https://gustos-guide.vercel.app').replace(/\/$/, '')
+const site = (process.env.SITE_URL || 'https://gustos-guide.pages.dev').replace(/\/$/, '')
 
 function escapeXml(value) {
   return String(value)

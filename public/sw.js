@@ -1,32 +1,69 @@
-const CACHE = 'gusto-shell-v1'
+// Replaced in dist/sw.js by scripts/stamp-sw.mjs with the git commit.
+const CACHE = 'gusto-__GUSTO_BUILD__'
+const SHELL = ['./', './index.html', './manifest.webmanifest']
 
 self.addEventListener('install', (event) => {
   event.waitUntil(
-    caches.open(CACHE).then((cache) => cache.addAll(['./', './index.html', './manifest.webmanifest'])).then(() => self.skipWaiting()),
+    caches
+      .open(CACHE)
+      .then((cache) => cache.addAll(SHELL))
+      .then(() => self.skipWaiting()),
   )
 })
 
 self.addEventListener('activate', (event) => {
   event.waitUntil(
-    caches.keys().then((keys) => Promise.all(keys.filter((key) => key !== CACHE).map((key) => caches.delete(key)))).then(() => self.clients.claim()),
+    caches
+      .keys()
+      .then((keys) => Promise.all(keys.filter((key) => key !== CACHE).map((key) => caches.delete(key))))
+      .then(() => self.clients.claim()),
   )
 })
+
+function isHashedAsset(url) {
+  return url.pathname.includes('/assets/')
+}
+
+function isWorkerScript(url) {
+  return url.pathname === '/sw.js' || url.pathname.endsWith('/sw.js')
+}
+
+async function cacheFirst(request) {
+  const cached = await caches.match(request)
+  if (cached) return cached
+  const response = await fetch(request)
+  if (response.ok) {
+    const copy = response.clone()
+    caches.open(CACHE).then((cache) => cache.put(request, copy)).catch(() => {})
+  }
+  return response
+}
+
+async function networkFirst(request) {
+  const cache = await caches.open(CACHE)
+  try {
+    const response = await fetch(request)
+    if (response.ok) await cache.put(request, response.clone())
+    return response
+  } catch {
+    const cached = await caches.match(request)
+    if (cached) return cached
+    if (request.mode === 'navigate') {
+      const shell = await caches.match('./index.html')
+      if (shell) return shell
+    }
+    return Response.error()
+  }
+}
 
 self.addEventListener('fetch', (event) => {
   const request = event.request
   if (request.method !== 'GET') return
-  event.respondWith(
-    caches.match(request).then((cached) => {
-      if (cached) return cached
-      return fetch(request)
-        .then((response) => {
-          if (response.ok && new URL(request.url).origin === self.location.origin) {
-            const copy = response.clone()
-            caches.open(CACHE).then((cache) => cache.put(request, copy)).catch(() => {})
-          }
-          return response
-        })
-        .catch(() => caches.match('./index.html'))
-    }),
-  )
+  const url = new URL(request.url)
+  if (url.origin !== self.location.origin) return
+  if (isWorkerScript(url)) {
+    event.respondWith(fetch(request))
+    return
+  }
+  event.respondWith(isHashedAsset(url) ? cacheFirst(request) : networkFirst(request))
 })

@@ -42,4 +42,4 @@ Leave `VITE_SUPABASE_URL` and `VITE_SUPABASE_ANON_KEY` unset to stay local. When
 
 ## Deploy
 
-See `DEPLOY.md`. Framework preset Vite. Build command `npm run build`. Output directory `dist`. No environment variables are required for the local demo. Do not deploy from a cloud-agent session unless you mean to publish.
+See `DEPLOY.md`. The site is published to Cloudflare Pages with `npm run build` and `npm run deploy:cf` (`wrangler pages deploy dist --project-name gustos-guide`). Output directory `dist`. The sitemap default is `https://gustos-guide.pages.dev`. No environment variables are required for the local demo. Do not deploy from a cloud-agent session unless you mean to publish.
