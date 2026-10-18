@@ -25,7 +25,7 @@ export function SignInSheet({ open, onClose }: { open: boolean; onClose: () => v
         <p className="mt-2 text-sm">
           {supabase
             ? 'This browser is pointed at Supabase. Use the email on that project.'
-            : 'Name only, on this browser. Sign in as Augusto to publish house photos.'}
+            : 'Your name stays on this phone. Sign in as Augusto for house photos.'}
         </p>
         {supabase ? (
           <>

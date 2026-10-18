@@ -103,14 +103,24 @@ function priceTier(value) {
   return 4
 }
 
+function isShuttered(place) {
+  return Boolean(place?.closed) || place?.hours_type === 'PERMANENT_CLOSURE'
+}
+
+const shutteredNames = new Set(
+  rawPlaces.filter((place) => place?.name && isShuttered(place)).map((place) => normName(place.name)),
+)
+
 function isLaunch(place) {
   return (
     place.resolved &&
     (place.kind === 'food' || place.kind === 'drinks') &&
     !place.excluded &&
-    !place.closed &&
+    !isShuttered(place) &&
     !place.outside_seattle &&
-    !place.duplicate_of
+    !place.duplicate_of &&
+    Boolean(place.name) &&
+    !shutteredNames.has(normName(place.name))
   )
 }
 
@@ -272,56 +282,96 @@ function perfectFor(place) {
   return list.slice(0, 5)
 }
 
-function priceWord(price) {
-  return ['a cheap', 'a mid-priced', 'a spendy', 'a special-occasion'][price - 1] ?? 'a'
+function mood(place) {
+  if (place.price >= 4) return 'a jacket-and-a-plan room'
+  if (place.price === 3) return 'a nice-night room'
+  if (place.price === 1) return 'a counter you can hit without a group chat'
+  if (/counter|coffee|bakery|dessert/.test(place.placeType)) return 'a small room built for eating now'
+  return 'a regular-night table'
 }
 
 function hook(place, angle, seed) {
   const cuisine = place.cuisine[0].toLowerCase()
   const hood = place.neighborhood
-  if (angle === 'pizza') return `${place.name} is on the pizza list because the pie is the point in ${hood}, not a side dish with melted cheese.`
-  if (angle === 'coffee') return `${place.name} is a coffee stop in ${hood} worth leaving the apartment for, which is a higher bar than it sounds.`
-  if (angle === 'date') return `${place.name} makes the date-night cut in ${hood}: ${priceWord(place.price)} ${cuisine} room where you can hear the person across the table.`
-  if (angle === 'neighborhood') return `${place.name} is one of the saved ${cuisine} rooms in ${hood}, which is why it is on this neighborhood list and not a citywide ranking.`
-  if (angle === 'cheap') return `${place.name} is here because it is a ${cuisine} value in ${hood}, the kind of receipt you do not have to explain.`
-  if (angle === 'late') return `${place.name} earns the late list by being a ${cuisine} option in ${hood} when the sensible kitchens have closed.`
-  if (angle === 'drinks') return `${place.name} is a ${place.placeType} in ${hood}. Come for a drink first and let the food be a pleasant rumor until it arrives.`
-  const banks = [
-    `${place.name} is ${priceWord(place.price)} ${cuisine} address in ${hood}, saved because it does that job without a speech.`,
-    `In ${hood}, ${place.name} is the ${cuisine} move when you already know what you want to eat.`,
-    `${place.name} sits in ${hood} and cooks ${cuisine}. That is the assignment, and the room should be judged on it.`,
-  ]
-  return pick(banks, seed)
+  const banks = {
+    pizza: [
+      `${place.name} is the ${hood} answer when the craving is a pie, not a salad with melted cheese on it.`,
+      `At ${place.name}, the crust is the whole conversation. ${hood} just happens to be where the oven lives.`,
+      `${place.name} does pizza the way ${hood} actually eats it: hot, salty, and worth the walk.`,
+    ],
+    coffee: [
+      `${place.name} is the cup that gets you out of the apartment and into ${hood}.`,
+      `Order at ${place.name} before you claim a seat. The coffee is the point; the playlist is scenery.`,
+      `${hood} has plenty of places to stare at a laptop. ${place.name} is for the cup.`,
+    ],
+    date: [
+      `${place.name} is where you take someone when ${hood} should feel like a night, not an errand.`,
+      `Two chairs, low light, and ${cuisine} at ${place.name}. That is a date in ${hood}.`,
+      `${place.name} has the volume right: alive enough to feel out, quiet enough to hear the person across the table.`,
+    ],
+    neighborhood: [
+      `${place.name} is the ${cuisine} move when you are already in ${hood} and hungry for real.`,
+      `Stay in ${hood}. ${place.name} cooks ${cuisine} and does not make you cross the ship canal for it.`,
+      `${hood} evenings get better if ${place.name} is on the walk home.`,
+    ],
+    cheap: [
+      `${place.name} feeds you ${cuisine} in ${hood} and still leaves enough for a second thing.`,
+      `The pleasure at ${place.name} is the food and the receipt, in that order.`,
+      `${place.name} is the ${hood} lunch that does not require a strategy.`,
+    ],
+    late: [
+      `${place.name} is still cooking ${cuisine} when ${hood} has mostly gone home.`,
+      `After midnight, standards drop. ${place.name} is the exception in ${hood}.`,
+      `Come to ${place.name} when the sensible kitchens are dark and you still want ${cuisine}.`,
+    ],
+    drinks: [
+      `${place.name} is a ${place.placeType} in ${hood}. Start with one drink made the way they like it.`,
+      `The glass comes first at ${place.name}. Food can arrive as a rumor that turns out to be true.`,
+      `${hood} at night needs a room. ${place.name} is that room, with ${cuisine} if you stay.`,
+    ],
+    breakfast: [
+      `${place.name} understands morning in ${hood}: go early, eat something warm, leave before the day gets cute.`,
+      `Breakfast at ${place.name} is a reason to be in ${hood} before the rest of the street wakes up.`,
+    ],
+    happy: [
+      `${place.name} is the after-work landing in ${hood}. One round, then decide if you are staying for dinner.`,
+    ],
+    default: [
+      `${place.name} cooks ${cuisine} in ${hood}, and that is exactly the meal to show up for.`,
+      `When ${hood} is the plan, ${place.name} is the ${cuisine} that makes the plan worth it.`,
+      `${place.name} is ${mood(place)} with ${cuisine} on the plate.`,
+    ],
+  }
+  const bank = banks[angle] ?? banks.default
+  return pick(bank, seed)
 }
 
 function roomLine(place, seed) {
-  const size =
+  const lines = [
     place.price >= 3
-      ? 'Dress like you meant to leave the house. This is not a counter with a stack of napkins.'
+      ? `Dress like you meant to leave the house. ${place.name} is not a counter with a stack of napkins.`
       : /counter|coffee|bakery|dessert/.test(place.placeType)
-        ? 'It is a counter or a small room. Plan on eating soon after you order, not on holding a four-top.'
-        : 'The room is built for a normal night out: a friend, a date, or you and a book if the lighting allows it.'
-  const extras = [
-    size,
-    `${place.neighborhood} supplies the walk there. The meal still has to be worth the blocks.`,
+        ? `It is a counter and a short wait. Eat it while it is still itself.`
+        : `The room fits a friend, a date, or you and the corner if the light is kind.`,
+    `${place.neighborhood} does the walk. ${place.name} has to earn the blocks.`,
     place.price === 1
-      ? 'Spend the money you saved on a second thing, not on pretending this is a tasting menu.'
-      : 'The price tier is a hint, not a promise. Look at the menu before you commit the table.',
+      ? `Spend what you did not spend on a second order. This is not a tasting menu, and that is the compliment.`
+      : `Look at the menu before you fall in love with the table. The prices should match the night you planned.`,
   ]
-  return pick(extras, seed + 'room')
+  return pick(lines, seed + 'room')
 }
 
 function tip(place, angle, seed) {
   const early = place.periods.some((period) => period.start > 0 && period.start <= 9 * 60)
   const late = place.periods.some((period) => period.end >= 23 * 60 || period.end === 24 * 60)
-  if (angle === 'breakfast' || early) return 'Come before the neighborhood is fully awake. Morning places get worse on your schedule, not theirs.'
-  if (angle === 'late' || late) return 'Check the posted hours the day you go. A late kitchen in this file is a lead, not a guarantee after midnight.'
-  if (angle === 'happy') return 'Do not treat this as a verified happy-hour ad. Confirm the specials. The bar itself is the reason it was saved.'
-  if (place.orderThis.length) return `If you need a decision, start with ${place.orderThis[0].dish}. It is the known order, not a secret menu.`
+  if (angle === 'breakfast' || (early && angle !== 'late')) return `Come before ${place.neighborhood} is fully awake. Morning food gets worse on your schedule, not theirs.`
+  if (angle === 'late' || late) return `Night is the assignment. Go when you are actually hungry, not when you are touring.`
+  if (angle === 'happy') return `Stay for one drink and see if the room talks you into dinner.`
+  if (place.orderThis.length) return `If the menu stares back, start with the ${place.orderThis[0].dish.toLowerCase()}. ${place.orderThis[0].note}`
   const tips = [
-    'Walk in if the style is a counter. If it looks like a dining room, call or check the site before you bring four people.',
-    'The website and the phone are on the card for a reason. Hours and reservations move faster than a guide.',
-    'First visit: order the obvious thing. Second visit: wander. This draft will not invent a dish to sound specific.',
+    `Order the thing the place is built to make, then wander on the second visit.`,
+    `A full table is a good sign. A quiet one can be, too. Taste the food before you decide which.`,
+    `Eat it here. ${place.cuisine[0]} rarely improves in a box on the passenger seat.`,
   ]
   return pick(tips, seed + 'tip')
 }
@@ -334,7 +384,7 @@ function fitText(parts, min, max) {
     chosen.push(part)
   }
   let text = chosen.join(' ')
-  const pad = 'Specifics stay general until a visit note replaces this draft.'
+  const pad = 'Go hungry. The pleasure is the plate in front of you.'
   if (wordCount(text) < min) text = `${text} ${pad}`
   if (wordCount(text) > max) {
     const trimmed = words(text).slice(0, max)
@@ -350,12 +400,13 @@ function blurb(place, angle) {
 }
 
 function oneLiner(place) {
-  const cuisine = place.cuisine[0]
+  const cuisine = place.cuisine[0].toLowerCase()
   const options = [
-    `${cuisine} in ${place.neighborhood}, no speech required.`,
-    `A ${cuisine.toLowerCase()} stop when you are already in ${place.neighborhood}.`,
-    `${place.name.split(' ')[0]} does ${cuisine.toLowerCase()} and then gets out of the way.`,
-    `${'$'.repeat(place.price)} ${cuisine.toLowerCase()} for a ${place.neighborhood} plan.`,
+    `${cuisine} worth the walk in ${place.neighborhood}.`,
+    `Hot, salty, and exactly the point.`,
+    `Come hungry. Leave ${place.neighborhood} happier.`,
+    `${place.neighborhood} ${cuisine}, done properly.`,
+    `The night gets simpler once you are seated.`,
   ].filter((line) => wordCount(line) <= 15)
   return options[hash(place.id) % options.length]
 }
@@ -364,12 +415,13 @@ function pullQuote(place, angle) {
   const cuisine = place.cuisine[0].toLowerCase()
   const options = [
     oneLiner(place),
-    angle === 'pizza' ? 'Come for the pie. Leave the novelty toppings.' : '',
-    angle === 'coffee' ? 'A cup worth leaving the apartment for.' : '',
+    angle === 'pizza' ? 'Come for the pie. Stay for the crust.' : '',
+    angle === 'coffee' ? 'A cup worth leaving the house for.' : '',
     angle === 'date' ? 'Loud enough to feel alive, quiet enough to talk.' : '',
-    angle === 'cheap' ? 'The receipt should not require a speech.' : '',
-    `Save this for a ${cuisine} night in ${place.neighborhood}.`,
-  ].filter((line) => line && wordCount(line) <= 15)
+    angle === 'cheap' ? 'A full meal and a humane receipt.' : '',
+    angle === 'drinks' ? 'One great drink, then see what happens.' : '',
+    `The ${cuisine} you want when you are in ${place.neighborhood}.`,
+  ].filter((line) => line && wordCount(line) <= 16)
   return options[hash(`${place.id}:${angle}:q`) % options.length]
 }
 
@@ -379,39 +431,38 @@ function review(place) {
   const order = place.orderThis[0]
   const first = fitText(
     [
-      `${place.name} is ${priceWord(place.price)} ${place.placeType} in ${place.neighborhood}, filed under ${cuisine}.`,
+      `${place.name} is ${mood(place)} in ${place.neighborhood}, and the meal is ${cuisine}.`,
       sensory(place, seed),
       order
-        ? `The order people already repeat is ${order.dish}. ${order.note}`
-        : 'No signature dish is named here on purpose. If the kitchen has one, it should come from a visit note, not a guess.',
+        ? `Start with the ${order.dish.toLowerCase()}. ${order.note}`
+        : `Order what the room is obviously set up to cook. The first plate should taste like ${cuisine}, not like a mood board.`,
     ],
-    40,
-    80,
+    45,
+    85,
   )
   const second = fitText(
     [
       roomLine(place, seed),
-      place.perfectFor.length
-        ? `The tags that fit without stretching are ${place.perfectFor.slice(0, 3).join(', ')}.`
-        : 'Bring the person who already agreed to this cuisine.',
+      place.perfectFor.includes('Date Night')
+        ? `Bring someone you want to talk to. The lighting is doing you a favor.`
+        : `Bring whoever already agreed to ${cuisine}. This is not the night to negotiate the cuisine.`,
       place.price >= 3
-        ? 'Spend the money when the occasion is real. This is not a Tuesday default unless you are celebrating a Tuesday.'
-        : 'It belongs on a normal week, which is a better compliment than calling it a destination.',
+        ? `Spend it when the night is actually a night. A random Tuesday can qualify if you treat it like one.`
+        : `It belongs on a normal week, which is better than calling it a destination.`,
+    ],
+    40,
+    85,
+  )
+  const third = fitText(
+    [
+      tip(place, 'page', seed),
+      `${place.neighborhood} is half the pleasure: the walk in, the door, the first bite.`,
+      place.periods.length
+        ? `Go when you are hungry and the lights are on. A good table still loses to bad timing.`
+        : `Call ahead if you are bringing people. A full room is part of the charm until it is your problem.`,
     ],
     40,
     80,
-  )
-  const hourBit = place.periods.length
-    ? 'The hours in the card come from the saved listing. Read them again the day you go.'
-    : 'Hours were not in the source listing, so call or check the site.'
-  const third = fitText(
-    [
-      hourBit,
-      `Directions open in Apple Maps, and the phone is there if the website is vague.`,
-      `Public ratings, when they exist, sit under the score as someone else's number. Gusto's score stays blank until Augusto ranks it.`,
-    ],
-    35,
-    75,
   )
   return [first, second, third].join('\n\n')
 }
@@ -570,12 +621,35 @@ function addGuide(guide) {
   })
 }
 
-function intro(title, dek, count, extra) {
-  return [
-    `${title} is a cut of places Augusto saved in Seattle. ${dek} It is not a census, and it is not borrowed from another publication.`,
-    extra,
-    `There are ${count} entries in this draft. Nothing has a Gusto's score yet, so the order leans on public ratings and a few obvious classics. Every blurb is marked draft. Named dishes show up only when they are already the place's known order.`,
-  ].join('\n\n')
+function intro(title, dek, places, angle) {
+  const names = places.slice(0, 3).map((place) => place.name)
+  const hoods = [...new Set(places.map((place) => place.neighborhood))].slice(0, 3)
+  const cast = names.length >= 2 ? `${names[0]} and ${names[1]}` : names[0] ?? title
+  const where = hoods.length ? hoods.join(', ') : 'Seattle'
+  const openers = {
+    pizza: `${dek} ${cast} are the argument. Everyone else is what you eat when the oven you wanted is slammed or you are on the wrong side of the water.`,
+    coffee: `${dek} ${cast} are worth putting on a coat for. The rest of ${where} can keep the mugs that taste like a waiting room.`,
+    neighborhood: `${title} eats well if you let it. ${cast} cover the cravings, and the walks between them are short enough to stay hungry.`,
+    drinks: `${dek} Start at ${names[0] ?? 'the bar'}. If the room is right, you will not need a second plan.`,
+    date: `${dek} ${cast} are where the night should feel like you left the house for a reason.`,
+    cheap: `${dek} ${cast} prove a good meal does not need a reservation or a second mortgage.`,
+    late: `${dek} ${cast} are still going when the rest of ${where} has turned into porch lights.`,
+    breakfast: `${dek} ${cast} taste better before the day gets ambitious.`,
+    default: `${dek} ${cast} are the ones to remember. The rest of the list is how you eat through ${where} without repeating yourself.`,
+  }
+  const second = {
+    pizza: `Judge a pie by the underside: blister, salt, and whether the middle survives the trip to the table. Styles sit next to each other because that is how the city actually eats, from a wood oven to a square slice on a paper plate.`,
+    coffee: `Taste it before you colonize a table. Some of these rooms want you to stay. Some want you back on the sidewalk with a hot cup and somewhere to be.`,
+    neighborhood: `Same craving does not get to take over the page. A neighborhood should feel like a week of dinners, not one cuisine copied down the block.`,
+    drinks: `Order one drink the way the bar wants it, then decide if you are staying. A well-made classic beats a menu pun. Food is welcome. It is not the cover charge.`,
+    date: `The test is simple: can you hear each other, and is the food good enough that the check feels like part of the night instead of the ending.`,
+    cheap: `Counters, small rooms, and the kind of receipt you can explain to yourself later. Eat it there. A lot of this food gets worse in a car.`,
+    late: `Hunger after dark is a different animal. These are the kitchens and bars that still take it seriously.`,
+    breakfast: `Go early. Butter, salt, and a short line beat a pretty case in the afternoon.`,
+    default: `Come hungry and order the obvious thing. ${where} will still be there when you want to get weird on the second visit.`,
+  }
+  const key = openers[angle] ? angle : 'default'
+  return [openers[key], second[key]].join('\n\n')
 }
 
 const themeGuides = [
@@ -591,18 +665,18 @@ const themeGuides = [
   ['Wine Bars', 'wine-bars', 'Drinks', false, 'Lists you can use, and seats where a glass is the plan.'],
   ['Breweries & Beer Bars', 'beer', 'Drinks', false, 'House beer, pubs, and the louder pint.'],
   ['Date Night', 'date-night', 'Occasion', false, 'Rooms where a table for two is the point.'],
-  ['Special Occasion / Splurge', 'splurge', 'Occasion', false, 'The expensive saved rooms, for when the night needs a jacket.'],
+  ['Special Occasion / Splurge', 'splurge', 'Occasion', false, 'The expensive rooms, for when the night needs a jacket.'],
   ['Cheap Eats', 'cheap-eats', 'Best of', false, 'The $ tier: counters and small rooms with a humane receipt.'],
   ['Best Brunch', 'brunch', 'Occasion', false, 'Late breakfast that is still worth the wait you chose.'],
-  ['Happy Hour', 'happy-hour', 'Occasion', false, 'After-work bars and kitchens. Specials are not verified in this draft.'],
+  ['Happy Hour', 'happy-hour', 'Occasion', false, 'After-work bars and kitchens, when one round should turn into dinner.'],
   ['Best Sandwiches', 'sandwiches', 'Cuisine', true, 'Bread, filling, and the ones you eat before they steam themselves.'],
   ['Best Burgers', 'burgers', 'Cuisine', true, 'Patties from drive-in to sit-down.'],
   ['Italian & Pasta', 'italian', 'Cuisine', false, 'Pasta shops and Italian dining rooms, not another pizza list.'],
   ['Seafood & Oysters', 'seafood', 'Cuisine', false, 'Fish, oysters, and chowder, because the city is made of water.'],
   ['Ramen, Pho & Noodles', 'noodles', 'Cuisine', false, 'Bowls for gray weather: ramen, phở, and the other noodles.'],
-  ['Tacos & Mexican', 'tacos', 'Cuisine', false, 'Tacos and the wider Mexican rooms on the saved list.'],
+  ['Tacos & Mexican', 'tacos', 'Cuisine', false, 'Tacos first, then the wider Mexican rooms.'],
   ['Steakhouses', 'steakhouses', 'Cuisine', false, 'Steaks, grills, and the rooms that smell like butter.'],
-  ['Seattle Classics & Institutions', 'classics', 'Best of', false, 'The saved places that already belong to the city.'],
+  ['Seattle Classics & Institutions', 'classics', 'Best of', false, 'The places that already belong to the city.'],
 ]
 
 for (const theme of themes) {
@@ -628,7 +702,7 @@ for (const theme of themes) {
     ranked,
     angle,
     places,
-    intro: intro(theme.theme, dek, Math.min(places.length, 40), theme.description),
+    intro: intro(theme.theme, dek, places, angle),
   })
 }
 
@@ -645,12 +719,12 @@ for (const sub of themes.find((theme) => theme.sub_guides).sub_guides) {
   addGuide({
     slug,
     title: label,
-    dek: `Where to eat and drink in ${label}, from the places already saved.`,
+    dek: `Where to eat and drink in ${label}, from a weeknight to a night you bothered to dress for.`,
     group: 'Neighborhoods',
     ranked: false,
     angle: 'neighborhood',
     places,
-    intro: intro(label, `A neighborhood cut, capped so the list stays usable.`, places.length, 'Same cuisine does not get to fill the page. Public ratings break ties until real scores exist.'),
+    intro: intro(label, `Where to eat and drink in ${label}, from a weeknight to a night you bothered to dress for.`, places, 'neighborhood'),
   })
 }
 
@@ -668,18 +742,18 @@ function filterGuide(slug, title, dek, group, ranked, angle, predicate, cap = 24
     ranked,
     angle,
     places,
-    intro: intro(title, dek, places.length, 'Derived from hours, price, cuisine, or place type on the saved list. Nothing extra was invented to fill the count.'),
+    intro: intro(title, dek, places, angle),
   })
 }
 
-filterGuide('breakfast-before-9', 'Breakfast Before 9am', 'Saved places whose listed hours start at or before 9.', 'Best of', false, 'breakfast', (place) => place.periods.some((period) => period.start > 0 && period.start <= 9 * 60))
-filterGuide('late-night', 'Late-Night Eats', 'Saved kitchens and bars whose listed hours run to 11pm or later.', 'Occasion', false, 'late', (place) => place.periods.some((period) => period.end >= 23 * 60 || period.end === 24 * 60))
-filterGuide('dumplings', 'Dumplings & Dim Sum', 'Dumpling houses and dim sum on the saved list.', 'Cuisine', false, 'default', (place) => /dumpling|dim sum|gyoza|xiao/i.test(`${place.name} ${place.cuisine.join(' ')} ${place.placeType}`))
-filterGuide('teriyaki', 'Teriyaki & Other Seattle Things', 'Teriyaki shops from the saved list, the local weeknight.', 'Cuisine', false, 'default', (place) => /teriyaki/i.test(`${place.name} ${place.cuisine.join(' ')}`))
-filterGuide('big-group', 'Big Group Dinners That Don\'t Suck', 'Breweries, halls, and the louder saved rooms.', 'Occasion', false, 'default', (place) => /brew|pub|beer hall|sports bar|haus/.test(`${place.placeType} ${place.name}`.toLowerCase()))
+filterGuide('breakfast-before-9', 'Breakfast Before 9am', 'Open by 9, which is when breakfast still tastes like breakfast.', 'Best of', false, 'breakfast', (place) => place.periods.some((period) => period.start > 0 && period.start <= 9 * 60))
+filterGuide('late-night', 'Late-Night Eats', 'Kitchens and bars still going at 11pm or later.', 'Occasion', false, 'late', (place) => place.periods.some((period) => period.end >= 23 * 60 || period.end === 24 * 60))
+filterGuide('dumplings', 'Dumplings & Dim Sum', 'Dumpling houses and dim sum, soup first.', 'Cuisine', false, 'default', (place) => /dumpling|dim sum|gyoza|xiao/i.test(`${place.name} ${place.cuisine.join(' ')} ${place.placeType}`))
+filterGuide('teriyaki', 'Teriyaki & Other Seattle Things', 'Teriyaki, the local weeknight.', 'Cuisine', false, 'default', (place) => /teriyaki/i.test(`${place.name} ${place.cuisine.join(' ')}`))
+filterGuide('big-group', 'Big Group Dinners That Don\'t Suck', 'Breweries, halls, and the louder rooms.', 'Occasion', false, 'default', (place) => /brew|pub|beer hall|sports bar|haus/.test(`${place.placeType} ${place.name}`.toLowerCase()))
 filterGuide('walk-in', 'Walk-In Friendly', 'Counters, cafes, bakeries, and other places built for showing up.', 'Occasion', false, 'default', (place) => /counter|coffee|bakery|dessert|cafe/.test(place.placeType))
 filterGuide('bring-the-parents', 'Bring The Parents', 'The spendier dining rooms, when the visit needs a tablecloth mood.', 'Occasion', false, 'date', (place) => place.price >= 3 && /restaurant|steak|sushi/.test(place.placeType))
-filterGuide('the-bar-list', 'The Bar List', 'Cocktails, wine, and dives from the saved bars.', 'Drinks', false, 'drinks', (place) => place.placeType.includes('bar') || place.placeType === 'pub' || place.cuisine[0] === 'Cocktails' || place.cuisine[0] === 'Wine')
+filterGuide('the-bar-list', 'The Bar List', 'Cocktails, wine, and the dives worth standing in.', 'Drinks', false, 'drinks', (place) => place.placeType.includes('bar') || place.placeType === 'pub' || place.cuisine[0] === 'Cocktails' || place.cuisine[0] === 'Wine')
 
 const gustoPool = diversify(
   sortDraft(launch.filter((place) => /restaurant|sushi|steak|seafood/.test(place.placeType) && place.price >= 2)),
@@ -689,12 +763,12 @@ const gustoPool = diversify(
 addGuide({
   slug: 'gustos-25',
   title: "Gusto's 25",
-  dek: 'A draft shelf of 25 saved dining rooms. Not a scored ranking.',
+  dek: 'Twenty-five dining rooms for when dinner should feel like an event.',
   group: 'Best of',
   ranked: false,
   angle: 'default',
   places: gustoPool,
-  intro: intro("Gusto's 25", 'The flagship seats are reserved for Gusto\'s scores, which are empty.', gustoPool.length, 'This pass spreads cuisines and neighborhoods across dining rooms he already saved. When the pairwise ranks exist, this page should be rewritten from those scores and this intro should be deleted.'),
+  intro: intro("Gusto's 25", 'Twenty-five rooms for when dinner should feel like an event, spread across the city so you do not eat the same night twice.', gustoPool, 'default'),
 })
 
 const guideSlugsByPlace = new Map(launch.map((place) => [place.id, []]))
@@ -765,7 +839,7 @@ const demo = {
     { id: 'demo-sam', name: 'Sam Ortega', handle: 'sam', demo: true, neighborhood: 'Columbia City', streak: 4, scores: samScores, been: Object.keys(samScores) },
   ],
   activities: [
-    { id: 'act-mina-spinasse', userId: 'demo-mina', type: 'rated', placeId: 'spinasse', text: 'Weeknight pasta, no speech.', score: 9.1, createdAt: '2026-10-16T02:00:00.000Z' },
+    { id: 'act-mina-spinasse', userId: 'demo-mina', type: 'rated', placeId: 'spinasse', text: 'Weeknight pasta. The tajarin was the whole point.', score: 9.1, createdAt: '2026-10-16T02:00:00.000Z' },
     { id: 'act-leo-delancey', userId: 'demo-leo', type: 'been', placeId: 'delancey', text: 'Pie, Ballard, done.', createdAt: '2026-10-15T03:00:00.000Z' },
     { id: 'act-sam-canlis', userId: 'demo-sam', type: 'rated', placeId: 'canlis', text: 'Parents survived. We will be invited back.', score: 9.6, createdAt: '2026-10-14T04:00:00.000Z' },
     { id: 'act-mina-list', userId: 'demo-mina', type: 'list', listId: 'list-weeknight', listTitle: 'Weeknight, no reservations', text: 'Started a shared list.', createdAt: '2026-10-13T18:00:00.000Z' },
@@ -819,6 +893,31 @@ writeFileSync(join(root, 'src/content/guides.json'), JSON.stringify(guides))
 writeFileSync(join(root, 'src/content/hidden.json'), JSON.stringify(hidden))
 writeFileSync(join(root, 'src/content/demo.json'), JSON.stringify(demo))
 
+const sourceByMuid = new Map(rawPlaces.filter((place) => place?.muid).map((place) => [String(place.muid), place]))
+const leaks = []
+for (const place of Object.values(full)) {
+  const source = sourceByMuid.get(place.muid)
+  if (!source || source.closed || source.excluded || source.outside_seattle || source.duplicate_of || source.hours_type === 'PERMANENT_CLOSURE' || shutteredNames.has(normName(place.name))) {
+    leaks.push(place.name)
+  }
+}
+for (const guide of guides) {
+  for (const entry of guide.entries) {
+    if (!full[entry.placeId]) leaks.push(`${guide.slug}:${entry.placeId}`)
+  }
+}
+if (leaks.length) {
+  throw new Error(`Closed, excluded, outside-Seattle, or duplicate places leaked: ${leaks.slice(0, 12).join(', ')}`)
+}
+const banned = /draft|augusto|census|borrowed from|gusto's score|not yet rated|this file|entries in this|saved list|saved places|no speech/i
+const spoken = [
+  ...Object.values(full).flatMap((place) => [place.oneLiner, place.review]),
+  ...guides.flatMap((guide) => [guide.intro, guide.dek, ...guide.entries.flatMap((entry) => [entry.blurb, entry.pullQuote])]),
+]
+const voiceHits = spoken.filter((line) => banned.test(line))
+if (voiceHits.length) {
+  throw new Error(`Meta copy leaked:\n${voiceHits.slice(0, 6).join('\n---\n')}`)
+}
 const blurbs = guides.flatMap((guide) => guide.entries.map((entry) => wordCount(entry.blurb)))
 const shortReviews = Object.values(full).filter((place) => place.review.split('\n\n').length < 2)
 console.log(JSON.stringify({

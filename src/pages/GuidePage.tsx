@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
+import { GuideHero } from '../components/GuideHero.tsx'
 import { GuideMap } from '../components/GuideMap.tsx'
 import { PhotoFrame } from '../components/PhotoFrame.tsx'
 import { SignInSheet } from '../components/SignInSheet.tsx'
@@ -24,6 +25,7 @@ export function GuidePage() {
   const [openNow, setOpenNow] = useState(false)
   const [desktop, setDesktop] = useState(() => window.matchMedia('(min-width: 1024px)').matches)
   const [signInOpen, setSignInOpen] = useState(false)
+  const [filtersOpen, setFiltersOpen] = useState(false)
 
   useEffect(() => {
     const media = window.matchMedia('(min-width: 1024px)')
@@ -64,7 +66,9 @@ export function GuidePage() {
     return true
   })
 
-  if (missing) {
+  const summary = catalog.guides.find((item) => item.slug === slug)
+
+  if (missing || (!guide && !summary)) {
     return (
       <main id="main" tabIndex={-1} className="mx-auto max-w-3xl px-4 pt-28 outline-none">
         <h1 className="font-serif text-5xl italic">That guide is not on the list.</h1>
@@ -72,53 +76,118 @@ export function GuidePage() {
       </main>
     )
   }
-  if (!guide) return <main className="px-4 pt-28">Loading the guide…</main>
+  if (!guide) {
+    return (
+      <main id="main" tabIndex={-1} className="mx-auto max-w-6xl px-4 pt-24 outline-none">
+        <p className="text-xs font-bold tracking-[0.14em] uppercase">{summary?.group}</p>
+        <h1 className="mt-1 font-serif text-5xl italic">{summary?.title}</h1>
+        <p className="mt-3 max-w-2xl font-serif text-2xl italic">{summary?.dek}</p>
+      </main>
+    )
+  }
 
   const neighborhoods = [...new Set(rows.map((row) => row.place.neighborhood))].sort()
   const cuisines = [...new Set(rows.flatMap((row) => row.place.cuisine))].sort()
   const tags = [...new Set(rows.flatMap((row) => row.place.perfectFor))].sort()
-  const heroPlace = shown[0]?.place ?? rows[0]?.place
-  const hero = heroPlace ? displayPhotos(heroPlace, photos)[0] : null
   const mobileMap = !desktop && pane === 'map'
+  const activeFilters = [
+    neighborhood,
+    cuisine,
+    price ? '$'.repeat(price) : '',
+    tag,
+    openNow ? 'Open now' : '',
+  ].filter(Boolean)
 
   return (
     <main id="main" tabIndex={-1} className={`mx-auto max-w-6xl px-4 outline-none ${mobileMap ? 'flex h-dvh max-h-dvh flex-col overflow-hidden pt-20 pb-3' : 'pt-24 pb-16'}`}>
       <div className={mobileMap ? 'shrink-0' : undefined}>
         <Link to="/guides" className="text-sm font-bold">← All guides</Link>
-        {hero && !mobileMap ? <div className="mt-4 max-h-80 overflow-hidden border-2 border-ink"><PhotoFrame photo={hero} priority /></div> : null}
-        <p className="mt-4 text-xs font-bold tracking-[0.14em] uppercase">{guide.group} · Updated {guide.updatedAt}</p>
-        <h1 className="mt-1 font-serif text-5xl italic leading-none sm:text-7xl">{guide.title}</h1>
-        <p className="mt-3 max-w-2xl font-serif text-2xl italic">{guide.dek}</p>
+        {!mobileMap ? <GuideHero title={guide.title} places={rows.map((row) => row.place)} uploads={photos} /> : <h1 className="mt-2 font-serif text-4xl italic">{guide.title}</h1>}
+        <p className="mt-3 text-xs font-bold tracking-[0.14em] uppercase">{guide.group} · Updated {guide.updatedAt}</p>
+        <p className="mt-2 max-w-2xl font-serif text-2xl italic">{guide.dek}</p>
         {!mobileMap ? guide.intro.split('\n\n').map((paragraph) => <p key={paragraph.slice(0, 24)} className="mt-3 max-w-2xl">{paragraph}</p>) : null}
-        <nav className="mt-4 flex gap-3 overflow-auto text-sm font-bold" aria-label="On this page">
-          {shown.map(({ place }, index) => (
-            <a key={place.id} href={`#entry-${place.id}`}>{guide.ranked ? `${index + 1}. ` : ''}{place.name}</a>
-          ))}
+        <nav className="mt-5" aria-label="On this page">
+          <ol className="hidden list-none gap-x-8 lg:grid lg:grid-cols-3">
+            {shown.map(({ place }, index) => (
+              <li key={place.id} className="border-b border-ink/15 py-1.5">
+                <a href={`#entry-${place.id}`} className="font-bold"><span className="mr-2 text-coral">{index + 1}</span>{place.name}</a>
+              </li>
+            ))}
+          </ol>
+          <div className="-mx-4 flex gap-2 overflow-x-auto px-4 pb-1 lg:hidden">
+            {shown.map(({ place }, index) => (
+              <a key={place.id} href={`#entry-${place.id}`} className="chip shrink-0 whitespace-nowrap">{index + 1}. {place.name}</a>
+            ))}
+          </div>
         </nav>
-        <div className="mt-4 grid gap-2 sm:grid-cols-2 lg:grid-cols-5">
-          <select className="border-2 border-ink bg-cream px-2 py-2" value={neighborhood} onChange={(event) => setNeighborhood(event.target.value)} aria-label="Neighborhood">
-            <option value="">All neighborhoods</option>
-            {neighborhoods.map((item) => <option key={item}>{item}</option>)}
-          </select>
-          <select className="border-2 border-ink bg-cream px-2 py-2" value={cuisine} onChange={(event) => setCuisine(event.target.value)} aria-label="Cuisine">
-            <option value="">All cuisines</option>
-            {cuisines.map((item) => <option key={item}>{item}</option>)}
-          </select>
-          <select className="border-2 border-ink bg-cream px-2 py-2" value={price} onChange={(event) => setPrice(Number(event.target.value))} aria-label="Price">
-            <option value={0}>Any price</option>
-            <option value={1}>$</option>
-            <option value={2}>$$</option>
-            <option value={3}>$$$</option>
-            <option value={4}>$$$$</option>
-          </select>
-          <select className="border-2 border-ink bg-cream px-2 py-2" value={tag} onChange={(event) => setTag(event.target.value)} aria-label="Perfect for">
-            <option value="">Perfect for</option>
-            {tags.map((item) => <option key={item}>{item}</option>)}
-          </select>
-          <button type="button" className={`btn text-sm ${openNow ? 'btn-navy' : ''}`} aria-pressed={openNow} onClick={() => setOpenNow((value) => !value)}>
-            Open now
-          </button>
+        <div className="mt-4 hidden gap-2 lg:grid lg:grid-cols-5">
+          <FilterFields
+            neighborhoods={neighborhoods}
+            cuisines={cuisines}
+            tags={tags}
+            neighborhood={neighborhood}
+            cuisine={cuisine}
+            price={price}
+            tag={tag}
+            openNow={openNow}
+            setNeighborhood={setNeighborhood}
+            setCuisine={setCuisine}
+            setPrice={setPrice}
+            setTag={setTag}
+            setOpenNow={setOpenNow}
+          />
         </div>
+        <div className="mt-4 lg:hidden">
+          <button type="button" className="btn w-full" onClick={() => setFiltersOpen(true)}>
+            Filters{activeFilters.length ? ` · ${activeFilters.length}` : ''}
+          </button>
+          {activeFilters.length ? (
+            <div className="mt-2 flex gap-2 overflow-x-auto">
+              {activeFilters.map((item) => (
+                <button
+                  key={item}
+                  type="button"
+                  className="chip shrink-0"
+                  onClick={() => {
+                    if (item === neighborhood) setNeighborhood('')
+                    else if (item === cuisine) setCuisine('')
+                    else if (item === tag) setTag('')
+                    else if (item === 'Open now') setOpenNow(false)
+                    else setPrice(0)
+                  }}
+                >
+                  {item} ×
+                </button>
+              ))}
+            </div>
+          ) : null}
+        </div>
+        {filtersOpen ? (
+          <div className="fixed inset-0 z-50 flex items-end">
+            <button type="button" className="absolute inset-0 bg-ink/50" aria-label="Close filters" onClick={() => setFiltersOpen(false)} />
+            <div className="relative max-h-[85dvh] w-full overflow-auto border-t-2 border-ink bg-cream p-4">
+              <h2 className="font-serif text-3xl italic">Filters</h2>
+              <div className="mt-3 grid gap-2">
+                <FilterFields
+                  neighborhoods={neighborhoods}
+                  cuisines={cuisines}
+                  tags={tags}
+                  neighborhood={neighborhood}
+                  cuisine={cuisine}
+                  price={price}
+                  tag={tag}
+                  openNow={openNow}
+                  setNeighborhood={setNeighborhood}
+                  setCuisine={setCuisine}
+                  setPrice={setPrice}
+                  setTag={setTag}
+                  setOpenNow={setOpenNow}
+                />
+              </div>
+              <button type="button" className="btn btn-coral mt-4 w-full" onClick={() => setFiltersOpen(false)}>Show {shown.length}</button>
+            </div>
+          </div>
+        ) : null}
         <div className="mt-4 flex lg:hidden" role="group" aria-label="List or map">
           <button type="button" className={`btn flex-1 text-sm ${pane === 'list' ? 'btn-navy' : ''}`} onClick={() => setPane('list')}>List</button>
           <button type="button" className={`btn flex-1 border-l-0 text-sm ${pane === 'map' ? 'btn-navy' : ''}`} onClick={() => setPane('map')}>Map</button>
@@ -166,5 +235,62 @@ export function GuidePage() {
       </div>
       <SignInSheet open={signInOpen} onClose={() => setSignInOpen(false)} />
     </main>
+  )
+}
+
+function FilterFields({
+  neighborhoods,
+  cuisines,
+  tags,
+  neighborhood,
+  cuisine,
+  price,
+  tag,
+  openNow,
+  setNeighborhood,
+  setCuisine,
+  setPrice,
+  setTag,
+  setOpenNow,
+}: {
+  neighborhoods: string[]
+  cuisines: string[]
+  tags: string[]
+  neighborhood: string
+  cuisine: string
+  price: number
+  tag: string
+  openNow: boolean
+  setNeighborhood: (value: string) => void
+  setCuisine: (value: string) => void
+  setPrice: (value: number) => void
+  setTag: (value: string) => void
+  setOpenNow: (value: boolean | ((current: boolean) => boolean)) => void
+}) {
+  return (
+    <>
+      <select className="border-2 border-ink bg-cream px-2 py-2" value={neighborhood} onChange={(event) => setNeighborhood(event.target.value)} aria-label="Neighborhood">
+        <option value="">All neighborhoods</option>
+        {neighborhoods.map((item) => <option key={item}>{item}</option>)}
+      </select>
+      <select className="border-2 border-ink bg-cream px-2 py-2" value={cuisine} onChange={(event) => setCuisine(event.target.value)} aria-label="Cuisine">
+        <option value="">All cuisines</option>
+        {cuisines.map((item) => <option key={item}>{item}</option>)}
+      </select>
+      <select className="border-2 border-ink bg-cream px-2 py-2" value={price} onChange={(event) => setPrice(Number(event.target.value))} aria-label="Price">
+        <option value={0}>Any price</option>
+        <option value={1}>$</option>
+        <option value={2}>$$</option>
+        <option value={3}>$$$</option>
+        <option value={4}>$$$$</option>
+      </select>
+      <select className="border-2 border-ink bg-cream px-2 py-2" value={tag} onChange={(event) => setTag(event.target.value)} aria-label="Perfect for">
+        <option value="">Perfect for</option>
+        {tags.map((item) => <option key={item}>{item}</option>)}
+      </select>
+      <button type="button" className={`btn text-sm ${openNow ? 'btn-navy' : ''}`} aria-pressed={openNow} onClick={() => setOpenNow((value) => !value)}>
+        Open now
+      </button>
+    </>
   )
 }

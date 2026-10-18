@@ -52,11 +52,11 @@ export function SearchPage() {
       </section>
       <section className="mt-6">
         <h2 className="font-serif text-3xl italic">Neighborhoods</h2>
-        <p className="mt-2">{neighborhoods.slice(0, 16).map((name) => <Link key={name} className="mr-3 font-bold" to={`/search?q=${encodeURIComponent(name)}`}>{name}</Link>)}</p>
+        <p className="mt-2 flex flex-wrap gap-x-3 gap-y-1">{neighborhoods.slice(0, 16).map((name) => <Link key={name} className="font-bold" to={`/search?q=${encodeURIComponent(name)}`}>{name}</Link>)}</p>
       </section>
       <section className="mt-6">
         <h2 className="font-serif text-3xl italic">Cuisines</h2>
-        <p className="mt-2">{cuisines.slice(0, 16).map((name) => <Link key={name} className="mr-3 font-bold" to={`/search?q=${encodeURIComponent(name)}`}>{name}</Link>)}</p>
+        <p className="mt-2 flex flex-wrap gap-x-3 gap-y-1">{cuisines.slice(0, 16).map((name) => <Link key={name} className="font-bold" to={`/search?q=${encodeURIComponent(name)}`}>{name}</Link>)}</p>
       </section>
       <section className="mt-6">
         <h2 className="font-serif text-3xl italic">{places.length} places</h2>

@@ -7,7 +7,7 @@ export function Footer() {
         <div>
           <p className="font-serif text-6xl italic leading-none sm:text-8xl">Go eat.</p>
           <p className="mt-4 max-w-md text-cream">
-            Seattle only, for now. House guides are Augusto's saved places. Scores stay blank until he ranks them.
+            Seattle, from the first coffee to the last stool.
           </p>
         </div>
         <div>
@@ -21,7 +21,7 @@ export function Footer() {
       </div>
       <div className="border-t border-cream/20 px-4 py-4 text-sm">
         <div className="mx-auto flex max-w-6xl flex-wrap justify-between gap-2">
-          <p>Draft copy, marked for review.</p>
+          <p>House notes, still being eaten through.</p>
           <p>
             Maps © <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> © <a href="https://openfreemap.org">OpenFreeMap</a>
           </p>

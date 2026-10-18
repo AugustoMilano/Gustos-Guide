@@ -6,12 +6,12 @@ import type { GuideGroup } from '../types.ts'
 const GROUPS: GuideGroup[] = ['Best of', 'Cuisine', 'Occasion', 'Neighborhoods', 'Drinks']
 
 export function GuideIndexPage() {
-  usePageMeta("Guides · Gusto's Guide", 'Seattle guides from Augusto’s saved places, grouped by best-of, cuisine, occasion, neighborhood, and drinks.')
+  usePageMeta("Guides · Gusto's Guide", 'Seattle guides for pizza, neighborhoods, late nights, and the bars worth crossing town for.')
   return (
     <main id="main" tabIndex={-1} className="mx-auto max-w-6xl px-4 pt-24 pb-16 outline-none">
       <p className="text-xs font-bold tracking-[0.14em] uppercase">Seattle</p>
       <h1 className="mt-2 font-serif text-6xl italic">The guides</h1>
-      <p className="mt-3 max-w-2xl">Updated {catalog.updatedAt}. Draft copy throughout. Gusto's scores are not filled in.</p>
+      <p className="mt-3 max-w-2xl">Updated {catalog.updatedAt}. Pizza, neighborhoods, late nights, and the bars worth crossing town for.</p>
       {GROUPS.map((group) => (
         <section key={group} className="mt-10">
           <h2 className="font-serif text-4xl italic">{group}</h2>

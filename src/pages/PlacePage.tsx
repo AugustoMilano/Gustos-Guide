@@ -3,7 +3,7 @@ import { Link, useParams } from 'react-router-dom'
 import { GuideMap } from '../components/GuideMap.tsx'
 import { PhotoFrame } from '../components/PhotoFrame.tsx'
 import { SignInSheet } from '../components/SignInSheet.tsx'
-import { catalog, loadPlace } from '../content/load.ts'
+import { catalog, loadPlace, slimById } from '../content/load.ts'
 import { displayPhotos } from '../lib/gallery.ts'
 import { formatPeriods, isOpen } from '../lib/hours.ts'
 import { milesBetween, priceLabel, shareUrl } from '../lib/format.ts'
@@ -14,8 +14,8 @@ import type { Place } from '../types.ts'
 export function PlacePage() {
   const { slug = '' } = useParams()
   const app = useApp()
-  const [place, setPlace] = useState<Place | null>(null)
-  const [missing, setMissing] = useState(false)
+  const slim = slimById(slug)
+  const [full, setFull] = useState<Place | null>(null)
   const [active, setActive] = useState(0)
   const [error, setError] = useState('')
   const [signIn, setSignIn] = useState(false)
@@ -23,20 +23,19 @@ export function PlacePage() {
 
   useEffect(() => {
     let cancelled = false
-    setPlace(null)
-    setMissing(false)
+    setFull(null)
     setActive(0)
     void loadPlace(slug).then((next) => {
-      if (cancelled) return
-      if (!next) setMissing(true)
-      else setPlace(next)
+      if (!cancelled && next) setFull(next)
     })
     return () => {
       cancelled = true
     }
   }, [slug])
 
-  usePageMeta(place ? `${place.name} · Gusto's Guide` : "Place · Gusto's Guide", place?.oneLiner ?? 'A Seattle place on Gusto’s list.')
+  const place = full ?? slim
+
+  usePageMeta(place ? `${place.name} · Gusto's Guide` : "Place · Gusto's Guide", place?.oneLiner ?? 'A Seattle restaurant.')
 
   const photos = useMemo(() => (place ? displayPhotos(place, app.photos) : []), [place, app.photos])
   const similar = useMemo(() => {
@@ -49,7 +48,7 @@ export function PlacePage() {
       .map((row) => row.item)
   }, [place])
 
-  if (missing) {
+  if (!place) {
     return (
       <main id="main" tabIndex={-1} className="mx-auto max-w-3xl px-4 pt-28 outline-none">
         <h1 className="font-serif text-5xl italic">That place is not on the list.</h1>
@@ -57,7 +56,6 @@ export function PlacePage() {
       </main>
     )
   }
-  if (!place) return <main className="px-4 pt-28">Loading…</main>
 
   const guides = catalog.guides.filter((guide) => place.guideSlugs.includes(guide.slug))
   const friends = app.friendScore(place.id)
@@ -92,7 +90,7 @@ export function PlacePage() {
           </div>
           <section className="mt-4 border-2 border-ink p-4" aria-labelledby="upload-heading">
             <h2 id="upload-heading" className="font-serif text-3xl italic">Add a photo</h2>
-            <p className="mt-2 text-sm">Been here? Upload a picture. It is resized to WebP on this device. Augusto’s uploads become the primary photo, credited Photo by Gusto.</p>
+            <p className="mt-2 text-sm">Been here? Add a photo. House shots are credited Photo by Gusto.</p>
             {!app.user ? (
               <button type="button" className="btn btn-coral mt-3" onClick={() => setSignIn(true)}>Sign in to add a photo</button>
             ) : !been ? (
@@ -110,8 +108,8 @@ export function PlacePage() {
           <p className="text-xs font-bold tracking-[0.14em] uppercase">{place.cuisine.join(' · ')} · {place.neighborhood}</p>
           <h1 className="mt-1 font-serif text-5xl italic leading-none sm:text-6xl">{place.name}</h1>
           <p className="mt-3 font-serif text-2xl italic">“{place.oneLiner}”</p>
-          <p className="score-pill mt-3">Gusto's score · Not yet rated</p>
-          {app.scores[place.id] ? <p className="mt-2 text-sm">Your draft score {app.scores[place.id].score.toFixed(1)} · {app.scores[place.id].bucket}</p> : null}
+          <p className="score-pill mt-3">Not yet rated</p>
+          {app.scores[place.id] ? <p className="mt-2 text-sm">Your score {app.scores[place.id].score.toFixed(1)}</p> : null}
           {place.publicRating ? <p className="mt-2 text-sm">{place.publicRating.value.toFixed(1)} from {place.publicRating.count} on {place.publicRating.source}</p> : null}
           {place.appleRating ? <p className="text-sm">Apple Maps {place.appleRating.percent}%{place.appleRating.count ? ` · ${place.appleRating.count} ratings` : ''}</p> : null}
           {friends.count ? <p className="mt-2 text-sm">{friends.loved ? `${friends.loved} ${friends.loved === 1 ? 'friend loved' : 'friends loved'} this. ` : ''}Friend score {friends.average}.</p> : null}
@@ -131,19 +129,18 @@ export function PlacePage() {
       </div>
       <div className="mt-8 grid gap-8 lg:grid-cols-[minmax(0,1fr)_320px]">
         <article>
-          {place.review.split('\n\n').map((paragraph) => <p key={paragraph.slice(0, 32)} className="mt-4 max-w-2xl text-lg">{paragraph}</p>)}
-          <p className="mt-3 text-xs font-bold uppercase tracking-wide">Draft copy</p>
-          {place.orderThis.length ? (
+          {full ? full.review.split('\n\n').map((paragraph) => <p key={paragraph.slice(0, 32)} className="mt-4 max-w-2xl text-lg">{paragraph}</p>) : <p className="mt-4 max-w-2xl text-lg">{place.oneLiner}</p>}
+          {full?.orderThis.length ? (
             <section className="mt-6">
               <h2 className="font-serif text-3xl italic">What to order</h2>
               <ul className="mt-2 space-y-2">
-                {place.orderThis.map((item) => <li key={item.dish}><strong>{item.dish}.</strong> {item.note}</li>)}
+                {full.orderThis.map((item) => <li key={item.dish}><strong>{item.dish}.</strong> {item.note}</li>)}
               </ul>
             </section>
           ) : null}
           <section className="mt-6">
             <h2 className="font-serif text-3xl italic">Hours</h2>
-            {place.periods.length ? <ul className="mt-2">{formatPeriods(place.periods).map((line) => <li key={line}>{line}</li>)}</ul> : <p className="mt-2">No hours in the saved listing.</p>}
+            {place.periods.length ? <ul className="mt-2">{formatPeriods(place.periods).map((line) => <li key={line}>{line}</li>)}</ul> : <p className="mt-2">Hours are not posted. Call before you trek across town.</p>}
             <p className="mt-3">{place.address}</p>
           </section>
           <section className="mt-6">

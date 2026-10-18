@@ -10,7 +10,7 @@ export function RankPage() {
   const app = useApp()
   const [query, setQuery] = useState('')
   const [signIn, setSignIn] = useState(false)
-  usePageMeta("Rank · Gusto's Guide", 'Bucket a place, then pick which you prefer. The 0–10 score stays a draft until it is published.')
+  usePageMeta("Rank · Gusto's Guide", 'Loved, liked, fine, or did not. Then pick which meal you would rather eat again.')
   const matches = useMemo(() => {
     const q = query.trim().toLowerCase()
     return catalog.places.filter((place) => !q || place.name.toLowerCase().includes(q)).slice(0, 12)
@@ -22,14 +22,14 @@ export function RankPage() {
   return (
     <main id="main" tabIndex={-1} className="mx-auto max-w-3xl px-4 pt-24 pb-16 outline-none">
       <h1 className="font-serif text-5xl italic">Rank it</h1>
-      <p className="mt-3 max-w-2xl">Loved, Liked, Fine, or Didn't. Then: which did you prefer? House pages still say Not yet rated. Your draft score shows on the place after you finish.</p>
+      <p className="mt-3 max-w-2xl">Loved, Liked, Fine, or Didn't. Then say which one you would rather eat again.</p>
       {!app.user ? <button type="button" className="btn btn-coral mt-4" onClick={() => setSignIn(true)}>Sign in to rank</button> : null}
       <label className="field mt-4"><span>Find a place</span><input value={query} onChange={(event) => setQuery(event.target.value)} /></label>
       <ul className="mt-4 space-y-4">
         {matches.map((place) => (
           <li key={place.id} className="border-2 border-ink p-3">
             <Link to={`/place/${place.id}`} className="font-serif text-2xl italic">{place.name}</Link>
-            {app.scores[place.id] ? <p className="text-sm">Draft {app.scores[place.id].score.toFixed(1)} · {app.scores[place.id].bucket}</p> : <p className="text-sm">Not yet rated</p>}
+            {app.scores[place.id] ? <p className="text-sm">Your score {app.scores[place.id].score.toFixed(1)}</p> : <p className="score-pill mt-1">Not yet rated</p>}
             <div className="mt-2 flex flex-wrap gap-2">
               {BUCKETS.map((bucket) => (
                 <button key={bucket.id} type="button" className="btn text-sm" disabled={!app.user} onClick={() => app.startRank(place.id, bucket.id)}>
