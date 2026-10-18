@@ -1,73 +1,130 @@
 export type Price = 1 | 2 | 3 | 4
-
 export type VisitStatus = 'togo' | 'been'
+export type GuideGroup = 'Best of' | 'Cuisine' | 'Occasion' | 'Neighborhoods' | 'Drinks'
+export type Bucket = 'loved' | 'liked' | 'fine' | 'didnt'
 
-export interface City {
-  id: string
-  name: string
-  slug: string
-  region: string
-  blurb: string
-  comingSoon: boolean
-  center: { lat: number; lng: number } | null
+export type CatalogPhoto = {
+  source: 'wikimedia' | 'illustration' | 'foursquare'
+  url?: string
+  alt: string
+  credit: string
+  creditUrl?: string
+  license?: string
+  isIllustration?: boolean
+  fsqPhotoId?: string
+  fsqPrefix?: string
+  fsqSuffix?: string
 }
 
-export interface Place {
+export type Period = { days: number[]; start: number; end: number }
+
+export type SlimPlace = {
   id: string
-  slug: string
   name: string
-  cityId: string
   neighborhood: string
-  cuisine: string
-  price: Price
-  rating: number
-  dish: string
-  note: string
   address: string
   lat: number
   lng: number
+  cuisine: string[]
+  placeType: string
+  price: Price
+  oneLiner: string
+  perfectFor: string[]
+  periods: Period[]
+  appleRating?: { percent: number; count?: number }
+  publicRating?: { value: number; count: number; source: string }
+  gustoScore: null
+  photo: CatalogPhoto
   website?: string
-  hours?: string
-  photoUrl?: string
-  source: 'house' | 'user'
+  phone?: string
+  appleMapsUrl: string
+  guideSlugs: string[]
 }
 
-export interface Guide {
-  id: string
+export type Place = Omit<SlimPlace, 'photo'> & {
+  muid: string
+  hoursLabel: string
+  review: string
+  orderThis: { dish: string; note: string }[]
+  ids: { fsq?: string; yelp?: string }
+  copySource: 'draft'
+  updatedAt: string
+  photos: CatalogPhoto[]
+}
+
+export type GuideEntry = {
+  placeId: string
+  pullQuote: string
+  blurb: string
+  copySource: 'draft'
+}
+
+export type Guide = {
   slug: string
   title: string
-  cityId: string
   dek: string
-  kind: 'house' | 'user'
-  placeIds: string[]
+  group: GuideGroup
+  intro: string
+  updatedAt: string
+  ranked: boolean
+  entries: GuideEntry[]
 }
 
-export interface LocalUser {
+export type GuideSummary = {
+  slug: string
+  title: string
+  dek: string
+  group: GuideGroup
+  updatedAt: string
+  ranked: boolean
+  count: number
+}
+
+export type UserGuide = {
+  id: string
+  title: string
+  placeIds: string[]
+  shared: boolean
+  collaboratorIds: string[]
+}
+
+export type Activity = {
+  id: string
+  userId: string
+  type: 'been' | 'saved' | 'rated' | 'list' | 'photo'
+  placeId?: string
+  listId?: string
+  listTitle?: string
+  text: string
+  score?: number
+  createdAt: string
+}
+
+export type Plan = {
+  id: string
+  title: string
+  hostId: string
+  demo?: boolean
+  placeIds: string[]
+  dates: string[]
+  votes: Record<string, { placeId?: string; date?: string }>
+  rsvps: Record<string, 'yes' | 'no' | 'maybe'>
+  inviteIds: string[]
+}
+
+export type Comment = {
+  id: string
+  activityId: string
+  userId: string
+  text: string
+  createdAt: string
+}
+
+export type RankScore = { bucket: Bucket; score: number }
+
+export type SessionUser = {
   id: string
   name: string
-}
-
-export interface UserDocument {
-  version: 1
-  cities: City[]
-  places: Place[]
-  guides: Guide[]
-  statuses: Record<string, VisitStatus>
-}
-
-export interface NewPlaceInput {
-  name: string
-  cityId: string
-  neighborhood: string
-  cuisine: string
-  price: Price
-  rating: number
-  dish: string
-  note: string
-  address: string
-  lat: number
-  lng: number
-  website?: string
-  hours?: string
-  photoUrl?: string
+  handle: string
+  isOwner: boolean
 }

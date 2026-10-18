@@ -1,4 +1,4 @@
-import type { Place, Price } from '../types.ts'
+import type { Price } from '../types.ts'
 
 export function cx(...parts: Array<string | false | null | undefined>): string {
   return parts.filter(Boolean).join(' ')
@@ -69,9 +69,8 @@ export function shareUrl(slug: string): string {
   return url.toString()
 }
 
-export function directionsUrl(place: Pick<Place, 'name' | 'address'>): string {
-  const destination = encodeURIComponent(`${place.name}, ${place.address}`)
-  return `https://www.google.com/maps/dir/?api=1&destination=${destination}`
+export function directionsUrl(place: { name: string; lat: number; lng: number }): string {
+  return `https://maps.apple.com/?daddr=${place.lat},${place.lng}&q=${encodeURIComponent(place.name)}`
 }
 
 export function escapeHtml(value: string): string {

@@ -1,55 +1,24 @@
-import { useLocation, useNavigate, useParams, type Location } from 'react-router-dom'
+import { lazy, Suspense } from 'react'
 import { Route, Routes } from 'react-router-dom'
-import { AddCitySheet, AddPlaceSheet, CreateGuideSheet, SaveSheet, SignInSheet } from './components/EditorSheets.tsx'
 import { Footer } from './components/Footer.tsx'
 import { Header } from './components/Header.tsx'
-import { PlaceDetail } from './components/PlaceDetail.tsx'
-import { GuidePage } from './pages/GuidePage.tsx'
 import { HomePage } from './pages/HomePage.tsx'
-import { MyGuidesPage } from './pages/MyGuidesPage.tsx'
-import { SearchPage } from './pages/SearchPage.tsx'
-import { useGuide } from './state/GuideContext.tsx'
+import { NotFoundPage } from './pages/NotFoundPage.tsx'
+import { useApp } from './state/AppState.tsx'
 
-function NotFound() {
-  return (
-    <main id="main" tabIndex={-1} className="mx-auto max-w-3xl px-4 pt-28 outline-none">
-      <h1 className="font-serif text-5xl italic">That page wandered off.</h1>
-      <a href="#/" className="btn mt-6 inline-flex">
-        Back to the guides
-      </a>
-    </main>
-  )
-}
-
-function PlaceFallback() {
-  const { slug = '' } = useParams()
-  const { placeBySlug, guidesForPlace } = useGuide()
-  const place = placeBySlug(slug)
-  if (!place) return <NotFound />
-  const guides = guidesForPlace(place.id)
-  const guide = guides.find((item) => item.kind === 'house') ?? guides[0]
-  if (!guide) return <HomePage />
-  if (guide.kind === 'house') return <GuidePage slugOverride={guide.slug} />
-  return <GuidePage idOverride={guide.id} />
-}
-
-function PlaceRoute() {
-  const { pathname } = useLocation()
-  const { placeBySlug } = useGuide()
-  const slug = decodeURIComponent(pathname.match(/^\/place\/([^/]+)/)?.[1] ?? '')
-  const place = slug ? placeBySlug(slug) : undefined
-  if (!place) return null
-  return <PlaceDetail place={place} />
-}
+const GuideIndexPage = lazy(() => import('./pages/GuideIndexPage.tsx').then((module) => ({ default: module.GuideIndexPage })))
+const GuidePage = lazy(() => import('./pages/GuidePage.tsx').then((module) => ({ default: module.GuidePage })))
+const PlacePage = lazy(() => import('./pages/PlacePage.tsx').then((module) => ({ default: module.PlacePage })))
+const SearchPage = lazy(() => import('./pages/SearchPage.tsx').then((module) => ({ default: module.SearchPage })))
+const FeedPage = lazy(() => import('./pages/FeedPage.tsx').then((module) => ({ default: module.FeedPage })))
+const PlansPage = lazy(() => import('./pages/PlanPage.tsx').then((module) => ({ default: module.PlansPage })))
+const PlanDetailPage = lazy(() => import('./pages/PlanPage.tsx').then((module) => ({ default: module.PlanDetailPage })))
+const RankPage = lazy(() => import('./pages/RankPage.tsx').then((module) => ({ default: module.RankPage })))
+const MyGuidesPage = lazy(() => import('./pages/MyGuidesPage.tsx').then((module) => ({ default: module.MyGuidesPage })))
+const ProfilePage = lazy(() => import('./pages/ProfilePage.tsx').then((module) => ({ default: module.ProfilePage })))
 
 function Shell() {
-  const location = useLocation()
-  const navigate = useNavigate()
-  const { announcement } = useGuide()
-  const state = location.state as { background?: Location } | null
-  const background = state?.background
-  const showingPlace = location.pathname.startsWith('/place/')
-
+  const { announcement } = useApp()
   return (
     <>
       <button
@@ -64,26 +33,24 @@ function Shell() {
         Skip to content
       </button>
       <Header />
-      <Routes location={showingPlace && background ? background : location}>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/city/:slug" element={<HomePage />} />
-        <Route path="/guide/:slug" element={<GuidePage />} />
-        <Route path="/my" element={<MyGuidesPage />} />
-        <Route path="/my/:guideId" element={<GuidePage />} />
-        <Route path="/search" element={<SearchPage />} />
-        <Route path="/place/:slug" element={<PlaceFallback />} />
-        <Route path="*" element={<NotFound />} />
-      </Routes>
-      {showingPlace ? <PlaceRoute /> : null}
+      <Suspense fallback={<main className="px-4 pt-28">Loading…</main>}>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/guides" element={<GuideIndexPage />} />
+          <Route path="/guide/:slug" element={<GuidePage />} />
+          <Route path="/place/:slug" element={<PlacePage />} />
+          <Route path="/search" element={<SearchPage />} />
+          <Route path="/feed" element={<FeedPage />} />
+          <Route path="/plans" element={<PlansPage />} />
+          <Route path="/plan/:id" element={<PlanDetailPage />} />
+          <Route path="/rank" element={<RankPage />} />
+          <Route path="/my" element={<MyGuidesPage />} />
+          <Route path="/u/:handle" element={<ProfilePage />} />
+          <Route path="*" element={<NotFoundPage />} />
+        </Routes>
+      </Suspense>
       <Footer />
-      <SignInSheet />
-      <AddCitySheet onCreated={(slug) => navigate(slug === 'seattle' ? '/' : `/city/${slug}`)} />
-      <CreateGuideSheet onCreated={(id) => navigate(`/my/${id}`)} />
-      <SaveSheet />
-      <AddPlaceSheet />
-      <div className="sr-only" aria-live="polite">
-        {announcement}
-      </div>
+      <div className="sr-only" aria-live="polite">{announcement}</div>
     </>
   )
 }

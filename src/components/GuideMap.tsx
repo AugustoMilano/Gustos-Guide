@@ -4,7 +4,9 @@ import { divIcon, latLngBounds, marker, type Layer, type MarkerClusterGroup } fr
 import '../lib/setup-leaflet.ts'
 import 'leaflet.markercluster'
 import { escapeHtml } from '../lib/format.ts'
-import type { Place, VisitStatus } from '../types.ts'
+import type { VisitStatus } from '../types.ts'
+
+type MapPlace = { id: string; name: string; neighborhood: string; lat: number; lng: number }
 
 const BASEMAP_STYLE = 'https://tiles.openfreemap.org/styles/positron'
 
@@ -53,7 +55,7 @@ function FitPins({
   places,
   statuses,
 }: {
-  places: Place[]
+  places: MapPlace[]
   statuses: Record<string, VisitStatus>
 }) {
   const map = useMap()
@@ -84,7 +86,7 @@ function FitPins({
         keyboard: true,
         alt: place.name,
       })
-      const href = `#/place/${place.slug}`
+      const href = `#/place/${place.id}`
       pin.bindPopup(
         `<strong>${escapeHtml(place.name)}</strong><br/><span>${escapeHtml(place.neighborhood)}</span><br/><a href="${href}">Open ${escapeHtml(place.name)}</a>`,
       )
@@ -129,7 +131,7 @@ export function GuideMap({
   places,
   statuses,
 }: {
-  places: Place[]
+  places: MapPlace[]
   statuses: Record<string, VisitStatus>
 }) {
   if (!places.length) {

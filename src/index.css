@@ -191,6 +191,53 @@ textarea {
   aspect-ratio: 4 / 3;
 }
 
+.site-header {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 40;
+  background: #eee3d6;
+  border-bottom: 2px solid #181818;
+}
+
+.guide-card {
+  display: block;
+  border: 2px solid #181818;
+  background: #fffaf3;
+  padding: 1rem;
+}
+
+.guide-card:hover {
+  transform: translateY(-2px);
+}
+
+.tag {
+  display: inline-flex;
+  border: 2px solid #181818;
+  padding: 0.15rem 0.45rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.score-pill {
+  display: inline-flex;
+  border: 2px solid #181818;
+  background: #fffaf3;
+  padding: 0.2rem 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.photo-frame {
+  margin: 0;
+  border: 2px solid #181818;
+  background: #f2f3f0;
+}
+
+.photo-frame figcaption {
+  padding: 0.35rem 0.5rem;
+  font-size: 0.75rem;
+}
+
 .note {
   font-family: var(--font-serif);
   font-style: italic;

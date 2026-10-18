@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom'
-import { SEED_GUIDES } from '../data/seed.ts'
 
 export function Footer() {
   return (
@@ -8,35 +7,23 @@ export function Footer() {
         <div>
           <p className="font-serif text-6xl italic leading-none sm:text-8xl">Go eat.</p>
           <p className="mt-4 max-w-md text-cream">
-            Gusto's Guide is Augusto's field list: house rankings for Seattle, and private lists that stay in this
-            browser until real accounts show up.
+            Seattle only, for now. House guides are Augusto's saved places. Scores stay blank until he ranks them.
           </p>
         </div>
         <div>
-          <p className="text-xs font-bold tracking-[0.14em] uppercase text-cream">House guides</p>
+          <p className="text-xs font-bold tracking-[0.14em] uppercase">Around the guide</p>
           <ul className="mt-3 space-y-2">
-            {SEED_GUIDES.map((guide) => (
-              <li key={guide.id}>
-                <Link to={`/guide/${guide.slug}`} className="font-serif text-2xl italic">
-                  {guide.title}
-                </Link>
-              </li>
-            ))}
-            <li>
-              <Link to="/my" className="font-serif text-2xl italic">
-                My guides
-              </Link>
-            </li>
+            <li><Link to="/guides" className="font-serif text-2xl italic">All guides</Link></li>
+            <li><Link to="/feed" className="font-serif text-2xl italic">Friend feed</Link></li>
+            <li><Link to="/rank" className="font-serif text-2xl italic">Rank a place</Link></li>
           </ul>
         </div>
       </div>
-      <div className="border-t border-cream/20 px-4 py-4 text-sm text-cream">
+      <div className="border-t border-cream/20 px-4 py-4 text-sm">
         <div className="mx-auto flex max-w-6xl flex-wrap justify-between gap-2">
-          <p>Seattle first. Los Angeles when the tacos are ready.</p>
+          <p>Draft copy, marked for review.</p>
           <p>
-            Maps ©{' '}
-            <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors ©{' '}
-            <a href="https://openfreemap.org">OpenFreeMap</a>
+            Maps © <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> © <a href="https://openfreemap.org">OpenFreeMap</a>
           </p>
         </div>
       </div>
