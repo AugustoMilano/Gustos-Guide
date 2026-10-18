@@ -6,7 +6,8 @@ import { PlaceThumb } from '../components/PlaceThumb.tsx'
 import { SignInSheet } from '../components/SignInSheet.tsx'
 import { catalog, loadPlace, slimById } from '../content/load.ts'
 import { displayPhotos } from '../lib/gallery.ts'
-import { formatPeriods, isOpen } from '../lib/hours.ts'
+import { ScoreBadge } from '../components/ScoreBadge.tsx'
+import { formatPeriods, hoursPhrase } from '../lib/hours.ts'
 import { milesBetween, priceLabel, publicReference, shareUrl, yelpBizUrl } from '../lib/format.ts'
 import { usePageMeta } from '../lib/meta.ts'
 import { useApp } from '../state/AppState.tsx'
@@ -83,7 +84,7 @@ export function PlacePage() {
     <main id="main" tabIndex={-1} className="mx-auto max-w-6xl px-4 pt-24 pb-16 outline-none">
       <div className="grid gap-6 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,0.8fr)]">
         <div>
-          <PhotoFrame photo={current} priority />
+          <PhotoFrame photo={current} priority compact={Boolean(current?.illustration || !current?.url)} />
           <div className="mt-2 flex gap-2 overflow-auto">
             {photos.map((photo, index) => (
               <button key={photo.key} type="button" className={`h-16 w-24 shrink-0 border-2 ${index === active ? 'border-coral' : 'border-ink'}`} onClick={() => setActive(index)}>
@@ -111,11 +112,17 @@ export function PlacePage() {
           <p className="text-xs font-bold tracking-[0.14em] uppercase">{place.cuisine.join(' · ')} · {place.neighborhood}</p>
           <h1 className="mt-1 font-serif text-5xl italic leading-none sm:text-6xl">{place.name}</h1>
           <blockquote className="entry-quote mt-4 border-2 border-ink bg-[#fffaf3] px-4 py-3">“{place.oneLiner}”</blockquote>
-          <p className="score-pill mt-3">Not yet rated</p>
-          {app.scores[place.id] ? <p className="mt-2 text-sm">Your score {app.scores[place.id].score.toFixed(1)}</p> : null}
-          {reference ? <p className="mt-2 text-sm">{reference}</p> : null}
-          {friends.count ? <p className="mt-2 text-sm">{friends.loved ? `${friends.loved} ${friends.loved === 1 ? 'friend loved' : 'friends loved'} this. ` : ''}Friend score {friends.average}.</p> : null}
-          <p className="mt-2 font-bold">{priceLabel(place.price)} · {isOpen(place.periods) ? 'Open now' : 'Closed now, or hours unknown'}</p>
+          <div className="mt-3"><ScoreBadge score={app.gustoScore(place.id)} /></div>
+          {app.user && !app.user.isOwner && app.scores[place.id] ? <p className="mt-2 text-sm">Your score {app.scores[place.id].score.toFixed(1)}</p> : null}
+          {reference ? <p className="public-ref mt-2">{reference}</p> : null}
+          {app.user && friends.count ? (
+            <p className="mt-2 text-sm text-ink/70">
+              {friends.demo ? 'Demo friends · ' : ''}
+              {friends.loved ? `${friends.loved} ${friends.loved === 1 ? 'friend loved' : 'friends loved'} this. ` : ''}
+              Friend score {friends.average}.
+            </p>
+          ) : null}
+          <p className="mt-2 font-bold">{[priceLabel(place.price), hoursPhrase(place.periods)].filter(Boolean).join(' · ')}</p>
           <div className="mt-3 flex flex-wrap gap-2">
             {place.perfectFor.map((tag) => <span key={tag} className="tag">{tag}</span>)}
           </div>
@@ -161,7 +168,8 @@ export function PlacePage() {
                     <PlaceThumb place={item} uploads={app.photos} />
                   </div>
                   <div className="p-2">
-                    <h3 className="font-serif text-xl italic leading-none">{item.name}</h3>
+                    <ScoreBadge score={app.gustoScore(item.id)} size="sm" />
+                    <h3 className="mt-1 font-serif text-xl italic leading-tight">{item.name}</h3>
                     <p className="mt-1 text-xs font-bold tracking-wide uppercase">{item.neighborhood}</p>
                   </div>
                 </Link>

@@ -11,7 +11,7 @@ import type { Guide, SlimPlace, VisitStatus } from '../types.ts'
 
 export function GuidePage() {
   const { slug = '' } = useParams()
-  const { statuses, setStatus, user, photos, friendScore } = useApp()
+  const { statuses, setStatus, user, photos, friendScore, gustoScore } = useApp()
   const [guide, setGuide] = useState<Guide | null>(null)
   const [missing, setMissing] = useState(false)
   const [pane, setPane] = useState<'list' | 'map'>('list')
@@ -23,6 +23,7 @@ export function GuidePage() {
   const [desktop, setDesktop] = useState(() => window.matchMedia('(min-width: 1024px)').matches)
   const [signInOpen, setSignInOpen] = useState(false)
   const [filtersOpen, setFiltersOpen] = useState(false)
+  const [sort, setSort] = useState<'guide' | 'score'>('guide')
 
   useEffect(() => {
     const media = window.matchMedia('(min-width: 1024px)')
@@ -41,6 +42,7 @@ export function GuidePage() {
     setPrice(0)
     setTag('')
     setOpenNow(false)
+    setSort('guide')
     void loadGuide(slug).then((next) => {
       if (cancelled) return
       if (!next) setMissing(true)
@@ -67,6 +69,15 @@ export function GuidePage() {
     if (tag && !place.perfectFor.includes(tag)) return false
     if (openNow && !isOpen(place.periods)) return false
     return true
+  })
+  const ordered = sort === 'guide' ? shown : shown.slice().sort((a, b) => {
+    const left = gustoScore(a.place.id)
+    const right = gustoScore(b.place.id)
+    if (left == null && right == null) return a.number - b.number
+    if (left == null) return 1
+    if (right == null) return -1
+    if (right !== left) return right - left
+    return a.number - b.number
   })
 
   const summary = catalog.guides.find((item) => item.slug === slug)
@@ -114,9 +125,15 @@ export function GuidePage() {
   return (
     <main id="main" tabIndex={-1} className={`mx-auto max-w-6xl px-4 outline-none ${mobileMap ? 'flex h-dvh max-h-dvh flex-col overflow-hidden pt-20 pb-3' : 'pt-20 pb-16'}`}>
       <div className={mobileMap ? 'shrink-0' : undefined}>
-        <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
+        <div className="flex flex-wrap items-center justify-between gap-x-4 gap-y-2">
           <Link to="/guides" className="text-sm font-bold">← All guides</Link>
-          <p className="text-xs font-bold tracking-[0.14em] uppercase">{guide.group} · Updated {guide.updatedAt}</p>
+          <div className="flex flex-wrap items-center gap-2">
+            <p className="text-xs font-bold tracking-[0.14em] uppercase">{guide.group} · Updated {guide.updatedAt}</p>
+            <div role="group" aria-label="Sort this guide" className="flex gap-1">
+              <button type="button" className="sort-chip" aria-pressed={sort === 'guide'} onClick={() => setSort('guide')}>Guide order</button>
+              <button type="button" className="sort-chip" aria-pressed={sort === 'score'} onClick={() => setSort('score')}>Gusto's Score</button>
+            </div>
+          </div>
         </div>
         <h1 className="mt-1 font-serif text-4xl italic leading-none sm:text-5xl">{guide.title}</h1>
         {!mobileMap ? <p className="mt-2 line-clamp-1 max-w-2xl font-serif text-xl italic">{guide.dek}</p> : null}
@@ -200,14 +217,14 @@ export function GuidePage() {
         ) : null}
         {!mobileMap ? (
           <div className="mt-4">
-            <GuideStrip rows={shown.map(({ place, number }) => ({ place, number }))} uploads={photos} statuses={statuses} onToggle={onToggle} />
+            <GuideStrip rows={ordered.map(({ place, number }) => ({ place, number, score: gustoScore(place.id) }))} uploads={photos} statuses={statuses} onToggle={onToggle} />
           </div>
         ) : null}
       </div>
       <div className={mobileMap ? 'mt-3 grid min-h-0 flex-1' : 'mt-5 grid items-start gap-4 lg:grid-cols-[minmax(0,1fr)_380px]'}>
         <div className={pane === 'map' && !desktop ? 'hidden' : 'grid gap-8'}>
-          {shown.length === 0 ? <p className="border-t-2 border-ink pt-4 font-serif text-2xl italic">Nothing on this list matches. Loosen a filter.</p> : null}
-          {shown.map(({ entry, place, number }, index) => (
+          {ordered.length === 0 ? <p className="border-t-2 border-ink pt-4 font-serif text-2xl italic">Nothing on this list matches. Loosen a filter.</p> : null}
+          {ordered.map(({ entry, place, number }, index) => (
             <GuideEntryCard
               key={place.id}
               place={place}
@@ -217,6 +234,7 @@ export function GuidePage() {
               uploads={photos}
               status={statuses[place.id]}
               friends={friendScore(place.id)}
+              score={gustoScore(place.id)}
               signedIn={Boolean(user)}
               onToggle={(status) => onToggle(place.id, status)}
               onNeedSignIn={() => setSignInOpen(true)}
@@ -224,7 +242,7 @@ export function GuidePage() {
           ))}
         </div>
         <div className={mobileMap ? 'h-full min-h-0' : `lg:sticky lg:top-20 lg:h-[calc(100dvh-5rem-1.5rem)] ${pane === 'list' ? 'hidden lg:block' : ''}`}>
-          {(desktop || pane === 'map') && <GuideMap places={shown.map((row) => row.place)} statuses={statuses} />}
+          {(desktop || pane === 'map') && <GuideMap places={ordered.map((row) => row.place)} statuses={statuses} />}
         </div>
       </div>
       <SignInSheet open={signInOpen} onClose={() => setSignInOpen(false)} />

@@ -1,6 +1,7 @@
 import { useMemo, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { PlaceThumb } from '../components/PlaceThumb.tsx'
+import { ScoreBadge } from '../components/ScoreBadge.tsx'
 import { catalog } from '../content/load.ts'
 import { BUCKETS } from '../lib/rank.ts'
 import { usePageMeta } from '../lib/meta.ts'
@@ -23,7 +24,11 @@ export function RankPage() {
   return (
     <main id="main" tabIndex={-1} className="mx-auto max-w-3xl px-4 pt-24 pb-16 outline-none">
       <h1 className="font-serif text-5xl italic">Rank it</h1>
-      <p className="mt-3 max-w-2xl">Loved, Liked, Fine, or Didn't. Then say which one you would rather eat again.</p>
+      <p className="mt-3 max-w-2xl">
+        {app.user?.isOwner
+          ? "You are the owner. A finished rank publishes Gusto's Score on this device. Yelp stays a separate 1–5 star line."
+          : "Loved, Liked, Fine, or Didn't. Your score stays personal until the owner publishes Gusto's Score."}
+      </p>
       {!app.user ? <button type="button" className="btn btn-coral mt-4" onClick={() => setSignIn(true)}>Sign in to rank</button> : null}
       <label className="field mt-4"><span>Find a place</span><input value={query} onChange={(event) => setQuery(event.target.value)} /></label>
       <ul className="mt-4 space-y-4">
@@ -35,7 +40,8 @@ export function RankPage() {
               </span>
               <span className="font-serif text-2xl italic leading-none">{place.name}</span>
             </Link>
-            {app.scores[place.id] ? <p className="text-sm">Your score {app.scores[place.id].score.toFixed(1)}</p> : <p className="score-pill mt-1">Not yet rated</p>}
+            <div className="mt-2"><ScoreBadge score={app.gustoScore(place.id)} size="sm" /></div>
+            {app.user && !app.user.isOwner && app.scores[place.id] ? <p className="mt-1 text-sm">Your score {app.scores[place.id].score.toFixed(1)}</p> : null}
             <div className="mt-2 flex flex-wrap gap-2">
               {BUCKETS.map((bucket) => (
                 <button key={bucket.id} type="button" className="btn text-sm" disabled={!app.user} onClick={() => app.startRank(place.id, bucket.id)}>

@@ -36,8 +36,8 @@ export function HomePage() {
     <main id="main" tabIndex={-1} className="outline-none">
       <section className="hero on-navy relative overflow-hidden">
         <ParticleHero />
-        <div className="relative z-10 mx-auto max-w-6xl px-4 pt-8 pb-12">
-          <p className="font-serif text-6xl italic leading-none text-cream sm:text-8xl">Gusto's Guide</p>
+        <div className="relative z-10 mx-auto max-w-6xl px-4 pt-28 pb-12 sm:pt-32">
+          <p className="font-serif text-5xl italic leading-[1.12] text-cream sm:text-7xl sm:leading-[1.08] lg:text-8xl">Gusto's Guide</p>
           <h1 className="mt-4 max-w-3xl font-serif text-4xl italic leading-tight sm:text-5xl">Eat your way through Seattle.</h1>
           <p className="mt-3 max-w-xl text-lg text-cream">
             From a 7am bun to the last good stool on Pike. Pizza, oysters, teriyaki, and the bars worth the hill.

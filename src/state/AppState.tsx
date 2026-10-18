@@ -26,6 +26,7 @@ type DemoFile = {
 
 const demo = demoFile as DemoFile
 const SESSION_KEY = 'gusto.session.v1'
+const HOUSE_KEY = 'gusto.house.v1'
 
 export type LivePhoto = {
   id: string
@@ -88,7 +89,8 @@ type AppValue = {
   uploadPhoto: (placeId: string, file: File) => Promise<void>
   deletePhoto: (id: string) => Promise<void>
   demoUsers: DemoUser[]
-  friendScore: (placeId: string) => { average: number | null; loved: number; count: number }
+  friendScore: (placeId: string) => { average: number | null; loved: number; count: number; demo: boolean }
+  gustoScore: (placeId: string) => number | null
   tasteMatch: (userId: string) => number | null
   announcement: string
 }
@@ -132,6 +134,18 @@ export function AppProvider({ children }: { children: ReactNode }) {
   const [photos, setPhotos] = useState<LivePhoto[]>([])
   const [compare, setCompare] = useState<Compare | null>(null)
   const [announcement, setAnnouncement] = useState('')
+  const [house, setHouse] = useState<Record<string, number>>({})
+
+  useEffect(() => {
+    try {
+      const raw = localStorage.getItem(HOUSE_KEY)
+      if (!raw) return
+      const parsed = JSON.parse(raw) as Record<string, number>
+      if (parsed && typeof parsed === 'object') setHouse(parsed)
+    } catch {
+      setHouse({})
+    }
+  }, [])
 
   useEffect(() => {
     const raw = localStorage.getItem(SESSION_KEY)
@@ -370,6 +384,14 @@ export function AppProvider({ children }: { children: ReactNode }) {
     const place = catalog.places.find((item) => item.id === placeId)
     pushActivity(next, { id: crypto.randomUUID(), userId: user.id, type: 'rated', placeId, text: `Ranked ${place?.name ?? 'a place'}.`, score: bucketScores[placeId]?.score, createdAt: new Date().toISOString() }, user)
     persist(next)
+    if (user.isOwner) {
+      const published: Record<string, number> = {}
+      for (const [id, rank] of Object.entries(scores)) {
+        if (typeof rank.score === 'number') published[id] = rank.score
+      }
+      localStorage.setItem(HOUSE_KEY, JSON.stringify(published))
+      setHouse(published)
+    }
     setCompare(null)
     if (remote && bucketScores[placeId]) {
       void remote.from('rankings').upsert({ user_id: user.id, place_id: placeId, bucket, score: bucketScores[placeId].score })
@@ -472,12 +494,18 @@ export function AppProvider({ children }: { children: ReactNode }) {
   const guides = useMemo(() => [...doc.guides, ...demo.lists], [doc.guides])
 
   function friendScore(placeId: string) {
+    if (!user || remote) return { average: null, loved: 0, count: 0, demo: false }
     const followed = demo.users.filter((person) => doc.following.includes(person.id) && person.scores[placeId] !== undefined)
-    if (!followed.length) return { average: null, loved: 0, count: 0 }
+    if (!followed.length) return { average: null, loved: 0, count: 0, demo: true }
     const values = followed.map((person) => person.scores[placeId])
     const loved = values.filter((score) => score >= 9).length
     const average = Math.round((values.reduce((sum, score) => sum + score, 0) / values.length) * 10) / 10
-    return { average, loved, count: followed.length }
+    return { average, loved, count: followed.length, demo: true }
+  }
+
+  function gustoScore(placeId: string): number | null {
+    const value = house[placeId]
+    return typeof value === 'number' ? value : null
   }
 
   function tasteMatch(userId: string) {
@@ -541,6 +569,7 @@ export function AppProvider({ children }: { children: ReactNode }) {
     deletePhoto,
     demoUsers: demo.users,
     friendScore,
+    gustoScore,
     tasteMatch,
     announcement,
   }

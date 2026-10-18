@@ -1,6 +1,7 @@
 import { readFileSync, writeFileSync, mkdirSync } from 'node:fs'
 import { dirname, join } from 'node:path'
 import { fileURLToPath } from 'node:url'
+import { createVoice } from './voice.mjs'
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..')
 
@@ -533,6 +534,9 @@ const launch = rawPlaces.filter(isLaunch).map((place) => {
     updatedAt: UPDATED,
     chain: place.chain_group || null,
     orderThis: orderFor(place.name),
+    perfectFor: [],
+    oneLiner: '',
+    review: '',
     photos: [
       ...(wikiById.get(id) ?? []),
       {
@@ -544,10 +548,43 @@ const launch = rawPlaces.filter(isLaunch).map((place) => {
     ],
   }
   next.perfectFor = perfectFor(next)
-  next.oneLiner = oneLiner(next)
-  next.review = review(next)
   return next
 })
+
+function titleName(title) {
+  return normName(String(title || '').replace(/\s+in\s+.+$/i, ''))
+}
+
+const slugsByName = new Map()
+for (const record of Object.values(providerIds)) {
+  if (!/seattle/i.test(record?.title || '')) continue
+  const slug = typeof record.yelp_ids?.[0] === 'string' ? record.yelp_ids[0].trim() : ''
+  const key = titleName(record.title)
+  if (!slug || !key) continue
+  const set = slugsByName.get(key) ?? new Set()
+  set.add(slug)
+  slugsByName.set(key, set)
+}
+
+const usedYelp = new Set(launch.map((place) => place.yelpSlug).filter(Boolean))
+let yelpNameMatches = 0
+for (const place of launch) {
+  if (place.yelpSlug) continue
+  const slugs = slugsByName.get(normName(place.name))
+  if (!slugs || slugs.size !== 1) continue
+  const slug = [...slugs][0]
+  if (usedYelp.has(slug)) continue
+  place.yelpSlug = slug
+  place.ids.yelp = slug
+  usedYelp.add(slug)
+  yelpNameMatches += 1
+}
+
+const voice = createVoice()
+for (const place of launch) {
+  place.oneLiner = voice.line(place)
+  place.review = voice.review(place)
+}
 
 const byNorm = new Map()
 for (const place of launch) {
@@ -622,8 +659,8 @@ const guides = []
 function addGuide(guide) {
   const entries = guide.places.map((place) => ({
     placeId: place.id,
-    pullQuote: pullQuote(place, guide.angle),
-    blurb: blurb(place, guide.angle),
+    pullQuote: voice.quote(place, guide.angle),
+    blurb: voice.blurb(place, guide.angle),
     copySource: 'draft',
   }))
   if (entries.length < 8 || entries.length > 40) {
@@ -892,6 +929,8 @@ const demo = {
   ],
 }
 
+const copyCheck = voice.assert()
+
 mkdirSync(join(root, 'src/content'), { recursive: true })
 const index = {
   updatedAt: UPDATED,
@@ -956,4 +995,14 @@ console.log(JSON.stringify({
   unmatched: [...new Set(unmatched)].length,
   under8: guides.filter((guide) => guide.entries.length < 8).map((guide) => [guide.slug, guide.entries.length]),
   over40: guides.filter((guide) => guide.entries.length > 40).map((guide) => guide.slug),
+  uniqueOneLiners: new Set(Object.values(full).map((place) => place.oneLiner)).size,
+  yelpRatings: Object.values(full).filter((place) => place.publicRating?.source === 'Yelp').length,
+  openTableRatings: Object.values(full).filter((place) => place.publicRating?.source === 'OpenTable').length,
+  yelpLinks: Object.values(full).filter((place) => place.yelpSlug).length,
+  yelpNameMatches,
+  copyCheck,
+  photos: Object.values(full).reduce((acc, place) => {
+    for (const photo of place.photos) acc[photo.source] = (acc[photo.source] ?? 0) + 1
+    return acc
+  }, {}),
 }, null, 2))

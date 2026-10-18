@@ -38,11 +38,12 @@ export function publicReference(place: {
 }): string | null {
   const rating = place.publicRating
   if (rating && PUBLIC_SOURCES.has(rating.source)) {
-    const count = rating.count > 0 ? ` (${rating.count.toLocaleString('en-US')})` : ''
-    return `${rating.value.toFixed(1)} on ${rating.source}${count}`
+    const stars = `${rating.value.toFixed(1)} ★`
+    const count = rating.count > 0 ? ` · ${rating.count.toLocaleString('en-US')} reviews` : ''
+    return `${rating.source} ${stars}${count}`
   }
   if (place.appleRating && Number.isFinite(place.appleRating.percent)) {
-    return `${place.appleRating.percent}% on Apple Maps`
+    return `Apple Maps ${place.appleRating.percent}%`
   }
   return null
 }

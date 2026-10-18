@@ -306,6 +306,109 @@ textarea {
   font-weight: 700;
 }
 
+.score-badge {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.05rem;
+  min-width: 5.5rem;
+  border: 2px solid #181818;
+  padding: 0.28rem 0.5rem 0.32rem;
+  line-height: 1;
+  box-shadow: 3px 3px 0 #181818;
+}
+
+.score-badge small {
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.score-badge strong {
+  font-family: var(--font-serif);
+  font-size: 1.85rem;
+  font-style: italic;
+  font-weight: 400;
+}
+
+.score-badge span {
+  font-size: 0.68rem;
+  font-weight: 700;
+}
+
+.score-badge.tone-best {
+  background: #1e8f32;
+  color: #fffaf3;
+}
+
+.score-badge.tone-great {
+  background: #38ba46;
+  color: #10210f;
+}
+
+.score-badge.tone-good {
+  background: #e7b23c;
+  color: #181818;
+}
+
+.score-badge.tone-fine {
+  background: #fff6ea;
+  color: #181818;
+}
+
+.score-badge.tone-skip {
+  background: #ff5330;
+  color: #181818;
+}
+
+.score-badge.is-muted {
+  background: #e4ddd2;
+  color: #6a645c;
+  box-shadow: none;
+}
+
+.score-badge-sm {
+  min-width: 0;
+  padding: 0.16rem 0.38rem 0.2rem;
+  box-shadow: 2px 2px 0 #181818;
+}
+
+.score-badge-sm strong {
+  font-size: 1.2rem;
+}
+
+.score-badge-sm.is-muted {
+  box-shadow: none;
+}
+
+.public-ref {
+  color: #6b6560;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.sort-chip {
+  min-height: 32px;
+  border: 2px solid #181818;
+  background: transparent;
+  padding: 0.15rem 0.55rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.sort-chip[aria-pressed='true'] {
+  background: #141f4d;
+  color: #eee3d6;
+}
+
+.photo-frame.is-compact .place-art {
+  width: 12rem;
+  height: 9rem;
+  aspect-ratio: auto;
+}
+
 .photo-frame {
   margin: 0;
   border: 2px solid #181818;

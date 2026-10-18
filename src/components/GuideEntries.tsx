@@ -4,8 +4,14 @@ import { PlaceArt } from './PlaceArt.tsx'
 import { PlaceThumb } from './PlaceThumb.tsx'
 import { Reveal } from './Reveal.tsx'
 import { displayPhotos, type DisplayPhoto, type LivePhoto } from '../lib/gallery.ts'
+import { ScoreBadge } from './ScoreBadge.tsx'
 import { priceLabel, publicReference, yelpBizUrl } from '../lib/format.ts'
 import type { GuideEntry, SlimPlace, VisitStatus } from '../types.ts'
+
+function illustrated(place: SlimPlace): boolean {
+  const photo = place.photo
+  return !photo?.url || photo.source === 'illustration' || Boolean(photo.isIllustration)
+}
 
 function scrollToEntry(placeId: string) {
   const node = document.getElementById(`entry-${placeId}`)
@@ -42,7 +48,7 @@ export function GuideStrip({
   statuses,
   onToggle,
 }: {
-  rows: { place: SlimPlace; number: number }[]
+  rows: { place: SlimPlace; number: number; score: number | null }[]
   uploads: LivePhoto[]
   statuses: Record<string, VisitStatus>
   onToggle: (placeId: string, status: VisitStatus) => void
@@ -53,34 +59,38 @@ export function GuideStrip({
         <h2 className="font-serif text-2xl italic sm:text-3xl">In this guide</h2>
         <p className="text-xs font-bold tracking-[0.14em] uppercase">{rows.length} places</p>
       </div>
-      <div className="strip-scroll mt-3 flex snap-x gap-3 overflow-x-auto pb-3">
-        {rows.map(({ place, number }, index) => (
-          <article key={place.id} className="toc-card flex w-52 shrink-0 snap-start flex-col border-2 border-ink bg-[#fffaf3] sm:w-60">
-            <a
-              href={`#entry-${place.id}`}
-              className="block min-w-0 flex-1"
-              onClick={(event) => {
-                event.preventDefault()
-                scrollToEntry(place.id)
-              }}
-            >
-              <div className="toc-shot relative h-20 overflow-hidden bg-navy sm:h-24 [&_.place-art]:aspect-auto [&_.place-art]:h-full">
-                <PlaceThumb place={place} uploads={uploads} eager={index < 6} />
-                <span className="absolute top-2 left-2 grid h-8 min-w-8 -rotate-6 place-items-center border-2 border-ink bg-coral px-1 text-sm font-bold shadow-[2px_2px_0_#181818]">{number}</span>
+      <div className="strip-scroll mt-3 flex snap-x items-start gap-3 overflow-x-auto pb-3">
+        {rows.map(({ place, number, score }, index) => {
+          const art = illustrated(place)
+          return (
+            <article key={place.id} className="toc-card flex w-52 shrink-0 snap-start flex-col items-start border-2 border-ink bg-[#fffaf3] sm:w-60">
+              <a
+                href={`#entry-${place.id}`}
+                className="block w-full min-w-0"
+                onClick={(event) => {
+                  event.preventDefault()
+                  scrollToEntry(place.id)
+                }}
+              >
+                <div className={`toc-shot relative overflow-hidden bg-navy [&_.place-art]:aspect-auto [&_.place-art]:h-full ${art ? 'h-14' : 'h-24'}`}>
+                  <PlaceThumb place={place} uploads={uploads} eager={index < 6} />
+                  <span className="absolute top-1.5 left-1.5 grid h-7 min-w-7 -rotate-6 place-items-center border-2 border-ink bg-coral px-1 text-xs font-bold shadow-[2px_2px_0_#181818]">{number}</span>
+                </div>
+                <div className="px-2.5 pt-2">
+                  <ScoreBadge score={score} size="sm" />
+                  <h3 className="mt-1.5 line-clamp-2 font-serif text-xl italic leading-tight">{place.name}</h3>
+                  <p className="mt-1 text-[11px] font-bold tracking-wide uppercase">
+                    {place.neighborhood} · {place.cuisine[0]} · {priceLabel(place.price)}
+                  </p>
+                  {place.perfectFor[0] ? <span className="tag mt-1.5">{place.perfectFor[0]}</span> : null}
+                </div>
+              </a>
+              <div className="px-2.5 pt-2 pb-2.5">
+                <StatusPills mini status={statuses[place.id]} onToggle={(status) => onToggle(place.id, status)} />
               </div>
-              <div className="p-2.5">
-                <h3 className="line-clamp-2 font-serif text-xl italic leading-none">{place.name}</h3>
-                <p className="mt-1.5 text-[11px] font-bold tracking-wide uppercase">
-                  {place.neighborhood} · {place.cuisine[0]} · {priceLabel(place.price)}
-                </p>
-                {place.perfectFor[0] ? <span className="tag mt-2">{place.perfectFor[0]}</span> : null}
-              </div>
-            </a>
-            <div className="mt-auto px-3 pb-3">
-              <StatusPills mini status={statuses[place.id]} onToggle={(status) => onToggle(place.id, status)} />
-            </div>
-          </article>
-        ))}
+            </article>
+          )
+        })}
       </div>
     </section>
   )
@@ -121,6 +131,7 @@ export function GuideEntryCard({
   uploads,
   status,
   friends,
+  score,
   onToggle,
   onNeedSignIn,
   signedIn,
@@ -131,7 +142,8 @@ export function GuideEntryCard({
   number: number
   uploads: LivePhoto[]
   status?: VisitStatus
-  friends: { average: number | null; loved: number; count: number }
+  friends: { average: number | null; loved: number; count: number; demo?: boolean }
+  score: number | null
   onToggle: (status: VisitStatus) => void
   onNeedSignIn: () => void
   signedIn: boolean
@@ -140,6 +152,7 @@ export function GuideEntryCard({
   const reference = publicReference(place)
   const [active, setActive] = useState(0)
   const photo = shots[Math.min(active, shots.length - 1)]
+  const artOnly = !photo?.url || photo.illustration
   const layout = index % 3
   const image = (
     <div className="relative min-w-0">
@@ -169,7 +182,7 @@ export function GuideEntryCard({
           <span className="mr-2 text-coral not-italic">{number}</span>
           <Link to={`/place/${place.id}`}>{place.name}</Link>
         </h3>
-        <p className="score-pill shrink-0">Not yet rated</p>
+        <ScoreBadge score={score} />
       </div>
       <p className="mt-3 text-sm font-bold tracking-wide uppercase">
         {place.cuisine.join(' · ')} · {place.neighborhood} · {priceLabel(place.price)}
@@ -185,8 +198,14 @@ export function GuideEntryCard({
       <div className="mt-4 flex flex-wrap gap-2">
         {place.perfectFor.map((tag) => <span key={tag} className="tag">{tag}</span>)}
       </div>
-      {reference ? <p className="mt-3 text-sm">{reference}</p> : null}
-      {friends.count ? <p className="text-sm">{friends.loved ? `${friends.loved} ${friends.loved === 1 ? 'friend loved' : 'friends loved'} this. ` : ''}Friend score {friends.average}.</p> : null}
+      {reference ? <p className="public-ref mt-3">{reference}</p> : null}
+      {signedIn && friends.count ? (
+        <p className="text-sm text-ink/70">
+          {friends.demo ? 'Demo friends · ' : ''}
+          {friends.loved ? `${friends.loved} ${friends.loved === 1 ? 'friend loved' : 'friends loved'} this. ` : ''}
+          Friend score {friends.average}.
+        </p>
+      ) : null}
       <div className="mt-4 flex flex-wrap gap-2">
         {place.website ? <a className="btn text-sm" href={place.website}>Website</a> : null}
         {place.yelpSlug ? <a className="btn text-sm" href={yelpBizUrl(place.yelpSlug)}>Yelp</a> : null}
@@ -203,6 +222,41 @@ export function GuideEntryCard({
       {rest}
     </div>
   )
+  const compact = (
+    <article id={`entry-${place.id}`} className="guide-entry scroll-mt-24 border-t-2 border-ink pt-5">
+      {title}
+      <div className="mt-3 flex items-start gap-3">
+        <figure className="w-24 shrink-0">
+          <div className="h-24 w-24 overflow-hidden border-2 border-ink bg-navy [&_.place-art]:aspect-auto [&_.place-art]:h-full">
+            <PlaceArt id={place.id} cuisine={place.cuisine[0] ?? 'Seattle'} neighborhood={place.neighborhood} />
+          </div>
+          <figcaption className="mt-1 text-[10px] font-bold tracking-wide uppercase">Illustration</figcaption>
+        </figure>
+        <blockquote className="entry-quote min-w-0 flex-1 border-l-4 border-coral pl-3">“{entry.pullQuote}”</blockquote>
+      </div>
+      <p className="mt-4 max-w-2xl text-lg leading-relaxed">{entry.blurb}</p>
+      <div className="mt-4 flex flex-wrap gap-2">
+        {place.perfectFor.map((tag) => <span key={tag} className="tag">{tag}</span>)}
+      </div>
+      {reference ? <p className="public-ref mt-3">{reference}</p> : null}
+      {signedIn && friends.count ? (
+        <p className="text-sm text-ink/70">
+          {friends.demo ? 'Demo friends · ' : ''}
+          {friends.loved ? `${friends.loved} ${friends.loved === 1 ? 'friend loved' : 'friends loved'} this. ` : ''}
+          Friend score {friends.average}.
+        </p>
+      ) : null}
+      <div className="mt-4 flex flex-wrap gap-2">
+        {place.website ? <a className="btn text-sm" href={place.website}>Website</a> : null}
+        {place.yelpSlug ? <a className="btn text-sm" href={yelpBizUrl(place.yelpSlug)}>Yelp</a> : null}
+        <a className="btn text-sm" href={place.appleMapsUrl}>Directions</a>
+        {place.phone ? <a className="btn text-sm" href={`tel:${place.phone}`}>Call</a> : null}
+        <button type="button" className={`btn text-sm ${status === 'togo' ? 'btn-coral' : ''}`} onClick={() => (signedIn ? onToggle('togo') : onNeedSignIn())}>To go</button>
+        <button type="button" className={`btn text-sm ${status === 'been' ? 'btn-leaf' : ''}`} onClick={() => (signedIn ? onToggle('been') : onNeedSignIn())}>Been</button>
+      </div>
+    </article>
+  )
+  if (artOnly) return index === 0 ? compact : <Reveal>{compact}</Reveal>
   const body = layout === 0 ? (
     <article id={`entry-${place.id}`} className="guide-entry scroll-mt-24 border-t-2 border-ink pt-5">
       {title}

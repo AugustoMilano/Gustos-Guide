@@ -1,12 +1,15 @@
 import { useMemo, useState } from 'react'
 import { Link, useSearchParams } from 'react-router-dom'
 import { PlaceThumb } from '../components/PlaceThumb.tsx'
+import { ScoreBadge } from '../components/ScoreBadge.tsx'
 import { catalog } from '../content/load.ts'
-import { milesBetween, priceLabel } from '../lib/format.ts'
+import { milesBetween, priceLabel, publicReference } from '../lib/format.ts'
 import { readPosition } from '../lib/geo.ts'
 import { usePageMeta } from '../lib/meta.ts'
+import { useApp } from '../state/AppState.tsx'
 
 export function SearchPage() {
+  const { gustoScore } = useApp()
   const [params, setParams] = useSearchParams()
   const q = params.get('q') ?? ''
   const [origin, setOrigin] = useState<{ lat: number; lng: number } | null>(null)
@@ -69,9 +72,13 @@ export function SearchPage() {
                   <span className="h-16 w-16 shrink-0 overflow-hidden bg-navy [&_.place-art]:aspect-auto [&_.place-art]:h-full">
                     <PlaceThumb place={place} />
                   </span>
-                  <span className="min-w-0 py-2 pr-3">
-                    <span className="block font-serif text-2xl italic leading-none">{place.name}</span>
-                    <span className="mt-1 block text-sm">{place.cuisine.join(' · ')} · {place.neighborhood} · {priceLabel(place.price)}{origin ? ` · ${milesBetween(origin, place).toFixed(1)} mi` : ''}</span>
+                  <span className="flex min-w-0 flex-1 items-start justify-between gap-2 py-2 pr-3">
+                    <span className="min-w-0">
+                      <span className="block font-serif text-2xl italic leading-tight">{place.name}</span>
+                      <span className="mt-1 block text-sm">{place.cuisine.join(' · ')} · {place.neighborhood} · {priceLabel(place.price)}{origin ? ` · ${milesBetween(origin, place).toFixed(1)} mi` : ''}</span>
+                      {publicReference(place) ? <span className="public-ref mt-1 block">{publicReference(place)}</span> : null}
+                    </span>
+                    <ScoreBadge score={gustoScore(place.id)} size="sm" />
                   </span>
                 </span>
               </Link>

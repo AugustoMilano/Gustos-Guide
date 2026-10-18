@@ -27,7 +27,7 @@ Source lists live in `data/places_categorized.json`, `data/guide_themes.json`, a
 npm run content
 ```
 
-That regenerates `src/content/`. Launch places are resolved Seattle food and drink that are not excluded, closed, outside the city, or duplicates. Outside-Seattle places stay in `src/content/hidden.json` and are not linked. Copy is marked `copy_source: "draft"`. Gusto's scores are empty.
+That regenerates `src/content/`. Launch places are resolved Seattle food and drink that are not excluded, closed, outside the city, or duplicates. Outside-Seattle places stay in `src/content/hidden.json` and are not linked. Copy is marked `copy_source: "draft"`. Catalog scores stay empty. Sign in as Augusto and use Rank to publish Gusto's Score (0–10, one decimal) in this browser. Yelp and OpenTable remain a separate 1–5 star line.
 
 ## Photos
 
