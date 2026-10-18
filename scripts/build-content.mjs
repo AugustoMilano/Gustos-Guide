@@ -161,6 +161,54 @@ function brandKey(name) {
   return key
 }
 
+// data/location_overrides.json maps a brand name to the muid the owner wants kept.
+// Keys go through brandKey, so "Aroom" covers "Aroom Coffee Waterfront". Other locations
+// of that brand are hidden as "other location of {kept name} ({neighborhood})".
+function loadLocationOverrides() {
+  const chosen = new Map()
+  const raw = JSON.parse(readFileSync(join(root, 'data/location_overrides.json'), 'utf8'))
+  for (const [label, muid] of Object.entries(raw)) {
+    const key = brandKey(label)
+    if (!key) throw new Error(`location override ${label} has an empty brand`)
+    if (chosen.has(key)) throw new Error(`location override ${label} repeats brand ${key}`)
+    chosen.set(key, { label, muid: String(muid) })
+  }
+  return chosen
+}
+
+function applyLocationOverrides(places, chosen) {
+  const groups = new Map()
+  for (const place of places) {
+    if (!place?.name) continue
+    const key = brandKey(place.name)
+    if (!chosen.has(key)) continue
+    const list = groups.get(key) ?? []
+    list.push(place)
+    groups.set(key, list)
+  }
+  for (const [key, { label, muid }] of chosen) {
+    const list = groups.get(key) ?? []
+    const kept = list.find((place) => String(place.muid) === muid)
+    if (!kept) throw new Error(`location override for ${label} keeps muid ${muid}, which is not a ${key} location`)
+    if (typeof kept.hidden_reason === 'string' && kept.hidden_reason.startsWith('other location of ')) {
+      delete kept.hidden_reason
+      delete kept.hidden_kept_muid
+    }
+    if (kept.hidden_reason) throw new Error(`location override ${label} keeps ${kept.name}, which is hidden: ${kept.hidden_reason}`)
+    const reason = `other location of ${kept.name} (${kept.neighborhood})`
+    for (const place of list) {
+      if (place === kept) continue
+      const alreadyOther = typeof place.hidden_reason === 'string' && place.hidden_reason.startsWith('other location of ')
+      if (place.hidden_reason && !alreadyOther) continue
+      if (!alreadyOther && !isLaunch({ ...place, hidden_reason: undefined })) continue
+      place.hidden_reason = reason
+      place.hidden_kept_muid = String(kept.muid)
+    }
+  }
+}
+
+applyLocationOverrides(rawPlaces, loadLocationOverrides())
+
 function isHidden(place) {
   return (
     place.resolved &&
@@ -574,6 +622,11 @@ const launch = rawPlaces.filter(isLaunch).map((place) => {
   next.perfectFor = perfectFor(next)
   return next
 })
+
+for (const { label, muid } of loadLocationOverrides().values()) {
+  const kept = launch.find((place) => place.muid === muid)
+  if (!kept) throw new Error(`location override ${label} kept ${muid}, but that place is not live`)
+}
 
 function titleName(title) {
   return normName(String(title || '').replace(/\s+in\s+.+$/i, ''))

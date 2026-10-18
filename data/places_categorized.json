@@ -5281,9 +5281,7 @@
   "duplicate_of": null,
   "closed_note": null,
   "notes": null,
-  "location_count_in_list": 2,
-  "hidden_reason": "other location of Aroom Coffee Waterfront (Waterfront)",
-  "hidden_kept_muid": "17553945507727273379"
+  "location_count_in_list": 2
  },
  {
   "order": 109,
@@ -17917,7 +17915,9 @@
   "duplicate_of": null,
   "closed_note": null,
   "notes": null,
-  "location_count_in_list": 2
+  "location_count_in_list": 2,
+  "hidden_reason": "other location of Aroom (Fremont)",
+  "hidden_kept_muid": "4841484876097121479"
  },
  {
   "order": 367,
