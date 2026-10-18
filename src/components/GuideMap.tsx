@@ -4,9 +4,15 @@ import { divIcon, latLngBounds, marker, type Layer, type MarkerClusterGroup } fr
 import '../lib/setup-leaflet.ts'
 import 'leaflet.markercluster'
 import { escapeHtml } from '../lib/format.ts'
+import { appleDirectionsUrl, applePlaceUrl, googleMapsUrl, prefersAppleMaps } from '../lib/maps.ts'
 import type { VisitStatus } from '../types.ts'
 
-type MapPlace = { id: string; name: string; neighborhood: string; lat: number; lng: number }
+type MapPlace = { id: string; name: string; neighborhood: string; lat: number; lng: number; address?: string }
+
+const SEATTLE = latLngBounds(
+  [47.495, -122.445],
+  [47.745, -122.245],
+)
 
 export type MapBounds = { south: number; north: number; west: number; east: number }
 
@@ -24,12 +30,29 @@ function Basemap() {
       await import('maplibre-gl/dist/maplibre-gl.css')
       const { maplibreGL } = await import('@maplibre/maplibre-gl-leaflet')
       if (cancelled) return
-      layer = maplibreGL({ style: BASEMAP_STYLE }).addTo(map)
-      map.invalidateSize()
+      const created = maplibreGL({ style: BASEMAP_STYLE, preserveDrawingBuffer: true } as object)
+      created.addTo(map)
+      layer = created
+      const gl = (created as { getMaplibreMap?: () => { resize: () => void; once: (event: string, fn: () => void) => void } }).getMaplibreMap?.()
+      const nudge = () => {
+        map.invalidateSize()
+        gl?.resize()
+      }
+      gl?.once('load', nudge)
+      gl?.once('idle', nudge)
+      nudge()
     })()
+
+    const observer = new ResizeObserver(() => {
+      map.invalidateSize()
+      const gl = (layer as { getMaplibreMap?: () => { resize: () => void } } | null)?.getMaplibreMap?.()
+      gl?.resize()
+    })
+    observer.observe(map.getContainer())
 
     return () => {
       cancelled = true
+      observer.disconnect()
       if (!layer) return
       map.removeLayer(layer)
     }
@@ -44,24 +67,42 @@ const COLORS: Record<VisitStatus | 'none', string> = {
   none: '#141F4D',
 }
 
-function pinIcon(color: string) {
+function pinIcon(color: string, hot = false) {
   return divIcon({
-    className: 'gusto-pin-wrap',
-    html: `<span class="gusto-pin" style="background:${color}"></span>`,
-    iconSize: [18, 18],
-    iconAnchor: [9, 9],
+    className: `gusto-pin-wrap${hot ? ' is-hot' : ''}`,
+    html: `<span class="gusto-pin${hot ? ' is-hot' : ''}" style="background:${color}"></span>`,
+    iconSize: hot ? [26, 26] : [18, 18],
+    iconAnchor: hot ? [13, 13] : [9, 9],
   })
+}
+
+function popupHtml(place: MapPlace): string {
+  const apple = prefersAppleMaps()
+  const placeUrl = applePlaceUrl(place.id)
+  const links = apple
+    ? `${placeUrl ? `<a href="${escapeHtml(placeUrl)}">Open in Apple Maps</a><br/>` : ''}<a href="${escapeHtml(appleDirectionsUrl(place))}">Directions</a>`
+    : `<a href="${escapeHtml(googleMapsUrl(place))}">Open in Google Maps</a>`
+  const href = `#/place/${place.id}`
+  return `<strong>${escapeHtml(place.name)}</strong><br/><span>${escapeHtml(place.neighborhood)}</span><br/><a href="${href}">Open ${escapeHtml(place.name)}</a><br/>${links}`
 }
 
 function FitPins({
   places,
   statuses,
+  activeId,
+  onHover,
 }: {
   places: MapPlace[]
   statuses: Record<string, VisitStatus>
+  activeId?: string | null
+  onHover?: (id: string | null) => void
 }) {
   const map = useMap()
   const seenIds = useRef('')
+  const markers = useRef(new Map<string, ReturnType<typeof marker>>())
+  const groupRef = useRef<MarkerClusterGroup | null>(null)
+  const hoverRef = useRef(onHover)
+  hoverRef.current = onHover
   const idKey = places.map((place) => place.id).join('|')
   const colorKey = places.map((place) => statuses[place.id] ?? 'none').join('|')
 
@@ -78,53 +119,80 @@ function FitPins({
           iconAnchor: [18, 18],
         }),
     })
+    markers.current = new Map()
 
     for (const place of places) {
       if (!Number.isFinite(place.lat) || !Number.isFinite(place.lng)) continue
       const status = statuses[place.id] ?? 'none'
       const pin = marker([place.lat, place.lng], {
-        icon: pinIcon(COLORS[status]),
+        icon: pinIcon(COLORS[status], place.id === activeId),
         title: place.name,
         keyboard: true,
         alt: place.name,
       })
-      const href = `#/place/${place.id}`
-      pin.bindPopup(
-        `<strong>${escapeHtml(place.name)}</strong><br/><span>${escapeHtml(place.neighborhood)}</span><br/><a href="${href}">Open ${escapeHtml(place.name)}</a>`,
-      )
+      pin.bindPopup(popupHtml(place))
+      pin.on('mouseover', () => hoverRef.current?.(place.id))
+      pin.on('mouseout', () => hoverRef.current?.(null))
+      pin.on('focus', () => hoverRef.current?.(place.id))
+      markers.current.set(place.id, pin)
       group.addLayer(pin)
     }
 
+    groupRef.current = group
     map.addLayer(group)
     let cancelled = false
     const fit = () => {
       if (cancelled) return
       map.invalidateSize()
-      if (map.getSize().y < 40) return
-      if (seenIds.current === idKey) return
-      seenIds.current = idKey
-      if (places.length === 1) {
-        map.setView([places[0].lat, places[0].lng], 15)
-      } else if (places.length > 1) {
-        map.fitBounds(latLngBounds(places.map((place) => [place.lat, place.lng])), {
-          padding: [42, 42],
-          maxZoom: 15,
+      const size = map.getSize()
+      if (size.y < 200 || size.x < 200) return
+      const key = `${idKey}:${size.x}x${size.y}`
+      if (seenIds.current === key) return
+      seenIds.current = key
+      const finite = places.filter((place) => Number.isFinite(place.lat) && Number.isFinite(place.lng))
+      if (finite.length === 1) {
+        map.setView([finite[0].lat, finite[0].lng], 15)
+      } else if (finite.length > 1) {
+        map.fitBounds(latLngBounds(finite.map((place) => [place.lat, place.lng])), {
+          padding: [36, 36],
+          maxZoom: 14,
+          animate: false,
         })
+      } else {
+        map.fitBounds(SEATTLE, { padding: [28, 28], maxZoom: 12, animate: false })
       }
     }
+    map.on('resize', fit)
     const frame = window.requestAnimationFrame(fit)
-    const timer = window.setTimeout(fit, 250)
+    const timer = window.setTimeout(fit, 400)
 
     return () => {
       cancelled = true
+      map.off('resize', fit)
       window.cancelAnimationFrame(frame)
       window.clearTimeout(timer)
+      markers.current.clear()
+      groupRef.current = null
       map.removeLayer(group)
     }
     // Refit when the place set changes. Color changes rebuild pins without a new dependency split
     // because both keys are listed; fitBounds on a color change stays at street-or-city zoom.
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [map, idKey, colorKey])
+
+  useEffect(() => {
+    for (const [id, pin] of markers.current) {
+      const status = statuses[id] ?? 'none'
+      const hot = id === activeId
+      pin.setIcon(pinIcon(COLORS[status], hot))
+      pin.setZIndexOffset(hot ? 1000 : 0)
+    }
+    const pin = activeId ? markers.current.get(activeId) : undefined
+    const parent = pin && groupRef.current ? groupRef.current.getVisibleParent(pin) : null
+    const element = parent?.getElement?.() ?? pin?.getElement?.() ?? null
+    element?.classList.add('is-hot')
+    return () => element?.classList.remove('is-hot')
+  }, [activeId, statuses])
 
   return null
 }
@@ -160,10 +228,14 @@ export function GuideMap({
   places,
   statuses,
   onMoveEnd,
+  activeId,
+  onHover,
 }: {
   places: MapPlace[]
   statuses: Record<string, VisitStatus>
   onMoveEnd?: (box: MapBounds) => void
+  activeId?: string | null
+  onHover?: (id: string | null) => void
 }) {
   if (!places.length) {
     return (
@@ -183,6 +255,7 @@ export function GuideMap({
       <MapContainer
         center={[first.lat, first.lng]}
         zoom={12}
+        zoomSnap={0}
         minZoom={1}
         maxZoom={18}
         zoomControl={false}
@@ -191,7 +264,7 @@ export function GuideMap({
       >
         <ZoomControl position="topright" />
         <Basemap />
-        <FitPins places={places} statuses={statuses} />
+        <FitPins places={places} statuses={statuses} activeId={activeId} onHover={onHover} />
         <WatchBounds onMoveEnd={onMoveEnd} />
       </MapContainer>
       <div className="map-legend">

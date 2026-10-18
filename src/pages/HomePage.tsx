@@ -4,7 +4,7 @@ import { ParticleHero } from '../components/ParticleHero.tsx'
 import { PlaceThumb } from '../components/PlaceThumb.tsx'
 import { ScoreBadge } from '../components/ScoreBadge.tsx'
 import { catalog, slimById } from '../content/load.ts'
-import { isOpen } from '../lib/hours.ts'
+import { hoursPhrase, isOpen } from '../lib/hours.ts'
 import { usePageMeta } from '../lib/meta.ts'
 import { useApp } from '../state/AppState.tsx'
 import type { GuideGroup, SlimPlace } from '../types.ts'
@@ -43,6 +43,14 @@ function diverse(places: SlimPlace[], limit: number): SlimPlace[] {
     if (picked.length === limit) break
   }
   return picked
+}
+
+function whyNow(place: SlimPlace): string {
+  const phrase = hoursPhrase(place.periods)
+  if (phrase?.startsWith('Open now · until ')) {
+    return `Open till ${phrase.slice('Open now · until '.length)} · ${place.neighborhood}`
+  }
+  return `${place.neighborhood} · ${place.cuisine[0]}`
 }
 
 function rightNow(): { places: SlimPlace[]; open: boolean } {
@@ -111,7 +119,7 @@ export function HomePage() {
                 <div className="p-3">
                   <ScoreBadge score={app.gustoScore(place.id)} size="sm" />
                   <h3 className="mt-2 font-serif text-2xl italic leading-none">{place.name}</h3>
-                  <p className="mt-2 text-sm">{place.neighborhood} · {place.cuisine[0]}</p>
+                  <p className="mt-2 text-sm">{whyNow(place)}</p>
                 </div>
               </Link>
             ))}

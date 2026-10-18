@@ -5,13 +5,9 @@ import { PlaceThumb } from './PlaceThumb.tsx'
 import { Reveal } from './Reveal.tsx'
 import { displayPhotos, type DisplayPhoto, type LivePhoto } from '../lib/gallery.ts'
 import { ScoreBadge } from './ScoreBadge.tsx'
+import { MapLinks } from './MapLinks.tsx'
 import { priceLabel, publicReference, yelpBizUrl } from '../lib/format.ts'
 import type { GuideEntry, SlimPlace, VisitStatus } from '../types.ts'
-
-function illustrated(place: SlimPlace): boolean {
-  const photo = place.photo
-  return !photo?.url || photo.source === 'illustration' || Boolean(photo.isIllustration)
-}
 
 function scrollToEntry(placeId: string) {
   const node = document.getElementById(`entry-${placeId}`)
@@ -59,33 +55,34 @@ export function GuideStrip({
         <h2 className="font-serif text-2xl italic sm:text-3xl">In this guide</h2>
         <p className="text-xs font-bold tracking-[0.14em] uppercase">{rows.length} places</p>
       </div>
-      <div className="strip-scroll mt-3 flex snap-x items-start gap-3 overflow-x-auto pb-3">
+      <div className="strip-scroll mt-3 flex snap-x items-stretch gap-3 overflow-x-auto pb-3">
         {rows.map(({ place, number, score }, index) => {
-          const art = illustrated(place)
           return (
-            <article key={place.id} className="toc-card flex w-52 shrink-0 snap-start flex-col items-start border-2 border-ink bg-[#fffaf3] sm:w-60">
+            <article key={place.id} className="toc-card flex w-52 shrink-0 snap-start flex-col border-2 border-ink bg-[#fffaf3] sm:w-60">
               <a
                 href={`#entry-${place.id}`}
-                className="block w-full min-w-0"
+                className="flex h-full min-w-0 flex-col"
                 onClick={(event) => {
                   event.preventDefault()
                   scrollToEntry(place.id)
                 }}
               >
-                <div className={`toc-shot relative overflow-hidden bg-navy [&_.place-art]:aspect-auto [&_.place-art]:h-full ${art ? 'h-14' : 'h-24'}`}>
+                <div className="toc-shot relative h-24 overflow-hidden bg-navy [&_.place-art]:aspect-auto [&_.place-art]:h-full">
                   <PlaceThumb place={place} uploads={uploads} eager={index < 6} />
                   <span className="absolute top-1.5 left-1.5 grid h-7 min-w-7 -rotate-6 place-items-center border-2 border-ink bg-coral px-1 text-xs font-bold shadow-[2px_2px_0_#181818]">{number}</span>
                 </div>
-                <div className="px-2.5 pt-2">
-                  <ScoreBadge score={score} size="sm" />
-                  <h3 className="mt-1.5 line-clamp-2 font-serif text-xl italic leading-tight">{place.name}</h3>
-                  <p className="mt-1 text-[11px] font-bold tracking-wide uppercase">
+                <div className="flex flex-1 flex-col px-2.5 pt-2">
+                  <div className="toc-badge">
+                    <ScoreBadge score={score} size="sm" />
+                  </div>
+                  <h3 className="mt-1.5 line-clamp-2 min-h-[2.6rem] font-serif text-xl italic leading-tight">{place.name}</h3>
+                  <p className="mt-1 line-clamp-2 min-h-[2rem] text-[11px] font-bold tracking-wide uppercase">
                     {place.neighborhood} · {place.cuisine[0]} · {priceLabel(place.price)}
                   </p>
-                  {place.perfectFor[0] ? <span className="tag mt-1.5">{place.perfectFor[0]}</span> : null}
+                  <span className="tag mt-1.5 min-h-6">{place.perfectFor[0] ?? 'Seattle'}</span>
                 </div>
               </a>
-              <div className="px-2.5 pt-2 pb-2.5">
+              <div className="mt-auto px-2.5 pt-2 pb-2.5">
                 <StatusPills mini status={statuses[place.id]} onToggle={(status) => onToggle(place.id, status)} />
               </div>
             </article>
@@ -209,7 +206,7 @@ export function GuideEntryCard({
       <div className="mt-4 flex flex-wrap gap-2">
         {place.website ? <a className="btn text-sm" href={place.website}>Website</a> : null}
         {place.yelpSlug ? <a className="btn text-sm" href={yelpBizUrl(place.yelpSlug)}>Yelp</a> : null}
-        <a className="btn text-sm" href={place.appleMapsUrl}>Directions</a>
+        <MapLinks place={place} />
         {place.phone ? <a className="btn text-sm" href={`tel:${place.phone}`}>Call</a> : null}
         <button type="button" className={`btn text-sm ${status === 'togo' ? 'btn-coral' : ''}`} onClick={() => (signedIn ? onToggle('togo') : onNeedSignIn())}>To go</button>
         <button type="button" className={`btn text-sm ${status === 'been' ? 'btn-leaf' : ''}`} onClick={() => (signedIn ? onToggle('been') : onNeedSignIn())}>Been</button>
@@ -249,7 +246,7 @@ export function GuideEntryCard({
       <div className="mt-4 flex flex-wrap gap-2">
         {place.website ? <a className="btn text-sm" href={place.website}>Website</a> : null}
         {place.yelpSlug ? <a className="btn text-sm" href={yelpBizUrl(place.yelpSlug)}>Yelp</a> : null}
-        <a className="btn text-sm" href={place.appleMapsUrl}>Directions</a>
+        <MapLinks place={place} />
         {place.phone ? <a className="btn text-sm" href={`tel:${place.phone}`}>Call</a> : null}
         <button type="button" className={`btn text-sm ${status === 'togo' ? 'btn-coral' : ''}`} onClick={() => (signedIn ? onToggle('togo') : onNeedSignIn())}>To go</button>
         <button type="button" className={`btn text-sm ${status === 'been' ? 'btn-leaf' : ''}`} onClick={() => (signedIn ? onToggle('been') : onNeedSignIn())}>Been</button>

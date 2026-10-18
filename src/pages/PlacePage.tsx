@@ -8,6 +8,7 @@ import { catalog, loadPlace, slimById } from '../content/load.ts'
 import { displayPhotos } from '../lib/gallery.ts'
 import { ScoreBadge } from '../components/ScoreBadge.tsx'
 import { formatPeriods, hoursPhrase } from '../lib/hours.ts'
+import { MapLinks } from '../components/MapLinks.tsx'
 import { milesBetween, priceLabel, publicReference, shareUrl, yelpBizUrl } from '../lib/format.ts'
 import { usePageMeta } from '../lib/meta.ts'
 import { howToGetIn } from '../lib/visit.ts'
@@ -134,7 +135,7 @@ export function PlacePage() {
           <div className="mt-4 flex flex-wrap gap-2">
             {place.website ? <a className="btn text-sm" href={place.website}>Website</a> : null}
             {place.yelpSlug ? <a className="btn text-sm" href={yelpBizUrl(place.yelpSlug)}>Yelp</a> : null}
-            <a className="btn text-sm" href={place.appleMapsUrl}>Directions</a>
+            <MapLinks place={place} />
             {place.phone ? <a className="btn text-sm" href={`tel:${place.phone}`}>Call</a> : null}
             <button type="button" className={`btn text-sm ${app.statuses[place.id] === 'togo' ? 'btn-coral' : ''}`} onClick={() => (app.user ? app.setStatus(place.id, 'togo') : setSignIn(true))}>To go</button>
             <button type="button" className={`btn text-sm ${been ? 'btn-leaf' : ''}`} onClick={() => (app.user ? app.setStatus(place.id, 'been') : setSignIn(true))}>Been</button>

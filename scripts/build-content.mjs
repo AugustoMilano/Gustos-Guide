@@ -520,6 +520,10 @@ const launch = rawPlaces.filter(isLaunch).map((place) => {
     phone: place.phone || undefined,
     website: httpUrl(place.website),
     appleMapsUrl: `https://maps.apple.com/?daddr=${place.lat},${place.lng}&q=${encodeURIComponent(place.name)}`,
+    applePlaceUrl:
+      typeof place.apple_url === 'string' && place.apple_url.includes('auid=')
+        ? place.apple_url
+        : `https://maps.apple.com/place?auid=${place.muid}`,
     appleRating: Number.isFinite(applePercent) ? { percent: applePercent, count: place.apple_rating_count ?? undefined } : undefined,
     publicRating:
       typeof place.user_rating === 'number' && (ratingSource === 'Yelp' || ratingSource === 'OpenTable')
@@ -853,6 +857,7 @@ const slim = launch.map((place) => ({
   website: place.website,
   phone: place.phone,
   appleMapsUrl: place.appleMapsUrl,
+  applePlaceUrl: place.applePlaceUrl,
   yelpSlug: place.yelpSlug,
   guideSlugs: guideSlugsByPlace.get(place.id) ?? [],
 }))
@@ -952,6 +957,10 @@ writeFileSync(join(root, 'src/content/places.json'), JSON.stringify(full))
 writeFileSync(join(root, 'src/content/guides.json'), JSON.stringify(guides))
 writeFileSync(join(root, 'src/content/hidden.json'), JSON.stringify(hidden))
 writeFileSync(join(root, 'src/content/demo.json'), JSON.stringify(demo))
+writeFileSync(
+  join(root, 'src/content/apple-links.json'),
+  JSON.stringify(Object.fromEntries(launch.map((place) => [place.id, place.applePlaceUrl]))),
+)
 
 const sourceByMuid = new Map(rawPlaces.filter((place) => place?.muid).map((place) => [String(place.muid), place]))
 const leaks = []

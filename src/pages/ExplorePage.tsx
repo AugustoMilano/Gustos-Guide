@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { GuideMap, type MapBounds } from '../components/GuideMap.tsx'
+import { MapLinks } from '../components/MapLinks.tsx'
 import { PlaceThumb } from '../components/PlaceThumb.tsx'
 import { ScoreBadge, scoreBand } from '../components/ScoreBadge.tsx'
 import { catalog } from '../content/load.ts'
@@ -51,6 +52,7 @@ export function ExplorePage() {
   const [area, setArea] = useState<MapBounds | null>(null)
   const [pending, setPending] = useState(false)
   const [sheet, setSheet] = useState(false)
+  const [activeId, setActiveId] = useState<string | null>(null)
   const armedAt = useRef(Number.POSITIVE_INFINITY)
   const latest = useRef<MapBounds | null>(null)
 
@@ -145,17 +147,27 @@ export function ExplorePage() {
           ) : null}
           <ul className="space-y-2 px-3 pb-4">
             {rows.map((place) => (
-              <li key={place.id}>
-                <Link to={`/place/${place.id}`} className="flex items-center gap-3 border-2 border-ink bg-[#fffaf3] p-2">
-                  <span className="h-14 w-16 shrink-0 overflow-hidden bg-navy [&_.place-art]:aspect-auto [&_.place-art]:h-full">
+              <li
+                key={place.id}
+                className={`explore-card border-2 bg-[#fffaf3] p-2 ${activeId === place.id ? 'border-coral' : 'border-ink'}`}
+                onMouseEnter={() => setActiveId(place.id)}
+                onMouseLeave={() => setActiveId((current) => (current === place.id ? null : current))}
+              >
+                <Link to={`/place/${place.id}`} className="flex items-center gap-3">
+                  <span className="h-20 w-24 shrink-0 overflow-hidden bg-navy [&_.place-art]:aspect-auto [&_.place-art]:h-full">
                     <PlaceThumb place={place} uploads={app.photos} />
                   </span>
                   <span className="min-w-0">
                     <ScoreBadge score={app.gustoScore(place.id)} size="sm" />
                     <span className="mt-1 block font-serif text-xl italic leading-none">{place.name}</span>
-                    <span className="mt-1 block text-xs font-bold tracking-wide uppercase">{place.neighborhood}</span>
+                    <span className="mt-1 block text-xs font-bold tracking-wide uppercase">
+                      {place.cuisine[0]} · {priceLabel(place.price)} · {place.neighborhood}
+                    </span>
                   </span>
                 </Link>
+                <div className="mt-2 flex flex-wrap gap-2">
+                  <MapLinks place={place} />
+                </div>
               </li>
             ))}
           </ul>
@@ -167,6 +179,8 @@ export function ExplorePage() {
         <GuideMap
           places={filtered}
           statuses={app.statuses}
+          activeId={activeId}
+          onHover={setActiveId}
           onMoveEnd={(box) => {
             latest.current = box
             if (Date.now() < armedAt.current) return

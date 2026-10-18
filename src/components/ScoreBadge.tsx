@@ -7,9 +7,12 @@ export function scoreBand(score: number): { label: string; tone: 'best' | 'great
 }
 
 export function ScoreBadge({ score, size = 'md' }: { score: number | null; size?: 'md' | 'sm' }) {
+  if (score == null && size === 'sm') {
+    return <p className="score-pill is-muted">Not yet rated</p>
+  }
   if (score == null) {
     return (
-      <p className={`score-badge is-muted ${size === 'sm' ? 'score-badge-sm' : ''}`}>
+      <p className="score-badge is-muted">
         <small>Gusto's</small>
         <strong>Not yet rated</strong>
       </p>

@@ -208,6 +208,12 @@ textarea {
 
 .guide-card,
 .hit-card,
+.toc-badge {
+  display: flex;
+  align-items: flex-start;
+  min-height: 3.25rem;
+}
+
 .toc-card {
   transition: transform 180ms ease, box-shadow 180ms ease;
 }
@@ -304,6 +310,16 @@ textarea {
   padding: 0.2rem 0.5rem;
   font-size: 0.75rem;
   font-weight: 700;
+}
+
+.score-pill.is-muted {
+  border-color: #8a837a;
+  background: #e4ddd2;
+  color: #3f3a36;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
 }
 
 .score-badge {
@@ -531,6 +547,13 @@ textarea {
   border: 0;
 }
 
+.gusto-pin.is-hot,
+.leaflet-marker-icon.is-hot .gusto-pin,
+.gusto-cluster.is-hot span,
+.leaflet-marker-icon.is-hot span {
+  box-shadow: 0 0 0 4px #ff5330;
+}
+
 .gusto-pin {
   display: block;
   width: 18px;
@@ -745,6 +768,112 @@ textarea {
   bottom: 5.25rem;
   transform: translateX(-50%);
   white-space: nowrap;
+}
+
+.wizard-progress {
+  height: 0.55rem;
+  border: 2px solid #181818;
+  background: #fffaf3;
+}
+
+.wizard-progress span {
+  display: block;
+  height: 100%;
+  background: #ff5330;
+  transition: width 280ms ease;
+}
+
+.avatar-card,
+.vibe-card,
+.vote-card {
+  border: 2px solid #181818;
+  background: #fffaf3;
+  text-align: left;
+}
+
+.avatar-card,
+.vibe-card {
+  display: flex;
+  gap: 0.7rem;
+  align-items: center;
+  padding: 0.8rem;
+}
+
+.avatar-card {
+  flex-direction: column;
+  align-items: flex-start;
+  min-height: 8.5rem;
+}
+
+.avatar-card.is-on,
+.vibe-card.is-on,
+.vote-card.is-on {
+  border-color: #ff5330;
+  box-shadow: 4px 4px 0 #181818;
+}
+
+.avatar {
+  display: grid;
+  width: 2.75rem;
+  height: 2.75rem;
+  place-items: center;
+  border: 2px solid #181818;
+  border-radius: 999px;
+  color: #fffaf3;
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+.avatar-sm {
+  width: 1.8rem;
+  height: 1.8rem;
+  font-size: 0.62rem;
+}
+
+.budget-slider {
+  width: 100%;
+  min-height: 44px;
+  accent-color: #ff5330;
+}
+
+.vote-card {
+  display: flex;
+  width: 100%;
+  gap: 0.75rem;
+  padding: 0.55rem;
+}
+
+.celebrate {
+  position: fixed;
+  inset: 0;
+  z-index: 70;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  background: rgb(20 31 77 / 90%);
+  color: #eee3d6;
+}
+
+.celebrate i {
+  position: absolute;
+  top: -12%;
+  width: 12px;
+  height: 18px;
+  animation: confetti 900ms ease-in forwards;
+}
+
+@keyframes confetti {
+  to {
+    transform: translateY(110vh) rotate(200deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wizard-progress span,
+  .celebrate i {
+    transition: none;
+    animation: none;
+  }
 }
 
 @media (max-width: 767px) {

@@ -38,6 +38,7 @@ export type SlimPlace = {
   website?: string
   phone?: string
   appleMapsUrl: string
+  applePlaceUrl?: string
   yelpSlug?: string
   guideSlugs: string[]
 }

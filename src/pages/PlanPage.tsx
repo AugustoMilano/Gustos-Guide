@@ -1,10 +1,14 @@
 import { useMemo, useState } from 'react'
 import { Link, useNavigate, useParams } from 'react-router-dom'
-import { catalog } from '../content/load.ts'
-import { priceLabel } from '../lib/format.ts'
+import { GuideMap } from '../components/GuideMap.tsx'
+import { MapLinks } from '../components/MapLinks.tsx'
+import { PlaceThumb } from '../components/PlaceThumb.tsx'
+import { ScoreBadge } from '../components/ScoreBadge.tsx'
+import { catalog, slimById } from '../content/load.ts'
+import { priceLabel, publicReference } from '../lib/format.ts'
 import { usePageMeta } from '../lib/meta.ts'
 import { useApp } from '../state/AppState.tsx'
-import type { SlimPlace } from '../types.ts'
+import type { Plan, SlimPlace } from '../types.ts'
 
 export function PlansPage() {
   const app = useApp()
@@ -76,6 +80,7 @@ export function PlanDetailPage() {
       <p className="mt-3 text-xs font-bold uppercase tracking-wide">{plan.demo ? 'Demo plan' : 'Your plan'}{plan.locked ? ' · Locked in' : ''}{plan.vibe ? ` · ${plan.vibe}` : ''}</p>
       <h1 className="font-serif text-5xl italic">{plan.title}</h1>
       {plan.locked ? <p className="mt-2">This dinner is locked in. The votes below are the record.</p> : null}
+      {plan.locked ? <LockedMaps plan={plan} /> : null}
       <ul className="mt-4 space-y-2">
         {plan.placeIds.map((pid) => {
           const place = catalog.places.find((item) => item.id === pid)
@@ -117,14 +122,6 @@ export function PlanDetailPage() {
   )
 }
 
-const VIBES = [
-  { id: 'date', label: 'Date' },
-  { id: 'cheap', label: 'Cheap' },
-  { id: 'late', label: 'Late' },
-  { id: 'drinks', label: 'Drinks' },
-  { id: 'casual', label: 'Casual' },
-] as const
-
 function matchesVibe(place: SlimPlace, vibe: string): boolean {
   const guides = place.guideSlugs
   if (vibe === 'date') return guides.includes('date-night')
@@ -132,6 +129,55 @@ function matchesVibe(place: SlimPlace, vibe: string): boolean {
   if (vibe === 'late') return guides.includes('late-night')
   if (vibe === 'drinks') return guides.some((slug) => slug === 'cocktail-bars' || slug === 'wine-bars' || slug === 'beer' || slug === 'the-bar-list' || slug === 'happy-hour')
   return place.price <= 3
+}
+
+function winningPlaceId(plan: Plan): string | undefined {
+  const tally = new Map<string, number>()
+  for (const vote of Object.values(plan.votes)) {
+    if (vote.placeId) tally.set(vote.placeId, (tally.get(vote.placeId) ?? 0) + 1)
+  }
+  let best = ''
+  let count = 0
+  for (const [id, votes] of tally) {
+    if (votes > count) {
+      best = id
+      count = votes
+    }
+  }
+  return best || plan.placeIds[0]
+}
+
+function LockedMaps({ plan }: { plan: Plan }) {
+  const place = slimById(winningPlaceId(plan) ?? '')
+  if (!place) return null
+  return (
+    <div className="mt-4 border-2 border-ink bg-[#fffaf3] p-4">
+      <p className="text-xs font-bold uppercase tracking-wide">Go together</p>
+      <p className="font-serif text-3xl italic">{place.name}</p>
+      <div className="mt-3 flex flex-wrap gap-2">
+        <MapLinks place={place} />
+      </div>
+    </div>
+  )
+}
+
+const VIBE_CARDS = [
+  { id: 'date', label: 'Date', emoji: '🕯️', line: 'Low light, a real table.' },
+  { id: 'cheap', label: 'Cheap', emoji: '💵', line: 'Dinner that stays easy.' },
+  { id: 'late', label: 'Late', emoji: '🌙', line: 'After the usual kitchens close.' },
+  { id: 'drinks', label: 'Drinks', emoji: '🍸', line: 'A stool before the meal.' },
+  { id: 'casual', label: 'Casual', emoji: '🌮', line: 'No speeches, just food.' },
+] as const
+
+const AVATAR = ['#ff5330', '#141f4d', '#38ba46', '#e7b23c']
+
+function initials(name: string): string {
+  return name
+    .split(' ')
+    .map((part) => part[0] ?? '')
+    .join('')
+    .slice(0, 2)
+    .toUpperCase()
 }
 
 export function PlanWizardPage() {
@@ -147,6 +193,7 @@ export function PlanWizardPage() {
   const [vibe, setVibe] = useState<string>('casual')
   const [budget, setBudget] = useState(2)
   const [choice, setChoice] = useState('')
+  const [celebrate, setCelebrate] = useState(false)
   usePageMeta("Plan dinner · Gusto's Guide", 'Pick friends, an area, a vibe, and a budget. Then vote and lock it in.', './og/og.svg')
 
   const friendPlaces = new Set(
@@ -172,23 +219,39 @@ export function PlanWizardPage() {
   const shortlist = source.slice(0, 5)
   const steps = ['Friends', 'Area', 'Vibe', 'Budget', 'Vote']
 
+  const areaPins = (area === 'any'
+    ? neighborhoods.map((name) => catalog.places.find((place) => place.neighborhood === name)).filter((place): place is SlimPlace => place != null)
+    : catalog.places.filter((place) => place.neighborhood === area)
+  ).slice(0, 24)
+  const pickedFriends = app.demoUsers.filter((person) => friends.includes(person.id))
+
   function lockIn() {
-    if (!app.user || !choice) return
-    const names = app.demoUsers.filter((person) => friends.includes(person.id)).map((person) => person.name.split(' ')[0])
+    if (!app.user || !choice || celebrate) return
+    const names = pickedFriends.map((person) => person.name.split(' ')[0])
     const title = names.length ? `Dinner with ${names.join(', ')}` : 'Dinner'
     const id = app.createPlan(title, shortlist.map((place) => place.id), [new Date().toISOString().slice(0, 10)], {
       vibe,
       votePlaceId: choice,
       locked: true,
     })
-    if (id) navigate(`/plan/${id}`)
+    if (!id) return
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    if (reduce) {
+      navigate(`/plan/${id}`)
+      return
+    }
+    setCelebrate(true)
+    window.setTimeout(() => navigate(`/plan/${id}`), 900)
   }
 
   return (
     <main id="main" tabIndex={-1} className="mx-auto max-w-3xl px-4 pt-24 pb-16 outline-none">
       <Link to="/plans" className="text-sm font-bold">← Plans</Link>
       <h1 className="mt-3 font-serif text-5xl italic">Plan dinner</h1>
-      <ol className="mt-4 flex flex-wrap gap-2" aria-label="Wizard steps">
+      <div className="wizard-progress mt-4" aria-hidden="true">
+        <span style={{ width: `${((step + 1) / steps.length) * 100}%` }} />
+      </div>
+      <ol className="mt-3 flex flex-wrap gap-2" aria-label="Wizard steps">
         {steps.map((label, index) => (
           <li key={label}>
             <button type="button" className="chip" aria-current={step === index ? 'step' : undefined} onClick={() => setStep(index)}>
@@ -201,70 +264,120 @@ export function PlanWizardPage() {
         <fieldset className="mt-6">
           <legend className="font-serif text-3xl italic">Who is coming?</legend>
           <p className="mt-2 text-sm">Demo friends. Picking them looks for To go overlaps with places they have been.</p>
-          <ul className="mt-3 space-y-2">
-            {app.demoUsers.map((person) => (
-              <li key={person.id}>
-                <label className="flex min-h-11 items-center gap-2">
-                  <input
-                    type="checkbox"
-                    checked={friends.includes(person.id)}
-                    onChange={() => setFriends((current) => current.includes(person.id) ? current.filter((id) => id !== person.id) : [...current, person.id])}
-                  />
-                  {person.name} · Demo · {person.neighborhood}
-                </label>
-              </li>
-            ))}
-          </ul>
+          <div className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-3">
+            {app.demoUsers.map((person, index) => {
+              const on = friends.includes(person.id)
+              return (
+                <button
+                  key={person.id}
+                  type="button"
+                  className={`avatar-card ${on ? 'is-on' : ''}`}
+                  aria-pressed={on}
+                  onClick={() => setFriends((current) => current.includes(person.id) ? current.filter((id) => id !== person.id) : [...current, person.id])}
+                >
+                  <span className="avatar" style={{ background: AVATAR[index % AVATAR.length] }}>{initials(person.name)}</span>
+                  <span className="font-serif text-2xl italic leading-none">{person.name}</span>
+                  <span className="text-xs font-bold uppercase tracking-wide">{person.neighborhood} · Demo</span>
+                </button>
+              )
+            })}
+          </div>
         </fieldset>
       ) : null}
       {step === 1 ? (
-        <label className="field mt-6">
-          <span>Area</span>
-          <select value={area} onChange={(event) => setArea(event.target.value)}>
-            <option value="any">Anywhere in Seattle</option>
-            {neighborhoods.map((item) => <option key={item}>{item}</option>)}
-          </select>
-        </label>
+        <section className="mt-6" aria-label="Area">
+          <h2 className="font-serif text-3xl italic">Where in Seattle?</h2>
+          <div className="mt-3 flex flex-wrap gap-2">
+            <button type="button" className="chip" aria-pressed={area === 'any'} onClick={() => setArea('any')}>Anywhere</button>
+            {neighborhoods.map((item) => (
+              <button key={item} type="button" className="chip" aria-pressed={area === item} onClick={() => setArea(item)}>{item}</button>
+            ))}
+          </div>
+          <div className="mt-4 h-56">
+            <GuideMap places={areaPins} statuses={app.statuses} />
+          </div>
+        </section>
       ) : null}
       {step === 2 ? (
         <fieldset className="mt-6">
           <legend className="font-serif text-3xl italic">Vibe</legend>
-          <div className="mt-3 flex flex-wrap gap-2">
-            {VIBES.map((item) => (
-              <button key={item.id} type="button" className="chip" aria-pressed={vibe === item.id} onClick={() => setVibe(item.id)}>
-                {item.label}
+          <div className="mt-3 grid gap-3 sm:grid-cols-2">
+            {VIBE_CARDS.map((item) => (
+              <button key={item.id} type="button" className={`vibe-card ${vibe === item.id ? 'is-on' : ''}`} aria-pressed={vibe === item.id} onClick={() => setVibe(item.id)}>
+                <span className="text-4xl" aria-hidden="true">{item.emoji}</span>
+                <span>
+                  <span className="block font-serif text-3xl italic leading-none">{item.label}</span>
+                  <span className="mt-1 block text-sm">{item.line}</span>
+                </span>
               </button>
             ))}
           </div>
         </fieldset>
       ) : null}
       {step === 3 ? (
-        <label className="field mt-6">
-          <span>Budget</span>
-          <select value={budget} onChange={(event) => setBudget(Number(event.target.value))}>
-            {[1, 2, 3, 4].map((item) => <option key={item} value={item}>Up to {priceLabel(item as 1 | 2 | 3 | 4)}</option>)}
-          </select>
-        </label>
+        <section className="mt-6">
+          <h2 className="font-serif text-3xl italic">Budget</h2>
+          <p className="mt-2 font-serif text-5xl italic">{priceLabel(budget as 1 | 2 | 3 | 4)}</p>
+          <label className="mt-4 block">
+            <span className="sr-only">Maximum price</span>
+            <input
+              className="budget-slider"
+              type="range"
+              min={1}
+              max={4}
+              step={1}
+              value={budget}
+              aria-valuetext={`Up to ${priceLabel(budget as 1 | 2 | 3 | 4)}`}
+              onChange={(event) => setBudget(Number(event.target.value))}
+            />
+          </label>
+          <div className="mt-2 flex justify-between text-sm font-bold">
+            <span>$</span><span>$$</span><span>$$$</span><span>$$$$</span>
+          </div>
+        </section>
       ) : null}
       {step === 4 ? (
         <section className="mt-6" aria-labelledby="shortlist">
           <h2 id="shortlist" className="font-serif text-3xl italic">Shortlist</h2>
           <p className="mt-2">{note}</p>
           {!app.user ? <p className="mt-2">Sign in to lock the plan in.</p> : null}
-          <ul className="mt-3 space-y-2">
-            {shortlist.map((place) => (
-              <li key={place.id}>
-                <button
-                  type="button"
-                  className={`w-full border-2 px-3 py-3 text-left ${choice === place.id ? 'border-coral bg-[#fffaf3]' : 'border-ink'}`}
-                  aria-pressed={choice === place.id}
-                  onClick={() => setChoice(place.id)}
-                >
-                  <span className="font-serif text-2xl italic">{place.name}</span>
-                  <span className="mt-1 block text-sm">{place.neighborhood} · {priceLabel(place.price)} · {place.cuisine[0]}</span>
-                </button>
-              </li>
-            ))}
+          <ul className="mt-3 space-y-3">
+            {shortlist.map((place) => {
+              const fans = pickedFriends.filter((person) => person.been.includes(place.id) || person.scores[place.id] !== undefined)
+              const you = choice === place.id ? 1 : 0
+              const tally = fans.length + you
+              const reference = publicReference(place)
+              return (
+                <li key={place.id}>
+                  <button
+                    type="button"
+                    className={`vote-card ${choice === place.id ? 'is-on' : ''}`}
+                    aria-pressed={choice === place.id}
+                    onClick={() => setChoice(place.id)}
+                  >
+                    <span className="h-24 w-28 shrink-0 overflow-hidden bg-navy [&_.place-art]:aspect-auto [&_.place-art]:h-full">
+                      <PlaceThumb place={place} uploads={app.photos} />
+                    </span>
+                    <span className="min-w-0 flex-1 text-left">
+                      <ScoreBadge score={app.gustoScore(place.id)} size="sm" />
+                      <span className="mt-1 block font-serif text-2xl italic leading-none">{place.name}</span>
+                      {reference ? <span className="public-ref mt-1 block">{reference}</span> : null}
+                      <span className="mt-2 flex flex-wrap gap-1">
+                        {tally > 0 ? <span className="tag">{tally} of you want to go</span> : null}
+                        {place.price <= budget ? <span className="tag">Fits {priceLabel(place.price)}</span> : null}
+                      </span>
+                      <span className="mt-2 flex items-center gap-1">
+                        {fans.map((person, index) => (
+                          <span key={person.id} className="avatar avatar-sm" style={{ background: AVATAR[index % AVATAR.length] }} title={`${person.name} · Demo`}>{initials(person.name)}</span>
+                        ))}
+                        {you ? <span className="avatar avatar-sm" style={{ background: '#181818' }} title="Your vote">You</span> : null}
+                        <span className="ml-auto font-serif text-3xl italic">{tally}</span>
+                      </span>
+                    </span>
+                  </button>
+                </li>
+              )
+            })}
           </ul>
           {shortlist.length === 0 ? <p>No places match. Widen the area or the budget.</p> : null}
           <button type="button" className="btn btn-coral mt-4" disabled={!app.user || !choice} onClick={lockIn}>Lock it in</button>
@@ -274,6 +387,12 @@ export function PlanWizardPage() {
         <button type="button" className="btn" disabled={step === 0} onClick={() => setStep((value) => Math.max(0, value - 1))}>Back</button>
         {step < 4 ? <button type="button" className="btn btn-coral" onClick={() => setStep((value) => Math.min(4, value + 1))}>Next</button> : null}
       </div>
+      {celebrate ? (
+        <div className="celebrate" role="status">
+          <p className="font-serif text-6xl italic">Locked in.</p>
+          {Array.from({ length: 18 }, (_, index) => <i key={index} style={{ left: `${(index * 17) % 100}%`, animationDelay: `${index * 40}ms`, background: AVATAR[index % AVATAR.length] }} />)}
+        </div>
+      ) : null}
     </main>
   )
 }
