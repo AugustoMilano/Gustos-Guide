@@ -136,7 +136,7 @@ export function PlacePage() {
             <p className="mt-2 text-sm text-ink/70">
               {demoFriendsEnabled && friends.demo ? 'Seeded friends · ' : ''}
               {friends.loved ? `${friends.loved} ${friends.loved === 1 ? 'friend loved' : 'friends loved'} this. ` : ''}
-              Friend score {friends.average}.
+              Friend score {friends.average == null ? '' : friends.average.toFixed(1)}.
             </p>
           ) : null}
           <p className="mt-2 font-bold">{[priceLabel(place.price), hoursPhrase(place.periods)].filter(Boolean).join(' · ')}</p>

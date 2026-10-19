@@ -209,7 +209,7 @@ export function GuideEntryCard({
         <p className="text-sm text-ink/70">
           {demoFriendsEnabled && friends.demo ? 'Seeded friends · ' : ''}
           {friends.loved ? `${friends.loved} ${friends.loved === 1 ? 'friend loved' : 'friends loved'} this. ` : ''}
-          Friend score {friends.average}.
+          Friend score {friends.average == null ? '' : friends.average.toFixed(1)}.
         </p>
       ) : null}
       <div className="mt-4 flex flex-wrap gap-2">
@@ -252,7 +252,7 @@ export function GuideEntryCard({
         <p className="text-sm text-ink/70">
           {demoFriendsEnabled && friends.demo ? 'Seeded friends · ' : ''}
           {friends.loved ? `${friends.loved} ${friends.loved === 1 ? 'friend loved' : 'friends loved'} this. ` : ''}
-          Friend score {friends.average}.
+          Friend score {friends.average == null ? '' : friends.average.toFixed(1)}.
         </p>
       ) : null}
       <div className="mt-4 flex flex-wrap gap-2">

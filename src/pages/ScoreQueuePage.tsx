@@ -13,8 +13,10 @@ export function ScoreQueuePage() {
   const app = useApp()
   const [shown, setShown] = useState(PAGE)
   const [signIn, setSignIn] = useState(false)
+  const [keep, setKeep] = useState<string[]>([])
   usePageMeta("Needs a score · Gusto's Guide", 'Places still waiting on a house score.', './og/og.svg')
-  const queue = catalog.places.filter((place) => app.gustoScore(place.id) == null)
+  const queue = catalog.places.filter((place) => app.gustoScore(place.id) == null || keep.includes(place.id))
+  const waiting = catalog.places.filter((place) => app.gustoScore(place.id) == null).length
   const visible = queue.slice(0, shown)
 
   return (
@@ -33,7 +35,7 @@ export function ScoreQueuePage() {
         <p className="mt-4">Every place on the guide has a house score.</p>
       ) : (
         <>
-          <p className="mt-3 text-sm">{queue.length} places still open. Tap a number. It publishes as the house score.</p>
+          <p className="mt-3 text-sm">{waiting} places still open. Tap a number, then a tenth. It publishes as the house score.</p>
           <ul className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2">
             {visible.map((place) => (
               <li key={place.id} className="feed-card">
@@ -42,7 +44,7 @@ export function ScoreQueuePage() {
                 </Link>
                 <h2 className="mt-2 font-serif text-2xl italic leading-none">{place.name}</h2>
                 <p className="mt-1 text-sm">{place.neighborhood}</p>
-                <HouseScorePad placeId={place.id} compact />
+                <HouseScorePad placeId={place.id} compact onScored={() => setKeep((ids) => ids.includes(place.id) ? ids : [...ids, place.id])} />
               </li>
             ))}
           </ul>
