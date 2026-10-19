@@ -89,7 +89,6 @@ function GuideEditor({
   const cover = slimById(guide.coverPlaceId ?? guide.placeIds[0] ?? '')
   const [friendHandle, setFriendHandle] = useState('')
   const [shareError, setShareError] = useState('')
-  const mina = !app.supabase && guide.collaboratorIds.includes('demo-mina')
   const visibility = guide.visibility ?? (guide.isPublic === false ? 'private' : 'public')
   const isPublic = visibility === 'public'
 
@@ -113,7 +112,7 @@ function GuideEditor({
         <div>
           <h2 className="font-serif text-3xl italic">{guide.title}</h2>
           <p className="text-sm"><Link className="font-bold" to={`/list/${guide.id}`}>Open list</Link> · {isPublic ? 'Public' : 'Private'}</p>
-          {demoFriendsEnabled && mina ? <p className="text-sm">Mina can edit. This seeded collaborator stays in this browser.</p> : null}
+          {demoFriendsEnabled && !app.supabase && guide.collaboratorIds.includes('demo-mina') ? <p className="text-sm">Mina can edit. This seeded collaborator stays in this browser.</p> : null}
         </div>
       </div>
       <div className="share-card mt-3 border-2 border-ink bg-[#fffaf3] p-3">
