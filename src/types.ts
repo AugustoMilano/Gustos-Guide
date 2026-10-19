@@ -46,7 +46,7 @@ export type SlimPlace = {
 export type Place = Omit<SlimPlace, 'photo'> & {
   muid: string
   hoursLabel: string
-  review: string
+  blurb: string
   orderThis: { dish: string; note: string }[]
   ids: { fsq?: string; yelp?: string }
   copySource: 'draft'

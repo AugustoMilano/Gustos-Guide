@@ -1,8 +1,7 @@
 import { readFileSync, writeFileSync, mkdirSync } from 'node:fs'
 import { dirname, join } from 'node:path'
 import { fileURLToPath } from 'node:url'
-import { assertCopy } from './lint-copy.mjs'
-import { createVoice } from './voice.mjs'
+import { assertCopy, truncatedNameHit } from './lint-copy.mjs'
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..')
 
@@ -609,7 +608,7 @@ const launch = rawPlaces.filter(isLaunch).map((place) => {
     orderThis: orderFor(place.name),
     perfectFor: [],
     oneLiner: '',
-    review: '',
+    blurb: '',
     photos: [
       ...(wikiById.get(`muid:${place.muid}`) ?? []),
       {
@@ -658,10 +657,23 @@ for (const place of launch) {
   yelpNameMatches += 1
 }
 
-const voice = createVoice()
+const houseCopy = JSON.parse(readFileSync(join(root, 'data/house-copy.json'), 'utf8'))
+const funDiveSource = JSON.parse(readFileSync(join(root, 'data/fun-dive-bars.json'), 'utf8'))
+const handDiveByName = new Map(funDiveSource.entries.map((item) => [normName(item.name), item]))
+const guideQuotes = new Map()
+
 for (const place of launch) {
-  place.oneLiner = voice.line(place)
-  place.review = voice.review(place)
+  const hand = handDiveByName.get(normName(place.name))
+  if (hand) {
+    place.oneLiner = hand.pullQuote
+    place.blurb = hand.blurb
+    continue
+  }
+  const copy = houseCopy[place.id]
+  if (!copy?.pullQuote || !copy?.blurb) throw new Error(`Missing house copy for ${place.name} (${place.id})`)
+  place.oneLiner = String(copy.pullQuote).trim()
+  place.blurb = String(copy.blurb).trim()
+  guideQuotes.set(place.id, copy.guideQuotes && typeof copy.guideQuotes === 'object' ? copy.guideQuotes : {})
 }
 
 const byNorm = new Map()
@@ -746,8 +758,8 @@ const guides = []
 function addGuide(guide) {
   const entries = guide.places.map((place) => ({
     placeId: place.id,
-    pullQuote: voice.quote(place, guide.angle),
-    blurb: voice.blurb(place, guide.angle),
+    pullQuote: guideQuotes.get(place.id)?.[guide.slug] || place.oneLiner,
+    blurb: place.blurb,
     copySource: 'draft',
   }))
   if (entries.length < 8 || entries.length > 40) {
@@ -1041,12 +1053,42 @@ const demo = {
   ],
 }
 
-const copyCheck = voice.assert()
-assertCopy({
-  lines: [...launch.map((place) => place.oneLiner), ...guides.flatMap((guide) => guide.entries.map((entry) => entry.pullQuote))],
-  blurbs: guides.flatMap((guide) => guide.entries.map((entry) => entry.blurb)),
-  prose: launch.map((place) => place.review),
+const handDiveBlurbs = new Set(funDiveSource.entries.map((item) => item.blurb))
+const copyCheck = assertCopy({
+  lines: [
+    ...launch.map((place) => ({ text: place.oneLiner, placeId: place.id })),
+    ...guides.flatMap((guide) => guide.entries.map((entry) => ({ text: entry.pullQuote, placeId: entry.placeId }))),
+  ],
+  blurbs: [
+    ...launch.map((place) => ({ text: place.blurb, placeId: place.id, name: place.name, exempt: handDiveBlurbs.has(place.blurb) })),
+    ...guides.flatMap((guide) =>
+      guide.entries.map((entry) => ({
+        text: entry.blurb,
+        placeId: entry.placeId,
+        name: launch.find((place) => place.id === entry.placeId)?.name,
+        exempt: guide.slug === 'fun-dive-bars' || handDiveBlurbs.has(entry.blurb),
+      })),
+    ),
+  ],
 })
+for (const place of launch) {
+  for (const text of [place.oneLiner, place.blurb]) {
+    if (truncatedNameHit(place.name, place.address, text)) {
+      throw new Error(`Truncated name merged with address in copy for ${place.name}: ${text.slice(0, 160)}`)
+    }
+  }
+}
+for (const guide of guides) {
+  for (const entry of guide.entries) {
+    const place = launch.find((item) => item.id === entry.placeId)
+    if (!place) continue
+    for (const text of [entry.pullQuote, entry.blurb]) {
+      if (truncatedNameHit(place.name, place.address, text)) {
+        throw new Error(`Truncated name merged with address in ${guide.slug} copy for ${place.name}`)
+      }
+    }
+  }
+}
 
 mkdirSync(join(root, 'src/content'), { recursive: true })
 const index = {
@@ -1107,6 +1149,36 @@ if (sharedBrands.length) {
 for (const guide of guides) {
   const ids = guide.entries.map((entry) => entry.placeId)
   if (new Set(ids).size !== ids.length) throw new Error(`Guide ${guide.slug} lists a place twice`)
+  if (guide.slug === 'fun-dive-bars') continue
+  for (const entry of guide.entries) {
+    const place = full[entry.placeId]
+    if (entry.blurb !== place.blurb) throw new Error(`${guide.slug} does not reuse the blurb for ${place.name}`)
+    const override = guideQuotes.get(place.id)?.[guide.slug]
+    const expected = override || place.oneLiner
+    if (entry.pullQuote !== expected) throw new Error(`${guide.slug} pull quote for ${place.name} is not the place copy or a guide-specific quote`)
+  }
+}
+const funGuide = guides.find((guide) => guide.slug === 'fun-dive-bars')
+if (!funGuide || funGuide.entries.length !== funDiveSource.entries.length) {
+  throw new Error('Best Fun & Dive Bars was not preserved entry for entry')
+}
+for (const item of funDiveSource.entries) {
+  const place = Object.values(full).find((candidate) => normName(candidate.name) === normName(item.name))
+  if (!place) throw new Error(`Fun & dive bars place ${item.name} is not live`)
+  const entry = funGuide.entries.find((candidate) => candidate.placeId === place.id)
+  if (!entry || entry.pullQuote !== item.pullQuote || entry.blurb !== item.blurb || entry.vibe !== item.vibe) {
+    throw new Error(`Fun & dive bars copy changed for ${item.name}`)
+  }
+  if (place.oneLiner !== item.pullQuote || place.blurb !== item.blurb) {
+    throw new Error(`Place page copy for ${item.name} drifted from the Fun & Dive Bars guide`)
+  }
+}
+for (const [placeId, quotes] of guideQuotes) {
+  for (const [slug, quote] of Object.entries(quotes)) {
+    if (String(quote).trim() === full[placeId].oneLiner.trim()) {
+      throw new Error(`Guide-specific pull quote for ${full[placeId].name} on ${slug} repeats the place quote`)
+    }
+  }
 }
 const badRatings = Object.values(full).filter((place) => place.publicRating && place.publicRating.source !== 'Yelp' && place.publicRating.source !== 'OpenTable')
 if (badRatings.length) {
@@ -1114,7 +1186,7 @@ if (badRatings.length) {
 }
 const banned = /draft|augusto|census|borrowed from|gusto's score|not yet rated|this file|entries in this|saved list|saved places|no speech/i
 const spoken = [
-  ...Object.values(full).flatMap((place) => [place.oneLiner, place.review]),
+  ...Object.values(full).flatMap((place) => [place.oneLiner, place.blurb]),
   ...guides.flatMap((guide) => [guide.intro, guide.dek, ...guide.entries.flatMap((entry) => [entry.blurb, entry.pullQuote])]),
 ]
 const voiceHits = spoken.filter((line) => banned.test(line))
@@ -1122,7 +1194,6 @@ if (voiceHits.length) {
   throw new Error(`Meta copy leaked:\n${voiceHits.slice(0, 6).join('\n---\n')}`)
 }
 const blurbs = guides.flatMap((guide) => guide.entries.map((entry) => wordCount(entry.blurb)))
-const shortReviews = Object.values(full).filter((place) => place.review.split('\n\n').length < 2)
 console.log(JSON.stringify({
   launch: slim.length,
   hidden: hidden.length,
@@ -1131,7 +1202,6 @@ console.log(JSON.stringify({
   byGroup: guides.reduce((acc, guide) => ({ ...acc, [guide.group]: (acc[guide.group] ?? 0) + 1 }), {}),
   blurbMin: Math.min(...blurbs),
   blurbMax: Math.max(...blurbs),
-  shortReviews: shortReviews.length,
   unmatched: [...new Set(unmatched)].length,
   under8: guides.filter((guide) => guide.entries.length < 8).map((guide) => [guide.slug, guide.entries.length]),
   over40: guides.filter((guide) => guide.entries.length > 40).map((guide) => guide.slug),

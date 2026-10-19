@@ -369,6 +369,7 @@ function rightPairs(bag) {
 }
 
 export function createVoice() {
+  throw new Error('Catalog copy lives in data/house-copy.json. Voice frames are not the house writer.')
   const lineSets = []
   const blurbSets = []
   const lines = []

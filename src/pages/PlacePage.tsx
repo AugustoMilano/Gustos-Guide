@@ -145,8 +145,7 @@ export function PlacePage() {
       </div>
       <div className="mt-8 grid gap-8 lg:grid-cols-[minmax(0,1fr)_320px]">
         <article>
-          <h2 className="font-serif text-3xl italic">The review</h2>
-          {full ? full.review.split('\n\n').map((paragraph) => <p key={paragraph.slice(0, 40)} className="mt-4 max-w-2xl text-lg">{paragraph}</p>) : <p className="mt-4 max-w-2xl text-lg">{place.oneLiner}</p>}
+          <p className="max-w-2xl text-lg leading-relaxed">{full?.blurb || place.oneLiner}</p>
           {howToGetIn(place) ? (
             <section className="mt-6">
               <h2 className="font-serif text-3xl italic">How to get in</h2>
