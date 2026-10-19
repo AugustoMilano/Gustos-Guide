@@ -14,8 +14,9 @@ export function ListPage() {
   if (!guide) {
     return <main id="main" tabIndex={-1} className="mx-auto max-w-3xl px-4 pt-28 outline-none"><h1 className="font-serif text-5xl italic">That list is not here.</h1></main>
   }
-  const isPublic = guide.isPublic !== false
-  const allowed = isPublic || guide.ownerId === app.user?.id || (app.user ? guide.collaboratorIds.includes(app.user.id) : false)
+  const visibility = guide.visibility ?? (guide.isPublic === false ? 'private' : 'public')
+  const isPublic = visibility === 'public'
+  const allowed = app.supabase || isPublic || guide.demo || guide.ownerId === app.user?.id || (app.user ? guide.collaboratorIds.includes(app.user.id) : false)
   if (!allowed) {
     return (
       <main id="main" tabIndex={-1} className="mx-auto max-w-3xl px-4 pt-28 outline-none">
@@ -27,9 +28,9 @@ export function ListPage() {
   const cover = slimById(guide.coverPlaceId ?? guide.placeIds[0] ?? '')
   return (
     <main id="main" tabIndex={-1} className="mx-auto max-w-3xl px-4 pt-24 pb-16 outline-none">
-      <p className="text-xs font-bold uppercase tracking-wide">{guide.demo ? 'Demo list' : isPublic ? 'Public list' : 'Private list'}</p>
+      <p className="text-xs font-bold uppercase tracking-wide">{guide.demo ? 'Demo list' : visibility === 'public' ? 'Public list' : visibility === 'friends' ? 'Friends list' : 'Private list'}</p>
       <h1 className="font-serif text-5xl italic">{guide.title}</h1>
-      {guide.shared ? <p className="mt-2 text-sm">Collaborative. Edits stay in this browser.</p> : null}
+      {guide.shared ? <p className="mt-2 text-sm">{app.supabase ? 'Collaborative.' : 'Collaborative. Edits stay in this browser.'}</p> : null}
       {cover ? (
         <div className="mt-4 h-48 overflow-hidden border-2 border-ink bg-navy [&_.place-art]:aspect-auto [&_.place-art]:h-full">
           <PlaceThumb place={cover} uploads={app.photos} eager />

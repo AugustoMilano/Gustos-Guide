@@ -31,21 +31,27 @@ Hash routes are not separate documents. Crawlers that ignore the hash will only 
 
 No environment variables are required for the local demo. Lists, ranks, notifications, and Gusto's Score stay in this browser.
 
-## Supabase (optional)
+## Supabase
 
-Leave these unset to stay local:
+Leave these unset to stay on the local demo (demo friends included):
 
 - `VITE_SUPABASE_URL`
 - `VITE_SUPABASE_ANON_KEY`
 
-When both are set, sign-in uses Supabase email and password, and photo uploads also go to the `place-photos` bucket.
+When both are set at build time, the bundle signs in with an email magic link and does not show demo friends. Optional, and unset in the shipped build:
 
-1. Create a Supabase project.
-2. Open the SQL editor and run `supabase/schema.sql` (tables, row level security, storage policies).
-3. Confirm the `place-photos` bucket exists. The schema creates it.
-4. Add the two `VITE_` variables in the host's environment, then rebuild and upload.
+- `VITE_AUTH_PROVIDERS` — comma list, `google` and/or `apple`, to show those buttons
+- `VITE_AUTH_REDIRECT` — overrides the default return URL `https://gustos-guide.pages.dev`
 
-Do not put the service-role key in `VITE_` variables. The anon key is the one the browser uses, and row level security is what limits it.
+1. Apply `supabase/schema.sql` in the SQL editor or with psql. Re-running it is safe. It creates tables, grants, RLS, the private `place-photos` bucket, and realtime on `notifications`, `plans`, `plan_members`, and `plan_votes`.
+2. Authentication → URL configuration: Site URL `https://gustos-guide.pages.dev`. Redirect URLs: `https://gustos-guide.pages.dev` and `https://gustos-guide.pages.dev/**`.
+3. Authentication → Email: magic link on. The Magic Link template should keep `{{ .ConfirmationURL }}`. Password sign-in is unused.
+4. The built-in mailer is for testing. It is rate-limited (often 2 emails per hour) and, on the free plan, only delivers to the project’s team until you set custom SMTP. Auth also has its own email rate limit (default 30 per hour) once SMTP is custom.
+5. After the owner signs up once, in the SQL editor: `update public.profiles set is_owner = true where id = '<auth user uuid>';` The browser cannot set that flag. Only that account publishes Gusto's Score.
+6. Leave Google and Apple providers off until their client IDs exist. The provider callback is `https://<project-ref>.supabase.co/auth/v1/callback`. Then set `VITE_AUTH_PROVIDERS` and rebuild.
+7. Add the two `VITE_` variables in the host environment, then rebuild and upload.
+
+Do not put a secret or service-role key in `VITE_` variables. The publishable key is what the browser sends as `apikey`. Row level security is what limits it.
 
 ## Origin
 

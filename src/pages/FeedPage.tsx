@@ -10,8 +10,18 @@ export function FeedPage() {
   const app = useApp()
   const [drafts, setDrafts] = useState<Record<string, string>>({})
   const [signIn, setSignIn] = useState(false)
-  usePageMeta("Feed · Gusto's Guide", 'What demo friends and you have saved, ranked, and photographed in Seattle.', './og/og.svg')
-  const names = new Map([[app.user?.id ?? '', app.user?.name ?? ''], ...app.demoUsers.map((user) => [user.id, user.name] as const)])
+  const [handle, setHandle] = useState('')
+  const [email, setEmail] = useState('')
+  const [invite, setInvite] = useState('')
+  const [friendError, setFriendError] = useState('')
+  usePageMeta(
+    "Feed · Gusto's Guide",
+    app.supabase ? 'What you and your friends have saved, ranked, and photographed in Seattle.' : 'What demo friends and you have saved, ranked, and photographed in Seattle.',
+    './og/og.svg',
+  )
+  const names = new Map<string, string>([[app.user?.id ?? '', app.user?.name ?? '']])
+  for (const user of app.demoUsers) names.set(user.id, user.name)
+  for (const user of app.friends) names.set(user.id, user.name)
   const board = [
     ...app.demoUsers.map((user) => ({ id: user.id, name: user.name, count: user.been.length, streak: user.streak, demo: true })),
     { id: app.user?.id ?? 'you', name: app.user?.name ?? 'You', count: Object.keys(app.scores).length, streak: 0, demo: false },
@@ -20,9 +30,10 @@ export function FeedPage() {
   return (
     <main id="main" tabIndex={-1} className="mx-auto grid max-w-6xl gap-8 px-4 pt-24 pb-16 outline-none lg:grid-cols-[minmax(0,1fr)_280px]">
       <div>
-        <p className="text-xs font-bold tracking-[0.14em] uppercase">Demo friends are labeled</p>
+        <p className="text-xs font-bold tracking-[0.14em] uppercase">{app.supabase ? 'Friends only' : 'Demo friends are labeled'}</p>
         <h1 className="font-serif text-5xl italic">The feed</h1>
         <ul className="mt-6 space-y-4">
+          {app.activities.length === 0 ? <li className="border-2 border-ink p-4">Nothing on the feed yet.</li> : null}
           {app.activities.map((activity) => {
             const person = app.demoUsers.find((user) => user.id === activity.userId)
             const place = activity.placeId ? catalog.places.find((item) => item.id === activity.placeId) : undefined
@@ -93,7 +104,46 @@ export function FeedPage() {
           ))}
         </ol>
         <h2 className="mt-8 font-serif text-3xl italic">Friends</h2>
+        {app.supabase && app.user ? (
+          <form
+            className="mt-3 space-y-2"
+            onSubmit={(event) => {
+              event.preventDefault()
+              setFriendError('')
+              setInvite('')
+              const run = email.trim()
+                ? app.inviteByEmail(email).then((link) => setInvite(link))
+                : app.requestFriend(handle)
+              void run.catch((reason: unknown) => setFriendError(reason instanceof Error ? reason.message : 'Could not send that.'))
+            }}
+          >
+            <label className="field"><span>Username</span><input value={handle} onChange={(event) => setHandle(event.target.value)} /></label>
+            <label className="field"><span>Or email</span><input type="email" value={email} onChange={(event) => setEmail(event.target.value)} /></label>
+            <button type="button" className="btn text-sm" disabled={!handle.trim()} onClick={() => { setFriendError(''); void app.requestFriend(handle).catch((reason: unknown) => setFriendError(reason instanceof Error ? reason.message : 'Could not send that.')) }}>Request</button>
+            <button type="button" className="btn ml-2 text-sm" disabled={!email.trim()} onClick={() => { setFriendError(''); void app.inviteByEmail(email).then(setInvite).catch((reason: unknown) => setFriendError(reason instanceof Error ? reason.message : 'Could not send that.')) }}>Invite link</button>
+            {invite ? <p className="text-sm break-all">{invite}</p> : null}
+            {friendError ? <p className="text-sm">{friendError}</p> : null}
+          </form>
+        ) : null}
         <ul className="mt-3 space-y-2">
+          {app.requests.map((request) => (
+            <li key={request.id}>
+              <span className="font-bold">{request.name}</span>
+              <span className="text-sm"> · {request.direction === 'in' ? 'Wants to be friends' : 'Request sent'}</span>
+              {request.direction === 'in' ? (
+                <span className="mt-1 flex gap-2">
+                  <button type="button" className="btn text-sm" onClick={() => void app.respondFriend(request.id, true)}>Accept</button>
+                  <button type="button" className="btn text-sm" onClick={() => void app.respondFriend(request.id, false)}>Decline</button>
+                </span>
+              ) : null}
+            </li>
+          ))}
+          {app.friends.map((user) => (
+            <li key={user.id}>
+              <Link to={`/u/${user.handle}`} className="font-bold">{user.name}</Link>
+              <span className="text-sm"> · @{user.handle}</span>
+            </li>
+          ))}
           {app.demoUsers.map((user) => (
             <li key={user.id}>
               <Link to={`/u/${user.handle}`} className="font-bold">{user.name}</Link>

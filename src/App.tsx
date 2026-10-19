@@ -2,6 +2,7 @@ import { lazy, Suspense, useEffect, useRef, useState } from 'react'
 import { Route, Routes, useLocation } from 'react-router-dom'
 import { Footer } from './components/Footer.tsx'
 import { Header } from './components/Header.tsx'
+import { ImportLocalSheet } from './components/ImportLocalSheet.tsx'
 import { GuidePage } from './pages/GuidePage.tsx'
 import { HomePage } from './pages/HomePage.tsx'
 import { NotFoundPage } from './pages/NotFoundPage.tsx'
@@ -104,7 +105,7 @@ function PageSkeleton() {
 }
 
 function Shell() {
-  const { announcement } = useApp()
+  const { announcement, importOffer, acceptImport, dismissImport } = useApp()
   const { pathname } = useLocation()
   return (
     <>
@@ -144,6 +145,7 @@ function Shell() {
       </Suspense>
       {pathname === '/explore' ? null : <Footer />}
       <BackToTop />
+      {importOffer ? <ImportLocalSheet offer={importOffer} onAccept={() => void acceptImport()} onDismiss={dismissImport} /> : null}
       <div className="sr-only" aria-live="polite">{announcement}</div>
     </>
   )

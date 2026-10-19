@@ -13,9 +13,11 @@ export function MyGuidesPage() {
   const [query, setQuery] = useState('')
   const [copied, setCopied] = useState('')
   const [signIn, setSignIn] = useState(false)
-  usePageMeta("My guides · Gusto's Guide", 'Lists you make, plus shared demo lists.', './og/og.svg')
-  const mine = app.guides.filter((guide) => !guide.demo)
-  const shared = app.guides.filter((guide) => guide.demo)
+  usePageMeta("My guides · Gusto's Guide", app.supabase ? 'Lists on your account.' : 'Lists you make, plus shared demo lists.', './og/og.svg')
+  const mine = app.guides.filter((guide) => !guide.demo && (!app.supabase || !guide.ownerId || guide.ownerId === app.user?.id))
+  const shared = app.supabase
+    ? app.guides.filter((guide) => guide.ownerId && guide.ownerId !== app.user?.id)
+    : app.guides.filter((guide) => guide.demo)
   const matches = catalog.places.filter((place) => query && place.name.toLowerCase().includes(query.toLowerCase())).slice(0, 6)
 
   async function copyLink(guide: UserGuide) {
@@ -27,7 +29,7 @@ export function MyGuidesPage() {
   return (
     <main id="main" tabIndex={-1} className="mx-auto max-w-3xl px-4 pt-24 pb-16 outline-none">
       <h1 className="font-serif text-5xl italic">My guides</h1>
-      <p className="mt-2">House guides stay read-only. These lists live in this browser. Drag a row, or use the buttons, to reorder.</p>
+      <p className="mt-2">{app.supabase ? 'House guides stay read-only. These lists live on your account. Drag a row, or use the buttons, to reorder.' : 'House guides stay read-only. These lists live in this browser. Drag a row, or use the buttons, to reorder.'}</p>
       {app.user ? (
         <form className="mt-4 flex gap-2" onSubmit={(event) => { event.preventDefault(); app.createGuide(title); setTitle('') }}>
           <label className="sr-only" htmlFor="new-list">New list title</label>
@@ -36,7 +38,7 @@ export function MyGuidesPage() {
         </form>
       ) : (
         <div className="mt-4">
-          <p>Sign in to make a list. It stays in this browser.</p>
+          <p>{app.supabase ? 'Sign in to make a list. It stays on your account.' : 'Sign in to make a list. It stays in this browser.'}</p>
           <button type="button" className="btn btn-coral mt-3" onClick={() => setSignIn(true)}>Sign in</button>
         </div>
       )}
@@ -83,8 +85,11 @@ function GuideEditor({
   const app = useApp()
   const [dragFrom, setDragFrom] = useState<number | null>(null)
   const cover = slimById(guide.coverPlaceId ?? guide.placeIds[0] ?? '')
-  const mina = guide.collaboratorIds.includes('demo-mina')
-  const isPublic = guide.isPublic !== false
+  const [friendHandle, setFriendHandle] = useState('')
+  const [shareError, setShareError] = useState('')
+  const mina = !app.supabase && guide.collaboratorIds.includes('demo-mina')
+  const visibility = guide.visibility ?? (guide.isPublic === false ? 'private' : 'public')
+  const isPublic = visibility === 'public'
 
   function dropAt(index: number) {
     if (dragFrom === null || dragFrom === index) return
@@ -112,17 +117,44 @@ function GuideEditor({
       <div className="share-card mt-3 border-2 border-ink bg-[#fffaf3] p-3">
         <p className="text-xs font-bold uppercase tracking-wide">Share card</p>
         <p className="font-serif text-2xl italic">{guide.title}</p>
-        <p className="text-sm">{guide.placeIds.length} places · {isPublic ? 'Anyone with the link on this browser' : 'Private until you toggle it'}</p>
+        <p className="text-sm">{guide.placeIds.length} places · {visibility === 'public' ? 'Public' : visibility === 'friends' ? 'Friends' : 'Private'}</p>
         <button type="button" className="btn mt-2 text-sm" onClick={onCopy}>{copied ? 'Copied' : 'Copy share link'}</button>
-        <p className="mt-2 text-sm">This link opens the list on this browser.</p>
+        <p className="mt-2 text-sm">{app.supabase ? 'This link lets someone join the list after they sign in.' : 'This link opens the list on this browser.'}</p>
       </div>
       <div className="mt-3 flex flex-wrap gap-2">
-        <button type="button" className="btn text-sm" onClick={() => app.shareGuide(guide.id, 'demo-mina')}>Share with Mina · Demo</button>
-        <button type="button" className="btn text-sm" aria-pressed={isPublic} onClick={() => app.setGuidePublic(guide.id, !isPublic)}>
-          {isPublic ? 'Make private' : 'Make public'}
-        </button>
+        {app.supabase ? (
+          <form
+            className="flex flex-wrap gap-2"
+            onSubmit={(event) => {
+              event.preventDefault()
+              setShareError('')
+              void app.shareGuideByHandle(guide.id, friendHandle).then(() => setFriendHandle('')).catch((reason: unknown) => setShareError(reason instanceof Error ? reason.message : 'Could not share.'))
+            }}
+          >
+            <label className="sr-only" htmlFor={`collab-${guide.id}`}>Collaborator username</label>
+            <input id={`collab-${guide.id}`} className="min-h-11 border-2 border-ink bg-cream px-2" value={friendHandle} onChange={(event) => setFriendHandle(event.target.value)} placeholder="Username" />
+            <button type="submit" className="btn text-sm">Add collaborator</button>
+          </form>
+        ) : (
+          <button type="button" className="btn text-sm" onClick={() => app.shareGuide(guide.id, 'demo-mina')}>Share with Mina · Demo</button>
+        )}
+        {app.supabase ? (
+          <label className="field min-w-40">
+            <span className="sr-only">Who can see this</span>
+            <select value={visibility} onChange={(event) => app.setGuideVisibility(guide.id, event.target.value as 'private' | 'friends' | 'public')}>
+              <option value="private">Private</option>
+              <option value="friends">Friends</option>
+              <option value="public">Public</option>
+            </select>
+          </label>
+        ) : (
+          <button type="button" className="btn text-sm" aria-pressed={isPublic} onClick={() => app.setGuidePublic(guide.id, !isPublic)}>
+            {isPublic ? 'Make private' : 'Make public'}
+          </button>
+        )}
         <button type="button" className="btn text-sm" onClick={() => app.deleteGuide(guide.id)}>Delete</button>
       </div>
+      {shareError ? <p className="mt-2 text-sm">{shareError}</p> : null}
       {guide.placeIds.length ? (
         <label className="field mt-3">
           <span>Cover image</span>

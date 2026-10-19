@@ -11,14 +11,15 @@ export function ProfilePage() {
   const { handle = '' } = useParams()
   const app = useApp()
   const person = app.demoUsers.find((user) => user.handle === handle)
+  const friend = app.friends.find((user) => user.handle === handle)
   const mine = app.user?.handle === handle
   usePageMeta(
-    mine ? `${app.user?.name ?? 'You'} · Gusto's Guide` : person ? `${person.name} · Gusto's Guide` : 'Profile',
-    mine ? 'Your Seattle stats.' : 'A demo friend on Gusto’s Guide.',
+    mine ? `${app.user?.name ?? 'You'} · Gusto's Guide` : person ? `${person.name} · Gusto's Guide` : friend ? `${friend.name} · Gusto's Guide` : 'Profile',
+    mine ? 'Your Seattle stats.' : person ? 'A demo friend on Gusto’s Guide.' : 'A friend on Gusto’s Guide.',
     './og/og.svg',
   )
 
-  if (!person && !mine) {
+  if (!person && !friend && !mine) {
     return (
       <main id="main" tabIndex={-1} className="mx-auto max-w-3xl px-4 pt-28 outline-none">
         <h1 className="font-serif text-5xl italic">No one by that name.</h1>
@@ -42,10 +43,10 @@ export function ProfilePage() {
 
   return (
     <main id="main" tabIndex={-1} className="mx-auto max-w-3xl px-4 pt-24 pb-16 outline-none">
-      <p className="text-xs font-bold uppercase tracking-wide">{mine ? 'Your profile' : 'Demo profile'}</p>
-      <h1 className="font-serif text-5xl italic">{mine ? app.user?.name : person?.name}</h1>
+      <p className="text-xs font-bold uppercase tracking-wide">{mine ? 'Your profile' : person ? 'Demo profile' : 'Friend'}</p>
+      <h1 className="font-serif text-5xl italic">{mine ? app.user?.name : person?.name ?? friend?.name}</h1>
       <p className="mt-2">
-        {mine ? 'Signed in on this browser' : `${person?.neighborhood} · streak ${person?.streak} weeks`}
+        {mine ? (app.supabase ? 'Signed in' : 'Signed in on this browser') : person ? `${person.neighborhood} · streak ${person.streak} weeks` : `@${friend?.handle ?? handle}`}
         {' '}· {beenPlaces.length} been
       </p>
       {mine ? (
@@ -58,9 +59,11 @@ export function ProfilePage() {
               ? `Rank three of the same places. You overlap on ${shared} so far. The match is a correlation of those scores: 82% would mean you tend to rank the same meals high.`
               : `${match}%. That is a correlation over ${shared} places you have both scored. A high number means you tend to rank the same meals high.`}
           </p>
-          <button type="button" className="btn mt-3" onClick={() => app.user && person && app.toggleFollow(person.id)}>
-            {person && app.following.includes(person.id) ? 'Following' : 'Follow'}
-          </button>
+          {person ? (
+            <button type="button" className="btn mt-3" onClick={() => app.user && app.toggleFollow(person.id)}>
+              {app.following.includes(person.id) ? 'Following' : 'Follow'}
+            </button>
+          ) : null}
         </section>
       )}
       <h2 className="mt-8 font-serif text-3xl italic">Top cuisines</h2>

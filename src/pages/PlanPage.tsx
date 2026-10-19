@@ -36,7 +36,7 @@ export function PlansPage() {
         }}
       >
         <h2 className="font-serif text-3xl italic">New plan</h2>
-        {!app.user ? <p className="mt-2 text-sm">Sign in to host. You can still open the demo plan.</p> : null}
+        {!app.user ? <p className="mt-2 text-sm">{app.supabase ? 'Sign in to host.' : 'Sign in to host. You can still open the demo plan.'}</p> : null}
         <label className="field mt-3"><span>Title</span><input value={title} onChange={(event) => setTitle(event.target.value)} /></label>
         <label className="field mt-3"><span>Date</span><input type="date" value={date} onChange={(event) => setDate(event.target.value)} /></label>
         <p className="mt-3 text-sm font-bold">Pick up to 3 places</p>
@@ -66,11 +66,14 @@ export function PlanDetailPage() {
   const plan = app.plans.find((item) => item.id === id)
   const [placeId, setPlaceId] = useState(plan?.placeIds[0] ?? '')
   const [date, setDate] = useState(plan?.dates[0] ?? '')
+  const [time, setTime] = useState('')
   usePageMeta(plan ? `${plan.title} · Plan` : 'Plan', 'Vote on where to eat and whether you are coming.')
   if (!plan) {
     return <main className="mx-auto max-w-3xl px-4 pt-28"><h1 className="font-serif text-5xl italic">That plan wandered off.</h1></main>
   }
-  const names = new Map(app.demoUsers.map((user) => [user.id, `${user.name} · Demo`]))
+  const names = new Map<string, string>()
+  for (const user of app.demoUsers) names.set(user.id, `${user.name} · Demo`)
+  for (const user of app.friends) names.set(user.id, user.name)
   if (app.user) names.set(app.user.id, app.user.name)
   const tally = new Map<string, number>()
   for (const vote of Object.values(plan.votes)) if (vote.placeId) tally.set(vote.placeId, (tally.get(vote.placeId) ?? 0) + 1)
@@ -92,7 +95,7 @@ export function PlanDetailPage() {
         className="mt-4 grid gap-2 sm:grid-cols-2"
         onSubmit={(event) => {
           event.preventDefault()
-          app.votePlan(plan.id, placeId, date)
+          app.votePlan(plan.id, placeId, date, time)
         }}
       >
         <label className="field"><span>Vote for a place</span>
@@ -104,6 +107,9 @@ export function PlanDetailPage() {
           <select value={date} onChange={(event) => setDate(event.target.value)}>
             {plan.dates.map((item) => <option key={item}>{item}</option>)}
           </select>
+        </label>
+        <label className="field"><span>Time</span>
+          <input type="time" value={time} onChange={(event) => setTime(event.target.value)} />
         </label>
         <button className="btn btn-coral" type="submit" disabled={!app.user}>Cast vote</button>
       </form>
@@ -117,7 +123,7 @@ export function PlanDetailPage() {
         {Object.entries(plan.rsvps).map(([userId, rsvp]) => <li key={userId}>{names.get(userId) ?? userId}: {rsvp}</li>)}
       </ul>
       <button type="button" className="btn mt-4" onClick={() => void navigator.clipboard.writeText(app.inviteLink('plan', plan.id))}>Copy share link</button>
-      <p className="mt-2 text-sm">This link opens the plan on this browser.</p>
+      <p className="mt-2 text-sm">{app.supabase ? 'This link lets someone join the plan after they sign in.' : 'This link opens the plan on this browser.'}</p>
     </main>
   )
 }
@@ -196,8 +202,11 @@ export function PlanWizardPage() {
   const [celebrate, setCelebrate] = useState(false)
   usePageMeta("Plan dinner · Gusto's Guide", 'Pick friends, an area, a vibe, and a budget. Then vote and lock it in.', './og/og.svg')
 
+  const roster = app.supabase
+    ? app.friends.map((person) => ({ id: person.id, name: person.name, neighborhood: '', been: [] as string[], scores: {} as Record<string, number>, demo: false }))
+    : app.demoUsers
   const friendPlaces = new Set(
-    app.demoUsers.filter((person) => friends.includes(person.id)).flatMap((person) => person.been),
+    roster.filter((person) => friends.includes(person.id)).flatMap((person) => person.been),
   )
   const pool = catalog.places.filter((place) => {
     if (area !== 'any' && place.neighborhood !== area) return false
@@ -223,7 +232,7 @@ export function PlanWizardPage() {
     ? neighborhoods.map((name) => catalog.places.find((place) => place.neighborhood === name)).filter((place): place is SlimPlace => place != null)
     : catalog.places.filter((place) => place.neighborhood === area)
   ).slice(0, 24)
-  const pickedFriends = app.demoUsers.filter((person) => friends.includes(person.id))
+  const pickedFriends = roster.filter((person) => friends.includes(person.id))
 
   function lockIn() {
     if (!app.user || !choice || celebrate) return
@@ -233,6 +242,7 @@ export function PlanWizardPage() {
       vibe,
       votePlaceId: choice,
       locked: true,
+      inviteIds: friends,
     })
     if (!id) return
     const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches
@@ -263,9 +273,10 @@ export function PlanWizardPage() {
       {step === 0 ? (
         <fieldset className="mt-6">
           <legend className="font-serif text-3xl italic">Who is coming?</legend>
-          <p className="mt-2 text-sm">Demo friends. Picking them looks for To go overlaps with places they have been.</p>
+          <p className="mt-2 text-sm">{app.supabase ? 'Friends you have accepted. Their To go lists stay private, so the shortlist uses yours.' : 'Demo friends. Picking them looks for To go overlaps with places they have been.'}</p>
+          {app.supabase && roster.length === 0 ? <p className="mt-2 text-sm">No friends yet. Send a request from the feed. You can still plan dinner.</p> : null}
           <div className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-3">
-            {app.demoUsers.map((person, index) => {
+            {roster.map((person, index) => {
               const on = friends.includes(person.id)
               return (
                 <button
@@ -277,7 +288,7 @@ export function PlanWizardPage() {
                 >
                   <span className="avatar" style={{ background: AVATAR[index % AVATAR.length] }}>{initials(person.name)}</span>
                   <span className="font-serif text-2xl italic leading-none">{person.name}</span>
-                  <span className="text-xs font-bold uppercase tracking-wide">{person.neighborhood} · Demo</span>
+                  <span className="text-xs font-bold uppercase tracking-wide">{person.demo ? `${person.neighborhood} · Demo` : 'Friend'}</span>
                 </button>
               )
             })}
@@ -368,7 +379,7 @@ export function PlanWizardPage() {
                       </span>
                       <span className="mt-2 flex items-center gap-1">
                         {fans.map((person, index) => (
-                          <span key={person.id} className="avatar avatar-sm" style={{ background: AVATAR[index % AVATAR.length] }} title={`${person.name} · Demo`}>{initials(person.name)}</span>
+                          <span key={person.id} className="avatar avatar-sm" style={{ background: AVATAR[index % AVATAR.length] }} title={person.demo ? `${person.name} · Demo` : person.name}>{initials(person.name)}</span>
                         ))}
                         {you ? <span className="avatar avatar-sm" style={{ background: '#181818' }} title="Your vote">You</span> : null}
                         <span className="ml-auto font-serif text-3xl italic">{tally}</span>

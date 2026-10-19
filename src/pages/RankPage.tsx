@@ -26,7 +26,9 @@ export function RankPage() {
       <h1 className="font-serif text-5xl italic">Rank it</h1>
       <p className="mt-3 max-w-2xl">
         {app.user?.isOwner
-          ? "You are the owner. A finished rank publishes Gusto's Score on this device. Yelp stays a separate 1–5 star line."
+          ? app.supabase
+            ? "You are the owner. A finished rank publishes Gusto's Score for everyone on the guide. Yelp stays a separate 1–5 star line."
+            : "You are the owner. A finished rank publishes Gusto's Score on this device. Yelp stays a separate 1–5 star line."
           : "Loved, Liked, Fine, or Didn't. Your score stays personal until the owner publishes Gusto's Score."}
       </p>
       {!app.user ? <button type="button" className="btn btn-coral mt-4" onClick={() => setSignIn(true)}>Sign in to rank</button> : null}

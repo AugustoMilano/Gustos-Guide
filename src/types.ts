@@ -83,6 +83,8 @@ export type GuideSummary = {
   count: number
 }
 
+export type GuideVisibility = 'private' | 'friends' | 'public'
+
 export type UserGuide = {
   id: string
   title: string
@@ -92,6 +94,7 @@ export type UserGuide = {
   ownerId?: string
   demo?: boolean
   isPublic?: boolean
+  visibility?: GuideVisibility
   coverPlaceId?: string
   inviteToken?: string
 }
@@ -115,7 +118,7 @@ export type Plan = {
   demo?: boolean
   placeIds: string[]
   dates: string[]
-  votes: Record<string, { placeId?: string; date?: string }>
+  votes: Record<string, { placeId?: string; date?: string; time?: string }>
   rsvps: Record<string, 'yes' | 'no' | 'maybe'>
   inviteIds: string[]
   locked?: boolean

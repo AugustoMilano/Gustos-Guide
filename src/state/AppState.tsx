@@ -1,10 +1,13 @@
-import { createContext, useContext, useEffect, useMemo, useState, type ReactNode } from 'react'
+import { createContext, useContext, useEffect, useMemo, useRef, useState, type ReactNode } from 'react'
+import type { User } from '@supabase/supabase-js'
 import demoFile from '../content/demo.json'
 import { catalog } from '../content/load.ts'
 import { compressToWebp, readPhotos, removePhoto, savePhoto, type StoredPhoto } from '../lib/photos.ts'
 import { rescore } from '../lib/rank.ts'
-import { supabaseClient, uploadPlacePhoto } from '../social/supabase.ts'
-import type { Activity, Bucket, Comment, Notice, Plan, RankScore, SessionUser, UserGuide, VisitStatus } from '../types.ts'
+import { deleteGuideRemote, importLocalBundle, loadAccount, loadHouseScores, loadNotices, loadPlans, saveGuide, savePlan, type FriendProfile, type FriendRequest } from '../social/account.ts'
+import { scanLocalBundle, type LocalBundle } from '../social/importLocal.ts'
+import { authProviders, sendMagicLink, signInWithProvider, supabaseClient, uploadPlacePhoto } from '../social/supabase.ts'
+import type { Activity, Bucket, Comment, GuideVisibility, Notice, Plan, RankScore, SessionUser, UserGuide, VisitStatus } from '../types.ts'
 
 type DemoUser = {
   id: string
@@ -37,7 +40,10 @@ export type LivePhoto = {
   url: string
   width: number
   height: number
+  storagePath?: string
 }
+
+export type ImportOffer = { places: number; guides: number; photos: number }
 
 type Doc = {
   statuses: Record<string, VisitStatus>
@@ -57,8 +63,10 @@ type Compare = { placeId: string; bucket: Bucket; low: number; high: number }
 type AppValue = {
   user: SessionUser | null
   supabase: boolean
+  authProviders: Array<'apple' | 'google'>
   signIn: (name: string) => Promise<void>
-  signInEmail: (email: string, password: string, create: boolean) => Promise<void>
+  sendMagicLink: (email: string) => Promise<void>
+  signInProvider: (provider: 'apple' | 'google') => Promise<void>
   signOut: () => void
   statuses: Record<string, VisitStatus>
   setStatus: (placeId: string, status: VisitStatus) => void
@@ -71,22 +79,29 @@ type AppValue = {
   moveInGuide: (guideId: string, placeId: string, direction: -1 | 1) => void
   reorderGuide: (guideId: string, placeIds: string[]) => void
   setGuidePublic: (guideId: string, isPublic: boolean) => void
+  setGuideVisibility: (guideId: string, visibility: GuideVisibility) => void
   setGuideCover: (guideId: string, placeId: string) => void
   shareGuide: (guideId: string, collaboratorId: string) => void
+  shareGuideByHandle: (guideId: string, handle: string) => Promise<void>
   inviteLink: (kind: 'guide' | 'plan', id: string) => string
   following: string[]
   toggleFollow: (userId: string) => void
+  requestFriend: (handle: string) => Promise<void>
+  inviteByEmail: (email: string) => Promise<string>
+  respondFriend: (id: string, accept: boolean) => Promise<void>
+  friends: FriendProfile[]
+  requests: FriendRequest[]
   activities: Activity[]
   toggleLike: (activityId: string) => void
   likes: string[]
   comments: Comment[]
   addComment: (activityId: string, text: string) => void
   plans: Plan[]
-  createPlan: (title: string, placeIds: string[], dates: string[], options?: { vibe?: string; votePlaceId?: string; locked?: boolean }) => string
-  votePlan: (planId: string, placeId: string, date: string) => void
+  createPlan: (title: string, placeIds: string[], dates: string[], options?: { vibe?: string; votePlaceId?: string; locked?: boolean; inviteIds?: string[] }) => string
+  votePlan: (planId: string, placeId: string, date: string, time?: string) => void
   rsvpPlan: (planId: string, rsvp: 'yes' | 'no' | 'maybe') => void
   lockPlan: (planId: string) => void
-  joinInvite: (token: string) => 'guide' | 'plan' | null
+  joinInvite: (token: string) => Promise<'guide' | 'plan' | 'friend' | null>
   notices: Notice[]
   markNoticesRead: () => void
   scores: Record<string, RankScore>
@@ -102,15 +117,19 @@ type AppValue = {
   gustoScore: (placeId: string) => number | null
   tasteMatch: (userId: string) => number | null
   announcement: string
+  importOffer: ImportOffer | null
+  acceptImport: () => Promise<void>
+  dismissImport: () => void
 }
 
 const Ctx = createContext<AppValue | null>(null)
 
 function emptyDoc(): Doc {
+  const live = Boolean(supabaseClient())
   return {
     statuses: {},
     guides: [],
-    following: demo.users.map((user) => user.id),
+    following: live ? [] : demo.users.map((user) => user.id),
     activities: [],
     likes: [],
     comments: [],
@@ -144,12 +163,78 @@ function loadDoc(id: string): Doc {
 
 export function AppProvider({ children }: { children: ReactNode }) {
   const remote = useMemo(() => supabaseClient(), [])
+  const providers = useMemo(() => authProviders(), [])
   const [user, setUser] = useState<SessionUser | null>(null)
   const [doc, setDoc] = useState<Doc>(emptyDoc)
   const [photos, setPhotos] = useState<LivePhoto[]>([])
   const [compare, setCompare] = useState<Compare | null>(null)
   const [announcement, setAnnouncement] = useState('')
   const [house, setHouse] = useState<Record<string, number>>({})
+  const [friends, setFriends] = useState<FriendProfile[]>([])
+  const [requests, setRequests] = useState<FriendRequest[]>([])
+  const [friendRanks, setFriendRanks] = useState<Record<string, Record<string, number>>>({})
+  const [importOffer, setImportOffer] = useState<ImportOffer | null>(null)
+  const importBundle = useRef<LocalBundle | null>(null)
+  const generation = useRef(0)
+  const hydrateRef = useRef<(authUser: User | null) => Promise<void>>(async () => {})
+
+  function remoteError(error: unknown) {
+    const message = error instanceof Error ? error.message : 'Could not save that.'
+    setAnnouncement(message)
+  }
+
+  async function hydrate(authUser: User | null) {
+    if (!remote) return
+    const ticket = ++generation.current
+    if (!authUser) {
+      setUser(null)
+      setDoc(emptyDoc())
+      setPhotos([])
+      setFriends([])
+      setRequests([])
+      setFriendRanks({})
+      setImportOffer(null)
+      importBundle.current = null
+      return
+    }
+    try {
+      const snap = await loadAccount(remote, authUser)
+      if (ticket !== generation.current) return
+      setUser(snap.user)
+      setDoc(snap.doc)
+      if (snap.house) setHouse(snap.house)
+      setPhotos(snap.photos)
+      setFriends(snap.friends)
+      setRequests(snap.requests)
+      setFriendRanks(snap.friendRanks)
+      localStorage.setItem(`gusto.doc.v1.${snap.user.id}`, JSON.stringify(snap.doc))
+      const bundle = snap.counts.places || snap.counts.guides || snap.counts.photos ? null : await scanLocalBundle(snap.user.id)
+      if (ticket !== generation.current) return
+      importBundle.current = bundle
+      setImportOffer(bundle ? { places: Object.keys(bundle.statuses).length, guides: bundle.guides.length, photos: bundle.photos.length } : null)
+    } catch (error) {
+      if (ticket !== generation.current) return
+      const fallback: SessionUser = {
+        id: authUser.id,
+        name: authUser.email?.split('@')[0] || 'Guest',
+        handle: handleOf(authUser.email?.split('@')[0] || 'guest'),
+        isOwner: false,
+      }
+      setUser(fallback)
+      setDoc(loadDoc(authUser.id))
+      remoteError(error)
+    }
+  }
+
+  useEffect(() => {
+    hydrateRef.current = hydrate
+  })
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search)
+    const description = params.get('error_description')
+    if (description) setAnnouncement(description.replace(/\+/g, ' '))
+  }, [])
 
   useEffect(() => {
     try {
@@ -163,14 +248,38 @@ export function AppProvider({ children }: { children: ReactNode }) {
   }, [])
 
   useEffect(() => {
+    if (!remote) return
+    let cancel = false
+    void loadHouseScores(remote).then((scores) => {
+      if (!cancel && scores) setHouse(scores)
+    })
+    return () => {
+      cancel = true
+    }
+  }, [remote])
+
+  useEffect(() => {
+    if (remote) return
     const raw = localStorage.getItem(SESSION_KEY)
-    if (!raw || remote) return
+    if (!raw) return
     const session = JSON.parse(raw) as SessionUser
     setUser(session)
     setDoc(loadDoc(session.id))
   }, [remote])
 
   useEffect(() => {
+    if (!remote) return
+    const { data } = remote.auth.onAuthStateChange((event, session) => {
+      if (event === 'TOKEN_REFRESHED') return
+      setTimeout(() => {
+        void hydrateRef.current(session?.user ?? null)
+      }, 0)
+    })
+    return () => data.subscription.unsubscribe()
+  }, [remote])
+
+  useEffect(() => {
+    if (remote) return
     let cancelled = false
     const urls: string[] = []
     void readPhotos().then((rows) => {
@@ -187,11 +296,47 @@ export function AppProvider({ children }: { children: ReactNode }) {
       cancelled = true
       for (const url of urls) URL.revokeObjectURL(url)
     }
-  }, [])
+  }, [remote])
+
+  useEffect(() => {
+    if (!remote || !user) return
+    let cancel = false
+    const refreshPlans = () => {
+      void loadPlans(remote).then((plans) => {
+        if (!cancel) setDoc((current) => ({ ...current, plans }))
+      })
+    }
+    const refreshNotes = () => {
+      void loadNotices(remote).then((notices) => {
+        if (!cancel) setDoc((current) => ({ ...current, notices }))
+      })
+    }
+    const channel = remote
+      .channel(`live-${user.id}`)
+      .on('postgres_changes', { event: '*', schema: 'public', table: 'notifications', filter: `user_id=eq.${user.id}` }, refreshNotes)
+      .on('postgres_changes', { event: '*', schema: 'public', table: 'plans' }, refreshPlans)
+      .on('postgres_changes', { event: '*', schema: 'public', table: 'plan_members' }, refreshPlans)
+      .on('postgres_changes', { event: '*', schema: 'public', table: 'plan_votes' }, refreshPlans)
+      .subscribe()
+    return () => {
+      cancel = true
+      void remote.removeChannel(channel)
+    }
+  }, [remote, user])
 
   function persist(next: Doc, session = user) {
     setDoc(next)
     if (session) localStorage.setItem(`gusto.doc.v1.${session.id}`, JSON.stringify(next))
+  }
+
+  function pushGuide(guide: UserGuide | undefined, session = user) {
+    if (!remote || !session || !guide || guide.demo) return
+    void saveGuide(remote, session.id, guide).catch(remoteError)
+  }
+
+  function pushPlan(plan: Plan | undefined, session = user) {
+    if (!remote || !session || !plan || plan.demo) return
+    void savePlan(remote, session.id, plan).catch(remoteError)
   }
 
   function pushActivity(next: Doc, activity: Activity, session: SessionUser) {
@@ -202,15 +347,31 @@ export function AppProvider({ children }: { children: ReactNode }) {
       user_id: session.id,
       type: activity.type,
       place_id: activity.placeId,
+      list_id: activity.listId,
       list_title: activity.listTitle,
       body: activity.text,
       score: activity.score,
+    }).then(({ error }) => {
+      if (error) remoteError(error)
+    })
+  }
+
+  function pushNotice(notice: Notice, session = user) {
+    if (!remote || !session) return
+    void remote.from('notifications').insert({
+      id: notice.id,
+      user_id: session.id,
+      body: notice.text,
+      href: notice.href,
+      read: notice.read,
+    }).then(({ error }) => {
+      if (error) remoteError(error)
     })
   }
 
   async function signIn(name: string) {
     const trimmed = name.trim()
-    if (!trimmed) return
+    if (!trimmed || remote) return
     const session: SessionUser = {
       id: `local-${handleOf(trimmed)}`,
       name: trimmed,
@@ -223,19 +384,16 @@ export function AppProvider({ children }: { children: ReactNode }) {
     setAnnouncement(`Signed in as ${trimmed}.`)
   }
 
-  async function signInEmail(email: string, password: string, create: boolean) {
+  async function emailLink(email: string) {
     if (!remote) throw new Error('Supabase is not configured.')
-    const result = create
-      ? await remote.auth.signUp({ email, password })
-      : await remote.auth.signInWithPassword({ email, password })
-    if (result.error) throw result.error
-    const authUser = result.data.user
-    if (!authUser) throw new Error('No session came back.')
-    const name = email.split('@')[0] ?? 'Guest'
-    await remote.from('profiles').upsert({ id: authUser.id, name, handle: handleOf(name), is_owner: ownerName(name) })
-    const session: SessionUser = { id: authUser.id, name, handle: handleOf(name), isOwner: ownerName(name) }
-    setUser(session)
-    setAnnouncement(`Signed in as ${name}.`)
+    await sendMagicLink(remote, email)
+    setAnnouncement('Check your email for a sign-in link.')
+  }
+
+  async function providerSignIn(provider: 'apple' | 'google') {
+    if (!remote) throw new Error('Supabase is not configured.')
+    if (!providers.includes(provider)) throw new Error('That sign-in is not turned on.')
+    await signInWithProvider(remote, provider)
   }
 
   function signOut() {
@@ -243,7 +401,13 @@ export function AppProvider({ children }: { children: ReactNode }) {
     localStorage.removeItem(SESSION_KEY)
     setUser(null)
     setDoc(emptyDoc())
+    setFriends([])
+    setRequests([])
+    setFriendRanks({})
+    setImportOffer(null)
+    importBundle.current = null
     setCompare(null)
+    if (remote) setPhotos([])
   }
 
   function setStatus(placeId: string, status: VisitStatus) {
@@ -267,8 +431,12 @@ export function AppProvider({ children }: { children: ReactNode }) {
     )
     persist(next)
     if (remote) {
-      if (turningOff) void remote.from('place_status').delete().eq('user_id', user.id).eq('place_id', placeId)
-      else void remote.from('place_status').upsert({ user_id: user.id, place_id: placeId, status })
+      const write = turningOff
+        ? remote.from('place_status').delete().eq('user_id', user.id).eq('place_id', placeId)
+        : remote.from('place_status').upsert({ user_id: user.id, place_id: placeId, status })
+      void write.then(({ error }) => {
+        if (error) remoteError(error)
+      })
     }
   }
 
@@ -282,39 +450,48 @@ export function AppProvider({ children }: { children: ReactNode }) {
       collaboratorIds: [],
       ownerId: user.id,
       isPublic: false,
+      visibility: 'private',
       inviteToken: crypto.randomUUID().slice(0, 8),
     }
     const next = { ...doc, guides: [guide, ...doc.guides] }
     pushActivity(next, { id: crypto.randomUUID(), userId: user.id, type: 'list', listId: guide.id, listTitle: guide.title, text: `Started ${guide.title}.`, createdAt: new Date().toISOString() }, user)
     persist(next)
+    pushGuide(guide)
   }
 
   function renameGuide(id: string, title: string) {
-    persist({ ...doc, guides: doc.guides.map((guide) => (guide.id === id ? { ...guide, title } : guide)) })
+    const next = { ...doc, guides: doc.guides.map((guide) => (guide.id === id ? { ...guide, title } : guide)) }
+    persist(next)
+    pushGuide(next.guides.find((guide) => guide.id === id))
   }
 
   function deleteGuide(id: string) {
     persist({ ...doc, guides: doc.guides.filter((guide) => guide.id !== id) })
+    if (remote) void deleteGuideRemote(remote, id).catch(remoteError)
   }
 
   function addToGuide(guideId: string, placeId: string) {
-    persist({
+    const next = {
       ...doc,
       guides: doc.guides.map((guide) =>
         guide.id === guideId && !guide.placeIds.includes(placeId) ? { ...guide, placeIds: [...guide.placeIds, placeId] } : guide,
       ),
-    })
+    }
+    persist(next)
+    pushGuide(next.guides.find((guide) => guide.id === guideId))
   }
 
   function removeFromGuide(guideId: string, placeId: string) {
-    persist({
+    const next = {
       ...doc,
       guides: doc.guides.map((guide) => (guide.id === guideId ? { ...guide, placeIds: guide.placeIds.filter((id) => id !== placeId) } : guide)),
-    })
+    }
+    persist(next)
+    pushGuide(next.guides.find((guide) => guide.id === guideId))
   }
 
   function moveInGuide(guideId: string, placeId: string, direction: -1 | 1) {
-    persist({
+    const next = {
       ...doc,
       guides: doc.guides.map((guide) => {
         if (guide.id !== guideId) return guide
@@ -326,31 +503,41 @@ export function AppProvider({ children }: { children: ReactNode }) {
         placeIds.splice(target, 0, item)
         return { ...guide, placeIds }
       }),
-    })
+    }
+    persist(next)
+    pushGuide(next.guides.find((guide) => guide.id === guideId))
   }
 
   function reorderGuide(guideId: string, placeIds: string[]) {
     if (!user) return
-    persist({
+    const next = { ...doc, guides: doc.guides.map((guide) => (guide.id === guideId ? { ...guide, placeIds } : guide)) }
+    persist(next)
+    pushGuide(next.guides.find((guide) => guide.id === guideId))
+  }
+
+  function setGuideVisibility(guideId: string, visibility: GuideVisibility) {
+    if (!user) return
+    const next = {
       ...doc,
-      guides: doc.guides.map((guide) => (guide.id === guideId ? { ...guide, placeIds } : guide)),
-    })
+      guides: doc.guides.map((guide) =>
+        guide.id === guideId
+          ? { ...guide, visibility, isPublic: visibility === 'public', shared: visibility !== 'private' || guide.collaboratorIds.length > 0 }
+          : guide,
+      ),
+    }
+    persist(next)
+    pushGuide(next.guides.find((guide) => guide.id === guideId))
   }
 
   function setGuidePublic(guideId: string, isPublic: boolean) {
-    if (!user) return
-    persist({
-      ...doc,
-      guides: doc.guides.map((guide) => (guide.id === guideId ? { ...guide, isPublic } : guide)),
-    })
+    setGuideVisibility(guideId, isPublic ? 'public' : 'private')
   }
 
   function setGuideCover(guideId: string, placeId: string) {
     if (!user) return
-    persist({
-      ...doc,
-      guides: doc.guides.map((guide) => (guide.id === guideId ? { ...guide, coverPlaceId: placeId } : guide)),
-    })
+    const next = { ...doc, guides: doc.guides.map((guide) => (guide.id === guideId ? { ...guide, coverPlaceId: placeId } : guide)) }
+    persist(next)
+    pushGuide(next.guides.find((guide) => guide.id === guideId))
   }
 
   function shareGuide(guideId: string, collaboratorId: string) {
@@ -359,18 +546,63 @@ export function AppProvider({ children }: { children: ReactNode }) {
       ...doc,
       guides: doc.guides.map((guide) =>
         guide.id === guideId
-          ? { ...guide, shared: true, collaboratorIds: guide.collaboratorIds.includes(collaboratorId) ? guide.collaboratorIds : [...guide.collaboratorIds, collaboratorId] }
+          ? {
+              ...guide,
+              shared: true,
+              visibility: guide.visibility === 'private' || !guide.visibility ? 'friends' : guide.visibility,
+              collaboratorIds: guide.collaboratorIds.includes(collaboratorId) ? guide.collaboratorIds : [...guide.collaboratorIds, collaboratorId],
+            }
           : guide,
       ),
     }
     const guide = next.guides.find((item) => item.id === guideId)
     pushActivity(next, { id: crypto.randomUUID(), userId: user.id, type: 'list', listId: guideId, listTitle: guide?.title, text: `Shared ${guide?.title ?? 'a list'}.`, createdAt: new Date().toISOString() }, user)
     persist(next)
+    pushGuide(guide)
+  }
+
+  async function shareGuideByHandle(guideId: string, handle: string) {
+    if (!remote) return
+    const cleaned = handle.trim().toLowerCase()
+    const { data, error } = await remote.from('profiles').select('id').eq('handle', cleaned).maybeSingle()
+    if (error) throw error
+    if (!data) throw new Error('No one uses that username.')
+    shareGuide(guideId, data.id)
   }
 
   function toggleFollow(userId: string) {
+    if (remote) return
     const following = doc.following.includes(userId) ? doc.following.filter((id) => id !== userId) : [...doc.following, userId]
     persist({ ...doc, following })
+  }
+
+  async function requestFriend(handle: string) {
+    if (!remote || !user) throw new Error('Sign in first.')
+    const { error } = await remote.rpc('request_friend', { target_handle: handle.trim().toLowerCase() })
+    if (error) throw error
+    await hydrateRef.current((await remote.auth.getUser()).data.user)
+    setAnnouncement('Friend request sent.')
+  }
+
+  async function inviteByEmail(email: string) {
+    if (!remote || !user) throw new Error('Sign in first.')
+    const { data, error } = await remote.rpc('invite_friend_email', { target_email: email.trim() })
+    if (error) throw error
+    await hydrateRef.current((await remote.auth.getUser()).data.user)
+    if (!data) {
+      setAnnouncement('Friend request sent.')
+      return ''
+    }
+    const link = `${window.location.origin}${window.location.pathname}#/join/${data}`
+    setAnnouncement('Invite link ready.')
+    return link
+  }
+
+  async function respondFriend(id: string, accept: boolean) {
+    if (!remote || !user) return
+    const { error } = await remote.rpc('respond_friend', { friendship: id, accept })
+    if (error) throw error
+    await hydrateRef.current((await remote.auth.getUser()).data.user)
   }
 
   function toggleLike(activityId: string) {
@@ -378,8 +610,12 @@ export function AppProvider({ children }: { children: ReactNode }) {
     const likes = doc.likes.includes(activityId) ? doc.likes.filter((id) => id !== activityId) : [...doc.likes, activityId]
     persist({ ...doc, likes })
     if (remote) {
-      if (likes.includes(activityId)) void remote.from('activity_likes').upsert({ activity_id: activityId, user_id: user.id })
-      else void remote.from('activity_likes').delete().eq('activity_id', activityId).eq('user_id', user.id)
+      const write = likes.includes(activityId)
+        ? remote.from('activity_likes').upsert({ activity_id: activityId, user_id: user.id })
+        : remote.from('activity_likes').delete().eq('activity_id', activityId).eq('user_id', user.id)
+      void write.then(({ error }) => {
+        if (error) remoteError(error)
+      })
     }
   }
 
@@ -394,16 +630,22 @@ export function AppProvider({ children }: { children: ReactNode }) {
       createdAt: comment.createdAt,
     }
     persist({ ...doc, comments: [...doc.comments, comment], notices: [notice, ...doc.notices].slice(0, 40) })
-    if (remote) void remote.from('activity_comments').insert({ id: comment.id, activity_id: activityId, user_id: user.id, body: comment.text })
+    pushNotice(notice)
+    if (remote) {
+      void remote.from('comments').insert({ id: comment.id, activity_id: activityId, user_id: user.id, body: comment.text }).then(({ error }) => {
+        if (error) remoteError(error)
+      })
+    }
   }
 
   function createPlan(
     title: string,
     placeIds: string[],
     dates: string[],
-    options?: { vibe?: string; votePlaceId?: string; locked?: boolean },
+    options?: { vibe?: string; votePlaceId?: string; locked?: boolean; inviteIds?: string[] },
   ) {
     if (!user) return ''
+    const inviteIds = (options?.inviteIds ?? (remote ? [] : demo.users.map((person) => person.id))).filter((id) => id !== user.id)
     const plan: Plan = {
       id: crypto.randomUUID(),
       title: title.trim() || 'Go together',
@@ -412,7 +654,7 @@ export function AppProvider({ children }: { children: ReactNode }) {
       dates,
       votes: options?.votePlaceId ? { [user.id]: { placeId: options.votePlaceId, date: dates[0] } } : {},
       rsvps: { [user.id]: 'yes' },
-      inviteIds: demo.users.map((person) => person.id),
+      inviteIds,
       locked: Boolean(options?.locked),
       vibe: options?.vibe,
       inviteToken: crypto.randomUUID().slice(0, 8),
@@ -425,6 +667,8 @@ export function AppProvider({ children }: { children: ReactNode }) {
       createdAt: new Date().toISOString(),
     }
     persist({ ...doc, plans: [plan, ...doc.plans], notices: [notice, ...doc.notices].slice(0, 40) })
+    pushNotice(notice)
+    pushPlan(plan)
     return plan.id
   }
 
@@ -438,30 +682,46 @@ export function AppProvider({ children }: { children: ReactNode }) {
       read: false,
       createdAt: new Date().toISOString(),
     }
-    persist({
+    const next = {
       ...doc,
       plans: doc.plans.map((item) => (item.id === planId ? { ...item, locked: true } : item)),
       notices: [notice, ...doc.notices].slice(0, 40),
-    })
+    }
+    persist(next)
+    pushNotice(notice)
+    pushPlan(next.plans.find((item) => item.id === planId))
   }
 
   function inviteLink(kind: 'guide' | 'plan', id: string) {
+    const guides = remote ? doc.guides : [...doc.guides, ...demo.lists]
+    const plans = remote ? doc.plans : [...doc.plans, ...demo.plans]
     if (kind === 'plan') {
-      const plan = doc.plans.find((item) => item.id === id)
+      const plan = plans.find((item) => item.id === id)
       const token = plan?.inviteToken || plan?.id || id
       return `${window.location.origin}${window.location.pathname}#/join/${token}`
     }
-    const guide = [...doc.guides, ...demo.lists].find((item) => item.id === id)
+    const guide = guides.find((item) => item.id === id)
     const token = guide?.inviteToken || guide?.id || id
     return `${window.location.origin}${window.location.pathname}#/join/${token}`
   }
 
   function markNoticesRead() {
     persist({ ...doc, notices: doc.notices.map((notice) => ({ ...notice, read: true })) })
+    if (remote && user) {
+      void remote.from('notifications').update({ read: true }).eq('user_id', user.id).eq('read', false)
+    }
   }
 
-  function joinInvite(token: string): 'guide' | 'plan' | null {
+  async function joinInvite(token: string): Promise<'guide' | 'plan' | 'friend' | null> {
     if (!user) return null
+    if (remote) {
+      const { data, error } = await remote.rpc('accept_invite', { token })
+      if (error) throw error
+      const kind = data === 'guide' || data === 'plan' || data === 'friend' ? data : null
+      const auth = await remote.auth.getUser()
+      await hydrateRef.current(auth.data.user)
+      return kind
+    }
     const guide = [...doc.guides, ...demo.lists].find((item) => item.inviteToken === token || item.id === token)
     if (guide) {
       const base = doc.guides.find((item) => item.id === guide.id) ?? guide
@@ -481,19 +741,26 @@ export function AppProvider({ children }: { children: ReactNode }) {
     return 'plan'
   }
 
-  function votePlan(planId: string, placeId: string, date: string) {
+  function votePlan(planId: string, placeId: string, date: string, time?: string) {
     if (!user) return
-    const apply = (plan: Plan): Plan =>
-      plan.id === planId ? { ...plan, votes: { ...plan.votes, [user.id]: { placeId, date } } } : plan
-    persist({ ...doc, plans: doc.plans.map(apply) })
+    const next = {
+      ...doc,
+      plans: doc.plans.map((plan) =>
+        plan.id === planId ? { ...plan, votes: { ...plan.votes, [user.id]: { placeId, date, time } } } : plan,
+      ),
+    }
+    persist(next)
+    pushPlan(next.plans.find((plan) => plan.id === planId))
   }
 
   function rsvpPlan(planId: string, rsvp: 'yes' | 'no' | 'maybe') {
     if (!user) return
-    persist({
+    const next = {
       ...doc,
       plans: doc.plans.map((plan) => (plan.id === planId ? { ...plan, rsvps: { ...plan.rsvps, [user.id]: rsvp } } : plan)),
-    })
+    }
+    persist(next)
+    pushPlan(next.plans.find((plan) => plan.id === planId))
   }
 
   function finishRank(nextOrder: string[], bucket: Bucket, placeId: string) {
@@ -514,10 +781,20 @@ export function AppProvider({ children }: { children: ReactNode }) {
       }
       localStorage.setItem(HOUSE_KEY, JSON.stringify(published))
       setHouse(published)
+      if (remote) {
+        const rows = Object.entries(published).map(([place_id, score]) => ({ place_id, score, updated_by: user.id }))
+        if (rows.length) {
+          void remote.from('house_scores').upsert(rows).then(({ error }) => {
+            if (error) remoteError(error)
+          })
+        }
+      }
     }
     setCompare(null)
     if (remote && bucketScores[placeId]) {
-      void remote.from('rankings').upsert({ user_id: user.id, place_id: placeId, bucket, score: bucketScores[placeId].score })
+      void remote.from('rankings').upsert({ user_id: user.id, place_id: placeId, bucket, score: bucketScores[placeId].score }).then(({ error }) => {
+        if (error) remoteError(error)
+      })
     }
   }
 
@@ -582,22 +859,25 @@ export function AppProvider({ children }: { children: ReactNode }) {
       height: image.height,
       blob: image.blob,
     }
-    await savePhoto(record)
     let url = URL.createObjectURL(image.blob)
+    let storagePath: string | undefined
     if (remote) {
-      const path = `${user.id}/${placeId}/${id}.webp`
-      url = await uploadPlacePhoto(remote, image.blob, path)
-      await remote.from('place_photos').insert({
+      storagePath = `${user.id}/${placeId}/${id}.webp`
+      await uploadPlacePhoto(remote, image.blob, storagePath)
+      const { error } = await remote.from('place_photos').insert({
         id,
         place_id: placeId,
         user_id: user.id,
-        is_owner: user.isOwner,
-        storage_path: path,
+        is_owner: false,
+        storage_path: storagePath,
         width: image.width,
         height: image.height,
       })
+      if (error) throw error
+    } else {
+      await savePhoto(record)
     }
-    setPhotos((current) => [{ ...record, url }, ...current])
+    setPhotos((current) => [{ ...record, url, storagePath }, ...current])
     const place = catalog.places.find((item) => item.id === placeId)
     const next = { ...doc }
     pushActivity(next, { id: crypto.randomUUID(), userId: user.id, type: 'photo', placeId, text: `Added a photo of ${place?.name ?? 'a place'}.`, createdAt: new Date().toISOString() }, user)
@@ -605,25 +885,62 @@ export function AppProvider({ children }: { children: ReactNode }) {
   }
 
   async function deletePhoto(id: string) {
+    const photo = photos.find((item) => item.id === id)
     await removePhoto(id)
-    setPhotos((current) => current.filter((photo) => photo.id !== id))
+    setPhotos((current) => current.filter((item) => item.id !== id))
+    if (remote && photo?.storagePath) {
+      await remote.storage.from('place-photos').remove([photo.storagePath])
+      await remote.from('place_photos').delete().eq('id', id)
+    }
+  }
+
+  async function acceptImport() {
+    if (!remote || !user || !importBundle.current) return
+    const bundle = importBundle.current
+    setAnnouncement('Moving places, guides, and photos into your account.')
+    await importLocalBundle(remote, user, bundle)
+    localStorage.setItem(`gusto.import.v1.${user.id}`, 'done')
+    importBundle.current = null
+    setImportOffer(null)
+    const auth = await remote.auth.getUser()
+    await hydrateRef.current(auth.data.user)
+    setAnnouncement('Imported into your account.')
+  }
+
+  function dismissImport() {
+    if (user) localStorage.setItem(`gusto.import.v1.${user.id}`, 'skip')
+    importBundle.current = null
+    setImportOffer(null)
   }
 
   const activities = useMemo(() => {
-    return [...doc.activities, ...demo.activities].sort((a, b) => b.createdAt.localeCompare(a.createdAt))
-  }, [doc.activities])
+    const rows = remote ? doc.activities : [...doc.activities, ...demo.activities]
+    return rows.slice().sort((a, b) => b.createdAt.localeCompare(a.createdAt))
+  }, [doc.activities, remote])
 
   const plans = useMemo(() => {
+    if (remote) return doc.plans
     const ids = new Set(doc.plans.map((plan) => plan.id))
     return [...doc.plans, ...demo.plans.filter((plan) => !ids.has(plan.id))]
-  }, [doc.plans])
+  }, [doc.plans, remote])
+
   const guides = useMemo(() => {
+    if (remote) return doc.guides
     const ids = new Set(doc.guides.map((guide) => guide.id))
     return [...doc.guides, ...demo.lists.filter((guide) => !ids.has(guide.id))]
-  }, [doc.guides])
+  }, [doc.guides, remote])
 
   function friendScore(placeId: string) {
-    if (!user || remote) return { average: null, loved: 0, count: 0, demo: false }
+    if (!user) return { average: null, loved: 0, count: 0, demo: false }
+    if (remote) {
+      const values = doc.following
+        .map((id) => friendRanks[id]?.[placeId])
+        .filter((score): score is number => typeof score === 'number')
+      if (!values.length) return { average: null, loved: 0, count: 0, demo: false }
+      const loved = values.filter((score) => score >= 9).length
+      const average = Math.round((values.reduce((sum, score) => sum + score, 0) / values.length) * 10) / 10
+      return { average, loved, count: values.length, demo: false }
+    }
     const followed = demo.users.filter((person) => doc.following.includes(person.id) && person.scores[placeId] !== undefined)
     if (!followed.length) return { average: null, loved: 0, count: 0, demo: true }
     const values = followed.map((person) => person.scores[placeId])
@@ -638,12 +955,12 @@ export function AppProvider({ children }: { children: ReactNode }) {
   }
 
   function tasteMatch(userId: string) {
-    const other = demo.users.find((person) => person.id === userId)
-    if (!other) return null
-    const keys = Object.keys(doc.scores).filter((id) => other.scores[id] !== undefined)
+    const otherScores = remote ? friendRanks[userId] : demo.users.find((person) => person.id === userId)?.scores
+    if (!otherScores) return null
+    const keys = Object.keys(doc.scores).filter((id) => otherScores[id] !== undefined)
     if (keys.length < 3) return null
     const left = keys.map((id) => doc.scores[id].score)
-    const right = keys.map((id) => other.scores[id])
+    const right = keys.map((id) => otherScores[id])
     const mean = (list: number[]) => list.reduce((sum, n) => sum + n, 0) / list.length
     const ml = mean(left)
     const mr = mean(right)
@@ -664,8 +981,10 @@ export function AppProvider({ children }: { children: ReactNode }) {
   const value: AppValue = {
     user,
     supabase: Boolean(remote),
+    authProviders: providers,
     signIn,
-    signInEmail,
+    sendMagicLink: emailLink,
+    signInProvider: providerSignIn,
     signOut,
     statuses: doc.statuses,
     setStatus,
@@ -678,11 +997,18 @@ export function AppProvider({ children }: { children: ReactNode }) {
     moveInGuide,
     reorderGuide,
     setGuidePublic,
+    setGuideVisibility,
     setGuideCover,
     shareGuide,
+    shareGuideByHandle,
     inviteLink,
     following: doc.following,
     toggleFollow,
+    requestFriend,
+    inviteByEmail,
+    respondFriend,
+    friends,
+    requests,
     activities,
     toggleLike,
     likes: doc.likes,
@@ -704,11 +1030,14 @@ export function AppProvider({ children }: { children: ReactNode }) {
     photos,
     uploadPhoto,
     deletePhoto,
-    demoUsers: demo.users,
+    demoUsers: remote ? [] : demo.users,
     friendScore,
     gustoScore,
     tasteMatch,
     announcement,
+    importOffer,
+    acceptImport,
+    dismissImport,
   }
 
   return <Ctx.Provider value={value}>{children}</Ctx.Provider>
