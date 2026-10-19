@@ -7,6 +7,12 @@ import { loadGuides, loadPlaces } from './content/load.ts'
 import { AppProvider } from './state/AppState.tsx'
 import './index.css'
 
+if (window.location.hostname === 'www.gustosguide.com') {
+  const url = new URL(window.location.href)
+  url.hostname = 'gustosguide.com'
+  window.location.replace(url.toString())
+}
+
 void loadPlaces()
 void loadGuides()
 
@@ -29,12 +35,14 @@ if (import.meta.env.PROD && 'serviceWorker' in navigator) {
   })
 }
 
-createRoot(document.getElementById('root')!).render(
-  <StrictMode>
-    <AppProvider>
-      <HashRouter>
-        <App />
-      </HashRouter>
-    </AppProvider>
-  </StrictMode>,
-)
+if (window.location.hostname !== 'www.gustosguide.com') {
+  createRoot(document.getElementById('root')!).render(
+    <StrictMode>
+      <AppProvider>
+        <HashRouter>
+          <App />
+        </HashRouter>
+      </AppProvider>
+    </StrictMode>,
+  )
+}

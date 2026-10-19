@@ -1,6 +1,5 @@
 import { createClient, type SupabaseClient } from '@supabase/supabase-js'
-
-export const AUTH_REDIRECT = import.meta.env.VITE_AUTH_REDIRECT || 'https://gustos-guide.pages.dev'
+import { authReturnUrl } from '../lib/site.ts'
 
 const BUCKET = 'place-photos'
 
@@ -56,7 +55,7 @@ export async function signedPhotoUrl(client: SupabaseClient, path: string): Prom
 export async function sendMagicLink(client: SupabaseClient, email: string): Promise<void> {
   const { error } = await client.auth.signInWithOtp({
     email: email.trim(),
-    options: { emailRedirectTo: AUTH_REDIRECT, shouldCreateUser: true },
+    options: { emailRedirectTo: authReturnUrl(), shouldCreateUser: true },
   })
   if (error) throw error
 }
@@ -64,7 +63,7 @@ export async function sendMagicLink(client: SupabaseClient, email: string): Prom
 export async function signInWithProvider(client: SupabaseClient, provider: AuthProviderName): Promise<void> {
   const { error } = await client.auth.signInWithOAuth({
     provider,
-    options: { redirectTo: provider === 'x' ? 'https://gustos-guide.pages.dev' : AUTH_REDIRECT },
+    options: { redirectTo: authReturnUrl() },
   })
   if (error) throw error
 }

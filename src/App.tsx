@@ -5,8 +5,10 @@ import { Header } from './components/Header.tsx'
 import { ImportLocalSheet } from './components/ImportLocalSheet.tsx'
 import { GuidePage } from './pages/GuidePage.tsx'
 import { HomePage } from './pages/HomePage.tsx'
+import { LegalPage } from './pages/LegalPage.tsx'
 import { NotFoundPage } from './pages/NotFoundPage.tsx'
 import { PlacePage } from './pages/PlacePage.tsx'
+import { directLegalSlug } from './lib/site.ts'
 import { useApp } from './state/AppState.tsx'
 
 const GuideIndexPage = lazy(() => import('./pages/GuideIndexPage.tsx').then((module) => ({ default: module.GuideIndexPage })))
@@ -107,6 +109,7 @@ function PageSkeleton() {
 function Shell() {
   const { announcement, importOffer, acceptImport, dismissImport } = useApp()
   const { pathname } = useLocation()
+  const legal = directLegalSlug()
   return (
     <>
       <ScrollManager />
@@ -124,6 +127,9 @@ function Shell() {
       </button>
       <Header />
       <Suspense fallback={<PageSkeleton />}>
+        {legal ? (
+          <LegalPage slug={legal} />
+        ) : (
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/explore" element={<ExplorePage />} />
@@ -140,8 +146,11 @@ function Shell() {
           <Route path="/rank" element={<RankPage />} />
           <Route path="/my" element={<MyGuidesPage />} />
           <Route path="/u/:handle" element={<ProfilePage />} />
+          <Route path="/terms" element={<LegalPage slug="terms" />} />
+          <Route path="/privacy" element={<LegalPage slug="privacy" />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
+        )}
       </Suspense>
       {pathname === '/explore' ? null : <Footer />}
       <BackToTop />

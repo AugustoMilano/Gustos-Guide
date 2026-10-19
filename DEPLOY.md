@@ -1,6 +1,6 @@
 # Deploy
 
-The published site is Cloudflare Pages, project `gustos-guide`, at https://gustos-guide.pages.dev. The app is a static Vite build. Routes live in the URL hash (`#/explore`), so a host does not need an SPA rewrite.
+The published site is Cloudflare Pages, project `gustos-guide`. The public address is https://gustosguide.com (www redirects to the apex in the browser). https://gustos-guide.pages.dev still serves the same build. The app is a static Vite build. Guide routes live in the URL hash (`#/explore`), so a host does not need an SPA rewrite. `/terms` and `/privacy` are real HTML files.
 
 ## Cloudflare Pages (direct upload)
 
@@ -13,7 +13,7 @@ npm run deploy:cf
 
 `deploy:cf` runs `wrangler pages deploy dist --project-name gustos-guide`.
 
-`npm run build` checks copy, writes `public/sitemap.xml` and Open Graph cards, typechecks, builds, then stamps `dist/sw.js` with the git commit. Set `SITE_URL` before the build if the sitemap should use another origin. The default is `https://gustos-guide.pages.dev`.
+`npm run build` checks copy, writes the Terms and Privacy pages, writes `public/sitemap.xml` and Open Graph cards, typechecks, builds, then stamps `dist/sw.js` with the git commit. The sitemap, canonical URLs, and `robots.txt` use `https://gustosguide.com`. Set `SITE_URL` before the build only if a preview should list a different origin.
 
 `public/_headers` is copied into `dist`. Files under `/assets/` (content-hashed) use `Cache-Control: public, max-age=31536000, immutable`. `/`, `/index.html`, and `/sw.js` use `Cache-Control: no-cache`, so the next visit revalidates the shell and the worker.
 
@@ -25,7 +25,7 @@ npm run deploy:cf
 4. Output directory: `dist`.
 5. `vercel.json` in the repo root records the same settings.
 
-Set `SITE_URL` to the Vercel origin before `npm run build` so the sitemap matches that host.
+The committed sitemap uses https://gustosguide.com. Set `SITE_URL` before `npm run build` only for a one-off preview.
 
 Hash routes are not separate documents. Crawlers that ignore the hash will only see the shell. The sitemap still lists `#/guide/…` and `#/place/…` URLs. Open Graph tags are set in the browser after navigation; the shared images are `public/og/og.svg`, `public/og/place.svg`, and `public/og/guides/<slug>.svg`.
 
@@ -41,14 +41,15 @@ Leave these unset to stay on the local demo (demo friends included):
 When both are set at build time, the bundle signs in with an email magic link and does not show demo friends. Optional:
 
 - `VITE_AUTH_PROVIDERS` — comma list. `x` shows Continue with X. `google` and `apple` show those buttons.
-- `VITE_AUTH_REDIRECT` — overrides the email return URL. Continue with X always returns to `https://gustos-guide.pages.dev`.
+
+Magic link and X both return to `window.location.origin` plus the current path, so a sign-in started on gustosguide.com, www, or pages.dev comes back to that same host. www.gustosguide.com is sent to the apex before the app renders.
 
 1. Apply `supabase/schema.sql` in the SQL editor or with psql. Re-running it is safe. It creates tables, grants, RLS, the private `place-photos` bucket, and realtime on `notifications`, `plans`, `plan_members`, and `plan_votes`.
-2. Authentication → URL configuration: Site URL `https://gustos-guide.pages.dev`. Redirect URLs: `https://gustos-guide.pages.dev` and `https://gustos-guide.pages.dev/**`.
+2. Authentication → URL configuration: Site URL `https://gustosguide.com`. Redirect URLs: `https://gustosguide.com/**`, `https://www.gustosguide.com/**`, and `https://gustos-guide.pages.dev/**`. The hash on a return URL is ignored when Supabase checks that list.
 3. Authentication → Email: magic link on. The Magic Link template should keep `{{ .ConfirmationURL }}`. Password sign-in is unused.
 4. The built-in mailer is for testing. It is rate-limited (often 2 emails per hour) and, on the free plan, only delivers to the project’s team until you set custom SMTP. Auth also has its own email rate limit (default 30 per hour) once SMTP is custom.
 5. After the owner signs up once, in the SQL editor: `update public.profiles set is_owner = true where id = '<auth user uuid>';` The browser cannot set that flag. Only that account publishes Gusto's Score.
-6. X / Twitter (OAuth 2.0) uses `external_x_enabled`, `external_x_client_id`, and `external_x_secret`. The provider callback is `https://<project-ref>.supabase.co/auth/v1/callback`. This build sets `VITE_AUTH_PROVIDERS=x`. Google and Apple stay off until their client IDs exist.
+6. X / Twitter (OAuth 2.0) uses `external_x_enabled`, `external_x_client_id`, and `external_x_secret`. The provider callback is `https://<project-ref>.supabase.co/auth/v1/callback`. Terms and privacy for the X app are `https://gustosguide.com/terms` and `https://gustosguide.com/privacy`. This build sets `VITE_AUTH_PROVIDERS=x`. Google and Apple stay off until their client IDs exist.
 7. Add the two `VITE_` variables in the host environment, then rebuild and upload.
 
 Do not put a secret or service-role key in `VITE_` variables. The publishable key is what the browser sends as `apikey`. Row level security is what limits it.

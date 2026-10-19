@@ -2,6 +2,7 @@ import { createContext, useContext, useEffect, useMemo, useRef, useState, type R
 import type { User } from '@supabase/supabase-js'
 import demoFile from '../content/demo.json'
 import { catalog } from '../content/load.ts'
+import { canonicalUrl } from '../lib/site.ts'
 import { compressToWebp, readPhotos, removePhoto, savePhoto, type StoredPhoto } from '../lib/photos.ts'
 import { rescore } from '../lib/rank.ts'
 import { deleteGuideRemote, importLocalBundle, loadAccount, loadHouseScores, loadNotices, loadPlans, saveGuide, savePlan, type FriendProfile, type FriendRequest } from '../social/account.ts'
@@ -593,7 +594,7 @@ export function AppProvider({ children }: { children: ReactNode }) {
       setAnnouncement('Friend request sent.')
       return ''
     }
-    const link = `${window.location.origin}${window.location.pathname}#/join/${data}`
+    const link = canonicalUrl(`#/join/${data}`)
     setAnnouncement('Invite link ready.')
     return link
   }
@@ -698,11 +699,11 @@ export function AppProvider({ children }: { children: ReactNode }) {
     if (kind === 'plan') {
       const plan = plans.find((item) => item.id === id)
       const token = plan?.inviteToken || plan?.id || id
-      return `${window.location.origin}${window.location.pathname}#/join/${token}`
+      return canonicalUrl(`#/join/${token}`)
     }
     const guide = guides.find((item) => item.id === id)
     const token = guide?.inviteToken || guide?.id || id
-    return `${window.location.origin}${window.location.pathname}#/join/${token}`
+    return canonicalUrl(`#/join/${token}`)
   }
 
   function markNoticesRead() {

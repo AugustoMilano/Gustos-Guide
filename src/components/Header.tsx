@@ -229,7 +229,7 @@ export function Header() {
         <motion.div
           ref={bellPanel}
           id="notifications-panel"
-          className="glass absolute top-full right-2 z-50 mt-2 w-80 max-w-[calc(100vw-1rem)] max-h-[calc(100dvh-5rem)] overflow-y-auto p-3 md:right-4"
+          className="notice-sheet"
           role="region"
           aria-label="Notifications"
           initial={reduceMotion ? false : { opacity: 0, y: -6 }}
@@ -240,7 +240,7 @@ export function Header() {
             <p className="text-sm font-bold">Notifications</p>
             <button
               type="button"
-              className="-m-1 inline-flex min-h-11 min-w-11 items-center justify-center text-2xl leading-none"
+              className="notice-close"
               aria-label="Close notifications"
               onClick={() => setBell(false)}
             >

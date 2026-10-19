@@ -46,6 +46,8 @@ const STATIC = [
   '/rank',
   '/my',
   '/u/mina',
+  '/terms',
+  '/privacy',
   '/no-such-page',
   '/place/not-on-the-list',
 ]
@@ -161,6 +163,54 @@ async function openRoute(page: Page, issues: string[], path: string) {
 }
 
 test.describe('routes', () => {
+  test('notifications stay on screen and legal pages are direct urls', async ({ page }) => {
+    await page.goto('/#/', { waitUntil: 'domcontentloaded' })
+    await expect(page.locator('link[rel="canonical"]')).toHaveAttribute('href', /https:\/\/gustosguide\.com\//)
+    await expect(page.locator('footer a[href="/terms"]')).toBeVisible()
+    await expect(page.locator('footer a[href="/privacy"]')).toBeVisible()
+    await page.getByRole('button', { name: /^Notifications/ }).click({ force: true })
+    const panel = page.locator('#notifications-panel')
+    await expect(panel).toBeVisible()
+    const box = await panel.boundingBox()
+    const viewport = page.viewportSize()
+    expect(box && viewport).toBeTruthy()
+    expect(box!.x).toBeGreaterThanOrEqual(11)
+    expect(box!.x + box!.width).toBeLessThanOrEqual(viewport!.width - 11)
+    expect(box!.width).toBeLessThanOrEqual(360.5)
+    expect(box!.width).toBeLessThanOrEqual(viewport!.width - 23)
+    const colors = await panel.evaluate((el) => {
+      const style = getComputedStyle(el)
+      const close = el.querySelector('.notice-close')
+      const closeStyle = close ? getComputedStyle(close) : null
+      return {
+        bg: style.backgroundColor,
+        color: style.color,
+        closeWidth: close ? close.getBoundingClientRect().width : 0,
+        closeHeight: close ? close.getBoundingClientRect().height : 0,
+        closeColor: closeStyle?.color ?? '',
+      }
+    })
+    expect(colors.bg).toBe('rgb(255, 250, 243)')
+    expect(colors.color).toBe('rgb(24, 24, 24)')
+    expect(colors.closeColor).toBe('rgb(24, 24, 24)')
+    expect(colors.closeWidth).toBeGreaterThanOrEqual(44)
+    expect(colors.closeHeight).toBeGreaterThanOrEqual(44)
+    if (page.viewportSize()!.width < 768) {
+      await page.getByRole('button', { name: 'Close notifications' }).click({ force: true })
+      await page.getByRole('button', { name: 'Menu' }).click({ force: true })
+      const menu = await page.getByRole('navigation', { name: 'Mobile' }).boundingBox()
+      expect(menu).toBeTruthy()
+      expect(menu!.x).toBeGreaterThanOrEqual(11)
+      expect(menu!.x + menu!.width).toBeLessThanOrEqual(viewport!.width - 11)
+    }
+    await page.goto('/terms', { waitUntil: 'domcontentloaded' })
+    await expect(page.getByRole('heading', { level: 1, name: 'Terms' })).toBeVisible()
+    await expect(page.getByText('hello@gustosguide.com').first()).toBeVisible()
+    await page.goto('/privacy', { waitUntil: 'domcontentloaded' })
+    await expect(page.getByRole('heading', { level: 1, name: 'Privacy' })).toBeVisible()
+    await expect(page.getByText('does not sell your data')).toBeVisible()
+  })
+
   test('static pages', async ({ page }) => {
     const issues = watch(page)
     for (const path of STATIC) await openRoute(page, issues, path)

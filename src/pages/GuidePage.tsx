@@ -198,7 +198,7 @@ export function GuidePage() {
         {filtersOpen ? (
           <div className="fixed inset-0 z-50 flex items-end">
             <button type="button" className="absolute inset-0 bg-ink/50" aria-label="Close filters" onClick={() => setFiltersOpen(false)} />
-            <div className="relative max-h-[85dvh] w-full overflow-auto border-t-2 border-ink bg-cream p-4">
+            <div className="bottom-sheet relative max-h-[85dvh] w-full overflow-auto border-t-2 border-ink bg-cream p-4">
               <h2 className="font-serif text-3xl italic">Filters</h2>
               <div className="mt-3 grid gap-2">
                 <FilterFields
