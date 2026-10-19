@@ -8,6 +8,7 @@ import { SignInSheet } from '../components/SignInSheet.tsx'
 import { catalog, loadPlace, slimById } from '../content/load.ts'
 import { demoFriendsEnabled } from '../lib/demo.ts'
 import { displayPhotos } from '../lib/gallery.ts'
+import { HouseScorePad } from '../components/HouseScorePad.tsx'
 import { ScoreBadge } from '../components/ScoreBadge.tsx'
 import { formatPeriods, hoursPhrase } from '../lib/hours.ts'
 import { MapLinks } from '../components/MapLinks.tsx'
@@ -112,7 +113,7 @@ export function PlacePage() {
             <p className="mt-2 text-sm">Been here? Add a photo. House shots are credited Photo by Gusto.</p>
             {!app.user ? (
               <button type="button" className="btn btn-coral mt-3" onClick={() => setSignIn(true)}>Sign in to add a photo</button>
-            ) : !been ? (
+            ) : !been && !app.user.isOwner ? (
               <button type="button" className="btn mt-3" onClick={() => app.setStatus(place.id, 'been')}>Mark Been to add a photo</button>
             ) : (
               <label className="btn mt-3 cursor-pointer">
@@ -128,6 +129,7 @@ export function PlacePage() {
           <h1 className="mt-1 font-serif text-5xl italic leading-none sm:text-6xl">{place.name}</h1>
           <p className="review-headline mt-4 border-2 border-ink bg-[#fffaf3] px-4 py-3 font-serif text-2xl italic leading-snug">“{place.oneLiner}”</p>
           <div className="mt-3"><ScoreBadge score={app.gustoScore(place.id)} /></div>
+          <HouseScorePad placeId={place.id} />
           {app.user && !app.user.isOwner && app.scores[place.id] ? <p className="mt-2 text-sm">Your score {app.scores[place.id].score.toFixed(1)}</p> : null}
           {reference ? <p className="public-ref mt-2">{reference}</p> : null}
           {app.user && friends.count ? (

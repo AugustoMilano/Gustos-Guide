@@ -87,6 +87,7 @@ export type AccountSnapshot = {
   friends: FriendProfile[]
   requests: FriendRequest[]
   friendRanks: Record<string, Record<string, number>>
+  friendLists: FriendLists
   counts: { places: number; guides: number; photos: number }
 }
 
@@ -97,6 +98,35 @@ type GuideRow = {
   visibility: GuideVisibility
   cover_place_id: string | null
   invite_token: string | null
+  emoji?: string | null
+  accent?: string | null
+}
+
+type ItemRow = {
+  guide_id: string
+  place_id: string
+  position: number
+  note?: string | null
+  added_at?: string | null
+}
+
+export type FriendLists = Record<string, { been: string[]; togo: string[] }>
+
+function missingListColumn(error: { message?: string } | null): boolean {
+  if (!error?.message) return false
+  return /emoji|accent|note|added_at/i.test(error.message) && /column|schema cache/i.test(error.message)
+}
+
+async function selectGuides(client: SupabaseClient) {
+  const rich = await client.from('guides').select('id, owner_id, title, visibility, cover_place_id, invite_token, emoji, accent')
+  if (!rich.error || !missingListColumn(rich.error)) return rich
+  return client.from('guides').select('id, owner_id, title, visibility, cover_place_id, invite_token')
+}
+
+async function selectGuideItems(client: SupabaseClient) {
+  const rich = await client.from('guide_items').select('guide_id, place_id, position, note, added_at')
+  if (!rich.error || !missingListColumn(rich.error)) return rich
+  return client.from('guide_items').select('guide_id, place_id, position')
 }
 
 const buckets: Bucket[] = ['loved', 'liked', 'fine', 'didnt']
@@ -165,8 +195,8 @@ export async function loadAccount(client: SupabaseClient, authUser: User): Promi
 
   const [statusRes, guideRes, itemRes, collabRes, planRes, memberRes, voteRes, activityRes, likeRes, commentRes, noticeRes, rankRes, photoRes, friendRes, house] = await Promise.all([
     client.from('place_status').select('place_id, status').eq('user_id', user.id),
-    client.from('guides').select('id, owner_id, title, visibility, cover_place_id, invite_token'),
-    client.from('guide_items').select('guide_id, place_id, position'),
+    selectGuides(client),
+    selectGuideItems(client),
     client.from('guide_collaborators').select('guide_id, user_id'),
     client.from('plans').select('id, host_id, title, place_ids, dates, locked, vibe, invite_token'),
     client.from('plan_members').select('plan_id, user_id, rsvp'),
@@ -191,10 +221,10 @@ export async function loadAccount(client: SupabaseClient, authUser: User): Promi
     if (row.status === 'togo' || row.status === 'been') statuses[row.place_id] = row.status
   }
 
-  const items = new Map<string, { placeId: string; position: number }[]>()
-  for (const row of itemRes.data ?? []) {
+  const items = new Map<string, ItemRow[]>()
+  for (const row of (itemRes.data ?? []) as ItemRow[]) {
     const list = items.get(row.guide_id) ?? []
-    list.push({ placeId: row.place_id, position: row.position })
+    list.push(row)
     items.set(row.guide_id, list)
   }
   const collaborators = new Map<string, string[]>()
@@ -204,7 +234,14 @@ export async function loadAccount(client: SupabaseClient, authUser: User): Promi
     collaborators.set(row.guide_id, list)
   }
   const guides: UserGuide[] = ((guideRes.data ?? []) as GuideRow[]).map((row) => {
-    const placeIds = (items.get(row.id) ?? []).sort((a, b) => a.position - b.position).map((item) => item.placeId)
+    const sorted = (items.get(row.id) ?? []).slice().sort((a, b) => a.position - b.position)
+    const placeIds = sorted.map((item) => item.place_id)
+    const notes: Record<string, string> = {}
+    const addedAt: Record<string, string> = {}
+    for (const item of sorted) {
+      if (item.note) notes[item.place_id] = item.note
+      if (item.added_at) addedAt[item.place_id] = item.added_at
+    }
     const collaboratorIds = collaborators.get(row.id) ?? []
     return {
       id: row.id,
@@ -217,6 +254,10 @@ export async function loadAccount(client: SupabaseClient, authUser: User): Promi
       visibility: row.visibility,
       coverPlaceId: row.cover_place_id ?? undefined,
       inviteToken: row.invite_token ?? undefined,
+      emoji: row.emoji || undefined,
+      color: row.accent || undefined,
+      notes,
+      addedAt,
     }
   })
 
@@ -344,6 +385,19 @@ export async function loadAccount(client: SupabaseClient, authUser: User): Promi
     })),
   )
 
+  const friendLists: FriendLists = {}
+  const friendStatus = await client.from('place_status').select('user_id, place_id, status')
+  if (!friendStatus.error) {
+    for (const row of friendStatus.data ?? []) {
+      if (row.user_id === user.id) continue
+      const status: 'been' | 'togo' | null = row.status === 'been' ? 'been' : row.status === 'togo' ? 'togo' : null
+      if (!status) continue
+      const bag = friendLists[row.user_id] ?? { been: [], togo: [] }
+      bag[status].push(row.place_id)
+      friendLists[row.user_id] = bag
+    }
+  }
+
   return {
     user,
     doc: {
@@ -363,6 +417,7 @@ export async function loadAccount(client: SupabaseClient, authUser: User): Promi
     friends,
     requests,
     friendRanks,
+    friendLists,
     counts: { places: Object.keys(statuses).length, guides: guides.filter((guide) => guide.ownerId === user.id).length, photos: photoRows.length },
   }
 }
@@ -448,14 +503,22 @@ export async function saveGuide(client: SupabaseClient, userId: string, guide: U
   const visibility = guideVisibility(guide)
   const mine = (guide.ownerId || userId) === userId
   if (mine) {
-    const { error } = await client.from('guides').upsert({
+    const row = {
       id: guide.id,
       owner_id: userId,
       title: guide.title,
       visibility,
       cover_place_id: guide.coverPlaceId ?? null,
       invite_token: guide.inviteToken ?? null,
-    })
+      emoji: guide.emoji ?? null,
+      accent: guide.color ?? null,
+    }
+    let { error } = await client.from('guides').upsert(row)
+    if (error && missingListColumn(error)) {
+      const { emoji: _emoji, accent: _accent, ...plain } = row
+      const retry = await client.from('guides').upsert(plain)
+      error = retry.error
+    }
     if (error) throw error
     await client.from('guide_collaborators').delete().eq('guide_id', guide.id)
     if (guide.collaboratorIds.length) {
@@ -468,9 +531,19 @@ export async function saveGuide(client: SupabaseClient, userId: string, guide: U
   }
   await client.from('guide_items').delete().eq('guide_id', guide.id)
   if (guide.placeIds.length) {
-    const { error: itemError } = await client.from('guide_items').insert(
-      guide.placeIds.map((placeId, position) => ({ guide_id: guide.id, place_id: placeId, position })),
-    )
+    const rows = guide.placeIds.map((placeId, position) => ({
+      guide_id: guide.id,
+      place_id: placeId,
+      position,
+      note: guide.notes?.[placeId] ?? null,
+      added_at: guide.addedAt?.[placeId] ?? null,
+    }))
+    let { error: itemError } = await client.from('guide_items').insert(rows)
+    if (itemError && missingListColumn(itemError)) {
+      const plain = rows.map(({ note: _note, added_at: _added, ...item }) => item)
+      const retry = await client.from('guide_items').insert(plain)
+      itemError = retry.error
+    }
     if (itemError) throw itemError
   }
 }
@@ -549,7 +622,7 @@ async function uploadImportedPhoto(client: SupabaseClient, user: SessionUser, ph
     id,
     place_id: photo.placeId,
     user_id: user.id,
-    is_owner: false,
+    is_owner: photo.owner,
     storage_path: path,
     width: photo.width,
     height: photo.height,

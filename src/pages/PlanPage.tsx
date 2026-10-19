@@ -1,6 +1,6 @@
 import { useMemo, useState } from 'react'
 import { useReducedMotion } from 'framer-motion'
-import { Link, useNavigate, useParams } from 'react-router-dom'
+import { Link, useNavigate, useParams, useSearchParams } from 'react-router-dom'
 import { GuideMap } from '../components/GuideMap.tsx'
 import { MapLinks } from '../components/MapLinks.tsx'
 import { PlaceThumb } from '../components/PlaceThumb.tsx'
@@ -18,7 +18,9 @@ import type { Plan, SlimPlace } from '../types.ts'
 
 export function PlansPage() {
   const app = useApp()
-  const [sheet, setSheet] = useState(false)
+  const [params] = useSearchParams()
+  const seed = params.get('place') ?? undefined
+  const [sheet, setSheet] = useState(Boolean(seed))
   usePageMeta("Go together · Gusto's Guide", 'Make a plan, invite friends, vote on a place and a date.')
   return (
     <main id="main" tabIndex={-1} className="mx-auto max-w-3xl px-4 pt-24 pb-16 outline-none">
@@ -34,7 +36,7 @@ export function PlansPage() {
           <li key={plan.id}><PlanCard planId={plan.id} /></li>
         ))}
       </ul>
-      <PlanSheet open={sheet} onClose={() => setSheet(false)} />
+      <PlanSheet open={sheet} onClose={() => setSheet(false)} seedPlaceId={seed} />
     </main>
   )
 }

@@ -20,6 +20,8 @@ export type Period = { days: number[]; start: number; end: number }
 
 export type SlimPlace = {
   id: string
+  /** Defaults to Seattle until a second city is live. */
+  city?: 'seattle'
   name: string
   neighborhood: string
   address: string
@@ -97,6 +99,10 @@ export type UserGuide = {
   visibility?: GuideVisibility
   coverPlaceId?: string
   inviteToken?: string
+  emoji?: string
+  color?: string
+  notes?: Record<string, string>
+  addedAt?: Record<string, string>
 }
 
 export type Activity = {

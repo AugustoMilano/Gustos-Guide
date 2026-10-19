@@ -1,6 +1,14 @@
 // Replaced in dist/sw.js by scripts/stamp-sw.mjs with the git commit.
 const CACHE = 'gusto-__GUSTO_BUILD__'
-const SHELL = ['./', './index.html', './manifest.webmanifest']
+const SHELL = [
+  './',
+  './index.html',
+  './manifest.webmanifest',
+  './icon-192.png',
+  './icon-512.png',
+  './apple-touch-icon.png',
+  './splash-iphone.png',
+]
 
 self.addEventListener('install', (event) => {
   event.waitUntil(
@@ -21,6 +29,7 @@ self.addEventListener('activate', (event) => {
 })
 
 function isHashedAsset(url) {
+  // Hashed chunks include the place and guide catalogs, so a visit caches them for offline.
   return url.pathname.includes('/assets/')
 }
 

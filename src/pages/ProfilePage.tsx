@@ -1,5 +1,6 @@
 import { Link, useParams } from 'react-router-dom'
 import { GuideMap } from '../components/GuideMap.tsx'
+import { PlaceThumb } from '../components/PlaceThumb.tsx'
 import { catalog, slimById } from '../content/load.ts'
 import { usePageMeta } from '../lib/meta.ts'
 import { useApp } from '../state/AppState.tsx'
@@ -28,9 +29,15 @@ export function ProfilePage() {
     )
   }
 
+  const lists = friend ? app.friendLists[friend.id] : undefined
   const beenIds = mine
     ? Object.entries(app.statuses).filter(([, status]) => status === 'been').map(([id]) => id)
-    : person?.been ?? []
+    : person?.been ?? lists?.been ?? []
+  const togoIds = mine
+    ? Object.entries(app.statuses).filter(([, status]) => status === 'togo').map(([id]) => id)
+    : lists?.togo ?? []
+  const mineTogo = new Set(Object.entries(app.statuses).filter(([, status]) => status === 'togo').map(([id]) => id))
+  const overlap = friend ? togoIds.filter((id) => mineTogo.has(id)) : []
   const beenPlaces = beenIds.map((id) => slimById(id)).filter((place): place is SlimPlace => place != null)
   const scoreRows: Row[] = mine
     ? Object.entries(app.scores).map(([id, score]) => ({ id, name: slimById(id)?.name ?? id, score: score.score }))
@@ -67,6 +74,32 @@ export function ProfilePage() {
           ) : null}
         </section>
       )}
+      {!mine ? (
+        <>
+          <h2 className="mt-8 font-serif text-3xl italic">Been</h2>
+          <PlaceGrid ids={beenIds} empty="No Been marks yet." />
+          <h2 className="mt-8 font-serif text-3xl italic">To go</h2>
+          <PlaceGrid ids={togoIds} empty="Nothing waiting on their list." />
+          <h2 className="mt-8 font-serif text-3xl italic">You both want to try</h2>
+          {overlap.length ? (
+            <ul className="mt-3 grid grid-cols-2 gap-3">
+              {overlap.map((id) => {
+                const spot = slimById(id)
+                if (!spot) return null
+                return (
+                  <li key={id} className="feed-card">
+                    <Link to={`/place/${id}`} className="block h-28 overflow-hidden bg-navy [&_.place-art]:aspect-auto [&_.place-art]:h-full">
+                      <PlaceThumb place={spot} uploads={app.photos} />
+                    </Link>
+                    <p className="mt-2 font-serif text-xl italic leading-none">{spot.name}</p>
+                    <Link className="btn mt-3 text-sm" to={`/plans?place=${id}`}>Go together</Link>
+                  </li>
+                )
+              })}
+            </ul>
+          ) : <p className="mt-2">No overlap yet. When you both mark the same place To go, it lands here.</p>}
+        </>
+      ) : null}
       <h2 className="mt-8 font-serif text-3xl italic">Top cuisines</h2>
       {cuisines.length ? (
         <ul className="mt-2 flex flex-wrap gap-2">
@@ -93,6 +126,29 @@ export function ProfilePage() {
       ) : null}
       <p className="mt-4 text-sm">{catalog.places.length} places are on the guide.</p>
     </main>
+  )
+}
+
+function PlaceGrid({ ids, empty }: { ids: string[]; empty: string }) {
+  const app = useApp()
+  const places = ids.map((id) => slimById(id)).filter((place): place is SlimPlace => place != null).slice(0, 8)
+  if (!places.length) return <p className="mt-2">{empty}</p>
+  return (
+    <ul className="mt-3 grid grid-cols-2 gap-3">
+      {places.map((place) => (
+        <li key={place.id}>
+          <Link to={`/place/${place.id}`} className="hit-card">
+            <div className="h-28 overflow-hidden bg-navy [&_.place-art]:aspect-auto [&_.place-art]:h-full">
+              <PlaceThumb place={place} uploads={app.photos} />
+            </div>
+            <div className="p-2">
+              <h3 className="font-serif text-xl italic leading-tight">{place.name}</h3>
+              <p className="mt-1 text-xs font-bold tracking-wide uppercase">{place.neighborhood}</p>
+            </div>
+          </Link>
+        </li>
+      ))}
+    </ul>
   )
 }
 

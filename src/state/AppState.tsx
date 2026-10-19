@@ -6,7 +6,7 @@ import { clearStashedAuthError, peekAuthError } from '../lib/auth-callback.ts'
 import { canonicalUrl } from '../lib/site.ts'
 import { compressToWebp, readPhotos, removePhoto, savePhoto, type StoredPhoto } from '../lib/photos.ts'
 import { rescore } from '../lib/rank.ts'
-import { deleteGuideRemote, importLocalBundle, loadAccount, loadHouseScores, loadNotices, loadPlans, saveGuide, savePlan, type FriendProfile, type FriendRequest } from '../social/account.ts'
+import { deleteGuideRemote, importLocalBundle, loadAccount, loadHouseScores, loadNotices, loadPlans, saveGuide, savePlan, type FriendLists, type FriendProfile, type FriendRequest } from '../social/account.ts'
 import { scanLocalBundle, type LocalBundle } from '../social/importLocal.ts'
 import { authProviders, sendMagicLink, signInWithProvider, supabaseClient, uploadPlacePhoto } from '../social/supabase.ts'
 import type { Activity, Bucket, Comment, GuideVisibility, Notice, Plan, RankScore, SessionUser, UserGuide, VisitStatus } from '../types.ts'
@@ -64,6 +64,8 @@ type AppValue = {
   setGuidePublic: (guideId: string, isPublic: boolean) => void
   setGuideVisibility: (guideId: string, visibility: GuideVisibility) => void
   setGuideCover: (guideId: string, placeId: string) => void
+  setGuideLook: (guideId: string, look: { emoji?: string; color?: string }) => void
+  setPlaceNote: (guideId: string, placeId: string, note: string) => void
   shareGuide: (guideId: string, collaboratorId: string) => void
   shareGuideByHandle: (guideId: string, handle: string) => Promise<void>
   inviteLink: (kind: 'guide' | 'plan', id: string) => string
@@ -71,8 +73,10 @@ type AppValue = {
   toggleFollow: (userId: string) => void
   requestFriend: (handle: string) => Promise<void>
   inviteByEmail: (email: string) => Promise<string>
+  createFriendLink: () => Promise<string>
   respondFriend: (id: string, accept: boolean) => Promise<void>
   friends: FriendProfile[]
+  friendLists: FriendLists
   requests: FriendRequest[]
   activities: Activity[]
   toggleLike: (activityId: string) => void
@@ -99,6 +103,7 @@ type AppValue = {
   friendScore: (placeId: string) => { average: number | null; loved: number; count: number; demo: boolean }
   friendMarks: (placeId: string) => { id: string; name: string; handle: string; score: number }[]
   gustoScore: (placeId: string) => number | null
+  setHouseScore: (placeId: string, score: number) => void
   tasteMatch: (userId: string) => number | null
   announcement: string
   authError: string | null
@@ -161,6 +166,7 @@ export function AppProvider({ children }: { children: ReactNode }) {
   const [friends, setFriends] = useState<FriendProfile[]>([])
   const [requests, setRequests] = useState<FriendRequest[]>([])
   const [friendRanks, setFriendRanks] = useState<Record<string, Record<string, number>>>({})
+  const [friendLists, setFriendLists] = useState<FriendLists>({})
   const [importOffer, setImportOffer] = useState<ImportOffer | null>(null)
   const importBundle = useRef<LocalBundle | null>(null)
   const generation = useRef(0)
@@ -181,6 +187,7 @@ export function AppProvider({ children }: { children: ReactNode }) {
       setFriends([])
       setRequests([])
       setFriendRanks({})
+      setFriendLists({})
       setImportOffer(null)
       importBundle.current = null
       return
@@ -195,6 +202,7 @@ export function AppProvider({ children }: { children: ReactNode }) {
       setFriends(snap.friends)
       setRequests(snap.requests)
       setFriendRanks(snap.friendRanks)
+      setFriendLists(snap.friendLists)
       localStorage.setItem(`gusto.doc.v1.${snap.user.id}`, JSON.stringify(snap.doc))
       const bundle = snap.counts.places || snap.counts.guides || snap.counts.photos ? null : await scanLocalBundle(snap.user.id)
       if (ticket !== generation.current) return
@@ -475,9 +483,14 @@ export function AppProvider({ children }: { children: ReactNode }) {
   function addToGuide(guideId: string, placeId: string) {
     const next = {
       ...doc,
-      guides: doc.guides.map((guide) =>
-        guide.id === guideId && !guide.placeIds.includes(placeId) ? { ...guide, placeIds: [...guide.placeIds, placeId] } : guide,
-      ),
+      guides: doc.guides.map((guide) => {
+        if (guide.id !== guideId || guide.placeIds.includes(placeId)) return guide
+        return {
+          ...guide,
+          placeIds: [...guide.placeIds, placeId],
+          addedAt: { ...guide.addedAt, [placeId]: new Date().toISOString() },
+        }
+      }),
     }
     persist(next)
     pushGuide(next.guides.find((guide) => guide.id === guideId))
@@ -486,7 +499,14 @@ export function AppProvider({ children }: { children: ReactNode }) {
   function removeFromGuide(guideId: string, placeId: string) {
     const next = {
       ...doc,
-      guides: doc.guides.map((guide) => (guide.id === guideId ? { ...guide, placeIds: guide.placeIds.filter((id) => id !== placeId) } : guide)),
+      guides: doc.guides.map((guide) => {
+        if (guide.id !== guideId) return guide
+        const notes = { ...guide.notes }
+        const addedAt = { ...guide.addedAt }
+        delete notes[placeId]
+        delete addedAt[placeId]
+        return { ...guide, placeIds: guide.placeIds.filter((id) => id !== placeId), notes, addedAt }
+      }),
     }
     persist(next)
     pushGuide(next.guides.find((guide) => guide.id === guideId))
@@ -538,6 +558,33 @@ export function AppProvider({ children }: { children: ReactNode }) {
   function setGuideCover(guideId: string, placeId: string) {
     if (!user) return
     const next = { ...doc, guides: doc.guides.map((guide) => (guide.id === guideId ? { ...guide, coverPlaceId: placeId } : guide)) }
+    persist(next)
+    pushGuide(next.guides.find((guide) => guide.id === guideId))
+  }
+
+  function setGuideLook(guideId: string, look: { emoji?: string; color?: string }) {
+    if (!user) return
+    const next = {
+      ...doc,
+      guides: doc.guides.map((guide) => (guide.id === guideId ? { ...guide, ...look } : guide)),
+    }
+    persist(next)
+    pushGuide(next.guides.find((guide) => guide.id === guideId))
+  }
+
+  function setPlaceNote(guideId: string, placeId: string, note: string) {
+    if (!user) return
+    const text = note.trim().slice(0, 140)
+    const next = {
+      ...doc,
+      guides: doc.guides.map((guide) => {
+        if (guide.id !== guideId) return guide
+        const notes = { ...guide.notes }
+        if (text) notes[placeId] = text
+        else delete notes[placeId]
+        return { ...guide, notes }
+      }),
+    }
     persist(next)
     pushGuide(next.guides.find((guide) => guide.id === guideId))
   }
@@ -595,6 +642,25 @@ export function AppProvider({ children }: { children: ReactNode }) {
       setAnnouncement('Friend request sent.')
       return ''
     }
+    const link = canonicalUrl(`#/join/${data}`)
+    setAnnouncement('Invite link ready.')
+    return link
+  }
+
+  async function createFriendLink() {
+    if (!user) throw new Error('Sign in first.')
+    if (!remote) {
+      const token = crypto.randomUUID().replace(/-/g, '').slice(0, 16)
+      const raw = localStorage.getItem('gusto.friend-links.v1')
+      const bag = raw ? (JSON.parse(raw) as { token: string; name: string; handle: string }[]) : []
+      bag.push({ token, name: user.name, handle: user.handle })
+      localStorage.setItem('gusto.friend-links.v1', JSON.stringify(bag.slice(-20)))
+      const link = canonicalUrl(`#/join/${token}`)
+      setAnnouncement('Invite link ready.')
+      return link
+    }
+    const { data, error } = await remote.rpc('create_friend_link')
+    if (error) throw new Error(error.message.includes('create_friend_link') ? 'Friend links need the latest database update.' : error.message)
     const link = canonicalUrl(`#/join/${data}`)
     setAnnouncement('Invite link ready.')
     return link
@@ -847,9 +913,23 @@ export function AppProvider({ children }: { children: ReactNode }) {
     setCompare({ ...compare, low: mid + 1 })
   }
 
+  function setHouseScore(placeId: string, score: number) {
+    if (!user?.isOwner) return
+    const value = Math.round(score * 10) / 10
+    if (value < 1 || value > 10) return
+    const next = { ...house, [placeId]: value }
+    setHouse(next)
+    localStorage.setItem(HOUSE_KEY, JSON.stringify(next))
+    if (remote) {
+      void remote.from('house_scores').upsert({ place_id: placeId, score: value, updated_by: user.id }).then(({ error }) => {
+        if (error) remoteError(error)
+      })
+    }
+  }
+
   async function uploadPhoto(placeId: string, file: File) {
     if (!user) throw new Error('Sign in first.')
-    if (doc.statuses[placeId] !== 'been') throw new Error('Mark the place Been before adding a photo.')
+    if (!user.isOwner && doc.statuses[placeId] !== 'been') throw new Error('Mark the place Been before adding a photo.')
     const image = await compressToWebp(file)
     const id = crypto.randomUUID()
     const record: StoredPhoto = {
@@ -872,7 +952,7 @@ export function AppProvider({ children }: { children: ReactNode }) {
         id,
         place_id: placeId,
         user_id: user.id,
-        is_owner: false,
+        is_owner: user.isOwner,
         storage_path: storagePath,
         width: image.width,
         height: image.height,
@@ -1011,6 +1091,8 @@ export function AppProvider({ children }: { children: ReactNode }) {
     setGuidePublic,
     setGuideVisibility,
     setGuideCover,
+    setGuideLook,
+    setPlaceNote,
     shareGuide,
     shareGuideByHandle,
     inviteLink,
@@ -1018,8 +1100,10 @@ export function AppProvider({ children }: { children: ReactNode }) {
     toggleFollow,
     requestFriend,
     inviteByEmail,
+    createFriendLink,
     respondFriend,
     friends,
+    friendLists,
     requests,
     activities,
     toggleLike,
@@ -1046,6 +1130,7 @@ export function AppProvider({ children }: { children: ReactNode }) {
     friendScore,
     friendMarks,
     gustoScore,
+    setHouseScore,
     tasteMatch,
     announcement,
     authError,

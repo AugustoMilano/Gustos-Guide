@@ -2,6 +2,8 @@ import { useEffect, useRef, useState, type FormEvent, type RefObject } from 'rea
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
 import { dragSheet } from '../lib/motion.ts'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
+import { cityPath } from '../lib/city.ts'
+import { CitySwitcher } from './CitySwitcher.tsx'
 import { SignInSheet } from './SignInSheet.tsx'
 import { useApp } from '../state/AppState.tsx'
 
@@ -111,16 +113,17 @@ export function Header() {
 
   function search(event: FormEvent) {
     event.preventDefault()
-    navigate(`/search?q=${encodeURIComponent(query.trim())}`)
+    navigate(cityPath(`/search?q=${encodeURIComponent(query.trim())}`))
     setMenu(false)
   }
 
   return (
     <header key={onHero ? 'hero' : 'page'} className={`site-header${onHero ? ' on-hero' : ''}${scrolled && !onHero ? ' is-scrolled' : ''}`}>
       <div className="mx-auto flex max-w-6xl items-center gap-3 px-4 py-3">
-        <Link to="/" className="font-serif text-3xl italic leading-none">
+        <Link to={cityPath('/')} className="font-serif text-3xl italic leading-none">
           Gusto's Guide
         </Link>
+        <CitySwitcher />
         <form onSubmit={search} className="ml-auto hidden min-w-0 flex-1 md:block md:max-w-[14rem]">
           <label className="sr-only" htmlFor="site-search">
             Search Seattle
@@ -134,12 +137,14 @@ export function Header() {
           />
         </form>
         <nav className="site-nav ml-auto hidden items-center gap-1 text-sm font-bold md:flex" aria-label="Primary">
-          <Link to="/explore" onMouseEnter={() => prefetch('/explore')} onFocus={() => prefetch('/explore')}>Explore</Link>
-          <Link to="/guides">Guides</Link>
-          <Link to="/feed">Feed</Link>
-          <Link to="/plans" onMouseEnter={() => prefetch('/plans/wizard')} onFocus={() => prefetch('/plans/wizard')}>Plans</Link>
-          <Link to="/rank">Rank</Link>
-          <Link to="/my">My guides</Link>
+          <Link to={cityPath('/explore')} onMouseEnter={() => prefetch('/explore')} onFocus={() => prefetch('/explore')}>Explore</Link>
+          <Link to={cityPath('/guides')}>Guides</Link>
+          <Link to={cityPath('/tonight')}>Tonight</Link>
+          <Link to={cityPath('/feed')}>Feed</Link>
+          <Link to={cityPath('/plans')} onMouseEnter={() => prefetch('/plans/wizard')} onFocus={() => prefetch('/plans/wizard')}>Plans</Link>
+          <Link to={cityPath('/rank')}>Rank</Link>
+          <Link to={cityPath('/my')}>My guides</Link>
+          {user?.isOwner ? <Link to={cityPath('/score')}>Scores</Link> : null}
           <button
             type="button"
             className="relative min-h-11 px-2"
@@ -153,7 +158,7 @@ export function Header() {
           </button>
           {user ? (
             <>
-              <Link to={`/u/${user.handle}`} className="inline-flex items-center gap-2">
+              <Link to={cityPath(`/u/${user.handle}`)} className="inline-flex items-center gap-2">
                 {user.avatarUrl ? <img src={user.avatarUrl} alt="" className="h-8 w-8 rounded-full object-cover" /> : null}
                 {user.name}
               </Link>
@@ -207,18 +212,20 @@ export function Header() {
           <form onSubmit={search}>
             <input aria-label="Search" value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Search" className="glass-input w-full px-3 py-2" />
           </form>
-          <Link to="/explore" onClick={() => setMenu(false)} onFocus={() => prefetch('/explore')}>Explore</Link>
-          <Link to="/guides" onClick={() => setMenu(false)}>Guides</Link>
-          <Link to="/feed" onClick={() => setMenu(false)}>Feed</Link>
-          <Link to="/plans" onClick={() => setMenu(false)}>Plans</Link>
-          <Link to="/rank" onClick={() => setMenu(false)}>Rank</Link>
-          <Link to="/my" onClick={() => setMenu(false)}>My guides</Link>
+          <Link to={cityPath('/explore')} onClick={() => setMenu(false)} onFocus={() => prefetch('/explore')}>Explore</Link>
+          <Link to={cityPath('/guides')} onClick={() => setMenu(false)}>Guides</Link>
+          <Link to={cityPath('/tonight')} onClick={() => setMenu(false)}>Tonight</Link>
+          <Link to={cityPath('/feed')} onClick={() => setMenu(false)}>Feed</Link>
+          <Link to={cityPath('/plans')} onClick={() => setMenu(false)}>Plans</Link>
+          <Link to={cityPath('/rank')} onClick={() => setMenu(false)}>Rank</Link>
+          <Link to={cityPath('/my')} onClick={() => setMenu(false)}>My guides</Link>
+          {user?.isOwner ? <Link to={cityPath('/score')} onClick={() => setMenu(false)}>Scores</Link> : null}
           <button type="button" className="text-left" aria-label="Notifications" onClick={() => { setMenu(false); setBell(true); markNoticesRead() }}>
             Notifications{unread ? ` (${unread})` : ''}
           </button>
           {user ? (
             <>
-              <Link to={`/u/${user.handle}`} className="inline-flex items-center gap-2" onClick={() => setMenu(false)}>
+              <Link to={cityPath(`/u/${user.handle}`)} className="inline-flex items-center gap-2" onClick={() => setMenu(false)}>
                 {user.avatarUrl ? <img src={user.avatarUrl} alt="" className="h-8 w-8 rounded-full object-cover" /> : null}
                 {user.name}
               </Link>

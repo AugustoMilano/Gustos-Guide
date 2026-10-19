@@ -80,6 +80,24 @@ export function FriendEmpty({
       <div className="mt-3 flex flex-wrap gap-2">
         <button type="button" className="btn btn-coral" disabled={!handle.trim()} onClick={() => void addFriend()}>Add friends</button>
         <button type="button" className="btn" disabled={!email.trim()} onClick={() => void invite()}>Invite a friend</button>
+        <button
+          type="button"
+          className="btn"
+          onClick={() => {
+            setError('')
+            setNote('')
+            void app.createFriendLink().then(async (link) => {
+              try {
+                await navigator.clipboard.writeText(link)
+                setNote('Invite link copied.')
+              } catch {
+                setNote(link)
+              }
+            }).catch((reason: unknown) => setError(reason instanceof Error ? reason.message : 'Could not make a link.'))
+          }}
+        >
+          Copy invite link
+        </button>
       </div>
       {note ? <p className="mt-2 break-all text-sm">{note}</p> : null}
       {error ? <p className="mt-2 text-sm">{error}</p> : null}

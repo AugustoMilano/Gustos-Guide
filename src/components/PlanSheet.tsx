@@ -1,4 +1,4 @@
-import { useMemo, useState, type PointerEvent as ReactPointerEvent } from 'react'
+import { useEffect, useMemo, useState, type PointerEvent as ReactPointerEvent } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useReducedMotion } from 'framer-motion'
 import { FriendEmpty } from './FriendEmpty.tsx'
@@ -57,7 +57,7 @@ function initials(name: string): string {
 
 const AVATAR = ['#ff5330', '#141f4d', '#38ba46', '#e7b23c']
 
-export function PlanSheet({ open, onClose }: { open: boolean; onClose: () => void }) {
+export function PlanSheet({ open, onClose, seedPlaceId }: { open: boolean; onClose: () => void; seedPlaceId?: string }) {
   const app = useApp()
   const navigate = useNavigate()
   const reduceMotion = useReducedMotion()
@@ -70,6 +70,11 @@ export function PlanSheet({ open, onClose }: { open: boolean; onClose: () => voi
   const [invited, setInvited] = useState<string[]>([])
   const [signIn, setSignIn] = useState(false)
   const [full, setFull] = useState(false)
+
+  useEffect(() => {
+    if (!open || !seedPlaceId) return
+    setPicked((current) => current.includes(seedPlaceId) ? current : [seedPlaceId, ...current].slice(0, 3))
+  }, [open, seedPlaceId])
 
   const toGo = useMemo(
     () => new Set(Object.entries(app.statuses).filter(([, status]) => status === 'togo').map(([id]) => id)),

@@ -9,6 +9,8 @@ import { HomePage } from './pages/HomePage.tsx'
 import { LegalPage } from './pages/LegalPage.tsx'
 import { NotFoundPage } from './pages/NotFoundPage.tsx'
 import { PlacePage } from './pages/PlacePage.tsx'
+import { InstallHint } from './components/InstallHint.tsx'
+import { barePath } from './lib/city.ts'
 import { directLegalSlug } from './lib/site.ts'
 import { useApp } from './state/AppState.tsx'
 
@@ -24,6 +26,8 @@ const ExplorePage = lazy(() => import('./pages/ExplorePage.tsx').then((module) =
 const PlanWizardPage = lazy(() => import('./pages/PlanPage.tsx').then((module) => ({ default: module.PlanWizardPage })))
 const ListPage = lazy(() => import('./pages/ListPage.tsx').then((module) => ({ default: module.ListPage })))
 const JoinPage = lazy(() => import('./pages/JoinPage.tsx').then((module) => ({ default: module.JoinPage })))
+const TonightPage = lazy(() => import('./pages/TonightPage.tsx').then((module) => ({ default: module.TonightPage })))
+const ScoreQueuePage = lazy(() => import('./pages/ScoreQueuePage.tsx').then((module) => ({ default: module.ScoreQueuePage })))
 
 function ScrollManager() {
   const location = useLocation()
@@ -62,7 +66,7 @@ function BackToTop() {
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
   }, [pathname])
-  if (!show || pathname === '/explore') return null
+  if (!show || barePath(pathname) === '/explore') return null
   return (
     <button
       type="button"
@@ -149,28 +153,33 @@ function Shell() {
           <LegalPage slug={legal} />
         ) : (
         <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/explore" element={<ExplorePage />} />
-          <Route path="/guides" element={<GuideIndexPage />} />
-          <Route path="/guide/:slug" element={<GuidePage />} />
-          <Route path="/place/:slug" element={<PlacePage />} />
-          <Route path="/search" element={<SearchPage />} />
-          <Route path="/feed" element={<FeedPage />} />
-          <Route path="/plans" element={<PlansPage />} />
-          <Route path="/plans/wizard" element={<PlanWizardPage />} />
-          <Route path="/plan/:id" element={<PlanDetailPage />} />
-          <Route path="/list/:id" element={<ListPage />} />
-          <Route path="/join/:token" element={<JoinPage />} />
-          <Route path="/rank" element={<RankPage />} />
-          <Route path="/my" element={<MyGuidesPage />} />
-          <Route path="/u/:handle" element={<ProfilePage />} />
+          {['', '/seattle'].flatMap((prefix) => [
+            <Route key={`${prefix}-home`} path={prefix || '/'} element={<HomePage />} />,
+            <Route key={`${prefix}-explore`} path={`${prefix}/explore`} element={<ExplorePage />} />,
+            <Route key={`${prefix}-guides`} path={`${prefix}/guides`} element={<GuideIndexPage />} />,
+            <Route key={`${prefix}-guide`} path={`${prefix}/guide/:slug`} element={<GuidePage />} />,
+            <Route key={`${prefix}-place`} path={`${prefix}/place/:slug`} element={<PlacePage />} />,
+            <Route key={`${prefix}-search`} path={`${prefix}/search`} element={<SearchPage />} />,
+            <Route key={`${prefix}-feed`} path={`${prefix}/feed`} element={<FeedPage />} />,
+            <Route key={`${prefix}-tonight`} path={`${prefix}/tonight`} element={<TonightPage />} />,
+            <Route key={`${prefix}-score`} path={`${prefix}/score`} element={<ScoreQueuePage />} />,
+            <Route key={`${prefix}-plans`} path={`${prefix}/plans`} element={<PlansPage />} />,
+            <Route key={`${prefix}-wizard`} path={`${prefix}/plans/wizard`} element={<PlanWizardPage />} />,
+            <Route key={`${prefix}-plan`} path={`${prefix}/plan/:id`} element={<PlanDetailPage />} />,
+            <Route key={`${prefix}-list`} path={`${prefix}/list/:id`} element={<ListPage />} />,
+            <Route key={`${prefix}-join`} path={`${prefix}/join/:token`} element={<JoinPage />} />,
+            <Route key={`${prefix}-rank`} path={`${prefix}/rank`} element={<RankPage />} />,
+            <Route key={`${prefix}-my`} path={`${prefix}/my`} element={<MyGuidesPage />} />,
+            <Route key={`${prefix}-profile`} path={`${prefix}/u/:handle`} element={<ProfilePage />} />,
+          ])}
           <Route path="/terms" element={<LegalPage slug="terms" />} />
           <Route path="/privacy" element={<LegalPage slug="privacy" />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
         )}
       </Suspense>
-      {pathname === '/explore' ? null : <Footer />}
+      {barePath(pathname) === '/explore' ? null : <Footer />}
+      <InstallHint />
       <BackToTop />
       {importOffer ? <ImportLocalSheet offer={importOffer} onAccept={() => void acceptImport()} onDismiss={dismissImport} /> : null}
       <AuthErrorSheet />

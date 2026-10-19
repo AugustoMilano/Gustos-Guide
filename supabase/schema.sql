@@ -94,7 +94,7 @@ create table if not exists public.friendships (
   status text not null default 'pending' check (status in ('pending', 'accepted', 'declined', 'cancelled')),
   created_at timestamptz not null default now(),
   updated_at timestamptz not null default now(),
-  constraint friendships_target check (addressee_id is not null or invite_email is not null),
+  constraint friendships_target check (addressee_id is not null or invite_email is not null or invite_token is not null),
   constraint friendships_not_self check (addressee_id is null or addressee_id <> requester_id)
 );
 
@@ -195,6 +195,14 @@ alter table public.plan_votes add column if not exists vote_time text;
 alter table public.activities add column if not exists list_id text;
 alter table public.guides add column if not exists cover_place_id text;
 alter table public.guides add column if not exists invite_token text;
+alter table public.guides add column if not exists emoji text;
+alter table public.guides add column if not exists accent text;
+alter table public.guide_items add column if not exists note text;
+alter table public.guide_items add column if not exists added_at timestamptz;
+alter table public.friendships drop constraint if exists friendships_target;
+alter table public.friendships add constraint friendships_target check (
+  addressee_id is not null or invite_email is not null or invite_token is not null
+);
 alter table public.profiles add column if not exists avatar_url text;
 
 alter table public.lists drop constraint if exists lists_visibility_check;
@@ -667,6 +675,26 @@ begin
 end;
 $$;
 
+create or replace function public.create_friend_link()
+returns text
+language plpgsql
+security definer
+set search_path = public
+as $$
+declare
+  me uuid := auth.uid();
+  token text;
+begin
+  if me is null then
+    raise exception 'Sign in first.';
+  end if;
+  token := encode(extensions.gen_random_bytes(16), 'hex');
+  insert into public.friendships (requester_id, invite_token, status)
+  values (me, token, 'pending');
+  return token;
+end;
+$$;
+
 create or replace function public.respond_friend(friendship uuid, accept boolean)
 returns void
 language plpgsql
@@ -864,6 +892,10 @@ create policy "profiles_update" on public.profiles for update to authenticated
 create policy "place_status_own" on public.place_status for all to authenticated
   using (user_id = auth.uid())
   with check (user_id = auth.uid());
+
+drop policy if exists "place_status_friends" on public.place_status;
+create policy "place_status_friends" on public.place_status for select to authenticated
+  using (public.friends_with(user_id));
 
 create policy "rankings_select" on public.rankings for select to authenticated
   using (user_id = auth.uid() or public.friends_with(user_id));
@@ -1107,6 +1139,7 @@ revoke all on function public.can_see_activity(uuid) from public;
 revoke all on function public.notify_user(uuid, text, text) from public;
 revoke all on function public.request_friend(text) from public;
 revoke all on function public.invite_friend_email(text) from public;
+revoke all on function public.create_friend_link() from public;
 revoke all on function public.respond_friend(uuid, boolean) from public;
 revoke all on function public.preview_invite(text) from public;
 revoke all on function public.accept_invite(text) from public;
@@ -1127,6 +1160,7 @@ grant execute on function public.is_plan_member(uuid) to authenticated;
 grant execute on function public.can_see_activity(uuid) to authenticated;
 grant execute on function public.request_friend(text) to authenticated;
 grant execute on function public.invite_friend_email(text) to authenticated;
+grant execute on function public.create_friend_link() to authenticated;
 grant execute on function public.respond_friend(uuid, boolean) to authenticated;
 grant execute on function public.preview_invite(text) to anon, authenticated;
 grant execute on function public.accept_invite(text) to authenticated;

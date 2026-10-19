@@ -1,8 +1,10 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
+import { ListShareCard } from '../components/ListShareCard.tsx'
 import { PlaceThumb } from '../components/PlaceThumb.tsx'
 import { SignInSheet } from '../components/SignInSheet.tsx'
 import { catalog, slimById } from '../content/load.ts'
+import { LIST_COLORS, LIST_EMOJI } from '../lib/lists.ts'
 import { demoFriendsEnabled } from '../lib/demo.ts'
 import { usePageMeta } from '../lib/meta.ts'
 import { useApp } from '../state/AppState.tsx'
@@ -11,7 +13,6 @@ import type { UserGuide } from '../types.ts'
 export function MyGuidesPage() {
   const app = useApp()
   const [title, setTitle] = useState('')
-  const [query, setQuery] = useState('')
   const [copied, setCopied] = useState('')
   const [signIn, setSignIn] = useState(false)
   usePageMeta("My guides · Gusto's Guide", 'Lists on your account.', './og/og.svg')
@@ -19,8 +20,6 @@ export function MyGuidesPage() {
   const shared = app.supabase
     ? app.guides.filter((guide) => guide.ownerId && guide.ownerId !== app.user?.id)
     : app.guides.filter((guide) => guide.demo)
-  const matches = catalog.places.filter((place) => query && place.name.toLowerCase().includes(query.toLowerCase())).slice(0, 6)
-
   async function copyLink(guide: UserGuide) {
     const link = app.inviteLink('guide', guide.id)
     await navigator.clipboard.writeText(link)
@@ -47,9 +46,6 @@ export function MyGuidesPage() {
         <GuideEditor
           key={guide.id}
           guide={guide}
-          query={query}
-          setQuery={setQuery}
-          matches={matches}
           copied={copied === guide.id}
           onCopy={() => void copyLink(guide)}
         />
@@ -71,26 +67,22 @@ export function MyGuidesPage() {
 
 function GuideEditor({
   guide,
-  query,
-  setQuery,
-  matches,
   copied,
   onCopy,
 }: {
   guide: UserGuide
-  query: string
-  setQuery: (value: string) => void
-  matches: { id: string; name: string }[]
   copied: boolean
   onCopy: () => void
 }) {
   const app = useApp()
   const [dragFrom, setDragFrom] = useState<number | null>(null)
+  const [query, setQuery] = useState('')
+  const [title, setTitle] = useState(guide.title)
   const cover = slimById(guide.coverPlaceId ?? guide.placeIds[0] ?? '')
   const [friendHandle, setFriendHandle] = useState('')
   const [shareError, setShareError] = useState('')
   const visibility = guide.visibility ?? (guide.isPublic === false ? 'private' : 'public')
-  const isPublic = visibility === 'public'
+  const matches = catalog.places.filter((place) => query && place.name.toLowerCase().includes(query.toLowerCase())).slice(0, 6)
 
   function dropAt(index: number) {
     if (dragFrom === null || dragFrom === index) return
@@ -109,18 +101,31 @@ function GuideEditor({
             <PlaceThumb place={cover} uploads={app.photos} />
           </span>
         ) : null}
-        <div>
-          <h2 className="font-serif text-3xl italic">{guide.title}</h2>
-          <p className="text-sm"><Link className="font-bold" to={`/list/${guide.id}`}>Open list</Link> · {isPublic ? 'Public' : 'Private'}</p>
+        <div className="min-w-0 flex-1">
+          <label className="field">
+            <span className="sr-only">List name</span>
+            <input
+              value={title}
+              onChange={(event) => setTitle(event.target.value)}
+              onBlur={() => title.trim() && title !== guide.title && app.renameGuide(guide.id, title.trim())}
+            />
+          </label>
+          <p className="mt-1 text-sm"><Link className="font-bold" to={`/list/${guide.id}`}>Open list</Link> · {visibility === 'public' ? 'Public' : visibility === 'friends' ? 'Friends' : 'Private'}</p>
           {demoFriendsEnabled && !app.supabase && guide.collaboratorIds.includes('demo-mina') ? <p className="text-sm">Mina can edit. This seeded collaborator stays in this browser.</p> : null}
         </div>
       </div>
-      <div className="share-card mt-3 border-2 border-ink bg-[#fffaf3] p-3">
-        <p className="text-xs font-bold uppercase tracking-wide">Share card</p>
-        <p className="font-serif text-2xl italic">{guide.title}</p>
-        <p className="text-sm">{guide.placeIds.length} places · {visibility === 'public' ? 'Public' : visibility === 'friends' ? 'Friends' : 'Private'}</p>
-        <button type="button" className="btn mt-2 text-sm" onClick={onCopy}>{copied ? 'Copied' : 'Copy share link'}</button>
-        <p className="mt-2 text-sm">{app.supabase ? 'This link lets someone join the list after they sign in.' : 'This link opens the list on this browser.'}</p>
+      <div className="mt-3 flex flex-wrap gap-2" role="group" aria-label="List emoji">
+        {LIST_EMOJI.map((emoji) => (
+          <button key={emoji} type="button" className="sheet-icon text-lg" aria-pressed={guide.emoji === emoji} aria-label={`Emoji ${emoji}`} onClick={() => app.setGuideLook(guide.id, { emoji: guide.emoji === emoji ? '' : emoji })}>{emoji}</button>
+        ))}
+      </div>
+      <div className="mt-2 flex flex-wrap gap-2" role="group" aria-label="List color">
+        {LIST_COLORS.map((color) => (
+          <button key={color.id} type="button" className="swatch" style={{ background: color.value }} aria-pressed={guide.color === color.id} aria-label={color.label} onClick={() => app.setGuideLook(guide.id, { color: color.id })} />
+        ))}
+      </div>
+      <div className="mt-3">
+        <ListShareCard guide={{ ...guide, title: title.trim() || guide.title }} cover={cover} uploads={app.photos} copied={copied} onCopy={onCopy} />
       </div>
       <div className="mt-3 flex flex-wrap gap-2">
         {app.supabase ? (
@@ -139,33 +144,33 @@ function GuideEditor({
         ) : demoFriendsEnabled ? (
           <button type="button" className="btn text-sm" onClick={() => app.shareGuide(guide.id, 'demo-mina')}>Share with Mina</button>
         ) : null}
-        {app.supabase ? (
-          <label className="field min-w-40">
-            <span className="sr-only">Who can see this</span>
-            <select value={visibility} onChange={(event) => app.setGuideVisibility(guide.id, event.target.value as 'private' | 'friends' | 'public')}>
-              <option value="private">Private</option>
-              <option value="friends">Friends</option>
-              <option value="public">Public</option>
-            </select>
-          </label>
-        ) : (
-          <button type="button" className="btn text-sm" aria-pressed={isPublic} onClick={() => app.setGuidePublic(guide.id, !isPublic)}>
-            {isPublic ? 'Make private' : 'Make public'}
-          </button>
-        )}
+        <label className="field min-w-40">
+          <span className="sr-only">Who can see this</span>
+          <select value={visibility} onChange={(event) => app.setGuideVisibility(guide.id, event.target.value as 'private' | 'friends' | 'public')}>
+            <option value="private">Private</option>
+            <option value="friends">Friends</option>
+            <option value="public">Public</option>
+          </select>
+        </label>
         <button type="button" className="btn text-sm" onClick={() => app.deleteGuide(guide.id)}>Delete</button>
       </div>
       {shareError ? <p className="mt-2 text-sm">{shareError}</p> : null}
       {guide.placeIds.length ? (
-        <label className="field mt-3">
-          <span>Cover image</span>
-          <select value={guide.coverPlaceId ?? guide.placeIds[0]} onChange={(event) => app.setGuideCover(guide.id, event.target.value)}>
+        <div className="mt-3">
+          <p className="text-sm font-bold">Cover photo</p>
+          <div className="mt-2 flex gap-2 overflow-x-auto">
             {guide.placeIds.map((id) => {
               const place = slimById(id)
-              return <option key={id} value={id}>{place?.name ?? id}</option>
+              if (!place) return null
+              const on = (guide.coverPlaceId ?? guide.placeIds[0]) === id
+              return (
+                <button key={id} type="button" className={`h-16 w-20 shrink-0 overflow-hidden border-2 ${on ? 'border-coral' : 'border-ink'}`} aria-pressed={on} aria-label={`Cover ${place.name}`} onClick={() => app.setGuideCover(guide.id, id)}>
+                  <PlaceThumb place={place} uploads={app.photos} />
+                </button>
+              )
             })}
-          </select>
-        </label>
+          </div>
+        </div>
       ) : null}
       <ul className="mt-3 space-y-2">
         {guide.placeIds.map((id, index) => {
@@ -181,7 +186,17 @@ function GuideEditor({
               className="plan-tray-item"
             >
               <span className="plan-tray-shot" aria-hidden="true"><PlaceThumb place={place} uploads={app.photos} /></span>
-              <Link className="inline-flex min-h-11 min-w-0 flex-1 items-center truncate font-bold" to={`/place/${id}`}>{place.name}</Link>
+              <span className="min-w-0 flex-1">
+                <Link className="inline-flex min-h-11 min-w-0 items-center truncate font-bold" to={`/place/${id}`}>{place.name}</Link>
+                <label className="field">
+                  <span className="sr-only">Note for {place.name}</span>
+                  <input
+                    defaultValue={guide.notes?.[id] ?? ''}
+                    placeholder="A short note"
+                    onBlur={(event) => app.setPlaceNote(guide.id, id, event.target.value)}
+                  />
+                </label>
+              </span>
               <button type="button" className="sheet-icon" aria-label={`Move ${place.name} up`} disabled={index === 0} onClick={() => app.moveInGuide(guide.id, id, -1)}>↑</button>
               <button type="button" className="sheet-icon" aria-label={`Move ${place.name} down`} disabled={index === guide.placeIds.length - 1} onClick={() => app.moveInGuide(guide.id, id, 1)}>↓</button>
               <button type="button" className="sheet-icon" aria-label={`Remove ${place.name}`} onClick={() => app.removeFromGuide(guide.id, id)}>×</button>
