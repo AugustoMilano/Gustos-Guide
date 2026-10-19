@@ -20,6 +20,7 @@ create table if not exists public.profiles (
   name text not null,
   handle text unique not null,
   is_owner boolean not null default false,
+  avatar_url text,
   created_at timestamptz not null default now()
 );
 
@@ -194,6 +195,7 @@ alter table public.plan_votes add column if not exists vote_time text;
 alter table public.activities add column if not exists list_id text;
 alter table public.guides add column if not exists cover_place_id text;
 alter table public.guides add column if not exists invite_token text;
+alter table public.profiles add column if not exists avatar_url text;
 
 alter table public.lists drop constraint if exists lists_visibility_check;
 alter table public.lists add constraint lists_visibility_check check (visibility in ('private', 'friends', 'public'));
@@ -443,13 +445,32 @@ declare
   candidate text;
   n int := 0;
   display text;
+  avatar text;
+  handle_source text;
 begin
   display := coalesce(
+    nullif(trim(new.raw_user_meta_data->>'full_name'), ''),
     nullif(trim(new.raw_user_meta_data->>'name'), ''),
     nullif(split_part(coalesce(new.email, ''), '@', 1), ''),
     'Guest'
   );
-  base := lower(regexp_replace(display, '[^a-z0-9]+', '', 'g'));
+  avatar := coalesce(
+    nullif(trim(new.raw_user_meta_data->>'avatar_url'), ''),
+    nullif(trim(new.raw_user_meta_data->>'picture'), '')
+  );
+  if avatar is not null then
+    avatar := replace(avatar, '_normal.', '_400x400.');
+  end if;
+  handle_source := coalesce(
+    nullif(trim(new.raw_user_meta_data->>'preferred_username'), ''),
+    nullif(trim(new.raw_user_meta_data->>'user_name'), ''),
+    nullif(trim(new.raw_user_meta_data->>'username'), '')
+  );
+  if handle_source is not null then
+    base := lower(regexp_replace(regexp_replace(handle_source, '^@', ''), '[^a-z0-9_]+', '', 'g'));
+  else
+    base := lower(regexp_replace(display, '[^a-z0-9]+', '', 'g'));
+  end if;
   if base is null or base = '' then
     base := 'guest';
   end if;
@@ -459,8 +480,8 @@ begin
     n := n + 1;
     candidate := left(base, 18) || n::text;
   end loop;
-  insert into public.profiles (id, name, handle, is_owner)
-  values (new.id, left(display, 80), candidate, false)
+  insert into public.profiles (id, name, handle, is_owner, avatar_url)
+  values (new.id, left(display, 80), candidate, false, nullif(avatar, ''))
   on conflict (id) do nothing;
 
   update public.friendships
@@ -1000,7 +1021,7 @@ grant usage on schema public to anon, authenticated;
 
 revoke all on table public.profiles from public, anon, authenticated;
 grant select on table public.profiles to anon, authenticated;
-grant update (name, handle) on table public.profiles to authenticated;
+grant update (name, handle, avatar_url) on table public.profiles to authenticated;
 
 revoke all on table public.place_status from public, anon, authenticated;
 grant select, insert, update, delete on table public.place_status to authenticated;

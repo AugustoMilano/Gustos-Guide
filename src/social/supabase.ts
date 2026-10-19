@@ -6,13 +6,15 @@ const BUCKET = 'place-photos'
 
 let cached: SupabaseClient | null | undefined
 
-export function authProviders(): Array<'apple' | 'google'> {
+export type AuthProviderName = 'apple' | 'google' | 'x'
+
+export function authProviders(): AuthProviderName[] {
   const raw = import.meta.env.VITE_AUTH_PROVIDERS ?? ''
-  const allowed = new Set(['apple', 'google'])
-  const found: Array<'apple' | 'google'> = []
+  const allowed = new Set<AuthProviderName>(['apple', 'google', 'x'])
+  const found: AuthProviderName[] = []
   for (const part of raw.split(',')) {
     const name = part.trim().toLowerCase()
-    if (allowed.has(name) && !found.includes(name as 'apple' | 'google')) found.push(name as 'apple' | 'google')
+    if (allowed.has(name as AuthProviderName) && !found.includes(name as AuthProviderName)) found.push(name as AuthProviderName)
   }
   return found
 }
@@ -59,10 +61,10 @@ export async function sendMagicLink(client: SupabaseClient, email: string): Prom
   if (error) throw error
 }
 
-export async function signInWithProvider(client: SupabaseClient, provider: 'apple' | 'google'): Promise<void> {
+export async function signInWithProvider(client: SupabaseClient, provider: AuthProviderName): Promise<void> {
   const { error } = await client.auth.signInWithOAuth({
     provider,
-    options: { redirectTo: AUTH_REDIRECT },
+    options: { redirectTo: provider === 'x' ? 'https://gustos-guide.pages.dev' : AUTH_REDIRECT },
   })
   if (error) throw error
 }

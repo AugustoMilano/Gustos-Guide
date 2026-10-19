@@ -152,7 +152,10 @@ export function Header() {
           </button>
           {user ? (
             <>
-              <Link to={`/u/${user.handle}`}>{user.name}</Link>
+              <Link to={`/u/${user.handle}`} className="inline-flex items-center gap-2">
+                {user.avatarUrl ? <img src={user.avatarUrl} alt="" className="h-8 w-8 rounded-full object-cover" /> : null}
+                {user.name}
+              </Link>
               <button type="button" className="btn text-sm" onClick={signOut}>Sign out</button>
             </>
           ) : (
@@ -211,7 +214,10 @@ export function Header() {
           </button>
           {user ? (
             <>
-              <Link to={`/u/${user.handle}`} onClick={() => setMenu(false)}>{user.name}</Link>
+              <Link to={`/u/${user.handle}`} className="inline-flex items-center gap-2" onClick={() => setMenu(false)}>
+                {user.avatarUrl ? <img src={user.avatarUrl} alt="" className="h-8 w-8 rounded-full object-cover" /> : null}
+                {user.name}
+              </Link>
               <button type="button" className="btn" onClick={signOut}>Sign out {user.name}</button>
             </>
           ) : (

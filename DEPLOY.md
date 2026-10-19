@@ -38,17 +38,17 @@ Leave these unset to stay on the local demo (demo friends included):
 - `VITE_SUPABASE_URL`
 - `VITE_SUPABASE_ANON_KEY`
 
-When both are set at build time, the bundle signs in with an email magic link and does not show demo friends. Optional, and unset in the shipped build:
+When both are set at build time, the bundle signs in with an email magic link and does not show demo friends. Optional:
 
-- `VITE_AUTH_PROVIDERS` — comma list, `google` and/or `apple`, to show those buttons
-- `VITE_AUTH_REDIRECT` — overrides the default return URL `https://gustos-guide.pages.dev`
+- `VITE_AUTH_PROVIDERS` — comma list. `x` shows Continue with X. `google` and `apple` show those buttons.
+- `VITE_AUTH_REDIRECT` — overrides the email return URL. Continue with X always returns to `https://gustos-guide.pages.dev`.
 
 1. Apply `supabase/schema.sql` in the SQL editor or with psql. Re-running it is safe. It creates tables, grants, RLS, the private `place-photos` bucket, and realtime on `notifications`, `plans`, `plan_members`, and `plan_votes`.
 2. Authentication → URL configuration: Site URL `https://gustos-guide.pages.dev`. Redirect URLs: `https://gustos-guide.pages.dev` and `https://gustos-guide.pages.dev/**`.
 3. Authentication → Email: magic link on. The Magic Link template should keep `{{ .ConfirmationURL }}`. Password sign-in is unused.
 4. The built-in mailer is for testing. It is rate-limited (often 2 emails per hour) and, on the free plan, only delivers to the project’s team until you set custom SMTP. Auth also has its own email rate limit (default 30 per hour) once SMTP is custom.
 5. After the owner signs up once, in the SQL editor: `update public.profiles set is_owner = true where id = '<auth user uuid>';` The browser cannot set that flag. Only that account publishes Gusto's Score.
-6. Leave Google and Apple providers off until their client IDs exist. The provider callback is `https://<project-ref>.supabase.co/auth/v1/callback`. Then set `VITE_AUTH_PROVIDERS` and rebuild.
+6. X / Twitter (OAuth 2.0) uses `external_x_enabled`, `external_x_client_id`, and `external_x_secret`. The provider callback is `https://<project-ref>.supabase.co/auth/v1/callback`. This build sets `VITE_AUTH_PROVIDERS=x`. Google and Apple stay off until their client IDs exist.
 7. Add the two `VITE_` variables in the host environment, then rebuild and upload.
 
 Do not put a secret or service-role key in `VITE_` variables. The publishable key is what the browser sends as `apikey`. Row level security is what limits it.

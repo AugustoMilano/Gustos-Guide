@@ -45,6 +45,7 @@ export function ProfilePage() {
     <main id="main" tabIndex={-1} className="mx-auto max-w-3xl px-4 pt-24 pb-16 outline-none">
       <p className="text-xs font-bold uppercase tracking-wide">{mine ? 'Your profile' : person ? 'Demo profile' : 'Friend'}</p>
       <h1 className="font-serif text-5xl italic">{mine ? app.user?.name : person?.name ?? friend?.name}</h1>
+      {mine && app.user?.avatarUrl ? <img src={app.user.avatarUrl} alt="" className="mt-4 h-16 w-16 rounded-full border-2 border-ink object-cover" /> : null}
       <p className="mt-2">
         {mine ? (app.supabase ? 'Signed in' : 'Signed in on this browser') : person ? `${person.neighborhood} · streak ${person.streak} weeks` : `@${friend?.handle ?? handle}`}
         {' '}· {beenPlaces.length} been

@@ -36,6 +36,15 @@ test.describe('supabase', () => {
     await expect(form.getByRole('button', { name: 'Email me a link' })).toBeVisible()
     await expect(form.getByRole('button', { name: 'Sign in with Apple' })).toHaveCount(0)
     await expect(form.getByRole('button', { name: 'Sign in with Google' })).toHaveCount(0)
+    const wantsX = (process.env.VITE_AUTH_PROVIDERS ?? '').toLowerCase().split(',').map((part) => part.trim()).includes('x')
+    if (wantsX) {
+      const xButton = form.getByRole('button', { name: 'Continue with X' })
+      if ((await xButton.count()) === 1) {
+        const xBox = await xButton.boundingBox()
+        const emailBox = await form.getByLabel('Email').boundingBox()
+        expect(xBox && emailBox && xBox.y < emailBox.y).toBeTruthy()
+      }
+    }
     await page.keyboard.press('Escape')
     await page.goto('/#/feed')
     await expect(page.getByText('Mina Cho')).toHaveCount(0)

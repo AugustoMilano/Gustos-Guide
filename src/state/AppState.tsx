@@ -63,10 +63,10 @@ type Compare = { placeId: string; bucket: Bucket; low: number; high: number }
 type AppValue = {
   user: SessionUser | null
   supabase: boolean
-  authProviders: Array<'apple' | 'google'>
+  authProviders: Array<'apple' | 'google' | 'x'>
   signIn: (name: string) => Promise<void>
   sendMagicLink: (email: string) => Promise<void>
-  signInProvider: (provider: 'apple' | 'google') => Promise<void>
+  signInProvider: (provider: 'apple' | 'google' | 'x') => Promise<void>
   signOut: () => void
   statuses: Record<string, VisitStatus>
   setStatus: (placeId: string, status: VisitStatus) => void
@@ -390,7 +390,7 @@ export function AppProvider({ children }: { children: ReactNode }) {
     setAnnouncement('Check your email for a sign-in link.')
   }
 
-  async function providerSignIn(provider: 'apple' | 'google') {
+  async function providerSignIn(provider: 'apple' | 'google' | 'x') {
     if (!remote) throw new Error('Supabase is not configured.')
     if (!providers.includes(provider)) throw new Error('That sign-in is not turned on.')
     await signInWithProvider(remote, provider)

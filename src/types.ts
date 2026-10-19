@@ -149,4 +149,5 @@ export type SessionUser = {
   name: string
   handle: string
   isOwner: boolean
+  avatarUrl?: string
 }

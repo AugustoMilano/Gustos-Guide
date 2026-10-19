@@ -4,7 +4,66 @@ import type { Activity, Bucket, Comment, GuideVisibility, Notice, Plan, RankScor
 import type { LocalBundle } from './importLocal.ts'
 import { signedPhotoUrl, uploadPlacePhoto } from './supabase.ts'
 
-export type FriendProfile = { id: string; name: string; handle: string }
+export type FriendProfile = { id: string; name: string; handle: string; avatarUrl?: string }
+
+type OwnProfile = { id: string; name: string; handle: string; is_owner: boolean; avatar_url?: string | null }
+
+function claim(meta: Record<string, unknown>, key: string): string {
+  const value = meta[key]
+  return typeof value === 'string' ? value.trim() : ''
+}
+
+export function xClaims(user: User): { name: string; handle: string; avatarUrl: string } | null {
+  const fromX = user.app_metadata?.provider === 'x' || user.identities?.some((identity) => identity.provider === 'x')
+  if (!fromX) return null
+  const meta = (user.user_metadata ?? {}) as Record<string, unknown>
+  const name = claim(meta, 'full_name') || claim(meta, 'name')
+  const rawHandle = claim(meta, 'preferred_username') || claim(meta, 'user_name') || claim(meta, 'username')
+  const handle = rawHandle.replace(/^@/, '').toLowerCase().replace(/[^a-z0-9_]/g, '').slice(0, 24)
+  const avatarUrl = (claim(meta, 'avatar_url') || claim(meta, 'picture')).replace('_normal.', '_400x400.')
+  if (!name && !handle && !avatarUrl) return null
+  return { name, handle, avatarUrl }
+}
+
+async function loadOwnProfile(client: SupabaseClient, id: string) {
+  const withAvatar = await client.from('profiles').select('id, name, handle, is_owner, avatar_url').eq('id', id).maybeSingle()
+  if (!withAvatar.error || !/avatar_url|schema cache/i.test(withAvatar.error.message)) return withAvatar
+  return client.from('profiles').select('id, name, handle, is_owner').eq('id', id).maybeSingle()
+}
+
+function generatedHandle(name: string, handle: string): boolean {
+  const base = name.toLowerCase().replace(/[^a-z0-9]+/g, '').slice(0, 24)
+  if (!handle || handle === 'guest') return true
+  if (!base) return false
+  return handle === base || (handle.startsWith(base.slice(0, 18)) && /\d+$/.test(handle))
+}
+
+async function applyXProfile(client: SupabaseClient, authUser: User, profile: OwnProfile): Promise<void> {
+  const claims = xClaims(authUser)
+  if (!claims) return
+  const patch: { name?: string; handle?: string; avatar_url?: string } = {}
+  if (claims.avatarUrl && (!profile.avatar_url || profile.avatar_url.includes('_normal.'))) patch.avatar_url = claims.avatarUrl
+  if (claims.name && (!profile.name || profile.name === 'Guest')) patch.name = claims.name.slice(0, 80)
+  if (claims.handle && generatedHandle(profile.name, profile.handle) && profile.handle !== claims.handle) patch.handle = claims.handle
+  if (!patch.name && !patch.handle && !patch.avatar_url) return
+  let { error } = await client.from('profiles').update(patch).eq('id', profile.id)
+  if (error && /avatar_url|schema cache/i.test(error.message)) {
+    delete patch.avatar_url
+    if (!patch.name && !patch.handle) return
+    const retry = await client.from('profiles').update(patch).eq('id', profile.id)
+    error = retry.error
+  }
+  if (error?.code === '23505') {
+    delete patch.handle
+    if (!patch.name && !patch.avatar_url) return
+    const retry = await client.from('profiles').update(patch).eq('id', profile.id)
+    error = retry.error
+  }
+  if (error) return
+  if (patch.name) profile.name = patch.name
+  if (patch.handle) profile.handle = patch.handle
+  if (patch.avatar_url) profile.avatar_url = patch.avatar_url
+}
 export type FriendRequest = { id: string; direction: 'in' | 'out'; name: string; handle: string }
 
 export type AccountDoc = {
@@ -77,10 +136,10 @@ export async function loadHouseScores(client: SupabaseClient): Promise<Record<st
 }
 
 export async function loadAccount(client: SupabaseClient, authUser: User): Promise<AccountSnapshot> {
-  let profile: { id: string; name: string; handle: string; is_owner: boolean } | null = null
+  let profile: OwnProfile | null = null
   let lastError: { message?: string; code?: string } | null = null
   for (let attempt = 0; attempt < 5; attempt += 1) {
-    const result = await client.from('profiles').select('id, name, handle, is_owner').eq('id', authUser.id).maybeSingle()
+    const result = await loadOwnProfile(client, authUser.id)
     if (result.error) {
       lastError = result.error
       break
@@ -94,12 +153,14 @@ export async function loadAccount(client: SupabaseClient, authUser: User): Promi
   const hinted = schemaHint(lastError)
   if (hinted) throw hinted
   if (!profile) throw new Error('Your profile is not ready yet. Apply supabase/schema.sql, then open the sign-in link again.')
+  await applyXProfile(client, authUser, profile)
 
   const user: SessionUser = {
     id: profile.id,
     name: profile.name,
     handle: profile.handle,
     isOwner: profile.is_owner,
+    avatarUrl: profile.avatar_url || undefined,
   }
 
   const [statusRes, guideRes, itemRes, collabRes, planRes, memberRes, voteRes, activityRes, likeRes, commentRes, noticeRes, rankRes, photoRes, friendRes, house] = await Promise.all([
