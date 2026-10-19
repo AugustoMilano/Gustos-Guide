@@ -6,6 +6,7 @@ import { PhotoFrame } from '../components/PhotoFrame.tsx'
 import { PlaceThumb } from '../components/PlaceThumb.tsx'
 import { SignInSheet } from '../components/SignInSheet.tsx'
 import { catalog, loadPlace, slimById } from '../content/load.ts'
+import { demoFriendsEnabled } from '../lib/demo.ts'
 import { displayPhotos } from '../lib/gallery.ts'
 import { ScoreBadge } from '../components/ScoreBadge.tsx'
 import { formatPeriods, hoursPhrase } from '../lib/hours.ts'
@@ -131,7 +132,7 @@ export function PlacePage() {
           {reference ? <p className="public-ref mt-2">{reference}</p> : null}
           {app.user && friends.count ? (
             <p className="mt-2 text-sm text-ink/70">
-              {friends.demo ? 'Demo friends · ' : ''}
+              {demoFriendsEnabled && friends.demo ? 'Seeded friends · ' : ''}
               {friends.loved ? `${friends.loved} ${friends.loved === 1 ? 'friend loved' : 'friends loved'} this. ` : ''}
               Friend score {friends.average}.
             </p>
@@ -160,9 +161,7 @@ export function PlacePage() {
               <p className="mt-2 max-w-2xl">{howToGetIn(place)}</p>
             </section>
           ) : null}
-          {app.user ? (
-            <FriendsBeen placeId={place.id} />
-          ) : null}
+          <FriendsBeen placeId={place.id} onSignIn={() => setSignIn(true)} />
           {full?.orderThis.length ? (
             <section className="mt-6">
               <h2 className="font-serif text-3xl italic">What to order</h2>
@@ -209,22 +208,38 @@ export function PlacePage() {
   )
 }
 
-function FriendsBeen({ placeId }: { placeId: string }) {
+function FriendsBeen({ placeId, onSignIn }: { placeId: string; onSignIn: () => void }) {
   const app = useApp()
   const people = app.demoUsers.filter((person) => person.been.includes(placeId) || person.scores[placeId] !== undefined)
-  if (!people.length) return null
+  const scored = app.friendMarks(placeId)
+  if (!app.user && !people.length) {
+    return (
+      <section className="mt-6">
+        <h2 className="font-serif text-3xl italic">Friends who've been</h2>
+        <p className="mt-2 text-sm">Sign in to see which friends have scored this.</p>
+        <button type="button" className="btn mt-3" onClick={onSignIn}>Sign in</button>
+      </section>
+    )
+  }
+  const rows = [
+    ...people.map((person) => ({ id: person.id, name: person.name, handle: person.handle, demo: true, score: person.scores[placeId] as number | undefined })),
+    ...scored.map((person) => ({ id: person.id, name: person.name, handle: person.handle, demo: false, score: person.score })),
+  ]
   return (
     <section className="mt-6">
       <h2 className="font-serif text-3xl italic">Friends who've been</h2>
-      <ul className="rsvp-list mt-2">
-        {people.map((person) => (
-          <li key={person.id} className="rsvp-row">
-            <span className="avatar" aria-hidden="true">{person.name.split(' ').map((part) => part[0] ?? '').join('').slice(0, 2)}</span>
-            <Link className="inline-flex min-h-11 min-w-0 flex-1 items-center truncate font-bold" to={`/u/${person.handle}`}>{person.name}</Link>
-            <span className="tag">Demo{person.scores[placeId] !== undefined ? ` · ${person.scores[placeId].toFixed(1)}` : ''}</span>
-          </li>
-        ))}
-      </ul>
+      {rows.length === 0 ? <p className="mt-2 text-sm">None of your friends have scored this yet.</p> : (
+        <ul className="rsvp-list mt-2">
+          {rows.map((person) => (
+            <li key={person.id} className="rsvp-row">
+              <span className="avatar" aria-hidden="true">{person.name.split(' ').map((part) => part[0] ?? '').join('').slice(0, 2)}</span>
+              <Link className="inline-flex min-h-11 min-w-0 flex-1 items-center truncate font-bold" to={`/u/${person.handle}`}>{person.name}</Link>
+              {demoFriendsEnabled && person.demo ? <span className="tag">Seeded</span> : null}
+              {person.score !== undefined ? <span className="tag">{person.score.toFixed(1)}</span> : null}
+            </li>
+          ))}
+        </ul>
+      )}
     </section>
   )
 }

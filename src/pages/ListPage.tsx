@@ -2,6 +2,7 @@ import { Link, useParams } from 'react-router-dom'
 import { PlaceThumb } from '../components/PlaceThumb.tsx'
 import { ScoreBadge } from '../components/ScoreBadge.tsx'
 import { slimById } from '../content/load.ts'
+import { demoFriendsEnabled } from '../lib/demo.ts'
 import { usePageMeta } from '../lib/meta.ts'
 import { useApp } from '../state/AppState.tsx'
 
@@ -28,7 +29,7 @@ export function ListPage() {
   const cover = slimById(guide.coverPlaceId ?? guide.placeIds[0] ?? '')
   return (
     <main id="main" tabIndex={-1} className="mx-auto max-w-3xl px-4 pt-24 pb-16 outline-none">
-      <p className="text-xs font-bold uppercase tracking-wide">{guide.demo ? 'Demo list' : visibility === 'public' ? 'Public list' : visibility === 'friends' ? 'Friends list' : 'Private list'}</p>
+      <p className="text-xs font-bold uppercase tracking-wide">{demoFriendsEnabled && guide.demo ? 'Seeded list' : visibility === 'public' ? 'Public list' : visibility === 'friends' ? 'Friends list' : 'Private list'}</p>
       <h1 className="font-serif text-5xl italic">{guide.title}</h1>
       {guide.shared ? <p className="mt-2 text-sm">{app.supabase ? 'Collaborative.' : 'Collaborative. Edits stay in this browser.'}</p> : null}
       {cover ? (

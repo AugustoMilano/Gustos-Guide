@@ -1,8 +1,10 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
+import { FriendEmpty } from '../components/FriendEmpty.tsx'
 import { PlaceThumb } from '../components/PlaceThumb.tsx'
 import { SignInSheet } from '../components/SignInSheet.tsx'
 import { catalog } from '../content/load.ts'
+import { demoFriendsEnabled } from '../lib/demo.ts'
 import { usePageMeta } from '../lib/meta.ts'
 import { useApp } from '../state/AppState.tsx'
 
@@ -10,30 +12,42 @@ export function FeedPage() {
   const app = useApp()
   const [drafts, setDrafts] = useState<Record<string, string>>({})
   const [signIn, setSignIn] = useState(false)
-  const [handle, setHandle] = useState('')
-  const [email, setEmail] = useState('')
-  const [invite, setInvite] = useState('')
-  const [friendError, setFriendError] = useState('')
   usePageMeta(
     "Feed · Gusto's Guide",
-    app.supabase ? 'What you and your friends have saved, ranked, and photographed in Seattle.' : 'What demo friends and you have saved, ranked, and photographed in Seattle.',
+    'What you and your friends have saved, ranked, and photographed in Seattle.',
     './og/og.svg',
   )
   const names = new Map<string, string>([[app.user?.id ?? '', app.user?.name ?? '']])
   for (const user of app.demoUsers) names.set(user.id, user.name)
   for (const user of app.friends) names.set(user.id, user.name)
   const board = [
-    ...app.demoUsers.map((user) => ({ id: user.id, name: user.name, count: user.been.length, streak: user.streak, demo: true })),
-    { id: app.user?.id ?? 'you', name: app.user?.name ?? 'You', count: Object.keys(app.scores).length, streak: 0, demo: false },
+    ...app.demoUsers.map((user) => ({ id: user.id, name: user.name, href: `/u/${user.handle}`, count: user.been.length, streak: user.streak, demo: true })),
+    ...app.friends.map((user) => ({ id: user.id, name: user.name, href: `/u/${user.handle}`, count: 0, streak: 0, demo: false })),
+    ...(app.user ? [{ id: app.user.id, name: app.user.name, href: '/my', count: Object.keys(app.scores).length, streak: 0, demo: false }] : []),
   ].sort((a, b) => b.count - a.count)
 
   return (
     <main id="main" tabIndex={-1} className="mx-auto grid max-w-6xl gap-8 px-4 pt-24 pb-16 outline-none lg:grid-cols-[minmax(0,1fr)_280px]">
       <div>
-        <p className="text-xs font-bold tracking-[0.14em] uppercase">{app.supabase ? 'Friends only' : 'Demo friends are labeled'}</p>
+        <p className="text-xs font-bold tracking-[0.14em] uppercase">Friends only</p>
         <h1 className="font-serif text-5xl italic">The feed</h1>
         <ul className="mt-6 space-y-4">
-          {app.activities.length === 0 ? <li className="feed-card">Nothing on the feed yet.</li> : null}
+          {app.activities.length === 0 ? (
+            <li className="feed-card">
+              {app.user ? (
+                <>
+                  <p className="font-serif text-2xl italic">The feed is quiet.</p>
+                  <p className="mt-1 text-sm">When friends save a place or start a plan, it shows up here.</p>
+                </>
+              ) : (
+                <>
+                  <p className="font-serif text-2xl italic">Sign in to see the feed.</p>
+                  <p className="mt-1 text-sm">Saves, plans, and photos from people you know land here.</p>
+                  <button type="button" className="btn btn-coral mt-3" onClick={() => setSignIn(true)}>Sign in</button>
+                </>
+              )}
+            </li>
+          ) : null}
           {app.activities.map((activity) => {
             const person = app.demoUsers.find((user) => user.id === activity.userId)
             const place = activity.placeId ? catalog.places.find((item) => item.id === activity.placeId) : undefined
@@ -41,7 +55,7 @@ export function FeedPage() {
               <li key={activity.id} className="feed-card">
                 <p className="text-sm font-bold">
                   {names.get(activity.userId) ?? 'Someone'}
-                  {person?.demo ? ' · Demo' : ''}
+                  {demoFriendsEnabled && person?.demo ? ' · Seeded' : ''}
                 </p>
                 <p className="mt-1">{activity.text}</p>
                 {place ? (
@@ -64,7 +78,7 @@ export function FeedPage() {
                     {app.comments.filter((comment) => comment.activityId === activity.id).map((comment) => (
                       <li key={comment.id} className="border-l-2 border-ink pl-2">
                         <strong>{names.get(comment.userId) ?? 'You'}</strong>
-                        {app.demoUsers.some((user) => user.id === comment.userId) ? ' · Demo' : ''}
+                        {demoFriendsEnabled && app.demoUsers.some((user) => user.id === comment.userId) ? ' · Seeded' : ''}
                         <span className="mt-1 block">{comment.text}</span>
                       </li>
                     ))}
@@ -97,34 +111,13 @@ export function FeedPage() {
             <li key={row.id} className="flex items-center gap-2">
               <span className="grid h-8 w-8 shrink-0 place-items-center border-2 border-ink bg-coral text-sm font-bold">{index + 1}</span>
               <span>
-                <Link to={row.demo ? `/u/${row.id.replace('demo-', '')}` : '/my'} className="font-bold">{row.name}</Link>
-                {row.demo ? ' · Demo' : ''} · {row.count} ranked · streak {row.streak}
+                <Link to={row.href} className="font-bold">{row.name}</Link>
+                {demoFriendsEnabled && row.demo ? ' · Seeded' : ''} · {row.count} ranked · streak {row.streak}
               </span>
             </li>
           ))}
         </ol>
         <h2 className="mt-8 font-serif text-3xl italic">Friends</h2>
-        {app.supabase && app.user ? (
-          <form
-            className="mt-3 space-y-2"
-            onSubmit={(event) => {
-              event.preventDefault()
-              setFriendError('')
-              setInvite('')
-              const run = email.trim()
-                ? app.inviteByEmail(email).then((link) => setInvite(link))
-                : app.requestFriend(handle)
-              void run.catch((reason: unknown) => setFriendError(reason instanceof Error ? reason.message : 'Could not send that.'))
-            }}
-          >
-            <label className="field"><span>Username</span><input value={handle} onChange={(event) => setHandle(event.target.value)} /></label>
-            <label className="field"><span>Or email</span><input type="email" value={email} onChange={(event) => setEmail(event.target.value)} /></label>
-            <button type="button" className="btn text-sm" disabled={!handle.trim()} onClick={() => { setFriendError(''); void app.requestFriend(handle).catch((reason: unknown) => setFriendError(reason instanceof Error ? reason.message : 'Could not send that.')) }}>Request</button>
-            <button type="button" className="btn ml-2 text-sm" disabled={!email.trim()} onClick={() => { setFriendError(''); void app.inviteByEmail(email).then(setInvite).catch((reason: unknown) => setFriendError(reason instanceof Error ? reason.message : 'Could not send that.')) }}>Invite link</button>
-            {invite ? <p className="text-sm break-all">{invite}</p> : null}
-            {friendError ? <p className="text-sm">{friendError}</p> : null}
-          </form>
-        ) : null}
         <ul className="mt-3 space-y-2">
           {app.requests.map((request) => (
             <li key={request.id}>
@@ -147,13 +140,19 @@ export function FeedPage() {
           {app.demoUsers.map((user) => (
             <li key={user.id}>
               <Link to={`/u/${user.handle}`} className="font-bold">{user.name}</Link>
-              <span className="text-sm"> · Demo · {app.following.includes(user.id) ? 'Following' : 'Not following'}</span>
+              <span className="text-sm"> · {demoFriendsEnabled ? 'Seeded · ' : ''}{app.following.includes(user.id) ? 'Following' : 'Not following'}</span>
               <button type="button" className="btn ml-2 text-sm" onClick={() => app.user && app.toggleFollow(user.id)}>
                 {app.following.includes(user.id) ? 'Unfollow' : 'Follow'}
               </button>
             </li>
           ))}
         </ul>
+        <div className="mt-3">
+          <FriendEmpty
+            onSignIn={() => setSignIn(true)}
+            title={app.friends.length || app.demoUsers.length ? 'Invite someone else' : 'No friends yet'}
+          />
+        </div>
       </aside>
       <SignInSheet open={signIn} onClose={() => setSignIn(false)} />
     </main>

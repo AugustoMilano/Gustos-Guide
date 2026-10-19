@@ -7,6 +7,7 @@ import { Reveal } from './Reveal.tsx'
 import { displayPhotos, type DisplayPhoto, type LivePhoto } from '../lib/gallery.ts'
 import { ScoreBadge } from './ScoreBadge.tsx'
 import { MapLinks } from './MapLinks.tsx'
+import { demoFriendsEnabled } from '../lib/demo.ts'
 import { priceLabel, publicReference, yelpBizUrl } from '../lib/format.ts'
 import { bounceMark } from '../lib/motion.ts'
 import type { GuideEntry, SlimPlace, VisitStatus } from '../types.ts'
@@ -206,7 +207,7 @@ export function GuideEntryCard({
       {reference ? <p className="public-ref mt-3">{reference}</p> : null}
       {signedIn && friends.count ? (
         <p className="text-sm text-ink/70">
-          {friends.demo ? 'Demo friends · ' : ''}
+          {demoFriendsEnabled && friends.demo ? 'Seeded friends · ' : ''}
           {friends.loved ? `${friends.loved} ${friends.loved === 1 ? 'friend loved' : 'friends loved'} this. ` : ''}
           Friend score {friends.average}.
         </p>
@@ -249,7 +250,7 @@ export function GuideEntryCard({
       {reference ? <p className="public-ref mt-3">{reference}</p> : null}
       {signedIn && friends.count ? (
         <p className="text-sm text-ink/70">
-          {friends.demo ? 'Demo friends · ' : ''}
+          {demoFriendsEnabled && friends.demo ? 'Seeded friends · ' : ''}
           {friends.loved ? `${friends.loved} ${friends.loved === 1 ? 'friend loved' : 'friends loved'} this. ` : ''}
           Friend score {friends.average}.
         </p>

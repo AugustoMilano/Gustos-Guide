@@ -4,10 +4,13 @@ import { Link, useNavigate, useParams } from 'react-router-dom'
 import { GuideMap } from '../components/GuideMap.tsx'
 import { MapLinks } from '../components/MapLinks.tsx'
 import { PlaceThumb } from '../components/PlaceThumb.tsx'
+import { FriendEmpty } from '../components/FriendEmpty.tsx'
 import { PlanCard, PlanSheet } from '../components/PlanSheet.tsx'
+import { SignInSheet } from '../components/SignInSheet.tsx'
 import { SlidingRow } from '../components/SlidingRow.tsx'
 import { ScoreBadge } from '../components/ScoreBadge.tsx'
 import { catalog, slimById } from '../content/load.ts'
+import { demoFriendsEnabled } from '../lib/demo.ts'
 import { priceLabel, publicReference } from '../lib/format.ts'
 import { usePageMeta } from '../lib/meta.ts'
 import { useApp } from '../state/AppState.tsx'
@@ -24,7 +27,7 @@ export function PlansPage() {
         <button type="button" className="btn btn-coral" onClick={() => setSheet(true)}>New plan</button>
         <Link className="btn" to="/plans/wizard">Plan dinner</Link>
       </div>
-      {!app.user ? <p className="mt-3 text-sm">{app.supabase ? 'Sign in to host a plan.' : 'Sign in to host. The demo plan below is already on the table.'}</p> : null}
+      {!app.user ? <p className="mt-3 text-sm">Sign in to host a plan. Friends you add are the only people invited.</p> : null}
       <ul className="mt-6 space-y-3">
         {app.plans.length === 0 ? <li className="text-sm">No plans yet. Start one when you know the night.</li> : null}
         {app.plans.map((plan) => (
@@ -49,7 +52,7 @@ export function PlanDetailPage() {
     return <main className="mx-auto max-w-3xl px-4 pt-28"><h1 className="font-serif text-5xl italic">That plan wandered off.</h1></main>
   }
   const names = new Map<string, string>()
-  for (const user of app.demoUsers) names.set(user.id, `${user.name} · Demo`)
+  for (const user of app.demoUsers) names.set(user.id, user.name)
   for (const user of app.friends) names.set(user.id, user.name)
   if (app.user) names.set(app.user.id, app.user.name)
   const tally = new Map<string, number>()
@@ -57,7 +60,7 @@ export function PlanDetailPage() {
   return (
     <main id="main" tabIndex={-1} className="mx-auto max-w-3xl px-4 pt-24 pb-16 outline-none">
       <Link to="/plans" className="text-sm font-bold">← Plans</Link>
-      <p className="mt-3 text-xs font-bold uppercase tracking-wide">{plan.demo ? 'Demo plan' : 'Your plan'}{plan.locked ? ' · Locked in' : ''}{plan.vibe ? ` · ${plan.vibe}` : ''}</p>
+      <p className="mt-3 text-xs font-bold uppercase tracking-wide">{demoFriendsEnabled && plan.demo ? 'Seeded plan' : 'Your plan'}{plan.locked ? ' · Locked in' : ''}{plan.vibe ? ` · ${plan.vibe}` : ''}</p>
       <h1 className="font-serif text-5xl italic">{plan.title}</h1>
       {plan.locked ? <p className="mt-2">This dinner is locked in. The votes below are the record.</p> : null}
       {plan.locked ? <LockedMaps plan={plan} /> : null}
@@ -124,7 +127,7 @@ export function PlanDetailPage() {
           const label = names.get(userId) ?? 'Guest'
           return (
             <li key={userId} className="rsvp-row">
-              <span className="avatar" aria-hidden="true">{initials(label.replace(' · Demo', ''))}</span>
+              <span className="avatar" aria-hidden="true">{initials(label)}</span>
               <span className="min-w-0 flex-1 truncate font-bold">{label}</span>
               <span className="tag">{rsvp === 'yes' ? 'Coming' : rsvp === 'no' ? 'Out' : 'Maybe'}</span>
             </li>
@@ -215,9 +218,10 @@ export function PlanWizardPage() {
   const [budget, setBudget] = useState(2)
   const [choice, setChoice] = useState('')
   const [celebrate, setCelebrate] = useState(false)
+  const [signIn, setSignIn] = useState(false)
   usePageMeta("Plan dinner · Gusto's Guide", 'Pick friends, an area, a vibe, and a budget. Then vote and lock it in.', './og/og.svg')
 
-  const roster = app.supabase
+  const roster = app.friends.length
     ? app.friends.map((person) => ({ id: person.id, name: person.name, neighborhood: '', been: [] as string[], scores: {} as Record<string, number>, demo: false }))
     : app.demoUsers
   const friendPlaces = new Set(
@@ -288,8 +292,8 @@ export function PlanWizardPage() {
       {step === 0 ? (
         <fieldset className="mt-6">
           <legend className="font-serif text-3xl italic">Who is coming?</legend>
-          <p className="mt-2 text-sm">{app.supabase ? 'Friends you have accepted. Their To go lists stay private, so the shortlist uses yours.' : 'Demo friends. Picking them looks for To go overlaps with places they have been.'}</p>
-          {app.supabase && roster.length === 0 ? <p className="mt-2 text-sm">No friends yet. Send a request from the feed. You can still plan dinner.</p> : null}
+          <p className="mt-2 text-sm">Friends you have accepted. Their To go lists stay private, so the shortlist uses yours.</p>
+          {roster.length === 0 ? <div className="mt-3"><FriendEmpty onSignIn={() => setSignIn(true)} title="No friends yet" line="Add a username or email an invite. You can still plan dinner on your own." /></div> : null}
           <div className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-3">
             {roster.map((person, index) => {
               const on = friends.includes(person.id)
@@ -303,7 +307,7 @@ export function PlanWizardPage() {
                 >
                   <span className="avatar" style={{ background: AVATAR[index % AVATAR.length] }}>{initials(person.name)}</span>
                   <span className="font-serif text-2xl italic leading-none">{person.name}</span>
-                  <span className="text-xs font-bold uppercase tracking-wide">{person.demo ? `${person.neighborhood} · Demo` : 'Friend'}</span>
+                  <span className="text-xs font-bold uppercase tracking-wide">{demoFriendsEnabled && person.demo ? person.neighborhood : 'Friend'}</span>
                 </button>
               )
             })}
@@ -394,7 +398,7 @@ export function PlanWizardPage() {
                       </span>
                       <span className="mt-2 flex items-center gap-1">
                         {fans.map((person, index) => (
-                          <span key={person.id} className="avatar avatar-sm" style={{ background: AVATAR[index % AVATAR.length] }} title={person.demo ? `${person.name} · Demo` : person.name}>{initials(person.name)}</span>
+                          <span key={person.id} className="avatar avatar-sm" style={{ background: AVATAR[index % AVATAR.length] }} title={person.name}>{initials(person.name)}</span>
                         ))}
                         {you ? <span className="avatar avatar-sm" style={{ background: '#181818' }} title="Your vote">You</span> : null}
                         <span className="ml-auto font-serif text-3xl italic">{tally}</span>
@@ -413,6 +417,7 @@ export function PlanWizardPage() {
         <button type="button" className="btn" disabled={step === 0} onClick={() => setStep((value) => Math.max(0, value - 1))}>Back</button>
         {step < 4 ? <button type="button" className="btn btn-coral" onClick={() => setStep((value) => Math.min(4, value + 1))}>Next</button> : null}
       </div>
+      <SignInSheet open={signIn} onClose={() => setSignIn(false)} />
       {celebrate ? (
         <div className="celebrate" role="status">
           <p className="font-serif text-6xl italic">Locked in.</p>

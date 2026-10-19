@@ -1,6 +1,6 @@
 # Gusto's Guide
 
-Seattle restaurant guide built from Augusto's saved places. House guides are public and read-only. Sign in with a name to mark Been / To go, rank places, upload photos, and keep your own lists. Demo friends are labeled demo and live in this browser.
+Seattle restaurant guide built from Augusto's saved places. House guides are public and read-only. Sign in to mark Been / To go, rank places, upload photos, and keep your own lists. Friends, the feed, and plans come from real accounts.
 
 ## Run
 
@@ -41,7 +41,7 @@ That regenerates `src/content/`. Launch places are resolved Seattle food and dri
 
 ## Supabase
 
-Leave `VITE_SUPABASE_URL` and `VITE_SUPABASE_ANON_KEY` unset to stay local. Demo friends, demo lists, and the demo plan only appear in that local mode.
+Leave `VITE_SUPABASE_URL` and `VITE_SUPABASE_ANON_KEY` unset to stay local. Seeded friends stay off unless you start the dev server with `VITE_DEMO_FRIENDS=1`. Production builds ignore that flag.
 
 When both are set, sign-in is an email magic link (PKCE). The return URL is the current origin plus the current path, so `?code=` stays in the query string and does not collide with hash routes. `VITE_AUTH_PROVIDERS` is a comma list. `x` shows Continue with X above the email field and returns to that same origin. `google` and `apple` stay hidden unless they are listed. A new X account stores the X name, handle (`preferred_username` or `user_name`), and avatar on the profile. Public terms and privacy live at `/terms` and `/privacy`. The first sign-in on a browser that already has To go, Been, guides, or photos offers to import them. Apply `supabase/schema.sql` first. It is safe to re-run. It grants `anon` and `authenticated` itself, because new tables are not exposed automatically, and it turns on realtime for notifications and plans.
 

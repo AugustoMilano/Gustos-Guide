@@ -1,8 +1,10 @@
 import { useMemo, useState, type PointerEvent as ReactPointerEvent } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useReducedMotion } from 'framer-motion'
+import { FriendEmpty } from './FriendEmpty.tsx'
 import { Modal } from './Modal.tsx'
 import { SlidingRow } from './SlidingRow.tsx'
+import { demoFriendsEnabled } from '../lib/demo.ts'
 import { PlaceThumb } from './PlaceThumb.tsx'
 import { SignInSheet } from './SignInSheet.tsx'
 import { catalog } from '../content/load.ts'
@@ -82,14 +84,15 @@ export function PlanSheet({ open, onClose }: { open: boolean; onClose: () => voi
     () => catalog.guides.filter((guide) => guide.group === 'Best of' || guide.group === 'Occasion').slice(0, 4),
     [],
   )
-  const roster = app.supabase
-    ? app.friends.map((person) => ({ id: person.id, name: person.name, demo: false }))
-    : app.demoUsers.map((person) => ({ id: person.id, name: person.name, demo: true }))
+  const roster = [
+    ...app.friends.map((person) => ({ id: person.id, name: person.name, demo: false })),
+    ...app.demoUsers.map((person) => ({ id: person.id, name: person.name, demo: true })),
+  ]
 
   const results = useMemo(() => {
     const night = whenFrom(date, time)
     const friendIds = new Set<string>()
-    if (!app.supabase) {
+    if (demoFriendsEnabled && !app.supabase) {
       for (const person of app.demoUsers) {
         for (const id of person.been) friendIds.add(id)
         for (const id of Object.keys(person.scores)) friendIds.add(id)
@@ -165,9 +168,7 @@ export function PlanSheet({ open, onClose }: { open: boolean; onClose: () => voi
   const empty = filter.kind === 'togo'
     ? 'Nothing in To go yet. Search the list, or try a neighborhood.'
     : filter.kind === 'friends'
-      ? app.supabase
-        ? 'No friend picks on this list yet.'
-        : 'Demo friends have not marked that. Try another chip.'
+      ? 'No friend picks on this list yet.'
       : filter.kind === 'open'
         ? 'Nothing on the list is open then. Try a later time.'
         : 'Nothing matches. Clear the search or pick another chip.'
@@ -249,7 +250,7 @@ export function PlanSheet({ open, onClose }: { open: boolean; onClose: () => voi
                 <button key={guide.slug} type="button" className="chip" aria-pressed={filter.kind === 'guide' && filter.slug === guide.slug} onClick={() => setFilter({ kind: 'guide', slug: guide.slug, title: guide.title })}>{guide.title}</button>
               ))}
             </SlidingRow>
-            {filter.kind === 'friends' && !app.supabase ? <p className="mt-2 text-sm">Demo friends · places they have been.</p> : null}
+            {demoFriendsEnabled && filter.kind === 'friends' && !app.supabase ? <p className="mt-2 text-sm">Seeded friends, dev only. Places they have been.</p> : null}
             <ul className="mt-3 space-y-2">
               {results.map((place) => {
                 const on = picked.includes(place.id)
@@ -277,7 +278,11 @@ export function PlanSheet({ open, onClose }: { open: boolean; onClose: () => voi
             </ul>
             {results.length === 0 ? <p className="mt-3 text-sm">{empty}</p> : null}
             <h3 className="mt-5 font-serif text-2xl italic">Who's coming</h3>
-            {roster.length === 0 ? <p className="mt-2 text-sm">No friends yet. You can still make the plan and share it after.</p> : null}
+            {roster.length === 0 ? (
+              <div className="mt-2">
+                <FriendEmpty onSignIn={() => setSignIn(true)} title="No friends yet" line="Add a username or email an invite. The plan can still go out with just you." />
+              </div>
+            ) : null}
             <ul className="invite-row mt-2">
               {roster.map((person, index) => {
                 const on = invited.includes(person.id)
@@ -291,7 +296,7 @@ export function PlanSheet({ open, onClose }: { open: boolean; onClose: () => voi
                     >
                       <span className="avatar" style={{ background: AVATAR[index % AVATAR.length] }}>{initials(person.name)}</span>
                       <span className="truncate text-sm font-bold">{person.name.split(' ')[0]}</span>
-                      {person.demo ? <span className="text-[0.65rem] font-bold uppercase">Demo</span> : null}
+                      {demoFriendsEnabled && person.demo ? <span className="text-[0.65rem] font-bold uppercase">Seeded</span> : null}
                     </button>
                   </li>
                 )
@@ -331,7 +336,7 @@ export function PlanCard({ planId }: { planId: string }) {
       </span>
       <span className="min-w-0">
         <span className="block font-serif text-2xl italic leading-none">{plan.title}</span>
-        <span className="mt-1 block text-sm">{[when ? prettyDate(when) : '', plan.demo ? 'Demo' : '', plan.locked ? 'Locked in' : ''].filter(Boolean).join(' · ')}</span>
+        <span className="mt-1 block text-sm">{[when ? prettyDate(when) : '', demoFriendsEnabled && plan.demo ? 'Seeded' : '', plan.locked ? 'Locked in' : ''].filter(Boolean).join(' · ')}</span>
         <span className="mt-1 block truncate text-sm">{places.map((place) => place.name).join(' · ')}</span>
       </span>
     </Link>

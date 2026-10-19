@@ -1,7 +1,7 @@
 import { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState, type ReactNode } from 'react'
 import type { User } from '@supabase/supabase-js'
-import demoFile from '../content/demo.json'
 import { catalog } from '../content/load.ts'
+import { demo, demoFriendsEnabled, type DemoUser } from '../lib/demo.ts'
 import { clearStashedAuthError, peekAuthError } from '../lib/auth-callback.ts'
 import { canonicalUrl } from '../lib/site.ts'
 import { compressToWebp, readPhotos, removePhoto, savePhoto, type StoredPhoto } from '../lib/photos.ts'
@@ -11,25 +11,6 @@ import { scanLocalBundle, type LocalBundle } from '../social/importLocal.ts'
 import { authProviders, sendMagicLink, signInWithProvider, supabaseClient, uploadPlacePhoto } from '../social/supabase.ts'
 import type { Activity, Bucket, Comment, GuideVisibility, Notice, Plan, RankScore, SessionUser, UserGuide, VisitStatus } from '../types.ts'
 
-type DemoUser = {
-  id: string
-  name: string
-  handle: string
-  demo: true
-  neighborhood: string
-  streak: number
-  scores: Record<string, number>
-  been: string[]
-}
-
-type DemoFile = {
-  users: DemoUser[]
-  activities: Activity[]
-  lists: UserGuide[]
-  plans: Plan[]
-}
-
-const demo = demoFile as DemoFile
 const SESSION_KEY = 'gusto.session.v1'
 const HOUSE_KEY = 'gusto.house.v1'
 
@@ -116,6 +97,7 @@ type AppValue = {
   deletePhoto: (id: string) => Promise<void>
   demoUsers: DemoUser[]
   friendScore: (placeId: string) => { average: number | null; loved: number; count: number; demo: boolean }
+  friendMarks: (placeId: string) => { id: string; name: string; handle: string; score: number }[]
   gustoScore: (placeId: string) => number | null
   tasteMatch: (userId: string) => number | null
   announcement: string
@@ -134,7 +116,7 @@ function emptyDoc(): Doc {
   return {
     statuses: {},
     guides: [],
-    following: live ? [] : demo.users.map((user) => user.id),
+    following: live || !demoFriendsEnabled ? [] : demo.users.map((user) => user.id),
     activities: [],
     likes: [],
     comments: [],
@@ -665,7 +647,7 @@ export function AppProvider({ children }: { children: ReactNode }) {
     options?: { vibe?: string; votePlaceId?: string; locked?: boolean; inviteIds?: string[]; time?: string },
   ) {
     if (!user) return ''
-    const inviteIds = (options?.inviteIds ?? (remote ? [] : demo.users.map((person) => person.id))).filter((id) => id !== user.id)
+    const inviteIds = (options?.inviteIds ?? (remote || !demoFriendsEnabled ? [] : demo.users.map((person) => person.id))).filter((id) => id !== user.id)
     const plan: Plan = {
       id: crypto.randomUUID(),
       title: title.trim() || 'Go together',
@@ -715,8 +697,8 @@ export function AppProvider({ children }: { children: ReactNode }) {
   }
 
   function inviteLink(kind: 'guide' | 'plan', id: string) {
-    const guides = remote ? doc.guides : [...doc.guides, ...demo.lists]
-    const plans = remote ? doc.plans : [...doc.plans, ...demo.plans]
+    const guides = remote || !demoFriendsEnabled ? doc.guides : [...doc.guides, ...demo.lists]
+    const plans = remote || !demoFriendsEnabled ? doc.plans : [...doc.plans, ...demo.plans]
     if (kind === 'plan') {
       const plan = plans.find((item) => item.id === id)
       const token = plan?.inviteToken || plan?.id || id
@@ -744,7 +726,7 @@ export function AppProvider({ children }: { children: ReactNode }) {
       await hydrateRef.current(auth.data.user)
       return kind
     }
-    const guide = [...doc.guides, ...demo.lists].find((item) => item.inviteToken === token || item.id === token)
+    const guide = [...doc.guides, ...(demoFriendsEnabled ? demo.lists : [])].find((item) => item.inviteToken === token || item.id === token)
     if (guide) {
       const base = doc.guides.find((item) => item.id === guide.id) ?? guide
       const nextGuide: UserGuide = {
@@ -755,7 +737,7 @@ export function AppProvider({ children }: { children: ReactNode }) {
       persist({ ...doc, guides: [nextGuide, ...doc.guides.filter((item) => item.id !== guide.id)] })
       return 'guide'
     }
-    const plan = [...doc.plans, ...demo.plans].find((item) => item.inviteToken === token || item.id === token)
+    const plan = [...doc.plans, ...(demoFriendsEnabled ? demo.plans : [])].find((item) => item.inviteToken === token || item.id === token)
     if (!plan) return null
     const base = doc.plans.find((item) => item.id === plan.id) ?? plan
     const nextPlan: Plan = { ...base, rsvps: { ...base.rsvps, [user.id]: 'yes' } }
@@ -936,18 +918,18 @@ export function AppProvider({ children }: { children: ReactNode }) {
   }
 
   const activities = useMemo(() => {
-    const rows = remote ? doc.activities : [...doc.activities, ...demo.activities]
+    const rows = remote || !demoFriendsEnabled ? doc.activities : [...doc.activities, ...demo.activities]
     return rows.slice().sort((a, b) => b.createdAt.localeCompare(a.createdAt))
   }, [doc.activities, remote])
 
   const plans = useMemo(() => {
-    if (remote) return doc.plans
+    if (remote || !demoFriendsEnabled) return doc.plans
     const ids = new Set(doc.plans.map((plan) => plan.id))
     return [...doc.plans, ...demo.plans.filter((plan) => !ids.has(plan.id))]
   }, [doc.plans, remote])
 
   const guides = useMemo(() => {
-    if (remote) return doc.guides
+    if (remote || !demoFriendsEnabled) return doc.guides
     const ids = new Set(doc.guides.map((guide) => guide.id))
     return [...doc.guides, ...demo.lists.filter((guide) => !ids.has(guide.id))]
   }, [doc.guides, remote])
@@ -963,12 +945,20 @@ export function AppProvider({ children }: { children: ReactNode }) {
       const average = Math.round((values.reduce((sum, score) => sum + score, 0) / values.length) * 10) / 10
       return { average, loved, count: values.length, demo: false }
     }
+    if (!demoFriendsEnabled) return { average: null, loved: 0, count: 0, demo: false }
     const followed = demo.users.filter((person) => doc.following.includes(person.id) && person.scores[placeId] !== undefined)
-    if (!followed.length) return { average: null, loved: 0, count: 0, demo: true }
+    if (!followed.length) return { average: null, loved: 0, count: 0, demo: false }
     const values = followed.map((person) => person.scores[placeId])
     const loved = values.filter((score) => score >= 9).length
     const average = Math.round((values.reduce((sum, score) => sum + score, 0) / values.length) * 10) / 10
     return { average, loved, count: followed.length, demo: true }
+  }
+
+  function friendMarks(placeId: string) {
+    return friends.flatMap((person) => {
+      const score = friendRanks[person.id]?.[placeId]
+      return typeof score === 'number' ? [{ id: person.id, name: person.name, handle: person.handle, score }] : []
+    })
   }
 
   function gustoScore(placeId: string): number | null {
@@ -977,7 +967,7 @@ export function AppProvider({ children }: { children: ReactNode }) {
   }
 
   function tasteMatch(userId: string) {
-    const otherScores = remote ? friendRanks[userId] : demo.users.find((person) => person.id === userId)?.scores
+    const otherScores = remote || !demoFriendsEnabled ? friendRanks[userId] : demo.users.find((person) => person.id === userId)?.scores
     if (!otherScores) return null
     const keys = Object.keys(doc.scores).filter((id) => otherScores[id] !== undefined)
     if (keys.length < 3) return null
@@ -1052,8 +1042,9 @@ export function AppProvider({ children }: { children: ReactNode }) {
     photos,
     uploadPhoto,
     deletePhoto,
-    demoUsers: remote ? [] : demo.users,
+    demoUsers: remote || !demoFriendsEnabled ? [] : demo.users,
     friendScore,
+    friendMarks,
     gustoScore,
     tasteMatch,
     announcement,

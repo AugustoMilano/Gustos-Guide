@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { PlaceThumb } from '../components/PlaceThumb.tsx'
 import { SignInSheet } from '../components/SignInSheet.tsx'
 import { catalog, slimById } from '../content/load.ts'
+import { demoFriendsEnabled } from '../lib/demo.ts'
 import { usePageMeta } from '../lib/meta.ts'
 import { useApp } from '../state/AppState.tsx'
 import type { UserGuide } from '../types.ts'
@@ -13,7 +14,7 @@ export function MyGuidesPage() {
   const [query, setQuery] = useState('')
   const [copied, setCopied] = useState('')
   const [signIn, setSignIn] = useState(false)
-  usePageMeta("My guides · Gusto's Guide", app.supabase ? 'Lists on your account.' : 'Lists you make, plus shared demo lists.', './og/og.svg')
+  usePageMeta("My guides · Gusto's Guide", 'Lists on your account.', './og/og.svg')
   const mine = app.guides.filter((guide) => !guide.demo && (!app.supabase || !guide.ownerId || guide.ownerId === app.user?.id))
   const shared = app.supabase
     ? app.guides.filter((guide) => guide.ownerId && guide.ownerId !== app.user?.id)
@@ -55,11 +56,12 @@ export function MyGuidesPage() {
       ))}
       <SignInSheet open={signIn} onClose={() => setSignIn(false)} />
       <h2 className="mt-10 font-serif text-4xl italic">Shared</h2>
+      {shared.length === 0 ? <p className="mt-2 text-sm">No shared lists yet. Add a collaborator from a list you made.</p> : null}
       <ul className="mt-3 space-y-3">
         {shared.map((guide) => (
           <li key={guide.id} className="border-2 border-ink p-3">
             <Link className="font-serif text-2xl italic" to={`/list/${guide.id}`}>{guide.title}</Link>
-            <p className="text-sm">{guide.shared ? 'Collaborative · Demo' : 'Demo'} · {guide.placeIds.length} places · {guide.isPublic === false ? 'Private' : 'Public'}</p>
+            <p className="text-sm">{[demoFriendsEnabled && guide.demo ? 'Seeded' : '', `${guide.placeIds.length} places`, guide.isPublic === false ? 'Private' : 'Public'].filter(Boolean).join(' · ')}</p>
           </li>
         ))}
       </ul>
@@ -111,7 +113,7 @@ function GuideEditor({
         <div>
           <h2 className="font-serif text-3xl italic">{guide.title}</h2>
           <p className="text-sm"><Link className="font-bold" to={`/list/${guide.id}`}>Open list</Link> · {isPublic ? 'Public' : 'Private'}</p>
-          {mina ? <p className="text-sm">Mina can edit · Demo. Changes stay in this browser.</p> : null}
+          {demoFriendsEnabled && mina ? <p className="text-sm">Mina can edit. This seeded collaborator stays in this browser.</p> : null}
         </div>
       </div>
       <div className="share-card mt-3 border-2 border-ink bg-[#fffaf3] p-3">
@@ -135,9 +137,9 @@ function GuideEditor({
             <input id={`collab-${guide.id}`} className="min-h-11 border-2 border-ink bg-cream px-2" value={friendHandle} onChange={(event) => setFriendHandle(event.target.value)} placeholder="Username" />
             <button type="submit" className="btn text-sm">Add collaborator</button>
           </form>
-        ) : (
-          <button type="button" className="btn text-sm" onClick={() => app.shareGuide(guide.id, 'demo-mina')}>Share with Mina · Demo</button>
-        )}
+        ) : demoFriendsEnabled ? (
+          <button type="button" className="btn text-sm" onClick={() => app.shareGuide(guide.id, 'demo-mina')}>Share with Mina</button>
+        ) : null}
         {app.supabase ? (
           <label className="field min-w-40">
             <span className="sr-only">Who can see this</span>

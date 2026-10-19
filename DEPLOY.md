@@ -33,7 +33,7 @@ No environment variables are required for the local demo. Lists, ranks, notifica
 
 ## Supabase
 
-Leave these unset to stay on the local demo (demo friends included):
+Leave these unset to stay local. Seeded friends are not included unless a dev server is started with `VITE_DEMO_FRIENDS=1`. Production builds ignore that flag:
 
 - `VITE_SUPABASE_URL`
 - `VITE_SUPABASE_ANON_KEY`

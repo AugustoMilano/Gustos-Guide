@@ -1934,6 +1934,16 @@ input[type='time'] {
   min-height: 44px;
 }
 
+.friend-empty {
+  border-radius: 18px;
+  background: #fff;
+  border: 1px solid rgb(24 24 24 / 8%);
+  box-shadow: 0 8px 22px rgb(20 31 77 / 8%);
+  padding: 0.9rem 1rem 1rem;
+  min-width: 0;
+  max-width: 100%;
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .plan-pick,
   .plan-card,

@@ -15,7 +15,7 @@ export function ProfilePage() {
   const mine = app.user?.handle === handle
   usePageMeta(
     mine ? `${app.user?.name ?? 'You'} · Gusto's Guide` : person ? `${person.name} · Gusto's Guide` : friend ? `${friend.name} · Gusto's Guide` : 'Profile',
-    mine ? 'Your Seattle stats.' : person ? 'A demo friend on Gusto’s Guide.' : 'A friend on Gusto’s Guide.',
+    mine ? 'Your Seattle stats.' : 'A friend on Gusto’s Guide.',
     './og/og.svg',
   )
 
@@ -43,7 +43,7 @@ export function ProfilePage() {
 
   return (
     <main id="main" tabIndex={-1} className="mx-auto max-w-3xl px-4 pt-24 pb-16 outline-none">
-      <p className="text-xs font-bold uppercase tracking-wide">{mine ? 'Your profile' : person ? 'Demo profile' : 'Friend'}</p>
+      <p className="text-xs font-bold uppercase tracking-wide">{mine ? 'Your profile' : 'Friend'}</p>
       <h1 className="font-serif text-5xl italic">{mine ? app.user?.name : person?.name ?? friend?.name}</h1>
       {mine && app.user?.avatarUrl ? <img src={app.user.avatarUrl} alt="" className="mt-4 h-16 w-16 rounded-full border-2 border-ink object-cover" /> : null}
       <p className="mt-2">
@@ -89,7 +89,7 @@ export function ProfilePage() {
         </ol>
       ) : <p className="mt-2">No scores yet.</p>}
       {!mine && person ? (
-        <p className="mt-6 text-sm">Scores on this page are the demo friend’s, labeled so they are not Gusto's Score.</p>
+        <p className="mt-6 text-sm">Scores on this page are theirs. They are not Gusto's Score.</p>
       ) : null}
       <p className="mt-4 text-sm">{catalog.places.length} places are on the guide.</p>
     </main>
