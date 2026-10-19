@@ -1400,6 +1400,12 @@ textarea {
   color: #181818;
 }
 
+.site-header.on-hero .btn.btn-x {
+  background: #000;
+  color: #fff;
+  border-color: #000;
+}
+
 /* The menu sits on the navy hero. Translucent cream over navy turns lavender and fails contrast. */
 .site-header.on-hero .menu-sheet {
   background: #fffaf3;
