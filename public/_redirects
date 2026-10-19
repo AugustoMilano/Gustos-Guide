@@ -1,0 +1,4 @@
+# OAuth and magic-link return. The file is a tiny redirect onto / so the
+# hashed app shell (relative assets) can finish PKCE.
+/auth/callback /auth/callback/index.html 200
+/auth/callback/ /auth/callback/index.html 200

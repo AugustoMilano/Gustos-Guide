@@ -1,7 +1,8 @@
-import { createContext, useContext, useEffect, useMemo, useRef, useState, type ReactNode } from 'react'
+import { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState, type ReactNode } from 'react'
 import type { User } from '@supabase/supabase-js'
 import demoFile from '../content/demo.json'
 import { catalog } from '../content/load.ts'
+import { clearStashedAuthError, peekAuthError } from '../lib/auth-callback.ts'
 import { canonicalUrl } from '../lib/site.ts'
 import { compressToWebp, readPhotos, removePhoto, savePhoto, type StoredPhoto } from '../lib/photos.ts'
 import { rescore } from '../lib/rank.ts'
@@ -118,6 +119,9 @@ type AppValue = {
   gustoScore: (placeId: string) => number | null
   tasteMatch: (userId: string) => number | null
   announcement: string
+  authError: string | null
+  noteAuthFailure: (message: string) => void
+  clearAuthError: () => void
   importOffer: ImportOffer | null
   acceptImport: () => Promise<void>
   dismissImport: () => void
@@ -170,6 +174,7 @@ export function AppProvider({ children }: { children: ReactNode }) {
   const [photos, setPhotos] = useState<LivePhoto[]>([])
   const [compare, setCompare] = useState<Compare | null>(null)
   const [announcement, setAnnouncement] = useState('')
+  const [authError, setAuthError] = useState<string | null>(() => peekAuthError())
   const [house, setHouse] = useState<Record<string, number>>({})
   const [friends, setFriends] = useState<FriendProfile[]>([])
   const [requests, setRequests] = useState<FriendRequest[]>([])
@@ -231,10 +236,24 @@ export function AppProvider({ children }: { children: ReactNode }) {
     hydrateRef.current = hydrate
   })
 
+  const noteAuthFailure = useCallback((message: string) => {
+    const text = message.trim()
+    if (!text) return
+    setAuthError((current) => current || text)
+  }, [])
+
+  function clearAuthError() {
+    setAuthError(null)
+    clearStashedAuthError()
+  }
+
   useEffect(() => {
-    const params = new URLSearchParams(window.location.search)
-    const description = params.get('error_description')
-    if (description) setAnnouncement(description.replace(/\+/g, ' '))
+    const onError = (event: Event) => {
+      const detail = (event as CustomEvent<string>).detail
+      if (typeof detail === 'string' && detail.trim()) setAuthError((current) => current || detail.trim())
+    }
+    window.addEventListener('gusto-auth-error', onError)
+    return () => window.removeEventListener('gusto-auth-error', onError)
   }, [])
 
   useEffect(() => {
@@ -1036,6 +1055,9 @@ export function AppProvider({ children }: { children: ReactNode }) {
     gustoScore,
     tasteMatch,
     announcement,
+    authError,
+    noteAuthFailure,
+    clearAuthError,
     importOffer,
     acceptImport,
     dismissImport,

@@ -42,10 +42,10 @@ When both are set at build time, the bundle signs in with an email magic link an
 
 - `VITE_AUTH_PROVIDERS` — comma list. `x` shows Continue with X. `google` and `apple` show those buttons.
 
-Magic link and X both return to `window.location.origin` plus the current path, so a sign-in started on gustosguide.com, www, or pages.dev comes back to that same host. www.gustosguide.com is sent to the apex before the app renders.
+Magic link and every OAuth provider, including X, return to `{window.location.origin}/auth/callback`. That page forwards to `/` with the code in the query string, then the app exchanges it and opens the hash route the person started from. A sign-in started on gustosguide.com, www, or pages.dev comes back to that same host. www.gustosguide.com is sent to the apex before the app renders. The client uses PKCE (`flowType: 'pkce'`).
 
-1. Apply `supabase/schema.sql` in the SQL editor or with psql. Re-running it is safe. It creates tables, grants, RLS, the private `place-photos` bucket, and realtime on `notifications`, `plans`, `plan_members`, and `plan_votes`.
-2. Authentication → URL configuration: Site URL `https://gustosguide.com`. Redirect URLs: `https://gustosguide.com/**`, `https://www.gustosguide.com/**`, and `https://gustos-guide.pages.dev/**`. The hash on a return URL is ignored when Supabase checks that list.
+1. Apply `supabase/schema.sql` in the SQL editor or with psql. Re-running it is safe. It creates tables, grants, RLS, the private `place-photos` bucket, and realtime on `notifications`, `plans`, `plan_members`, and `plan_votes`. If profiles already exist, also run `supabase/migrations/20261019120000_handle_lowercase_first.sql` so new X handles keep their capitals (`AugustoTMilano` stays `augustotmilano` instead of `ugustoilano`).
+2. Authentication → URL configuration: Site URL `https://gustosguide.com`. Redirect URLs: `https://gustosguide.com/**`, `https://www.gustosguide.com/**`, and `https://gustos-guide.pages.dev/**`. Those wildcards cover `/auth/callback`. The hash on a return URL is ignored when Supabase checks that list.
 3. Authentication → Email: magic link on. The Magic Link template should keep `{{ .ConfirmationURL }}`. Password sign-in is unused.
 4. The built-in mailer is for testing. It is rate-limited (often 2 emails per hour) and, on the free plan, only delivers to the project’s team until you set custom SMTP. Auth also has its own email rate limit (default 30 per hour) once SMTP is custom.
 5. After the owner signs up once, in the SQL editor: `update public.profiles set is_owner = true where id = '<auth user uuid>';` The browser cannot set that flag. Only that account publishes Gusto's Score.

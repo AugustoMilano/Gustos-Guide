@@ -13,8 +13,3 @@ export function directLegalSlug(): 'terms' | 'privacy' | null {
   return null
 }
 
-export function authReturnUrl(): string {
-  const url = new URL(window.location.href)
-  for (const key of ['code', 'sb_flow_id', 'error', 'error_code', 'error_description']) url.searchParams.delete(key)
-  return url.toString()
-}

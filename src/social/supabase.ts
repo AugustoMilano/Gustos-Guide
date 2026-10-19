@@ -1,5 +1,5 @@
 import { createClient, type SupabaseClient } from '@supabase/supabase-js'
-import { authReturnUrl } from '../lib/site.ts'
+import { authCallbackUrl, rememberAuthReturn } from '../lib/auth-callback.ts'
 
 const BUCKET = 'place-photos'
 
@@ -28,6 +28,7 @@ export function supabaseClient(): SupabaseClient | null {
   }
   cached = createClient(url, key, {
     auth: {
+      // PKCE only. Implicit puts tokens in the hash, and the hash router treats that as a page.
       flowType: 'pkce',
       detectSessionInUrl: true,
       persistSession: true,
@@ -53,17 +54,19 @@ export async function signedPhotoUrl(client: SupabaseClient, path: string): Prom
 }
 
 export async function sendMagicLink(client: SupabaseClient, email: string): Promise<void> {
+  rememberAuthReturn()
   const { error } = await client.auth.signInWithOtp({
     email: email.trim(),
-    options: { emailRedirectTo: authReturnUrl(), shouldCreateUser: true },
+    options: { emailRedirectTo: authCallbackUrl(), shouldCreateUser: true },
   })
   if (error) throw error
 }
 
 export async function signInWithProvider(client: SupabaseClient, provider: AuthProviderName): Promise<void> {
+  rememberAuthReturn()
   const { error } = await client.auth.signInWithOAuth({
     provider,
-    options: { redirectTo: authReturnUrl() },
+    options: { redirectTo: authCallbackUrl() },
   })
   if (error) throw error
 }

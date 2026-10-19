@@ -3,6 +3,7 @@ import { Route, Routes, useLocation } from 'react-router-dom'
 import { Footer } from './components/Footer.tsx'
 import { Header } from './components/Header.tsx'
 import { ImportLocalSheet } from './components/ImportLocalSheet.tsx'
+import { Modal } from './components/Modal.tsx'
 import { GuidePage } from './pages/GuidePage.tsx'
 import { HomePage } from './pages/HomePage.tsx'
 import { LegalPage } from './pages/LegalPage.tsx'
@@ -106,6 +107,23 @@ function PageSkeleton() {
   )
 }
 
+function AuthErrorSheet() {
+  const { authError, clearAuthError } = useApp()
+  if (!authError) return null
+  return (
+    <Modal onClose={clearAuthError} label="Sign-in problem">
+      <div className="p-5">
+        <h2 className="font-serif text-4xl italic">Couldn't sign in</h2>
+        <p className="mt-3 text-sm">The link came back without a session. This is the note from sign-in, so it can be matched to the auth log:</p>
+        <p className="mt-3 break-words border-2 border-ink bg-cream p-3 text-sm">{authError}</p>
+        <button type="button" className="btn btn-coral mt-4" onClick={clearAuthError}>
+          Close
+        </button>
+      </div>
+    </Modal>
+  )
+}
+
 function Shell() {
   const { announcement, importOffer, acceptImport, dismissImport } = useApp()
   const { pathname } = useLocation()
@@ -155,6 +173,7 @@ function Shell() {
       {pathname === '/explore' ? null : <Footer />}
       <BackToTop />
       {importOffer ? <ImportLocalSheet offer={importOffer} onAccept={() => void acceptImport()} onDismiss={dismissImport} /> : null}
+      <AuthErrorSheet />
       <div className="sr-only" aria-live="polite">{announcement}</div>
     </>
   )

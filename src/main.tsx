@@ -3,7 +3,9 @@ import { createRoot } from 'react-dom/client'
 import { HashRouter } from 'react-router-dom'
 import 'leaflet/dist/leaflet.css'
 import { App } from './App.tsx'
+import { AuthRouterGate } from './components/AuthRouterGate.tsx'
 import { loadGuides, loadPlaces } from './content/load.ts'
+import { settleAuthUrl, watchAuthHash } from './lib/auth-callback.ts'
 import { AppProvider } from './state/AppState.tsx'
 import './index.css'
 
@@ -36,12 +38,16 @@ if (import.meta.env.PROD && 'serviceWorker' in navigator) {
 }
 
 if (window.location.hostname !== 'www.gustosguide.com') {
+  settleAuthUrl()
+  watchAuthHash()
   createRoot(document.getElementById('root')!).render(
     <StrictMode>
       <AppProvider>
-        <HashRouter>
-          <App />
-        </HashRouter>
+        <AuthRouterGate>
+          <HashRouter>
+            <App />
+          </HashRouter>
+        </AuthRouterGate>
       </AppProvider>
     </StrictMode>,
   )

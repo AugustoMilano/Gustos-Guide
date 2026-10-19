@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Signing in · Gusto's Guide</title>
+    <style>
+      body {
+        margin: 0;
+        min-height: 100vh;
+        display: grid;
+        place-items: center;
+        background: #eee3d6;
+        color: #181818;
+        font-family: Georgia, "Times New Roman", serif;
+      }
+      h1 {
+        font-weight: 400;
+        font-style: italic;
+        font-size: 2.5rem;
+        padding: 1.5rem;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Signing you in…</h1>
+    <script>
+      ;(function () {
+        var loc = window.location
+        if (loc.hostname === 'www.gustosguide.com') {
+          var apex = new URL(loc.href)
+          apex.hostname = 'gustosguide.com'
+          loc.replace(apex.toString())
+          return
+        }
+        var url = new URL(loc.href)
+        var hash = url.hash.charAt(0) === '#' ? url.hash.slice(1) : ''
+        var route = ''
+        if (hash.charAt(0) === '/' || hash.charAt(0) === '!') {
+          route = url.hash
+        } else if (hash) {
+          var params = new URLSearchParams(hash)
+          params.forEach(function (value, key) {
+            if (!url.searchParams.has(key)) url.searchParams.set(key, value)
+          })
+        }
+        if (!route) {
+          try {
+            var saved = sessionStorage.getItem('gusto.auth.return') || ''
+            if (saved.indexOf('#/') === 0 && saved.indexOf('://') === -1) route = saved
+          } catch (e) {}
+        }
+        loc.replace(url.origin + '/' + url.search + (route || ''))
+      })()
+    </script>
+  </body>
+</html>

@@ -7,9 +7,13 @@ import { defineConfig } from 'vite'
 // before Vite's SPA fallback so dev and preview serve the same documents
 // Cloudflare Pages serves from terms/index.html and privacy/index.html.
 const legalPaths: Connect.NextHandleFunction = (req, _res, next) => {
-  const path = req.url?.split('?')[0]
-  if (path === '/terms' || path === '/terms/') req.url = '/terms/index.html'
-  if (path === '/privacy' || path === '/privacy/') req.url = '/privacy/index.html'
+  const [path, query] = (req.url || '').split('?')
+  const search = query ? `?${query}` : ''
+  if (path === '/terms' || path === '/terms/') req.url = `/terms/index.html${search}`
+  if (path === '/privacy' || path === '/privacy/') req.url = `/privacy/index.html${search}`
+  // public/auth/callback/index.html is the OAuth landing page. Vite's SPA
+  // fallback would serve the app here, and relative /assets/ would 404.
+  if (path === '/auth/callback' || path === '/auth/callback/') req.url = `/auth/callback/index.html${search}`
   next()
 }
 

@@ -395,3 +395,32 @@ test.describe('controls', () => {
     expect(issues, issues.join('\n')).toEqual([])
   })
 })
+
+test.describe('auth return', () => {
+  test('oauth and magic-link params never land on the missing page', async ({ page }) => {
+    await page.goto('/#error=access_denied&error_description=Database+error+saving+new+user', { waitUntil: 'domcontentloaded' })
+    await expect(page.getByRole('heading', { name: 'That page is not on the menu.' })).toHaveCount(0)
+    const dialog = page.getByRole('dialog', { name: 'Sign-in problem' })
+    await expect(dialog).toBeVisible()
+    await expect(dialog.getByText('Database error saving new user')).toBeVisible()
+    await expect(page).toHaveURL(/#\/$/)
+
+    await page.addInitScript(() => sessionStorage.setItem('gusto.auth.return', '#/explore'))
+    await page.goto('/?code=test-code&sb_flow_id=flow-1', { waitUntil: 'domcontentloaded' })
+    await expect(page.getByRole('heading', { name: 'That page is not on the menu.' })).toHaveCount(0)
+    await expect(page).toHaveURL(/#\/explore/)
+    await expect(page).not.toHaveURL(/[?&]code=/)
+
+    await page.goto('/?from=token#access_token=abc&refresh_token=def&token_type=bearer&type=signup', { waitUntil: 'domcontentloaded' })
+    await expect(page.getByRole('heading', { name: 'That page is not on the menu.' })).toHaveCount(0)
+    await expect(page).not.toHaveURL(/access_token/)
+    await expect(page).toHaveURL(/#\/explore/)
+
+    await page.goto('/auth/callback?error=server_error&error_description=redirect+url+not+allowed', { waitUntil: 'domcontentloaded' })
+    await expect(page.getByRole('heading', { name: 'That page is not on the menu.' })).toHaveCount(0)
+    await expect(page.getByRole('dialog', { name: 'Sign-in problem' })).toBeVisible()
+    await expect(page.getByText('redirect url not allowed')).toBeVisible()
+    await expect(page).not.toHaveURL(/auth\/callback/)
+    await expect(page).toHaveURL(/#\/explore/)
+  })
+})

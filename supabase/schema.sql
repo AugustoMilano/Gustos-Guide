@@ -467,9 +467,10 @@ begin
     nullif(trim(new.raw_user_meta_data->>'username'), '')
   );
   if handle_source is not null then
-    base := lower(regexp_replace(regexp_replace(handle_source, '^@', ''), '[^a-z0-9_]+', '', 'g'));
+    -- lower() first. The old order deleted uppercase letters (AugustoTMilano -> ugustoilano).
+    base := regexp_replace(regexp_replace(lower(handle_source), '^@', ''), '[^a-z0-9_]+', '', 'g');
   else
-    base := lower(regexp_replace(display, '[^a-z0-9]+', '', 'g'));
+    base := regexp_replace(lower(display), '[^a-z0-9]+', '', 'g');
   end if;
   if base is null or base = '' then
     base := 'guest';
