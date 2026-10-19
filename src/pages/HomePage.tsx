@@ -66,8 +66,7 @@ export function HomePage() {
   return (
     <main id="main" tabIndex={-1} className="outline-none">
       <section className="hero on-navy relative overflow-hidden">
-        <div className="hero-mesh" aria-hidden="true" />
-        <div className="hero-copy relative z-10 mx-auto max-w-6xl px-4 pt-28 pb-14 sm:pt-32">
+        <div className="hero-copy relative mx-auto max-w-6xl px-4 pt-28 pb-14 sm:pt-32">
           <h1 className="max-w-3xl font-serif text-5xl italic leading-[1.05] text-cream sm:text-7xl">Eat your way through Seattle.</h1>
           <p className="hero-dek">
             From a 7am bun to the last good stool on Pike. Pizza, oysters, teriyaki, and the bars worth the hill.

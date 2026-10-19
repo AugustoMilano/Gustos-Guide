@@ -59,6 +59,7 @@ export function Header() {
   const [open, setOpen] = useState(false)
   const [query, setQuery] = useState('')
   const [menu, setMenu] = useState(false)
+  const [more, setMore] = useState(false)
   const [bell, setBell] = useState(false)
   const unread = notices.filter((notice) => !notice.read).length
   const navigate = useNavigate()
@@ -68,8 +69,11 @@ export function Header() {
   const bellMobile = useRef<HTMLButtonElement>(null)
   const menuPanel = useRef<HTMLElement>(null)
   const menuButton = useRef<HTMLButtonElement>(null)
+  const morePanel = useRef<HTMLDivElement>(null)
+  const moreButton = useRef<HTMLButtonElement>(null)
   const [bellRefs] = useState(() => [bellPanel, bellDesktop, bellMobile])
   const [menuRefs] = useState(() => [menuPanel, menuButton])
+  const [moreRefs] = useState(() => [morePanel, moreButton])
   const reduceMotion = useReducedMotion()
   const [scrolled, setScrolled] = useState(false)
   const [onHero, setOnHero] = useState(() => location.pathname === '/')
@@ -96,6 +100,7 @@ export function Header() {
 
   useDismiss(bell, () => setBell(false), bellRefs, true)
   useDismiss(menu, () => setMenu(false), menuRefs)
+  useDismiss(more, () => setMore(false), moreRefs, true)
 
   // Close both popovers when the route changes (adjusting state during render, not in an effect).
   const [lastRoute, setLastRoute] = useState(route)
@@ -103,10 +108,12 @@ export function Header() {
     setLastRoute(route)
     setBell(false)
     setMenu(false)
+    setMore(false)
   }
 
   function toggleBell() {
     setMenu(false)
+    setMore(false)
     if (!bell) markNoticesRead()
     setBell(!bell)
   }
@@ -115,16 +122,17 @@ export function Header() {
     event.preventDefault()
     navigate(cityPath(`/search?q=${encodeURIComponent(query.trim())}`))
     setMenu(false)
+    setMore(false)
   }
 
   return (
     <header key={onHero ? 'hero' : 'page'} className={`site-header${onHero ? ' on-hero' : ''}${scrolled && !onHero ? ' is-scrolled' : ''}`}>
-      <div className="mx-auto flex max-w-6xl items-center gap-3 px-4 py-3">
-        <Link to={cityPath('/')} className="font-serif text-3xl italic leading-none">
+      <div className="mx-auto flex w-full max-w-[100rem] items-center gap-3 px-4 py-3">
+        <Link to={cityPath('/')} className="shrink-0 font-serif text-3xl italic leading-none">
           Gusto's Guide
         </Link>
         <CitySwitcher />
-        <form onSubmit={search} className="ml-auto hidden min-w-0 flex-1 md:block md:max-w-[14rem]">
+        <form onSubmit={search} className="site-search ml-auto hidden w-44 shrink-0 lg:block min-[1400px]:w-60">
           <label className="sr-only" htmlFor="site-search">
             Search Seattle
           </label>
@@ -132,20 +140,56 @@ export function Header() {
             id="site-search"
             value={query}
             onChange={(event) => setQuery(event.target.value)}
-            placeholder="Places, guides, neighborhoods"
+            placeholder="Search"
             className="glass-input w-full px-3 py-2"
           />
         </form>
-        <nav className="site-nav ml-auto hidden items-center gap-1 text-sm font-bold md:flex" aria-label="Primary">
+        <nav className="site-nav hidden items-center gap-1 text-sm font-bold lg:flex" aria-label="Primary">
           <Link to={cityPath('/explore')} onMouseEnter={() => prefetch('/explore')} onFocus={() => prefetch('/explore')}>Explore</Link>
           <Link to={cityPath('/guides')}>Guides</Link>
           <Link to={cityPath('/tonight')}>Tonight</Link>
-          <Link to={cityPath('/feed')}>Feed</Link>
-          <Link to={cityPath('/plans')} onMouseEnter={() => prefetch('/plans/wizard')} onFocus={() => prefetch('/plans/wizard')}>Plans</Link>
-          <Link to={cityPath('/rank')}>Rank</Link>
-          <Link to={cityPath('/my')}>My guides</Link>
-          {user?.isOwner ? <Link to={cityPath('/score')}>Scores</Link> : null}
-          {user?.isOwner ? <Link to={cityPath('/photos')}>Photos</Link> : null}
+          <Link className="nav-wide" to={cityPath('/feed')}>Feed</Link>
+          <Link className="nav-wide" to={cityPath('/plans')} onMouseEnter={() => prefetch('/plans/wizard')} onFocus={() => prefetch('/plans/wizard')}>Plans</Link>
+          <Link className="nav-wide" to={cityPath('/rank')}>Rank</Link>
+          <Link className="nav-wide" to={cityPath('/my')}>My guides</Link>
+          {user?.isOwner ? <Link className="nav-wide" to={cityPath('/score')}>Scores</Link> : null}
+          {user?.isOwner ? <Link className="nav-wide" to={cityPath('/photos')}>Photos</Link> : null}
+          <div className="nav-more relative">
+            <button
+              type="button"
+              ref={moreButton}
+              aria-expanded={more}
+              aria-controls="more-menu"
+              onClick={() => {
+                setBell(false)
+                setMore((value) => !value)
+              }}
+            >
+              More
+            </button>
+            <AnimatePresence>
+              {more ? (
+                <motion.div
+                  ref={morePanel}
+                  id="more-menu"
+                  className="more-sheet"
+                  role="group"
+                  aria-label="More"
+                  initial={reduceMotion ? false : { opacity: 0, y: -8, scale: 0.96 }}
+                  animate={{ opacity: 1, y: 0, scale: 1 }}
+                  exit={reduceMotion ? undefined : { opacity: 0, y: -6, scale: 0.96 }}
+                  transition={{ type: 'spring', stiffness: 420, damping: 32 }}
+                >
+                  <Link to={cityPath('/feed')} onClick={() => setMore(false)}>Feed</Link>
+                  <Link to={cityPath('/plans')} onClick={() => setMore(false)} onFocus={() => prefetch('/plans/wizard')}>Plans</Link>
+                  <Link to={cityPath('/rank')} onClick={() => setMore(false)}>Rank</Link>
+                  <Link to={cityPath('/my')} onClick={() => setMore(false)}>My guides</Link>
+                  {user?.isOwner ? <Link to={cityPath('/score')} onClick={() => setMore(false)}>Scores</Link> : null}
+                  {user?.isOwner ? <Link to={cityPath('/photos')} onClick={() => setMore(false)}>Photos</Link> : null}
+                </motion.div>
+              ) : null}
+            </AnimatePresence>
+          </div>
           <button
             type="button"
             className="relative min-h-11 px-2"
@@ -159,9 +203,9 @@ export function Header() {
           </button>
           {user ? (
             <>
-              <Link to={cityPath(`/u/${user.handle}`)} className="inline-flex items-center gap-2">
-                {user.avatarUrl ? <img src={user.avatarUrl} alt="" className="h-8 w-8 rounded-full object-cover" /> : null}
-                {user.name}
+              <Link to={cityPath(`/u/${user.handle}`)} className="inline-flex max-w-[10rem] items-center gap-2">
+                {user.avatarUrl ? <img src={user.avatarUrl} alt="" className="h-8 w-8 shrink-0 rounded-full object-cover" /> : null}
+                <span className="truncate">{user.name}</span>
               </Link>
               <button type="button" className="btn text-sm" onClick={signOut}>Sign out</button>
             </>
@@ -175,7 +219,7 @@ export function Header() {
           type="button"
           ref={bellMobile}
           whileTap={press}
-          className="glass-icon relative ml-auto inline-flex min-h-11 min-w-11 items-center justify-center px-2 md:hidden"
+          className="glass-icon relative ml-auto inline-flex min-h-11 min-w-11 items-center justify-center px-2 lg:hidden"
           aria-label={unread ? `Notifications, ${unread} unread` : 'Notifications'}
           aria-expanded={bell}
           aria-controls="notifications-panel"
@@ -188,7 +232,7 @@ export function Header() {
           type="button"
           ref={menuButton}
           whileTap={press}
-          className="glass-icon inline-flex min-h-11 items-center px-3 text-sm font-bold md:hidden"
+          className="glass-icon inline-flex min-h-11 items-center px-3 text-sm font-bold lg:hidden"
           aria-expanded={menu}
           aria-controls="mobile-menu"
           onClick={() => {
@@ -204,7 +248,7 @@ export function Header() {
         <motion.nav
           ref={menuPanel}
           id="mobile-menu"
-          className="menu-sheet glass grid max-h-[calc(100dvh-5.5rem)] gap-2 overflow-y-auto text-sm font-bold md:hidden"
+          className="menu-sheet glass grid max-h-[calc(100dvh-5.5rem)] gap-2 overflow-y-auto text-sm font-bold lg:hidden"
           aria-label="Menu"
           style={{ transformOrigin: 'top right' }}
           initial={reduceMotion ? false : { opacity: 0, y: -10, scale: 0.92 }}
