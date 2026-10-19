@@ -2,6 +2,7 @@ import { useMemo, useState, type PointerEvent as ReactPointerEvent } from 'react
 import { Link, useNavigate } from 'react-router-dom'
 import { useReducedMotion } from 'framer-motion'
 import { Modal } from './Modal.tsx'
+import { SlidingRow } from './SlidingRow.tsx'
 import { PlaceThumb } from './PlaceThumb.tsx'
 import { SignInSheet } from './SignInSheet.tsx'
 import { catalog } from '../content/load.ts'
@@ -236,7 +237,7 @@ export function PlanSheet({ open, onClose }: { open: boolean; onClose: () => voi
               <span>Search</span>
               <input value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Pizza, Ballard, Canlis" />
             </label>
-            <div className="chip-row mt-3" role="group" aria-label="Suggestions">
+            <SlidingRow label="Suggestions" className="mt-3">
               <button type="button" className="chip" aria-pressed={filter.kind === 'mix'} onClick={() => setFilter({ kind: 'mix' })}>Suggested</button>
               <button type="button" className="chip" aria-pressed={filter.kind === 'togo'} onClick={() => setFilter({ kind: 'togo' })}>To go</button>
               <button type="button" className="chip" aria-pressed={filter.kind === 'friends'} onClick={() => setFilter({ kind: 'friends' })}>Friends' picks</button>
@@ -247,7 +248,7 @@ export function PlanSheet({ open, onClose }: { open: boolean; onClose: () => voi
               {guides.map((guide) => (
                 <button key={guide.slug} type="button" className="chip" aria-pressed={filter.kind === 'guide' && filter.slug === guide.slug} onClick={() => setFilter({ kind: 'guide', slug: guide.slug, title: guide.title })}>{guide.title}</button>
               ))}
-            </div>
+            </SlidingRow>
             {filter.kind === 'friends' && !app.supabase ? <p className="mt-2 text-sm">Demo friends · places they have been.</p> : null}
             <ul className="mt-3 space-y-2">
               {results.map((place) => {

@@ -264,7 +264,8 @@ export function GuideEntryCard({
       </div>
     </article>
   )
-  if (artOnly) return index === 0 ? compact : <Reveal>{compact}</Reveal>
+  const stagger = Math.min(index, 6) * 0.05
+  if (artOnly) return index === 0 ? compact : <Reveal delay={stagger}>{compact}</Reveal>
   const body = layout === 0 ? (
     <article id={`entry-${place.id}`} className="guide-entry scroll-mt-24 border-t-2 border-ink pt-5">
       {title}
@@ -281,5 +282,5 @@ export function GuideEntryCard({
     </article>
   )
   if (index === 0) return body
-  return <Reveal>{body}</Reveal>
+  return <Reveal delay={stagger}>{body}</Reveal>
 }

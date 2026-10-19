@@ -1273,7 +1273,12 @@ textarea {
   .glass-icon,
   .avatar-card,
   .vibe-card,
-  .vote-card {
+  .vote-card,
+  .hit-card,
+  .guide-card,
+  .explore-card,
+  .toc-card,
+  .feed-card {
     transition: transform 340ms cubic-bezier(0.2, 0.9, 0.3, 1.15), filter 340ms cubic-bezier(0.2, 0.9, 0.3, 1), background 340ms cubic-bezier(0.2, 0.9, 0.3, 1), box-shadow 340ms cubic-bezier(0.2, 0.9, 0.3, 1);
   }
 
@@ -1289,7 +1294,12 @@ textarea {
   .glass-icon:active,
   .avatar-card:active,
   .vibe-card:active,
-  .vote-card:active {
+  .vote-card:active,
+  .hit-card:active,
+  .guide-card:active,
+  .explore-card:active,
+  .toc-card:active,
+  .feed-card:active {
     transform: scale(0.97);
   }
 }
@@ -1300,7 +1310,12 @@ textarea {
   .glass-icon:active,
   .avatar-card:active,
   .vibe-card:active,
-  .vote-card:active {
+  .vote-card:active,
+  .hit-card:active,
+  .guide-card:active,
+  .explore-card:active,
+  .toc-card:active,
+  .feed-card:active {
     transform: none;
   }
 }
@@ -1877,6 +1892,48 @@ input[type='time'] {
   accent-color: #ff5330;
 }
 
+.slide-choices {
+  position: relative;
+  align-items: center;
+  min-width: 0;
+  min-height: 44px;
+}
+
+.choice-mark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+  background: #141f4d;
+  transform-origin: left center;
+  pointer-events: none;
+}
+
+.slide-choices .chip,
+.slide-choices .sort-chip {
+  position: relative;
+  z-index: 1;
+  background: rgb(255 250 243 / 72%);
+  color: #181818;
+}
+
+.slide-choices .chip[aria-pressed='true'],
+.slide-choices .sort-chip[aria-pressed='true'] {
+  background: transparent;
+  color: #fffaf3;
+  border-color: transparent;
+  box-shadow: none;
+}
+
+.notice-sheet a {
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .plan-pick,
   .plan-card,
@@ -1898,8 +1955,8 @@ input[type='time'] {
     animation: status-bounce 420ms cubic-bezier(0.2, 1.3, 0.4, 1);
   }
 
-  .chip[aria-pressed='true'] {
-    animation: chip-settle 380ms cubic-bezier(0.2, 1.15, 0.3, 1);
+  .choice-mark {
+    transition: transform 380ms cubic-bezier(0.2, 0.9, 0.3, 1.15), opacity 220ms cubic-bezier(0.2, 0.9, 0.3, 1);
   }
 
   .gusto-pin {
@@ -1984,5 +2041,9 @@ input[type='time'] {
   .status-mark.is-pop,
   .chip[aria-pressed='true'] {
     animation: none;
+  }
+
+  .choice-mark {
+    transition: none;
   }
 }

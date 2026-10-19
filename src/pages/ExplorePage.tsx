@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
+import { useReducedMotion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { GuideMap, type MapBounds } from '../components/GuideMap.tsx'
 import { MapLinks } from '../components/MapLinks.tsx'
@@ -34,6 +35,7 @@ function inside(place: SlimPlace, box: MapBounds): boolean {
 export function ExplorePage() {
   usePageMeta("Explore · Gusto's Guide", 'Every Seattle place on the guide, on one map.', './og/og.svg')
   const app = useApp()
+  const reduceMotion = useReducedMotion()
   const cuisines = useMemo(() => {
     const set = new Set<string>()
     for (const place of catalog.places) for (const cuisine of place.cuisine) set.add(cuisine)
@@ -153,8 +155,8 @@ export function ExplorePage() {
                 onMouseEnter={() => setActiveId(place.id)}
                 onMouseLeave={() => setActiveId((current) => (current === place.id ? null : current))}
               >
-                <Link to={`/place/${place.id}`} className="flex items-center gap-3 after:absolute after:inset-0">
-                  <span className="h-20 w-24 shrink-0 overflow-hidden bg-navy [&_.place-art]:aspect-auto [&_.place-art]:h-full">
+                <Link to={`/place/${place.id}`} className="flex items-center gap-3 after:absolute after:inset-0" viewTransition={!reduceMotion}>
+                  <span className="h-20 w-24 shrink-0 overflow-hidden bg-navy [&_.place-art]:aspect-auto [&_.place-art]:h-full" style={reduceMotion ? undefined : { viewTransitionName: `place-${place.id}` }}>
                     <PlaceThumb place={place} uploads={app.photos} />
                   </span>
                   <span className="min-w-0">

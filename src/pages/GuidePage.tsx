@@ -3,6 +3,7 @@ import { Link, useParams } from 'react-router-dom'
 import { GuideEntryCard, GuideStrip } from '../components/GuideEntries.tsx'
 import { GuideMap } from '../components/GuideMap.tsx'
 import { ShareButton } from '../components/ShareButton.tsx'
+import { SlidingRow } from '../components/SlidingRow.tsx'
 import { SignInSheet } from '../components/SignInSheet.tsx'
 import { catalog, loadGuide } from '../content/load.ts'
 import { pageShareUrl } from '../lib/format.ts'
@@ -135,10 +136,10 @@ export function GuidePage() {
           <div className="flex flex-wrap items-center gap-2">
             <p className="text-xs font-bold tracking-[0.14em] uppercase">{guide.group} · Updated {guide.updatedAt}</p>
             <ShareButton title={guide.title} url={pageShareUrl(`/guide/${guide.slug}`)} />
-            <div role="group" aria-label="Sort this guide" className="flex gap-1">
+            <SlidingRow label="Sort this guide">
               <button type="button" className="sort-chip" aria-pressed={sort === 'guide'} onClick={() => setSort('guide')}>Guide order</button>
               <button type="button" className="sort-chip" aria-pressed={sort === 'score'} onClick={() => setSort('score')}>Gusto's Score</button>
-            </div>
+            </SlidingRow>
           </div>
         </div>
         <h1 className="mt-1 font-serif text-4xl italic leading-none sm:text-5xl">{guide.title}</h1>

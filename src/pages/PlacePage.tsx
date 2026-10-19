@@ -178,16 +178,16 @@ export function PlacePage() {
           </section>
           <section className="mt-6">
             <h2 className="font-serif text-3xl italic">Included in</h2>
-            <ul className="mt-2 space-y-1">
-              {guides.map((guide) => <li key={guide.slug}><Link to={`/guide/${guide.slug}`} className="font-bold">{guide.title}</Link></li>)}
-            </ul>
+            <div className="mt-2 flex flex-wrap gap-2">
+              {guides.map((guide) => <Link key={guide.slug} to={`/guide/${guide.slug}`} className="chip inline-flex items-center" viewTransition={!reduceMotion}>{guide.title}</Link>)}
+            </div>
           </section>
           <section className="mt-6">
             <h2 className="font-serif text-3xl italic">Similar places nearby</h2>
             <div className="mt-3 grid grid-cols-2 gap-3">
               {similar.map((item) => (
-                <Link key={item.id} to={`/place/${item.id}`} className="hit-card">
-                  <div className="h-24 overflow-hidden bg-navy [&_.place-art]:aspect-auto [&_.place-art]:h-full">
+                <Link key={item.id} to={`/place/${item.id}`} className="hit-card" viewTransition={!reduceMotion}>
+                  <div className="h-24 overflow-hidden bg-navy [&_.place-art]:aspect-auto [&_.place-art]:h-full" style={reduceMotion ? undefined : { viewTransitionName: `place-${item.id}` }}>
                     <PlaceThumb place={item} uploads={app.photos} />
                   </div>
                   <div className="p-2">
@@ -216,11 +216,12 @@ function FriendsBeen({ placeId }: { placeId: string }) {
   return (
     <section className="mt-6">
       <h2 className="font-serif text-3xl italic">Friends who've been</h2>
-      <ul className="mt-2 space-y-1">
+      <ul className="rsvp-list mt-2">
         {people.map((person) => (
-          <li key={person.id}>
-            <Link className="font-bold" to={`/u/${person.handle}`}>{person.name}</Link>
-            <span> · Demo{person.scores[placeId] !== undefined ? ` · ${person.scores[placeId].toFixed(1)}` : ''}</span>
+          <li key={person.id} className="rsvp-row">
+            <span className="avatar" aria-hidden="true">{person.name.split(' ').map((part) => part[0] ?? '').join('').slice(0, 2)}</span>
+            <Link className="inline-flex min-h-11 min-w-0 flex-1 items-center truncate font-bold" to={`/u/${person.handle}`}>{person.name}</Link>
+            <span className="tag">Demo{person.scores[placeId] !== undefined ? ` · ${person.scores[placeId].toFixed(1)}` : ''}</span>
           </li>
         ))}
       </ul>

@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState, type FormEvent, type RefObject } from 'react'
-import { motion, useReducedMotion } from 'framer-motion'
+import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
+import { dragSheet } from '../lib/motion.ts'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { SignInSheet } from './SignInSheet.tsx'
 import { useApp } from '../state/AppState.tsx'
@@ -191,13 +192,16 @@ export function Header() {
           {menu ? 'Close' : 'Menu'}
         </motion.button>
       </div>
+      <AnimatePresence>
       {menu ? (
         <motion.nav
           ref={menuPanel}
           className="menu-sheet glass grid max-h-[calc(100dvh-5.5rem)] gap-2 overflow-y-auto text-sm font-bold md:hidden"
           aria-label="Mobile"
-          initial={reduceMotion ? false : { opacity: 0, y: -8 }}
-          animate={{ opacity: 1, y: 0 }}
+          style={{ transformOrigin: 'top right' }}
+          initial={reduceMotion ? false : { opacity: 0, y: -10, scale: 0.92 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          exit={reduceMotion ? undefined : { opacity: 0, y: -8, scale: 0.94 }}
           transition={{ type: 'spring', stiffness: 420, damping: 32 }}
         >
           <form onSubmit={search}>
@@ -225,6 +229,8 @@ export function Header() {
           )}
         </motion.nav>
       ) : null}
+      </AnimatePresence>
+      <AnimatePresence>
       {bell ? (
         <motion.div
           ref={bellPanel}
@@ -232,10 +238,15 @@ export function Header() {
           className="notice-sheet"
           role="region"
           aria-label="Notifications"
-          initial={reduceMotion ? false : { opacity: 0, y: -6 }}
-          animate={{ opacity: 1, y: 0 }}
+          style={{ transformOrigin: 'top right' }}
+          initial={reduceMotion ? false : { opacity: 0, y: -8, scale: 0.92 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          exit={reduceMotion ? undefined : { opacity: 0, y: -6, scale: 0.94 }}
           transition={{ type: 'spring', stiffness: 420, damping: 32 }}
         >
+          <div className="sheet-grab md:hidden" onPointerDown={(event) => dragSheet(event, bellPanel.current, () => setBell(false))}>
+            <span />
+          </div>
           <div className="mb-2 flex items-center justify-between gap-2">
             <p className="text-sm font-bold">Notifications</p>
             <button
@@ -258,6 +269,7 @@ export function Header() {
           )}
         </motion.div>
       ) : null}
+      </AnimatePresence>
       <SignInSheet open={open} onClose={() => setOpen(false)} />
     </header>
   )

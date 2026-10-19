@@ -1,5 +1,6 @@
 import { useEffect, useId, useRef, type ReactNode, type RefObject } from 'react'
 import { motion, useReducedMotion } from 'framer-motion'
+import { dragSheet } from '../lib/motion.ts'
 
 const FOCUSABLE =
   'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])'
@@ -119,6 +120,11 @@ export function Modal({
         animate={{ opacity: 1, y: 0, scale: 1 }}
         transition={{ type: 'spring', stiffness: 380, damping: 32 }}
       >
+        {className.includes('plan-sheet') ? null : (
+          <div className="sheet-grab sm:hidden" onPointerDown={(event) => dragSheet(event, panelRef.current, onClose)}>
+            <span />
+          </div>
+        )}
         {children}
       </motion.div>
     </div>

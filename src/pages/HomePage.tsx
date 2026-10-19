@@ -1,7 +1,9 @@
 import { motion, useReducedMotion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { GuideMap } from '../components/GuideMap.tsx'
+import { PlanCard } from '../components/PlanSheet.tsx'
 import { PlaceThumb } from '../components/PlaceThumb.tsx'
+import { Reveal } from '../components/Reveal.tsx'
 import { ScoreBadge } from '../components/ScoreBadge.tsx'
 import { catalog, slimById } from '../content/load.ts'
 import { hoursPhrase, isOpen } from '../lib/hours.ts'
@@ -116,9 +118,10 @@ export function HomePage() {
               : "Editor's picks for the next time you are hungry. Nothing on the list is open at this hour, so these are not a live open-now claim."}
           </p>
           <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-            {now.places.map((place) => (
-              <Link key={place.id} to={`/place/${place.id}`} className="hit-card" viewTransition={!reduceMotion}>
-                <div className="h-32 overflow-hidden bg-navy [&_.place-art]:aspect-auto [&_.place-art]:h-full">
+            {now.places.map((place, index) => (
+              <Reveal key={place.id} delay={Math.min(index, 6) * 0.04}>
+              <Link to={`/place/${place.id}`} className="hit-card" viewTransition={!reduceMotion}>
+                <div className="h-32 overflow-hidden bg-navy [&_.place-art]:aspect-auto [&_.place-art]:h-full" style={reduceMotion ? undefined : { viewTransitionName: `place-${place.id}` }}>
                   <PlaceThumb place={place} uploads={photos} eager />
                 </div>
                 <div className="p-3">
@@ -127,18 +130,21 @@ export function HomePage() {
                   <p className="mt-2 text-sm">{whyNow(place)}</p>
                 </div>
               </Link>
+              </Reveal>
             ))}
           </div>
         </section>
         <section className="mt-10" aria-labelledby="occasions">
           <h2 id="occasions" className="font-serif text-4xl italic">Guides by occasion</h2>
           <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-            {occasions.map((guide) => (
-              <Link key={guide.slug} to={`/guide/${guide.slug}`} className="guide-card" viewTransition={!reduceMotion}>
+            {occasions.map((guide, index) => (
+              <Reveal key={guide.slug} delay={Math.min(index, 6) * 0.04}>
+              <Link to={`/guide/${guide.slug}`} className="guide-card" viewTransition={!reduceMotion}>
                 <p className="text-xs font-bold tracking-[0.14em] uppercase">{guide.count} places</p>
                 <h3 className="mt-2 font-serif text-3xl italic leading-none">{guide.title}</h3>
                 <p className="mt-2 text-sm">{guide.dek}</p>
               </Link>
+              </Reveal>
             ))}
           </div>
         </section>
@@ -148,19 +154,22 @@ export function HomePage() {
             <p className="mt-2">{toGo} on your To go list.</p>
             <h3 className="mt-4 font-serif text-2xl italic">Recently rated</h3>
             {recent.length ? (
-              <ul className="mt-2 space-y-1">
+              <ul className="mt-2 space-y-2">
                 {recent.map((row) => (
                   <li key={row.place!.id}>
-                    <Link className="font-bold text-cream underline" to={`/place/${row.place!.id}`}>{row.place!.name}</Link>
-                    {' '}· {row.score.toFixed(1)}
+                    <Link className="plan-tray-item" to={`/place/${row.place!.id}`} viewTransition={!reduceMotion}>
+                      <span className="plan-tray-shot"><PlaceThumb place={row.place!} uploads={photos} /></span>
+                      <span className="min-w-0 flex-1 truncate font-bold">{row.place!.name}</span>
+                      <span className="pr-3 font-serif text-2xl italic">{row.score.toFixed(1)}</span>
+                    </Link>
                   </li>
                 ))}
               </ul>
             ) : <p className="mt-2">Nothing ranked yet. <Link className="font-bold text-cream underline" to="/rank">Rank a place</Link> and it will land here.</p>}
             <h3 className="mt-4 font-serif text-2xl italic">Plans</h3>
-            <ul className="mt-2 space-y-1">
+            <ul className="mt-2 space-y-2">
               {app.plans.slice(0, 3).map((plan) => (
-                <li key={plan.id}><Link className="font-bold text-cream underline" to={`/plan/${plan.id}`}>{plan.title}</Link>{plan.locked ? ' · locked in' : ''}</li>
+                <li key={plan.id}><PlanCard planId={plan.id} /></li>
               ))}
             </ul>
             <Link to="/plans/wizard" className="btn btn-coral mt-4">Plan dinner</Link>

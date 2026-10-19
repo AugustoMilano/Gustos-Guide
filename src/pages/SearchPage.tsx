@@ -1,4 +1,5 @@
 import { useMemo, useState } from 'react'
+import { useReducedMotion } from 'framer-motion'
 import { Link, useSearchParams } from 'react-router-dom'
 import { PlaceThumb } from '../components/PlaceThumb.tsx'
 import { ScoreBadge } from '../components/ScoreBadge.tsx'
@@ -10,6 +11,7 @@ import { useApp } from '../state/AppState.tsx'
 
 export function SearchPage() {
   const { gustoScore } = useApp()
+  const reduceMotion = useReducedMotion()
   const [params, setParams] = useSearchParams()
   const q = params.get('q') ?? ''
   const [origin, setOrigin] = useState<{ lat: number; lng: number } | null>(null)
@@ -61,7 +63,7 @@ export function SearchPage() {
       {origin ? <p className="mt-2 text-sm">Sorting places by distance from you.</p> : null}
       <section className="mt-8">
         <h2 className="font-serif text-3xl italic">Guides</h2>
-        <ul className="mt-2 space-y-2">{guides.slice(0, 12).map((guide) => <li key={guide.slug}><Link className="font-bold" to={`/guide/${guide.slug}`}>{guide.title}</Link> · {guide.group}</li>)}</ul>
+        <ul className="mt-2 grid gap-3 sm:grid-cols-2">{guides.slice(0, 12).map((guide) => <li key={guide.slug}><Link className="guide-card" to={`/guide/${guide.slug}`} viewTransition={!reduceMotion}><p className="text-xs font-bold tracking-[0.14em] uppercase">{guide.group}</p><h3 className="mt-2 font-serif text-2xl italic leading-none">{guide.title}</h3></Link></li>)}</ul>
       </section>
       <section className="mt-6">
         <h2 className="font-serif text-3xl italic">Neighborhoods</h2>
@@ -82,9 +84,9 @@ export function SearchPage() {
         <ul className="mt-3 space-y-3">
           {places.slice(0, 40).map((place) => (
             <li key={place.id}>
-              <Link to={`/place/${place.id}`} className="hit-card min-w-0">
+              <Link to={`/place/${place.id}`} className="hit-card min-w-0" viewTransition={!reduceMotion}>
                 <span className="flex items-center gap-3">
-                  <span className="h-16 w-16 shrink-0 overflow-hidden bg-navy [&_.place-art]:aspect-auto [&_.place-art]:h-full">
+                  <span className="h-16 w-16 shrink-0 overflow-hidden bg-navy [&_.place-art]:aspect-auto [&_.place-art]:h-full" style={reduceMotion ? undefined : { viewTransitionName: `place-${place.id}` }}>
                     <PlaceThumb place={place} />
                   </span>
                   <span className="flex min-w-0 flex-1 items-start justify-between gap-2 py-2 pr-3">

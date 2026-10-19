@@ -101,7 +101,7 @@ function GuideEditor({
   }
 
   return (
-    <section className="mt-6 border-2 border-ink p-4">
+    <section className="feed-card mt-6">
       <div className="flex gap-3">
         {cover ? (
           <span className="h-20 w-24 shrink-0 overflow-hidden border-2 border-ink bg-navy [&_.place-art]:aspect-auto [&_.place-art]:h-full">
@@ -177,17 +177,13 @@ function GuideEditor({
               onDragStart={() => setDragFrom(index)}
               onDragOver={(event) => event.preventDefault()}
               onDrop={() => dropAt(index)}
-              className="flex items-center justify-between gap-2 border border-ink/30 bg-cream px-2 py-1"
+              className="plan-tray-item"
             >
-              <span className="flex min-w-0 items-center gap-2">
-                <span aria-hidden="true" className="cursor-grab font-bold">⠿</span>
-                <Link to={`/place/${id}`}>{place.name}</Link>
-              </span>
-              <span className="flex shrink-0 gap-1">
-                <button type="button" className="btn text-sm" aria-label={`Move ${place.name} up`} disabled={index === 0} onClick={() => app.moveInGuide(guide.id, id, -1)}>Up</button>
-                <button type="button" className="btn text-sm" aria-label={`Move ${place.name} down`} disabled={index === guide.placeIds.length - 1} onClick={() => app.moveInGuide(guide.id, id, 1)}>Down</button>
-                <button type="button" className="btn text-sm" onClick={() => app.removeFromGuide(guide.id, id)}>Remove</button>
-              </span>
+              <span className="plan-tray-shot" aria-hidden="true"><PlaceThumb place={place} uploads={app.photos} /></span>
+              <Link className="inline-flex min-h-11 min-w-0 flex-1 items-center truncate font-bold" to={`/place/${id}`}>{place.name}</Link>
+              <button type="button" className="sheet-icon" aria-label={`Move ${place.name} up`} disabled={index === 0} onClick={() => app.moveInGuide(guide.id, id, -1)}>↑</button>
+              <button type="button" className="sheet-icon" aria-label={`Move ${place.name} down`} disabled={index === guide.placeIds.length - 1} onClick={() => app.moveInGuide(guide.id, id, 1)}>↓</button>
+              <button type="button" className="sheet-icon" aria-label={`Remove ${place.name}`} onClick={() => app.removeFromGuide(guide.id, id)}>×</button>
             </li>
           )
         })}
@@ -196,10 +192,23 @@ function GuideEditor({
         <span>Add a place</span>
         <input value={query} onChange={(event) => setQuery(event.target.value)} />
       </label>
-      <ul>
-        {matches.map((place) => (
-          <li key={place.id}><button type="button" className="text-sm font-bold" onClick={() => app.addToGuide(guide.id, place.id)}>Add {place.name}</button></li>
-        ))}
+      <ul className="mt-2 space-y-2">
+        {matches.map((place) => {
+          const full = slimById(place.id)
+          if (!full) return null
+          return (
+            <li key={place.id}>
+              <button type="button" className="plan-pick" onClick={() => app.addToGuide(guide.id, place.id)}>
+                <span className="plan-pick-shot"><PlaceThumb place={full} uploads={app.photos} /></span>
+                <span className="min-w-0 flex-1 text-left">
+                  <span className="block truncate font-serif text-2xl italic leading-none">{full.name}</span>
+                  <span className="mt-1 block truncate text-sm">{full.neighborhood}</span>
+                </span>
+                <span className="pr-2 text-sm font-bold">Add</span>
+              </button>
+            </li>
+          )
+        })}
       </ul>
     </section>
   )

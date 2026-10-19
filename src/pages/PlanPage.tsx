@@ -5,6 +5,7 @@ import { GuideMap } from '../components/GuideMap.tsx'
 import { MapLinks } from '../components/MapLinks.tsx'
 import { PlaceThumb } from '../components/PlaceThumb.tsx'
 import { PlanCard, PlanSheet } from '../components/PlanSheet.tsx'
+import { SlidingRow } from '../components/SlidingRow.tsx'
 import { ScoreBadge } from '../components/ScoreBadge.tsx'
 import { catalog, slimById } from '../content/load.ts'
 import { priceLabel, publicReference } from '../lib/format.ts'
@@ -101,11 +102,11 @@ export function PlanDetailPage() {
         }}
       >
         <p className="text-sm font-bold">Date</p>
-        <div className="chip-row mt-2" role="group" aria-label="Vote for a date">
+        <SlidingRow label="Vote for a date" className="mt-2">
           {plan.dates.map((item) => (
             <button key={item} type="button" className="chip" aria-pressed={date === item} onClick={() => setDate(item)}>{prettyDate(item)}</button>
           ))}
-        </div>
+        </SlidingRow>
         <label className="field mt-3 max-w-xs"><span>Time</span>
           <input type="time" value={time} onChange={(event) => setTime(event.target.value)} />
         </label>
