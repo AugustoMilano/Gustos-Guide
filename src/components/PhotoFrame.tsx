@@ -32,7 +32,7 @@ export function PhotoFrame({
         />
       )}
       <figcaption>
-        {photo.illustration ? 'Illustration' : photo.credit}
+        {art ? 'Illustration' : photo.credit}
         {photo.license ? ` · ${photo.license}` : ''}
         {photo.creditUrl ? (
           <>

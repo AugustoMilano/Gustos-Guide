@@ -45,13 +45,14 @@ export function PlacePage() {
 
   const place = full ?? slim
 
+  const photos = useMemo(() => (place ? displayPhotos(place, app.photos) : []), [place, app.photos])
+  const ownerImage = photos.find((photo) => photo.shareUrl)?.shareUrl
+
   usePageMeta(
     place ? `${place.name} · Gusto's Guide` : "Place · Gusto's Guide",
     place?.oneLiner ?? 'A Seattle restaurant.',
-    './og/place.svg',
+    ownerImage || './og/place.svg',
   )
-
-  const photos = useMemo(() => (place ? displayPhotos(place, app.photos) : []), [place, app.photos])
   const similar = useMemo(() => {
     if (!place) return []
     return catalog.places

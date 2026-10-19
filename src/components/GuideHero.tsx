@@ -1,5 +1,5 @@
-import { displayPhotos } from '../lib/gallery.ts'
-import type { LivePhoto } from '../lib/gallery.ts'
+import { useState } from 'react'
+import { displayPhotos, type DisplayPhoto, type LivePhoto } from '../lib/gallery.ts'
 import type { SlimPlace } from '../types.ts'
 
 function motif(cuisine: string) {
@@ -69,9 +69,14 @@ export function GuideHero({
   places: SlimPlace[]
   uploads: LivePhoto[]
 }) {
-  const photos = []
+  const [failed, setFailed] = useState<string[]>([])
+  function markFailed(url: string | undefined) {
+    if (!url) return
+    setFailed((current) => (current.includes(url) ? current : [...current, url]))
+  }
+  const photos: DisplayPhoto[] = []
   for (const place of places) {
-    const shot = displayPhotos(place, uploads).find((photo) => photo.url && !photo.illustration)
+    const shot = displayPhotos(place, uploads).find((photo) => photo.url && !photo.illustration && !failed.includes(photo.url))
     if (shot) photos.push(shot)
     if (photos.length === 3) break
   }
@@ -79,10 +84,10 @@ export function GuideHero({
     <div className="guide-hero relative mt-4 overflow-hidden bg-navy text-cream">
       {photos.length >= 2 ? (
         <div className="grid h-64 grid-cols-3 sm:h-80">
-          <img src={photos[0].url} alt="" className="col-span-2 h-full w-full object-cover" />
+          <img src={photos[0].url} alt="" className="col-span-2 h-full w-full object-cover" onError={() => markFailed(photos[0].url)} />
           <div className="grid grid-rows-2">
-            <img src={photos[1].url} alt="" className="h-full w-full object-cover" />
-            {photos[2] ? <img src={photos[2].url} alt="" className="h-full w-full object-cover" /> : <div className="bg-coral" />}
+            <img src={photos[1].url} alt="" className="h-full w-full object-cover" onError={() => markFailed(photos[1].url)} />
+            {photos[2] ? <img src={photos[2].url} alt="" className="h-full w-full object-cover" onError={() => markFailed(photos[2].url)} /> : <div className="bg-coral" />}
           </div>
         </div>
       ) : (

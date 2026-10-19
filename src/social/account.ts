@@ -2,7 +2,8 @@ import type { SupabaseClient, User } from '@supabase/supabase-js'
 import type { StoredPhoto } from '../lib/photos.ts'
 import type { Activity, Bucket, Comment, GuideVisibility, Notice, Plan, RankScore, SessionUser, UserGuide, VisitStatus } from '../types.ts'
 import type { LocalBundle } from './importLocal.ts'
-import { signedPhotoUrl, uploadPlacePhoto } from './supabase.ts'
+import type { LivePhoto } from '../lib/gallery.ts'
+import { ownerPhotoUrl, savePlacePhoto, signedPhotoUrl } from './supabase.ts'
 
 export type FriendProfile = { id: string; name: string; handle: string; avatarUrl?: string }
 
@@ -83,7 +84,7 @@ export type AccountSnapshot = {
   user: SessionUser
   doc: AccountDoc
   house: Record<string, number> | null
-  photos: { id: string; placeId: string; userId: string; userName: string; owner: boolean; url: string; width: number; height: number; storagePath: string }[]
+  photos: LivePhoto[]
   friends: FriendProfile[]
   requests: FriendRequest[]
   friendRanks: Record<string, Record<string, number>>
@@ -155,6 +156,29 @@ function schemaHint(error: { message?: string; code?: string } | null): Error | 
 export function guideVisibility(guide: UserGuide): GuideVisibility {
   if (guide.visibility) return guide.visibility
   return guide.isPublic ? 'public' : 'private'
+}
+
+export async function loadOwnerPhotos(client: SupabaseClient): Promise<LivePhoto[]> {
+  const { data, error } = await client.from('place_photos').select('id, place_id, user_id, storage_path, width, height').eq('is_owner', true)
+  if (error || !data) return []
+  const photos: LivePhoto[] = []
+  for (const row of data) {
+    const url = ownerPhotoUrl(row.storage_path)
+    if (!url) continue
+    photos.push({
+      id: row.id,
+      placeId: row.place_id,
+      userId: row.user_id,
+      userName: 'Gusto',
+      owner: true,
+      url,
+      shareUrl: url,
+      width: row.width ?? 1,
+      height: row.height ?? 1,
+      storagePath: row.storage_path,
+    })
+  }
+  return photos
 }
 
 export async function loadHouseScores(client: SupabaseClient): Promise<Record<string, number> | null> {
@@ -372,17 +396,22 @@ export async function loadAccount(client: SupabaseClient, authUser: User): Promi
   }
 
   const photos = await Promise.all(
-    photoRows.map(async (row) => ({
-      id: row.id,
-      placeId: row.place_id,
-      userId: row.user_id,
-      userName: row.user_id === user.id ? user.name : nameById.get(row.user_id)?.name ?? 'Friend',
-      owner: row.is_owner,
-      url: await signedPhotoUrl(client, row.storage_path).catch(() => ''),
-      width: row.width ?? 1,
-      height: row.height ?? 1,
-      storagePath: row.storage_path,
-    })),
+    photoRows.map(async (row) => {
+      const shareUrl = row.is_owner ? ownerPhotoUrl(row.storage_path) : undefined
+      const signed = await signedPhotoUrl(client, row.storage_path).catch(() => '')
+      return {
+        id: row.id,
+        placeId: row.place_id,
+        userId: row.user_id,
+        userName: row.user_id === user.id ? user.name : nameById.get(row.user_id)?.name ?? 'Friend',
+        owner: row.is_owner,
+        url: signed || shareUrl || '',
+        shareUrl,
+        width: row.width ?? 1,
+        height: row.height ?? 1,
+        storagePath: row.storage_path,
+      }
+    }),
   )
 
   const friendLists: FriendLists = {}
@@ -617,7 +646,7 @@ export async function importLocalBundle(client: SupabaseClient, user: SessionUse
 async function uploadImportedPhoto(client: SupabaseClient, user: SessionUser, photo: StoredPhoto): Promise<void> {
   const id = crypto.randomUUID()
   const path = `${user.id}/${photo.placeId}/${id}.webp`
-  await uploadPlacePhoto(client, photo.blob, path)
+  await savePlacePhoto(client, photo.blob, path, user.isOwner)
   const { error } = await client.from('place_photos').insert({
     id,
     place_id: photo.placeId,

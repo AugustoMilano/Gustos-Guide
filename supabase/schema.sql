@@ -239,6 +239,7 @@ create index if not exists rankings_place_idx on public.rankings (place_id);
 create index if not exists house_scores_updated_idx on public.house_scores (updated_at desc);
 create index if not exists place_photos_place_idx on public.place_photos (place_id);
 create index if not exists place_photos_user_idx on public.place_photos (user_id);
+create index if not exists place_photos_owner_idx on public.place_photos (place_id) where is_owner;
 create index if not exists guides_owner_idx on public.guides (owner_id);
 create index if not exists guides_visibility_idx on public.guides (visibility);
 create index if not exists guide_items_place_idx on public.guide_items (place_id);
@@ -911,8 +912,14 @@ create policy "house_scores_write" on public.house_scores for all to authenticat
   using (public.is_house_owner())
   with check (public.is_house_owner() and updated_by = auth.uid());
 
-create policy "place_photos_select" on public.place_photos for select to authenticated
-  using (user_id = auth.uid() or public.friends_with(user_id));
+create policy "place_photos_select" on public.place_photos for select to anon, authenticated
+  using (
+    is_owner
+    or (
+      auth.uid() is not null
+      and (user_id = auth.uid() or public.friends_with(user_id))
+    )
+  );
 
 create policy "place_photos_insert" on public.place_photos for insert to authenticated
   with check (user_id = auth.uid());
@@ -1067,7 +1074,8 @@ grant select on table public.house_scores to anon, authenticated;
 grant insert, update, delete on table public.house_scores to authenticated;
 
 revoke all on table public.place_photos from public, anon, authenticated;
-grant select, insert, delete on table public.place_photos to authenticated;
+grant select on table public.place_photos to anon, authenticated;
+grant insert, delete on table public.place_photos to authenticated;
 
 revoke all on table public.guides from public, anon, authenticated;
 grant select on table public.guides to anon, authenticated;
@@ -1166,8 +1174,8 @@ grant execute on function public.preview_invite(text) to anon, authenticated;
 grant execute on function public.accept_invite(text) to authenticated;
 
 -- ---------------------------------------------------------------------------
--- Storage. Bucket is private. Owners upload into a folder named with their id.
--- Friends can read. Signed URLs are created by a session that passes these policies.
+-- Storage. Friend photos stay in the private place-photos bucket.
+-- House photos (profiles.is_owner) live in the public owner-photos bucket.
 -- ---------------------------------------------------------------------------
 
 insert into storage.buckets (id, name, public, file_size_limit, allowed_mime_types)
@@ -1202,6 +1210,33 @@ create policy "place_photos_storage_insert" on storage.objects for insert to aut
 create policy "place_photos_storage_delete" on storage.objects for delete to authenticated
   using (
     bucket_id = 'place-photos'
+    and (storage.foldername(name))[1] = auth.uid()::text
+  );
+
+insert into storage.buckets (id, name, public, file_size_limit, allowed_mime_types)
+values ('owner-photos', 'owner-photos', true, 5242880, array['image/webp']::text[])
+on conflict (id) do update
+  set public = true,
+      file_size_limit = excluded.file_size_limit,
+      allowed_mime_types = excluded.allowed_mime_types;
+
+drop policy if exists "owner_photos_public_read" on storage.objects;
+drop policy if exists "owner_photos_insert" on storage.objects;
+drop policy if exists "owner_photos_delete" on storage.objects;
+
+create policy "owner_photos_public_read" on storage.objects for select to anon, authenticated
+  using (bucket_id = 'owner-photos');
+
+create policy "owner_photos_insert" on storage.objects for insert to authenticated
+  with check (
+    bucket_id = 'owner-photos'
+    and public.is_house_owner()
+    and (storage.foldername(name))[1] = auth.uid()::text
+  );
+
+create policy "owner_photos_delete" on storage.objects for delete to authenticated
+  using (
+    bucket_id = 'owner-photos'
     and (storage.foldername(name))[1] = auth.uid()::text
   );
 

@@ -6,25 +6,16 @@ import { clearStashedAuthError, peekAuthError } from '../lib/auth-callback.ts'
 import { canonicalUrl } from '../lib/site.ts'
 import { compressToWebp, readPhotos, removePhoto, savePhoto, type StoredPhoto } from '../lib/photos.ts'
 import { rescore } from '../lib/rank.ts'
-import { deleteGuideRemote, importLocalBundle, loadAccount, loadHouseScores, loadNotices, loadPlans, saveGuide, savePlan, type FriendLists, type FriendProfile, type FriendRequest } from '../social/account.ts'
+import { mergeUploads, type LivePhoto } from '../lib/gallery.ts'
+import { deleteGuideRemote, importLocalBundle, loadAccount, loadHouseScores, loadNotices, loadOwnerPhotos, loadPlans, saveGuide, savePlan, type FriendLists, type FriendProfile, type FriendRequest } from '../social/account.ts'
 import { scanLocalBundle, type LocalBundle } from '../social/importLocal.ts'
-import { authProviders, sendMagicLink, signInWithProvider, supabaseClient, uploadPlacePhoto } from '../social/supabase.ts'
+import { authProviders, removePlacePhoto, savePlacePhoto, sendMagicLink, signInWithProvider, supabaseClient } from '../social/supabase.ts'
 import type { Activity, Bucket, Comment, GuideVisibility, Notice, Plan, RankScore, SessionUser, UserGuide, VisitStatus } from '../types.ts'
 
 const SESSION_KEY = 'gusto.session.v1'
 const HOUSE_KEY = 'gusto.house.v1'
 
-export type LivePhoto = {
-  id: string
-  placeId: string
-  userId: string
-  userName: string
-  owner: boolean
-  url: string
-  width: number
-  height: number
-  storagePath?: string
-}
+export type { LivePhoto }
 
 export type ImportOffer = { places: number; guides: number; photos: number }
 
@@ -159,6 +150,7 @@ export function AppProvider({ children }: { children: ReactNode }) {
   const [user, setUser] = useState<SessionUser | null>(null)
   const [doc, setDoc] = useState<Doc>(emptyDoc)
   const [photos, setPhotos] = useState<LivePhoto[]>([])
+  const [housePhotos, setHousePhotos] = useState<LivePhoto[]>([])
   const [compare, setCompare] = useState<Compare | null>(null)
   const [announcement, setAnnouncement] = useState('')
   const [authError, setAuthError] = useState<string | null>(() => peekAuthError())
@@ -262,6 +254,9 @@ export function AppProvider({ children }: { children: ReactNode }) {
     let cancel = false
     void loadHouseScores(remote).then((scores) => {
       if (!cancel && scores) setHouse(scores)
+    })
+    void loadOwnerPhotos(remote).then((rows) => {
+      if (!cancel) setHousePhotos(rows)
     })
     return () => {
       cancel = true
@@ -943,11 +938,11 @@ export function AppProvider({ children }: { children: ReactNode }) {
       height: image.height,
       blob: image.blob,
     }
-    let url = URL.createObjectURL(image.blob)
+    let url = ''
     let storagePath: string | undefined
     if (remote) {
       storagePath = `${user.id}/${placeId}/${id}.webp`
-      await uploadPlacePhoto(remote, image.blob, storagePath)
+      url = await savePlacePhoto(remote, image.blob, storagePath, user.isOwner)
       const { error } = await remote.from('place_photos').insert({
         id,
         place_id: placeId,
@@ -960,8 +955,15 @@ export function AppProvider({ children }: { children: ReactNode }) {
       if (error) throw error
     } else {
       await savePhoto(record)
+      url = URL.createObjectURL(image.blob)
     }
-    setPhotos((current) => [{ ...record, url, storagePath }, ...current])
+    const publicOwner = url.includes('/object/public/owner-photos/')
+    const live: LivePhoto = { ...record, url, storagePath, shareUrl: publicOwner ? url : undefined }
+    if (remote && publicOwner) {
+      setHousePhotos((current) => [live, ...current.filter((item) => item.id !== live.id)])
+    } else {
+      setPhotos((current) => [live, ...current])
+    }
     const place = catalog.places.find((item) => item.id === placeId)
     const next = { ...doc }
     pushActivity(next, { id: crypto.randomUUID(), userId: user.id, type: 'photo', placeId, text: `Added a photo of ${place?.name ?? 'a place'}.`, createdAt: new Date().toISOString() }, user)
@@ -969,11 +971,12 @@ export function AppProvider({ children }: { children: ReactNode }) {
   }
 
   async function deletePhoto(id: string) {
-    const photo = photos.find((item) => item.id === id)
+    const photo = photos.find((item) => item.id === id) ?? housePhotos.find((item) => item.id === id)
     await removePhoto(id)
     setPhotos((current) => current.filter((item) => item.id !== id))
+    setHousePhotos((current) => current.filter((item) => item.id !== id))
     if (remote && photo?.storagePath) {
-      await remote.storage.from('place-photos').remove([photo.storagePath])
+      await removePlacePhoto(remote, photo.storagePath, Boolean(photo.owner))
       await remote.from('place_photos').delete().eq('id', id)
     }
   }
@@ -1123,7 +1126,7 @@ export function AppProvider({ children }: { children: ReactNode }) {
     compare,
     startRank,
     answerRank,
-    photos,
+    photos: remote ? mergeUploads(housePhotos, photos) : photos,
     uploadPhoto,
     deletePhoto,
     demoUsers: remote || !demoFriendsEnabled ? [] : demo.users,
