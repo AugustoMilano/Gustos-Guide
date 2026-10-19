@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Privacy · Gusto's Guide</title>
+  <meta name="description" content="What Gusto’s Guide stores, and how to ask for it to be deleted." />
+  <link rel="canonical" href="https://gustosguide.com/privacy" />
+  <meta property="og:title" content="Privacy · Gusto's Guide" />
+  <meta property="og:description" content="What Gusto’s Guide stores, and how to ask for it to be deleted." />
+  <meta property="og:url" content="https://gustosguide.com/privacy" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://gustosguide.com/og/og.svg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://gustosguide.com/og/og.svg" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <style>
+    :root { color-scheme: light; }
+    body { margin: 0; background: #eee3d6; color: #181818; font-family: Georgia, "Times New Roman", serif; }
+    a { color: #141f4d; }
+    header, main, footer { box-sizing: border-box; }
+    header { background: #141f4d; color: #fffaf3; padding: max(1rem, env(safe-area-inset-top)) max(1rem, env(safe-area-inset-right)) 1rem max(1rem, env(safe-area-inset-left)); }
+    header a { color: #fffaf3; font-size: 1.8rem; font-style: italic; text-decoration: none; }
+    main { max-width: 40rem; margin: 0 auto; padding: 2rem max(1rem, env(safe-area-inset-right)) 3rem max(1rem, env(safe-area-inset-left)); }
+    h1 { font-size: clamp(2.6rem, 8vw, 4rem); font-weight: 400; font-style: italic; line-height: 1; margin: 0.4rem 0 1.2rem; }
+    p { font-family: "Avenir Next", "Segoe UI", sans-serif; font-size: 1.05rem; line-height: 1.55; margin: 0 0 1rem; }
+    footer { border-top: 1px solid rgb(24 24 24 / 15%); padding: 1rem max(1rem, env(safe-area-inset-right)) max(1rem, env(safe-area-inset-bottom)) max(1rem, env(safe-area-inset-left)); font-family: "Avenir Next", "Segoe UI", sans-serif; font-size: 0.9rem; }
+  </style>
+</head>
+<body>
+  <header><a href="/">Gusto's Guide</a></header>
+  <main id="main">
+    <h1>Privacy</h1>
+    <p>Gusto’s Guide does not run ads and does not sell your data.</p>
+    <p>Browsing the guide does not create an account. A name you type on a phone that never signs in to Supabase stays on that device.</p>
+    <p>If you sign in, the account is stored with Supabase. We keep the email you used, or your X handle, and the name and avatar that come with that sign-in.</p>
+    <p>We also keep the lists you make, the statuses you set (such as To go and Been), the plans you host or join, the comments you write, and the photos you upload.</p>
+    <p>People you invite can see the lists, plans, and comments you share with them. Photos you add to a place are visible to friends.</p>
+    <p>To delete your account and the lists, statuses, plans, comments, and photos tied to it, email <a href="mailto:hello@gustosguide.com">hello@gustosguide.com</a>.</p>
+    <p>The map is drawn by OpenStreetMap and OpenFreeMap. Those services see the map request from your browser. They do not receive your account.</p>
+    <p>The rules for using the guide are on <a href="/terms">/terms</a>.</p>
+  </main>
+  <footer><a href="/">Back to the guide</a></footer>
+  <script>
+    if (location.hostname === 'www.gustosguide.com') {
+      location.replace(location.href.replace('//www.gustosguide.com', '//gustosguide.com'))
+    }
+  </script>
+</body>
+</html>
