@@ -99,7 +99,7 @@ type AppValue = {
   comments: Comment[]
   addComment: (activityId: string, text: string) => void
   plans: Plan[]
-  createPlan: (title: string, placeIds: string[], dates: string[], options?: { vibe?: string; votePlaceId?: string; locked?: boolean; inviteIds?: string[] }) => string
+  createPlan: (title: string, placeIds: string[], dates: string[], options?: { vibe?: string; votePlaceId?: string; locked?: boolean; inviteIds?: string[]; time?: string }) => string
   votePlan: (planId: string, placeId: string, date: string, time?: string) => void
   rsvpPlan: (planId: string, rsvp: 'yes' | 'no' | 'maybe') => void
   lockPlan: (planId: string) => void
@@ -662,7 +662,7 @@ export function AppProvider({ children }: { children: ReactNode }) {
     title: string,
     placeIds: string[],
     dates: string[],
-    options?: { vibe?: string; votePlaceId?: string; locked?: boolean; inviteIds?: string[] },
+    options?: { vibe?: string; votePlaceId?: string; locked?: boolean; inviteIds?: string[]; time?: string },
   ) {
     if (!user) return ''
     const inviteIds = (options?.inviteIds ?? (remote ? [] : demo.users.map((person) => person.id))).filter((id) => id !== user.id)
@@ -672,7 +672,9 @@ export function AppProvider({ children }: { children: ReactNode }) {
       hostId: user.id,
       placeIds,
       dates,
-      votes: options?.votePlaceId ? { [user.id]: { placeId: options.votePlaceId, date: dates[0] } } : {},
+      votes: options?.votePlaceId || options?.time
+        ? { [user.id]: { placeId: options.votePlaceId, date: dates[0], time: options.time || undefined } }
+        : {},
       rsvps: { [user.id]: 'yes' },
       inviteIds,
       locked: Boolean(options?.locked),

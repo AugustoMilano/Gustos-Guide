@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from 'react'
+import { useReducedMotion } from 'framer-motion'
 import { Link, useParams } from 'react-router-dom'
 import { GuideMap } from '../components/GuideMap.tsx'
 import { PhotoFrame } from '../components/PhotoFrame.tsx'
@@ -11,6 +12,7 @@ import { formatPeriods, hoursPhrase } from '../lib/hours.ts'
 import { MapLinks } from '../components/MapLinks.tsx'
 import { ShareButton } from '../components/ShareButton.tsx'
 import { milesBetween, priceLabel, publicReference, shareUrl, yelpBizUrl } from '../lib/format.ts'
+import { bounceMark } from '../lib/motion.ts'
 import { usePageMeta } from '../lib/meta.ts'
 import { howToGetIn } from '../lib/visit.ts'
 import { useApp } from '../state/AppState.tsx'
@@ -25,6 +27,7 @@ export function PlacePage() {
   const [error, setError] = useState('')
   const [signIn, setSignIn] = useState(false)
   const [busy, setBusy] = useState(false)
+  const reduceMotion = useReducedMotion()
 
   useEffect(() => {
     let cancelled = false
@@ -90,7 +93,12 @@ export function PlacePage() {
     <main id="main" tabIndex={-1} className="mx-auto max-w-6xl px-4 pt-24 pb-16 outline-none">
       <div className="grid gap-6 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,0.8fr)]">
         <div>
-          <PhotoFrame photo={current} priority compact={Boolean(current?.illustration || !current?.url)} />
+          <PhotoFrame
+            photo={current}
+            priority
+            compact={Boolean(current?.illustration || !current?.url)}
+            transitionName={reduceMotion ? undefined : `place-${place.id}`}
+          />
           <div className="mt-2 flex gap-2 overflow-auto">
             {photos.map((photo, index) => (
               <button key={photo.key} type="button" className={`h-16 w-24 shrink-0 border-2 ${index === active ? 'border-coral' : 'border-ink'}`} aria-label={`Photo ${index + 1} of ${photos.length}`} onClick={() => setActive(index)}>
@@ -137,8 +145,8 @@ export function PlacePage() {
             {place.yelpSlug ? <a className="btn text-sm" href={yelpBizUrl(place.yelpSlug)}>Yelp</a> : null}
             <MapLinks place={place} />
             {place.phone ? <a className="btn text-sm" href={`tel:${place.phone}`}>Call</a> : null}
-            <button type="button" className={`btn text-sm ${app.statuses[place.id] === 'togo' ? 'btn-coral' : ''}`} onClick={() => (app.user ? app.setStatus(place.id, 'togo') : setSignIn(true))}>To go</button>
-            <button type="button" className={`btn text-sm ${been ? 'btn-leaf' : ''}`} onClick={() => (app.user ? app.setStatus(place.id, 'been') : setSignIn(true))}>Been</button>
+            <button type="button" className={`btn status-mark text-sm ${app.statuses[place.id] === 'togo' ? 'btn-coral' : ''}`} aria-pressed={app.statuses[place.id] === 'togo'} onClick={(event) => { if (!app.user) { setSignIn(true); return } bounceMark(event); app.setStatus(place.id, 'togo') }}>To go</button>
+            <button type="button" className={`btn status-mark text-sm ${been ? 'btn-leaf' : ''}`} aria-pressed={been} onClick={(event) => { if (!app.user) { setSignIn(true); return } bounceMark(event); app.setStatus(place.id, 'been') }}>Been</button>
             <ShareButton title={place.name} url={shareUrl(place.id)} />
           </div>
         </div>

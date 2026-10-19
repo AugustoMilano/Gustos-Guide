@@ -33,12 +33,12 @@ export function FeedPage() {
         <p className="text-xs font-bold tracking-[0.14em] uppercase">{app.supabase ? 'Friends only' : 'Demo friends are labeled'}</p>
         <h1 className="font-serif text-5xl italic">The feed</h1>
         <ul className="mt-6 space-y-4">
-          {app.activities.length === 0 ? <li className="border-2 border-ink p-4">Nothing on the feed yet.</li> : null}
+          {app.activities.length === 0 ? <li className="feed-card">Nothing on the feed yet.</li> : null}
           {app.activities.map((activity) => {
             const person = app.demoUsers.find((user) => user.id === activity.userId)
             const place = activity.placeId ? catalog.places.find((item) => item.id === activity.placeId) : undefined
             return (
-              <li key={activity.id} className="border-2 border-ink p-4">
+              <li key={activity.id} className="feed-card">
                 <p className="text-sm font-bold">
                   {names.get(activity.userId) ?? 'Someone'}
                   {person?.demo ? ' · Demo' : ''}
@@ -92,7 +92,7 @@ export function FeedPage() {
       </div>
       <aside>
         <h2 className="font-serif text-3xl italic">Leaderboard</h2>
-        <ol className="mt-3 space-y-2">
+        <ol className="leaderboard mt-3 space-y-1">
           {board.map((row, index) => (
             <li key={row.id} className="flex items-center gap-2">
               <span className="grid h-8 w-8 shrink-0 place-items-center border-2 border-ink bg-coral text-sm font-bold">{index + 1}</span>

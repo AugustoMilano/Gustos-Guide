@@ -1274,7 +1274,7 @@ textarea {
   .avatar-card,
   .vibe-card,
   .vote-card {
-    transition: transform 160ms ease, filter 160ms ease, background 160ms ease, box-shadow 160ms ease;
+    transition: transform 340ms cubic-bezier(0.2, 0.9, 0.3, 1.15), filter 340ms cubic-bezier(0.2, 0.9, 0.3, 1), background 340ms cubic-bezier(0.2, 0.9, 0.3, 1), box-shadow 340ms cubic-bezier(0.2, 0.9, 0.3, 1);
   }
 
   .btn:hover,
@@ -1597,4 +1597,392 @@ textarea {
 
 @media (prefers-reduced-motion: reduce) {
   .skeleton { animation: none; }
+}
+
+.site-nav a,
+.site-nav button:not(.btn) {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  min-width: 44px;
+  padding-inline: 0.45rem;
+}
+
+.leaderboard a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+}
+
+.photo-frame figcaption a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  min-width: 44px;
+  padding-inline: 0.35rem;
+}
+
+.field,
+.field input,
+.field select,
+input[type='date'],
+input[type='time'] {
+  min-width: 0;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.map-legend,
+.leaflet-popup-content-wrapper,
+.leaflet-popup-tip {
+  background: #fffaf3;
+  color: #181818;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+
+.map-legend::before,
+.leaflet-popup-content-wrapper::before {
+  display: none;
+}
+
+.plan-sheet.modal-panel {
+  display: flex;
+  flex-direction: column;
+  height: min(100dvh, 920px);
+  max-height: 100dvh;
+  overflow: hidden;
+  padding: 0;
+  background: rgb(255 250 243 / 96%);
+  color: #181818;
+}
+
+.plan-sheet .field input,
+.plan-sheet .field select {
+  border: 1px solid rgb(24 24 24 / 12%);
+  border-radius: 14px;
+  background: #fff;
+  box-shadow: none;
+}
+
+.sheet-grab {
+  display: flex;
+  justify-content: center;
+  padding: 0.55rem 0 0.2rem;
+  touch-action: none;
+  cursor: grab;
+}
+
+.sheet-grab span {
+  width: 2.5rem;
+  height: 0.28rem;
+  border-radius: 999px;
+  background: rgb(24 24 24 / 28%);
+}
+
+.sheet-close,
+.sheet-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  min-width: 44px;
+  border-radius: 999px;
+  background: #fff;
+  border: 1px solid rgb(24 24 24 / 12%);
+  font-weight: 700;
+}
+
+.sheet-icon:disabled {
+  opacity: 0.35;
+}
+
+.plan-sheet-foot {
+  padding: 0.75rem 1rem max(0.85rem, env(safe-area-inset-bottom));
+  background: rgb(255 250 243 / 96%);
+  border-top: 1px solid rgb(24 24 24 / 8%);
+}
+
+.plan-when {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(0, 0.85fr);
+  gap: 0.6rem;
+}
+
+.chip-row,
+.invite-row {
+  display: flex;
+  gap: 0.45rem;
+  max-width: 100%;
+  overflow-x: auto;
+  padding-bottom: 0.15rem;
+}
+
+.chip-row .chip,
+.invite-row > li {
+  flex: none;
+}
+
+.plan-tray {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.plan-tray-item,
+.rsvp-row,
+.plan-card,
+.plan-pick {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  min-width: 0;
+  max-width: 100%;
+}
+
+.plan-tray-item,
+.plan-pick,
+.plan-card,
+.rsvp-row {
+  border-radius: 18px;
+  background: #fff;
+  border: 1px solid rgb(24 24 24 / 8%);
+  box-shadow: 0 8px 22px rgb(20 31 77 / 8%);
+}
+
+.plan-tray-item,
+.rsvp-row {
+  min-height: 64px;
+  padding-right: 0.2rem;
+}
+
+.plan-tray-shot,
+.plan-pick-shot,
+.plan-card-shot {
+  width: 4.25rem;
+  height: 4.25rem;
+  flex: none;
+  overflow: hidden;
+  border-radius: 16px 0 0 16px;
+  background: #141f4d;
+}
+
+.plan-tray-shot .place-art,
+.plan-pick-shot .place-art,
+.plan-card-shot .place-art {
+  aspect-ratio: auto;
+  height: 100%;
+}
+
+.plan-pick {
+  width: 100%;
+  padding: 0 0.7rem 0 0;
+  text-align: left;
+  min-height: 76px;
+}
+
+.plan-pick.is-on {
+  box-shadow:
+    0 0 0 2px rgb(255 83 48 / 45%),
+    0 10px 24px rgb(20 31 77 / 10%);
+}
+
+.pick-check {
+  display: grid;
+  place-items: center;
+  width: 1.7rem;
+  height: 1.7rem;
+  flex: none;
+  border-radius: 999px;
+  background: #ff5330;
+  color: #181818;
+  font-weight: 700;
+  opacity: 0;
+  transform: scale(0.6);
+}
+
+.pick-check.is-on {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.plan-card {
+  padding: 0.45rem 0.8rem 0.45rem 0.45rem;
+  min-height: 76px;
+}
+
+.plan-card-shots {
+  display: flex;
+  flex: none;
+}
+
+.plan-card-shot + .plan-card-shot {
+  margin-left: -1.1rem;
+  border: 2px solid #fff;
+  border-radius: 16px;
+}
+
+.invite-person {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.2rem;
+  width: 4.6rem;
+  min-height: 76px;
+  padding: 0.35rem;
+  border-radius: 16px;
+  background: #fff;
+  border: 1px solid rgb(24 24 24 / 8%);
+}
+
+.invite-person.is-on {
+  box-shadow: 0 0 0 2px #ff5330;
+}
+
+.rsvp-row {
+  padding-left: 0.35rem;
+}
+
+.plan-open {
+  max-width: 100%;
+  min-height: 44px;
+  justify-content: flex-start;
+  white-space: normal;
+  text-align: left;
+}
+
+.locked-card,
+.feed-card {
+  border-radius: 18px;
+  background: #fff;
+  border: 1px solid rgb(24 24 24 / 8%);
+  box-shadow: 0 8px 22px rgb(20 31 77 / 8%);
+  min-width: 0;
+  max-width: 100%;
+}
+
+.feed-card {
+  padding: 1rem;
+}
+
+.locked-card {
+  padding: 1rem;
+}
+
+.open-check {
+  width: 1.375rem;
+  height: 1.375rem;
+  accent-color: #ff5330;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .plan-pick,
+  .plan-card,
+  .invite-person {
+    transition: transform 380ms cubic-bezier(0.2, 0.9, 0.3, 1.15), box-shadow 380ms cubic-bezier(0.2, 0.9, 0.3, 1);
+  }
+
+  .plan-pick:active,
+  .plan-card:active,
+  .invite-person:active {
+    transform: scale(0.97);
+  }
+
+  .pick-check.is-on {
+    animation: check-pop 420ms cubic-bezier(0.2, 1.3, 0.4, 1) both;
+  }
+
+  .status-mark.is-pop {
+    animation: status-bounce 420ms cubic-bezier(0.2, 1.3, 0.4, 1);
+  }
+
+  .chip[aria-pressed='true'] {
+    animation: chip-settle 380ms cubic-bezier(0.2, 1.15, 0.3, 1);
+  }
+
+  .gusto-pin {
+    animation: pin-drop 420ms cubic-bezier(0.2, 0.9, 0.3, 1.15) both;
+  }
+
+  .gusto-pin.is-hot {
+    animation: pin-pop 380ms cubic-bezier(0.2, 1.25, 0.3, 1) both;
+  }
+
+  @supports (animation-timeline: scroll()) {
+    .hero-mesh {
+      animation: hero-drift linear both;
+      animation-timeline: scroll(root);
+      animation-range: 0 28rem;
+    }
+  }
+
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation-duration: 380ms;
+    animation-timing-function: cubic-bezier(0.2, 0.9, 0.3, 1);
+  }
+}
+
+@keyframes check-pop {
+  0% { transform: scale(0.4); opacity: 0; }
+  55% { transform: scale(1.16); opacity: 1; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes status-bounce {
+  0% { transform: scale(0.94); }
+  45% { transform: scale(1.06); }
+  100% { transform: scale(1); }
+}
+
+@keyframes chip-settle {
+  0% { transform: scale(0.96); }
+  60% { transform: scale(1.04); }
+  100% { transform: scale(1); }
+}
+
+@keyframes pin-drop {
+  from { transform: translateY(-16px) scale(0.7); opacity: 0; }
+  to { transform: none; opacity: 1; }
+}
+
+@keyframes pin-pop {
+  0% { transform: scale(1); }
+  45% { transform: scale(1.35); }
+  100% { transform: scale(1.12); }
+}
+
+@keyframes hero-drift {
+  to { transform: translateY(24px) scale(1.06); opacity: 0.62; }
+}
+
+@media (min-width: 640px) {
+  .plan-sheet.modal-panel {
+    height: min(86dvh, 820px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .plan-pick:active,
+  .plan-card:active,
+  .invite-person:active,
+  .gusto-pin,
+  .gusto-pin.is-hot,
+  .hero-mesh {
+    transform: none;
+    animation: none;
+  }
+
+  .pick-check.is-on {
+    opacity: 1;
+    transform: none;
+    animation: none;
+  }
+
+  .status-mark.is-pop,
+  .chip[aria-pressed='true'] {
+    animation: none;
+  }
 }

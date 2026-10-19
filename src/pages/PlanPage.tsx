@@ -1,8 +1,10 @@
 import { useMemo, useState } from 'react'
+import { useReducedMotion } from 'framer-motion'
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import { GuideMap } from '../components/GuideMap.tsx'
 import { MapLinks } from '../components/MapLinks.tsx'
 import { PlaceThumb } from '../components/PlaceThumb.tsx'
+import { PlanCard, PlanSheet } from '../components/PlanSheet.tsx'
 import { ScoreBadge } from '../components/ScoreBadge.tsx'
 import { catalog, slimById } from '../content/load.ts'
 import { priceLabel, publicReference } from '../lib/format.ts'
@@ -12,50 +14,23 @@ import type { Plan, SlimPlace } from '../types.ts'
 
 export function PlansPage() {
   const app = useApp()
-  const navigate = useNavigate()
-  const [title, setTitle] = useState('Friday night')
-  const [picked, setPicked] = useState<string[]>([])
-  const [date, setDate] = useState('2026-10-24')
+  const [sheet, setSheet] = useState(false)
   usePageMeta("Go together · Gusto's Guide", 'Make a plan, invite friends, vote on a place and a date.')
   return (
     <main id="main" tabIndex={-1} className="mx-auto max-w-3xl px-4 pt-24 pb-16 outline-none">
       <h1 className="font-serif text-5xl italic">Go together</h1>
-      <p className="mt-3"><Link className="btn btn-coral" to="/plans/wizard">Plan dinner</Link></p>
-      <ul className="mt-4 space-y-2">
+      <div className="mt-4 flex flex-wrap gap-2">
+        <button type="button" className="btn btn-coral" onClick={() => setSheet(true)}>New plan</button>
+        <Link className="btn" to="/plans/wizard">Plan dinner</Link>
+      </div>
+      {!app.user ? <p className="mt-3 text-sm">{app.supabase ? 'Sign in to host a plan.' : 'Sign in to host. The demo plan below is already on the table.'}</p> : null}
+      <ul className="mt-6 space-y-3">
+        {app.plans.length === 0 ? <li className="text-sm">No plans yet. Start one when you know the night.</li> : null}
         {app.plans.map((plan) => (
-          <li key={plan.id}><Link className="font-serif text-2xl italic" to={`/plan/${plan.id}`}>{plan.title}</Link>{plan.demo ? ' · Demo' : ''}</li>
+          <li key={plan.id}><PlanCard planId={plan.id} /></li>
         ))}
       </ul>
-      <form
-        className="mt-8 border-2 border-ink p-4"
-        onSubmit={(event) => {
-          event.preventDefault()
-          if (!app.user || picked.length === 0) return
-          const id = app.createPlan(title, picked, [date])
-          if (id) navigate(`/plan/${id}`)
-        }}
-      >
-        <h2 className="font-serif text-3xl italic">New plan</h2>
-        {!app.user ? <p className="mt-2 text-sm">{app.supabase ? 'Sign in to host.' : 'Sign in to host. You can still open the demo plan.'}</p> : null}
-        <label className="field mt-3"><span>Title</span><input value={title} onChange={(event) => setTitle(event.target.value)} /></label>
-        <label className="field mt-3"><span>Date</span><input type="date" value={date} onChange={(event) => setDate(event.target.value)} /></label>
-        <p className="mt-3 text-sm font-bold">Pick up to 3 places</p>
-        <ul className="mt-2 max-h-64 space-y-1 overflow-auto">
-          {catalog.places.slice(0, 30).map((place) => (
-            <li key={place.id}>
-              <label className="flex items-center gap-2">
-                <input
-                  type="checkbox"
-                  checked={picked.includes(place.id)}
-                  onChange={() => setPicked((current) => (current.includes(place.id) ? current.filter((id) => id !== place.id) : current.length >= 3 ? current : [...current, place.id]))}
-                />
-                {place.name}
-              </label>
-            </li>
-          ))}
-        </ul>
-        <button className="btn btn-coral mt-4" type="submit" disabled={!app.user}>Create plan</button>
-      </form>
+      <PlanSheet open={sheet} onClose={() => setSheet(false)} />
     </main>
   )
 }
@@ -63,6 +38,7 @@ export function PlansPage() {
 export function PlanDetailPage() {
   const { id = '' } = useParams()
   const app = useApp()
+  const reduceMotion = useReducedMotion()
   const plan = app.plans.find((item) => item.id === id)
   const [placeId, setPlaceId] = useState(plan?.placeIds[0] ?? '')
   const [date, setDate] = useState(plan?.dates[0] ?? '')
@@ -84,43 +60,75 @@ export function PlanDetailPage() {
       <h1 className="font-serif text-5xl italic">{plan.title}</h1>
       {plan.locked ? <p className="mt-2">This dinner is locked in. The votes below are the record.</p> : null}
       {plan.locked ? <LockedMaps plan={plan} /> : null}
-      <ul className="mt-4 space-y-2">
+      <ul className="mt-4 space-y-3">
         {plan.placeIds.map((pid) => {
           const place = catalog.places.find((item) => item.id === pid)
           if (!place) return null
-          return <li key={pid}><Link className="font-bold" to={`/place/${pid}`}>{place.name}</Link> · {tally.get(pid) ?? 0} votes</li>
+          const on = placeId === pid
+          const votes = tally.get(pid) ?? 0
+          return (
+            <li key={pid}>
+              <button
+                type="button"
+                className={`plan-pick ${on ? 'is-on' : ''}`}
+                aria-pressed={on}
+                onClick={() => setPlaceId(pid)}
+              >
+                <span className="plan-pick-shot" style={reduceMotion ? undefined : { viewTransitionName: `place-${place.id}` }}>
+                  <PlaceThumb place={place} uploads={app.photos} />
+                </span>
+                <span className="min-w-0 flex-1 text-left">
+                  <span className="block truncate font-serif text-2xl italic leading-none">{place.name}</span>
+                  <span className="mt-1 block truncate text-sm">{place.neighborhood} · {place.cuisine[0]}</span>
+                  <span className={`mt-2 block score-pill ${app.gustoScore(place.id) == null ? 'is-muted' : ''}`}>{app.gustoScore(place.id) == null ? 'Unrated' : app.gustoScore(place.id)!.toFixed(1)}</span>
+                </span>
+                <span className="text-right">
+                  <span className="block font-serif text-3xl italic leading-none">{votes}</span>
+                  <span className="text-xs font-bold uppercase">{votes === 1 ? 'vote' : 'votes'}</span>
+                </span>
+                <span className={`pick-check ${on ? 'is-on' : ''}`} aria-hidden="true">✓</span>
+              </button>
+              <Link className="btn plan-open mt-2 text-sm" to={`/place/${pid}`} viewTransition={!reduceMotion}>Open {place.name}</Link>
+            </li>
+          )
         })}
       </ul>
       <form
-        className="mt-4 grid gap-2 sm:grid-cols-2"
+        className="mt-4"
         onSubmit={(event) => {
           event.preventDefault()
           app.votePlan(plan.id, placeId, date, time)
         }}
       >
-        <label className="field"><span>Vote for a place</span>
-          <select value={placeId} onChange={(event) => setPlaceId(event.target.value)}>
-            {plan.placeIds.map((pid) => <option key={pid} value={pid}>{catalog.places.find((place) => place.id === pid)?.name}</option>)}
-          </select>
-        </label>
-        <label className="field"><span>Vote for a date</span>
-          <select value={date} onChange={(event) => setDate(event.target.value)}>
-            {plan.dates.map((item) => <option key={item}>{item}</option>)}
-          </select>
-        </label>
-        <label className="field"><span>Time</span>
+        <p className="text-sm font-bold">Date</p>
+        <div className="chip-row mt-2" role="group" aria-label="Vote for a date">
+          {plan.dates.map((item) => (
+            <button key={item} type="button" className="chip" aria-pressed={date === item} onClick={() => setDate(item)}>{prettyDate(item)}</button>
+          ))}
+        </div>
+        <label className="field mt-3 max-w-xs"><span>Time</span>
           <input type="time" value={time} onChange={(event) => setTime(event.target.value)} />
         </label>
-        <button className="btn btn-coral" type="submit" disabled={!app.user}>Cast vote</button>
+        <button className="btn btn-coral mt-3" type="submit" disabled={!app.user || !placeId}>Cast vote</button>
       </form>
-      <div className="mt-4 flex gap-2">
+      <h2 className="mt-6 font-serif text-3xl italic">Are you coming?</h2>
+      <div className="mt-3 flex flex-wrap gap-2">
         {(['yes', 'no', 'maybe'] as const).map((rsvp) => (
-          <button key={rsvp} type="button" className="btn text-sm" onClick={() => app.rsvpPlan(plan.id, rsvp)}>{rsvp}</button>
+          <button key={rsvp} type="button" className={`btn text-sm ${app.user && plan.rsvps[app.user.id] === rsvp ? 'btn-coral' : ''}`} aria-pressed={app.user ? plan.rsvps[app.user.id] === rsvp : undefined} onClick={() => app.rsvpPlan(plan.id, rsvp)}>{rsvp === 'yes' ? 'Coming' : rsvp === 'no' ? 'Out' : 'Maybe'}</button>
         ))}
       </div>
-      <h2 className="mt-6 font-serif text-3xl italic">RSVPs</h2>
-      <ul className="mt-2">
-        {Object.entries(plan.rsvps).map(([userId, rsvp]) => <li key={userId}>{names.get(userId) ?? userId}: {rsvp}</li>)}
+      <ul className="rsvp-list mt-4">
+        {Object.entries(plan.rsvps).length === 0 ? <li className="text-sm">No replies yet.</li> : null}
+        {Object.entries(plan.rsvps).map(([userId, rsvp]) => {
+          const label = names.get(userId) ?? 'Guest'
+          return (
+            <li key={userId} className="rsvp-row">
+              <span className="avatar" aria-hidden="true">{initials(label.replace(' · Demo', ''))}</span>
+              <span className="min-w-0 flex-1 truncate font-bold">{label}</span>
+              <span className="tag">{rsvp === 'yes' ? 'Coming' : rsvp === 'no' ? 'Out' : 'Maybe'}</span>
+            </li>
+          )
+        })}
       </ul>
       <button type="button" className="btn mt-4" onClick={() => void navigator.clipboard.writeText(app.inviteLink('plan', plan.id))}>Copy share link</button>
       <p className="mt-2 text-sm">{app.supabase ? 'This link lets someone join the plan after they sign in.' : 'This link opens the plan on this browser.'}</p>
@@ -157,7 +165,7 @@ function LockedMaps({ plan }: { plan: Plan }) {
   const place = slimById(winningPlaceId(plan) ?? '')
   if (!place) return null
   return (
-    <div className="mt-4 border-2 border-ink bg-[#fffaf3] p-4">
+    <div className="locked-card mt-4">
       <p className="text-xs font-bold uppercase tracking-wide">Go together</p>
       <p className="font-serif text-3xl italic">{place.name}</p>
       <div className="mt-3 flex flex-wrap gap-2">
@@ -176,6 +184,12 @@ const VIBE_CARDS = [
 ] as const
 
 const AVATAR = ['#ff5330', '#141f4d', '#38ba46', '#e7b23c']
+
+function prettyDate(iso: string): string {
+  const [year, month, day] = iso.split('-').map(Number)
+  if (!year || !month || !day) return iso
+  return new Date(year, month - 1, day).toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' })
+}
 
 function initials(name: string): string {
   return name

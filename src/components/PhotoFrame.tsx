@@ -2,11 +2,21 @@ import { useState } from 'react'
 import { PlaceArt } from './PlaceArt.tsx'
 import type { DisplayPhoto } from '../lib/gallery.ts'
 
-export function PhotoFrame({ photo, priority = false, compact = false }: { photo: DisplayPhoto; priority?: boolean; compact?: boolean }) {
+export function PhotoFrame({
+  photo,
+  priority = false,
+  compact = false,
+  transitionName,
+}: {
+  photo: DisplayPhoto
+  priority?: boolean
+  compact?: boolean
+  transitionName?: string
+}) {
   const [failed, setFailed] = useState(false)
   const art = photo.illustration || !photo.url || failed
   return (
-    <figure className={`photo-frame ${compact || art ? 'is-compact' : ''}`}>
+    <figure className={`photo-frame ${compact || art ? 'is-compact' : ''}`} style={transitionName ? { viewTransitionName: transitionName } : undefined}>
       {photo.illustration || !photo.url || failed ? (
         <PlaceArt id={photo.placeId} cuisine={photo.cuisine} neighborhood={photo.neighborhood} />
       ) : (

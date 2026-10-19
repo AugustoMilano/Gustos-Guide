@@ -117,7 +117,7 @@ export function HomePage() {
           </p>
           <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
             {now.places.map((place) => (
-              <Link key={place.id} to={`/place/${place.id}`} className="hit-card">
+              <Link key={place.id} to={`/place/${place.id}`} className="hit-card" viewTransition={!reduceMotion}>
                 <div className="h-32 overflow-hidden bg-navy [&_.place-art]:aspect-auto [&_.place-art]:h-full">
                   <PlaceThumb place={place} uploads={photos} eager />
                 </div>
@@ -134,7 +134,7 @@ export function HomePage() {
           <h2 id="occasions" className="font-serif text-4xl italic">Guides by occasion</h2>
           <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
             {occasions.map((guide) => (
-              <Link key={guide.slug} to={`/guide/${guide.slug}`} className="guide-card">
+              <Link key={guide.slug} to={`/guide/${guide.slug}`} className="guide-card" viewTransition={!reduceMotion}>
                 <p className="text-xs font-bold tracking-[0.14em] uppercase">{guide.count} places</p>
                 <h3 className="mt-2 font-serif text-3xl italic leading-none">{guide.title}</h3>
                 <p className="mt-2 text-sm">{guide.dek}</p>
@@ -188,7 +188,7 @@ export function HomePage() {
           </div>
           <div className="mt-4 flex gap-3 overflow-x-auto pb-2">
             {featured.map((guide) => (
-              <Link key={guide.slug} to={`/guide/${guide.slug}`} className="guide-card w-72 shrink-0">
+              <Link key={guide.slug} to={`/guide/${guide.slug}`} className="guide-card w-72 shrink-0" viewTransition={!reduceMotion}>
                 <span className="flex items-start justify-between gap-3">
                   <span>
                     <p className="text-xs font-bold tracking-[0.14em] uppercase">{guide.group}</p>
@@ -206,7 +206,7 @@ export function HomePage() {
           <p className="mt-2 max-w-xl">The rooms people already cross town for, one neighborhood at a time.</p>
           <div className="mt-4 flex gap-3 overflow-x-auto pb-2">
             {hits.map((place, index) => (
-              <Link key={place.id} to={`/place/${place.id}`} className="hit-card w-56 shrink-0">
+              <Link key={place.id} to={`/place/${place.id}`} className="hit-card w-56 shrink-0" viewTransition={!reduceMotion}>
                 <div className="h-28 overflow-hidden bg-navy [&_.place-art]:aspect-auto [&_.place-art]:h-full">
                   <PlaceThumb place={place} uploads={photos} eager={index < 4} />
                 </div>
@@ -224,7 +224,7 @@ export function HomePage() {
             <h2 className="font-serif text-4xl italic">{group}</h2>
             <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
               {catalog.guides.filter((guide) => guide.group === group).slice(0, group === 'Neighborhoods' ? 6 : 4).map((guide) => (
-                <Link key={guide.slug} to={`/guide/${guide.slug}`} className="guide-card">
+                <Link key={guide.slug} to={`/guide/${guide.slug}`} className="guide-card" viewTransition={!reduceMotion}>
                   <p className="text-xs font-bold tracking-[0.14em] uppercase">{guide.count} places</p>
                   <h3 className="mt-2 font-serif text-3xl italic leading-none">{guide.title}</h3>
                   <p className="mt-2 text-sm">{guide.dek}</p>

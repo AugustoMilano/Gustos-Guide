@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useReducedMotion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { PlaceArt } from './PlaceArt.tsx'
 import { PlaceThumb } from './PlaceThumb.tsx'
@@ -7,6 +8,7 @@ import { displayPhotos, type DisplayPhoto, type LivePhoto } from '../lib/gallery
 import { ScoreBadge } from './ScoreBadge.tsx'
 import { MapLinks } from './MapLinks.tsx'
 import { priceLabel, publicReference, yelpBizUrl } from '../lib/format.ts'
+import { bounceMark } from '../lib/motion.ts'
 import type { GuideEntry, SlimPlace, VisitStatus } from '../types.ts'
 
 function scrollToEntry(placeId: string) {
@@ -28,10 +30,10 @@ function StatusPills({
   const size = mini ? 'btn-mini' : 'text-sm'
   return (
     <span className="inline-flex">
-      <button type="button" className={`btn ${size} ${status === 'togo' ? 'btn-coral' : ''}`} aria-pressed={status === 'togo'} onClick={() => onToggle('togo')}>
+      <button type="button" className={`btn status-mark ${size} ${status === 'togo' ? 'btn-coral' : ''}`} aria-pressed={status === 'togo'} onClick={(event) => { bounceMark(event); onToggle('togo') }}>
         To go
       </button>
-      <button type="button" className={`btn border-l-0 ${size} ${status === 'been' ? 'btn-leaf' : ''}`} aria-pressed={status === 'been'} onClick={() => onToggle('been')}>
+      <button type="button" className={`btn status-mark border-l-0 ${size} ${status === 'been' ? 'btn-leaf' : ''}`} aria-pressed={status === 'been'} onClick={(event) => { bounceMark(event); onToggle('been') }}>
         Been
       </button>
     </span>
@@ -145,6 +147,7 @@ export function GuideEntryCard({
   onNeedSignIn: () => void
   signedIn: boolean
 }) {
+  const reduceMotion = useReducedMotion()
   const shots = displayPhotos(place, uploads)
   const reference = publicReference(place)
   const [active, setActive] = useState(0)
@@ -154,8 +157,10 @@ export function GuideEntryCard({
   const image = (
     <div className="relative min-w-0">
       <span className="absolute top-3 left-3 z-10 grid h-12 min-w-12 -rotate-6 place-items-center border-2 border-ink bg-coral px-2 font-serif text-2xl italic shadow-[3px_3px_0_#181818]">{number}</span>
-      <Link to={`/place/${place.id}`} className="block" aria-label={place.name}>
-        <Shot place={place} photo={photo} tall={layout === 0} />
+      <Link to={`/place/${place.id}`} className="block" aria-label={place.name} viewTransition={!reduceMotion}>
+        <span className="block" style={reduceMotion ? undefined : { viewTransitionName: `place-${place.id}` }}>
+          <Shot place={place} photo={photo} tall={layout === 0} />
+        </span>
       </Link>
       {shots.length > 1 ? (
         <div className="absolute right-3 bottom-10 flex gap-1">
@@ -179,7 +184,7 @@ export function GuideEntryCard({
       <div className="flex flex-wrap items-start justify-between gap-3">
         <h3 className="max-w-full font-serif text-4xl leading-[0.9] italic [overflow-wrap:anywhere] sm:text-6xl">
           <span className="mr-2 text-coral not-italic">{number}</span>
-          <Link to={`/place/${place.id}`}>{place.name}</Link>
+          <Link to={`/place/${place.id}`} viewTransition={!reduceMotion}>{place.name}</Link>
         </h3>
         <ScoreBadge score={score} />
       </div>
@@ -211,8 +216,8 @@ export function GuideEntryCard({
         {place.yelpSlug ? <a className="btn text-sm" href={yelpBizUrl(place.yelpSlug)}>Yelp</a> : null}
         <MapLinks place={place} />
         {place.phone ? <a className="btn text-sm" href={`tel:${place.phone}`}>Call</a> : null}
-        <button type="button" className={`btn text-sm ${status === 'togo' ? 'btn-coral' : ''}`} onClick={() => (signedIn ? onToggle('togo') : onNeedSignIn())}>To go</button>
-        <button type="button" className={`btn text-sm ${status === 'been' ? 'btn-leaf' : ''}`} onClick={() => (signedIn ? onToggle('been') : onNeedSignIn())}>Been</button>
+        <button type="button" className={`btn status-mark text-sm ${status === 'togo' ? 'btn-coral' : ''}`} aria-pressed={status === 'togo'} onClick={(event) => { if (!signedIn) { onNeedSignIn(); return } bounceMark(event); onToggle('togo') }}>To go</button>
+        <button type="button" className={`btn status-mark text-sm ${status === 'been' ? 'btn-leaf' : ''}`} aria-pressed={status === 'been'} onClick={(event) => { if (!signedIn) { onNeedSignIn(); return } bounceMark(event); onToggle('been') }}>Been</button>
       </div>
     </div>
   )
@@ -227,7 +232,7 @@ export function GuideEntryCard({
       {title}
       <div className="mt-3 flex items-start gap-3">
         <figure className="w-24 shrink-0">
-          <Link to={`/place/${place.id}`} className="block" aria-label={place.name}>
+          <Link to={`/place/${place.id}`} className="block" aria-label={place.name} viewTransition={!reduceMotion}>
             <div className="h-24 w-24 overflow-hidden border-2 border-ink bg-navy [&_.place-art]:aspect-auto [&_.place-art]:h-full">
               <PlaceArt id={place.id} cuisine={place.cuisine[0] ?? 'Seattle'} neighborhood={place.neighborhood} />
             </div>
@@ -254,8 +259,8 @@ export function GuideEntryCard({
         {place.yelpSlug ? <a className="btn text-sm" href={yelpBizUrl(place.yelpSlug)}>Yelp</a> : null}
         <MapLinks place={place} />
         {place.phone ? <a className="btn text-sm" href={`tel:${place.phone}`}>Call</a> : null}
-        <button type="button" className={`btn text-sm ${status === 'togo' ? 'btn-coral' : ''}`} onClick={() => (signedIn ? onToggle('togo') : onNeedSignIn())}>To go</button>
-        <button type="button" className={`btn text-sm ${status === 'been' ? 'btn-leaf' : ''}`} onClick={() => (signedIn ? onToggle('been') : onNeedSignIn())}>Been</button>
+        <button type="button" className={`btn status-mark text-sm ${status === 'togo' ? 'btn-coral' : ''}`} aria-pressed={status === 'togo'} onClick={(event) => { if (!signedIn) { onNeedSignIn(); return } bounceMark(event); onToggle('togo') }}>To go</button>
+        <button type="button" className={`btn status-mark text-sm ${status === 'been' ? 'btn-leaf' : ''}`} aria-pressed={status === 'been'} onClick={(event) => { if (!signedIn) { onNeedSignIn(); return } bounceMark(event); onToggle('been') }}>Been</button>
       </div>
     </article>
   )

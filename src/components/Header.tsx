@@ -132,7 +132,7 @@ export function Header() {
             className="glass-input w-full px-3 py-2"
           />
         </form>
-        <nav className="ml-auto hidden items-center gap-3 text-sm font-bold md:flex" aria-label="Primary">
+        <nav className="site-nav ml-auto hidden items-center gap-1 text-sm font-bold md:flex" aria-label="Primary">
           <Link to="/explore" onMouseEnter={() => prefetch('/explore')} onFocus={() => prefetch('/explore')}>Explore</Link>
           <Link to="/guides">Guides</Link>
           <Link to="/feed">Feed</Link>

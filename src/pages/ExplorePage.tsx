@@ -134,8 +134,8 @@ export function ExplorePage() {
                 <option value="unmarked">Unmarked</option>
               </select>
             </label>
-            <label className="flex min-h-11 items-end gap-2 pb-2 text-sm font-bold">
-              <input type="checkbox" checked={openNow} onChange={(event) => { setOpenNow(event.target.checked); resetArea() }} />
+            <label className="flex min-h-11 items-center gap-2 text-sm font-bold">
+              <input className="open-check" type="checkbox" checked={openNow} onChange={(event) => { setOpenNow(event.target.checked); resetArea() }} />
               Open now
             </label>
           </form>
