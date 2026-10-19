@@ -40,6 +40,8 @@ const STATIC = [
   '/feed',
   '/tonight',
   '/score',
+  '/photos',
+  '/seattle/photos',
   '/seattle',
   '/seattle/guides',
   '/plans',
@@ -202,7 +204,7 @@ test.describe('routes', () => {
     if (page.viewportSize()!.width < 768) {
       await page.getByRole('button', { name: 'Close notifications' }).click({ force: true })
       await page.getByRole('button', { name: 'Menu' }).click({ force: true })
-      const menu = await page.getByRole('navigation', { name: 'Mobile' }).boundingBox()
+      const menu = await page.getByRole('navigation', { name: 'Menu' }).boundingBox()
       expect(menu).toBeTruthy()
       expect(menu!.x).toBeGreaterThanOrEqual(11)
       expect(menu!.x + menu!.width).toBeLessThanOrEqual(viewport!.width - 11)
@@ -358,9 +360,9 @@ test.describe('controls', () => {
     await page.goto('/#/', { waitUntil: 'domcontentloaded' })
     if (info.project.name === 'webkit') {
       await tap(page.getByRole('button', { name: 'Menu' }))
-      await expect(page.getByRole('navigation', { name: 'Mobile' })).toBeVisible()
+      await expect(page.getByRole('navigation', { name: 'Menu' })).toBeVisible()
       await page.keyboard.press('Escape')
-      await expect(page.getByRole('navigation', { name: 'Mobile' })).toHaveCount(0)
+      await expect(page.getByRole('navigation', { name: 'Menu' })).toHaveCount(0)
       await tap(page.getByRole('button', { name: /Notifications/ }).first())
     } else {
       await tap(page.getByRole('button', { name: 'Notifications' }))

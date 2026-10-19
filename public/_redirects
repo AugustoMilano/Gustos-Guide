@@ -2,3 +2,5 @@
 # hashed app shell (relative assets) can finish PKCE.
 /auth/callback /auth/callback/index.html 200
 /auth/callback/ /auth/callback/index.html 200
+/share/place/:id /share/place/:id/index.html 200
+/share/guide/:slug /share/guide/:slug/index.html 200

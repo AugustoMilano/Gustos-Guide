@@ -25,7 +25,13 @@ function openDb(): Promise<IDBDatabase> {
 }
 
 export async function compressToWebp(file: File): Promise<{ blob: Blob; width: number; height: number }> {
-  const bitmap = await createImageBitmap(file)
+  // Redrawing drops EXIF, including location. Orientation is applied first when the browser allows it.
+  let bitmap: ImageBitmap
+  try {
+    bitmap = await createImageBitmap(file, { imageOrientation: 'from-image' })
+  } catch {
+    bitmap = await createImageBitmap(file)
+  }
   const scale = Math.min(1, 1600 / Math.max(bitmap.width, bitmap.height))
   const width = Math.max(1, Math.round(bitmap.width * scale))
   const height = Math.max(1, Math.round(bitmap.height * scale))

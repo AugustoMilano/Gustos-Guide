@@ -28,6 +28,7 @@ const ListPage = lazy(() => import('./pages/ListPage.tsx').then((module) => ({ d
 const JoinPage = lazy(() => import('./pages/JoinPage.tsx').then((module) => ({ default: module.JoinPage })))
 const TonightPage = lazy(() => import('./pages/TonightPage.tsx').then((module) => ({ default: module.TonightPage })))
 const ScoreQueuePage = lazy(() => import('./pages/ScoreQueuePage.tsx').then((module) => ({ default: module.ScoreQueuePage })))
+const PhotoQueuePage = lazy(() => import('./pages/PhotoQueuePage.tsx').then((module) => ({ default: module.PhotoQueuePage })))
 
 function ScrollManager() {
   const location = useLocation()
@@ -163,6 +164,7 @@ function Shell() {
             <Route key={`${prefix}-feed`} path={`${prefix}/feed`} element={<FeedPage />} />,
             <Route key={`${prefix}-tonight`} path={`${prefix}/tonight`} element={<TonightPage />} />,
             <Route key={`${prefix}-score`} path={`${prefix}/score`} element={<ScoreQueuePage />} />,
+            <Route key={`${prefix}-photos`} path={`${prefix}/photos`} element={<PhotoQueuePage />} />,
             <Route key={`${prefix}-plans`} path={`${prefix}/plans`} element={<PlansPage />} />,
             <Route key={`${prefix}-wizard`} path={`${prefix}/plans/wizard`} element={<PlanWizardPage />} />,
             <Route key={`${prefix}-plan`} path={`${prefix}/plan/:id`} element={<PlanDetailPage />} />,

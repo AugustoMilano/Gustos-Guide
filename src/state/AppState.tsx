@@ -88,6 +88,7 @@ type AppValue = {
   startRank: (placeId: string, bucket: Bucket) => void
   answerRank: (choice: 'new' | 'old' | 'close' | 'skip') => void
   photos: LivePhoto[]
+  photosReady: boolean
   uploadPhoto: (placeId: string, file: File) => Promise<void>
   deletePhoto: (id: string) => Promise<void>
   demoUsers: DemoUser[]
@@ -151,6 +152,7 @@ export function AppProvider({ children }: { children: ReactNode }) {
   const [doc, setDoc] = useState<Doc>(emptyDoc)
   const [photos, setPhotos] = useState<LivePhoto[]>([])
   const [housePhotos, setHousePhotos] = useState<LivePhoto[]>([])
+  const [photosReady, setPhotosReady] = useState(false)
   const [compare, setCompare] = useState<Compare | null>(null)
   const [announcement, setAnnouncement] = useState('')
   const [authError, setAuthError] = useState<string | null>(() => peekAuthError())
@@ -256,7 +258,11 @@ export function AppProvider({ children }: { children: ReactNode }) {
       if (!cancel && scores) setHouse(scores)
     })
     void loadOwnerPhotos(remote).then((rows) => {
-      if (!cancel) setHousePhotos(rows)
+      if (cancel) return
+      setHousePhotos(rows)
+      setPhotosReady(true)
+    }).catch(() => {
+      if (!cancel) setPhotosReady(true)
     })
     return () => {
       cancel = true
@@ -296,6 +302,9 @@ export function AppProvider({ children }: { children: ReactNode }) {
           return { ...row, url }
         }),
       )
+      setPhotosReady(true)
+    }).catch(() => {
+      if (!cancelled) setPhotosReady(true)
     })
     return () => {
       cancelled = true
@@ -1127,6 +1136,7 @@ export function AppProvider({ children }: { children: ReactNode }) {
     startRank,
     answerRank,
     photos: remote ? mergeUploads(housePhotos, photos) : photos,
+    photosReady,
     uploadPhoto,
     deletePhoto,
     demoUsers: remote || !demoFriendsEnabled ? [] : demo.users,

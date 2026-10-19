@@ -34,6 +34,9 @@ function page(doc) {
   <meta property="og:description" content="${escapeHtml(doc.description)}" />
   <meta property="og:url" content="https://gustosguide.com/${doc.slug}" />
   <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://gustosguide.com/og/og.svg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://gustosguide.com/og/og.svg" />
   <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
   <style>
     :root { color-scheme: light; }

@@ -6,6 +6,7 @@ import { PlaceThumb } from '../components/PlaceThumb.tsx'
 import { Reveal } from '../components/Reveal.tsx'
 import { ScoreBadge } from '../components/ScoreBadge.tsx'
 import { catalog, slimById } from '../content/load.ts'
+import { homeHitList, RIGHT_NOW_FALLBACK } from '../lib/photo-queue.ts'
 import { hoursPhrase, isOpen } from '../lib/hours.ts'
 import { usePageMeta } from '../lib/meta.ts'
 import { useApp } from '../state/AppState.tsx'
@@ -14,25 +15,8 @@ import type { GuideGroup, SlimPlace } from '../types.ts'
 const GROUPS: GuideGroup[] = ['Best of', 'Cuisine', 'Occasion', 'Neighborhoods', 'Drinks']
 const FEATURED = ['best-pizza', 'date-night', 'capitol-hill', 'cheap-eats', 'cocktail-bars', 'fun-dive-bars', 'seafood', 'brunch', 'ballard']
 
-function hitList(): SlimPlace[] {
-  const ranked = catalog.places
-    .filter((place) => place.publicRating || place.appleRating)
-    .slice()
-    .sort((a, b) => (b.publicRating?.value ?? 0) - (a.publicRating?.value ?? 0) || (b.appleRating?.percent ?? 0) - (a.appleRating?.percent ?? 0))
-  const picked: SlimPlace[] = []
-  const hoods = new Set<string>()
-  for (const place of ranked) {
-    if (hoods.has(place.neighborhood)) continue
-    hoods.add(place.neighborhood)
-    picked.push(place)
-    if (picked.length === 12) break
-  }
-  return picked
-}
-
 const TICKER = ['Pizza', 'Oysters', 'Capitol Hill', 'Ballard', 'Date night', 'Cheap eats', 'Cocktail bars', 'Fun & dive bars', 'Brunch', 'Georgetown', 'Fremont', 'Late night', 'Seafood']
 const OCCASIONS = ['date-night', 'cheap-eats', 'brunch', 'late-night', 'happy-hour', 'fun-dive-bars', 'bring-the-parents']
-const EDITORIAL = ['delancey', 'spinasse', 'paseo', 'tacos-chukis', 'the-walrus-and-the-carpenter', 'canlis']
 
 function diverse(places: SlimPlace[], limit: number): SlimPlace[] {
   const picked: SlimPlace[] = []
@@ -58,7 +42,7 @@ function whyNow(place: SlimPlace): string {
 function rightNow(): { places: SlimPlace[]; open: boolean } {
   const open = diverse(catalog.places.filter((place) => isOpen(place.periods)), 6)
   if (open.length >= 3) return { places: open, open: true }
-  const editorial = EDITORIAL.map((id) => slimById(id)).filter((place): place is SlimPlace => place != null)
+  const editorial = RIGHT_NOW_FALLBACK.map((id) => slimById(id)).filter((place): place is SlimPlace => place != null)
   return { places: editorial, open: false }
 }
 
@@ -70,7 +54,7 @@ export function HomePage() {
   const { photos } = app
   const featured = FEATURED.map((slug) => catalog.guides.find((guide) => guide.slug === slug)).filter((guide) => guide != null)
   const occasions = OCCASIONS.map((slug) => catalog.guides.find((guide) => guide.slug === slug)).filter((guide) => guide != null)
-  const hits = hitList()
+  const hits = homeHitList(catalog.places)
   const now = rightNow()
   const hoodPins = diverse(catalog.places, 18)
   const neighborhoods = catalog.guides.filter((guide) => guide.group === 'Neighborhoods').slice(0, 8)

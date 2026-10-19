@@ -117,12 +117,23 @@ export function PlacePage() {
             ) : !been && !app.user.isOwner ? (
               <button type="button" className="btn mt-3" onClick={() => app.setStatus(place.id, 'been')}>Mark Been to add a photo</button>
             ) : (
-              <label className="btn mt-3 cursor-pointer">
+              <label className={`btn relative mt-3 overflow-hidden ${busy ? 'pointer-events-none' : ''}`}>
                 {busy ? 'Saving…' : 'Upload photo'}
-                <input className="sr-only" type="file" accept="image/*" onChange={(event) => void onFile(event.target.files?.[0])} />
+                <input
+                  className="file-hit"
+                  type="file"
+                  accept="image/*"
+                  aria-label={busy ? `Saving a photo of ${place.name}` : `Add a photo of ${place.name}`}
+                  disabled={busy}
+                  onChange={(event) => {
+                    const file = event.target.files?.[0]
+                    event.target.value = ''
+                    void onFile(file)
+                  }}
+                />
               </label>
             )}
-            {error ? <p className="mt-2 text-sm">{error}</p> : null}
+            {error ? <p className="mt-2 text-sm" role="alert">{error}</p> : null}
           </section>
         </div>
         <div>

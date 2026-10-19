@@ -1,5 +1,5 @@
 import type { Price } from '../types.ts'
-import { canonicalUrl } from './site.ts'
+import { SITE_ORIGIN, canonicalUrl } from './site.ts'
 
 export function cx(...parts: Array<string | false | null | undefined>): string {
   return parts.filter(Boolean).join(' ')
@@ -91,8 +91,10 @@ export function shareUrl(slug: string): string {
 }
 
 export function pageShareUrl(hashPath: string): string {
-  const path = hashPath.startsWith('#') ? hashPath : `#${hashPath.startsWith('/') ? hashPath : `/${hashPath}`}`
-  return canonicalUrl(path)
+  const path = hashPath.replace(/^#/, '')
+  const bare = path.startsWith('/') ? path : `/${path}`
+  if (bare.startsWith('/place/') || bare.startsWith('/guide/')) return `${SITE_ORIGIN}/share${bare}`
+  return canonicalUrl(`#${bare}`)
 }
 
 export function directionsUrl(place: { name: string; lat: number; lng: number }): string {

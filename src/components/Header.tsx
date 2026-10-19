@@ -145,6 +145,7 @@ export function Header() {
           <Link to={cityPath('/rank')}>Rank</Link>
           <Link to={cityPath('/my')}>My guides</Link>
           {user?.isOwner ? <Link to={cityPath('/score')}>Scores</Link> : null}
+          {user?.isOwner ? <Link to={cityPath('/photos')}>Photos</Link> : null}
           <button
             type="button"
             className="relative min-h-11 px-2"
@@ -189,6 +190,7 @@ export function Header() {
           whileTap={press}
           className="glass-icon inline-flex min-h-11 items-center px-3 text-sm font-bold md:hidden"
           aria-expanded={menu}
+          aria-controls="mobile-menu"
           onClick={() => {
             setBell(false)
             setMenu((value) => !value)
@@ -201,8 +203,9 @@ export function Header() {
       {menu ? (
         <motion.nav
           ref={menuPanel}
+          id="mobile-menu"
           className="menu-sheet glass grid max-h-[calc(100dvh-5.5rem)] gap-2 overflow-y-auto text-sm font-bold md:hidden"
-          aria-label="Mobile"
+          aria-label="Menu"
           style={{ transformOrigin: 'top right' }}
           initial={reduceMotion ? false : { opacity: 0, y: -10, scale: 0.92 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
@@ -220,6 +223,7 @@ export function Header() {
           <Link to={cityPath('/rank')} onClick={() => setMenu(false)}>Rank</Link>
           <Link to={cityPath('/my')} onClick={() => setMenu(false)}>My guides</Link>
           {user?.isOwner ? <Link to={cityPath('/score')} onClick={() => setMenu(false)}>Scores</Link> : null}
+          {user?.isOwner ? <Link to={cityPath('/photos')} onClick={() => setMenu(false)}>Photos</Link> : null}
           <button type="button" className="text-left" aria-label="Notifications" onClick={() => { setMenu(false); setBell(true); markNoticesRead() }}>
             Notifications{unread ? ` (${unread})` : ''}
           </button>
