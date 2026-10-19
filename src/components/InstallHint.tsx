@@ -16,11 +16,9 @@ export function InstallHint() {
   if (!open) return null
   return (
     <div className="install-hint" role="status">
-      <p className="font-serif text-2xl italic">Add to Home Screen</p>
-      <p className="mt-1 text-sm">Tap Share, then Add to Home Screen. Guides you have opened stay on the phone.</p>
       <button
         type="button"
-        className="btn mt-3"
+        className="btn"
         onClick={() => {
           localStorage.setItem('gusto.install-hint', 'hide')
           setOpen(false)
@@ -28,6 +26,7 @@ export function InstallHint() {
       >
         Got it
       </button>
+      <p>Add to Home Screen from Share. Guides you open stay on the phone.</p>
     </div>
   )
 }

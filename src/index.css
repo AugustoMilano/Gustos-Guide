@@ -2085,11 +2085,14 @@ input[type='time'] {
   position: fixed;
   z-index: 30;
   left: max(12px, env(safe-area-inset-left));
-  right: max(12px, env(safe-area-inset-right));
-  bottom: max(12px, env(safe-area-inset-bottom));
-  max-width: 24rem;
-  margin: 0 auto;
-  padding: 1rem;
+  /* Stay left of the map List button, and above the guide strip's To go row. */
+  width: min(17.5rem, calc(100% - 6.5rem));
+  bottom: max(6.25rem, calc(env(safe-area-inset-bottom) + 5.75rem));
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin: 0;
+  padding: 0.45rem 0.7rem 0.45rem 0.45rem;
   border-radius: 20px;
   background: #fffaf3;
   color: #181818;
@@ -2098,8 +2101,18 @@ input[type='time'] {
   pointer-events: none;
 }
 
+.install-hint p {
+  margin: 0;
+  flex: 1;
+  min-width: 0;
+  font-size: 0.8125rem;
+  line-height: 1.25;
+}
+
 .install-hint .btn {
   pointer-events: auto;
+  flex: none;
+  padding-inline: 0.7rem;
 }
 
 .friend-empty {
