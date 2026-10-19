@@ -117,6 +117,7 @@ function Shot({
         )}
       </div>
       <figcaption className="border-x-2 border-b-2 border-ink bg-[#fffaf3] px-2 py-1 text-xs font-bold">
+        {!art && photo?.caption ? `${photo.caption} · ` : null}
         {art ? 'Illustration' : photo?.credit}
       </figcaption>
     </figure>

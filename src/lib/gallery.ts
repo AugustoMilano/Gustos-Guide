@@ -32,6 +32,7 @@ export type DisplayPhoto = {
   url?: string
   shareUrl?: string
   alt: string
+  caption?: string
   credit: string
   creditUrl?: string
   license?: string
@@ -41,15 +42,24 @@ export type DisplayPhoto = {
   placeId: string
 }
 
-export function displayPhotos(place: Pick<SlimPlace, 'id' | 'name' | 'cuisine' | 'neighborhood'> & { photo?: CatalogPhoto; photos?: CatalogPhoto[] }, uploads: LivePhoto[]): DisplayPhoto[] {
+export function displayPhotos(
+  place: Pick<SlimPlace, 'id' | 'name' | 'cuisine' | 'neighborhood'> & {
+    photo?: CatalogPhoto
+    photos?: CatalogPhoto[]
+    orderThis?: { dish: string }[]
+  },
+  uploads: LivePhoto[],
+): DisplayPhoto[] {
   const catalog = place.photos?.length ? place.photos : place.photo ? [place.photo] : []
+  const dish = place.orderThis?.find((item) => item.dish)?.dish
   const owner = uploads
     .filter((photo) => photo.placeId === place.id && photo.owner)
     .map((photo) => ({
       key: photo.id,
       url: photo.url,
       shareUrl: photo.shareUrl,
-      alt: `Photo of ${place.name} by Gusto`,
+      alt: dish || `Photo of ${place.name} by Gusto`,
+      caption: dish,
       credit: 'Photo by Gusto',
       illustration: false,
       cuisine: place.cuisine[0] ?? 'Restaurant',

@@ -6,6 +6,7 @@ const root = join(dirname(fileURLToPath(import.meta.url)), '..')
 const site = (process.env.SITE_URL || 'https://gustosguide.com').replace(/\/$/, '')
 const index = JSON.parse(readFileSync(join(root, 'src/content/index.json'), 'utf8'))
 const guides = JSON.parse(readFileSync(join(root, 'src/content/guides.json'), 'utf8'))
+const fullPlaces = JSON.parse(readFileSync(join(root, 'src/content/places.json'), 'utf8'))
 
 function escapeHtml(value) {
   return String(value)
@@ -97,7 +98,7 @@ for (const place of index.places) {
     title: `${place.name} · Gusto's Guide`,
     description: place.oneLiner || 'A Seattle restaurant.',
     image,
-    imageAlt: photos.has(place.id) ? `Photo of ${place.name}` : place.name,
+    imageAlt: photos.has(place.id) ? fullPlaces[place.id]?.orderThis?.[0]?.dish || `Photo of ${place.name}` : place.name,
     sharePath: `/share/place/${place.id}`,
     hashPath: `/place/${place.id}`,
   }))

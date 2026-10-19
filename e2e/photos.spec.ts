@@ -54,6 +54,10 @@ test('owner photos lead, and a private signed url does not hide the public one f
 
   expect(displayPhotos(place, []).map((photo) => photo.credit)).toEqual(['Wikimedia'])
   expect(displayPhotos({ ...place, photo: undefined }, []).map((photo) => photo.illustration)).toEqual([true])
+
+  const labeled = displayPhotos({ ...place, orderThis: [{ dish: 'Bacon, egg and cheese', note: 'On a poppy seed bagel.' }] }, [house])
+  expect(labeled[0]?.alt).toBe('Bacon, egg and cheese')
+  expect(labeled[0]?.caption).toBe('Bacon, egg and cheese')
 })
 
 function sample(partial: Partial<SlimPlace> & Pick<SlimPlace, 'id' | 'name'>): SlimPlace {
