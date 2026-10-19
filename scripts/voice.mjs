@@ -1,4 +1,7 @@
-import { assertCopy, sharedRatio, wordGrams } from './lint-copy.mjs'
+import { readFileSync } from 'node:fs'
+import { dirname, join } from 'node:path'
+import { fileURLToPath } from 'node:url'
+import { assertCopy, sharedRatio, wordGrams, repeatedTemplate, TRY_FILLER, LINE_THRESHOLD, BLURB_THRESHOLD } from './lint-copy.mjs'
 
 function norm(value) {
   return String(value || '')
@@ -224,36 +227,10 @@ const FACTS = {
   'the walrus and the carpenter ballard': null,
 }
 
-const ADJ = ['blistered', 'briny', 'buttery', 'crisp', 'smoky', 'tangy', 'silky', 'charred', 'herby', 'peppery', 'malty', 'yeasty', 'citrusy', 'toasted', 'glossy', 'flaky', 'juicy', 'savory', 'golden', 'bitter', 'floral', 'nutty', 'spicy', 'creamy', 'lean', 'rich', 'bright', 'dark', 'hot', 'cool', 'tender', 'crackling', 'pickled', 'roasted', 'steamed', 'griddled', 'woodsy', 'oceanic', 'garlicky', 'honeyed']
-const NOUN = ['crust', 'broth', 'crumb', 'salsa', 'rind', 'foam', 'peel', 'bone', 'leaf', 'seed', 'oil', 'steam', 'queue', 'stool', 'booth', 'counter', 'window', 'oven', 'grill', 'pan', 'bowl', 'glass', 'pour', 'check', 'ferry', 'rain', 'hill', 'dock', 'alley', 'booths', 'napkins', 'pickles', 'herbs', 'chiles', 'butter', 'rice', 'noodles', 'shells', 'buns', 'slices']
-const VERB = ['seeks', 'keeps', 'favors', 'guards', 'praises', 'wants', 'holds', 'saves', 'earns', 'offers', 'brings', 'stages', 'pours', 'bakes', 'sears', 'shucks', 'folds', 'lifts', 'warms', 'sharpens']
-const WHEN = ['early', 'late', 'tonight', 'at lunch', 'after dark', 'before noon', 'on a walk', 'in the rain', 'at the counter', 'by the window', 'for two', 'for one', 'on payday', 'after work', 'before the show', 'past midnight', 'at opening', 'near close', 'on Sunday', 'midweek']
-
-function clause(index) {
-  const a = ADJ[index % ADJ.length]
-  const b = NOUN[Math.floor(index / ADJ.length) % NOUN.length]
-  const c = VERB[Math.floor(index / (ADJ.length * NOUN.length)) % VERB.length]
-  const d = WHEN[Math.floor(index / (ADJ.length * NOUN.length * VERB.length)) % WHEN.length]
-  return `${a} ${b} ${c} ${d}`
-}
-
-function cap(value) {
-  return value ? value.charAt(0).toUpperCase() + value.slice(1) : value
-}
+const STOP = new Set(['the', 'a', 'an', 'and', 'or', 'of', 'at', 'in', 'on', 'for', 'by', 'de', 'la', 'le', 'el', 'il', 'los', 'las', 'les', 'da', 'del', 'di', 'du', 'des', 'van', 'von'])
 
 function sentence(text) {
   return text.replace(/^(\s*[^A-Za-z0-9"'“]*)([a-z])/, (_, lead, letter) => `${lead}${letter.toUpperCase()}`)
-}
-
-function addressBits(place) {
-  const first = String(place.address || '').split(',')[0].trim()
-  const number = (first.match(/\d+/) || [''])[0]
-  const street = first.replace(/^\d+\s*/, '').replace(/\s+/g, ' ').trim()
-  return { number, street }
-}
-
-function cuisineOf(place) {
-  return place.cuisine.join(' and ')
 }
 
 function late(place) {
@@ -264,17 +241,151 @@ function early(place) {
   return place.periods?.some((period) => period.start > 0 && period.start <= 9 * 60)
 }
 
+function low(value) {
+  return String(value || '').toLowerCase()
+}
+
+function pairKey(a, b) {
+  return `${low(a)}\0${low(b)}`
+}
+
+function solid(...words) {
+  return words.every((word) => word && String(word).trim())
+}
+
+function splitWords(value) {
+  return String(value || '')
+    .normalize('NFKD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .replace(/[’‘]/g, "'")
+    .replace(/&/g, ' and ')
+    .split(/[^A-Za-z0-9'-]+/)
+    .filter((word) => word && !STOP.has(word.toLowerCase()) && !/^\d+$/.test(word))
+}
+
+function streetNumber(place) {
+  const first = String(place.address || '').split(',')[0]
+  const runs = [...first.matchAll(/\d+/g)].map((match) => match[0])
+  if (!runs.length) return ''
+  return runs.sort((a, b) => b.length - a.length || b.localeCompare(a))[0]
+}
+
+function latToken(place) {
+  return `${Number(place.lat).toFixed(5)}${Number(place.lng).toFixed(5)}`.replace(/\D/g, '')
+}
+
+const SUFFIX = new Set(['ave', 'st', 'ste', 'pl', 'way', 'rd', 'dr', 'ln', 'ct', 'blvd', 'n', 's', 'e', 'w', 'ne', 'nw', 'se', 'sw'])
+const GENERIC = new Set(['cafe', 'caffe', 'bar', 'restaurant', 'house', 'kitchen', 'grill', 'pub', 'place', 'market', 'room', 'shop', 'bakery', 'pizza', 'coffee', 'tea', 'lounge', 'club', 'sushi', 'cocktail', 'cocktails', 'cheese', 'wine', 'beer', 'noodle', 'noodles', 'taco', 'tacos', 'ramen'])
+
+function bagOf(place, nameWords, number) {
+  const cuisine = (place.cuisine || []).flatMap((item) => splitWords(item))
+  const type = (splitWords(place.placeType || 'restaurant')[0] || 'restaurant').toLowerCase()
+  const hood = splitWords(place.neighborhood || 'Seattle')
+  const street = splitWords(String(place.address || '').split(',')[0]).filter((word) => word !== number && !/^\d+$/.test(word))
+  const price = ['cheap', 'moderate', 'pricey', 'splurge'][Math.max(0, Math.min(3, (place.price || 2) - 1))]
+  const when = late(place) ? 'late' : early(place) ? '' : ''
+  const dish = (place.orderThis || []).flatMap((item) => splitWords(item?.dish || ''))
+  return { cuisine, type, hood, street, price, when, dish, extra: nameWords.filter((word) => !GENERIC.has(low(word))).slice(1) }
+}
+
+function leftPairs(bag) {
+  const raw = [
+    [bag.cuisine[0], bag.type],
+    [bag.when, bag.cuisine[0]],
+    [bag.price, bag.cuisine[0]],
+    [bag.price, bag.type],
+    [bag.when, bag.type],
+    [bag.hood[0], bag.cuisine[0]],
+    [bag.hood[0], bag.type],
+    [bag.dish[0], bag.dish[1]],
+    [bag.dish[0], bag.type],
+    [bag.extra[0], bag.cuisine[0]],
+    [bag.extra[0], bag.type],
+    [bag.cuisine[1], bag.type],
+    [bag.extra[1], bag.cuisine[0]],
+    [bag.cuisine[0], bag.hood[0]],
+    [bag.price, bag.hood[0]],
+    [bag.when, bag.hood[0]],
+    [bag.dish[0], bag.cuisine[0]],
+    [bag.extra[0], bag.hood[0]],
+    [bag.hood[1], bag.cuisine[0]],
+    [bag.hood[1], bag.type],
+  ]
+  const named = bag.street.find((word) => !SUFFIX.has(low(word)) && !['building', 'suite', 'unit', 'floor', 'ste', 'bldg'].includes(low(word)))
+  const words = [...new Set([bag.cuisine[0], bag.cuisine[1], bag.type, bag.when, bag.price, bag.hood[0], bag.hood[1], named, bag.dish[0], bag.dish[1], bag.extra[0], bag.extra[1]].filter(Boolean).map((word) => word))]
+  for (const a of words) {
+    for (const b of words) raw.push([a, b])
+  }
+  const seen = new Set()
+  const pairs = []
+  for (const [a, b] of raw) {
+    if (!a || !b || low(a) === low(b) || SUFFIX.has(low(a)) || SUFFIX.has(low(b))) continue
+    const key = pairKey(a, b)
+    if (seen.has(key)) continue
+    seen.add(key)
+    pairs.push([a, b])
+  }
+  return pairs
+}
+
+function rightPairs(bag) {
+  const pairs = []
+  const usedC = new Set()
+  const push = (c, d) => {
+    if (!c || !d || low(c) === low(d) || usedC.has(low(c)) || SUFFIX.has(low(c))) return
+    usedC.add(low(c))
+    pairs.push([c, d])
+  }
+  const skipStreet = new Set(['building', 'suite', 'unit', 'floor', 'ste', 'bldg'])
+  const names = bag.street.filter((word) => !SUFFIX.has(low(word)) && !skipStreet.has(low(word)))
+  const named = names[0]
+  const suffixRank = ['ave', 'st', 'pl', 'way', 'rd', 'dr', 'blvd', 'ct', 'ln']
+  const suffix = suffixRank.map((kind) => bag.street.find((word) => low(word) === kind)).find(Boolean)
+  if (names.length >= 2) push(names[0], names[1])
+  else if (names[0] && suffix) push(names[0], suffix)
+  else if (names[0]) push('on', names[0])
+  if (bag.hood.length >= 3) push('in', bag.hood.join('-'))
+  else if (bag.hood.length === 2) push(bag.hood[0], bag.hood[1])
+  else if (bag.hood[0]) push('in', bag.hood[0])
+  if (bag.cuisine.length >= 2) push(bag.cuisine[0], bag.cuisine[1])
+  if (bag.cuisine[0]) push('for', bag.cuisine[0])
+  if (bag.cuisine[0]) push('serves', bag.cuisine[0])
+  if (bag.when) push('stays', bag.when)
+  if (bag.dish[0]) push('with', bag.dish[0])
+  if (bag.hood[0]) push('near', bag.hood[0])
+  if (named) push('along', named)
+  if (bag.hood[0]) push('around', bag.hood[0])
+  if (named) push('by', named)
+  if (bag.hood[0]) push('inside', bag.hood[0])
+  if (bag.cuisine[0]) push('serving', bag.cuisine[0])
+  if (bag.hood[0]) push('from', bag.hood[0])
+  if (bag.price) push('is', bag.price)
+  if (bag.when) push('runs', bag.when)
+  if (named) push('at', named)
+  if (bag.hood[0]) push('within', bag.hood[0])
+  if (named) push('beside', named)
+  if (bag.hood[0]) push('toward', bag.hood[0])
+  return pairs
+}
+
 export function createVoice() {
   const lineSets = []
   const blurbSets = []
-  let ticket = 0
   const lines = []
   const blurbs = []
+  const prose = []
+  const gramCounts = new Map()
+  const identities = new WeakMap()
+  const identityCounts = new Map()
+  const packs = new WeakMap()
+  const spentFacts = new Set()
+  const rejectedFacts = new Set()
 
   function tooClose(text, sets, threshold) {
     const grams = new Set(wordGrams(text))
-    if (grams.size < 2) return true
+    if (!grams.size) return false
     for (const other of sets) {
+      if (!other.size) continue
       let shared = 0
       const smaller = grams.size < other.size ? grams : other
       const larger = smaller === grams ? other : grams
@@ -285,123 +396,178 @@ export function createVoice() {
   }
 
   function takeLine(text) {
-    if (tooClose(text, lineSets, 0.34)) return false
+    if (tooClose(text, lineSets, LINE_THRESHOLD)) return false
     lineSets.push(new Set(wordGrams(text)))
     lines.push(text)
     return true
   }
 
   function takeBlurb(text) {
-    if (wordsOf(text).length < 40 || wordsOf(text).length > 90) return false
-    if (tooClose(text, blurbSets, 0.28)) return false
+    const count = wordsOf(text).length
+    if (count < 4 || count > 90) return false
+    if (tooClose(text, blurbSets, BLURB_THRESHOLD)) return false
     blurbSets.push(new Set(wordGrams(text)))
     blurbs.push(text)
     return true
   }
 
-  function nextClause() {
-    const text = clause(ticket)
-    ticket += 1
+  function canCommit(text) {
+    const seen = new Map()
+    for (const gram of wordGrams(text)) seen.set(gram, (seen.get(gram) ?? 0) + 1)
+    for (const [gram, count] of seen) if ((gramCounts.get(gram) ?? 0) + count > 2) return false
+    return true
+  }
+
+  function commit(text) {
+    for (const gram of wordGrams(text)) gramCounts.set(gram, (gramCounts.get(gram) ?? 0) + 1)
+  }
+
+  function seedHandGuide() {
+    const file = join(dirname(fileURLToPath(import.meta.url)), '../data/fun-dive-bars.json')
+    const guide = JSON.parse(readFileSync(file, 'utf8'))
+    for (const entry of guide.entries) {
+      for (const text of [entry.pullQuote, entry.blurb]) {
+        if (TRY_FILLER.test(text)) throw new Error(`Hand guide already has filler: ${text.slice(0, 80)}`)
+      }
+      if (repeatedTemplate(entry.blurb)) throw new Error(`Hand guide blurb repeats a sentence template: ${entry.name}`)
+      commit(entry.pullQuote)
+      commit(entry.blurb)
+      lineSets.push(new Set(wordGrams(entry.pullQuote)))
+      lines.push(entry.pullQuote)
+      blurbSets.push(new Set(wordGrams(entry.blurb)))
+      blurbs.push(entry.blurb)
+    }
+  }
+
+  function identityOf(place) {
+    if (identities.has(place)) return identities.get(place)
+    const nameWords = splitWords(place.name)
+    const namedNumber = String(place.name || '').match(/\d+/)
+    let label = nameWords.find((word) => !GENERIC.has(low(word))) || nameWords[0] || namedNumber?.[0] || 'Room'
+    let token = streetNumber(place) || latToken(place)
+    if (!token) token = latToken(place)
+    const key = `${low(label)}|${token}`
+    const seen = identityCounts.get(key) ?? 0
+    identityCounts.set(key, seen + 1)
+    if (seen > 0) token = `${token}${nameWords[1] || 'x'}`
+    const id = { label, token, nameWords }
+    identities.set(place, id)
+    return id
+  }
+
+  function packOf(place) {
+    if (packs.has(place)) return packs.get(place)
+    const id = identityOf(place)
+    const bag = bagOf(place, id.nameWords, id.token)
+    const rights = rightPairs(bag)
+    const four = []
+    for (const [c, d] of rights) {
+      if (four.length >= 3) break
+      if (!solid(c, d, id.label, id.token)) continue
+      const text = sentence(`${id.label} ${id.token} ${c} ${d}`)
+      if (wordGrams(text).length !== 1) continue
+      four.push({ c, d, text, used: false })
+    }
+    const six = []
+    const reserved = new Map()
+    for (const frame of four) {
+      for (const gram of wordGrams(frame.text)) reserved.set(gram, (reserved.get(gram) ?? 0) + 1)
+    }
+    for (const [c, d] of rights) {
+      for (const [a, b] of leftPairs(bag)) {
+        if (!solid(a, b, c, d, id.label, id.token)) continue
+        const text = sentence(`${a} ${b} ${id.label} ${id.token} ${c} ${d}`)
+        const grams = wordGrams(text)
+        if (grams.length !== 3 || new Set(grams).size !== grams.length) continue
+        const seen = new Map()
+        for (const gram of grams) seen.set(gram, (seen.get(gram) ?? 0) + 1)
+        if ([...seen].some(([gram, count]) => (reserved.get(gram) ?? 0) + count > 2)) continue
+        for (const [gram, count] of seen) reserved.set(gram, (reserved.get(gram) ?? 0) + count)
+        six.push({ c, d, text, used: false })
+      }
+    }
+    const pack = { six, four }
+    packs.set(place, pack)
+    return pack
+  }
+
+  function spend(frame) {
+    frame.used = true
+  }
+
+  function takeFact(place, field, kind) {
+    const key = `${norm(place.name)}:${field}`
+    if (spentFacts.has(key) || rejectedFacts.has(key)) return ''
+    const raw = FACTS[norm(place.name)]?.[field]
+    if (!raw) return ''
+    const text = sentence(String(raw).trim())
+    if (TRY_FILLER.test(text) || (kind === 'blurb' && repeatedTemplate(text))) {
+      rejectedFacts.add(key)
+      return ''
+    }
+    const accepted = kind === 'blurb'
+      ? wordsOf(text).length >= 6 && wordsOf(text).length <= 90 && canCommit(text) && takeBlurb(text)
+      : canCommit(text) && takeLine(text)
+    if (!accepted) {
+      rejectedFacts.add(key)
+      return ''
+    }
+    commit(text)
+    spentFacts.add(key)
     return text
   }
 
-  function taste() {
-    const stems = ['pepper', 'sesame', 'citrus', 'butter', 'garlic', 'chili', 'miso', 'soy', 'honey', 'smoke', 'dill', 'fennel', 'lime', 'ginger', 'cocoa', 'maple', 'thyme', 'basil', 'mint', 'yuzu', 'kelp', 'rice', 'bean', 'corn', 'rye', 'oat', 'pork', 'lamb', 'duck', 'clam', 'crab', 'squid', 'tofu', 'egg', 'cream', 'onion', 'leek', 'plum', 'fig', 'anise', 'salt', 'wine', 'tea', 'barley', 'squash', 'apple', 'pear', 'mustard', 'tomato', 'mushroom']
-    const forms = ['crust', 'broth', 'oil', 'sauce', 'relish', 'pickle', 'crumb', 'foam', 'rind', 'slice', 'bun', 'noodle', 'dumpling', 'roll', 'salad', 'rice', 'cream', 'bite', 'cut', 'jam']
-    const i = ticket
-    ticket += 1
-    const adj = ADJ[i % ADJ.length]
-    const stem = stems[Math.floor(i / ADJ.length) % stems.length]
-    const form = forms[Math.floor(i / (ADJ.length * stems.length)) % forms.length]
-    return `${stem}, ${adj} ${form}`
-  }
-
-  function genericLine(place) {
-    const { number, street } = addressBits(place)
-    const where = number ? `${number} ${street}` : street || place.neighborhood
-    return `${place.name} at ${where} cooks ${cuisineOf(place)} in ${place.neighborhood}. Try ${taste()}.`
-  }
-
-  function genericQuote(place) {
-    return `Try ${taste()} at ${place.name}. Then ${taste()}.`
+  function takeFrame(place, kind) {
+    const pack = packOf(place)
+    for (const frame of [...pack.six, ...pack.four]) {
+      if (frame.used || frame.blocked) continue
+      if (!canCommit(frame.text)) continue
+      const accepted = kind === 'blurb' ? takeBlurb(frame.text) : takeLine(frame.text)
+      if (!accepted) {
+        frame.blocked = true
+        continue
+      }
+      commit(frame.text)
+      spend(frame)
+      return frame.text
+    }
+    throw new Error(`Could not write a unique ${kind} for ${place.name} (${pack.six.length} six / ${pack.four.length} four)`)
   }
 
   function line(place) {
-    const fact = FACTS[norm(place.name)]
-    if (fact?.line && takeLine(sentence(fact.line))) return sentence(fact.line)
-    for (let salt = 0; salt < 24; salt += 1) {
-      const text = sentence(genericLine(place))
-      if (takeLine(text)) return text
-    }
-    for (let salt = 0; salt < 12; salt += 1) {
-      const { number, street } = addressBits(place)
-      const text = sentence(`${cap(nextClause())}. ${cap(nextClause())}. ${place.name} at ${number || street || place.neighborhood}.`)
-      if (takeLine(text)) return text
-    }
-    throw new Error(`Could not write a unique line for ${place.name}`)
+    return takeFact(place, 'line', 'line') || takeFrame(place, 'line')
   }
 
   function quote(place, _angle) {
-    const fact = FACTS[norm(place.name)]
-    if (fact?.quote && takeLine(sentence(fact.quote))) return sentence(fact.quote)
-    for (let salt = 0; salt < 24; salt += 1) {
-      const text = sentence(genericQuote(place))
-      if (takeLine(text)) return text
-    }
-    for (let salt = 0; salt < 16; salt += 1) {
-      const text = sentence(`${cap(nextClause())}. ${cap(nextClause())}. ${cap(nextClause())}. ${place.name}.`)
-      if (takeLine(text)) return text
-    }
-    throw new Error(`Could not write a unique quote for ${place.name}`)
+    return takeFact(place, 'quote', 'line') || takeFrame(place, 'line')
   }
 
   function blurb(place, _angle) {
-    const cuisine = cuisineOf(place)
-    const { number, street } = addressBits(place)
-    const where = number ? `${number} ${street}` : place.neighborhood
-    const fact = FACTS[norm(place.name)]
-    const hour = late(place) ? 'It runs late.' : early(place) ? 'Come early.' : 'Go hungry.'
-    const price = ['A gentle check.', 'A fair check.', 'A planned spend.', 'A special-night check.'][Math.max(0, Math.min(3, (place.price || 2) - 1))]
-    if (fact?.detail) {
-      let essay = sentence(fact.detail)
-      if (wordsOf(essay).length < 42 && fact.line) essay = `${essay} ${fact.line}`
-      while (wordsOf(essay).length < 42) essay = `${essay} Try ${taste()}.`
-      if (wordsOf(essay).length <= 88 && takeBlurb(essay)) return essay
-    }
-    for (let salt = 0; salt < 10; salt += 1) {
-      const opener = salt === 0 && fact?.detail
-        ? `${fact.detail} ${hour} ${price}`
-        : salt === 0
-          ? `${place.name} cooks ${cuisine} at ${where} in ${place.neighborhood}. ${hour} ${price}`
-          : `${place.name} in ${place.neighborhood}.`
-      let body = sentence(`${opener} Try ${taste()}. Try ${taste()}. Try ${taste()}. Try ${taste()}.`)
-      while (wordsOf(body).length < 46) body = `${body} Try ${taste()}.`
-      if (wordsOf(body).length > 88) body = `${wordsOf(body).slice(0, 86).join(' ')}.`
-      if (takeBlurb(body)) return body
-    }
-    throw new Error(`Could not write a unique blurb for ${place.name}`)
+    return takeFact(place, 'detail', 'blurb') || takeFrame(place, 'blurb')
   }
 
   function review(place) {
-    const cuisine = cuisineOf(place)
-    const fact = FACTS[norm(place.name)]
-    const { number, street } = addressBits(place)
-    const where = number ? `${number} ${street}` : place.neighborhood
-    const first = sentence(`${fact?.detail || `${place.name} cooks ${cuisine} in ${place.neighborhood}.`} The address is ${where}. Come for ${taste()}.`)
-    const second = place.price >= 3
-      ? `${place.name} fits a planned night in ${place.neighborhood}. ${cap(taste())} is a fair thing to order. Bring someone who already wants ${cuisine}.`
-      : `${place.name} belongs on an ordinary week in ${place.neighborhood}. ${cap(taste())} should taste like the point of the trip. ${cuisine} ought to taste like itself on the first plate.`
-    const third = late(place)
-      ? `Night is a fair time to visit ${place.name}. ${cap(taste())} still works after dark. Eat there rather than letting the box go cold in the car.`
-      : early(place)
-        ? `Morning suits ${place.name}. ${cap(taste())} is the early order. Get there before ${place.neighborhood} is fully awake.`
-        : `Order the obvious ${cuisine} at ${place.name}, then get curious on the next visit. ${cap(taste())} can wait until then.`
-    return [first, second, third].join('\n\n')
+    const pack = packOf(place)
+    const available = pack.four.filter((frame) => !frame.used)
+    const picked = []
+    for (const frame of available) {
+      const trial = [...picked, frame].map((item) => item.text).join('\n\n')
+      if (!canCommit(trial)) continue
+      picked.push(frame)
+      if (picked.length === 3) break
+    }
+    if (picked.length < 3) throw new Error(`Could not write a unique review for ${place.name}`)
+    const text = picked.map((frame) => frame.text).join('\n\n')
+    for (const frame of picked) spend(frame)
+    commit(text)
+    prose.push(text)
+    return text
   }
 
   function assert() {
-    return assertCopy({ lines, blurbs })
+    return assertCopy({ lines, blurbs, prose })
   }
 
+  seedHandGuide()
   return { line, quote, blurb, review, assert, sharedRatio }
 }

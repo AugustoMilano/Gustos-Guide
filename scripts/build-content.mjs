@@ -1045,6 +1045,7 @@ const copyCheck = voice.assert()
 assertCopy({
   lines: [...launch.map((place) => place.oneLiner), ...guides.flatMap((guide) => guide.entries.map((entry) => entry.pullQuote))],
   blurbs: guides.flatMap((guide) => guide.entries.map((entry) => entry.blurb)),
+  prose: launch.map((place) => place.review),
 })
 
 mkdirSync(join(root, 'src/content'), { recursive: true })
