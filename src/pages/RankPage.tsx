@@ -1,5 +1,6 @@
 import { useMemo, useState } from 'react'
 import { Link } from 'react-router-dom'
+import { AreaKicker } from '../components/AreaKicker.tsx'
 import { PlaceThumb } from '../components/PlaceThumb.tsx'
 import { ScoreBadge } from '../components/ScoreBadge.tsx'
 import { catalog } from '../content/load.ts'
@@ -26,7 +27,8 @@ export function RankPage() {
 
   return (
     <main id="main" tabIndex={-1} className="mx-auto max-w-3xl px-4 pt-24 pb-16 outline-none">
-      <h1 className="font-serif text-5xl italic">Rank it</h1>
+      <AreaKicker />
+      <h1 className="mt-2 font-serif text-5xl italic">Rank it</h1>
       <p className="mt-3 max-w-2xl">
         {app.user?.isOwner
           ? app.supabase

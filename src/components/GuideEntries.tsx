@@ -31,11 +31,11 @@ function StatusPills({
 }) {
   const size = mini ? 'btn-mini' : 'text-sm'
   return (
-    <span className="inline-flex">
+    <span className="inline-flex gap-2">
       <button type="button" className={`btn status-mark ${size} ${status === 'togo' ? 'btn-coral' : ''}`} aria-pressed={status === 'togo'} onClick={(event) => { bounceMark(event); onToggle('togo') }}>
         To go
       </button>
-      <button type="button" className={`btn status-mark border-l-0 ${size} ${status === 'been' ? 'btn-leaf' : ''}`} aria-pressed={status === 'been'} onClick={(event) => { bounceMark(event); onToggle('been') }}>
+      <button type="button" className={`btn status-mark ${size} ${status === 'been' ? 'btn-leaf' : ''}`} aria-pressed={status === 'been'} onClick={(event) => { bounceMark(event); onToggle('been') }}>
         Been
       </button>
     </span>

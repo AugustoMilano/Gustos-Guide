@@ -1,16 +1,17 @@
 import { motion, useReducedMotion } from 'framer-motion'
 import { useNavigate } from 'react-router-dom'
-import { CITIES, cityPath } from '../lib/city.ts'
+import { CITIES, areaTitle, cityPath } from '../lib/city.ts'
 import { useCityId } from '../lib/use-city.ts'
 
-/** Glass segmented control. The header copy hides below 640px; the menu copy is for phones. */
-export function CitySwitcher({ layoutId = 'city-pill' }: { layoutId?: string }) {
+const SPRING = { type: 'spring' as const, stiffness: 420, damping: 32 }
+
+/** Solid accent pill on the selected area. One control, in the header on every width. */
+export function CitySwitcher() {
   const city = useCityId()
   const navigate = useNavigate()
   const reduce = useReducedMotion()
-  const inMenu = layoutId !== 'city-pill'
   return (
-    <div className={inMenu ? 'city-switch city-switch-menu' : 'city-switch city-switch-bar'} role="group" aria-label="Area">
+    <div className="city-switch city-switch-bar" role="group" aria-label={`Area, ${areaTitle(city)} selected`}>
       {CITIES.filter((item) => item.ready).map((item) => {
         const on = item.id === city
         return (
@@ -19,16 +20,22 @@ export function CitySwitcher({ layoutId = 'city-pill' }: { layoutId?: string }) 
             type="button"
             className="city-switch-btn"
             aria-pressed={on}
-            onClick={() => navigate(cityPath('/', item.id))}
+            aria-current={on ? 'true' : undefined}
+            onClick={() => {
+              if (!on) navigate(cityPath('/', item.id))
+            }}
           >
             {on ? (
               <motion.span
-                layoutId={layoutId}
+                layoutId="city-pill"
                 className="city-switch-glint"
-                transition={reduce ? { duration: 0 } : { type: 'spring', stiffness: 420, damping: 32 }}
+                transition={reduce ? { duration: 0 } : SPRING}
               />
             ) : null}
-            <span className="relative">{item.name}</span>
+            <span className="city-switch-label">
+              <span className="city-mark" aria-hidden="true" />
+              {item.name}
+            </span>
           </button>
         )
       })}

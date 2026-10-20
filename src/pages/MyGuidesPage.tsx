@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
+import { AreaKicker } from '../components/AreaKicker.tsx'
 import { ListShareCard } from '../components/ListShareCard.tsx'
 import { PlaceThumb } from '../components/PlaceThumb.tsx'
 import { SignInSheet } from '../components/SignInSheet.tsx'
@@ -29,7 +30,8 @@ export function MyGuidesPage() {
 
   return (
     <main id="main" tabIndex={-1} className="mx-auto max-w-3xl px-4 pt-24 pb-16 outline-none">
-      <h1 className="font-serif text-5xl italic">My guides</h1>
+      <AreaKicker />
+      <h1 className="mt-2 font-serif text-5xl italic">My guides</h1>
       <p className="mt-2">{app.supabase ? 'House guides stay read-only. These lists live on your account. Drag a row, or use the buttons, to reorder.' : 'House guides stay read-only. These lists live in this browser. Drag a row, or use the buttons, to reorder.'}</p>
       {app.user ? (
         <form className="mt-4 flex gap-2" onSubmit={(event) => { event.preventDefault(); app.createGuide(title); setTitle('') }}>

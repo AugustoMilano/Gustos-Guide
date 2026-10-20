@@ -6,7 +6,7 @@ import { PhotoFrame } from '../components/PhotoFrame.tsx'
 import { PlaceThumb } from '../components/PlaceThumb.tsx'
 import { SignInSheet } from '../components/SignInSheet.tsx'
 import { catalog, loadPlace, slimById } from '../content/load.ts'
-import { cityPath } from '../lib/city.ts'
+import { areaTitle, cityPath } from '../lib/city.ts'
 import { placeCity, placesForCity } from '../lib/use-city.ts'
 import { demoFriendsEnabled } from '../lib/demo.ts'
 import { displayPhotos } from '../lib/gallery.ts'
@@ -69,7 +69,7 @@ export function PlacePage() {
     return (
       <main id="main" tabIndex={-1} className="mx-auto max-w-3xl px-4 pt-28 outline-none">
         <h1 className="font-serif text-5xl italic">That place is not on the list.</h1>
-        <Link to="/search" className="btn mt-6">Search</Link>
+        <Link to={cityPath('/search')} className="btn mt-6">Search</Link>
       </main>
     )
   }
@@ -139,7 +139,8 @@ export function PlacePage() {
           </section>
         </div>
         <div>
-          <p className="text-xs font-bold tracking-[0.14em] uppercase">{place.cuisine.join(' · ')} · {place.neighborhood}</p>
+          <p className="area-kicker">{areaTitle(placeCity(place))}</p>
+          <p className="mt-2 text-xs font-bold tracking-[0.14em] uppercase">{[place.cuisine.join(' · '), place.neighborhood].filter(Boolean).join(' · ')}</p>
           <h1 className="mt-1 font-serif text-5xl italic leading-none sm:text-6xl">{place.name}</h1>
           {place.oneLiner ? <p className="review-headline mt-4 border-2 border-ink bg-[#fffaf3] px-4 py-3 font-serif text-2xl italic leading-snug">“{place.oneLiner}”</p> : null}
           <div className="mt-3"><ScoreBadge score={app.gustoScore(place.id)} /></div>

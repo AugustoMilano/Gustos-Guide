@@ -13,6 +13,10 @@ export const CITIES: City[] = [
 
 export const ACTIVE_CITY: CityId = 'seattle'
 
+export function areaTitle(city: CityId): string {
+  return city === 'eastside' ? 'The Eastside' : 'Seattle'
+}
+
 const PLAIN = new Set(['/terms', '/privacy'])
 const PREFIXES = ['/seattle', '/eastside'] as const
 

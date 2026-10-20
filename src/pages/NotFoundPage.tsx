@@ -1,5 +1,7 @@
 import { useState, type FormEvent } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
+import { AreaKicker } from '../components/AreaKicker.tsx'
+import { cityPath } from '../lib/city.ts'
 import { usePageMeta } from '../lib/meta.ts'
 
 export function NotFoundPage() {
@@ -15,7 +17,8 @@ export function NotFoundPage() {
 
   return (
     <main id="main" tabIndex={-1} className="mx-auto max-w-3xl px-4 pt-28 outline-none">
-      <p className="text-xs font-bold tracking-[0.14em] uppercase">404</p>
+      <AreaKicker />
+      <p className="mt-2 text-xs font-bold tracking-[0.14em] uppercase">404</p>
       <h1 className="mt-2 font-serif text-5xl italic">That page is not on the menu.</h1>
       <p className="mt-3 max-w-xl">The link may be old. Search the Seattle list, or start from the guides.</p>
       <form className="mt-6 flex flex-wrap gap-2" onSubmit={search}>
@@ -30,9 +33,9 @@ export function NotFoundPage() {
         <button className="btn btn-coral" type="submit">Search</button>
       </form>
       <div className="mt-4 flex flex-wrap gap-2">
-        <Link to="/" className="btn">Home</Link>
-        <Link to="/guides" className="btn">All guides</Link>
-        <Link to="/explore" className="btn">Map</Link>
+        <Link to={cityPath('/')} className="btn">Home</Link>
+        <Link to={cityPath('/guides')} className="btn">All guides</Link>
+        <Link to={cityPath('/explore')} className="btn">Map</Link>
       </div>
     </main>
   )

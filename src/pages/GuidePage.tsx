@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
+import { AreaKicker } from '../components/AreaKicker.tsx'
 import { GuideEntryCard, GuideStrip } from '../components/GuideEntries.tsx'
 import { GuideMap } from '../components/GuideMap.tsx'
 import { ShareButton } from '../components/ShareButton.tsx'
@@ -132,8 +133,9 @@ export function GuidePage() {
   return (
     <main id="main" tabIndex={-1} className={`mx-auto max-w-6xl px-4 outline-none ${mobileMap ? 'flex h-dvh max-h-dvh flex-col overflow-hidden pt-20 pb-3' : 'pt-20 pb-16'}`}>
       <div className={mobileMap ? 'shrink-0' : undefined}>
-        <div className="flex flex-wrap items-center justify-between gap-x-4 gap-y-2">
-          <Link to={cityPath('/guides')} className="text-sm font-bold">← All guides</Link>
+        <AreaKicker />
+        <div className="mt-2 flex flex-wrap items-center justify-between gap-x-4 gap-y-2">
+          <Link to={cityPath('/guides')} className="inline-flex min-h-11 items-center text-sm font-bold">← All guides</Link>
           <div className="flex flex-wrap items-center gap-2">
             <p className="text-xs font-bold tracking-[0.14em] uppercase">{guide.group} · Updated {guide.updatedAt}</p>
             <ShareButton title={guide.title} url={pageShareUrl(`/guide/${guide.slug}`)} />
@@ -172,9 +174,9 @@ export function GuidePage() {
           <button type="button" className="btn flex-1 text-sm" onClick={() => setFiltersOpen(true)}>
             Filters{activeFilters.length ? ` · ${activeFilters.length}` : ''}
           </button>
-          <div className="flex flex-1" role="group" aria-label="List or map">
+          <div className="flex flex-1 gap-2" role="group" aria-label="List or map">
             <button type="button" className={`btn flex-1 text-sm ${pane === 'list' ? 'btn-navy' : ''}`} onClick={() => setPane('list')}>List</button>
-            <button type="button" className={`btn flex-1 border-l-0 text-sm ${pane === 'map' ? 'btn-navy' : ''}`} onClick={() => setPane('map')}>Map</button>
+            <button type="button" className={`btn flex-1 text-sm ${pane === 'map' ? 'btn-navy' : ''}`} onClick={() => setPane('map')}>Map</button>
           </div>
         </div>
         {activeFilters.length && !desktop ? (
