@@ -4,7 +4,7 @@ type VisitPlace = {
   id: string
   placeType: string
   cuisine: string[]
-  price: Price
+  price?: Price
   website?: string
   phone?: string
 }
@@ -23,7 +23,7 @@ export function howToGetIn(place: VisitPlace): string | null {
   if (/counter|coffee|bakery|cafe|café|dessert/.test(blob)) {
     return 'Show up. Nothing here implies a reservation.'
   }
-  if (place.price >= 3 && place.website) {
+  if (place.price != null && place.price >= 3 && place.website) {
     return 'Use the website if they take tables. This guide does not invent a booking window.'
   }
   if (place.phone) return 'Call the restaurant. This guide does not invent a booking window.'

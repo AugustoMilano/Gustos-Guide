@@ -5,7 +5,8 @@ import { GuideMap, type MapBounds } from '../components/GuideMap.tsx'
 import { MapLinks } from '../components/MapLinks.tsx'
 import { PlaceThumb } from '../components/PlaceThumb.tsx'
 import { ScoreBadge, scoreBand } from '../components/ScoreBadge.tsx'
-import { catalog } from '../content/load.ts'
+import { cityPath } from '../lib/city.ts'
+import { useCityCatalog } from '../lib/use-city.ts'
 import { isOpen } from '../lib/hours.ts'
 import { priceLabel } from '../lib/format.ts'
 import { usePageMeta } from '../lib/meta.ts'
@@ -33,17 +34,19 @@ function inside(place: SlimPlace, box: MapBounds): boolean {
 }
 
 export function ExplorePage() {
-  usePageMeta("Explore · Gusto's Guide", 'Every Seattle place on the guide, on one map.', './og/og.svg')
+  const { city, places } = useCityCatalog()
+  const areaName = city === 'eastside' ? 'the Eastside' : 'Seattle'
+  usePageMeta("Explore · Gusto's Guide", `Every ${areaName} place on the guide, on one map.`, './og/og.svg')
   const app = useApp()
   const reduceMotion = useReducedMotion()
   const cuisines = useMemo(() => {
     const set = new Set<string>()
-    for (const place of catalog.places) for (const cuisine of place.cuisine) set.add(cuisine)
+    for (const place of places) for (const cuisine of place.cuisine) set.add(cuisine)
     return [...set].sort((a, b) => a.localeCompare(b))
-  }, [])
+  }, [places])
   const neighborhoods = useMemo(
-    () => [...new Set(catalog.places.map((place) => place.neighborhood))].sort((a, b) => a.localeCompare(b)),
-    [],
+    () => [...new Set(places.map((place) => place.neighborhood))].sort((a, b) => a.localeCompare(b)),
+    [places],
   )
   const [cuisine, setCuisine] = useState('any')
   const [neighborhood, setNeighborhood] = useState('any')
@@ -68,7 +71,7 @@ export function ExplorePage() {
     setPending(false)
   }
 
-  const filtered = catalog.places.filter((place) => {
+  const filtered = places.filter((place) => {
     if (cuisine !== 'any' && !place.cuisine.includes(cuisine)) return false
     if (neighborhood !== 'any' && place.neighborhood !== neighborhood) return false
     if (price !== 'any' && place.price !== Number(price)) return false
@@ -85,7 +88,7 @@ export function ExplorePage() {
 
   return (
     <main id="main" tabIndex={-1} className="explore-shell outline-none">
-      <h1 className="sr-only">Explore Seattle</h1>
+      <h1 className="sr-only">Explore {areaName}</h1>
       <section className={`explore-list ${sheet ? 'is-open' : 'is-peek'}`} aria-label="Places in this view">
         <div className="flex items-center justify-between gap-2 border-b-2 border-ink px-3 py-2">
           <p className="font-serif text-2xl italic">{listed.length} places</p>
@@ -155,7 +158,7 @@ export function ExplorePage() {
                 onMouseEnter={() => setActiveId(place.id)}
                 onMouseLeave={() => setActiveId((current) => (current === place.id ? null : current))}
               >
-                <Link to={`/place/${place.id}`} className="flex items-center gap-3 after:absolute after:inset-0" viewTransition={!reduceMotion}>
+                <Link to={cityPath(`/place/${place.id}`)} className="flex items-center gap-3 after:absolute after:inset-0" viewTransition={!reduceMotion}>
                   <span className="h-20 w-24 shrink-0 overflow-hidden bg-navy [&_.place-art]:aspect-auto [&_.place-art]:h-full" style={reduceMotion ? undefined : { viewTransitionName: `place-${place.id}` }}>
                     <PlaceThumb place={place} uploads={app.photos} />
                   </span>
@@ -163,7 +166,7 @@ export function ExplorePage() {
                     <ScoreBadge score={app.gustoScore(place.id)} size="sm" />
                     <span className="mt-1 block font-serif text-xl italic leading-none">{place.name}</span>
                     <span className="mt-1 block text-xs font-bold tracking-wide uppercase">
-                      {place.cuisine[0]} · {priceLabel(place.price)} · {place.neighborhood}
+                      {[place.cuisine[0], priceLabel(place.price), place.neighborhood].filter(Boolean).join(' · ')}
                     </span>
                   </span>
                 </Link>

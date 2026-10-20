@@ -1,0 +1,1225 @@
+{
+  "updatedAt": "2026-10-20",
+  "places": [
+    {
+      "id": "bis-on-main",
+      "city": "eastside",
+      "name": "Bis on Main",
+      "neighborhood": "Old Bellevue",
+      "address": "10213 Main Street, Bellevue, WA 98004",
+      "lat": 47.6100241,
+      "lng": -122.2039115,
+      "cuisine": [
+        "Italian"
+      ],
+      "placeType": "restaurant",
+      "price": 3,
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "start": 690,
+          "end": 1260
+        },
+        {
+          "days": [
+            5
+          ],
+          "start": 690,
+          "end": 1290
+        },
+        {
+          "days": [
+            6
+          ],
+          "start": 600,
+          "end": 1290
+        },
+        {
+          "days": [
+            0
+          ],
+          "start": 600,
+          "end": 1260
+        }
+      ],
+      "gustoScore": null,
+      "website": "http://bobbymoorerestaurants.com/",
+      "phone": "+1 (425) 455-2033",
+      "appleMapsUrl": "https://maps.apple.com/?daddr=47.6100241,-122.2039115&q=Bis%20on%20Main",
+      "guideSlugs": [
+        "best-of-bellevue"
+      ],
+      "muid": "",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-10-20",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Italian at Bis on Main",
+          "credit": "Illustration"
+        }
+      ]
+    },
+    {
+      "id": "monsoon-bellevue",
+      "city": "eastside",
+      "name": "Monsoon Bellevue",
+      "neighborhood": "Old Bellevue",
+      "address": "10245 Main Street, Bellevue, WA 98004",
+      "lat": 47.6099608,
+      "lng": -122.2032267,
+      "cuisine": [
+        "Vietnamese"
+      ],
+      "placeType": "restaurant",
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "start": 690,
+          "end": 1320
+        },
+        {
+          "days": [
+            5
+          ],
+          "start": 690,
+          "end": 1380
+        },
+        {
+          "days": [
+            6
+          ],
+          "start": 660,
+          "end": 1380
+        },
+        {
+          "days": [
+            0
+          ],
+          "start": 660,
+          "end": 1320
+        }
+      ],
+      "gustoScore": null,
+      "website": "https://www.monsoonrestaurants.com/bellevue",
+      "phone": "+1 (425) 635-1112",
+      "appleMapsUrl": "https://maps.apple.com/?daddr=47.6099608,-122.2032267&q=Monsoon%20Bellevue",
+      "guideSlugs": [
+        "best-of-bellevue"
+      ],
+      "muid": "",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-10-20",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Vietnamese at Monsoon Bellevue",
+          "credit": "Illustration"
+        }
+      ]
+    },
+    {
+      "id": "seastar-restaurant-and-raw-bar",
+      "city": "eastside",
+      "name": "Seastar Restaurant & Raw Bar",
+      "neighborhood": "Downtown Bellevue",
+      "address": "205 108th Ave NE, Suite 100, Bellevue, WA 98004",
+      "lat": 47.6121373,
+      "lng": -122.1963444,
+      "cuisine": [
+        "Seafood"
+      ],
+      "placeType": "restaurant",
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [],
+      "gustoScore": null,
+      "website": "https://seastarrestaurant.com/",
+      "phone": "+1 (425) 456-0010",
+      "appleMapsUrl": "https://maps.apple.com/?daddr=47.6121373,-122.1963444&q=Seastar%20Restaurant%20%26%20Raw%20Bar",
+      "guideSlugs": [
+        "best-of-bellevue"
+      ],
+      "muid": "",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-10-20",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Seafood at Seastar Restaurant & Raw Bar",
+          "credit": "Illustration"
+        }
+      ]
+    },
+    {
+      "id": "john-howie-steak",
+      "city": "eastside",
+      "name": "John Howie Steak",
+      "neighborhood": "The Bravern",
+      "address": "11111 NE 8th St, Ste 125, Bellevue, WA 98004",
+      "lat": 47.6170951,
+      "lng": -122.1919712,
+      "cuisine": [
+        "Steak"
+      ],
+      "placeType": "steakhouse",
+      "price": 4,
+      "oneLiner": "Steakhouse in the Bravern. The lunch service is currently closed.",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "start": 1020,
+          "end": 1260
+        },
+        {
+          "days": [
+            0,
+            6
+          ],
+          "start": 960,
+          "end": 1260
+        }
+      ],
+      "gustoScore": null,
+      "website": "https://johnhowiesteak.com/",
+      "phone": "+1 (425) 440-0880",
+      "appleMapsUrl": "https://maps.apple.com/?daddr=47.6170951,-122.1919712&q=John%20Howie%20Steak",
+      "guideSlugs": [
+        "best-of-bellevue"
+      ],
+      "muid": "",
+      "hoursLabel": "",
+      "blurb": "Steakhouse in the Bravern. The lunch service is currently closed.",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-10-20",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Steak at John Howie Steak",
+          "credit": "Illustration"
+        }
+      ]
+    },
+    {
+      "id": "tavern-hall",
+      "city": "eastside",
+      "name": "Tavern Hall",
+      "neighborhood": "Bellevue Square",
+      "address": "505 Bellevue Square, Bellevue, WA 98004",
+      "lat": 47.6165675,
+      "lng": -122.202069,
+      "cuisine": [
+        "American"
+      ],
+      "placeType": "restaurant",
+      "price": 2,
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "start": 690,
+          "end": 1320
+        }
+      ],
+      "gustoScore": null,
+      "website": "https://www.tavern-hall.com/",
+      "phone": "+1 (425) 454-7500",
+      "appleMapsUrl": "https://maps.apple.com/?daddr=47.6165675,-122.202069&q=Tavern%20Hall",
+      "guideSlugs": [
+        "best-of-bellevue"
+      ],
+      "muid": "",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-10-20",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting American at Tavern Hall",
+          "credit": "Illustration"
+        }
+      ]
+    },
+    {
+      "id": "regent-bakery-and-cafe",
+      "city": "eastside",
+      "name": "Regent Bakery and Cafe",
+      "neighborhood": "Bel-Red",
+      "address": "677 120th Ave NE, Ste 9A, Bellevue, WA 98005",
+      "lat": 47.6162309,
+      "lng": -122.1808153,
+      "cuisine": [
+        "Bakery"
+      ],
+      "placeType": "bakery",
+      "oneLiner": "Asian bakery and cafe on 120th Avenue Northeast, in Bellevue since 2000.",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "start": 540,
+          "end": 1140
+        },
+        {
+          "days": [
+            0
+          ],
+          "start": 600,
+          "end": 1080
+        }
+      ],
+      "gustoScore": null,
+      "website": "http://www.regentbakeryandcafe.com/bellevue",
+      "phone": "+1 (425) 378-1498",
+      "appleMapsUrl": "https://maps.apple.com/?daddr=47.6162309,-122.1808153&q=Regent%20Bakery%20and%20Cafe",
+      "guideSlugs": [
+        "best-of-bellevue"
+      ],
+      "muid": "",
+      "hoursLabel": "",
+      "blurb": "Asian bakery and cafe on 120th Avenue Northeast, in Bellevue since 2000.",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-10-20",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Bakery at Regent Bakery and Cafe",
+          "credit": "Illustration"
+        }
+      ]
+    },
+    {
+      "id": "facing-east",
+      "city": "eastside",
+      "name": "Facing East",
+      "neighborhood": "Spring District",
+      "address": "12736 Bel-Red Road, Bellevue, WA 98005",
+      "lat": 47.6208959,
+      "lng": -122.1705706,
+      "cuisine": [
+        "Taiwanese"
+      ],
+      "placeType": "takeout",
+      "oneLiner": "Takeout on Bel-Red Road since the December 2021 move from downtown.",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "start": 690,
+          "end": 900
+        },
+        {
+          "days": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "start": 1020,
+          "end": 1230
+        },
+        {
+          "days": [
+            5,
+            6
+          ],
+          "start": 690,
+          "end": 900
+        },
+        {
+          "days": [
+            5,
+            6
+          ],
+          "start": 1020,
+          "end": 1260
+        }
+      ],
+      "gustoScore": null,
+      "website": "https://www.facingeastbellevue.com/",
+      "phone": "+1 (425) 688-2986",
+      "appleMapsUrl": "https://maps.apple.com/?daddr=47.6208959,-122.1705706&q=Facing%20East",
+      "guideSlugs": [
+        "best-of-bellevue"
+      ],
+      "muid": "",
+      "hoursLabel": "",
+      "blurb": "Takeout on Bel-Red Road since the December 2021 move from downtown.",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-10-20",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Taiwanese at Facing East",
+          "credit": "Illustration"
+        }
+      ]
+    },
+    {
+      "id": "the-slip",
+      "city": "eastside",
+      "name": "The Slip",
+      "neighborhood": "Downtown Kirkland",
+      "address": "80 Kirkland Ave, Kirkland, WA 98033",
+      "lat": 47.6754189,
+      "lng": -122.2071877,
+      "cuisine": [
+        "American"
+      ],
+      "placeType": "restaurant",
+      "oneLiner": "Waterfront dining at Marina Beach Park. Burgers have been served here since 1996.",
+      "perfectFor": [
+        "Waterfront"
+      ],
+      "periods": [
+        {
+          "days": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "start": 720,
+          "end": 1200
+        },
+        {
+          "days": [
+            4,
+            5,
+            6
+          ],
+          "start": 660,
+          "end": 1260
+        }
+      ],
+      "gustoScore": null,
+      "website": "https://theslipkirkland.com/",
+      "phone": "+1 (425) 952-0256",
+      "appleMapsUrl": "https://maps.apple.com/?daddr=47.6754189,-122.2071877&q=The%20Slip",
+      "guideSlugs": [
+        "kirkland-waterfront",
+        "best-of-kirkland"
+      ],
+      "muid": "",
+      "hoursLabel": "",
+      "blurb": "Waterfront dining at Marina Beach Park. Burgers have been served here since 1996.",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-10-20",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting American at The Slip",
+          "credit": "Illustration"
+        }
+      ]
+    },
+    {
+      "id": "beachhouse-bar-and-grill",
+      "city": "eastside",
+      "name": "BeachHouse Bar + Grill",
+      "neighborhood": "Houghton",
+      "address": "6023 Lake Washington Blvd NE, Kirkland, WA 98033",
+      "lat": 47.6616855,
+      "lng": -122.2071866,
+      "cuisine": [
+        "American"
+      ],
+      "placeType": "restaurant",
+      "oneLiner": "",
+      "perfectFor": [
+        "Waterfront"
+      ],
+      "periods": [
+        {
+          "days": [
+            1,
+            2
+          ],
+          "start": 660,
+          "end": 1200
+        },
+        {
+          "days": [
+            3,
+            4
+          ],
+          "start": 660,
+          "end": 1260
+        },
+        {
+          "days": [
+            5
+          ],
+          "start": 660,
+          "end": 1320
+        },
+        {
+          "days": [
+            6
+          ],
+          "start": 600,
+          "end": 1320
+        },
+        {
+          "days": [
+            0
+          ],
+          "start": 600,
+          "end": 1200
+        }
+      ],
+      "gustoScore": null,
+      "website": "https://beachhouserestaurants.com/",
+      "phone": "+1 (425) 968-5587",
+      "appleMapsUrl": "https://maps.apple.com/?daddr=47.6616855,-122.2071866&q=BeachHouse%20Bar%20%2B%20Grill",
+      "guideSlugs": [
+        "kirkland-waterfront",
+        "best-of-kirkland"
+      ],
+      "muid": "",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-10-20",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting American at BeachHouse Bar + Grill",
+          "credit": "Illustration"
+        }
+      ]
+    },
+    {
+      "id": "ristorante-paradiso",
+      "city": "eastside",
+      "name": "Ristorante Paradiso",
+      "neighborhood": "Downtown Kirkland",
+      "address": "120 Park Ln, Ste A, Kirkland, WA 98033",
+      "lat": 47.6762459,
+      "lng": -122.205942,
+      "cuisine": [
+        "Italian"
+      ],
+      "placeType": "restaurant",
+      "price": 2,
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "start": 660,
+          "end": 1260
+        },
+        {
+          "days": [
+            5
+          ],
+          "start": 660,
+          "end": 1290
+        },
+        {
+          "days": [
+            6
+          ],
+          "start": 720,
+          "end": 1290
+        },
+        {
+          "days": [
+            0
+          ],
+          "start": 720,
+          "end": 1260
+        }
+      ],
+      "gustoScore": null,
+      "phone": "+1 (425) 889-8601",
+      "appleMapsUrl": "https://maps.apple.com/?daddr=47.6762459,-122.205942&q=Ristorante%20Paradiso",
+      "guideSlugs": [
+        "best-of-kirkland"
+      ],
+      "muid": "",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-10-20",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Italian at Ristorante Paradiso",
+          "credit": "Illustration"
+        }
+      ]
+    },
+    {
+      "id": "cafe-juanita",
+      "city": "eastside",
+      "name": "Cafe Juanita",
+      "neighborhood": "Juanita",
+      "address": "9702 NE 120th Pl, Kirkland, WA 98034",
+      "lat": 47.7076316,
+      "lng": -122.2123046,
+      "cuisine": [
+        "Italian"
+      ],
+      "placeType": "restaurant",
+      "price": 4,
+      "oneLiner": "Prix-fixe Northern Italian tasting menus in the Juanita neighborhood.",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            2,
+            3
+          ],
+          "start": 1020,
+          "end": 1260
+        },
+        {
+          "days": [
+            5,
+            6
+          ],
+          "start": 1020,
+          "end": 1305
+        }
+      ],
+      "gustoScore": null,
+      "website": "https://www.cafejuanita.com/",
+      "phone": "+1 (425) 823-1505",
+      "appleMapsUrl": "https://maps.apple.com/?daddr=47.7076316,-122.2123046&q=Cafe%20Juanita",
+      "guideSlugs": [
+        "best-of-kirkland"
+      ],
+      "muid": "",
+      "hoursLabel": "",
+      "blurb": "Prix-fixe Northern Italian tasting menus in the Juanita neighborhood.",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-10-20",
+      "photos": [
+        {
+          "source": "wikimedia",
+          "url": "/photos/cafe-juanita.jpg",
+          "alt": "Panorama of Cafe Juanita in Kirkland, Washington",
+          "credit": "HistoryTheorist",
+          "creditUrl": "https://commons.wikimedia.org/wiki/File:Cafe_Juanita_Pano.jpg",
+          "license": "CC BY 4.0"
+        }
+      ]
+    },
+    {
+      "id": "woodblock",
+      "city": "eastside",
+      "name": "Woodblock",
+      "neighborhood": "Downtown Redmond",
+      "address": "16175 Cleveland Street, Suite 109, Redmond, WA 98052",
+      "lat": 47.6736412,
+      "lng": -122.1246041,
+      "cuisine": [
+        "American"
+      ],
+      "placeType": "restaurant",
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "start": 690,
+          "end": 1320
+        },
+        {
+          "days": [
+            5
+          ],
+          "start": 690,
+          "end": 1380
+        },
+        {
+          "days": [
+            6
+          ],
+          "start": 600,
+          "end": 1380
+        },
+        {
+          "days": [
+            0
+          ],
+          "start": 600,
+          "end": 1200
+        }
+      ],
+      "gustoScore": null,
+      "website": "https://www.woodblockredmond.com/",
+      "phone": "+1 (425) 285-9416",
+      "appleMapsUrl": "https://maps.apple.com/?daddr=47.6736412,-122.1246041&q=Woodblock",
+      "guideSlugs": [
+        "redmond"
+      ],
+      "muid": "",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-10-20",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting American at Woodblock",
+          "credit": "Illustration"
+        }
+      ]
+    },
+    {
+      "id": "pomegranate-bistro",
+      "city": "eastside",
+      "name": "Pomegranate Bistro",
+      "neighborhood": "Southeast Redmond",
+      "address": "18005 NE 68th Street, A-150, Redmond, WA 98052",
+      "lat": 47.6664353,
+      "lng": -122.0991773,
+      "cuisine": [
+        "American"
+      ],
+      "placeType": "restaurant",
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            1
+          ],
+          "start": 480,
+          "end": 900
+        },
+        {
+          "days": [
+            2,
+            3,
+            4,
+            5
+          ],
+          "start": 480,
+          "end": 1260
+        },
+        {
+          "days": [
+            6
+          ],
+          "start": 540,
+          "end": 1260
+        },
+        {
+          "days": [
+            0
+          ],
+          "start": 540,
+          "end": 900
+        }
+      ],
+      "gustoScore": null,
+      "website": "https://pomegranatebistro.com/",
+      "phone": "+1 (425) 556-5972",
+      "appleMapsUrl": "https://maps.apple.com/?daddr=47.6664353,-122.0991773&q=Pomegranate%20Bistro",
+      "guideSlugs": [
+        "redmond"
+      ],
+      "muid": "",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-10-20",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting American at Pomegranate Bistro",
+          "credit": "Illustration"
+        }
+      ]
+    },
+    {
+      "id": "jaks-grill",
+      "city": "eastside",
+      "name": "JaK's Grill",
+      "neighborhood": "Downtown Issaquah",
+      "address": "14 Front Street N, Issaquah, WA 98027",
+      "lat": 47.5303803,
+      "lng": -122.0363951,
+      "cuisine": [
+        "Steak"
+      ],
+      "placeType": "steakhouse",
+      "price": 3,
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            1
+          ],
+          "start": 960,
+          "end": 1260
+        },
+        {
+          "days": [
+            2,
+            3,
+            4
+          ],
+          "start": 660,
+          "end": 840
+        },
+        {
+          "days": [
+            2,
+            3,
+            4
+          ],
+          "start": 960,
+          "end": 1260
+        },
+        {
+          "days": [
+            5
+          ],
+          "start": 660,
+          "end": 840
+        },
+        {
+          "days": [
+            5
+          ],
+          "start": 960,
+          "end": 1320
+        },
+        {
+          "days": [
+            6
+          ],
+          "start": 600,
+          "end": 840
+        },
+        {
+          "days": [
+            6
+          ],
+          "start": 960,
+          "end": 1320
+        },
+        {
+          "days": [
+            0
+          ],
+          "start": 600,
+          "end": 840
+        },
+        {
+          "days": [
+            0
+          ],
+          "start": 960,
+          "end": 1260
+        }
+      ],
+      "gustoScore": null,
+      "website": "https://www.jaksgrill.com/location/jaks-grill-issaquah/",
+      "phone": "+1 (425) 472-3920",
+      "appleMapsUrl": "https://maps.apple.com/?daddr=47.5303803,-122.0363951&q=JaK's%20Grill",
+      "guideSlugs": [
+        "issaquah"
+      ],
+      "muid": "",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-10-20",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Steak at JaK's Grill",
+          "credit": "Illustration"
+        }
+      ]
+    },
+    {
+      "id": "beardslee-public-house",
+      "city": "eastside",
+      "name": "Beardslee Public House",
+      "neighborhood": "Downtown Bothell",
+      "address": "19116 Beardslee Blvd, Bothell, WA 98011",
+      "lat": 47.7664248,
+      "lng": -122.1916265,
+      "cuisine": [
+        "American"
+      ],
+      "placeType": "brewery",
+      "oneLiner": "Public house on Beardslee Boulevard. The beer is brewed in the building.",
+      "perfectFor": [],
+      "periods": [],
+      "gustoScore": null,
+      "website": "https://beardsleeph.com/",
+      "phone": "+1 (425) 286-1001",
+      "appleMapsUrl": "https://maps.apple.com/?daddr=47.7664248,-122.1916265&q=Beardslee%20Public%20House",
+      "guideSlugs": [
+        "bothell"
+      ],
+      "muid": "",
+      "hoursLabel": "",
+      "blurb": "Public house on Beardslee Boulevard. The beer is brewed in the building.",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-10-20",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting American at Beardslee Public House",
+          "credit": "Illustration"
+        }
+      ]
+    },
+    {
+      "id": "amaro-bistro",
+      "city": "eastside",
+      "name": "Amaro Bistro",
+      "neighborhood": "Wayne",
+      "address": "18333 Bothell Way NE, Ste 105, Bothell, WA 98011",
+      "lat": 47.7613428,
+      "lng": -122.2080504,
+      "cuisine": [
+        "Italian"
+      ],
+      "placeType": "restaurant",
+      "price": 2,
+      "oneLiner": "Italian dining room on Bothell Way, and the sister restaurant to Il Bistro.",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "start": 960,
+          "end": 1260
+        },
+        {
+          "days": [
+            5,
+            6
+          ],
+          "start": 960,
+          "end": 1320
+        }
+      ],
+      "gustoScore": null,
+      "website": "https://amarorestaurant.com/",
+      "phone": "+1 (425) 485-2300",
+      "appleMapsUrl": "https://maps.apple.com/?daddr=47.7613428,-122.2080504&q=Amaro%20Bistro",
+      "guideSlugs": [
+        "bothell"
+      ],
+      "muid": "",
+      "hoursLabel": "",
+      "blurb": "Italian dining room on Bothell Way, and the sister restaurant to Il Bistro.",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-10-20",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Italian at Amaro Bistro",
+          "credit": "Illustration"
+        }
+      ]
+    }
+  ],
+  "guides": [
+    {
+      "slug": "best-of-bellevue",
+      "title": "Best of Bellevue",
+      "dek": "Bellevue rooms with a published address, from Old Bellevue to Bel-Red.",
+      "group": "Best of",
+      "intro": "Bis on Main and Monsoon Bellevue are on Main Street. Seastar Restaurant & Raw Bar is on 108th Avenue Northeast. John Howie Steak is in the Bravern. Tavern Hall is in Bellevue Square. Regent Bakery and Cafe is on 120th Avenue Northeast. Facing East is takeout on Bel-Red Road.",
+      "updatedAt": "2026-10-20",
+      "ranked": false,
+      "city": "eastside",
+      "entries": [
+        {
+          "placeId": "bis-on-main",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "monsoon-bellevue",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "seastar-restaurant-and-raw-bar",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "john-howie-steak",
+          "pullQuote": "Steakhouse in the Bravern. The lunch service is currently closed.",
+          "blurb": "Steakhouse in the Bravern. The lunch service is currently closed.",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "tavern-hall",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "regent-bakery-and-cafe",
+          "pullQuote": "Asian bakery and cafe on 120th Avenue Northeast, in Bellevue since 2000.",
+          "blurb": "Asian bakery and cafe on 120th Avenue Northeast, in Bellevue since 2000.",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "facing-east",
+          "pullQuote": "Takeout on Bel-Red Road since the December 2021 move from downtown.",
+          "blurb": "Takeout on Bel-Red Road since the December 2021 move from downtown.",
+          "copySource": "draft"
+        }
+      ]
+    },
+    {
+      "slug": "kirkland-waterfront",
+      "title": "Kirkland waterfront",
+      "dek": "Kirkland restaurants that publish a waterfront address.",
+      "group": "Neighborhoods",
+      "intro": "The Slip is at Marina Beach Park, 80 Kirkland Avenue. BeachHouse Bar + Grill is at 6023 Lake Washington Boulevard Northeast in Houghton.",
+      "updatedAt": "2026-10-20",
+      "ranked": false,
+      "city": "eastside",
+      "entries": [
+        {
+          "placeId": "the-slip",
+          "pullQuote": "Waterfront dining at Marina Beach Park. Burgers have been served here since 1996.",
+          "blurb": "Waterfront dining at Marina Beach Park. Burgers have been served here since 1996.",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "beachhouse-bar-and-grill",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        }
+      ]
+    },
+    {
+      "slug": "best-of-kirkland",
+      "title": "Best of Kirkland",
+      "dek": "Kirkland and Juanita restaurants with a published address.",
+      "group": "Best of",
+      "intro": "The Slip and BeachHouse Bar + Grill are on the lake. Ristorante Paradiso is on Park Lane. Cafe Juanita is in Juanita, at 9702 Northeast 120th Place.",
+      "updatedAt": "2026-10-20",
+      "ranked": false,
+      "city": "eastside",
+      "entries": [
+        {
+          "placeId": "the-slip",
+          "pullQuote": "Waterfront dining at Marina Beach Park. Burgers have been served here since 1996.",
+          "blurb": "Waterfront dining at Marina Beach Park. Burgers have been served here since 1996.",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "beachhouse-bar-and-grill",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "ristorante-paradiso",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "cafe-juanita",
+          "pullQuote": "Prix-fixe Northern Italian tasting menus in the Juanita neighborhood.",
+          "blurb": "Prix-fixe Northern Italian tasting menus in the Juanita neighborhood.",
+          "copySource": "draft"
+        }
+      ]
+    },
+    {
+      "slug": "redmond",
+      "title": "Redmond",
+      "dek": "Redmond restaurants with a published address.",
+      "group": "Neighborhoods",
+      "intro": "Woodblock is at 16175 Cleveland Street in downtown Redmond. Pomegranate Bistro is at 18005 Northeast 68th Street.",
+      "updatedAt": "2026-10-20",
+      "ranked": false,
+      "city": "eastside",
+      "entries": [
+        {
+          "placeId": "woodblock",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "pomegranate-bistro",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        }
+      ]
+    },
+    {
+      "slug": "issaquah",
+      "title": "Issaquah",
+      "dek": "A Front Street steakhouse in downtown Issaquah.",
+      "group": "Neighborhoods",
+      "intro": "JaK's Grill is at 14 Front Street North. The restaurant posts lunch Tuesday through Friday, brunch Saturday and Sunday, and dinner every night.",
+      "updatedAt": "2026-10-20",
+      "ranked": false,
+      "city": "eastside",
+      "entries": [
+        {
+          "placeId": "jaks-grill",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        }
+      ]
+    },
+    {
+      "slug": "bothell",
+      "title": "Bothell",
+      "dek": "Bothell restaurants with a published address.",
+      "group": "Neighborhoods",
+      "intro": "Beardslee Public House is at 19116 Beardslee Boulevard and brews in the building. Amaro Bistro is at 18333 Bothell Way Northeast.",
+      "updatedAt": "2026-10-20",
+      "ranked": false,
+      "city": "eastside",
+      "entries": [
+        {
+          "placeId": "beardslee-public-house",
+          "pullQuote": "Public house on Beardslee Boulevard. The beer is brewed in the building.",
+          "blurb": "Public house on Beardslee Boulevard. The beer is brewed in the building.",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "amaro-bistro",
+          "pullQuote": "Italian dining room on Bothell Way, and the sister restaurant to Il Bistro.",
+          "blurb": "Italian dining room on Bothell Way, and the sister restaurant to Il Bistro.",
+          "copySource": "draft"
+        }
+      ]
+    }
+  ]
+}

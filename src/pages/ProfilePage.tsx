@@ -1,7 +1,8 @@
 import { Link, useParams } from 'react-router-dom'
 import { GuideMap } from '../components/GuideMap.tsx'
 import { PlaceThumb } from '../components/PlaceThumb.tsx'
-import { catalog, slimById } from '../content/load.ts'
+import { slimById } from '../content/load.ts'
+import { placesForCity, useCityId } from '../lib/use-city.ts'
 import { usePageMeta } from '../lib/meta.ts'
 import { useApp } from '../state/AppState.tsx'
 import type { SlimPlace } from '../types.ts'
@@ -14,9 +15,11 @@ export function ProfilePage() {
   const person = app.demoUsers.find((user) => user.handle === handle)
   const friend = app.friends.find((user) => user.handle === handle)
   const mine = app.user?.handle === handle
+  const city = useCityId()
+  const area = city === 'eastside' ? 'Eastside' : 'Seattle'
   usePageMeta(
     mine ? `${app.user?.name ?? 'You'} · Gusto's Guide` : person ? `${person.name} · Gusto's Guide` : friend ? `${friend.name} · Gusto's Guide` : 'Profile',
-    mine ? 'Your Seattle stats.' : 'A friend on Gusto’s Guide.',
+    mine ? `Your ${area} stats.` : 'A friend on Gusto’s Guide.',
     './og/og.svg',
   )
 
@@ -124,7 +127,7 @@ export function ProfilePage() {
       {!mine && person ? (
         <p className="mt-6 text-sm">Scores on this page are theirs. They are not Gusto's Score.</p>
       ) : null}
-      <p className="mt-4 text-sm">{catalog.places.length} places are on the guide.</p>
+      <p className="mt-4 text-sm">{placesForCity(city).length} places are on the {area} guide.</p>
     </main>
   )
 }

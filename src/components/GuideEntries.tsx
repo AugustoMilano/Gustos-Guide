@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useReducedMotion } from 'framer-motion'
 import { Link } from 'react-router-dom'
+import { cityPath } from '../lib/city.ts'
 import { PlaceArt } from './PlaceArt.tsx'
 import { PlaceThumb } from './PlaceThumb.tsx'
 import { Reveal } from './Reveal.tsx'
@@ -80,9 +81,9 @@ export function GuideStrip({
                   </div>
                   <h3 className="mt-1.5 line-clamp-2 min-h-[2.6rem] font-serif text-xl italic leading-tight">{place.name}</h3>
                   <p className="mt-1 line-clamp-2 min-h-[2rem] text-[11px] font-bold tracking-wide uppercase">
-                    {place.neighborhood} · {place.cuisine[0]} · {priceLabel(place.price)}
+                    {[place.neighborhood, place.cuisine[0], priceLabel(place.price)].filter(Boolean).join(' · ')}
                   </p>
-                  <span className={`tag mt-1.5 min-h-6 ${vibe ? 'tag-vibe' : ''}`}>{vibe ?? place.perfectFor[0] ?? 'Seattle'}</span>
+                  {vibe || place.perfectFor[0] ? <span className={`tag mt-1.5 min-h-6 ${vibe ? 'tag-vibe' : ''}`}>{vibe ?? place.perfectFor[0]}</span> : null}
                 </div>
               </a>
               <div className="mt-auto px-2.5 pt-2 pb-2.5">
@@ -159,7 +160,7 @@ export function GuideEntryCard({
   const image = (
     <div className="relative min-w-0">
       <span className="absolute top-3 left-3 z-10 grid h-12 min-w-12 -rotate-6 place-items-center border-2 border-ink bg-coral px-2 font-serif text-2xl italic shadow-[3px_3px_0_#181818]">{number}</span>
-      <Link to={`/place/${place.id}`} className="block" aria-label={place.name} viewTransition={!reduceMotion}>
+      <Link to={cityPath(`/place/${place.id}`)} className="block" aria-label={place.name} viewTransition={!reduceMotion}>
         <span className="block" style={reduceMotion ? undefined : { viewTransitionName: `place-${place.id}` }}>
           <Shot place={place} photo={photo} tall={layout === 0} />
         </span>
@@ -186,20 +187,22 @@ export function GuideEntryCard({
       <div className="flex flex-wrap items-start justify-between gap-3">
         <h3 className="max-w-full font-serif text-4xl leading-[0.9] italic [overflow-wrap:anywhere] sm:text-6xl">
           <span className="mr-2 text-coral not-italic">{number}</span>
-          <Link to={`/place/${place.id}`} viewTransition={!reduceMotion}>{place.name}</Link>
+          <Link to={cityPath(`/place/${place.id}`)} viewTransition={!reduceMotion}>{place.name}</Link>
         </h3>
         <ScoreBadge score={score} />
       </div>
       <p className="mt-3 text-sm font-bold tracking-wide uppercase">
-        {place.cuisine.join(' · ')} · {place.neighborhood} · {priceLabel(place.price)}
+        {[place.cuisine.join(' · '), place.neighborhood, priceLabel(place.price)].filter(Boolean).join(' · ')}
       </p>
     </div>
   )
   const rest = (
     <div className="min-w-0">
+      {entry.pullQuote ? (
       <blockquote className={`entry-quote mt-4 ${layout === 1 ? 'border-l-4 border-coral pl-4' : 'border-2 border-ink bg-[#fffaf3] px-4 py-3'}`}>
         “{entry.pullQuote}”
       </blockquote>
+      ) : null}
       {entry.blurb !== entry.pullQuote ? <p className="mt-4 max-w-2xl text-lg leading-relaxed">{entry.blurb}</p> : null}
       <div className="mt-4 flex flex-wrap gap-2">
         {entry.vibe ? <span className="tag tag-vibe">{entry.vibe}</span> : null}
@@ -234,14 +237,14 @@ export function GuideEntryCard({
       {title}
       <div className="mt-3 flex items-start gap-3">
         <figure className="w-24 shrink-0">
-          <Link to={`/place/${place.id}`} className="block" aria-label={place.name} viewTransition={!reduceMotion}>
+          <Link to={cityPath(`/place/${place.id}`)} className="block" aria-label={place.name} viewTransition={!reduceMotion}>
             <div className="h-24 w-24 overflow-hidden border-2 border-ink bg-navy [&_.place-art]:aspect-auto [&_.place-art]:h-full">
               <PlaceArt id={place.id} cuisine={place.cuisine[0] ?? 'Seattle'} neighborhood={place.neighborhood} />
             </div>
           </Link>
           <figcaption className="mt-1 text-[10px] font-bold tracking-wide uppercase">Illustration</figcaption>
         </figure>
-        <blockquote className="entry-quote min-w-0 flex-1 border-l-4 border-coral pl-3">“{entry.pullQuote}”</blockquote>
+        {entry.pullQuote ? <blockquote className="entry-quote min-w-0 flex-1 border-l-4 border-coral pl-3">“{entry.pullQuote}”</blockquote> : null}
       </div>
       {entry.blurb !== entry.pullQuote ? <p className="mt-4 max-w-2xl text-lg leading-relaxed">{entry.blurb}</p> : null}
       <div className="mt-4 flex flex-wrap gap-2">

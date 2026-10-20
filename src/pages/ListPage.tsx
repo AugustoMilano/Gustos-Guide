@@ -27,7 +27,7 @@ export function ListPage() {
   const [origin, setOrigin] = useState<{ lat: number; lng: number } | null>(null)
   const [whereError, setWhereError] = useState('')
   const [copied, setCopied] = useState(false)
-  const detail = guide ? `${guide.placeIds.length} places in Seattle` : 'A list on Gusto’s Guide.'
+  const detail = guide ? `${guide.placeIds.length} places on this list` : 'A list on Gusto’s Guide.'
   usePageMeta(
     `${title} · Gusto's Guide`,
     detail,
@@ -45,7 +45,7 @@ export function ListPage() {
       .filter((row): row is { place: SlimPlace; index: number; note: string } => row != null)
     const filtered = places.filter((row) => {
       if (openNow && !isOpen(row.place.periods)) return false
-      if (prices.length && !prices.includes(row.place.price)) return false
+      if (prices.length && (row.place.price == null || !prices.includes(row.place.price))) return false
       return true
     })
     const scored = filtered.slice()

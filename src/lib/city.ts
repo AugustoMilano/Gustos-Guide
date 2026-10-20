@@ -1,4 +1,4 @@
-export type CityId = 'seattle'
+export type CityId = 'seattle' | 'eastside'
 
 export type City = {
   id: CityId
@@ -6,24 +6,43 @@ export type City = {
   ready: boolean
 }
 
-/** A second city flips `ready` on. The switcher stays hidden until then. */
-export const CITIES: City[] = [{ id: 'seattle', name: 'Seattle', ready: true }]
+export const CITIES: City[] = [
+  { id: 'seattle', name: 'Seattle', ready: true },
+  { id: 'eastside', name: 'Eastside', ready: true },
+]
 
 export const ACTIVE_CITY: CityId = 'seattle'
 
 const PLAIN = new Set(['/terms', '/privacy'])
+const PREFIXES = ['/seattle', '/eastside'] as const
 
-export function cityPath(path: string): string {
+export function cityFromPath(pathname: string): CityId {
+  const path = (pathname.split('?')[0] || '/').replace(/\/$/, '') || '/'
+  if (path === '/eastside' || path.startsWith('/eastside/')) return 'eastside'
+  return 'seattle'
+}
+
+function currentCity(): CityId {
+  if (typeof window === 'undefined') return 'seattle'
+  const hash = window.location.hash.replace(/^#/, '') || '/'
+  return cityFromPath(hash)
+}
+
+export function cityPath(path: string, city: CityId = currentCity()): string {
   const hashless = path.startsWith('#') ? path.slice(1) : path
   const [pathname = '/', search = ''] = hashless.split('?')
   const query = search ? `?${search}` : ''
-  if (pathname.startsWith('/seattle') || pathname.startsWith('/auth') || PLAIN.has(pathname)) return `${pathname}${query}`
-  if (pathname === '/' || pathname === '') return `/seattle${query}`
-  return `/seattle${pathname.startsWith('/') ? pathname : `/${pathname}`}${query}`
+  if (pathname.startsWith('/auth') || PLAIN.has(pathname)) return `${pathname}${query}`
+  if (PREFIXES.some((prefix) => pathname === prefix || pathname.startsWith(`${prefix}/`))) return `${pathname}${query}`
+  const prefix = city === 'eastside' ? '/eastside' : '/seattle'
+  if (pathname === '/' || pathname === '') return `${prefix}${query}`
+  return `${prefix}${pathname.startsWith('/') ? pathname : `/${pathname}`}${query}`
 }
 
 export function barePath(pathname: string): string {
-  if (pathname === '/seattle') return '/'
-  if (pathname.startsWith('/seattle/')) return pathname.slice('/seattle'.length)
+  for (const prefix of PREFIXES) {
+    if (pathname === prefix) return '/'
+    if (pathname.startsWith(`${prefix}/`)) return pathname.slice(prefix.length)
+  }
   return pathname
 }

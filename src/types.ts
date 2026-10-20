@@ -20,8 +20,8 @@ export type Period = { days: number[]; start: number; end: number }
 
 export type SlimPlace = {
   id: string
-  /** Defaults to Seattle until a second city is live. */
-  city?: 'seattle'
+  /** Omitted places are Seattle. Eastside is the second area. */
+  city?: 'seattle' | 'eastside'
   name: string
   neighborhood: string
   address: string
@@ -29,7 +29,8 @@ export type SlimPlace = {
   lng: number
   cuisine: string[]
   placeType: string
-  price: Price
+  /** Missing when no price band was published. */
+  price?: Price
   oneLiner: string
   perfectFor: string[]
   periods: Period[]
@@ -72,6 +73,8 @@ export type Guide = {
   intro: string
   updatedAt: string
   ranked: boolean
+  /** Omitted guides are Seattle. */
+  city?: 'seattle' | 'eastside'
   entries: GuideEntry[]
 }
 
@@ -83,6 +86,8 @@ export type GuideSummary = {
   updatedAt: string
   ranked: boolean
   count: number
+  /** Omitted guides are Seattle. */
+  city?: 'seattle' | 'eastside'
 }
 
 export type GuideVisibility = 'private' | 'friends' | 'public'

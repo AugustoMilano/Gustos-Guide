@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom'
 import { PlaceThumb } from '../components/PlaceThumb.tsx'
 import { ScoreBadge } from '../components/ScoreBadge.tsx'
 import { catalog } from '../content/load.ts'
+import { cityPath } from '../lib/city.ts'
+import { useCityCatalog } from '../lib/use-city.ts'
 import { BUCKETS } from '../lib/rank.ts'
 import { usePageMeta } from '../lib/meta.ts'
 import { useApp } from '../state/AppState.tsx'
@@ -10,13 +12,14 @@ import { SignInSheet } from '../components/SignInSheet.tsx'
 
 export function RankPage() {
   const app = useApp()
+  const { places } = useCityCatalog()
   const [query, setQuery] = useState('')
   const [signIn, setSignIn] = useState(false)
   usePageMeta("Rank · Gusto's Guide", 'Loved, liked, fine, or did not. Then pick which meal you would rather eat again.')
   const matches = useMemo(() => {
     const q = query.trim().toLowerCase()
-    return catalog.places.filter((place) => !q || place.name.toLowerCase().includes(q)).slice(0, 12)
-  }, [query])
+    return places.filter((place) => !q || place.name.toLowerCase().includes(q)).slice(0, 12)
+  }, [places, query])
   const opponentId = app.compare ? app.order[app.compare.bucket].filter((id) => id !== app.compare?.placeId)[Math.floor((app.compare.low + app.compare.high) / 2)] : undefined
   const opponent = catalog.places.find((place) => place.id === opponentId)
   const current = catalog.places.find((place) => place.id === app.compare?.placeId)
@@ -36,7 +39,7 @@ export function RankPage() {
       <ul className="mt-4 space-y-4">
         {matches.map((place) => (
           <li key={place.id} className="border-2 border-ink p-3">
-            <Link to={`/place/${place.id}`} className="flex items-center gap-3">
+            <Link to={cityPath(`/place/${place.id}`)} className="flex items-center gap-3">
               <span className="h-14 w-16 shrink-0 overflow-hidden border-2 border-ink bg-navy [&_.place-art]:aspect-auto [&_.place-art]:h-full">
                 <PlaceThumb place={place} uploads={app.photos} />
               </span>

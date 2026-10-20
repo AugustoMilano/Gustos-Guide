@@ -3,7 +3,8 @@ import { Link } from 'react-router-dom'
 import { ListShareCard } from '../components/ListShareCard.tsx'
 import { PlaceThumb } from '../components/PlaceThumb.tsx'
 import { SignInSheet } from '../components/SignInSheet.tsx'
-import { catalog, slimById } from '../content/load.ts'
+import { slimById } from '../content/load.ts'
+import { useCityCatalog } from '../lib/use-city.ts'
 import { LIST_COLORS, LIST_EMOJI } from '../lib/lists.ts'
 import { demoFriendsEnabled } from '../lib/demo.ts'
 import { usePageMeta } from '../lib/meta.ts'
@@ -82,7 +83,8 @@ function GuideEditor({
   const [friendHandle, setFriendHandle] = useState('')
   const [shareError, setShareError] = useState('')
   const visibility = guide.visibility ?? (guide.isPublic === false ? 'private' : 'public')
-  const matches = catalog.places.filter((place) => query && place.name.toLowerCase().includes(query.toLowerCase())).slice(0, 6)
+  const { places } = useCityCatalog()
+  const matches = places.filter((place) => query && place.name.toLowerCase().includes(query.toLowerCase())).slice(0, 6)
 
   function dropAt(index: number) {
     if (dragFrom === null || dragFrom === index) return

@@ -23,7 +23,8 @@ export function uniqueSlug(value: string, taken: string[]): string {
   return `${base}-${n}`
 }
 
-export function priceLabel(price: Price): string {
+export function priceLabel(price: Price | undefined): string {
+  if (!price) return ''
   return '$'.repeat(price)
 }
 
