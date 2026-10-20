@@ -4,7 +4,7 @@ import { Link, useSearchParams } from 'react-router-dom'
 import { PlaceThumb } from '../components/PlaceThumb.tsx'
 import { ScoreBadge } from '../components/ScoreBadge.tsx'
 import { AreaKicker } from '../components/AreaKicker.tsx'
-import { cityPath } from '../lib/city.ts'
+import { areaPhrase, cityPath } from '../lib/city.ts'
 import { useCityCatalog } from '../lib/use-city.ts'
 import { milesBetween, priceLabel, publicReference } from '../lib/format.ts'
 import { readPosition } from '../lib/geo.ts'
@@ -14,7 +14,7 @@ import { useApp } from '../state/AppState.tsx'
 export function SearchPage() {
   const { gustoScore } = useApp()
   const { city, places: cityPlaces, guides: cityGuides } = useCityCatalog()
-  const area = city === 'eastside' ? 'the Eastside' : 'Seattle'
+  const area = areaPhrase(city)
   const reduceMotion = useReducedMotion()
   const [params, setParams] = useSearchParams()
   const q = params.get('q') ?? ''
@@ -47,7 +47,7 @@ export function SearchPage() {
   return (
     <main id="main" tabIndex={-1} className="mx-auto max-w-3xl px-4 pt-24 pb-16 outline-none">
       <AreaKicker />
-      <h1 className="mt-2 font-serif text-5xl italic">Search {area === 'the Eastside' ? 'the Eastside' : 'Seattle'}</h1>
+      <h1 className="mt-2 font-serif text-5xl italic">Search {area}</h1>
       <form className="mt-4" onSubmit={(event) => event.preventDefault()}>
         <label className="field">
           <span>Places, guides, cuisines, neighborhoods</span>

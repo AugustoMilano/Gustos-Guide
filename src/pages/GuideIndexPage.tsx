@@ -13,20 +13,25 @@ export function GuideIndexPage() {
   const reduceMotion = useReducedMotion()
   const { city, guides } = useCityCatalog()
   const east = city === 'eastside'
+  const la = city === 'la'
   usePageMeta(
     "Guides · Gusto's Guide",
-    east
-      ? 'Eastside guides for Bellevue, the Kirkland waterfront, Redmond, Issaquah, and Bothell.'
-      : 'Seattle guides for pizza, neighborhoods, late nights, and the bars worth crossing town for.',
+    la
+      ? 'Los Angeles guides for Venice, Santa Monica, West Hollywood, Downtown, and a few cuisines.'
+      : east
+        ? 'Eastside guides for Bellevue, the Kirkland waterfront, Redmond, Issaquah, and Bothell.'
+        : 'Seattle guides for pizza, neighborhoods, late nights, and the bars worth crossing town for.',
   )
   return (
     <main id="main" tabIndex={-1} className="mx-auto max-w-6xl px-4 pt-24 pb-16 outline-none">
       <AreaKicker />
-      <h1 className="mt-2 font-serif text-6xl italic">{east ? 'Eastside guides' : 'Seattle guides'}</h1>
+      <h1 className="mt-2 font-serif text-6xl italic">{la ? 'Los Angeles guides' : east ? 'Eastside guides' : 'Seattle guides'}</h1>
       <p className="mt-3 max-w-2xl">
-        {east
-          ? 'Bellevue, Kirkland, Redmond, Issaquah, and Bothell.'
-          : `Updated ${catalog.updatedAt}. Pizza, neighborhoods, late nights, and the bars worth crossing town for.`}
+        {la
+          ? 'Venice, Santa Monica, West Hollywood, Beverly Hills, Downtown, and Hollywood.'
+          : east
+            ? 'Bellevue, Kirkland, Redmond, Issaquah, and Bothell.'
+            : `Updated ${catalog.updatedAt}. Pizza, neighborhoods, late nights, and the bars worth crossing town for.`}
       </p>
       {GROUPS.map((group) => {
         const rows = guides.filter((guide) => guide.group === group)

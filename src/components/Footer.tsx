@@ -1,14 +1,24 @@
-import { Link } from 'react-router-dom'
-import { cityPath } from '../lib/city.ts'
+import { Link, useLocation } from 'react-router-dom'
+import { cityPath, isCityPicker } from '../lib/city.ts'
+import { useCityId } from '../lib/use-city.ts'
 
 export function Footer() {
+  const city = useCityId()
+  const { pathname } = useLocation()
+  const line = isCityPicker(pathname)
+    ? 'Seattle and the Eastside, or Los Angeles.'
+    : city === 'la'
+    ? 'Los Angeles, from Abbot Kinney to the last stool on Sunset.'
+    : city === 'eastside'
+      ? 'The Eastside, from Old Bellevue to the lake.'
+      : 'Seattle, from the first coffee to the last stool.'
   return (
     <footer className="site-footer on-navy mt-16 bg-navy text-cream">
       <div className="mx-auto grid max-w-6xl gap-8 px-4 py-12 sm:grid-cols-[1.4fr_1fr]">
         <div>
           <p className="font-serif text-6xl italic leading-none sm:text-8xl">Go eat.</p>
           <p className="mt-4 max-w-md text-cream">
-            Seattle, from the first coffee to the last stool.
+            {line}
           </p>
         </div>
         <div>
@@ -19,6 +29,7 @@ export function Footer() {
             <li><Link to={cityPath('/tonight')} className="font-serif text-2xl italic">Tonight</Link></li>
             <li><Link to={cityPath('/feed')} className="font-serif text-2xl italic">Friend feed</Link></li>
             <li><Link to={cityPath('/rank')} className="font-serif text-2xl italic">Rank a place</Link></li>
+            <li><Link to="/cities" className="font-serif text-2xl italic">Choose a city</Link></li>
           </ul>
         </div>
       </div>

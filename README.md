@@ -30,7 +30,9 @@ Source lists live in `data/places_categorized.json`, `data/guide_themes.json`, a
 npm run content
 ```
 
-That regenerates `src/content/`. Launch places are resolved Seattle food and drink that are not excluded, closed, outside the city, or duplicates. Outside-Seattle places stay in `src/content/hidden.json` and are not linked. Copy is marked `copy_source: "draft"`. Catalog scores stay empty. Sign in as Augusto and use Rank to publish Gusto's Score (0–10, one decimal) in this browser. Yelp and OpenTable remain a separate 1–5 star line.
+That regenerates the Seattle files in `src/content/`. Do not run it to refresh the Eastside or Los Angeles lists. Seattle food and drink that are not excluded, closed, outside the city, or duplicates stay in `src/content/places.json`. Outside-Seattle places from that pass stay in `src/content/hidden.json` and are not linked. The Eastside list is `src/content/eastside.json`. Los Angeles is `src/content/la.json`, taken from Augusto's Apple Maps guide and kept to food and drink, one location per brand. Copy is marked `copy_source: "draft"`. Catalog scores stay empty. Sign in as Augusto and use Rank to publish Gusto's Score (0–10, one decimal) in this browser. Yelp and OpenTable remain a separate 1–5 star line. New Los Angeles rows use Yelp only, and only when Apple Maps credits Yelp.
+
+The header region name returns to Choose a city (`#/cities`). Seattle is a region: the coral pill still switches Seattle and the Eastside. Los Angeles is `#/la/...`. Unprefixed URLs and `#/seattle/...` stay on Seattle. The last city you opened is stored in this browser.
 
 ## Photos
 

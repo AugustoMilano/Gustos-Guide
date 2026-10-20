@@ -20,8 +20,8 @@ export type Period = { days: number[]; start: number; end: number }
 
 export type SlimPlace = {
   id: string
-  /** Omitted places are Seattle. Eastside is the second area. */
-  city?: 'seattle' | 'eastside'
+  /** Omitted places are Seattle. Eastside and Los Angeles are marked. */
+  city?: 'seattle' | 'eastside' | 'la'
   name: string
   neighborhood: string
   address: string
@@ -74,7 +74,7 @@ export type Guide = {
   updatedAt: string
   ranked: boolean
   /** Omitted guides are Seattle. */
-  city?: 'seattle' | 'eastside'
+  city?: 'seattle' | 'eastside' | 'la'
   entries: GuideEntry[]
 }
 
@@ -87,7 +87,7 @@ export type GuideSummary = {
   ranked: boolean
   count: number
   /** Omitted guides are Seattle. */
-  city?: 'seattle' | 'eastside'
+  city?: 'seattle' | 'eastside' | 'la'
 }
 
 export type GuideVisibility = 'private' | 'friends' | 'public'

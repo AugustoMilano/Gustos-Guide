@@ -5,6 +5,7 @@ import { fileURLToPath } from 'node:url'
 const root = join(dirname(fileURLToPath(import.meta.url)), '..')
 const index = JSON.parse(readFileSync(join(root, 'src/content/index.json'), 'utf8'))
 const eastside = JSON.parse(readFileSync(join(root, 'src/content/eastside.json'), 'utf8'))
+const la = JSON.parse(readFileSync(join(root, 'src/content/la.json'), 'utf8'))
 const site = (process.env.SITE_URL || 'https://gustosguide.com').replace(/\/$/, '')
 
 function escapeXml(value) {
@@ -54,7 +55,7 @@ const ogDir = join(root, 'public/og/guides')
 mkdirSync(ogDir, { recursive: true })
 writeFileSync(join(root, 'public/og/og.svg'), card("Gusto's Guide", 'Eat your way through Seattle.'))
 writeFileSync(join(root, 'public/og/place.svg'), card('A Seattle place', 'From the house guide.'))
-for (const guide of [...index.guides, ...eastside.guides]) {
+for (const guide of [...index.guides, ...eastside.guides, ...la.guides]) {
   writeFileSync(join(ogDir, `${guide.slug}.svg`), card(guide.title, guide.dek || 'A guide from Gusto.'))
 }
 
@@ -68,10 +69,16 @@ const urls = [
   `${site}/#/eastside`,
   `${site}/#/eastside/explore`,
   `${site}/#/eastside/guides`,
+  `${site}/#/la`,
+  `${site}/#/la/explore`,
+  `${site}/#/la/guides`,
+  `${site}/#/cities`,
   ...index.guides.map((guide) => `${site}/#/guide/${encodeURIComponent(guide.slug)}`),
   ...index.places.map((place) => `${site}/#/place/${encodeURIComponent(place.id)}`),
   ...eastside.guides.map((guide) => `${site}/#/eastside/guide/${encodeURIComponent(guide.slug)}`),
   ...eastside.places.map((place) => `${site}/#/eastside/place/${encodeURIComponent(place.id)}`),
+  ...la.guides.map((guide) => `${site}/#/la/guide/${encodeURIComponent(guide.slug)}`),
+  ...la.places.map((place) => `${site}/#/la/place/${encodeURIComponent(place.id)}`),
 ]
 const body = urls
   .map((loc) => `  <url><loc>${escapeXml(loc)}</loc></url>`)
@@ -80,4 +87,4 @@ writeFileSync(
   join(root, 'public/sitemap.xml'),
   `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${body}\n</urlset>\n`,
 )
-console.log(`sitemap ${urls.length} urls, ${index.guides.length} guide cards, site ${site}`)
+console.log(`sitemap ${urls.length} urls, ${index.guides.length + eastside.guides.length + la.guides.length} guide cards, site ${site}`)

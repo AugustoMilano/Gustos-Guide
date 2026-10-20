@@ -27,6 +27,18 @@ html {
   html {
     --header-offset: 8.6rem;
   }
+
+  html[data-header='areas'] {
+    --header-offset: 12.25rem;
+  }
+
+  html[data-header='single'] {
+    --header-offset: 8.75rem;
+  }
+
+  html[data-header='picker'] {
+    --header-offset: 5.25rem;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -2371,6 +2383,75 @@ input[type='time'] {
   }
 }
 
+.brand-lockup {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  min-width: 0;
+}
+
+.region-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.1rem;
+  min-height: 44px;
+  min-width: 44px;
+  padding: 0 0.2rem;
+  color: inherit;
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 0.01em;
+  line-height: 1;
+  text-decoration: none;
+}
+
+.region-back svg {
+  flex: none;
+}
+
+.city-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  width: 100%;
+  min-height: 88px;
+  padding: 1.1rem 1.15rem;
+  border: 1px solid rgb(255 255 255 / 72%);
+  border-radius: 1.4rem;
+  background: rgb(255 250 243 / 72%);
+  box-shadow:
+    0 10px 28px rgb(20 31 77 / 8%),
+    inset 0 1px 0 rgb(255 255 255 / 80%);
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+}
+
+.city-card-mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  min-width: 44px;
+  padding: 0 0.9rem;
+  border-radius: 999px;
+  background: transparent;
+  color: #5c534c;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.city-card-mark.is-on {
+  background: #ff5330;
+  color: #181818;
+}
+
 .city-switch {
   display: inline-flex;
   align-items: center;
@@ -2500,9 +2581,16 @@ input[type='time'] {
     align-items: center;
   }
 
-  .header-bar .wordmark {
+  .header-bar .brand-lockup {
     grid-column: 1;
     grid-row: 1;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+    min-width: 0;
+  }
+
+  .header-bar .wordmark {
     min-width: 0;
   }
 
@@ -2539,9 +2627,14 @@ input[type='time'] {
 
 @media (prefers-reduced-motion: reduce) {
   .city-switch,
-  .city-switch-glint {
+  .city-switch-glint,
+  .city-card {
     backdrop-filter: none;
     -webkit-backdrop-filter: none;
+  }
+
+  .city-card {
+    background: #fffaf3;
   }
 
   .city-switch {
@@ -2559,6 +2652,12 @@ input[type='time'] {
 }
 
 @media (prefers-reduced-transparency: reduce) {
+  .city-card {
+    background: #fffaf3;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+
   .city-switch {
     background: #fffaf3;
     backdrop-filter: none;
