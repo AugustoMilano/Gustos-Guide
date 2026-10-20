@@ -168,7 +168,7 @@ export function PlacePage() {
       </div>
       <div className="mt-8 grid gap-8 lg:grid-cols-[minmax(0,1fr)_320px]">
         <article>
-          <p className="max-w-2xl text-lg leading-relaxed">{full?.blurb || place.oneLiner}</p>
+          {full?.blurb && full.blurb !== place.oneLiner ? <p className="max-w-2xl text-lg leading-relaxed">{full.blurb}</p> : null}
           {howToGetIn(place) ? (
             <section className="mt-6">
               <h2 className="font-serif text-3xl italic">How to get in</h2>
@@ -180,7 +180,7 @@ export function PlacePage() {
             <section className="mt-6">
               <h2 className="font-serif text-3xl italic">What to order</h2>
               <ul className="mt-2 space-y-2">
-                {full.orderThis.map((item) => <li key={item.dish}><strong>{item.dish}.</strong> {item.note}</li>)}
+                {full.orderThis.map((item) => <li key={item.dish}><strong>{item.dish}.</strong>{item.note ? ` ${item.note}` : null}</li>)}
               </ul>
             </section>
           ) : null}
