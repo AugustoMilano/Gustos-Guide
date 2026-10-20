@@ -1106,7 +1106,9 @@
       "hoursLabel": "",
       "blurb": "",
       "orderThis": [],
-      "ids": {},
+      "ids": {
+        "yelp": "gxsirnsHHzl6P6XNIvVfeg"
+      },
       "copySource": "draft",
       "updatedAt": "2026-10-20",
       "photos": [
@@ -1116,7 +1118,13 @@
           "alt": "Illustration suggesting American at 13 Coins",
           "credit": "Illustration"
         }
-      ]
+      ],
+      "publicRating": {
+        "value": 2.9,
+        "count": 1059,
+        "source": "Yelp"
+      },
+      "yelpSlug": "gxsirnsHHzl6P6XNIvVfeg"
     },
     {
       "id": "bellevue-brewing",
@@ -1144,7 +1152,9 @@
       "hoursLabel": "",
       "blurb": "",
       "orderThis": [],
-      "ids": {},
+      "ids": {
+        "yelp": "KM7OsHRmID4lLu2amREVfg"
+      },
       "copySource": "draft",
       "updatedAt": "2026-10-20",
       "photos": [
@@ -1154,7 +1164,13 @@
           "alt": "Illustration suggesting American at Bellevue Brewing Company",
           "credit": "Illustration"
         }
-      ]
+      ],
+      "publicRating": {
+        "value": 4.0,
+        "count": 206,
+        "source": "Yelp"
+      },
+      "yelpSlug": "KM7OsHRmID4lLu2amREVfg"
     },
     {
       "id": "arayas-place",
@@ -1248,7 +1264,9 @@
       "hoursLabel": "",
       "blurb": "",
       "orderThis": [],
-      "ids": {},
+      "ids": {
+        "yelp": "l-Oy3_fCE4VPhQ55lct-FQ"
+      },
       "copySource": "draft",
       "updatedAt": "2026-10-20",
       "photos": [
@@ -1258,7 +1276,13 @@
           "alt": "Illustration suggesting Coffee at Third Culture Coffee",
           "credit": "Illustration"
         }
-      ]
+      ],
+      "publicRating": {
+        "value": 3.8,
+        "count": 441,
+        "source": "Yelp"
+      },
+      "yelpSlug": "l-Oy3_fCE4VPhQ55lct-FQ"
     },
     {
       "id": "cascadia-pizza",
@@ -1285,7 +1309,9 @@
       "hoursLabel": "",
       "blurb": "",
       "orderThis": [],
-      "ids": {},
+      "ids": {
+        "yelp": "ssSXXTx_xOiMGrmu_33-pg"
+      },
       "copySource": "draft",
       "updatedAt": "2026-10-20",
       "photos": [
@@ -1295,7 +1321,13 @@
           "alt": "Illustration suggesting Pizza at Cascadia Pizza Co.",
           "credit": "Illustration"
         }
-      ]
+      ],
+      "publicRating": {
+        "value": 4.5,
+        "count": 167,
+        "source": "Yelp"
+      },
+      "yelpSlug": "ssSXXTx_xOiMGrmu_33-pg"
     },
     {
       "id": "farine-bakery",
@@ -1447,7 +1479,9 @@
       "hoursLabel": "",
       "blurb": "",
       "orderThis": [],
-      "ids": {},
+      "ids": {
+        "yelp": "vmy0Csf5YEywg_geEA3tCA"
+      },
       "copySource": "draft",
       "updatedAt": "2026-10-20",
       "photos": [
@@ -1457,7 +1491,13 @@
           "alt": "Illustration suggesting Japanese at Ginza",
           "credit": "Illustration"
         }
-      ]
+      ],
+      "publicRating": {
+        "value": 3.8,
+        "count": 875,
+        "source": "Yelp"
+      },
+      "yelpSlug": "vmy0Csf5YEywg_geEA3tCA"
     },
     {
       "id": "i-love-sushi",
@@ -1486,7 +1526,9 @@
       "hoursLabel": "",
       "blurb": "",
       "orderThis": [],
-      "ids": {},
+      "ids": {
+        "yelp": "bcjWiEonA4lVLf7md6N6PA"
+      },
       "copySource": "draft",
       "updatedAt": "2026-10-20",
       "photos": [
@@ -1496,7 +1538,13 @@
           "alt": "Illustration suggesting Japanese at I Love Sushi",
           "credit": "Illustration"
         }
-      ]
+      ],
+      "publicRating": {
+        "value": 4.0,
+        "count": 802,
+        "source": "Yelp"
+      },
+      "yelpSlug": "bcjWiEonA4lVLf7md6N6PA"
     },
     {
       "id": "katsu-burger",
@@ -1538,7 +1586,9 @@
       "hoursLabel": "",
       "blurb": "",
       "orderThis": [],
-      "ids": {},
+      "ids": {
+        "yelp": "QOYPgNeaTMIvn-9crMovVg"
+      },
       "copySource": "draft",
       "updatedAt": "2026-10-20",
       "photos": [
@@ -1548,7 +1598,13 @@
           "alt": "Illustration suggesting Burgers at Katsu Burger",
           "credit": "Illustration"
         }
-      ]
+      ],
+      "publicRating": {
+        "value": 4.1,
+        "count": 569,
+        "source": "Yelp"
+      },
+      "yelpSlug": "QOYPgNeaTMIvn-9crMovVg"
     },
     {
       "id": "peony",
@@ -1597,7 +1653,9 @@
       "hoursLabel": "",
       "blurb": "",
       "orderThis": [],
-      "ids": {},
+      "ids": {
+        "yelp": "grempm7OaF3ZE_3gtYgdAQ"
+      },
       "copySource": "draft",
       "updatedAt": "2026-10-20",
       "photos": [
@@ -1607,7 +1665,13 @@
           "alt": "Illustration suggesting Chinese at Peony",
           "credit": "Illustration"
         }
-      ]
+      ],
+      "publicRating": {
+        "value": 3.5,
+        "count": 644,
+        "source": "Yelp"
+      },
+      "yelpSlug": "grempm7OaF3ZE_3gtYgdAQ"
     },
     {
       "id": "takai-by-kashiba",
@@ -1676,7 +1740,9 @@
       "hoursLabel": "",
       "blurb": "",
       "orderThis": [],
-      "ids": {},
+      "ids": {
+        "yelp": "kWetirlXv5PmEjRBk4EAKQ"
+      },
       "copySource": "draft",
       "updatedAt": "2026-10-20",
       "photos": [
@@ -1686,7 +1752,13 @@
           "alt": "Illustration suggesting Chinese at Xi'an Noodles",
           "credit": "Illustration"
         }
-      ]
+      ],
+      "publicRating": {
+        "value": 4.1,
+        "count": 147,
+        "source": "Yelp"
+      },
+      "yelpSlug": "kWetirlXv5PmEjRBk4EAKQ"
     },
     {
       "id": "anthonys-homeport",
@@ -1980,7 +2052,9 @@
       "hoursLabel": "",
       "blurb": "",
       "orderThis": [],
-      "ids": {},
+      "ids": {
+        "yelp": "2fJ4Rmwukbgm-4fQen9aRg"
+      },
       "copySource": "draft",
       "updatedAt": "2026-10-20",
       "photos": [
@@ -1990,7 +2064,13 @@
           "alt": "Illustration suggesting Greek at George's",
           "credit": "Illustration"
         }
-      ]
+      ],
+      "publicRating": {
+        "value": 3.4,
+        "count": 480,
+        "source": "Yelp"
+      },
+      "yelpSlug": "2fJ4Rmwukbgm-4fQen9aRg"
     },
     {
       "id": "hanuman-thai",
@@ -2044,7 +2124,9 @@
       "hoursLabel": "",
       "blurb": "",
       "orderThis": [],
-      "ids": {},
+      "ids": {
+        "yelp": "NZ1AkiNssGaY9fI1xoQk7A"
+      },
       "copySource": "draft",
       "updatedAt": "2026-10-20",
       "photos": [
@@ -2054,7 +2136,13 @@
           "alt": "Illustration suggesting Thai at Hanuman Thai Cafe",
           "credit": "Illustration"
         }
-      ]
+      ],
+      "publicRating": {
+        "value": 3.8,
+        "count": 343,
+        "source": "Yelp"
+      },
+      "yelpSlug": "NZ1AkiNssGaY9fI1xoQk7A"
     },
     {
       "id": "moss-bay-hall",
@@ -2081,7 +2169,9 @@
       "hoursLabel": "",
       "blurb": "",
       "orderThis": [],
-      "ids": {},
+      "ids": {
+        "yelp": "vOJ-nVN7xs6Sr2QpkoXm-w"
+      },
       "copySource": "draft",
       "updatedAt": "2026-10-20",
       "photos": [
@@ -2091,7 +2181,13 @@
           "alt": "Illustration suggesting American at Moss Bay Hall",
           "credit": "Illustration"
         }
-      ]
+      ],
+      "publicRating": {
+        "value": 4.0,
+        "count": 208,
+        "source": "Yelp"
+      },
+      "yelpSlug": "vOJ-nVN7xs6Sr2QpkoXm-w"
     },
     {
       "id": "sparrow",
@@ -2190,7 +2286,9 @@
       "hoursLabel": "",
       "blurb": "",
       "orderThis": [],
-      "ids": {},
+      "ids": {
+        "yelp": "bFWYdUimp6cKYtbTPKa7qQ"
+      },
       "copySource": "draft",
       "updatedAt": "2026-10-20",
       "photos": [
@@ -2200,7 +2298,13 @@
           "alt": "Illustration suggesting Sichuan at Spicy Talk Bistro",
           "credit": "Illustration"
         }
-      ]
+      ],
+      "publicRating": {
+        "value": 4.0,
+        "count": 267,
+        "source": "Yelp"
+      },
+      "yelpSlug": "bFWYdUimp6cKYtbTPKa7qQ"
     },
     {
       "id": "volterra",
@@ -2377,7 +2481,9 @@
       "hoursLabel": "",
       "blurb": "",
       "orderThis": [],
-      "ids": {},
+      "ids": {
+        "yelp": "1PXPK3Igro_DFh01go3y4A"
+      },
       "copySource": "draft",
       "updatedAt": "2026-10-20",
       "photos": [
@@ -2387,7 +2493,13 @@
           "alt": "Illustration suggesting Italian at Ristorante Tropea",
           "credit": "Illustration"
         }
-      ]
+      ],
+      "publicRating": {
+        "value": 4.2,
+        "count": 455,
+        "source": "Yelp"
+      },
+      "yelpSlug": "1PXPK3Igro_DFh01go3y4A"
     },
     {
       "id": "the-british-pantry",
@@ -2559,7 +2671,9 @@
       "hoursLabel": "",
       "blurb": "",
       "orderThis": [],
-      "ids": {},
+      "ids": {
+        "yelp": "P95aRg5I-_eY4lcKIRpJww"
+      },
       "copySource": "draft",
       "updatedAt": "2026-10-20",
       "photos": [
@@ -2569,7 +2683,13 @@
           "alt": "Illustration suggesting Bagels at Rubinstein Bagels",
           "credit": "Illustration"
         }
-      ]
+      ],
+      "publicRating": {
+        "value": 3.4,
+        "count": 226,
+        "source": "Yelp"
+      },
+      "yelpSlug": "P95aRg5I-_eY4lcKIRpJww"
     },
     {
       "id": "ooba-tooba",
@@ -2611,7 +2731,9 @@
       "hoursLabel": "",
       "blurb": "",
       "orderThis": [],
-      "ids": {},
+      "ids": {
+        "yelp": "Kx-pwf-GQ9FX8ti5E87l0w"
+      },
       "copySource": "draft",
       "updatedAt": "2026-10-20",
       "photos": [
@@ -2621,7 +2743,13 @@
           "alt": "Illustration suggesting Mexican at Ooba Tooba",
           "credit": "Illustration"
         }
-      ]
+      ],
+      "publicRating": {
+        "value": 4.0,
+        "count": 485,
+        "source": "Yelp"
+      },
+      "yelpSlug": "Kx-pwf-GQ9FX8ti5E87l0w"
     },
     {
       "id": "black-raven-brewing",
@@ -2688,7 +2816,9 @@
       "hoursLabel": "",
       "blurb": "",
       "orderThis": [],
-      "ids": {},
+      "ids": {
+        "yelp": "vaE0fUbYBayyn0aggiqSjg"
+      },
       "copySource": "draft",
       "updatedAt": "2026-10-20",
       "photos": [
@@ -2698,7 +2828,13 @@
           "alt": "Illustration suggesting American at Black Raven Brewing",
           "credit": "Illustration"
         }
-      ]
+      ],
+      "publicRating": {
+        "value": 4.4,
+        "count": 352,
+        "source": "Yelp"
+      },
+      "yelpSlug": "vaE0fUbYBayyn0aggiqSjg"
     },
     {
       "id": "chicago-pastrami",
@@ -2745,7 +2881,9 @@
       "hoursLabel": "",
       "blurb": "",
       "orderThis": [],
-      "ids": {},
+      "ids": {
+        "yelp": "EUUbRy1Ibdtnk7S1pJpsCg"
+      },
       "copySource": "draft",
       "updatedAt": "2026-10-20",
       "photos": [
@@ -2755,7 +2893,13 @@
           "alt": "Illustration suggesting American at Chicago Pastrami",
           "credit": "Illustration"
         }
-      ]
+      ],
+      "publicRating": {
+        "value": 3.8,
+        "count": 307,
+        "source": "Yelp"
+      },
+      "yelpSlug": "EUUbRy1Ibdtnk7S1pJpsCg"
     },
     {
       "id": "flying-pie-pizzeria",
@@ -2802,7 +2946,9 @@
       "hoursLabel": "",
       "blurb": "",
       "orderThis": [],
-      "ids": {},
+      "ids": {
+        "yelp": "V5dJV4x5L63YxQFhPZ4SpA"
+      },
       "copySource": "draft",
       "updatedAt": "2026-10-20",
       "photos": [
@@ -2812,7 +2958,13 @@
           "alt": "Illustration suggesting Pizza at Flying Pie Pizzeria",
           "credit": "Illustration"
         }
-      ]
+      ],
+      "publicRating": {
+        "value": 3.6,
+        "count": 274,
+        "source": "Yelp"
+      },
+      "yelpSlug": "V5dJV4x5L63YxQFhPZ4SpA"
     },
     {
       "id": "sip-thai-bistro",
@@ -2899,7 +3051,9 @@
       "hoursLabel": "",
       "blurb": "",
       "orderThis": [],
-      "ids": {},
+      "ids": {
+        "yelp": "Py5-tm4H2lDIF6gl9729tA"
+      },
       "copySource": "draft",
       "updatedAt": "2026-10-20",
       "photos": [
@@ -2909,7 +3063,13 @@
           "alt": "Illustration suggesting Italian at Amarone",
           "credit": "Illustration"
         }
-      ]
+      ],
+      "publicRating": {
+        "value": 4.3,
+        "count": 170,
+        "source": "Yelp"
+      },
+      "yelpSlug": "Py5-tm4H2lDIF6gl9729tA"
     },
     {
       "id": "vino-bella",
@@ -2955,7 +3115,9 @@
       "hoursLabel": "",
       "blurb": "",
       "orderThis": [],
-      "ids": {},
+      "ids": {
+        "yelp": "VXw6UnBqCmIMm5U-LK19Jw"
+      },
       "copySource": "draft",
       "updatedAt": "2026-10-20",
       "photos": [
@@ -2965,7 +3127,13 @@
           "alt": "Illustration suggesting Wine at Vino Bella",
           "credit": "Illustration"
         }
-      ]
+      ],
+      "publicRating": {
+        "value": 3.8,
+        "count": 150,
+        "source": "Yelp"
+      },
+      "yelpSlug": "VXw6UnBqCmIMm5U-LK19Jw"
     },
     {
       "id": "levitate-gastropub",
@@ -2992,7 +3160,9 @@
       "hoursLabel": "",
       "blurb": "",
       "orderThis": [],
-      "ids": {},
+      "ids": {
+        "yelp": "fwSLfXNk4D4BiGgriRnJcQ"
+      },
       "copySource": "draft",
       "updatedAt": "2026-10-20",
       "photos": [
@@ -3002,7 +3172,13 @@
           "alt": "Illustration suggesting American at Levitate Gastropub",
           "credit": "Illustration"
         }
-      ]
+      ],
+      "publicRating": {
+        "value": 3.7,
+        "count": 523,
+        "source": "Yelp"
+      },
+      "yelpSlug": "fwSLfXNk4D4BiGgriRnJcQ"
     },
     {
       "id": "heritage-restaurant",
@@ -3114,7 +3290,9 @@
       "hoursLabel": "",
       "blurb": "",
       "orderThis": [],
-      "ids": {},
+      "ids": {
+        "yelp": "0rPK999V5MbiJoSwZTrEsg"
+      },
       "copySource": "draft",
       "updatedAt": "2026-10-20",
       "photos": [
@@ -3124,7 +3302,13 @@
           "alt": "Illustration suggesting American at The Hollywood Tavern",
           "credit": "Illustration"
         }
-      ]
+      ],
+      "publicRating": {
+        "value": 4.2,
+        "count": 974,
+        "source": "Yelp"
+      },
+      "yelpSlug": "0rPK999V5MbiJoSwZTrEsg"
     },
     {
       "id": "brix-wine-cafe",
@@ -3171,7 +3355,9 @@
       "hoursLabel": "",
       "blurb": "",
       "orderThis": [],
-      "ids": {},
+      "ids": {
+        "yelp": "edo72oAv6qlgRny4DDK4wA"
+      },
       "copySource": "draft",
       "updatedAt": "2026-10-20",
       "photos": [
@@ -3181,7 +3367,13 @@
           "alt": "Illustration suggesting Italian at Brix Wine Cafe",
           "credit": "Illustration"
         }
-      ]
+      ],
+      "publicRating": {
+        "value": 4.2,
+        "count": 115,
+        "source": "Yelp"
+      },
+      "yelpSlug": "edo72oAv6qlgRny4DDK4wA"
     },
     {
       "id": "vivi-pizzeria",
@@ -3305,7 +3497,9 @@
       "hoursLabel": "",
       "blurb": "",
       "orderThis": [],
-      "ids": {},
+      "ids": {
+        "yelp": "NywVsjIhVYuhtJ4wBB2eEw"
+      },
       "copySource": "draft",
       "updatedAt": "2026-10-20",
       "photos": [
@@ -3315,7 +3509,13 @@
           "alt": "Illustration suggesting American at Watts Brewing Company",
           "credit": "Illustration"
         }
-      ]
+      ],
+      "publicRating": {
+        "value": 4.5,
+        "count": 35,
+        "source": "Yelp"
+      },
+      "yelpSlug": "NywVsjIhVYuhtJ4wBB2eEw"
     },
     {
       "id": "chantanee",
@@ -3344,7 +3544,9 @@
       "hoursLabel": "",
       "blurb": "",
       "orderThis": [],
-      "ids": {},
+      "ids": {
+        "yelp": "qPnHPyV88CEVpA6Cj8WbVQ"
+      },
       "copySource": "draft",
       "updatedAt": "2026-10-20",
       "photos": [
@@ -3354,7 +3556,13 @@
           "alt": "Illustration suggesting Thai at Chantanee",
           "credit": "Illustration"
         }
-      ]
+      ],
+      "publicRating": {
+        "value": 3.5,
+        "count": 556,
+        "source": "Yelp"
+      },
+      "yelpSlug": "qPnHPyV88CEVpA6Cj8WbVQ"
     },
     {
       "id": "russells",
@@ -3452,7 +3660,9 @@
       "hoursLabel": "",
       "blurb": "",
       "orderThis": [],
-      "ids": {},
+      "ids": {
+        "yelp": "LNS1qPLjUsjs98xicWghsQ"
+      },
       "copySource": "draft",
       "updatedAt": "2026-10-20",
       "photos": [
@@ -3462,7 +3672,13 @@
           "alt": "Illustration suggesting Mexican at Agave Cocina",
           "credit": "Illustration"
         }
-      ]
+      ],
+      "publicRating": {
+        "value": 4.3,
+        "count": 34,
+        "source": "Yelp"
+      },
+      "yelpSlug": "LNS1qPLjUsjs98xicWghsQ"
     },
     {
       "id": "sushi-zone",
@@ -3542,7 +3758,9 @@
       "hoursLabel": "",
       "blurb": "",
       "orderThis": [],
-      "ids": {},
+      "ids": {
+        "yelp": "4NYR2AlivrZsyyBHpXyLiQ"
+      },
       "copySource": "draft",
       "updatedAt": "2026-10-20",
       "photos": [
@@ -3552,7 +3770,13 @@
           "alt": "Illustration suggesting Japanese at Sushi Zone",
           "credit": "Illustration"
         }
-      ]
+      ],
+      "publicRating": {
+        "value": 3.8,
+        "count": 415,
+        "source": "Yelp"
+      },
+      "yelpSlug": "4NYR2AlivrZsyyBHpXyLiQ"
     },
     {
       "id": "namdo-korean-bbq",
@@ -3595,7 +3819,9 @@
       "hoursLabel": "",
       "blurb": "",
       "orderThis": [],
-      "ids": {},
+      "ids": {
+        "yelp": "ryRy9yDHcSpDzjhtVcpPGA"
+      },
       "copySource": "draft",
       "updatedAt": "2026-10-20",
       "photos": [
@@ -3605,7 +3831,13 @@
           "alt": "Illustration suggesting Korean at Namdo Korean BBQ",
           "credit": "Illustration"
         }
-      ]
+      ],
+      "publicRating": {
+        "value": 3.7,
+        "count": 64,
+        "source": "Yelp"
+      },
+      "yelpSlug": "ryRy9yDHcSpDzjhtVcpPGA"
     },
     {
       "id": "barrels-wine-bar",
@@ -3650,7 +3882,9 @@
       "hoursLabel": "",
       "blurb": "",
       "orderThis": [],
-      "ids": {},
+      "ids": {
+        "yelp": "W6OeoxIyWt4jv57pB3kQ8A"
+      },
       "copySource": "draft",
       "updatedAt": "2026-10-20",
       "photos": [
@@ -3660,7 +3894,13 @@
           "alt": "Illustration suggesting Wine at Barrels Wine Bar",
           "credit": "Illustration"
         }
-      ]
+      ],
+      "publicRating": {
+        "value": 4.9,
+        "count": 36,
+        "source": "Yelp"
+      },
+      "yelpSlug": "W6OeoxIyWt4jv57pB3kQ8A"
     },
     {
       "id": "lexperience-paris",
@@ -3687,7 +3927,9 @@
       "hoursLabel": "",
       "blurb": "",
       "orderThis": [],
-      "ids": {},
+      "ids": {
+        "yelp": "-1BySrVdsg9NGmDzYTbD1g"
+      },
       "copySource": "draft",
       "updatedAt": "2026-10-20",
       "photos": [
@@ -3697,7 +3939,13 @@
           "alt": "Illustration suggesting French at L'Experience Paris",
           "credit": "Illustration"
         }
-      ]
+      ],
+      "publicRating": {
+        "value": 3.5,
+        "count": 125,
+        "source": "Yelp"
+      },
+      "yelpSlug": "-1BySrVdsg9NGmDzYTbD1g"
     },
     {
       "id": "roanoke-inn",
@@ -3739,7 +3987,9 @@
       "hoursLabel": "",
       "blurb": "",
       "orderThis": [],
-      "ids": {},
+      "ids": {
+        "yelp": "XWag2eb853TrXaAk38Op_w"
+      },
       "copySource": "draft",
       "updatedAt": "2026-10-20",
       "photos": [
@@ -3749,7 +3999,13 @@
           "alt": "Illustration suggesting American at Roanoke Inn",
           "credit": "Illustration"
         }
-      ]
+      ],
+      "publicRating": {
+        "value": 3.5,
+        "count": 344,
+        "source": "Yelp"
+      },
+      "yelpSlug": "XWag2eb853TrXaAk38Op_w"
     },
     {
       "id": "sushi-joa",
@@ -3802,7 +4058,9 @@
       "hoursLabel": "",
       "blurb": "",
       "orderThis": [],
-      "ids": {},
+      "ids": {
+        "yelp": "HX3E14oV9TYH3FZE2096nA"
+      },
       "copySource": "draft",
       "updatedAt": "2026-10-20",
       "photos": [
@@ -3812,7 +4070,13 @@
           "alt": "Illustration suggesting Japanese at Sushi Joa",
           "credit": "Illustration"
         }
-      ]
+      ],
+      "publicRating": {
+        "value": 4.0,
+        "count": 226,
+        "source": "Yelp"
+      },
+      "yelpSlug": "HX3E14oV9TYH3FZE2096nA"
     },
     {
       "id": "haps-burgers",
@@ -3860,7 +4124,9 @@
       "hoursLabel": "",
       "blurb": "",
       "orderThis": [],
-      "ids": {},
+      "ids": {
+        "yelp": "vpkjyTwhSWNjaJO6j2Dpew"
+      },
       "copySource": "draft",
       "updatedAt": "2026-10-20",
       "photos": [
@@ -3870,7 +4136,13 @@
           "alt": "Illustration suggesting Burgers at Hap's Burgers",
           "credit": "Illustration"
         }
-      ]
+      ],
+      "publicRating": {
+        "value": 3.9,
+        "count": 212,
+        "source": "Yelp"
+      },
+      "yelpSlug": "vpkjyTwhSWNjaJO6j2Dpew"
     },
     {
       "id": "melrose-grill",
@@ -3931,7 +4203,9 @@
       "hoursLabel": "",
       "blurb": "",
       "orderThis": [],
-      "ids": {},
+      "ids": {
+        "yelp": "iCvPIKn8Gm716UDn3iPNtA"
+      },
       "copySource": "draft",
       "updatedAt": "2026-10-20",
       "photos": [
@@ -3941,7 +4215,13 @@
           "alt": "Illustration suggesting Steak at Melrose Grill",
           "credit": "Illustration"
         }
-      ]
+      ],
+      "publicRating": {
+        "value": 4.5,
+        "count": 2098,
+        "source": "Yelp"
+      },
+      "yelpSlug": "iCvPIKn8Gm716UDn3iPNtA"
     },
     {
       "id": "smoking-monkey-pizza",
@@ -3989,7 +4269,9 @@
       "hoursLabel": "",
       "blurb": "",
       "orderThis": [],
-      "ids": {},
+      "ids": {
+        "yelp": "9X95cmNzvV0BAr49kcN8vg"
+      },
       "copySource": "draft",
       "updatedAt": "2026-10-20",
       "photos": [
@@ -3999,7 +4281,13 @@
           "alt": "Illustration suggesting Pizza at Smoking Monkey Pizza",
           "credit": "Illustration"
         }
-      ]
+      ],
+      "publicRating": {
+        "value": 3.7,
+        "count": 954,
+        "source": "Yelp"
+      },
+      "yelpSlug": "9X95cmNzvV0BAr49kcN8vg"
     },
     {
       "id": "crawfish-house",
@@ -4041,7 +4329,9 @@
       "hoursLabel": "",
       "blurb": "",
       "orderThis": [],
-      "ids": {},
+      "ids": {
+        "yelp": "1BkAVtOkWkJfVXF1ASUN8Q"
+      },
       "copySource": "draft",
       "updatedAt": "2026-10-20",
       "photos": [
@@ -4051,7 +4341,13 @@
           "alt": "Illustration suggesting Cajun at Crawfish House",
           "credit": "Illustration"
         }
-      ]
+      ],
+      "publicRating": {
+        "value": 3.8,
+        "count": 122,
+        "source": "Yelp"
+      },
+      "yelpSlug": "1BkAVtOkWkJfVXF1ASUN8Q"
     },
     {
       "id": "jimmy-macs-roadhouse",
@@ -4152,7 +4448,9 @@
       "hoursLabel": "",
       "blurb": "",
       "orderThis": [],
-      "ids": {},
+      "ids": {
+        "yelp": "EWqgeiGor-aVJlMLc8iSKw"
+      },
       "copySource": "draft",
       "updatedAt": "2026-10-20",
       "photos": [
@@ -4162,7 +4460,13 @@
           "alt": "Illustration suggesting Coffee at Boon Boona Coffee",
           "credit": "Illustration"
         }
-      ]
+      ],
+      "publicRating": {
+        "value": 4.3,
+        "count": 448,
+        "source": "Yelp"
+      },
+      "yelpSlug": "EWqgeiGor-aVJlMLc8iSKw"
     },
     {
       "id": "tanoor",
@@ -4190,7 +4494,9 @@
       "hoursLabel": "",
       "blurb": "",
       "orderThis": [],
-      "ids": {},
+      "ids": {
+        "yelp": "MQMyrnwXlbiNqGwfbLRnLQ"
+      },
       "copySource": "draft",
       "updatedAt": "2026-10-20",
       "photos": [
@@ -4200,7 +4506,13 @@
           "alt": "Illustration suggesting Lebanese at Tanoor",
           "credit": "Illustration"
         }
-      ]
+      ],
+      "publicRating": {
+        "value": 4.1,
+        "count": 658,
+        "source": "Yelp"
+      },
+      "yelpSlug": "MQMyrnwXlbiNqGwfbLRnLQ"
     },
     {
       "id": "diyar",
@@ -4228,7 +4540,9 @@
       "hoursLabel": "",
       "blurb": "",
       "orderThis": [],
-      "ids": {},
+      "ids": {
+        "yelp": "XNZqaPgA31r2tAu7JgpJ2w"
+      },
       "copySource": "draft",
       "updatedAt": "2026-10-20",
       "photos": [
@@ -4238,7 +4552,13 @@
           "alt": "Illustration suggesting Persian at Diyar",
           "credit": "Illustration"
         }
-      ]
+      ],
+      "publicRating": {
+        "value": 4.8,
+        "count": 76,
+        "source": "Yelp"
+      },
+      "yelpSlug": "XNZqaPgA31r2tAu7JgpJ2w"
     },
     {
       "id": "big-fish-sushi",
@@ -4311,7 +4631,9 @@
       "hoursLabel": "",
       "blurb": "",
       "orderThis": [],
-      "ids": {},
+      "ids": {
+        "yelp": "T3rn-GGmq0HYEokY-8kdGA"
+      },
       "copySource": "draft",
       "updatedAt": "2026-10-20",
       "photos": [
@@ -4321,7 +4643,13 @@
           "alt": "Illustration suggesting Japanese at Big Fish Sushi",
           "credit": "Illustration"
         }
-      ]
+      ],
+      "publicRating": {
+        "value": 3.9,
+        "count": 98,
+        "source": "Yelp"
+      },
+      "yelpSlug": "T3rn-GGmq0HYEokY-8kdGA"
     },
     {
       "id": "jobos-pizza-pub",
@@ -4419,7 +4747,9 @@
       "hoursLabel": "",
       "blurb": "",
       "orderThis": [],
-      "ids": {},
+      "ids": {
+        "yelp": "BqbOCQmNqQigkPANakQuHg"
+      },
       "copySource": "draft",
       "updatedAt": "2026-10-20",
       "photos": [
@@ -4429,7 +4759,13 @@
           "alt": "Illustration suggesting American at Sammamish Cafe",
           "credit": "Illustration"
         }
-      ]
+      ],
+      "publicRating": {
+        "value": 4.0,
+        "count": 501,
+        "source": "Yelp"
+      },
+      "yelpSlug": "BqbOCQmNqQigkPANakQuHg"
     }
   ],
   "guides": [
