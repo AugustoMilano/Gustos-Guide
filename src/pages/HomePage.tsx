@@ -125,7 +125,7 @@ export function HomePage() {
               <Reveal key={place.id} delay={Math.min(index, 6) * 0.04}>
               <Link to={cityPath(`/place/${place.id}`)} className="hit-card" viewTransition={!reduceMotion}>
                 <div className="h-32 overflow-hidden bg-navy [&_.place-art]:aspect-auto [&_.place-art]:h-full" style={reduceMotion ? undefined : { viewTransitionName: `place-${place.id}` }}>
-                  <PlaceThumb place={place} uploads={photos} eager />
+                  <PlaceThumb place={place} uploads={photos} eager={index < 2} sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw" />
                 </div>
                 <div className="p-3">
                   <ScoreBadge score={app.gustoScore(place.id)} size="sm" />
@@ -217,10 +217,10 @@ export function HomePage() {
           <h2 className="font-serif text-4xl italic">{east ? 'The Eastside list' : 'The hit list'}</h2>
           <p className="mt-2 max-w-xl">{east ? 'Every Eastside room on the guide so far.' : 'The rooms people already cross town for, one neighborhood at a time.'}</p>
           <div className="mt-4 flex gap-3 overflow-x-auto pb-2">
-            {hits.map((place, index) => (
+            {hits.map((place) => (
               <Link key={place.id} to={cityPath(`/place/${place.id}`)} className="hit-card w-56 shrink-0" viewTransition={!reduceMotion}>
                 <div className="h-28 overflow-hidden bg-navy [&_.place-art]:aspect-auto [&_.place-art]:h-full">
-                  <PlaceThumb place={place} uploads={photos} eager={index < 4} />
+                  <PlaceThumb place={place} uploads={photos} sizes="224px" />
                 </div>
                 <div className="p-3">
                   <p className="text-xs font-bold tracking-[0.14em] uppercase">{place.neighborhood}</p>

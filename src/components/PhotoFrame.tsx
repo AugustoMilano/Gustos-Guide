@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { PlaceArt } from './PlaceArt.tsx'
 import type { DisplayPhoto } from '../lib/gallery.ts'
+import { responsivePhoto } from '../lib/responsivePhoto.ts'
 
 export function PhotoFrame({
   photo,
@@ -21,12 +22,11 @@ export function PhotoFrame({
         <PlaceArt id={photo.placeId} cuisine={photo.cuisine} neighborhood={photo.neighborhood} />
       ) : (
         <img
-          src={photo.url}
+          {...responsivePhoto(photo.url, '(min-width: 1024px) 60vw, 100vw')}
           alt={photo.alt}
-          width={800}
-          height={600}
           loading={priority ? 'eager' : 'lazy'}
           decoding="async"
+          fetchPriority={priority ? 'high' : undefined}
           className="place-art object-cover"
           onError={() => setFailed(true)}
         />

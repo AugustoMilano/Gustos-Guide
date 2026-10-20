@@ -115,7 +115,7 @@ export function TonightPage() {
                   transition={{ type: 'spring', stiffness: 380, damping: 28 }}
                 >
                   <Link to={`/place/${pick.id}`} className="tonight-card">
-                    <span className="tonight-photo"><PlaceThumb place={pick} uploads={app.photos} eager /></span>
+                    <span className="tonight-photo"><PlaceThumb place={pick} uploads={app.photos} eager priority sizes="(min-width: 768px) 280px, 40vw" /></span>
                     <span className="tonight-copy">
                       <span className="block font-serif text-4xl italic leading-none">{pick.name}</span>
                       <span className="mt-2 block text-sm">{[pick.neighborhood, priceLabel(pick.price)].filter(Boolean).join(' · ')}</span>

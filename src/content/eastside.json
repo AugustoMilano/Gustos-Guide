@@ -54,7 +54,9 @@
       "phone": "+1 (425) 455-2033",
       "appleMapsUrl": "https://maps.apple.com/?daddr=47.6100241,-122.2039115&q=Bis%20on%20Main",
       "guideSlugs": [
-        "best-of-bellevue"
+        "best-of-bellevue",
+        "bellevue",
+        "eastside-date-night"
       ],
       "muid": "",
       "hoursLabel": "",
@@ -124,7 +126,9 @@
       "phone": "+1 (425) 635-1112",
       "appleMapsUrl": "https://maps.apple.com/?daddr=47.6099608,-122.2032267&q=Monsoon%20Bellevue",
       "guideSlugs": [
-        "best-of-bellevue"
+        "best-of-bellevue",
+        "bellevue",
+        "eastside-asian"
       ],
       "muid": "",
       "hoursLabel": "",
@@ -162,7 +166,9 @@
       "phone": "+1 (425) 456-0010",
       "appleMapsUrl": "https://maps.apple.com/?daddr=47.6121373,-122.1963444&q=Seastar%20Restaurant%20%26%20Raw%20Bar",
       "guideSlugs": [
-        "best-of-bellevue"
+        "best-of-bellevue",
+        "bellevue",
+        "eastside-date-night"
       ],
       "muid": "",
       "hoursLabel": "",
@@ -221,7 +227,9 @@
       "phone": "+1 (425) 440-0880",
       "appleMapsUrl": "https://maps.apple.com/?daddr=47.6170951,-122.1919712&q=John%20Howie%20Steak",
       "guideSlugs": [
-        "best-of-bellevue"
+        "best-of-bellevue",
+        "bellevue",
+        "eastside-date-night"
       ],
       "muid": "",
       "hoursLabel": "",
@@ -274,7 +282,8 @@
       "phone": "+1 (425) 454-7500",
       "appleMapsUrl": "https://maps.apple.com/?daddr=47.6165675,-122.202069&q=Tavern%20Hall",
       "guideSlugs": [
-        "best-of-bellevue"
+        "best-of-bellevue",
+        "bellevue"
       ],
       "muid": "",
       "hoursLabel": "",
@@ -332,7 +341,9 @@
       "phone": "+1 (425) 378-1498",
       "appleMapsUrl": "https://maps.apple.com/?daddr=47.6162309,-122.1808153&q=Regent%20Bakery%20and%20Cafe",
       "guideSlugs": [
-        "best-of-bellevue"
+        "best-of-bellevue",
+        "bellevue",
+        "eastside-coffee"
       ],
       "muid": "",
       "hoursLabel": "",
@@ -409,7 +420,9 @@
       "phone": "+1 (425) 688-2986",
       "appleMapsUrl": "https://maps.apple.com/?daddr=47.6208959,-122.1705706&q=Facing%20East",
       "guideSlugs": [
-        "best-of-bellevue"
+        "best-of-bellevue",
+        "bellevue",
+        "eastside-asian"
       ],
       "muid": "",
       "hoursLabel": "",
@@ -470,7 +483,8 @@
       "appleMapsUrl": "https://maps.apple.com/?daddr=47.6754189,-122.2071877&q=The%20Slip",
       "guideSlugs": [
         "kirkland-waterfront",
-        "best-of-kirkland"
+        "best-of-kirkland",
+        "kirkland"
       ],
       "muid": "",
       "hoursLabel": "",
@@ -549,7 +563,8 @@
       "appleMapsUrl": "https://maps.apple.com/?daddr=47.6616855,-122.2071866&q=BeachHouse%20Bar%20%2B%20Grill",
       "guideSlugs": [
         "kirkland-waterfront",
-        "best-of-kirkland"
+        "best-of-kirkland",
+        "kirkland"
       ],
       "muid": "",
       "hoursLabel": "",
@@ -619,7 +634,9 @@
       "phone": "+1 (425) 889-8601",
       "appleMapsUrl": "https://maps.apple.com/?daddr=47.6762459,-122.205942&q=Ristorante%20Paradiso",
       "guideSlugs": [
-        "best-of-kirkland"
+        "best-of-kirkland",
+        "kirkland",
+        "eastside-date-night"
       ],
       "muid": "",
       "hoursLabel": "",
@@ -675,7 +692,9 @@
       "phone": "+1 (425) 823-1505",
       "appleMapsUrl": "https://maps.apple.com/?daddr=47.7076316,-122.2123046&q=Cafe%20Juanita",
       "guideSlugs": [
-        "best-of-kirkland"
+        "best-of-kirkland",
+        "kirkland",
+        "eastside-date-night"
       ],
       "muid": "",
       "hoursLabel": "",
@@ -962,7 +981,8 @@
       "phone": "+1 (425) 286-1001",
       "appleMapsUrl": "https://maps.apple.com/?daddr=47.7664248,-122.1916265&q=Beardslee%20Public%20House",
       "guideSlugs": [
-        "bothell"
+        "bothell",
+        "eastside-breweries"
       ],
       "muid": "",
       "hoursLabel": "",
@@ -1038,6 +1058,3378 @@
           "credit": "Illustration"
         }
       ]
+    },
+    {
+      "id": "13-coins",
+      "city": "eastside",
+      "name": "13 Coins",
+      "neighborhood": "Downtown Bellevue",
+      "address": "900 Bellevue Way Northeast, Bellevue, WA 98004",
+      "lat": 47.6182022,
+      "lng": -122.2013198,
+      "cuisine": [
+        "American"
+      ],
+      "placeType": "restaurant",
+      "oneLiner": "Bellevue Way diner with breakfast from seven and a late weekend close.",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "start": 420,
+          "end": 1380
+        },
+        {
+          "days": [
+            5,
+            6
+          ],
+          "start": 420,
+          "end": 120
+        }
+      ],
+      "gustoScore": null,
+      "website": "https://www.13coins.com/location/13-coins-bellevue/",
+      "phone": "+1 (425) 455-1313",
+      "appleMapsUrl": "https://maps.apple.com/?daddr=47.6182022,-122.2013198&q=13%20Coins",
+      "guideSlugs": [
+        "bellevue",
+        "eastside-brunch"
+      ],
+      "muid": "",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-10-20",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting American at 13 Coins",
+          "credit": "Illustration"
+        }
+      ]
+    },
+    {
+      "id": "bellevue-brewing",
+      "city": "eastside",
+      "name": "Bellevue Brewing Company",
+      "neighborhood": "Spring District",
+      "address": "12190 Northeast District Way, Bellevue, WA 98005",
+      "lat": 47.621394,
+      "lng": -122.1778158,
+      "cuisine": [
+        "American"
+      ],
+      "placeType": "brewery",
+      "oneLiner": "A brewpub on Northeast District Way in the Spring District.",
+      "perfectFor": [],
+      "periods": [],
+      "gustoScore": null,
+      "website": "https://www.bellevuebrewing.com",
+      "appleMapsUrl": "https://maps.apple.com/?daddr=47.621394,-122.1778158&q=Bellevue%20Brewing%20Company",
+      "guideSlugs": [
+        "bellevue",
+        "eastside-breweries"
+      ],
+      "muid": "",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-10-20",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting American at Bellevue Brewing Company",
+          "credit": "Illustration"
+        }
+      ]
+    },
+    {
+      "id": "arayas-place",
+      "city": "eastside",
+      "name": "Araya's Place",
+      "neighborhood": "Old Bellevue",
+      "address": "10246 Main Street, Bellevue, WA 98004",
+      "lat": 47.6102752,
+      "lng": -122.2030425,
+      "cuisine": [
+        "Thai"
+      ],
+      "placeType": "restaurant",
+      "oneLiner": "Vegan Thai on Main Street, and the mock duck is the order.",
+      "perfectFor": [],
+      "periods": [],
+      "gustoScore": null,
+      "website": "https://www.arayasplace.com",
+      "phone": "+1 (425) 454-2440",
+      "appleMapsUrl": "https://maps.apple.com/?daddr=47.6102752,-122.2030425&q=Araya's%20Place",
+      "guideSlugs": [
+        "bellevue",
+        "eastside-asian"
+      ],
+      "muid": "",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-10-20",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Thai at Araya's Place",
+          "credit": "Illustration"
+        }
+      ]
+    },
+    {
+      "id": "third-culture-coffee",
+      "city": "eastside",
+      "name": "Third Culture Coffee",
+      "neighborhood": "Downtown Bellevue",
+      "address": "80 102nd Avenue Northeast, Bellevue, WA 98004",
+      "lat": 47.6108569,
+      "lng": -122.2039409,
+      "cuisine": [
+        "Coffee"
+      ],
+      "placeType": "cafe",
+      "oneLiner": "Coffee roaster on 102nd Avenue Northeast in downtown Bellevue.",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "start": 420,
+          "end": 1020
+        },
+        {
+          "days": [
+            5,
+            6
+          ],
+          "start": 420,
+          "end": 1080
+        },
+        {
+          "days": [
+            0
+          ],
+          "start": 420,
+          "end": 1020
+        }
+      ],
+      "gustoScore": null,
+      "website": "https://thirdculturecoffee.com",
+      "phone": "+1 (425) 230-3660",
+      "appleMapsUrl": "https://maps.apple.com/?daddr=47.6108569,-122.2039409&q=Third%20Culture%20Coffee",
+      "guideSlugs": [
+        "bellevue",
+        "eastside-coffee"
+      ],
+      "muid": "",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-10-20",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Coffee at Third Culture Coffee",
+          "credit": "Illustration"
+        }
+      ]
+    },
+    {
+      "id": "cascadia-pizza",
+      "city": "eastside",
+      "name": "Cascadia Pizza Co.",
+      "neighborhood": "Bel-Red",
+      "address": "1820 130th Avenue Northeast, Bellevue, WA 98005",
+      "lat": 47.626576,
+      "lng": -122.1662253,
+      "cuisine": [
+        "Pizza"
+      ],
+      "placeType": "restaurant",
+      "oneLiner": "Wood-fired pies on 130th, in the Bel-Red warehouse blocks.",
+      "perfectFor": [],
+      "periods": [],
+      "gustoScore": null,
+      "website": "https://www.cascadiapizzaco.com/",
+      "appleMapsUrl": "https://maps.apple.com/?daddr=47.626576,-122.1662253&q=Cascadia%20Pizza%20Co.",
+      "guideSlugs": [
+        "bellevue"
+      ],
+      "muid": "",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-10-20",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Pizza at Cascadia Pizza Co.",
+          "credit": "Illustration"
+        }
+      ]
+    },
+    {
+      "id": "farine-bakery",
+      "city": "eastside",
+      "name": "Farine Bakery",
+      "neighborhood": "Downtown Bellevue",
+      "address": "11194 Northeast 10th Street, Bellevue, WA 98004",
+      "lat": 47.6195371,
+      "lng": -122.1913429,
+      "cuisine": [
+        "Bakery"
+      ],
+      "placeType": "bakery",
+      "oneLiner": "Belgian bakery on Northeast 10th, with kouign-amann in the case.",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "start": 420,
+          "end": 900
+        }
+      ],
+      "gustoScore": null,
+      "website": "https://www.farinecafe.com/",
+      "appleMapsUrl": "https://maps.apple.com/?daddr=47.6195371,-122.1913429&q=Farine%20Bakery",
+      "guideSlugs": [
+        "bellevue",
+        "eastside-coffee",
+        "eastside-brunch"
+      ],
+      "muid": "",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-10-20",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Bakery at Farine Bakery",
+          "credit": "Illustration"
+        }
+      ]
+    },
+    {
+      "id": "fogo-de-chao",
+      "city": "eastside",
+      "name": "Fogo de Chão",
+      "neighborhood": "Downtown Bellevue",
+      "address": "440 Bellevue Way Northeast, Bellevue, WA 98004",
+      "lat": 47.6144352,
+      "lng": -122.2013597,
+      "cuisine": [
+        "Brazilian"
+      ],
+      "placeType": "restaurant",
+      "oneLiner": "Brazilian churrasco on Bellevue Way, served rodizio style.",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "start": 660,
+          "end": 1290
+        },
+        {
+          "days": [
+            5
+          ],
+          "start": 660,
+          "end": 1320
+        },
+        {
+          "days": [
+            6
+          ],
+          "start": 690,
+          "end": 1320
+        },
+        {
+          "days": [
+            0
+          ],
+          "start": 690,
+          "end": 1260
+        }
+      ],
+      "gustoScore": null,
+      "website": "https://fogodechao.com/location/bellevue/",
+      "phone": "+1 (425) 450-4004",
+      "appleMapsUrl": "https://maps.apple.com/?daddr=47.6144352,-122.2013597&q=Fogo%20de%20Ch%C3%A3o",
+      "guideSlugs": [
+        "bellevue",
+        "eastside-date-night"
+      ],
+      "muid": "",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-10-20",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Brazilian at Fogo de Chão",
+          "credit": "Illustration"
+        }
+      ]
+    },
+    {
+      "id": "ginza",
+      "city": "eastside",
+      "name": "Ginza",
+      "neighborhood": "Old Bellevue",
+      "address": "103 102nd Avenue Southeast, Bellevue, WA 98004",
+      "lat": 47.6098826,
+      "lng": -122.2043064,
+      "cuisine": [
+        "Japanese"
+      ],
+      "placeType": "restaurant",
+      "oneLiner": "A long-running sushi room just south of Main, off 102nd.",
+      "perfectFor": [],
+      "periods": [],
+      "gustoScore": null,
+      "website": "https://www.ginzabellevue.com/",
+      "appleMapsUrl": "https://maps.apple.com/?daddr=47.6098826,-122.2043064&q=Ginza",
+      "guideSlugs": [
+        "bellevue",
+        "eastside-asian"
+      ],
+      "muid": "",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-10-20",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Japanese at Ginza",
+          "credit": "Illustration"
+        }
+      ]
+    },
+    {
+      "id": "i-love-sushi",
+      "city": "eastside",
+      "name": "I Love Sushi",
+      "neighborhood": "Lake Bellevue",
+      "address": "23 Lake Bellevue Drive, Bellevue, WA 98005",
+      "lat": 47.6191274,
+      "lng": -122.1818316,
+      "cuisine": [
+        "Japanese"
+      ],
+      "placeType": "restaurant",
+      "oneLiner": "Sushi on Lake Bellevue Drive, with a deck over the water.",
+      "perfectFor": [],
+      "periods": [],
+      "gustoScore": null,
+      "website": "https://ilovesushi.com/",
+      "phone": "+1 (425) 455-9090",
+      "appleMapsUrl": "https://maps.apple.com/?daddr=47.6191274,-122.1818316&q=I%20Love%20Sushi",
+      "guideSlugs": [
+        "bellevue",
+        "eastside-asian"
+      ],
+      "muid": "",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-10-20",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Japanese at I Love Sushi",
+          "credit": "Illustration"
+        }
+      ]
+    },
+    {
+      "id": "katsu-burger",
+      "city": "eastside",
+      "name": "Katsu Burger",
+      "neighborhood": "Factoria",
+      "address": "12700 Southeast 38th Street, Bellevue, WA 98006",
+      "lat": 47.576761,
+      "lng": -122.1703267,
+      "cuisine": [
+        "Burgers"
+      ],
+      "placeType": "restaurant",
+      "oneLiner": "Katsu sandwiches and burgers at the Factoria shop on 38th.",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "start": 660,
+          "end": 1260
+        }
+      ],
+      "gustoScore": null,
+      "website": "https://www.katsuburger.com/",
+      "phone": "+1 (425) 971-7228",
+      "appleMapsUrl": "https://maps.apple.com/?daddr=47.576761,-122.1703267&q=Katsu%20Burger",
+      "guideSlugs": [
+        "bellevue"
+      ],
+      "muid": "",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-10-20",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Burgers at Katsu Burger",
+          "credit": "Illustration"
+        }
+      ]
+    },
+    {
+      "id": "peony",
+      "city": "eastside",
+      "name": "Peony",
+      "neighborhood": "Old Bellevue",
+      "address": "10317 Main Street, Bellevue, WA 98004",
+      "lat": 47.6100322,
+      "lng": -122.2026916,
+      "cuisine": [
+        "Chinese"
+      ],
+      "placeType": "restaurant",
+      "oneLiner": "Hong Kong-style Chinese on Main, in the old downtown blocks.",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "start": 660,
+          "end": 1260
+        },
+        {
+          "days": [
+            0,
+            6
+          ],
+          "start": 660,
+          "end": 1320
+        }
+      ],
+      "gustoScore": null,
+      "website": "https://www.peonykitchen.com/",
+      "phone": "+1 (425) 502-7652",
+      "appleMapsUrl": "https://maps.apple.com/?daddr=47.6100322,-122.2026916&q=Peony",
+      "guideSlugs": [
+        "bellevue",
+        "eastside-asian"
+      ],
+      "muid": "",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-10-20",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Chinese at Peony",
+          "credit": "Illustration"
+        }
+      ]
+    },
+    {
+      "id": "takai-by-kashiba",
+      "city": "eastside",
+      "name": "Takai by Kashiba",
+      "neighborhood": "Downtown Bellevue",
+      "address": "180 Bellevue Way Northeast, Bellevue, WA 98004",
+      "lat": 47.6116763,
+      "lng": -122.2012671,
+      "cuisine": [
+        "Japanese"
+      ],
+      "placeType": "restaurant",
+      "oneLiner": "Shiro Kashiba's sushi counter on Bellevue Way. Book the omakase.",
+      "perfectFor": [],
+      "periods": [],
+      "gustoScore": null,
+      "website": "https://takaibykashiba.com/",
+      "phone": "+1 (425) 502-7259",
+      "appleMapsUrl": "https://maps.apple.com/?daddr=47.6116763,-122.2012671&q=Takai%20by%20Kashiba",
+      "guideSlugs": [
+        "bellevue",
+        "eastside-asian",
+        "eastside-date-night"
+      ],
+      "muid": "",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-10-20",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Japanese at Takai by Kashiba",
+          "credit": "Illustration"
+        }
+      ]
+    },
+    {
+      "id": "xian-noodles",
+      "city": "eastside",
+      "name": "Xi'an Noodles",
+      "neighborhood": "Downtown Bellevue",
+      "address": "1075 Bellevue Way Northeast, Bellevue, WA 98004",
+      "lat": 47.6197288,
+      "lng": -122.2027458,
+      "cuisine": [
+        "Chinese"
+      ],
+      "placeType": "restaurant",
+      "oneLiner": "Hand-pulled biang biang noodles on Bellevue Way by the mall.",
+      "perfectFor": [],
+      "periods": [],
+      "gustoScore": null,
+      "website": "https://www.xiannoodles.com/",
+      "phone": "+1 (425) 286-8888",
+      "appleMapsUrl": "https://maps.apple.com/?daddr=47.6197288,-122.2027458&q=Xi'an%20Noodles",
+      "guideSlugs": [
+        "bellevue",
+        "eastside-asian"
+      ],
+      "muid": "",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-10-20",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Chinese at Xi'an Noodles",
+          "credit": "Illustration"
+        }
+      ]
+    },
+    {
+      "id": "anthonys-homeport",
+      "city": "eastside",
+      "name": "Anthony's HomePort",
+      "neighborhood": "Downtown Kirkland",
+      "address": "135 Lake Street South, Kirkland, WA 98033",
+      "lat": 47.6742361,
+      "lng": -122.206514,
+      "cuisine": [
+        "Seafood"
+      ],
+      "placeType": "restaurant",
+      "oneLiner": "Seafood at the south end of Lake Street, on the marina.",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "start": 270,
+          "end": 1260
+        },
+        {
+          "days": [
+            5,
+            6
+          ],
+          "start": 270,
+          "end": 1320
+        },
+        {
+          "days": [
+            0
+          ],
+          "start": 600,
+          "end": 1260
+        }
+      ],
+      "gustoScore": null,
+      "website": "https://www.anthonys.com/restaurants/detail/anthonys-homeport-kirkland",
+      "phone": "+1 (425) 822-0225",
+      "appleMapsUrl": "https://maps.apple.com/?daddr=47.6742361,-122.206514&q=Anthony's%20HomePort",
+      "guideSlugs": [
+        "kirkland-waterfront",
+        "kirkland"
+      ],
+      "muid": "",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-10-20",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Seafood at Anthony's HomePort",
+          "credit": "Illustration"
+        }
+      ]
+    },
+    {
+      "id": "bottle-and-bull",
+      "city": "eastside",
+      "name": "Bottle & Bull",
+      "neighborhood": "Downtown Kirkland",
+      "address": "105 Lake Street South, Kirkland, WA 98033",
+      "lat": 47.6751652,
+      "lng": -122.2065667,
+      "cuisine": [
+        "American"
+      ],
+      "placeType": "restaurant",
+      "oneLiner": "Steak and a wine list on Lake Street South, up from the docks.",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "start": 960,
+          "end": 1380
+        },
+        {
+          "days": [
+            5,
+            6
+          ],
+          "start": 960,
+          "end": 1440
+        }
+      ],
+      "gustoScore": null,
+      "website": "https://bottle-bull.com",
+      "phone": "+1 (425) 298-4972",
+      "appleMapsUrl": "https://maps.apple.com/?daddr=47.6751652,-122.2065667&q=Bottle%20%26%20Bull",
+      "guideSlugs": [
+        "kirkland",
+        "eastside-date-night"
+      ],
+      "muid": "",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-10-20",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting American at Bottle & Bull",
+          "credit": "Illustration"
+        }
+      ]
+    },
+    {
+      "id": "como",
+      "city": "eastside",
+      "name": "Como",
+      "neighborhood": "Carillon Point",
+      "address": "1270 Carillon Point, Kirkland, WA 98033",
+      "lat": 47.6568768,
+      "lng": -122.2075705,
+      "cuisine": [
+        "Italian"
+      ],
+      "placeType": "restaurant",
+      "oneLiner": "Lombardy-style Italian at Carillon Point, dinner beside the lake.",
+      "perfectFor": [],
+      "periods": [],
+      "gustoScore": null,
+      "website": "https://www.comousa.com/",
+      "phone": "+1 (425) 484-0787",
+      "appleMapsUrl": "https://maps.apple.com/?daddr=47.6568768,-122.2075705&q=Como",
+      "guideSlugs": [
+        "kirkland-waterfront",
+        "kirkland",
+        "eastside-date-night"
+      ],
+      "muid": "",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-10-20",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Italian at Como",
+          "credit": "Illustration"
+        }
+      ]
+    },
+    {
+      "id": "feast",
+      "city": "eastside",
+      "name": "Feast",
+      "neighborhood": "Downtown Kirkland",
+      "address": "115 Park Lane, Kirkland, WA 98033",
+      "lat": 47.6759934,
+      "lng": -122.206022,
+      "cuisine": [
+        "French"
+      ],
+      "placeType": "restaurant",
+      "oneLiner": "A French dining room on Park Lane in old downtown Kirkland.",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            2,
+            3
+          ],
+          "start": 990,
+          "end": 1260
+        },
+        {
+          "days": [
+            4
+          ],
+          "start": 990,
+          "end": 1290
+        },
+        {
+          "days": [
+            5,
+            6
+          ],
+          "start": 720,
+          "end": 1290
+        },
+        {
+          "days": [
+            0
+          ],
+          "start": 720,
+          "end": 1230
+        }
+      ],
+      "gustoScore": null,
+      "website": "http://feast-kirkland.com/",
+      "phone": "+1 (425) 822-0788",
+      "appleMapsUrl": "https://maps.apple.com/?daddr=47.6759934,-122.206022&q=Feast",
+      "guideSlugs": [
+        "kirkland",
+        "eastside-date-night"
+      ],
+      "muid": "",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-10-20",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting French at Feast",
+          "credit": "Illustration"
+        }
+      ]
+    },
+    {
+      "id": "georges",
+      "city": "eastside",
+      "name": "George's",
+      "neighborhood": "Downtown Kirkland",
+      "address": "108 Kirkland Avenue, Kirkland, WA 98033",
+      "lat": 47.6756507,
+      "lng": -122.2060934,
+      "cuisine": [
+        "Greek"
+      ],
+      "placeType": "restaurant",
+      "oneLiner": "Greek plates on Kirkland Avenue, a short walk from the lake.",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "start": 480,
+          "end": 1200
+        },
+        {
+          "days": [
+            5
+          ],
+          "start": 480,
+          "end": 1260
+        },
+        {
+          "days": [
+            6
+          ],
+          "start": 420,
+          "end": 1260
+        },
+        {
+          "days": [
+            0
+          ],
+          "start": 420,
+          "end": 1200
+        }
+      ],
+      "gustoScore": null,
+      "website": "https://www.georgeskirkland.com/",
+      "phone": "+1 (425) 827-6622",
+      "appleMapsUrl": "https://maps.apple.com/?daddr=47.6756507,-122.2060934&q=George's",
+      "guideSlugs": [
+        "kirkland"
+      ],
+      "muid": "",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-10-20",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Greek at George's",
+          "credit": "Illustration"
+        }
+      ]
+    },
+    {
+      "id": "hanuman-thai",
+      "city": "eastside",
+      "name": "Hanuman Thai Cafe",
+      "neighborhood": "Downtown Kirkland",
+      "address": "115 Central Way, Kirkland, WA 98033",
+      "lat": 47.6763092,
+      "lng": -122.2075082,
+      "cuisine": [
+        "Thai"
+      ],
+      "placeType": "restaurant",
+      "oneLiner": "Thai cafe on Central Way, casual and close to the waterfront.",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "start": 660,
+          "end": 1290
+        },
+        {
+          "days": [
+            5,
+            6
+          ],
+          "start": 660,
+          "end": 1320
+        },
+        {
+          "days": [
+            0
+          ],
+          "start": 720,
+          "end": 1290
+        }
+      ],
+      "gustoScore": null,
+      "website": "https://hanumanthai-cafe.com/",
+      "appleMapsUrl": "https://maps.apple.com/?daddr=47.6763092,-122.2075082&q=Hanuman%20Thai%20Cafe",
+      "guideSlugs": [
+        "kirkland",
+        "eastside-asian"
+      ],
+      "muid": "",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-10-20",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Thai at Hanuman Thai Cafe",
+          "credit": "Illustration"
+        }
+      ]
+    },
+    {
+      "id": "moss-bay-hall",
+      "city": "eastside",
+      "name": "Moss Bay Hall",
+      "neighborhood": "Downtown Kirkland",
+      "address": "111 Central Way, Kirkland, WA 98033",
+      "lat": 47.6762912,
+      "lng": -122.2078125,
+      "cuisine": [
+        "American"
+      ],
+      "placeType": "pub",
+      "oneLiner": "A downtown Kirkland hall on Central Way, a block from the lake.",
+      "perfectFor": [],
+      "periods": [],
+      "gustoScore": null,
+      "website": "https://mossbayhall.com",
+      "appleMapsUrl": "https://maps.apple.com/?daddr=47.6762912,-122.2078125&q=Moss%20Bay%20Hall",
+      "guideSlugs": [
+        "kirkland"
+      ],
+      "muid": "",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-10-20",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting American at Moss Bay Hall",
+          "credit": "Illustration"
+        }
+      ]
+    },
+    {
+      "id": "sparrow",
+      "city": "eastside",
+      "name": "Sparrow",
+      "neighborhood": "Juanita",
+      "address": "9736 Northeast 120th Place, Kirkland, WA 98034",
+      "lat": 47.7081589,
+      "lng": -122.2113834,
+      "cuisine": [
+        "American"
+      ],
+      "placeType": "restaurant",
+      "oneLiner": "Brunch and dinner in Juanita, off Northeast 120th Place.",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            4,
+            5
+          ],
+          "start": 660,
+          "end": 1320
+        },
+        {
+          "days": [
+            6
+          ],
+          "start": 600,
+          "end": 1320
+        },
+        {
+          "days": [
+            0
+          ],
+          "start": 600,
+          "end": 1260
+        },
+        {
+          "days": [
+            1,
+            2,
+            3
+          ],
+          "start": 660,
+          "end": 1260
+        }
+      ],
+      "gustoScore": null,
+      "website": "https://sparrowkirkland.com",
+      "phone": "+1 (425) 686-8231",
+      "appleMapsUrl": "https://maps.apple.com/?daddr=47.7081589,-122.2113834&q=Sparrow",
+      "guideSlugs": [
+        "kirkland",
+        "eastside-brunch"
+      ],
+      "muid": "",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-10-20",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting American at Sparrow",
+          "credit": "Illustration"
+        }
+      ]
+    },
+    {
+      "id": "spicy-talk-bistro",
+      "city": "eastside",
+      "name": "Spicy Talk Bistro",
+      "neighborhood": "Totem Lake",
+      "address": "12305 120th Avenue Northeast, Kirkland, WA 98034",
+      "lat": 47.7088394,
+      "lng": -122.185093,
+      "cuisine": [
+        "Sichuan"
+      ],
+      "placeType": "restaurant",
+      "oneLiner": "Sichuan cooking on 120th Avenue Northeast, out by Totem Lake.",
+      "perfectFor": [],
+      "periods": [],
+      "gustoScore": null,
+      "website": "https://www.spicytalkbistro.com/",
+      "appleMapsUrl": "https://maps.apple.com/?daddr=47.7088394,-122.185093&q=Spicy%20Talk%20Bistro",
+      "guideSlugs": [
+        "kirkland",
+        "eastside-asian"
+      ],
+      "muid": "",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-10-20",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Sichuan at Spicy Talk Bistro",
+          "credit": "Illustration"
+        }
+      ]
+    },
+    {
+      "id": "volterra",
+      "city": "eastside",
+      "name": "Volterra",
+      "neighborhood": "Downtown Kirkland",
+      "address": "121 Kirkland Avenue, Kirkland, WA 98033",
+      "lat": 47.6754527,
+      "lng": -122.2052842,
+      "cuisine": [
+        "Italian"
+      ],
+      "placeType": "restaurant",
+      "oneLiner": "Italian on Kirkland Avenue, the Eastside room of the Ballard original.",
+      "perfectFor": [],
+      "periods": [],
+      "gustoScore": null,
+      "website": "https://volterrakirkland.com/",
+      "appleMapsUrl": "https://maps.apple.com/?daddr=47.6754527,-122.2052842&q=Volterra",
+      "guideSlugs": [
+        "kirkland",
+        "eastside-date-night"
+      ],
+      "muid": "",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-10-20",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Italian at Volterra",
+          "credit": "Illustration"
+        }
+      ]
+    },
+    {
+      "id": "deru-market",
+      "city": "eastside",
+      "name": "Deru Market",
+      "neighborhood": "Norkirk",
+      "address": "723 9th Avenue, Kirkland, WA 98033",
+      "lat": 47.6819884,
+      "lng": -122.1941403,
+      "cuisine": [
+        "American"
+      ],
+      "placeType": "restaurant",
+      "oneLiner": "Market counter and brunch on 9th Avenue, just uphill from downtown.",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "start": 480,
+          "end": 1260
+        }
+      ],
+      "gustoScore": null,
+      "website": "https://www.derumarket.com/",
+      "phone": "+1 (425) 298-0268",
+      "appleMapsUrl": "https://maps.apple.com/?daddr=47.6819884,-122.1941403&q=Deru%20Market",
+      "guideSlugs": [
+        "kirkland",
+        "eastside-brunch"
+      ],
+      "muid": "",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-10-20",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting American at Deru Market",
+          "credit": "Illustration"
+        }
+      ]
+    },
+    {
+      "id": "matts-rotisserie",
+      "city": "eastside",
+      "name": "Matts' Rotisserie & Oyster Lounge",
+      "neighborhood": "Overlake",
+      "address": "16551 Northeast 74th Street, Redmond, WA 98052",
+      "lat": 47.6697211,
+      "lng": -122.1200345,
+      "cuisine": [
+        "American"
+      ],
+      "placeType": "restaurant",
+      "oneLiner": "Rotisserie chicken and an oyster bar on 74th in Overlake.",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "start": 660,
+          "end": 1260
+        },
+        {
+          "days": [
+            5,
+            6
+          ],
+          "start": 660,
+          "end": 600
+        }
+      ],
+      "gustoScore": null,
+      "website": "https://www.mattsrotisserie.com/",
+      "phone": "+1 (425) 376-0909",
+      "appleMapsUrl": "https://maps.apple.com/?daddr=47.6697211,-122.1200345&q=Matts'%20Rotisserie%20%26%20Oyster%20Lounge",
+      "guideSlugs": [
+        "redmond"
+      ],
+      "muid": "",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-10-20",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting American at Matts' Rotisserie & Oyster Lounge",
+          "credit": "Illustration"
+        }
+      ]
+    },
+    {
+      "id": "ristorante-tropea",
+      "city": "eastside",
+      "name": "Ristorante Tropea",
+      "neighborhood": "Overlake",
+      "address": "8461 164th Avenue Northeast, Redmond, WA 98052",
+      "lat": 47.6779991,
+      "lng": -122.122344,
+      "cuisine": [
+        "Italian"
+      ],
+      "placeType": "restaurant",
+      "oneLiner": "Southern Italian dinner on 164th Avenue Northeast in Overlake.",
+      "perfectFor": [],
+      "periods": [],
+      "gustoScore": null,
+      "website": "https://www.ristorantetropea.com/",
+      "phone": "+1 (425) 448-9982",
+      "appleMapsUrl": "https://maps.apple.com/?daddr=47.6779991,-122.122344&q=Ristorante%20Tropea",
+      "guideSlugs": [
+        "redmond",
+        "eastside-date-night"
+      ],
+      "muid": "",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-10-20",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Italian at Ristorante Tropea",
+          "credit": "Illustration"
+        }
+      ]
+    },
+    {
+      "id": "the-british-pantry",
+      "city": "eastside",
+      "name": "The British Pantry",
+      "neighborhood": "Downtown Redmond",
+      "address": "8125 161st Avenue Northeast, Redmond, WA 98052",
+      "lat": 47.6759811,
+      "lng": -122.1262638,
+      "cuisine": [
+        "British"
+      ],
+      "placeType": "restaurant",
+      "oneLiner": "Tea, pastries, and a British grocery on 161st Avenue.",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "start": 600,
+          "end": 1080
+        },
+        {
+          "days": [
+            0,
+            5,
+            6
+          ],
+          "start": 600,
+          "end": 1260
+        }
+      ],
+      "gustoScore": null,
+      "website": "https://www.thebritishpantryltd.com/",
+      "phone": "+1 (425) 883-7511",
+      "appleMapsUrl": "https://maps.apple.com/?daddr=47.6759811,-122.1262638&q=The%20British%20Pantry",
+      "guideSlugs": [
+        "redmond",
+        "eastside-brunch"
+      ],
+      "muid": "",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-10-20",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting British at The British Pantry",
+          "credit": "Illustration"
+        }
+      ]
+    },
+    {
+      "id": "postdoc-brewing",
+      "city": "eastside",
+      "name": "Postdoc Brewing",
+      "neighborhood": "Southeast Redmond",
+      "address": "17625 Northeast 65th Street, Redmond, WA 98052",
+      "lat": 47.6636505,
+      "lng": -122.1054223,
+      "cuisine": [
+        "American"
+      ],
+      "placeType": "brewery",
+      "oneLiner": "Small brewery taproom on 65th Street, east of downtown Redmond.",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            1,
+            2
+          ],
+          "start": 900,
+          "end": 1320
+        },
+        {
+          "days": [
+            3,
+            4
+          ],
+          "start": 720,
+          "end": 1320
+        },
+        {
+          "days": [
+            5,
+            6
+          ],
+          "start": 660,
+          "end": 1320
+        },
+        {
+          "days": [
+            0
+          ],
+          "start": 660,
+          "end": 1200
+        }
+      ],
+      "gustoScore": null,
+      "website": "https://www.postdocbrewing.com/",
+      "appleMapsUrl": "https://maps.apple.com/?daddr=47.6636505,-122.1054223&q=Postdoc%20Brewing",
+      "guideSlugs": [
+        "redmond",
+        "eastside-breweries"
+      ],
+      "muid": "",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-10-20",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting American at Postdoc Brewing",
+          "credit": "Illustration"
+        }
+      ]
+    },
+    {
+      "id": "rubinstein-bagels",
+      "city": "eastside",
+      "name": "Rubinstein Bagels",
+      "neighborhood": "Downtown Redmond",
+      "address": "16050 Cleveland Street, Redmond, WA 98052",
+      "lat": 47.674712,
+      "lng": -122.125854,
+      "cuisine": [
+        "Bagels"
+      ],
+      "placeType": "cafe",
+      "oneLiner": "Boiled bagels on Cleveland Street in downtown Redmond.",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "start": 420,
+          "end": 900
+        }
+      ],
+      "gustoScore": null,
+      "website": "https://rubinsteinbagels.com/",
+      "appleMapsUrl": "https://maps.apple.com/?daddr=47.674712,-122.125854&q=Rubinstein%20Bagels",
+      "guideSlugs": [
+        "redmond",
+        "eastside-coffee",
+        "eastside-brunch"
+      ],
+      "muid": "",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-10-20",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Bagels at Rubinstein Bagels",
+          "credit": "Illustration"
+        }
+      ]
+    },
+    {
+      "id": "ooba-tooba",
+      "city": "eastside",
+      "name": "Ooba Tooba",
+      "neighborhood": "Downtown Redmond",
+      "address": "15802 Northeast 83rd Street, Redmond, WA 98052",
+      "lat": 47.6767956,
+      "lng": -122.1300893,
+      "cuisine": [
+        "Mexican"
+      ],
+      "placeType": "restaurant",
+      "oneLiner": "Burritos and Mexican plates on Northeast 83rd, north of downtown.",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "start": 660,
+          "end": 1170
+        }
+      ],
+      "gustoScore": null,
+      "website": "https://oobatooba.com/",
+      "phone": "+1 (425) 702-1694",
+      "appleMapsUrl": "https://maps.apple.com/?daddr=47.6767956,-122.1300893&q=Ooba%20Tooba",
+      "guideSlugs": [
+        "redmond"
+      ],
+      "muid": "",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-10-20",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Mexican at Ooba Tooba",
+          "credit": "Illustration"
+        }
+      ]
+    },
+    {
+      "id": "black-raven-brewing",
+      "city": "eastside",
+      "name": "Black Raven Brewing",
+      "neighborhood": "Willows",
+      "address": "14679 Northeast 95th Street, Redmond, WA 98052",
+      "lat": 47.6855472,
+      "lng": -122.1446573,
+      "cuisine": [
+        "American"
+      ],
+      "placeType": "brewery",
+      "oneLiner": "Brewpub on Northeast 95th. The beer is made in the building.",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            1,
+            2,
+            3
+          ],
+          "start": 840,
+          "end": 1260
+        },
+        {
+          "days": [
+            4
+          ],
+          "start": 840,
+          "end": 1320
+        },
+        {
+          "days": [
+            5
+          ],
+          "start": 720,
+          "end": 1320
+        },
+        {
+          "days": [
+            6
+          ],
+          "start": 720,
+          "end": 1260
+        },
+        {
+          "days": [
+            0
+          ],
+          "start": 720,
+          "end": 1200
+        }
+      ],
+      "gustoScore": null,
+      "website": "https://blackravenbrewing.com",
+      "phone": "+1 (425) 881-3020",
+      "appleMapsUrl": "https://maps.apple.com/?daddr=47.6855472,-122.1446573&q=Black%20Raven%20Brewing",
+      "guideSlugs": [
+        "redmond",
+        "eastside-breweries"
+      ],
+      "muid": "",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-10-20",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting American at Black Raven Brewing",
+          "credit": "Illustration"
+        }
+      ]
+    },
+    {
+      "id": "chicago-pastrami",
+      "city": "eastside",
+      "name": "Chicago Pastrami",
+      "neighborhood": "Downtown Issaquah",
+      "address": "172 Front Street North, Issaquah, WA 98027",
+      "lat": 47.5322061,
+      "lng": -122.0363651,
+      "cuisine": [
+        "American"
+      ],
+      "placeType": "restaurant",
+      "oneLiner": "Pastrami and Chicago-style sandwiches on Front Street North.",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "start": 660,
+          "end": 1200
+        },
+        {
+          "days": [
+            0
+          ],
+          "start": 660,
+          "end": 1020
+        }
+      ],
+      "gustoScore": null,
+      "website": "https://www.chicagopastrami.com/",
+      "appleMapsUrl": "https://maps.apple.com/?daddr=47.5322061,-122.0363651&q=Chicago%20Pastrami",
+      "guideSlugs": [
+        "issaquah"
+      ],
+      "muid": "",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-10-20",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting American at Chicago Pastrami",
+          "credit": "Illustration"
+        }
+      ]
+    },
+    {
+      "id": "flying-pie-pizzeria",
+      "city": "eastside",
+      "name": "Flying Pie Pizzeria",
+      "neighborhood": "Downtown Issaquah",
+      "address": "30 Front Street South, Issaquah, WA 98027",
+      "lat": 47.529839,
+      "lng": -122.0352207,
+      "cuisine": [
+        "Pizza"
+      ],
+      "placeType": "restaurant",
+      "oneLiner": "Pizza on Front Street South, open every day but Monday.",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            0,
+            2,
+            3,
+            4
+          ],
+          "start": 660,
+          "end": 1260
+        },
+        {
+          "days": [
+            5,
+            6
+          ],
+          "start": 660,
+          "end": 1320
+        }
+      ],
+      "gustoScore": null,
+      "website": "https://www.flyingpieissaquah.com/",
+      "phone": "+1 (425) 391-2407",
+      "appleMapsUrl": "https://maps.apple.com/?daddr=47.529839,-122.0352207&q=Flying%20Pie%20Pizzeria",
+      "guideSlugs": [
+        "issaquah"
+      ],
+      "muid": "",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-10-20",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Pizza at Flying Pie Pizzeria",
+          "credit": "Illustration"
+        }
+      ]
+    },
+    {
+      "id": "sip-thai-bistro",
+      "city": "eastside",
+      "name": "Sip Thai Bistro",
+      "neighborhood": "Downtown Issaquah",
+      "address": "108 Front Street North, Issaquah, WA 98027",
+      "lat": 47.5315491,
+      "lng": -122.03637,
+      "cuisine": [
+        "Thai"
+      ],
+      "placeType": "restaurant",
+      "oneLiner": "Thai on Front Street, tucked into downtown Issaquah.",
+      "perfectFor": [],
+      "periods": [],
+      "gustoScore": null,
+      "website": "https://www.sipthaibistro.com/",
+      "phone": "+1 (425) 657-0839",
+      "appleMapsUrl": "https://maps.apple.com/?daddr=47.5315491,-122.03637&q=Sip%20Thai%20Bistro",
+      "guideSlugs": [
+        "issaquah",
+        "eastside-asian"
+      ],
+      "muid": "",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-10-20",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Thai at Sip Thai Bistro",
+          "credit": "Illustration"
+        }
+      ]
+    },
+    {
+      "id": "amarone",
+      "city": "eastside",
+      "name": "Amarone",
+      "neighborhood": "Issaquah Highlands",
+      "address": "1084 Northeast Park Drive, Issaquah, WA 98029",
+      "lat": 47.5441239,
+      "lng": -122.0147288,
+      "cuisine": [
+        "Italian"
+      ],
+      "placeType": "restaurant",
+      "oneLiner": "Italian dinner in the Issaquah Highlands, up on Park Drive.",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "start": 960,
+          "end": 1320
+        },
+        {
+          "days": [
+            0
+          ],
+          "start": 960,
+          "end": 1260
+        }
+      ],
+      "gustoScore": null,
+      "website": "https://www.amaroneristorantebar.com/",
+      "phone": "+1 (425) 369-1181",
+      "appleMapsUrl": "https://maps.apple.com/?daddr=47.5441239,-122.0147288&q=Amarone",
+      "guideSlugs": [
+        "issaquah",
+        "eastside-date-night"
+      ],
+      "muid": "",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-10-20",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Italian at Amarone",
+          "credit": "Illustration"
+        }
+      ]
+    },
+    {
+      "id": "vino-bella",
+      "city": "eastside",
+      "name": "Vino Bella",
+      "neighborhood": "Downtown Issaquah",
+      "address": "99 Front Street North, Issaquah, WA 98027",
+      "lat": 47.5313144,
+      "lng": -122.0366896,
+      "cuisine": [
+        "Wine"
+      ],
+      "placeType": "bar",
+      "oneLiner": "A small wine bar on Front Street North, built for a walk-in.",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "start": 870,
+          "end": 1290
+        },
+        {
+          "days": [
+            5,
+            6
+          ],
+          "start": 870,
+          "end": 0
+        }
+      ],
+      "gustoScore": null,
+      "website": "https://www.vinobella.com/",
+      "appleMapsUrl": "https://maps.apple.com/?daddr=47.5313144,-122.0366896&q=Vino%20Bella",
+      "guideSlugs": [
+        "issaquah"
+      ],
+      "muid": "",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-10-20",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Wine at Vino Bella",
+          "credit": "Illustration"
+        }
+      ]
+    },
+    {
+      "id": "levitate-gastropub",
+      "city": "eastside",
+      "name": "Levitate Gastropub",
+      "neighborhood": "Downtown Issaquah",
+      "address": "185 Front Street, Issaquah, WA 98027",
+      "lat": 47.5322656,
+      "lng": -122.0366643,
+      "cuisine": [
+        "American"
+      ],
+      "placeType": "pub",
+      "oneLiner": "Gastropub on Front Street, a few doors from the pastrami shop.",
+      "perfectFor": [],
+      "periods": [],
+      "gustoScore": null,
+      "website": "https://www.levitategastropub.com",
+      "appleMapsUrl": "https://maps.apple.com/?daddr=47.5322656,-122.0366643&q=Levitate%20Gastropub",
+      "guideSlugs": [
+        "issaquah"
+      ],
+      "muid": "",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-10-20",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting American at Levitate Gastropub",
+          "credit": "Illustration"
+        }
+      ]
+    },
+    {
+      "id": "heritage-restaurant",
+      "city": "eastside",
+      "name": "Heritage",
+      "neighborhood": "Hollywood",
+      "address": "14450 Woodinville Redmond Road Northeast, Woodinville, WA 98072",
+      "lat": 47.7324083,
+      "lng": -122.1409412,
+      "cuisine": [
+        "American"
+      ],
+      "placeType": "restaurant",
+      "oneLiner": "Steak and wood-fired plates on the Woodinville-Redmond Road.",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            2,
+            3,
+            4
+          ],
+          "start": 660,
+          "end": 1200
+        },
+        {
+          "days": [
+            5,
+            6
+          ],
+          "start": 660,
+          "end": 1260
+        },
+        {
+          "days": [
+            0
+          ],
+          "start": 660,
+          "end": 1200
+        }
+      ],
+      "gustoScore": null,
+      "website": "https://www.heritagewoodinville.com/",
+      "phone": "+1 (425) 419-4760",
+      "appleMapsUrl": "https://maps.apple.com/?daddr=47.7324083,-122.1409412&q=Heritage",
+      "guideSlugs": [
+        "woodinville",
+        "eastside-date-night"
+      ],
+      "muid": "",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-10-20",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting American at Heritage",
+          "credit": "Illustration"
+        }
+      ]
+    },
+    {
+      "id": "the-hollywood-tavern",
+      "city": "eastside",
+      "name": "The Hollywood Tavern",
+      "neighborhood": "Hollywood",
+      "address": "14508 Woodinville Redmond Road Northeast, Woodinville, WA 98072",
+      "lat": 47.7331554,
+      "lng": -122.1529165,
+      "cuisine": [
+        "American"
+      ],
+      "placeType": "pub",
+      "oneLiner": "Burgers and a tavern room in the old Hollywood district.",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "start": 660,
+          "end": 1260
+        },
+        {
+          "days": [
+            5,
+            6
+          ],
+          "start": 660,
+          "end": 1320
+        }
+      ],
+      "gustoScore": null,
+      "website": "https://thehollywoodtavern.com",
+      "phone": "+1 (425) 481-7703",
+      "appleMapsUrl": "https://maps.apple.com/?daddr=47.7331554,-122.1529165&q=The%20Hollywood%20Tavern",
+      "guideSlugs": [
+        "woodinville"
+      ],
+      "muid": "",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-10-20",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting American at The Hollywood Tavern",
+          "credit": "Illustration"
+        }
+      ]
+    },
+    {
+      "id": "brix-wine-cafe",
+      "city": "eastside",
+      "name": "Brix Wine Cafe",
+      "neighborhood": "Woodinville Village",
+      "address": "13550 Village Square Drive, Woodinville, WA 98072",
+      "lat": 47.7519683,
+      "lng": -122.1588317,
+      "cuisine": [
+        "Italian"
+      ],
+      "placeType": "restaurant",
+      "oneLiner": "Wine-country cooking at Village Square, near the tasting rooms.",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            2,
+            3,
+            4,
+            5
+          ],
+          "start": 960,
+          "end": 1260
+        },
+        {
+          "days": [
+            0,
+            6
+          ],
+          "start": 660,
+          "end": 1260
+        }
+      ],
+      "gustoScore": null,
+      "website": "https://www.brixwinecafe.com",
+      "phone": "+1 (425) 242-0280",
+      "appleMapsUrl": "https://maps.apple.com/?daddr=47.7519683,-122.1588317&q=Brix%20Wine%20Cafe",
+      "guideSlugs": [
+        "woodinville"
+      ],
+      "muid": "",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-10-20",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Italian at Brix Wine Cafe",
+          "credit": "Illustration"
+        }
+      ]
+    },
+    {
+      "id": "vivi-pizzeria",
+      "city": "eastside",
+      "name": "Vivi Pizzeria",
+      "neighborhood": "Hollywood",
+      "address": "14505 148th Avenue Northeast, Woodinville, WA 98072",
+      "lat": 47.7330596,
+      "lng": -122.1427072,
+      "cuisine": [
+        "Pizza"
+      ],
+      "placeType": "restaurant",
+      "oneLiner": "Neapolitan pizza on 148th Avenue, in the warehouse district.",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "start": 660,
+          "end": 1200
+        },
+        {
+          "days": [
+            5,
+            6
+          ],
+          "start": 660,
+          "end": 1260
+        },
+        {
+          "days": [
+            0
+          ],
+          "start": 660,
+          "end": 1200
+        }
+      ],
+      "gustoScore": null,
+      "website": "https://vivipizzeria.com/",
+      "phone": "+1 (425) 408-0711",
+      "appleMapsUrl": "https://maps.apple.com/?daddr=47.7330596,-122.1427072&q=Vivi%20Pizzeria",
+      "guideSlugs": [
+        "woodinville"
+      ],
+      "muid": "",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-10-20",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Pizza at Vivi Pizzeria",
+          "credit": "Illustration"
+        }
+      ]
+    },
+    {
+      "id": "watts-brewing",
+      "city": "eastside",
+      "name": "Watts Brewing Company",
+      "neighborhood": "Hollywood",
+      "address": "15510 Woodinville Redmond Road Northeast, Woodinville, WA 98072",
+      "lat": 47.7398964,
+      "lng": -122.1537618,
+      "cuisine": [
+        "American"
+      ],
+      "placeType": "brewery",
+      "oneLiner": "A brewery taproom pouring on the Woodinville-Redmond Road.",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "start": 840,
+          "end": 1260
+        },
+        {
+          "days": [
+            5
+          ],
+          "start": 840,
+          "end": 1320
+        },
+        {
+          "days": [
+            6
+          ],
+          "start": 720,
+          "end": 1320
+        },
+        {
+          "days": [
+            0
+          ],
+          "start": 720,
+          "end": 1200
+        }
+      ],
+      "gustoScore": null,
+      "website": "https://wattsbrewingcompany.com/",
+      "appleMapsUrl": "https://maps.apple.com/?daddr=47.7398964,-122.1537618&q=Watts%20Brewing%20Company",
+      "guideSlugs": [
+        "woodinville",
+        "eastside-breweries"
+      ],
+      "muid": "",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-10-20",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting American at Watts Brewing Company",
+          "credit": "Illustration"
+        }
+      ]
+    },
+    {
+      "id": "chantanee",
+      "city": "eastside",
+      "name": "Chantanee",
+      "neighborhood": "Downtown Bothell",
+      "address": "10107 Main Street, Bothell, WA 98011",
+      "lat": 47.759978,
+      "lng": -122.205034,
+      "cuisine": [
+        "Thai"
+      ],
+      "placeType": "restaurant",
+      "oneLiner": "Thai on Main Street in the old downtown Bothell storefronts.",
+      "perfectFor": [],
+      "periods": [],
+      "gustoScore": null,
+      "website": "https://www.chantaneethai.com/",
+      "phone": "+1 (425) 398-7300",
+      "appleMapsUrl": "https://maps.apple.com/?daddr=47.759978,-122.205034&q=Chantanee",
+      "guideSlugs": [
+        "bothell",
+        "eastside-asian"
+      ],
+      "muid": "",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-10-20",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Thai at Chantanee",
+          "credit": "Illustration"
+        }
+      ]
+    },
+    {
+      "id": "russells",
+      "city": "eastside",
+      "name": "Russell's",
+      "neighborhood": "Canyon Park",
+      "address": "3305 Monte Villa Parkway, Bothell, WA 98021",
+      "lat": 47.7787922,
+      "lng": -122.1887933,
+      "cuisine": [
+        "American"
+      ],
+      "placeType": "restaurant",
+      "oneLiner": "Dinner and a loft dining room at Monte Villa Parkway.",
+      "perfectFor": [],
+      "periods": [],
+      "gustoScore": null,
+      "website": "https://www.russelllowell.com",
+      "phone": "+1 (425) 892-8492",
+      "appleMapsUrl": "https://maps.apple.com/?daddr=47.7787922,-122.1887933&q=Russell's",
+      "guideSlugs": [
+        "bothell"
+      ],
+      "muid": "",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-10-20",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting American at Russell's",
+          "credit": "Illustration"
+        }
+      ]
+    },
+    {
+      "id": "agave-cocina",
+      "city": "eastside",
+      "name": "Agave Cocina",
+      "neighborhood": "Wayne",
+      "address": "18505 Bothell Way Northeast, Bothell, WA 98011",
+      "lat": 47.7618173,
+      "lng": -122.2079972,
+      "cuisine": [
+        "Mexican"
+      ],
+      "placeType": "restaurant",
+      "oneLiner": "Mexican cooking on Bothell Way, in the Wayne neighborhood.",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "start": 660,
+          "end": 1320
+        },
+        {
+          "days": [
+            5
+          ],
+          "start": 660,
+          "end": 1380
+        },
+        {
+          "days": [
+            6
+          ],
+          "start": 600,
+          "end": 1380
+        },
+        {
+          "days": [
+            0
+          ],
+          "start": 600,
+          "end": 1320
+        }
+      ],
+      "gustoScore": null,
+      "website": "https://agavecocina.com/",
+      "phone": "+1 (425) 371-1977",
+      "appleMapsUrl": "https://maps.apple.com/?daddr=47.7618173,-122.2079972&q=Agave%20Cocina",
+      "guideSlugs": [
+        "bothell"
+      ],
+      "muid": "",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-10-20",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Mexican at Agave Cocina",
+          "credit": "Illustration"
+        }
+      ]
+    },
+    {
+      "id": "sushi-zone",
+      "city": "eastside",
+      "name": "Sushi Zone",
+      "neighborhood": "Downtown Bothell",
+      "address": "10024 Main Street, Bothell, WA 98011",
+      "lat": 47.7601688,
+      "lng": -122.2065087,
+      "cuisine": [
+        "Japanese"
+      ],
+      "placeType": "restaurant",
+      "oneLiner": "Conveyor-belt sushi on Main Street in downtown Bothell.",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "start": 660,
+          "end": 900
+        },
+        {
+          "days": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "start": 960,
+          "end": 1290
+        },
+        {
+          "days": [
+            5,
+            6
+          ],
+          "start": 660,
+          "end": 900
+        },
+        {
+          "days": [
+            5,
+            6
+          ],
+          "start": 960,
+          "end": 1320
+        },
+        {
+          "days": [
+            0
+          ],
+          "start": 660,
+          "end": 900
+        },
+        {
+          "days": [
+            0
+          ],
+          "start": 960,
+          "end": 1260
+        }
+      ],
+      "gustoScore": null,
+      "website": "https://sushizonebothellwa.com/",
+      "phone": "+1 (425) 402-9988",
+      "appleMapsUrl": "https://maps.apple.com/?daddr=47.7601688,-122.2065087&q=Sushi%20Zone",
+      "guideSlugs": [
+        "bothell",
+        "eastside-asian"
+      ],
+      "muid": "",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-10-20",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Japanese at Sushi Zone",
+          "credit": "Illustration"
+        }
+      ]
+    },
+    {
+      "id": "namdo-korean-bbq",
+      "city": "eastside",
+      "name": "Namdo Korean BBQ",
+      "neighborhood": "Canyon Park",
+      "address": "22616 Bothell-Everett Highway, Bothell, WA 98021",
+      "lat": 47.7933323,
+      "lng": -122.2160104,
+      "cuisine": [
+        "Korean"
+      ],
+      "placeType": "restaurant",
+      "oneLiner": "Korean barbecue on the Bothell-Everett Highway, north of downtown.",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "start": 690,
+          "end": 1320
+        }
+      ],
+      "gustoScore": null,
+      "website": "https://namdokoreanbbq.com/",
+      "phone": "+1 (425) 908-7475",
+      "appleMapsUrl": "https://maps.apple.com/?daddr=47.7933323,-122.2160104&q=Namdo%20Korean%20BBQ",
+      "guideSlugs": [
+        "bothell",
+        "eastside-asian"
+      ],
+      "muid": "",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-10-20",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Korean at Namdo Korean BBQ",
+          "credit": "Illustration"
+        }
+      ]
+    },
+    {
+      "id": "barrels-wine-bar",
+      "city": "eastside",
+      "name": "Barrels Wine Bar",
+      "neighborhood": "Town Center",
+      "address": "7605 Southeast 27th Street, Mercer Island, WA 98040",
+      "lat": 47.586572,
+      "lng": -122.236897,
+      "cuisine": [
+        "Wine"
+      ],
+      "placeType": "bar",
+      "oneLiner": "Wine bar in the town center, on Southeast 27th Street.",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            2,
+            3,
+            4,
+            5
+          ],
+          "start": 900,
+          "end": 1260
+        },
+        {
+          "days": [
+            6
+          ],
+          "start": 840,
+          "end": 1140
+        }
+      ],
+      "gustoScore": null,
+      "website": "https://barrelswinebar.com",
+      "appleMapsUrl": "https://maps.apple.com/?daddr=47.586572,-122.236897&q=Barrels%20Wine%20Bar",
+      "guideSlugs": [
+        "mercer-island"
+      ],
+      "muid": "",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-10-20",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Wine at Barrels Wine Bar",
+          "credit": "Illustration"
+        }
+      ]
+    },
+    {
+      "id": "lexperience-paris",
+      "city": "eastside",
+      "name": "L'Experience Paris",
+      "neighborhood": "Town Center",
+      "address": "3020 78th Avenue Southeast, Mercer Island, WA 98040",
+      "lat": 47.5832528,
+      "lng": -122.2327738,
+      "cuisine": [
+        "French"
+      ],
+      "placeType": "cafe",
+      "oneLiner": "French cafe and crepes on 78th, in the Mercer Island town center.",
+      "perfectFor": [],
+      "periods": [],
+      "gustoScore": null,
+      "website": "https://lexperienceparis.com/",
+      "appleMapsUrl": "https://maps.apple.com/?daddr=47.5832528,-122.2327738&q=L'Experience%20Paris",
+      "guideSlugs": [
+        "mercer-island"
+      ],
+      "muid": "",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-10-20",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting French at L'Experience Paris",
+          "credit": "Illustration"
+        }
+      ]
+    },
+    {
+      "id": "roanoke-inn",
+      "city": "eastside",
+      "name": "Roanoke Inn",
+      "neighborhood": "North End",
+      "address": "1825 72nd Avenue Southeast, Mercer Island, WA 98040",
+      "lat": 47.5939707,
+      "lng": -122.2434267,
+      "cuisine": [
+        "American"
+      ],
+      "placeType": "restaurant",
+      "oneLiner": "The island's old roadhouse, still open on 72nd Avenue Southeast.",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "start": 690,
+          "end": 1260
+        }
+      ],
+      "gustoScore": null,
+      "website": "https://theroanokeinn.com/",
+      "phone": "+1 (206) 232-0800",
+      "appleMapsUrl": "https://maps.apple.com/?daddr=47.5939707,-122.2434267&q=Roanoke%20Inn",
+      "guideSlugs": [
+        "mercer-island"
+      ],
+      "muid": "",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-10-20",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting American at Roanoke Inn",
+          "credit": "Illustration"
+        }
+      ]
+    },
+    {
+      "id": "sushi-joa",
+      "city": "eastside",
+      "name": "Sushi Joa",
+      "neighborhood": "Town Center",
+      "address": "2717 78th Avenue Southeast, Mercer Island, WA 98040",
+      "lat": 47.5861481,
+      "lng": -122.234064,
+      "cuisine": [
+        "Japanese"
+      ],
+      "placeType": "restaurant",
+      "oneLiner": "Sushi in the town center, on 78th Avenue Southeast.",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "start": 690,
+          "end": 1260
+        },
+        {
+          "days": [
+            5
+          ],
+          "start": 690,
+          "end": 1290
+        },
+        {
+          "days": [
+            6
+          ],
+          "start": 690,
+          "end": 1260
+        }
+      ],
+      "gustoScore": null,
+      "website": "https://www.sushijoa.com",
+      "appleMapsUrl": "https://maps.apple.com/?daddr=47.5861481,-122.234064&q=Sushi%20Joa",
+      "guideSlugs": [
+        "mercer-island",
+        "eastside-asian"
+      ],
+      "muid": "",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-10-20",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Japanese at Sushi Joa",
+          "credit": "Illustration"
+        }
+      ]
+    },
+    {
+      "id": "haps-burgers",
+      "city": "eastside",
+      "name": "Hap's Burgers",
+      "neighborhood": "Town Center",
+      "address": "2411 76th Avenue Southeast, Mercer Island, WA 98040",
+      "lat": 47.5885721,
+      "lng": -122.2381622,
+      "cuisine": [
+        "Burgers"
+      ],
+      "placeType": "restaurant",
+      "oneLiner": "Burgers and a tap list on 76th Avenue Southeast.",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "start": 630,
+          "end": 1200
+        },
+        {
+          "days": [
+            0
+          ],
+          "start": 630,
+          "end": 1140
+        }
+      ],
+      "gustoScore": null,
+      "website": "https://www.hapsburgers.com/",
+      "phone": "+1 (360) 544-2447",
+      "appleMapsUrl": "https://maps.apple.com/?daddr=47.5885721,-122.2381622&q=Hap's%20Burgers",
+      "guideSlugs": [
+        "mercer-island"
+      ],
+      "muid": "",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-10-20",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Burgers at Hap's Burgers",
+          "credit": "Illustration"
+        }
+      ]
+    },
+    {
+      "id": "melrose-grill",
+      "city": "eastside",
+      "name": "Melrose Grill",
+      "neighborhood": "Downtown Renton",
+      "address": "819 Houser Way South, Renton, WA 98057",
+      "lat": 47.4787711,
+      "lng": -122.2056529,
+      "cuisine": [
+        "Steak"
+      ],
+      "placeType": "steakhouse",
+      "oneLiner": "Steakhouse on Houser Way, in Renton's old downtown.",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "start": 1020,
+          "end": 1260
+        },
+        {
+          "days": [
+            5
+          ],
+          "start": 1020,
+          "end": 1320
+        },
+        {
+          "days": [
+            6
+          ],
+          "start": 960,
+          "end": 1320
+        },
+        {
+          "days": [
+            0
+          ],
+          "start": 960,
+          "end": 1260
+        }
+      ],
+      "gustoScore": null,
+      "website": "https://www.melrosegrill.com",
+      "phone": "+1 (425) 254-0759",
+      "appleMapsUrl": "https://maps.apple.com/?daddr=47.4787711,-122.2056529&q=Melrose%20Grill",
+      "guideSlugs": [
+        "renton",
+        "eastside-date-night"
+      ],
+      "muid": "",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-10-20",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Steak at Melrose Grill",
+          "credit": "Illustration"
+        }
+      ]
+    },
+    {
+      "id": "smoking-monkey-pizza",
+      "city": "eastside",
+      "name": "Smoking Monkey Pizza",
+      "neighborhood": "Downtown Renton",
+      "address": "613 South 3rd Street, Renton, WA 98057",
+      "lat": 47.4796093,
+      "lng": -122.2087755,
+      "cuisine": [
+        "Pizza"
+      ],
+      "placeType": "restaurant",
+      "oneLiner": "Pizza on South 3rd Street in downtown Renton.",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "start": 660,
+          "end": 1230
+        },
+        {
+          "days": [
+            5,
+            6
+          ],
+          "start": 660,
+          "end": 1290
+        }
+      ],
+      "gustoScore": null,
+      "website": "https://www.smokingmonkeypizza.com/",
+      "phone": "+1 (425) 291-7560",
+      "appleMapsUrl": "https://maps.apple.com/?daddr=47.4796093,-122.2087755&q=Smoking%20Monkey%20Pizza",
+      "guideSlugs": [
+        "renton"
+      ],
+      "muid": "",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-10-20",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Pizza at Smoking Monkey Pizza",
+          "credit": "Illustration"
+        }
+      ]
+    },
+    {
+      "id": "crawfish-house",
+      "city": "eastside",
+      "name": "Crawfish House",
+      "neighborhood": "Downtown Renton",
+      "address": "247 Park Avenue North, Renton, WA 98057",
+      "lat": 47.4863928,
+      "lng": -122.2025601,
+      "cuisine": [
+        "Cajun"
+      ],
+      "placeType": "restaurant",
+      "oneLiner": "Cajun seafood on Park Avenue North, just off the downtown grid.",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "start": 840,
+          "end": 1380
+        }
+      ],
+      "gustoScore": null,
+      "website": "http://crawfishhouse206.com",
+      "phone": "+1 (425) 572-6013",
+      "appleMapsUrl": "https://maps.apple.com/?daddr=47.4863928,-122.2025601&q=Crawfish%20House",
+      "guideSlugs": [
+        "renton"
+      ],
+      "muid": "",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-10-20",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Cajun at Crawfish House",
+          "credit": "Illustration"
+        }
+      ]
+    },
+    {
+      "id": "jimmy-macs-roadhouse",
+      "city": "eastside",
+      "name": "Jimmy Mac's Roadhouse",
+      "neighborhood": "Downtown Renton",
+      "address": "225 Southwest 7th Street, Renton, WA 98057",
+      "lat": 47.4734452,
+      "lng": -122.2190575,
+      "cuisine": [
+        "American"
+      ],
+      "placeType": "restaurant",
+      "oneLiner": "Burgers and a roadhouse dining room on Southwest 7th Street.",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "start": 660,
+          "end": 1320
+        },
+        {
+          "days": [
+            5,
+            6
+          ],
+          "start": 660,
+          "end": 1380
+        }
+      ],
+      "gustoScore": null,
+      "website": "https://www.jimmymacsroadhouse.com/",
+      "phone": "+1 (425) 227-6881",
+      "appleMapsUrl": "https://maps.apple.com/?daddr=47.4734452,-122.2190575&q=Jimmy%20Mac's%20Roadhouse",
+      "guideSlugs": [
+        "renton"
+      ],
+      "muid": "",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-10-20",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting American at Jimmy Mac's Roadhouse",
+          "credit": "Illustration"
+        }
+      ]
+    },
+    {
+      "id": "boon-boona-coffee",
+      "city": "eastside",
+      "name": "Boon Boona Coffee",
+      "neighborhood": "Downtown Renton",
+      "address": "724 South 3rd Street, Renton, WA 98057",
+      "lat": 47.4797859,
+      "lng": -122.206888,
+      "cuisine": [
+        "Coffee"
+      ],
+      "placeType": "cafe",
+      "oneLiner": "Boon Boona coffee on South 3rd, in downtown Renton.",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "start": 480,
+          "end": 1020
+        }
+      ],
+      "gustoScore": null,
+      "website": "https://www.boonboonacoffee.com/pages/renton",
+      "phone": "+1 (425) 496-8618",
+      "appleMapsUrl": "https://maps.apple.com/?daddr=47.4797859,-122.206888&q=Boon%20Boona%20Coffee",
+      "guideSlugs": [
+        "renton",
+        "eastside-coffee"
+      ],
+      "muid": "",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-10-20",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Coffee at Boon Boona Coffee",
+          "credit": "Illustration"
+        }
+      ]
+    },
+    {
+      "id": "tanoor",
+      "city": "eastside",
+      "name": "Tanoor",
+      "neighborhood": "Town Center",
+      "address": "22610 Southeast 4th Street, Sammamish, WA 98074",
+      "lat": 47.6057085,
+      "lng": -122.0370143,
+      "cuisine": [
+        "Lebanese"
+      ],
+      "placeType": "restaurant",
+      "oneLiner": "Lebanese plates on Southeast 4th, in the Sammamish town center.",
+      "perfectFor": [],
+      "periods": [],
+      "gustoScore": null,
+      "website": "https://www.tanoor.com/",
+      "phone": "+1 (425) 961-0831",
+      "appleMapsUrl": "https://maps.apple.com/?daddr=47.6057085,-122.0370143&q=Tanoor",
+      "guideSlugs": [
+        "sammamish"
+      ],
+      "muid": "",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-10-20",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Lebanese at Tanoor",
+          "credit": "Illustration"
+        }
+      ]
+    },
+    {
+      "id": "diyar",
+      "city": "eastside",
+      "name": "Diyar",
+      "neighborhood": "Klahanie",
+      "address": "4592 Klahanie Drive Southeast, Sammamish, WA 98029",
+      "lat": 47.5647109,
+      "lng": -122.0036164,
+      "cuisine": [
+        "Persian"
+      ],
+      "placeType": "restaurant",
+      "oneLiner": "Persian and Mediterranean cooking in the Klahanie neighborhood.",
+      "perfectFor": [],
+      "periods": [],
+      "gustoScore": null,
+      "website": "https://diyarrestaurant.com",
+      "phone": "+1 (425) 657-0767",
+      "appleMapsUrl": "https://maps.apple.com/?daddr=47.5647109,-122.0036164&q=Diyar",
+      "guideSlugs": [
+        "sammamish"
+      ],
+      "muid": "",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-10-20",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Persian at Diyar",
+          "credit": "Illustration"
+        }
+      ]
+    },
+    {
+      "id": "big-fish-sushi",
+      "city": "eastside",
+      "name": "Big Fish Sushi",
+      "neighborhood": "Inglewood",
+      "address": "22639 Northeast Inglewood Hill Road, Sammamish, WA 98074",
+      "lat": 47.6155871,
+      "lng": -122.0369328,
+      "cuisine": [
+        "Japanese"
+      ],
+      "placeType": "restaurant",
+      "oneLiner": "Sushi on Inglewood Hill Road, up on the Sammamish plateau.",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "start": 690,
+          "end": 900
+        },
+        {
+          "days": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "start": 960,
+          "end": 1260
+        },
+        {
+          "days": [
+            5,
+            6
+          ],
+          "start": 690,
+          "end": 900
+        },
+        {
+          "days": [
+            5,
+            6
+          ],
+          "start": 960,
+          "end": 1290
+        },
+        {
+          "days": [
+            0
+          ],
+          "start": 720,
+          "end": 1260
+        }
+      ],
+      "gustoScore": null,
+      "website": "https://www.bigfishsushi.com/",
+      "phone": "+1 (425) 896-8063",
+      "appleMapsUrl": "https://maps.apple.com/?daddr=47.6155871,-122.0369328&q=Big%20Fish%20Sushi",
+      "guideSlugs": [
+        "sammamish",
+        "eastside-asian"
+      ],
+      "muid": "",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-10-20",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Japanese at Big Fish Sushi",
+          "credit": "Illustration"
+        }
+      ]
+    },
+    {
+      "id": "jobos-pizza-pub",
+      "city": "eastside",
+      "name": "Jobo's Pizza Pub",
+      "neighborhood": "East Lake Sammamish",
+      "address": "3310 East Lake Sammamish Parkway Southeast, Sammamish, WA 98075",
+      "lat": 47.5793911,
+      "lng": -122.0741394,
+      "cuisine": [
+        "Pizza"
+      ],
+      "placeType": "pub",
+      "oneLiner": "Pizza and a pub on East Lake Sammamish Parkway.",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "start": 900,
+          "end": 1260
+        },
+        {
+          "days": [
+            5
+          ],
+          "start": 900,
+          "end": 600
+        },
+        {
+          "days": [
+            6
+          ],
+          "start": 720,
+          "end": 1320
+        },
+        {
+          "days": [
+            0
+          ],
+          "start": 720,
+          "end": 1200
+        }
+      ],
+      "gustoScore": null,
+      "website": "https://jobospizzapub.com",
+      "phone": "+1 (425) 270-3224",
+      "appleMapsUrl": "https://maps.apple.com/?daddr=47.5793911,-122.0741394&q=Jobo's%20Pizza%20Pub",
+      "guideSlugs": [
+        "sammamish"
+      ],
+      "muid": "",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-10-20",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Pizza at Jobo's Pizza Pub",
+          "credit": "Illustration"
+        }
+      ]
+    },
+    {
+      "id": "sammamish-cafe",
+      "city": "eastside",
+      "name": "Sammamish Cafe",
+      "neighborhood": "Central Sammamish",
+      "address": "22850 Northeast 8th Street, Sammamish, WA 98074",
+      "lat": 47.6169223,
+      "lng": -122.0338741,
+      "cuisine": [
+        "American"
+      ],
+      "placeType": "restaurant",
+      "oneLiner": "Neighborhood cafe on Northeast 8th, with breakfast and a bar.",
+      "perfectFor": [],
+      "periods": [],
+      "gustoScore": null,
+      "website": "http://sammamish.cafesinc.com",
+      "appleMapsUrl": "https://maps.apple.com/?daddr=47.6169223,-122.0338741&q=Sammamish%20Cafe",
+      "guideSlugs": [
+        "sammamish",
+        "eastside-brunch"
+      ],
+      "muid": "",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-10-20",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting American at Sammamish Cafe",
+          "credit": "Illustration"
+        }
+      ]
     }
   ],
   "guides": [
@@ -1098,9 +4490,9 @@
     {
       "slug": "kirkland-waterfront",
       "title": "Kirkland waterfront",
-      "dek": "Kirkland restaurants that publish a waterfront address.",
+      "dek": "Kirkland restaurants on the lake.",
       "group": "Neighborhoods",
-      "intro": "The Slip is at Marina Beach Park, 80 Kirkland Avenue. BeachHouse Bar + Grill is at 6023 Lake Washington Boulevard Northeast in Houghton.",
+      "intro": "The Slip is at Marina Beach Park. BeachHouse Bar + Grill is in Houghton. Anthony's HomePort is on the marina at the south end of Lake Street, and Como is at Carillon Point.",
       "updatedAt": "2026-10-20",
       "ranked": false,
       "city": "eastside",
@@ -1115,6 +4507,18 @@
           "placeId": "beachhouse-bar-and-grill",
           "pullQuote": "",
           "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "anthonys-homeport",
+          "pullQuote": "Seafood at the south end of Lake Street, on the marina.",
+          "blurb": "Seafood at the south end of Lake Street, on the marina.",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "como",
+          "pullQuote": "Lombardy-style Italian at Carillon Point, dinner beside the lake.",
+          "blurb": "Lombardy-style Italian at Carillon Point, dinner beside the lake.",
           "copySource": "draft"
         }
       ]
@@ -1158,9 +4562,9 @@
     {
       "slug": "redmond",
       "title": "Redmond",
-      "dek": "Redmond restaurants with a published address.",
+      "dek": "Downtown, Overlake, the Willows, and southeast Redmond.",
       "group": "Neighborhoods",
-      "intro": "Woodblock is at 16175 Cleveland Street in downtown Redmond. Pomegranate Bistro is at 18005 Northeast 68th Street.",
+      "intro": "Redmond rooms from Cleveland Street out to Overlake, Northeast 95th, and the southeast side of town.",
       "updatedAt": "2026-10-20",
       "ranked": false,
       "city": "eastside",
@@ -1176,15 +4580,57 @@
           "pullQuote": "",
           "blurb": "",
           "copySource": "draft"
+        },
+        {
+          "placeId": "matts-rotisserie",
+          "pullQuote": "Rotisserie chicken and an oyster bar on 74th in Overlake.",
+          "blurb": "Rotisserie chicken and an oyster bar on 74th in Overlake.",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "ristorante-tropea",
+          "pullQuote": "Southern Italian dinner on 164th Avenue Northeast in Overlake.",
+          "blurb": "Southern Italian dinner on 164th Avenue Northeast in Overlake.",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "the-british-pantry",
+          "pullQuote": "Tea, pastries, and a British grocery on 161st Avenue.",
+          "blurb": "Tea, pastries, and a British grocery on 161st Avenue.",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "postdoc-brewing",
+          "pullQuote": "Small brewery taproom on 65th Street, east of downtown Redmond.",
+          "blurb": "Small brewery taproom on 65th Street, east of downtown Redmond.",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "rubinstein-bagels",
+          "pullQuote": "Boiled bagels on Cleveland Street in downtown Redmond.",
+          "blurb": "Boiled bagels on Cleveland Street in downtown Redmond.",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "ooba-tooba",
+          "pullQuote": "Burritos and Mexican plates on Northeast 83rd, north of downtown.",
+          "blurb": "Burritos and Mexican plates on Northeast 83rd, north of downtown.",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "black-raven-brewing",
+          "pullQuote": "Brewpub on Northeast 95th. The beer is made in the building.",
+          "blurb": "Brewpub on Northeast 95th. The beer is made in the building.",
+          "copySource": "draft"
         }
       ]
     },
     {
       "slug": "issaquah",
       "title": "Issaquah",
-      "dek": "A Front Street steakhouse in downtown Issaquah.",
+      "dek": "Front Street and the Issaquah Highlands.",
       "group": "Neighborhoods",
-      "intro": "JaK's Grill is at 14 Front Street North. The restaurant posts lunch Tuesday through Friday, brunch Saturday and Sunday, and dinner every night.",
+      "intro": "JaK's Grill and the other Front Street rooms, plus Amarone up on Park Drive in the Highlands.",
       "updatedAt": "2026-10-20",
       "ranked": false,
       "city": "eastside",
@@ -1194,15 +4640,51 @@
           "pullQuote": "",
           "blurb": "",
           "copySource": "draft"
+        },
+        {
+          "placeId": "chicago-pastrami",
+          "pullQuote": "Pastrami and Chicago-style sandwiches on Front Street North.",
+          "blurb": "Pastrami and Chicago-style sandwiches on Front Street North.",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "flying-pie-pizzeria",
+          "pullQuote": "Pizza on Front Street South, open every day but Monday.",
+          "blurb": "Pizza on Front Street South, open every day but Monday.",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "sip-thai-bistro",
+          "pullQuote": "Thai on Front Street, tucked into downtown Issaquah.",
+          "blurb": "Thai on Front Street, tucked into downtown Issaquah.",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "amarone",
+          "pullQuote": "Italian dinner in the Issaquah Highlands, up on Park Drive.",
+          "blurb": "Italian dinner in the Issaquah Highlands, up on Park Drive.",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "vino-bella",
+          "pullQuote": "A small wine bar on Front Street North, built for a walk-in.",
+          "blurb": "A small wine bar on Front Street North, built for a walk-in.",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "levitate-gastropub",
+          "pullQuote": "Gastropub on Front Street, a few doors from the pastrami shop.",
+          "blurb": "Gastropub on Front Street, a few doors from the pastrami shop.",
+          "copySource": "draft"
         }
       ]
     },
     {
       "slug": "bothell",
       "title": "Bothell",
-      "dek": "Bothell restaurants with a published address.",
+      "dek": "Downtown Bothell, Wayne, and Canyon Park.",
       "group": "Neighborhoods",
-      "intro": "Beardslee Public House is at 19116 Beardslee Boulevard and brews in the building. Amaro Bistro is at 18333 Bothell Way Northeast.",
+      "intro": "Bothell restaurants from Main Street out to Wayne and the Bothell-Everett Highway.",
       "updatedAt": "2026-10-20",
       "ranked": false,
       "city": "eastside",
@@ -1217,6 +4699,786 @@
           "placeId": "amaro-bistro",
           "pullQuote": "Italian dining room on Bothell Way, and the sister restaurant to Il Bistro.",
           "blurb": "Italian dining room on Bothell Way, and the sister restaurant to Il Bistro.",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "chantanee",
+          "pullQuote": "Thai on Main Street in the old downtown Bothell storefronts.",
+          "blurb": "Thai on Main Street in the old downtown Bothell storefronts.",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "russells",
+          "pullQuote": "Dinner and a loft dining room at Monte Villa Parkway.",
+          "blurb": "Dinner and a loft dining room at Monte Villa Parkway.",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "agave-cocina",
+          "pullQuote": "Mexican cooking on Bothell Way, in the Wayne neighborhood.",
+          "blurb": "Mexican cooking on Bothell Way, in the Wayne neighborhood.",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "sushi-zone",
+          "pullQuote": "Conveyor-belt sushi on Main Street in downtown Bothell.",
+          "blurb": "Conveyor-belt sushi on Main Street in downtown Bothell.",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "namdo-korean-bbq",
+          "pullQuote": "Korean barbecue on the Bothell-Everett Highway, north of downtown.",
+          "blurb": "Korean barbecue on the Bothell-Everett Highway, north of downtown.",
+          "copySource": "draft"
+        }
+      ]
+    },
+    {
+      "slug": "bellevue",
+      "title": "Bellevue",
+      "dek": "Old Bellevue, downtown, Factoria, Bel-Red, and Lake Bellevue.",
+      "group": "Neighborhoods",
+      "intro": "Bellevue rooms with a street address, from Main Street out to Factoria, Bel-Red, and the Spring District.",
+      "updatedAt": "2026-10-20",
+      "ranked": false,
+      "city": "eastside",
+      "entries": [
+        {
+          "placeId": "bis-on-main",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "monsoon-bellevue",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "seastar-restaurant-and-raw-bar",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "john-howie-steak",
+          "pullQuote": "Steakhouse in the Bravern. The lunch service is currently closed.",
+          "blurb": "Steakhouse in the Bravern. The lunch service is currently closed.",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "tavern-hall",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "regent-bakery-and-cafe",
+          "pullQuote": "Asian bakery and cafe on 120th Avenue Northeast, in Bellevue since 2000.",
+          "blurb": "Asian bakery and cafe on 120th Avenue Northeast, in Bellevue since 2000.",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "facing-east",
+          "pullQuote": "Takeout on Bel-Red Road since the December 2021 move from downtown.",
+          "blurb": "Takeout on Bel-Red Road since the December 2021 move from downtown.",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "13-coins",
+          "pullQuote": "Bellevue Way diner with breakfast from seven and a late weekend close.",
+          "blurb": "Bellevue Way diner with breakfast from seven and a late weekend close.",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "bellevue-brewing",
+          "pullQuote": "A brewpub on Northeast District Way in the Spring District.",
+          "blurb": "A brewpub on Northeast District Way in the Spring District.",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "arayas-place",
+          "pullQuote": "Vegan Thai on Main Street, and the mock duck is the order.",
+          "blurb": "Vegan Thai on Main Street, and the mock duck is the order.",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "third-culture-coffee",
+          "pullQuote": "Coffee roaster on 102nd Avenue Northeast in downtown Bellevue.",
+          "blurb": "Coffee roaster on 102nd Avenue Northeast in downtown Bellevue.",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "cascadia-pizza",
+          "pullQuote": "Wood-fired pies on 130th, in the Bel-Red warehouse blocks.",
+          "blurb": "Wood-fired pies on 130th, in the Bel-Red warehouse blocks.",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "farine-bakery",
+          "pullQuote": "Belgian bakery on Northeast 10th, with kouign-amann in the case.",
+          "blurb": "Belgian bakery on Northeast 10th, with kouign-amann in the case.",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "fogo-de-chao",
+          "pullQuote": "Brazilian churrasco on Bellevue Way, served rodizio style.",
+          "blurb": "Brazilian churrasco on Bellevue Way, served rodizio style.",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "ginza",
+          "pullQuote": "A long-running sushi room just south of Main, off 102nd.",
+          "blurb": "A long-running sushi room just south of Main, off 102nd.",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "i-love-sushi",
+          "pullQuote": "Sushi on Lake Bellevue Drive, with a deck over the water.",
+          "blurb": "Sushi on Lake Bellevue Drive, with a deck over the water.",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "katsu-burger",
+          "pullQuote": "Katsu sandwiches and burgers at the Factoria shop on 38th.",
+          "blurb": "Katsu sandwiches and burgers at the Factoria shop on 38th.",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "peony",
+          "pullQuote": "Hong Kong-style Chinese on Main, in the old downtown blocks.",
+          "blurb": "Hong Kong-style Chinese on Main, in the old downtown blocks.",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "takai-by-kashiba",
+          "pullQuote": "Shiro Kashiba's sushi counter on Bellevue Way. Book the omakase.",
+          "blurb": "Shiro Kashiba's sushi counter on Bellevue Way. Book the omakase.",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "xian-noodles",
+          "pullQuote": "Hand-pulled biang biang noodles on Bellevue Way by the mall.",
+          "blurb": "Hand-pulled biang biang noodles on Bellevue Way by the mall.",
+          "copySource": "draft"
+        }
+      ]
+    },
+    {
+      "slug": "kirkland",
+      "title": "Kirkland",
+      "dek": "Downtown, the marina, Juanita, Carillon Point, and Totem Lake.",
+      "group": "Neighborhoods",
+      "intro": "Kirkland restaurants with a published address, from Lake Street and Carillon Point out to Juanita and Totem Lake.",
+      "updatedAt": "2026-10-20",
+      "ranked": false,
+      "city": "eastside",
+      "entries": [
+        {
+          "placeId": "the-slip",
+          "pullQuote": "Waterfront dining at Marina Beach Park. Burgers have been served here since 1996.",
+          "blurb": "Waterfront dining at Marina Beach Park. Burgers have been served here since 1996.",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "beachhouse-bar-and-grill",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "ristorante-paradiso",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "cafe-juanita",
+          "pullQuote": "Prix-fixe Northern Italian tasting menus in the Juanita neighborhood.",
+          "blurb": "Prix-fixe Northern Italian tasting menus in the Juanita neighborhood.",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "anthonys-homeport",
+          "pullQuote": "Seafood at the south end of Lake Street, on the marina.",
+          "blurb": "Seafood at the south end of Lake Street, on the marina.",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "bottle-and-bull",
+          "pullQuote": "Steak and a wine list on Lake Street South, up from the docks.",
+          "blurb": "Steak and a wine list on Lake Street South, up from the docks.",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "como",
+          "pullQuote": "Lombardy-style Italian at Carillon Point, dinner beside the lake.",
+          "blurb": "Lombardy-style Italian at Carillon Point, dinner beside the lake.",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "feast",
+          "pullQuote": "A French dining room on Park Lane in old downtown Kirkland.",
+          "blurb": "A French dining room on Park Lane in old downtown Kirkland.",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "georges",
+          "pullQuote": "Greek plates on Kirkland Avenue, a short walk from the lake.",
+          "blurb": "Greek plates on Kirkland Avenue, a short walk from the lake.",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "hanuman-thai",
+          "pullQuote": "Thai cafe on Central Way, casual and close to the waterfront.",
+          "blurb": "Thai cafe on Central Way, casual and close to the waterfront.",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "moss-bay-hall",
+          "pullQuote": "A downtown Kirkland hall on Central Way, a block from the lake.",
+          "blurb": "A downtown Kirkland hall on Central Way, a block from the lake.",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "sparrow",
+          "pullQuote": "Brunch and dinner in Juanita, off Northeast 120th Place.",
+          "blurb": "Brunch and dinner in Juanita, off Northeast 120th Place.",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "spicy-talk-bistro",
+          "pullQuote": "Sichuan cooking on 120th Avenue Northeast, out by Totem Lake.",
+          "blurb": "Sichuan cooking on 120th Avenue Northeast, out by Totem Lake.",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "volterra",
+          "pullQuote": "Italian on Kirkland Avenue, the Eastside room of the Ballard original.",
+          "blurb": "Italian on Kirkland Avenue, the Eastside room of the Ballard original.",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "deru-market",
+          "pullQuote": "Market counter and brunch on 9th Avenue, just uphill from downtown.",
+          "blurb": "Market counter and brunch on 9th Avenue, just uphill from downtown.",
+          "copySource": "draft"
+        }
+      ]
+    },
+    {
+      "slug": "woodinville",
+      "title": "Woodinville",
+      "dek": "The Hollywood district and Village Square.",
+      "group": "Neighborhoods",
+      "intro": "Restaurants along the Woodinville-Redmond Road and at Village Square, a short hop from the tasting rooms.",
+      "updatedAt": "2026-10-20",
+      "ranked": false,
+      "city": "eastside",
+      "entries": [
+        {
+          "placeId": "heritage-restaurant",
+          "pullQuote": "Steak and wood-fired plates on the Woodinville-Redmond Road.",
+          "blurb": "Steak and wood-fired plates on the Woodinville-Redmond Road.",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "the-hollywood-tavern",
+          "pullQuote": "Burgers and a tavern room in the old Hollywood district.",
+          "blurb": "Burgers and a tavern room in the old Hollywood district.",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "brix-wine-cafe",
+          "pullQuote": "Wine-country cooking at Village Square, near the tasting rooms.",
+          "blurb": "Wine-country cooking at Village Square, near the tasting rooms.",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "vivi-pizzeria",
+          "pullQuote": "Neapolitan pizza on 148th Avenue, in the warehouse district.",
+          "blurb": "Neapolitan pizza on 148th Avenue, in the warehouse district.",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "watts-brewing",
+          "pullQuote": "A brewery taproom pouring on the Woodinville-Redmond Road.",
+          "blurb": "A brewery taproom pouring on the Woodinville-Redmond Road.",
+          "copySource": "draft"
+        }
+      ]
+    },
+    {
+      "slug": "mercer-island",
+      "title": "Mercer Island",
+      "dek": "The town center and the north-end roadhouse.",
+      "group": "Neighborhoods",
+      "intro": "Mercer Island places in the town center, plus the Roanoke Inn on 72nd Avenue Southeast.",
+      "updatedAt": "2026-10-20",
+      "ranked": false,
+      "city": "eastside",
+      "entries": [
+        {
+          "placeId": "barrels-wine-bar",
+          "pullQuote": "Wine bar in the town center, on Southeast 27th Street.",
+          "blurb": "Wine bar in the town center, on Southeast 27th Street.",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "lexperience-paris",
+          "pullQuote": "French cafe and crepes on 78th, in the Mercer Island town center.",
+          "blurb": "French cafe and crepes on 78th, in the Mercer Island town center.",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "roanoke-inn",
+          "pullQuote": "The island's old roadhouse, still open on 72nd Avenue Southeast.",
+          "blurb": "The island's old roadhouse, still open on 72nd Avenue Southeast.",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "sushi-joa",
+          "pullQuote": "Sushi in the town center, on 78th Avenue Southeast.",
+          "blurb": "Sushi in the town center, on 78th Avenue Southeast.",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "haps-burgers",
+          "pullQuote": "Burgers and a tap list on 76th Avenue Southeast.",
+          "blurb": "Burgers and a tap list on 76th Avenue Southeast.",
+          "copySource": "draft"
+        }
+      ]
+    },
+    {
+      "slug": "renton",
+      "title": "Renton",
+      "dek": "Downtown Renton rooms with a street address.",
+      "group": "Neighborhoods",
+      "intro": "Downtown Renton: the steakhouse on Houser Way, pizza and coffee on South 3rd, and a few rooms nearby.",
+      "updatedAt": "2026-10-20",
+      "ranked": false,
+      "city": "eastside",
+      "entries": [
+        {
+          "placeId": "melrose-grill",
+          "pullQuote": "Steakhouse on Houser Way, in Renton's old downtown.",
+          "blurb": "Steakhouse on Houser Way, in Renton's old downtown.",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "smoking-monkey-pizza",
+          "pullQuote": "Pizza on South 3rd Street in downtown Renton.",
+          "blurb": "Pizza on South 3rd Street in downtown Renton.",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "crawfish-house",
+          "pullQuote": "Cajun seafood on Park Avenue North, just off the downtown grid.",
+          "blurb": "Cajun seafood on Park Avenue North, just off the downtown grid.",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "jimmy-macs-roadhouse",
+          "pullQuote": "Burgers and a roadhouse dining room on Southwest 7th Street.",
+          "blurb": "Burgers and a roadhouse dining room on Southwest 7th Street.",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "boon-boona-coffee",
+          "pullQuote": "Boon Boona coffee on South 3rd, in downtown Renton.",
+          "blurb": "Boon Boona coffee on South 3rd, in downtown Renton.",
+          "copySource": "draft"
+        }
+      ]
+    },
+    {
+      "slug": "sammamish",
+      "title": "Sammamish",
+      "dek": "The town center, Klahanie, and Inglewood Hill.",
+      "group": "Neighborhoods",
+      "intro": "Sammamish restaurants with a street address, from Southeast 4th out to Klahanie and Inglewood Hill Road.",
+      "updatedAt": "2026-10-20",
+      "ranked": false,
+      "city": "eastside",
+      "entries": [
+        {
+          "placeId": "tanoor",
+          "pullQuote": "Lebanese plates on Southeast 4th, in the Sammamish town center.",
+          "blurb": "Lebanese plates on Southeast 4th, in the Sammamish town center.",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "diyar",
+          "pullQuote": "Persian and Mediterranean cooking in the Klahanie neighborhood.",
+          "blurb": "Persian and Mediterranean cooking in the Klahanie neighborhood.",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "big-fish-sushi",
+          "pullQuote": "Sushi on Inglewood Hill Road, up on the Sammamish plateau.",
+          "blurb": "Sushi on Inglewood Hill Road, up on the Sammamish plateau.",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "jobos-pizza-pub",
+          "pullQuote": "Pizza and a pub on East Lake Sammamish Parkway.",
+          "blurb": "Pizza and a pub on East Lake Sammamish Parkway.",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "sammamish-cafe",
+          "pullQuote": "Neighborhood cafe on Northeast 8th, with breakfast and a bar.",
+          "blurb": "Neighborhood cafe on Northeast 8th, with breakfast and a bar.",
+          "copySource": "draft"
+        }
+      ]
+    },
+    {
+      "slug": "eastside-coffee",
+      "title": "Eastside coffee",
+      "dek": "Cafes, a bakery, and bagels.",
+      "group": "Cuisine",
+      "intro": "Third Culture Coffee roasts on 102nd in downtown Bellevue. Farine is a Belgian bakery on Northeast 10th. Rubinstein Bagels boils on Cleveland Street in Redmond, and Boon Boona Coffee is on South 3rd in Renton.",
+      "updatedAt": "2026-10-20",
+      "ranked": false,
+      "city": "eastside",
+      "entries": [
+        {
+          "placeId": "third-culture-coffee",
+          "pullQuote": "Coffee roaster on 102nd Avenue Northeast in downtown Bellevue.",
+          "blurb": "Coffee roaster on 102nd Avenue Northeast in downtown Bellevue.",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "farine-bakery",
+          "pullQuote": "Belgian bakery on Northeast 10th, with kouign-amann in the case.",
+          "blurb": "Belgian bakery on Northeast 10th, with kouign-amann in the case.",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "regent-bakery-and-cafe",
+          "pullQuote": "Asian bakery and cafe on 120th Avenue Northeast, in Bellevue since 2000.",
+          "blurb": "Asian bakery and cafe on 120th Avenue Northeast, in Bellevue since 2000.",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "rubinstein-bagels",
+          "pullQuote": "Boiled bagels on Cleveland Street in downtown Redmond.",
+          "blurb": "Boiled bagels on Cleveland Street in downtown Redmond.",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "boon-boona-coffee",
+          "pullQuote": "Boon Boona coffee on South 3rd, in downtown Renton.",
+          "blurb": "Boon Boona coffee on South 3rd, in downtown Renton.",
+          "copySource": "draft"
+        }
+      ]
+    },
+    {
+      "slug": "eastside-asian",
+      "title": "Eastside Asian",
+      "dek": "Thai, Chinese, Japanese, Korean, Vietnamese, Sichuan, and Taiwanese.",
+      "group": "Cuisine",
+      "intro": "Eastside Asian restaurants from Old Bellevue and Lake Bellevue out to Totem Lake, Issaquah, and downtown Bothell.",
+      "updatedAt": "2026-10-20",
+      "ranked": false,
+      "city": "eastside",
+      "entries": [
+        {
+          "placeId": "monsoon-bellevue",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "facing-east",
+          "pullQuote": "Takeout on Bel-Red Road since the December 2021 move from downtown.",
+          "blurb": "Takeout on Bel-Red Road since the December 2021 move from downtown.",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "arayas-place",
+          "pullQuote": "Vegan Thai on Main Street, and the mock duck is the order.",
+          "blurb": "Vegan Thai on Main Street, and the mock duck is the order.",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "ginza",
+          "pullQuote": "A long-running sushi room just south of Main, off 102nd.",
+          "blurb": "A long-running sushi room just south of Main, off 102nd.",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "peony",
+          "pullQuote": "Hong Kong-style Chinese on Main, in the old downtown blocks.",
+          "blurb": "Hong Kong-style Chinese on Main, in the old downtown blocks.",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "takai-by-kashiba",
+          "pullQuote": "Shiro Kashiba's sushi counter on Bellevue Way. Book the omakase.",
+          "blurb": "Shiro Kashiba's sushi counter on Bellevue Way. Book the omakase.",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "xian-noodles",
+          "pullQuote": "Hand-pulled biang biang noodles on Bellevue Way by the mall.",
+          "blurb": "Hand-pulled biang biang noodles on Bellevue Way by the mall.",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "i-love-sushi",
+          "pullQuote": "Sushi on Lake Bellevue Drive, with a deck over the water.",
+          "blurb": "Sushi on Lake Bellevue Drive, with a deck over the water.",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "hanuman-thai",
+          "pullQuote": "Thai cafe on Central Way, casual and close to the waterfront.",
+          "blurb": "Thai cafe on Central Way, casual and close to the waterfront.",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "spicy-talk-bistro",
+          "pullQuote": "Sichuan cooking on 120th Avenue Northeast, out by Totem Lake.",
+          "blurb": "Sichuan cooking on 120th Avenue Northeast, out by Totem Lake.",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "sip-thai-bistro",
+          "pullQuote": "Thai on Front Street, tucked into downtown Issaquah.",
+          "blurb": "Thai on Front Street, tucked into downtown Issaquah.",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "chantanee",
+          "pullQuote": "Thai on Main Street in the old downtown Bothell storefronts.",
+          "blurb": "Thai on Main Street in the old downtown Bothell storefronts.",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "sushi-zone",
+          "pullQuote": "Conveyor-belt sushi on Main Street in downtown Bothell.",
+          "blurb": "Conveyor-belt sushi on Main Street in downtown Bothell.",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "namdo-korean-bbq",
+          "pullQuote": "Korean barbecue on the Bothell-Everett Highway, north of downtown.",
+          "blurb": "Korean barbecue on the Bothell-Everett Highway, north of downtown.",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "sushi-joa",
+          "pullQuote": "Sushi in the town center, on 78th Avenue Southeast.",
+          "blurb": "Sushi in the town center, on 78th Avenue Southeast.",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "big-fish-sushi",
+          "pullQuote": "Sushi on Inglewood Hill Road, up on the Sammamish plateau.",
+          "blurb": "Sushi on Inglewood Hill Road, up on the Sammamish plateau.",
+          "copySource": "draft"
+        }
+      ]
+    },
+    {
+      "slug": "eastside-brunch",
+      "title": "Eastside brunch",
+      "dek": "Morning rooms: diner, bakery, bagels, and brunch.",
+      "group": "Occasion",
+      "intro": "Places that open in the morning. 13 Coins starts breakfast on Bellevue Way, Farine opens the bakery case at seven, and Deru Market serves brunch on 9th Avenue in Kirkland.",
+      "updatedAt": "2026-10-20",
+      "ranked": false,
+      "city": "eastside",
+      "entries": [
+        {
+          "placeId": "13-coins",
+          "pullQuote": "Bellevue Way diner with breakfast from seven and a late weekend close.",
+          "blurb": "Bellevue Way diner with breakfast from seven and a late weekend close.",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "farine-bakery",
+          "pullQuote": "Belgian bakery on Northeast 10th, with kouign-amann in the case.",
+          "blurb": "Belgian bakery on Northeast 10th, with kouign-amann in the case.",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "deru-market",
+          "pullQuote": "Market counter and brunch on 9th Avenue, just uphill from downtown.",
+          "blurb": "Market counter and brunch on 9th Avenue, just uphill from downtown.",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "sparrow",
+          "pullQuote": "Brunch and dinner in Juanita, off Northeast 120th Place.",
+          "blurb": "Brunch and dinner in Juanita, off Northeast 120th Place.",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "rubinstein-bagels",
+          "pullQuote": "Boiled bagels on Cleveland Street in downtown Redmond.",
+          "blurb": "Boiled bagels on Cleveland Street in downtown Redmond.",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "the-british-pantry",
+          "pullQuote": "Tea, pastries, and a British grocery on 161st Avenue.",
+          "blurb": "Tea, pastries, and a British grocery on 161st Avenue.",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "sammamish-cafe",
+          "pullQuote": "Neighborhood cafe on Northeast 8th, with breakfast and a bar.",
+          "blurb": "Neighborhood cafe on Northeast 8th, with breakfast and a bar.",
+          "copySource": "draft"
+        }
+      ]
+    },
+    {
+      "slug": "eastside-date-night",
+      "title": "Eastside date night",
+      "dek": "Dinner rooms for a slower night.",
+      "group": "Occasion",
+      "intro": "Sit-down dinner rooms across the Eastside, from Cafe Juanita and the Bellevue steakhouses to Carillon Point and Woodinville.",
+      "updatedAt": "2026-10-20",
+      "ranked": false,
+      "city": "eastside",
+      "entries": [
+        {
+          "placeId": "cafe-juanita",
+          "pullQuote": "Prix-fixe Northern Italian tasting menus in the Juanita neighborhood.",
+          "blurb": "Prix-fixe Northern Italian tasting menus in the Juanita neighborhood.",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "bis-on-main",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "john-howie-steak",
+          "pullQuote": "Steakhouse in the Bravern. The lunch service is currently closed.",
+          "blurb": "Steakhouse in the Bravern. The lunch service is currently closed.",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "seastar-restaurant-and-raw-bar",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "takai-by-kashiba",
+          "pullQuote": "Shiro Kashiba's sushi counter on Bellevue Way. Book the omakase.",
+          "blurb": "Shiro Kashiba's sushi counter on Bellevue Way. Book the omakase.",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "fogo-de-chao",
+          "pullQuote": "Brazilian churrasco on Bellevue Way, served rodizio style.",
+          "blurb": "Brazilian churrasco on Bellevue Way, served rodizio style.",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "como",
+          "pullQuote": "Lombardy-style Italian at Carillon Point, dinner beside the lake.",
+          "blurb": "Lombardy-style Italian at Carillon Point, dinner beside the lake.",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "feast",
+          "pullQuote": "A French dining room on Park Lane in old downtown Kirkland.",
+          "blurb": "A French dining room on Park Lane in old downtown Kirkland.",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "volterra",
+          "pullQuote": "Italian on Kirkland Avenue, the Eastside room of the Ballard original.",
+          "blurb": "Italian on Kirkland Avenue, the Eastside room of the Ballard original.",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "bottle-and-bull",
+          "pullQuote": "Steak and a wine list on Lake Street South, up from the docks.",
+          "blurb": "Steak and a wine list on Lake Street South, up from the docks.",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "ristorante-paradiso",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "ristorante-tropea",
+          "pullQuote": "Southern Italian dinner on 164th Avenue Northeast in Overlake.",
+          "blurb": "Southern Italian dinner on 164th Avenue Northeast in Overlake.",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "amarone",
+          "pullQuote": "Italian dinner in the Issaquah Highlands, up on Park Drive.",
+          "blurb": "Italian dinner in the Issaquah Highlands, up on Park Drive.",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "heritage-restaurant",
+          "pullQuote": "Steak and wood-fired plates on the Woodinville-Redmond Road.",
+          "blurb": "Steak and wood-fired plates on the Woodinville-Redmond Road.",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "melrose-grill",
+          "pullQuote": "Steakhouse on Houser Way, in Renton's old downtown.",
+          "blurb": "Steakhouse on Houser Way, in Renton's old downtown.",
+          "copySource": "draft"
+        }
+      ]
+    },
+    {
+      "slug": "eastside-breweries",
+      "title": "Eastside breweries",
+      "dek": "Brewpubs that make the beer on site.",
+      "group": "Drinks",
+      "intro": "Beardslee brews on Beardslee Boulevard. Bellevue Brewing is in the Spring District. Black Raven sits on Northeast 95th, Postdoc is east of downtown Redmond, and Watts pours on the Woodinville-Redmond Road.",
+      "updatedAt": "2026-10-20",
+      "ranked": false,
+      "city": "eastside",
+      "entries": [
+        {
+          "placeId": "beardslee-public-house",
+          "pullQuote": "Public house on Beardslee Boulevard. The beer is brewed in the building.",
+          "blurb": "Public house on Beardslee Boulevard. The beer is brewed in the building.",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "bellevue-brewing",
+          "pullQuote": "A brewpub on Northeast District Way in the Spring District.",
+          "blurb": "A brewpub on Northeast District Way in the Spring District.",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "black-raven-brewing",
+          "pullQuote": "Brewpub on Northeast 95th. The beer is made in the building.",
+          "blurb": "Brewpub on Northeast 95th. The beer is made in the building.",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "postdoc-brewing",
+          "pullQuote": "Small brewery taproom on 65th Street, east of downtown Redmond.",
+          "blurb": "Small brewery taproom on 65th Street, east of downtown Redmond.",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "watts-brewing",
+          "pullQuote": "A brewery taproom pouring on the Woodinville-Redmond Road.",
+          "blurb": "A brewery taproom pouring on the Woodinville-Redmond Road.",
           "copySource": "draft"
         }
       ]

@@ -333,12 +333,10 @@
   <url><loc>https://gustosguide.com/#/place/seattle-dumpling-house</loc></url>
   <url><loc>https://gustosguide.com/#/place/rockcreek-seafood-spirits</loc></url>
   <url><loc>https://gustosguide.com/#/place/taurus-ox</loc></url>
-  <url><loc>https://gustosguide.com/#/place/boat-bar</loc></url>
   <url><loc>https://gustosguide.com/#/place/la-loba</loc></url>
   <url><loc>https://gustosguide.com/#/place/ben-paris</loc></url>
   <url><loc>https://gustosguide.com/#/place/unlisted</loc></url>
   <url><loc>https://gustosguide.com/#/place/dingfelder-s-delicatessen</loc></url>
-  <url><loc>https://gustosguide.com/#/place/wild-ginger-mckenzie</loc></url>
   <url><loc>https://gustosguide.com/#/place/fat-s-chicken-waffles</loc></url>
   <url><loc>https://gustosguide.com/#/place/neko</loc></url>
   <url><loc>https://gustosguide.com/#/place/purple-cafe-and-wine-bar</loc></url>
@@ -544,6 +542,17 @@
   <url><loc>https://gustosguide.com/#/eastside/guide/redmond</loc></url>
   <url><loc>https://gustosguide.com/#/eastside/guide/issaquah</loc></url>
   <url><loc>https://gustosguide.com/#/eastside/guide/bothell</loc></url>
+  <url><loc>https://gustosguide.com/#/eastside/guide/bellevue</loc></url>
+  <url><loc>https://gustosguide.com/#/eastside/guide/kirkland</loc></url>
+  <url><loc>https://gustosguide.com/#/eastside/guide/woodinville</loc></url>
+  <url><loc>https://gustosguide.com/#/eastside/guide/mercer-island</loc></url>
+  <url><loc>https://gustosguide.com/#/eastside/guide/renton</loc></url>
+  <url><loc>https://gustosguide.com/#/eastside/guide/sammamish</loc></url>
+  <url><loc>https://gustosguide.com/#/eastside/guide/eastside-coffee</loc></url>
+  <url><loc>https://gustosguide.com/#/eastside/guide/eastside-asian</loc></url>
+  <url><loc>https://gustosguide.com/#/eastside/guide/eastside-brunch</loc></url>
+  <url><loc>https://gustosguide.com/#/eastside/guide/eastside-date-night</loc></url>
+  <url><loc>https://gustosguide.com/#/eastside/guide/eastside-breweries</loc></url>
   <url><loc>https://gustosguide.com/#/eastside/place/bis-on-main</loc></url>
   <url><loc>https://gustosguide.com/#/eastside/place/monsoon-bellevue</loc></url>
   <url><loc>https://gustosguide.com/#/eastside/place/seastar-restaurant-and-raw-bar</loc></url>
@@ -560,4 +569,66 @@
   <url><loc>https://gustosguide.com/#/eastside/place/jaks-grill</loc></url>
   <url><loc>https://gustosguide.com/#/eastside/place/beardslee-public-house</loc></url>
   <url><loc>https://gustosguide.com/#/eastside/place/amaro-bistro</loc></url>
+  <url><loc>https://gustosguide.com/#/eastside/place/13-coins</loc></url>
+  <url><loc>https://gustosguide.com/#/eastside/place/bellevue-brewing</loc></url>
+  <url><loc>https://gustosguide.com/#/eastside/place/arayas-place</loc></url>
+  <url><loc>https://gustosguide.com/#/eastside/place/third-culture-coffee</loc></url>
+  <url><loc>https://gustosguide.com/#/eastside/place/cascadia-pizza</loc></url>
+  <url><loc>https://gustosguide.com/#/eastside/place/farine-bakery</loc></url>
+  <url><loc>https://gustosguide.com/#/eastside/place/fogo-de-chao</loc></url>
+  <url><loc>https://gustosguide.com/#/eastside/place/ginza</loc></url>
+  <url><loc>https://gustosguide.com/#/eastside/place/i-love-sushi</loc></url>
+  <url><loc>https://gustosguide.com/#/eastside/place/katsu-burger</loc></url>
+  <url><loc>https://gustosguide.com/#/eastside/place/peony</loc></url>
+  <url><loc>https://gustosguide.com/#/eastside/place/takai-by-kashiba</loc></url>
+  <url><loc>https://gustosguide.com/#/eastside/place/xian-noodles</loc></url>
+  <url><loc>https://gustosguide.com/#/eastside/place/anthonys-homeport</loc></url>
+  <url><loc>https://gustosguide.com/#/eastside/place/bottle-and-bull</loc></url>
+  <url><loc>https://gustosguide.com/#/eastside/place/como</loc></url>
+  <url><loc>https://gustosguide.com/#/eastside/place/feast</loc></url>
+  <url><loc>https://gustosguide.com/#/eastside/place/georges</loc></url>
+  <url><loc>https://gustosguide.com/#/eastside/place/hanuman-thai</loc></url>
+  <url><loc>https://gustosguide.com/#/eastside/place/moss-bay-hall</loc></url>
+  <url><loc>https://gustosguide.com/#/eastside/place/sparrow</loc></url>
+  <url><loc>https://gustosguide.com/#/eastside/place/spicy-talk-bistro</loc></url>
+  <url><loc>https://gustosguide.com/#/eastside/place/volterra</loc></url>
+  <url><loc>https://gustosguide.com/#/eastside/place/deru-market</loc></url>
+  <url><loc>https://gustosguide.com/#/eastside/place/matts-rotisserie</loc></url>
+  <url><loc>https://gustosguide.com/#/eastside/place/ristorante-tropea</loc></url>
+  <url><loc>https://gustosguide.com/#/eastside/place/the-british-pantry</loc></url>
+  <url><loc>https://gustosguide.com/#/eastside/place/postdoc-brewing</loc></url>
+  <url><loc>https://gustosguide.com/#/eastside/place/rubinstein-bagels</loc></url>
+  <url><loc>https://gustosguide.com/#/eastside/place/ooba-tooba</loc></url>
+  <url><loc>https://gustosguide.com/#/eastside/place/black-raven-brewing</loc></url>
+  <url><loc>https://gustosguide.com/#/eastside/place/chicago-pastrami</loc></url>
+  <url><loc>https://gustosguide.com/#/eastside/place/flying-pie-pizzeria</loc></url>
+  <url><loc>https://gustosguide.com/#/eastside/place/sip-thai-bistro</loc></url>
+  <url><loc>https://gustosguide.com/#/eastside/place/amarone</loc></url>
+  <url><loc>https://gustosguide.com/#/eastside/place/vino-bella</loc></url>
+  <url><loc>https://gustosguide.com/#/eastside/place/levitate-gastropub</loc></url>
+  <url><loc>https://gustosguide.com/#/eastside/place/heritage-restaurant</loc></url>
+  <url><loc>https://gustosguide.com/#/eastside/place/the-hollywood-tavern</loc></url>
+  <url><loc>https://gustosguide.com/#/eastside/place/brix-wine-cafe</loc></url>
+  <url><loc>https://gustosguide.com/#/eastside/place/vivi-pizzeria</loc></url>
+  <url><loc>https://gustosguide.com/#/eastside/place/watts-brewing</loc></url>
+  <url><loc>https://gustosguide.com/#/eastside/place/chantanee</loc></url>
+  <url><loc>https://gustosguide.com/#/eastside/place/russells</loc></url>
+  <url><loc>https://gustosguide.com/#/eastside/place/agave-cocina</loc></url>
+  <url><loc>https://gustosguide.com/#/eastside/place/sushi-zone</loc></url>
+  <url><loc>https://gustosguide.com/#/eastside/place/namdo-korean-bbq</loc></url>
+  <url><loc>https://gustosguide.com/#/eastside/place/barrels-wine-bar</loc></url>
+  <url><loc>https://gustosguide.com/#/eastside/place/lexperience-paris</loc></url>
+  <url><loc>https://gustosguide.com/#/eastside/place/roanoke-inn</loc></url>
+  <url><loc>https://gustosguide.com/#/eastside/place/sushi-joa</loc></url>
+  <url><loc>https://gustosguide.com/#/eastside/place/haps-burgers</loc></url>
+  <url><loc>https://gustosguide.com/#/eastside/place/melrose-grill</loc></url>
+  <url><loc>https://gustosguide.com/#/eastside/place/smoking-monkey-pizza</loc></url>
+  <url><loc>https://gustosguide.com/#/eastside/place/crawfish-house</loc></url>
+  <url><loc>https://gustosguide.com/#/eastside/place/jimmy-macs-roadhouse</loc></url>
+  <url><loc>https://gustosguide.com/#/eastside/place/boon-boona-coffee</loc></url>
+  <url><loc>https://gustosguide.com/#/eastside/place/tanoor</loc></url>
+  <url><loc>https://gustosguide.com/#/eastside/place/diyar</loc></url>
+  <url><loc>https://gustosguide.com/#/eastside/place/big-fish-sushi</loc></url>
+  <url><loc>https://gustosguide.com/#/eastside/place/jobos-pizza-pub</loc></url>
+  <url><loc>https://gustosguide.com/#/eastside/place/sammamish-cafe</loc></url>
 </urlset>
