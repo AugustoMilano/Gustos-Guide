@@ -92,8 +92,13 @@ let withPhoto = 0
 
 for (const place of eastside.places) fullPlaces[place.id] = place
 
+function catalogImage(place) {
+  const lead = place?.photos?.find((photo) => (photo.source === 'wikimedia' || photo.source === 'flickr') && photo.url)
+  return lead ? `${site}${lead.url}` : `${site}/og/place.svg`
+}
+
 for (const place of index.places) {
-  const image = photos.get(place.id) || `${site}/og/place.svg`
+  const image = photos.get(place.id) || catalogImage(fullPlaces[place.id])
   if (photos.has(place.id)) withPhoto += 1
   const dir = join(shareRoot, 'place', place.id)
   mkdirSync(dir, { recursive: true })
@@ -124,9 +129,7 @@ for (const guide of guides) {
 }
 
 for (const place of eastside.places) {
-  const image = photos.get(place.id) || (place.photos?.[0]?.source === 'wikimedia' && place.photos[0].url
-    ? `${site}${place.photos[0].url}`
-    : `${site}/og/place.svg`)
+  const image = photos.get(place.id) || catalogImage(place)
   if (photos.has(place.id)) withPhoto += 1
   const dir = join(shareRoot, 'place', place.id)
   mkdirSync(dir, { recursive: true })

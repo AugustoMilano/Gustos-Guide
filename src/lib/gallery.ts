@@ -79,7 +79,7 @@ export function displayPhotos(
       placeId: place.id,
     }))
   const commons = catalog
-    .filter((photo) => photo.source === 'wikimedia' && photo.url)
+    .filter((photo) => (photo.source === 'wikimedia' || photo.source === 'flickr') && photo.url)
     .map((photo) => ({
       key: photo.url ?? photo.credit,
       url: photo.url,

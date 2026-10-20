@@ -4,7 +4,7 @@ export type GuideGroup = 'Best of' | 'Cuisine' | 'Occasion' | 'Neighborhoods' | 
 export type Bucket = 'loved' | 'liked' | 'fine' | 'didnt'
 
 export type CatalogPhoto = {
-  source: 'wikimedia' | 'illustration' | 'foursquare'
+  source: 'wikimedia' | 'flickr' | 'illustration' | 'foursquare'
   url?: string
   alt: string
   credit: string

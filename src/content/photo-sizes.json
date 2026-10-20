@@ -1,4 +1,13 @@
 {
+  "2120.jpg": {
+    "w": 1600,
+    "h": 1200,
+    "widths": [
+      480,
+      960,
+      1600
+    ]
+  },
   "alibi-room.jpg": {
     "w": 1280,
     "h": 831,
@@ -113,6 +122,15 @@
       600
     ]
   },
+  "canon.jpg": {
+    "w": 1600,
+    "h": 1200,
+    "widths": [
+      480,
+      960,
+      1600
+    ]
+  },
   "chung-chun-rice-dog.jpg": {
     "w": 1280,
     "h": 1707,
@@ -122,6 +140,24 @@
       1280
     ]
   },
+  "cinnamon-works.jpg": {
+    "w": 1600,
+    "h": 1200,
+    "widths": [
+      480,
+      960,
+      1600
+    ]
+  },
+  "d-la-santa.jpg": {
+    "w": 1600,
+    "h": 1200,
+    "widths": [
+      480,
+      960,
+      1600
+    ]
+  },
   "dahlia-bakery.jpg": {
     "w": 1280,
     "h": 1707,
@@ -129,6 +165,15 @@
       480,
       960,
       1280
+    ]
+  },
+  "dead-line.jpg": {
+    "w": 1600,
+    "h": 1200,
+    "widths": [
+      480,
+      960,
+      1600
     ]
   },
   "delaurenti.jpg": {
@@ -147,6 +192,24 @@
       480,
       960,
       1280
+    ]
+  },
+  "dingfelder-s-delicatessen.jpg": {
+    "w": 1600,
+    "h": 886,
+    "widths": [
+      480,
+      960,
+      1600
+    ]
+  },
+  "dino-s-tomato-pie.jpg": {
+    "w": 1600,
+    "h": 1200,
+    "widths": [
+      480,
+      960,
+      1600
     ]
   },
   "donna-s.jpg": {
@@ -185,6 +248,24 @@
       1280
     ]
   },
+  "farestart-restaurant.jpg": {
+    "w": 1024,
+    "h": 771,
+    "widths": [
+      480,
+      960,
+      1024
+    ]
+  },
+  "fat-s-chicken-waffles.jpg": {
+    "w": 1600,
+    "h": 757,
+    "widths": [
+      480,
+      960,
+      1600
+    ]
+  },
   "fogon-cocina-mexicana.jpg": {
     "w": 1280,
     "h": 2276,
@@ -194,6 +275,15 @@
       1280
     ]
   },
+  "frankie-jo-s.jpg": {
+    "w": 1600,
+    "h": 2369,
+    "widths": [
+      480,
+      960,
+      1600
+    ]
+  },
   "fremont-brewing.jpg": {
     "w": 1280,
     "h": 960,
@@ -201,6 +291,15 @@
       480,
       960,
       1280
+    ]
+  },
+  "gelatiamo.jpg": {
+    "w": 1600,
+    "h": 1255,
+    "widths": [
+      480,
+      960,
+      1600
     ]
   },
   "georgetown-brewing.jpg": {
@@ -230,6 +329,24 @@
       1280
     ]
   },
+  "ghost-note-coffee.jpg": {
+    "w": 1600,
+    "h": 1200,
+    "widths": [
+      480,
+      960,
+      1600
+    ]
+  },
+  "glo-s.jpg": {
+    "w": 1600,
+    "h": 1200,
+    "widths": [
+      480,
+      960,
+      1600
+    ]
+  },
   "goldfinch-tavern.jpg": {
     "w": 1280,
     "h": 720,
@@ -248,6 +365,15 @@
       1280
     ]
   },
+  "hellenika-cultured-creamery.jpg": {
+    "w": 1600,
+    "h": 1200,
+    "widths": [
+      480,
+      960,
+      1600
+    ]
+  },
   "hello-robin.jpg": {
     "w": 1280,
     "h": 1707,
@@ -255,6 +381,15 @@
       480,
       960,
       1280
+    ]
+  },
+  "honeyhole-sandwiches.jpg": {
+    "w": 1600,
+    "h": 1200,
+    "widths": [
+      480,
+      960,
+      1600
     ]
   },
   "il-bistro.jpg": {
@@ -272,6 +407,33 @@
     "widths": [
       480,
       700
+    ]
+  },
+  "la-parisienne-french-bakery.jpg": {
+    "w": 1600,
+    "h": 1200,
+    "widths": [
+      480,
+      960,
+      1600
+    ]
+  },
+  "lark.jpg": {
+    "w": 1600,
+    "h": 1200,
+    "widths": [
+      480,
+      960,
+      1600
+    ]
+  },
+  "le-panier.jpg": {
+    "w": 1600,
+    "h": 1200,
+    "widths": [
+      480,
+      960,
+      1600
     ]
   },
   "le-pichet.jpg": {
@@ -292,6 +454,15 @@
       1280
     ]
   },
+  "maiz.jpg": {
+    "w": 1600,
+    "h": 1200,
+    "widths": [
+      480,
+      960,
+      1600
+    ]
+  },
   "maneki.jpg": {
     "w": 1280,
     "h": 960,
@@ -299,6 +470,15 @@
       480,
       960,
       1280
+    ]
+  },
+  "market-grill.jpg": {
+    "w": 1023,
+    "h": 660,
+    "widths": [
+      480,
+      960,
+      1023
     ]
   },
   "marmalade.jpg": {
@@ -309,6 +489,15 @@
       700
     ]
   },
+  "matt-s-in-the-market.jpg": {
+    "w": 1600,
+    "h": 1200,
+    "widths": [
+      480,
+      960,
+      1600
+    ]
+  },
   "maximilien.jpg": {
     "w": 1280,
     "h": 960,
@@ -316,6 +505,24 @@
       480,
       960,
       1280
+    ]
+  },
+  "mee-sum-pastry.jpg": {
+    "w": 1600,
+    "h": 1200,
+    "widths": [
+      480,
+      960,
+      1600
+    ]
+  },
+  "mike-s-noodle-house.jpg": {
+    "w": 1600,
+    "h": 1200,
+    "widths": [
+      480,
+      960,
+      1600
     ]
   },
   "molly-moon-s.jpg": {
@@ -345,6 +552,15 @@
       1280
     ]
   },
+  "mt-bagel.jpg": {
+    "w": 1600,
+    "h": 1155,
+    "widths": [
+      480,
+      960,
+      1600
+    ]
+  },
   "mykonos-greek-grill.jpg": {
     "w": 1280,
     "h": 850,
@@ -363,12 +579,48 @@
       1280
     ]
   },
+  "ooink.jpg": {
+    "w": 1600,
+    "h": 1200,
+    "widths": [
+      480,
+      960,
+      1600
+    ]
+  },
+  "oriental-mart.jpg": {
+    "w": 1600,
+    "h": 1200,
+    "widths": [
+      480,
+      960,
+      1600
+    ]
+  },
   "oxbow.jpg": {
     "w": 768,
     "h": 535,
     "widths": [
       480,
       768
+    ]
+  },
+  "palace-kitchen.jpg": {
+    "w": 1600,
+    "h": 1067,
+    "widths": [
+      480,
+      960,
+      1600
+    ]
+  },
+  "paseo.jpg": {
+    "w": 1600,
+    "h": 1067,
+    "widths": [
+      480,
+      960,
+      1600
     ]
   },
   "pike-place-chowder.jpg": {
@@ -389,6 +641,15 @@
       1280
     ]
   },
+  "piroshky-piroshky.jpg": {
+    "w": 1600,
+    "h": 1200,
+    "widths": [
+      480,
+      960,
+      1600
+    ]
+  },
   "portage-bay-cafe.jpg": {
     "w": 1280,
     "h": 850,
@@ -396,6 +657,24 @@
       480,
       960,
       1280
+    ]
+  },
+  "post-alley-pizza.jpg": {
+    "w": 1600,
+    "h": 1265,
+    "widths": [
+      480,
+      960,
+      1600
+    ]
+  },
+  "radiator-whiskey.jpg": {
+    "w": 1600,
+    "h": 1200,
+    "widths": [
+      480,
+      960,
+      1600
     ]
   },
   "red-mill-burgers.jpg": {
@@ -416,6 +695,15 @@
       1280
     ]
   },
+  "rob-roy.jpg": {
+    "w": 1600,
+    "h": 1200,
+    "widths": [
+      480,
+      960,
+      1600
+    ]
+  },
   "sabine.jpg": {
     "w": 1280,
     "h": 1920,
@@ -425,12 +713,30 @@
       1280
     ]
   },
+  "saint-bread.jpg": {
+    "w": 1600,
+    "h": 790,
+    "widths": [
+      480,
+      960,
+      1600
+    ]
+  },
   "salumi.jpg": {
     "w": 600,
     "h": 800,
     "widths": [
       480,
       600
+    ]
+  },
+  "seattle-fish-guys.jpg": {
+    "w": 1600,
+    "h": 1200,
+    "widths": [
+      480,
+      960,
+      1600
     ]
   },
   "serious-pie.jpg": {
@@ -459,6 +765,15 @@
       1280
     ]
   },
+  "spinasse.jpg": {
+    "w": 1600,
+    "h": 1200,
+    "widths": [
+      480,
+      960,
+      1600
+    ]
+  },
   "starbucks-coffee-company.jpg": {
     "w": 1280,
     "h": 1171,
@@ -468,6 +783,42 @@
       1280
     ]
   },
+  "storyville-coffee-company.jpg": {
+    "w": 1600,
+    "h": 1200,
+    "widths": [
+      480,
+      960,
+      1600
+    ]
+  },
+  "sweet-alchemy.jpg": {
+    "w": 1600,
+    "h": 1200,
+    "widths": [
+      480,
+      960,
+      1600
+    ]
+  },
+  "taurus-ox.jpg": {
+    "w": 1600,
+    "h": 1200,
+    "widths": [
+      480,
+      960,
+      1600
+    ]
+  },
+  "temple-pastries.jpg": {
+    "w": 1600,
+    "h": 1200,
+    "widths": [
+      480,
+      960,
+      1600
+    ]
+  },
   "terra-plata.jpg": {
     "w": 1280,
     "h": 960,
@@ -475,6 +826,15 @@
       480,
       960,
       1280
+    ]
+  },
+  "that-s-amore-italian-cafe.jpg": {
+    "w": 1600,
+    "h": 1185,
+    "widths": [
+      480,
+      960,
+      1600
     ]
   },
   "the-5-point-cafe.jpg": {
@@ -502,6 +862,15 @@
       480,
       960,
       1280
+    ]
+  },
+  "the-crumpet-shop.jpg": {
+    "w": 1600,
+    "h": 1200,
+    "widths": [
+      480,
+      960,
+      1600
     ]
   },
   "the-dressing-room.jpg": {
@@ -546,6 +915,15 @@
     "widths": [
       480,
       700
+    ]
+  },
+  "three-girls-bakery.jpg": {
+    "w": 1600,
+    "h": 1200,
+    "widths": [
+      480,
+      960,
+      1600
     ]
   },
   "tivoli.jpg": {
