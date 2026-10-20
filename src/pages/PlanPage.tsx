@@ -10,6 +10,7 @@ import { SignInSheet } from '../components/SignInSheet.tsx'
 import { SlidingRow } from '../components/SlidingRow.tsx'
 import { ScoreBadge } from '../components/ScoreBadge.tsx'
 import { catalog, slimById } from '../content/load.ts'
+import { useCityCatalog } from '../lib/use-city.ts'
 import { demoFriendsEnabled } from '../lib/demo.ts'
 import { priceLabel, publicReference } from '../lib/format.ts'
 import { usePageMeta } from '../lib/meta.ts'
@@ -145,10 +146,10 @@ export function PlanDetailPage() {
 function matchesVibe(place: SlimPlace, vibe: string): boolean {
   const guides = place.guideSlugs
   if (vibe === 'date') return guides.includes('date-night')
-  if (vibe === 'cheap') return place.price <= 2 || guides.includes('cheap-eats')
+  if (vibe === 'cheap') return (place.price != null && place.price <= 2) || guides.includes('cheap-eats')
   if (vibe === 'late') return guides.includes('late-night')
   if (vibe === 'drinks') return guides.some((slug) => slug === 'cocktail-bars' || slug === 'wine-bars' || slug === 'beer' || slug === 'the-bar-list' || slug === 'happy-hour' || slug === 'fun-dive-bars')
-  return place.price <= 3
+  return place.price != null && place.price <= 3
 }
 
 function winningPlaceId(plan: Plan): string | undefined {
@@ -209,9 +210,10 @@ function initials(name: string): string {
 export function PlanWizardPage() {
   const app = useApp()
   const navigate = useNavigate()
+  const { places } = useCityCatalog()
   const neighborhoods = useMemo(
-    () => [...new Set(catalog.places.map((place) => place.neighborhood))].sort((a, b) => a.localeCompare(b)),
-    [],
+    () => [...new Set(places.map((place) => place.neighborhood))].sort((a, b) => a.localeCompare(b)),
+    [places],
   )
   const [step, setStep] = useState(0)
   const [friends, setFriends] = useState<string[]>([])
@@ -229,9 +231,9 @@ export function PlanWizardPage() {
   const friendPlaces = new Set(
     roster.filter((person) => friends.includes(person.id)).flatMap((person) => person.been),
   )
-  const pool = catalog.places.filter((place) => {
+  const pool = places.filter((place) => {
     if (area !== 'any' && place.neighborhood !== area) return false
-    if (place.price > budget) return false
+    if (place.price == null || place.price > budget) return false
     return true
   })
   const vibed = pool.filter((place) => matchesVibe(place, vibe))
@@ -250,8 +252,8 @@ export function PlanWizardPage() {
   const steps = ['Friends', 'Area', 'Vibe', 'Budget', 'Vote']
 
   const areaPins = (area === 'any'
-    ? neighborhoods.map((name) => catalog.places.find((place) => place.neighborhood === name)).filter((place): place is SlimPlace => place != null)
-    : catalog.places.filter((place) => place.neighborhood === area)
+    ? neighborhoods.map((name) => places.find((place) => place.neighborhood === name)).filter((place): place is SlimPlace => place != null)
+    : places.filter((place) => place.neighborhood === area)
   ).slice(0, 24)
   const pickedFriends = roster.filter((person) => friends.includes(person.id))
 
@@ -396,7 +398,7 @@ export function PlanWizardPage() {
                       {reference ? <span className="public-ref mt-1 block">{reference}</span> : null}
                       <span className="mt-2 flex flex-wrap gap-1">
                         {tally > 0 ? <span className="tag">{tally} of you want to go</span> : null}
-                        {place.price <= budget ? <span className="tag">Fits {priceLabel(place.price)}</span> : null}
+                        {place.price != null && place.price <= budget ? <span className="tag">Fits {priceLabel(place.price)}</span> : null}
                       </span>
                       <span className="mt-2 flex items-center gap-1">
                         {fans.map((person, index) => (

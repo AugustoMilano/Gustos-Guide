@@ -2,7 +2,9 @@ import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { PlaceThumb } from '../components/PlaceThumb.tsx'
 import { SignInSheet } from '../components/SignInSheet.tsx'
-import { catalog, loadGuides } from '../content/load.ts'
+import { loadGuides } from '../content/load.ts'
+import { cityPath } from '../lib/city.ts'
+import { placesForCity, useCityId } from '../lib/use-city.ts'
 import { usePageMeta } from '../lib/meta.ts'
 import { photoQueue, type RankedGuide } from '../lib/photo-queue.ts'
 import { useApp } from '../state/AppState.tsx'
@@ -11,6 +13,7 @@ const PAGE = 12
 
 export function PhotoQueuePage() {
   const app = useApp()
+  const city = useCityId()
   const [shown, setShown] = useState(PAGE)
   const [signIn, setSignIn] = useState(false)
   const [busy, setBusy] = useState('')
@@ -28,7 +31,7 @@ export function PhotoQueuePage() {
       cancel = true
     }
   }, [])
-  const queue = guides ? photoQueue(catalog.places, guides, app.photos) : []
+  const queue = guides ? photoQueue(placesForCity(city), guides, app.photos) : []
   const visible = queue.slice(0, shown)
 
   async function onFile(placeId: string, file: File | undefined) {
@@ -73,7 +76,7 @@ export function PhotoQueuePage() {
           <ul className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2">
             {visible.map(({ place, reason }) => (
               <li key={place.id} className="feed-card">
-                <Link to={`/place/${place.id}`} className="block h-36 overflow-hidden bg-navy [&_.place-art]:aspect-auto [&_.place-art]:h-full" aria-label={place.name}>
+                <Link to={cityPath(`/place/${place.id}`)} className="block h-36 overflow-hidden bg-navy [&_.place-art]:aspect-auto [&_.place-art]:h-full" aria-label={place.name}>
                   <PlaceThumb place={place} uploads={app.photos} />
                 </Link>
                 <h2 className="mt-2 font-serif text-2xl italic leading-none">{place.name}</h2>

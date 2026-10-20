@@ -44,6 +44,10 @@ const STATIC = [
   '/seattle/photos',
   '/seattle',
   '/seattle/guides',
+  '/eastside',
+  '/eastside/guides',
+  '/eastside/guide/kirkland-waterfront',
+  '/eastside/place/cafe-juanita',
   '/plans',
   '/plans/wizard',
   '/plan/plan-friday',
@@ -271,10 +275,10 @@ test.describe('controls', () => {
 
     await scrollTo(page, 900)
     await page.evaluate(() => {
-      const link = document.querySelector<HTMLAnchorElement>('a[href="#/guides"]')
+      const link = document.querySelector<HTMLAnchorElement>('a[href="#/seattle/guides"]')
       link?.click()
     })
-    await expect(page).toHaveURL(/#\/guides/)
+    await expect(page).toHaveURL(/#\/seattle\/guides/)
     await page.goBack()
     await expect(page).toHaveURL(/#\/$|#\/$|#$/)
     await expect.poll(() => page.evaluate(() => window.scrollY)).toBeGreaterThan(400)
@@ -342,7 +346,7 @@ test.describe('controls', () => {
     await page.goto('/#/search?q=zzzznotaplace')
     await expect(page.getByText(/Nothing matches/)).toBeVisible()
     await tap(page.getByRole('link', { name: 'Browse the guides' }))
-    await expect(page).toHaveURL(/#\/guides/)
+    await expect(page).toHaveURL(/#\/seattle\/guides/)
 
     await page.goto('/#/rank')
     await tap(page.getByRole('button', { name: 'Loved' }).first())

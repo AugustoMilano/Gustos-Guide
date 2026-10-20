@@ -154,7 +154,7 @@ function Shell() {
           <LegalPage slug={legal} />
         ) : (
         <Routes>
-          {['', '/seattle'].flatMap((prefix) => [
+          {['', '/seattle', '/eastside'].flatMap((prefix) => [
             <Route key={`${prefix}-home`} path={prefix || '/'} element={<HomePage />} />,
             <Route key={`${prefix}-explore`} path={`${prefix}/explore`} element={<ExplorePage />} />,
             <Route key={`${prefix}-guides`} path={`${prefix}/guides`} element={<GuideIndexPage />} />,

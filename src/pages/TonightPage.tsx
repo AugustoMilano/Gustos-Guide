@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import { PlaceThumb } from '../components/PlaceThumb.tsx'
 import { SignInSheet } from '../components/SignInSheet.tsx'
 import { SlidingRow } from '../components/SlidingRow.tsx'
-import { catalog } from '../content/load.ts'
+import { useCityCatalog } from '../lib/use-city.ts'
 import { milesBetween, priceLabel } from '../lib/format.ts'
 import { readPosition } from '../lib/geo.ts'
 import { isOpen } from '../lib/hours.ts'
@@ -14,6 +14,7 @@ import type { Price, SlimPlace } from '../types.ts'
 
 export function TonightPage() {
   const app = useApp()
+  const { places } = useCityCatalog()
   const reduceMotion = useReducedMotion()
   const [signIn, setSignIn] = useState(false)
   const [vibe, setVibe] = useState('')
@@ -25,22 +26,22 @@ export function TonightPage() {
   usePageMeta("Tonight · Gusto's Guide", 'Shuffle a To go place that is open now.', './og/og.svg')
 
   const pool = useMemo(() => {
-    const togo = catalog.places.filter((place) => app.statuses[place.id] === 'togo' && isOpen(place.periods))
-    const priced = prices.length ? togo.filter((place) => prices.includes(place.price)) : togo
+    const togo = places.filter((place) => app.statuses[place.id] === 'togo' && isOpen(place.periods))
+    const priced = prices.length ? togo.filter((place) => place.price != null && prices.includes(place.price)) : togo
     const vibed = vibe ? priced.filter((place) => place.perfectFor.includes(vibe)) : priced
     const located = origin ? vibed.slice().sort((a, b) => milesBetween(origin, a) - milesBetween(origin, b)) : vibed
     const near = origin ? located.filter((place) => milesBetween(origin, place) <= 8) : located
     return near.length ? near : located
-  }, [app.statuses, prices, vibe, origin])
+  }, [places, app.statuses, prices, vibe, origin])
 
   const vibes = useMemo(() => {
     const counts = new Map<string, number>()
-    for (const place of catalog.places) {
+    for (const place of places) {
       if (app.statuses[place.id] !== 'togo') continue
       for (const tag of place.perfectFor) counts.set(tag, (counts.get(tag) ?? 0) + 1)
     }
     return [...counts.entries()].sort((a, b) => b[1] - a[1]).slice(0, 8).map(([name]) => name)
-  }, [app.statuses])
+  }, [places, app.statuses])
 
   function togglePrice(price: Price) {
     setPrices((current) => current.includes(price) ? current.filter((item) => item !== price) : [...current, price])
@@ -116,8 +117,8 @@ export function TonightPage() {
                     <span className="tonight-photo"><PlaceThumb place={pick} uploads={app.photos} eager /></span>
                     <span className="tonight-copy">
                       <span className="block font-serif text-4xl italic leading-none">{pick.name}</span>
-                      <span className="mt-2 block text-sm">{pick.neighborhood} · {priceLabel(pick.price)}</span>
-                      <span className="mt-2 block text-sm italic">{pick.oneLiner}</span>
+                      <span className="mt-2 block text-sm">{[pick.neighborhood, priceLabel(pick.price)].filter(Boolean).join(' · ')}</span>
+                      {pick.oneLiner ? <span className="mt-2 block text-sm italic">{pick.oneLiner}</span> : null}
                     </span>
                   </Link>
                 </motion.div>

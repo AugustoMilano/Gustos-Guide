@@ -6,6 +6,7 @@ import { ShareButton } from '../components/ShareButton.tsx'
 import { SlidingRow } from '../components/SlidingRow.tsx'
 import { SignInSheet } from '../components/SignInSheet.tsx'
 import { catalog, loadGuide } from '../content/load.ts'
+import { cityPath } from '../lib/city.ts'
 import { pageShareUrl } from '../lib/format.ts'
 import { isOpen } from '../lib/hours.ts'
 import { usePageMeta } from '../lib/meta.ts'
@@ -97,7 +98,7 @@ export function GuidePage() {
     return (
       <main id="main" tabIndex={-1} className="mx-auto max-w-3xl px-4 pt-28 outline-none">
         <h1 className="font-serif text-5xl italic">That guide is not on the list.</h1>
-        <Link to="/guides" className="btn mt-6">All guides</Link>
+        <Link to={cityPath('/guides')} className="btn mt-6">All guides</Link>
       </main>
     )
   }
@@ -132,7 +133,7 @@ export function GuidePage() {
     <main id="main" tabIndex={-1} className={`mx-auto max-w-6xl px-4 outline-none ${mobileMap ? 'flex h-dvh max-h-dvh flex-col overflow-hidden pt-20 pb-3' : 'pt-20 pb-16'}`}>
       <div className={mobileMap ? 'shrink-0' : undefined}>
         <div className="flex flex-wrap items-center justify-between gap-x-4 gap-y-2">
-          <Link to="/guides" className="text-sm font-bold">← All guides</Link>
+          <Link to={cityPath('/guides')} className="text-sm font-bold">← All guides</Link>
           <div className="flex flex-wrap items-center gap-2">
             <p className="text-xs font-bold tracking-[0.14em] uppercase">{guide.group} · Updated {guide.updatedAt}</p>
             <ShareButton title={guide.title} url={pageShareUrl(`/guide/${guide.slug}`)} />

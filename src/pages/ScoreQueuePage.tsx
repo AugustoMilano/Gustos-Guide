@@ -3,7 +3,8 @@ import { Link } from 'react-router-dom'
 import { HouseScorePad } from '../components/HouseScorePad.tsx'
 import { PlaceThumb } from '../components/PlaceThumb.tsx'
 import { SignInSheet } from '../components/SignInSheet.tsx'
-import { catalog } from '../content/load.ts'
+import { cityPath } from '../lib/city.ts'
+import { useCityCatalog } from '../lib/use-city.ts'
 import { usePageMeta } from '../lib/meta.ts'
 import { useApp } from '../state/AppState.tsx'
 
@@ -11,12 +12,13 @@ const PAGE = 12
 
 export function ScoreQueuePage() {
   const app = useApp()
+  const { places } = useCityCatalog()
   const [shown, setShown] = useState(PAGE)
   const [signIn, setSignIn] = useState(false)
   const [keep, setKeep] = useState<string[]>([])
   usePageMeta("Needs a score · Gusto's Guide", 'Places still waiting on a house score.', './og/og.svg')
-  const queue = catalog.places.filter((place) => app.gustoScore(place.id) == null || keep.includes(place.id))
-  const waiting = catalog.places.filter((place) => app.gustoScore(place.id) == null).length
+  const queue = places.filter((place) => app.gustoScore(place.id) == null || keep.includes(place.id))
+  const waiting = places.filter((place) => app.gustoScore(place.id) == null).length
   const visible = queue.slice(0, shown)
 
   return (
@@ -39,7 +41,7 @@ export function ScoreQueuePage() {
           <ul className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2">
             {visible.map((place) => (
               <li key={place.id} className="feed-card">
-                <Link to={`/place/${place.id}`} className="block h-36 overflow-hidden bg-navy [&_.place-art]:aspect-auto [&_.place-art]:h-full">
+                <Link to={cityPath(`/place/${place.id}`)} className="block h-36 overflow-hidden bg-navy [&_.place-art]:aspect-auto [&_.place-art]:h-full">
                   <PlaceThumb place={place} uploads={app.photos} />
                 </Link>
                 <h2 className="mt-2 font-serif text-2xl italic leading-none">{place.name}</h2>

@@ -3,6 +3,7 @@ import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
 import { dragSheet } from '../lib/motion.ts'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { cityPath } from '../lib/city.ts'
+import { useCityId } from '../lib/use-city.ts'
 import { CitySwitcher } from './CitySwitcher.tsx'
 import { SignInSheet } from './SignInSheet.tsx'
 import { useApp } from '../state/AppState.tsx'
@@ -64,6 +65,7 @@ export function Header() {
   const unread = notices.filter((notice) => !notice.read).length
   const navigate = useNavigate()
   const location = useLocation()
+  const areaName = useCityId() === 'eastside' ? 'the Eastside' : 'Seattle'
   const bellPanel = useRef<HTMLDivElement>(null)
   const bellDesktop = useRef<HTMLButtonElement>(null)
   const bellMobile = useRef<HTMLButtonElement>(null)
@@ -76,7 +78,7 @@ export function Header() {
   const [moreRefs] = useState(() => [morePanel, moreButton])
   const reduceMotion = useReducedMotion()
   const [scrolled, setScrolled] = useState(false)
-  const [onHero, setOnHero] = useState(() => location.pathname === '/')
+  const [onHero, setOnHero] = useState(() => location.pathname === '/' || location.pathname === '/seattle' || location.pathname === '/eastside')
   const press = reduceMotion ? undefined : { scale: 0.97 }
   const route = `${location.pathname}${location.search}`
 
@@ -134,7 +136,7 @@ export function Header() {
         <CitySwitcher />
         <form onSubmit={search} className="site-search ml-auto hidden w-44 shrink-0 lg:block min-[1400px]:w-60">
           <label className="sr-only" htmlFor="site-search">
-            Search Seattle
+            Search {areaName}
           </label>
           <input
             id="site-search"
@@ -257,8 +259,9 @@ export function Header() {
           transition={{ type: 'spring', stiffness: 420, damping: 32 }}
         >
           <form onSubmit={search}>
-            <input aria-label="Search" value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Search" className="glass-input w-full px-3 py-2" />
+            <input aria-label={`Search ${areaName}`} value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Search" className="glass-input w-full px-3 py-2" />
           </form>
+          <CitySwitcher layoutId="city-pill-menu" />
           <Link to={cityPath('/explore')} onClick={() => setMenu(false)} onFocus={() => prefetch('/explore')}>Explore</Link>
           <Link to={cityPath('/guides')} onClick={() => setMenu(false)}>Guides</Link>
           <Link to={cityPath('/tonight')} onClick={() => setMenu(false)}>Tonight</Link>

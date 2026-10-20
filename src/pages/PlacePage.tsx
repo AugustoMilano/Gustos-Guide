@@ -6,6 +6,8 @@ import { PhotoFrame } from '../components/PhotoFrame.tsx'
 import { PlaceThumb } from '../components/PlaceThumb.tsx'
 import { SignInSheet } from '../components/SignInSheet.tsx'
 import { catalog, loadPlace, slimById } from '../content/load.ts'
+import { cityPath } from '../lib/city.ts'
+import { placeCity, placesForCity } from '../lib/use-city.ts'
 import { demoFriendsEnabled } from '../lib/demo.ts'
 import { displayPhotos } from '../lib/gallery.ts'
 import { HouseScorePad } from '../components/HouseScorePad.tsx'
@@ -50,12 +52,12 @@ export function PlacePage() {
 
   usePageMeta(
     place ? `${place.name} · Gusto's Guide` : "Place · Gusto's Guide",
-    place?.oneLiner ?? 'A Seattle restaurant.',
+    place ? place.oneLiner || `${place.name} in ${place.neighborhood}.` : 'A Seattle restaurant.',
     ownerImage || './og/place.svg',
   )
   const similar = useMemo(() => {
     if (!place) return []
-    return catalog.places
+    return placesForCity(placeCity(place))
       .filter((item) => item.id !== place.id && item.cuisine.some((cuisine) => place.cuisine.includes(cuisine)))
       .map((item) => ({ item, miles: milesBetween(place, item) }))
       .sort((a, b) => a.miles - b.miles)
@@ -139,7 +141,7 @@ export function PlacePage() {
         <div>
           <p className="text-xs font-bold tracking-[0.14em] uppercase">{place.cuisine.join(' · ')} · {place.neighborhood}</p>
           <h1 className="mt-1 font-serif text-5xl italic leading-none sm:text-6xl">{place.name}</h1>
-          <p className="review-headline mt-4 border-2 border-ink bg-[#fffaf3] px-4 py-3 font-serif text-2xl italic leading-snug">“{place.oneLiner}”</p>
+          {place.oneLiner ? <p className="review-headline mt-4 border-2 border-ink bg-[#fffaf3] px-4 py-3 font-serif text-2xl italic leading-snug">“{place.oneLiner}”</p> : null}
           <div className="mt-3"><ScoreBadge score={app.gustoScore(place.id)} /></div>
           <HouseScorePad placeId={place.id} />
           {app.user && !app.user.isOwner && app.scores[place.id] ? <p className="mt-2 text-sm">Your score {app.scores[place.id].score.toFixed(1)}</p> : null}
@@ -192,14 +194,14 @@ export function PlacePage() {
           <section className="mt-6">
             <h2 className="font-serif text-3xl italic">Included in</h2>
             <div className="mt-2 flex flex-wrap gap-2">
-              {guides.map((guide) => <Link key={guide.slug} to={`/guide/${guide.slug}`} className="chip inline-flex items-center" viewTransition={!reduceMotion}>{guide.title}</Link>)}
+              {guides.map((guide) => <Link key={guide.slug} to={cityPath(`/guide/${guide.slug}`, placeCity(place))} className="chip inline-flex items-center" viewTransition={!reduceMotion}>{guide.title}</Link>)}
             </div>
           </section>
           <section className="mt-6">
             <h2 className="font-serif text-3xl italic">Similar places nearby</h2>
             <div className="mt-3 grid grid-cols-2 gap-3">
               {similar.map((item) => (
-                <Link key={item.id} to={`/place/${item.id}`} className="hit-card" viewTransition={!reduceMotion}>
+                <Link key={item.id} to={cityPath(`/place/${item.id}`, placeCity(place))} className="hit-card" viewTransition={!reduceMotion}>
                   <div className="h-24 overflow-hidden bg-navy [&_.place-art]:aspect-auto [&_.place-art]:h-full" style={reduceMotion ? undefined : { viewTransitionName: `place-${item.id}` }}>
                     <PlaceThumb place={item} uploads={app.photos} />
                   </div>

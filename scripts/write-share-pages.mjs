@@ -7,6 +7,7 @@ const site = (process.env.SITE_URL || 'https://gustosguide.com').replace(/\/$/, 
 const index = JSON.parse(readFileSync(join(root, 'src/content/index.json'), 'utf8'))
 const guides = JSON.parse(readFileSync(join(root, 'src/content/guides.json'), 'utf8'))
 const fullPlaces = JSON.parse(readFileSync(join(root, 'src/content/places.json'), 'utf8'))
+const eastside = JSON.parse(readFileSync(join(root, 'src/content/eastside.json'), 'utf8'))
 
 function escapeHtml(value) {
   return String(value)
@@ -89,6 +90,8 @@ const photos = await ownerPhotos()
 const places = new Map(index.places.map((place) => [place.id, place]))
 let withPhoto = 0
 
+for (const place of eastside.places) fullPlaces[place.id] = place
+
 for (const place of index.places) {
   const image = photos.get(place.id) || `${site}/og/place.svg`
   if (photos.has(place.id)) withPhoto += 1
@@ -120,4 +123,37 @@ for (const guide of guides) {
   }))
 }
 
-console.log(`share pages ${index.places.length} places, ${guides.length} guides, ${withPhoto} using an owner photo, ${places.size} known`)
+for (const place of eastside.places) {
+  const image = photos.get(place.id) || (place.photos?.[0]?.source === 'wikimedia' && place.photos[0].url
+    ? `${site}${place.photos[0].url}`
+    : `${site}/og/place.svg`)
+  if (photos.has(place.id)) withPhoto += 1
+  const dir = join(shareRoot, 'place', place.id)
+  mkdirSync(dir, { recursive: true })
+  writeFileSync(join(dir, 'index.html'), page({
+    title: `${place.name} · Gusto's Guide`,
+    description: place.oneLiner || `${place.name} in ${place.neighborhood}.`,
+    image,
+    imageAlt: place.photos?.[0]?.alt || place.name,
+    sharePath: `/share/place/${place.id}`,
+    hashPath: `/eastside/place/${place.id}`,
+  }))
+}
+
+for (const guide of eastside.guides) {
+  const first = guide.entries.map((entry) => photos.get(entry.placeId)).find(Boolean)
+  const image = first || `${site}/og/guides/${guide.slug}.svg`
+  if (first) withPhoto += 1
+  const dir = join(shareRoot, 'guide', guide.slug)
+  mkdirSync(dir, { recursive: true })
+  writeFileSync(join(dir, 'index.html'), page({
+    title: `${guide.title} · Gusto's Guide`,
+    description: guide.dek || 'An Eastside guide.',
+    image,
+    imageAlt: guide.title,
+    sharePath: `/share/guide/${guide.slug}`,
+    hashPath: `/eastside/guide/${guide.slug}`,
+  }))
+}
+
+console.log(`share pages ${index.places.length + eastside.places.length} places, ${guides.length + eastside.guides.length} guides, ${withPhoto} using an owner photo, ${places.size} known`)

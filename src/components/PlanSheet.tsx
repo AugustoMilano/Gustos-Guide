@@ -8,6 +8,7 @@ import { demoFriendsEnabled } from '../lib/demo.ts'
 import { PlaceThumb } from './PlaceThumb.tsx'
 import { SignInSheet } from './SignInSheet.tsx'
 import { catalog } from '../content/load.ts'
+import { useCityCatalog } from '../lib/use-city.ts'
 import { isOpen } from '../lib/hours.ts'
 import { useApp } from '../state/AppState.tsx'
 import type { SlimPlace } from '../types.ts'
@@ -59,6 +60,7 @@ const AVATAR = ['#ff5330', '#141f4d', '#38ba46', '#e7b23c']
 
 export function PlanSheet({ open, onClose, seedPlaceId }: { open: boolean; onClose: () => void; seedPlaceId?: string }) {
   const app = useApp()
+  const { places, guides: cityGuides } = useCityCatalog()
   const navigate = useNavigate()
   const reduceMotion = useReducedMotion()
   const [title, setTitle] = useState('Friday night')
@@ -82,12 +84,12 @@ export function PlanSheet({ open, onClose, seedPlaceId }: { open: boolean; onClo
   )
   const hoods = useMemo(() => {
     const counts = new Map<string, number>()
-    for (const place of catalog.places) counts.set(place.neighborhood, (counts.get(place.neighborhood) ?? 0) + 1)
+    for (const place of places) counts.set(place.neighborhood, (counts.get(place.neighborhood) ?? 0) + 1)
     return [...counts.entries()].sort((a, b) => b[1] - a[1]).slice(0, 5).map(([name]) => name)
-  }, [])
+  }, [places])
   const guides = useMemo(
-    () => catalog.guides.filter((guide) => guide.group === 'Best of' || guide.group === 'Occasion').slice(0, 4),
-    [],
+    () => cityGuides.filter((guide) => guide.group === 'Best of' || guide.group === 'Occasion').slice(0, 4),
+    [cityGuides],
   )
   const roster = [
     ...app.friends.map((person) => ({ id: person.id, name: person.name, demo: false })),
@@ -117,12 +119,12 @@ export function PlanSheet({ open, onClose, seedPlaceId }: { open: boolean; onClo
       if (filter.kind === 'guide') return place.guideSlugs.includes(filter.slug)
       return toGo.has(place.id) || friendIds.has(place.id) || isOpen(place.periods, night)
     }
-    const rows = catalog.places.filter(matches)
+    const rows = places.filter(matches)
     if (filter.kind === 'mix' && !q) {
       rows.sort((a, b) => Number(toGo.has(b.id)) - Number(toGo.has(a.id)) || Number(friendIds.has(b.id)) - Number(friendIds.has(a.id)))
     }
     return rows.slice(0, 18)
-  }, [query, filter, toGo, date, time, app])
+  }, [places, query, filter, toGo, date, time, app])
 
   function toggle(id: string) {
     if (picked.includes(id)) {
