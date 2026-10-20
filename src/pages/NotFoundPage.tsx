@@ -1,18 +1,23 @@
 import { useState, type FormEvent } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { AreaKicker } from '../components/AreaKicker.tsx'
-import { cityPath } from '../lib/city.ts'
+import { areaPhrase, cityPath } from '../lib/city.ts'
+import { useCityId } from '../lib/use-city.ts'
 import { usePageMeta } from '../lib/meta.ts'
 
 export function NotFoundPage() {
   const navigate = useNavigate()
+  const city = useCityId()
   const [query, setQuery] = useState('')
-  usePageMeta("Page not found · Gusto's Guide", 'That page is not on the menu. Search the Seattle list.', './og/og.svg')
+  usePageMeta("Page not found · Gusto's Guide", `That page is not on the menu. Search ${areaPhrase(city)}.`, './og/og.svg')
 
   function search(event: FormEvent) {
     event.preventDefault()
     const q = query.trim()
-    navigate(q ? `/search?q=${encodeURIComponent(q)}` : '/search')
+    const path = q ? `/search?q=${encodeURIComponent(q)}` : '/search'
+    // Unprefixed misses stay on the Seattle search URL the rest of the site already uses.
+    const prefixed = window.location.hash.includes('/la') || window.location.hash.includes('/eastside') || window.location.hash.includes('/seattle')
+    navigate(prefixed ? cityPath(path, city) : path)
   }
 
   return (
@@ -20,9 +25,9 @@ export function NotFoundPage() {
       <AreaKicker />
       <p className="mt-2 text-xs font-bold tracking-[0.14em] uppercase">404</p>
       <h1 className="mt-2 font-serif text-5xl italic">That page is not on the menu.</h1>
-      <p className="mt-3 max-w-xl">The link may be old. Search the Seattle list, or start from the guides.</p>
+      <p className="mt-3 max-w-xl">The link may be old. Search {areaPhrase(city)}, or start from the guides.</p>
       <form className="mt-6 flex flex-wrap gap-2" onSubmit={search}>
-        <label className="sr-only" htmlFor="missing-search">Search Seattle</label>
+        <label className="sr-only" htmlFor="missing-search">Search {areaPhrase(city)}</label>
         <input
           id="missing-search"
           className="min-h-11 min-w-0 flex-1 border-2 border-ink bg-cream px-3"

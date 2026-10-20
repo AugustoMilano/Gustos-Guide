@@ -44,6 +44,14 @@
       1280
     ]
   },
+  "bavel.jpg": {
+    "w": 747,
+    "h": 800,
+    "widths": [
+      480,
+      747
+    ]
+  },
   "beecher-s-handmade-cheese.jpg": {
     "w": 1280,
     "h": 960,
@@ -381,6 +389,15 @@
       480,
       960,
       1280
+    ]
+  },
+  "holbox.jpg": {
+    "w": 1920,
+    "h": 1440,
+    "widths": [
+      480,
+      960,
+      1920
     ]
   },
   "honeyhole-sandwiches.jpg": {
@@ -900,6 +917,15 @@
       1280
     ]
   },
+  "the-musso-frank-grill.jpg": {
+    "w": 1600,
+    "h": 1200,
+    "widths": [
+      480,
+      960,
+      1600
+    ]
+  },
   "the-pink-door.jpg": {
     "w": 1280,
     "h": 960,
@@ -918,6 +944,15 @@
     ]
   },
   "three-girls-bakery.jpg": {
+    "w": 1600,
+    "h": 1200,
+    "widths": [
+      480,
+      960,
+      1600
+    ]
+  },
+  "tiki-ti.jpg": {
     "w": 1600,
     "h": 1200,
     "widths": [

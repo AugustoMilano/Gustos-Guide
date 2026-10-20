@@ -9,7 +9,9 @@ export function useCityId(): CityId {
 }
 
 export function placeCity(place: { city?: string }): CityId {
-  return place.city === 'eastside' ? 'eastside' : 'seattle'
+  if (place.city === 'la') return 'la'
+  if (place.city === 'eastside') return 'eastside'
+  return 'seattle'
 }
 
 export function placesForCity(city: CityId): SlimPlace[] {

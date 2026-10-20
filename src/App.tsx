@@ -4,6 +4,7 @@ import { Footer } from './components/Footer.tsx'
 import { Header } from './components/Header.tsx'
 import { ImportLocalSheet } from './components/ImportLocalSheet.tsx'
 import { Modal } from './components/Modal.tsx'
+import { CitiesPage } from './pages/CitiesPage.tsx'
 import { GuidePage } from './pages/GuidePage.tsx'
 import { HomePage } from './pages/HomePage.tsx'
 import { LegalPage } from './pages/LegalPage.tsx'
@@ -154,7 +155,8 @@ function Shell() {
           <LegalPage slug={legal} />
         ) : (
         <Routes>
-          {['', '/seattle', '/eastside'].flatMap((prefix) => [
+          <Route path="/cities" element={<CitiesPage />} />
+          {['', '/seattle', '/eastside', '/la'].flatMap((prefix) => [
             <Route key={`${prefix}-home`} path={prefix || '/'} element={<HomePage />} />,
             <Route key={`${prefix}-explore`} path={`${prefix}/explore`} element={<ExplorePage />} />,
             <Route key={`${prefix}-guides`} path={`${prefix}/guides`} element={<GuideIndexPage />} />,

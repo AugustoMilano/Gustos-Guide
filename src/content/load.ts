@@ -1,5 +1,6 @@
 import index from './index.json'
 import eastsideFile from './eastside.json'
+import laFile from './la.json'
 import type { Guide, GuideSummary, Place, SlimPlace } from '../types.ts'
 
 type IndexFile = {
@@ -16,6 +17,7 @@ type EastsideFile = {
 }
 
 const eastside = eastsideFile as EastsideFile
+const la = laFile as EastsideFile
 
 function slimFrom(place: Place): SlimPlace {
   return {
@@ -46,22 +48,27 @@ function slimFrom(place: Place): SlimPlace {
 }
 
 const seattle = index as IndexFile
-const eastGuides: GuideSummary[] = eastside.guides.map((guide) => ({
-  slug: guide.slug,
-  title: guide.title,
-  dek: guide.dek,
-  group: guide.group,
-  updatedAt: guide.updatedAt,
-  ranked: guide.ranked,
-  count: guide.entries.length,
-  city: 'eastside',
-}))
+function summary(guide: Guide, city: Guide['city']): GuideSummary {
+  return {
+    slug: guide.slug,
+    title: guide.title,
+    dek: guide.dek,
+    group: guide.group,
+    updatedAt: guide.updatedAt,
+    ranked: guide.ranked,
+    count: guide.entries.length,
+    city,
+  }
+}
+
+const eastGuides: GuideSummary[] = eastside.guides.map((guide) => summary(guide, 'eastside'))
+const laGuides: GuideSummary[] = la.guides.map((guide) => summary(guide, guide.city ?? 'la'))
 
 export const catalog: IndexFile = {
   ...seattle,
-  placeCount: seattle.places.length + eastside.places.length,
-  places: [...seattle.places, ...eastside.places.map(slimFrom)],
-  guides: [...seattle.guides, ...eastGuides],
+  placeCount: seattle.places.length + eastside.places.length + la.places.length,
+  places: [...seattle.places, ...eastside.places.map(slimFrom), ...la.places.map(slimFrom)],
+  guides: [...seattle.guides, ...eastGuides, ...laGuides],
 }
 
 const placeById = new Map(catalog.places.map((place) => [place.id, place]))
@@ -78,6 +85,7 @@ export function loadPlaces(): Promise<Record<string, Place>> {
     const seattlePlaces = module.default as unknown as Record<string, Place>
     const extra: Record<string, Place> = {}
     for (const place of eastside.places) extra[place.id] = place
+    for (const place of la.places) extra[place.id] = place
     return { ...seattlePlaces, ...extra }
   })
   return placesPromise
@@ -86,7 +94,7 @@ export function loadPlaces(): Promise<Record<string, Place>> {
 export function loadGuides(): Promise<Guide[]> {
   guidesPromise ??= import('./guides.json').then((module) => {
     const seattleGuides = module.default as Guide[]
-    return [...seattleGuides, ...eastside.guides]
+    return [...seattleGuides, ...eastside.guides, ...la.guides]
   })
   return guidesPromise
 }

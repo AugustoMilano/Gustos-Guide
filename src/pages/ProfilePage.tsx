@@ -2,6 +2,7 @@ import { Link, useParams } from 'react-router-dom'
 import { GuideMap } from '../components/GuideMap.tsx'
 import { PlaceThumb } from '../components/PlaceThumb.tsx'
 import { slimById } from '../content/load.ts'
+import { areaTitle } from '../lib/city.ts'
 import { placesForCity, useCityId } from '../lib/use-city.ts'
 import { usePageMeta } from '../lib/meta.ts'
 import { useApp } from '../state/AppState.tsx'
@@ -16,7 +17,7 @@ export function ProfilePage() {
   const friend = app.friends.find((user) => user.handle === handle)
   const mine = app.user?.handle === handle
   const city = useCityId()
-  const area = city === 'eastside' ? 'Eastside' : 'Seattle'
+  const area = areaTitle(city)
   usePageMeta(
     mine ? `${app.user?.name ?? 'You'} · Gusto's Guide` : person ? `${person.name} · Gusto's Guide` : friend ? `${friend.name} · Gusto's Guide` : 'Profile',
     mine ? `Your ${area} stats.` : 'A friend on Gusto’s Guide.',

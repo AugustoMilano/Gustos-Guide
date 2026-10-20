@@ -6,7 +6,7 @@ import { PlaceThumb } from '../components/PlaceThumb.tsx'
 import { Reveal } from '../components/Reveal.tsx'
 import { ScoreBadge } from '../components/ScoreBadge.tsx'
 import { slimById } from '../content/load.ts'
-import { cityPath } from '../lib/city.ts'
+import { cityPath, type CityId } from '../lib/city.ts'
 import { useCityCatalog } from '../lib/use-city.ts'
 import { homeHitList, RIGHT_NOW_FALLBACK } from '../lib/photo-queue.ts'
 import { hoursPhrase, isOpen } from '../lib/hours.ts'
@@ -41,10 +41,10 @@ function whyNow(place: SlimPlace): string {
   return `${place.neighborhood} · ${place.cuisine[0]}`
 }
 
-function rightNow(places: SlimPlace[]): { places: SlimPlace[]; open: boolean } {
+function rightNow(city: CityId, places: SlimPlace[]): { places: SlimPlace[]; open: boolean } {
   const open = diverse(places.filter((place) => isOpen(place.periods)), 6)
   if (open.length >= 3) return { places: open, open: true }
-  if (places.some((place) => place.city === 'eastside')) return { places: diverse(places, 6), open: false }
+  if (city !== 'seattle') return { places: diverse(places, 6), open: false }
   const editorial = RIGHT_NOW_FALLBACK.map((id) => slimById(id)).filter((place): place is SlimPlace => place != null)
   return { places: editorial, open: false }
 }
@@ -52,28 +52,40 @@ function rightNow(places: SlimPlace[]): { places: SlimPlace[]; open: boolean } {
 export function HomePage() {
   const { city, places, guides } = useCityCatalog()
   const east = city === 'eastside'
+  const la = city === 'la'
   usePageMeta(
     "Gusto's Guide",
-    east
-      ? 'Eat across the Eastside: Bellevue, Kirkland, Redmond, Issaquah, and Bothell.'
-      : 'Eat your way through Seattle: pizza, oysters, coffee, neighborhood dinners, and the bars worth the hill.',
+    la
+      ? 'Eat across Los Angeles: Venice, Santa Monica, West Hollywood, Downtown, and the rooms on the list.'
+      : east
+        ? 'Eat across the Eastside: Bellevue, Kirkland, Redmond, Issaquah, and Bothell.'
+        : 'Eat your way through Seattle: pizza, oysters, coffee, neighborhood dinners, and the bars worth the hill.',
     './og/og.svg',
   )
   const app = useApp()
   const reduceMotion = useReducedMotion()
   const { photos } = app
-  const featuredSlugs = east
-    ? ['best-of-bellevue', 'kirkland-waterfront', 'best-of-kirkland', 'redmond', 'issaquah', 'bothell']
-    : FEATURED
+  const featuredSlugs = la
+    ? ['santa-monica', 'venice', 'west-hollywood', 'beverly-hills', 'downtown-la', 'hollywood', 'la-sushi', 'la-date-night']
+    : east
+      ? ['best-of-bellevue', 'kirkland-waterfront', 'best-of-kirkland', 'redmond', 'issaquah', 'bothell']
+      : FEATURED
+  const occasionSlugs = la
+    ? ['la-date-night', 'la-sushi', 'la-italian', 'la-mexican', 'la-coffee-bakeries', 'santa-monica']
+    : east
+      ? featuredSlugs
+      : OCCASIONS
   const featured = featuredSlugs.map((slug) => guides.find((guide) => guide.slug === slug)).filter((guide) => guide != null)
-  const occasions = (east ? featuredSlugs : OCCASIONS).map((slug) => guides.find((guide) => guide.slug === slug)).filter((guide) => guide != null)
-  const hits = east ? places : homeHitList(places)
-  const now = rightNow(places)
+  const occasions = occasionSlugs.map((slug) => guides.find((guide) => guide.slug === slug)).filter((guide) => guide != null)
+  const hits = east || la ? places : homeHitList(places)
+  const now = rightNow(city, places)
   const hoodPins = diverse(places, 18)
   const neighborhoods = guides.filter((guide) => guide.group === 'Neighborhoods').slice(0, 8)
-  const ticker = east
-    ? ['Bellevue', 'Kirkland waterfront', 'Juanita', 'Redmond', 'Issaquah', 'Bothell', 'Houghton', 'The Bravern']
-    : TICKER
+  const ticker = la
+    ? ['Venice', 'Santa Monica', 'West Hollywood', 'Beverly Hills', 'Downtown', 'Hollywood', 'Malibu', 'Sushi']
+    : east
+      ? ['Bellevue', 'Kirkland waterfront', 'Juanita', 'Redmond', 'Issaquah', 'Bothell', 'Houghton', 'The Bravern']
+      : TICKER
   const toGo = Object.values(app.statuses).filter((status) => status === 'togo').length
   const recent = Object.entries(app.scores)
     .map(([id, score]) => ({ place: slimById(id), score: score.score }))
@@ -83,11 +95,13 @@ export function HomePage() {
     <main id="main" tabIndex={-1} className="home-main outline-none">
       <section className="hero on-navy relative overflow-hidden">
         <div className="hero-copy relative mx-auto max-w-6xl px-4 pt-28 pb-14 sm:pt-32">
-          <h1 className="max-w-3xl font-serif text-5xl italic leading-[1.05] text-cream sm:text-7xl">{east ? 'Eat across the Eastside.' : 'Eat your way through Seattle.'}</h1>
+          <h1 className="max-w-3xl font-serif text-5xl italic leading-[1.05] text-cream sm:text-7xl">{la ? 'Eat across Los Angeles.' : east ? 'Eat across the Eastside.' : 'Eat your way through Seattle.'}</h1>
           <p className="hero-dek">
-            {east
-              ? 'Bellevue, Kirkland, Redmond, Issaquah, and Bothell, on the same map as Seattle.'
-              : 'From a 7am bun to the last good stool on Pike. Pizza, oysters, teriyaki, and the bars worth the hill.'}
+            {la
+              ? 'Venice, Santa Monica, West Hollywood, Beverly Hills, Downtown, and Hollywood, from the same list.'
+              : east
+                ? 'Bellevue, Kirkland, Redmond, Issaquah, and Bothell, on the same map as Seattle.'
+                : 'From a 7am bun to the last good stool on Pike. Pizza, oysters, teriyaki, and the bars worth the hill.'}
           </p>
           <div className="mt-6 flex flex-wrap gap-3">
             <Link to={cityPath('/guides')} className="btn btn-coral">Browse the guides</Link>
@@ -138,7 +152,7 @@ export function HomePage() {
           </div>
         </section>
         <section className="mt-10" aria-labelledby="occasions">
-          <h2 id="occasions" className="font-serif text-4xl italic">{east ? 'Start here' : 'Guides by occasion'}</h2>
+          <h2 id="occasions" className="font-serif text-4xl italic">{east || la ? 'Start here' : 'Guides by occasion'}</h2>
           <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
             {occasions.map((guide, index) => (
               <Reveal key={guide.slug} delay={Math.min(index, 6) * 0.04}>
@@ -152,8 +166,8 @@ export function HomePage() {
           </div>
         </section>
         {app.user ? (
-          <section className="glass glass-dark mt-10 p-5" aria-labelledby={east ? 'your-eastside' : 'your-seattle'}>
-            <h2 id={east ? 'your-eastside' : 'your-seattle'} className="font-serif text-4xl italic">{east ? 'Your Eastside' : 'Your Seattle'}</h2>
+          <section className="glass glass-dark mt-10 p-5" aria-labelledby={la ? 'your-la' : east ? 'your-eastside' : 'your-seattle'}>
+            <h2 id={la ? 'your-la' : east ? 'your-eastside' : 'your-seattle'} className="font-serif text-4xl italic">{la ? 'Your Los Angeles' : east ? 'Your Eastside' : 'Your Seattle'}</h2>
             <p className="mt-2">{toGo} on your To go list.</p>
             <h3 className="mt-4 font-serif text-2xl italic">Recently rated</h3>
             {recent.length ? (
@@ -214,8 +228,8 @@ export function HomePage() {
           </div>
         </section>
         <section className="mt-10">
-          <h2 className="font-serif text-4xl italic">{east ? 'The Eastside list' : 'The hit list'}</h2>
-          <p className="mt-2 max-w-xl">{east ? 'Every Eastside room on the guide so far.' : 'The rooms people already cross town for, one neighborhood at a time.'}</p>
+          <h2 className="font-serif text-4xl italic">{la ? 'The Los Angeles list' : east ? 'The Eastside list' : 'The hit list'}</h2>
+          <p className="mt-2 max-w-xl">{la ? 'Every Los Angeles room on the guide so far.' : east ? 'Every Eastside room on the guide so far.' : 'The rooms people already cross town for, one neighborhood at a time.'}</p>
           <div className="mt-4 flex gap-3 overflow-x-auto pb-2">
             {hits.map((place) => (
               <Link key={place.id} to={cityPath(`/place/${place.id}`)} className="hit-card w-56 shrink-0" viewTransition={!reduceMotion}>

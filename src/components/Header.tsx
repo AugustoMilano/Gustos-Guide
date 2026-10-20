@@ -2,7 +2,7 @@ import { useEffect, useRef, useState, type FormEvent, type RefObject } from 'rea
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
 import { dragSheet } from '../lib/motion.ts'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
-import { cityPath } from '../lib/city.ts'
+import { areaPhrase, cityPath, isCityPicker, readRegionMemory, regionName, regionOf, writeRegionMemory } from '../lib/city.ts'
 import { useCityId } from '../lib/use-city.ts'
 import { AreaKicker } from './AreaKicker.tsx'
 import { CitySwitcher } from './CitySwitcher.tsx'
@@ -66,7 +66,11 @@ export function Header() {
   const unread = notices.filter((notice) => !notice.read).length
   const navigate = useNavigate()
   const location = useLocation()
-  const areaName = useCityId() === 'eastside' ? 'the Eastside' : 'Seattle'
+  const city = useCityId()
+  const picker = isCityPicker(location.pathname)
+  const linkCity = picker ? readRegionMemory().area : city
+  const areaName = areaPhrase(linkCity)
+  const showAreas = !picker && regionOf(city) === 'seattle'
   const bellPanel = useRef<HTMLDivElement>(null)
   const bellDesktop = useRef<HTMLButtonElement>(null)
   const bellMobile = useRef<HTMLButtonElement>(null)
@@ -79,8 +83,14 @@ export function Header() {
   const [moreRefs] = useState(() => [morePanel, moreButton])
   const reduceMotion = useReducedMotion()
   const [scrolled, setScrolled] = useState(false)
-  const [onHero, setOnHero] = useState(() => location.pathname === '/' || location.pathname === '/seattle' || location.pathname === '/eastside')
+  const [onHero, setOnHero] = useState(() => ['/', '/seattle', '/eastside', '/la'].includes(location.pathname))
   const route = `${location.pathname}${location.search}`
+
+  useEffect(() => {
+    const mode = picker ? 'picker' : showAreas ? 'areas' : 'single'
+    document.documentElement.dataset.header = mode
+    if (!picker) writeRegionMemory(city)
+  }, [picker, showAreas, city])
 
   useEffect(() => {
     const onScroll = () => {
@@ -122,7 +132,7 @@ export function Header() {
 
   function search(event: FormEvent) {
     event.preventDefault()
-    navigate(cityPath(`/search?q=${encodeURIComponent(query.trim())}`))
+    navigate(cityPath(`/search?q=${encodeURIComponent(query.trim())}`, linkCity))
     setMenu(false)
     setMore(false)
   }
@@ -130,10 +140,20 @@ export function Header() {
   return (
     <header className={`site-header${onHero ? ' on-hero' : ''}${scrolled && !onHero ? ' is-scrolled' : ''}`}>
       <div className="header-bar mx-auto flex w-full max-w-[100rem] items-center gap-3 px-4 py-3">
-        <Link to={cityPath('/')} className="wordmark shrink-0 font-serif text-2xl italic leading-none sm:text-3xl">
-          Gusto's Guide
-        </Link>
-        <CitySwitcher />
+        <div className="brand-lockup">
+          {picker ? null : (
+            <Link to="/cities" className="region-back">
+              <svg aria-hidden="true" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M15 6 9 12l6 6" />
+              </svg>
+              {regionName(city)}
+            </Link>
+          )}
+          <Link to={cityPath('/', linkCity)} className="wordmark shrink-0 font-serif text-2xl italic leading-none sm:text-3xl">
+            Gusto's Guide
+          </Link>
+        </div>
+        {showAreas ? <CitySwitcher /> : null}
         <form onSubmit={search} className="site-search ml-auto hidden w-44 shrink-0 lg:block min-[1400px]:w-60">
           <label className="sr-only" htmlFor="site-search">
             Search {areaName}
@@ -147,15 +167,15 @@ export function Header() {
           />
         </form>
         <nav className="site-nav hidden items-center gap-1 text-sm font-bold lg:flex" aria-label="Primary">
-          <Link to={cityPath('/explore')} onMouseEnter={() => prefetch('/explore')} onFocus={() => prefetch('/explore')}>Explore</Link>
-          <Link to={cityPath('/guides')}>Guides</Link>
-          <Link to={cityPath('/tonight')}>Tonight</Link>
-          <Link className="nav-wide" to={cityPath('/feed')}>Feed</Link>
-          <Link className="nav-wide" to={cityPath('/plans')} onMouseEnter={() => prefetch('/plans/wizard')} onFocus={() => prefetch('/plans/wizard')}>Plans</Link>
-          <Link className="nav-wide" to={cityPath('/rank')}>Rank</Link>
-          <Link className="nav-wide" to={cityPath('/my')}>My guides</Link>
-          {user?.isOwner ? <Link className="nav-wide" to={cityPath('/score')}>Scores</Link> : null}
-          {user?.isOwner ? <Link className="nav-wide" to={cityPath('/photos')}>Photos</Link> : null}
+          <Link to={cityPath('/explore', linkCity)} onMouseEnter={() => prefetch('/explore')} onFocus={() => prefetch('/explore')}>Explore</Link>
+          <Link to={cityPath('/guides', linkCity)}>Guides</Link>
+          <Link to={cityPath('/tonight', linkCity)}>Tonight</Link>
+          <Link className="nav-wide" to={cityPath('/feed', linkCity)}>Feed</Link>
+          <Link className="nav-wide" to={cityPath('/plans', linkCity)} onMouseEnter={() => prefetch('/plans/wizard')} onFocus={() => prefetch('/plans/wizard')}>Plans</Link>
+          <Link className="nav-wide" to={cityPath('/rank', linkCity)}>Rank</Link>
+          <Link className="nav-wide" to={cityPath('/my', linkCity)}>My guides</Link>
+          {user?.isOwner ? <Link className="nav-wide" to={cityPath('/score', linkCity)}>Scores</Link> : null}
+          {user?.isOwner ? <Link className="nav-wide" to={cityPath('/photos', linkCity)}>Photos</Link> : null}
           <div className="nav-more relative">
             <button
               type="button"
@@ -182,12 +202,12 @@ export function Header() {
                   exit={reduceMotion ? undefined : { opacity: 0, y: -6, scale: 0.96 }}
                   transition={{ type: 'spring', stiffness: 420, damping: 32 }}
                 >
-                  <Link to={cityPath('/feed')} onClick={() => setMore(false)}>Feed</Link>
-                  <Link to={cityPath('/plans')} onClick={() => setMore(false)} onFocus={() => prefetch('/plans/wizard')}>Plans</Link>
-                  <Link to={cityPath('/rank')} onClick={() => setMore(false)}>Rank</Link>
-                  <Link to={cityPath('/my')} onClick={() => setMore(false)}>My guides</Link>
-                  {user?.isOwner ? <Link to={cityPath('/score')} onClick={() => setMore(false)}>Scores</Link> : null}
-                  {user?.isOwner ? <Link to={cityPath('/photos')} onClick={() => setMore(false)}>Photos</Link> : null}
+                  <Link to={cityPath('/feed', linkCity)} onClick={() => setMore(false)}>Feed</Link>
+                  <Link to={cityPath('/plans', linkCity)} onClick={() => setMore(false)} onFocus={() => prefetch('/plans/wizard')}>Plans</Link>
+                  <Link to={cityPath('/rank', linkCity)} onClick={() => setMore(false)}>Rank</Link>
+                  <Link to={cityPath('/my', linkCity)} onClick={() => setMore(false)}>My guides</Link>
+                  {user?.isOwner ? <Link to={cityPath('/score', linkCity)} onClick={() => setMore(false)}>Scores</Link> : null}
+                  {user?.isOwner ? <Link to={cityPath('/photos', linkCity)} onClick={() => setMore(false)}>Photos</Link> : null}
                 </motion.div>
               ) : null}
             </AnimatePresence>
@@ -205,7 +225,7 @@ export function Header() {
           </button>
           {user ? (
             <>
-              <Link to={cityPath(`/u/${user.handle}`)} className="inline-flex max-w-[10rem] items-center gap-2">
+              <Link to={cityPath(`/u/${user.handle}`, linkCity)} className="inline-flex max-w-[10rem] items-center gap-2">
                 {user.avatarUrl ? <img src={user.avatarUrl} alt="" width={32} height={32} loading="lazy" decoding="async" className="h-8 w-8 shrink-0 rounded-full object-cover" /> : null}
                 <span className="truncate">{user.name}</span>
               </Link>
@@ -260,21 +280,21 @@ export function Header() {
             <input aria-label={`Search ${areaName}`} value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Search" className="glass-input w-full px-3 py-2" />
           </form>
           <AreaKicker />
-          <Link to={cityPath('/explore')} onClick={() => setMenu(false)} onFocus={() => prefetch('/explore')}>Explore</Link>
-          <Link to={cityPath('/guides')} onClick={() => setMenu(false)}>Guides</Link>
-          <Link to={cityPath('/tonight')} onClick={() => setMenu(false)}>Tonight</Link>
-          <Link to={cityPath('/feed')} onClick={() => setMenu(false)}>Feed</Link>
-          <Link to={cityPath('/plans')} onClick={() => setMenu(false)}>Plans</Link>
-          <Link to={cityPath('/rank')} onClick={() => setMenu(false)}>Rank</Link>
-          <Link to={cityPath('/my')} onClick={() => setMenu(false)}>My guides</Link>
-          {user?.isOwner ? <Link to={cityPath('/score')} onClick={() => setMenu(false)}>Scores</Link> : null}
-          {user?.isOwner ? <Link to={cityPath('/photos')} onClick={() => setMenu(false)}>Photos</Link> : null}
+          <Link to={cityPath('/explore', linkCity)} onClick={() => setMenu(false)} onFocus={() => prefetch('/explore')}>Explore</Link>
+          <Link to={cityPath('/guides', linkCity)} onClick={() => setMenu(false)}>Guides</Link>
+          <Link to={cityPath('/tonight', linkCity)} onClick={() => setMenu(false)}>Tonight</Link>
+          <Link to={cityPath('/feed', linkCity)} onClick={() => setMenu(false)}>Feed</Link>
+          <Link to={cityPath('/plans', linkCity)} onClick={() => setMenu(false)}>Plans</Link>
+          <Link to={cityPath('/rank', linkCity)} onClick={() => setMenu(false)}>Rank</Link>
+          <Link to={cityPath('/my', linkCity)} onClick={() => setMenu(false)}>My guides</Link>
+          {user?.isOwner ? <Link to={cityPath('/score', linkCity)} onClick={() => setMenu(false)}>Scores</Link> : null}
+          {user?.isOwner ? <Link to={cityPath('/photos', linkCity)} onClick={() => setMenu(false)}>Photos</Link> : null}
           <button type="button" className="text-left" aria-label="Notifications" onClick={() => { setMenu(false); setBell(true); markNoticesRead() }}>
             Notifications{unread ? ` (${unread})` : ''}
           </button>
           {user ? (
             <>
-              <Link to={cityPath(`/u/${user.handle}`)} className="inline-flex items-center gap-2" onClick={() => setMenu(false)}>
+              <Link to={cityPath(`/u/${user.handle}`, linkCity)} className="inline-flex items-center gap-2" onClick={() => setMenu(false)}>
                 {user.avatarUrl ? <img src={user.avatarUrl} alt="" width={32} height={32} loading="lazy" decoding="async" className="h-8 w-8 rounded-full object-cover" /> : null}
                 {user.name}
               </Link>

@@ -5,7 +5,7 @@ import { GuideMap, type MapBounds } from '../components/GuideMap.tsx'
 import { MapLinks } from '../components/MapLinks.tsx'
 import { PlaceThumb } from '../components/PlaceThumb.tsx'
 import { ScoreBadge, scoreBand } from '../components/ScoreBadge.tsx'
-import { areaTitle, cityPath } from '../lib/city.ts'
+import { areaPhrase, areaTitle, cityPath } from '../lib/city.ts'
 import { useCityCatalog } from '../lib/use-city.ts'
 import { isOpen } from '../lib/hours.ts'
 import { priceLabel } from '../lib/format.ts'
@@ -35,7 +35,7 @@ function inside(place: SlimPlace, box: MapBounds): boolean {
 
 export function ExplorePage() {
   const { city, places } = useCityCatalog()
-  const areaName = city === 'eastside' ? 'the Eastside' : 'Seattle'
+  const areaName = areaPhrase(city)
   usePageMeta("Explore · Gusto's Guide", `Every ${areaName} place on the guide, on one map.`, './og/og.svg')
   const app = useApp()
   const reduceMotion = useReducedMotion()
