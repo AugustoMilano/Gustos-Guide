@@ -8,6 +8,7 @@ import { demoFriendsEnabled } from '../lib/demo.ts'
 import { PlaceThumb } from './PlaceThumb.tsx'
 import { SignInSheet } from './SignInSheet.tsx'
 import { catalog } from '../content/load.ts'
+import { cityPath } from '../lib/city.ts'
 import { useCityCatalog } from '../lib/use-city.ts'
 import { isOpen } from '../lib/hours.ts'
 import { useApp } from '../state/AppState.tsx'
@@ -191,7 +192,7 @@ export function PlanSheet({ open, onClose, seedPlaceId }: { open: boolean; onClo
             const id = app.createPlan(title, picked, [date], { time, inviteIds: invited })
             if (!id) return
             onClose()
-            navigate(`/plan/${id}`)
+            navigate(cityPath(`/plan/${id}`))
           }}
         >
           <div className="sheet-grab" onPointerDown={swipeStart}>

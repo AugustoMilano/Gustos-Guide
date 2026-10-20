@@ -9,7 +9,9 @@ import { PlanCard, PlanSheet } from '../components/PlanSheet.tsx'
 import { SignInSheet } from '../components/SignInSheet.tsx'
 import { SlidingRow } from '../components/SlidingRow.tsx'
 import { ScoreBadge } from '../components/ScoreBadge.tsx'
+import { AreaKicker } from '../components/AreaKicker.tsx'
 import { catalog, slimById } from '../content/load.ts'
+import { cityPath } from '../lib/city.ts'
 import { useCityCatalog } from '../lib/use-city.ts'
 import { demoFriendsEnabled } from '../lib/demo.ts'
 import { priceLabel, publicReference } from '../lib/format.ts'
@@ -25,10 +27,11 @@ export function PlansPage() {
   usePageMeta("Go together · Gusto's Guide", 'Make a plan, invite friends, vote on a place and a date.')
   return (
     <main id="main" tabIndex={-1} className="mx-auto max-w-3xl px-4 pt-24 pb-16 outline-none">
-      <h1 className="font-serif text-5xl italic">Go together</h1>
+      <AreaKicker />
+      <h1 className="mt-2 font-serif text-5xl italic">Go together</h1>
       <div className="mt-4 flex flex-wrap gap-2">
         <button type="button" className="btn btn-coral" onClick={() => setSheet(true)}>New plan</button>
-        <Link className="btn" to="/plans/wizard">Plan dinner</Link>
+        <Link className="btn" to={cityPath('/plans/wizard')}>Plan dinner</Link>
       </div>
       {!app.user ? <p className="mt-3 text-sm">Sign in to host a plan. Friends you add are the only people invited.</p> : null}
       <ul className="mt-6 space-y-3">
@@ -62,7 +65,8 @@ export function PlanDetailPage() {
   for (const vote of Object.values(plan.votes)) if (vote.placeId) tally.set(vote.placeId, (tally.get(vote.placeId) ?? 0) + 1)
   return (
     <main id="main" tabIndex={-1} className="mx-auto max-w-3xl px-4 pt-24 pb-16 outline-none">
-      <Link to="/plans" className="text-sm font-bold">← Plans</Link>
+      <AreaKicker />
+      <Link to={cityPath('/plans')} className="mt-2 inline-flex min-h-11 items-center text-sm font-bold">← Plans</Link>
       <p className="mt-3 text-xs font-bold uppercase tracking-wide">{demoFriendsEnabled && plan.demo ? 'Seeded plan' : 'Your plan'}{plan.locked ? ' · Locked in' : ''}{plan.vibe ? ` · ${plan.vibe}` : ''}</p>
       <h1 className="font-serif text-5xl italic">{plan.title}</h1>
       {plan.locked ? <p className="mt-2">This dinner is locked in. The votes below are the record.</p> : null}
@@ -270,16 +274,17 @@ export function PlanWizardPage() {
     if (!id) return
     const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches
     if (reduce) {
-      navigate(`/plan/${id}`)
+      navigate(cityPath(`/plan/${id}`))
       return
     }
     setCelebrate(true)
-    window.setTimeout(() => navigate(`/plan/${id}`), 900)
+    window.setTimeout(() => navigate(cityPath(`/plan/${id}`)), 900)
   }
 
   return (
     <main id="main" tabIndex={-1} className="mx-auto max-w-3xl px-4 pt-24 pb-16 outline-none">
-      <Link to="/plans" className="text-sm font-bold">← Plans</Link>
+      <AreaKicker />
+      <Link to={cityPath('/plans')} className="mt-2 inline-flex min-h-11 items-center text-sm font-bold">← Plans</Link>
       <h1 className="mt-3 font-serif text-5xl italic">Plan dinner</h1>
       <div className="wizard-progress mt-4" aria-hidden="true">
         <span style={{ width: `${((step + 1) / steps.length) * 100}%` }} />

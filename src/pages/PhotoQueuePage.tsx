@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
+import { AreaKicker } from '../components/AreaKicker.tsx'
 import { PlaceThumb } from '../components/PlaceThumb.tsx'
 import { SignInSheet } from '../components/SignInSheet.tsx'
 import { loadGuides } from '../content/load.ts'
@@ -49,8 +50,8 @@ export function PhotoQueuePage() {
 
   return (
     <main id="main" tabIndex={-1} className="mx-auto max-w-3xl px-4 pt-24 pb-16 outline-none">
-      <p className="text-xs font-bold tracking-[0.14em] uppercase">House</p>
-      <h1 className="font-serif text-5xl italic">Needs a photo</h1>
+      <AreaKicker />
+      <h1 className="mt-2 font-serif text-5xl italic">Needs a photo</h1>
       {!app.user ? (
         <div className="friend-empty mt-4">
           <p className="font-serif text-2xl italic">Sign in to add house photos.</p>

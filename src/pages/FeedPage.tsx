@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
+import { AreaKicker } from '../components/AreaKicker.tsx'
 import { FriendEmpty } from '../components/FriendEmpty.tsx'
 import { PlaceThumb } from '../components/PlaceThumb.tsx'
 import { SignInSheet } from '../components/SignInSheet.tsx'
@@ -29,7 +30,8 @@ export function FeedPage() {
   return (
     <main id="main" tabIndex={-1} className="mx-auto grid max-w-6xl gap-8 px-4 pt-24 pb-16 outline-none lg:grid-cols-[minmax(0,1fr)_280px]">
       <div>
-        <p className="text-xs font-bold tracking-[0.14em] uppercase">Friends only</p>
+        <AreaKicker />
+        <p className="mt-2 text-xs font-bold tracking-[0.14em] uppercase">Friends only</p>
         <h1 className="font-serif text-5xl italic">The feed</h1>
         <ul className="mt-6 space-y-4">
           {app.activities.length === 0 ? (

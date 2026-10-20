@@ -61,7 +61,6 @@ export function HomePage() {
   )
   const app = useApp()
   const reduceMotion = useReducedMotion()
-  const press = reduceMotion ? undefined : { scale: 0.97 }
   const { photos } = app
   const featuredSlugs = east
     ? ['best-of-bellevue', 'kirkland-waterfront', 'best-of-kirkland', 'redmond', 'issaquah', 'bothell']
@@ -81,7 +80,7 @@ export function HomePage() {
     .filter((row) => row.place)
     .slice(0, 4)
   return (
-    <main id="main" tabIndex={-1} className="outline-none">
+    <main id="main" tabIndex={-1} className="home-main outline-none">
       <section className="hero on-navy relative overflow-hidden">
         <div className="hero-copy relative mx-auto max-w-6xl px-4 pt-28 pb-14 sm:pt-32">
           <h1 className="max-w-3xl font-serif text-5xl italic leading-[1.05] text-cream sm:text-7xl">{east ? 'Eat across the Eastside.' : 'Eat your way through Seattle.'}</h1>
@@ -91,12 +90,8 @@ export function HomePage() {
               : 'From a 7am bun to the last good stool on Pike. Pizza, oysters, teriyaki, and the bars worth the hill.'}
           </p>
           <div className="mt-6 flex flex-wrap gap-3">
-            <motion.div whileTap={press} whileHover={reduceMotion ? undefined : { y: -1 }}>
-              <Link to={cityPath('/guides')} className="btn btn-coral">Browse the guides</Link>
-            </motion.div>
-            <motion.div whileTap={press} whileHover={reduceMotion ? undefined : { y: -1 }}>
-              <Link to={cityPath('/search')} className="btn">Search the list</Link>
-            </motion.div>
+            <Link to={cityPath('/guides')} className="btn btn-coral">Browse the guides</Link>
+            <Link to={cityPath('/search')} className="btn">Search the list</Link>
           </div>
         </div>
       </section>

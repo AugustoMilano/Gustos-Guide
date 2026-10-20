@@ -4,6 +4,7 @@ import { dragSheet } from '../lib/motion.ts'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { cityPath } from '../lib/city.ts'
 import { useCityId } from '../lib/use-city.ts'
+import { AreaKicker } from './AreaKicker.tsx'
 import { CitySwitcher } from './CitySwitcher.tsx'
 import { SignInSheet } from './SignInSheet.tsx'
 import { useApp } from '../state/AppState.tsx'
@@ -79,7 +80,6 @@ export function Header() {
   const reduceMotion = useReducedMotion()
   const [scrolled, setScrolled] = useState(false)
   const [onHero, setOnHero] = useState(() => location.pathname === '/' || location.pathname === '/seattle' || location.pathname === '/eastside')
-  const press = reduceMotion ? undefined : { scale: 0.97 }
   const route = `${location.pathname}${location.search}`
 
   useEffect(() => {
@@ -128,9 +128,9 @@ export function Header() {
   }
 
   return (
-    <header key={onHero ? 'hero' : 'page'} className={`site-header${onHero ? ' on-hero' : ''}${scrolled && !onHero ? ' is-scrolled' : ''}`}>
-      <div className="mx-auto flex w-full max-w-[100rem] items-center gap-3 px-4 py-3">
-        <Link to={cityPath('/')} className="shrink-0 font-serif text-3xl italic leading-none">
+    <header className={`site-header${onHero ? ' on-hero' : ''}${scrolled && !onHero ? ' is-scrolled' : ''}`}>
+      <div className="header-bar mx-auto flex w-full max-w-[100rem] items-center gap-3 px-4 py-3">
+        <Link to={cityPath('/')} className="wordmark shrink-0 font-serif text-2xl italic leading-none sm:text-3xl">
           Gusto's Guide
         </Link>
         <CitySwitcher />
@@ -217,11 +217,10 @@ export function Header() {
             </button>
           )}
         </nav>
-        <motion.button
+        <button
           type="button"
           ref={bellMobile}
-          whileTap={press}
-          className="glass-icon relative ml-auto inline-flex min-h-11 min-w-11 items-center justify-center px-2 lg:hidden"
+          className="bell-btn glass-icon relative ml-auto inline-flex min-h-11 min-w-11 items-center justify-center px-2 lg:hidden"
           aria-label={unread ? `Notifications, ${unread} unread` : 'Notifications'}
           aria-expanded={bell}
           aria-controls="notifications-panel"
@@ -229,12 +228,11 @@ export function Header() {
         >
           <BellIcon />
           {unread ? <span className="absolute -top-1.5 -right-1.5 min-w-5 rounded-full bg-coral px-1 text-center text-xs font-bold leading-5">{unread}</span> : null}
-        </motion.button>
-        <motion.button
+        </button>
+        <button
           type="button"
           ref={menuButton}
-          whileTap={press}
-          className="glass-icon inline-flex min-h-11 items-center px-3 text-sm font-bold lg:hidden"
+          className="menu-btn glass-icon inline-flex min-h-11 items-center px-3 text-sm font-bold lg:hidden"
           aria-expanded={menu}
           aria-controls="mobile-menu"
           onClick={() => {
@@ -243,14 +241,14 @@ export function Header() {
           }}
         >
           {menu ? 'Close' : 'Menu'}
-        </motion.button>
+        </button>
       </div>
       <AnimatePresence>
       {menu ? (
         <motion.nav
           ref={menuPanel}
           id="mobile-menu"
-          className="menu-sheet glass grid max-h-[calc(100dvh-5.5rem)] gap-2 overflow-y-auto text-sm font-bold lg:hidden"
+          className="menu-sheet glass grid max-h-[calc(100dvh-var(--header-offset)-0.75rem)] gap-2 overflow-y-auto text-sm font-bold lg:hidden"
           aria-label="Menu"
           style={{ transformOrigin: 'top right' }}
           initial={reduceMotion ? false : { opacity: 0, y: -10, scale: 0.92 }}
@@ -261,7 +259,7 @@ export function Header() {
           <form onSubmit={search}>
             <input aria-label={`Search ${areaName}`} value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Search" className="glass-input w-full px-3 py-2" />
           </form>
-          <CitySwitcher layoutId="city-pill-menu" />
+          <AreaKicker />
           <Link to={cityPath('/explore')} onClick={() => setMenu(false)} onFocus={() => prefetch('/explore')}>Explore</Link>
           <Link to={cityPath('/guides')} onClick={() => setMenu(false)}>Guides</Link>
           <Link to={cityPath('/tonight')} onClick={() => setMenu(false)}>Tonight</Link>

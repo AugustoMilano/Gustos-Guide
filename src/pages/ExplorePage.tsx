@@ -5,7 +5,7 @@ import { GuideMap, type MapBounds } from '../components/GuideMap.tsx'
 import { MapLinks } from '../components/MapLinks.tsx'
 import { PlaceThumb } from '../components/PlaceThumb.tsx'
 import { ScoreBadge, scoreBand } from '../components/ScoreBadge.tsx'
-import { cityPath } from '../lib/city.ts'
+import { areaTitle, cityPath } from '../lib/city.ts'
 import { useCityCatalog } from '../lib/use-city.ts'
 import { isOpen } from '../lib/hours.ts'
 import { priceLabel } from '../lib/format.ts'
@@ -91,7 +91,10 @@ export function ExplorePage() {
       <h1 className="sr-only">Explore {areaName}</h1>
       <section className={`explore-list ${sheet ? 'is-open' : 'is-peek'}`} aria-label="Places in this view">
         <div className="flex items-center justify-between gap-2 border-b-2 border-ink px-3 py-2">
-          <p className="font-serif text-2xl italic">{listed.length} places</p>
+          <p className="min-w-0">
+            <span className="area-kicker">{areaTitle(city)}</span>
+            <span className="mt-0.5 block font-serif text-2xl italic leading-none">{listed.length} places</span>
+          </p>
           <button
             type="button"
             className="btn text-sm md:hidden"
@@ -147,7 +150,7 @@ export function ExplorePage() {
           {area ? (
             <p className="px-3 pb-2 text-sm">
               Searching this area.{' '}
-              <button type="button" className="inline-flex min-h-11 items-center font-bold underline" onClick={resetArea}>Clear</button>
+              <button type="button" className="btn text-sm" onClick={resetArea}>Clear</button>
             </p>
           ) : null}
           <ul className="space-y-2 px-3 pb-4">

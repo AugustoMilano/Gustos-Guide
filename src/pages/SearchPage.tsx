@@ -3,6 +3,7 @@ import { useReducedMotion } from 'framer-motion'
 import { Link, useSearchParams } from 'react-router-dom'
 import { PlaceThumb } from '../components/PlaceThumb.tsx'
 import { ScoreBadge } from '../components/ScoreBadge.tsx'
+import { AreaKicker } from '../components/AreaKicker.tsx'
 import { cityPath } from '../lib/city.ts'
 import { useCityCatalog } from '../lib/use-city.ts'
 import { milesBetween, priceLabel, publicReference } from '../lib/format.ts'
@@ -45,7 +46,8 @@ export function SearchPage() {
 
   return (
     <main id="main" tabIndex={-1} className="mx-auto max-w-3xl px-4 pt-24 pb-16 outline-none">
-      <h1 className="font-serif text-5xl italic">Search {area === 'the Eastside' ? 'the Eastside' : 'Seattle'}</h1>
+      <AreaKicker />
+      <h1 className="mt-2 font-serif text-5xl italic">Search {area === 'the Eastside' ? 'the Eastside' : 'Seattle'}</h1>
       <form className="mt-4" onSubmit={(event) => event.preventDefault()}>
         <label className="field">
           <span>Places, guides, cuisines, neighborhoods</span>

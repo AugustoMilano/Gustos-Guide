@@ -64,10 +64,12 @@ export function GuideHero({
   title,
   places,
   uploads,
+  area = 'Seattle',
 }: {
   title: string
   places: SlimPlace[]
   uploads: LivePhoto[]
+  area?: string
 }) {
   const [failed, setFailed] = useState<string[]>([])
   function markFailed(url: string | undefined) {
@@ -95,7 +97,7 @@ export function GuideHero({
       )}
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-navy via-navy/40 to-transparent" />
       <div className="absolute inset-x-0 bottom-0 p-4 sm:p-6">
-        <p className="text-xs font-bold tracking-[0.16em] uppercase text-white">Seattle</p>
+        <p className="area-kicker text-white">{area}</p>
         <h1 className="mt-1 max-w-4xl font-serif text-4xl italic leading-none text-white sm:text-6xl">{title}</h1>
       </div>
     </div>
