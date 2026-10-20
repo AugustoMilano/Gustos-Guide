@@ -144,7 +144,8 @@
           "alt": "Illustration suggesting Vietnamese at Monsoon Bellevue",
           "credit": "Illustration"
         }
-      ]
+      ],
+      "price": 2
     },
     {
       "id": "seastar-restaurant-and-raw-bar",
@@ -160,7 +161,21 @@
       "placeType": "restaurant",
       "oneLiner": "",
       "perfectFor": [],
-      "periods": [],
+      "periods": [
+        {
+          "days": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "start": 960,
+          "end": 1260
+        }
+      ],
       "gustoScore": null,
       "website": "https://seastarrestaurant.com/",
       "phone": "+1 (425) 456-0010",
@@ -184,7 +199,8 @@
           "alt": "Illustration suggesting Seafood at Seastar Restaurant & Raw Bar",
           "credit": "Illustration"
         }
-      ]
+      ],
+      "price": 3
     },
     {
       "id": "john-howie-steak",
@@ -500,7 +516,8 @@
           "alt": "Illustration suggesting American at The Slip",
           "credit": "Illustration"
         }
-      ]
+      ],
+      "price": 2
     },
     {
       "id": "beachhouse-bar-and-grill",
@@ -580,7 +597,8 @@
           "alt": "Illustration suggesting American at BeachHouse Bar + Grill",
           "credit": "Illustration"
         }
-      ]
+      ],
+      "price": 3
     },
     {
       "id": "ristorante-paradiso",
@@ -652,7 +670,8 @@
           "alt": "Illustration suggesting Italian at Ristorante Paradiso",
           "credit": "Illustration"
         }
-      ]
+      ],
+      "website": "https://ristoranteparadiso.com"
     },
     {
       "id": "cafe-juanita",
@@ -782,7 +801,8 @@
           "alt": "Illustration suggesting American at Woodblock",
           "credit": "Illustration"
         }
-      ]
+      ],
+      "price": 2
     },
     {
       "id": "pomegranate-bistro",
@@ -852,7 +872,8 @@
           "alt": "Illustration suggesting American at Pomegranate Bistro",
           "credit": "Illustration"
         }
-      ]
+      ],
+      "price": 2
     },
     {
       "id": "jaks-grill",
@@ -975,7 +996,45 @@
       "placeType": "brewery",
       "oneLiner": "Public house on Beardslee Boulevard. The beer is brewed in the building.",
       "perfectFor": [],
-      "periods": [],
+      "periods": [
+        {
+          "days": [
+            0
+          ],
+          "start": 630,
+          "end": 1230
+        },
+        {
+          "days": [
+            6
+          ],
+          "start": 630,
+          "end": 1260
+        },
+        {
+          "days": [
+            2,
+            3,
+            4
+          ],
+          "start": 720,
+          "end": 1230
+        },
+        {
+          "days": [
+            5
+          ],
+          "start": 720,
+          "end": 1260
+        },
+        {
+          "days": [
+            1
+          ],
+          "start": 930,
+          "end": 1230
+        }
+      ],
       "gustoScore": null,
       "website": "https://beardsleeph.com/",
       "phone": "+1 (425) 286-1001",
@@ -998,7 +1057,8 @@
           "alt": "Illustration suggesting American at Beardslee Public House",
           "credit": "Illustration"
         }
-      ]
+      ],
+      "price": 2
     },
     {
       "id": "amaro-bistro",
@@ -1124,7 +1184,8 @@
         "count": 1059,
         "source": "Yelp"
       },
-      "yelpSlug": "gxsirnsHHzl6P6XNIvVfeg"
+      "yelpSlug": "gxsirnsHHzl6P6XNIvVfeg",
+      "price": 2
     },
     {
       "id": "bellevue-brewing",
@@ -1140,7 +1201,33 @@
       "placeType": "brewery",
       "oneLiner": "A brewpub on Northeast District Way in the Spring District.",
       "perfectFor": [],
-      "periods": [],
+      "periods": [
+        {
+          "days": [
+            0
+          ],
+          "start": 690,
+          "end": 1260
+        },
+        {
+          "days": [
+            1,
+            2,
+            3,
+            4,
+            6
+          ],
+          "start": 690,
+          "end": 1320
+        },
+        {
+          "days": [
+            5
+          ],
+          "start": 690,
+          "end": 1380
+        }
+      ],
       "gustoScore": null,
       "website": "https://www.bellevuebrewing.com",
       "appleMapsUrl": "https://maps.apple.com/?daddr=47.621394,-122.1778158&q=Bellevue%20Brewing%20Company",
@@ -1170,7 +1257,9 @@
         "count": 206,
         "source": "Yelp"
       },
-      "yelpSlug": "KM7OsHRmID4lLu2amREVfg"
+      "yelpSlug": "KM7OsHRmID4lLu2amREVfg",
+      "phone": "+1 (425) 497-8686",
+      "price": 2
     },
     {
       "id": "arayas-place",
@@ -1186,7 +1275,40 @@
       "placeType": "restaurant",
       "oneLiner": "Vegan Thai on Main Street, and the mock duck is the order.",
       "perfectFor": [],
-      "periods": [],
+      "periods": [
+        {
+          "days": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "start": 690,
+          "end": 900
+        },
+        {
+          "days": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "start": 990,
+          "end": 1260
+        },
+        {
+          "days": [
+            5,
+            6
+          ],
+          "start": 990,
+          "end": 1290
+        }
+      ],
       "gustoScore": null,
       "website": "https://www.arayasplace.com",
       "phone": "+1 (425) 454-2440",
@@ -1282,7 +1404,8 @@
         "count": 441,
         "source": "Yelp"
       },
-      "yelpSlug": "l-Oy3_fCE4VPhQ55lct-FQ"
+      "yelpSlug": "l-Oy3_fCE4VPhQ55lct-FQ",
+      "price": 1
     },
     {
       "id": "cascadia-pizza",
@@ -1298,7 +1421,27 @@
       "placeType": "restaurant",
       "oneLiner": "Wood-fired pies on 130th, in the Bel-Red warehouse blocks.",
       "perfectFor": [],
-      "periods": [],
+      "periods": [
+        {
+          "days": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "start": 690,
+          "end": 1260
+        },
+        {
+          "days": [
+            5,
+            6
+          ],
+          "start": 690,
+          "end": 1320
+        }
+      ],
       "gustoScore": null,
       "website": "https://www.cascadiapizzaco.com/",
       "appleMapsUrl": "https://maps.apple.com/?daddr=47.626576,-122.1662253&q=Cascadia%20Pizza%20Co.",
@@ -1327,7 +1470,9 @@
         "count": 167,
         "source": "Yelp"
       },
-      "yelpSlug": "ssSXXTx_xOiMGrmu_33-pg"
+      "yelpSlug": "ssSXXTx_xOiMGrmu_33-pg",
+      "phone": "+1 (425) 274-2100",
+      "price": 2
     },
     {
       "id": "farine-bakery",
@@ -1380,7 +1525,8 @@
           "alt": "Illustration suggesting Bakery at Farine Bakery",
           "credit": "Illustration"
         }
-      ]
+      ],
+      "phone": "+1 (425) 502-7265"
     },
     {
       "id": "fogo-de-chao",
@@ -1467,7 +1613,38 @@
       "placeType": "restaurant",
       "oneLiner": "A long-running sushi room just south of Main, off 102nd.",
       "perfectFor": [],
-      "periods": [],
+      "periods": [
+        {
+          "days": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "start": 690,
+          "end": 840
+        },
+        {
+          "days": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "start": 1020,
+          "end": 1260
+        },
+        {
+          "days": [
+            5,
+            6
+          ],
+          "start": 1020,
+          "end": 1290
+        }
+      ],
       "gustoScore": null,
       "website": "https://www.ginzabellevue.com/",
       "appleMapsUrl": "https://maps.apple.com/?daddr=47.6098826,-122.2043064&q=Ginza",
@@ -1497,7 +1674,9 @@
         "count": 875,
         "source": "Yelp"
       },
-      "yelpSlug": "vmy0Csf5YEywg_geEA3tCA"
+      "yelpSlug": "vmy0Csf5YEywg_geEA3tCA",
+      "phone": "+1 (425) 709-7072",
+      "price": 2
     },
     {
       "id": "i-love-sushi",
@@ -1513,7 +1692,40 @@
       "placeType": "restaurant",
       "oneLiner": "Sushi on Lake Bellevue Drive, with a deck over the water.",
       "perfectFor": [],
-      "periods": [],
+      "periods": [
+        {
+          "days": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "start": 690,
+          "end": 840
+        },
+        {
+          "days": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "start": 1020,
+          "end": 1245
+        },
+        {
+          "days": [
+            5,
+            6
+          ],
+          "start": 1020,
+          "end": 1260
+        }
+      ],
       "gustoScore": null,
       "website": "https://ilovesushi.com/",
       "phone": "+1 (425) 455-9090",
@@ -1544,7 +1756,8 @@
         "count": 802,
         "source": "Yelp"
       },
-      "yelpSlug": "bcjWiEonA4lVLf7md6N6PA"
+      "yelpSlug": "bcjWiEonA4lVLf7md6N6PA",
+      "price": 2
     },
     {
       "id": "katsu-burger",
@@ -1604,7 +1817,8 @@
         "count": 569,
         "source": "Yelp"
       },
-      "yelpSlug": "QOYPgNeaTMIvn-9crMovVg"
+      "yelpSlug": "QOYPgNeaTMIvn-9crMovVg",
+      "price": 2
     },
     {
       "id": "peony",
@@ -1671,7 +1885,8 @@
         "count": 644,
         "source": "Yelp"
       },
-      "yelpSlug": "grempm7OaF3ZE_3gtYgdAQ"
+      "yelpSlug": "grempm7OaF3ZE_3gtYgdAQ",
+      "price": 2
     },
     {
       "id": "takai-by-kashiba",
@@ -1687,7 +1902,19 @@
       "placeType": "restaurant",
       "oneLiner": "Shiro Kashiba's sushi counter on Bellevue Way. Book the omakase.",
       "perfectFor": [],
-      "periods": [],
+      "periods": [
+        {
+          "days": [
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "start": 1050,
+          "end": 1260
+        }
+      ],
       "gustoScore": null,
       "website": "https://takaibykashiba.com/",
       "phone": "+1 (425) 502-7259",
@@ -1727,7 +1954,21 @@
       "placeType": "restaurant",
       "oneLiner": "Hand-pulled biang biang noodles on Bellevue Way by the mall.",
       "perfectFor": [],
-      "periods": [],
+      "periods": [
+        {
+          "days": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "start": 660,
+          "end": 1230
+        }
+      ],
       "gustoScore": null,
       "website": "https://www.xiannoodles.com/",
       "phone": "+1 (425) 286-8888",
@@ -1758,7 +1999,8 @@
         "count": 147,
         "source": "Yelp"
       },
-      "yelpSlug": "kWetirlXv5PmEjRBk4EAKQ"
+      "yelpSlug": "kWetirlXv5PmEjRBk4EAKQ",
+      "price": 2
     },
     {
       "id": "anthonys-homeport",
@@ -1823,7 +2065,8 @@
           "alt": "Illustration suggesting Seafood at Anthony's HomePort",
           "credit": "Illustration"
         }
-      ]
+      ],
+      "price": 2
     },
     {
       "id": "bottle-and-bull",
@@ -1882,7 +2125,8 @@
           "alt": "Illustration suggesting American at Bottle & Bull",
           "credit": "Illustration"
         }
-      ]
+      ],
+      "price": 2
     },
     {
       "id": "como",
@@ -1898,7 +2142,27 @@
       "placeType": "restaurant",
       "oneLiner": "Lombardy-style Italian at Carillon Point, dinner beside the lake.",
       "perfectFor": [],
-      "periods": [],
+      "periods": [
+        {
+          "days": [
+            0,
+            3,
+            4,
+            5,
+            6
+          ],
+          "start": 960,
+          "end": 1320
+        },
+        {
+          "days": [
+            1,
+            2
+          ],
+          "start": 960,
+          "end": 1290
+        }
+      ],
       "gustoScore": null,
       "website": "https://www.comousa.com/",
       "phone": "+1 (425) 484-0787",
@@ -1922,7 +2186,8 @@
           "alt": "Illustration suggesting Italian at Como",
           "credit": "Illustration"
         }
-      ]
+      ],
+      "price": 3
     },
     {
       "id": "feast",
@@ -2070,7 +2335,8 @@
         "count": 480,
         "source": "Yelp"
       },
-      "yelpSlug": "2fJ4Rmwukbgm-4fQen9aRg"
+      "yelpSlug": "2fJ4Rmwukbgm-4fQen9aRg",
+      "price": 2
     },
     {
       "id": "hanuman-thai",
@@ -2142,7 +2408,9 @@
         "count": 343,
         "source": "Yelp"
       },
-      "yelpSlug": "NZ1AkiNssGaY9fI1xoQk7A"
+      "yelpSlug": "NZ1AkiNssGaY9fI1xoQk7A",
+      "phone": "+1 (425) 822-2629",
+      "price": 2
     },
     {
       "id": "moss-bay-hall",
@@ -2158,7 +2426,39 @@
       "placeType": "pub",
       "oneLiner": "A downtown Kirkland hall on Central Way, a block from the lake.",
       "perfectFor": [],
-      "periods": [],
+      "periods": [
+        {
+          "days": [
+            0
+          ],
+          "start": 600,
+          "end": 1380
+        },
+        {
+          "days": [
+            6
+          ],
+          "start": 600,
+          "end": 1440
+        },
+        {
+          "days": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "start": 660,
+          "end": 1380
+        },
+        {
+          "days": [
+            5
+          ],
+          "start": 660,
+          "end": 1440
+        }
+      ],
       "gustoScore": null,
       "website": "https://mossbayhall.com",
       "appleMapsUrl": "https://maps.apple.com/?daddr=47.6762912,-122.2078125&q=Moss%20Bay%20Hall",
@@ -2187,7 +2487,9 @@
         "count": 208,
         "source": "Yelp"
       },
-      "yelpSlug": "vOJ-nVN7xs6Sr2QpkoXm-w"
+      "yelpSlug": "vOJ-nVN7xs6Sr2QpkoXm-w",
+      "phone": "+1 (425) 285-9132",
+      "price": 2
     },
     {
       "id": "sparrow",
@@ -2258,7 +2560,8 @@
           "alt": "Illustration suggesting American at Sparrow",
           "credit": "Illustration"
         }
-      ]
+      ],
+      "price": 3
     },
     {
       "id": "spicy-talk-bistro",
@@ -2274,7 +2577,36 @@
       "placeType": "restaurant",
       "oneLiner": "Sichuan cooking on 120th Avenue Northeast, out by Totem Lake.",
       "perfectFor": [],
-      "periods": [],
+      "periods": [
+        {
+          "days": [
+            2,
+            3,
+            4,
+            5
+          ],
+          "start": 690,
+          "end": 900
+        },
+        {
+          "days": [
+            0,
+            6
+          ],
+          "start": 720,
+          "end": 1260
+        },
+        {
+          "days": [
+            2,
+            3,
+            4,
+            5
+          ],
+          "start": 990,
+          "end": 1260
+        }
+      ],
       "gustoScore": null,
       "website": "https://www.spicytalkbistro.com/",
       "appleMapsUrl": "https://maps.apple.com/?daddr=47.7088394,-122.185093&q=Spicy%20Talk%20Bistro",
@@ -2304,7 +2636,9 @@
         "count": 267,
         "source": "Yelp"
       },
-      "yelpSlug": "bFWYdUimp6cKYtbTPKa7qQ"
+      "yelpSlug": "bFWYdUimp6cKYtbTPKa7qQ",
+      "phone": "+1 (425) 821-8898",
+      "price": 2
     },
     {
       "id": "volterra",
@@ -2320,7 +2654,33 @@
       "placeType": "restaurant",
       "oneLiner": "Italian on Kirkland Avenue, the Eastside room of the Ballard original.",
       "perfectFor": [],
-      "periods": [],
+      "periods": [
+        {
+          "days": [
+            0
+          ],
+          "start": 960,
+          "end": 1260
+        },
+        {
+          "days": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "start": 960,
+          "end": 1290
+        },
+        {
+          "days": [
+            5,
+            6
+          ],
+          "start": 960,
+          "end": 1320
+        }
+      ],
       "gustoScore": null,
       "website": "https://volterrakirkland.com/",
       "appleMapsUrl": "https://maps.apple.com/?daddr=47.6754527,-122.2052842&q=Volterra",
@@ -2342,7 +2702,9 @@
           "alt": "Illustration suggesting Italian at Volterra",
           "credit": "Illustration"
         }
-      ]
+      ],
+      "phone": "+1 (425) 202-7201",
+      "price": 3
     },
     {
       "id": "deru-market",
@@ -2452,7 +2814,8 @@
           "alt": "Illustration suggesting American at Matts' Rotisserie & Oyster Lounge",
           "credit": "Illustration"
         }
-      ]
+      ],
+      "price": 3
     },
     {
       "id": "ristorante-tropea",
@@ -2468,7 +2831,38 @@
       "placeType": "restaurant",
       "oneLiner": "Southern Italian dinner on 164th Avenue Northeast in Overlake.",
       "perfectFor": [],
-      "periods": [],
+      "periods": [
+        {
+          "days": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "start": 660,
+          "end": 840
+        },
+        {
+          "days": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "start": 990,
+          "end": 1260
+        },
+        {
+          "days": [
+            5,
+            6
+          ],
+          "start": 990,
+          "end": 1320
+        }
+      ],
       "gustoScore": null,
       "website": "https://www.ristorantetropea.com/",
       "phone": "+1 (425) 448-9982",
@@ -2499,7 +2893,8 @@
         "count": 455,
         "source": "Yelp"
       },
-      "yelpSlug": "1PXPK3Igro_DFh01go3y4A"
+      "yelpSlug": "1PXPK3Igro_DFh01go3y4A",
+      "price": 3
     },
     {
       "id": "the-british-pantry",
@@ -2628,7 +3023,8 @@
           "alt": "Illustration suggesting American at Postdoc Brewing",
           "credit": "Illustration"
         }
-      ]
+      ],
+      "phone": "+1 (425) 658-4963"
     },
     {
       "id": "rubinstein-bagels",
@@ -2689,7 +3085,8 @@
         "count": 226,
         "source": "Yelp"
       },
-      "yelpSlug": "P95aRg5I-_eY4lcKIRpJww"
+      "yelpSlug": "P95aRg5I-_eY4lcKIRpJww",
+      "phone": "+1 (425) 979-7950"
     },
     {
       "id": "ooba-tooba",
@@ -2749,7 +3146,8 @@
         "count": 485,
         "source": "Yelp"
       },
-      "yelpSlug": "Kx-pwf-GQ9FX8ti5E87l0w"
+      "yelpSlug": "Kx-pwf-GQ9FX8ti5E87l0w",
+      "price": 2
     },
     {
       "id": "black-raven-brewing",
@@ -2834,7 +3232,8 @@
         "count": 352,
         "source": "Yelp"
       },
-      "yelpSlug": "vaE0fUbYBayyn0aggiqSjg"
+      "yelpSlug": "vaE0fUbYBayyn0aggiqSjg",
+      "price": 2
     },
     {
       "id": "chicago-pastrami",
@@ -2899,7 +3298,9 @@
         "count": 307,
         "source": "Yelp"
       },
-      "yelpSlug": "EUUbRy1Ibdtnk7S1pJpsCg"
+      "yelpSlug": "EUUbRy1Ibdtnk7S1pJpsCg",
+      "phone": "+1 (425) 295-7024",
+      "price": 2
     },
     {
       "id": "flying-pie-pizzeria",
@@ -2964,7 +3365,8 @@
         "count": 274,
         "source": "Yelp"
       },
-      "yelpSlug": "V5dJV4x5L63YxQFhPZ4SpA"
+      "yelpSlug": "V5dJV4x5L63YxQFhPZ4SpA",
+      "price": 2
     },
     {
       "id": "sip-thai-bistro",
@@ -3069,7 +3471,8 @@
         "count": 170,
         "source": "Yelp"
       },
-      "yelpSlug": "Py5-tm4H2lDIF6gl9729tA"
+      "yelpSlug": "Py5-tm4H2lDIF6gl9729tA",
+      "price": 2
     },
     {
       "id": "vino-bella",
@@ -3133,7 +3536,9 @@
         "count": 150,
         "source": "Yelp"
       },
-      "yelpSlug": "VXw6UnBqCmIMm5U-LK19Jw"
+      "yelpSlug": "VXw6UnBqCmIMm5U-LK19Jw",
+      "phone": "+1 (425) 391-1424",
+      "price": 2
     },
     {
       "id": "levitate-gastropub",
@@ -3149,7 +3554,38 @@
       "placeType": "pub",
       "oneLiner": "Gastropub on Front Street, a few doors from the pastrami shop.",
       "perfectFor": [],
-      "periods": [],
+      "periods": [
+        {
+          "days": [
+            0
+          ],
+          "start": 600,
+          "end": 1200
+        },
+        {
+          "days": [
+            6
+          ],
+          "start": 600,
+          "end": 1320
+        },
+        {
+          "days": [
+            2,
+            3,
+            4
+          ],
+          "start": 720,
+          "end": 1260
+        },
+        {
+          "days": [
+            5
+          ],
+          "start": 720,
+          "end": 1320
+        }
+      ],
       "gustoScore": null,
       "website": "https://www.levitategastropub.com",
       "appleMapsUrl": "https://maps.apple.com/?daddr=47.5322656,-122.0366643&q=Levitate%20Gastropub",
@@ -3178,7 +3614,9 @@
         "count": 523,
         "source": "Yelp"
       },
-      "yelpSlug": "fwSLfXNk4D4BiGgriRnJcQ"
+      "yelpSlug": "fwSLfXNk4D4BiGgriRnJcQ",
+      "phone": "+1 (425) 677-8497",
+      "price": 2
     },
     {
       "id": "heritage-restaurant",
@@ -3242,7 +3680,8 @@
           "alt": "Illustration suggesting American at Heritage",
           "credit": "Illustration"
         }
-      ]
+      ],
+      "price": 3
     },
     {
       "id": "the-hollywood-tavern",
@@ -3308,7 +3747,8 @@
         "count": 974,
         "source": "Yelp"
       },
-      "yelpSlug": "0rPK999V5MbiJoSwZTrEsg"
+      "yelpSlug": "0rPK999V5MbiJoSwZTrEsg",
+      "price": 2
     },
     {
       "id": "brix-wine-cafe",
@@ -3373,7 +3813,8 @@
         "count": 115,
         "source": "Yelp"
       },
-      "yelpSlug": "edo72oAv6qlgRny4DDK4wA"
+      "yelpSlug": "edo72oAv6qlgRny4DDK4wA",
+      "price": 2
     },
     {
       "id": "vivi-pizzeria",
@@ -3437,7 +3878,8 @@
           "alt": "Illustration suggesting Pizza at Vivi Pizzeria",
           "credit": "Illustration"
         }
-      ]
+      ],
+      "price": 2
     },
     {
       "id": "watts-brewing",
@@ -3515,7 +3957,8 @@
         "count": 35,
         "source": "Yelp"
       },
-      "yelpSlug": "NywVsjIhVYuhtJ4wBB2eEw"
+      "yelpSlug": "NywVsjIhVYuhtJ4wBB2eEw",
+      "phone": "+1 (425) 908-7146"
     },
     {
       "id": "chantanee",
@@ -3531,7 +3974,38 @@
       "placeType": "restaurant",
       "oneLiner": "Thai on Main Street in the old downtown Bothell storefronts.",
       "perfectFor": [],
-      "periods": [],
+      "periods": [
+        {
+          "days": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "start": 690,
+          "end": 900
+        },
+        {
+          "days": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "start": 960,
+          "end": 1200
+        },
+        {
+          "days": [
+            5,
+            6
+          ],
+          "start": 960,
+          "end": 1260
+        }
+      ],
       "gustoScore": null,
       "website": "https://www.chantaneethai.com/",
       "phone": "+1 (425) 398-7300",
@@ -3562,7 +4036,8 @@
         "count": 556,
         "source": "Yelp"
       },
-      "yelpSlug": "qPnHPyV88CEVpA6Cj8WbVQ"
+      "yelpSlug": "qPnHPyV88CEVpA6Cj8WbVQ",
+      "price": 2
     },
     {
       "id": "russells",
@@ -3578,7 +4053,26 @@
       "placeType": "restaurant",
       "oneLiner": "Dinner and a loft dining room at Monte Villa Parkway.",
       "perfectFor": [],
-      "periods": [],
+      "periods": [
+        {
+          "days": [
+            0
+          ],
+          "start": 990,
+          "end": 1200
+        },
+        {
+          "days": [
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "start": 1020,
+          "end": 1260
+        }
+      ],
       "gustoScore": null,
       "website": "https://www.russelllowell.com",
       "phone": "+1 (425) 892-8492",
@@ -3600,7 +4094,8 @@
           "alt": "Illustration suggesting American at Russell's",
           "credit": "Illustration"
         }
-      ]
+      ],
+      "price": 4
     },
     {
       "id": "agave-cocina",
@@ -3776,7 +4271,8 @@
         "count": 415,
         "source": "Yelp"
       },
-      "yelpSlug": "4NYR2AlivrZsyyBHpXyLiQ"
+      "yelpSlug": "4NYR2AlivrZsyyBHpXyLiQ",
+      "price": 1
     },
     {
       "id": "namdo-korean-bbq",
@@ -3900,7 +4396,8 @@
         "count": 36,
         "source": "Yelp"
       },
-      "yelpSlug": "W6OeoxIyWt4jv57pB3kQ8A"
+      "yelpSlug": "W6OeoxIyWt4jv57pB3kQ8A",
+      "phone": "+1 (206) 268-0588"
     },
     {
       "id": "lexperience-paris",
@@ -3916,7 +4413,27 @@
       "placeType": "cafe",
       "oneLiner": "French cafe and crepes on 78th, in the Mercer Island town center.",
       "perfectFor": [],
-      "periods": [],
+      "periods": [
+        {
+          "days": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "start": 450,
+          "end": 960
+        },
+        {
+          "days": [
+            0,
+            6
+          ],
+          "start": 480,
+          "end": 960
+        }
+      ],
       "gustoScore": null,
       "website": "https://lexperienceparis.com/",
       "appleMapsUrl": "https://maps.apple.com/?daddr=47.5832528,-122.2327738&q=L'Experience%20Paris",
@@ -3945,7 +4462,8 @@
         "count": 125,
         "source": "Yelp"
       },
-      "yelpSlug": "-1BySrVdsg9NGmDzYTbD1g"
+      "yelpSlug": "-1BySrVdsg9NGmDzYTbD1g",
+      "phone": "+1 (425) 340-5931"
     },
     {
       "id": "roanoke-inn",
@@ -4005,7 +4523,8 @@
         "count": 344,
         "source": "Yelp"
       },
-      "yelpSlug": "XWag2eb853TrXaAk38Op_w"
+      "yelpSlug": "XWag2eb853TrXaAk38Op_w",
+      "price": 2
     },
     {
       "id": "sushi-joa",
@@ -4076,7 +4595,9 @@
         "count": 226,
         "source": "Yelp"
       },
-      "yelpSlug": "HX3E14oV9TYH3FZE2096nA"
+      "yelpSlug": "HX3E14oV9TYH3FZE2096nA",
+      "phone": "+1 (206) 230-4120",
+      "price": 2
     },
     {
       "id": "haps-burgers",
@@ -4142,7 +4663,8 @@
         "count": 212,
         "source": "Yelp"
       },
-      "yelpSlug": "vpkjyTwhSWNjaJO6j2Dpew"
+      "yelpSlug": "vpkjyTwhSWNjaJO6j2Dpew",
+      "price": 2
     },
     {
       "id": "melrose-grill",
@@ -4221,7 +4743,8 @@
         "count": 2098,
         "source": "Yelp"
       },
-      "yelpSlug": "iCvPIKn8Gm716UDn3iPNtA"
+      "yelpSlug": "iCvPIKn8Gm716UDn3iPNtA",
+      "price": 3
     },
     {
       "id": "smoking-monkey-pizza",
@@ -4287,7 +4810,8 @@
         "count": 954,
         "source": "Yelp"
       },
-      "yelpSlug": "9X95cmNzvV0BAr49kcN8vg"
+      "yelpSlug": "9X95cmNzvV0BAr49kcN8vg",
+      "price": 2
     },
     {
       "id": "crawfish-house",
@@ -4347,7 +4871,8 @@
         "count": 122,
         "source": "Yelp"
       },
-      "yelpSlug": "1BkAVtOkWkJfVXF1ASUN8Q"
+      "yelpSlug": "1BkAVtOkWkJfVXF1ASUN8Q",
+      "price": 2
     },
     {
       "id": "jimmy-macs-roadhouse",
@@ -4466,7 +4991,8 @@
         "count": 448,
         "source": "Yelp"
       },
-      "yelpSlug": "EWqgeiGor-aVJlMLc8iSKw"
+      "yelpSlug": "EWqgeiGor-aVJlMLc8iSKw",
+      "price": 2
     },
     {
       "id": "tanoor",
@@ -4482,7 +5008,21 @@
       "placeType": "restaurant",
       "oneLiner": "Lebanese plates on Southeast 4th, in the Sammamish town center.",
       "perfectFor": [],
-      "periods": [],
+      "periods": [
+        {
+          "days": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "start": 660,
+          "end": 1260
+        }
+      ],
       "gustoScore": null,
       "website": "https://www.tanoor.com/",
       "phone": "+1 (425) 961-0831",
@@ -4512,7 +5052,8 @@
         "count": 658,
         "source": "Yelp"
       },
-      "yelpSlug": "MQMyrnwXlbiNqGwfbLRnLQ"
+      "yelpSlug": "MQMyrnwXlbiNqGwfbLRnLQ",
+      "price": 2
     },
     {
       "id": "diyar",
@@ -4528,7 +5069,27 @@
       "placeType": "restaurant",
       "oneLiner": "Persian and Mediterranean cooking in the Klahanie neighborhood.",
       "perfectFor": [],
-      "periods": [],
+      "periods": [
+        {
+          "days": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "start": 660,
+          "end": 1260
+        },
+        {
+          "days": [
+            5,
+            6
+          ],
+          "start": 660,
+          "end": 1320
+        }
+      ],
       "gustoScore": null,
       "website": "https://diyarrestaurant.com",
       "phone": "+1 (425) 657-0767",
@@ -4735,7 +5296,21 @@
       "placeType": "restaurant",
       "oneLiner": "Neighborhood cafe on Northeast 8th, with breakfast and a bar.",
       "perfectFor": [],
-      "periods": [],
+      "periods": [
+        {
+          "days": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "start": 420,
+          "end": 1260
+        }
+      ],
       "gustoScore": null,
       "website": "http://sammamish.cafesinc.com",
       "appleMapsUrl": "https://maps.apple.com/?daddr=47.6169223,-122.0338741&q=Sammamish%20Cafe",
@@ -4765,7 +5340,9 @@
         "count": 501,
         "source": "Yelp"
       },
-      "yelpSlug": "BqbOCQmNqQigkPANakQuHg"
+      "yelpSlug": "BqbOCQmNqQigkPANakQuHg",
+      "phone": "+1 (425) 242-1350",
+      "price": 2
     }
   ],
   "guides": [
