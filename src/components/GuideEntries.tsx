@@ -200,7 +200,7 @@ export function GuideEntryCard({
       <blockquote className={`entry-quote mt-4 ${layout === 1 ? 'border-l-4 border-coral pl-4' : 'border-2 border-ink bg-[#fffaf3] px-4 py-3'}`}>
         “{entry.pullQuote}”
       </blockquote>
-      <p className="mt-4 max-w-2xl text-lg leading-relaxed">{entry.blurb}</p>
+      {entry.blurb !== entry.pullQuote ? <p className="mt-4 max-w-2xl text-lg leading-relaxed">{entry.blurb}</p> : null}
       <div className="mt-4 flex flex-wrap gap-2">
         {entry.vibe ? <span className="tag tag-vibe">{entry.vibe}</span> : null}
         {place.perfectFor.map((tag) => <span key={tag} className="tag">{tag}</span>)}
@@ -243,7 +243,7 @@ export function GuideEntryCard({
         </figure>
         <blockquote className="entry-quote min-w-0 flex-1 border-l-4 border-coral pl-3">“{entry.pullQuote}”</blockquote>
       </div>
-      <p className="mt-4 max-w-2xl text-lg leading-relaxed">{entry.blurb}</p>
+      {entry.blurb !== entry.pullQuote ? <p className="mt-4 max-w-2xl text-lg leading-relaxed">{entry.blurb}</p> : null}
       <div className="mt-4 flex flex-wrap gap-2">
         {entry.vibe ? <span className="tag tag-vibe">{entry.vibe}</span> : null}
         {place.perfectFor.map((tag) => <span key={tag} className="tag">{tag}</span>)}

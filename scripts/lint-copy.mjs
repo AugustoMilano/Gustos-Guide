@@ -9,6 +9,19 @@ export const GRAM_LIMIT = 2
 
 const TEMPLATES = /worth the walk|exactly the point|done properly|the night gets simpler|come hungry\.\s*leave|hot, salty, and exactly/i
 
+// Augusto's sandwich notes, copied verbatim. They are the description, so the
+// 8–16 word pull-quote rule and the four-word sentence floor do not apply.
+const OWNER_COPY = new Set([
+  "The Caribbean roast. Best sandwich in Seattle. Garlic sauce, pork, and that bread. Don't order anything else.",
+  'Philly cheesesteak or pastrami are both hits here, and it might be the best cheesesteak in the city.',
+  'East-coast deli on Ballard Ave. Get the Electric Wizard or Rajun Cajun.',
+  'Great constantly changing menu, I went for the Hot Honey Piccante.',
+  'Come in with friends or solo, best turkey sandwich around.',
+  'Different from the traditional bánh mì, but that side of beef bone marrow broth makes it uniquely amazing and a must.',
+  'Honestly, everything is good here, but my favorite is the TBR (turkey, bacon, ranch). Pro tip: get the spuds on the side.',
+  'As the name states, go for any of their salami sandwiches and you’ll be coming back.',
+])
+
 // "Try tofu, smoky broth." / "Then tofu, tangy broth." A real "Try the pork shoulder." does not match.
 export const TRY_FILLER = /\b(?:try|then)\s+[a-z][\w'-]*,\s+[a-z][\w'-]*\s+[a-z][\w'-]*/i
 
@@ -198,8 +211,10 @@ export function assertCopy({ lines, blurbs, prose = [] }) {
     if (!/^[A-Z0-9"“]/.test(line)) fail('Line does not start with a capital', line)
     if (TEMPLATES.test(line)) fail('Template phrase', line)
     if (fillerHit(line)) fail('Try-filler line', line)
-    const count = wordCount(line)
-    if (count < 8 || count > 16) fail(`Pull quote must be 8–16 words (got ${count})`, line)
+    if (!OWNER_COPY.has(line)) {
+      const count = wordCount(line)
+      if (count < 8 || count > 16) fail(`Pull quote must be 8–16 words (got ${count})`, line)
+    }
   }
   for (const item of blurbItems) {
     const blurb = item.text
@@ -208,7 +223,7 @@ export function assertCopy({ lines, blurbs, prose = [] }) {
     if (fillerHit(blurb)) fail('Try-filler blurb', blurb.slice(0, 180))
     const loop = repeatedTemplate(blurb)
     if (loop) fail('Repeated sentence template in blurb', `${loop.a}\n---\n${loop.b}`)
-    if (item.exempt) continue
+    if (item.exempt || OWNER_COPY.has(blurb)) continue
     const count = sentencesOf(blurb).length
     if (count < 1 || count > 4) fail(`Blurb must be 1–4 sentences (got ${count})`, blurb.slice(0, 180))
     const brief = shortSentence(blurb)
@@ -224,6 +239,13 @@ export function assertCopy({ lines, blurbs, prose = [] }) {
   const lineTexts = lineItems.map((item) => item.text)
   const blurbTexts = blurbItems.map((item) => item.text)
   const proseTexts = proseItems.map((item) => item.text)
+  const seenOwner = new Set()
+  const gramSource = [...lineTexts, ...blurbTexts, ...proseTexts].filter((text) => {
+    if (!OWNER_COPY.has(text)) return true
+    if (seenOwner.has(text)) return false
+    seenOwner.add(text)
+    return true
+  })
   const lineWorst = worstPair(lineTexts, LINE_THRESHOLD)
   if (lineWorst.ratio > LINE_THRESHOLD) {
     fail(`Near-duplicate lines (${lineWorst.ratio.toFixed(2)} > ${LINE_THRESHOLD})`, `${lineWorst.a}\n---\n${lineWorst.b}`)
@@ -232,7 +254,7 @@ export function assertCopy({ lines, blurbs, prose = [] }) {
   if (blurbWorst.ratio > BLURB_THRESHOLD) {
     fail(`Near-duplicate blurbs (${blurbWorst.ratio.toFixed(2)} > ${BLURB_THRESHOLD})`, `${blurbWorst.a.slice(0, 240)}\n---\n${blurbWorst.b.slice(0, 240)}`)
   }
-  const grams = repeatedGrams([...lineTexts, ...blurbTexts, ...proseTexts], N, GRAM_LIMIT)
+  const grams = repeatedGrams(gramSource, N, GRAM_LIMIT)
   if (grams.length) {
     fail(
       `Repeated ${N}-word phrase (more than ${GRAM_LIMIT} times)`,
