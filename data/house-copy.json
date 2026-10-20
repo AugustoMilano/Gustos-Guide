@@ -160,8 +160,8 @@
     "blurb": "Late diners can still get a proper Italian meal at Barolo Ristorante, where the kitchen keeps going past eleven."
   },
   "bateau": {
-    "pullQuote": "Check the chalkboard for the night's cuts and order a steak to share.",
-    "blurb": "Bateau brings a French accent to steak, with a chalkboard of whichever cuts showed up that day. It shares a family tree with the Ballard oyster room, and the bright little space makes a strong argument for a date."
+    "pullQuote": "The old Bateau room, reopened as Jeffry's steakhouse on Union.",
+    "blurb": "Bateau and Boat Bar closed, then reopened as Jeffry's in the same Capitol Hill rooms. Dry-aged steaks and steakhouse sides are the menu, and the old bar is now the front door."
   },
   "baxter-frost": {
     "pullQuote": "A cheap and cheerful pastry stop when you're wandering the Market.",
@@ -226,10 +226,6 @@
   "bluwater-bistro-leschi": {
     "pullQuote": "Grab an outdoor table on a sunny day and watch the lake.",
     "blurb": "Lake Washington views from the outdoor seating are the main draw at BluWater Bistro - Leschi."
-  },
-  "boat-bar": {
-    "pullQuote": "A Hill bar with serious drinks to keep on your regular rotation.",
-    "blurb": "On Capitol Hill, Boat Bar is a cocktail stop worth adding to the bar crawl."
   },
   "bongos-cafe": {
     "pullQuote": "After a Green Lake loop, bring the dog and order jerk chicken.",
@@ -1839,10 +1835,6 @@
   "wild-ginger-kitchen": {
     "pullQuote": "A polished downtown pick for pan-Asian plates before a show or meeting.",
     "blurb": "Wild Ginger Kitchen serves Asian fusion dishes in a polished downtown dining room."
-  },
-  "wild-ginger-mckenzie": {
-    "pullQuote": "A stylish Denny Triangle spot for Southeast Asian cooking on a weeknight.",
-    "blurb": "Over in the Denny Triangle, Wild Ginger McKenzie serves Southeast Asian dishes in a polished setting."
   },
   "willmott-s-ghost": {
     "pullQuote": "Book the Spheres room when a Roman pizza night should feel like a splurge.",
