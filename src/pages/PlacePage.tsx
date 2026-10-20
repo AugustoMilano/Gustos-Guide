@@ -10,6 +10,7 @@ import { areaTitle, cityPath } from '../lib/city.ts'
 import { placeCity, placesForCity } from '../lib/use-city.ts'
 import { demoFriendsEnabled } from '../lib/demo.ts'
 import { displayPhotos } from '../lib/gallery.ts'
+import { responsivePhoto } from '../lib/responsivePhoto.ts'
 import { HouseScorePad } from '../components/HouseScorePad.tsx'
 import { ScoreBadge } from '../components/ScoreBadge.tsx'
 import { formatPeriods, hoursPhrase } from '../lib/hours.ts'
@@ -107,7 +108,7 @@ export function PlacePage() {
           <div className="mt-2 flex gap-2 overflow-auto">
             {photos.map((photo, index) => (
               <button key={photo.key} type="button" className={`h-16 w-24 shrink-0 border-2 ${index === active ? 'border-coral' : 'border-ink'}`} aria-label={`Photo ${index + 1} of ${photos.length}`} onClick={() => setActive(index)}>
-                {photo.url && !photo.illustration ? <img src={photo.url} alt="" decoding="async" className="h-full w-full object-cover" /> : <span className="text-xs font-bold">Illustration</span>}
+                {photo.url && !photo.illustration ? <img {...responsivePhoto(photo.url, '96px')} alt="" loading="lazy" decoding="async" className="h-full w-full object-cover" /> : <span className="text-xs font-bold">Illustration</span>}
               </button>
             ))}
           </div>
@@ -204,7 +205,7 @@ export function PlacePage() {
               {similar.map((item) => (
                 <Link key={item.id} to={cityPath(`/place/${item.id}`, placeCity(place))} className="hit-card" viewTransition={!reduceMotion}>
                   <div className="h-24 overflow-hidden bg-navy [&_.place-art]:aspect-auto [&_.place-art]:h-full" style={reduceMotion ? undefined : { viewTransitionName: `place-${item.id}` }}>
-                    <PlaceThumb place={item} uploads={app.photos} />
+                    <PlaceThumb place={item} uploads={app.photos} sizes="(min-width: 1024px) 200px, 45vw" />
                   </div>
                   <div className="p-2">
                     <ScoreBadge score={app.gustoScore(item.id)} size="sm" />

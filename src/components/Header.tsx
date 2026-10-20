@@ -206,7 +206,7 @@ export function Header() {
           {user ? (
             <>
               <Link to={cityPath(`/u/${user.handle}`)} className="inline-flex max-w-[10rem] items-center gap-2">
-                {user.avatarUrl ? <img src={user.avatarUrl} alt="" className="h-8 w-8 shrink-0 rounded-full object-cover" /> : null}
+                {user.avatarUrl ? <img src={user.avatarUrl} alt="" width={32} height={32} loading="lazy" decoding="async" className="h-8 w-8 shrink-0 rounded-full object-cover" /> : null}
                 <span className="truncate">{user.name}</span>
               </Link>
               <button type="button" className="btn text-sm" onClick={signOut}>Sign out</button>
@@ -275,7 +275,7 @@ export function Header() {
           {user ? (
             <>
               <Link to={cityPath(`/u/${user.handle}`)} className="inline-flex items-center gap-2" onClick={() => setMenu(false)}>
-                {user.avatarUrl ? <img src={user.avatarUrl} alt="" className="h-8 w-8 rounded-full object-cover" /> : null}
+                {user.avatarUrl ? <img src={user.avatarUrl} alt="" width={32} height={32} loading="lazy" decoding="async" className="h-8 w-8 rounded-full object-cover" /> : null}
                 {user.name}
               </Link>
               <button type="button" className="btn" onClick={signOut}>Sign out {user.name}</button>

@@ -6,6 +6,7 @@ import { PlaceArt } from './PlaceArt.tsx'
 import { PlaceThumb } from './PlaceThumb.tsx'
 import { Reveal } from './Reveal.tsx'
 import { displayPhotos, type DisplayPhoto, type LivePhoto } from '../lib/gallery.ts'
+import { responsivePhoto } from '../lib/responsivePhoto.ts'
 import { ScoreBadge } from './ScoreBadge.tsx'
 import { MapLinks } from './MapLinks.tsx'
 import { demoFriendsEnabled } from '../lib/demo.ts'
@@ -72,7 +73,7 @@ export function GuideStrip({
                 }}
               >
                 <div className="toc-shot relative h-24 overflow-hidden bg-navy [&_.place-art]:aspect-auto [&_.place-art]:h-full">
-                  <PlaceThumb place={place} uploads={uploads} eager={index < 6} />
+                  <PlaceThumb place={place} uploads={uploads} eager={index < 2} sizes="240px" />
                   <span className="absolute top-1.5 left-1.5 grid h-7 min-w-7 -rotate-6 place-items-center border-2 border-ink bg-coral px-1 text-xs font-bold shadow-[2px_2px_0_#181818]">{number}</span>
                 </div>
                 <div className="flex flex-1 flex-col px-2.5 pt-2">
@@ -101,10 +102,12 @@ function Shot({
   place,
   photo,
   tall,
+  priority = false,
 }: {
   place: SlimPlace
   photo: DisplayPhoto | undefined
   tall: boolean
+  priority?: boolean
 }) {
   const [failed, setFailed] = useState(false)
   const art = photo?.illustration || !photo?.url || failed
@@ -114,7 +117,15 @@ function Shot({
         {art ? (
           <PlaceArt id={place.id} cuisine={place.cuisine[0] ?? 'Seattle'} neighborhood={place.neighborhood} />
         ) : (
-          <img src={photo.url} alt={photo.alt} className="h-full w-full object-cover" onError={() => setFailed(true)} />
+          <img
+            {...responsivePhoto(photo.url, '(min-width: 1024px) 40vw, 100vw')}
+            alt={photo.alt}
+            className="h-full w-full object-cover"
+            loading={priority ? 'eager' : 'lazy'}
+            decoding="async"
+            fetchPriority={priority ? 'high' : undefined}
+            onError={() => setFailed(true)}
+          />
         )}
       </div>
       <figcaption className="border-x-2 border-b-2 border-ink bg-[#fffaf3] px-2 py-1 text-xs font-bold">
@@ -162,7 +173,7 @@ export function GuideEntryCard({
       <span className="absolute top-3 left-3 z-10 grid h-12 min-w-12 -rotate-6 place-items-center border-2 border-ink bg-coral px-2 font-serif text-2xl italic shadow-[3px_3px_0_#181818]">{number}</span>
       <Link to={cityPath(`/place/${place.id}`)} className="block" aria-label={place.name} viewTransition={!reduceMotion}>
         <span className="block" style={reduceMotion ? undefined : { viewTransitionName: `place-${place.id}` }}>
-          <Shot place={place} photo={photo} tall={layout === 0} />
+          <Shot place={place} photo={photo} tall={layout === 0} priority={index === 0} />
         </span>
       </Link>
       {shots.length > 1 ? (
@@ -175,7 +186,7 @@ export function GuideEntryCard({
               onClick={() => setActive(shotIndex)}
               aria-label={`Photo ${shotIndex + 1} of ${place.name}`}
             >
-              {shot.url && !shot.illustration ? <img src={shot.url} alt="" className="h-full w-full object-cover" /> : <span className="text-[10px] font-bold">Art</span>}
+              {shot.url && !shot.illustration ? <img {...responsivePhoto(shot.url, '64px')} alt="" className="h-full w-full object-cover" loading="lazy" decoding="async" /> : <span className="text-[10px] font-bold">Art</span>}
             </button>
           ))}
         </div>

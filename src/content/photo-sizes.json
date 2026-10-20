@@ -1,0 +1,604 @@
+{
+  "alibi-room.jpg": {
+    "w": 1280,
+    "h": 831,
+    "widths": [
+      480,
+      960,
+      1280
+    ]
+  },
+  "anchorhead-coffee-2.jpg": {
+    "w": 1280,
+    "h": 1707,
+    "widths": [
+      480,
+      960,
+      1280
+    ]
+  },
+  "anchorhead-coffee.jpg": {
+    "w": 1280,
+    "h": 1707,
+    "widths": [
+      480,
+      960,
+      1280
+    ]
+  },
+  "artusi.jpg": {
+    "w": 1280,
+    "h": 1707,
+    "widths": [
+      480,
+      960,
+      1280
+    ]
+  },
+  "beecher-s-handmade-cheese.jpg": {
+    "w": 1280,
+    "h": 960,
+    "widths": [
+      480,
+      960,
+      1280
+    ]
+  },
+  "biang-biang-noodles.jpg": {
+    "w": 1280,
+    "h": 1707,
+    "widths": [
+      480,
+      960,
+      1280
+    ]
+  },
+  "blue-moon.jpg": {
+    "w": 1280,
+    "h": 960,
+    "widths": [
+      480,
+      960,
+      1280
+    ]
+  },
+  "cafe-hagen-2.jpg": {
+    "w": 1280,
+    "h": 1261,
+    "widths": [
+      480,
+      960,
+      1280
+    ]
+  },
+  "cafe-hagen.jpg": {
+    "w": 1280,
+    "h": 1261,
+    "widths": [
+      480,
+      960,
+      1280
+    ]
+  },
+  "cafe-juanita.jpg": {
+    "w": 1280,
+    "h": 290,
+    "widths": [
+      480,
+      960,
+      1280
+    ]
+  },
+  "caffe-umbria.jpg": {
+    "w": 398,
+    "h": 606,
+    "widths": [
+      398
+    ]
+  },
+  "caffe-vita.jpg": {
+    "w": 1280,
+    "h": 1927,
+    "widths": [
+      480,
+      960,
+      1280
+    ]
+  },
+  "canlis.jpg": {
+    "w": 600,
+    "h": 435,
+    "widths": [
+      480,
+      600
+    ]
+  },
+  "chung-chun-rice-dog.jpg": {
+    "w": 1280,
+    "h": 1707,
+    "widths": [
+      480,
+      960,
+      1280
+    ]
+  },
+  "dahlia-bakery.jpg": {
+    "w": 1280,
+    "h": 1707,
+    "widths": [
+      480,
+      960,
+      1280
+    ]
+  },
+  "delaurenti.jpg": {
+    "w": 1280,
+    "h": 853,
+    "widths": [
+      480,
+      960,
+      1280
+    ]
+  },
+  "dick-s-drive-in.jpg": {
+    "w": 1280,
+    "h": 1262,
+    "widths": [
+      480,
+      960,
+      1280
+    ]
+  },
+  "donna-s.jpg": {
+    "w": 1280,
+    "h": 909,
+    "widths": [
+      480,
+      960,
+      1280
+    ]
+  },
+  "el-gaucho.jpg": {
+    "w": 1280,
+    "h": 960,
+    "widths": [
+      480,
+      960,
+      1280
+    ]
+  },
+  "elysian-brewing-capitol-hill.jpg": {
+    "w": 1280,
+    "h": 853,
+    "widths": [
+      480,
+      960,
+      1280
+    ]
+  },
+  "espresso-vivace.jpg": {
+    "w": 1280,
+    "h": 960,
+    "widths": [
+      480,
+      960,
+      1280
+    ]
+  },
+  "fogon-cocina-mexicana.jpg": {
+    "w": 1280,
+    "h": 2276,
+    "widths": [
+      480,
+      960,
+      1280
+    ]
+  },
+  "fremont-brewing.jpg": {
+    "w": 1280,
+    "h": 960,
+    "widths": [
+      480,
+      960,
+      1280
+    ]
+  },
+  "georgetown-brewing.jpg": {
+    "w": 1280,
+    "h": 853,
+    "widths": [
+      480,
+      960,
+      1280
+    ]
+  },
+  "geraldine-s-counter.jpg": {
+    "w": 1280,
+    "h": 1463,
+    "widths": [
+      480,
+      960,
+      1280
+    ]
+  },
+  "ghost-alley-espresso.jpg": {
+    "w": 1280,
+    "h": 960,
+    "widths": [
+      480,
+      960,
+      1280
+    ]
+  },
+  "goldfinch-tavern.jpg": {
+    "w": 1280,
+    "h": 720,
+    "widths": [
+      480,
+      960,
+      1280
+    ]
+  },
+  "grand-central-bakery.jpg": {
+    "w": 1280,
+    "h": 853,
+    "widths": [
+      480,
+      960,
+      1280
+    ]
+  },
+  "hello-robin.jpg": {
+    "w": 1280,
+    "h": 1707,
+    "widths": [
+      480,
+      960,
+      1280
+    ]
+  },
+  "il-bistro.jpg": {
+    "w": 1280,
+    "h": 960,
+    "widths": [
+      480,
+      960,
+      1280
+    ]
+  },
+  "japonessa-sushi-cocina.jpg": {
+    "w": 700,
+    "h": 502,
+    "widths": [
+      480,
+      700
+    ]
+  },
+  "le-pichet.jpg": {
+    "w": 1280,
+    "h": 960,
+    "widths": [
+      480,
+      960,
+      1280
+    ]
+  },
+  "life-on-mars.jpg": {
+    "w": 1280,
+    "h": 960,
+    "widths": [
+      480,
+      960,
+      1280
+    ]
+  },
+  "maneki.jpg": {
+    "w": 1280,
+    "h": 960,
+    "widths": [
+      480,
+      960,
+      1280
+    ]
+  },
+  "marmalade.jpg": {
+    "w": 700,
+    "h": 700,
+    "widths": [
+      480,
+      700
+    ]
+  },
+  "maximilien.jpg": {
+    "w": 1280,
+    "h": 960,
+    "widths": [
+      480,
+      960,
+      1280
+    ]
+  },
+  "molly-moon-s.jpg": {
+    "w": 1280,
+    "h": 960,
+    "widths": [
+      480,
+      960,
+      1280
+    ]
+  },
+  "monorail-espresso-2.jpg": {
+    "w": 1280,
+    "h": 960,
+    "widths": [
+      480,
+      960,
+      1280
+    ]
+  },
+  "monorail-espresso.jpg": {
+    "w": 1280,
+    "h": 960,
+    "widths": [
+      480,
+      960,
+      1280
+    ]
+  },
+  "mykonos-greek-grill.jpg": {
+    "w": 1280,
+    "h": 850,
+    "widths": [
+      480,
+      960,
+      1280
+    ]
+  },
+  "nana-s-green-tea.jpg": {
+    "w": 1280,
+    "h": 1000,
+    "widths": [
+      480,
+      960,
+      1280
+    ]
+  },
+  "oxbow.jpg": {
+    "w": 768,
+    "h": 535,
+    "widths": [
+      480,
+      768
+    ]
+  },
+  "pike-place-chowder.jpg": {
+    "w": 1280,
+    "h": 960,
+    "widths": [
+      480,
+      960,
+      1280
+    ]
+  },
+  "pike-place-market.jpg": {
+    "w": 1280,
+    "h": 868,
+    "widths": [
+      480,
+      960,
+      1280
+    ]
+  },
+  "portage-bay-cafe.jpg": {
+    "w": 1280,
+    "h": 850,
+    "widths": [
+      480,
+      960,
+      1280
+    ]
+  },
+  "red-mill-burgers.jpg": {
+    "w": 1280,
+    "h": 850,
+    "widths": [
+      480,
+      960,
+      1280
+    ]
+  },
+  "rhein-haus.jpg": {
+    "w": 1280,
+    "h": 960,
+    "widths": [
+      480,
+      960,
+      1280
+    ]
+  },
+  "sabine.jpg": {
+    "w": 1280,
+    "h": 1920,
+    "widths": [
+      480,
+      960,
+      1280
+    ]
+  },
+  "salumi.jpg": {
+    "w": 600,
+    "h": 800,
+    "widths": [
+      480,
+      600
+    ]
+  },
+  "serious-pie.jpg": {
+    "w": 1280,
+    "h": 960,
+    "widths": [
+      480,
+      960,
+      1280
+    ]
+  },
+  "shiro-s-sushi-restaurant.jpg": {
+    "w": 800,
+    "h": 600,
+    "widths": [
+      480,
+      800
+    ]
+  },
+  "skalka.jpg": {
+    "w": 1280,
+    "h": 1624,
+    "widths": [
+      480,
+      960,
+      1280
+    ]
+  },
+  "starbucks-coffee-company.jpg": {
+    "w": 1280,
+    "h": 1171,
+    "widths": [
+      480,
+      960,
+      1280
+    ]
+  },
+  "terra-plata.jpg": {
+    "w": 1280,
+    "h": 960,
+    "widths": [
+      480,
+      960,
+      1280
+    ]
+  },
+  "the-5-point-cafe.jpg": {
+    "w": 1280,
+    "h": 851,
+    "widths": [
+      480,
+      960,
+      1280
+    ]
+  },
+  "the-carlile-room.jpg": {
+    "w": 1280,
+    "h": 1707,
+    "widths": [
+      480,
+      960,
+      1280
+    ]
+  },
+  "the-corson-building.jpg": {
+    "w": 1280,
+    "h": 960,
+    "widths": [
+      480,
+      960,
+      1280
+    ]
+  },
+  "the-dressing-room.jpg": {
+    "w": 1280,
+    "h": 904,
+    "widths": [
+      480,
+      960,
+      1280
+    ]
+  },
+  "the-flour-box.jpg": {
+    "w": 1020,
+    "h": 1140,
+    "widths": [
+      480,
+      960,
+      1020
+    ]
+  },
+  "the-harvest-vine.jpg": {
+    "w": 1280,
+    "h": 850,
+    "widths": [
+      480,
+      960,
+      1280
+    ]
+  },
+  "the-pink-door.jpg": {
+    "w": 1280,
+    "h": 960,
+    "widths": [
+      480,
+      960,
+      1280
+    ]
+  },
+  "the-usual.jpg": {
+    "w": 700,
+    "h": 446,
+    "widths": [
+      480,
+      700
+    ]
+  },
+  "tivoli.jpg": {
+    "w": 768,
+    "h": 625,
+    "widths": [
+      480,
+      768
+    ]
+  },
+  "top-pot-doughnuts.jpg": {
+    "w": 1280,
+    "h": 853,
+    "widths": [
+      480,
+      960,
+      1280
+    ]
+  },
+  "toulouse-petit.jpg": {
+    "w": 1280,
+    "h": 1795,
+    "widths": [
+      480,
+      960,
+      1280
+    ]
+  },
+  "unicorn.jpg": {
+    "w": 1280,
+    "h": 850,
+    "widths": [
+      480,
+      960,
+      1280
+    ]
+  },
+  "victrola-coffee-roasters.jpg": {
+    "w": 1280,
+    "h": 850,
+    "widths": [
+      480,
+      960,
+      1280
+    ]
+  },
+  "volunteer-park-cafe-pantry.jpg": {
+    "w": 1280,
+    "h": 960,
+    "widths": [
+      480,
+      960,
+      1280
+    ]
+  }
+}
