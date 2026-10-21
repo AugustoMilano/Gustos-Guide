@@ -7,6 +7,7 @@ import { PlaceThumb } from './PlaceThumb.tsx'
 import { Reveal } from './Reveal.tsx'
 import { displayPhotos, type DisplayPhoto, type LivePhoto } from '../lib/gallery.ts'
 import { responsivePhoto } from '../lib/responsivePhoto.ts'
+import { GoldenFork } from './GoldenFork.tsx'
 import { ScoreBadge } from './ScoreBadge.tsx'
 import { MapLinks } from './MapLinks.tsx'
 import { demoFriendsEnabled } from '../lib/demo.ts'
@@ -75,6 +76,7 @@ export function GuideStrip({
                 <div className="toc-shot relative h-24 overflow-hidden bg-navy [&_.place-art]:aspect-auto [&_.place-art]:h-full">
                   <PlaceThumb place={place} uploads={uploads} eager={index < 2} sizes="240px" />
                   <span className="absolute top-1.5 left-1.5 grid h-7 min-w-7 -rotate-6 place-items-center border-2 border-ink bg-coral px-1 text-xs font-bold shadow-[2px_2px_0_#181818]">{number}</span>
+                  <GoldenFork placeId={place.id} overlay />
                 </div>
                 <div className="flex flex-1 flex-col px-2.5 pt-2">
                   <div className="toc-badge">
@@ -200,7 +202,7 @@ export function GuideEntryCard({
           <span className="mr-2 text-coral not-italic">{number}</span>
           <Link to={cityPath(`/place/${place.id}`)} viewTransition={!reduceMotion}>{place.name}</Link>
         </h3>
-        <ScoreBadge score={score} />
+        <span className="flex items-center gap-2"><ScoreBadge score={score} /><GoldenFork placeId={place.id} size="md" /></span>
       </div>
       <p className="mt-3 text-sm font-bold tracking-wide uppercase">
         {[place.cuisine.join(' · '), place.neighborhood, priceLabel(place.price)].filter(Boolean).join(' · ')}

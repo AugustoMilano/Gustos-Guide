@@ -21,6 +21,7 @@ const FeedPage = lazy(() => import('./pages/FeedPage.tsx').then((module) => ({ d
 const PlansPage = lazy(() => import('./pages/PlanPage.tsx').then((module) => ({ default: module.PlansPage })))
 const PlanDetailPage = lazy(() => import('./pages/PlanPage.tsx').then((module) => ({ default: module.PlanDetailPage })))
 const RankPage = lazy(() => import('./pages/RankPage.tsx').then((module) => ({ default: module.RankPage })))
+const TopPage = lazy(() => import('./pages/TopPage.tsx').then((module) => ({ default: module.TopPage })))
 const MyGuidesPage = lazy(() => import('./pages/MyGuidesPage.tsx').then((module) => ({ default: module.MyGuidesPage })))
 const ProfilePage = lazy(() => import('./pages/ProfilePage.tsx').then((module) => ({ default: module.ProfilePage })))
 const ExplorePage = lazy(() => import('./pages/ExplorePage.tsx').then((module) => ({ default: module.ExplorePage })))
@@ -175,6 +176,7 @@ function Shell() {
             <Route key={`${prefix}-list`} path={`${prefix}/list/:id`} element={<ListPage />} />,
             <Route key={`${prefix}-join`} path={`${prefix}/join/:token`} element={<JoinPage />} />,
             <Route key={`${prefix}-rank`} path={`${prefix}/rank`} element={<RankPage />} />,
+            <Route key={`${prefix}-top`} path={`${prefix}/top`} element={<TopPage />} />,
             <Route key={`${prefix}-my`} path={`${prefix}/my`} element={<MyGuidesPage />} />,
             <Route key={`${prefix}-profile`} path={`${prefix}/u/:handle`} element={<ProfilePage />} />,
           ])}

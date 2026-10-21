@@ -4,6 +4,7 @@ import { GuideMap } from '../components/GuideMap.tsx'
 import { PlanCard } from '../components/PlanSheet.tsx'
 import { PlaceThumb } from '../components/PlaceThumb.tsx'
 import { Reveal } from '../components/Reveal.tsx'
+import { GoldenFork } from '../components/GoldenFork.tsx'
 import { ScoreBadge } from '../components/ScoreBadge.tsx'
 import { slimById } from '../content/load.ts'
 import { cityPath, type CityId } from '../lib/city.ts'
@@ -142,8 +143,9 @@ export function HomePage() {
             {now.places.map((place, index) => (
               <Reveal key={place.id} delay={Math.min(index, 6) * 0.04}>
               <Link to={cityPath(`/place/${place.id}`)} className="hit-card" viewTransition={!reduceMotion}>
-                <div className="h-32 overflow-hidden bg-navy [&_.place-art]:aspect-auto [&_.place-art]:h-full" style={reduceMotion ? undefined : { viewTransitionName: `place-${place.id}` }}>
+                <div className="relative h-32 overflow-hidden bg-navy [&_.place-art]:aspect-auto [&_.place-art]:h-full" style={reduceMotion ? undefined : { viewTransitionName: `place-${place.id}` }}>
                   <PlaceThumb place={place} uploads={photos} eager={index < 2} sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw" />
+                  <GoldenFork placeId={place.id} overlay />
                 </div>
                 <div className="p-3">
                   <ScoreBadge score={app.gustoScore(place.id)} size="sm" />

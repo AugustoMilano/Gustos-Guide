@@ -2,7 +2,9 @@ import { useMemo, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { ListShareCard } from '../components/ListShareCard.tsx'
 import { PlaceThumb } from '../components/PlaceThumb.tsx'
+import { GoldenFork } from '../components/GoldenFork.tsx'
 import { ScoreBadge } from '../components/ScoreBadge.tsx'
+import { StoryShareButton } from '../components/StoryShareButton.tsx'
 import { SlidingRow } from '../components/SlidingRow.tsx'
 import { slimById } from '../content/load.ts'
 import { demoFriendsEnabled } from '../lib/demo.ts'
@@ -10,6 +12,8 @@ import { milesBetween, priceLabel } from '../lib/format.ts'
 import { readPosition } from '../lib/geo.ts'
 import { isOpen } from '../lib/hours.ts'
 import { listColor, listOgSvg } from '../lib/lists.ts'
+import { renderGuideStory } from '../lib/story-card.ts'
+import { awardFor } from '../lib/top25.ts'
 import { usePageMeta } from '../lib/meta.ts'
 import { useApp } from '../state/AppState.tsx'
 import type { Price, SlimPlace } from '../types.ts'
@@ -104,7 +108,22 @@ export function ListPage() {
   return (
     <main id="main" tabIndex={-1} className="mx-auto max-w-3xl px-4 pt-24 pb-16 outline-none">
       <p className="text-xs font-bold uppercase tracking-wide">{demoFriendsEnabled && guide.demo ? 'Seeded list' : visibility === 'public' ? 'Public list' : visibility === 'friends' ? 'Friends list' : 'Private list'}</p>
-      <h1 className="font-serif text-5xl italic">{guide.emoji ? `${guide.emoji} ` : ''}{guide.title}</h1>
+      <div className="mt-2 flex flex-wrap items-center justify-between gap-3">
+        <h1 className="font-serif text-5xl italic">{guide.emoji ? `${guide.emoji} ` : ''}{guide.title}</h1>
+        <StoryShareButton
+          filename={`${guide.id}-story.png`}
+          title={guide.title}
+          build={() => renderGuideStory({
+            title: guide.title,
+            items: guide.placeIds.flatMap((placeId) => {
+              const place = slimById(placeId)
+              if (!place) return []
+              const award = awardFor(place.id, app.gustoScore)
+              return [{ name: place.name, neighborhood: place.neighborhood, score: app.gustoScore(place.id), metal: award?.metal ?? null }]
+            }),
+          })}
+        />
+      </div>
       {guide.collaboratorIds.length ? <p className="mt-2 text-sm">{app.supabase ? 'Collaborative.' : 'Collaborative. Edits stay in this browser.'}</p> : null}
       <div className="mt-4">
         <ListShareCard guide={guide} cover={cover} uploads={app.photos} copied={copied} onCopy={() => void copyLink()} />
@@ -134,7 +153,7 @@ export function ListPage() {
             <Link to={`/place/${place.id}`} className="plan-pick">
               <span className="plan-pick-shot"><PlaceThumb place={place} uploads={app.photos} /></span>
               <span className="min-w-0 flex-1 text-left">
-                <ScoreBadge score={app.gustoScore(place.id)} size="sm" />
+                <span className="flex flex-wrap items-center gap-2"><ScoreBadge score={app.gustoScore(place.id)} size="sm" /><GoldenFork placeId={place.id} /></span>
                 <span className="mt-1 block font-serif text-2xl italic leading-none">{index + 1}. {place.name}</span>
                 <span className="mt-1 block text-sm">{place.neighborhood} · {priceLabel(place.price)}</span>
                 {note ? <span className="mt-1 block text-sm italic">{note}</span> : null}

@@ -170,6 +170,7 @@ export function Header() {
           <Link to={cityPath('/explore', linkCity)} onMouseEnter={() => prefetch('/explore')} onFocus={() => prefetch('/explore')}>Explore</Link>
           <Link to={cityPath('/guides', linkCity)}>Guides</Link>
           <Link to={cityPath('/tonight', linkCity)}>Tonight</Link>
+          <Link to={cityPath('/top', linkCity)}>Top 25</Link>
           <Link className="nav-wide" to={cityPath('/feed', linkCity)}>Feed</Link>
           <Link className="nav-wide" to={cityPath('/plans', linkCity)} onMouseEnter={() => prefetch('/plans/wizard')} onFocus={() => prefetch('/plans/wizard')}>Plans</Link>
           <Link className="nav-wide" to={cityPath('/rank', linkCity)}>Rank</Link>
@@ -206,6 +207,7 @@ export function Header() {
                   <Link to={cityPath('/feed', linkCity)} onClick={() => setMore(false)}>Feed</Link>
                   <Link to={cityPath('/plans', linkCity)} onClick={() => setMore(false)} onFocus={() => prefetch('/plans/wizard')}>Plans</Link>
                   <Link to={cityPath('/rank', linkCity)} onClick={() => setMore(false)}>Rank</Link>
+                  <Link to={cityPath('/top', linkCity)} onClick={() => setMore(false)}>Top 25</Link>
                   <Link to={cityPath('/my', linkCity)} onClick={() => setMore(false)}>My guides</Link>
                   {user?.isOwner ? <Link to={cityPath('/score', linkCity)} onClick={() => setMore(false)}>Scores</Link> : null}
                   {user?.isOwner ? <Link to={cityPath('/score/quick', linkCity)} onClick={() => setMore(false)}>Quick score</Link> : null}
@@ -288,6 +290,7 @@ export function Header() {
           <Link to={cityPath('/feed', linkCity)} onClick={() => setMenu(false)}>Feed</Link>
           <Link to={cityPath('/plans', linkCity)} onClick={() => setMenu(false)}>Plans</Link>
           <Link to={cityPath('/rank', linkCity)} onClick={() => setMenu(false)}>Rank</Link>
+          <Link to={cityPath('/top', linkCity)} onClick={() => setMenu(false)}>Top 25</Link>
           <Link to={cityPath('/my', linkCity)} onClick={() => setMenu(false)}>My guides</Link>
           {user?.isOwner ? <Link to={cityPath('/score', linkCity)} onClick={() => setMenu(false)}>Scores</Link> : null}
           {user?.isOwner ? <Link to={cityPath('/score/quick', linkCity)} onClick={() => setMenu(false)}>Quick score</Link> : null}

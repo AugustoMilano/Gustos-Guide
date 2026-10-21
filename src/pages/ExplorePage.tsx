@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import { GuideMap, type MapBounds } from '../components/GuideMap.tsx'
 import { MapLinks } from '../components/MapLinks.tsx'
 import { PlaceThumb } from '../components/PlaceThumb.tsx'
+import { GoldenFork } from '../components/GoldenFork.tsx'
 import { ScoreBadge, scoreBand } from '../components/ScoreBadge.tsx'
 import { areaPhrase, areaTitle, cityPath } from '../lib/city.ts'
 import { useCityCatalog } from '../lib/use-city.ts'
@@ -162,8 +163,9 @@ export function ExplorePage() {
                 onMouseLeave={() => setActiveId((current) => (current === place.id ? null : current))}
               >
                 <Link to={cityPath(`/place/${place.id}`)} className="flex items-center gap-3 after:absolute after:inset-0" viewTransition={!reduceMotion}>
-                  <span className="h-20 w-24 shrink-0 overflow-hidden bg-navy [&_.place-art]:aspect-auto [&_.place-art]:h-full" style={reduceMotion ? undefined : { viewTransitionName: `place-${place.id}` }}>
+                  <span className="relative h-20 w-24 shrink-0 overflow-hidden bg-navy [&_.place-art]:aspect-auto [&_.place-art]:h-full" style={reduceMotion ? undefined : { viewTransitionName: `place-${place.id}` }}>
                     <PlaceThumb place={place} uploads={app.photos} />
+                    <GoldenFork placeId={place.id} overlay />
                   </span>
                   <span className="min-w-0">
                     <ScoreBadge score={app.gustoScore(place.id)} size="sm" />

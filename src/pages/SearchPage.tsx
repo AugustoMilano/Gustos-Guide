@@ -2,6 +2,7 @@ import { useMemo, useState } from 'react'
 import { useReducedMotion } from 'framer-motion'
 import { Link, useSearchParams } from 'react-router-dom'
 import { PlaceThumb } from '../components/PlaceThumb.tsx'
+import { GoldenFork } from '../components/GoldenFork.tsx'
 import { ScoreBadge } from '../components/ScoreBadge.tsx'
 import { AreaKicker } from '../components/AreaKicker.tsx'
 import { areaPhrase, cityPath } from '../lib/city.ts'
@@ -100,7 +101,10 @@ export function SearchPage() {
                       <span className="mt-1 block text-sm">{[place.cuisine.join(' · '), place.neighborhood, priceLabel(place.price)].filter(Boolean).join(' · ')}{origin ? ` · ${milesBetween(origin, place).toFixed(1)} mi` : ''}</span>
                       {publicReference(place) ? <span className="public-ref mt-1 block">{publicReference(place)}</span> : null}
                     </span>
-                    <ScoreBadge score={gustoScore(place.id)} size="sm" />
+                    <span className="flex shrink-0 flex-col items-end gap-1">
+                      <GoldenFork placeId={place.id} />
+                      <ScoreBadge score={gustoScore(place.id)} size="sm" />
+                    </span>
                   </span>
                 </span>
               </Link>
