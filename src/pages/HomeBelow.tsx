@@ -6,7 +6,9 @@ import { Reveal } from '../components/Reveal.tsx'
 import { GoldenFork } from '../components/GoldenFork.tsx'
 import { ScoreBadge } from '../components/ScoreBadge.tsx'
 import { slimById } from '../content/load.ts'
+import { OwnerCollections } from '../components/OwnerCollections.tsx'
 import { cityPath, type CityId } from '../lib/city.ts'
+import { publicChips } from '../lib/collections.ts'
 import { useCityCatalog } from '../lib/use-city.ts'
 import { homeHitList, RIGHT_NOW_FALLBACK } from '../lib/photo-queue.ts'
 import { hoursPhrase, isOpen } from '../lib/hours.ts'
@@ -83,6 +85,8 @@ export function HomeBelow() {
   const hits = east || la ? places : homeHitList(places)
   const now = rightNow(city, places)
   const neighborhoods = guides.filter((guide) => guide.group === 'Neighborhoods').slice(0, 8)
+  const chips = publicChips(city, places, app.collections)
+  const house = Boolean(app.user?.isOwner)
   const toGo = Object.values(app.statuses).filter((status) => status === 'togo').length
   const recent = Object.entries(app.scores)
     .map(([id, score]) => ({ place: slimById(id), score: score.score }))
@@ -97,7 +101,25 @@ export function HomeBelow() {
         animate={{ opacity: 1, y: 0 }}
         transition={reduceMotion ? { duration: 0 } : { type: 'spring', stiffness: 420, damping: 32 }}
       >
-        <section aria-labelledby="right-now">
+        {chips.length || house ? (
+          <section aria-labelledby="collections">
+            <h2 id="collections" className="font-serif text-4xl italic">Collections</h2>
+            {chips.length ? (
+              <ul className="mt-4 flex flex-wrap gap-2">
+                {chips.map((chip) => (
+                  <li key={chip.slug}>
+                    <Link className="chip inline-flex items-center gap-2" to={cityPath(`/collection/${chip.slug}`)}>
+                      {chip.title}
+                      <span className="tabular-nums">{chip.count}</span>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            ) : null}
+            {house ? <OwnerCollections /> : null}
+          </section>
+        ) : null}
+        <section className="mt-10" aria-labelledby="right-now">
           <h2 id="right-now" className="font-serif text-4xl italic">Where to eat right now</h2>
           <p className="mt-2 max-w-xl">
             {now.open

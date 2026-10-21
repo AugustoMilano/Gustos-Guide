@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
 import { Link } from 'react-router-dom'
+import { CollectionMembership } from '../components/CollectionMembership.tsx'
 import { PlaceThumb } from '../components/PlaceThumb.tsx'
 import { SignInSheet } from '../components/SignInSheet.tsx'
 import { scoreBand } from '../components/ScoreBadge.tsx'
@@ -299,6 +300,7 @@ export function QuickScorePage() {
                     </h2>
                     <p className="mt-2 text-sm">{place.neighborhood} · {place.cuisine.join(', ')}</p>
                     {publicReference(place) ? <p className="public-ref mt-2">{publicReference(place)}</p> : null}
+                    <CollectionMembership placeId={place.id} city={place.city ?? 'seattle'} compact />
                     <p className="mt-2 text-sm lg:hidden">Swipe the photo left if you haven't been, right to score.</p>
                   </div>
                 </div>

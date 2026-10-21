@@ -986,6 +986,16 @@ textarea {
   }
 }
 
+.explore-bar .sheet-toggle {
+  display: none;
+}
+
+@media (max-width: 767px) {
+  .explore-bar .sheet-toggle {
+    display: inline-flex;
+  }
+}
+
 .explore-shell {
   position: fixed;
   z-index: 32;
@@ -2637,6 +2647,29 @@ input[type='time'] {
   align-items: center;
   gap: 0.45rem 0.55rem;
   min-width: 0;
+}
+
+.brand-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  min-height: 44px;
+  color: inherit;
+  text-decoration: none;
+}
+
+.brand-mark {
+  display: block;
+  width: 1.85rem;
+  height: 1.85rem;
+  flex: none;
+}
+
+@media (min-width: 640px) {
+  .brand-mark {
+    width: 2.15rem;
+    height: 2.15rem;
+  }
 }
 
 .region-back {

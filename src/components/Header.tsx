@@ -7,6 +7,7 @@ import { SearchField } from './SearchField.tsx'
 import { useCityId } from '../lib/use-city-id.ts'
 import { AreaKicker } from './AreaKicker.tsx'
 import { CitySwitcher } from './CitySwitcher.tsx'
+import { LogoMark } from './LogoMark.tsx'
 import { SignInSheet } from './SignInSheet.tsx'
 import { useApp } from '../state/AppState.tsx'
 
@@ -175,8 +176,9 @@ export function Header() {
       <OfflineBanner />
       <div className="header-bar mx-auto flex w-full max-w-[100rem] items-center gap-3 px-4 py-3">
         <div className="brand-lockup">
-          <Link viewTransition={!reduceMotion} to={cityPath('/', linkCity)} className="wordmark shrink-0 font-serif text-2xl italic leading-none sm:text-3xl">
-            Gusto's Guide
+          <Link viewTransition={!reduceMotion} to={cityPath('/', linkCity)} className="brand-link">
+            <LogoMark />
+            <span className="wordmark font-serif text-2xl italic leading-none sm:text-3xl">Gusto's Guide</span>
           </Link>
           {picker ? null : (
             <CityButton

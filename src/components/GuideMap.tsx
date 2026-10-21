@@ -279,12 +279,15 @@ function FitPins({
     const latlng = pin.getLatLng()
     const focused = focusRef.current === activeId
     if (focused) focusRef.current = null
-    const inView = map.getBounds().pad(-0.08).contains(latlng)
-    if (focused || !inView) {
+    try {
+      const inView = map.getBounds().pad(-0.08).contains(latlng)
+      if (!focused && inView) return () => element?.classList.remove('is-hot')
       const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches
       const zoom = focused ? Math.max(map.getZoom(), 15) : map.getZoom()
       if (reduce) map.setView(latlng, zoom, { animate: false })
       else map.flyTo(latlng, zoom, { duration: focused ? 0.75 : 0.45 })
+    } catch {
+      // The map can unmount while a pin is still active.
     }
     return () => element?.classList.remove('is-hot')
   }, [activeId, map, statuses])

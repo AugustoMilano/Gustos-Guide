@@ -1,5 +1,15 @@
 import { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState, type ReactNode } from 'react'
 import type { User } from '@supabase/supabase-js'
+import type { CityId } from '../lib/city.ts'
+import {
+  blurbProblem,
+  cleanBlurb,
+  cleanTitle,
+  collectionSlug,
+  titleProblem,
+  type CollectionsStatus,
+  type HouseCollection,
+} from '../lib/collections.ts'
 import { demo, demoFriendsEnabled, type DemoUser } from '../lib/demo.ts'
 import { clearStashedAuthError, peekAuthError } from '../lib/auth-callback.ts'
 import { canonicalUrl } from '../lib/site.ts'
@@ -8,6 +18,16 @@ import { rescore } from '../lib/rank.ts'
 import { mergeUploads, type LivePhoto } from '../lib/gallery.ts'
 import type { HouseMark } from '../lib/quick-score.ts'
 import { deleteGuideRemote, importLocalBundle, loadAccount, loadHouseMarks, loadHouseScores, loadNotices, loadOwnerPhotos, loadPlans, saveGuide, savePlan, type FriendLists, type FriendProfile, type FriendRequest } from '../social/account.ts'
+import {
+  addCollectionPlace,
+  fetchCollections,
+  insertCollection,
+  orderCollectionPlaces,
+  patchCollection,
+  removeCollection,
+  removeCollectionPlace,
+  unpublishedNote,
+} from '../social/collection-store.ts'
 import { scanLocalBundle, type LocalBundle } from '../social/importLocal.ts'
 import { authProviders, removePlacePhoto, savePlacePhoto, sendMagicLink, signInWithProvider, supabaseClient } from '../social/supabase.ts'
 import type { Activity, Bucket, Comment, GuideVisibility, Notice, Plan, RankScore, SessionUser, UserGuide, VisitStatus } from '../types.ts'
@@ -104,6 +124,14 @@ type AppValue = {
   setHouseScore: (placeId: string, score: number | null) => void
   houseMark: (placeId: string) => HouseMark | null
   setHouseMark: (placeId: string, status: HouseMark | null) => void
+  collections: HouseCollection[]
+  collectionsStatus: CollectionsStatus
+  collectionsMessage: string
+  createCollection: (city: CityId, title: string, blurb: string, placeIds?: string[]) => Promise<string | null>
+  renameCollection: (id: string, title: string, blurb: string) => Promise<boolean>
+  deleteCollection: (id: string) => Promise<void>
+  setCollectionPlace: (collectionId: string, placeId: string, include: boolean) => void
+  reorderCollection: (collectionId: string, placeIds: string[]) => void
   tasteMatch: (userId: string) => number | null
   announcement: string
   authError: string | null
@@ -166,6 +194,11 @@ export function AppProvider({ children }: { children: ReactNode }) {
   const [authError, setAuthError] = useState<string | null>(() => peekAuthError())
   const [house, setHouse] = useState<Record<string, number>>({})
   const [marks, setMarks] = useState<Record<string, HouseMark>>({})
+  const [collections, setCollections] = useState<HouseCollection[]>([])
+  const collectionsRef = useRef<HouseCollection[]>([])
+  const [collectionsStatus, setCollectionsStatus] = useState<CollectionsStatus>(remote ? 'loading' : 'offline')
+  const collectionsStatusRef = useRef(collectionsStatus)
+  const [collectionsMessage, setCollectionsMessage] = useState('')
   const marksRef = useRef(marks)
   const [friends, setFriends] = useState<FriendProfile[]>([])
   const [requests, setRequests] = useState<FriendRequest[]>([])
@@ -241,6 +274,10 @@ export function AppProvider({ children }: { children: ReactNode }) {
     hydrateRef.current = hydrate
   })
 
+  useEffect(() => {
+    collectionsStatusRef.current = collectionsStatus
+  }, [collectionsStatus])
+
   const noteAuthFailure = useCallback((message: string) => {
     const text = message.trim()
     if (!text) return
@@ -291,6 +328,29 @@ export function AppProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
     if (!remote) return
     let cancel = false
+    void fetchCollections(remote).then((result) => {
+      if (cancel) return
+      if (result.ok) {
+        setCollections((current) => {
+          const serverIds = new Set(result.rows.map((row) => row.id))
+          const extras = current.filter((row) => row.published && !serverIds.has(row.id))
+          const drafts = current.filter((row) => !row.published)
+          const next = [...result.rows, ...extras, ...drafts]
+          collectionsRef.current = next
+          return next
+        })
+        setCollectionsStatus('ready')
+        setCollectionsMessage('')
+        return
+      }
+      if (result.missing) {
+        setCollectionsStatus('missing')
+        setCollectionsMessage(unpublishedNote(true))
+        return
+      }
+      setCollectionsStatus('error')
+      setCollectionsMessage(result.message)
+    })
     void loadHouseScores(remote).then((scores) => {
       if (!cancel && scores) setHouse(scores)
     })
@@ -1029,6 +1089,148 @@ export function AppProvider({ children }: { children: ReactNode }) {
     return marks[placeId] ?? null
   }
 
+  function rememberCollections(next: HouseCollection[]) {
+    collectionsRef.current = next
+    setCollections(next)
+  }
+
+  async function createCollection(city: CityId, title: string, blurb: string, placeIds: string[] = []): Promise<string | null> {
+    if (!user?.isOwner) return null
+    const nextTitle = cleanTitle(title)
+    const nextBlurb = cleanBlurb(blurb)
+    const problem = titleProblem(nextTitle, collectionsRef.current.filter((row) => row.city === city).map((row) => row.title)) ?? blurbProblem(nextBlurb)
+    if (problem) {
+      setAnnouncement(problem)
+      return null
+    }
+    const slug = collectionSlug(nextTitle, collectionsRef.current.filter((row) => row.city === city).map((row) => row.slug))
+    const position = collectionsRef.current.filter((row) => row.city === city).reduce((max, row) => Math.max(max, row.position), -1) + 1
+    const tempId = crypto.randomUUID()
+    const draft: HouseCollection = {
+      id: tempId,
+      city,
+      title: nextTitle,
+      slug,
+      blurb: nextBlurb,
+      position,
+      placeIds: [...placeIds],
+      published: false,
+    }
+    rememberCollections([...collectionsRef.current, draft])
+    const status = collectionsStatusRef.current
+    if (!remote || status === 'missing' || status === 'offline') {
+      setAnnouncement(unpublishedNote(status === 'missing'))
+      return tempId
+    }
+    const result = await insertCollection(remote, user.id, draft)
+    if (!result.ok) {
+      if (result.missing) {
+        setCollectionsStatus('missing')
+        setCollectionsMessage(unpublishedNote(true))
+        setAnnouncement(unpublishedNote(true))
+        return tempId
+      }
+      rememberCollections(collectionsRef.current.filter((row) => row.id !== tempId))
+      setAnnouncement(result.message)
+      return null
+    }
+    rememberCollections(collectionsRef.current.map((row) => (row.id === tempId ? { ...row, id: result.id, published: true } : row)))
+    return result.id
+  }
+
+  async function renameCollection(id: string, title: string, blurb: string): Promise<boolean> {
+    if (!user?.isOwner) return false
+    const current = collectionsRef.current.find((row) => row.id === id)
+    if (!current) return false
+    const nextTitle = cleanTitle(title)
+    const nextBlurb = cleanBlurb(blurb)
+    const problem = titleProblem(
+      nextTitle,
+      collectionsRef.current.filter((row) => row.city === current.city).map((row) => row.title),
+      current.title,
+    ) ?? blurbProblem(nextBlurb)
+    if (problem) {
+      setAnnouncement(problem)
+      return false
+    }
+    rememberCollections(collectionsRef.current.map((row) => (row.id === id ? { ...row, title: nextTitle, blurb: nextBlurb } : row)))
+    if (!remote || !current.published) return true
+    const result = await patchCollection(remote, user.id, id, { title: nextTitle, blurb: nextBlurb })
+    if (result.ok) return true
+    if (result.missing) {
+      setCollectionsStatus('missing')
+      rememberCollections(collectionsRef.current.map((row) => (row.id === id ? { ...row, published: false } : row)))
+      setAnnouncement(unpublishedNote(true))
+      return true
+    }
+    rememberCollections(collectionsRef.current.map((row) => (row.id === id ? current : row)))
+    setAnnouncement(result.message)
+    return false
+  }
+
+  async function deleteCollection(id: string) {
+    if (!user?.isOwner) return
+    const current = collectionsRef.current.find((row) => row.id === id)
+    if (!current) return
+    rememberCollections(collectionsRef.current.filter((row) => row.id !== id))
+    if (!remote || !current.published) return
+    const result = await removeCollection(remote, id)
+    if (result.ok) return
+    rememberCollections([...collectionsRef.current, current])
+    if (result.missing) {
+      setCollectionsStatus('missing')
+      setAnnouncement(unpublishedNote(true))
+      return
+    }
+    setAnnouncement(result.message)
+  }
+
+  function setCollectionPlace(collectionId: string, placeId: string, include: boolean) {
+    if (!user?.isOwner) return
+    const current = collectionsRef.current.find((row) => row.id === collectionId)
+    if (!current) return
+    const has = current.placeIds.includes(placeId)
+    if (include === has) return
+    const placeIds = include ? [...current.placeIds, placeId] : current.placeIds.filter((item) => item !== placeId)
+    const previous = current.placeIds
+    rememberCollections(collectionsRef.current.map((row) => (row.id === collectionId ? { ...row, placeIds } : row)))
+    if (!remote || !current.published) return
+    const write = include
+      ? addCollectionPlace(remote, user.id, collectionId, placeId, Math.max(0, placeIds.length - 1))
+      : removeCollectionPlace(remote, collectionId, placeId)
+    void write.then((result) => {
+      if (result.ok) return
+      if (result.missing) {
+        setCollectionsStatus('missing')
+        rememberCollections(collectionsRef.current.map((row) => (row.id === collectionId ? { ...row, placeIds, published: false } : row)))
+        setAnnouncement(unpublishedNote(true))
+        return
+      }
+      rememberCollections(collectionsRef.current.map((row) => (row.id === collectionId ? { ...row, placeIds: previous } : row)))
+      setAnnouncement(result.message)
+    })
+  }
+
+  function reorderCollection(collectionId: string, placeIds: string[]) {
+    if (!user?.isOwner) return
+    const current = collectionsRef.current.find((row) => row.id === collectionId)
+    if (!current) return
+    const previous = current.placeIds
+    rememberCollections(collectionsRef.current.map((row) => (row.id === collectionId ? { ...row, placeIds } : row)))
+    if (!remote || !current.published) return
+    void orderCollectionPlaces(remote, user.id, collectionId, placeIds).then((result) => {
+      if (result.ok) return
+      if (result.missing) {
+        setCollectionsStatus('missing')
+        rememberCollections(collectionsRef.current.map((row) => (row.id === collectionId ? { ...row, published: false } : row)))
+        setAnnouncement(unpublishedNote(true))
+        return
+      }
+      rememberCollections(collectionsRef.current.map((row) => (row.id === collectionId ? { ...row, placeIds: previous } : row)))
+      setAnnouncement(result.message)
+    })
+  }
+
   async function uploadPhoto(placeId: string, file: File) {
     if (!user) throw new Error('Sign in first.')
     if (!user.isOwner && doc.statuses[placeId] !== 'been') throw new Error('Mark the place Been before adding a photo.')
@@ -1243,6 +1445,14 @@ export function AppProvider({ children }: { children: ReactNode }) {
     setHouseScore,
     houseMark,
     setHouseMark,
+    collections,
+    collectionsStatus,
+    collectionsMessage,
+    createCollection,
+    renameCollection,
+    deleteCollection,
+    setCollectionPlace,
+    reorderCollection,
     tasteMatch,
     announcement,
     authError,

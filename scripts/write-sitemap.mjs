@@ -1,6 +1,7 @@
 import { mkdirSync, readFileSync, writeFileSync } from 'node:fs'
 import { dirname, join } from 'node:path'
 import { fileURLToPath } from 'node:url'
+import { markMarkup } from './logo-geometry.mjs'
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..')
 const index = JSON.parse(readFileSync(join(root, 'src/content/index.json'), 'utf8'))
@@ -44,7 +45,8 @@ function card(title, dek) {
   return `<?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
   <rect width="1200" height="630" fill="#141F4D"/>
-  <text x="72" y="88" fill="#EEE3D6" font-family="Georgia, serif" font-size="28">Gusto's Guide</text>
+  <g transform="translate(72 36) scale(0.92)">${markMarkup()}</g>
+  <text x="140" y="78" fill="#EEE3D6" font-family="Georgia, serif" font-size="28" font-style="italic">Gusto's Guide</text>
   ${titleText}
   ${dekText}
 </svg>
