@@ -131,8 +131,8 @@ export function GuidePage() {
   ].filter(Boolean)
 
   return (
-    <main id="main" tabIndex={-1} className={`mx-auto max-w-6xl px-4 outline-none ${mobileMap ? 'flex h-dvh max-h-dvh flex-col overflow-hidden pt-20 pb-3' : 'pt-20 pb-16'}`}>
-      <div className={mobileMap ? 'shrink-0' : undefined}>
+    <main id="main" tabIndex={-1} className={desktop ? 'bleed-stage outline-none' : `mx-auto max-w-6xl px-4 outline-none ${mobileMap ? 'flex h-dvh max-h-dvh flex-col overflow-hidden pt-20 pb-3' : 'pt-20 pb-16'}`}>
+      <div className={desktop ? 'bleed-copy' : mobileMap ? 'shrink-0' : undefined}>
         <AreaKicker />
         <div className="mt-2 flex flex-wrap items-center justify-between gap-x-4 gap-y-2">
           <Link to={cityPath('/guides')} className="inline-flex min-h-11 items-center text-sm font-bold">← All guides</Link>
@@ -153,7 +153,7 @@ export function GuidePage() {
             {guide.intro.split('\n\n').map((paragraph) => <p key={paragraph.slice(0, 24)}>{paragraph}</p>)}
           </details>
         ) : null}
-        <div className="mt-3 hidden gap-2 lg:grid lg:grid-cols-5">
+        <div className="mt-3 hidden gap-2 lg:grid lg:grid-cols-[repeat(auto-fit,minmax(8.5rem,1fr))]">
           <FilterFields
             neighborhoods={neighborhoods}
             cuisines={cuisines}
@@ -230,32 +230,32 @@ export function GuidePage() {
             <GuideStrip rows={ordered.map(({ place, number, entry }) => ({ place, number, score: gustoScore(place.id), vibe: entry.vibe }))} uploads={photos} statuses={statuses} onToggle={onToggle} />
           </div>
         ) : null}
+        {!mobileMap ? (
+          <div className="mt-5 grid gap-8">
+            {ordered.length === 0 ? <p className="border-t-2 border-ink pt-4 font-serif text-2xl italic">Nothing on this list matches. Loosen a filter.</p> : null}
+            {ordered.map(({ entry, place, number }, index) => (
+              <GuideEntryCard
+                key={place.id}
+                place={place}
+                entry={entry}
+                index={index}
+                number={number}
+                uploads={photos}
+                status={statuses[place.id]}
+                friends={friendScore(place.id)}
+                score={gustoScore(place.id)}
+                signedIn={Boolean(user)}
+                onToggle={(status) => onToggle(place.id, status)}
+                onNeedSignIn={() => setSignInOpen(true)}
+              />
+            ))}
+          </div>
+        ) : null}
+        <SignInSheet open={signInOpen} onClose={() => setSignInOpen(false)} />
       </div>
-      <div className={mobileMap ? 'mt-3 grid min-h-0 flex-1' : 'mt-5 grid items-start gap-4 lg:grid-cols-[minmax(0,1fr)_380px]'}>
-        <div className={pane === 'map' && !desktop ? 'hidden' : 'grid gap-8'}>
-          {ordered.length === 0 ? <p className="border-t-2 border-ink pt-4 font-serif text-2xl italic">Nothing on this list matches. Loosen a filter.</p> : null}
-          {ordered.map(({ entry, place, number }, index) => (
-            <GuideEntryCard
-              key={place.id}
-              place={place}
-              entry={entry}
-              index={index}
-              number={number}
-              uploads={photos}
-              status={statuses[place.id]}
-              friends={friendScore(place.id)}
-              score={gustoScore(place.id)}
-              signedIn={Boolean(user)}
-              onToggle={(status) => onToggle(place.id, status)}
-              onNeedSignIn={() => setSignInOpen(true)}
-            />
-          ))}
-        </div>
-        <div className={mobileMap ? 'h-full min-h-0' : `lg:sticky lg:top-20 lg:h-[calc(100dvh-5rem-1.5rem)] ${pane === 'list' ? 'hidden lg:block' : ''}`}>
-          {(desktop || pane === 'map') && <GuideMap places={ordered.map((row) => row.place)} statuses={statuses} />}
-        </div>
+      <div className={desktop ? 'bleed-map' : mobileMap ? 'mt-3 min-h-0 flex-1' : 'hidden'}>
+        {(desktop || pane === 'map') && <GuideMap places={ordered.map((row) => row.place)} statuses={statuses} />}
       </div>
-      <SignInSheet open={signInOpen} onClose={() => setSignInOpen(false)} />
     </main>
   )
 }

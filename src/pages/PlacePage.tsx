@@ -96,7 +96,8 @@ export function PlacePage() {
   }
 
   return (
-    <main id="main" tabIndex={-1} className="mx-auto max-w-6xl px-4 pt-24 pb-16 outline-none">
+    <main id="main" tabIndex={-1} className="bleed-stage place-stage outline-none max-lg:mx-auto max-lg:max-w-6xl max-lg:px-4 max-lg:pt-24 max-lg:pb-16">
+      <div className="bleed-copy max-lg:contents">
       <div className="grid gap-6 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,0.8fr)]">
         <div>
           <PhotoFrame
@@ -170,8 +171,7 @@ export function PlacePage() {
           </div>
         </div>
       </div>
-      <div className="mt-8 grid gap-8 lg:grid-cols-[minmax(0,1fr)_320px]">
-        <article>
+      <article className="mt-8">
           {full?.blurb && full.blurb !== place.oneLiner ? <p className="max-w-2xl text-lg leading-relaxed">{full.blurb}</p> : null}
           {howToGetIn(place) ? (
             <section className="mt-6">
@@ -217,11 +217,11 @@ export function PlacePage() {
             </div>
           </section>
         </article>
-        <div className="h-80 lg:sticky lg:top-24">
-          <GuideMap places={[place]} statuses={app.statuses} />
-        </div>
+        <SignInSheet open={signIn} onClose={() => setSignIn(false)} />
       </div>
-      <SignInSheet open={signIn} onClose={() => setSignIn(false)} />
+      <div className="bleed-map mt-8 h-80 lg:mt-0 lg:h-auto">
+        <GuideMap places={[place]} statuses={app.statuses} />
+      </div>
     </main>
   )
 }

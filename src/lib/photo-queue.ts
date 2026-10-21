@@ -19,9 +19,9 @@ export type PhotoNeed = {
 
 export function homeHitList(places: SlimPlace[]): SlimPlace[] {
   const ranked = places
-    .filter((place) => place.publicRating || place.appleRating)
+    .filter((place) => place.publicRating?.source === 'Yelp')
     .slice()
-    .sort((a, b) => (b.publicRating?.value ?? 0) - (a.publicRating?.value ?? 0) || (b.appleRating?.percent ?? 0) - (a.appleRating?.percent ?? 0))
+    .sort((a, b) => (b.publicRating?.value ?? 0) - (a.publicRating?.value ?? 0))
   const picked: SlimPlace[] = []
   const hoods = new Set<string>()
   for (const place of ranked) {

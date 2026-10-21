@@ -32,22 +32,14 @@ export function formatRating(rating: number): string {
   return rating.toFixed(1)
 }
 
-const PUBLIC_SOURCES = new Set(['Yelp', 'OpenTable'])
-
 export function publicReference(place: {
   publicRating?: { value: number; count: number; source: string }
-  appleRating?: { percent: number; count?: number }
 }): string | null {
   const rating = place.publicRating
-  if (rating && PUBLIC_SOURCES.has(rating.source)) {
-    const stars = `${rating.value.toFixed(1)} ★`
-    const count = rating.count > 0 ? ` · ${rating.count.toLocaleString('en-US')} reviews` : ''
-    return `${rating.source} ${stars}${count}`
-  }
-  if (place.appleRating && Number.isFinite(place.appleRating.percent)) {
-    return `Apple Maps ${place.appleRating.percent}%`
-  }
-  return null
+  if (!rating || rating.source !== 'Yelp' || !Number.isFinite(rating.value)) return null
+  const stars = `${rating.value.toFixed(1)} ★`
+  const count = rating.count > 0 ? ` · ${rating.count.toLocaleString('en-US')} reviews` : ''
+  return `Yelp ${stars}${count}`
 }
 
 export function yelpBizUrl(slug: string): string {

@@ -23,7 +23,11 @@ const OCCASIONS = ['date-night', 'cheap-eats', 'brunch', 'late-night', 'happy-ho
 function diverse(places: SlimPlace[], limit: number): SlimPlace[] {
   const picked: SlimPlace[] = []
   const hoods = new Set<string>()
-  const ranked = places.slice().sort((a, b) => (b.publicRating?.value ?? 0) - (a.publicRating?.value ?? 0))
+  const ranked = places.slice().sort((a, b) => {
+    const left = a.publicRating?.source === 'Yelp' ? a.publicRating.value : 0
+    const right = b.publicRating?.source === 'Yelp' ? b.publicRating.value : 0
+    return right - left
+  })
   for (const place of ranked) {
     if (hoods.has(place.neighborhood)) continue
     hoods.add(place.neighborhood)
