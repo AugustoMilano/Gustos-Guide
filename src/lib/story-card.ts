@@ -135,14 +135,7 @@ function frame(ctx: CanvasRenderingContext2D) {
 
 async function drawFork(ctx: CanvasRenderingContext2D, metal: ForkMetal, gem: boolean, x: number, y: number, w: number) {
   const image = await loadFork(metal, gem)
-  if (metal === 'navy') {
-    ctx.save()
-    ctx.fillStyle = CREAM
-    roundRect(ctx, x - 10, y - 8, w + 20, w * 1.25 + 16, 22)
-    ctx.fill()
-    ctx.restore()
-  }
-  ctx.drawImage(image, x, y, w, w * 1.25)
+  ctx.drawImage(image, x, y, w, w)
 }
 
 export async function renderPlaceStory(place: StoryPlace): Promise<Blob> {
@@ -209,7 +202,7 @@ export async function renderPlaceStory(place: StoryPlace): Promise<Blob> {
     ctx.font = '700 24px "Instrument Sans", sans-serif'
     ctx.textAlign = 'center'
     const caption = place.award.metal === 'navy' ? 'TOP 25' : `#${place.award.rank}`
-    ctx.fillText(caption, W - 84 - 120, place.award.metal === 'navy' ? cursor + 286 : cursor + 250)
+    ctx.fillText(caption, W - 84 - 120, cursor + 222)
     ctx.textAlign = 'left'
   }
   const credit = place.credit && place.credit !== 'Illustration' ? `Photo · ${place.credit}${place.license ? ` · ${place.license}` : ''}` : ''
@@ -272,7 +265,7 @@ export async function renderGuideStory(guide: { title: string; items: StoryItem[
       ctx.textAlign = 'left'
     }
     if (item.metal) {
-      await drawFork(ctx, item.metal, item.metal === 'gold', W - 210, rowY + 8, 72)
+      await drawFork(ctx, item.metal, item.metal === 'gold', W - 196, rowY + 20, 72)
     }
     cursor += 128
   }
