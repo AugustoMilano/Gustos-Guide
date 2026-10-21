@@ -1,5 +1,6 @@
 import { lazy, Suspense, useEffect, useRef, useState } from 'react'
 import { Route, Routes, useLocation, useNavigate } from 'react-router-dom'
+import { CollectionErrorBoundary } from './components/CollectionErrorBoundary.tsx'
 import { Footer } from './components/Footer.tsx'
 import { Header } from './components/Header.tsx'
 import { ImportLocalSheet } from './components/ImportLocalSheet.tsx'
@@ -33,6 +34,15 @@ const ScoreQueuePage = lazy(() => import('./pages/ScoreQueuePage.tsx').then((mod
 const QuickScorePage = lazy(() => import('./pages/QuickScorePage.tsx').then((module) => ({ default: module.QuickScorePage })))
 const PhotoQueuePage = lazy(() => import('./pages/PhotoQueuePage.tsx').then((module) => ({ default: module.PhotoQueuePage })))
 const CollectionPage = lazy(() => import('./pages/CollectionPage.tsx').then((module) => ({ default: module.CollectionPage })))
+
+function CollectionRoute() {
+  const { pathname } = useLocation()
+  return (
+    <CollectionErrorBoundary key={pathname}>
+      <CollectionPage />
+    </CollectionErrorBoundary>
+  )
+}
 
 function ScrollManager() {
   const location = useLocation()
@@ -187,7 +197,7 @@ function Shell() {
             <Route key={`${prefix}-explore`} path={`${prefix}/explore`} element={<ExplorePage />} />,
             <Route key={`${prefix}-guides`} path={`${prefix}/guides`} element={<GuideIndexPage />} />,
             <Route key={`${prefix}-guide`} path={`${prefix}/guide/:slug`} element={<GuidePage />} />,
-            <Route key={`${prefix}-collection`} path={`${prefix}/collection/:slug`} element={<CollectionPage />} />,
+            <Route key={`${prefix}-collection`} path={`${prefix}/collection/:slug`} element={<CollectionRoute />} />,
             <Route key={`${prefix}-place`} path={`${prefix}/place/:slug`} element={<PlacePage />} />,
             <Route key={`${prefix}-search`} path={`${prefix}/search`} element={<SearchPage />} />,
             <Route key={`${prefix}-feed`} path={`${prefix}/feed`} element={<FeedPage />} />,

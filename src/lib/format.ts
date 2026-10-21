@@ -32,11 +32,14 @@ export function formatRating(rating: number): string {
   return rating.toFixed(1)
 }
 
+/** Shown on the gray Yelp line. Lower ratings stay in the data and in ranking. */
+export const YELP_LINE_MIN = 3.9
+
 export function publicReference(place: {
   publicRating?: { value: number; count: number; source: string }
 }): string | null {
   const rating = place.publicRating
-  if (!rating || rating.source !== 'Yelp' || !Number.isFinite(rating.value)) return null
+  if (!rating || rating.source !== 'Yelp' || !Number.isFinite(rating.value) || rating.value < YELP_LINE_MIN) return null
   const stars = `${rating.value.toFixed(1)} ★`
   const count = rating.count > 0 ? ` · ${rating.count.toLocaleString('en-US')} reviews` : ''
   return `Yelp ${stars}${count}`

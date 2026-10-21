@@ -51,6 +51,7 @@ export function unpublishedNote(missing: boolean): string {
 export async function fetchCollections(client: SupabaseClient): Promise<
   { ok: true; rows: HouseCollection[] } | { ok: false; missing: boolean; message: string }
 > {
+  try {
   const [lists, members] = await Promise.all([
     client.from('collections').select('id, city, title, slug, blurb, position').order('position', { ascending: true }),
     client.from('collection_places').select('collection_id, place_id, position').order('position', { ascending: true }),
@@ -58,28 +59,35 @@ export async function fetchCollections(client: SupabaseClient): Promise<
   const error = lists.error ?? members.error
   if (error) return failed(error, 'Could not load collections.')
   const grouped = new Map<string, MemberRow[]>()
-  for (const row of (members.data ?? []) as MemberRow[]) {
+  const memberRows = Array.isArray(members.data) ? (members.data as MemberRow[]) : []
+  for (const row of memberRows) {
+    if (!row || typeof row.collection_id !== 'string' || typeof row.place_id !== 'string') continue
     const list = grouped.get(row.collection_id) ?? []
     list.push(row)
     grouped.set(row.collection_id, list)
   }
   const rows: HouseCollection[] = []
-  for (const row of (lists.data ?? []) as CollectionRow[]) {
+  const listRows = Array.isArray(lists.data) ? (lists.data as CollectionRow[]) : []
+  for (const row of listRows) {
     const city = asCity(row.city)
-    if (!city) continue
+    if (!city || typeof row.id !== 'string') continue
     const places = (grouped.get(row.id) ?? []).slice().sort((a, b) => a.position - b.position)
     rows.push({
       id: row.id,
       city,
-      title: row.title,
-      slug: row.slug,
+      title: typeof row.title === 'string' ? row.title : 'Collection',
+      slug: typeof row.slug === 'string' ? row.slug : '',
       blurb: row.blurb?.trim() ? row.blurb.trim() : null,
-      position: row.position,
+      position: typeof row.position === 'number' ? row.position : 0,
       placeIds: places.map((place) => place.place_id),
       published: true,
     })
   }
-  return { ok: true, rows }
+  return { ok: true, rows: rows.filter((row) => row.slug) }
+  } catch (error) {
+    const message = error instanceof Error ? error.message : 'Could not load collections.'
+    return { ok: false, missing: false, message }
+  }
 }
 
 export async function insertCollection(

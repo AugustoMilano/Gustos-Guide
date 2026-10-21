@@ -350,6 +350,10 @@ export function AppProvider({ children }: { children: ReactNode }) {
       }
       setCollectionsStatus('error')
       setCollectionsMessage(result.message)
+    }).catch((error: unknown) => {
+      if (cancel) return
+      setCollectionsStatus('error')
+      setCollectionsMessage(error instanceof Error ? error.message : 'Could not load collections.')
     })
     void loadHouseScores(remote).then((scores) => {
       if (!cancel && scores) setHouse(scores)

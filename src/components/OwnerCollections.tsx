@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { cityPath } from '../lib/city.ts'
-import { cleanTitle, collectionsForCity, flagshipAimHint, suggestionsFor } from '../lib/collections.ts'
+import { cleanTitle, collectionsForCity, flagshipAimHint, renderableIds, suggestionsFor } from '../lib/collections.ts'
 import { useCityCatalog } from '../lib/use-city.ts'
 import { COLLECTIONS_MIGRATION } from '../social/collection-store.ts'
 import { useApp } from '../state/AppState.tsx'
@@ -57,7 +57,7 @@ export function OwnerCollections() {
             <li key={row.id} className="border-t border-ink/15 pt-3">
               <div className="flex flex-wrap items-center gap-2">
                 <Link className="font-bold" to={cityPath(`/collection/${row.slug}`)}>{row.title}</Link>
-                <span className="text-sm">{flagshipAimHint(row.placeIds.length)}</span>
+                <span className="text-sm">{flagshipAimHint((renderableIds(row.placeIds) ?? []).length)}</span>
                 {row.published ? null : <span className="text-sm">Not published</span>}
                 <button
                   type="button"
