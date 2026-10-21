@@ -12,20 +12,43 @@ const DISC: Record<Exclude<ForkMetal, 'navy'>, [string, string, string, string]>
 }
 
 /**
- * Classic dinner fork, symmetric, built from straight tines and a pill handle
- * so the silhouette stays legible inside a 24px coin.
+ * One filled silhouette: long thin tines, a curved shoulder, a narrow neck,
+ * and a handle that widens a little into a round end. Rotated like flatware.
+ * Tine width is the minimum that still separates at 24px.
  */
 function forkShapes(fill: string): string {
-  const tine = (x: number) => `<rect x="${x}" y="15" width="8" height="34" rx="4" fill="${fill}"/>`
-  return `
-    ${tine(26.5)}
-    ${tine(39.5)}
-    ${tine(52.5)}
-    ${tine(65.5)}
-    <rect x="24" y="40" width="52" height="14" rx="5" fill="${fill}"/>
-    <path fill="${fill}" d="M34 48h32l-8 18h-16z"/>
-    <path fill="${fill}" d="M44 60h12v16q0 10-6 10t-6-10z"/>
-  `
+  const tw = 5.2
+  const gap = 4.4
+  const count = 4
+  const total = count * tw + (count - 1) * gap
+  const x0 = 50 - total / 2
+  const tip = 12
+  const base = 46
+  const neckY = 58
+  const endY = 88
+  const neck = 2.35
+  const butt = 3.55
+  const cap = tw / 2
+  const outerR = x0 + total
+  let d = `M ${50 - neck} ${neckY}`
+  d += ` C ${50 - neck} ${neckY + 10}, ${50 - butt} ${endY - 14}, ${50 - butt} ${endY - butt}`
+  d += ` A ${butt} ${butt} 0 0 0 ${50 + butt} ${endY - butt}`
+  d += ` C ${50 + butt} ${endY - 14}, ${50 + neck} ${neckY + 10}, ${50 + neck} ${neckY}`
+  d += ` C ${50 + neck + 7} ${neckY - 7}, ${outerR - 1} ${base + 7}, ${outerR} ${base}`
+  const over = (right: number, left: number) => {
+    const mid = (right + left) / 2
+    return `L ${right} ${tip + cap} Q ${right} ${tip} ${mid} ${tip} Q ${left} ${tip} ${left} ${tip + cap} L ${left} ${base}`
+  }
+  d += over(outerR, outerR - tw)
+  for (let i = count - 2; i >= 0; i -= 1) {
+    const left = x0 + i * (tw + gap)
+    const right = left + tw
+    const gapRight = right + gap
+    d += ` C ${gapRight} ${base + 3.6}, ${right} ${base + 3.6}, ${right} ${base}`
+    d += over(right, left)
+  }
+  d += ` C ${x0 + 1} ${base + 7}, ${50 - neck - 7} ${neckY - 7}, ${50 - neck} ${neckY} Z`
+  return `<path fill="${fill}" d="${d}"/>`
 }
 
 /** Circular medallion. Gold carries a small pink gem; Top 25 is flat navy and coral. */
@@ -46,12 +69,14 @@ export function forkSvg(metal: ForkMetal, options?: { id?: string; gem?: boolean
       })()
   const fork = metal === 'navy' ? CORAL : DISC[metal][2]
   const gemMark = gem
-    ? `<circle cx="50" cy="70" r="2.6" fill="#e23b78" stroke="#f0d078" stroke-width="0.7"/>
-      <circle cx="49.2" cy="69.2" r="0.7" fill="#fff" opacity="0.9"/>`
+    ? `<circle cx="50" cy="78" r="2.05" fill="#e23b78" stroke="#f0d078" stroke-width="0.55"/>
+      <circle cx="49.3" cy="77.3" r="0.55" fill="#fff" opacity="0.9"/>`
     : ''
   return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100" aria-hidden="true" focusable="false">
   ${disc}
-  ${forkShapes(fork)}
-  ${gemMark}
+  <g transform="rotate(-30 50 50)">
+    ${forkShapes(fork)}
+    ${gemMark}
+  </g>
 </svg>`
 }
