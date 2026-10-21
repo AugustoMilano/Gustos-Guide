@@ -32,6 +32,7 @@ const TonightPage = lazy(() => import('./pages/TonightPage.tsx').then((module) =
 const ScoreQueuePage = lazy(() => import('./pages/ScoreQueuePage.tsx').then((module) => ({ default: module.ScoreQueuePage })))
 const QuickScorePage = lazy(() => import('./pages/QuickScorePage.tsx').then((module) => ({ default: module.QuickScorePage })))
 const PhotoQueuePage = lazy(() => import('./pages/PhotoQueuePage.tsx').then((module) => ({ default: module.PhotoQueuePage })))
+const CollectionPage = lazy(() => import('./pages/CollectionPage.tsx').then((module) => ({ default: module.CollectionPage })))
 
 function ScrollManager() {
   const location = useLocation()
@@ -108,7 +109,8 @@ function BackToTop() {
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
   }, [pathname])
-  if (!show || barePath(pathname) === '/explore') return null
+  const bare = barePath(pathname)
+  if (!show || bare === '/explore' || bare.startsWith('/collection/')) return null
   return (
     <button
       type="button"
@@ -185,6 +187,7 @@ function Shell() {
             <Route key={`${prefix}-explore`} path={`${prefix}/explore`} element={<ExplorePage />} />,
             <Route key={`${prefix}-guides`} path={`${prefix}/guides`} element={<GuideIndexPage />} />,
             <Route key={`${prefix}-guide`} path={`${prefix}/guide/:slug`} element={<GuidePage />} />,
+            <Route key={`${prefix}-collection`} path={`${prefix}/collection/:slug`} element={<CollectionPage />} />,
             <Route key={`${prefix}-place`} path={`${prefix}/place/:slug`} element={<PlacePage />} />,
             <Route key={`${prefix}-search`} path={`${prefix}/search`} element={<SearchPage />} />,
             <Route key={`${prefix}-feed`} path={`${prefix}/feed`} element={<FeedPage />} />,
@@ -208,7 +211,7 @@ function Shell() {
         </Routes>
         )}
       </Suspense>
-      {barePath(pathname) === '/explore' ? null : <Footer />}
+      {barePath(pathname) === '/explore' || barePath(pathname).startsWith('/collection/') ? null : <Footer />}
       <InstallHint />
       <BackToTop />
       {importOffer ? <ImportLocalSheet offer={importOffer} onAccept={() => void acceptImport()} onDismiss={dismissImport} /> : null}

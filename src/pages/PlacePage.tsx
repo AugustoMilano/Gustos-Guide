@@ -9,6 +9,7 @@ import { areaTitle, cityPath } from '../lib/city.ts'
 import { placeCity, placesForCity } from '../lib/use-city.ts'
 import { demoFriendsEnabled } from '../lib/demo.ts'
 import { displayPhotos } from '../lib/gallery.ts'
+import { CollectionMembership } from '../components/CollectionMembership.tsx'
 import { HouseScorePad } from '../components/HouseScorePad.tsx'
 import { GoldenFork } from '../components/GoldenFork.tsx'
 import { ScoreBadge } from '../components/ScoreBadge.tsx'
@@ -167,6 +168,7 @@ export function PlacePage() {
               }}
             />
           </div>
+          {place.closed ? null : <CollectionMembership placeId={place.id} city={placeCity(place)} />}
         </div>
       </div>
       <section className="place-upload" aria-labelledby="upload-heading">

@@ -986,6 +986,16 @@ textarea {
   }
 }
 
+.explore-bar .sheet-toggle {
+  display: none;
+}
+
+@media (max-width: 767px) {
+  .explore-bar .sheet-toggle {
+    display: inline-flex;
+  }
+}
+
 .explore-shell {
   position: fixed;
   z-index: 32;
