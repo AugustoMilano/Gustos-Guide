@@ -207,7 +207,8 @@
         }
       ],
       "phone": "+1 (310) 657-4662",
-      "website": "https://pizzana.com/pages/pizzana-west-hollywood"
+      "website": "https://pizzana.com/pages/pizzana-west-hollywood",
+      "yelpSlug": "pizzana-west-hollywood-west-hollywood-3"
     },
     {
       "id": "bestia",
@@ -263,7 +264,8 @@
         }
       ],
       "phone": "+1 (213) 514-5724",
-      "website": "https://bestiala.com"
+      "website": "https://bestiala.com",
+      "yelpSlug": "bestia-los-angeles"
     },
     {
       "id": "venice-flake",
@@ -375,7 +377,8 @@
         }
       ],
       "phone": "+1 (310) 836-6252",
-      "website": "https://www.n-naka.com"
+      "website": "https://www.n-naka.com",
+      "yelpSlug": "n-naka-los-angeles"
     },
     {
       "id": "freddo",
@@ -493,7 +496,8 @@
         }
       ],
       "phone": "+1 (310) 587-0700",
-      "website": "http://www.tarandroses.com"
+      "website": "http://www.tarandroses.com",
+      "yelpSlug": "tar-and-roses-santa-monica"
     },
     {
       "id": "the-musso-frank-grill",
@@ -553,7 +557,8 @@
         }
       ],
       "phone": "+1 (323) 467-7788",
-      "website": "https://mussoandfrank.com"
+      "website": "https://mussoandfrank.com",
+      "yelpSlug": "musso-and-frank-grill-hollywood"
     },
     {
       "id": "the-butcher-the-baker-the-cappuccino-maker",
@@ -606,7 +611,8 @@
         }
       ],
       "phone": "+1 (310) 360-6900",
-      "website": "https://bbcmcafe.com"
+      "website": "https://bbcmcafe.com",
+      "yelpSlug": "the-butcher-the-baker-the-cappuccino-maker-west-hollywood-2"
     },
     {
       "id": "saffron-rose-persian-ice-cream",
@@ -665,7 +671,8 @@
         }
       ],
       "phone": "+1 (310) 477-5533",
-      "website": "https://saffronrosepersianicecream.com"
+      "website": "https://saffronrosepersianicecream.com",
+      "yelpSlug": "saffron-and-rose-persian-ice-cream-los-angeles"
     },
     {
       "id": "parakeet-cafe",
@@ -808,7 +815,7 @@
         "Italian"
       ],
       "placeType": "restaurant",
-      "oneLiner": "7900 Santa Monica Blvd — Mamie, Italian, West Hollywood.",
+      "oneLiner": "7900 Santa Monica Blvd \u2014 Mamie, Italian, West Hollywood.",
       "perfectFor": [],
       "periods": [
         {
@@ -834,7 +841,7 @@
       ],
       "muid": "16166686475079566009",
       "hoursLabel": "",
-      "blurb": "7900 Santa Monica Blvd — Mamie, Italian, West Hollywood.",
+      "blurb": "7900 Santa Monica Blvd \u2014 Mamie, Italian, West Hollywood.",
       "orderThis": [],
       "ids": {},
       "copySource": "draft",
@@ -848,12 +855,13 @@
         }
       ],
       "phone": "+1 (323) 848-4894",
-      "website": "https://www.mamiekitchen.com"
+      "website": "https://www.mamiekitchen.com",
+      "yelpSlug": "mamie-west-hollywood-2"
     },
     {
       "id": "urth-caffe",
       "city": "la",
-      "name": "Urth Caffé",
+      "name": "Urth Caff\u00e9",
       "neighborhood": "Beverly Hills",
       "address": "267 S Beverly Dr, Beverly Hills, CA 90212",
       "lat": 34.0626694,
@@ -862,7 +870,7 @@
         "Coffee"
       ],
       "placeType": "cafe",
-      "oneLiner": "Urth Caffé sits at 267 S Beverly Dr. Coffee, Beverly Hills.",
+      "oneLiner": "Urth Caff\u00e9 sits at 267 S Beverly Dr. Coffee, Beverly Hills.",
       "perfectFor": [],
       "periods": [
         {
@@ -894,7 +902,7 @@
       ],
       "muid": "6358349288316434289",
       "hoursLabel": "",
-      "blurb": "Urth Caffé sits at 267 S Beverly Dr. Coffee, Beverly Hills.",
+      "blurb": "Urth Caff\u00e9 sits at 267 S Beverly Dr. Coffee, Beverly Hills.",
       "orderThis": [],
       "ids": {},
       "copySource": "draft",
@@ -903,7 +911,7 @@
         {
           "source": "illustration",
           "isIllustration": true,
-          "alt": "Illustration suggesting Coffee at Urth Caffé",
+          "alt": "Illustration suggesting Coffee at Urth Caff\u00e9",
           "credit": "Illustration"
         }
       ],
@@ -976,7 +984,8 @@
         }
       ],
       "phone": "+1 (213) 799-4628",
-      "website": "https://girlandthegoat.com/los-angeles"
+      "website": "https://girlandthegoat.com/los-angeles",
+      "yelpSlug": "girl-and-the-goat-los-angeles-2"
     },
     {
       "id": "langers",
@@ -1028,12 +1037,13 @@
         }
       ],
       "phone": "+1 (213) 483-8050",
-      "website": "https://www.langersdeli.com"
+      "website": "https://www.langersdeli.com",
+      "yelpSlug": "langers-delicatessen-los-angeles-2"
     },
     {
       "id": "angels-tijuana-tacos",
       "city": "la",
-      "name": "Angel’s Tijuana Tacos",
+      "name": "Angel\u2019s Tijuana Tacos",
       "neighborhood": "Echo Park",
       "address": "1185 Sunset Blvd, Los Angeles, CA 90026",
       "lat": 34.0679687,
@@ -1042,7 +1052,7 @@
         "Tacos"
       ],
       "placeType": "restaurant",
-      "oneLiner": "Angel’s Tijuana Tacos, 1185 Sunset Blvd. Tacos in Echo Park.",
+      "oneLiner": "Angel\u2019s Tijuana Tacos, 1185 Sunset Blvd. Tacos in Echo Park.",
       "perfectFor": [],
       "periods": [
         {
@@ -1074,7 +1084,7 @@
       ],
       "muid": "9847032698611023768",
       "hoursLabel": "",
-      "blurb": "Angel’s Tijuana Tacos, 1185 Sunset Blvd. Tacos in Echo Park.",
+      "blurb": "Angel\u2019s Tijuana Tacos, 1185 Sunset Blvd. Tacos in Echo Park.",
       "orderThis": [],
       "ids": {},
       "copySource": "draft",
@@ -1083,11 +1093,12 @@
         {
           "source": "illustration",
           "isIllustration": true,
-          "alt": "Illustration suggesting Tacos at Angel’s Tijuana Tacos",
+          "alt": "Illustration suggesting Tacos at Angel\u2019s Tijuana Tacos",
           "credit": "Illustration"
         }
       ],
-      "website": "https://www.instagram.com/angelstijuanatacos"
+      "website": "https://www.instagram.com/angelstijuanatacos",
+      "yelpSlug": "angels-tijuana-tacos-los-angeles-2"
     },
     {
       "id": "fat-sals",
@@ -1238,7 +1249,8 @@
         }
       ],
       "phone": "+1 (424) 390-0737",
-      "website": "https://www.properhotel.com/santa-monica/restaurants-bars/calabra/"
+      "website": "https://www.properhotel.com/santa-monica/restaurants-bars/calabra/",
+      "yelpSlug": "calabra-santa-monica"
     },
     {
       "id": "sugarfish",
@@ -1252,7 +1264,7 @@
         "Sushi"
       ],
       "placeType": "restaurant",
-      "oneLiner": "600 W 7th St — SUGARFISH, Sushi, Downtown.",
+      "oneLiner": "600 W 7th St \u2014 SUGARFISH, Sushi, Downtown.",
       "perfectFor": [],
       "periods": [
         {
@@ -1279,7 +1291,7 @@
       ],
       "muid": "13780764325173306588",
       "hoursLabel": "",
-      "blurb": "600 W 7th St — SUGARFISH, Sushi, Downtown.",
+      "blurb": "600 W 7th St \u2014 SUGARFISH, Sushi, Downtown.",
       "orderThis": [],
       "ids": {},
       "copySource": "draft",
@@ -1294,7 +1306,8 @@
       ],
       "phone": "+1 (213) 627-3000",
       "website": "https://sugarfishsushi.com/locations/dtla/",
-      "price": 3
+      "price": 3,
+      "yelpSlug": "sugarfish-downtown-la-los-angeles-3"
     },
     {
       "id": "mastros-steakhouse",
@@ -1354,7 +1367,8 @@
       ],
       "phone": "+1 (310) 888-8782",
       "website": "https://www.mastrosrestaurants.com/Locations/CA/Beverly-Hills-Steakhouse/",
-      "_n": 1
+      "_n": 1,
+      "yelpSlug": "mastros-steakhouse-beverly-hills-2"
     },
     {
       "id": "1212-santa-monica",
@@ -1419,7 +1433,8 @@
         }
       ],
       "phone": "+1 (310) 576-9996",
-      "website": "http://www.1212santamonica.com"
+      "website": "http://www.1212santamonica.com",
+      "yelpSlug": "1212-santa-monica-santa-monica-5"
     },
     {
       "id": "capo",
@@ -1529,7 +1544,8 @@
         }
       ],
       "phone": "+1 (213) 232-4966",
-      "website": "https://baveldtla.com"
+      "website": "https://baveldtla.com",
+      "yelpSlug": "bavel-los-angeles-3"
     },
     {
       "id": "the-ivy",
@@ -1654,7 +1670,8 @@
       ],
       "phone": "+1 (310) 821-1100",
       "website": "https://www.scopaitalianroots.com/",
-      "price": 3
+      "price": 3,
+      "yelpSlug": "scopa-italian-roots-venice"
     },
     {
       "id": "kazunori",
@@ -1714,7 +1731,8 @@
         }
       ],
       "phone": "+1 (424) 999-4594",
-      "website": "https://www.kazunorisushi.com/locations/santa-monica/"
+      "website": "https://www.kazunorisushi.com/locations/santa-monica/",
+      "yelpSlug": "kazunori-santa-monica-santa-monica-3"
     },
     {
       "id": "layla-bagels-coffee",
@@ -1728,7 +1746,7 @@
         "Bagels"
       ],
       "placeType": "bakery",
-      "oneLiner": "1614 Ocean Park Blvd — Layla Bagels & Coffee, Bagels, Santa Monica.",
+      "oneLiner": "1614 Ocean Park Blvd \u2014 Layla Bagels & Coffee, Bagels, Santa Monica.",
       "perfectFor": [],
       "periods": [
         {
@@ -1754,7 +1772,7 @@
       ],
       "muid": "15206899794803451319",
       "hoursLabel": "",
-      "blurb": "1614 Ocean Park Blvd — Layla Bagels & Coffee, Bagels, Santa Monica.",
+      "blurb": "1614 Ocean Park Blvd \u2014 Layla Bagels & Coffee, Bagels, Santa Monica.",
       "orderThis": [],
       "ids": {},
       "copySource": "draft",
@@ -1768,7 +1786,8 @@
         }
       ],
       "phone": "+1 (424) 268-4921",
-      "website": "http://laylabagels.com"
+      "website": "http://laylabagels.com",
+      "yelpSlug": "layla-bagels-and-coffee-santa-monica-2"
     },
     {
       "id": "kreation-organic-juicery",
@@ -1902,7 +1921,8 @@
         }
       ],
       "phone": "+1 (323) 347-6060",
-      "website": "https://www.catchrestaurants.com/location/catch-la/"
+      "website": "https://www.catchrestaurants.com/location/catch-la/",
+      "yelpSlug": "catch-west-hollywood"
     },
     {
       "id": "magnolia-bakery",
@@ -1964,7 +1984,8 @@
         }
       ],
       "phone": "+1 (323) 951-0636",
-      "website": "https://www.magnoliabakery.com/locations/los-angeles/"
+      "website": "https://www.magnoliabakery.com/locations/los-angeles/",
+      "yelpSlug": "magnolia-bakery-los-angeles-2"
     },
     {
       "id": "heavy-handed",
@@ -2017,7 +2038,8 @@
         }
       ],
       "phone": "+1 (818) 299-0326",
-      "website": "https://heavyhanded.la"
+      "website": "https://heavyhanded.la",
+      "yelpSlug": "heavy-handed-santa-monica"
     },
     {
       "id": "the-whaler",
@@ -2145,7 +2167,8 @@
         }
       ],
       "phone": "+1 (213) 935-8399",
-      "website": "https://howlinrays.com"
+      "website": "https://howlinrays.com",
+      "yelpSlug": "howlin-rays-los-angeles-7"
     },
     {
       "id": "saffys",
@@ -2210,7 +2233,7 @@
         "Italian"
       ],
       "placeType": "restaurant",
-      "oneLiner": "1320 Second St — UOVO Pasta, Italian, Santa Monica.",
+      "oneLiner": "1320 Second St \u2014 UOVO Pasta, Italian, Santa Monica.",
       "perfectFor": [],
       "periods": [
         {
@@ -2236,7 +2259,7 @@
       ],
       "muid": "1319429278146149472",
       "hoursLabel": "",
-      "blurb": "1320 Second St — UOVO Pasta, Italian, Santa Monica.",
+      "blurb": "1320 Second St \u2014 UOVO Pasta, Italian, Santa Monica.",
       "orderThis": [],
       "ids": {},
       "copySource": "draft",
@@ -2370,7 +2393,8 @@
         }
       ],
       "phone": "+1 (818) 786-0522",
-      "website": "https://www.mercadobuenosairesusa.com"
+      "website": "https://www.mercadobuenosairesusa.com",
+      "yelpSlug": "mercado-buenos-aires-van-nuys"
     },
     {
       "id": "gjelina",
@@ -2454,7 +2478,8 @@
       ],
       "phone": "+1 (310) 450-1429",
       "website": "https://gjelina.getbento.com",
-      "_n": 1
+      "_n": 1,
+      "yelpSlug": "gjelina-venice-2"
     },
     {
       "id": "osteria-la-buca",
@@ -2520,7 +2545,8 @@
         }
       ],
       "phone": "+1 (323) 462-1900",
-      "website": "https://www.osterialabuca.com"
+      "website": "https://www.osterialabuca.com",
+      "yelpSlug": "osteria-la-buca-los-angeles-2"
     },
     {
       "id": "le-coupe",
@@ -2571,7 +2597,8 @@
         }
       ],
       "phone": "+1 (323) 380-7019",
-      "website": "https://www.lecoupefriedchicken.com/"
+      "website": "https://www.lecoupefriedchicken.com/",
+      "yelpSlug": "le-coupe-los-angeles-5"
     },
     {
       "id": "cut",
@@ -2644,7 +2671,7 @@
         "New American"
       ],
       "placeType": "restaurant",
-      "oneLiner": "120 N Robertson Blvd — The Henry, New American, Beverly Grove.",
+      "oneLiner": "120 N Robertson Blvd \u2014 The Henry, New American, Beverly Grove.",
       "perfectFor": [],
       "periods": [
         {
@@ -2687,7 +2714,7 @@
       ],
       "muid": "11480653247393011714",
       "hoursLabel": "",
-      "blurb": "120 N Robertson Blvd — The Henry, New American, Beverly Grove.",
+      "blurb": "120 N Robertson Blvd \u2014 The Henry, New American, Beverly Grove.",
       "orderThis": [],
       "ids": {},
       "copySource": "draft",
@@ -2702,7 +2729,8 @@
       ],
       "phone": "+1 (424) 204-1595",
       "website": "https://www.thehenryrestaurant.com/locations/the-henry-west-hollywood/",
-      "price": 2
+      "price": 2,
+      "yelpSlug": "the-henry-los-angeles-4"
     },
     {
       "id": "pasta-bar",
@@ -2753,7 +2781,8 @@
         }
       ],
       "phone": "+1 (818) 208-1805",
-      "website": "https://www.scratchrestaurants.com"
+      "website": "https://www.scratchrestaurants.com",
+      "yelpSlug": "pasta-bar-los-angeles-4"
     },
     {
       "id": "piccolo-santa-monica",
@@ -2821,7 +2850,8 @@
       ],
       "phone": "+1 (310) 314-0144",
       "website": "http://www.piccoloristoranti.com/",
-      "price": 3
+      "price": 3,
+      "yelpSlug": "piccolo-santa-monica-santa-monica"
     },
     {
       "id": "joey-dtla",
@@ -2884,7 +2914,8 @@
       ],
       "phone": "+1 (213) 372-5335",
       "website": "https://joeyrestaurants.com/location/joey-dtla",
-      "_n": 1
+      "_n": 1,
+      "yelpSlug": "joey-dtla-los-angeles-4"
     },
     {
       "id": "burger-she-wrote",
@@ -3062,7 +3093,8 @@
         }
       ],
       "phone": "+1 (213) 278-0453",
-      "website": "https://www.poppyandrose.com"
+      "website": "https://www.poppyandrose.com",
+      "yelpSlug": "poppy-rose-los-angeles"
     },
     {
       "id": "hayato",
@@ -3076,7 +3108,7 @@
         "Japanese"
       ],
       "placeType": "restaurant",
-      "oneLiner": "1320 E 7th St — Hayato, Japanese, Downtown.",
+      "oneLiner": "1320 E 7th St \u2014 Hayato, Japanese, Downtown.",
       "perfectFor": [],
       "periods": [
         {
@@ -3100,7 +3132,7 @@
       ],
       "muid": "9331242589471548178",
       "hoursLabel": "",
-      "blurb": "1320 E 7th St — Hayato, Japanese, Downtown.",
+      "blurb": "1320 E 7th St \u2014 Hayato, Japanese, Downtown.",
       "orderThis": [],
       "ids": {},
       "copySource": "draft",
@@ -3114,7 +3146,8 @@
         }
       ],
       "phone": "+1 (213) 395-0607",
-      "website": "https://hayatorestaurant.com"
+      "website": "https://hayatorestaurant.com",
+      "yelpSlug": "hayato-los-angeles-3"
     },
     {
       "id": "boa-steakhouse",
@@ -3303,7 +3336,8 @@
         }
       ],
       "phone": "+1 (310) 205-5444",
-      "website": "https://www.ilpastaiobeverlyhills.com"
+      "website": "https://www.ilpastaiobeverlyhills.com",
+      "yelpSlug": "il-pastaio-beverly-hills"
     },
     {
       "id": "gwen",
@@ -3429,7 +3463,8 @@
       "phone": "+1 (424) 310-1197",
       "website": "https://www.ardorweho.com",
       "_n": 5,
-      "price": 4
+      "price": 4,
+      "yelpSlug": "ardor-west-hollywood"
     },
     {
       "id": "dudley-market",
@@ -3486,7 +3521,8 @@
         }
       ],
       "phone": "+1 (310) 392-0825",
-      "website": "http://www.dudleymarketvenice.com"
+      "website": "http://www.dudleymarketvenice.com",
+      "yelpSlug": "dudley-market-venice-3"
     },
     {
       "id": "the-penthouse",
@@ -3577,7 +3613,7 @@
         "Bakery"
       ],
       "placeType": "bakery",
-      "oneLiner": "4703 York Blvd — Fondry, Bakery, Eagle Rock.",
+      "oneLiner": "4703 York Blvd \u2014 Fondry, Bakery, Eagle Rock.",
       "perfectFor": [],
       "periods": [
         {
@@ -3600,7 +3636,7 @@
       ],
       "muid": "1995357176465319122",
       "hoursLabel": "",
-      "blurb": "4703 York Blvd — Fondry, Bakery, Eagle Rock.",
+      "blurb": "4703 York Blvd \u2014 Fondry, Bakery, Eagle Rock.",
       "orderThis": [],
       "ids": {},
       "copySource": "draft",
@@ -3613,7 +3649,8 @@
           "credit": "Illustration"
         }
       ],
-      "website": "https://www.instagram.com/fondry_la/"
+      "website": "https://www.instagram.com/fondry_la/",
+      "yelpSlug": "fondry-los-angeles-2"
     },
     {
       "id": "bacio-di-latte",
@@ -3667,7 +3704,8 @@
       ],
       "phone": "+1 (310) 272-7800",
       "website": "https://baciodilatte.us",
-      "_n": 8
+      "_n": 8,
+      "yelpSlug": "bacio-di-latte-los-angeles-7"
     },
     {
       "id": "osteria-mozza",
@@ -3736,7 +3774,8 @@
       ],
       "phone": "+1 (323) 297-0100",
       "website": "https://www.osteriamozza.com/location/los-angeles-osteria-mozza/",
-      "price": 4
+      "price": 4,
+      "yelpSlug": "osteria-mozza-los-angeles"
     },
     {
       "id": "gjusta",
@@ -3789,7 +3828,8 @@
         }
       ],
       "phone": "+1 (310) 314-0320",
-      "website": "https://www.gjusta.com"
+      "website": "https://www.gjusta.com",
+      "yelpSlug": "gjusta-venice"
     },
     {
       "id": "ocean-prime",
@@ -3862,7 +3902,8 @@
       ],
       "phone": "+1 (310) 859-4818",
       "website": "https://www.ocean-prime.com/locations/beverly-hills",
-      "price": 3
+      "price": 3,
+      "yelpSlug": "ocean-prime-beverly-hills-2"
     },
     {
       "id": "gracias-madre",
@@ -3933,7 +3974,8 @@
         }
       ],
       "phone": "+1 (323) 978-2170",
-      "website": "http://www.graciasmadre.com"
+      "website": "http://www.graciasmadre.com",
+      "yelpSlug": "gracias-madre-west-hollywood-3"
     },
     {
       "id": "vespertine",
@@ -3987,7 +4029,8 @@
       ],
       "phone": "+1 (323) 320-4023",
       "website": "http://vespertine.la",
-      "price": 4
+      "price": 4,
+      "yelpSlug": "vespertine-culver-city"
     },
     {
       "id": "ysabel",
@@ -4001,7 +4044,7 @@
         "New American"
       ],
       "placeType": "restaurant",
-      "oneLiner": "945 N Fairfax Ave — Ysabel, New American, West Hollywood.",
+      "oneLiner": "945 N Fairfax Ave \u2014 Ysabel, New American, West Hollywood.",
       "perfectFor": [],
       "periods": [
         {
@@ -4051,7 +4094,7 @@
       ],
       "muid": "12997504008630969425",
       "hoursLabel": "",
-      "blurb": "945 N Fairfax Ave — Ysabel, New American, West Hollywood.",
+      "blurb": "945 N Fairfax Ave \u2014 Ysabel, New American, West Hollywood.",
       "orderThis": [],
       "ids": {},
       "copySource": "draft",
@@ -4066,7 +4109,8 @@
       ],
       "phone": "+1 (323) 366-2940",
       "_n": 2,
-      "website": "https://www.ysabel.la/"
+      "website": "https://www.ysabel.la/",
+      "yelpSlug": "ysabel-west-hollywood"
     },
     {
       "id": "malibu-farm-restaurant",
@@ -4080,7 +4124,7 @@
         "New American"
       ],
       "placeType": "restaurant",
-      "oneLiner": "23000 Pacific Coast Hwy — Malibu Farm Restaurant, New American, Malibu.",
+      "oneLiner": "23000 Pacific Coast Hwy \u2014 Malibu Farm Restaurant, New American, Malibu.",
       "perfectFor": [],
       "periods": [
         {
@@ -4112,7 +4156,7 @@
       ],
       "muid": "697893718901763513",
       "hoursLabel": "",
-      "blurb": "23000 Pacific Coast Hwy — Malibu Farm Restaurant, New American, Malibu.",
+      "blurb": "23000 Pacific Coast Hwy \u2014 Malibu Farm Restaurant, New American, Malibu.",
       "orderThis": [],
       "ids": {
         "yelp": "pjXxukY-PNnB6WFxZNQ_RQ"
@@ -4193,7 +4237,8 @@
         }
       ],
       "phone": "+1 (213) 986-9972",
-      "website": "https://www.holboxla.com"
+      "website": "https://www.holboxla.com",
+      "yelpSlug": "holbox-los-angeles-2"
     },
     {
       "id": "nobu",
@@ -4371,7 +4416,8 @@
         }
       ],
       "phone": "+1 (310) 899-8530",
-      "website": "https://www.thebungalow.com/santa-monica/"
+      "website": "https://www.thebungalow.com/santa-monica/",
+      "yelpSlug": "the-bungalow-santa-monica-3"
     },
     {
       "id": "delilah",
@@ -4438,7 +4484,8 @@
       "phone": "+1 (323) 745-0600",
       "website": "https://www.delilahrestaurants.com/location/los-angeles/",
       "_n": 4,
-      "price": 4
+      "price": 4,
+      "yelpSlug": "delilah-west-hollywood"
     },
     {
       "id": "pinks-hot-dogs",
@@ -4512,7 +4559,8 @@
         }
       ],
       "phone": "+1 (323) 931-4223",
-      "website": "https://www.pinkshollywood.com"
+      "website": "https://www.pinkshollywood.com",
+      "yelpSlug": "pinks-hot-dogs-los-angeles-4"
     },
     {
       "id": "the-rooftop-beverly-hills",
@@ -4589,7 +4637,7 @@
         "Sushi"
       ],
       "placeType": "restaurant",
-      "oneLiner": "359 N La Cienega Blvd — Sushi Fumi, Sushi, West Hollywood.",
+      "oneLiner": "359 N La Cienega Blvd \u2014 Sushi Fumi, Sushi, West Hollywood.",
       "perfectFor": [],
       "periods": [
         {
@@ -4625,7 +4673,7 @@
       ],
       "muid": "4959094788839979585",
       "hoursLabel": "",
-      "blurb": "359 N La Cienega Blvd — Sushi Fumi, Sushi, West Hollywood.",
+      "blurb": "359 N La Cienega Blvd \u2014 Sushi Fumi, Sushi, West Hollywood.",
       "orderThis": [],
       "ids": {
         "yelp": "m_xAjTKjvcyqd-jBs8A2VA"
@@ -4710,7 +4758,8 @@
         }
       ],
       "phone": "+1 (310) 382-2460",
-      "website": "https://www.northitalia.com/locations/santa-monica-ca/"
+      "website": "https://www.northitalia.com/locations/santa-monica-ca/",
+      "yelpSlug": "north-italia-santa-monica-3"
     },
     {
       "id": "javiers",
@@ -4770,7 +4819,8 @@
       ],
       "phone": "+1 (424) 313-8143",
       "website": "https://www.javiersfinestfoods.com/century-city",
-      "_n": 8
+      "_n": 8,
+      "yelpSlug": "javiers-century-city-los-angeles"
     },
     {
       "id": "jon-vinnys",
@@ -4876,7 +4926,8 @@
         }
       ],
       "phone": "+1 (213) 297-7892",
-      "website": "https://www.forthewinla.com"
+      "website": "https://www.forthewinla.com",
+      "yelpSlug": "for-the-win-los-angeles-20"
     },
     {
       "id": "sabys-cafe",
@@ -4929,7 +4980,8 @@
         }
       ],
       "phone": "+1 (740) 518-3583",
-      "website": "https://sabyscafe.toast.site"
+      "website": "https://sabyscafe.toast.site",
+      "yelpSlug": "sabys-coffee-and-kitchen-los-angeles-4"
     },
     {
       "id": "carlitos-gardel-argentine-steakhouse",
@@ -4989,7 +5041,8 @@
       ],
       "phone": "+1 (323) 655-0891",
       "website": "https://www.facebook.com/gardelsmelrose",
-      "price": 4
+      "price": 4,
+      "yelpSlug": "carlitos-gardel-argentine-steakhouse-los-angeles-2"
     },
     {
       "id": "vin-folk",
@@ -5003,7 +5056,7 @@
         "Wine"
       ],
       "placeType": "bar",
-      "oneLiner": "1501 Hermosa Ave — Vin Folk, Wine, Hermosa Beach.",
+      "oneLiner": "1501 Hermosa Ave \u2014 Vin Folk, Wine, Hermosa Beach.",
       "perfectFor": [],
       "periods": [
         {
@@ -5024,7 +5077,7 @@
       "guideSlugs": [],
       "muid": "4942090681225394535",
       "hoursLabel": "",
-      "blurb": "1501 Hermosa Ave — Vin Folk, Wine, Hermosa Beach.",
+      "blurb": "1501 Hermosa Ave \u2014 Vin Folk, Wine, Hermosa Beach.",
       "orderThis": [],
       "ids": {},
       "copySource": "draft",
@@ -5038,7 +5091,8 @@
         }
       ],
       "phone": "+1 (424) 473-5909",
-      "website": "http://www.vin-folk.com"
+      "website": "http://www.vin-folk.com",
+      "yelpSlug": "vin-folk-hermosa-beach"
     },
     {
       "id": "apollonias-pizzeria",
@@ -5100,7 +5154,8 @@
         }
       ],
       "phone": "+1 (323) 937-2823",
-      "website": "https://www.apolloniaspizzeria.com/wilshiremiraclemile.html"
+      "website": "https://www.apolloniaspizzeria.com/wilshiremiraclemile.html",
+      "yelpSlug": "apollonias-pizzeria-los-angeles-2"
     },
     {
       "id": "si-mon",
@@ -5173,7 +5228,8 @@
         }
       ],
       "phone": "+1 (310) 302-0016",
-      "website": "https://www.si-mon.la"
+      "website": "https://www.si-mon.la",
+      "yelpSlug": "si-mon-los-angeles"
     },
     {
       "id": "grand-central-market",
@@ -5294,7 +5350,8 @@
         }
       ],
       "phone": "+1 (310) 684-2889",
-      "website": "https://tatsuramen.com/tatsu-ramen-sawtelle/"
+      "website": "https://tatsuramen.com/tatsu-ramen-sawtelle/",
+      "yelpSlug": "tatsu-ramen-los-angeles"
     },
     {
       "id": "rustic-canyon",
@@ -5354,7 +5411,8 @@
       ],
       "phone": "+1 (310) 393-7050",
       "website": "https://rusticcanyonrestaurant.com",
-      "_n": 1
+      "_n": 1,
+      "yelpSlug": "rustic-canyon-santa-monica"
     },
     {
       "id": "pasjoli",
@@ -5413,7 +5471,8 @@
         }
       ],
       "phone": "+1 (424) 330-0020",
-      "website": "https://www.pasjoli.com"
+      "website": "https://www.pasjoli.com",
+      "yelpSlug": "pasjoli-santa-monica"
     },
     {
       "id": "broad-street-oyster-co",
@@ -5466,7 +5525,8 @@
         }
       ],
       "phone": "+1 (424) 644-0131",
-      "website": "https://www.broadstreetoyster.com"
+      "website": "https://www.broadstreetoyster.com",
+      "yelpSlug": "broad-street-oyster-company-malibu-2"
     },
     {
       "id": "colapasta",
@@ -5480,7 +5540,7 @@
         "Italian"
       ],
       "placeType": "restaurant",
-      "oneLiner": "1241 Fifth St — Colapasta, Italian, Santa Monica.",
+      "oneLiner": "1241 Fifth St \u2014 Colapasta, Italian, Santa Monica.",
       "perfectFor": [],
       "periods": [
         {
@@ -5513,7 +5573,7 @@
       ],
       "muid": "5871833613612873604",
       "hoursLabel": "",
-      "blurb": "1241 Fifth St — Colapasta, Italian, Santa Monica.",
+      "blurb": "1241 Fifth St \u2014 Colapasta, Italian, Santa Monica.",
       "orderThis": [],
       "ids": {},
       "copySource": "draft",
@@ -5527,7 +5587,8 @@
         }
       ],
       "phone": "+1 (310) 310-8336",
-      "website": "https://www.colapasta.com"
+      "website": "https://www.colapasta.com",
+      "yelpSlug": "colapasta-restaurant-santa-monica-2"
     },
     {
       "id": "guisados",
@@ -5594,12 +5655,13 @@
         }
       ],
       "phone": "+1 (213) 250-7600",
-      "website": "http://www.guisados.co"
+      "website": "http://www.guisados.co",
+      "yelpSlug": "guisados-los-angeles-3"
     },
     {
       "id": "republique",
       "city": "la",
-      "name": "République",
+      "name": "R\u00e9publique",
       "neighborhood": "Miracle Mile",
       "address": "624 S La Brea Ave, Los Angeles, CA 90036",
       "lat": 34.0641327,
@@ -5608,7 +5670,7 @@
         "French"
       ],
       "placeType": "restaurant",
-      "oneLiner": "French from République at 624 S La Brea Ave, Miracle Mile.",
+      "oneLiner": "French from R\u00e9publique at 624 S La Brea Ave, Miracle Mile.",
       "perfectFor": [],
       "periods": [
         {
@@ -5648,7 +5710,7 @@
       "guideSlugs": [],
       "muid": "1889472255676531377",
       "hoursLabel": "",
-      "blurb": "French from République at 624 S La Brea Ave, Miracle Mile.",
+      "blurb": "French from R\u00e9publique at 624 S La Brea Ave, Miracle Mile.",
       "orderThis": [],
       "ids": {},
       "copySource": "draft",
@@ -5657,14 +5719,15 @@
         {
           "source": "wikimedia",
           "url": "/photos/republique.jpg",
-          "alt": "République in Miracle Mile",
+          "alt": "R\u00e9publique in Miracle Mile",
           "credit": "Eric Polk",
           "creditUrl": "https://commons.wikimedia.org/wiki/File:R%C3%A9publique_Restaurant.jpg",
           "license": "CC BY-SA 4.0"
         }
       ],
       "phone": "+1 (310) 362-6115",
-      "website": "https://republiquela.com"
+      "website": "https://republiquela.com",
+      "yelpSlug": "republique-los-angeles-6"
     },
     {
       "id": "matsuhisa",
@@ -5724,7 +5787,8 @@
         }
       ],
       "phone": "+1 (310) 659-9639",
-      "website": "https://matsuhisabeverlyhills.com"
+      "website": "https://matsuhisabeverlyhills.com",
+      "yelpSlug": "matsuhisa-beverly-hills"
     },
     {
       "id": "providence",
@@ -5783,7 +5847,8 @@
       ],
       "phone": "+1 (323) 460-4170",
       "website": "https://providencela.com",
-      "price": 4
+      "price": 4,
+      "yelpSlug": "providence-los-angeles-2"
     },
     {
       "id": "doans-bakery",
@@ -5894,7 +5959,8 @@
         }
       ],
       "phone": "+1 (310) 860-7886",
-      "website": "https://www.maybournebeverlyhills.com/restaurants-bars/the-terrace/"
+      "website": "https://www.maybournebeverlyhills.com/restaurants-bars/the-terrace/",
+      "yelpSlug": "the-terrace-beverly-hills-4"
     },
     {
       "id": "somni",
@@ -5944,7 +6010,8 @@
           "credit": "Illustration"
         }
       ],
-      "website": "https://www.somnirestaurant.com"
+      "website": "https://www.somnirestaurant.com",
+      "yelpSlug": "somni-west-hollywood-2"
     },
     {
       "id": "jean-georges-beverly-hills",
@@ -5958,7 +6025,7 @@
         "Californian"
       ],
       "placeType": "restaurant",
-      "oneLiner": "9850 Wilshire Blvd — Jean-Georges Beverly Hills, Californian, Beverly Hills.",
+      "oneLiner": "9850 Wilshire Blvd \u2014 Jean-Georges Beverly Hills, Californian, Beverly Hills.",
       "perfectFor": [],
       "periods": [
         {
@@ -6016,7 +6083,7 @@
       ],
       "muid": "14907604975189333779",
       "hoursLabel": "",
-      "blurb": "9850 Wilshire Blvd — Jean-Georges Beverly Hills, Californian, Beverly Hills.",
+      "blurb": "9850 Wilshire Blvd \u2014 Jean-Georges Beverly Hills, Californian, Beverly Hills.",
       "orderThis": [],
       "ids": {
         "yelp": "sYyoLn1Z9X29AHZPcpTwhg"
@@ -6233,7 +6300,8 @@
       "phone": "+1 (310) 773-3366",
       "website": "http://www.meatonocean.com",
       "_n": 1,
-      "price": 3
+      "price": 3,
+      "yelpSlug": "meat-on-ocean-santa-monica-3"
     },
     {
       "id": "saddle-ranch-chop-house",
@@ -6305,7 +6373,8 @@
         }
       ],
       "phone": "+1 (323) 656-2007",
-      "website": "http://www.thesaddleranch.com/locations/sunset-strip"
+      "website": "http://www.thesaddleranch.com/locations/sunset-strip",
+      "yelpSlug": "saddle-ranch-chop-house-west-hollywood"
     },
     {
       "id": "calamigos-beach-club",
@@ -6501,7 +6570,8 @@
         }
       ],
       "phone": "+1 (310) 878-0814",
-      "website": "https://www.thecasamadera.com/locations/toronto-ontario"
+      "website": "https://www.thecasamadera.com/locations/toronto-ontario",
+      "yelpSlug": "casa-madera-west-hollywood-west-hollywood-2"
     },
     {
       "id": "barans-2239",
@@ -6515,7 +6585,7 @@
         "Persian"
       ],
       "placeType": "restaurant",
-      "oneLiner": "502 Pacific Coast Hwy — Baran's 2239, Persian, Hermosa Beach.",
+      "oneLiner": "502 Pacific Coast Hwy \u2014 Baran's 2239, Persian, Hermosa Beach.",
       "perfectFor": [],
       "periods": [
         {
@@ -6565,7 +6635,7 @@
       ],
       "muid": "5124635232378356114",
       "hoursLabel": "",
-      "blurb": "502 Pacific Coast Hwy — Baran's 2239, Persian, Hermosa Beach.",
+      "blurb": "502 Pacific Coast Hwy \u2014 Baran's 2239, Persian, Hermosa Beach.",
       "orderThis": [],
       "ids": {},
       "copySource": "draft",
@@ -6580,7 +6650,8 @@
       ],
       "phone": "+1 (424) 247-8468",
       "website": "https://www.barans2239.com/",
-      "price": 3
+      "price": 3,
+      "yelpSlug": "barans-2239-hermosa-beach"
     },
     {
       "id": "polo-lounge",
@@ -6594,7 +6665,7 @@
         "New American"
       ],
       "placeType": "restaurant",
-      "oneLiner": "9641 W Sunset Blvd — Polo Lounge, New American, Beverly Hills.",
+      "oneLiner": "9641 W Sunset Blvd \u2014 Polo Lounge, New American, Beverly Hills.",
       "perfectFor": [],
       "periods": [
         {
@@ -6632,7 +6703,7 @@
       ],
       "muid": "4209144687248591942",
       "hoursLabel": "",
-      "blurb": "9641 W Sunset Blvd — Polo Lounge, New American, Beverly Hills.",
+      "blurb": "9641 W Sunset Blvd \u2014 Polo Lounge, New American, Beverly Hills.",
       "orderThis": [],
       "ids": {},
       "copySource": "draft",
@@ -6649,7 +6720,8 @@
       ],
       "phone": "+1 (310) 887-2777",
       "website": "https://www.dorchestercollection.com/en/los-angeles/the-beverly-hills-hotel/restaurants-bars/the-polo-lounge/",
-      "_n": 2
+      "_n": 2,
+      "yelpSlug": "polo-lounge-beverly-hills-2"
     },
     {
       "id": "randys-donuts",
@@ -6704,7 +6776,8 @@
         }
       ],
       "phone": "+1 (310) 645-4707",
-      "website": "https://randysdonuts.com/locations/test-location/"
+      "website": "https://randysdonuts.com/locations/test-location/",
+      "yelpSlug": "randys-donuts-inglewood"
     },
     {
       "id": "blue-plate-taco",
@@ -6767,7 +6840,8 @@
       ],
       "phone": "+1 (310) 458-2985",
       "website": "https://www.blueplatetaco.com",
-      "_n": 1
+      "_n": 1,
+      "yelpSlug": "blue-plate-taco-santa-monica"
     },
     {
       "id": "lalas-argentine-grill",
@@ -6909,7 +6983,8 @@
       ],
       "phone": "+1 (310) 432-2000",
       "website": "http://www.cecconiswesthollywood.com",
-      "price": 3
+      "price": 3,
+      "yelpSlug": "cecconis-west-hollywood-west-hollywood"
     },
     {
       "id": "tesla-diner",
@@ -6964,12 +7039,13 @@
         }
       ],
       "phone": "+1 (877) 798-3752",
-      "website": "https://www.tesla.com/tesla-diner"
+      "website": "https://www.tesla.com/tesla-diner",
+      "yelpSlug": "tesla-diner-west-hollywood"
     },
     {
       "id": "melisse",
       "city": "la",
-      "name": "Mélisse",
+      "name": "M\u00e9lisse",
       "neighborhood": "Santa Monica",
       "address": "1104 Wilshire Blvd, Santa Monica, CA 90401",
       "lat": 34.0245296,
@@ -6978,7 +7054,7 @@
         "Californian"
       ],
       "placeType": "restaurant",
-      "oneLiner": "Mélisse sits at 1104 Wilshire Blvd. Californian, Santa Monica.",
+      "oneLiner": "M\u00e9lisse sits at 1104 Wilshire Blvd. Californian, Santa Monica.",
       "perfectFor": [],
       "periods": [
         {
@@ -7002,7 +7078,7 @@
       ],
       "muid": "7239587844585916040",
       "hoursLabel": "",
-      "blurb": "Mélisse sits at 1104 Wilshire Blvd. Californian, Santa Monica.",
+      "blurb": "M\u00e9lisse sits at 1104 Wilshire Blvd. Californian, Santa Monica.",
       "orderThis": [],
       "ids": {},
       "copySource": "draft",
@@ -7011,7 +7087,7 @@
         {
           "source": "illustration",
           "isIllustration": true,
-          "alt": "Illustration suggesting Californian at Mélisse",
+          "alt": "Illustration suggesting Californian at M\u00e9lisse",
           "credit": "Illustration"
         }
       ],
@@ -7031,7 +7107,7 @@
         "Donuts"
       ],
       "placeType": "bakery",
-      "oneLiner": "317 S Broadway — The Donut Man, Donuts, Downtown.",
+      "oneLiner": "317 S Broadway \u2014 The Donut Man, Donuts, Downtown.",
       "perfectFor": [],
       "periods": [
         {
@@ -7057,7 +7133,7 @@
       ],
       "muid": "8560916942563961714",
       "hoursLabel": "",
-      "blurb": "317 S Broadway — The Donut Man, Donuts, Downtown.",
+      "blurb": "317 S Broadway \u2014 The Donut Man, Donuts, Downtown.",
       "orderThis": [],
       "ids": {},
       "copySource": "draft",
@@ -7071,7 +7147,8 @@
         }
       ],
       "phone": "+1 (213) 265-7834",
-      "website": "https://www.thedonutmanca.com"
+      "website": "https://www.thedonutmanca.com",
+      "yelpSlug": "the-donut-man-los-angeles"
     },
     {
       "id": "felix",
@@ -7137,7 +7214,8 @@
         }
       ],
       "phone": "+1 (424) 387-8622",
-      "website": "http://www.felixla.com"
+      "website": "http://www.felixla.com",
+      "yelpSlug": "felix-trattoria-los-angeles-2"
     },
     {
       "id": "in-n-out-burger",
@@ -7207,7 +7285,8 @@
         }
       ],
       "phone": "+1 (800) 786-1000",
-      "website": "https://locations.in-n-out.com/117"
+      "website": "https://locations.in-n-out.com/117",
+      "yelpSlug": "in-n-out-burger-los-angeles-2"
     },
     {
       "id": "levain-bakery",
@@ -7524,7 +7603,8 @@
       ],
       "phone": "+1 (310) 399-9010",
       "website": "https://www.barriquevenice.com/",
-      "price": 3
+      "price": 3,
+      "yelpSlug": "barrique-venice"
     },
     {
       "id": "saltie-girl",
@@ -7603,7 +7683,7 @@
     {
       "id": "zinque",
       "city": "la",
-      "name": "Zinqué",
+      "name": "Zinqu\u00e9",
       "neighborhood": "Century City",
       "address": "10250 Santa Monica Blvd, Los Angeles, CA 90067",
       "lat": 34.0592344,
@@ -7652,7 +7732,7 @@
         {
           "source": "illustration",
           "isIllustration": true,
-          "alt": "Illustration suggesting French at Zinqué",
+          "alt": "Illustration suggesting French at Zinqu\u00e9",
           "credit": "Illustration"
         }
       ],
@@ -7711,19 +7791,22 @@
       "updatedAt": "2026-10-20",
       "photos": [
         {
-          "source": "illustration",
-          "isIllustration": true,
-          "alt": "Illustration suggesting Sandwiches at Philippe The Original",
-          "credit": "Illustration"
+          "source": "wikimedia",
+          "url": "/photos/philippe-the-original.jpg",
+          "alt": "Philippe The Original in Downtown",
+          "credit": "Bobak Ha'Eri",
+          "creditUrl": "https://commons.wikimedia.org/wiki/File:120207-LA-Philippes.jpg",
+          "license": "CC BY 3.0"
         }
       ],
       "phone": "+1 (213) 628-3781",
-      "website": "https://www.philippes.com"
+      "website": "https://www.philippes.com",
+      "yelpSlug": "philippe-the-original-los-angeles-4"
     },
     {
       "id": "lantica-pizzeria-da-michele",
       "city": "la",
-      "name": "L’antica Pizzeria da Michele",
+      "name": "L\u2019antica Pizzeria da Michele",
       "neighborhood": "Hollywood",
       "address": "1534 N McCadden Pl, Los Angeles, CA 90028",
       "lat": 34.0990611,
@@ -7779,7 +7862,7 @@
         {
           "source": "illustration",
           "isIllustration": true,
-          "alt": "Illustration suggesting Pizza at L’antica Pizzeria da Michele",
+          "alt": "Illustration suggesting Pizza at L\u2019antica Pizzeria da Michele",
           "credit": "Illustration"
         }
       ],
@@ -7836,15 +7919,18 @@
       "updatedAt": "2026-10-20",
       "photos": [
         {
-          "source": "illustration",
-          "isIllustration": true,
-          "alt": "Illustration suggesting Californian at Spago",
-          "credit": "Illustration"
+          "source": "wikimedia",
+          "url": "/photos/spago.jpg",
+          "alt": "Spago in Beverly Hills",
+          "credit": "Alan Light",
+          "creditUrl": "https://commons.wikimedia.org/wiki/File:Spago_Beverly_Hills_courtyard_2007.jpg",
+          "license": "CC BY 2.0"
         }
       ],
       "phone": "+1 (310) 385-0880",
       "website": "https://wolfgangpuck.com/restaurants/spago-beverly-hills/",
-      "price": 4
+      "price": 4,
+      "yelpSlug": "spago-beverly-hills-4"
     },
     {
       "id": "tiki-ti",
@@ -7894,7 +7980,8 @@
         }
       ],
       "phone": "+1 (323) 669-9381",
-      "website": "https://tiki-ti.com"
+      "website": "https://tiki-ti.com",
+      "yelpSlug": "tiki-ti-cocktail-lounge-los-angeles"
     },
     {
       "id": "eggslut-2",
@@ -7970,7 +8057,7 @@
         "Seafood"
       ],
       "placeType": "restaurant",
-      "oneLiner": "1401 Ocean Ave — Water Grill, Seafood, Santa Monica.",
+      "oneLiner": "1401 Ocean Ave \u2014 Water Grill, Seafood, Santa Monica.",
       "perfectFor": [],
       "periods": [
         {
@@ -8002,7 +8089,7 @@
       ],
       "muid": "13839146432849478806",
       "hoursLabel": "",
-      "blurb": "1401 Ocean Ave — Water Grill, Seafood, Santa Monica.",
+      "blurb": "1401 Ocean Ave \u2014 Water Grill, Seafood, Santa Monica.",
       "orderThis": [],
       "ids": {},
       "copySource": "draft",
@@ -8017,7 +8104,8 @@
       ],
       "phone": "+1 (310) 394-5669",
       "website": "https://www.watergrill.com/",
-      "price": 3
+      "price": 3,
+      "yelpSlug": "water-grill-santa-monica-santa-monica"
     },
     {
       "id": "homestate",
@@ -8070,7 +8158,8 @@
         }
       ],
       "phone": "+1 (323) 906-1122",
-      "website": "https://www.myhomestate.com/hollywood-blvd-los-angeles/"
+      "website": "https://www.myhomestate.com/hollywood-blvd-los-angeles/",
+      "yelpSlug": "homestate-los-angeles"
     },
     {
       "id": "amboy",
@@ -8123,12 +8212,13 @@
         }
       ],
       "phone": "+1 (213) 935-8188",
-      "website": "https://amboyqmdb.square.site/?location=CA95XQF6N4AMA"
+      "website": "https://amboyqmdb.square.site/?location=CA95XQF6N4AMA",
+      "yelpSlug": "amboy-los-angeles"
     },
     {
       "id": "elephante",
       "city": "la",
-      "name": "Élephante",
+      "name": "\u00c9lephante",
       "neighborhood": "Santa Monica",
       "address": "1332 2nd Street, Santa Monica, CA 90401",
       "lat": 34.0153374,
@@ -8186,7 +8276,7 @@
         {
           "source": "illustration",
           "isIllustration": true,
-          "alt": "Illustration suggesting Italian at Élephante",
+          "alt": "Illustration suggesting Italian at \u00c9lephante",
           "credit": "Illustration"
         }
       ],
@@ -8248,7 +8338,8 @@
         }
       ],
       "phone": "+1 (323) 686-6027",
-      "website": "https://www.dunsmoor.la"
+      "website": "https://www.dunsmoor.la",
+      "yelpSlug": "dunsmoor-los-angeles"
     },
     {
       "id": "community-goods",
@@ -8308,7 +8399,8 @@
         }
       ],
       "phone": "+1 (740) 866-1328",
-      "website": "https://communitygoodsmenu.us"
+      "website": "https://communitygoodsmenu.us",
+      "yelpSlug": "community-goods-los-angeles"
     }
   ],
   "guides": [
@@ -8354,8 +8446,8 @@
         },
         {
           "placeId": "layla-bagels-coffee",
-          "pullQuote": "1614 Ocean Park Blvd — Layla Bagels & Coffee, Bagels, Santa Monica.",
-          "blurb": "1614 Ocean Park Blvd — Layla Bagels & Coffee, Bagels, Santa Monica.",
+          "pullQuote": "1614 Ocean Park Blvd \u2014 Layla Bagels & Coffee, Bagels, Santa Monica.",
+          "blurb": "1614 Ocean Park Blvd \u2014 Layla Bagels & Coffee, Bagels, Santa Monica.",
           "copySource": "draft"
         },
         {
@@ -8372,8 +8464,8 @@
         },
         {
           "placeId": "uovo-pasta",
-          "pullQuote": "1320 Second St — UOVO Pasta, Italian, Santa Monica.",
-          "blurb": "1320 Second St — UOVO Pasta, Italian, Santa Monica.",
+          "pullQuote": "1320 Second St \u2014 UOVO Pasta, Italian, Santa Monica.",
+          "blurb": "1320 Second St \u2014 UOVO Pasta, Italian, Santa Monica.",
           "copySource": "draft"
         },
         {
@@ -8414,8 +8506,8 @@
         },
         {
           "placeId": "colapasta",
-          "pullQuote": "1241 Fifth St — Colapasta, Italian, Santa Monica.",
-          "blurb": "1241 Fifth St — Colapasta, Italian, Santa Monica.",
+          "pullQuote": "1241 Fifth St \u2014 Colapasta, Italian, Santa Monica.",
+          "blurb": "1241 Fifth St \u2014 Colapasta, Italian, Santa Monica.",
           "copySource": "draft"
         },
         {
@@ -8444,14 +8536,14 @@
         },
         {
           "placeId": "melisse",
-          "pullQuote": "Mélisse sits at 1104 Wilshire Blvd. Californian, Santa Monica.",
-          "blurb": "Mélisse sits at 1104 Wilshire Blvd. Californian, Santa Monica.",
+          "pullQuote": "M\u00e9lisse sits at 1104 Wilshire Blvd. Californian, Santa Monica.",
+          "blurb": "M\u00e9lisse sits at 1104 Wilshire Blvd. Californian, Santa Monica.",
           "copySource": "draft"
         },
         {
           "placeId": "water-grill",
-          "pullQuote": "1401 Ocean Ave — Water Grill, Seafood, Santa Monica.",
-          "blurb": "1401 Ocean Ave — Water Grill, Seafood, Santa Monica.",
+          "pullQuote": "1401 Ocean Ave \u2014 Water Grill, Seafood, Santa Monica.",
+          "blurb": "1401 Ocean Ave \u2014 Water Grill, Seafood, Santa Monica.",
           "copySource": "draft"
         },
         {
@@ -8492,8 +8584,8 @@
         },
         {
           "placeId": "mamie",
-          "pullQuote": "7900 Santa Monica Blvd — Mamie, Italian, West Hollywood.",
-          "blurb": "7900 Santa Monica Blvd — Mamie, Italian, West Hollywood.",
+          "pullQuote": "7900 Santa Monica Blvd \u2014 Mamie, Italian, West Hollywood.",
+          "blurb": "7900 Santa Monica Blvd \u2014 Mamie, Italian, West Hollywood.",
           "copySource": "draft"
         },
         {
@@ -8522,8 +8614,8 @@
         },
         {
           "placeId": "ysabel",
-          "pullQuote": "945 N Fairfax Ave — Ysabel, New American, West Hollywood.",
-          "blurb": "945 N Fairfax Ave — Ysabel, New American, West Hollywood.",
+          "pullQuote": "945 N Fairfax Ave \u2014 Ysabel, New American, West Hollywood.",
+          "blurb": "945 N Fairfax Ave \u2014 Ysabel, New American, West Hollywood.",
           "copySource": "draft"
         },
         {
@@ -8534,8 +8626,8 @@
         },
         {
           "placeId": "sushi-fumi",
-          "pullQuote": "359 N La Cienega Blvd — Sushi Fumi, Sushi, West Hollywood.",
-          "blurb": "359 N La Cienega Blvd — Sushi Fumi, Sushi, West Hollywood.",
+          "pullQuote": "359 N La Cienega Blvd \u2014 Sushi Fumi, Sushi, West Hollywood.",
+          "blurb": "359 N La Cienega Blvd \u2014 Sushi Fumi, Sushi, West Hollywood.",
           "copySource": "draft"
         },
         {
@@ -8587,7 +8679,7 @@
       "title": "Beverly Hills",
       "dek": "Parakeet Cafe at 206 S Beverly Dr, and 13 more Beverly Hills stops.",
       "group": "Neighborhoods",
-      "intro": "Parakeet Cafe is at 206 S Beverly Dr. Urth Caffé is at 267 S Beverly Dr.",
+      "intro": "Parakeet Cafe is at 206 S Beverly Dr. Urth Caff\u00e9 is at 267 S Beverly Dr.",
       "updatedAt": "2026-10-20",
       "ranked": false,
       "city": "la",
@@ -8600,8 +8692,8 @@
         },
         {
           "placeId": "urth-caffe",
-          "pullQuote": "Urth Caffé sits at 267 S Beverly Dr. Coffee, Beverly Hills.",
-          "blurb": "Urth Caffé sits at 267 S Beverly Dr. Coffee, Beverly Hills.",
+          "pullQuote": "Urth Caff\u00e9 sits at 267 S Beverly Dr. Coffee, Beverly Hills.",
+          "blurb": "Urth Caff\u00e9 sits at 267 S Beverly Dr. Coffee, Beverly Hills.",
           "copySource": "draft"
         },
         {
@@ -8654,14 +8746,14 @@
         },
         {
           "placeId": "jean-georges-beverly-hills",
-          "pullQuote": "9850 Wilshire Blvd — Jean-Georges Beverly Hills, Californian, Beverly Hills.",
-          "blurb": "9850 Wilshire Blvd — Jean-Georges Beverly Hills, Californian, Beverly Hills.",
+          "pullQuote": "9850 Wilshire Blvd \u2014 Jean-Georges Beverly Hills, Californian, Beverly Hills.",
+          "blurb": "9850 Wilshire Blvd \u2014 Jean-Georges Beverly Hills, Californian, Beverly Hills.",
           "copySource": "draft"
         },
         {
           "placeId": "polo-lounge",
-          "pullQuote": "9641 W Sunset Blvd — Polo Lounge, New American, Beverly Hills.",
-          "blurb": "9641 W Sunset Blvd — Polo Lounge, New American, Beverly Hills.",
+          "pullQuote": "9641 W Sunset Blvd \u2014 Polo Lounge, New American, Beverly Hills.",
+          "blurb": "9641 W Sunset Blvd \u2014 Polo Lounge, New American, Beverly Hills.",
           "copySource": "draft"
         },
         {
@@ -8702,8 +8794,8 @@
         },
         {
           "placeId": "sugarfish",
-          "pullQuote": "600 W 7th St — SUGARFISH, Sushi, Downtown.",
-          "blurb": "600 W 7th St — SUGARFISH, Sushi, Downtown.",
+          "pullQuote": "600 W 7th St \u2014 SUGARFISH, Sushi, Downtown.",
+          "blurb": "600 W 7th St \u2014 SUGARFISH, Sushi, Downtown.",
           "copySource": "draft"
         },
         {
@@ -8732,8 +8824,8 @@
         },
         {
           "placeId": "hayato",
-          "pullQuote": "1320 E 7th St — Hayato, Japanese, Downtown.",
-          "blurb": "1320 E 7th St — Hayato, Japanese, Downtown.",
+          "pullQuote": "1320 E 7th St \u2014 Hayato, Japanese, Downtown.",
+          "blurb": "1320 E 7th St \u2014 Hayato, Japanese, Downtown.",
           "copySource": "draft"
         },
         {
@@ -8756,8 +8848,8 @@
         },
         {
           "placeId": "the-donut-man",
-          "pullQuote": "317 S Broadway — The Donut Man, Donuts, Downtown.",
-          "blurb": "317 S Broadway — The Donut Man, Donuts, Downtown.",
+          "pullQuote": "317 S Broadway \u2014 The Donut Man, Donuts, Downtown.",
+          "blurb": "317 S Broadway \u2014 The Donut Man, Donuts, Downtown.",
           "copySource": "draft"
         },
         {
@@ -8942,8 +9034,8 @@
         },
         {
           "placeId": "malibu-farm-restaurant",
-          "pullQuote": "23000 Pacific Coast Hwy — Malibu Farm Restaurant, New American, Malibu.",
-          "blurb": "23000 Pacific Coast Hwy — Malibu Farm Restaurant, New American, Malibu.",
+          "pullQuote": "23000 Pacific Coast Hwy \u2014 Malibu Farm Restaurant, New American, Malibu.",
+          "blurb": "23000 Pacific Coast Hwy \u2014 Malibu Farm Restaurant, New American, Malibu.",
           "copySource": "draft"
         },
         {
@@ -8990,8 +9082,8 @@
         },
         {
           "placeId": "the-henry",
-          "pullQuote": "120 N Robertson Blvd — The Henry, New American, Beverly Grove.",
-          "blurb": "120 N Robertson Blvd — The Henry, New American, Beverly Grove.",
+          "pullQuote": "120 N Robertson Blvd \u2014 The Henry, New American, Beverly Grove.",
+          "blurb": "120 N Robertson Blvd \u2014 The Henry, New American, Beverly Grove.",
           "copySource": "draft"
         },
         {
@@ -9032,8 +9124,8 @@
         },
         {
           "placeId": "sugarfish",
-          "pullQuote": "600 W 7th St — SUGARFISH, Sushi, Downtown.",
-          "blurb": "600 W 7th St — SUGARFISH, Sushi, Downtown.",
+          "pullQuote": "600 W 7th St \u2014 SUGARFISH, Sushi, Downtown.",
+          "blurb": "600 W 7th St \u2014 SUGARFISH, Sushi, Downtown.",
           "copySource": "draft"
         },
         {
@@ -9044,8 +9136,8 @@
         },
         {
           "placeId": "hayato",
-          "pullQuote": "1320 E 7th St — Hayato, Japanese, Downtown.",
-          "blurb": "1320 E 7th St — Hayato, Japanese, Downtown.",
+          "pullQuote": "1320 E 7th St \u2014 Hayato, Japanese, Downtown.",
+          "blurb": "1320 E 7th St \u2014 Hayato, Japanese, Downtown.",
           "copySource": "draft"
         },
         {
@@ -9056,8 +9148,8 @@
         },
         {
           "placeId": "sushi-fumi",
-          "pullQuote": "359 N La Cienega Blvd — Sushi Fumi, Sushi, West Hollywood.",
-          "blurb": "359 N La Cienega Blvd — Sushi Fumi, Sushi, West Hollywood.",
+          "pullQuote": "359 N La Cienega Blvd \u2014 Sushi Fumi, Sushi, West Hollywood.",
+          "blurb": "359 N La Cienega Blvd \u2014 Sushi Fumi, Sushi, West Hollywood.",
           "copySource": "draft"
         },
         {
@@ -9098,8 +9190,8 @@
         },
         {
           "placeId": "mamie",
-          "pullQuote": "7900 Santa Monica Blvd — Mamie, Italian, West Hollywood.",
-          "blurb": "7900 Santa Monica Blvd — Mamie, Italian, West Hollywood.",
+          "pullQuote": "7900 Santa Monica Blvd \u2014 Mamie, Italian, West Hollywood.",
+          "blurb": "7900 Santa Monica Blvd \u2014 Mamie, Italian, West Hollywood.",
           "copySource": "draft"
         },
         {
@@ -9116,8 +9208,8 @@
         },
         {
           "placeId": "uovo-pasta",
-          "pullQuote": "1320 Second St — UOVO Pasta, Italian, Santa Monica.",
-          "blurb": "1320 Second St — UOVO Pasta, Italian, Santa Monica.",
+          "pullQuote": "1320 Second St \u2014 UOVO Pasta, Italian, Santa Monica.",
+          "blurb": "1320 Second St \u2014 UOVO Pasta, Italian, Santa Monica.",
           "copySource": "draft"
         },
         {
@@ -9170,8 +9262,8 @@
         },
         {
           "placeId": "colapasta",
-          "pullQuote": "1241 Fifth St — Colapasta, Italian, Santa Monica.",
-          "blurb": "1241 Fifth St — Colapasta, Italian, Santa Monica.",
+          "pullQuote": "1241 Fifth St \u2014 Colapasta, Italian, Santa Monica.",
+          "blurb": "1241 Fifth St \u2014 Colapasta, Italian, Santa Monica.",
           "copySource": "draft"
         },
         {
@@ -9215,17 +9307,17 @@
     {
       "slug": "la-mexican",
       "title": "Tacos and Mexican",
-      "dek": "Angel’s Tijuana Tacos and other Mexican spots on the list.",
+      "dek": "Angel\u2019s Tijuana Tacos and other Mexican spots on the list.",
       "group": "Cuisine",
-      "intro": "Angel’s Tijuana Tacos is at 1185 Sunset Blvd. Le Grand Restaurant is at 707 S Grand Ave.",
+      "intro": "Angel\u2019s Tijuana Tacos is at 1185 Sunset Blvd. Le Grand Restaurant is at 707 S Grand Ave.",
       "updatedAt": "2026-10-20",
       "ranked": false,
       "city": "la",
       "entries": [
         {
           "placeId": "angels-tijuana-tacos",
-          "pullQuote": "Angel’s Tijuana Tacos, 1185 Sunset Blvd. Tacos in Echo Park.",
-          "blurb": "Angel’s Tijuana Tacos, 1185 Sunset Blvd. Tacos in Echo Park.",
+          "pullQuote": "Angel\u2019s Tijuana Tacos, 1185 Sunset Blvd. Tacos in Echo Park.",
+          "blurb": "Angel\u2019s Tijuana Tacos, 1185 Sunset Blvd. Tacos in Echo Park.",
           "copySource": "draft"
         },
         {
@@ -9296,14 +9388,14 @@
         },
         {
           "placeId": "urth-caffe",
-          "pullQuote": "Urth Caffé sits at 267 S Beverly Dr. Coffee, Beverly Hills.",
-          "blurb": "Urth Caffé sits at 267 S Beverly Dr. Coffee, Beverly Hills.",
+          "pullQuote": "Urth Caff\u00e9 sits at 267 S Beverly Dr. Coffee, Beverly Hills.",
+          "blurb": "Urth Caff\u00e9 sits at 267 S Beverly Dr. Coffee, Beverly Hills.",
           "copySource": "draft"
         },
         {
           "placeId": "layla-bagels-coffee",
-          "pullQuote": "1614 Ocean Park Blvd — Layla Bagels & Coffee, Bagels, Santa Monica.",
-          "blurb": "1614 Ocean Park Blvd — Layla Bagels & Coffee, Bagels, Santa Monica.",
+          "pullQuote": "1614 Ocean Park Blvd \u2014 Layla Bagels & Coffee, Bagels, Santa Monica.",
+          "blurb": "1614 Ocean Park Blvd \u2014 Layla Bagels & Coffee, Bagels, Santa Monica.",
           "copySource": "draft"
         },
         {
@@ -9320,8 +9412,8 @@
         },
         {
           "placeId": "fondry",
-          "pullQuote": "4703 York Blvd — Fondry, Bakery, Eagle Rock.",
-          "blurb": "4703 York Blvd — Fondry, Bakery, Eagle Rock.",
+          "pullQuote": "4703 York Blvd \u2014 Fondry, Bakery, Eagle Rock.",
+          "blurb": "4703 York Blvd \u2014 Fondry, Bakery, Eagle Rock.",
           "copySource": "draft"
         },
         {
@@ -9344,8 +9436,8 @@
         },
         {
           "placeId": "the-donut-man",
-          "pullQuote": "317 S Broadway — The Donut Man, Donuts, Downtown.",
-          "blurb": "317 S Broadway — The Donut Man, Donuts, Downtown.",
+          "pullQuote": "317 S Broadway \u2014 The Donut Man, Donuts, Downtown.",
+          "blurb": "317 S Broadway \u2014 The Donut Man, Donuts, Downtown.",
           "copySource": "draft"
         },
         {
@@ -9392,8 +9484,8 @@
         },
         {
           "placeId": "malibu-farm-restaurant",
-          "pullQuote": "23000 Pacific Coast Hwy — Malibu Farm Restaurant, New American, Malibu.",
-          "blurb": "23000 Pacific Coast Hwy — Malibu Farm Restaurant, New American, Malibu.",
+          "pullQuote": "23000 Pacific Coast Hwy \u2014 Malibu Farm Restaurant, New American, Malibu.",
+          "blurb": "23000 Pacific Coast Hwy \u2014 Malibu Farm Restaurant, New American, Malibu.",
           "copySource": "draft"
         },
         {
@@ -9404,14 +9496,14 @@
         },
         {
           "placeId": "jean-georges-beverly-hills",
-          "pullQuote": "9850 Wilshire Blvd — Jean-Georges Beverly Hills, Californian, Beverly Hills.",
-          "blurb": "9850 Wilshire Blvd — Jean-Georges Beverly Hills, Californian, Beverly Hills.",
+          "pullQuote": "9850 Wilshire Blvd \u2014 Jean-Georges Beverly Hills, Californian, Beverly Hills.",
+          "blurb": "9850 Wilshire Blvd \u2014 Jean-Georges Beverly Hills, Californian, Beverly Hills.",
           "copySource": "draft"
         },
         {
           "placeId": "sugarfish",
-          "pullQuote": "600 W 7th St — SUGARFISH, Sushi, Downtown.",
-          "blurb": "600 W 7th St — SUGARFISH, Sushi, Downtown.",
+          "pullQuote": "600 W 7th St \u2014 SUGARFISH, Sushi, Downtown.",
+          "blurb": "600 W 7th St \u2014 SUGARFISH, Sushi, Downtown.",
           "copySource": "draft"
         },
         {
@@ -9494,8 +9586,8 @@
         },
         {
           "placeId": "barans-2239",
-          "pullQuote": "502 Pacific Coast Hwy — Baran's 2239, Persian, Hermosa Beach.",
-          "blurb": "502 Pacific Coast Hwy — Baran's 2239, Persian, Hermosa Beach.",
+          "pullQuote": "502 Pacific Coast Hwy \u2014 Baran's 2239, Persian, Hermosa Beach.",
+          "blurb": "502 Pacific Coast Hwy \u2014 Baran's 2239, Persian, Hermosa Beach.",
           "copySource": "draft"
         },
         {
@@ -9506,8 +9598,8 @@
         },
         {
           "placeId": "melisse",
-          "pullQuote": "Mélisse sits at 1104 Wilshire Blvd. Californian, Santa Monica.",
-          "blurb": "Mélisse sits at 1104 Wilshire Blvd. Californian, Santa Monica.",
+          "pullQuote": "M\u00e9lisse sits at 1104 Wilshire Blvd. Californian, Santa Monica.",
+          "blurb": "M\u00e9lisse sits at 1104 Wilshire Blvd. Californian, Santa Monica.",
           "copySource": "draft"
         },
         {
@@ -9530,8 +9622,8 @@
         },
         {
           "placeId": "water-grill",
-          "pullQuote": "1401 Ocean Ave — Water Grill, Seafood, Santa Monica.",
-          "blurb": "1401 Ocean Ave — Water Grill, Seafood, Santa Monica.",
+          "pullQuote": "1401 Ocean Ave \u2014 Water Grill, Seafood, Santa Monica.",
+          "blurb": "1401 Ocean Ave \u2014 Water Grill, Seafood, Santa Monica.",
           "copySource": "draft"
         }
       ]

@@ -4,11 +4,14 @@ import { AreaKicker } from '../components/AreaKicker.tsx'
 import { GuideEntryCard, GuideStrip } from '../components/GuideEntries.tsx'
 import { GuideMap } from '../components/GuideMap.tsx'
 import { ShareButton } from '../components/ShareButton.tsx'
+import { StoryShareButton } from '../components/StoryShareButton.tsx'
 import { SlidingRow } from '../components/SlidingRow.tsx'
 import { SignInSheet } from '../components/SignInSheet.tsx'
 import { catalog, loadGuide } from '../content/load.ts'
 import { cityPath } from '../lib/city.ts'
 import { pageShareUrl } from '../lib/format.ts'
+import { renderGuideStory } from '../lib/story-card.ts'
+import { awardFor } from '../lib/top25.ts'
 import { isOpen } from '../lib/hours.ts'
 import { usePageMeta } from '../lib/meta.ts'
 import { useApp } from '../state/AppState.tsx'
@@ -139,6 +142,17 @@ export function GuidePage() {
           <div className="flex flex-wrap items-center gap-2">
             <p className="text-xs font-bold tracking-[0.14em] uppercase">{guide.group} · Updated {guide.updatedAt}</p>
             <ShareButton title={guide.title} url={pageShareUrl(`/guide/${guide.slug}`)} />
+            <StoryShareButton
+              filename={`${guide.slug}-story.png`}
+              title={guide.title}
+              build={() => renderGuideStory({
+                title: guide.title,
+                items: rows.map(({ place }) => {
+                  const award = awardFor(place.id, gustoScore)
+                  return { name: place.name, neighborhood: place.neighborhood, score: gustoScore(place.id), metal: award?.metal ?? null }
+                }),
+              })}
+            />
             <SlidingRow label="Sort this guide">
               <button type="button" className="sort-chip" aria-pressed={sort === 'guide'} onClick={() => setSort('guide')}>Guide order</button>
               <button type="button" className="sort-chip" aria-pressed={sort === 'score'} onClick={() => setSort('score')}>Gusto's Score</button>

@@ -2,6 +2,7 @@ import { useMemo, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { AreaKicker } from '../components/AreaKicker.tsx'
 import { PlaceThumb } from '../components/PlaceThumb.tsx'
+import { GoldenFork } from '../components/GoldenFork.tsx'
 import { ScoreBadge } from '../components/ScoreBadge.tsx'
 import { catalog } from '../content/load.ts'
 import { cityPath } from '../lib/city.ts'
@@ -36,6 +37,7 @@ export function RankPage() {
             : "You are the owner. A finished rank publishes Gusto's Score on this device. Yelp stays a separate 1–5 star line."
           : "Loved, Liked, Fine, or Didn't. Your score stays personal until the owner publishes Gusto's Score."}
       </p>
+      <Link to={cityPath('/top')} className="btn mt-4">Golden Fork Top 25</Link>
       {!app.user ? <button type="button" className="btn btn-coral mt-4" onClick={() => setSignIn(true)}>Sign in to rank</button> : null}
       <label className="field mt-4"><span>Find a place</span><input value={query} onChange={(event) => setQuery(event.target.value)} /></label>
       <ul className="mt-4 space-y-4">
@@ -47,7 +49,7 @@ export function RankPage() {
               </span>
               <span className="font-serif text-2xl italic leading-none">{place.name}</span>
             </Link>
-            <div className="mt-2"><ScoreBadge score={app.gustoScore(place.id)} size="sm" /></div>
+            <div className="mt-2 flex flex-wrap items-center gap-2"><ScoreBadge score={app.gustoScore(place.id)} size="sm" /><GoldenFork placeId={place.id} /></div>
             {app.user && !app.user.isOwner && app.scores[place.id] ? <p className="mt-1 text-sm">Your score {app.scores[place.id].score.toFixed(1)}</p> : null}
             <div className="mt-2 flex flex-wrap gap-2">
               {BUCKETS.map((bucket) => (

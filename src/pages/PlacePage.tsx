@@ -12,11 +12,15 @@ import { demoFriendsEnabled } from '../lib/demo.ts'
 import { displayPhotos } from '../lib/gallery.ts'
 import { responsivePhoto } from '../lib/responsivePhoto.ts'
 import { HouseScorePad } from '../components/HouseScorePad.tsx'
+import { GoldenFork } from '../components/GoldenFork.tsx'
 import { ScoreBadge } from '../components/ScoreBadge.tsx'
+import { StoryShareButton } from '../components/StoryShareButton.tsx'
 import { formatPeriods, hoursPhrase } from '../lib/hours.ts'
 import { MapLinks } from '../components/MapLinks.tsx'
 import { ShareButton } from '../components/ShareButton.tsx'
 import { milesBetween, priceLabel, publicReference, shareUrl, yelpBizUrl } from '../lib/format.ts'
+import { renderPlaceStory } from '../lib/story-card.ts'
+import { awardFor } from '../lib/top25.ts'
 import { bounceMark } from '../lib/motion.ts'
 import { usePageMeta } from '../lib/meta.ts'
 import { howToGetIn } from '../lib/visit.ts'
@@ -145,7 +149,10 @@ export function PlacePage() {
           <p className="mt-2 text-xs font-bold tracking-[0.14em] uppercase">{[place.cuisine.join(' · '), place.neighborhood].filter(Boolean).join(' · ')}</p>
           <h1 className="mt-1 font-serif text-5xl italic leading-none sm:text-6xl">{place.name}</h1>
           {place.oneLiner ? <p className="review-headline mt-4 border-2 border-ink bg-[#fffaf3] px-4 py-3 font-serif text-2xl italic leading-snug">“{place.oneLiner}”</p> : null}
-          <div className="mt-3"><ScoreBadge score={app.gustoScore(place.id)} /></div>
+          <div className="mt-3 flex flex-wrap items-center gap-3">
+            <ScoreBadge score={app.gustoScore(place.id)} />
+            <GoldenFork placeId={place.id} size="md" />
+          </div>
           <HouseScorePad placeId={place.id} />
           {app.user && !app.user.isOwner && app.scores[place.id] ? <p className="mt-2 text-sm">Your score {app.scores[place.id].score.toFixed(1)}</p> : null}
           {reference ? <p className="public-ref mt-2">{reference}</p> : null}
@@ -168,6 +175,23 @@ export function PlacePage() {
             <button type="button" className={`btn status-mark text-sm ${app.statuses[place.id] === 'togo' ? 'btn-coral' : ''}`} aria-pressed={app.statuses[place.id] === 'togo'} onClick={(event) => { if (!app.user) { setSignIn(true); return } bounceMark(event); app.setStatus(place.id, 'togo') }}>To go</button>
             <button type="button" className={`btn status-mark text-sm ${been ? 'btn-leaf' : ''}`} aria-pressed={been} onClick={(event) => { if (!app.user) { setSignIn(true); return } bounceMark(event); app.setStatus(place.id, 'been') }}>Been</button>
             <ShareButton title={place.name} url={shareUrl(place.id)} />
+            <StoryShareButton
+              filename={`${place.id}-story.png`}
+              title={place.name}
+              build={() => {
+                const shot = photos.find((photo) => photo.url && !photo.illustration)
+                return renderPlaceStory({
+                  name: place.name,
+                  neighborhood: place.neighborhood,
+                  cuisine: place.cuisine[0],
+                  photoUrl: shot?.url,
+                  credit: shot?.credit,
+                  license: shot?.license,
+                  score: app.gustoScore(place.id),
+                  award: awardFor(place.id, app.gustoScore),
+                })
+              }}
+            />
           </div>
         </div>
       </div>
@@ -204,8 +228,9 @@ export function PlacePage() {
             <div className="mt-3 grid grid-cols-2 gap-3">
               {similar.map((item) => (
                 <Link key={item.id} to={cityPath(`/place/${item.id}`, placeCity(place))} className="hit-card" viewTransition={!reduceMotion}>
-                  <div className="h-24 overflow-hidden bg-navy [&_.place-art]:aspect-auto [&_.place-art]:h-full" style={reduceMotion ? undefined : { viewTransitionName: `place-${item.id}` }}>
+                  <div className="relative h-24 overflow-hidden bg-navy [&_.place-art]:aspect-auto [&_.place-art]:h-full" style={reduceMotion ? undefined : { viewTransitionName: `place-${item.id}` }}>
                     <PlaceThumb place={item} uploads={app.photos} sizes="(min-width: 1024px) 200px, 45vw" />
+                    <GoldenFork placeId={item.id} overlay />
                   </div>
                   <div className="p-2">
                     <ScoreBadge score={app.gustoScore(item.id)} size="sm" />

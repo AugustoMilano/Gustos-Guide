@@ -8,6 +8,7 @@ import { FriendEmpty } from '../components/FriendEmpty.tsx'
 import { PlanCard, PlanSheet } from '../components/PlanSheet.tsx'
 import { SignInSheet } from '../components/SignInSheet.tsx'
 import { SlidingRow } from '../components/SlidingRow.tsx'
+import { GoldenFork } from '../components/GoldenFork.tsx'
 import { ScoreBadge } from '../components/ScoreBadge.tsx'
 import { AreaKicker } from '../components/AreaKicker.tsx'
 import { catalog, slimById } from '../content/load.ts'
@@ -398,7 +399,7 @@ export function PlanWizardPage() {
                       <PlaceThumb place={place} uploads={app.photos} />
                     </span>
                     <span className="min-w-0 flex-1 text-left">
-                      <ScoreBadge score={app.gustoScore(place.id)} size="sm" />
+                      <span className="flex flex-wrap items-center gap-2"><ScoreBadge score={app.gustoScore(place.id)} size="sm" /><GoldenFork placeId={place.id} /></span>
                       <span className="mt-1 block font-serif text-2xl italic leading-none">{place.name}</span>
                       {reference ? <span className="public-ref mt-1 block">{reference}</span> : null}
                       <span className="mt-2 flex flex-wrap gap-1">
