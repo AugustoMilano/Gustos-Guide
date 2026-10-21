@@ -1,5 +1,5 @@
 import { lazy, Suspense, useEffect, useRef, useState } from 'react'
-import { Route, Routes, useLocation } from 'react-router-dom'
+import { Route, Routes, useLocation, useNavigate } from 'react-router-dom'
 import { Footer } from './components/Footer.tsx'
 import { Header } from './components/Header.tsx'
 import { ImportLocalSheet } from './components/ImportLocalSheet.tsx'
@@ -65,6 +65,40 @@ function ScrollManager() {
   return null
 }
 
+function EdgeBack() {
+  const navigate = useNavigate()
+  useEffect(() => {
+    let tracking = false
+    let startX = 0
+    let startY = 0
+    const down = (event: PointerEvent) => {
+      if (event.clientX > 24) return
+      const target = event.target
+      if (target instanceof Element && target.closest('input, textarea, select, .lightbox, [data-noswipe]')) return
+      tracking = true
+      startX = event.clientX
+      startY = event.clientY
+    }
+    const up = (event: PointerEvent) => {
+      if (!tracking) return
+      tracking = false
+      if (document.querySelector('.lightbox')) return
+      const dx = event.clientX - startX
+      const dy = event.clientY - startY
+      if (dx < 72 || Math.abs(dy) > 48) return
+      if (window.history.length <= 1) return
+      navigate(-1)
+    }
+    window.addEventListener('pointerdown', down)
+    window.addEventListener('pointerup', up)
+    return () => {
+      window.removeEventListener('pointerdown', down)
+      window.removeEventListener('pointerup', up)
+    }
+  }, [navigate])
+  return null
+}
+
 function BackToTop() {
   const { pathname } = useLocation()
   const [show, setShow] = useState(false)
@@ -127,6 +161,7 @@ function Shell() {
   return (
     <>
       <ScrollManager />
+      <EdgeBack />
       <button
         type="button"
         className="skip"

@@ -150,6 +150,8 @@ export function GuideEntryCard({
   onToggle,
   onNeedSignIn,
   signedIn,
+  hot = false,
+  onPoint,
 }: {
   place: SlimPlace
   entry: GuideEntry
@@ -162,6 +164,8 @@ export function GuideEntryCard({
   onToggle: (status: VisitStatus) => void
   onNeedSignIn: () => void
   signedIn: boolean
+  hot?: boolean
+  onPoint?: (id: string | null) => void
 }) {
   const reduceMotion = useReducedMotion()
   const shots = displayPhotos(place, uploads)
@@ -245,8 +249,15 @@ export function GuideEntryCard({
       {rest}
     </div>
   )
+  const point = {
+    onMouseEnter: () => onPoint?.(place.id),
+    onMouseLeave: () => onPoint?.(null),
+    onFocus: () => onPoint?.(place.id),
+    onBlur: () => onPoint?.(null),
+  }
+  const hotClass = hot ? ' is-hot' : ''
   const compact = (
-    <article id={`entry-${place.id}`} className="guide-entry scroll-mt-24 border-t-2 border-ink pt-5">
+    <article id={`entry-${place.id}`} className={`guide-entry scroll-mt-24 border-t-2 border-ink pt-5${hotClass}`} {...point}>
       {title}
       <div className="mt-3 flex items-start gap-3">
         <figure className="w-24 shrink-0">
@@ -285,7 +296,7 @@ export function GuideEntryCard({
   const stagger = Math.min(index, 6) * 0.05
   if (artOnly) return index === 0 ? compact : <Reveal delay={stagger}>{compact}</Reveal>
   const body = layout === 0 ? (
-    <article id={`entry-${place.id}`} className="guide-entry scroll-mt-24 border-t-2 border-ink pt-5">
+    <article id={`entry-${place.id}`} className={`guide-entry scroll-mt-24 border-t-2 border-ink pt-5${hotClass}`} {...point}>
       {title}
       <div className="mt-4">{image}</div>
       {rest}
@@ -293,7 +304,8 @@ export function GuideEntryCard({
   ) : (
     <article
       id={`entry-${place.id}`}
-      className="guide-entry scroll-mt-24 grid gap-4 border-t-2 border-ink pt-5 md:grid-cols-2 md:items-center md:gap-6"
+      className={`guide-entry scroll-mt-24 grid gap-4 border-t-2 border-ink pt-5 md:grid-cols-2 md:items-center md:gap-6${hotClass}`}
+      {...point}
     >
       {layout === 2 ? copy : image}
       {layout === 2 ? image : copy}

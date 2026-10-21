@@ -17,7 +17,7 @@ export function usePageMeta(title: string, description: string, image?: string, 
     const node = document.querySelector('meta[name="description"]')
     const previous = node?.getAttribute('content') ?? ''
     node?.setAttribute('content', description)
-    const picture = image ? new URL(image, window.location.href).href : ''
+    const picture = new URL(image || './og/og.svg', window.location.href).href
     const canonical = canonicalOverride || canonicalUrl()
     let link = document.head.querySelector('link[rel="canonical"]')
     if (!link) {
@@ -32,10 +32,11 @@ export function usePageMeta(title: string, description: string, image?: string, 
     upsert('property', 'og:url', canonical)
     upsert('name', 'twitter:title', title)
     upsert('name', 'twitter:description', description)
-    if (picture) {
-      upsert('property', 'og:image', picture)
-      upsert('name', 'twitter:image', picture)
-    }
+    upsert('name', 'twitter:card', 'summary_large_image')
+    upsert('property', 'og:image', picture)
+    upsert('property', 'og:image:alt', title)
+    upsert('name', 'twitter:image', picture)
+    upsert('name', 'twitter:image:alt', title)
     return () => {
       document.title = "Gusto's Guide"
       node?.setAttribute('content', previous)

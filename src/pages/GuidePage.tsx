@@ -32,6 +32,7 @@ export function GuidePage() {
   const [signInOpen, setSignInOpen] = useState(false)
   const [filtersOpen, setFiltersOpen] = useState(false)
   const [sort, setSort] = useState<'guide' | 'score'>('guide')
+  const [activeId, setActiveId] = useState<string | null>(null)
 
   useEffect(() => {
     const media = window.matchMedia('(min-width: 1024px)')
@@ -168,7 +169,7 @@ export function GuidePage() {
             {guide.intro.split('\n\n').map((paragraph) => <p key={paragraph.slice(0, 24)}>{paragraph}</p>)}
           </details>
         ) : null}
-        <div className="mt-3 hidden gap-2 lg:grid lg:grid-cols-[repeat(auto-fit,minmax(8.5rem,1fr))]">
+        <div className="guide-sticky mt-3 hidden gap-2 lg:grid lg:grid-cols-[repeat(auto-fit,minmax(8.5rem,1fr))]">
           <FilterFields
             neighborhoods={neighborhoods}
             cuisines={cuisines}
@@ -185,7 +186,7 @@ export function GuidePage() {
             setOpenNow={setOpenNow}
           />
         </div>
-        <div className="mt-3 flex gap-2 lg:hidden">
+        <div className="guide-sticky mt-3 flex gap-2 lg:hidden">
           <button type="button" className="btn flex-1 text-sm" onClick={() => setFiltersOpen(true)}>
             Filters{activeFilters.length ? ` · ${activeFilters.length}` : ''}
           </button>
@@ -262,6 +263,8 @@ export function GuidePage() {
                 signedIn={Boolean(user)}
                 onToggle={(status) => onToggle(place.id, status)}
                 onNeedSignIn={() => setSignInOpen(true)}
+                hot={activeId === place.id}
+                onPoint={setActiveId}
               />
             ))}
           </div>
@@ -269,7 +272,21 @@ export function GuidePage() {
         <SignInSheet open={signInOpen} onClose={() => setSignInOpen(false)} />
       </div>
       <div className={desktop ? 'bleed-map' : mobileMap ? 'mt-3 min-h-0 flex-1' : 'hidden'}>
-        {(desktop || pane === 'map') && <GuideMap places={ordered.map((row) => row.place)} statuses={statuses} />}
+        {(desktop || pane === 'map') && (
+          <GuideMap
+            places={ordered.map((row) => row.place)}
+            statuses={statuses}
+            activeId={activeId}
+            onHover={setActiveId}
+            onSelect={(id) => {
+              setActiveId(id)
+              if (!desktop && pane === 'map') setPane('list')
+              window.setTimeout(() => {
+                document.getElementById(`entry-${id}`)?.scrollIntoView({ block: 'nearest', behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' })
+              }, 40)
+            }}
+          />
+        )}
       </div>
     </main>
   )

@@ -2,7 +2,7 @@ import { useEffect, useMemo, useState } from 'react'
 import { useReducedMotion } from 'framer-motion'
 import { Link, useParams } from 'react-router-dom'
 import { GuideMap } from '../components/GuideMap.tsx'
-import { PhotoFrame } from '../components/PhotoFrame.tsx'
+import { PlaceGallery } from '../components/PlaceGallery.tsx'
 import { PlaceThumb } from '../components/PlaceThumb.tsx'
 import { SignInSheet } from '../components/SignInSheet.tsx'
 import { catalog, loadPlace, slimById } from '../content/load.ts'
@@ -10,7 +10,6 @@ import { areaTitle, cityPath } from '../lib/city.ts'
 import { placeCity, placesForCity } from '../lib/use-city.ts'
 import { demoFriendsEnabled } from '../lib/demo.ts'
 import { displayPhotos } from '../lib/gallery.ts'
-import { responsivePhoto } from '../lib/responsivePhoto.ts'
 import { HouseScorePad } from '../components/HouseScorePad.tsx'
 import { GoldenFork } from '../components/GoldenFork.tsx'
 import { ScoreBadge } from '../components/ScoreBadge.tsx'
@@ -83,7 +82,6 @@ export function PlacePage() {
   const guides = catalog.guides.filter((guide) => place.guideSlugs.includes(guide.slug))
   const friends = app.friendScore(place.id)
   const been = app.statuses[place.id] === 'been'
-  const current = photos[Math.min(active, photos.length - 1)]
 
   async function onFile(file: File | undefined) {
     if (!file) return
@@ -102,22 +100,76 @@ export function PlacePage() {
   return (
     <main id="main" tabIndex={-1} className="bleed-stage place-stage outline-none max-lg:mx-auto max-lg:max-w-6xl max-lg:px-4 max-lg:pt-24 max-lg:pb-16">
       <div className="bleed-copy max-lg:contents">
-      <div className="grid gap-6 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,0.8fr)]">
-        <div>
-          <PhotoFrame
-            photo={current}
-            priority
-            compact={Boolean(current?.illustration || !current?.url)}
-            transitionName={reduceMotion ? undefined : `place-${place.id}`}
-          />
-          <div className="mt-2 flex gap-2 overflow-auto">
-            {photos.map((photo, index) => (
-              <button key={photo.key} type="button" className={`h-16 w-24 shrink-0 border-2 ${index === active ? 'border-coral' : 'border-ink'}`} aria-label={`Photo ${index + 1} of ${photos.length}`} onClick={() => setActive(index)}>
-                {photo.url && !photo.illustration ? <img {...responsivePhoto(photo.url, '96px')} alt="" loading="lazy" decoding="async" className="h-full w-full object-cover" /> : <span className="text-xs font-bold">Illustration</span>}
-              </button>
-            ))}
+      <div className="place-grid">
+        <PlaceGallery
+          photos={photos}
+          active={active}
+          onChange={setActive}
+          transitionName={reduceMotion ? undefined : `place-${place.id}`}
+        />
+        <div className="place-identity">
+          <p className="area-kicker">{areaTitle(placeCity(place))}</p>
+          <p className="mt-2 text-xs font-bold tracking-[0.14em] uppercase">{[place.cuisine.join(' · '), place.neighborhood].filter(Boolean).join(' · ')}</p>
+          <h1 className="mt-1 font-serif text-5xl italic leading-none sm:text-6xl">{place.name}</h1>
+          {place.oneLiner ? <p className="review-headline mt-4 border-2 border-ink bg-[#fffaf3] px-4 py-3 font-serif text-2xl italic leading-snug">“{place.oneLiner}”</p> : null}
+          <div className="mt-3 flex flex-wrap items-center gap-3">
+            <ScoreBadge score={app.gustoScore(place.id)} />
+            <GoldenFork placeId={place.id} size="md" />
           </div>
-          <section className="mt-4 border-2 border-ink p-4" aria-labelledby="upload-heading">
+          <HouseScorePad placeId={place.id} />
+          {app.user && !app.user.isOwner && app.scores[place.id] ? <p className="mt-2 text-sm">Your score {app.scores[place.id].score.toFixed(1)}</p> : null}
+          {reference ? <p className="public-ref mt-2">{reference}</p> : null}
+          {app.user && friends.count ? (
+            <p className="mt-2 text-sm text-ink/70">
+              {demoFriendsEnabled && friends.demo ? 'Seeded friends · ' : ''}
+              {friends.loved ? `${friends.loved} ${friends.loved === 1 ? 'friend loved' : 'friends loved'} this. ` : ''}
+              Friend score {friends.average == null ? '' : friends.average.toFixed(1)}.
+            </p>
+          ) : null}
+          <section className="place-facts" aria-label="Address and hours">
+            {place.price ? <p className="font-bold">{priceLabel(place.price)}</p> : null}
+            {place.address ? <p className="place-address">{place.address}</p> : null}
+            {place.periods.length ? (
+              <details className="place-hours">
+                <summary>{hoursPhrase(place.periods) ?? 'Hours'}</summary>
+                <ul>{formatPeriods(place.periods).map((line) => <li key={line}>{line}</li>)}</ul>
+              </details>
+            ) : <p>Hours are not posted. Call before you trek across town.</p>}
+            <div className="place-actions">
+              <MapLinks place={place} prominent />
+              {place.website ? <a className="btn text-sm" href={place.website}>Website</a> : null}
+              {place.phone ? <a className="btn text-sm" href={`tel:${place.phone}`}>Call</a> : null}
+              {place.yelpSlug ? <a className="btn text-sm" href={yelpBizUrl(place.yelpSlug)}>Yelp</a> : null}
+            </div>
+          </section>
+          <div className="mt-4 flex flex-wrap gap-2">
+            {place.perfectFor.map((tag) => <span key={tag} className="tag">{tag}</span>)}
+          </div>
+          <div className="mt-4 flex flex-wrap gap-2">
+            <button type="button" className={`btn status-mark text-sm ${app.statuses[place.id] === 'togo' ? 'btn-coral' : ''}`} aria-pressed={app.statuses[place.id] === 'togo'} onClick={(event) => { if (!app.user) { setSignIn(true); return } bounceMark(event); app.setStatus(place.id, 'togo') }}>To go</button>
+            <button type="button" className={`btn status-mark text-sm ${been ? 'btn-leaf' : ''}`} aria-pressed={been} onClick={(event) => { if (!app.user) { setSignIn(true); return } bounceMark(event); app.setStatus(place.id, 'been') }}>Been</button>
+            <ShareButton title={place.name} url={shareUrl(place.id)} />
+            <StoryShareButton
+              filename={`${place.id}-story.png`}
+              title={place.name}
+              build={() => {
+                const shot = photos.find((photo) => photo.url && !photo.illustration)
+                return renderPlaceStory({
+                  name: place.name,
+                  neighborhood: place.neighborhood,
+                  cuisine: place.cuisine[0],
+                  photoUrl: shot?.url,
+                  credit: shot?.credit,
+                  license: shot?.license,
+                  score: app.gustoScore(place.id),
+                  award: awardFor(place.id, app.gustoScore),
+                })
+              }}
+            />
+          </div>
+        </div>
+      </div>
+      <section className="place-upload" aria-labelledby="upload-heading">
             <h2 id="upload-heading" className="font-serif text-3xl italic">Add a photo</h2>
             <p className="mt-2 text-sm">Been here? Add a photo. House shots are credited Photo by Gusto.</p>
             {!app.user ? (
@@ -142,59 +194,7 @@ export function PlacePage() {
               </label>
             )}
             {error ? <p className="mt-2 text-sm" role="alert">{error}</p> : null}
-          </section>
-        </div>
-        <div>
-          <p className="area-kicker">{areaTitle(placeCity(place))}</p>
-          <p className="mt-2 text-xs font-bold tracking-[0.14em] uppercase">{[place.cuisine.join(' · '), place.neighborhood].filter(Boolean).join(' · ')}</p>
-          <h1 className="mt-1 font-serif text-5xl italic leading-none sm:text-6xl">{place.name}</h1>
-          {place.oneLiner ? <p className="review-headline mt-4 border-2 border-ink bg-[#fffaf3] px-4 py-3 font-serif text-2xl italic leading-snug">“{place.oneLiner}”</p> : null}
-          <div className="mt-3 flex flex-wrap items-center gap-3">
-            <ScoreBadge score={app.gustoScore(place.id)} />
-            <GoldenFork placeId={place.id} size="md" />
-          </div>
-          <HouseScorePad placeId={place.id} />
-          {app.user && !app.user.isOwner && app.scores[place.id] ? <p className="mt-2 text-sm">Your score {app.scores[place.id].score.toFixed(1)}</p> : null}
-          {reference ? <p className="public-ref mt-2">{reference}</p> : null}
-          {app.user && friends.count ? (
-            <p className="mt-2 text-sm text-ink/70">
-              {demoFriendsEnabled && friends.demo ? 'Seeded friends · ' : ''}
-              {friends.loved ? `${friends.loved} ${friends.loved === 1 ? 'friend loved' : 'friends loved'} this. ` : ''}
-              Friend score {friends.average == null ? '' : friends.average.toFixed(1)}.
-            </p>
-          ) : null}
-          <p className="mt-2 font-bold">{[priceLabel(place.price), hoursPhrase(place.periods)].filter(Boolean).join(' · ')}</p>
-          <div className="mt-3 flex flex-wrap gap-2">
-            {place.perfectFor.map((tag) => <span key={tag} className="tag">{tag}</span>)}
-          </div>
-          <div className="mt-4 flex flex-wrap gap-2">
-            {place.website ? <a className="btn text-sm" href={place.website}>Website</a> : null}
-            {place.yelpSlug ? <a className="btn text-sm" href={yelpBizUrl(place.yelpSlug)}>Yelp</a> : null}
-            <MapLinks place={place} />
-            {place.phone ? <a className="btn text-sm" href={`tel:${place.phone}`}>Call</a> : null}
-            <button type="button" className={`btn status-mark text-sm ${app.statuses[place.id] === 'togo' ? 'btn-coral' : ''}`} aria-pressed={app.statuses[place.id] === 'togo'} onClick={(event) => { if (!app.user) { setSignIn(true); return } bounceMark(event); app.setStatus(place.id, 'togo') }}>To go</button>
-            <button type="button" className={`btn status-mark text-sm ${been ? 'btn-leaf' : ''}`} aria-pressed={been} onClick={(event) => { if (!app.user) { setSignIn(true); return } bounceMark(event); app.setStatus(place.id, 'been') }}>Been</button>
-            <ShareButton title={place.name} url={shareUrl(place.id)} />
-            <StoryShareButton
-              filename={`${place.id}-story.png`}
-              title={place.name}
-              build={() => {
-                const shot = photos.find((photo) => photo.url && !photo.illustration)
-                return renderPlaceStory({
-                  name: place.name,
-                  neighborhood: place.neighborhood,
-                  cuisine: place.cuisine[0],
-                  photoUrl: shot?.url,
-                  credit: shot?.credit,
-                  license: shot?.license,
-                  score: app.gustoScore(place.id),
-                  award: awardFor(place.id, app.gustoScore),
-                })
-              }}
-            />
-          </div>
-        </div>
-      </div>
+      </section>
       <article className="mt-8">
           {full?.blurb && full.blurb !== place.oneLiner ? <p className="max-w-2xl text-lg leading-relaxed">{full.blurb}</p> : null}
           {howToGetIn(place) ? (
@@ -212,11 +212,6 @@ export function PlacePage() {
               </ul>
             </section>
           ) : null}
-          <section className="mt-6">
-            <h2 className="font-serif text-3xl italic">Hours</h2>
-            {place.periods.length ? <ul className="mt-2">{formatPeriods(place.periods).map((line) => <li key={line}>{line}</li>)}</ul> : <p className="mt-2">Hours are not posted. Call before you trek across town.</p>}
-            <p className="mt-3">{place.address}</p>
-          </section>
           <section className="mt-6">
             <h2 className="font-serif text-3xl italic">Included in</h2>
             <div className="mt-2 flex flex-wrap gap-2">

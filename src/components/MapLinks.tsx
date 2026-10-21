@@ -3,30 +3,32 @@ import { appleDirectionsUrl, applePlaceUrl, googleDirectionsUrl, googleMapsUrl, 
 
 type MapPlace = { id: string; name: string; address?: string; lat: number; lng: number }
 
-export function MapLinks({ place }: { place: MapPlace }) {
+export function MapLinks({ place, prominent = false }: { place: MapPlace; prominent?: boolean }) {
   const [apple] = useState(() => prefersAppleMaps())
   const placeUrl = applePlaceUrl(place.id)
+  const directions = prominent ? 'btn btn-coral' : 'btn text-sm'
+  const maps = 'btn text-sm'
   if (apple) {
     return (
       <>
+        <a className={directions} href={appleDirectionsUrl(place)}>
+          Directions
+        </a>
         {placeUrl ? (
-          <a className="btn text-sm" href={placeUrl}>
+          <a className={maps} href={placeUrl}>
             Open in Apple Maps
           </a>
         ) : null}
-        <a className="btn text-sm" href={appleDirectionsUrl(place)}>
-          Directions
-        </a>
       </>
     )
   }
   return (
     <>
-      <a className="btn text-sm" href={googleMapsUrl(place)}>
-        Open in Google Maps
-      </a>
-      <a className="btn text-sm" href={googleDirectionsUrl(place)}>
+      <a className={directions} href={googleDirectionsUrl(place)}>
         Directions
+      </a>
+      <a className={maps} href={googleMapsUrl(place)}>
+        Open in Google Maps
       </a>
     </>
   )

@@ -180,7 +180,7 @@ export function Header() {
       <OfflineBanner />
       <div className="header-bar mx-auto flex w-full max-w-[100rem] items-center gap-3 px-4 py-3">
         <div className="brand-lockup">
-          <Link to={cityPath('/', linkCity)} className="wordmark shrink-0 font-serif text-2xl italic leading-none sm:text-3xl">
+          <Link viewTransition={!reduceMotion} to={cityPath('/', linkCity)} className="wordmark shrink-0 font-serif text-2xl italic leading-none sm:text-3xl">
             Gusto's Guide
           </Link>
           {picker ? null : (
@@ -230,17 +230,17 @@ export function Header() {
           />
         </form>
         <nav className="site-nav hidden items-center gap-1 text-sm font-bold lg:flex" aria-label="Primary">
-          <Link to={cityPath('/explore', linkCity)} onMouseEnter={() => prefetch('/explore')} onFocus={() => prefetch('/explore')}>Explore</Link>
-          <Link to={cityPath('/guides', linkCity)}>Guides</Link>
-          <Link to={cityPath('/tonight', linkCity)}>Tonight</Link>
-          <Link to={cityPath('/top', linkCity)}>Top 25</Link>
-          <Link className="nav-wide" to={cityPath('/feed', linkCity)}>Feed</Link>
-          <Link className="nav-wide" to={cityPath('/plans', linkCity)} onMouseEnter={() => prefetch('/plans/wizard')} onFocus={() => prefetch('/plans/wizard')}>Plans</Link>
-          <Link className="nav-wide" to={cityPath('/rank', linkCity)}>Rank</Link>
-          <Link className="nav-wide" to={cityPath('/my', linkCity)}>My guides</Link>
-          {user?.isOwner ? <Link className="nav-wide" to={cityPath('/score', linkCity)}>Scores</Link> : null}
-          {user?.isOwner ? <Link className="nav-wide" to={cityPath('/score/quick', linkCity)}>Quick</Link> : null}
-          {user?.isOwner ? <Link className="nav-wide" to={cityPath('/photos', linkCity)}>Photos</Link> : null}
+          <Link viewTransition={!reduceMotion} to={cityPath('/explore', linkCity)} onMouseEnter={() => prefetch('/explore')} onFocus={() => prefetch('/explore')}>Explore</Link>
+          <Link viewTransition={!reduceMotion} to={cityPath('/guides', linkCity)}>Guides</Link>
+          <Link viewTransition={!reduceMotion} to={cityPath('/tonight', linkCity)}>Tonight</Link>
+          <Link viewTransition={!reduceMotion} to={cityPath('/top', linkCity)}>Top 25</Link>
+          <Link viewTransition={!reduceMotion} className="nav-wide" to={cityPath('/feed', linkCity)}>Feed</Link>
+          <Link viewTransition={!reduceMotion} className="nav-wide" to={cityPath('/plans', linkCity)} onMouseEnter={() => prefetch('/plans/wizard')} onFocus={() => prefetch('/plans/wizard')}>Plans</Link>
+          <Link viewTransition={!reduceMotion} className="nav-wide" to={cityPath('/rank', linkCity)}>Rank</Link>
+          <Link viewTransition={!reduceMotion} className="nav-wide" to={cityPath('/my', linkCity)}>My guides</Link>
+          {user?.isOwner ? <Link viewTransition={!reduceMotion} className="nav-wide" to={cityPath('/score', linkCity)}>Scores</Link> : null}
+          {user?.isOwner ? <Link viewTransition={!reduceMotion} className="nav-wide" to={cityPath('/score/quick', linkCity)}>Quick</Link> : null}
+          {user?.isOwner ? <Link viewTransition={!reduceMotion} className="nav-wide" to={cityPath('/photos', linkCity)}>Photos</Link> : null}
           <div className="nav-more relative">
             <button
               type="button"
@@ -267,14 +267,14 @@ export function Header() {
                   exit={reduceMotion ? undefined : { opacity: 0, y: -6, scale: 0.96 }}
                   transition={{ type: 'spring', stiffness: 420, damping: 32 }}
                 >
-                  <Link to={cityPath('/feed', linkCity)} onClick={() => setMore(false)}>Feed</Link>
-                  <Link to={cityPath('/plans', linkCity)} onClick={() => setMore(false)} onFocus={() => prefetch('/plans/wizard')}>Plans</Link>
-                  <Link to={cityPath('/rank', linkCity)} onClick={() => setMore(false)}>Rank</Link>
-                  <Link to={cityPath('/top', linkCity)} onClick={() => setMore(false)}>Top 25</Link>
-                  <Link to={cityPath('/my', linkCity)} onClick={() => setMore(false)}>My guides</Link>
-                  {user?.isOwner ? <Link to={cityPath('/score', linkCity)} onClick={() => setMore(false)}>Scores</Link> : null}
-                  {user?.isOwner ? <Link to={cityPath('/score/quick', linkCity)} onClick={() => setMore(false)}>Quick score</Link> : null}
-                  {user?.isOwner ? <Link to={cityPath('/photos', linkCity)} onClick={() => setMore(false)}>Photos</Link> : null}
+                  <Link viewTransition={!reduceMotion} to={cityPath('/feed', linkCity)} onClick={() => setMore(false)}>Feed</Link>
+                  <Link viewTransition={!reduceMotion} to={cityPath('/plans', linkCity)} onClick={() => setMore(false)} onFocus={() => prefetch('/plans/wizard')}>Plans</Link>
+                  <Link viewTransition={!reduceMotion} to={cityPath('/rank', linkCity)} onClick={() => setMore(false)}>Rank</Link>
+                  <Link viewTransition={!reduceMotion} to={cityPath('/top', linkCity)} onClick={() => setMore(false)}>Top 25</Link>
+                  <Link viewTransition={!reduceMotion} to={cityPath('/my', linkCity)} onClick={() => setMore(false)}>My guides</Link>
+                  {user?.isOwner ? <Link viewTransition={!reduceMotion} to={cityPath('/score', linkCity)} onClick={() => setMore(false)}>Scores</Link> : null}
+                  {user?.isOwner ? <Link viewTransition={!reduceMotion} to={cityPath('/score/quick', linkCity)} onClick={() => setMore(false)}>Quick score</Link> : null}
+                  {user?.isOwner ? <Link viewTransition={!reduceMotion} to={cityPath('/photos', linkCity)} onClick={() => setMore(false)}>Photos</Link> : null}
                 </motion.div>
               ) : null}
             </AnimatePresence>
@@ -292,7 +292,7 @@ export function Header() {
           </button>
           {user ? (
             <>
-              <Link to={cityPath(`/u/${user.handle}`, linkCity)} className="inline-flex max-w-[10rem] items-center gap-2">
+              <Link viewTransition={!reduceMotion} to={cityPath(`/u/${user.handle}`, linkCity)} className="inline-flex max-w-[10rem] items-center gap-2">
                 {user.avatarUrl ? <img src={user.avatarUrl} alt="" width={32} height={32} loading="lazy" decoding="async" className="h-8 w-8 shrink-0 rounded-full object-cover" /> : null}
                 <span className="truncate">{user.name}</span>
               </Link>
@@ -347,23 +347,23 @@ export function Header() {
             <input aria-label={`Search ${areaName}`} value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Search" className="glass-input w-full px-3 py-2" />
           </form>
           <AreaKicker />
-          <Link to={cityPath('/explore', linkCity)} onClick={() => setMenu(false)} onFocus={() => prefetch('/explore')}>Explore</Link>
-          <Link to={cityPath('/guides', linkCity)} onClick={() => setMenu(false)}>Guides</Link>
-          <Link to={cityPath('/tonight', linkCity)} onClick={() => setMenu(false)}>Tonight</Link>
-          <Link to={cityPath('/feed', linkCity)} onClick={() => setMenu(false)}>Feed</Link>
-          <Link to={cityPath('/plans', linkCity)} onClick={() => setMenu(false)}>Plans</Link>
-          <Link to={cityPath('/rank', linkCity)} onClick={() => setMenu(false)}>Rank</Link>
-          <Link to={cityPath('/top', linkCity)} onClick={() => setMenu(false)}>Top 25</Link>
-          <Link to={cityPath('/my', linkCity)} onClick={() => setMenu(false)}>My guides</Link>
-          {user?.isOwner ? <Link to={cityPath('/score', linkCity)} onClick={() => setMenu(false)}>Scores</Link> : null}
-          {user?.isOwner ? <Link to={cityPath('/score/quick', linkCity)} onClick={() => setMenu(false)}>Quick score</Link> : null}
-          {user?.isOwner ? <Link to={cityPath('/photos', linkCity)} onClick={() => setMenu(false)}>Photos</Link> : null}
+          <Link viewTransition={!reduceMotion} to={cityPath('/explore', linkCity)} onClick={() => setMenu(false)} onFocus={() => prefetch('/explore')}>Explore</Link>
+          <Link viewTransition={!reduceMotion} to={cityPath('/guides', linkCity)} onClick={() => setMenu(false)}>Guides</Link>
+          <Link viewTransition={!reduceMotion} to={cityPath('/tonight', linkCity)} onClick={() => setMenu(false)}>Tonight</Link>
+          <Link viewTransition={!reduceMotion} to={cityPath('/feed', linkCity)} onClick={() => setMenu(false)}>Feed</Link>
+          <Link viewTransition={!reduceMotion} to={cityPath('/plans', linkCity)} onClick={() => setMenu(false)}>Plans</Link>
+          <Link viewTransition={!reduceMotion} to={cityPath('/rank', linkCity)} onClick={() => setMenu(false)}>Rank</Link>
+          <Link viewTransition={!reduceMotion} to={cityPath('/top', linkCity)} onClick={() => setMenu(false)}>Top 25</Link>
+          <Link viewTransition={!reduceMotion} to={cityPath('/my', linkCity)} onClick={() => setMenu(false)}>My guides</Link>
+          {user?.isOwner ? <Link viewTransition={!reduceMotion} to={cityPath('/score', linkCity)} onClick={() => setMenu(false)}>Scores</Link> : null}
+          {user?.isOwner ? <Link viewTransition={!reduceMotion} to={cityPath('/score/quick', linkCity)} onClick={() => setMenu(false)}>Quick score</Link> : null}
+          {user?.isOwner ? <Link viewTransition={!reduceMotion} to={cityPath('/photos', linkCity)} onClick={() => setMenu(false)}>Photos</Link> : null}
           <button type="button" className="text-left" aria-label="Notifications" onClick={() => { setMenu(false); setBell(true); markNoticesRead() }}>
             Notifications{unread ? ` (${unread})` : ''}
           </button>
           {user ? (
             <>
-              <Link to={cityPath(`/u/${user.handle}`, linkCity)} className="inline-flex items-center gap-2" onClick={() => setMenu(false)}>
+              <Link viewTransition={!reduceMotion} to={cityPath(`/u/${user.handle}`, linkCity)} className="inline-flex items-center gap-2" onClick={() => setMenu(false)}>
                 {user.avatarUrl ? <img src={user.avatarUrl} alt="" width={32} height={32} loading="lazy" decoding="async" className="h-8 w-8 rounded-full object-cover" /> : null}
                 {user.name}
               </Link>
@@ -407,7 +407,7 @@ export function Header() {
             <ul className="space-y-2">
               {notices.slice(0, 8).map((notice) => (
                 <li key={notice.id}>
-                  <Link to={notice.href} onClick={() => setBell(false)}>{notice.text}</Link>
+                  <Link viewTransition={!reduceMotion} to={notice.href} onClick={() => setBell(false)}>{notice.text}</Link>
                 </li>
               ))}
             </ul>
