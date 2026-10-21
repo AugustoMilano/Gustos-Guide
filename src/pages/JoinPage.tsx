@@ -66,7 +66,8 @@ export function JoinPage() {
         </div>
         <div>
           <p className="text-xs font-bold tracking-[0.14em] uppercase">{kind === 'friend' ? 'Friend invite' : kind === 'plan' ? 'Dinner plan' : 'List'}</p>
-          <h1 className="mt-1 font-serif text-4xl italic leading-none">{label ? (kind === 'friend' ? `${label} wants to eat with you.` : `Join ${label}`) : 'That invite is not on this browser.'}</h1>
+          <h1 className="mt-1 font-serif text-4xl italic">{label ? (kind === 'friend' ? `${label} wants to eat with you.` : `Join ${label}`) : 'That invite is not on this browser.'}</h1>
+          {guide ? <p className="mt-2 text-sm font-bold">{guide.placeIds.length} {guide.placeIds.length === 1 ? 'place' : 'places'}</p> : null}
           <p className="mt-3 text-sm">
             {kind === 'friend'
               ? own
@@ -86,7 +87,7 @@ export function JoinPage() {
               {joined ? 'Joined' : kind === 'guide' ? 'Join the list' : 'RSVP yes'}
             </button>
           ) : null}
-          {joined === 'friend' ? <p className="mt-3 text-sm">You are friends. The feed is the next table.</p> : null}
+          {joined === 'friend' ? <p className="mt-3 text-sm" role="status">You are friends. The feed is the next table.</p> : null}
           {joined && target ? <p className="mt-3"><Link className="btn" to={target}>Open it</Link></p> : null}
         </div>
       </section>

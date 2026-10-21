@@ -44,11 +44,14 @@ export function ScoreQueuePage() {
       ) : (
         <>
           <p className="mt-3 text-sm">{waiting} places still open. Tap a number, then a tenth. It publishes as the house score.</p>
+          <div className="quick-meter mt-3" role="progressbar" aria-valuemin={0} aria-valuemax={places.length} aria-valuenow={places.length - waiting} aria-label={`${places.length - waiting} of ${places.length} scored`}>
+            <span style={{ width: `${places.length ? ((places.length - waiting) / places.length) * 100 : 0}%` }} />
+          </div>
           <ul className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2">
             {visible.map((place) => (
               <li key={place.id} className="feed-card">
                 <Link to={cityPath(`/place/${place.id}`)} className="block h-36 overflow-hidden bg-navy [&_.place-art]:aspect-auto [&_.place-art]:h-full">
-                  <PlaceThumb place={place} uploads={app.photos} />
+                  <PlaceThumb place={place} uploads={app.photos} sizes="(min-width: 640px) 320px, 100vw" />
                 </Link>
                 <h2 className="mt-2 font-serif text-2xl italic leading-none">{place.name}</h2>
                 <p className="mt-1 text-sm">{place.neighborhood}</p>

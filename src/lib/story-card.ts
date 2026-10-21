@@ -65,6 +65,8 @@ function canvas(): { canvas: HTMLCanvasElement; ctx: CanvasRenderingContext2D } 
   node.height = H
   const ctx = node.getContext('2d')
   if (!ctx) throw new Error('Canvas is unavailable')
+  ctx.imageSmoothingEnabled = true
+  ctx.imageSmoothingQuality = 'high'
   return { canvas: node, ctx }
 }
 
@@ -82,6 +84,13 @@ function roundRect(ctx: CanvasRenderingContext2D, x: number, y: number, w: numbe
   ctx.arcTo(x, y + h, x, y, r)
   ctx.arcTo(x, y, x + w, y, r)
   ctx.closePath()
+}
+
+function fit(ctx: CanvasRenderingContext2D, text: string, max: number): string {
+  if (ctx.measureText(text).width <= max) return text
+  let next = text
+  while (next.length > 1 && ctx.measureText(`${next}…`).width > max) next = next.slice(0, -1)
+  return `${next}…`
 }
 
 function wrap(ctx: CanvasRenderingContext2D, text: string, max: number): string[] {
@@ -163,10 +172,21 @@ export async function renderPlaceStory(place: StoryPlace): Promise<Blob> {
     ctx.restore()
   }
   if (place.award) {
-    ctx.strokeStyle = place.award.metal === 'silver' ? '#d5dde6' : place.award.metal === 'bronze' ? '#e0a36a' : place.award.metal === 'navy' ? CORAL : '#f0d078'
-    ctx.lineWidth = 6
-    roundRect(ctx, x, y, w, h, 32)
-    ctx.stroke()
+    const size = 176
+    const bx = x + w - size - 28
+    const by = y + h - size - 28
+    ctx.save()
+    ctx.fillStyle = 'rgba(255, 250, 243, 0.94)'
+    ctx.beginPath()
+    ctx.arc(bx + size / 2, by + size / 2, size / 2, 0, Math.PI * 2)
+    ctx.fill()
+    ctx.restore()
+    await drawFork(ctx, place.award.metal, place.award.rank === 1, bx + 24, by + 18, size - 64)
+    ctx.fillStyle = place.award.metal === 'navy' ? CORAL : NAVY
+    ctx.font = '700 22px "Instrument Sans", sans-serif'
+    ctx.textAlign = 'center'
+    ctx.fillText(place.award.metal === 'navy' ? 'TOP 25' : `#${place.award.rank}`, bx + size / 2, by + size - 30)
+    ctx.textAlign = 'left'
   }
 
   let cursor = y + h + 86
@@ -191,19 +211,10 @@ export async function renderPlaceStory(place: StoryPlace): Promise<Blob> {
   if (typeof place.score === 'number') {
     ctx.fillStyle = CORAL
     ctx.font = '700 22px "Instrument Sans", sans-serif'
-    ctx.fillText("GUSTO'S SCORE", x, cursor + 20)
+    ctx.fillText("GUSTO'S SCORE", x, cursor + 12)
     ctx.fillStyle = CREAM
-    ctx.font = 'italic 120px "Instrument Serif", Georgia, serif'
-    ctx.fillText(place.score.toFixed(1), x, cursor + 140)
-  }
-  if (place.award) {
-    await drawFork(ctx, place.award.metal, place.award.rank === 1, W - 84 - 210, cursor + 10, 180)
-    ctx.fillStyle = place.award.metal === 'navy' ? CORAL : CREAM
-    ctx.font = '700 24px "Instrument Sans", sans-serif'
-    ctx.textAlign = 'center'
-    const caption = place.award.metal === 'navy' ? 'TOP 25' : `#${place.award.rank}`
-    ctx.fillText(caption, W - 84 - 120, cursor + 222)
-    ctx.textAlign = 'left'
+    ctx.font = 'italic 128px "Instrument Serif", Georgia, serif'
+    ctx.fillText(place.score.toFixed(1), x, cursor + 132)
   }
   const credit = place.credit && place.credit !== 'Illustration' ? `Photo · ${place.credit}${place.license ? ` · ${place.license}` : ''}` : ''
   ctx.fillStyle = 'rgba(238, 227, 214, 0.72)'
@@ -246,26 +257,31 @@ export async function renderGuideStory(guide: { title: string; items: StoryItem[
     ctx.fillStyle = 'rgba(255, 250, 243, 0.08)'
     roundRect(ctx, 84, rowY, W - 168, 112, 18)
     ctx.fill()
+    const forkSize = 72
+    const right = W - 108
+    const forkX = right - forkSize
+    const scoreRight = item.metal ? forkX - 18 : right
     ctx.fillStyle = CORAL
     ctx.font = 'italic 48px "Instrument Serif", Georgia, serif'
     ctx.textAlign = 'left'
     ctx.fillText(String(index + 1), 112, rowY + 72)
+    ctx.font = 'italic 40px "Instrument Serif", Georgia, serif'
+    const nameMax = scoreRight - (typeof item.score === 'number' ? 130 : 24) - 176
+    const name = fit(ctx, item.name, Math.max(180, nameMax))
     ctx.fillStyle = CREAM
-    ctx.font = 'italic 44px "Instrument Serif", Georgia, serif'
-    const name = wrap(ctx, item.name, 560)[0] ?? item.name
-    ctx.fillText(name, 176, rowY + 52)
+    ctx.fillText(name, 176, rowY + 50)
     ctx.fillStyle = CREAM_DIM
-    ctx.font = '700 20px "Instrument Sans", sans-serif'
-    ctx.fillText(item.neighborhood.toUpperCase(), 176, rowY + 86)
+    ctx.font = '700 18px "Instrument Sans", sans-serif'
+    ctx.fillText(fit(ctx, item.neighborhood.toUpperCase(), Math.max(180, nameMax)), 176, rowY + 84)
     if (typeof item.score === 'number') {
       ctx.fillStyle = CREAM
-      ctx.font = 'italic 48px "Instrument Serif", Georgia, serif'
+      ctx.font = 'italic 44px "Instrument Serif", Georgia, serif'
       ctx.textAlign = 'right'
-      ctx.fillText(item.score.toFixed(1), item.metal ? W - 250 : W - 120, rowY + 72)
+      ctx.fillText(item.score.toFixed(1), scoreRight, rowY + 74)
       ctx.textAlign = 'left'
     }
     if (item.metal) {
-      await drawFork(ctx, item.metal, item.metal === 'gold', W - 196, rowY + 20, 72)
+      await drawFork(ctx, item.metal, item.metal === 'gold', forkX, rowY + 20, forkSize)
     }
     cursor += 128
   }

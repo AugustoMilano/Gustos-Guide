@@ -39,7 +39,7 @@ export function GuideIndexPage() {
         return (
         <section key={group} className="mt-10">
           <h2 className="font-serif text-4xl italic">{group}</h2>
-          <div className="mt-4 grid gap-3 sm:grid-cols-2">
+          <div className="guide-index mt-4 grid gap-3 sm:grid-cols-2">
             {rows.map((guide, index) => (
               <Link
                 key={guide.slug}
@@ -48,13 +48,16 @@ export function GuideIndexPage() {
                 style={reduceMotion ? undefined : { animationDelay: `${Math.min(index, 6) * 40}ms` }}
                 viewTransition={!reduceMotion}
               >
-                <span className="flex items-start justify-between gap-3">
+                <span className="flex min-w-0 items-start justify-between gap-3">
                   <span className="min-w-0">
                     <p className="text-xs font-bold tracking-[0.14em] uppercase">Updated {guide.updatedAt}</p>
                     <h3 className="mt-2 font-serif text-3xl italic leading-none">{guide.title}</h3>
-                    <p className="mt-2 text-sm">{guide.dek}</p>
+                    <p className="mt-2 line-clamp-3 text-sm">{guide.dek}</p>
                   </span>
-                  <span className="sticker shrink-0">{guide.count}</span>
+                  <span className="guide-count shrink-0" aria-label={`${guide.count} places`}>
+                    <strong>{guide.count}</strong>
+                    <span>places</span>
+                  </span>
                 </span>
               </Link>
             ))}

@@ -2,7 +2,7 @@ import { useState, type FormEvent } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { AreaKicker } from '../components/AreaKicker.tsx'
 import { areaPhrase, cityPath } from '../lib/city.ts'
-import { useCityId } from '../lib/use-city.ts'
+import { useCityId } from '../lib/use-city-id.ts'
 import { usePageMeta } from '../lib/meta.ts'
 
 export function NotFoundPage() {
