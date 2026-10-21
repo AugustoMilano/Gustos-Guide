@@ -1253,7 +1253,7 @@
         }
       ],
       "publicRating": {
-        "value": 4.0,
+        "value": 4,
         "count": 206,
         "source": "Yelp"
       },
@@ -1752,7 +1752,7 @@
         }
       ],
       "publicRating": {
-        "value": 4.0,
+        "value": 4,
         "count": 802,
         "source": "Yelp"
       },
@@ -2201,7 +2201,7 @@
         "French"
       ],
       "placeType": "restaurant",
-      "oneLiner": "A French dining room on Park Lane in old downtown Kirkland.",
+      "oneLiner": "",
       "perfectFor": [],
       "periods": [
         {
@@ -2483,7 +2483,7 @@
         }
       ],
       "publicRating": {
-        "value": 4.0,
+        "value": 4,
         "count": 208,
         "source": "Yelp"
       },
@@ -2632,7 +2632,7 @@
         }
       ],
       "publicRating": {
-        "value": 4.0,
+        "value": 4,
         "count": 267,
         "source": "Yelp"
       },
@@ -3142,7 +3142,7 @@
         }
       ],
       "publicRating": {
-        "value": 4.0,
+        "value": 4,
         "count": 485,
         "source": "Yelp"
       },
@@ -4591,7 +4591,7 @@
         }
       ],
       "publicRating": {
-        "value": 4.0,
+        "value": 4,
         "count": 226,
         "source": "Yelp"
       },
@@ -5336,7 +5336,7 @@
         }
       ],
       "publicRating": {
-        "value": 4.0,
+        "value": 4,
         "count": 501,
         "source": "Yelp"
       },
@@ -5832,8 +5832,8 @@
         },
         {
           "placeId": "feast",
-          "pullQuote": "A French dining room on Park Lane in old downtown Kirkland.",
-          "blurb": "A French dining room on Park Lane in old downtown Kirkland.",
+          "pullQuote": "",
+          "blurb": "",
           "copySource": "draft"
         },
         {
@@ -6306,8 +6306,8 @@
         },
         {
           "placeId": "feast",
-          "pullQuote": "A French dining room on Park Lane in old downtown Kirkland.",
-          "blurb": "A French dining room on Park Lane in old downtown Kirkland.",
+          "pullQuote": "",
+          "blurb": "",
           "copySource": "draft"
         },
         {

@@ -1,7 +1,6 @@
 import { useMemo, useState } from 'react'
 import { useReducedMotion } from 'framer-motion'
 import { Link, useNavigate, useParams, useSearchParams } from 'react-router-dom'
-import { GuideMap } from '../components/GuideMap.tsx'
 import { MapLinks } from '../components/MapLinks.tsx'
 import { PlaceThumb } from '../components/PlaceThumb.tsx'
 import { FriendEmpty } from '../components/FriendEmpty.tsx'
@@ -228,7 +227,7 @@ export function PlanWizardPage() {
   const [choice, setChoice] = useState('')
   const [celebrate, setCelebrate] = useState(false)
   const [signIn, setSignIn] = useState(false)
-  usePageMeta("Plan dinner · Gusto's Guide", 'Pick friends, an area, a vibe, and a budget. Then vote and lock it in.', './og/og.svg')
+  usePageMeta("Plan dinner · Gusto's Guide", 'Pick friends, an area, a vibe, and a budget. Then vote and lock it in.', './og/og.png')
 
   const roster = app.friends.length
     ? app.friends.map((person) => ({ id: person.id, name: person.name, neighborhood: '', been: [] as string[], scores: {} as Record<string, number>, demo: false }))
@@ -256,10 +255,6 @@ export function PlanWizardPage() {
   const shortlist = source.slice(0, 5)
   const steps = ['Friends', 'Area', 'Vibe', 'Budget', 'Vote']
 
-  const areaPins = (area === 'any'
-    ? neighborhoods.map((name) => places.find((place) => place.neighborhood === name)).filter((place): place is SlimPlace => place != null)
-    : places.filter((place) => place.neighborhood === area)
-  ).slice(0, 24)
   const pickedFriends = roster.filter((person) => friends.includes(person.id))
 
   function lockIn() {
@@ -333,9 +328,7 @@ export function PlanWizardPage() {
               <button key={item} type="button" className="chip" aria-pressed={area === item} onClick={() => setArea(item)}>{item}</button>
             ))}
           </div>
-          <div className="mt-4 h-56">
-            <GuideMap places={areaPins} statuses={app.statuses} />
-          </div>
+          <p className="mt-4"><Link className="btn" to={cityPath('/explore')}>Open the map</Link></p>
         </section>
       ) : null}
       {step === 2 ? (

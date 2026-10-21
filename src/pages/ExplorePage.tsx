@@ -37,7 +37,7 @@ function inside(place: SlimPlace, box: MapBounds): boolean {
 export function ExplorePage() {
   const { city, places } = useCityCatalog()
   const areaName = areaPhrase(city)
-  usePageMeta("Explore · Gusto's Guide", `Every ${areaName} place on the guide, on one map.`, './og/og.svg')
+  usePageMeta("Explore · Gusto's Guide", `Every ${areaName} place on the guide, on one map.`, './og/og.png')
   const app = useApp()
   const reduceMotion = useReducedMotion()
   const cuisines = useMemo(() => {

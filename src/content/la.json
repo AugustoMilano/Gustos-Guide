@@ -815,7 +815,7 @@
         "Italian"
       ],
       "placeType": "restaurant",
-      "oneLiner": "7900 Santa Monica Blvd \u2014 Mamie, Italian, West Hollywood.",
+      "oneLiner": "7900 Santa Monica Blvd — Mamie, Italian, West Hollywood.",
       "perfectFor": [],
       "periods": [
         {
@@ -841,7 +841,7 @@
       ],
       "muid": "16166686475079566009",
       "hoursLabel": "",
-      "blurb": "7900 Santa Monica Blvd \u2014 Mamie, Italian, West Hollywood.",
+      "blurb": "7900 Santa Monica Blvd — Mamie, Italian, West Hollywood.",
       "orderThis": [],
       "ids": {},
       "copySource": "draft",
@@ -861,7 +861,7 @@
     {
       "id": "urth-caffe",
       "city": "la",
-      "name": "Urth Caff\u00e9",
+      "name": "Urth Caffé",
       "neighborhood": "Beverly Hills",
       "address": "267 S Beverly Dr, Beverly Hills, CA 90212",
       "lat": 34.0626694,
@@ -870,7 +870,7 @@
         "Coffee"
       ],
       "placeType": "cafe",
-      "oneLiner": "Urth Caff\u00e9 sits at 267 S Beverly Dr. Coffee, Beverly Hills.",
+      "oneLiner": "Urth Caffé sits at 267 S Beverly Dr. Coffee, Beverly Hills.",
       "perfectFor": [],
       "periods": [
         {
@@ -902,7 +902,7 @@
       ],
       "muid": "6358349288316434289",
       "hoursLabel": "",
-      "blurb": "Urth Caff\u00e9 sits at 267 S Beverly Dr. Coffee, Beverly Hills.",
+      "blurb": "Urth Caffé sits at 267 S Beverly Dr. Coffee, Beverly Hills.",
       "orderThis": [],
       "ids": {},
       "copySource": "draft",
@@ -911,7 +911,7 @@
         {
           "source": "illustration",
           "isIllustration": true,
-          "alt": "Illustration suggesting Coffee at Urth Caff\u00e9",
+          "alt": "Illustration suggesting Coffee at Urth Caffé",
           "credit": "Illustration"
         }
       ],
@@ -1043,7 +1043,7 @@
     {
       "id": "angels-tijuana-tacos",
       "city": "la",
-      "name": "Angel\u2019s Tijuana Tacos",
+      "name": "Angel’s Tijuana Tacos",
       "neighborhood": "Echo Park",
       "address": "1185 Sunset Blvd, Los Angeles, CA 90026",
       "lat": 34.0679687,
@@ -1052,7 +1052,7 @@
         "Tacos"
       ],
       "placeType": "restaurant",
-      "oneLiner": "Angel\u2019s Tijuana Tacos, 1185 Sunset Blvd. Tacos in Echo Park.",
+      "oneLiner": "Angel’s Tijuana Tacos, 1185 Sunset Blvd. Tacos in Echo Park.",
       "perfectFor": [],
       "periods": [
         {
@@ -1084,7 +1084,7 @@
       ],
       "muid": "9847032698611023768",
       "hoursLabel": "",
-      "blurb": "Angel\u2019s Tijuana Tacos, 1185 Sunset Blvd. Tacos in Echo Park.",
+      "blurb": "Angel’s Tijuana Tacos, 1185 Sunset Blvd. Tacos in Echo Park.",
       "orderThis": [],
       "ids": {},
       "copySource": "draft",
@@ -1093,7 +1093,7 @@
         {
           "source": "illustration",
           "isIllustration": true,
-          "alt": "Illustration suggesting Tacos at Angel\u2019s Tijuana Tacos",
+          "alt": "Illustration suggesting Tacos at Angel’s Tijuana Tacos",
           "credit": "Illustration"
         }
       ],
@@ -1264,7 +1264,7 @@
         "Sushi"
       ],
       "placeType": "restaurant",
-      "oneLiner": "600 W 7th St \u2014 SUGARFISH, Sushi, Downtown.",
+      "oneLiner": "600 W 7th St — SUGARFISH, Sushi, Downtown.",
       "perfectFor": [],
       "periods": [
         {
@@ -1291,7 +1291,7 @@
       ],
       "muid": "13780764325173306588",
       "hoursLabel": "",
-      "blurb": "600 W 7th St \u2014 SUGARFISH, Sushi, Downtown.",
+      "blurb": "600 W 7th St — SUGARFISH, Sushi, Downtown.",
       "orderThis": [],
       "ids": {},
       "copySource": "draft",
@@ -1746,7 +1746,7 @@
         "Bagels"
       ],
       "placeType": "bakery",
-      "oneLiner": "1614 Ocean Park Blvd \u2014 Layla Bagels & Coffee, Bagels, Santa Monica.",
+      "oneLiner": "1614 Ocean Park Blvd — Layla Bagels & Coffee, Bagels, Santa Monica.",
       "perfectFor": [],
       "periods": [
         {
@@ -1772,7 +1772,7 @@
       ],
       "muid": "15206899794803451319",
       "hoursLabel": "",
-      "blurb": "1614 Ocean Park Blvd \u2014 Layla Bagels & Coffee, Bagels, Santa Monica.",
+      "blurb": "1614 Ocean Park Blvd — Layla Bagels & Coffee, Bagels, Santa Monica.",
       "orderThis": [],
       "ids": {},
       "copySource": "draft",
@@ -2233,7 +2233,7 @@
         "Italian"
       ],
       "placeType": "restaurant",
-      "oneLiner": "1320 Second St \u2014 UOVO Pasta, Italian, Santa Monica.",
+      "oneLiner": "1320 Second St — UOVO Pasta, Italian, Santa Monica.",
       "perfectFor": [],
       "periods": [
         {
@@ -2259,7 +2259,7 @@
       ],
       "muid": "1319429278146149472",
       "hoursLabel": "",
-      "blurb": "1320 Second St \u2014 UOVO Pasta, Italian, Santa Monica.",
+      "blurb": "1320 Second St — UOVO Pasta, Italian, Santa Monica.",
       "orderThis": [],
       "ids": {},
       "copySource": "draft",
@@ -2671,7 +2671,7 @@
         "New American"
       ],
       "placeType": "restaurant",
-      "oneLiner": "120 N Robertson Blvd \u2014 The Henry, New American, Beverly Grove.",
+      "oneLiner": "120 N Robertson Blvd — The Henry, New American, Beverly Grove.",
       "perfectFor": [],
       "periods": [
         {
@@ -2714,7 +2714,7 @@
       ],
       "muid": "11480653247393011714",
       "hoursLabel": "",
-      "blurb": "120 N Robertson Blvd \u2014 The Henry, New American, Beverly Grove.",
+      "blurb": "120 N Robertson Blvd — The Henry, New American, Beverly Grove.",
       "orderThis": [],
       "ids": {},
       "copySource": "draft",
@@ -3108,7 +3108,7 @@
         "Japanese"
       ],
       "placeType": "restaurant",
-      "oneLiner": "1320 E 7th St \u2014 Hayato, Japanese, Downtown.",
+      "oneLiner": "1320 E 7th St — Hayato, Japanese, Downtown.",
       "perfectFor": [],
       "periods": [
         {
@@ -3132,7 +3132,7 @@
       ],
       "muid": "9331242589471548178",
       "hoursLabel": "",
-      "blurb": "1320 E 7th St \u2014 Hayato, Japanese, Downtown.",
+      "blurb": "1320 E 7th St — Hayato, Japanese, Downtown.",
       "orderThis": [],
       "ids": {},
       "copySource": "draft",
@@ -3613,7 +3613,7 @@
         "Bakery"
       ],
       "placeType": "bakery",
-      "oneLiner": "4703 York Blvd \u2014 Fondry, Bakery, Eagle Rock.",
+      "oneLiner": "4703 York Blvd — Fondry, Bakery, Eagle Rock.",
       "perfectFor": [],
       "periods": [
         {
@@ -3636,7 +3636,7 @@
       ],
       "muid": "1995357176465319122",
       "hoursLabel": "",
-      "blurb": "4703 York Blvd \u2014 Fondry, Bakery, Eagle Rock.",
+      "blurb": "4703 York Blvd — Fondry, Bakery, Eagle Rock.",
       "orderThis": [],
       "ids": {},
       "copySource": "draft",
@@ -4044,7 +4044,7 @@
         "New American"
       ],
       "placeType": "restaurant",
-      "oneLiner": "945 N Fairfax Ave \u2014 Ysabel, New American, West Hollywood.",
+      "oneLiner": "945 N Fairfax Ave — Ysabel, New American, West Hollywood.",
       "perfectFor": [],
       "periods": [
         {
@@ -4094,7 +4094,7 @@
       ],
       "muid": "12997504008630969425",
       "hoursLabel": "",
-      "blurb": "945 N Fairfax Ave \u2014 Ysabel, New American, West Hollywood.",
+      "blurb": "945 N Fairfax Ave — Ysabel, New American, West Hollywood.",
       "orderThis": [],
       "ids": {},
       "copySource": "draft",
@@ -4124,7 +4124,7 @@
         "New American"
       ],
       "placeType": "restaurant",
-      "oneLiner": "23000 Pacific Coast Hwy \u2014 Malibu Farm Restaurant, New American, Malibu.",
+      "oneLiner": "23000 Pacific Coast Hwy — Malibu Farm Restaurant, New American, Malibu.",
       "perfectFor": [],
       "periods": [
         {
@@ -4156,7 +4156,7 @@
       ],
       "muid": "697893718901763513",
       "hoursLabel": "",
-      "blurb": "23000 Pacific Coast Hwy \u2014 Malibu Farm Restaurant, New American, Malibu.",
+      "blurb": "23000 Pacific Coast Hwy — Malibu Farm Restaurant, New American, Malibu.",
       "orderThis": [],
       "ids": {
         "yelp": "pjXxukY-PNnB6WFxZNQ_RQ"
@@ -4637,7 +4637,7 @@
         "Sushi"
       ],
       "placeType": "restaurant",
-      "oneLiner": "359 N La Cienega Blvd \u2014 Sushi Fumi, Sushi, West Hollywood.",
+      "oneLiner": "359 N La Cienega Blvd — Sushi Fumi, Sushi, West Hollywood.",
       "perfectFor": [],
       "periods": [
         {
@@ -4673,7 +4673,7 @@
       ],
       "muid": "4959094788839979585",
       "hoursLabel": "",
-      "blurb": "359 N La Cienega Blvd \u2014 Sushi Fumi, Sushi, West Hollywood.",
+      "blurb": "359 N La Cienega Blvd — Sushi Fumi, Sushi, West Hollywood.",
       "orderThis": [],
       "ids": {
         "yelp": "m_xAjTKjvcyqd-jBs8A2VA"
@@ -5056,7 +5056,7 @@
         "Wine"
       ],
       "placeType": "bar",
-      "oneLiner": "1501 Hermosa Ave \u2014 Vin Folk, Wine, Hermosa Beach.",
+      "oneLiner": "1501 Hermosa Ave — Vin Folk, Wine, Hermosa Beach.",
       "perfectFor": [],
       "periods": [
         {
@@ -5077,7 +5077,7 @@
       "guideSlugs": [],
       "muid": "4942090681225394535",
       "hoursLabel": "",
-      "blurb": "1501 Hermosa Ave \u2014 Vin Folk, Wine, Hermosa Beach.",
+      "blurb": "1501 Hermosa Ave — Vin Folk, Wine, Hermosa Beach.",
       "orderThis": [],
       "ids": {},
       "copySource": "draft",
@@ -5540,7 +5540,7 @@
         "Italian"
       ],
       "placeType": "restaurant",
-      "oneLiner": "1241 Fifth St \u2014 Colapasta, Italian, Santa Monica.",
+      "oneLiner": "1241 Fifth St — Colapasta, Italian, Santa Monica.",
       "perfectFor": [],
       "periods": [
         {
@@ -5573,7 +5573,7 @@
       ],
       "muid": "5871833613612873604",
       "hoursLabel": "",
-      "blurb": "1241 Fifth St \u2014 Colapasta, Italian, Santa Monica.",
+      "blurb": "1241 Fifth St — Colapasta, Italian, Santa Monica.",
       "orderThis": [],
       "ids": {},
       "copySource": "draft",
@@ -5661,7 +5661,7 @@
     {
       "id": "republique",
       "city": "la",
-      "name": "R\u00e9publique",
+      "name": "République",
       "neighborhood": "Miracle Mile",
       "address": "624 S La Brea Ave, Los Angeles, CA 90036",
       "lat": 34.0641327,
@@ -5670,7 +5670,7 @@
         "French"
       ],
       "placeType": "restaurant",
-      "oneLiner": "French from R\u00e9publique at 624 S La Brea Ave, Miracle Mile.",
+      "oneLiner": "French from République at 624 S La Brea Ave, Miracle Mile.",
       "perfectFor": [],
       "periods": [
         {
@@ -5710,7 +5710,7 @@
       "guideSlugs": [],
       "muid": "1889472255676531377",
       "hoursLabel": "",
-      "blurb": "French from R\u00e9publique at 624 S La Brea Ave, Miracle Mile.",
+      "blurb": "French from République at 624 S La Brea Ave, Miracle Mile.",
       "orderThis": [],
       "ids": {},
       "copySource": "draft",
@@ -5719,7 +5719,7 @@
         {
           "source": "wikimedia",
           "url": "/photos/republique.jpg",
-          "alt": "R\u00e9publique in Miracle Mile",
+          "alt": "République in Miracle Mile",
           "credit": "Eric Polk",
           "creditUrl": "https://commons.wikimedia.org/wiki/File:R%C3%A9publique_Restaurant.jpg",
           "license": "CC BY-SA 4.0"
@@ -6025,7 +6025,7 @@
         "Californian"
       ],
       "placeType": "restaurant",
-      "oneLiner": "9850 Wilshire Blvd \u2014 Jean-Georges Beverly Hills, Californian, Beverly Hills.",
+      "oneLiner": "9850 Wilshire Blvd — Jean-Georges Beverly Hills, Californian, Beverly Hills.",
       "perfectFor": [],
       "periods": [
         {
@@ -6083,7 +6083,7 @@
       ],
       "muid": "14907604975189333779",
       "hoursLabel": "",
-      "blurb": "9850 Wilshire Blvd \u2014 Jean-Georges Beverly Hills, Californian, Beverly Hills.",
+      "blurb": "9850 Wilshire Blvd — Jean-Georges Beverly Hills, Californian, Beverly Hills.",
       "orderThis": [],
       "ids": {
         "yelp": "sYyoLn1Z9X29AHZPcpTwhg"
@@ -6585,7 +6585,7 @@
         "Persian"
       ],
       "placeType": "restaurant",
-      "oneLiner": "502 Pacific Coast Hwy \u2014 Baran's 2239, Persian, Hermosa Beach.",
+      "oneLiner": "502 Pacific Coast Hwy — Baran's 2239, Persian, Hermosa Beach.",
       "perfectFor": [],
       "periods": [
         {
@@ -6635,7 +6635,7 @@
       ],
       "muid": "5124635232378356114",
       "hoursLabel": "",
-      "blurb": "502 Pacific Coast Hwy \u2014 Baran's 2239, Persian, Hermosa Beach.",
+      "blurb": "502 Pacific Coast Hwy — Baran's 2239, Persian, Hermosa Beach.",
       "orderThis": [],
       "ids": {},
       "copySource": "draft",
@@ -6665,7 +6665,7 @@
         "New American"
       ],
       "placeType": "restaurant",
-      "oneLiner": "9641 W Sunset Blvd \u2014 Polo Lounge, New American, Beverly Hills.",
+      "oneLiner": "9641 W Sunset Blvd — Polo Lounge, New American, Beverly Hills.",
       "perfectFor": [],
       "periods": [
         {
@@ -6703,7 +6703,7 @@
       ],
       "muid": "4209144687248591942",
       "hoursLabel": "",
-      "blurb": "9641 W Sunset Blvd \u2014 Polo Lounge, New American, Beverly Hills.",
+      "blurb": "9641 W Sunset Blvd — Polo Lounge, New American, Beverly Hills.",
       "orderThis": [],
       "ids": {},
       "copySource": "draft",
@@ -7045,7 +7045,7 @@
     {
       "id": "melisse",
       "city": "la",
-      "name": "M\u00e9lisse",
+      "name": "Mélisse",
       "neighborhood": "Santa Monica",
       "address": "1104 Wilshire Blvd, Santa Monica, CA 90401",
       "lat": 34.0245296,
@@ -7054,7 +7054,7 @@
         "Californian"
       ],
       "placeType": "restaurant",
-      "oneLiner": "M\u00e9lisse sits at 1104 Wilshire Blvd. Californian, Santa Monica.",
+      "oneLiner": "Mélisse sits at 1104 Wilshire Blvd. Californian, Santa Monica.",
       "perfectFor": [],
       "periods": [
         {
@@ -7078,7 +7078,7 @@
       ],
       "muid": "7239587844585916040",
       "hoursLabel": "",
-      "blurb": "M\u00e9lisse sits at 1104 Wilshire Blvd. Californian, Santa Monica.",
+      "blurb": "Mélisse sits at 1104 Wilshire Blvd. Californian, Santa Monica.",
       "orderThis": [],
       "ids": {},
       "copySource": "draft",
@@ -7087,7 +7087,7 @@
         {
           "source": "illustration",
           "isIllustration": true,
-          "alt": "Illustration suggesting Californian at M\u00e9lisse",
+          "alt": "Illustration suggesting Californian at Mélisse",
           "credit": "Illustration"
         }
       ],
@@ -7107,7 +7107,7 @@
         "Donuts"
       ],
       "placeType": "bakery",
-      "oneLiner": "317 S Broadway \u2014 The Donut Man, Donuts, Downtown.",
+      "oneLiner": "317 S Broadway — The Donut Man, Donuts, Downtown.",
       "perfectFor": [],
       "periods": [
         {
@@ -7133,7 +7133,7 @@
       ],
       "muid": "8560916942563961714",
       "hoursLabel": "",
-      "blurb": "317 S Broadway \u2014 The Donut Man, Donuts, Downtown.",
+      "blurb": "317 S Broadway — The Donut Man, Donuts, Downtown.",
       "orderThis": [],
       "ids": {},
       "copySource": "draft",
@@ -7683,7 +7683,7 @@
     {
       "id": "zinque",
       "city": "la",
-      "name": "Zinqu\u00e9",
+      "name": "Zinqué",
       "neighborhood": "Century City",
       "address": "10250 Santa Monica Blvd, Los Angeles, CA 90067",
       "lat": 34.0592344,
@@ -7732,7 +7732,7 @@
         {
           "source": "illustration",
           "isIllustration": true,
-          "alt": "Illustration suggesting French at Zinqu\u00e9",
+          "alt": "Illustration suggesting French at Zinqué",
           "credit": "Illustration"
         }
       ],
@@ -7806,7 +7806,7 @@
     {
       "id": "lantica-pizzeria-da-michele",
       "city": "la",
-      "name": "L\u2019antica Pizzeria da Michele",
+      "name": "L’antica Pizzeria da Michele",
       "neighborhood": "Hollywood",
       "address": "1534 N McCadden Pl, Los Angeles, CA 90028",
       "lat": 34.0990611,
@@ -7862,7 +7862,7 @@
         {
           "source": "illustration",
           "isIllustration": true,
-          "alt": "Illustration suggesting Pizza at L\u2019antica Pizzeria da Michele",
+          "alt": "Illustration suggesting Pizza at L’antica Pizzeria da Michele",
           "credit": "Illustration"
         }
       ],
@@ -8057,7 +8057,7 @@
         "Seafood"
       ],
       "placeType": "restaurant",
-      "oneLiner": "1401 Ocean Ave \u2014 Water Grill, Seafood, Santa Monica.",
+      "oneLiner": "1401 Ocean Ave — Water Grill, Seafood, Santa Monica.",
       "perfectFor": [],
       "periods": [
         {
@@ -8089,7 +8089,7 @@
       ],
       "muid": "13839146432849478806",
       "hoursLabel": "",
-      "blurb": "1401 Ocean Ave \u2014 Water Grill, Seafood, Santa Monica.",
+      "blurb": "1401 Ocean Ave — Water Grill, Seafood, Santa Monica.",
       "orderThis": [],
       "ids": {},
       "copySource": "draft",
@@ -8218,7 +8218,7 @@
     {
       "id": "elephante",
       "city": "la",
-      "name": "\u00c9lephante",
+      "name": "Élephante",
       "neighborhood": "Santa Monica",
       "address": "1332 2nd Street, Santa Monica, CA 90401",
       "lat": 34.0153374,
@@ -8276,7 +8276,7 @@
         {
           "source": "illustration",
           "isIllustration": true,
-          "alt": "Illustration suggesting Italian at \u00c9lephante",
+          "alt": "Illustration suggesting Italian at Élephante",
           "credit": "Illustration"
         }
       ],
@@ -8446,8 +8446,8 @@
         },
         {
           "placeId": "layla-bagels-coffee",
-          "pullQuote": "1614 Ocean Park Blvd \u2014 Layla Bagels & Coffee, Bagels, Santa Monica.",
-          "blurb": "1614 Ocean Park Blvd \u2014 Layla Bagels & Coffee, Bagels, Santa Monica.",
+          "pullQuote": "1614 Ocean Park Blvd — Layla Bagels & Coffee, Bagels, Santa Monica.",
+          "blurb": "1614 Ocean Park Blvd — Layla Bagels & Coffee, Bagels, Santa Monica.",
           "copySource": "draft"
         },
         {
@@ -8464,8 +8464,8 @@
         },
         {
           "placeId": "uovo-pasta",
-          "pullQuote": "1320 Second St \u2014 UOVO Pasta, Italian, Santa Monica.",
-          "blurb": "1320 Second St \u2014 UOVO Pasta, Italian, Santa Monica.",
+          "pullQuote": "1320 Second St — UOVO Pasta, Italian, Santa Monica.",
+          "blurb": "1320 Second St — UOVO Pasta, Italian, Santa Monica.",
           "copySource": "draft"
         },
         {
@@ -8506,8 +8506,8 @@
         },
         {
           "placeId": "colapasta",
-          "pullQuote": "1241 Fifth St \u2014 Colapasta, Italian, Santa Monica.",
-          "blurb": "1241 Fifth St \u2014 Colapasta, Italian, Santa Monica.",
+          "pullQuote": "1241 Fifth St — Colapasta, Italian, Santa Monica.",
+          "blurb": "1241 Fifth St — Colapasta, Italian, Santa Monica.",
           "copySource": "draft"
         },
         {
@@ -8536,14 +8536,14 @@
         },
         {
           "placeId": "melisse",
-          "pullQuote": "M\u00e9lisse sits at 1104 Wilshire Blvd. Californian, Santa Monica.",
-          "blurb": "M\u00e9lisse sits at 1104 Wilshire Blvd. Californian, Santa Monica.",
+          "pullQuote": "Mélisse sits at 1104 Wilshire Blvd. Californian, Santa Monica.",
+          "blurb": "Mélisse sits at 1104 Wilshire Blvd. Californian, Santa Monica.",
           "copySource": "draft"
         },
         {
           "placeId": "water-grill",
-          "pullQuote": "1401 Ocean Ave \u2014 Water Grill, Seafood, Santa Monica.",
-          "blurb": "1401 Ocean Ave \u2014 Water Grill, Seafood, Santa Monica.",
+          "pullQuote": "1401 Ocean Ave — Water Grill, Seafood, Santa Monica.",
+          "blurb": "1401 Ocean Ave — Water Grill, Seafood, Santa Monica.",
           "copySource": "draft"
         },
         {
@@ -8584,8 +8584,8 @@
         },
         {
           "placeId": "mamie",
-          "pullQuote": "7900 Santa Monica Blvd \u2014 Mamie, Italian, West Hollywood.",
-          "blurb": "7900 Santa Monica Blvd \u2014 Mamie, Italian, West Hollywood.",
+          "pullQuote": "7900 Santa Monica Blvd — Mamie, Italian, West Hollywood.",
+          "blurb": "7900 Santa Monica Blvd — Mamie, Italian, West Hollywood.",
           "copySource": "draft"
         },
         {
@@ -8614,8 +8614,8 @@
         },
         {
           "placeId": "ysabel",
-          "pullQuote": "945 N Fairfax Ave \u2014 Ysabel, New American, West Hollywood.",
-          "blurb": "945 N Fairfax Ave \u2014 Ysabel, New American, West Hollywood.",
+          "pullQuote": "945 N Fairfax Ave — Ysabel, New American, West Hollywood.",
+          "blurb": "945 N Fairfax Ave — Ysabel, New American, West Hollywood.",
           "copySource": "draft"
         },
         {
@@ -8626,8 +8626,8 @@
         },
         {
           "placeId": "sushi-fumi",
-          "pullQuote": "359 N La Cienega Blvd \u2014 Sushi Fumi, Sushi, West Hollywood.",
-          "blurb": "359 N La Cienega Blvd \u2014 Sushi Fumi, Sushi, West Hollywood.",
+          "pullQuote": "359 N La Cienega Blvd — Sushi Fumi, Sushi, West Hollywood.",
+          "blurb": "359 N La Cienega Blvd — Sushi Fumi, Sushi, West Hollywood.",
           "copySource": "draft"
         },
         {
@@ -8679,7 +8679,7 @@
       "title": "Beverly Hills",
       "dek": "Parakeet Cafe at 206 S Beverly Dr, and 13 more Beverly Hills stops.",
       "group": "Neighborhoods",
-      "intro": "Parakeet Cafe is at 206 S Beverly Dr. Urth Caff\u00e9 is at 267 S Beverly Dr.",
+      "intro": "Parakeet Cafe is at 206 S Beverly Dr. Urth Caffé is at 267 S Beverly Dr.",
       "updatedAt": "2026-10-20",
       "ranked": false,
       "city": "la",
@@ -8692,8 +8692,8 @@
         },
         {
           "placeId": "urth-caffe",
-          "pullQuote": "Urth Caff\u00e9 sits at 267 S Beverly Dr. Coffee, Beverly Hills.",
-          "blurb": "Urth Caff\u00e9 sits at 267 S Beverly Dr. Coffee, Beverly Hills.",
+          "pullQuote": "Urth Caffé sits at 267 S Beverly Dr. Coffee, Beverly Hills.",
+          "blurb": "Urth Caffé sits at 267 S Beverly Dr. Coffee, Beverly Hills.",
           "copySource": "draft"
         },
         {
@@ -8746,14 +8746,14 @@
         },
         {
           "placeId": "jean-georges-beverly-hills",
-          "pullQuote": "9850 Wilshire Blvd \u2014 Jean-Georges Beverly Hills, Californian, Beverly Hills.",
-          "blurb": "9850 Wilshire Blvd \u2014 Jean-Georges Beverly Hills, Californian, Beverly Hills.",
+          "pullQuote": "9850 Wilshire Blvd — Jean-Georges Beverly Hills, Californian, Beverly Hills.",
+          "blurb": "9850 Wilshire Blvd — Jean-Georges Beverly Hills, Californian, Beverly Hills.",
           "copySource": "draft"
         },
         {
           "placeId": "polo-lounge",
-          "pullQuote": "9641 W Sunset Blvd \u2014 Polo Lounge, New American, Beverly Hills.",
-          "blurb": "9641 W Sunset Blvd \u2014 Polo Lounge, New American, Beverly Hills.",
+          "pullQuote": "9641 W Sunset Blvd — Polo Lounge, New American, Beverly Hills.",
+          "blurb": "9641 W Sunset Blvd — Polo Lounge, New American, Beverly Hills.",
           "copySource": "draft"
         },
         {
@@ -8794,8 +8794,8 @@
         },
         {
           "placeId": "sugarfish",
-          "pullQuote": "600 W 7th St \u2014 SUGARFISH, Sushi, Downtown.",
-          "blurb": "600 W 7th St \u2014 SUGARFISH, Sushi, Downtown.",
+          "pullQuote": "600 W 7th St — SUGARFISH, Sushi, Downtown.",
+          "blurb": "600 W 7th St — SUGARFISH, Sushi, Downtown.",
           "copySource": "draft"
         },
         {
@@ -8824,8 +8824,8 @@
         },
         {
           "placeId": "hayato",
-          "pullQuote": "1320 E 7th St \u2014 Hayato, Japanese, Downtown.",
-          "blurb": "1320 E 7th St \u2014 Hayato, Japanese, Downtown.",
+          "pullQuote": "1320 E 7th St — Hayato, Japanese, Downtown.",
+          "blurb": "1320 E 7th St — Hayato, Japanese, Downtown.",
           "copySource": "draft"
         },
         {
@@ -8848,8 +8848,8 @@
         },
         {
           "placeId": "the-donut-man",
-          "pullQuote": "317 S Broadway \u2014 The Donut Man, Donuts, Downtown.",
-          "blurb": "317 S Broadway \u2014 The Donut Man, Donuts, Downtown.",
+          "pullQuote": "317 S Broadway — The Donut Man, Donuts, Downtown.",
+          "blurb": "317 S Broadway — The Donut Man, Donuts, Downtown.",
           "copySource": "draft"
         },
         {
@@ -9034,8 +9034,8 @@
         },
         {
           "placeId": "malibu-farm-restaurant",
-          "pullQuote": "23000 Pacific Coast Hwy \u2014 Malibu Farm Restaurant, New American, Malibu.",
-          "blurb": "23000 Pacific Coast Hwy \u2014 Malibu Farm Restaurant, New American, Malibu.",
+          "pullQuote": "23000 Pacific Coast Hwy — Malibu Farm Restaurant, New American, Malibu.",
+          "blurb": "23000 Pacific Coast Hwy — Malibu Farm Restaurant, New American, Malibu.",
           "copySource": "draft"
         },
         {
@@ -9082,8 +9082,8 @@
         },
         {
           "placeId": "the-henry",
-          "pullQuote": "120 N Robertson Blvd \u2014 The Henry, New American, Beverly Grove.",
-          "blurb": "120 N Robertson Blvd \u2014 The Henry, New American, Beverly Grove.",
+          "pullQuote": "120 N Robertson Blvd — The Henry, New American, Beverly Grove.",
+          "blurb": "120 N Robertson Blvd — The Henry, New American, Beverly Grove.",
           "copySource": "draft"
         },
         {
@@ -9124,8 +9124,8 @@
         },
         {
           "placeId": "sugarfish",
-          "pullQuote": "600 W 7th St \u2014 SUGARFISH, Sushi, Downtown.",
-          "blurb": "600 W 7th St \u2014 SUGARFISH, Sushi, Downtown.",
+          "pullQuote": "600 W 7th St — SUGARFISH, Sushi, Downtown.",
+          "blurb": "600 W 7th St — SUGARFISH, Sushi, Downtown.",
           "copySource": "draft"
         },
         {
@@ -9136,8 +9136,8 @@
         },
         {
           "placeId": "hayato",
-          "pullQuote": "1320 E 7th St \u2014 Hayato, Japanese, Downtown.",
-          "blurb": "1320 E 7th St \u2014 Hayato, Japanese, Downtown.",
+          "pullQuote": "1320 E 7th St — Hayato, Japanese, Downtown.",
+          "blurb": "1320 E 7th St — Hayato, Japanese, Downtown.",
           "copySource": "draft"
         },
         {
@@ -9148,8 +9148,8 @@
         },
         {
           "placeId": "sushi-fumi",
-          "pullQuote": "359 N La Cienega Blvd \u2014 Sushi Fumi, Sushi, West Hollywood.",
-          "blurb": "359 N La Cienega Blvd \u2014 Sushi Fumi, Sushi, West Hollywood.",
+          "pullQuote": "359 N La Cienega Blvd — Sushi Fumi, Sushi, West Hollywood.",
+          "blurb": "359 N La Cienega Blvd — Sushi Fumi, Sushi, West Hollywood.",
           "copySource": "draft"
         },
         {
@@ -9190,8 +9190,8 @@
         },
         {
           "placeId": "mamie",
-          "pullQuote": "7900 Santa Monica Blvd \u2014 Mamie, Italian, West Hollywood.",
-          "blurb": "7900 Santa Monica Blvd \u2014 Mamie, Italian, West Hollywood.",
+          "pullQuote": "7900 Santa Monica Blvd — Mamie, Italian, West Hollywood.",
+          "blurb": "7900 Santa Monica Blvd — Mamie, Italian, West Hollywood.",
           "copySource": "draft"
         },
         {
@@ -9208,8 +9208,8 @@
         },
         {
           "placeId": "uovo-pasta",
-          "pullQuote": "1320 Second St \u2014 UOVO Pasta, Italian, Santa Monica.",
-          "blurb": "1320 Second St \u2014 UOVO Pasta, Italian, Santa Monica.",
+          "pullQuote": "1320 Second St — UOVO Pasta, Italian, Santa Monica.",
+          "blurb": "1320 Second St — UOVO Pasta, Italian, Santa Monica.",
           "copySource": "draft"
         },
         {
@@ -9262,8 +9262,8 @@
         },
         {
           "placeId": "colapasta",
-          "pullQuote": "1241 Fifth St \u2014 Colapasta, Italian, Santa Monica.",
-          "blurb": "1241 Fifth St \u2014 Colapasta, Italian, Santa Monica.",
+          "pullQuote": "1241 Fifth St — Colapasta, Italian, Santa Monica.",
+          "blurb": "1241 Fifth St — Colapasta, Italian, Santa Monica.",
           "copySource": "draft"
         },
         {
@@ -9307,17 +9307,17 @@
     {
       "slug": "la-mexican",
       "title": "Tacos and Mexican",
-      "dek": "Angel\u2019s Tijuana Tacos and other Mexican spots on the list.",
+      "dek": "Angel’s Tijuana Tacos and other Mexican spots on the list.",
       "group": "Cuisine",
-      "intro": "Angel\u2019s Tijuana Tacos is at 1185 Sunset Blvd. Le Grand Restaurant is at 707 S Grand Ave.",
+      "intro": "Angel’s Tijuana Tacos is at 1185 Sunset Blvd. Le Grand Restaurant is at 707 S Grand Ave.",
       "updatedAt": "2026-10-20",
       "ranked": false,
       "city": "la",
       "entries": [
         {
           "placeId": "angels-tijuana-tacos",
-          "pullQuote": "Angel\u2019s Tijuana Tacos, 1185 Sunset Blvd. Tacos in Echo Park.",
-          "blurb": "Angel\u2019s Tijuana Tacos, 1185 Sunset Blvd. Tacos in Echo Park.",
+          "pullQuote": "Angel’s Tijuana Tacos, 1185 Sunset Blvd. Tacos in Echo Park.",
+          "blurb": "Angel’s Tijuana Tacos, 1185 Sunset Blvd. Tacos in Echo Park.",
           "copySource": "draft"
         },
         {
@@ -9388,14 +9388,14 @@
         },
         {
           "placeId": "urth-caffe",
-          "pullQuote": "Urth Caff\u00e9 sits at 267 S Beverly Dr. Coffee, Beverly Hills.",
-          "blurb": "Urth Caff\u00e9 sits at 267 S Beverly Dr. Coffee, Beverly Hills.",
+          "pullQuote": "Urth Caffé sits at 267 S Beverly Dr. Coffee, Beverly Hills.",
+          "blurb": "Urth Caffé sits at 267 S Beverly Dr. Coffee, Beverly Hills.",
           "copySource": "draft"
         },
         {
           "placeId": "layla-bagels-coffee",
-          "pullQuote": "1614 Ocean Park Blvd \u2014 Layla Bagels & Coffee, Bagels, Santa Monica.",
-          "blurb": "1614 Ocean Park Blvd \u2014 Layla Bagels & Coffee, Bagels, Santa Monica.",
+          "pullQuote": "1614 Ocean Park Blvd — Layla Bagels & Coffee, Bagels, Santa Monica.",
+          "blurb": "1614 Ocean Park Blvd — Layla Bagels & Coffee, Bagels, Santa Monica.",
           "copySource": "draft"
         },
         {
@@ -9412,8 +9412,8 @@
         },
         {
           "placeId": "fondry",
-          "pullQuote": "4703 York Blvd \u2014 Fondry, Bakery, Eagle Rock.",
-          "blurb": "4703 York Blvd \u2014 Fondry, Bakery, Eagle Rock.",
+          "pullQuote": "4703 York Blvd — Fondry, Bakery, Eagle Rock.",
+          "blurb": "4703 York Blvd — Fondry, Bakery, Eagle Rock.",
           "copySource": "draft"
         },
         {
@@ -9436,8 +9436,8 @@
         },
         {
           "placeId": "the-donut-man",
-          "pullQuote": "317 S Broadway \u2014 The Donut Man, Donuts, Downtown.",
-          "blurb": "317 S Broadway \u2014 The Donut Man, Donuts, Downtown.",
+          "pullQuote": "317 S Broadway — The Donut Man, Donuts, Downtown.",
+          "blurb": "317 S Broadway — The Donut Man, Donuts, Downtown.",
           "copySource": "draft"
         },
         {
@@ -9484,8 +9484,8 @@
         },
         {
           "placeId": "malibu-farm-restaurant",
-          "pullQuote": "23000 Pacific Coast Hwy \u2014 Malibu Farm Restaurant, New American, Malibu.",
-          "blurb": "23000 Pacific Coast Hwy \u2014 Malibu Farm Restaurant, New American, Malibu.",
+          "pullQuote": "23000 Pacific Coast Hwy — Malibu Farm Restaurant, New American, Malibu.",
+          "blurb": "23000 Pacific Coast Hwy — Malibu Farm Restaurant, New American, Malibu.",
           "copySource": "draft"
         },
         {
@@ -9496,14 +9496,14 @@
         },
         {
           "placeId": "jean-georges-beverly-hills",
-          "pullQuote": "9850 Wilshire Blvd \u2014 Jean-Georges Beverly Hills, Californian, Beverly Hills.",
-          "blurb": "9850 Wilshire Blvd \u2014 Jean-Georges Beverly Hills, Californian, Beverly Hills.",
+          "pullQuote": "9850 Wilshire Blvd — Jean-Georges Beverly Hills, Californian, Beverly Hills.",
+          "blurb": "9850 Wilshire Blvd — Jean-Georges Beverly Hills, Californian, Beverly Hills.",
           "copySource": "draft"
         },
         {
           "placeId": "sugarfish",
-          "pullQuote": "600 W 7th St \u2014 SUGARFISH, Sushi, Downtown.",
-          "blurb": "600 W 7th St \u2014 SUGARFISH, Sushi, Downtown.",
+          "pullQuote": "600 W 7th St — SUGARFISH, Sushi, Downtown.",
+          "blurb": "600 W 7th St — SUGARFISH, Sushi, Downtown.",
           "copySource": "draft"
         },
         {
@@ -9586,8 +9586,8 @@
         },
         {
           "placeId": "barans-2239",
-          "pullQuote": "502 Pacific Coast Hwy \u2014 Baran's 2239, Persian, Hermosa Beach.",
-          "blurb": "502 Pacific Coast Hwy \u2014 Baran's 2239, Persian, Hermosa Beach.",
+          "pullQuote": "502 Pacific Coast Hwy — Baran's 2239, Persian, Hermosa Beach.",
+          "blurb": "502 Pacific Coast Hwy — Baran's 2239, Persian, Hermosa Beach.",
           "copySource": "draft"
         },
         {
@@ -9598,8 +9598,8 @@
         },
         {
           "placeId": "melisse",
-          "pullQuote": "M\u00e9lisse sits at 1104 Wilshire Blvd. Californian, Santa Monica.",
-          "blurb": "M\u00e9lisse sits at 1104 Wilshire Blvd. Californian, Santa Monica.",
+          "pullQuote": "Mélisse sits at 1104 Wilshire Blvd. Californian, Santa Monica.",
+          "blurb": "Mélisse sits at 1104 Wilshire Blvd. Californian, Santa Monica.",
           "copySource": "draft"
         },
         {
@@ -9622,8 +9622,8 @@
         },
         {
           "placeId": "water-grill",
-          "pullQuote": "1401 Ocean Ave \u2014 Water Grill, Seafood, Santa Monica.",
-          "blurb": "1401 Ocean Ave \u2014 Water Grill, Seafood, Santa Monica.",
+          "pullQuote": "1401 Ocean Ave — Water Grill, Seafood, Santa Monica.",
+          "blurb": "1401 Ocean Ave — Water Grill, Seafood, Santa Monica.",
           "copySource": "draft"
         }
       ]

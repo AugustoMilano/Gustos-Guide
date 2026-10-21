@@ -11,7 +11,7 @@ function RichText({ text }: { text: string }) {
           return <a key={index} href="mailto:hello@gustosguide.com">{part}</a>
         }
         if (part === '/privacy' || part === '/terms') {
-          return <a key={index} href={part}>{part}</a>
+          return <a key={index} href={`${part}/`}>{part}/</a>
         }
         return part
       })}
@@ -21,7 +21,7 @@ function RichText({ text }: { text: string }) {
 
 export function LegalPage({ slug }: { slug: LegalDoc['slug'] }) {
   const doc = legalDocs.find((item) => item.slug === slug) ?? legalDocs[0]
-  usePageMeta(`${doc.title} · Gusto's Guide`, doc.description, './og/og.svg', `${SITE_ORIGIN}/${doc.slug}`)
+  usePageMeta(`${doc.title} · Gusto's Guide`, doc.description, './og/og.png', `${SITE_ORIGIN}/${doc.slug}/`)
   return (
     <main id="main" tabIndex={-1} className="mx-auto max-w-2xl px-4 pt-28 pb-8 outline-none">
       <p className="text-xs font-bold tracking-[0.14em] uppercase">Gusto's Guide</p>

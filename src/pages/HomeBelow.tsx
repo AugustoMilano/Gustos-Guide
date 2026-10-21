@@ -1,4 +1,3 @@
-import { lazy, Suspense, useEffect, useRef, useState, type ReactNode } from 'react'
 import { motion, useReducedMotion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { PlanCard } from '../components/PlanSheet.tsx'
@@ -14,34 +13,6 @@ import { hoursPhrase, isOpen } from '../lib/hours.ts'
 import { usePageMeta } from '../lib/meta.ts'
 import { useApp } from '../state/AppState.tsx'
 import type { GuideGroup, SlimPlace } from '../types.ts'
-
-const GuideMap = lazy(() => import('../components/GuideMap.tsx').then((module) => ({ default: module.GuideMap })))
-
-function MapWhenVisible({ children }: { children: ReactNode }) {
-  const ref = useRef<HTMLDivElement>(null)
-  const [show, setShow] = useState(false)
-  useEffect(() => {
-    const node = ref.current
-    if (!node) return
-    if (typeof IntersectionObserver === 'undefined') {
-      setShow(true)
-      return
-    }
-    const observer = new IntersectionObserver((entries) => {
-      if (entries.some((entry) => entry.isIntersecting)) {
-        setShow(true)
-        observer.disconnect()
-      }
-    }, { rootMargin: '240px' })
-    observer.observe(node)
-    return () => observer.disconnect()
-  }, [])
-  return (
-    <div ref={ref} className="h-full">
-      {show ? children : <div className="map-frame skeleton h-full" aria-busy="true"><span className="sr-only">Loading map</span></div>}
-    </div>
-  )
-}
 
 const GROUPS: GuideGroup[] = ['Best of', 'Cuisine', 'Occasion', 'Neighborhoods', 'Drinks']
 const FEATURED = ['best-pizza', 'date-night', 'capitol-hill', 'cheap-eats', 'cocktail-bars', 'fun-dive-bars', 'seafood', 'brunch', 'ballard']
@@ -92,7 +63,7 @@ export function HomeBelow() {
       : east
         ? 'Eat across the Eastside: Bellevue, Kirkland, Redmond, Issaquah, and Bothell.'
         : 'Eat your way through Seattle: pizza, oysters, coffee, neighborhood dinners, and the bars worth the hill.',
-    './og/og.svg',
+    './og/og.png',
   )
   const app = useApp()
   const reduceMotion = useReducedMotion()
@@ -111,7 +82,6 @@ export function HomeBelow() {
   const occasions = occasionSlugs.map((slug) => guides.find((guide) => guide.slug === slug)).filter((guide) => guide != null)
   const hits = east || la ? places : homeHitList(places)
   const now = rightNow(city, places)
-  const hoodPins = diverse(places, 18)
   const neighborhoods = guides.filter((guide) => guide.group === 'Neighborhoods').slice(0, 8)
   const toGo = Object.values(app.statuses).filter((status) => status === 'togo').length
   const recent = Object.entries(app.scores)
@@ -200,14 +170,8 @@ export function HomeBelow() {
             <h2 id="hood-teaser" className="font-serif text-4xl italic">{east ? 'Cities' : 'Neighborhoods'}</h2>
             <Link to={cityPath('/explore')} className="text-sm font-bold">Open the map</Link>
           </div>
-          <p className="mt-2 max-w-xl">One pin per neighborhood. The full list, all {places.length} places, is on the explore map.</p>
-          <div className="mt-4 h-80">
-            <MapWhenVisible>
-              <Suspense fallback={<div className="map-frame skeleton h-full" aria-busy="true"><span className="sr-only">Loading map</span></div>}>
-                <GuideMap places={hoodPins} statuses={app.statuses} />
-              </Suspense>
-            </MapWhenVisible>
-          </div>
+          <p className="mt-2 max-w-xl">The full list, all {places.length} places, is on the explore map.</p>
+          <Link to={cityPath('/explore')} className="btn mt-4">Open the map</Link>
           <ul className="mt-4 flex flex-wrap gap-2">
             {neighborhoods.map((guide) => (
               <li key={guide.slug}><Link className="chip inline-flex items-center" to={cityPath(`/guide/${guide.slug}`)}>{guide.title}</Link></li>

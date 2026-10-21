@@ -14,8 +14,12 @@ export function placeCity(place: { city?: string }): CityId {
   return 'seattle'
 }
 
+export function isListed(place: { closed?: boolean }): boolean {
+  return place.closed !== true
+}
+
 export function placesForCity(city: CityId): SlimPlace[] {
-  return catalog.places.filter((place) => placeCity(place) === city)
+  return catalog.places.filter((place) => isListed(place) && placeCity(place) === city)
 }
 
 export function guidesForCity(city: CityId): GuideSummary[] {

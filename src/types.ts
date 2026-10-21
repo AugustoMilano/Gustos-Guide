@@ -34,7 +34,8 @@ export type SlimPlace = {
   oneLiner: string
   perfectFor: string[]
   periods: Period[]
-  appleRating?: { percent: number; count?: number }
+  /** Set only when a stable source says the place has closed. Lists hide it; the page stays. */
+  closed?: boolean
   publicRating?: { value: number; count: number; source: string }
   gustoScore: null
   photo: CatalogPhoto

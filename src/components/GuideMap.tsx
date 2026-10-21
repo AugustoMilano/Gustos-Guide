@@ -74,8 +74,10 @@ function Basemap() {
   useEffect(() => {
     let layer: Layer | null = null
     let cancelled = false
+    let idleId = 0
 
-    void (async () => {
+    const start = () => {
+      void (async () => {
       await import('../lib/setup-maplibre.ts')
       await import('maplibre-gl/dist/maplibre-gl.css')
       const { maplibreGL } = await import('@maplibre/maplibre-gl-leaflet')
@@ -91,7 +93,10 @@ function Basemap() {
       gl?.once('load', nudge)
       gl?.once('idle', nudge)
       nudge()
-    })()
+      })()
+    }
+
+    idleId = window.requestIdleCallback(start, { timeout: 700 })
 
     const observer = new ResizeObserver(() => {
       map.invalidateSize()
@@ -102,6 +107,7 @@ function Basemap() {
 
     return () => {
       cancelled = true
+      window.cancelIdleCallback(idleId)
       observer.disconnect()
       if (!layer) return
       try {
@@ -181,32 +187,39 @@ function FitPins({
       },
     })
     markers.current = new Map()
-
-    for (const place of places) {
-      if (!Number.isFinite(place.lat) || !Number.isFinite(place.lng)) continue
-      const status = statuses[place.id] ?? 'none'
-      const pin = marker([place.lat, place.lng], {
-        icon: pinIcon(COLORS[status], place.id === activeId),
-        title: place.name,
-        keyboard: true,
-        alt: place.name,
-      })
-      pin.bindPopup(popupHtml(place))
-      pin.on('mouseover', () => hoverRef.current?.(place.id))
-      pin.on('mouseout', () => hoverRef.current?.(null))
-      pin.on('focus', () => hoverRef.current?.(place.id))
-      pin.on('click', () => {
-        focusRef.current = place.id
-        hoverRef.current?.(place.id)
-        selectRef.current?.(place.id)
-      })
-      markers.current.set(place.id, pin)
-      group.addLayer(pin)
-    }
-
     groupRef.current = group
     map.addLayer(group)
     let cancelled = false
+    const finite = places.filter((place) => Number.isFinite(place.lat) && Number.isFinite(place.lng))
+    let cursor = 0
+    let pump = 0
+    const addBatch = () => {
+      if (cancelled) return
+      const end = Math.min(cursor + 50, finite.length)
+      for (; cursor < end; cursor += 1) {
+        const place = finite[cursor]
+        const status = statuses[place.id] ?? 'none'
+        const pin = marker([place.lat, place.lng], {
+          icon: pinIcon(COLORS[status], place.id === activeId),
+          title: place.name,
+          keyboard: true,
+          alt: place.name,
+        })
+        pin.bindPopup(popupHtml(place))
+        pin.on('mouseover', () => hoverRef.current?.(place.id))
+        pin.on('mouseout', () => hoverRef.current?.(null))
+        pin.on('focus', () => hoverRef.current?.(place.id))
+        pin.on('click', () => {
+          focusRef.current = place.id
+          hoverRef.current?.(place.id)
+          selectRef.current?.(place.id)
+        })
+        markers.current.set(place.id, pin)
+        group.addLayer(pin)
+      }
+      if (cursor < finite.length) pump = window.requestAnimationFrame(addBatch)
+    }
+    pump = window.requestAnimationFrame(addBatch)
     const fit = () => {
       if (cancelled) return
       map.invalidateSize()
@@ -235,6 +248,7 @@ function FitPins({
     return () => {
       cancelled = true
       window.cancelAnimationFrame(frame)
+      window.cancelAnimationFrame(pump)
       window.clearTimeout(timer)
       markers.current.clear()
       groupRef.current = null

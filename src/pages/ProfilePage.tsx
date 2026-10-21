@@ -1,8 +1,7 @@
 import { Link, useParams } from 'react-router-dom'
-import { GuideMap } from '../components/GuideMap.tsx'
 import { PlaceThumb } from '../components/PlaceThumb.tsx'
 import { slimById } from '../content/load.ts'
-import { areaTitle } from '../lib/city.ts'
+import { areaTitle, cityPath } from '../lib/city.ts'
 import { placesForCity, useCityId } from '../lib/use-city.ts'
 import { usePageMeta } from '../lib/meta.ts'
 import { useApp } from '../state/AppState.tsx'
@@ -21,7 +20,7 @@ export function ProfilePage() {
   usePageMeta(
     mine ? `${app.user?.name ?? 'You'} · Gusto's Guide` : person ? `${person.name} · Gusto's Guide` : friend ? `${friend.name} · Gusto's Guide` : 'Profile',
     mine ? `Your ${area} stats.` : 'A friend on Gusto’s Guide.',
-    './og/og.svg',
+    './og/og.png',
   )
 
   if (!person && !friend && !mine) {
@@ -112,8 +111,9 @@ export function ProfilePage() {
         </ul>
       ) : <p className="mt-2">Mark a few places Been and the cuisines show up here.</p>}
       <h2 className="mt-8 font-serif text-3xl italic">Neighborhoods</h2>
-      <div className="mt-3 h-72">
-        {beenPlaces.length ? <GuideMap places={beenPlaces} statuses={app.statuses} /> : <p>No been pins yet.</p>}
+      <div className="mt-3">
+        {beenPlaces.length ? <p>{beenPlaces.length} places marked Been.</p> : <p>No been pins yet.</p>}
+        <Link className="btn mt-3" to={cityPath('/explore')}>Open the map</Link>
       </div>
       <h2 className="mt-8 font-serif text-3xl italic">Top 10</h2>
       {top.length ? (

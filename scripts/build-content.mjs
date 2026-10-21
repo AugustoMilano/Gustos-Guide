@@ -552,9 +552,12 @@ function review(place) {
   return [first, second, third].join('\n\n')
 }
 
+const sortApple = new Map()
+const sortPublic = new Map()
+
 function publicScore(place) {
-  const apple = place.appleRating ? place.appleRating.percent / 10 : 0
-  const user = place.publicRating ? place.publicRating.value * 2 : 0
+  const apple = sortApple.get(place.id) ?? 0
+  const user = sortPublic.get(place.id) ?? 0
   return Math.max(apple, user)
 }
 
@@ -592,10 +595,9 @@ const launch = rawPlaces.filter(isLaunch).map((place) => {
       typeof place.apple_url === 'string' && place.apple_url.includes('auid=')
         ? place.apple_url
         : `https://maps.apple.com/place?auid=${place.muid}`,
-    appleRating: Number.isFinite(applePercent) ? { percent: applePercent, count: place.apple_rating_count ?? undefined } : undefined,
     publicRating:
-      typeof place.user_rating === 'number' && (ratingSource === 'Yelp' || ratingSource === 'OpenTable')
-        ? { value: place.user_rating, count: place.user_rating_count ?? 0, source: ratingSource }
+      ratingSource === 'Yelp' && typeof place.user_rating === 'number'
+        ? { value: place.user_rating, count: place.user_rating_count ?? 0, source: 'Yelp' }
         : undefined,
     yelpSlug: yelpSlug || undefined,
     ids: {
@@ -620,6 +622,10 @@ const launch = rawPlaces.filter(isLaunch).map((place) => {
     ],
   }
   next.perfectFor = perfectFor(next)
+  if (Number.isFinite(applePercent)) sortApple.set(id, applePercent / 10)
+  if (typeof place.user_rating === 'number' && (ratingSource === 'Yelp' || ratingSource === 'OpenTable')) {
+    sortPublic.set(id, place.user_rating * 2)
+  }
   return next
 })
 
@@ -670,8 +676,8 @@ for (const place of launch) {
     continue
   }
   const copy = houseCopy[place.id]
-  if (!copy?.pullQuote || !copy?.blurb) throw new Error(`Missing house copy for ${place.name} (${place.id})`)
-  place.oneLiner = String(copy.pullQuote).trim()
+  if (!copy?.blurb) throw new Error(`Missing house copy for ${place.name} (${place.id})`)
+  place.oneLiner = String(copy.pullQuote || '').trim()
   place.blurb = String(copy.blurb).trim()
   guideQuotes.set(place.id, copy.guideQuotes && typeof copy.guideQuotes === 'object' ? copy.guideQuotes : {})
 }
@@ -969,8 +975,7 @@ const slim = launch.map((place) => ({
   oneLiner: place.oneLiner,
   perfectFor: place.perfectFor,
   periods: place.periods,
-  appleRating: place.appleRating,
-  publicRating: place.publicRating,
+  ...(place.publicRating?.source === 'Yelp' ? { publicRating: place.publicRating } : {}),
   gustoScore: null,
   photo: place.photos[0],
   website: place.website,
@@ -1175,14 +1180,19 @@ for (const item of funDiveSource.entries) {
 }
 for (const [placeId, quotes] of guideQuotes) {
   for (const [slug, quote] of Object.entries(quotes)) {
-    if (String(quote).trim() === full[placeId].oneLiner.trim()) {
+    const quoteText = String(quote).trim()
+    const placeLine = full[placeId].oneLiner.trim()
+    if (quoteText && placeLine && quoteText === placeLine) {
       throw new Error(`Guide-specific pull quote for ${full[placeId].name} on ${slug} repeats the place quote`)
     }
   }
 }
-const badRatings = Object.values(full).filter((place) => place.publicRating && place.publicRating.source !== 'Yelp' && place.publicRating.source !== 'OpenTable')
+const badRatings = Object.values(full).filter((place) => place.publicRating && place.publicRating.source !== 'Yelp')
 if (badRatings.length) {
-  throw new Error(`Tripadvisor or other ratings leaked: ${badRatings.slice(0, 8).map((place) => `${place.name} (${place.publicRating.source})`).join(', ')}`)
+  throw new Error(`Only Yelp may ship as an outside rating: ${badRatings.slice(0, 8).map((place) => `${place.name} (${place.publicRating.source})`).join(', ')}`)
+}
+if (JSON.stringify(full).includes('appleRating') || JSON.stringify(slim).includes('appleRating')) {
+  throw new Error('appleRating leaked into the catalog')
 }
 const banned = /draft|augusto|census|borrowed from|gusto's score|not yet rated|this file|entries in this|saved list|saved places|no speech/i
 const spoken = [

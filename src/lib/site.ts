@@ -1,5 +1,10 @@
 export const SITE_ORIGIN = 'https://gustosguide.com'
 
+export function originCanonical(path = '/'): string {
+  const bare = path.startsWith('/') ? path : `/${path}`
+  return `${SITE_ORIGIN}${bare.endsWith('/') ? bare : `${bare}/`}`
+}
+
 export function canonicalUrl(hash?: string): string {
   const raw = hash ?? (typeof window === 'undefined' ? '#/' : window.location.hash || '#/')
   const fragment = raw.startsWith('#') ? raw : `#${raw.startsWith('/') ? raw : `/${raw}`}`

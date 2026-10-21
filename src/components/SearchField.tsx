@@ -5,7 +5,7 @@ import { clearRecent, readRecent, rememberSearch } from '../lib/recent-search.ts
 import { useCityId } from '../lib/use-city-id.ts'
 import { MatchText } from './MatchText.tsx'
 
-type HitPlace = { id: string; name: string; neighborhood: string; cuisine: string[]; city?: string }
+type HitPlace = { id: string; name: string; neighborhood: string; cuisine: string[]; city?: string; closed?: boolean }
 type HitGuide = { slug: string; title: string; group: string; city?: string }
 type Hit = { key: string; label: string; detail: string; href: string }
 
@@ -54,7 +54,7 @@ export function SearchField({
   const hits = useMemo(() => {
     if (!query || !places || !guides) return []
     const placeHits: Hit[] = places
-      .filter((place) => cityOf(place) === city && `${place.name} ${place.neighborhood} ${place.cuisine.join(' ')}`.toLowerCase().includes(query))
+      .filter((place) => !place.closed && cityOf(place) === city && `${place.name} ${place.neighborhood} ${place.cuisine.join(' ')}`.toLowerCase().includes(query))
       .slice(0, 6)
       .map((place) => ({
         key: place.id,
@@ -156,10 +156,11 @@ export function SearchField({
         }}
       />
       {open && rows.length ? (
-        <ul id={listId} className="search-pop" role="listbox" aria-label={query ? 'Matches' : 'Recent searches'}>
-          {rows.map((hit, index) => (
-            <li key={hit.key} role="presentation">
+        <div className="search-pop">
+          <div id={listId} role="listbox" aria-label={query ? 'Matches' : 'Recent searches'}>
+            {rows.map((hit, index) => (
               <button
+                key={hit.key}
                 id={`${listId}-${index}`}
                 type="button"
                 role="option"
@@ -172,24 +173,22 @@ export function SearchField({
                 <span className="block truncate font-serif text-xl italic leading-tight"><MatchText text={hit.label} query={query} /></span>
                 <span className="block truncate text-xs font-bold tracking-wide uppercase">{hit.detail}</span>
               </button>
-            </li>
-          ))}
+            ))}
+          </div>
           {!query && recents.length ? (
-            <li role="presentation">
-              <button
-                type="button"
-                className="search-clear"
-                onMouseDown={(event) => event.preventDefault()}
-                onClick={() => {
-                  clearRecent()
-                  setRecents([])
-                }}
-              >
-                Clear recent searches
-              </button>
-            </li>
+            <button
+              type="button"
+              className="search-clear"
+              onMouseDown={(event) => event.preventDefault()}
+              onClick={() => {
+                clearRecent()
+                setRecents([])
+              }}
+            >
+              Clear recent searches
+            </button>
           ) : null}
-        </ul>
+        </div>
       ) : null}
     </form>
   )

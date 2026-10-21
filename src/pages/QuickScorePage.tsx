@@ -49,7 +49,7 @@ export function QuickScorePage() {
   const [undoStack, setUndoStack] = useState<Undo[]>([])
   const [note, setNote] = useState('')
   const [nudge, setNudge] = useState<'left' | 'right' | null>(null)
-  usePageMeta("Quick score · Gusto's Guide", 'Score one place at a time, across every region.', './og/og.svg')
+  usePageMeta("Quick score · Gusto's Guide", 'Score one place at a time, across every region.', './og/og.png')
 
   const owner = Boolean(app.user?.isOwner)
   const filterKey = `${region}|${neighborhood}|${cuisine}|${unscoredOnly}|${haventOnly}`
@@ -60,14 +60,14 @@ export function QuickScorePage() {
     setPin(null)
   }
 
-  const scoped = catalog.places.filter((place) => region === 'all' || (place.city ?? 'seattle') === region)
+  const scoped = catalog.places.filter((place) => !place.closed && (region === 'all' || (place.city ?? 'seattle') === region))
   const neighborhoods = [...new Set(scoped.map((place) => place.neighborhood))].sort((a, b) => a.localeCompare(b))
   const cuisines = [...new Set(scoped.flatMap((place) => place.cuisine))].sort((a, b) => a.localeCompare(b))
   if (neighborhood && !neighborhoods.includes(neighborhood)) setNeighborhood('')
   if (cuisine && !cuisines.includes(cuisine)) setCuisine('')
 
   const queue = owner
-    ? quickQueue(catalog.places, {
+    ? quickQueue(catalog.places.filter((place) => !place.closed), {
         region,
         neighborhood,
         cuisine,
@@ -80,8 +80,8 @@ export function QuickScorePage() {
   const pinned = pin ? queue.findIndex((place) => place.id === pin) : -1
   const index = queue.length === 0 ? 0 : pinned >= 0 ? pinned : Math.min(cursor, queue.length - 1)
   const place = queue[index]
-  const scored = catalog.places.filter((item) => app.gustoScore(item.id) != null).length
-  const total = catalog.places.length
+  const scored = catalog.places.filter((item) => !item.closed && app.gustoScore(item.id) != null).length
+  const total = catalog.places.filter((item) => !item.closed).length
   const pending = parseScoreDigits(draft)
   const whole = pending == null ? null : Math.min(10, Math.floor(pending + 1e-6))
   const tenth = pending == null ? null : Math.round((pending - Math.floor(pending + 1e-6)) * 10)

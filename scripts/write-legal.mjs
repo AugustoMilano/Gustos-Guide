@@ -16,8 +16,8 @@ function escapeHtml(value) {
 function rich(text) {
   return escapeHtml(text)
     .replaceAll('hello@gustosguide.com', '<a href="mailto:hello@gustosguide.com">hello@gustosguide.com</a>')
-    .replaceAll('/privacy', '<a href="/privacy">/privacy</a>')
-    .replaceAll('/terms', '<a href="/terms">/terms</a>')
+    .replaceAll('/privacy', '<a href="/privacy/">/privacy/</a>')
+    .replaceAll('/terms', '<a href="/terms/">/terms/</a>')
 }
 
 function page(doc) {
@@ -29,14 +29,14 @@ function page(doc) {
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>${escapeHtml(doc.title)} · Gusto's Guide</title>
   <meta name="description" content="${escapeHtml(doc.description)}" />
-  <link rel="canonical" href="https://gustosguide.com/${doc.slug}" />
+  <link rel="canonical" href="https://gustosguide.com/${doc.slug}/" />
   <meta property="og:title" content="${escapeHtml(doc.title)} · Gusto's Guide" />
   <meta property="og:description" content="${escapeHtml(doc.description)}" />
-  <meta property="og:url" content="https://gustosguide.com/${doc.slug}" />
+  <meta property="og:url" content="https://gustosguide.com/${doc.slug}/" />
   <meta property="og:type" content="website" />
-  <meta property="og:image" content="https://gustosguide.com/og/og.svg" />
+  <meta property="og:image" content="https://gustosguide.com/og/og.png" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:image" content="https://gustosguide.com/og/og.svg" />
+  <meta name="twitter:image" content="https://gustosguide.com/og/og.png" />
   <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
   <style>
     :root { color-scheme: light; }
