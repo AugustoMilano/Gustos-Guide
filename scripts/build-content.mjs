@@ -760,6 +760,33 @@ function angleFor(group, slug) {
   return 'default'
 }
 
+const FLAGSHIP_AIM = 25
+const publishedGuideIds = new Map()
+try {
+  const published = JSON.parse(readFileSync(join(root, 'src/content/guides.json'), 'utf8'))
+  for (const guide of published) {
+    if (!guide?.slug || !Array.isArray(guide.entries)) continue
+    publishedGuideIds.set(guide.slug, guide.entries.map((entry) => entry.placeId).filter(Boolean))
+  }
+} catch {
+  // First build has no published guides yet.
+}
+const launchById = new Map(launch.map((place) => [place.id, place]))
+
+function flagshipPlaces(slug, places) {
+  const existing = publishedGuideIds.get(slug)
+  if (!existing) return places.slice(0, FLAGSHIP_AIM)
+  const kept = []
+  const seen = new Set()
+  for (const id of existing) {
+    const place = launchById.get(id)
+    if (!place || seen.has(id)) continue
+    seen.add(id)
+    kept.push(place)
+  }
+  return kept.length ? kept : places.slice(0, FLAGSHIP_AIM)
+}
+
 const guides = []
 function addGuide(guide) {
   const entries = guide.places.map((place) => ({
@@ -768,7 +795,8 @@ function addGuide(guide) {
     blurb: place.blurb,
     copySource: 'draft',
   }))
-  if (entries.length < 8 || entries.length > 25) {
+  const known = publishedGuideIds.has(guide.slug)
+  if (entries.length < 8 || (!known && entries.length > FLAGSHIP_AIM)) {
     console.warn(`guide size ${entries.length}: ${guide.slug}`)
   }
   guides.push({
@@ -854,7 +882,7 @@ for (const theme of themes) {
     const extra = launch.filter((place) => /burger/i.test(`${place.name} ${place.cuisine.join(' ')} ${place.placeType}`))
     places = sortDraft([...new Map([...places, ...extra].map((place) => [place.id, place])).values()], priority)
   }
-  places = diversify(places, 25, slug === 'pike-place' ? 8 : 6)
+  places = flagshipPlaces(slug, diversify(places, FLAGSHIP_AIM, slug === 'pike-place' ? 8 : 6))
   const angle = angleFor(group, slug)
   addGuide({
     slug,
@@ -877,7 +905,7 @@ for (const sub of themes.find((theme) => theme.sub_guides).sub_guides) {
     members = [...members, ...sodo]
   }
   const slug = slugify(label)
-  let places = diversify(sortDraft(resolveMembers(members)), 25, 3)
+  let places = flagshipPlaces(slug, diversify(sortDraft(resolveMembers(members)), FLAGSHIP_AIM, 3))
   addGuide({
     slug,
     title: label,
@@ -891,7 +919,7 @@ for (const sub of themes.find((theme) => theme.sub_guides).sub_guides) {
 }
 
 function filterGuide(slug, title, dek, group, ranked, angle, predicate, cap = 24) {
-  const places = diversify(sortDraft(launch.filter(predicate)), cap, 4)
+  const places = flagshipPlaces(slug, diversify(sortDraft(launch.filter(predicate)), Math.min(cap, FLAGSHIP_AIM), 4))
   if (places.length < 8) {
     console.warn('skip short derived', slug, places.length)
     return
@@ -941,11 +969,11 @@ guides.push({
   entries: funDiveEntries,
 })
 
-const gustoPool = diversify(
+const gustoPool = flagshipPlaces('gustos-25', diversify(
   sortDraft(launch.filter((place) => /restaurant|sushi|steak|seafood/.test(place.placeType) && place.price >= 2)),
-  25,
+  FLAGSHIP_AIM,
   2,
-)
+))
 addGuide({
   slug: 'gustos-25',
   title: "Gusto's 25",

@@ -3,12 +3,9 @@ import type { User } from '@supabase/supabase-js'
 import type { CityId } from '../lib/city.ts'
 import {
   blurbProblem,
-  capPlaceIds,
   cleanBlurb,
   cleanTitle,
   collectionSlug,
-  GUIDE_LIMIT_MESSAGE,
-  GUIDE_PLACE_LIMIT,
   titleProblem,
   type CollectionsStatus,
   type HouseCollection,
@@ -598,16 +595,10 @@ export function AppProvider({ children }: { children: ReactNode }) {
   }
 
   function addToGuide(guideId: string, placeId: string) {
-    const current = doc.guides.find((guide) => guide.id === guideId)
-    if (!current || current.placeIds.includes(placeId)) return
-    if (current.placeIds.length >= GUIDE_PLACE_LIMIT) {
-      setAnnouncement(GUIDE_LIMIT_MESSAGE)
-      return
-    }
     const next = {
       ...doc,
       guides: doc.guides.map((guide) => {
-        if (guide.id !== guideId) return guide
+        if (guide.id !== guideId || guide.placeIds.includes(placeId)) return guide
         return {
           ...guide,
           placeIds: [...guide.placeIds, placeId],
@@ -1115,7 +1106,6 @@ export function AppProvider({ children }: { children: ReactNode }) {
     const slug = collectionSlug(nextTitle, collectionsRef.current.filter((row) => row.city === city).map((row) => row.slug))
     const position = collectionsRef.current.filter((row) => row.city === city).reduce((max, row) => Math.max(max, row.position), -1) + 1
     const tempId = crypto.randomUUID()
-    const capped = capPlaceIds(placeIds, gustoScore)
     const draft: HouseCollection = {
       id: tempId,
       city,
@@ -1123,7 +1113,7 @@ export function AppProvider({ children }: { children: ReactNode }) {
       slug,
       blurb: nextBlurb,
       position,
-      placeIds: capped,
+      placeIds: [...placeIds],
       published: false,
     }
     rememberCollections([...collectionsRef.current, draft])
@@ -1201,10 +1191,6 @@ export function AppProvider({ children }: { children: ReactNode }) {
     if (!current) return
     const has = current.placeIds.includes(placeId)
     if (include === has) return
-    if (include && current.placeIds.length >= GUIDE_PLACE_LIMIT) {
-      setAnnouncement(GUIDE_LIMIT_MESSAGE)
-      return
-    }
     const placeIds = include ? [...current.placeIds, placeId] : current.placeIds.filter((item) => item !== placeId)
     const previous = current.placeIds
     rememberCollections(collectionsRef.current.map((row) => (row.id === collectionId ? { ...row, placeIds } : row)))

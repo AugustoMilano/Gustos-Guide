@@ -8,7 +8,7 @@ import { ScoreBadge } from '../components/ScoreBadge.tsx'
 import { slimById } from '../content/load.ts'
 import { OwnerCollections } from '../components/OwnerCollections.tsx'
 import { cityPath, type CityId } from '../lib/city.ts'
-import { GUIDE_PLACE_LIMIT, guideCountLabel, publicChips } from '../lib/collections.ts'
+import { publicChips } from '../lib/collections.ts'
 import { useCityCatalog } from '../lib/use-city.ts'
 import { homeHitList, RIGHT_NOW_FALLBACK } from '../lib/photo-queue.ts'
 import { hoursPhrase, isOpen } from '../lib/hours.ts'
@@ -110,7 +110,7 @@ export function HomeBelow() {
                   <li key={chip.slug}>
                     <Link className="chip inline-flex items-center gap-2" to={cityPath(`/collection/${chip.slug}`)}>
                       {chip.title}
-                      <span className="tabular-nums">{guideCountLabel(chip.count)}</span>
+                      <span className="tabular-nums">{chip.count}</span>
                     </Link>
                   </li>
                 ))}
@@ -152,7 +152,7 @@ export function HomeBelow() {
             {occasions.map((guide, index) => (
               <Reveal key={guide.slug} delay={Math.min(index, 6) * 0.04}>
               <Link to={cityPath(`/guide/${guide.slug}`)} className="guide-card" viewTransition={!reduceMotion}>
-                <p className="text-xs font-bold tracking-[0.14em] uppercase">{guideCountLabel(guide.count)}</p>
+                <p className="text-xs font-bold tracking-[0.14em] uppercase">{guide.count} places</p>
                 <h3 className="mt-2 font-serif text-3xl italic leading-none">{guide.title}</h3>
                 <p className="mt-2 text-sm">{guide.dek}</p>
               </Link>
@@ -214,9 +214,9 @@ export function HomeBelow() {
                     <h3 className="mt-2 font-serif text-3xl italic leading-none">{guide.title}</h3>
                     <p className="mt-2 text-sm">{guide.dek}</p>
                   </span>
-                  <span className="guide-count" aria-label={`${guideCountLabel(guide.count)} places`}>
+                  <span className="guide-count" aria-label={`${guide.count} places`}>
                     <strong>{guide.count}</strong>
-                    <span>/{GUIDE_PLACE_LIMIT}</span>
+                    <span>places</span>
                   </span>
                 </span>
               </Link>
@@ -250,7 +250,7 @@ export function HomeBelow() {
             <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
               {rows.map((guide) => (
                 <Link key={guide.slug} to={cityPath(`/guide/${guide.slug}`)} className="guide-card" viewTransition={!reduceMotion}>
-                  <p className="text-xs font-bold tracking-[0.14em] uppercase">{guideCountLabel(guide.count)}</p>
+                  <p className="text-xs font-bold tracking-[0.14em] uppercase">{guide.count} places</p>
                   <h3 className="mt-2 font-serif text-3xl italic leading-none">{guide.title}</h3>
                   <p className="mt-2 text-sm">{guide.dek}</p>
                 </Link>
