@@ -189,6 +189,16 @@ export async function loadHouseScores(client: SupabaseClient): Promise<Record<st
   return house
 }
 
+export async function loadHouseMarks(client: SupabaseClient): Promise<Record<string, 'havent'> | null> {
+  const { data, error } = await client.from('house_marks').select('place_id, status')
+  if (error || !data) return null
+  const marks: Record<string, 'havent'> = {}
+  for (const row of data) {
+    if (row.status === 'havent') marks[row.place_id] = 'havent'
+  }
+  return marks
+}
+
 export async function loadAccount(client: SupabaseClient, authUser: User): Promise<AccountSnapshot> {
   let profile: OwnProfile | null = null
   let lastError: { message?: string; code?: string } | null = null

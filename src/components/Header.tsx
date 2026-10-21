@@ -175,6 +175,7 @@ export function Header() {
           <Link className="nav-wide" to={cityPath('/rank', linkCity)}>Rank</Link>
           <Link className="nav-wide" to={cityPath('/my', linkCity)}>My guides</Link>
           {user?.isOwner ? <Link className="nav-wide" to={cityPath('/score', linkCity)}>Scores</Link> : null}
+          {user?.isOwner ? <Link className="nav-wide" to={cityPath('/score/quick', linkCity)}>Quick</Link> : null}
           {user?.isOwner ? <Link className="nav-wide" to={cityPath('/photos', linkCity)}>Photos</Link> : null}
           <div className="nav-more relative">
             <button
@@ -207,6 +208,7 @@ export function Header() {
                   <Link to={cityPath('/rank', linkCity)} onClick={() => setMore(false)}>Rank</Link>
                   <Link to={cityPath('/my', linkCity)} onClick={() => setMore(false)}>My guides</Link>
                   {user?.isOwner ? <Link to={cityPath('/score', linkCity)} onClick={() => setMore(false)}>Scores</Link> : null}
+                  {user?.isOwner ? <Link to={cityPath('/score/quick', linkCity)} onClick={() => setMore(false)}>Quick score</Link> : null}
                   {user?.isOwner ? <Link to={cityPath('/photos', linkCity)} onClick={() => setMore(false)}>Photos</Link> : null}
                 </motion.div>
               ) : null}
@@ -288,6 +290,7 @@ export function Header() {
           <Link to={cityPath('/rank', linkCity)} onClick={() => setMenu(false)}>Rank</Link>
           <Link to={cityPath('/my', linkCity)} onClick={() => setMenu(false)}>My guides</Link>
           {user?.isOwner ? <Link to={cityPath('/score', linkCity)} onClick={() => setMenu(false)}>Scores</Link> : null}
+          {user?.isOwner ? <Link to={cityPath('/score/quick', linkCity)} onClick={() => setMenu(false)}>Quick score</Link> : null}
           {user?.isOwner ? <Link to={cityPath('/photos', linkCity)} onClick={() => setMenu(false)}>Photos</Link> : null}
           <button type="button" className="text-left" aria-label="Notifications" onClick={() => { setMenu(false); setBell(true); markNoticesRead() }}>
             Notifications{unread ? ` (${unread})` : ''}

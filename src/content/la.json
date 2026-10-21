@@ -96,7 +96,7 @@
         "Sandwiches"
       ],
       "placeType": "deli",
-      "oneLiner": "Venice: All'Antico Vinaio serves Sandwiches at 1121 Abbot Kinney Blvd.",
+      "oneLiner": "",
       "perfectFor": [],
       "periods": [
         {
@@ -121,7 +121,7 @@
       ],
       "muid": "17213954995878959249",
       "hoursLabel": "",
-      "blurb": "Venice: All'Antico Vinaio serves Sandwiches at 1121 Abbot Kinney Blvd.",
+      "blurb": "",
       "orderThis": [],
       "ids": {},
       "copySource": "draft",
@@ -221,7 +221,7 @@
         "Italian"
       ],
       "placeType": "restaurant",
-      "oneLiner": "At 2121 E 7th Pl, Bestia serves Italian, Downtown.",
+      "oneLiner": "",
       "perfectFor": [],
       "periods": [
         {
@@ -247,7 +247,7 @@
       ],
       "muid": "17788622162648530058",
       "hoursLabel": "",
-      "blurb": "At 2121 E 7th Pl, Bestia serves Italian, Downtown.",
+      "blurb": "",
       "orderThis": [],
       "ids": {},
       "copySource": "draft",
@@ -339,7 +339,7 @@
         "Japanese"
       ],
       "placeType": "restaurant",
-      "oneLiner": "N/Naka serves Japanese at 3455 Overland Ave in Palms.",
+      "oneLiner": "",
       "perfectFor": [],
       "periods": [
         {
@@ -361,7 +361,7 @@
       ],
       "muid": "16245299877826722218",
       "hoursLabel": "",
-      "blurb": "N/Naka serves Japanese at 3455 Overland Ave in Palms.",
+      "blurb": "",
       "orderThis": [],
       "ids": {},
       "copySource": "draft",
@@ -507,7 +507,7 @@
         "American"
       ],
       "placeType": "restaurant",
-      "oneLiner": "The Musso & Frank Grill serves American at 6667 Hollywood Blvd, Hollywood.",
+      "oneLiner": "",
       "perfectFor": [],
       "periods": [
         {
@@ -537,7 +537,7 @@
       ],
       "muid": "744780621808735901",
       "hoursLabel": "",
-      "blurb": "The Musso & Frank Grill serves American at 6667 Hollywood Blvd, Hollywood.",
+      "blurb": "",
       "orderThis": [],
       "ids": {},
       "copySource": "draft",
@@ -567,7 +567,7 @@
         "Californian"
       ],
       "placeType": "restaurant",
-      "oneLiner": "West Hollywood: The Butcher, The Baker, The Cappuccino Maker serves Californian at 8653 W Sunset Blvd.",
+      "oneLiner": "",
       "perfectFor": [],
       "periods": [
         {
@@ -592,7 +592,7 @@
       ],
       "muid": "12164379657695553269",
       "hoursLabel": "",
-      "blurb": "West Hollywood: The Butcher, The Baker, The Cappuccino Maker serves Californian at 8653 W Sunset Blvd.",
+      "blurb": "",
       "orderThis": [],
       "ids": {},
       "copySource": "draft",
@@ -679,7 +679,7 @@
         "Health food"
       ],
       "placeType": "restaurant",
-      "oneLiner": "At 206 S Beverly Dr, Parakeet Cafe serves Health food, Beverly Hills.",
+      "oneLiner": "",
       "perfectFor": [],
       "periods": [
         {
@@ -704,7 +704,7 @@
       ],
       "muid": "11096398158534463700",
       "hoursLabel": "",
-      "blurb": "At 206 S Beverly Dr, Parakeet Cafe serves Health food, Beverly Hills.",
+      "blurb": "",
       "orderThis": [],
       "ids": {
         "yelp": "v_fePD8Nl3U81cxg4_ow4g"
@@ -979,46 +979,6 @@
       "website": "https://girlandthegoat.com/los-angeles"
     },
     {
-      "id": "paderia-bakehouse",
-      "city": "la",
-      "name": "Paderia Bakehouse",
-      "neighborhood": "Santa Monica",
-      "address": "3032 Wilshire Blvd, Unit E, Santa Monica, CA 90403",
-      "lat": 34.0393795,
-      "lng": -118.4725386,
-      "cuisine": [
-        "Bakery"
-      ],
-      "placeType": "bakery",
-      "oneLiner": "Paderia Bakehouse serves Bakery at 3032 Wilshire Blvd, Santa Monica.",
-      "perfectFor": [],
-      "periods": [],
-      "gustoScore": null,
-      "appleMapsUrl": "https://maps.apple.com/?daddr=34.0393795,-118.4725386&q=Paderia%20Bakehouse",
-      "applePlaceUrl": "https://maps.apple.com/place?auid=8428825273781111621",
-      "guideSlugs": [
-        "santa-monica",
-        "la-coffee-bakeries"
-      ],
-      "muid": "8428825273781111621",
-      "hoursLabel": "",
-      "blurb": "Paderia Bakehouse serves Bakery at 3032 Wilshire Blvd, Santa Monica.",
-      "orderThis": [],
-      "ids": {},
-      "copySource": "draft",
-      "updatedAt": "2026-10-20",
-      "photos": [
-        {
-          "source": "illustration",
-          "isIllustration": true,
-          "alt": "Illustration suggesting Bakery at Paderia Bakehouse",
-          "credit": "Illustration"
-        }
-      ],
-      "phone": "+1 (424) 416-7785",
-      "website": "https://www.paderia.com"
-    },
-    {
       "id": "langers",
       "city": "la",
       "name": "Langer's",
@@ -1030,7 +990,7 @@
         "Deli"
       ],
       "placeType": "deli",
-      "oneLiner": "Westlake: Langer's serves Deli at 704 S Alvarado St.",
+      "oneLiner": "",
       "perfectFor": [],
       "periods": [
         {
@@ -1052,7 +1012,7 @@
       "guideSlugs": [],
       "muid": "16203098712328364112",
       "hoursLabel": "",
-      "blurb": "Westlake: Langer's serves Deli at 704 S Alvarado St.",
+      "blurb": "",
       "orderThis": [],
       "ids": {},
       "copySource": "draft",
@@ -1141,7 +1101,7 @@
         "Sandwiches"
       ],
       "placeType": "deli",
-      "oneLiner": "At 37 Washington Blvd, Fat Sal's serves Sandwiches, Marina del Rey.",
+      "oneLiner": "",
       "perfectFor": [],
       "periods": [
         {
@@ -1183,7 +1143,7 @@
       "guideSlugs": [],
       "muid": "11873328266790391154",
       "hoursLabel": "",
-      "blurb": "At 37 Washington Blvd, Fat Sal's serves Sandwiches, Marina del Rey.",
+      "blurb": "",
       "orderThis": [],
       "ids": {
         "yelp": "GTKI-aelJ-hd0ozccT06CA"
@@ -1528,7 +1488,7 @@
         "Middle Eastern"
       ],
       "placeType": "restaurant",
-      "oneLiner": "Downtown: Bavel serves Middle Eastern at 500 Mateo St.",
+      "oneLiner": "",
       "perfectFor": [],
       "periods": [
         {
@@ -1553,7 +1513,7 @@
       ],
       "muid": "14515670741806465051",
       "hoursLabel": "",
-      "blurb": "Downtown: Bavel serves Middle Eastern at 500 Mateo St.",
+      "blurb": "",
       "orderThis": [],
       "ids": {},
       "copySource": "draft",
@@ -1646,7 +1606,7 @@
         "Italian"
       ],
       "placeType": "restaurant",
-      "oneLiner": "At 2905 Washington Blvd, Scopa Italian Roots serves Italian, Venice.",
+      "oneLiner": "",
       "perfectFor": [],
       "periods": [
         {
@@ -1679,7 +1639,7 @@
       ],
       "muid": "2376689188220182838",
       "hoursLabel": "",
-      "blurb": "At 2905 Washington Blvd, Scopa Italian Roots serves Italian, Venice.",
+      "blurb": "",
       "orderThis": [],
       "ids": {},
       "copySource": "draft",
@@ -1866,7 +1826,7 @@
       "phone": "+1 (310) 777-3450",
       "website": "http://www.kreationjuice.com",
       "publicRating": {
-        "value": 4.0,
+        "value": 4,
         "count": 220,
         "source": "Yelp"
       },
@@ -1956,7 +1916,7 @@
         "Bakery"
       ],
       "placeType": "bakery",
-      "oneLiner": "Magnolia Bakery serves Bakery at 8389 W 3rd St, Beverly Grove.",
+      "oneLiner": "",
       "perfectFor": [],
       "periods": [
         {
@@ -1988,7 +1948,7 @@
       ],
       "muid": "7040119901737117764",
       "hoursLabel": "",
-      "blurb": "Magnolia Bakery serves Bakery at 8389 W 3rd St, Beverly Grove.",
+      "blurb": "",
       "orderThis": [],
       "ids": {},
       "copySource": "draft",
@@ -2018,7 +1978,7 @@
         "Burgers"
       ],
       "placeType": "restaurant",
-      "oneLiner": "Santa Monica: Heavy Handed serves Burgers at 2912 Main St.",
+      "oneLiner": "",
       "perfectFor": [],
       "periods": [
         {
@@ -2043,7 +2003,7 @@
       ],
       "muid": "16057293261797551039",
       "hoursLabel": "",
-      "blurb": "Santa Monica: Heavy Handed serves Burgers at 2912 Main St.",
+      "blurb": "",
       "orderThis": [],
       "ids": {},
       "copySource": "draft",
@@ -2148,7 +2108,7 @@
         "Chicken"
       ],
       "placeType": "restaurant",
-      "oneLiner": "At 727 N Broadway, Howlin' Ray's serves Chicken, Downtown.",
+      "oneLiner": "",
       "perfectFor": [],
       "periods": [
         {
@@ -2171,7 +2131,7 @@
       ],
       "muid": "14771692706178254942",
       "hoursLabel": "",
-      "blurb": "At 727 N Broadway, Howlin' Ray's serves Chicken, Downtown.",
+      "blurb": "",
       "orderThis": [],
       "ids": {},
       "copySource": "draft",
@@ -2497,46 +2457,6 @@
       "_n": 1
     },
     {
-      "id": "merois",
-      "city": "la",
-      "name": "Merois",
-      "neighborhood": "West Hollywood",
-      "address": "8430 Sunset Blvd, West Hollywood, CA 90069",
-      "lat": 34.094841,
-      "lng": -118.3734852,
-      "cuisine": [
-        "New American"
-      ],
-      "placeType": "restaurant",
-      "oneLiner": "Merois serves New American at 8430 Sunset Blvd, West Hollywood.",
-      "perfectFor": [],
-      "periods": [],
-      "gustoScore": null,
-      "appleMapsUrl": "https://maps.apple.com/?daddr=34.094841,-118.3734852&q=Merois",
-      "applePlaceUrl": "https://maps.apple.com/place?auid=6930480424869899732",
-      "guideSlugs": [
-        "west-hollywood"
-      ],
-      "muid": "6930480424869899732",
-      "hoursLabel": "",
-      "blurb": "Merois serves New American at 8430 Sunset Blvd, West Hollywood.",
-      "orderThis": [],
-      "ids": {},
-      "copySource": "draft",
-      "updatedAt": "2026-10-20",
-      "photos": [
-        {
-          "source": "illustration",
-          "isIllustration": true,
-          "alt": "Illustration suggesting New American at Merois",
-          "credit": "Illustration"
-        }
-      ],
-      "phone": "+1 (323) 918-3410",
-      "website": "https://wolfgangpuck.com",
-      "_n": 5
-    },
-    {
       "id": "osteria-la-buca",
       "city": "la",
       "name": "Osteria La Buca",
@@ -2614,7 +2534,7 @@
         "Chicken"
       ],
       "placeType": "restaurant",
-      "oneLiner": "At 709 N Western Ave, Le Coupe serves Chicken, Hollywood.",
+      "oneLiner": "",
       "perfectFor": [],
       "periods": [
         {
@@ -2637,7 +2557,7 @@
       ],
       "muid": "17392490187698710822",
       "hoursLabel": "",
-      "blurb": "At 709 N Western Ave, Le Coupe serves Chicken, Hollywood.",
+      "blurb": "",
       "orderThis": [],
       "ids": {},
       "copySource": "draft",
@@ -2978,7 +2898,7 @@
         "Burgers"
       ],
       "placeType": "restaurant",
-      "oneLiner": "Fairfax: Burger She Wrote serves Burgers at 7454 1/2 Beverly Blvd.",
+      "oneLiner": "",
       "perfectFor": [],
       "periods": [
         {
@@ -3007,7 +2927,7 @@
       "guideSlugs": [],
       "muid": "17350043778724050325",
       "hoursLabel": "",
-      "blurb": "Fairfax: Burger She Wrote serves Burgers at 7454 1/2 Beverly Blvd.",
+      "blurb": "",
       "orderThis": [],
       "ids": {},
       "copySource": "draft",
@@ -3084,55 +3004,6 @@
         "source": "Yelp"
       },
       "yelpSlug": "w3_fvvtRT7MteN7xVVyGWw"
-    },
-    {
-      "id": "le-grand-restaurant",
-      "city": "la",
-      "name": "Le Grand Restaurant",
-      "neighborhood": "Downtown",
-      "address": "707 S Grand Ave, Los Angeles, CA 90017",
-      "lat": 34.0471791,
-      "lng": -118.2570183,
-      "cuisine": [
-        "Mexican"
-      ],
-      "placeType": "restaurant",
-      "oneLiner": "At 707 S Grand Ave, Le Grand Restaurant serves Mexican, Downtown.",
-      "perfectFor": [],
-      "periods": [],
-      "gustoScore": null,
-      "appleMapsUrl": "https://maps.apple.com/?daddr=34.0471791,-118.2570183&q=Le%20Grand%20Restaurant",
-      "applePlaceUrl": "https://maps.apple.com/place?auid=6373348323200228206",
-      "guideSlugs": [
-        "downtown-la",
-        "la-mexican"
-      ],
-      "muid": "6373348323200228206",
-      "hoursLabel": "",
-      "blurb": "At 707 S Grand Ave, Le Grand Restaurant serves Mexican, Downtown.",
-      "orderThis": [],
-      "ids": {
-        "yelp": "W-znmhcbAFwoDtqLCmc9JA"
-      },
-      "copySource": "draft",
-      "updatedAt": "2026-10-20",
-      "photos": [
-        {
-          "source": "illustration",
-          "isIllustration": true,
-          "alt": "Illustration suggesting Mexican at Le Grand Restaurant",
-          "credit": "Illustration"
-        }
-      ],
-      "price": 2,
-      "phone": "+1 (213) 432-7674",
-      "website": "https://www.facebook.com/Le-Grand-388542398637350/",
-      "publicRating": {
-        "value": 4.0,
-        "count": 2066,
-        "source": "Yelp"
-      },
-      "yelpSlug": "W-znmhcbAFwoDtqLCmc9JA"
     },
     {
       "id": "poppy-rose",
@@ -3308,7 +3179,7 @@
       "phone": "+1 (310) 278-2050",
       "website": "https://boasteak.com/locations/westhollywood",
       "publicRating": {
-        "value": 4.0,
+        "value": 4,
         "count": 2649,
         "source": "Yelp"
       },
@@ -3380,7 +3251,7 @@
         "Italian"
       ],
       "placeType": "restaurant",
-      "oneLiner": "Il Pastaio serves Italian at 400 N Canon Dr, Beverly Hills.",
+      "oneLiner": "",
       "perfectFor": [],
       "periods": [
         {
@@ -3418,7 +3289,7 @@
       ],
       "muid": "14836097158112391120",
       "hoursLabel": "",
-      "blurb": "Il Pastaio serves Italian at 400 N Canon Dr, Beverly Hills.",
+      "blurb": "",
       "orderThis": [],
       "ids": {},
       "copySource": "draft",
@@ -3446,7 +3317,7 @@
         "Steak"
       ],
       "placeType": "restaurant",
-      "oneLiner": "Hollywood: Gwen serves Steak at 6600 Sunset Blvd.",
+      "oneLiner": "",
       "perfectFor": [],
       "periods": [
         {
@@ -3482,7 +3353,7 @@
       ],
       "muid": "17360734586213288599",
       "hoursLabel": "",
-      "blurb": "Hollywood: Gwen serves Steak at 6600 Sunset Blvd.",
+      "blurb": "",
       "orderThis": [],
       "ids": {},
       "copySource": "draft",
@@ -3512,7 +3383,7 @@
         "New American"
       ],
       "placeType": "restaurant",
-      "oneLiner": "Ardor serves New American at 9040 W Sunset Blvd, West Hollywood.",
+      "oneLiner": "",
       "perfectFor": [],
       "periods": [
         {
@@ -3542,7 +3413,7 @@
       ],
       "muid": "799252348062235531",
       "hoursLabel": "",
-      "blurb": "Ardor serves New American at 9040 W Sunset Blvd, West Hollywood.",
+      "blurb": "",
       "orderThis": [],
       "ids": {},
       "copySource": "draft",
@@ -3572,7 +3443,7 @@
         "Seafood"
       ],
       "placeType": "restaurant",
-      "oneLiner": "At 9 Dudley Ave, Dudley Market serves Seafood, Venice.",
+      "oneLiner": "",
       "perfectFor": [],
       "periods": [
         {
@@ -3601,7 +3472,7 @@
       ],
       "muid": "10746832749576658709",
       "hoursLabel": "",
-      "blurb": "At 9 Dudley Ave, Dudley Market serves Seafood, Venice.",
+      "blurb": "",
       "orderThis": [],
       "ids": {},
       "copySource": "draft",
@@ -3756,7 +3627,7 @@
         "Gelato"
       ],
       "placeType": "dessert",
-      "oneLiner": "At 10250 Santa Monica Blvd, Bacio di Latte serves Gelato, Century City.",
+      "oneLiner": "",
       "perfectFor": [],
       "periods": [
         {
@@ -3781,7 +3652,7 @@
       ],
       "muid": "10823268603273805561",
       "hoursLabel": "",
-      "blurb": "At 10250 Santa Monica Blvd, Bacio di Latte serves Gelato, Century City.",
+      "blurb": "",
       "orderThis": [],
       "ids": {},
       "copySource": "draft",
@@ -3879,7 +3750,7 @@
         "Cafe"
       ],
       "placeType": "cafe",
-      "oneLiner": "Gjusta serves Cafe at 320 Sunset Ave, Venice.",
+      "oneLiner": "",
       "perfectFor": [],
       "periods": [
         {
@@ -3904,7 +3775,7 @@
       ],
       "muid": "9169121213809894396",
       "hoursLabel": "",
-      "blurb": "Gjusta serves Cafe at 320 Sunset Ave, Venice.",
+      "blurb": "",
       "orderThis": [],
       "ids": {},
       "copySource": "draft",
@@ -3932,7 +3803,7 @@
         "Seafood"
       ],
       "placeType": "restaurant",
-      "oneLiner": "Beverly Hills: Ocean Prime serves Seafood at 9595 Wilshire Blvd.",
+      "oneLiner": "",
       "perfectFor": [],
       "periods": [
         {
@@ -3976,7 +3847,7 @@
       ],
       "muid": "14329005120270941135",
       "hoursLabel": "",
-      "blurb": "Beverly Hills: Ocean Prime serves Seafood at 9595 Wilshire Blvd.",
+      "blurb": "",
       "orderThis": [],
       "ids": {},
       "copySource": "draft",
@@ -4076,7 +3947,7 @@
         "New American"
       ],
       "placeType": "restaurant",
-      "oneLiner": "At 3599 Hayden Ave, Vespertine serves New American, Culver City.",
+      "oneLiner": "",
       "perfectFor": [],
       "periods": [
         {
@@ -4099,7 +3970,7 @@
       ],
       "muid": "12697609669732689390",
       "hoursLabel": "",
-      "blurb": "At 3599 Hayden Ave, Vespertine serves New American, Culver City.",
+      "blurb": "",
       "orderThis": [],
       "ids": {},
       "copySource": "draft",
@@ -4456,7 +4327,7 @@
         "Bar"
       ],
       "placeType": "bar",
-      "oneLiner": "Santa Monica: The Bungalow serves Bar at 101 Wilshire Blvd.",
+      "oneLiner": "",
       "perfectFor": [],
       "periods": [
         {
@@ -4486,7 +4357,7 @@
       ],
       "muid": "14632014226627398732",
       "hoursLabel": "",
-      "blurb": "Santa Monica: The Bungalow serves Bar at 101 Wilshire Blvd.",
+      "blurb": "",
       "orderThis": [],
       "ids": {},
       "copySource": "draft",
@@ -4581,7 +4452,7 @@
         "Hot dogs"
       ],
       "placeType": "restaurant",
-      "oneLiner": "At 709 N La Brea Ave, Pink's Hot Dogs serves Hot dogs, Hollywood.",
+      "oneLiner": "",
       "perfectFor": [],
       "periods": [
         {
@@ -4625,7 +4496,7 @@
       ],
       "muid": "10421890852224123321",
       "hoursLabel": "",
-      "blurb": "At 709 N La Brea Ave, Pink's Hot Dogs serves Hot dogs, Hollywood.",
+      "blurb": "",
       "orderThis": [],
       "ids": {},
       "copySource": "draft",
@@ -4853,7 +4724,7 @@
         "Mexican"
       ],
       "placeType": "restaurant",
-      "oneLiner": "At 10250 Santa Monica Blvd, Javier's serves Mexican, Century City.",
+      "oneLiner": "",
       "perfectFor": [],
       "periods": [
         {
@@ -4884,7 +4755,7 @@
       ],
       "muid": "12125344309633564653",
       "hoursLabel": "",
-      "blurb": "At 10250 Santa Monica Blvd, Javier's serves Mexican, Century City.",
+      "blurb": "",
       "orderThis": [],
       "ids": {},
       "copySource": "draft",
@@ -4913,7 +4784,7 @@
         "Italian"
       ],
       "placeType": "restaurant",
-      "oneLiner": "Jon & Vinny's serves Italian at 412 N Fairfax Ave, Fairfax.",
+      "oneLiner": "",
       "perfectFor": [],
       "periods": [
         {
@@ -4938,7 +4809,7 @@
       ],
       "muid": "11412134156890109169",
       "hoursLabel": "",
-      "blurb": "Jon & Vinny's serves Italian at 412 N Fairfax Ave, Fairfax.",
+      "blurb": "",
       "orderThis": [],
       "ids": {},
       "copySource": "draft",
@@ -4953,44 +4824,6 @@
       ],
       "phone": "+1 (323) 334-3369",
       "website": "https://www.jonandvinnys.com/"
-    },
-    {
-      "id": "marmalade-cafe",
-      "city": "la",
-      "name": "Marmalade Cafe",
-      "neighborhood": "Calabasas",
-      "address": "4783 Commons Way, Unit E, Calabasas, CA 91302",
-      "lat": 34.1531568,
-      "lng": -118.6462549,
-      "cuisine": [
-        "New American"
-      ],
-      "placeType": "restaurant",
-      "oneLiner": "Marmalade Cafe sits at 4783 Commons Way. New American, Calabasas.",
-      "perfectFor": [],
-      "periods": [],
-      "gustoScore": null,
-      "appleMapsUrl": "https://maps.apple.com/?daddr=34.1531568,-118.6462549&q=Marmalade%20Cafe",
-      "applePlaceUrl": "https://maps.apple.com/place?auid=2035593264181625167",
-      "guideSlugs": [],
-      "muid": "2035593264181625167",
-      "hoursLabel": "",
-      "blurb": "Marmalade Cafe sits at 4783 Commons Way. New American, Calabasas.",
-      "orderThis": [],
-      "ids": {},
-      "copySource": "draft",
-      "updatedAt": "2026-10-20",
-      "photos": [
-        {
-          "source": "illustration",
-          "isIllustration": true,
-          "alt": "Illustration suggesting New American at Marmalade Cafe",
-          "credit": "Illustration"
-        }
-      ],
-      "phone": "+1 (818) 225-9092",
-      "website": "https://marmaladecafe.com",
-      "_n": 1
     },
     {
       "id": "for-the-win",
@@ -5057,7 +4890,7 @@
         "Mexican"
       ],
       "placeType": "restaurant",
-      "oneLiner": "At 12900 Venice Blvd, Saby's Cafe serves Mexican, Mar Vista.",
+      "oneLiner": "",
       "perfectFor": [],
       "periods": [
         {
@@ -5082,7 +4915,7 @@
       ],
       "muid": "11123673120530541346",
       "hoursLabel": "",
-      "blurb": "At 12900 Venice Blvd, Saby's Cafe serves Mexican, Mar Vista.",
+      "blurb": "",
       "orderThis": [],
       "ids": {},
       "copySource": "draft",
@@ -5354,7 +5187,7 @@
         "Market"
       ],
       "placeType": "market",
-      "oneLiner": "Grand Central Market serves Market at 317 S Broadway, Downtown.",
+      "oneLiner": "",
       "perfectFor": [],
       "periods": [
         {
@@ -5379,7 +5212,7 @@
       ],
       "muid": "2143180312017747974",
       "hoursLabel": "",
-      "blurb": "Grand Central Market serves Market at 317 S Broadway, Downtown.",
+      "blurb": "",
       "orderThis": [],
       "ids": {},
       "copySource": "draft",
@@ -5409,7 +5242,7 @@
         "Ramen"
       ],
       "placeType": "restaurant",
-      "oneLiner": "Sawtelle: Tatsu Ramen serves Ramen at 2123 Sawtelle Blvd.",
+      "oneLiner": "",
       "perfectFor": [],
       "periods": [
         {
@@ -5447,7 +5280,7 @@
       ],
       "muid": "17294586949182478539",
       "hoursLabel": "",
-      "blurb": "Sawtelle: Tatsu Ramen serves Ramen at 2123 Sawtelle Blvd.",
+      "blurb": "",
       "orderThis": [],
       "ids": {},
       "copySource": "draft",
@@ -5535,7 +5368,7 @@
         "French"
       ],
       "placeType": "restaurant",
-      "oneLiner": "At 2732 Main St, Pasjoli serves French, Santa Monica.",
+      "oneLiner": "",
       "perfectFor": [],
       "periods": [
         {
@@ -5566,7 +5399,7 @@
       ],
       "muid": "6199525490235425231",
       "hoursLabel": "",
-      "blurb": "At 2732 Main St, Pasjoli serves French, Santa Monica.",
+      "blurb": "",
       "orderThis": [],
       "ids": {},
       "copySource": "draft",
@@ -5845,7 +5678,7 @@
         "Sushi"
       ],
       "placeType": "restaurant",
-      "oneLiner": "Matsuhisa serves Sushi at 129 N La Cienega Blvd, Beverly Hills.",
+      "oneLiner": "",
       "perfectFor": [],
       "periods": [
         {
@@ -5877,7 +5710,7 @@
       ],
       "muid": "16936081344767703960",
       "hoursLabel": "",
-      "blurb": "Matsuhisa serves Sushi at 129 N La Cienega Blvd, Beverly Hills.",
+      "blurb": "",
       "orderThis": [],
       "ids": {},
       "copySource": "draft",
@@ -5905,7 +5738,7 @@
         "Seafood"
       ],
       "placeType": "restaurant",
-      "oneLiner": "Hollywood: Providence serves Seafood at 5955 Melrose Ave.",
+      "oneLiner": "",
       "perfectFor": [],
       "periods": [
         {
@@ -5935,7 +5768,7 @@
       ],
       "muid": "8562327284573157580",
       "hoursLabel": "",
-      "blurb": "Hollywood: Providence serves Seafood at 5955 Melrose Ave.",
+      "blurb": "",
       "orderThis": [],
       "ids": {},
       "copySource": "draft",
@@ -6016,7 +5849,7 @@
         "European"
       ],
       "placeType": "restaurant",
-      "oneLiner": "At 225 N Canon Dr, The Terrace serves European, Beverly Hills.",
+      "oneLiner": "",
       "perfectFor": [],
       "periods": [
         {
@@ -6047,7 +5880,7 @@
       ],
       "muid": "2656200861479243320",
       "hoursLabel": "",
-      "blurb": "At 225 N Canon Dr, The Terrace serves European, Beverly Hills.",
+      "blurb": "",
       "orderThis": [],
       "ids": {},
       "copySource": "draft",
@@ -6414,7 +6247,7 @@
         "Steak"
       ],
       "placeType": "restaurant",
-      "oneLiner": "West Hollywood: Saddle Ranch Chop House serves Steak at 8371 Sunset Blvd.",
+      "oneLiner": "",
       "perfectFor": [],
       "periods": [
         {
@@ -6458,7 +6291,7 @@
       ],
       "muid": "5766827653271295867",
       "hoursLabel": "",
-      "blurb": "West Hollywood: Saddle Ranch Chop House serves Steak at 8371 Sunset Blvd.",
+      "blurb": "",
       "orderThis": [],
       "ids": {},
       "copySource": "draft",
@@ -6554,7 +6387,7 @@
         "Mediterranean"
       ],
       "placeType": "restaurant",
-      "oneLiner": "At 1318 Second St, CAVA serves Mediterranean, Santa Monica.",
+      "oneLiner": "",
       "perfectFor": [],
       "periods": [
         {
@@ -6579,7 +6412,7 @@
       ],
       "muid": "13168474895187276338",
       "hoursLabel": "",
-      "blurb": "At 1318 Second St, CAVA serves Mediterranean, Santa Monica.",
+      "blurb": "",
       "orderThis": [],
       "ids": {
         "yelp": "Vo-g-UzfeHG5aS4sZyF3rw"
@@ -6948,7 +6781,7 @@
         "Argentine"
       ],
       "placeType": "restaurant",
-      "oneLiner": "Downtown: Lala's Argentine Grill serves Argentine at 105 W 9th St.",
+      "oneLiner": "",
       "perfectFor": [],
       "periods": [
         {
@@ -6979,7 +6812,7 @@
       ],
       "muid": "5495495179773342483",
       "hoursLabel": "",
-      "blurb": "Downtown: Lala's Argentine Grill serves Argentine at 105 W 9th St.",
+      "blurb": "",
       "orderThis": [],
       "ids": {
         "yelp": "2AGiIf_qute8Yjyz-le5rQ"
@@ -7090,7 +6923,7 @@
         "Diner"
       ],
       "placeType": "restaurant",
-      "oneLiner": "At 7001 Santa Monica Blvd, Tesla Diner serves Diner, Hollywood.",
+      "oneLiner": "",
       "perfectFor": [],
       "periods": [
         {
@@ -7115,7 +6948,7 @@
       ],
       "muid": "601598107099309397",
       "hoursLabel": "",
-      "blurb": "At 7001 Santa Monica Blvd, Tesla Diner serves Diner, Hollywood.",
+      "blurb": "",
       "orderThis": [],
       "ids": {},
       "copySource": "draft",
@@ -7307,45 +7140,6 @@
       "website": "http://www.felixla.com"
     },
     {
-      "id": "208-rodeo-restaurant",
-      "city": "la",
-      "name": "208 Rodeo Restaurant",
-      "neighborhood": "Beverly Hills",
-      "address": "208 N Rodeo Drive, Beverly Hills, CA 90210",
-      "lat": 34.0673651,
-      "lng": -118.4007794,
-      "cuisine": [
-        "American"
-      ],
-      "placeType": "restaurant",
-      "oneLiner": "American from 208 Rodeo Restaurant at 208 N Rodeo Drive, Beverly Hills.",
-      "perfectFor": [],
-      "periods": [],
-      "gustoScore": null,
-      "appleMapsUrl": "https://maps.apple.com/?daddr=34.0673651,-118.4007794&q=208%20Rodeo%20Restaurant",
-      "applePlaceUrl": "https://maps.apple.com/place?auid=15890614102621868348",
-      "guideSlugs": [
-        "beverly-hills"
-      ],
-      "muid": "15890614102621868348",
-      "hoursLabel": "",
-      "blurb": "American from 208 Rodeo Restaurant at 208 N Rodeo Drive, Beverly Hills.",
-      "orderThis": [],
-      "ids": {},
-      "copySource": "draft",
-      "updatedAt": "2026-10-20",
-      "photos": [
-        {
-          "source": "illustration",
-          "isIllustration": true,
-          "alt": "Illustration suggesting American at 208 Rodeo Restaurant",
-          "credit": "Illustration"
-        }
-      ],
-      "phone": "+1 (310) 275-2428",
-      "website": "https://www.facebook.com/208rodeo/"
-    },
-    {
       "id": "in-n-out-burger",
       "city": "la",
       "name": "In-N-Out Burger",
@@ -7357,7 +7151,7 @@
         "Burgers"
       ],
       "placeType": "restaurant",
-      "oneLiner": "In-N-Out Burger serves Burgers at 9149 S Sepulveda Blvd, Westchester.",
+      "oneLiner": "",
       "perfectFor": [],
       "periods": [
         {
@@ -7399,7 +7193,7 @@
       "guideSlugs": [],
       "muid": "17538321074774721827",
       "hoursLabel": "",
-      "blurb": "In-N-Out Burger serves Burgers at 9149 S Sepulveda Blvd, Westchester.",
+      "blurb": "",
       "orderThis": [],
       "ids": {},
       "copySource": "draft",
@@ -7427,7 +7221,7 @@
         "Bakery"
       ],
       "placeType": "bakery",
-      "oneLiner": "Venice: Levain Bakery serves Bakery at 1661 Abbot Kinney Blvd.",
+      "oneLiner": "",
       "perfectFor": [],
       "periods": [
         {
@@ -7453,7 +7247,7 @@
       ],
       "muid": "17622490193033595065",
       "hoursLabel": "",
-      "blurb": "Venice: Levain Bakery serves Bakery at 1661 Abbot Kinney Blvd.",
+      "blurb": "",
       "orderThis": [],
       "ids": {
         "yelp": "VA24h4dewR5qWMXAZKm0Pg"
@@ -7542,7 +7336,7 @@
         "Wine"
       ],
       "placeType": "bar",
-      "oneLiner": "At 8700 W 3rd St, A.O.C serves Wine, West Hollywood.",
+      "oneLiner": "",
       "perfectFor": [],
       "periods": [
         {
@@ -7587,7 +7381,7 @@
       ],
       "muid": "14608567967945747274",
       "hoursLabel": "",
-      "blurb": "At 8700 W 3rd St, A.O.C serves Wine, West Hollywood.",
+      "blurb": "",
       "orderThis": [],
       "ids": {},
       "copySource": "draft",
@@ -7676,7 +7470,7 @@
         "Italian"
       ],
       "placeType": "restaurant",
-      "oneLiner": "Barrique serves Italian at 796 Main St in Venice.",
+      "oneLiner": "",
       "perfectFor": [],
       "periods": [
         {
@@ -7715,7 +7509,7 @@
       ],
       "muid": "256088094907533205",
       "hoursLabel": "",
-      "blurb": "Barrique serves Italian at 796 Main St in Venice.",
+      "blurb": "",
       "orderThis": [],
       "ids": {},
       "copySource": "draft",
@@ -7818,7 +7612,7 @@
         "French"
       ],
       "placeType": "restaurant",
-      "oneLiner": "At 10250 Santa Monica Blvd, Zinqué serves French, Century City.",
+      "oneLiner": "",
       "perfectFor": [],
       "periods": [
         {
@@ -7847,7 +7641,7 @@
       "guideSlugs": [],
       "muid": "7112846582606772100",
       "hoursLabel": "",
-      "blurb": "At 10250 Santa Monica Blvd, Zinqué serves French, Century City.",
+      "blurb": "",
       "orderThis": [],
       "ids": {
         "yelp": "i_9THQDG6yrWaJA_JAcyEg"
@@ -7885,7 +7679,7 @@
         "Sandwiches"
       ],
       "placeType": "deli",
-      "oneLiner": "Philippe The Original serves Sandwiches at 1001 N Alameda St, Downtown.",
+      "oneLiner": "",
       "perfectFor": [],
       "periods": [
         {
@@ -7910,7 +7704,7 @@
       ],
       "muid": "13915039241500418185",
       "hoursLabel": "",
-      "blurb": "Philippe The Original serves Sandwiches at 1001 N Alameda St, Downtown.",
+      "blurb": "",
       "orderThis": [],
       "ids": {},
       "copySource": "draft",
@@ -7938,7 +7732,7 @@
         "Pizza"
       ],
       "placeType": "restaurant",
-      "oneLiner": "Hollywood: L’antica Pizzeria da Michele serves Pizza at 1534 N McCadden Pl.",
+      "oneLiner": "",
       "perfectFor": [],
       "periods": [
         {
@@ -7976,7 +7770,7 @@
       ],
       "muid": "13200986640520312659",
       "hoursLabel": "",
-      "blurb": "Hollywood: L’antica Pizzeria da Michele serves Pizza at 1534 N McCadden Pl.",
+      "blurb": "",
       "orderThis": [],
       "ids": {},
       "copySource": "draft",
@@ -8064,7 +7858,7 @@
         "Cocktails"
       ],
       "placeType": "bar",
-      "oneLiner": "At 4427 W Sunset Blvd, Tiki-Ti serves Cocktails, East Hollywood.",
+      "oneLiner": "",
       "perfectFor": [],
       "periods": [
         {
@@ -8084,7 +7878,7 @@
       "guideSlugs": [],
       "muid": "7543398827279997618",
       "hoursLabel": "",
-      "blurb": "At 4427 W Sunset Blvd, Tiki-Ti serves Cocktails, East Hollywood.",
+      "blurb": "",
       "orderThis": [],
       "ids": {},
       "copySource": "draft",
@@ -8343,7 +8137,7 @@
         "Italian"
       ],
       "placeType": "restaurant",
-      "oneLiner": "Élephante serves Italian at 1332 2nd Street, Santa Monica.",
+      "oneLiner": "",
       "perfectFor": [],
       "periods": [
         {
@@ -8383,7 +8177,7 @@
       ],
       "muid": "18377350448936773189",
       "hoursLabel": "",
-      "blurb": "Élephante serves Italian at 1332 2nd Street, Santa Monica.",
+      "blurb": "",
       "orderThis": [],
       "ids": {},
       "copySource": "draft",
@@ -8411,7 +8205,7 @@
         "American"
       ],
       "placeType": "restaurant",
-      "oneLiner": "Glassell Park: Dunsmoor serves American at 3501 Eagle Rock Blvd.",
+      "oneLiner": "",
       "perfectFor": [],
       "periods": [
         {
@@ -8440,7 +8234,7 @@
       "guideSlugs": [],
       "muid": "11007361803630537660",
       "hoursLabel": "",
-      "blurb": "Glassell Park: Dunsmoor serves American at 3501 Eagle Rock Blvd.",
+      "blurb": "",
       "orderThis": [],
       "ids": {},
       "copySource": "draft",
@@ -8521,7 +8315,7 @@
     {
       "slug": "santa-monica",
       "title": "Santa Monica",
-      "dek": "Tar & Roses at 602 Santa Monica Blvd, and 23 more Santa Monica stops.",
+      "dek": "Tar & Roses at 602 Santa Monica Blvd, and 22 more Santa Monica stops.",
       "group": "Neighborhoods",
       "intro": "Tar & Roses is at 602 Santa Monica Blvd. Paderia Bakehouse is at 3032 Wilshire Blvd.",
       "updatedAt": "2026-10-20",
@@ -8532,12 +8326,6 @@
           "placeId": "tar-roses",
           "pullQuote": "Californian from Tar & Roses at 602 Santa Monica Blvd, Santa Monica.",
           "blurb": "Californian from Tar & Roses at 602 Santa Monica Blvd, Santa Monica.",
-          "copySource": "draft"
-        },
-        {
-          "placeId": "paderia-bakehouse",
-          "pullQuote": "Paderia Bakehouse serves Bakery at 3032 Wilshire Blvd, Santa Monica.",
-          "blurb": "Paderia Bakehouse serves Bakery at 3032 Wilshire Blvd, Santa Monica.",
           "copySource": "draft"
         },
         {
@@ -8572,8 +8360,8 @@
         },
         {
           "placeId": "heavy-handed",
-          "pullQuote": "Santa Monica: Heavy Handed serves Burgers at 2912 Main St.",
-          "blurb": "Santa Monica: Heavy Handed serves Burgers at 2912 Main St.",
+          "pullQuote": "",
+          "blurb": "",
           "copySource": "draft"
         },
         {
@@ -8602,8 +8390,8 @@
         },
         {
           "placeId": "the-bungalow",
-          "pullQuote": "Santa Monica: The Bungalow serves Bar at 101 Wilshire Blvd.",
-          "blurb": "Santa Monica: The Bungalow serves Bar at 101 Wilshire Blvd.",
+          "pullQuote": "",
+          "blurb": "",
           "copySource": "draft"
         },
         {
@@ -8620,8 +8408,8 @@
         },
         {
           "placeId": "pasjoli",
-          "pullQuote": "At 2732 Main St, Pasjoli serves French, Santa Monica.",
-          "blurb": "At 2732 Main St, Pasjoli serves French, Santa Monica.",
+          "pullQuote": "",
+          "blurb": "",
           "copySource": "draft"
         },
         {
@@ -8644,8 +8432,8 @@
         },
         {
           "placeId": "cava",
-          "pullQuote": "At 1318 Second St, CAVA serves Mediterranean, Santa Monica.",
-          "blurb": "At 1318 Second St, CAVA serves Mediterranean, Santa Monica.",
+          "pullQuote": "",
+          "blurb": "",
           "copySource": "draft"
         },
         {
@@ -8668,8 +8456,8 @@
         },
         {
           "placeId": "elephante",
-          "pullQuote": "Élephante serves Italian at 1332 2nd Street, Santa Monica.",
-          "blurb": "Élephante serves Italian at 1332 2nd Street, Santa Monica.",
+          "pullQuote": "",
+          "blurb": "",
           "copySource": "draft"
         }
       ]
@@ -8677,7 +8465,7 @@
     {
       "slug": "west-hollywood",
       "title": "West Hollywood",
-      "dek": "Katana at 8439 W Sunset Blvd, and 18 more West Hollywood stops.",
+      "dek": "Katana at 8439 W Sunset Blvd, and 17 more West Hollywood stops.",
       "group": "Neighborhoods",
       "intro": "Katana is at 8439 W Sunset Blvd. Pizzana is at 460 N Robertson Blvd.",
       "updatedAt": "2026-10-20",
@@ -8698,8 +8486,8 @@
         },
         {
           "placeId": "the-butcher-the-baker-the-cappuccino-maker",
-          "pullQuote": "West Hollywood: The Butcher, The Baker, The Cappuccino Maker serves Californian at 8653 W Sunset Blvd.",
-          "blurb": "West Hollywood: The Butcher, The Baker, The Cappuccino Maker serves Californian at 8653 W Sunset Blvd.",
+          "pullQuote": "",
+          "blurb": "",
           "copySource": "draft"
         },
         {
@@ -8715,12 +8503,6 @@
           "copySource": "draft"
         },
         {
-          "placeId": "merois",
-          "pullQuote": "Merois serves New American at 8430 Sunset Blvd, West Hollywood.",
-          "blurb": "Merois serves New American at 8430 Sunset Blvd, West Hollywood.",
-          "copySource": "draft"
-        },
-        {
           "placeId": "boa-steakhouse",
           "pullQuote": "BOA Steakhouse sits at 9200 Sunset Blvd. Steak, West Hollywood.",
           "blurb": "BOA Steakhouse sits at 9200 Sunset Blvd. Steak, West Hollywood.",
@@ -8728,8 +8510,8 @@
         },
         {
           "placeId": "ardor",
-          "pullQuote": "Ardor serves New American at 9040 W Sunset Blvd, West Hollywood.",
-          "blurb": "Ardor serves New American at 9040 W Sunset Blvd, West Hollywood.",
+          "pullQuote": "",
+          "blurb": "",
           "copySource": "draft"
         },
         {
@@ -8770,8 +8552,8 @@
         },
         {
           "placeId": "saddle-ranch-chop-house",
-          "pullQuote": "West Hollywood: Saddle Ranch Chop House serves Steak at 8371 Sunset Blvd.",
-          "blurb": "West Hollywood: Saddle Ranch Chop House serves Steak at 8371 Sunset Blvd.",
+          "pullQuote": "",
+          "blurb": "",
           "copySource": "draft"
         },
         {
@@ -8788,8 +8570,8 @@
         },
         {
           "placeId": "a-o-c",
-          "pullQuote": "At 8700 W 3rd St, A.O.C serves Wine, West Hollywood.",
-          "blurb": "At 8700 W 3rd St, A.O.C serves Wine, West Hollywood.",
+          "pullQuote": "",
+          "blurb": "",
           "copySource": "draft"
         },
         {
@@ -8803,7 +8585,7 @@
     {
       "slug": "beverly-hills",
       "title": "Beverly Hills",
-      "dek": "Parakeet Cafe at 206 S Beverly Dr, and 14 more Beverly Hills stops.",
+      "dek": "Parakeet Cafe at 206 S Beverly Dr, and 13 more Beverly Hills stops.",
       "group": "Neighborhoods",
       "intro": "Parakeet Cafe is at 206 S Beverly Dr. Urth Caffé is at 267 S Beverly Dr.",
       "updatedAt": "2026-10-20",
@@ -8812,8 +8594,8 @@
       "entries": [
         {
           "placeId": "parakeet-cafe",
-          "pullQuote": "At 206 S Beverly Dr, Parakeet Cafe serves Health food, Beverly Hills.",
-          "blurb": "At 206 S Beverly Dr, Parakeet Cafe serves Health food, Beverly Hills.",
+          "pullQuote": "",
+          "blurb": "",
           "copySource": "draft"
         },
         {
@@ -8842,14 +8624,14 @@
         },
         {
           "placeId": "il-pastaio",
-          "pullQuote": "Il Pastaio serves Italian at 400 N Canon Dr, Beverly Hills.",
-          "blurb": "Il Pastaio serves Italian at 400 N Canon Dr, Beverly Hills.",
+          "pullQuote": "",
+          "blurb": "",
           "copySource": "draft"
         },
         {
           "placeId": "ocean-prime",
-          "pullQuote": "Beverly Hills: Ocean Prime serves Seafood at 9595 Wilshire Blvd.",
-          "blurb": "Beverly Hills: Ocean Prime serves Seafood at 9595 Wilshire Blvd.",
+          "pullQuote": "",
+          "blurb": "",
           "copySource": "draft"
         },
         {
@@ -8860,14 +8642,14 @@
         },
         {
           "placeId": "matsuhisa",
-          "pullQuote": "Matsuhisa serves Sushi at 129 N La Cienega Blvd, Beverly Hills.",
-          "blurb": "Matsuhisa serves Sushi at 129 N La Cienega Blvd, Beverly Hills.",
+          "pullQuote": "",
+          "blurb": "",
           "copySource": "draft"
         },
         {
           "placeId": "the-terrace",
-          "pullQuote": "At 225 N Canon Dr, The Terrace serves European, Beverly Hills.",
-          "blurb": "At 225 N Canon Dr, The Terrace serves European, Beverly Hills.",
+          "pullQuote": "",
+          "blurb": "",
           "copySource": "draft"
         },
         {
@@ -8880,12 +8662,6 @@
           "placeId": "polo-lounge",
           "pullQuote": "9641 W Sunset Blvd — Polo Lounge, New American, Beverly Hills.",
           "blurb": "9641 W Sunset Blvd — Polo Lounge, New American, Beverly Hills.",
-          "copySource": "draft"
-        },
-        {
-          "placeId": "208-rodeo-restaurant",
-          "pullQuote": "American from 208 Rodeo Restaurant at 208 N Rodeo Drive, Beverly Hills.",
-          "blurb": "American from 208 Rodeo Restaurant at 208 N Rodeo Drive, Beverly Hills.",
           "copySource": "draft"
         },
         {
@@ -8905,7 +8681,7 @@
     {
       "slug": "downtown-la",
       "title": "Downtown",
-      "dek": "Bestia at 2121 E 7th Pl, and 14 more Downtown stops.",
+      "dek": "Bestia at 2121 E 7th Pl, and 13 more Downtown stops.",
       "group": "Neighborhoods",
       "intro": "Bestia is at 2121 E 7th Pl. Girl & the Goat is at 555-3 Mateo St.",
       "updatedAt": "2026-10-20",
@@ -8914,8 +8690,8 @@
       "entries": [
         {
           "placeId": "bestia",
-          "pullQuote": "At 2121 E 7th Pl, Bestia serves Italian, Downtown.",
-          "blurb": "At 2121 E 7th Pl, Bestia serves Italian, Downtown.",
+          "pullQuote": "",
+          "blurb": "",
           "copySource": "draft"
         },
         {
@@ -8932,26 +8708,20 @@
         },
         {
           "placeId": "bavel",
-          "pullQuote": "Downtown: Bavel serves Middle Eastern at 500 Mateo St.",
-          "blurb": "Downtown: Bavel serves Middle Eastern at 500 Mateo St.",
+          "pullQuote": "",
+          "blurb": "",
           "copySource": "draft"
         },
         {
           "placeId": "howlin-rays",
-          "pullQuote": "At 727 N Broadway, Howlin' Ray's serves Chicken, Downtown.",
-          "blurb": "At 727 N Broadway, Howlin' Ray's serves Chicken, Downtown.",
+          "pullQuote": "",
+          "blurb": "",
           "copySource": "draft"
         },
         {
           "placeId": "joey-dtla",
           "pullQuote": "JOEY DTLA sits at 700 W 7th. New American, Downtown.",
           "blurb": "JOEY DTLA sits at 700 W 7th. New American, Downtown.",
-          "copySource": "draft"
-        },
-        {
-          "placeId": "le-grand-restaurant",
-          "pullQuote": "At 707 S Grand Ave, Le Grand Restaurant serves Mexican, Downtown.",
-          "blurb": "At 707 S Grand Ave, Le Grand Restaurant serves Mexican, Downtown.",
           "copySource": "draft"
         },
         {
@@ -8974,14 +8744,14 @@
         },
         {
           "placeId": "grand-central-market",
-          "pullQuote": "Grand Central Market serves Market at 317 S Broadway, Downtown.",
-          "blurb": "Grand Central Market serves Market at 317 S Broadway, Downtown.",
+          "pullQuote": "",
+          "blurb": "",
           "copySource": "draft"
         },
         {
           "placeId": "lalas-argentine-grill",
-          "pullQuote": "Downtown: Lala's Argentine Grill serves Argentine at 105 W 9th St.",
-          "blurb": "Downtown: Lala's Argentine Grill serves Argentine at 105 W 9th St.",
+          "pullQuote": "",
+          "blurb": "",
           "copySource": "draft"
         },
         {
@@ -8992,8 +8762,8 @@
         },
         {
           "placeId": "philippe-the-original",
-          "pullQuote": "Philippe The Original serves Sandwiches at 1001 N Alameda St, Downtown.",
-          "blurb": "Philippe The Original serves Sandwiches at 1001 N Alameda St, Downtown.",
+          "pullQuote": "",
+          "blurb": "",
           "copySource": "draft"
         },
         {
@@ -9016,8 +8786,8 @@
       "entries": [
         {
           "placeId": "allantico-vinaio",
-          "pullQuote": "Venice: All'Antico Vinaio serves Sandwiches at 1121 Abbot Kinney Blvd.",
-          "blurb": "Venice: All'Antico Vinaio serves Sandwiches at 1121 Abbot Kinney Blvd.",
+          "pullQuote": "",
+          "blurb": "",
           "copySource": "draft"
         },
         {
@@ -9028,8 +8798,8 @@
         },
         {
           "placeId": "scopa-italian-roots",
-          "pullQuote": "At 2905 Washington Blvd, Scopa Italian Roots serves Italian, Venice.",
-          "blurb": "At 2905 Washington Blvd, Scopa Italian Roots serves Italian, Venice.",
+          "pullQuote": "",
+          "blurb": "",
           "copySource": "draft"
         },
         {
@@ -9040,14 +8810,14 @@
         },
         {
           "placeId": "dudley-market",
-          "pullQuote": "At 9 Dudley Ave, Dudley Market serves Seafood, Venice.",
-          "blurb": "At 9 Dudley Ave, Dudley Market serves Seafood, Venice.",
+          "pullQuote": "",
+          "blurb": "",
           "copySource": "draft"
         },
         {
           "placeId": "gjusta",
-          "pullQuote": "Gjusta serves Cafe at 320 Sunset Ave, Venice.",
-          "blurb": "Gjusta serves Cafe at 320 Sunset Ave, Venice.",
+          "pullQuote": "",
+          "blurb": "",
           "copySource": "draft"
         },
         {
@@ -9064,14 +8834,14 @@
         },
         {
           "placeId": "levain-bakery",
-          "pullQuote": "Venice: Levain Bakery serves Bakery at 1661 Abbot Kinney Blvd.",
-          "blurb": "Venice: Levain Bakery serves Bakery at 1661 Abbot Kinney Blvd.",
+          "pullQuote": "",
+          "blurb": "",
           "copySource": "draft"
         },
         {
           "placeId": "barrique",
-          "pullQuote": "Barrique serves Italian at 796 Main St in Venice.",
-          "blurb": "Barrique serves Italian at 796 Main St in Venice.",
+          "pullQuote": "",
+          "blurb": "",
           "copySource": "draft"
         },
         {
@@ -9094,14 +8864,14 @@
       "entries": [
         {
           "placeId": "the-musso-frank-grill",
-          "pullQuote": "The Musso & Frank Grill serves American at 6667 Hollywood Blvd, Hollywood.",
-          "blurb": "The Musso & Frank Grill serves American at 6667 Hollywood Blvd, Hollywood.",
+          "pullQuote": "",
+          "blurb": "",
           "copySource": "draft"
         },
         {
           "placeId": "le-coupe",
-          "pullQuote": "At 709 N Western Ave, Le Coupe serves Chicken, Hollywood.",
-          "blurb": "At 709 N Western Ave, Le Coupe serves Chicken, Hollywood.",
+          "pullQuote": "",
+          "blurb": "",
           "copySource": "draft"
         },
         {
@@ -9112,14 +8882,14 @@
         },
         {
           "placeId": "gwen",
-          "pullQuote": "Hollywood: Gwen serves Steak at 6600 Sunset Blvd.",
-          "blurb": "Hollywood: Gwen serves Steak at 6600 Sunset Blvd.",
+          "pullQuote": "",
+          "blurb": "",
           "copySource": "draft"
         },
         {
           "placeId": "pinks-hot-dogs",
-          "pullQuote": "At 709 N La Brea Ave, Pink's Hot Dogs serves Hot dogs, Hollywood.",
-          "blurb": "At 709 N La Brea Ave, Pink's Hot Dogs serves Hot dogs, Hollywood.",
+          "pullQuote": "",
+          "blurb": "",
           "copySource": "draft"
         },
         {
@@ -9130,20 +8900,20 @@
         },
         {
           "placeId": "providence",
-          "pullQuote": "Hollywood: Providence serves Seafood at 5955 Melrose Ave.",
-          "blurb": "Hollywood: Providence serves Seafood at 5955 Melrose Ave.",
+          "pullQuote": "",
+          "blurb": "",
           "copySource": "draft"
         },
         {
           "placeId": "tesla-diner",
-          "pullQuote": "At 7001 Santa Monica Blvd, Tesla Diner serves Diner, Hollywood.",
-          "blurb": "At 7001 Santa Monica Blvd, Tesla Diner serves Diner, Hollywood.",
+          "pullQuote": "",
+          "blurb": "",
           "copySource": "draft"
         },
         {
           "placeId": "lantica-pizzeria-da-michele",
-          "pullQuote": "Hollywood: L’antica Pizzeria da Michele serves Pizza at 1534 N McCadden Pl.",
-          "blurb": "Hollywood: L’antica Pizzeria da Michele serves Pizza at 1534 N McCadden Pl.",
+          "pullQuote": "",
+          "blurb": "",
           "copySource": "draft"
         }
       ]
@@ -9214,8 +8984,8 @@
         },
         {
           "placeId": "magnolia-bakery",
-          "pullQuote": "Magnolia Bakery serves Bakery at 8389 W 3rd St, Beverly Grove.",
-          "blurb": "Magnolia Bakery serves Bakery at 8389 W 3rd St, Beverly Grove.",
+          "pullQuote": "",
+          "blurb": "",
           "copySource": "draft"
         },
         {
@@ -9256,8 +9026,8 @@
         },
         {
           "placeId": "n-naka",
-          "pullQuote": "N/Naka serves Japanese at 3455 Overland Ave in Palms.",
-          "blurb": "N/Naka serves Japanese at 3455 Overland Ave in Palms.",
+          "pullQuote": "",
+          "blurb": "",
           "copySource": "draft"
         },
         {
@@ -9292,14 +9062,14 @@
         },
         {
           "placeId": "tatsu-ramen",
-          "pullQuote": "Sawtelle: Tatsu Ramen serves Ramen at 2123 Sawtelle Blvd.",
-          "blurb": "Sawtelle: Tatsu Ramen serves Ramen at 2123 Sawtelle Blvd.",
+          "pullQuote": "",
+          "blurb": "",
           "copySource": "draft"
         },
         {
           "placeId": "matsuhisa",
-          "pullQuote": "Matsuhisa serves Sushi at 129 N La Cienega Blvd, Beverly Hills.",
-          "blurb": "Matsuhisa serves Sushi at 129 N La Cienega Blvd, Beverly Hills.",
+          "pullQuote": "",
+          "blurb": "",
           "copySource": "draft"
         }
       ]
@@ -9322,8 +9092,8 @@
         },
         {
           "placeId": "bestia",
-          "pullQuote": "At 2121 E 7th Pl, Bestia serves Italian, Downtown.",
-          "blurb": "At 2121 E 7th Pl, Bestia serves Italian, Downtown.",
+          "pullQuote": "",
+          "blurb": "",
           "copySource": "draft"
         },
         {
@@ -9340,8 +9110,8 @@
         },
         {
           "placeId": "scopa-italian-roots",
-          "pullQuote": "At 2905 Washington Blvd, Scopa Italian Roots serves Italian, Venice.",
-          "blurb": "At 2905 Washington Blvd, Scopa Italian Roots serves Italian, Venice.",
+          "pullQuote": "",
+          "blurb": "",
           "copySource": "draft"
         },
         {
@@ -9370,8 +9140,8 @@
         },
         {
           "placeId": "il-pastaio",
-          "pullQuote": "Il Pastaio serves Italian at 400 N Canon Dr, Beverly Hills.",
-          "blurb": "Il Pastaio serves Italian at 400 N Canon Dr, Beverly Hills.",
+          "pullQuote": "",
+          "blurb": "",
           "copySource": "draft"
         },
         {
@@ -9388,8 +9158,8 @@
         },
         {
           "placeId": "jon-vinnys",
-          "pullQuote": "Jon & Vinny's serves Italian at 412 N Fairfax Ave, Fairfax.",
-          "blurb": "Jon & Vinny's serves Italian at 412 N Fairfax Ave, Fairfax.",
+          "pullQuote": "",
+          "blurb": "",
           "copySource": "draft"
         },
         {
@@ -9424,20 +9194,20 @@
         },
         {
           "placeId": "barrique",
-          "pullQuote": "Barrique serves Italian at 796 Main St in Venice.",
-          "blurb": "Barrique serves Italian at 796 Main St in Venice.",
+          "pullQuote": "",
+          "blurb": "",
           "copySource": "draft"
         },
         {
           "placeId": "lantica-pizzeria-da-michele",
-          "pullQuote": "Hollywood: L’antica Pizzeria da Michele serves Pizza at 1534 N McCadden Pl.",
-          "blurb": "Hollywood: L’antica Pizzeria da Michele serves Pizza at 1534 N McCadden Pl.",
+          "pullQuote": "",
+          "blurb": "",
           "copySource": "draft"
         },
         {
           "placeId": "elephante",
-          "pullQuote": "Élephante serves Italian at 1332 2nd Street, Santa Monica.",
-          "blurb": "Élephante serves Italian at 1332 2nd Street, Santa Monica.",
+          "pullQuote": "",
+          "blurb": "",
           "copySource": "draft"
         }
       ]
@@ -9459,21 +9229,15 @@
           "copySource": "draft"
         },
         {
-          "placeId": "le-grand-restaurant",
-          "pullQuote": "At 707 S Grand Ave, Le Grand Restaurant serves Mexican, Downtown.",
-          "blurb": "At 707 S Grand Ave, Le Grand Restaurant serves Mexican, Downtown.",
-          "copySource": "draft"
-        },
-        {
           "placeId": "javiers",
-          "pullQuote": "At 10250 Santa Monica Blvd, Javier's serves Mexican, Century City.",
-          "blurb": "At 10250 Santa Monica Blvd, Javier's serves Mexican, Century City.",
+          "pullQuote": "",
+          "blurb": "",
           "copySource": "draft"
         },
         {
           "placeId": "sabys-cafe",
-          "pullQuote": "At 12900 Venice Blvd, Saby's Cafe serves Mexican, Mar Vista.",
-          "blurb": "At 12900 Venice Blvd, Saby's Cafe serves Mexican, Mar Vista.",
+          "pullQuote": "",
+          "blurb": "",
           "copySource": "draft"
         },
         {
@@ -9537,12 +9301,6 @@
           "copySource": "draft"
         },
         {
-          "placeId": "paderia-bakehouse",
-          "pullQuote": "Paderia Bakehouse serves Bakery at 3032 Wilshire Blvd, Santa Monica.",
-          "blurb": "Paderia Bakehouse serves Bakery at 3032 Wilshire Blvd, Santa Monica.",
-          "copySource": "draft"
-        },
-        {
           "placeId": "layla-bagels-coffee",
           "pullQuote": "1614 Ocean Park Blvd — Layla Bagels & Coffee, Bagels, Santa Monica.",
           "blurb": "1614 Ocean Park Blvd — Layla Bagels & Coffee, Bagels, Santa Monica.",
@@ -9550,8 +9308,8 @@
         },
         {
           "placeId": "magnolia-bakery",
-          "pullQuote": "Magnolia Bakery serves Bakery at 8389 W 3rd St, Beverly Grove.",
-          "blurb": "Magnolia Bakery serves Bakery at 8389 W 3rd St, Beverly Grove.",
+          "pullQuote": "",
+          "blurb": "",
           "copySource": "draft"
         },
         {
@@ -9568,8 +9326,8 @@
         },
         {
           "placeId": "bacio-di-latte",
-          "pullQuote": "At 10250 Santa Monica Blvd, Bacio di Latte serves Gelato, Century City.",
-          "blurb": "At 10250 Santa Monica Blvd, Bacio di Latte serves Gelato, Century City.",
+          "pullQuote": "",
+          "blurb": "",
           "copySource": "draft"
         },
         {
@@ -9592,8 +9350,8 @@
         },
         {
           "placeId": "levain-bakery",
-          "pullQuote": "Venice: Levain Bakery serves Bakery at 1661 Abbot Kinney Blvd.",
-          "blurb": "Venice: Levain Bakery serves Bakery at 1661 Abbot Kinney Blvd.",
+          "pullQuote": "",
+          "blurb": "",
           "copySource": "draft"
         },
         {
@@ -9670,8 +9428,8 @@
         },
         {
           "placeId": "scopa-italian-roots",
-          "pullQuote": "At 2905 Washington Blvd, Scopa Italian Roots serves Italian, Venice.",
-          "blurb": "At 2905 Washington Blvd, Scopa Italian Roots serves Italian, Venice.",
+          "pullQuote": "",
+          "blurb": "",
           "copySource": "draft"
         },
         {
@@ -9688,8 +9446,8 @@
         },
         {
           "placeId": "ardor",
-          "pullQuote": "Ardor serves New American at 9040 W Sunset Blvd, West Hollywood.",
-          "blurb": "Ardor serves New American at 9040 W Sunset Blvd, West Hollywood.",
+          "pullQuote": "",
+          "blurb": "",
           "copySource": "draft"
         },
         {
@@ -9700,14 +9458,14 @@
         },
         {
           "placeId": "ocean-prime",
-          "pullQuote": "Beverly Hills: Ocean Prime serves Seafood at 9595 Wilshire Blvd.",
-          "blurb": "Beverly Hills: Ocean Prime serves Seafood at 9595 Wilshire Blvd.",
+          "pullQuote": "",
+          "blurb": "",
           "copySource": "draft"
         },
         {
           "placeId": "vespertine",
-          "pullQuote": "At 3599 Hayden Ave, Vespertine serves New American, Culver City.",
-          "blurb": "At 3599 Hayden Ave, Vespertine serves New American, Culver City.",
+          "pullQuote": "",
+          "blurb": "",
           "copySource": "draft"
         },
         {
@@ -9724,8 +9482,8 @@
         },
         {
           "placeId": "providence",
-          "pullQuote": "Hollywood: Providence serves Seafood at 5955 Melrose Ave.",
-          "blurb": "Hollywood: Providence serves Seafood at 5955 Melrose Ave.",
+          "pullQuote": "",
+          "blurb": "",
           "copySource": "draft"
         },
         {
@@ -9754,8 +9512,8 @@
         },
         {
           "placeId": "barrique",
-          "pullQuote": "Barrique serves Italian at 796 Main St in Venice.",
-          "blurb": "Barrique serves Italian at 796 Main St in Venice.",
+          "pullQuote": "",
+          "blurb": "",
           "copySource": "draft"
         },
         {
