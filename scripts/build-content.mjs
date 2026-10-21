@@ -768,7 +768,7 @@ function addGuide(guide) {
     blurb: place.blurb,
     copySource: 'draft',
   }))
-  if (entries.length < 8 || entries.length > 40) {
+  if (entries.length < 8 || entries.length > 25) {
     console.warn(`guide size ${entries.length}: ${guide.slug}`)
   }
   guides.push({
@@ -854,7 +854,7 @@ for (const theme of themes) {
     const extra = launch.filter((place) => /burger/i.test(`${place.name} ${place.cuisine.join(' ')} ${place.placeType}`))
     places = sortDraft([...new Map([...places, ...extra].map((place) => [place.id, place])).values()], priority)
   }
-  places = diversify(places, 40, slug === 'pike-place' ? 8 : 6)
+  places = diversify(places, 25, slug === 'pike-place' ? 8 : 6)
   const angle = angleFor(group, slug)
   addGuide({
     slug,
@@ -877,7 +877,7 @@ for (const sub of themes.find((theme) => theme.sub_guides).sub_guides) {
     members = [...members, ...sodo]
   }
   const slug = slugify(label)
-  let places = diversify(sortDraft(resolveMembers(members)), 40, 3)
+  let places = diversify(sortDraft(resolveMembers(members)), 25, 3)
   addGuide({
     slug,
     title: label,

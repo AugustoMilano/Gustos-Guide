@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { AreaKicker } from '../components/AreaKicker.tsx'
 import { catalog } from '../content/load.ts'
 import { cityPath } from '../lib/city.ts'
+import { GUIDE_PLACE_LIMIT, guideCountLabel } from '../lib/collections.ts'
 import { usePageMeta } from '../lib/meta.ts'
 import { useCityCatalog } from '../lib/use-city.ts'
 import type { GuideGroup } from '../types.ts'
@@ -54,9 +55,9 @@ export function GuideIndexPage() {
                     <h3 className="mt-2 font-serif text-3xl italic leading-none">{guide.title}</h3>
                     <p className="mt-2 line-clamp-3 text-sm">{guide.dek}</p>
                   </span>
-                  <span className="guide-count shrink-0" aria-label={`${guide.count} places`}>
+                  <span className="guide-count shrink-0" aria-label={`${guideCountLabel(guide.count)} places`}>
                     <strong>{guide.count}</strong>
-                    <span>places</span>
+                    <span>/{GUIDE_PLACE_LIMIT}</span>
                   </span>
                 </span>
               </Link>

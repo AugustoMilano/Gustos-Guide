@@ -7,7 +7,7 @@ import { MapLinks } from '../components/MapLinks.tsx'
 import { PlaceThumb } from '../components/PlaceThumb.tsx'
 import { ScoreBadge } from '../components/ScoreBadge.tsx'
 import { areaTitle, cityPath } from '../lib/city.ts'
-import { CHEAP_EATS_SLUG, CHEAP_EATS_TITLE, cheapEatsFor, cleanTitle, movedPlaceIds, orderedMembers } from '../lib/collections.ts'
+import { CHEAP_EATS_SLUG, CHEAP_EATS_TITLE, cheapEatsFor, cleanTitle, GUIDE_OVER_MESSAGE, GUIDE_PLACE_LIMIT, guideCountLabel, movedPlaceIds, orderedMembers } from '../lib/collections.ts'
 import { priceLabel } from '../lib/format.ts'
 import { usePageMeta } from '../lib/meta.ts'
 import { useCityCatalog } from '../lib/use-city.ts'
@@ -72,7 +72,10 @@ export function CollectionPage() {
           >
             <p className="area-kicker">{areaTitle(city)}</p>
             <h1 className="mt-0.5 font-serif text-3xl italic leading-none">{heading}</h1>
-            <p className="mt-1 text-sm tabular-nums">{members.length} places</p>
+            <p className="mt-1 text-sm tabular-nums">{guideCountLabel(live ? members.length : stored?.placeIds.length ?? members.length)}</p>
+            {(live ? members.length : stored?.placeIds.length ?? 0) > GUIDE_PLACE_LIMIT ? (
+              <p className="mt-1 text-sm" role="status">{GUIDE_OVER_MESSAGE}</p>
+            ) : null}
           </motion.div>
           <button
             type="button"

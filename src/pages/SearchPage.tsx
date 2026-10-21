@@ -7,6 +7,7 @@ import { GoldenFork } from '../components/GoldenFork.tsx'
 import { ScoreBadge } from '../components/ScoreBadge.tsx'
 import { AreaKicker } from '../components/AreaKicker.tsx'
 import { areaPhrase, cityPath } from '../lib/city.ts'
+import { guideCountLabel } from '../lib/collections.ts'
 import { useCityCatalog } from '../lib/use-city.ts'
 import { milesBetween, priceLabel, publicReference } from '../lib/format.ts'
 import { readPosition } from '../lib/geo.ts'
@@ -197,7 +198,7 @@ export function SearchPage() {
                     >
                       <p className="text-xs font-bold tracking-[0.14em] uppercase">{guide.group}</p>
                       <h3 className="mt-2 font-serif text-2xl italic leading-none"><MatchText text={guide.title} query={draft} /></h3>
-                      <p className="mt-2 text-sm font-bold">{guide.count} places</p>
+                      <p className="mt-2 text-sm font-bold tabular-nums">{guideCountLabel(guide.count)}</p>
                     </Link>
                   </li>
                 )

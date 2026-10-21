@@ -1,6 +1,6 @@
 import type { SupabaseClient } from '@supabase/supabase-js'
 import type { CityId } from '../lib/city.ts'
-import type { HouseCollection } from '../lib/collections.ts'
+import { GUIDE_PLACE_LIMIT, type HouseCollection } from '../lib/collections.ts'
 
 export const COLLECTIONS_MIGRATION = 'migrations/20261021080000_collections.sql'
 
@@ -102,9 +102,15 @@ export async function insertCollection(
     .single()
   if (error || !data?.id) return failed(error, 'Could not save that collection.')
   const id = String(data.id)
-  if (!draft.placeIds.length) return { ok: true, id }
+  const placeIds: string[] = []
+  for (const placeId of draft.placeIds) {
+    if (!placeId || placeIds.includes(placeId)) continue
+    placeIds.push(placeId)
+    if (placeIds.length === GUIDE_PLACE_LIMIT) break
+  }
+  if (!placeIds.length) return { ok: true, id }
   const places = await client.from('collection_places').insert(
-    draft.placeIds.map((placeId, position) => ({
+    placeIds.map((placeId, position) => ({
       collection_id: id,
       place_id: placeId,
       position,
