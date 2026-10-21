@@ -39,7 +39,7 @@ export function HomePage() {
       : east
         ? 'Eat across the Eastside: Bellevue, Kirkland, Redmond, Issaquah, and Bothell.'
         : 'Eat your way through Seattle: pizza, oysters, coffee, neighborhood dinners, and the bars worth the hill.',
-    './og/og.svg',
+    './og/og.png',
   )
   const ticker = tickerFor(city)
   return (

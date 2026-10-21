@@ -212,7 +212,7 @@ export function GuideEntryCard({
         </span>
       </div>
       <p className="mt-3 text-sm font-bold tracking-wide uppercase">
-        {[place.cuisine.join(' · '), place.neighborhood, priceLabel(place.price)].filter(Boolean).join(' · ')}
+        {[place.cuisine.join(' · '), place.neighborhood, priceLabel(place.price), place.closed ? 'Closed' : ''].filter(Boolean).join(' · ')}
       </p>
     </div>
   )

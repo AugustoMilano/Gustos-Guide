@@ -1258,6 +1258,7 @@ create policy "owner_photos_insert" on storage.objects for insert to authenticat
 create policy "owner_photos_delete" on storage.objects for delete to authenticated
   using (
     bucket_id = 'owner-photos'
+    and public.is_house_owner()
     and (storage.foldername(name))[1] = auth.uid()::text
   );
 

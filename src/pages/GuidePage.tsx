@@ -2,7 +2,6 @@ import { useEffect, useMemo, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { AreaKicker } from '../components/AreaKicker.tsx'
 import { GuideEntryCard, GuideStrip } from '../components/GuideEntries.tsx'
-import { GuideMap } from '../components/GuideMap.tsx'
 import { ShareButton } from '../components/ShareButton.tsx'
 import { StoryShareButton } from '../components/StoryShareButton.tsx'
 import { SlidingRow } from '../components/SlidingRow.tsx'
@@ -14,6 +13,7 @@ import { renderGuideStory } from '../lib/story-card.ts'
 import { awardFor } from '../lib/top25.ts'
 import { isOpen } from '../lib/hours.ts'
 import { usePageMeta } from '../lib/meta.ts'
+import { originCanonical } from '../lib/site.ts'
 import { useApp } from '../state/AppState.tsx'
 import type { Guide, SlimPlace, VisitStatus } from '../types.ts'
 
@@ -22,7 +22,6 @@ export function GuidePage() {
   const { statuses, setStatus, user, photos, friendScore, gustoScore } = useApp()
   const [guide, setGuide] = useState<Guide | null>(null)
   const [missing, setMissing] = useState(false)
-  const [pane, setPane] = useState<'list' | 'map'>('list')
   const [neighborhood, setNeighborhood] = useState('')
   const [cuisine, setCuisine] = useState('')
   const [price, setPrice] = useState(0)
@@ -63,8 +62,9 @@ export function GuidePage() {
 
   usePageMeta(
     guide ? `${guide.title} · Gusto's Guide` : "Guide · Gusto's Guide",
-    guide?.dek ?? 'A Seattle guide from Gusto.',
-    guide ? `./og/guides/${guide.slug}.svg` : './og/og.svg',
+    guide?.dek ?? 'A guide from Gusto.',
+    guide ? `./og/guides/${guide.slug}.png` : './og/og.png',
+    guide ? originCanonical(`/share/guide/${guide.slug}`) : undefined,
   )
 
   const rows = useMemo(() => {
@@ -126,7 +126,6 @@ export function GuidePage() {
   const neighborhoods = [...new Set(rows.map((row) => row.place.neighborhood))].sort()
   const cuisines = [...new Set(rows.flatMap((row) => row.place.cuisine))].sort()
   const tags = [...new Set(rows.flatMap((row) => [row.entry.vibe, ...row.place.perfectFor].filter((item): item is string => Boolean(item))))].sort()
-  const mobileMap = !desktop && pane === 'map'
   const activeFilters = [
     neighborhood,
     cuisine,
@@ -136,8 +135,8 @@ export function GuidePage() {
   ].filter(Boolean)
 
   return (
-    <main id="main" tabIndex={-1} className={desktop ? 'bleed-stage outline-none' : `mx-auto max-w-6xl px-4 outline-none ${mobileMap ? 'flex h-dvh max-h-dvh flex-col overflow-hidden pt-20 pb-3' : 'pt-20 pb-16'}`}>
-      <div className={desktop ? 'bleed-copy' : mobileMap ? 'shrink-0' : undefined}>
+    <main id="main" tabIndex={-1} className="mx-auto max-w-6xl px-4 pt-20 pb-16 outline-none">
+      <div>
         <AreaKicker />
         <div className="mt-2 flex flex-wrap items-center justify-between gap-x-4 gap-y-2">
           <Link to={cityPath('/guides')} className="inline-flex min-h-11 items-center text-sm font-bold">← All guides</Link>
@@ -163,13 +162,11 @@ export function GuidePage() {
         </div>
         <h1 className="mt-1 font-serif text-4xl italic leading-none sm:text-5xl">{guide.title}</h1>
         <p className="mt-2 text-sm font-bold">{ordered.length === rows.length ? `${rows.length} places` : `${ordered.length} of ${rows.length} places`}</p>
-        {!mobileMap ? <p className="mt-2 line-clamp-1 max-w-2xl font-serif text-xl italic">{guide.dek}</p> : null}
-        {!mobileMap ? (
-          <details className="guide-note mt-2 max-w-2xl">
-            <summary>About this guide</summary>
-            {guide.intro.split('\n\n').map((paragraph) => <p key={paragraph.slice(0, 24)}>{paragraph}</p>)}
-          </details>
-        ) : null}
+        <p className="mt-2 line-clamp-1 max-w-2xl font-serif text-xl italic">{guide.dek}</p>
+        <details className="guide-note mt-2 max-w-2xl">
+          <summary>About this guide</summary>
+          {guide.intro.split('\n\n').map((paragraph) => <p key={paragraph.slice(0, 24)}>{paragraph}</p>)}
+        </details>
         <div className="guide-sticky mt-3 hidden gap-2 lg:grid lg:grid-cols-[repeat(auto-fit,minmax(8.5rem,1fr))]">
           <FilterFields
             neighborhoods={neighborhoods}
@@ -191,10 +188,7 @@ export function GuidePage() {
           <button type="button" className="btn flex-1 text-sm" onClick={() => setFiltersOpen(true)}>
             Filters{activeFilters.length ? ` · ${activeFilters.length}` : ''}
           </button>
-          <div className="flex flex-1 gap-2" role="group" aria-label="List or map">
-            <button type="button" className={`btn flex-1 text-sm ${pane === 'list' ? 'btn-navy' : ''}`} onClick={() => setPane('list')}>List</button>
-            <button type="button" className={`btn flex-1 text-sm ${pane === 'map' ? 'btn-navy' : ''}`} onClick={() => setPane('map')}>Map</button>
-          </div>
+          <Link to={cityPath('/explore')} className="btn flex-1 text-sm">Map</Link>
         </div>
         {activeFilters.length && !desktop ? (
           <div className="mt-2 flex gap-2 overflow-x-auto">
@@ -242,13 +236,10 @@ export function GuidePage() {
             </div>
           </div>
         ) : null}
-        {!mobileMap ? (
-          <div className="mt-4">
-            <GuideStrip rows={ordered.map(({ place, number, entry }) => ({ place, number, score: gustoScore(place.id), vibe: entry.vibe }))} uploads={photos} statuses={statuses} onToggle={onToggle} />
-          </div>
-        ) : null}
-        {!mobileMap ? (
-          <div className="mt-5 grid gap-8">
+        <div className="mt-4">
+          <GuideStrip rows={ordered.map(({ place, number, entry }) => ({ place, number, score: gustoScore(place.id), vibe: entry.vibe }))} uploads={photos} statuses={statuses} onToggle={onToggle} />
+        </div>
+        <div className="mt-5 grid gap-8">
             {ordered.length === 0 ? <p className="border-t-2 border-ink pt-4 font-serif text-2xl italic">Nothing on this list matches. Loosen a filter.</p> : null}
             {ordered.map(({ entry, place, number }, index) => (
               <GuideEntryCard
@@ -268,26 +259,9 @@ export function GuidePage() {
                 onPoint={setActiveId}
               />
             ))}
-          </div>
-        ) : null}
+        </div>
+        <p className="mt-8"><Link className="btn" to={cityPath('/explore')}>Open the map</Link></p>
         <SignInSheet open={signInOpen} onClose={() => setSignInOpen(false)} />
-      </div>
-      <div className={desktop ? 'bleed-map' : mobileMap ? 'mt-3 min-h-0 flex-1' : 'hidden'}>
-        {(desktop || pane === 'map') && (
-          <GuideMap
-            places={ordered.map((row) => row.place)}
-            statuses={statuses}
-            activeId={activeId}
-            onHover={setActiveId}
-            onSelect={(id) => {
-              setActiveId(id)
-              if (!desktop && pane === 'map') setPane('list')
-              window.setTimeout(() => {
-                document.getElementById(`entry-${id}`)?.scrollIntoView({ block: 'nearest', behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' })
-              }, 40)
-            }}
-          />
-        )}
       </div>
     </main>
   )

@@ -1,7 +1,7 @@
 import { catalog } from '../content/load.ts'
 import { regionOf, type RegionId } from './city.ts'
 import type { ForkMetal } from './fork-mark.ts'
-import { placeCity } from './use-city.ts'
+import { isListed, placeCity } from './use-city.ts'
 import type { SlimPlace } from '../types.ts'
 
 export type ForkAward = {
@@ -49,7 +49,7 @@ function build(scoreOf: (placeId: string) => number | null): Cache {
   const boards = {} as Cache['boards']
   for (const region of ['seattle', 'la'] as const) {
     const ranked = catalog.places
-      .filter((place) => regionOf(placeCity(place)) === region)
+      .filter((place) => isListed(place) && regionOf(placeCity(place)) === region)
       .flatMap((place) => {
         const score = scoreOf(place.id)
         return typeof score === 'number' ? [{ place, score }] : []

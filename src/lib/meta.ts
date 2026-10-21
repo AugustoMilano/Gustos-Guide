@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import { canonicalUrl } from './site.ts'
+import { originCanonical } from './site.ts'
 
 function upsert(attr: 'name' | 'property', key: string, content: string) {
   let node = document.head.querySelector(`meta[${attr}="${key}"]`)
@@ -17,8 +17,8 @@ export function usePageMeta(title: string, description: string, image?: string, 
     const node = document.querySelector('meta[name="description"]')
     const previous = node?.getAttribute('content') ?? ''
     node?.setAttribute('content', description)
-    const picture = new URL(image || './og/og.svg', window.location.href).href
-    const canonical = canonicalOverride || canonicalUrl()
+    const picture = new URL(image || './og/og.png', window.location.href).href
+    const canonical = canonicalOverride || originCanonical()
     let link = document.head.querySelector('link[rel="canonical"]')
     if (!link) {
       link = document.createElement('link')

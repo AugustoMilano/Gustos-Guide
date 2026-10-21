@@ -12,6 +12,8 @@ dist
 dist-ssr
 /test-results/
 /public/share/
+/public/og/*.png
+/public/og/guides/*.png
 /playwright-report/
 /blob-report/
 /e2e-audit.mjs

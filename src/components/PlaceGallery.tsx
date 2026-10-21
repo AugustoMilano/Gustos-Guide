@@ -58,7 +58,7 @@ export function PlaceGallery({
             <button type="button" className="photo-nav is-next" aria-label="Next photo" onPointerDown={(event) => event.stopPropagation()} onClick={() => step(1)}>›</button>
           </>
         ) : null}
-        <button type="button" className="photo-expand" aria-label={`View photo ${index + 1} of ${photos.length}`} onPointerDown={(event) => event.stopPropagation()} onClick={() => setOpen(true)}>
+        <button type="button" className="photo-expand" aria-label={`View photo ${index + 1} / ${photos.length}`} onPointerDown={(event) => event.stopPropagation()} onClick={() => setOpen(true)}>
           {index + 1} / {photos.length}
         </button>
       </div>

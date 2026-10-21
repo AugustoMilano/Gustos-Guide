@@ -18,7 +18,7 @@ export function MyGuidesPage() {
   const [title, setTitle] = useState('')
   const [copied, setCopied] = useState('')
   const [signIn, setSignIn] = useState(false)
-  usePageMeta("My guides · Gusto's Guide", 'Lists on your account.', './og/og.svg')
+  usePageMeta("My guides · Gusto's Guide", 'Lists on your account.', './og/og.png')
   const mine = app.guides.filter((guide) => !guide.demo && (!app.supabase || !guide.ownerId || guide.ownerId === app.user?.id))
   const shared = app.supabase
     ? app.guides.filter((guide) => guide.ownerId && guide.ownerId !== app.user?.id)

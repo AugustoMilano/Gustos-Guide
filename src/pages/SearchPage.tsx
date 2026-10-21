@@ -124,11 +124,6 @@ export function SearchPage() {
           <span>Places, guides, cuisines, neighborhoods</span>
           <input
             id="page-search"
-            role="combobox"
-            aria-expanded={query.length > 0 && hits.length > 0}
-            aria-controls={listId}
-            aria-autocomplete="list"
-            aria-activedescendant={active >= 0 ? hits[active]?.id : undefined}
             value={draft}
             autoComplete="off"
             onChange={(event) => type(event.target.value)}
@@ -181,7 +176,7 @@ export function SearchPage() {
       </button>
       {error ? <p className="mt-2 text-sm" role="alert">{error}</p> : null}
       {origin ? <p className="mt-2 text-sm">Sorting places by distance from you.</p> : null}
-      <div id={listId} role={query ? 'listbox' : undefined} aria-label={query ? 'Search results' : undefined}>
+      <div id={listId}>
         {shownGuides.length ? (
           <section className="mt-8">
             <div className="flex items-baseline justify-between gap-3">
@@ -195,8 +190,6 @@ export function SearchPage() {
                   <li key={guide.slug}>
                     <Link
                       id={`guide-${guide.slug}`}
-                      role={query ? 'option' : undefined}
-                      aria-selected={query ? index === active : undefined}
                       className={`guide-card${index === active ? ' is-active' : ''}`}
                       to={cityPath(`/guide/${guide.slug}`)}
                       viewTransition={!reduceMotion}
@@ -226,8 +219,6 @@ export function SearchPage() {
                   <Link
                     key={name}
                     id={tokenId('hood', name)}
-                    role={query ? 'option' : undefined}
-                    aria-selected={query ? index === active : undefined}
                     className={`chip inline-flex items-center${index === active ? ' is-active' : ''}`}
                     to={slug ? cityPath(`/guide/${slug}`) : cityPath(`/search?q=${encodeURIComponent(name)}`)}
                     onClick={() => remember(draft)}
@@ -252,8 +243,6 @@ export function SearchPage() {
                   <Link
                     key={name}
                     id={tokenId('cuisine', name)}
-                    role={query ? 'option' : undefined}
-                    aria-selected={query ? index === active : undefined}
                     className={`chip inline-flex items-center${index === active ? ' is-active' : ''}`}
                     to={cityPath(`/search?q=${encodeURIComponent(name)}`)}
                     onClick={() => remember(name)}
@@ -286,8 +275,6 @@ export function SearchPage() {
                 <li key={place.id}>
                   <Link
                     id={`place-${place.id}`}
-                    role={query ? 'option' : undefined}
-                    aria-selected={query ? index === active : undefined}
                     to={cityPath(`/place/${place.id}`)}
                     className={`hit-card min-w-0${index === active ? ' is-active' : ''}`}
                     viewTransition={!reduceMotion}

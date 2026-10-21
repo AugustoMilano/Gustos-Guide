@@ -35,7 +35,7 @@ export function ListPage() {
   usePageMeta(
     `${title} · Gusto's Guide`,
     detail,
-    guide ? listOgSvg(guide.title, detail, guide.emoji ?? '🍽', listColor(guide.color)) : './og/og.svg',
+    guide ? listOgSvg(guide.title, detail, guide.emoji ?? '🍽', listColor(guide.color)) : './og/og.png',
   )
 
   const rows = useMemo(() => {

@@ -1,7 +1,6 @@
 import { useEffect, useMemo, useState } from 'react'
 import { useReducedMotion } from 'framer-motion'
 import { Link, useParams } from 'react-router-dom'
-import { GuideMap } from '../components/GuideMap.tsx'
 import { PlaceGallery } from '../components/PlaceGallery.tsx'
 import { PlaceThumb } from '../components/PlaceThumb.tsx'
 import { SignInSheet } from '../components/SignInSheet.tsx'
@@ -22,6 +21,7 @@ import { renderPlaceStory } from '../lib/story-card.ts'
 import { awardFor } from '../lib/top25.ts'
 import { bounceMark } from '../lib/motion.ts'
 import { usePageMeta } from '../lib/meta.ts'
+import { originCanonical } from '../lib/site.ts'
 import { howToGetIn } from '../lib/visit.ts'
 import { useApp } from '../state/AppState.tsx'
 import type { Place } from '../types.ts'
@@ -56,8 +56,9 @@ export function PlacePage() {
 
   usePageMeta(
     place ? `${place.name} · Gusto's Guide` : "Place · Gusto's Guide",
-    place ? place.oneLiner || `${place.name} in ${place.neighborhood}.` : 'A Seattle restaurant.',
-    ownerImage || './og/place.svg',
+    place ? place.oneLiner || `${place.name} in ${place.neighborhood}.` : 'A place on the guide.',
+    ownerImage || './og/place.png',
+    place ? originCanonical(`/share/place/${place.id}`) : undefined,
   )
   const similar = useMemo(() => {
     if (!place) return []
@@ -98,8 +99,8 @@ export function PlacePage() {
   }
 
   return (
-    <main id="main" tabIndex={-1} className="bleed-stage place-stage outline-none max-lg:mx-auto max-lg:max-w-6xl max-lg:px-4 max-lg:pt-24 max-lg:pb-16">
-      <div className="bleed-copy max-lg:contents">
+    <main id="main" tabIndex={-1} className="mx-auto max-w-6xl px-4 pt-24 pb-16 outline-none">
+      <div>
       <div className="place-grid">
         <PlaceGallery
           photos={photos}
@@ -111,6 +112,7 @@ export function PlacePage() {
           <p className="area-kicker">{areaTitle(placeCity(place))}</p>
           <p className="mt-2 text-xs font-bold tracking-[0.14em] uppercase">{[place.cuisine.join(' · '), place.neighborhood].filter(Boolean).join(' · ')}</p>
           <h1 className="mt-1 font-serif text-5xl italic leading-none sm:text-6xl">{place.name}</h1>
+          {place.closed ? <p className="closed-banner mt-3" role="status">Closed.</p> : null}
           {place.oneLiner ? <p className="review-headline mt-4 border-2 border-ink bg-[#fffaf3] px-4 py-3 font-serif text-2xl italic leading-snug">“{place.oneLiner}”</p> : null}
           <div className="mt-3 flex flex-wrap items-center gap-3">
             <ScoreBadge score={app.gustoScore(place.id)} />
@@ -129,7 +131,7 @@ export function PlacePage() {
           <section className="place-facts" aria-label="Address and hours">
             {place.price ? <p className="font-bold">{priceLabel(place.price)}</p> : null}
             {place.address ? <p className="place-address">{place.address}</p> : null}
-            {place.periods.length ? (
+            {place.closed ? <p>Closed.</p> : place.periods.length ? (
               <details className="place-hours">
                 <summary>{hoursPhrase(place.periods) ?? 'Hours'}</summary>
                 <ul>{formatPeriods(place.periods).map((line) => <li key={line}>{line}</li>)}</ul>
@@ -237,10 +239,8 @@ export function PlacePage() {
             </div>
           </section>
         </article>
+        <p className="mt-8"><Link className="btn" to={cityPath('/explore', placeCity(place))}>Open the map</Link></p>
         <SignInSheet open={signIn} onClose={() => setSignIn(false)} />
-      </div>
-      <div className="bleed-map mt-8 h-80 lg:mt-0 lg:h-auto">
-        <GuideMap places={[place]} statuses={app.statuses} />
       </div>
     </main>
   )

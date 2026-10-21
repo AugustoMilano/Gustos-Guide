@@ -9,6 +9,10 @@ export const GRAM_LIMIT = 2
 
 const TEMPLATES = /worth the walk|exactly the point|done properly|the night gets simpler|come hungry\.\s*leave|hot, salty, and exactly/i
 
+// "A Capitol Hill sushi bar …" / "A French dining room …". Real lines that start
+// with a lowercase word after "A" ("A cheap …") are not this mold.
+const FORMULAIC = /^A [A-Z].+ (spot|room|counter|bar) /
+
 // Augusto's sandwich notes, copied verbatim. They are the description, so the
 // 8–16 word pull-quote rule and the four-word sentence floor do not apply.
 const OWNER_COPY = new Set([
@@ -176,6 +180,7 @@ function asItem(value, index) {
     text: String(value?.text ?? ''),
     placeId: value?.placeId ? String(value.placeId) : `anon-${index}`,
     exempt: Boolean(value?.exempt),
+    allowEmpty: Boolean(value?.allowEmpty),
     name: value?.name ? String(value.name) : '',
   }
 }
@@ -184,7 +189,10 @@ function uniqueTexts(items, label) {
   const byKey = new Map()
   for (const item of items) {
     const key = item.text.trim().toLowerCase()
-    if (!key) fail(`Empty ${label}`, item.placeId)
+    if (!key) {
+      if (label === 'line' || item.allowEmpty) continue
+      fail(`Empty ${label}`, item.placeId)
+    }
     const existing = byKey.get(key)
     if (!existing) {
       byKey.set(key, { text: item.text.trim(), placeIds: new Set([item.placeId]), exempt: item.exempt, name: item.name })
@@ -209,7 +217,7 @@ export function assertCopy({ lines, blurbs, prose = [] }) {
   for (const item of lineItems) {
     const line = item.text
     if (!/^[A-Z0-9"“]/.test(line)) fail('Line does not start with a capital', line)
-    if (TEMPLATES.test(line)) fail('Template phrase', line)
+    if (TEMPLATES.test(line) || FORMULAIC.test(line)) fail('Template phrase', line)
     if (fillerHit(line)) fail('Try-filler line', line)
     if (!OWNER_COPY.has(line)) {
       const count = wordCount(line)
@@ -278,6 +286,8 @@ function fromFiles() {
   const root = join(dirname(fileURLToPath(import.meta.url)), '..')
   const places = JSON.parse(readFileSync(join(root, 'src/content/places.json'), 'utf8'))
   const guides = JSON.parse(readFileSync(join(root, 'src/content/guides.json'), 'utf8'))
+  const eastside = JSON.parse(readFileSync(join(root, 'src/content/eastside.json'), 'utf8'))
+  const la = JSON.parse(readFileSync(join(root, 'src/content/la.json'), 'utf8'))
   const dive = new Set(
     guides.find((guide) => guide.slug === 'fun-dive-bars')?.entries.map((entry) => entry.blurb) ?? [],
   )
@@ -296,8 +306,31 @@ function fromFiles() {
       })),
     ),
   ]
+  const regional = [...eastside.places, ...la.places]
+  const regionalTexts = [
+    ...regional.map((place) => place.oneLiner),
+    ...eastside.guides.flatMap((guide) => guide.entries.map((entry) => entry.pullQuote)),
+    ...la.guides.flatMap((guide) => guide.entries.map((entry) => entry.pullQuote)),
+  ]
+  const regionalBlurbs = [
+    ...regional.map((place) => place.blurb),
+    ...eastside.guides.flatMap((guide) => guide.entries.map((entry) => entry.blurb)),
+    ...la.guides.flatMap((guide) => guide.entries.map((entry) => entry.blurb)),
+  ]
+  for (const text of regionalTexts) {
+    const line = String(text || '').trim()
+    if (!line) continue
+    if (TEMPLATES.test(line) || FORMULAIC.test(line)) fail('Template phrase', line.slice(0, 180))
+    if (fillerHit(line)) fail('Try-filler line', line.slice(0, 180))
+  }
+  for (const text of regionalBlurbs) {
+    const line = String(text || '').trim()
+    if (!line) continue
+    if (TEMPLATES.test(line)) fail('Template phrase in blurb', line.slice(0, 180))
+    if (fillerHit(line)) fail('Try-filler blurb', line.slice(0, 180))
+  }
   const result = assertCopy({ lines, blurbs })
-  console.log(JSON.stringify(result))
+  console.log(JSON.stringify({ ...result, regional: regionalTexts.filter((text) => String(text || '').trim()).length }))
 }
 
 if (process.argv[1] && fileURLToPath(import.meta.url) === process.argv[1]) fromFiles()

@@ -9,7 +9,7 @@ export function NotFoundPage() {
   const navigate = useNavigate()
   const city = useCityId()
   const [query, setQuery] = useState('')
-  usePageMeta("Page not found · Gusto's Guide", `That page is not on the menu. Search ${areaPhrase(city)}.`, './og/og.svg')
+  usePageMeta("Page not found · Gusto's Guide", `That page is not on the menu. Search ${areaPhrase(city)}.`, './og/og.png')
 
   function search(event: FormEvent) {
     event.preventDefault()

@@ -600,6 +600,12 @@ textarea {
   background: #f2f3f0;
 }
 
+.photo-frame:not(.is-compact) .place-art {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 3;
+}
+
 .photo-frame figcaption {
   padding: 0.35rem 0.5rem;
   font-size: 0.75rem;
@@ -729,6 +735,10 @@ textarea {
 
 .leaflet-control-attribution a {
   color: #141f4d;
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0 8px;
 }
 
 .gusto-pin-wrap {
@@ -820,7 +830,7 @@ textarea {
 .field {
   display: flex;
   flex-direction: column;
-  gap: 0.3rem;
+  gap: var(--space-1);
 }
 
 .field span,
@@ -839,7 +849,7 @@ textarea {
   width: 100%;
   background: #fffaf3;
   border: 2px solid #181818;
-  padding: 0.65rem 0.7rem;
+  padding: var(--space-2) var(--space-3);
   min-height: 44px;
 }
 
@@ -954,7 +964,7 @@ textarea {
 
   .bleed-copy {
     min-width: 0;
-    padding-top: 0.85rem;
+    padding-top: 1rem;
     padding-bottom: 4rem;
   }
 
@@ -1235,14 +1245,14 @@ textarea {
 .menu-sheet {
   position: absolute;
   z-index: 50;
-  top: calc(100% + 0.35rem);
+  top: calc(100% + 8px);
   right: max(12px, env(safe-area-inset-right));
   left: max(12px, env(safe-area-inset-left));
   box-sizing: border-box;
   width: auto;
-  max-height: min(70dvh, calc(100dvh - var(--header-offset) - 0.75rem));
+  max-height: min(70dvh, calc(100dvh - var(--header-offset) - 12px));
   margin: 0;
-  padding: 0.9rem 1rem 1rem;
+  padding: 16px;
   background: #fffaf3;
   color: #181818;
 }
@@ -1307,7 +1317,7 @@ textarea {
 }
 
 .hero-dek {
-  margin-top: 1.05rem;
+  margin-top: 1rem;
   max-width: 34rem;
   color: #fffaf3;
   opacity: 1;
@@ -1743,7 +1753,7 @@ textarea {
   max-height: min(24rem, calc(100dvh - 6.5rem));
   overflow: auto;
   box-sizing: border-box;
-  padding: 0.75rem 0.85rem 1rem;
+  padding: 12px 12px 16px;
   border-radius: 20px;
   background: #fffaf3;
   color: #181818;
@@ -1908,7 +1918,7 @@ textarea {
   justify-content: center;
   min-height: 44px;
   min-width: 44px;
-  padding-inline: 0.45rem;
+  padding-inline: 8px;
 }
 
 .site-nav .nav-wide,
@@ -2301,9 +2311,20 @@ input[type='time'] {
 }
 
 .open-check {
-  width: 1.375rem;
-  height: 1.375rem;
+  width: 44px;
+  height: 44px;
   accent-color: #ff5330;
+}
+
+.closed-banner {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  margin: 0;
+  padding: 0 12px;
+  background: #181818;
+  color: #fffaf3;
+  font-weight: 700;
 }
 
 .slide-choices {
@@ -3587,7 +3608,7 @@ mark {
 .search-pop {
   position: absolute;
   z-index: 30;
-  top: calc(100% + 0.35rem);
+  top: calc(100% + 8px);
   right: 0;
   width: max(100%, 18rem);
   max-height: min(22rem, 60dvh);
@@ -3597,7 +3618,7 @@ mark {
   border: 2px solid #181818;
   border-radius: 16px;
   box-shadow: 0 16px 40px rgb(20 31 77 / 18%);
-  padding: 0.35rem;
+  padding: 8px;
 }
 
 .search-pop button {

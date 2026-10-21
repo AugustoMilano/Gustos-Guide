@@ -64,6 +64,7 @@ function page({ title, description, image, imageAlt, sharePath, hashPath }) {
   <title>${escapeHtml(title)}</title>
   <meta name="description" content="${escapeHtml(description)}" />
   <link rel="canonical" href="${shareUrl}" />
+  <meta http-equiv="refresh" content="0; url=${escapeHtml(openUrl)}" />
   <meta property="og:title" content="${escapeHtml(title)}" />
   <meta property="og:description" content="${escapeHtml(description)}" />
   <meta property="og:type" content="website" />
@@ -78,7 +79,6 @@ function page({ title, description, image, imageAlt, sharePath, hashPath }) {
 </head>
 <body>
   <p><a href="${openUrl}">${escapeHtml(title)}</a></p>
-  <script>location.replace(${JSON.stringify(openUrl)})</script>
 </body>
 </html>
 `
@@ -96,7 +96,7 @@ for (const place of la.places) fullPlaces[place.id] = place
 
 function catalogImage(place) {
   const lead = place?.photos?.find((photo) => (photo.source === 'wikimedia' || photo.source === 'flickr') && photo.url)
-  return lead ? `${site}${lead.url}` : `${site}/og/place.svg`
+  return lead ? `${site}${lead.url}` : `${site}/og/place.png`
 }
 
 for (const place of index.places) {
@@ -106,17 +106,17 @@ for (const place of index.places) {
   mkdirSync(dir, { recursive: true })
   writeFileSync(join(dir, 'index.html'), page({
     title: `${place.name} · Gusto's Guide`,
-    description: place.oneLiner || 'A Seattle restaurant.',
+    description: place.oneLiner || `${place.name} in ${place.neighborhood}.`,
     image,
     imageAlt: photos.has(place.id) ? fullPlaces[place.id]?.orderThis?.[0]?.dish || `Photo of ${place.name}` : place.name,
-    sharePath: `/share/place/${place.id}`,
+    sharePath: `/share/place/${place.id}/`,
     hashPath: `/place/${place.id}`,
   }))
 }
 
 for (const guide of guides) {
   const first = guide.entries.map((entry) => photos.get(entry.placeId)).find(Boolean)
-  const image = first || `${site}/og/guides/${guide.slug}.svg`
+  const image = first || `${site}/og/guides/${guide.slug}.png`
   if (first) withPhoto += 1
   const dir = join(shareRoot, 'guide', guide.slug)
   mkdirSync(dir, { recursive: true })
@@ -125,7 +125,7 @@ for (const guide of guides) {
     description: guide.dek || 'A Seattle guide.',
     image,
     imageAlt: guide.title,
-    sharePath: `/share/guide/${guide.slug}`,
+    sharePath: `/share/guide/${guide.slug}/`,
     hashPath: `/guide/${guide.slug}`,
   }))
 }
@@ -140,14 +140,14 @@ for (const place of eastside.places) {
     description: place.oneLiner || `${place.name} in ${place.neighborhood}.`,
     image,
     imageAlt: place.photos?.[0]?.alt || place.name,
-    sharePath: `/share/place/${place.id}`,
+    sharePath: `/share/place/${place.id}/`,
     hashPath: `/eastside/place/${place.id}`,
   }))
 }
 
 for (const guide of eastside.guides) {
   const first = guide.entries.map((entry) => photos.get(entry.placeId)).find(Boolean)
-  const image = first || `${site}/og/guides/${guide.slug}.svg`
+  const image = first || `${site}/og/guides/${guide.slug}.png`
   if (first) withPhoto += 1
   const dir = join(shareRoot, 'guide', guide.slug)
   mkdirSync(dir, { recursive: true })
@@ -156,7 +156,7 @@ for (const guide of eastside.guides) {
     description: guide.dek || 'An Eastside guide.',
     image,
     imageAlt: guide.title,
-    sharePath: `/share/guide/${guide.slug}`,
+    sharePath: `/share/guide/${guide.slug}/`,
     hashPath: `/eastside/guide/${guide.slug}`,
   }))
 }
@@ -171,14 +171,14 @@ for (const place of la.places) {
     description: place.oneLiner || `${place.name} in ${place.neighborhood}.`,
     image,
     imageAlt: place.photos?.[0]?.alt || place.name,
-    sharePath: `/share/place/${place.id}`,
+    sharePath: `/share/place/${place.id}/`,
     hashPath: `/la/place/${place.id}`,
   }))
 }
 
 for (const guide of la.guides) {
   const first = guide.entries.map((entry) => photos.get(entry.placeId)).find(Boolean)
-  const image = first || `${site}/og/guides/${guide.slug}.svg`
+  const image = first || `${site}/og/guides/${guide.slug}.png`
   if (first) withPhoto += 1
   const dir = join(shareRoot, 'guide', guide.slug)
   mkdirSync(dir, { recursive: true })
@@ -187,7 +187,7 @@ for (const guide of la.guides) {
     description: guide.dek || 'A Los Angeles guide.',
     image,
     imageAlt: guide.title,
-    sharePath: `/share/guide/${guide.slug}`,
+    sharePath: `/share/guide/${guide.slug}/`,
     hashPath: `/la/guide/${guide.slug}`,
   }))
 }

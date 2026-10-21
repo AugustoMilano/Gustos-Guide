@@ -37,8 +37,8 @@ export function Footer() {
         <div className="mx-auto flex max-w-6xl flex-wrap justify-between gap-2">
           <p>House notes, still being eaten through.</p>
           <p className="flex flex-wrap gap-x-4">
-            <a href="/terms">Terms</a>
-            <a href="/privacy">Privacy</a>
+            <a href="/terms/">Terms</a>
+            <a href="/privacy/">Privacy</a>
           </p>
           <p>
             Maps © <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> © <a href="https://openfreemap.org">OpenFreeMap</a>

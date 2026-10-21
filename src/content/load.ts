@@ -34,6 +34,7 @@ function slimFrom(place: Place): SlimPlace {
     oneLiner: place.oneLiner,
     perfectFor: place.perfectFor,
     periods: place.periods,
+    ...(place.closed ? { closed: true } : {}),
     ...(place.publicRating?.source === 'Yelp' ? { publicRating: place.publicRating } : {}),
     gustoScore: null,
     photo: place.photos[0],

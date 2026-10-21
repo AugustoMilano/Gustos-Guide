@@ -24,7 +24,7 @@ export function TonightPage() {
   const [whereError, setWhereError] = useState('')
   const [pick, setPick] = useState<SlimPlace | null>(null)
   const [spinning, setSpinning] = useState(false)
-  usePageMeta("Tonight · Gusto's Guide", 'Shuffle a To go place that is open now.', './og/og.svg')
+  usePageMeta("Tonight · Gusto's Guide", 'Shuffle a To go place that is open now.', './og/og.png')
 
   const pool = useMemo(() => {
     const togo = places.filter((place) => app.statuses[place.id] === 'togo' && isOpen(place.periods))

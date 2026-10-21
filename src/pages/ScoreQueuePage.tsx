@@ -17,7 +17,7 @@ export function ScoreQueuePage() {
   const [shown, setShown] = useState(PAGE)
   const [signIn, setSignIn] = useState(false)
   const [keep, setKeep] = useState<string[]>([])
-  usePageMeta("Needs a score · Gusto's Guide", 'Places still waiting on a house score.', './og/og.svg')
+  usePageMeta("Needs a score · Gusto's Guide", 'Places still waiting on a house score.', './og/og.png')
   const queue = places.filter((place) => app.gustoScore(place.id) == null || keep.includes(place.id))
   const waiting = places.filter((place) => app.gustoScore(place.id) == null).length
   const visible = queue.slice(0, shown)

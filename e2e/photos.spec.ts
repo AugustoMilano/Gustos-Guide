@@ -86,7 +86,7 @@ test('photo queue puts ranked guide leaders ahead of the home list', () => {
     { slug: 'best-pizza', title: 'Best Pizza in Seattle', ranked: true, entries: [{ placeId: 'lupo' }, { placeId: 'dino' }, { placeId: 'pie' }, { placeId: 'rest' }] },
   ] as RankedGuide[]
   const places = [
-    sample({ id: 'quiet', name: 'Quiet', guideSlugs: ['a', 'b', 'c'], publicRating: undefined, appleRating: undefined }),
+    sample({ id: 'quiet', name: 'Quiet', guideSlugs: ['a', 'b', 'c'], publicRating: undefined }),
     sample({ id: 'lupo', name: 'Lupo', guideSlugs: ['best-pizza'] }),
     sample({ id: 'wiki', name: 'Wiki', photo: { source: 'wikimedia', url: 'https://example.com/a.jpg', alt: '', credit: 'Wikimedia' } }),
     sample({ id: 'hit', name: 'Hit', neighborhood: 'Fremont', publicRating: { value: 5, count: 20, source: 'Yelp' } }),

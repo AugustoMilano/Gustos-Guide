@@ -20,7 +20,7 @@ export function PhotoQueuePage() {
   const [busy, setBusy] = useState('')
   const [errors, setErrors] = useState<Record<string, string>>({})
   const [guides, setGuides] = useState<RankedGuide[] | null>(null)
-  usePageMeta("Needs a photo · Gusto's Guide", 'Illustration-only places, busiest first.', 'https://gustosguide.com/og/og.svg')
+  usePageMeta("Needs a photo · Gusto's Guide", 'Illustration-only places, busiest first.', 'https://gustosguide.com/og/og.png')
   useEffect(() => {
     let cancel = false
     void loadGuides().then((rows) => {

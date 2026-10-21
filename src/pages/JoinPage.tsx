@@ -32,7 +32,7 @@ export function JoinPage() {
   usePageMeta(
     friend ? `${friend.name} wants to eat with you` : "Invite · Gusto's Guide",
     friend ? 'Sign in and you are friends.' : 'Join a list, a plan, or a friend.',
-    './og/og.svg',
+    './og/og.png',
   )
 
   useEffect(() => {

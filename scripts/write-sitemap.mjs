@@ -59,31 +59,18 @@ for (const guide of [...index.guides, ...eastside.guides, ...la.guides]) {
   writeFileSync(join(ogDir, `${guide.slug}.svg`), card(guide.title, guide.dek || 'A guide from Gusto.'))
 }
 
-const urls = [
+const share = new Set([
   `${site}/`,
-  `${site}/terms`,
-  `${site}/privacy`,
-  `${site}/#/`,
-  `${site}/#/explore`,
-  `${site}/#/guides`,
-  `${site}/#/top`,
-  `${site}/#/seattle/top`,
-  `${site}/#/eastside`,
-  `${site}/#/eastside/explore`,
-  `${site}/#/eastside/guides`,
-  `${site}/#/eastside/top`,
-  `${site}/#/la`,
-  `${site}/#/la/explore`,
-  `${site}/#/la/guides`,
-  `${site}/#/la/top`,
-  `${site}/#/cities`,
-  ...index.guides.map((guide) => `${site}/#/guide/${encodeURIComponent(guide.slug)}`),
-  ...index.places.map((place) => `${site}/#/place/${encodeURIComponent(place.id)}`),
-  ...eastside.guides.map((guide) => `${site}/#/eastside/guide/${encodeURIComponent(guide.slug)}`),
-  ...eastside.places.map((place) => `${site}/#/eastside/place/${encodeURIComponent(place.id)}`),
-  ...la.guides.map((guide) => `${site}/#/la/guide/${encodeURIComponent(guide.slug)}`),
-  ...la.places.map((place) => `${site}/#/la/place/${encodeURIComponent(place.id)}`),
-]
+  `${site}/terms/`,
+  `${site}/privacy/`,
+])
+for (const place of [...index.places, ...eastside.places, ...la.places]) {
+  share.add(`${site}/share/place/${encodeURIComponent(place.id)}/`)
+}
+for (const guide of [...index.guides, ...eastside.guides, ...la.guides]) {
+  share.add(`${site}/share/guide/${encodeURIComponent(guide.slug)}/`)
+}
+const urls = [...share]
 const body = urls
   .map((loc) => `  <url><loc>${escapeXml(loc)}</loc></url>`)
   .join('\n')

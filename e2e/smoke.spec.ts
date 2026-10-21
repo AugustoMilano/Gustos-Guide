@@ -176,8 +176,8 @@ test.describe('routes', () => {
   test('notifications stay on screen and legal pages are direct urls', async ({ page }) => {
     await page.goto('/#/', { waitUntil: 'domcontentloaded' })
     await expect(page.locator('link[rel="canonical"]')).toHaveAttribute('href', /https:\/\/gustosguide\.com\//)
-    await expect(page.locator('footer a[href="/terms"]')).toBeVisible()
-    await expect(page.locator('footer a[href="/privacy"]')).toBeVisible()
+    await expect(page.locator('footer a[href="/terms/"]')).toBeVisible()
+    await expect(page.locator('footer a[href="/privacy/"]')).toBeVisible()
     await page.getByRole('button', { name: /^Notifications/ }).click({ force: true })
     const panel = page.locator('#notifications-panel')
     await expect(panel).toBeVisible()
@@ -301,9 +301,10 @@ test.describe('controls', () => {
     if (info.project.name === 'webkit') {
       await tap(page.getByRole('button', { name: /Filters/ }))
       await tap(page.getByRole('button', { name: /Show/ }))
-      await tap(page.getByRole('button', { name: 'Map' }))
+      await tap(page.getByRole('link', { name: 'Map', exact: true }))
+      await expect(page).toHaveURL(/explore/)
       await expect(page.locator('.leaflet-container')).toBeVisible()
-      await tap(page.getByRole('button', { name: 'List' }))
+      await page.goBack()
     }
 
     const photo = page.locator('a[href="#/place/the-5-point-cafe"]').first()
