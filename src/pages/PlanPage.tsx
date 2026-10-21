@@ -82,23 +82,23 @@ export function PlanDetailPage() {
             <li key={pid}>
               <button
                 type="button"
-                className={`plan-pick ${on ? 'is-on' : ''}`}
+                className={`plan-pick place-row has-tail ${on ? 'is-on' : ''}`}
                 aria-pressed={on}
                 onClick={() => setPlaceId(pid)}
               >
-                <span className="plan-pick-shot" style={reduceMotion ? undefined : { viewTransitionName: `place-${place.id}` }}>
-                  <PlaceThumb place={place} uploads={app.photos} />
+                <span className="place-row-shot" style={reduceMotion ? undefined : { viewTransitionName: `place-${place.id}` }}>
+                  <PlaceThumb place={place} uploads={app.photos} sizes="64px" />
                 </span>
-                <span className="min-w-0 flex-1 text-left">
-                  <span className="block truncate font-serif text-2xl italic leading-none">{place.name}</span>
+                <span className="place-row-copy">
+                  <span className="block truncate font-serif text-2xl italic leading-tight">{place.name}</span>
                   <span className="mt-1 block truncate text-sm">{place.neighborhood} · {place.cuisine[0]}</span>
-                  <span className={`mt-2 block score-pill ${app.gustoScore(place.id) == null ? 'is-muted' : ''}`}>{app.gustoScore(place.id) == null ? 'Unrated' : app.gustoScore(place.id)!.toFixed(1)}</span>
                 </span>
-                <span className="text-right">
+                <span className="score-col"><ScoreBadge score={app.gustoScore(place.id)} size="sm" /></span>
+                <span className="row-tail">
                   <span className="block font-serif text-3xl italic leading-none">{votes}</span>
                   <span className="text-xs font-bold uppercase">{votes === 1 ? 'vote' : 'votes'}</span>
+                  <span className={`pick-check ${on ? 'is-on' : ''}`} aria-hidden="true">✓</span>
                 </span>
-                <span className={`pick-check ${on ? 'is-on' : ''}`} aria-hidden="true">✓</span>
               </button>
               <Link className="btn plan-open mt-2 text-sm" to={`/place/${pid}`} viewTransition={!reduceMotion}>Open {place.name}</Link>
             </li>
@@ -391,16 +391,16 @@ export function PlanWizardPage() {
                 <li key={place.id}>
                   <button
                     type="button"
-                    className={`vote-card ${choice === place.id ? 'is-on' : ''}`}
+                    className={`vote-card place-row ${choice === place.id ? 'is-on' : ''}`}
                     aria-pressed={choice === place.id}
                     onClick={() => setChoice(place.id)}
                   >
-                    <span className="h-24 w-28 shrink-0 overflow-hidden bg-navy [&_.place-art]:aspect-auto [&_.place-art]:h-full">
-                      <PlaceThumb place={place} uploads={app.photos} />
+                    <span className="place-row-shot">
+                      <PlaceThumb place={place} uploads={app.photos} sizes="64px" />
+                      <GoldenFork placeId={place.id} overlay />
                     </span>
-                    <span className="min-w-0 flex-1 text-left">
-                      <span className="flex flex-wrap items-center gap-2"><ScoreBadge score={app.gustoScore(place.id)} size="sm" /><GoldenFork placeId={place.id} /></span>
-                      <span className="mt-1 block font-serif text-2xl italic leading-none">{place.name}</span>
+                    <span className="place-row-copy">
+                      <span className="block font-serif text-2xl italic leading-tight">{place.name}</span>
                       {reference ? <span className="public-ref mt-1 block">{reference}</span> : null}
                       <span className="mt-2 flex flex-wrap gap-1">
                         {tally > 0 ? <span className="tag">{tally} of you want to go</span> : null}
@@ -411,9 +411,10 @@ export function PlanWizardPage() {
                           <span key={person.id} className="avatar avatar-sm" style={{ background: AVATAR[index % AVATAR.length] }} title={person.name}>{initials(person.name)}</span>
                         ))}
                         {you ? <span className="avatar avatar-sm" style={{ background: '#181818' }} title="Your vote">You</span> : null}
-                        <span className="ml-auto font-serif text-3xl italic">{tally}</span>
+                        <span className="score-num ml-auto">{tally}</span>
                       </span>
                     </span>
+                    <span className="score-col"><ScoreBadge score={app.gustoScore(place.id)} size="sm" /></span>
                   </button>
                 </li>
               )

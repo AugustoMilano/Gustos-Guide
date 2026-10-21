@@ -167,17 +167,19 @@ export function ExplorePage() {
                 onMouseEnter={() => setActiveId(place.id)}
                 onMouseLeave={() => setActiveId((current) => (current === place.id ? null : current))}
               >
-                <Link to={cityPath(`/place/${place.id}`)} className="flex items-center gap-3 after:absolute after:inset-0" viewTransition={!reduceMotion}>
-                  <span className="relative h-20 w-24 shrink-0 overflow-hidden bg-navy [&_.place-art]:aspect-auto [&_.place-art]:h-full" style={reduceMotion ? undefined : { viewTransitionName: `place-${place.id}` }}>
-                    <PlaceThumb place={place} uploads={app.photos} sizes="96px" />
+                <Link to={cityPath(`/place/${place.id}`)} className="place-row after:absolute after:inset-0" viewTransition={!reduceMotion}>
+                  <span className="place-row-shot" style={reduceMotion ? undefined : { viewTransitionName: `place-${place.id}` }}>
+                    <PlaceThumb place={place} uploads={app.photos} sizes="64px" />
                     <GoldenFork placeId={place.id} overlay />
                   </span>
-                  <span className="min-w-0">
-                    <ScoreBadge score={app.gustoScore(place.id)} size="sm" />
-                    <span className="mt-1 block font-serif text-xl italic leading-none">{place.name}</span>
+                  <span className="place-row-copy">
+                    <span className="block font-serif text-xl italic leading-tight">{place.name}</span>
                     <span className="mt-1 block text-xs font-bold tracking-wide uppercase">
                       {[place.cuisine[0], priceLabel(place.price), place.neighborhood].filter(Boolean).join(' · ')}
                     </span>
+                  </span>
+                  <span className="score-col">
+                    <ScoreBadge score={app.gustoScore(place.id)} size="sm" />
                   </span>
                 </Link>
                 <div className="relative z-10 mt-2 flex flex-wrap gap-2">

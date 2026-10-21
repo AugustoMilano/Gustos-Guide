@@ -67,7 +67,7 @@ test('city picker, Seattle urls, and Los Angeles', async ({ page }) => {
 
   await page.goto('/#/la/place/katana')
   await expect(page.getByRole('heading', { level: 1, name: 'Katana' })).toBeVisible()
-  await expect(page.locator('.score-pill.is-muted').first()).toBeVisible()
+  await expect(page.locator('.score-badge.is-muted').first()).toBeVisible()
   await expect(page.getByText(/Yelp 4\.1/).first()).toBeVisible()
 
   await page.goto('/#/la/explore')

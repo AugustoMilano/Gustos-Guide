@@ -8,7 +8,13 @@ export function scoreBand(score: number): { label: string; tone: 'best' | 'great
 
 export function ScoreBadge({ score, size = 'md' }: { score: number | null; size?: 'md' | 'sm' }) {
   if (score == null && size === 'sm') {
-    return <p className="score-pill is-muted">Not yet rated</p>
+    return (
+      <p className="score-badge score-badge-sm is-muted" aria-label="Gusto's Score, not yet rated">
+        <small>Gusto's</small>
+        <strong>—</strong>
+        <span>Not yet rated</span>
+      </p>
+    )
   }
   if (score == null) {
     return (

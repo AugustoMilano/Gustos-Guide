@@ -227,10 +227,12 @@ export function PlacePage() {
                     <PlaceThumb place={item} uploads={app.photos} sizes="(min-width: 1024px) 200px, 45vw" />
                     <GoldenFork placeId={item.id} overlay />
                   </div>
-                  <div className="p-2">
-                    <ScoreBadge score={app.gustoScore(item.id)} size="sm" />
-                    <h3 className="mt-1 font-serif text-xl italic leading-tight">{item.name}</h3>
-                    <p className="mt-1 text-xs font-bold tracking-wide uppercase">{item.neighborhood}</p>
+                  <div className="place-card-body is-dense">
+                    <div className="min-w-0">
+                      <h3 className="font-serif text-xl italic leading-tight">{item.name}</h3>
+                      <p className="mt-1 text-xs font-bold tracking-wide uppercase">{item.neighborhood}</p>
+                    </div>
+                    <span className="score-col"><ScoreBadge score={app.gustoScore(item.id)} size="sm" /></span>
                   </div>
                 </Link>
               ))}

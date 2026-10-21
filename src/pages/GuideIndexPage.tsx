@@ -48,7 +48,7 @@ export function GuideIndexPage() {
                 style={reduceMotion ? undefined : { animationDelay: `${Math.min(index, 6) * 40}ms` }}
                 viewTransition={!reduceMotion}
               >
-                <span className="flex min-w-0 items-start justify-between gap-3">
+                <span className="card-split">
                   <span className="min-w-0">
                     <p className="text-xs font-bold tracking-[0.14em] uppercase">Updated {guide.updatedAt}</p>
                     <h3 className="mt-2 font-serif text-3xl italic leading-none">{guide.title}</h3>

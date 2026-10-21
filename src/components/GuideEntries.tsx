@@ -33,7 +33,7 @@ function StatusPills({
 }) {
   const size = mini ? 'btn-mini' : 'text-sm'
   return (
-    <span className="inline-flex gap-2">
+    <span className={mini ? 'status-pair' : 'inline-flex gap-2'}>
       <button type="button" className={`btn status-mark ${size} ${status === 'togo' ? 'btn-coral' : ''}`} aria-pressed={status === 'togo'} onClick={(event) => { bounceMark(event); onToggle('togo') }}>
         To go
       </button>
@@ -75,7 +75,7 @@ export function GuideStrip({
               >
                 <div className="toc-shot relative h-24 overflow-hidden bg-navy [&_.place-art]:aspect-auto [&_.place-art]:h-full">
                   <PlaceThumb place={place} uploads={uploads} eager={index < 2} sizes="240px" />
-                  <span className="absolute top-1.5 left-1.5 grid h-7 min-w-7 -rotate-6 place-items-center border-2 border-ink bg-coral px-1 text-xs font-bold shadow-[2px_2px_0_#181818]">{number}</span>
+                  <span className="entry-index absolute top-1.5 left-1.5 -rotate-6 border-2 border-ink bg-coral text-xs font-bold shadow-[2px_2px_0_#181818]">{number}</span>
                   <GoldenFork placeId={place.id} overlay />
                 </div>
                 <div className="flex flex-1 flex-col px-2.5 pt-2">
@@ -176,7 +176,7 @@ export function GuideEntryCard({
   const layout = index % 3
   const image = (
     <div className="relative min-w-0">
-      <span className="absolute top-3 left-3 z-10 grid h-12 min-w-12 -rotate-6 place-items-center border-2 border-ink bg-coral px-2 font-serif text-2xl italic shadow-[3px_3px_0_#181818]">{number}</span>
+      <span className="entry-index entry-index-lg absolute top-3 left-3 z-10 -rotate-6 border-2 border-ink bg-coral font-serif text-2xl italic shadow-[3px_3px_0_#181818]">{number}</span>
       <Link to={cityPath(`/place/${place.id}`)} className="block" aria-label={place.name} viewTransition={!reduceMotion}>
         <span className="block" style={reduceMotion ? undefined : { viewTransitionName: `place-${place.id}` }}>
           <Shot place={place} photo={photo} tall={layout === 0} priority={index === 0} />
@@ -201,12 +201,15 @@ export function GuideEntryCard({
   )
   const title = (
     <div className="min-w-0">
-      <div className="flex flex-wrap items-start justify-between gap-3">
+      <div className="entry-head">
         <h3 className="max-w-full font-serif text-4xl leading-[0.9] italic [overflow-wrap:anywhere] sm:text-6xl">
           <span className="mr-2 text-coral not-italic">{number}</span>
           <Link to={cityPath(`/place/${place.id}`)} viewTransition={!reduceMotion}>{place.name}</Link>
         </h3>
-        <span className="flex items-center gap-2"><ScoreBadge score={score} /><GoldenFork placeId={place.id} size="md" /></span>
+        <span className="score-col">
+          <ScoreBadge score={score} size="sm" />
+          <GoldenFork placeId={place.id} size="sm" />
+        </span>
       </div>
       <p className="mt-3 text-sm font-bold tracking-wide uppercase">
         {[place.cuisine.join(' · '), place.neighborhood, priceLabel(place.price)].filter(Boolean).join(' · ')}
@@ -238,6 +241,8 @@ export function GuideEntryCard({
         {place.yelpSlug ? <a className="btn text-sm" href={yelpBizUrl(place.yelpSlug)}>Yelp</a> : null}
         <MapLinks place={place} />
         {place.phone ? <a className="btn text-sm" href={`tel:${place.phone}`}>Call</a> : null}
+      </div>
+      <div className="status-pair mt-2">
         <button type="button" className={`btn status-mark text-sm ${status === 'togo' ? 'btn-coral' : ''}`} aria-pressed={status === 'togo'} onClick={(event) => { if (!signedIn) { onNeedSignIn(); return } bounceMark(event); onToggle('togo') }}>To go</button>
         <button type="button" className={`btn status-mark text-sm ${status === 'been' ? 'btn-leaf' : ''}`} aria-pressed={status === 'been'} onClick={(event) => { if (!signedIn) { onNeedSignIn(); return } bounceMark(event); onToggle('been') }}>Been</button>
       </div>
@@ -288,6 +293,8 @@ export function GuideEntryCard({
         {place.yelpSlug ? <a className="btn text-sm" href={yelpBizUrl(place.yelpSlug)}>Yelp</a> : null}
         <MapLinks place={place} />
         {place.phone ? <a className="btn text-sm" href={`tel:${place.phone}`}>Call</a> : null}
+      </div>
+      <div className="status-pair mt-2">
         <button type="button" className={`btn status-mark text-sm ${status === 'togo' ? 'btn-coral' : ''}`} aria-pressed={status === 'togo'} onClick={(event) => { if (!signedIn) { onNeedSignIn(); return } bounceMark(event); onToggle('togo') }}>To go</button>
         <button type="button" className={`btn status-mark text-sm ${status === 'been' ? 'btn-leaf' : ''}`} aria-pressed={status === 'been'} onClick={(event) => { if (!signedIn) { onNeedSignIn(); return } bounceMark(event); onToggle('been') }}>Been</button>
       </div>
