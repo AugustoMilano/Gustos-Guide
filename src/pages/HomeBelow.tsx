@@ -48,6 +48,16 @@ function whyNow(place: SlimPlace, day: number, mins: number): string {
   return kind ? `${place.neighborhood} · ${kind}` : place.neighborhood
 }
 
+function GuideCardCopy({ count, title, dek }: { count: number; title: string; dek: string }) {
+  return (
+    <>
+      <p className="text-xs font-bold uppercase tracking-[0.14em] tabular-nums">{count} places</p>
+      <h3 className="mt-2 font-serif text-3xl italic">{title}</h3>
+      <p className="mt-2 text-sm">{dek}</p>
+    </>
+  )
+}
+
 function closedNow(city: CityId, places: SlimPlace[]): SlimPlace[] {
   if (city !== 'seattle') return diverse(places, 6)
   return RIGHT_NOW_FALLBACK.map((id) => slimById(id)).filter((place): place is SlimPlace => place != null)
@@ -156,13 +166,11 @@ export function HomeBelow() {
         </section>
         <section className="mt-10" aria-labelledby="occasions">
           <h2 id="occasions" className="font-serif text-4xl italic">{east || la || sf ? 'Start here' : 'Guides by occasion'}</h2>
-          <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="card-grid card-grid-3 mt-4">
             {occasions.map((guide, index) => (
-              <Reveal key={guide.slug} delay={Math.min(index, 6) * 0.04}>
+              <Reveal key={guide.slug} className="h-full" delay={Math.min(index, 6) * 0.04}>
               <Link to={cityPath(`/guide/${guide.slug}`)} className="guide-card" viewTransition={!reduceMotion}>
-                <p className="text-xs font-bold tracking-[0.14em] uppercase">{guide.count} places</p>
-                <h3 className="mt-2 font-serif text-3xl italic leading-none">{guide.title}</h3>
-                <p className="mt-2 text-sm">{guide.dek}</p>
+                <GuideCardCopy count={guide.count} title={guide.title} dek={guide.dek} />
               </Link>
               </Reveal>
             ))}
@@ -215,18 +223,8 @@ export function HomeBelow() {
           </div>
           <div className="mt-4 flex gap-3 overflow-x-auto pb-2">
             {featured.map((guide) => (
-              <Link key={guide.slug} to={cityPath(`/guide/${guide.slug}`)} className="guide-card w-72 shrink-0" viewTransition={!reduceMotion}>
-                <span className="card-split">
-                  <span className="min-w-0">
-                    <p className="text-xs font-bold tracking-[0.14em] uppercase">{guide.group}</p>
-                    <h3 className="mt-2 font-serif text-3xl italic leading-none">{guide.title}</h3>
-                    <p className="mt-2 text-sm">{guide.dek}</p>
-                  </span>
-                  <span className="guide-count" aria-label={`${guide.count} places`}>
-                    <strong>{guide.count}</strong>
-                    <span>places</span>
-                  </span>
-                </span>
+              <Link key={guide.slug} to={cityPath(`/guide/${guide.slug}`)} className="guide-card w-80 shrink-0" viewTransition={!reduceMotion}>
+                <GuideCardCopy count={guide.count} title={guide.title} dek={guide.dek} />
               </Link>
             ))}
           </div>
@@ -255,12 +253,10 @@ export function HomeBelow() {
           return (
           <section key={group} className="mt-10">
             <h2 className="font-serif text-4xl italic">{group}</h2>
-            <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+            <div className={`card-grid mt-4${rows.length % 3 === 0 ? ' card-grid-3' : ''}`}>
               {rows.map((guide) => (
                 <Link key={guide.slug} to={cityPath(`/guide/${guide.slug}`)} className="guide-card" viewTransition={!reduceMotion}>
-                  <p className="text-xs font-bold tracking-[0.14em] uppercase">{guide.count} places</p>
-                  <h3 className="mt-2 font-serif text-3xl italic leading-none">{guide.title}</h3>
-                  <p className="mt-2 text-sm">{guide.dek}</p>
+                  <GuideCardCopy count={guide.count} title={guide.title} dek={guide.dek} />
                 </Link>
               ))}
             </div>

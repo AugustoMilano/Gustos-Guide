@@ -358,18 +358,74 @@ textarea {
 }
 
 .guide-card {
-  display: block;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  min-width: 0;
+  min-height: 3.25rem;
   border: 2px solid #181818;
   background: var(--color-card);
   padding: var(--card-pad);
 }
 
-.guide-card,
+.card-grid .guide-card {
+  flex: 1 1 auto;
+  width: 100%;
+}
+
+.guide-card h3 {
+  line-height: 1.15;
+  text-wrap: balance;
+}
+
 .hit-card,
 .toc-badge {
   display: flex;
   align-items: flex-start;
   min-height: 3.25rem;
+}
+
+/* Guide cards: one column on a phone, two from a tablet, three only on a wide desktop. */
+.card-grid {
+  display: grid;
+  align-items: stretch;
+  gap: var(--gutter);
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.card-grid > * {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+@media (min-width: 40rem) {
+  .card-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  /* A leftover card stays the same width and sits in the middle of the last row. */
+  .card-grid > :last-child:nth-child(2n + 1) {
+    grid-column: 1 / -1;
+    justify-self: center;
+    width: calc((100% - var(--gutter)) / 2);
+  }
+}
+
+@media (min-width: 80rem) {
+  .card-grid-3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .card-grid-3 > :last-child:nth-child(2n + 1) {
+    grid-column: auto;
+    justify-self: stretch;
+    width: auto;
+  }
+
+  .card-grid-3 > :last-child:nth-child(3n + 1) {
+    grid-column: 2;
+  }
 }
 
 .toc-card {
