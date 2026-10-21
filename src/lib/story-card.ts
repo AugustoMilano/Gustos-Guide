@@ -135,6 +135,13 @@ function frame(ctx: CanvasRenderingContext2D) {
 
 async function drawFork(ctx: CanvasRenderingContext2D, metal: ForkMetal, gem: boolean, x: number, y: number, w: number) {
   const image = await loadFork(metal, gem)
+  if (metal === 'navy') {
+    ctx.save()
+    ctx.fillStyle = CREAM
+    roundRect(ctx, x - 10, y - 8, w + 20, w * 1.25 + 16, 22)
+    ctx.fill()
+    ctx.restore()
+  }
   ctx.drawImage(image, x, y, w, w * 1.25)
 }
 
@@ -163,7 +170,7 @@ export async function renderPlaceStory(place: StoryPlace): Promise<Blob> {
     ctx.restore()
   }
   if (place.award) {
-    ctx.strokeStyle = place.award.metal === 'silver' ? '#d5dde6' : place.award.metal === 'bronze' ? '#e0a36a' : '#f0d078'
+    ctx.strokeStyle = place.award.metal === 'silver' ? '#d5dde6' : place.award.metal === 'bronze' ? '#e0a36a' : place.award.metal === 'navy' ? CORAL : '#f0d078'
     ctx.lineWidth = 6
     roundRect(ctx, x, y, w, h, 32)
     ctx.stroke()
@@ -198,11 +205,11 @@ export async function renderPlaceStory(place: StoryPlace): Promise<Blob> {
   }
   if (place.award) {
     await drawFork(ctx, place.award.metal, place.award.rank === 1, W - 84 - 210, cursor + 10, 180)
-    ctx.fillStyle = CREAM
+    ctx.fillStyle = place.award.metal === 'navy' ? CORAL : CREAM
     ctx.font = '700 24px "Instrument Sans", sans-serif'
     ctx.textAlign = 'center'
-    const caption = place.award.metal === 'brushed' ? 'TOP 25' : `#${place.award.rank}`
-    ctx.fillText(caption, W - 84 - 120, cursor + 250)
+    const caption = place.award.metal === 'navy' ? 'TOP 25' : `#${place.award.rank}`
+    ctx.fillText(caption, W - 84 - 120, place.award.metal === 'navy' ? cursor + 286 : cursor + 250)
     ctx.textAlign = 'left'
   }
   const credit = place.credit && place.credit !== 'Illustration' ? `Photo · ${place.credit}${place.license ? ` · ${place.license}` : ''}` : ''

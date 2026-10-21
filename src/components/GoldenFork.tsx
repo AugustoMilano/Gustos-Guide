@@ -26,10 +26,10 @@ export function ForkMark({
   const rawId = useId()
   const id = `fork${rawId.replace(/[^a-zA-Z0-9]/g, '')}`
   const reduce = useReducedMotion()
-  const text = caption ?? (metal === 'brushed' ? 'Top 25' : rank ? `#${rank}` : '')
+  const text = caption ?? (metal === 'navy' ? 'Top 25' : rank ? `#${rank}` : '')
   return (
     <motion.span
-      className={`fork-badge fork-${size}${overlay ? ' fork-on-photo' : ''}`}
+      className={`fork-badge fork-${size}${metal === 'navy' ? ' fork-navy' : ''}${overlay ? ' fork-on-photo' : ''}`}
       role="img"
       aria-label={label}
       initial={reduce ? false : { opacity: 0, scale: 0.86 }}
@@ -55,7 +55,7 @@ export function GoldenFork({
   const award = awardFor(placeId, gustoScore)
   if (!award) return null
   const where = REGION_LABEL[award.region]
-  const label = award.metal === 'brushed'
+  const label = award.metal === 'navy'
     ? `Top 25, number ${award.rank} in ${where}`
     : `Golden Fork number ${award.rank} in ${where}`
   return (
