@@ -4,7 +4,6 @@ import { HashRouter } from 'react-router-dom'
 import 'leaflet/dist/leaflet.css'
 import { App } from './App.tsx'
 import { AuthRouterGate } from './components/AuthRouterGate.tsx'
-import { loadGuides, loadPlaces } from './content/load.ts'
 import { settleAuthUrl, watchAuthHash } from './lib/auth-callback.ts'
 import { AppProvider } from './state/AppState.tsx'
 import './index.css'
@@ -14,9 +13,6 @@ if (window.location.hostname === 'www.gustosguide.com') {
   url.hostname = 'gustosguide.com'
   window.location.replace(url.toString())
 }
-
-void loadPlaces()
-void loadGuides()
 
 if (import.meta.env.PROD && 'serviceWorker' in navigator) {
   const hadController = Boolean(navigator.serviceWorker.controller)

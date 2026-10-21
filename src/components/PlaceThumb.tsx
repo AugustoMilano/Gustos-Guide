@@ -19,21 +19,28 @@ export function PlaceThumb({
 }) {
   const photo = displayPhotos(place, uploads)[0]
   const [failed, setFailed] = useState(false)
+  const [readySrc, setReadySrc] = useState('')
   if (!photo || photo.illustration || !photo.url || failed) {
     return <PlaceArt id={place.id} cuisine={place.cuisine[0] ?? 'Seattle'} neighborhood={place.neighborhood} />
   }
   const picture = responsivePhoto(photo.url, sizes)
+  const src = picture.src ?? ''
+  const ready = readySrc === src
   return (
     <img
+      ref={(node) => {
+        if (node?.complete && node.naturalWidth > 0) setReadySrc(src)
+      }}
       src={picture.src}
       srcSet={picture.srcSet}
       sizes={picture.srcSet ? picture.sizes : undefined}
       alt=""
       draggable={false}
-      className="h-full w-full object-cover"
+      className={`h-full w-full object-cover${ready ? '' : ' is-pending'}`}
       loading={eager || priority ? 'eager' : 'lazy'}
       decoding="async"
       fetchPriority={priority ? 'high' : undefined}
+      onLoad={() => setReadySrc(src)}
       onError={() => setFailed(true)}
     />
   )

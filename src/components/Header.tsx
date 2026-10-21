@@ -56,6 +56,22 @@ function citySwitchLabel(city: CityId) {
   return 'Seattle'
 }
 
+function OfflineBanner() {
+  const [offline, setOffline] = useState(() => typeof navigator !== 'undefined' && !navigator.onLine)
+  useEffect(() => {
+    const on = () => setOffline(false)
+    const off = () => setOffline(true)
+    window.addEventListener('online', on)
+    window.addEventListener('offline', off)
+    return () => {
+      window.removeEventListener('online', on)
+      window.removeEventListener('offline', off)
+    }
+  }, [])
+  if (!offline) return null
+  return <p className="offline-banner" role="status">You are offline. Pages you already opened still work. New ones wait for a connection.</p>
+}
+
 function BellIcon() {
   return (
     <svg aria-hidden="true" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -161,6 +177,7 @@ export function Header() {
 
   return (
     <header className={`site-header${onHero ? ' on-hero' : ''}${scrolled && !onHero ? ' is-scrolled' : ''}`}>
+      <OfflineBanner />
       <div className="header-bar mx-auto flex w-full max-w-[100rem] items-center gap-3 px-4 py-3">
         <div className="brand-lockup">
           <Link to={cityPath('/', linkCity)} className="wordmark shrink-0 font-serif text-2xl italic leading-none sm:text-3xl">

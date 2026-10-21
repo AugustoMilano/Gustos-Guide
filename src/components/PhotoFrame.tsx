@@ -15,19 +15,27 @@ export function PhotoFrame({
   transitionName?: string
 }) {
   const [failed, setFailed] = useState(false)
+  const [readySrc, setReadySrc] = useState('')
   const art = photo.illustration || !photo.url || failed
+  const picture = photo.url && !photo.illustration ? responsivePhoto(photo.url, '(min-width: 1024px) 60vw, 100vw') : null
+  const src = picture?.src ?? ''
+  const ready = src !== '' && readySrc === src
   return (
     <figure className={`photo-frame ${compact || art ? 'is-compact' : ''}`} style={transitionName ? { viewTransitionName: transitionName } : undefined}>
-      {photo.illustration || !photo.url || failed ? (
+      {art || !picture ? (
         <PlaceArt id={photo.placeId} cuisine={photo.cuisine} neighborhood={photo.neighborhood} />
       ) : (
         <img
-          {...responsivePhoto(photo.url, '(min-width: 1024px) 60vw, 100vw')}
+          {...picture}
           alt={photo.alt}
           loading={priority ? 'eager' : 'lazy'}
           decoding="async"
           fetchPriority={priority ? 'high' : undefined}
-          className="place-art object-cover"
+          className={`place-art object-cover${ready ? '' : ' is-pending'}`}
+          ref={(node) => {
+            if (node?.complete && node.naturalWidth > 0) setReadySrc(src)
+          }}
+          onLoad={() => setReadySrc(src)}
           onError={() => setFailed(true)}
         />
       )}

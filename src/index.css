@@ -1675,6 +1675,14 @@ textarea {
 .gusto-cluster span {
   width: 44px;
   height: 44px;
+  font-size: 0.95rem;
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+}
+
+.gusto-cluster span.is-wide {
+  font-size: 0.72rem;
+  letter-spacing: -0.04em;
 }
 
 .leaflet-bar a,
@@ -1721,16 +1729,13 @@ textarea {
 }
 
 .offline-banner {
-  position: fixed;
-  top: 0;
-  right: 0;
-  left: 0;
-  z-index: 60;
+  margin: 0;
   background: #141f4d;
   color: #fffaf3;
-  padding: 0.45rem 1rem;
+  padding: 0.55rem 1rem;
   text-align: center;
   font-size: 0.85rem;
+  line-height: 1.35;
 }
 
 .skeleton {
@@ -2690,6 +2695,8 @@ input[type='time'] {
 }
 
 /* Tight serif titles used to sit on leading-none, so a wrapped line painted through the one under it. */
+h1.font-serif,
+h2.font-serif,
 .font-serif.leading-none:not(.wordmark) {
   line-height: 1.12;
 }
@@ -2779,12 +2786,42 @@ input[type='time'] {
     flex: 1;
   }
 
-  main#main:not(.explore-shell):not(.home-main) {
-    padding-top: calc(var(--header-offset) + 0.85rem);
-  }
+}
 
-  .home-main .hero-copy {
-    padding-top: calc(var(--header-offset) + 1.15rem);
+/* The header grows to two rows on a laptop. Tailwind pt-24/pt-28 stays short of that, so titles tuck under the bar. */
+main#main:not(.explore-shell):not(.home-main):not(.bleed-stage) {
+  padding-top: calc(var(--header-offset) + 1rem);
+}
+
+.home-main .hero-copy {
+  padding-top: calc(var(--header-offset) + 1.15rem);
+}
+
+@media (max-width: 1023px) {
+  main#main.bleed-stage {
+    padding-top: calc(var(--header-offset) + 1rem);
+  }
+}
+
+.btn-navy:focus-visible,
+.btn-x:focus-visible,
+.chip[aria-pressed='true']:focus-visible,
+.sort-chip[aria-pressed='true']:focus-visible,
+.sheet-icon[aria-pressed='true']:focus-visible {
+  outline-color: #ff5330;
+}
+
+img.is-pending,
+.photo-frame img.is-pending {
+  background: linear-gradient(90deg, #e7e0d6, #fffaf3 45%, #e7e0d6);
+  background-size: 200% 100%;
+  animation: skeleton-sheen 1.2s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  img.is-pending,
+  .photo-frame img.is-pending {
+    animation: none;
   }
 }
 

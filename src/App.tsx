@@ -5,16 +5,16 @@ import { Header } from './components/Header.tsx'
 import { ImportLocalSheet } from './components/ImportLocalSheet.tsx'
 import { Modal } from './components/Modal.tsx'
 import { CitiesPage } from './pages/CitiesPage.tsx'
-import { GuidePage } from './pages/GuidePage.tsx'
 import { HomePage } from './pages/HomePage.tsx'
 import { LegalPage } from './pages/LegalPage.tsx'
 import { NotFoundPage } from './pages/NotFoundPage.tsx'
-import { PlacePage } from './pages/PlacePage.tsx'
 import { InstallHint } from './components/InstallHint.tsx'
 import { barePath } from './lib/city.ts'
 import { directLegalSlug } from './lib/site.ts'
 import { useApp } from './state/AppState.tsx'
 
+const GuidePage = lazy(() => import('./pages/GuidePage.tsx').then((module) => ({ default: module.GuidePage })))
+const PlacePage = lazy(() => import('./pages/PlacePage.tsx').then((module) => ({ default: module.PlacePage })))
 const GuideIndexPage = lazy(() => import('./pages/GuideIndexPage.tsx').then((module) => ({ default: module.GuideIndexPage })))
 const SearchPage = lazy(() => import('./pages/SearchPage.tsx').then((module) => ({ default: module.SearchPage })))
 const FeedPage = lazy(() => import('./pages/FeedPage.tsx').then((module) => ({ default: module.FeedPage })))
@@ -43,7 +43,11 @@ function ScrollManager() {
     const key = location.key
     const saved = positions.current.get(key) ?? 0
     let last = saved
+    const root = document.documentElement
+    const previous = root.style.scrollBehavior
+    root.style.scrollBehavior = 'auto'
     window.scrollTo(0, saved)
+    root.style.scrollBehavior = previous
     const save = () => {
       last = window.scrollY
       positions.current.set(key, last)
@@ -85,22 +89,6 @@ function BackToTop() {
   )
 }
 
-function OfflineBanner() {
-  const [offline, setOffline] = useState(() => typeof navigator !== 'undefined' && !navigator.onLine)
-  useEffect(() => {
-    const on = () => setOffline(false)
-    const off = () => setOffline(true)
-    window.addEventListener('online', on)
-    window.addEventListener('offline', off)
-    return () => {
-      window.removeEventListener('online', on)
-      window.removeEventListener('offline', off)
-    }
-  }, [])
-  if (!offline) return null
-  return <p className="offline-banner" role="status">You are offline. Pages you already opened still work. New ones wait for a connection.</p>
-}
-
 function PageSkeleton() {
   return (
     <main id="main" className="mx-auto max-w-6xl px-4 pt-24" aria-busy="true" aria-live="polite">
@@ -139,7 +127,6 @@ function Shell() {
   return (
     <>
       <ScrollManager />
-      <OfflineBanner />
       <button
         type="button"
         className="skip"

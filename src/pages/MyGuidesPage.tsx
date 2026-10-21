@@ -34,9 +34,9 @@ export function MyGuidesPage() {
       <h1 className="mt-2 font-serif text-5xl italic">My guides</h1>
       <p className="mt-2">{app.supabase ? 'House guides stay read-only. These lists live on your account. Drag a row, or use the buttons, to reorder.' : 'House guides stay read-only. These lists live in this browser. Drag a row, or use the buttons, to reorder.'}</p>
       {app.user ? (
-        <form className="mt-4 flex gap-2" onSubmit={(event) => { event.preventDefault(); app.createGuide(title); setTitle('') }}>
+        <form className="mt-4 flex flex-wrap gap-2" onSubmit={(event) => { event.preventDefault(); app.createGuide(title); setTitle('') }}>
           <label className="sr-only" htmlFor="new-list">New list title</label>
-          <input id="new-list" className="min-h-11 flex-1 border-2 border-ink bg-cream px-3" value={title} onChange={(event) => setTitle(event.target.value)} placeholder="New list" />
+          <input id="new-list" className="min-h-11 min-w-0 flex-1 basis-40 border-2 border-ink bg-cream px-3" value={title} onChange={(event) => setTitle(event.target.value)} placeholder="New list" />
           <button className="btn btn-coral" type="submit">Create</button>
         </form>
       ) : (
@@ -45,6 +45,7 @@ export function MyGuidesPage() {
           <button type="button" className="btn btn-coral mt-3" onClick={() => setSignIn(true)}>Sign in</button>
         </div>
       )}
+      {app.user && mine.length === 0 ? <p className="mt-4">No lists yet.</p> : null}
       {mine.map((guide) => (
         <GuideEditor
           key={guide.id}
