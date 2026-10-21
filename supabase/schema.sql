@@ -637,40 +637,6 @@ create trigger plan_members_notify
   after insert on public.plan_members
   for each row execute function public.on_plan_member_notify();
 
-create or replace function public.limit_collection_places()
-returns trigger
-language plpgsql
-security definer
-set search_path = public
-as $$
-declare
-  n integer;
-begin
-  -- Re-saving a place already on the list is not a new row.
-  if exists (
-    select 1
-    from public.collection_places
-    where collection_id = new.collection_id
-      and place_id = new.place_id
-  ) then
-    return new;
-  end if;
-  select count(*) into n
-  from public.collection_places
-  where collection_id = new.collection_id;
-  if n >= 25 then
-    raise exception '25 places is the limit.'
-      using errcode = '23514';
-  end if;
-  return new;
-end;
-$$;
-
-drop trigger if exists collection_places_limit on public.collection_places;
-create trigger collection_places_limit
-  before insert on public.collection_places
-  for each row execute function public.limit_collection_places();
-
 -- ---------------------------------------------------------------------------
 -- Friend and invite RPCs
 -- ---------------------------------------------------------------------------
@@ -1288,7 +1254,6 @@ revoke all on function public.stamp_place_photo() from public;
 revoke all on function public.on_comment_notify() from public;
 revoke all on function public.on_friendship_notify() from public;
 revoke all on function public.on_plan_member_notify() from public;
-revoke all on function public.limit_collection_places() from public, anon, authenticated;
 
 grant execute on function public.is_house_owner() to anon, authenticated;
 grant execute on function public.friends_with(uuid) to anon, authenticated;

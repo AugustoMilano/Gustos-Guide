@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { cityPath } from '../lib/city.ts'
-import { cleanTitle, collectionsForCity, GUIDE_OVER_MESSAGE, GUIDE_PLACE_LIMIT, guideCountLabel, suggestionsFor } from '../lib/collections.ts'
+import { cleanTitle, collectionsForCity, flagshipAimHint, suggestionsFor } from '../lib/collections.ts'
 import { useCityCatalog } from '../lib/use-city.ts'
 import { COLLECTIONS_MIGRATION } from '../social/collection-store.ts'
 import { useApp } from '../state/AppState.tsx'
@@ -57,7 +57,7 @@ export function OwnerCollections() {
             <li key={row.id} className="border-t border-ink/15 pt-3">
               <div className="flex flex-wrap items-center gap-2">
                 <Link className="font-bold" to={cityPath(`/collection/${row.slug}`)}>{row.title}</Link>
-                <span className="tabular-nums text-sm">{guideCountLabel(row.placeIds.length)}</span>
+                <span className="text-sm">{flagshipAimHint(row.placeIds.length)}</span>
                 {row.published ? null : <span className="text-sm">Not published</span>}
                 <button
                   type="button"
@@ -109,7 +109,6 @@ export function OwnerCollections() {
                   </div>
                 </form>
               ) : row.blurb ? <p className="mt-2 text-sm">{row.blurb}</p> : null}
-              {row.placeIds.length > GUIDE_PLACE_LIMIT ? <p className="mt-2 text-sm" role="status">{GUIDE_OVER_MESSAGE}</p> : null}
             </li>
           ))}
         </ul>
@@ -122,7 +121,7 @@ export function OwnerCollections() {
               <li key={suggestion.key} className="flex items-center justify-between gap-3">
                 <span className="min-w-0 truncate">{suggestion.title}</span>
                 <span className="flex shrink-0 items-center gap-2">
-                  <span className="tabular-nums text-sm">{guideCountLabel(suggestion.placeIds.length)}</span>
+                  <span className="text-sm">{flagshipAimHint(suggestion.placeIds.length)}</span>
                   <button
                     type="button"
                     className="btn text-sm"

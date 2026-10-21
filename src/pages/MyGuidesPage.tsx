@@ -6,7 +6,6 @@ import { PlaceThumb } from '../components/PlaceThumb.tsx'
 import { ScoreBadge } from '../components/ScoreBadge.tsx'
 import { SignInSheet } from '../components/SignInSheet.tsx'
 import { slimById } from '../content/load.ts'
-import { GUIDE_LIMIT_MESSAGE, GUIDE_OVER_MESSAGE, GUIDE_PLACE_LIMIT, guideCountLabel } from '../lib/collections.ts'
 import { useCityCatalog } from '../lib/use-city.ts'
 import { LIST_COLORS, LIST_EMOJI } from '../lib/lists.ts'
 import { demoFriendsEnabled } from '../lib/demo.ts'
@@ -63,7 +62,7 @@ export function MyGuidesPage() {
         {shared.map((guide) => (
           <li key={guide.id} className="border-2 border-ink p-3">
             <Link className="font-serif text-2xl italic" to={`/list/${guide.id}`}>{guide.title}</Link>
-            <p className="text-sm">{[demoFriendsEnabled && guide.demo ? 'Seeded' : '', guideCountLabel(guide.placeIds.length), guide.isPublic === false ? 'Private' : 'Public'].filter(Boolean).join(' · ')}</p>
+            <p className="text-sm">{[demoFriendsEnabled && guide.demo ? 'Seeded' : '', `${guide.placeIds.length} places`, guide.isPublic === false ? 'Private' : 'Public'].filter(Boolean).join(' · ')}</p>
           </li>
         ))}
       </ul>
@@ -90,7 +89,6 @@ function GuideEditor({
   const visibility = guide.visibility ?? (guide.isPublic === false ? 'private' : 'public')
   const { places } = useCityCatalog()
   const matches = places.filter((place) => query && place.name.toLowerCase().includes(query.toLowerCase())).slice(0, 6)
-  const atLimit = guide.placeIds.length >= GUIDE_PLACE_LIMIT
 
   function dropAt(index: number) {
     if (dragFrom === null || dragFrom === index) return
@@ -118,8 +116,7 @@ function GuideEditor({
               onBlur={() => title.trim() && title !== guide.title && app.renameGuide(guide.id, title.trim())}
             />
           </label>
-          <p className="mt-1 text-sm"><Link className="font-bold" to={`/list/${guide.id}`}>Open list</Link> · {guideCountLabel(guide.placeIds.length)} · {visibility === 'public' ? 'Public' : visibility === 'friends' ? 'Friends' : 'Private'}</p>
-          {guide.placeIds.length > GUIDE_PLACE_LIMIT ? <p className="mt-1 text-sm" role="status">{GUIDE_OVER_MESSAGE}</p> : guide.placeIds.length >= GUIDE_PLACE_LIMIT ? <p className="mt-1 text-sm" role="status">{GUIDE_LIMIT_MESSAGE}</p> : null}
+          <p className="mt-1 text-sm"><Link className="font-bold" to={`/list/${guide.id}`}>Open list</Link> · {guide.placeIds.length} {guide.placeIds.length === 1 ? 'place' : 'places'} · {visibility === 'public' ? 'Public' : visibility === 'friends' ? 'Friends' : 'Private'}</p>
           {demoFriendsEnabled && !app.supabase && guide.collaboratorIds.includes('demo-mina') ? <p className="text-sm">Mina can edit. This seeded collaborator stays in this browser.</p> : null}
         </div>
       </div>
@@ -233,7 +230,7 @@ function GuideEditor({
           if (!full) return null
           return (
             <li key={place.id}>
-              <button type="button" className="plan-pick place-row disabled:cursor-not-allowed disabled:opacity-40" disabled={atLimit} onClick={() => app.addToGuide(guide.id, place.id)}>
+              <button type="button" className="plan-pick place-row" onClick={() => app.addToGuide(guide.id, place.id)}>
                 <span className="place-row-shot"><PlaceThumb place={full} uploads={app.photos} sizes="64px" /></span>
                 <span className="place-row-copy">
                   <span className="block truncate font-serif text-2xl italic leading-tight">{full.name}</span>
