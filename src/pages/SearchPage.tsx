@@ -187,17 +187,17 @@ export function SearchPage() {
               {shownGuides.map((guide) => {
                 const index = hits.findIndex((hit) => hit.id === `guide-${guide.slug}`)
                 return (
-                  <li key={guide.slug}>
+                  <li key={guide.slug} className="flex min-w-0">
                     <Link
                       id={`guide-${guide.slug}`}
-                      className={`guide-card${index === active ? ' is-active' : ''}`}
+                      className={`guide-card w-full${index === active ? ' is-active' : ''}`}
                       to={cityPath(`/guide/${guide.slug}`)}
                       viewTransition={!reduceMotion}
                       onClick={() => remember(draft)}
                     >
-                      <p className="text-xs font-bold tracking-[0.14em] uppercase">{guide.group}</p>
-                      <h3 className="mt-2 font-serif text-2xl italic leading-none"><MatchText text={guide.title} query={draft} /></h3>
-                      <p className="mt-2 text-sm font-bold">{guide.count} places</p>
+                      <p className="text-xs font-bold uppercase tracking-[0.14em]">{guide.group}</p>
+                      <h3 className="mt-2 font-serif text-2xl italic"><MatchText text={guide.title} query={draft} /></h3>
+                      <p className="mt-2 text-sm font-bold tabular-nums">{guide.count} places</p>
                     </Link>
                   </li>
                 )
