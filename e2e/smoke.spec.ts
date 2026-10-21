@@ -359,7 +359,7 @@ test.describe('controls', () => {
     expect(issues, issues.join('\n')).toEqual([])
   })
 
-  test('menu, alerts, and explore pins', async ({ page }, info) => {
+  test('menu, notifications, and explore pins', async ({ page }, info) => {
     const issues = watch(page)
     await page.goto('/#/', { waitUntil: 'domcontentloaded' })
     if (info.project.name === 'webkit') {
