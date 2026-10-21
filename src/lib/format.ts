@@ -23,6 +23,10 @@ export function uniqueSlug(value: string, taken: string[]): string {
   return `${base}-${n}`
 }
 
+export function countPlaces(count: number): string {
+  return `${count} ${count === 1 ? 'place' : 'places'}`
+}
+
 export function priceLabel(price: Price | undefined): string {
   if (!price) return ''
   return '$'.repeat(price)

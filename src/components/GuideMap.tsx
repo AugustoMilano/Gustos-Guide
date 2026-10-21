@@ -397,7 +397,7 @@ export function GuideMap({
   return (
     <div className="map-frame h-full min-h-0">
       <p className="sr-only">
-        Map of {places.length} places. Pins cluster when zoomed out. Coral means to go, green means been, navy means
+        Map of {places.length === 1 ? '1 place' : `${places.length} places`}. Pins cluster when zoomed out. Coral means to go, green means been, navy means
         unmarked.
       </p>
       <MapContainer

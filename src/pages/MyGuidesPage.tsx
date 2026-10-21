@@ -9,6 +9,7 @@ import { slimById } from '../content/load.ts'
 import { useCityCatalog } from '../lib/use-city.ts'
 import { LIST_COLORS, LIST_EMOJI } from '../lib/lists.ts'
 import { demoFriendsEnabled } from '../lib/demo.ts'
+import { countPlaces } from '../lib/format.ts'
 import { usePageMeta } from '../lib/meta.ts'
 import { useApp } from '../state/AppState.tsx'
 import type { UserGuide } from '../types.ts'
@@ -62,7 +63,7 @@ export function MyGuidesPage() {
         {shared.map((guide) => (
           <li key={guide.id} className="border-2 border-ink p-3">
             <Link className="font-serif text-2xl italic" to={`/list/${guide.id}`}>{guide.title}</Link>
-            <p className="text-sm">{[demoFriendsEnabled && guide.demo ? 'Seeded' : '', `${guide.placeIds.length} places`, guide.isPublic === false ? 'Private' : 'Public'].filter(Boolean).join(' · ')}</p>
+            <p className="text-sm">{[demoFriendsEnabled && guide.demo ? 'Seeded' : '', countPlaces(guide.placeIds.length), guide.isPublic === false ? 'Private' : 'Public'].filter(Boolean).join(' · ')}</p>
           </li>
         ))}
       </ul>

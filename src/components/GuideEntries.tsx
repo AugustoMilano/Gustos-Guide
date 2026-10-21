@@ -11,7 +11,7 @@ import { GoldenFork } from './GoldenFork.tsx'
 import { ScoreBadge } from './ScoreBadge.tsx'
 import { MapLinks } from './MapLinks.tsx'
 import { demoFriendsEnabled } from '../lib/demo.ts'
-import { priceLabel, publicReference, yelpBizUrl } from '../lib/format.ts'
+import { countPlaces, priceLabel, publicReference, yelpBizUrl } from '../lib/format.ts'
 import { bounceMark } from '../lib/motion.ts'
 import type { GuideEntry, SlimPlace, VisitStatus } from '../types.ts'
 
@@ -59,7 +59,7 @@ export function GuideStrip({
     <section aria-label="In this guide" className="min-w-0">
       <div className="flex items-baseline justify-between gap-3">
         <h2 className="font-serif text-2xl italic sm:text-3xl">In this guide</h2>
-        <p className="text-xs font-bold tracking-[0.14em] uppercase">{rows.length} places</p>
+        <p className="text-xs font-bold tracking-[0.14em] uppercase">{countPlaces(rows.length)}</p>
       </div>
       <div className="strip-scroll mt-3 flex snap-x items-stretch gap-3 overflow-x-auto pb-3">
         {rows.map(({ place, number, score, vibe }, index) => {
@@ -199,10 +199,11 @@ export function GuideEntryCard({
       ) : null}
     </div>
   )
+  const splitTitle = !artOnly && layout !== 0
   const title = (
     <div className="min-w-0">
       <div className="entry-head">
-        <h3 className="max-w-full font-serif text-4xl leading-[0.9] italic [overflow-wrap:anywhere] sm:text-6xl">
+        <h3 className={`max-w-full font-serif italic text-balance leading-[1.15] ${splitTitle ? 'text-3xl sm:text-4xl' : 'text-3xl sm:text-4xl lg:text-5xl'}`}>
           <span className="mr-2 text-coral not-italic">{number}</span>
           <Link to={cityPath(`/place/${place.id}`)} viewTransition={!reduceMotion}>{place.name}</Link>
         </h3>
