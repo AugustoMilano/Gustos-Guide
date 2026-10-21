@@ -23,7 +23,7 @@ export function TopPage() {
   const board = regionBoard(region, app.gustoScore)
   const reduce = useReducedMotion()
   const name = regionName(city)
-  const other = region === 'la' ? 'seattle' : 'la'
+  const others = (['seattle', 'la', 'sf'] as const).filter((item) => item !== region)
   const podium = podiumOrder(board.shown)
   const rest = board.shown.slice(Math.min(3, board.shown.length))
   usePageMeta(
@@ -39,14 +39,18 @@ export function TopPage() {
       <p className="mt-3 max-w-xl">
         {region === 'seattle'
           ? "Seattle and the Eastside, ranked by Augusto's exact Gusto's Score."
-          : "Los Angeles, ranked by Augusto's exact Gusto's Score."}
+          : region === 'la'
+            ? "Los Angeles, ranked by Augusto's exact Gusto's Score."
+            : "San Francisco and the Bay Area, ranked by Augusto's exact Gusto's Score."}
         {' '}Owner scores only. A place with no score stays off the list.
       </p>
       <div className="mt-4 flex flex-wrap gap-2">
         <Link className="btn text-sm" to={cityPath('/rank')}>Rank a place</Link>
-        <Link className="btn text-sm" to={other === 'la' ? '/la/top' : '/seattle/top'}>
-          {other === 'la' ? 'Los Angeles Top 25' : 'Seattle Top 25'}
-        </Link>
+        {others.map((item) => (
+          <Link key={item} className="btn text-sm" to={item === 'la' ? '/la/top' : item === 'sf' ? '/sf/top' : '/seattle/top'}>
+            {item === 'la' ? 'Los Angeles Top 25' : item === 'sf' ? 'San Francisco Top 25' : 'Seattle Top 25'}
+          </Link>
+        ))}
       </div>
       {board.scored === 0 ? (
         <section className="glass mt-6 px-5 py-8 text-center">

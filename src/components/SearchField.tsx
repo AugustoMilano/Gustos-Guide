@@ -12,6 +12,7 @@ type Hit = { key: string; label: string; detail: string; href: string }
 function cityOf(place: { city?: string }): CityId {
   if (place.city === 'la') return 'la'
   if (place.city === 'eastside') return 'eastside'
+  if (place.city === 'sf') return 'sf'
   return 'seattle'
 }
 

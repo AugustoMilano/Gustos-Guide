@@ -55,6 +55,7 @@ const SPRING = { type: 'spring' as const, stiffness: 420, damping: 32 }
 function citySwitchLabel(city: CityId) {
   if (city === 'eastside') return 'Eastside'
   if (city === 'la') return 'Los Angeles'
+  if (city === 'sf') return 'San Francisco'
   return 'Seattle'
 }
 
@@ -111,7 +112,7 @@ export function Header() {
   const [moreRefs] = useState(() => [morePanel, moreButton])
   const reduceMotion = useReducedMotion()
   const [scrolled, setScrolled] = useState(false)
-  const [onHero, setOnHero] = useState(() => ['/', '/seattle', '/eastside', '/la'].includes(location.pathname))
+  const [onHero, setOnHero] = useState(() => ['/', '/seattle', '/eastside', '/la', '/sf'].includes(location.pathname))
   const route = `${location.pathname}${location.search}`
 
   useEffect(() => {

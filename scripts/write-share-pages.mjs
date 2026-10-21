@@ -9,6 +9,7 @@ const guides = JSON.parse(readFileSync(join(root, 'src/content/guides.json'), 'u
 const fullPlaces = JSON.parse(readFileSync(join(root, 'src/content/places.json'), 'utf8'))
 const eastside = JSON.parse(readFileSync(join(root, 'src/content/eastside.json'), 'utf8'))
 const la = JSON.parse(readFileSync(join(root, 'src/content/la.json'), 'utf8'))
+const sf = JSON.parse(readFileSync(join(root, 'src/content/sf.json'), 'utf8'))
 
 function escapeHtml(value) {
   return String(value)
@@ -93,6 +94,7 @@ let withPhoto = 0
 
 for (const place of eastside.places) fullPlaces[place.id] = place
 for (const place of la.places) fullPlaces[place.id] = place
+for (const place of sf.places) fullPlaces[place.id] = place
 
 function catalogImage(place) {
   const lead = place?.photos?.find((photo) => (photo.source === 'wikimedia' || photo.source === 'flickr') && photo.url)
@@ -192,4 +194,35 @@ for (const guide of la.guides) {
   }))
 }
 
-console.log(`share pages ${index.places.length + eastside.places.length + la.places.length} places, ${guides.length + eastside.guides.length + la.guides.length} guides, ${withPhoto} using an owner photo, ${places.size} known`)
+for (const place of sf.places) {
+  const image = photos.get(place.id) || catalogImage(place)
+  if (photos.has(place.id)) withPhoto += 1
+  const dir = join(shareRoot, 'place', place.id)
+  mkdirSync(dir, { recursive: true })
+  writeFileSync(join(dir, 'index.html'), page({
+    title: `${place.name} · Gusto's Guide`,
+    description: place.oneLiner || `${place.name} in ${place.neighborhood}.`,
+    image,
+    imageAlt: place.photos?.[0]?.alt || place.name,
+    sharePath: `/share/place/${place.id}/`,
+    hashPath: `/sf/place/${place.id}`,
+  }))
+}
+
+for (const guide of sf.guides) {
+  const first = guide.entries.map((entry) => photos.get(entry.placeId)).find(Boolean)
+  const image = first || `${site}/og/guides/${guide.slug}.png`
+  if (first) withPhoto += 1
+  const dir = join(shareRoot, 'guide', guide.slug)
+  mkdirSync(dir, { recursive: true })
+  writeFileSync(join(dir, 'index.html'), page({
+    title: `${guide.title} · Gusto's Guide`,
+    description: guide.dek || 'A San Francisco guide.',
+    image,
+    imageAlt: guide.title,
+    sharePath: `/share/guide/${guide.slug}/`,
+    hashPath: `/sf/guide/${guide.slug}`,
+  }))
+}
+
+console.log(`share pages ${index.places.length + eastside.places.length + la.places.length + sf.places.length} places, ${guides.length + eastside.guides.length + la.guides.length + sf.guides.length} guides, ${withPhoto} using an owner photo, ${places.size} known`)

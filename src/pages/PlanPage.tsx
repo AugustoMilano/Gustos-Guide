@@ -321,7 +321,7 @@ export function PlanWizardPage() {
       ) : null}
       {step === 1 ? (
         <section className="mt-6" aria-label="Area">
-          <h2 className="font-serif text-3xl italic">{city === 'la' ? 'Where in Los Angeles?' : city === 'eastside' ? 'Where on the Eastside?' : 'Where in Seattle?'}</h2>
+          <h2 className="font-serif text-3xl italic">{city === 'la' ? 'Where in Los Angeles?' : city === 'sf' ? 'Where in San Francisco?' : city === 'eastside' ? 'Where on the Eastside?' : 'Where in Seattle?'}</h2>
           <div className="mt-3 flex flex-wrap gap-2">
             <button type="button" className="chip" aria-pressed={area === 'any'} onClick={() => setArea('any')}>Anywhere</button>
             {neighborhoods.map((item) => (

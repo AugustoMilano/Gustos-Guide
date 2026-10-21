@@ -46,6 +46,7 @@ test('city picker, Seattle urls, and Los Angeles', async ({ page }) => {
   await expect(page.locator('.city-switch')).toHaveCount(0)
   await expect(page.getByRole('button', { name: /Seattle/ })).toBeVisible()
   await expect(page.getByRole('button', { name: /Los Angeles/ })).toBeVisible()
+  await expect(page.getByRole('button', { name: /San Francisco/ })).toBeVisible()
 
   await tap(page.getByRole('button', { name: /Los Angeles/ }))
   await expect(page).toHaveURL(/#\/la$/)

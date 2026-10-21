@@ -45,7 +45,7 @@ export type PublicChip = {
 
 /** City on the place itself. Eastside stays Eastside; it does not fold into Seattle. */
 export function collectionCity(place: { city?: string }): CityId {
-  if (place.city === 'la' || place.city === 'eastside') return place.city
+  if (place.city === 'la' || place.city === 'eastside' || place.city === 'sf') return place.city
   return 'seattle'
 }
 
