@@ -72,8 +72,8 @@ export function SignInSheet({ open, onClose }: { open: boolean; onClose: () => v
             <input ref={fieldFocus} value={name} onChange={(event) => setName(event.target.value)} required />
           </label>
         )}
-        {sent ? <p className="mt-3 text-sm">Check your email for a sign-in link.</p> : null}
-        {error ? <p className="mt-3 text-sm">{error}</p> : null}
+        {sent ? <p className="mt-3 text-sm" role="status">Check your email for a sign-in link. It opens back on this guide.</p> : null}
+        {error ? <p className="mt-3 text-sm" role="alert">{error}</p> : null}
         <button type="submit" className="btn btn-coral mt-4">
           {supabase ? 'Email me a link' : 'Sign in'}
         </button>

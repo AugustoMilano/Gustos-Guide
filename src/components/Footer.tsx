@@ -1,6 +1,6 @@
 import { Link, useLocation } from 'react-router-dom'
 import { cityPath, isCityPicker } from '../lib/city.ts'
-import { useCityId } from '../lib/use-city.ts'
+import { useCityId } from '../lib/use-city-id.ts'
 
 export function Footer() {
   const city = useCityId()

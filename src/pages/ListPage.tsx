@@ -107,7 +107,7 @@ export function ListPage() {
 
   return (
     <main id="main" tabIndex={-1} className="mx-auto max-w-3xl px-4 pt-24 pb-16 outline-none">
-      <p className="text-xs font-bold uppercase tracking-wide">{demoFriendsEnabled && guide.demo ? 'Seeded list' : visibility === 'public' ? 'Public list' : visibility === 'friends' ? 'Friends list' : 'Private list'}</p>
+      <p className="text-xs font-bold uppercase tracking-wide">{demoFriendsEnabled && guide.demo ? 'Seeded list' : visibility === 'public' ? 'Public list' : visibility === 'friends' ? 'Friends list' : 'Private list'} · {rows.length === guide.placeIds.length ? `${guide.placeIds.length} places` : `${rows.length} of ${guide.placeIds.length} places`}</p>
       <div className="mt-2 flex flex-wrap items-center justify-between gap-3">
         <h1 className="font-serif text-5xl italic">{guide.emoji ? `${guide.emoji} ` : ''}{guide.title}</h1>
         <StoryShareButton
@@ -148,19 +148,29 @@ export function ListPage() {
       {whereError ? <p className="mt-2 text-sm">{whereError}</p> : null}
       {rows.length === 0 ? <p className="mt-6">Nothing in this list matches. Clear a filter, or add a place from My guides.</p> : null}
       <ol className="mt-6 space-y-3">
-        {rows.map(({ place, note }, index) => (
-          <li key={place.id}>
-            <Link to={`/place/${place.id}`} className="plan-pick">
-              <span className="plan-pick-shot"><PlaceThumb place={place} uploads={app.photos} /></span>
-              <span className="min-w-0 flex-1 text-left">
-                <span className="flex flex-wrap items-center gap-2"><ScoreBadge score={app.gustoScore(place.id)} size="sm" /><GoldenFork placeId={place.id} /></span>
-                <span className="mt-1 block font-serif text-2xl italic leading-none">{index + 1}. {place.name}</span>
-                <span className="mt-1 block text-sm">{place.neighborhood} · {priceLabel(place.price)}</span>
-                {note ? <span className="mt-1 block text-sm italic">{note}</span> : null}
-              </span>
-            </Link>
-          </li>
-        ))}
+        {rows.map(({ place, note }, index) => {
+          const editable = (owner || collab) && sort === 'order'
+          const at = guide.placeIds.indexOf(place.id)
+          return (
+            <li key={place.id} className="list-row">
+              <Link to={`/place/${place.id}`} className="plan-pick min-w-0 flex-1">
+                <span className="plan-pick-shot"><PlaceThumb place={place} uploads={app.photos} sizes="72px" /></span>
+                <span className="min-w-0 flex-1 text-left">
+                  <span className="flex flex-wrap items-center gap-2"><ScoreBadge score={app.gustoScore(place.id)} size="sm" /><GoldenFork placeId={place.id} /></span>
+                  <span className="mt-1 block font-serif text-2xl italic leading-none">{index + 1}. {place.name}</span>
+                  <span className="mt-1 block text-sm">{place.neighborhood} · {priceLabel(place.price)}</span>
+                  {note ? <span className="mt-1 block text-sm italic">{note}</span> : null}
+                </span>
+              </Link>
+              {editable ? (
+                <span className="list-row-actions">
+                  <button type="button" className="sheet-icon" aria-label={`Move ${place.name} up`} disabled={at <= 0} onClick={() => app.moveInGuide(guide.id, place.id, -1)}>↑</button>
+                  <button type="button" className="sheet-icon" aria-label={`Move ${place.name} down`} disabled={at < 0 || at >= guide.placeIds.length - 1} onClick={() => app.moveInGuide(guide.id, place.id, 1)}>↓</button>
+                </span>
+              ) : null}
+            </li>
+          )
+        })}
       </ol>
     </main>
   )

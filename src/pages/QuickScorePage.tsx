@@ -20,7 +20,7 @@ import { useApp } from '../state/AppState.tsx'
 const WHOLES = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 const TENTHS = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 
-type Undo = { placeId: string; score: number | null; mark: 'havent' | null }
+type Undo = { placeId: string; score: number | null; mark: 'havent' | null; summary: string }
 
 function tick() {
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
@@ -48,6 +48,7 @@ export function QuickScorePage() {
   const [direction, setDirection] = useState(0)
   const [undoStack, setUndoStack] = useState<Undo[]>([])
   const [note, setNote] = useState('')
+  const [nudge, setNudge] = useState<'left' | 'right' | null>(null)
   usePageMeta("Quick score · Gusto's Guide", 'Score one place at a time, across every region.', './og/og.svg')
 
   const owner = Boolean(app.user?.isOwner)
@@ -100,16 +101,16 @@ export function QuickScorePage() {
     draftRef.current = draft
   }, [draft])
 
-  function remember() {
+  function remember(summary: string) {
     if (!place) return
-    setUndoStack((stack) => [...stack, { placeId: place.id, score: app.gustoScore(place.id), mark: app.houseMark(place.id) }])
+    setUndoStack((stack) => [...stack, { placeId: place.id, score: app.gustoScore(place.id), mark: app.houseMark(place.id), summary }])
   }
 
   function save(value: number) {
     if (!place) return
     const next = Math.round(value * 10) / 10
     if (next < 0 || next > 10) return
-    remember()
+    remember(`Scored ${place.name} ${next.toFixed(1)}`)
     tick()
     setDirection(1)
     setPin(null)
@@ -121,7 +122,7 @@ export function QuickScorePage() {
 
   function havent() {
     if (!place) return
-    remember()
+    remember(`Marked ${place.name} as haven't been`)
     tick()
     setDirection(-1)
     setPin(null)
@@ -203,9 +204,18 @@ export function QuickScorePage() {
     <main id="main" tabIndex={-1} className="quick-score mx-auto max-w-xl px-4 pt-24 pb-16 outline-none">
       <p className="text-sm font-bold tracking-wide text-navy uppercase">House</p>
       <h1 className="mt-1 font-serif text-4xl italic sm:text-5xl">Quick score</h1>
-      <p className="mt-2 text-sm">{scored}/{total} scored. Seattle, the Eastside, and Los Angeles.</p>
-      {app.announcement ? <p className="mt-3 text-sm">{app.announcement}</p> : null}
-      <div className="quick-meter mt-3" aria-hidden="true"><span style={{ width: `${total ? (scored / total) * 100 : 0}%` }} /></div>
+      <p className="mt-2 text-sm">{scored} of {total} scored. Seattle, the Eastside, and Los Angeles.</p>
+      {app.announcement ? <p className="mt-3 text-sm" role="status">{app.announcement}</p> : null}
+      <div
+        className="quick-meter mt-3"
+        role="progressbar"
+        aria-valuemin={0}
+        aria-valuemax={total}
+        aria-valuenow={scored}
+        aria-label={`${scored} of ${total} scored`}
+      >
+        <span style={{ width: `${total ? (scored / total) * 100 : 0}%` }} />
+      </div>
       {!app.user ? (
         <div className="friend-empty mt-4">
           <p className="font-serif text-2xl italic">Sign in to score.</p>
@@ -261,19 +271,27 @@ export function QuickScorePage() {
               >
                 <div className="glass quick-card overflow-hidden">
                   <motion.div
-                    className="quick-photo h-24 cursor-grab overflow-hidden bg-navy sm:h-64"
+                    className="quick-photo relative h-24 cursor-grab overflow-hidden bg-navy sm:h-64"
                     drag={reduce ? false : 'x'}
                     dragConstraints={{ left: 0, right: 0 }}
                     dragElastic={0.4}
                     dragSnapToOrigin
+                    onDrag={(_, info) => {
+                      if (info.offset.x <= -36) setNudge('left')
+                      else if (info.offset.x >= 36) setNudge('right')
+                      else setNudge(null)
+                    }}
                     onDragEnd={(_, info) => {
+                      setNudge(null)
                       if (info.offset.x <= -72) havent()
                       else if (info.offset.x >= 72) setScoring(true)
                     }}
                   >
                     <div className="pointer-events-none h-full [&_.place-art]:aspect-auto [&_.place-art]:h-full">
-                      <PlaceThumb place={place} uploads={app.photos} eager priority />
+                      <PlaceThumb place={place} uploads={app.photos} eager priority sizes="(min-width: 640px) 36rem, 100vw" />
                     </div>
+                    <span className={`quick-nudge is-left${nudge === 'left' ? ' is-on' : ''}`}>Haven't been</span>
+                    <span className={`quick-nudge is-right${nudge === 'right' ? ' is-on' : ''}`}>Score</span>
                   </motion.div>
                   <div className="p-4">
                     <h2 className="font-serif text-4xl italic leading-none">
@@ -288,8 +306,9 @@ export function QuickScorePage() {
                   <button type="button" className="btn btn-coral lg:hidden" onClick={() => setScoring(true)}>Score</button>
                   <button type="button" className="btn" onClick={havent}>Haven't been</button>
                   <button type="button" className="btn" onClick={skip}>Skip</button>
-                  <button type="button" className="btn" onClick={undo} disabled={undoStack.length === 0}>Undo</button>
+                  <button type="button" className="btn" onClick={undo} disabled={undoStack.length === 0}>Undo last</button>
                 </div>
+                {undoStack.length ? <p className="mt-2 text-sm">Last: {undoStack[undoStack.length - 1].summary}</p> : null}
                 <div className={scoring ? 'quick-score-panel is-open' : 'quick-score-panel'}>
                   <div className="score-dial mt-3">
                     <button type="button" className="btn score-step" aria-label="Lower by 0.1" disabled={pending == null || pending <= 0} onClick={() => writeDraft(digitsFromScore((pending ?? 0) - 0.1))}>−</button>
@@ -300,7 +319,7 @@ export function QuickScorePage() {
                     <button type="button" className="btn score-step" aria-label="Raise by 0.1" disabled={pending != null && pending >= 10} onClick={() => writeDraft(digitsFromScore((pending ?? -0.1) + 0.1))}>+</button>
                   </div>
                   <label className="mt-3 block text-sm font-bold">
-                    Slider
+                    Score
                     <input
                       className="quick-slider"
                       type="range"
@@ -309,6 +328,7 @@ export function QuickScorePage() {
                       step={0.1}
                       value={pending ?? 0}
                       aria-valuetext={pending == null ? 'No score yet' : pending.toFixed(1)}
+                      style={{ ['--fill' as string]: `${((pending ?? 0) / 10) * 100}%` }}
                       onChange={(event) => writeDraft(digitsFromScore(Number(event.target.value)))}
                     />
                   </label>
@@ -331,7 +351,13 @@ export function QuickScorePage() {
           ) : (
             <p className="mt-6 font-serif text-3xl italic">Nothing in this pass.</p>
           )}
-          <p className="mt-4 text-sm">Keys: digits, Enter saves, N haven't been, S skip, Z undo.</p>
+          <ul className="key-hints mt-4" aria-label="Keyboard shortcuts">
+            <li><kbd>0–9</kbd> score</li>
+            <li><kbd>Enter</kbd> save</li>
+            <li><kbd>N</kbd> haven't been</li>
+            <li><kbd>S</kbd> skip</li>
+            <li><kbd>Z</kbd> undo last</li>
+          </ul>
         </>
       )}
       <p className="sr-only" aria-live="polite">{note}</p>

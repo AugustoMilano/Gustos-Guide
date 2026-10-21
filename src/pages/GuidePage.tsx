@@ -162,6 +162,7 @@ export function GuidePage() {
           </div>
         </div>
         <h1 className="mt-1 font-serif text-4xl italic leading-none sm:text-5xl">{guide.title}</h1>
+        <p className="mt-2 text-sm font-bold">{ordered.length === rows.length ? `${rows.length} places` : `${ordered.length} of ${rows.length} places`}</p>
         {!mobileMap ? <p className="mt-2 line-clamp-1 max-w-2xl font-serif text-xl italic">{guide.dek}</p> : null}
         {!mobileMap ? (
           <details className="guide-note mt-2 max-w-2xl">

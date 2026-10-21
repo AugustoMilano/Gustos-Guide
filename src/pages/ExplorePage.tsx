@@ -169,7 +169,7 @@ export function ExplorePage() {
               >
                 <Link to={cityPath(`/place/${place.id}`)} className="flex items-center gap-3 after:absolute after:inset-0" viewTransition={!reduceMotion}>
                   <span className="relative h-20 w-24 shrink-0 overflow-hidden bg-navy [&_.place-art]:aspect-auto [&_.place-art]:h-full" style={reduceMotion ? undefined : { viewTransitionName: `place-${place.id}` }}>
-                    <PlaceThumb place={place} uploads={app.photos} />
+                    <PlaceThumb place={place} uploads={app.photos} sizes="96px" />
                     <GoldenFork placeId={place.id} overlay />
                   </span>
                   <span className="min-w-0">

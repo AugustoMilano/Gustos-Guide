@@ -103,19 +103,19 @@ function GuideEditor({
       <div className="flex gap-3">
         {cover ? (
           <span className="h-20 w-24 shrink-0 overflow-hidden border-2 border-ink bg-navy [&_.place-art]:aspect-auto [&_.place-art]:h-full">
-            <PlaceThumb place={cover} uploads={app.photos} />
+            <PlaceThumb place={cover} uploads={app.photos} sizes="96px" />
           </span>
         ) : null}
         <div className="min-w-0 flex-1">
           <label className="field">
-            <span className="sr-only">List name</span>
+            <span>Name</span>
             <input
               value={title}
               onChange={(event) => setTitle(event.target.value)}
               onBlur={() => title.trim() && title !== guide.title && app.renameGuide(guide.id, title.trim())}
             />
           </label>
-          <p className="mt-1 text-sm"><Link className="font-bold" to={`/list/${guide.id}`}>Open list</Link> · {visibility === 'public' ? 'Public' : visibility === 'friends' ? 'Friends' : 'Private'}</p>
+          <p className="mt-1 text-sm"><Link className="font-bold" to={`/list/${guide.id}`}>Open list</Link> · {guide.placeIds.length} {guide.placeIds.length === 1 ? 'place' : 'places'} · {visibility === 'public' ? 'Public' : visibility === 'friends' ? 'Friends' : 'Private'}</p>
           {demoFriendsEnabled && !app.supabase && guide.collaboratorIds.includes('demo-mina') ? <p className="text-sm">Mina can edit. This seeded collaborator stays in this browser.</p> : null}
         </div>
       </div>
@@ -170,7 +170,7 @@ function GuideEditor({
               const on = (guide.coverPlaceId ?? guide.placeIds[0]) === id
               return (
                 <button key={id} type="button" className={`h-16 w-20 shrink-0 overflow-hidden border-2 ${on ? 'border-coral' : 'border-ink'}`} aria-pressed={on} aria-label={`Cover ${place.name}`} onClick={() => app.setGuideCover(guide.id, id)}>
-                  <PlaceThumb place={place} uploads={app.photos} />
+                  <PlaceThumb place={place} uploads={app.photos} sizes="80px" />
                 </button>
               )
             })}
@@ -184,14 +184,21 @@ function GuideEditor({
           return (
             <li
               key={id}
-              draggable
-              onDragStart={() => setDragFrom(index)}
+              className="guide-row"
               onDragOver={(event) => event.preventDefault()}
               onDrop={() => dropAt(index)}
-              className="plan-tray-item"
             >
-              <span className="plan-tray-shot" aria-hidden="true"><PlaceThumb place={place} uploads={app.photos} /></span>
-              <span className="min-w-0 flex-1">
+              <button
+                type="button"
+                className="drag-grip"
+                draggable
+                aria-label={`Drag to reorder ${place.name}`}
+                onDragStart={() => setDragFrom(index)}
+              >
+                <span aria-hidden="true">⋮⋮</span>
+              </button>
+              <span className="plan-tray-shot" aria-hidden="true"><PlaceThumb place={place} uploads={app.photos} sizes="72px" /></span>
+              <span className="min-w-0">
                 <Link className="inline-flex min-h-11 min-w-0 items-center truncate font-bold" to={`/place/${id}`}>{place.name}</Link>
                 <label className="field">
                   <span className="sr-only">Note for {place.name}</span>
@@ -202,9 +209,11 @@ function GuideEditor({
                   />
                 </label>
               </span>
-              <button type="button" className="sheet-icon" aria-label={`Move ${place.name} up`} disabled={index === 0} onClick={() => app.moveInGuide(guide.id, id, -1)}>↑</button>
-              <button type="button" className="sheet-icon" aria-label={`Move ${place.name} down`} disabled={index === guide.placeIds.length - 1} onClick={() => app.moveInGuide(guide.id, id, 1)}>↓</button>
-              <button type="button" className="sheet-icon" aria-label={`Remove ${place.name}`} onClick={() => app.removeFromGuide(guide.id, id)}>×</button>
+              <span className="guide-row-actions">
+                <button type="button" className="sheet-icon" aria-label={`Move ${place.name} up`} disabled={index === 0} onClick={() => app.moveInGuide(guide.id, id, -1)}>↑</button>
+                <button type="button" className="sheet-icon" aria-label={`Move ${place.name} down`} disabled={index === guide.placeIds.length - 1} onClick={() => app.moveInGuide(guide.id, id, 1)}>↓</button>
+                <button type="button" className="sheet-icon" aria-label={`Remove ${place.name}`} onClick={() => app.removeFromGuide(guide.id, id)}>×</button>
+              </span>
             </li>
           )
         })}
@@ -220,7 +229,7 @@ function GuideEditor({
           return (
             <li key={place.id}>
               <button type="button" className="plan-pick" onClick={() => app.addToGuide(guide.id, place.id)}>
-                <span className="plan-pick-shot"><PlaceThumb place={full} uploads={app.photos} /></span>
+                <span className="plan-pick-shot"><PlaceThumb place={full} uploads={app.photos} sizes="72px" /></span>
                 <span className="min-w-0 flex-1 text-left">
                   <span className="block truncate font-serif text-2xl italic leading-none">{full.name}</span>
                   <span className="mt-1 block truncate text-sm">{full.neighborhood}</span>

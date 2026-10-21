@@ -1,7 +1,7 @@
 import { motion, useReducedMotion } from 'framer-motion'
 import { useNavigate } from 'react-router-dom'
 import { CITIES, areaTitle, cityPath } from '../lib/city.ts'
-import { useCityId } from '../lib/use-city.ts'
+import { useCityId } from '../lib/use-city-id.ts'
 
 const SPRING = { type: 'spring' as const, stiffness: 420, damping: 32 }
 

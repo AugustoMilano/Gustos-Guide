@@ -1,6 +1,5 @@
 import { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState, type ReactNode } from 'react'
 import type { User } from '@supabase/supabase-js'
-import { catalog } from '../content/load.ts'
 import { demo, demoFriendsEnabled, type DemoUser } from '../lib/demo.ts'
 import { clearStashedAuthError, peekAuthError } from '../lib/auth-callback.ts'
 import { canonicalUrl } from '../lib/site.ts'
@@ -16,6 +15,11 @@ import type { Activity, Bucket, Comment, GuideVisibility, Notice, Plan, RankScor
 const SESSION_KEY = 'gusto.session.v1'
 const HOUSE_KEY = 'gusto.house.v1'
 const MARK_KEY = 'gusto.house-marks.v1'
+const placeNames = new Map<string, string>()
+
+function placeName(id: string) {
+  return placeNames.get(id)
+}
 
 export type { LivePhoto }
 
@@ -226,6 +230,12 @@ export function AppProvider({ children }: { children: ReactNode }) {
       remoteError(error)
     }
   }
+
+  useEffect(() => {
+    void import('../content/load.ts').then((mod) => {
+      for (const place of mod.catalog.places) placeNames.set(place.id, place.name)
+    })
+  }, [])
 
   useEffect(() => {
     hydrateRef.current = hydrate
@@ -470,7 +480,7 @@ export function AppProvider({ children }: { children: ReactNode }) {
     const turningOff = next.statuses[placeId] === status
     if (turningOff) delete next.statuses[placeId]
     else next.statuses[placeId] = status
-    const place = catalog.places.find((item) => item.id === placeId)
+    const name = placeName(placeId)
     pushActivity(
       next,
       {
@@ -478,7 +488,7 @@ export function AppProvider({ children }: { children: ReactNode }) {
         userId: user.id,
         type: status === 'been' ? 'been' : 'saved',
         placeId,
-        text: turningOff ? `Cleared ${place?.name ?? 'a place'}.` : `${status === 'been' ? 'Been' : 'Saved'} ${place?.name ?? 'a place'}.`,
+        text: turningOff ? `Cleared ${name ?? 'a place'}.` : `${status === 'been' ? 'Been' : 'Saved'} ${name ?? 'a place'}.`,
         createdAt: new Date().toISOString(),
       },
       user,
@@ -885,8 +895,7 @@ export function AppProvider({ children }: { children: ReactNode }) {
     for (const id of Object.keys(scores)) if (scores[id].bucket === bucket && !nextOrder.includes(id)) delete scores[id]
     Object.assign(scores, bucketScores)
     const next = { ...doc, order, scores }
-    const place = catalog.places.find((item) => item.id === placeId)
-    pushActivity(next, { id: crypto.randomUUID(), userId: user.id, type: 'rated', placeId, text: `Ranked ${place?.name ?? 'a place'}.`, score: bucketScores[placeId]?.score, createdAt: new Date().toISOString() }, user)
+    pushActivity(next, { id: crypto.randomUUID(), userId: user.id, type: 'rated', placeId, text: `Ranked ${placeName(placeId) ?? 'a place'}.`, score: bucketScores[placeId]?.score, createdAt: new Date().toISOString() }, user)
     persist(next)
     if (user.isOwner) {
       const published: Record<string, number> = {}
@@ -1062,9 +1071,8 @@ export function AppProvider({ children }: { children: ReactNode }) {
     } else {
       setPhotos((current) => [live, ...current])
     }
-    const place = catalog.places.find((item) => item.id === placeId)
     const next = { ...doc }
-    pushActivity(next, { id: crypto.randomUUID(), userId: user.id, type: 'photo', placeId, text: `Added a photo of ${place?.name ?? 'a place'}.`, createdAt: new Date().toISOString() }, user)
+    pushActivity(next, { id: crypto.randomUUID(), userId: user.id, type: 'photo', placeId, text: `Added a photo of ${placeName(placeId) ?? 'a place'}.`, createdAt: new Date().toISOString() }, user)
     persist(next)
   }
 

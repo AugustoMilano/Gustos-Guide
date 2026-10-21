@@ -1,9 +1,10 @@
-import { useEffect, useRef, useState, type FormEvent, type RefObject } from 'react'
+import { useEffect, useRef, useState, type RefObject } from 'react'
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
 import { dragSheet } from '../lib/motion.ts'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { areaPhrase, cityPath, isCityPicker, readRegionMemory, regionOf, writeRegionMemory, type CityId } from '../lib/city.ts'
-import { useCityId } from '../lib/use-city.ts'
+import { SearchField } from './SearchField.tsx'
+import { useCityId } from '../lib/use-city-id.ts'
 import { AreaKicker } from './AreaKicker.tsx'
 import { CitySwitcher } from './CitySwitcher.tsx'
 import { SignInSheet } from './SignInSheet.tsx'
@@ -168,13 +169,6 @@ export function Header() {
     setBell(!bell)
   }
 
-  function search(event: FormEvent) {
-    event.preventDefault()
-    navigate(cityPath(`/search?q=${encodeURIComponent(query.trim())}`, linkCity))
-    setMenu(false)
-    setMore(false)
-  }
-
   return (
     <header className={`site-header${onHero ? ' on-hero' : ''}${scrolled && !onHero ? ' is-scrolled' : ''}`}>
       <OfflineBanner />
@@ -217,18 +211,18 @@ export function Header() {
           )}
         </div>
         {showAreas ? <CitySwitcher /> : null}
-        <form onSubmit={search} className="site-search ml-auto hidden w-44 shrink-0 lg:block min-[1400px]:w-60">
-          <label className="sr-only" htmlFor="site-search">
-            Search {areaName}
-          </label>
-          <input
-            id="site-search"
-            value={query}
-            onChange={(event) => setQuery(event.target.value)}
-            placeholder="Search"
-            className="glass-input w-full px-3 py-2"
-          />
-        </form>
+        <SearchField
+          id="site-search"
+          label={`Search ${areaName}`}
+          value={query}
+          onChange={setQuery}
+          onSubmit={(next) => {
+            navigate(cityPath(`/search?q=${encodeURIComponent(next)}`, linkCity))
+            setMenu(false)
+            setMore(false)
+          }}
+          className="site-search ml-auto hidden w-44 shrink-0 lg:block min-[1400px]:w-60"
+        />
         <nav className="site-nav hidden items-center gap-1 text-sm font-bold lg:flex" aria-label="Primary">
           <Link viewTransition={!reduceMotion} to={cityPath('/explore', linkCity)} onMouseEnter={() => prefetch('/explore')} onFocus={() => prefetch('/explore')}>Explore</Link>
           <Link viewTransition={!reduceMotion} to={cityPath('/guides', linkCity)}>Guides</Link>
@@ -343,9 +337,17 @@ export function Header() {
           exit={reduceMotion ? undefined : { opacity: 0, y: -8, scale: 0.94 }}
           transition={{ type: 'spring', stiffness: 420, damping: 32 }}
         >
-          <form onSubmit={search}>
-            <input aria-label={`Search ${areaName}`} value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Search" className="glass-input w-full px-3 py-2" />
-          </form>
+          <SearchField
+            id="menu-search"
+            label={`Search ${areaName}`}
+            value={query}
+            onChange={setQuery}
+            onSubmit={(next) => {
+              navigate(cityPath(`/search?q=${encodeURIComponent(next)}`, linkCity))
+              setMenu(false)
+              setMore(false)
+            }}
+          />
           <AreaKicker />
           <Link viewTransition={!reduceMotion} to={cityPath('/explore', linkCity)} onClick={() => setMenu(false)} onFocus={() => prefetch('/explore')}>Explore</Link>
           <Link viewTransition={!reduceMotion} to={cityPath('/guides', linkCity)} onClick={() => setMenu(false)}>Guides</Link>
