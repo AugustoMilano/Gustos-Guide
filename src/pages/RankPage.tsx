@@ -40,7 +40,7 @@ export function RankPage() {
       <Link to={cityPath('/top')} className="btn mt-4">Golden Fork Top 25</Link>
       {!app.user ? <button type="button" className="btn btn-coral mt-4" onClick={() => setSignIn(true)}>Sign in to rank</button> : null}
       <label className="field mt-4"><span>Find a place</span><input value={query} onChange={(event) => setQuery(event.target.value)} /></label>
-      <ul className="mt-4 space-y-4">
+      <ul className="mt-4 space-y-3">
         {matches.map((place) => (
           <li key={place.id} className="border-2 border-ink p-3">
             <Link to={cityPath(`/place/${place.id}`)} className="place-row">

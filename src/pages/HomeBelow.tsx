@@ -246,7 +246,7 @@ export function HomeBelow() {
                 <div className="h-28 overflow-hidden bg-navy [&_.place-art]:aspect-auto [&_.place-art]:h-full">
                   <PlaceThumb place={place} uploads={photos} sizes="224px" />
                 </div>
-                <div className="p-3">
+                <div className="card-body">
                   <p className="text-xs font-bold tracking-[0.14em] uppercase">{place.neighborhood}</p>
                   <h3 className="mt-1 font-serif text-2xl italic leading-none">{place.name}</h3>
                   <p className="mt-2 text-sm">{place.cuisine[0]}</p>

@@ -95,7 +95,7 @@ export function ExplorePage() {
           <span aria-hidden="true" />
           <span className="sr-only">{sheet ? 'Show the map' : 'Show the list'}</span>
         </button>
-        <div className="explore-bar flex items-center justify-between gap-2 border-b-2 border-ink px-3 py-2">
+        <div className="explore-bar panel-pad flex items-center justify-between gap-2 border-b-2 border-ink py-2">
           <p className="min-w-0">
             <span className="area-kicker">{areaTitle(city)}</span>
             <span className="mt-0.5 block font-serif text-2xl italic leading-none">{listed.length} places</span>
@@ -110,7 +110,7 @@ export function ExplorePage() {
           </button>
         </div>
         <div className={sheet ? '' : 'max-md:hidden'}>
-          <form className="explore-filters grid grid-cols-2 gap-2 p-3" aria-label="Map filters">
+          <form className="explore-filters panel-pad grid grid-cols-2 gap-2 py-3" aria-label="Map filters">
             <label className="field">
               <span>Cuisine</span>
               <select value={cuisine} onChange={(event) => { setCuisine(event.target.value); resetArea() }}>
@@ -158,12 +158,12 @@ export function ExplorePage() {
               <button type="button" className="btn text-sm" onClick={resetArea}>Clear</button>
             </p>
           ) : null}
-          <ul className="space-y-2 px-3 pb-4">
+          <ul className="panel-pad space-y-3 pb-4">
             {rows.map((place) => (
               <li
                 key={place.id}
                 id={`explore-${place.id}`}
-                className={`explore-card relative border-2 bg-[#fffaf3] p-2 ${activeId === place.id ? 'is-hot border-coral' : 'border-ink'}`}
+                className={`explore-card relative border-2 bg-[#fffaf3] ${activeId === place.id ? 'is-hot border-coral' : 'border-ink'}`}
                 onMouseEnter={() => setActiveId(place.id)}
                 onMouseLeave={() => setActiveId((current) => (current === place.id ? null : current))}
               >

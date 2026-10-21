@@ -75,21 +75,21 @@ export function GuideStrip({
               >
                 <div className="toc-shot relative h-24 overflow-hidden bg-navy [&_.place-art]:aspect-auto [&_.place-art]:h-full">
                   <PlaceThumb place={place} uploads={uploads} eager={index < 2} sizes="240px" />
-                  <span className="entry-index absolute top-1.5 left-1.5 -rotate-6 border-2 border-ink bg-coral text-xs font-bold shadow-[2px_2px_0_#181818]">{number}</span>
+                  <span className="entry-index absolute top-2 left-2 -rotate-6 border-2 border-ink bg-coral text-xs font-bold shadow-[2px_2px_0_#181818]">{number}</span>
                   <GoldenFork placeId={place.id} overlay />
                 </div>
-                <div className="flex flex-1 flex-col px-2.5 pt-2">
+                <div className="toc-pad flex flex-1 flex-col">
                   <div className="toc-badge">
                     <ScoreBadge score={score} size="sm" />
                   </div>
-                  <h3 className="mt-1.5 line-clamp-2 min-h-[2.6rem] font-serif text-xl italic leading-tight">{place.name}</h3>
-                  <p className="mt-1 line-clamp-2 min-h-[2rem] text-[11px] font-bold tracking-wide uppercase">
+                  <h3 className="mt-2 line-clamp-2 min-h-[2.6rem] font-serif text-xl italic leading-tight">{place.name}</h3>
+                  <p className="mt-2 line-clamp-2 min-h-[2rem] text-xs font-bold tracking-wide uppercase">
                     {[place.neighborhood, place.cuisine[0], priceLabel(place.price)].filter(Boolean).join(' · ')}
                   </p>
                   {vibe || place.perfectFor[0] ? <span className={`tag mt-1.5 min-h-6 ${vibe ? 'tag-vibe' : ''}`}>{vibe ?? place.perfectFor[0]}</span> : null}
                 </div>
               </a>
-              <div className="mt-auto px-2.5 pt-2 pb-2.5">
+              <div className="toc-pad mt-auto pt-0">
                 <StatusPills mini status={statuses[place.id]} onToggle={(status) => onToggle(place.id, status)} />
               </div>
             </article>
@@ -236,13 +236,11 @@ export function GuideEntryCard({
           Friend score {friends.average == null ? '' : friends.average.toFixed(1)}.
         </p>
       ) : null}
-      <div className="mt-4 flex flex-wrap gap-2">
+      <div className="action-row mt-4">
         {place.website ? <a className="btn text-sm" href={place.website}>Website</a> : null}
         {place.yelpSlug ? <a className="btn text-sm" href={yelpBizUrl(place.yelpSlug)}>Yelp</a> : null}
         <MapLinks place={place} />
         {place.phone ? <a className="btn text-sm" href={`tel:${place.phone}`}>Call</a> : null}
-      </div>
-      <div className="status-pair mt-2">
         <button type="button" className={`btn status-mark text-sm ${status === 'togo' ? 'btn-coral' : ''}`} aria-pressed={status === 'togo'} onClick={(event) => { if (!signedIn) { onNeedSignIn(); return } bounceMark(event); onToggle('togo') }}>To go</button>
         <button type="button" className={`btn status-mark text-sm ${status === 'been' ? 'btn-leaf' : ''}`} aria-pressed={status === 'been'} onClick={(event) => { if (!signedIn) { onNeedSignIn(); return } bounceMark(event); onToggle('been') }}>Been</button>
       </div>
@@ -288,13 +286,11 @@ export function GuideEntryCard({
           Friend score {friends.average == null ? '' : friends.average.toFixed(1)}.
         </p>
       ) : null}
-      <div className="mt-4 flex flex-wrap gap-2">
+      <div className="action-row mt-4">
         {place.website ? <a className="btn text-sm" href={place.website}>Website</a> : null}
         {place.yelpSlug ? <a className="btn text-sm" href={yelpBizUrl(place.yelpSlug)}>Yelp</a> : null}
         <MapLinks place={place} />
         {place.phone ? <a className="btn text-sm" href={`tel:${place.phone}`}>Call</a> : null}
-      </div>
-      <div className="status-pair mt-2">
         <button type="button" className={`btn status-mark text-sm ${status === 'togo' ? 'btn-coral' : ''}`} aria-pressed={status === 'togo'} onClick={(event) => { if (!signedIn) { onNeedSignIn(); return } bounceMark(event); onToggle('togo') }}>To go</button>
         <button type="button" className={`btn status-mark text-sm ${status === 'been' ? 'btn-leaf' : ''}`} aria-pressed={status === 'been'} onClick={(event) => { if (!signedIn) { onNeedSignIn(); return } bounceMark(event); onToggle('been') }}>Been</button>
       </div>
