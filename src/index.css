@@ -2807,6 +2807,18 @@ input[type='time'] {
 .fork-md .fork-caption,
 .fork-lg .fork-caption { font-size: 10px; }
 
+.fork-badge.fork-navy {
+  width: auto;
+  min-width: 2.75rem;
+  color: #ff5330;
+}
+
+.fork-badge.fork-navy.fork-on-photo {
+  width: auto;
+  min-width: 2.6rem;
+  padding-inline: 5px;
+}
+
 .fork-on-photo {
   position: absolute;
   top: 0.35rem;

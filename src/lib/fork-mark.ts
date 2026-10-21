@@ -1,18 +1,15 @@
-export type ForkMetal = 'gold' | 'silver' | 'bronze' | 'brushed'
+export type ForkMetal = 'gold' | 'silver' | 'bronze' | 'navy'
 
-const STOPS: Record<ForkMetal, [string, string, string, string, string]> = {
+const NAVY = '#141f4d'
+const CREAM = '#fffaf3'
+
+const STOPS: Record<Exclude<ForkMetal, 'navy'>, [string, string, string, string, string]> = {
   gold: ['#fff8e4', '#f0d078', '#c4922e', '#8a6416', '#f6e2a8'],
   silver: ['#ffffff', '#d5dde6', '#9aa6b4', '#6e7a88', '#eef3f8'],
   bronze: ['#f8e0cc', '#e0a36a', '#b86a32', '#7a4120', '#f0c49a'],
-  brushed: ['#efe0bc', '#c6a15a', '#a07d3b', '#7a5c28', '#ddc48a'],
 }
 
-/** Flame-tined fork. One filled shape, shared by the badge and the story canvas. */
-export function forkSvg(metal: ForkMetal, options?: { id?: string; gem?: boolean }): string {
-  const id = options?.id ?? metal
-  const gem = options?.gem ?? metal === 'gold'
-  const [a, b, c, d, e] = STOPS[metal]
-  const shape = `
+const SHAPE = `
     <path d="M37 98h6V68h-6z"/>
     <path d="M28 70h24v4.2c0 1.2-1.2 2-2.2 2H30.2c-1 0-2.2-.8-2.2-2z"/>
     <path d="M16 66h4.2V40h-4.2z"/>
@@ -24,9 +21,18 @@ export function forkSvg(metal: ForkMetal, options?: { id?: string; gem?: boolean
     <path d="M42.2 28c-2-10 2-22 8-26 4-3 8 1 6 6-2 8-8 16-12 20h-2z"/>
     <path d="M56.2 40c2-8 10-16 16-16 4 0 6 4 3 8-4 6-12 12-17 16h-2z"/>
   `
-  const brush = metal === 'brushed'
-    ? `<pattern id="${id}-brush" width="3" height="3" patternUnits="userSpaceOnUse"><rect width="3" height="1.15" fill="#fff" opacity="0.38"/><rect y="1.5" width="3" height="1.15" fill="#3a2a12" opacity="0.16"/></pattern>`
-    : ''
+
+/** Flame-tined fork. Metals keep a gradient; the Top 25 mark is flat navy. */
+export function forkSvg(metal: ForkMetal, options?: { id?: string; gem?: boolean }): string {
+  const id = options?.id ?? metal
+  const gem = metal === 'gold' && (options?.gem ?? true)
+  const shape = SHAPE
+  if (metal === 'navy') {
+    return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 100" width="80" height="100" aria-hidden="true" focusable="false">
+  <g fill="${NAVY}" stroke="${CREAM}" stroke-width="3.2" stroke-linejoin="round" stroke-linecap="round" paint-order="stroke fill">${shape}</g>
+</svg>`
+  }
+  const [a, b, c, d, e] = STOPS[metal]
   const gemMark = gem
     ? `<radialGradient id="${id}-gem" cx="38%" cy="32%" r="70%">
         <stop offset="0" stop-color="#ffe4ee"/>
@@ -49,11 +55,9 @@ export function forkSvg(metal: ForkMetal, options?: { id?: string; gem?: boolean
       <stop offset="0.78" stop-color="${d}"/>
       <stop offset="1" stop-color="${e}"/>
     </linearGradient>
-    ${brush}
     <g id="${id}-shape">${shape}</g>
   </defs>
   <use href="#${id}-shape" fill="url(#${id}-metal)"/>
-  ${brush ? `<use href="#${id}-shape" fill="url(#${id}-brush)"/>` : ''}
   ${gemMark}
 </svg>`
 }
