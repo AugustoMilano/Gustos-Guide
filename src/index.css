@@ -2783,20 +2783,21 @@ input[type='time'] {
   display: inline-flex;
   flex-direction: column;
   align-items: center;
-  width: 40px;
+  width: auto;
   line-height: 1;
   color: #181818;
   vertical-align: middle;
 }
 
-.fork-md { width: 56px; }
-.fork-lg { width: 64px; }
-
-.fork-svg { display: block; width: 100%; }
-.fork-svg svg { display: block; width: 100%; height: auto; }
+.fork-svg { display: block; width: 32px; height: 32px; }
+.fork-svg svg { display: block; width: 32px; height: 32px; }
+.fork-md .fork-svg,
+.fork-md .fork-svg svg { width: 48px; height: 48px; }
+.fork-lg .fork-svg,
+.fork-lg .fork-svg svg { width: 64px; height: 64px; }
 
 .fork-caption {
-  margin-top: -2px;
+  margin-top: 2px;
   font-size: 8px;
   font-weight: 700;
   letter-spacing: 0.08em;
@@ -2807,31 +2808,18 @@ input[type='time'] {
 .fork-md .fork-caption,
 .fork-lg .fork-caption { font-size: 10px; }
 
-.fork-badge.fork-navy {
-  width: auto;
-  min-width: 2.75rem;
-  color: #ff5330;
-}
-
-.fork-badge.fork-navy.fork-on-photo {
-  width: auto;
-  min-width: 2.6rem;
-  padding-inline: 5px;
-}
+.fork-badge.fork-navy { color: #ff5330; }
 
 .fork-on-photo {
   position: absolute;
-  top: 0.35rem;
-  right: 0.35rem;
+  top: 0.4rem;
+  right: 0.4rem;
   z-index: 2;
-  width: 38px;
-  padding: 2px 4px 3px;
-  border-radius: 16px;
-  background: rgb(255 250 243 / 82%);
-  border: 1px solid rgb(255 255 255 / 70%);
-  box-shadow: 0 8px 18px rgb(20 31 77 / 22%);
-  backdrop-filter: blur(12px) saturate(160%);
-  -webkit-backdrop-filter: blur(12px) saturate(160%);
+  padding: 0;
+  background: none;
+  border: 0;
+  box-shadow: none;
+  filter: drop-shadow(0 1px 2px rgb(20 31 77 / 45%));
 }
 
 .top-podium {
@@ -2903,7 +2891,8 @@ input[type='time'] {
 .top-row-shot .place-art { height: 100%; aspect-ratio: auto; }
 
 @media (min-width: 640px) {
-  .fork-lg { width: 84px; }
+  .fork-lg .fork-svg,
+  .fork-lg .fork-svg svg { width: 84px; height: 84px; }
   .top-podium-shot { height: 6.5rem; }
 }
 
