@@ -7,6 +7,7 @@ const root = join(dirname(fileURLToPath(import.meta.url)), '..')
 const index = JSON.parse(readFileSync(join(root, 'src/content/index.json'), 'utf8'))
 const eastside = JSON.parse(readFileSync(join(root, 'src/content/eastside.json'), 'utf8'))
 const la = JSON.parse(readFileSync(join(root, 'src/content/la.json'), 'utf8'))
+const sf = JSON.parse(readFileSync(join(root, 'src/content/sf.json'), 'utf8'))
 const site = (process.env.SITE_URL || 'https://gustosguide.com').replace(/\/$/, '')
 
 function escapeXml(value) {
@@ -57,7 +58,7 @@ const ogDir = join(root, 'public/og/guides')
 mkdirSync(ogDir, { recursive: true })
 writeFileSync(join(root, 'public/og/og.svg'), card("Gusto's Guide", 'Eat your way through Seattle.'))
 writeFileSync(join(root, 'public/og/place.svg'), card('A Seattle place', 'From the house guide.'))
-for (const guide of [...index.guides, ...eastside.guides, ...la.guides]) {
+for (const guide of [...index.guides, ...eastside.guides, ...la.guides, ...sf.guides]) {
   writeFileSync(join(ogDir, `${guide.slug}.svg`), card(guide.title, guide.dek || 'A guide from Gusto.'))
 }
 
@@ -66,10 +67,10 @@ const share = new Set([
   `${site}/terms/`,
   `${site}/privacy/`,
 ])
-for (const place of [...index.places, ...eastside.places, ...la.places]) {
+for (const place of [...index.places, ...eastside.places, ...la.places, ...sf.places]) {
   share.add(`${site}/share/place/${encodeURIComponent(place.id)}/`)
 }
-for (const guide of [...index.guides, ...eastside.guides, ...la.guides]) {
+for (const guide of [...index.guides, ...eastside.guides, ...la.guides, ...sf.guides]) {
   share.add(`${site}/share/guide/${encodeURIComponent(guide.slug)}/`)
 }
 const urls = [...share]
@@ -80,4 +81,4 @@ writeFileSync(
   join(root, 'public/sitemap.xml'),
   `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${body}\n</urlset>\n`,
 )
-console.log(`sitemap ${urls.length} urls, ${index.guides.length + eastside.guides.length + la.guides.length} guide cards, site ${site}`)
+console.log(`sitemap ${urls.length} urls, ${index.guides.length + eastside.guides.length + la.guides.length + sf.guides.length} guide cards, site ${site}`)

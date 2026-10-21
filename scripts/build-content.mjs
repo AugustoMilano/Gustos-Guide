@@ -113,11 +113,13 @@ function parseHours(value) {
 }
 
 function priceTier(value) {
-  const count = String(value ?? '$$').replace(/[^$]/g, '').length
-  if (count <= 1) return 1
+  if (value == null || String(value).trim() === '') return null
+  const count = String(value).replace(/[^$]/g, '').length
+  if (count === 1) return 1
   if (count === 2) return 2
   if (count === 3) return 3
-  return 4
+  if (count >= 4) return 4
+  return null
 }
 
 function isShuttered(place) {
@@ -356,11 +358,11 @@ function perfectFor(place) {
   if (/rooftop|view/.test(type)) tags.add('View')
   if (late) tags.add('Late Night')
   if (/counter|sandwich|burger/.test(type) || /sandwich|burger/.test(cuisine)) tags.add('Lunch')
-  if (/restaurant/.test(type) && place.price <= 2) tags.add('Solo')
+  if (/restaurant/.test(type) && typeof place.price === 'number' && place.price <= 2) tags.add('Solo')
   if (place.neighborhood === 'Pike Place Market') tags.add('Out-Of-Towners')
   if (/seafood|oyster/.test(cuisine)) tags.add('Out-Of-Towners')
   const list = [...tags]
-  if (list.length < 2) {
+  if (list.length < 2 && typeof place.price === 'number') {
     list.push(place.price <= 2 ? 'Weeknight Dinner' : 'Date Night')
     if (!list.includes('Walk-Ins') && place.price <= 2) list.push('Walk-Ins')
   }
@@ -574,6 +576,7 @@ const launch = rawPlaces.filter(isLaunch).map((place) => {
   const applePercent = typeof place.apple_rating === 'string' ? Number(place.apple_rating.replace('%', '')) : null
   const yelpSlug = typeof ids.yelp_ids?.[0] === 'string' ? ids.yelp_ids[0].trim() : ''
   const ratingSource = place.user_rating_source
+  const tier = priceTier(place.price_tier)
   const next = {
     id,
     muid: String(place.muid),
@@ -584,7 +587,7 @@ const launch = rawPlaces.filter(isLaunch).map((place) => {
     lng: place.lng,
     cuisine: cuisine.length ? cuisine : ['Restaurant'],
     placeType: place.type || 'restaurant',
-    price: priceTier(place.price_tier),
+    ...(tier != null ? { price: tier } : {}),
     gustoScore: null,
     periods: parseHours(place.hours),
     hoursLabel: place.hours || '',

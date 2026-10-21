@@ -1182,5 +1182,212 @@
       960,
       1280
     ]
+  },
+  "la-taqueria.jpg": {
+    "w": 1920,
+    "h": 1440,
+    "widths": [
+      480,
+      960,
+      1920
+    ]
+  },
+  "golden-gate-fortune-cookie-factory.jpg": {
+    "w": 1920,
+    "h": 2560,
+    "widths": [
+      480,
+      960,
+      1920
+    ]
+  },
+  "rich-table.jpg": {
+    "w": 1920,
+    "h": 1281,
+    "widths": [
+      480,
+      960,
+      1920
+    ]
+  },
+  "el-farolito.jpg": {
+    "w": 1920,
+    "h": 2560,
+    "widths": [
+      480,
+      960,
+      1920
+    ]
+  },
+  "fog-harbor-fish-house.jpg": {
+    "w": 1920,
+    "h": 1440,
+    "widths": [
+      480,
+      960,
+      1920
+    ]
+  },
+  "niku-steakhouse.jpg": {
+    "w": 1920,
+    "h": 1437,
+    "widths": [
+      480,
+      960,
+      1920
+    ]
+  },
+  "golden-boy-pizza.jpg": {
+    "w": 1600,
+    "h": 1200,
+    "widths": [
+      480,
+      960,
+      1600
+    ]
+  },
+  "saison.jpg": {
+    "w": 1920,
+    "h": 1493,
+    "widths": [
+      480,
+      960,
+      1920
+    ]
+  },
+  "state-bird-provisions.jpg": {
+    "w": 1920,
+    "h": 2880,
+    "widths": [
+      480,
+      960,
+      1920
+    ]
+  },
+  "cafe-zoetrope.jpg": {
+    "w": 1920,
+    "h": 2688,
+    "widths": [
+      480,
+      960,
+      1920
+    ]
+  },
+  "zuni-cafe.jpg": {
+    "w": 1920,
+    "h": 1275,
+    "widths": [
+      480,
+      960,
+      1920
+    ]
+  },
+  "swan-oyster-depot.jpg": {
+    "w": 1920,
+    "h": 2560,
+    "widths": [
+      480,
+      960,
+      1920
+    ]
+  },
+  "the-buena-vista.jpg": {
+    "w": 1920,
+    "h": 2560,
+    "widths": [
+      480,
+      960,
+      1920
+    ]
+  },
+  "san-tung.jpg": {
+    "w": 1920,
+    "h": 1280,
+    "widths": [
+      480,
+      960,
+      1920
+    ]
+  },
+  "ramen-nagi.jpg": {
+    "w": 1920,
+    "h": 2560,
+    "widths": [
+      480,
+      960,
+      1920
+    ]
+  },
+  "original-joe-s.jpg": {
+    "w": 1920,
+    "h": 1440,
+    "widths": [
+      480,
+      960,
+      1920
+    ]
+  },
+  "atelier-crenn.jpg": {
+    "w": 1920,
+    "h": 2880,
+    "widths": [
+      480,
+      960,
+      1920
+    ]
+  },
+  "house-of-prime-rib.jpg": {
+    "w": 1920,
+    "h": 1440,
+    "widths": [
+      480,
+      960,
+      1920
+    ]
+  },
+  "lazy-bear.jpg": {
+    "w": 1920,
+    "h": 1280,
+    "widths": [
+      480,
+      960,
+      1920
+    ]
+  },
+  "the-garden-court.jpg": {
+    "w": 1920,
+    "h": 1652,
+    "widths": [
+      480,
+      960,
+      1920
+    ]
+  },
+  "angler.jpg": {
+    "w": 1920,
+    "h": 1370,
+    "widths": [
+      480,
+      960,
+      1920
+    ]
+  },
+  "molinari-delicatessen.jpg": {
+    "w": 1920,
+    "h": 1280,
+    "widths": [
+      480,
+      960,
+      1920
+    ]
+  },
+  "four-kings.jpg": {
+    "w": 1920,
+    "h": 1440,
+    "widths": [
+      480,
+      960,
+      1920
+    ]
   }
 }

@@ -11,6 +11,7 @@ export function useCityId(): CityId {
 export function placeCity(place: { city?: string }): CityId {
   if (place.city === 'la') return 'la'
   if (place.city === 'eastside') return 'eastside'
+  if (place.city === 'sf') return 'sf'
   return 'seattle'
 }
 

@@ -14,6 +14,21 @@ const SEATTLE = latLngBounds(
   [47.495, -122.445],
   [47.745, -122.245],
 )
+const LOS_ANGELES = latLngBounds(
+  [33.7, -118.72],
+  [34.34, -118.1],
+)
+const BAY_AREA = latLngBounds(
+  [37.2, -122.55],
+  [37.95, -121.75],
+)
+
+function fallbackBounds(places: MapPlace[]) {
+  const lat = places.find((place) => Number.isFinite(place.lat))?.lat
+  if (lat != null && lat >= 36 && lat < 42) return BAY_AREA
+  if (lat != null && lat < 36) return LOS_ANGELES
+  return SEATTLE
+}
 
 export type MapBounds = { south: number; north: number; west: number; east: number }
 
@@ -238,7 +253,7 @@ function FitPins({
           animate: false,
         })
       } else {
-        map.fitBounds(SEATTLE, { padding: [28, 28], maxZoom: 12, animate: false })
+        map.fitBounds(fallbackBounds(places), { padding: [28, 28], maxZoom: 12, animate: false })
       }
     }
     map.on('resize', fit)

@@ -6,9 +6,11 @@ export function Footer() {
   const city = useCityId()
   const { pathname } = useLocation()
   const line = isCityPicker(pathname)
-    ? 'Seattle and the Eastside, or Los Angeles.'
+    ? 'Seattle and the Eastside, Los Angeles, or San Francisco.'
     : city === 'la'
     ? 'Los Angeles, from Abbot Kinney to the last stool on Sunset.'
+    : city === 'sf'
+      ? 'San Francisco and the Bay Area, from the places on this list.'
     : city === 'eastside'
       ? 'The Eastside, from Old Bellevue to the lake.'
       : 'Seattle, from the first coffee to the last stool.'

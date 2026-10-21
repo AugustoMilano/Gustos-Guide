@@ -182,7 +182,7 @@ function Shell() {
         ) : (
         <Routes>
           <Route path="/cities" element={<CitiesPage />} />
-          {['', '/seattle', '/eastside', '/la'].flatMap((prefix) => [
+          {['', '/seattle', '/eastside', '/la', '/sf'].flatMap((prefix) => [
             <Route key={`${prefix}-home`} path={prefix || '/'} element={<HomePage />} />,
             <Route key={`${prefix}-explore`} path={`${prefix}/explore`} element={<ExplorePage />} />,
             <Route key={`${prefix}-guides`} path={`${prefix}/guides`} element={<GuideIndexPage />} />,

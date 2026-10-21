@@ -419,38 +419,46 @@ function reviewCount(rating) {
 }
 
 function harvest(card) {
-  let price = null
+  let yelpPrice = null
+  let fsqPrice = null
   let yelp = null
   let yelpId = ''
   const slugs = []
   const raw = JSON.stringify(card)
   for (const match of raw.matchAll(/https?:\/\/(?:www\.)?yelp\.com\/(?:biz|menu)\/([A-Za-z0-9_-]+)/g)) slugs.push(match[1])
-  function walk(node, allowYelp) {
+  function walk(node, vendor) {
     if (!node || typeof node !== 'object') return
     if (Array.isArray(node)) {
-      for (const item of node) walk(item, allowYelp)
+      for (const item of node) walk(item, vendor)
       return
     }
     const rating = node.ratingType ? node : null
-    if (rating?.ratingType === 'PRICE_RANGE' && price == null) {
+    if (rating?.ratingType === 'PRICE_RANGE') {
       const score = Number(rating.score)
-      if (score >= 1 && score <= 4) price = score
+      if (score >= 1 && score <= 4) {
+        if (vendor === 'yelp' && yelpPrice == null) yelpPrice = score
+        if (vendor === 'fsq' && fsqPrice == null) fsqPrice = score
+      }
     }
-    if (allowYelp && !yelp && rating?.ratingType === 'USER_RATING') {
+    if (vendor === 'yelp' && !yelp && rating?.ratingType === 'USER_RATING') {
       const score = Number(rating.score)
       const count = reviewCount(rating)
       if (score > 0 && score <= 5 && count > 0) yelp = { value: Math.round(score * 10) / 10, count, source: 'Yelp' }
     }
-    for (const value of Object.values(node)) walk(value, allowYelp)
+    for (const value of Object.values(node)) walk(value, vendor)
   }
   for (const component of card.component || []) {
     const attr = component.attribution || {}
     const yelpVendor = attr.vendorId === 'com.yelp' || attr.displayName === 'Yelp'
-    const aggregate = yelpVendor && component.type === 'COMPONENT_TYPE_RATING'
-    if (aggregate && !yelpId && /^[A-Za-z0-9_-]{8,}$/.test(attr.externalItemId || '')) yelpId = attr.externalItemId
-    walk(component, aggregate)
+    const fsqVendor = attr.vendorId === 'com.foursquare' || attr.vendorId === 'com.foursquare_v2' || attr.displayName === 'Foursquare'
+    const vendor = yelpVendor ? 'yelp' : fsqVendor ? 'fsq' : ''
+    if (!vendor) continue
+    if (yelpVendor && component.type === 'COMPONENT_TYPE_RATING' && !yelpId && /^[A-Za-z0-9_-]{8,}$/.test(attr.externalItemId || '')) {
+      yelpId = attr.externalItemId
+    }
+    walk(component, vendor)
   }
-  return { price, yelp, yelpId, slugs: [...new Set(slugs)] }
+  return { price: yelpPrice ?? fsqPrice, yelp, yelpId, slugs: [...new Set(slugs)] }
 }
 
 function slugOk(place, slug) {
@@ -485,7 +493,7 @@ async function selfCheck() {
   const d = harvest(await appleCard(delilah.muid))
   if (!g.yelp || g.yelp.source !== 'Yelp' || g.yelp.count < 100) throw new Error(`self-check missed Granville Yelp ${JSON.stringify(g.yelp)}`)
   if (d.yelp) throw new Error('self-check treated a non-Yelp Delilah rating as Yelp')
-  if (d.price !== 4) throw new Error(`self-check Delilah price ${d.price}`)
+  if (d.price != null) throw new Error(`self-check stored a non-Yelp Delilah price ${d.price}`)
   console.log('self-check ok', 'granville', g.yelp.value, g.yelp.count, 'delilah price', d.price, 'slugs', d.slugs.join(','))
 }
 
