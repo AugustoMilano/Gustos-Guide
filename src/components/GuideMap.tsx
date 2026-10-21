@@ -1,6 +1,7 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { MapContainer, useMap } from 'react-leaflet'
-import { divIcon, latLngBounds, marker, type Layer, type MarkerClusterGroup } from 'leaflet'
+import { circleMarker, divIcon, latLngBounds, marker, type Layer, type CircleMarker, type MarkerClusterGroup } from 'leaflet'
+import { readPosition } from '../lib/geo.ts'
 import '../lib/setup-leaflet.ts'
 import 'leaflet.markercluster'
 import { escapeHtml } from '../lib/format.ts'
@@ -20,13 +21,50 @@ const BASEMAP_STYLE = 'https://tiles.openfreemap.org/styles/positron'
 
 function ZoomButtons() {
   const map = useMap()
+  const here = useRef<CircleMarker | null>(null)
+  const [note, setNote] = useState('')
+
+  useEffect(() => () => {
+    here.current?.remove()
+  }, [])
+
+  async function locate() {
+    setNote('')
+    try {
+      const position = await readPosition()
+      const at: [number, number] = [position.lat, position.lng]
+      if (!here.current) {
+        here.current = circleMarker(at, {
+          radius: 8,
+          color: '#141f4d',
+          weight: 3,
+          fillColor: '#ff5330',
+          fillOpacity: 1,
+        }).addTo(map)
+      } else {
+        here.current.setLatLng(at)
+      }
+      const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+      if (reduce) map.setView(at, 15, { animate: false })
+      else map.flyTo(at, 15, { duration: 0.7 })
+    } catch (reason) {
+      setNote(reason instanceof Error ? reason.message : 'Location unavailable.')
+    }
+  }
+
   return (
-    <div className="leaflet-top leaflet-right">
-      <div className="leaflet-control map-zoom">
-        <button type="button" aria-label="Zoom in" onClick={() => map.zoomIn()}>+</button>
-        <button type="button" aria-label="Zoom out" onClick={() => map.zoomOut()}>−</button>
+    <>
+      <div className="leaflet-top leaflet-right">
+        <div className="leaflet-control map-zoom">
+          <button type="button" aria-label="Zoom in" onClick={() => map.zoomIn()}>+</button>
+          <button type="button" aria-label="Zoom out" onClick={() => map.zoomOut()}>−</button>
+          <button type="button" aria-label="Show my location" onClick={() => void locate()}>
+            <span aria-hidden="true">⌖</span>
+          </button>
+        </div>
       </div>
-    </div>
+      {note ? <p className="map-locate-note" role="status">{note}</p> : null}
+    </>
   )
 }
 
@@ -86,9 +124,9 @@ const COLORS: Record<VisitStatus | 'none', string> = {
 function pinIcon(color: string, hot = false) {
   return divIcon({
     className: `gusto-pin-wrap${hot ? ' is-hot' : ''}`,
-    html: `<span class="gusto-pin${hot ? ' is-hot' : ''}" style="background:${color}"></span>`,
+    html: `<span class="gusto-pin${hot ? ' is-hot' : ''}" style="color:${color}"><svg viewBox="0 0 32 42" aria-hidden="true"><path fill="currentColor" d="M16 1.6C8.6 1.6 2.6 7.5 2.6 14.8 2.6 24.4 16 40.4 16 40.4S29.4 24.4 29.4 14.8C29.4 7.5 23.4 1.6 16 1.6z"/><circle cx="16" cy="14.8" r="5" fill="#eee3d6"/></svg></span>`,
     iconSize: [44, 44],
-    iconAnchor: [22, 22],
+    iconAnchor: [22, 42],
   })
 }
 
@@ -107,18 +145,23 @@ function FitPins({
   statuses,
   activeId,
   onHover,
+  onSelect,
 }: {
   places: MapPlace[]
   statuses: Record<string, VisitStatus>
   activeId?: string | null
   onHover?: (id: string | null) => void
+  onSelect?: (id: string) => void
 }) {
   const map = useMap()
   const seenIds = useRef('')
   const markers = useRef(new Map<string, ReturnType<typeof marker>>())
   const groupRef = useRef<MarkerClusterGroup | null>(null)
   const hoverRef = useRef(onHover)
+  const selectRef = useRef(onSelect)
+  const focusRef = useRef<string | null>(null)
   hoverRef.current = onHover
+  selectRef.current = onSelect
   const idKey = places.map((place) => place.id).join('|')
   const colorKey = places.map((place) => statuses[place.id] ?? 'none').join('|')
 
@@ -152,6 +195,11 @@ function FitPins({
       pin.on('mouseover', () => hoverRef.current?.(place.id))
       pin.on('mouseout', () => hoverRef.current?.(null))
       pin.on('focus', () => hoverRef.current?.(place.id))
+      pin.on('click', () => {
+        focusRef.current = place.id
+        hoverRef.current?.(place.id)
+        selectRef.current?.(place.id)
+      })
       markers.current.set(place.id, pin)
       group.addLayer(pin)
     }
@@ -213,8 +261,19 @@ function FitPins({
     const parent = pin && groupRef.current ? groupRef.current.getVisibleParent(pin) : null
     const element = parent?.getElement?.() ?? pin?.getElement?.() ?? null
     element?.classList.add('is-hot')
+    if (!pin) return () => element?.classList.remove('is-hot')
+    const latlng = pin.getLatLng()
+    const focused = focusRef.current === activeId
+    if (focused) focusRef.current = null
+    const inView = map.getBounds().pad(-0.08).contains(latlng)
+    if (focused || !inView) {
+      const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+      const zoom = focused ? Math.max(map.getZoom(), 15) : map.getZoom()
+      if (reduce) map.setView(latlng, zoom, { animate: false })
+      else map.flyTo(latlng, zoom, { duration: focused ? 0.75 : 0.45 })
+    }
     return () => element?.classList.remove('is-hot')
-  }, [activeId, statuses])
+  }, [activeId, map, statuses])
 
   return null
 }
@@ -256,12 +315,14 @@ export function GuideMap({
   onMoveEnd,
   activeId,
   onHover,
+  onSelect,
 }: {
   places: MapPlace[]
   statuses: Record<string, VisitStatus>
   onMoveEnd?: (box: MapBounds) => void
   activeId?: string | null
   onHover?: (id: string | null) => void
+  onSelect?: (id: string) => void
 }) {
   if (!places.length) {
     return (
@@ -290,7 +351,7 @@ export function GuideMap({
       >
         <ZoomButtons />
         <Basemap />
-        <FitPins places={places} statuses={statuses} activeId={activeId} onHover={onHover} />
+        <FitPins places={places} statuses={statuses} activeId={activeId} onHover={onHover} onSelect={onSelect} />
         <WatchBounds onMoveEnd={onMoveEnd} />
       </MapContainer>
       <div className="map-legend">

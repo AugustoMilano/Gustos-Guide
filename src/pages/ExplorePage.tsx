@@ -91,7 +91,11 @@ export function ExplorePage() {
     <main id="main" tabIndex={-1} className="explore-shell outline-none">
       <h1 className="sr-only">Explore {areaName}</h1>
       <section className={`explore-list ${sheet ? 'is-open' : 'is-peek'}`} aria-label="Places in this view">
-        <div className="flex items-center justify-between gap-2 border-b-2 border-ink px-3 py-2">
+        <button type="button" className="explore-grab" aria-expanded={sheet} onClick={() => setSheet((value) => !value)}>
+          <span aria-hidden="true" />
+          <span className="sr-only">{sheet ? 'Show the map' : 'Show the list'}</span>
+        </button>
+        <div className="explore-bar flex items-center justify-between gap-2 border-b-2 border-ink px-3 py-2">
           <p className="min-w-0">
             <span className="area-kicker">{areaTitle(city)}</span>
             <span className="mt-0.5 block font-serif text-2xl italic leading-none">{listed.length} places</span>
@@ -106,7 +110,7 @@ export function ExplorePage() {
           </button>
         </div>
         <div className={sheet ? '' : 'max-md:hidden'}>
-          <form className="grid grid-cols-2 gap-2 p-3" aria-label="Map filters">
+          <form className="explore-filters grid grid-cols-2 gap-2 p-3" aria-label="Map filters">
             <label className="field">
               <span>Cuisine</span>
               <select value={cuisine} onChange={(event) => { setCuisine(event.target.value); resetArea() }}>
@@ -158,7 +162,8 @@ export function ExplorePage() {
             {rows.map((place) => (
               <li
                 key={place.id}
-                className={`explore-card relative border-2 bg-[#fffaf3] p-2 ${activeId === place.id ? 'border-coral' : 'border-ink'}`}
+                id={`explore-${place.id}`}
+                className={`explore-card relative border-2 bg-[#fffaf3] p-2 ${activeId === place.id ? 'is-hot border-coral' : 'border-ink'}`}
                 onMouseEnter={() => setActiveId(place.id)}
                 onMouseLeave={() => setActiveId((current) => (current === place.id ? null : current))}
               >
@@ -210,6 +215,13 @@ export function ExplorePage() {
           statuses={app.statuses}
           activeId={activeId}
           onHover={setActiveId}
+          onSelect={(id) => {
+            setActiveId(id)
+            setSheet(true)
+            window.requestAnimationFrame(() => {
+              document.getElementById(`explore-${id}`)?.scrollIntoView({ block: 'nearest', behavior: reduceMotion ? 'auto' : 'smooth' })
+            })
+          }}
           onMoveEnd={(box) => {
             latest.current = box
             if (Date.now() < armedAt.current) return

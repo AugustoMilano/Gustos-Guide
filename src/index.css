@@ -20,6 +20,7 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--header-offset) + 0.5rem);
   --header-offset: 4.75rem;
 }
 
@@ -216,6 +217,9 @@ textarea {
   z-index: 40;
   background: #eee3d6;
   border-bottom: 2px solid #181818;
+  padding-top: env(safe-area-inset-top);
+  padding-left: env(safe-area-inset-left);
+  padding-right: env(safe-area-inset-right);
 }
 
 .guide-card {
@@ -3081,4 +3085,317 @@ img.is-pending,
 
 @media (prefers-reduced-motion: reduce) {
   .fork-badge { transition: none; }
+}
+
+@media (display-mode: standalone) {
+  html { overscroll-behavior-y: none; }
+}
+
+.site-footer {
+  padding-bottom: max(0px, env(safe-area-inset-bottom));
+}
+
+.guide-entry {
+  scroll-margin-top: calc(var(--header-offset) + 0.75rem);
+}
+
+.guide-entry.is-hot {
+  box-shadow: inset 3px 0 0 #ff5330;
+}
+
+.guide-sticky {
+  position: sticky;
+  top: var(--header-offset);
+  z-index: 24;
+  margin-inline: -0.25rem;
+  padding: 0.35rem 0.25rem;
+  background: rgb(238 227 214 / 92%);
+  backdrop-filter: blur(16px);
+}
+
+.place-grid {
+  display: grid;
+  gap: 1.25rem;
+}
+
+@media (min-width: 1024px) {
+  .place-grid {
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+    align-items: start;
+  }
+}
+
+.place-facts {
+  margin-top: 1rem;
+  display: grid;
+  gap: 0.55rem;
+  padding: 0.9rem 1rem;
+  border-radius: 20px;
+  background: #fffaf3;
+  border: 1px solid rgb(24 24 24 / 12%);
+}
+
+.place-address {
+  margin: 0;
+  font-weight: 700;
+  line-height: 1.35;
+}
+
+.place-hours summary {
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.place-hours ul {
+  margin: 0.2rem 0 0.4rem;
+  padding-left: 1.1rem;
+}
+
+.place-actions,
+.place-upload {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.place-upload {
+  display: block;
+  margin-top: 1.5rem;
+  padding: 1rem;
+  border: 2px solid #181818;
+  border-radius: 20px;
+  background: #fffaf3;
+}
+
+.photo-stage {
+  position: relative;
+  touch-action: pan-y;
+}
+
+.photo-nav,
+.photo-expand {
+  position: absolute;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  min-width: 44px;
+  min-height: 44px;
+  border: 0;
+  border-radius: 999px;
+  background: rgb(255 250 243 / 92%);
+  color: #181818;
+  font-weight: 700;
+}
+
+.photo-nav { top: 50%; transform: translateY(-50%); }
+.photo-nav.is-prev { left: 0.6rem; }
+.photo-nav.is-next { right: 0.6rem; font-size: 1.4rem; }
+.photo-nav.is-prev { font-size: 1.4rem; }
+.photo-expand {
+  right: 0.6rem;
+  bottom: 2.4rem;
+  padding: 0 0.7rem;
+  font-size: 0.75rem;
+}
+
+.photo-strip {
+  display: flex;
+  gap: 0.45rem;
+  margin-top: 0.5rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+}
+
+.photo-thumb {
+  height: 4.5rem;
+  width: 6.5rem;
+  flex: none;
+  overflow: hidden;
+  scroll-snap-align: start;
+  border: 2px solid #181818;
+  background: #141f4d;
+  color: #eee3d6;
+  font-size: 0.7rem;
+  font-weight: 700;
+}
+
+.photo-thumb.is-on { border-color: #ff5330; }
+
+.lightbox {
+  position: fixed;
+  z-index: 80;
+  inset: 0;
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr) auto auto;
+  gap: 0.6rem;
+  padding:
+    max(0.8rem, env(safe-area-inset-top))
+    max(0.8rem, env(safe-area-inset-right))
+    max(0.8rem, env(safe-area-inset-bottom))
+    max(0.8rem, env(safe-area-inset-left));
+  background: rgb(8 14 40 / 92%);
+  color: #fffaf3;
+}
+
+.lightbox-backdrop {
+  position: absolute;
+  inset: 0;
+  border: 0;
+  background: transparent;
+}
+
+.lightbox-bar,
+.lightbox-nav,
+.lightbox-credit,
+.lightbox-stage {
+  position: relative;
+  z-index: 1;
+}
+
+.lightbox-bar,
+.lightbox-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.6rem;
+}
+
+.lightbox-stage {
+  display: grid;
+  place-items: center;
+  min-height: 0;
+  touch-action: pan-y;
+}
+
+.lightbox-stage img {
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.lightbox-credit {
+  margin: 0;
+  font-size: 0.8rem;
+}
+
+.lightbox-credit a { color: #fffaf3; }
+
+.gusto-pin {
+  display: grid;
+  width: 44px;
+  height: 44px;
+  place-items: end center;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.gusto-pin svg {
+  width: 22px;
+  height: 30px;
+  filter: drop-shadow(0 1px 1px rgb(0 0 0 / 35%));
+}
+
+.gusto-pin.is-hot,
+.leaflet-marker-icon.is-hot .gusto-pin {
+  box-shadow: none;
+  background: transparent;
+}
+
+.gusto-pin.is-hot svg {
+  width: 28px;
+  height: 38px;
+  filter: drop-shadow(0 0 1px #fffaf3) drop-shadow(0 0 5px #ff5330);
+}
+
+.map-locate-note {
+  position: absolute;
+  z-index: 500;
+  left: 0.6rem;
+  bottom: 2.6rem;
+  max-width: 16rem;
+  margin: 0;
+  padding: 0.45rem 0.7rem;
+  border-radius: 12px;
+  background: #fffaf3;
+  color: #181818;
+  font-size: 0.8rem;
+}
+
+.explore-grab {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 44px;
+  border: 0;
+  background: transparent;
+}
+
+.explore-grab span[aria-hidden='true'] {
+  width: 2.4rem;
+  height: 0.28rem;
+  border-radius: 999px;
+  background: rgb(24 24 24 / 35%);
+}
+
+@media (max-width: 767px) {
+  .explore-grab { display: flex; }
+}
+
+.explore-list {
+  padding-bottom: env(safe-area-inset-bottom);
+  transition: max-height 480ms cubic-bezier(0.2, 0.9, 0.3, 1.15);
+}
+
+.explore-bar,
+.explore-filters {
+  position: sticky;
+  z-index: 2;
+  background: rgb(255 250 243 / 94%);
+}
+
+.explore-bar { top: 0; }
+.explore-filters { top: 4.4rem; }
+
+.explore-card.is-hot {
+  box-shadow: inset 3px 0 0 #ff5330;
+}
+
+.btn,
+.chip,
+.sort-chip {
+  transition: transform 420ms cubic-bezier(0.2, 1.25, 0.3, 1);
+}
+
+.btn:active,
+.chip:active,
+.sort-chip:active {
+  transform: scale(0.97);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .explore-list,
+  .btn,
+  .chip,
+  .sort-chip {
+    transition: none;
+  }
+
+  .btn:active,
+  .chip:active,
+  .sort-chip:active {
+    transform: none;
+  }
+
+  .gusto-pin.is-hot svg {
+    filter: none;
+  }
 }
