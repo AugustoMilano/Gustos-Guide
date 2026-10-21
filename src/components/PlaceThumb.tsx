@@ -29,6 +29,7 @@ export function PlaceThumb({
       srcSet={picture.srcSet}
       sizes={picture.srcSet ? picture.sizes : undefined}
       alt=""
+      draggable={false}
       className="h-full w-full object-cover"
       loading={eager || priority ? 'eager' : 'lazy'}
       decoding="async"

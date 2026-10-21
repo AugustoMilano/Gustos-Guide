@@ -26,6 +26,11 @@ export function ScoreQueuePage() {
     <main id="main" tabIndex={-1} className="mx-auto max-w-3xl px-4 pt-24 pb-16 outline-none">
       <AreaKicker />
       <h1 className="mt-2 font-serif text-5xl italic">Needs a score</h1>
+      {app.user?.isOwner ? (
+        <p className="mt-4">
+          <Link className="btn btn-coral" to={cityPath('/score/quick')}>Quick score</Link>
+        </p>
+      ) : null}
       {!app.user ? (
         <div className="friend-empty mt-4">
           <p className="font-serif text-2xl italic">Sign in to score.</p>

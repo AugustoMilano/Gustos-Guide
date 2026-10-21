@@ -7,13 +7,15 @@ import { canonicalUrl } from '../lib/site.ts'
 import { compressToWebp, readPhotos, removePhoto, savePhoto, type StoredPhoto } from '../lib/photos.ts'
 import { rescore } from '../lib/rank.ts'
 import { mergeUploads, type LivePhoto } from '../lib/gallery.ts'
-import { deleteGuideRemote, importLocalBundle, loadAccount, loadHouseScores, loadNotices, loadOwnerPhotos, loadPlans, saveGuide, savePlan, type FriendLists, type FriendProfile, type FriendRequest } from '../social/account.ts'
+import type { HouseMark } from '../lib/quick-score.ts'
+import { deleteGuideRemote, importLocalBundle, loadAccount, loadHouseMarks, loadHouseScores, loadNotices, loadOwnerPhotos, loadPlans, saveGuide, savePlan, type FriendLists, type FriendProfile, type FriendRequest } from '../social/account.ts'
 import { scanLocalBundle, type LocalBundle } from '../social/importLocal.ts'
 import { authProviders, removePlacePhoto, savePlacePhoto, sendMagicLink, signInWithProvider, supabaseClient } from '../social/supabase.ts'
 import type { Activity, Bucket, Comment, GuideVisibility, Notice, Plan, RankScore, SessionUser, UserGuide, VisitStatus } from '../types.ts'
 
 const SESSION_KEY = 'gusto.session.v1'
 const HOUSE_KEY = 'gusto.house.v1'
+const MARK_KEY = 'gusto.house-marks.v1'
 
 export type { LivePhoto }
 
@@ -95,7 +97,9 @@ type AppValue = {
   friendScore: (placeId: string) => { average: number | null; loved: number; count: number; demo: boolean }
   friendMarks: (placeId: string) => { id: string; name: string; handle: string; score: number }[]
   gustoScore: (placeId: string) => number | null
-  setHouseScore: (placeId: string, score: number) => void
+  setHouseScore: (placeId: string, score: number | null) => void
+  houseMark: (placeId: string) => HouseMark | null
+  setHouseMark: (placeId: string, status: HouseMark | null) => void
   tasteMatch: (userId: string) => number | null
   announcement: string
   authError: string | null
@@ -157,6 +161,8 @@ export function AppProvider({ children }: { children: ReactNode }) {
   const [announcement, setAnnouncement] = useState('')
   const [authError, setAuthError] = useState<string | null>(() => peekAuthError())
   const [house, setHouse] = useState<Record<string, number>>({})
+  const [marks, setMarks] = useState<Record<string, HouseMark>>({})
+  const marksRef = useRef(marks)
   const [friends, setFriends] = useState<FriendProfile[]>([])
   const [requests, setRequests] = useState<FriendRequest[]>([])
   const [friendRanks, setFriendRanks] = useState<Record<string, Record<string, number>>>({})
@@ -169,6 +175,11 @@ export function AppProvider({ children }: { children: ReactNode }) {
   function remoteError(error: unknown) {
     const message = error instanceof Error ? error.message : 'Could not save that.'
     setAnnouncement(message)
+  }
+
+  function markTableMissing(error: unknown): boolean {
+    const record = error as { code?: string; message?: string }
+    return record?.code === '42P01' || /house_marks|schema cache|could not find the table/i.test(record?.message ?? '')
   }
 
   async function hydrate(authUser: User | null) {
@@ -243,11 +254,27 @@ export function AppProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
     try {
       const raw = localStorage.getItem(HOUSE_KEY)
-      if (!raw) return
-      const parsed = JSON.parse(raw) as Record<string, number>
-      if (parsed && typeof parsed === 'object') setHouse(parsed)
+      if (raw) {
+        const parsed = JSON.parse(raw) as Record<string, number>
+        if (parsed && typeof parsed === 'object') setHouse(parsed)
+      }
     } catch {
       setHouse({})
+    }
+    try {
+      const raw = localStorage.getItem(MARK_KEY)
+      if (!raw) return
+      const parsed = JSON.parse(raw) as Record<string, HouseMark>
+      if (!parsed || typeof parsed !== 'object') return
+      const stored: Record<string, HouseMark> = {}
+      for (const [id, status] of Object.entries(parsed)) {
+        if (status === 'havent') stored[id] = 'havent'
+      }
+      marksRef.current = stored
+      setMarks(stored)
+    } catch {
+      marksRef.current = {}
+      setMarks({})
     }
   }, [])
 
@@ -268,6 +295,19 @@ export function AppProvider({ children }: { children: ReactNode }) {
       cancel = true
     }
   }, [remote])
+
+  useEffect(() => {
+    if (!remote || !user?.isOwner) return
+    let cancel = false
+    void loadHouseMarks(remote).then((rows) => {
+      if (cancel || !rows) return
+      marksRef.current = rows
+      setMarks(rows)
+    })
+    return () => {
+      cancel = true
+    }
+  }, [remote, user?.isOwner])
 
   useEffect(() => {
     if (remote) return
@@ -917,18 +957,67 @@ export function AppProvider({ children }: { children: ReactNode }) {
     setCompare({ ...compare, low: mid + 1 })
   }
 
-  function setHouseScore(placeId: string, score: number) {
+  function rememberMarks(next: Record<string, HouseMark>) {
+    marksRef.current = next
+    setMarks(next)
+    localStorage.setItem(MARK_KEY, JSON.stringify(next))
+  }
+
+  function setHouseScore(placeId: string, score: number | null) {
     if (!user?.isOwner) return
-    const value = Math.round(score * 10) / 10
-    if (value < 1 || value > 10) return
-    const next = { ...house, [placeId]: value }
+    const next = { ...house }
+    let value: number | null = null
+    if (score != null) {
+      value = Math.round(score * 10) / 10
+      if (!Number.isFinite(value) || value < 0 || value > 10) return
+      next[placeId] = value
+    } else {
+      delete next[placeId]
+    }
     setHouse(next)
     localStorage.setItem(HOUSE_KEY, JSON.stringify(next))
+    if (value != null && marksRef.current[placeId]) {
+      const cleared = { ...marksRef.current }
+      delete cleared[placeId]
+      rememberMarks(cleared)
+      if (remote) {
+        void remote.from('house_marks').delete().eq('place_id', placeId).then(({ error }) => {
+          if (error && !markTableMissing(error)) remoteError(error)
+        })
+      }
+    }
     if (remote) {
-      void remote.from('house_scores').upsert({ place_id: placeId, score: value, updated_by: user.id }).then(({ error }) => {
+      const write = value == null
+        ? remote.from('house_scores').delete().eq('place_id', placeId)
+        : remote.from('house_scores').upsert({ place_id: placeId, score: value, updated_by: user.id })
+      void write.then(({ error }) => {
         if (error) remoteError(error)
       })
     }
+  }
+
+  function setHouseMark(placeId: string, status: HouseMark | null) {
+    if (!user?.isOwner) return
+    const next = { ...marksRef.current }
+    if (status == null) delete next[placeId]
+    else next[placeId] = status
+    rememberMarks(next)
+    if (!remote) return
+    const write = status == null
+      ? remote.from('house_marks').delete().eq('place_id', placeId)
+      : remote.from('house_marks').upsert({ place_id: placeId, status, updated_by: user.id })
+    void write.then(({ error }) => {
+      if (!error) return
+      if (markTableMissing(error)) {
+        setAnnouncement("Haven't-been marks are saved on this device. Apply supabase/migrations/20261021013000_house_marks.sql so they stick to the account.")
+        return
+      }
+      remoteError(error)
+    })
+  }
+
+  function houseMark(placeId: string): HouseMark | null {
+    return marks[placeId] ?? null
   }
 
   async function uploadPhoto(placeId: string, file: File) {
@@ -1144,6 +1233,8 @@ export function AppProvider({ children }: { children: ReactNode }) {
     friendMarks,
     gustoScore,
     setHouseScore,
+    houseMark,
+    setHouseMark,
     tasteMatch,
     announcement,
     authError,

@@ -49,6 +49,14 @@ create table if not exists public.house_scores (
   updated_at timestamptz not null default now()
 );
 
+-- Quick Score triage. Owner-only. Not a public score and not Been / To go.
+create table if not exists public.house_marks (
+  place_id text primary key,
+  status text not null check (status in ('havent')),
+  updated_by uuid not null references public.profiles (id),
+  updated_at timestamptz not null default now()
+);
+
 create table if not exists public.place_photos (
   id uuid primary key default gen_random_uuid(),
   place_id text not null,
@@ -786,6 +794,7 @@ alter table public.profiles enable row level security;
 alter table public.place_status enable row level security;
 alter table public.rankings enable row level security;
 alter table public.house_scores enable row level security;
+alter table public.house_marks enable row level security;
 alter table public.place_photos enable row level security;
 alter table public.guides enable row level security;
 alter table public.guide_items enable row level security;
@@ -816,6 +825,8 @@ drop policy if exists "rankings_select" on public.rankings;
 drop policy if exists "rankings_write" on public.rankings;
 drop policy if exists "house_scores_select" on public.house_scores;
 drop policy if exists "house_scores_write" on public.house_scores;
+drop policy if exists "house_marks_select" on public.house_marks;
+drop policy if exists "house_marks_write" on public.house_marks;
 drop policy if exists "activities readable" on public.activities;
 drop policy if exists "write own activities" on public.activities;
 drop policy if exists "delete own activities" on public.activities;
@@ -909,6 +920,13 @@ create policy "house_scores_select" on public.house_scores for select
   using (true);
 
 create policy "house_scores_write" on public.house_scores for all to authenticated
+  using (public.is_house_owner())
+  with check (public.is_house_owner() and updated_by = auth.uid());
+
+create policy "house_marks_select" on public.house_marks for select to authenticated
+  using (public.is_house_owner());
+
+create policy "house_marks_write" on public.house_marks for all to authenticated
   using (public.is_house_owner())
   with check (public.is_house_owner() and updated_by = auth.uid());
 
@@ -1072,6 +1090,9 @@ grant select, insert, update, delete on table public.rankings to authenticated;
 revoke all on table public.house_scores from public, anon, authenticated;
 grant select on table public.house_scores to anon, authenticated;
 grant insert, update, delete on table public.house_scores to authenticated;
+
+revoke all on table public.house_marks from public, anon, authenticated;
+grant select, insert, update, delete on table public.house_marks to authenticated;
 
 revoke all on table public.place_photos from public, anon, authenticated;
 grant select on table public.place_photos to anon, authenticated;
