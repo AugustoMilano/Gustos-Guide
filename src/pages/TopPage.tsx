@@ -2,6 +2,7 @@ import { motion, useReducedMotion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { AreaKicker } from '../components/AreaKicker.tsx'
 import { ForkMark, GoldenFork } from '../components/GoldenFork.tsx'
+import { ScoreBadge } from '../components/ScoreBadge.tsx'
 import { PlaceThumb } from '../components/PlaceThumb.tsx'
 import { cityPath, regionName, regionOf } from '../lib/city.ts'
 import { usePageMeta } from '../lib/meta.ts'
@@ -76,7 +77,7 @@ export function TopPage() {
                   </span>
                   <span className="mt-2 block font-serif text-xl italic leading-tight sm:text-2xl">{row.place.name}</span>
                   <span className="mt-1 block text-[11px] font-bold tracking-wide uppercase">{row.place.neighborhood}</span>
-                  <span className="mt-1 block font-serif text-3xl italic">{row.score.toFixed(1)}</span>
+                  <span className="podium-score">{row.score.toFixed(1)}</span>
                 </Link>
               </motion.div>
             ))}
@@ -92,15 +93,15 @@ export function TopPage() {
                 >
                   <Link to={cityPath(`/place/${row.place.id}`, placeCity(row.place))} className="top-row glass">
                     <span className="top-rank">{row.rank}</span>
-                    <GoldenFork placeId={row.place.id} size="sm" />
                     <span className="top-row-shot">
                       <PlaceThumb place={row.place} uploads={app.photos} />
+                      <GoldenFork placeId={row.place.id} overlay />
                     </span>
-                    <span className="min-w-0 flex-1">
-                      <span className="block truncate font-serif text-2xl italic leading-none">{row.place.name}</span>
+                    <span className="min-w-0">
+                      <span className="block truncate font-serif text-2xl italic leading-tight">{row.place.name}</span>
                       <span className="mt-1 block truncate text-xs font-bold tracking-wide uppercase">{row.place.neighborhood}</span>
                     </span>
-                    <span className="pr-1 font-serif text-3xl italic">{row.score.toFixed(1)}</span>
+                    <span className="score-col"><ScoreBadge score={row.score} size="sm" /></span>
                   </Link>
                 </motion.li>
               ))}

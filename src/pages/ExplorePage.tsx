@@ -95,7 +95,7 @@ export function ExplorePage() {
           <span aria-hidden="true" />
           <span className="sr-only">{sheet ? 'Show the map' : 'Show the list'}</span>
         </button>
-        <div className="explore-bar flex items-center justify-between gap-2 border-b-2 border-ink px-3 py-2">
+        <div className="explore-bar panel-pad flex items-center justify-between gap-2 border-b-2 border-ink py-2">
           <p className="min-w-0">
             <span className="area-kicker">{areaTitle(city)}</span>
             <span className="mt-0.5 block font-serif text-2xl italic leading-none">{listed.length} places</span>
@@ -110,7 +110,7 @@ export function ExplorePage() {
           </button>
         </div>
         <div className={sheet ? '' : 'max-md:hidden'}>
-          <form className="explore-filters grid grid-cols-2 gap-2 p-3" aria-label="Map filters">
+          <form className="explore-filters panel-pad grid grid-cols-2 gap-2 py-3" aria-label="Map filters">
             <label className="field">
               <span>Cuisine</span>
               <select value={cuisine} onChange={(event) => { setCuisine(event.target.value); resetArea() }}>
@@ -158,26 +158,28 @@ export function ExplorePage() {
               <button type="button" className="btn text-sm" onClick={resetArea}>Clear</button>
             </p>
           ) : null}
-          <ul className="space-y-2 px-3 pb-4">
+          <ul className="panel-pad space-y-3 pb-4">
             {rows.map((place) => (
               <li
                 key={place.id}
                 id={`explore-${place.id}`}
-                className={`explore-card relative border-2 bg-[#fffaf3] p-2 ${activeId === place.id ? 'is-hot border-coral' : 'border-ink'}`}
+                className={`explore-card relative border-2 bg-[#fffaf3] ${activeId === place.id ? 'is-hot border-coral' : 'border-ink'}`}
                 onMouseEnter={() => setActiveId(place.id)}
                 onMouseLeave={() => setActiveId((current) => (current === place.id ? null : current))}
               >
-                <Link to={cityPath(`/place/${place.id}`)} className="flex items-center gap-3 after:absolute after:inset-0" viewTransition={!reduceMotion}>
-                  <span className="relative h-20 w-24 shrink-0 overflow-hidden bg-navy [&_.place-art]:aspect-auto [&_.place-art]:h-full" style={reduceMotion ? undefined : { viewTransitionName: `place-${place.id}` }}>
-                    <PlaceThumb place={place} uploads={app.photos} sizes="96px" />
+                <Link to={cityPath(`/place/${place.id}`)} className="place-row after:absolute after:inset-0" viewTransition={!reduceMotion}>
+                  <span className="place-row-shot" style={reduceMotion ? undefined : { viewTransitionName: `place-${place.id}` }}>
+                    <PlaceThumb place={place} uploads={app.photos} sizes="64px" />
                     <GoldenFork placeId={place.id} overlay />
                   </span>
-                  <span className="min-w-0">
-                    <ScoreBadge score={app.gustoScore(place.id)} size="sm" />
-                    <span className="mt-1 block font-serif text-xl italic leading-none">{place.name}</span>
+                  <span className="place-row-copy">
+                    <span className="block font-serif text-xl italic leading-tight">{place.name}</span>
                     <span className="mt-1 block text-xs font-bold tracking-wide uppercase">
                       {[place.cuisine[0], priceLabel(place.price), place.neighborhood].filter(Boolean).join(' · ')}
                     </span>
+                  </span>
+                  <span className="score-col">
+                    <ScoreBadge score={app.gustoScore(place.id)} size="sm" />
                   </span>
                 </Link>
                 <div className="relative z-10 mt-2 flex flex-wrap gap-2">

@@ -6,6 +6,7 @@ import { Modal } from './Modal.tsx'
 import { SlidingRow } from './SlidingRow.tsx'
 import { demoFriendsEnabled } from '../lib/demo.ts'
 import { PlaceThumb } from './PlaceThumb.tsx'
+import { ScoreBadge } from './ScoreBadge.tsx'
 import { SignInSheet } from './SignInSheet.tsx'
 import { catalog } from '../content/load.ts'
 import { cityPath } from '../lib/city.ts'
@@ -45,12 +46,6 @@ function whenFrom(date: string, time: string): Date {
   const [year, month, day] = date.split('-').map(Number)
   const [hour, minute] = (time || '19:00').split(':').map(Number)
   return new Date(year || 2026, (month || 1) - 1, day || 1, hour || 19, minute || 0, 0, 0)
-}
-
-function ScoreLine({ score }: { score: number | null }) {
-  if (score == null) return <span className="score-pill is-muted">Unrated</span>
-  const band = score >= 9 ? 'Best of the best' : score >= 8 ? 'Great' : score >= 7 ? 'Good' : score >= 6 ? "It's fine" : 'Skip'
-  return <span className="score-pill" aria-label={`Gusto's Score ${score.toFixed(1)}, ${band}`}>{score.toFixed(1)}</span>
 }
 
 function initials(name: string): string {
@@ -266,18 +261,18 @@ export function PlanSheet({ open, onClose, seedPlaceId }: { open: boolean; onClo
                   <li key={place.id}>
                     <button
                       type="button"
-                      className={`plan-pick ${on ? 'is-on' : ''}`}
+                      className={`plan-pick place-row has-action ${on ? 'is-on' : ''}`}
                       aria-pressed={on}
                       onClick={() => toggle(place.id)}
                     >
-                      <span className="plan-pick-shot" style={reduceMotion ? undefined : { viewTransitionName: `place-${place.id}` }}>
-                        <PlaceThumb place={place} uploads={app.photos} />
+                      <span className="place-row-shot" style={reduceMotion ? undefined : { viewTransitionName: `place-${place.id}` }}>
+                        <PlaceThumb place={place} uploads={app.photos} sizes="64px" />
                       </span>
-                      <span className="min-w-0 flex-1 text-left">
-                        <span className="block truncate font-serif text-2xl italic leading-none">{place.name}</span>
+                      <span className="place-row-copy">
+                        <span className="block truncate font-serif text-2xl italic leading-tight">{place.name}</span>
                         <span className="mt-1 block truncate text-sm">{place.neighborhood} · {place.cuisine[0]}</span>
-                        <span className="mt-2 block"><ScoreLine score={app.gustoScore(place.id)} /></span>
                       </span>
+                      <span className="score-col"><ScoreBadge score={app.gustoScore(place.id)} size="sm" /></span>
                       <span className={`pick-check ${on ? 'is-on' : ''}`} aria-hidden="true">✓</span>
                     </button>
                   </li>

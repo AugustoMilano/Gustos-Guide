@@ -153,14 +153,14 @@ export function ListPage() {
           const at = guide.placeIds.indexOf(place.id)
           return (
             <li key={place.id} className="list-row">
-              <Link to={`/place/${place.id}`} className="plan-pick min-w-0 flex-1">
-                <span className="plan-pick-shot"><PlaceThumb place={place} uploads={app.photos} sizes="72px" /></span>
-                <span className="min-w-0 flex-1 text-left">
-                  <span className="flex flex-wrap items-center gap-2"><ScoreBadge score={app.gustoScore(place.id)} size="sm" /><GoldenFork placeId={place.id} /></span>
-                  <span className="mt-1 block font-serif text-2xl italic leading-none">{index + 1}. {place.name}</span>
+              <Link to={`/place/${place.id}`} className="plan-pick place-row min-w-0 flex-1">
+                <span className="place-row-shot"><PlaceThumb place={place} uploads={app.photos} sizes="64px" /><GoldenFork placeId={place.id} overlay /></span>
+                <span className="place-row-copy">
+                  <span className="block font-serif text-2xl italic leading-tight">{index + 1}. {place.name}</span>
                   <span className="mt-1 block text-sm">{place.neighborhood} · {priceLabel(place.price)}</span>
                   {note ? <span className="mt-1 block text-sm italic">{note}</span> : null}
                 </span>
+                <span className="score-col"><ScoreBadge score={app.gustoScore(place.id)} size="sm" /></span>
               </Link>
               {editable ? (
                 <span className="list-row-actions">

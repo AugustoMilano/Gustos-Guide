@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { AreaKicker } from '../components/AreaKicker.tsx'
 import { ListShareCard } from '../components/ListShareCard.tsx'
 import { PlaceThumb } from '../components/PlaceThumb.tsx'
+import { ScoreBadge } from '../components/ScoreBadge.tsx'
 import { SignInSheet } from '../components/SignInSheet.tsx'
 import { slimById } from '../content/load.ts'
 import { useCityCatalog } from '../lib/use-city.ts'
@@ -200,15 +201,16 @@ function GuideEditor({
               <span className="plan-tray-shot" aria-hidden="true"><PlaceThumb place={place} uploads={app.photos} sizes="72px" /></span>
               <span className="min-w-0">
                 <Link className="inline-flex min-h-11 min-w-0 items-center truncate font-bold" to={`/place/${id}`}>{place.name}</Link>
-                <label className="field">
-                  <span className="sr-only">Note for {place.name}</span>
-                  <input
-                    defaultValue={guide.notes?.[id] ?? ''}
-                    placeholder="A short note"
-                    onBlur={(event) => app.setPlaceNote(guide.id, id, event.target.value)}
-                  />
-                </label>
               </span>
+              <span className="score-col"><ScoreBadge score={app.gustoScore(place.id)} size="sm" /></span>
+              <label className="field row-note">
+                <span className="sr-only">Note for {place.name}</span>
+                <input
+                  defaultValue={guide.notes?.[id] ?? ''}
+                  placeholder="A short note"
+                  onBlur={(event) => app.setPlaceNote(guide.id, id, event.target.value)}
+                />
+              </label>
               <span className="guide-row-actions">
                 <button type="button" className="sheet-icon" aria-label={`Move ${place.name} up`} disabled={index === 0} onClick={() => app.moveInGuide(guide.id, id, -1)}>↑</button>
                 <button type="button" className="sheet-icon" aria-label={`Move ${place.name} down`} disabled={index === guide.placeIds.length - 1} onClick={() => app.moveInGuide(guide.id, id, 1)}>↓</button>
@@ -228,13 +230,14 @@ function GuideEditor({
           if (!full) return null
           return (
             <li key={place.id}>
-              <button type="button" className="plan-pick" onClick={() => app.addToGuide(guide.id, place.id)}>
-                <span className="plan-pick-shot"><PlaceThumb place={full} uploads={app.photos} sizes="72px" /></span>
-                <span className="min-w-0 flex-1 text-left">
-                  <span className="block truncate font-serif text-2xl italic leading-none">{full.name}</span>
+              <button type="button" className="plan-pick place-row" onClick={() => app.addToGuide(guide.id, place.id)}>
+                <span className="place-row-shot"><PlaceThumb place={full} uploads={app.photos} sizes="64px" /></span>
+                <span className="place-row-copy">
+                  <span className="block truncate font-serif text-2xl italic leading-tight">{full.name}</span>
                   <span className="mt-1 block truncate text-sm">{full.neighborhood}</span>
+                  <span className="mt-1 block text-sm font-bold">Add</span>
                 </span>
-                <span className="pr-2 text-sm font-bold">Add</span>
+                <span className="score-col"><ScoreBadge score={app.gustoScore(full.id)} size="sm" /></span>
               </button>
             </li>
           )

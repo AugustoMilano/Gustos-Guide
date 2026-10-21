@@ -293,23 +293,21 @@ export function SearchPage() {
                     viewTransition={!reduceMotion}
                     onClick={() => remember(draft)}
                   >
-                    <span className="flex items-center gap-3">
-                      <span className="h-16 w-16 shrink-0 overflow-hidden bg-navy [&_.place-art]:aspect-auto [&_.place-art]:h-full" style={reduceMotion ? undefined : { viewTransitionName: `place-${place.id}` }}>
+                    <span className="place-row">
+                      <span className="place-row-shot" style={reduceMotion ? undefined : { viewTransitionName: `place-${place.id}` }}>
                         <PlaceThumb place={place} sizes="64px" />
+                        <GoldenFork placeId={place.id} overlay />
                       </span>
-                      <span className="flex min-w-0 flex-1 items-start justify-between gap-2 py-2 pr-3">
-                        <span className="min-w-0">
-                          <span className="block font-serif text-2xl italic leading-tight"><MatchText text={place.name} query={draft} /></span>
-                          <span className="mt-1 block text-sm">
-                            <MatchText text={[place.cuisine.join(' · '), place.neighborhood, priceLabel(place.price)].filter(Boolean).join(' · ')} query={draft} />
-                            {origin ? ` · ${milesBetween(origin, place).toFixed(1)} mi` : ''}
-                          </span>
-                          {publicReference(place) ? <span className="public-ref mt-1 block">{publicReference(place)}</span> : null}
+                      <span className="place-row-copy py-1">
+                        <span className="block font-serif text-2xl italic leading-tight"><MatchText text={place.name} query={draft} /></span>
+                        <span className="mt-1 block text-sm">
+                          <MatchText text={[place.cuisine.join(' · '), place.neighborhood, priceLabel(place.price)].filter(Boolean).join(' · ')} query={draft} />
+                          {origin ? ` · ${milesBetween(origin, place).toFixed(1)} mi` : ''}
                         </span>
-                        <span className="flex shrink-0 flex-col items-end gap-1">
-                          <GoldenFork placeId={place.id} />
-                          <ScoreBadge score={gustoScore(place.id)} size="sm" />
-                        </span>
+                        {publicReference(place) ? <span className="public-ref mt-1 block">{publicReference(place)}</span> : null}
+                      </span>
+                      <span className="score-col">
+                        <ScoreBadge score={gustoScore(place.id)} size="sm" />
                       </span>
                     </span>
                   </Link>

@@ -135,17 +135,15 @@ export function PlacePage() {
                 <ul>{formatPeriods(place.periods).map((line) => <li key={line}>{line}</li>)}</ul>
               </details>
             ) : <p>Hours are not posted. Call before you trek across town.</p>}
-            <div className="place-actions">
-              <MapLinks place={place} prominent />
-              {place.website ? <a className="btn text-sm" href={place.website}>Website</a> : null}
-              {place.phone ? <a className="btn text-sm" href={`tel:${place.phone}`}>Call</a> : null}
-              {place.yelpSlug ? <a className="btn text-sm" href={yelpBizUrl(place.yelpSlug)}>Yelp</a> : null}
-            </div>
           </section>
           <div className="mt-4 flex flex-wrap gap-2">
             {place.perfectFor.map((tag) => <span key={tag} className="tag">{tag}</span>)}
           </div>
-          <div className="mt-4 flex flex-wrap gap-2">
+          <div className="action-row mt-4">
+            <MapLinks place={place} prominent />
+            {place.website ? <a className="btn text-sm" href={place.website}>Website</a> : null}
+            {place.phone ? <a className="btn text-sm" href={`tel:${place.phone}`}>Call</a> : null}
+            {place.yelpSlug ? <a className="btn text-sm" href={yelpBizUrl(place.yelpSlug)}>Yelp</a> : null}
             <button type="button" className={`btn status-mark text-sm ${app.statuses[place.id] === 'togo' ? 'btn-coral' : ''}`} aria-pressed={app.statuses[place.id] === 'togo'} onClick={(event) => { if (!app.user) { setSignIn(true); return } bounceMark(event); app.setStatus(place.id, 'togo') }}>To go</button>
             <button type="button" className={`btn status-mark text-sm ${been ? 'btn-leaf' : ''}`} aria-pressed={been} onClick={(event) => { if (!app.user) { setSignIn(true); return } bounceMark(event); app.setStatus(place.id, 'been') }}>Been</button>
             <ShareButton title={place.name} url={shareUrl(place.id)} />
@@ -227,10 +225,12 @@ export function PlacePage() {
                     <PlaceThumb place={item} uploads={app.photos} sizes="(min-width: 1024px) 200px, 45vw" />
                     <GoldenFork placeId={item.id} overlay />
                   </div>
-                  <div className="p-2">
-                    <ScoreBadge score={app.gustoScore(item.id)} size="sm" />
-                    <h3 className="mt-1 font-serif text-xl italic leading-tight">{item.name}</h3>
-                    <p className="mt-1 text-xs font-bold tracking-wide uppercase">{item.neighborhood}</p>
+                  <div className="place-card-body is-dense">
+                    <div className="min-w-0">
+                      <h3 className="font-serif text-xl italic leading-tight">{item.name}</h3>
+                      <p className="mt-1 text-xs font-bold tracking-wide uppercase">{item.neighborhood}</p>
+                    </div>
+                    <span className="score-col"><ScoreBadge score={app.gustoScore(item.id)} size="sm" /></span>
                   </div>
                 </Link>
               ))}

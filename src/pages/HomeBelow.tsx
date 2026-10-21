@@ -142,10 +142,12 @@ export function HomeBelow() {
                   <PlaceThumb place={place} uploads={photos} eager={index < 2} sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw" />
                   <GoldenFork placeId={place.id} overlay />
                 </div>
-                <div className="p-3">
-                  <ScoreBadge score={app.gustoScore(place.id)} size="sm" />
-                  <h3 className="mt-2 font-serif text-2xl italic leading-none">{place.name}</h3>
-                  <p className="mt-2 text-sm">{whyNow(place)}</p>
+                <div className="place-card-body">
+                  <div className="min-w-0">
+                    <h3 className="font-serif text-2xl italic leading-tight">{place.name}</h3>
+                    <p className="mt-2 text-sm">{whyNow(place)}</p>
+                  </div>
+                  <span className="score-col"><ScoreBadge score={app.gustoScore(place.id)} size="sm" /></span>
                 </div>
               </Link>
               </Reveal>
@@ -178,7 +180,7 @@ export function HomeBelow() {
                     <Link className="plan-tray-item" to={cityPath(`/place/${row.place!.id}`)} viewTransition={!reduceMotion}>
                       <span className="plan-tray-shot"><PlaceThumb place={row.place!} uploads={photos} sizes="72px" /></span>
                       <span className="min-w-0 flex-1 truncate font-bold">{row.place!.name}</span>
-                      <span className="pr-3 font-serif text-2xl italic">{row.score.toFixed(1)}</span>
+                      <span className="score-num">{row.score.toFixed(1)}</span>
                     </Link>
                   </li>
                 ))}
@@ -220,13 +222,16 @@ export function HomeBelow() {
           <div className="mt-4 flex gap-3 overflow-x-auto pb-2">
             {featured.map((guide) => (
               <Link key={guide.slug} to={cityPath(`/guide/${guide.slug}`)} className="guide-card w-72 shrink-0" viewTransition={!reduceMotion}>
-                <span className="flex items-start justify-between gap-3">
-                  <span>
+                <span className="card-split">
+                  <span className="min-w-0">
                     <p className="text-xs font-bold tracking-[0.14em] uppercase">{guide.group}</p>
                     <h3 className="mt-2 font-serif text-3xl italic leading-none">{guide.title}</h3>
                     <p className="mt-2 text-sm">{guide.dek}</p>
                   </span>
-                  <span className="sticker shrink-0">{guide.count}</span>
+                  <span className="guide-count" aria-label={`${guide.count} places`}>
+                    <strong>{guide.count}</strong>
+                    <span>places</span>
+                  </span>
                 </span>
               </Link>
             ))}
@@ -241,7 +246,7 @@ export function HomeBelow() {
                 <div className="h-28 overflow-hidden bg-navy [&_.place-art]:aspect-auto [&_.place-art]:h-full">
                   <PlaceThumb place={place} uploads={photos} sizes="224px" />
                 </div>
-                <div className="p-3">
+                <div className="card-body">
                   <p className="text-xs font-bold tracking-[0.14em] uppercase">{place.neighborhood}</p>
                   <h3 className="mt-1 font-serif text-2xl italic leading-none">{place.name}</h3>
                   <p className="mt-2 text-sm">{place.cuisine[0]}</p>

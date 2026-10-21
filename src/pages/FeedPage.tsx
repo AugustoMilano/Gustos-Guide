@@ -108,10 +108,10 @@ export function FeedPage() {
       </div>
       <aside>
         <h2 className="font-serif text-3xl italic">Leaderboard</h2>
-        <ol className="leaderboard mt-3 space-y-1">
+        <ol className="leaderboard mt-3 space-y-2">
           {board.map((row, index) => (
             <li key={row.id} className="flex items-center gap-2">
-              <span className="grid h-8 w-8 shrink-0 place-items-center border-2 border-ink bg-coral text-sm font-bold">{index + 1}</span>
+              <span className="rank-pip">{index + 1}</span>
               <span>
                 <Link to={row.href} className="font-bold">{row.name}</Link>
                 {demoFriendsEnabled && row.demo ? ' · Seeded' : ''} · {row.count} ranked · streak {row.streak}

@@ -40,17 +40,20 @@ export function RankPage() {
       <Link to={cityPath('/top')} className="btn mt-4">Golden Fork Top 25</Link>
       {!app.user ? <button type="button" className="btn btn-coral mt-4" onClick={() => setSignIn(true)}>Sign in to rank</button> : null}
       <label className="field mt-4"><span>Find a place</span><input value={query} onChange={(event) => setQuery(event.target.value)} /></label>
-      <ul className="mt-4 space-y-4">
+      <ul className="mt-4 space-y-3">
         {matches.map((place) => (
           <li key={place.id} className="border-2 border-ink p-3">
-            <Link to={cityPath(`/place/${place.id}`)} className="flex items-center gap-3">
-              <span className="h-14 w-16 shrink-0 overflow-hidden border-2 border-ink bg-navy [&_.place-art]:aspect-auto [&_.place-art]:h-full">
+            <Link to={cityPath(`/place/${place.id}`)} className="place-row">
+              <span className="place-row-shot">
                 <PlaceThumb place={place} uploads={app.photos} />
+                <GoldenFork placeId={place.id} overlay />
               </span>
-              <span className="font-serif text-2xl italic leading-none">{place.name}</span>
+              <span className="place-row-copy">
+                <span className="block font-serif text-2xl italic leading-tight">{place.name}</span>
+                {app.user && !app.user.isOwner && app.scores[place.id] ? <span className="mt-1 block text-sm">Your score {app.scores[place.id].score.toFixed(1)}</span> : null}
+              </span>
+              <span className="score-col"><ScoreBadge score={app.gustoScore(place.id)} size="sm" /></span>
             </Link>
-            <div className="mt-2 flex flex-wrap items-center gap-2"><ScoreBadge score={app.gustoScore(place.id)} size="sm" /><GoldenFork placeId={place.id} /></div>
-            {app.user && !app.user.isOwner && app.scores[place.id] ? <p className="mt-1 text-sm">Your score {app.scores[place.id].score.toFixed(1)}</p> : null}
             <div className="mt-2 flex flex-wrap gap-2">
               {BUCKETS.map((bucket) => (
                 <button key={bucket.id} type="button" className="btn text-sm" onClick={() => (app.user ? app.startRank(place.id, bucket.id) : setSignIn(true))}>

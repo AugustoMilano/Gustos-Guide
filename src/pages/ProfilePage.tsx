@@ -119,9 +119,10 @@ export function ProfilePage() {
       {top.length ? (
         <ol className="mt-3 space-y-2">
           {top.map((row, index) => (
-            <li key={row.id} className="flex items-baseline justify-between gap-3 border-b border-ink/20 py-1">
-              <span><span className="font-bold">{index + 1}.</span> <Link className="font-bold" to={`/place/${row.id}`}>{row.name}</Link></span>
-              <span>{row.score.toFixed(1)}</span>
+            <li key={row.id} className="score-line">
+              <span className="score-line-rank">{index + 1}</span>
+              <Link className="min-w-0 truncate font-bold" to={`/place/${row.id}`}>{row.name}</Link>
+              <span className="score-line-num">{row.score.toFixed(1)}</span>
             </li>
           ))}
         </ol>
