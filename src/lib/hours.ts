@@ -1,14 +1,12 @@
 import type { Period } from '../types.ts'
 
+export function isOpenAt(periods: Period[] | undefined, day: number, mins: number): boolean {
+  if (!periods?.length) return false
+  return periods.some((period) => covers(period, day, mins))
+}
+
 export function isOpen(periods: Period[], now = new Date()): boolean {
-  const day = now.getDay()
-  const mins = now.getHours() * 60 + now.getMinutes()
-  return periods.some((period) => {
-    if (period.end > period.start) return period.days.includes(day) && mins >= period.start && mins < period.end
-    if (period.days.includes(day) && mins >= period.start) return true
-    const previous = (day + 6) % 7
-    return period.days.includes(previous) && mins < period.end
-  })
+  return isOpenAt(periods, now.getDay(), now.getHours() * 60 + now.getMinutes())
 }
 
 const NAMES = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
@@ -36,10 +34,8 @@ function labelTime(mins: number): string {
   return clock(normalized)
 }
 
-export function hoursPhrase(periods: Period[], now = new Date()): string | null {
-  if (!periods.length) return null
-  const day = now.getDay()
-  const mins = now.getHours() * 60 + now.getMinutes()
+export function hoursPhraseAt(periods: Period[] | undefined, day: number, mins: number): string | null {
+  if (!periods?.length) return null
   const open = periods.find((period) => covers(period, day, mins))
   if (open) return `Open now · until ${labelTime(open.end)}`
   for (let offset = 0; offset < 7; offset += 1) {
@@ -54,6 +50,10 @@ export function hoursPhrase(periods: Period[], now = new Date()): string | null 
     return offset === 0 ? `Closed · opens ${when}` : `Closed · opens ${NAMES[date]} ${when}`
   }
   return null
+}
+
+export function hoursPhrase(periods: Period[], now = new Date()): string | null {
+  return hoursPhraseAt(periods, now.getDay(), now.getHours() * 60 + now.getMinutes())
 }
 
 export function formatPeriods(periods: Period[]): string[] {

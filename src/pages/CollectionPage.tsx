@@ -7,7 +7,7 @@ import { MapLinks } from '../components/MapLinks.tsx'
 import { PlaceThumb } from '../components/PlaceThumb.tsx'
 import { ScoreBadge } from '../components/ScoreBadge.tsx'
 import { areaTitle, cityPath } from '../lib/city.ts'
-import { CHEAP_EATS_SLUG, CHEAP_EATS_TITLE, cheapEatsFor, cleanTitle, flagshipAimHint, movedPlaceIds, orderedMembers } from '../lib/collections.ts'
+import { CHEAP_EATS_SLUG, CHEAP_EATS_TITLE, cheapEatsFor, cleanTitle, flagshipAimHint, movedPlaceIds, orderedMembers, renderableIds, usableCheapMembers } from '../lib/collections.ts'
 import { priceLabel } from '../lib/format.ts'
 import { usePageMeta } from '../lib/meta.ts'
 import { useCityCatalog } from '../lib/use-city.ts'
@@ -27,16 +27,19 @@ export function CollectionPage() {
   const [editing, setEditing] = useState(false)
   const [confirmDelete, setConfirmDelete] = useState(false)
   const isCheap = slug === CHEAP_EATS_SLUG
-  const stored = app.collections.find((row) => row.city === city && row.slug === slug && (row.published || app.user?.isOwner))
+  const stored = app.collections.find((row) => row.city === city && row.slug === slug && (row.published || app.user?.isOwner)) ?? null
   const loading = app.collectionsStatus === 'loading'
-  const members = stored
-    ? orderedMembers(stored.placeIds, places)
-    : isCheap
-      ? cheapEatsFor(places, city, app.gustoScore)
+  const storedIds = renderableIds(stored?.placeIds)
+  const cheapMembers = isCheap ? usableCheapMembers(stored, places) : null
+  const members = isCheap
+    ? cheapMembers ?? cheapEatsFor(places, city, app.gustoScore)
+    : storedIds
+      ? orderedMembers(storedIds, places)
       : []
+  const usingStored = isCheap ? cheapMembers != null : storedIds != null
   const heading = stored?.title ?? (isCheap ? CHEAP_EATS_TITLE : 'Collection')
   const blurb = stored?.blurb ?? ''
-  const owner = Boolean(app.user?.isOwner && stored)
+  const owner = Boolean(app.user?.isOwner && stored && usingStored && storedIds)
   usePageMeta(
     `${heading} · Gusto's Guide`,
     blurb || `${members.length} places · ${areaTitle(city)}`,
@@ -74,7 +77,7 @@ export function CollectionPage() {
             <h1 className="mt-0.5 font-serif text-3xl italic leading-none">{heading}</h1>
             <p className="mt-1 text-sm tabular-nums">{members.length} places</p>
             {app.user?.isOwner ? (
-              <p className="mt-1 text-sm">{flagshipAimHint(stored ? stored.placeIds.length : members.length)}</p>
+              <p className="mt-1 text-sm">{flagshipAimHint(usingStored && storedIds ? storedIds.length : members.length)}</p>
             ) : null}
           </motion.div>
           <button
@@ -156,7 +159,7 @@ export function CollectionPage() {
                   <span className="place-row-copy">
                     <span className="block font-serif text-xl italic leading-tight">{place.name}</span>
                     <span className="mt-1 block text-xs font-bold tracking-wide uppercase">
-                      {[place.cuisine[0], priceLabel(place.price), place.neighborhood].filter(Boolean).join(' · ')}
+                      {[place.cuisine?.[0], priceLabel(place.price), place.neighborhood].filter(Boolean).join(' · ')}
                     </span>
                   </span>
                   <span className="score-col">
@@ -173,7 +176,8 @@ export function CollectionPage() {
                         aria-label={`Move ${place.name} up`}
                         disabled={members[0]?.id === place.id}
                         onClick={() => {
-                          const next = movedPlaceIds(stored.placeIds, members.map((item) => item.id), place.id, -1)
+                          if (!storedIds) return
+                          const next = movedPlaceIds(storedIds, members.map((item) => item.id), place.id, -1)
                           if (next) app.reorderCollection(stored.id, next)
                         }}
                       >
@@ -185,7 +189,8 @@ export function CollectionPage() {
                         aria-label={`Move ${place.name} down`}
                         disabled={members[members.length - 1]?.id === place.id}
                         onClick={() => {
-                          const next = movedPlaceIds(stored.placeIds, members.map((item) => item.id), place.id, 1)
+                          if (!storedIds) return
+                          const next = movedPlaceIds(storedIds, members.map((item) => item.id), place.id, 1)
                           if (next) app.reorderCollection(stored.id, next)
                         }}
                       >

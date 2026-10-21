@@ -83,7 +83,7 @@ export function compareCheapEats(
   if (aYelp.count == null && bYelp.count != null) return 1
   if (aYelp.count != null && bYelp.count == null) return -1
   if (aYelp.count != null && bYelp.count != null && aYelp.count !== bYelp.count) return bYelp.count - aYelp.count
-  return a.name.localeCompare(b.name)
+  return (a.name || '').localeCompare(b.name || '')
 }
 
 /** Top 25 open $ places. His score, then Yelp rating, then Yelp review count. */
@@ -102,14 +102,49 @@ export function storedCheapEats(collections: HouseCollection[], city: CityId, ow
   return collections.find((row) => row.city === city && row.slug === CHEAP_EATS_SLUG && (owner || row.published)) ?? null
 }
 
-export function orderedMembers(placeIds: string[], places: SlimPlace[]): SlimPlace[] {
-  const byId = new Map(places.map((place) => [place.id, place]))
+/** String ids, or null when the stored row has no usable id list. */
+export function renderableIds(value: unknown): string[] | null {
+  if (!Array.isArray(value)) return null
+  const ids: string[] = []
+  for (const id of value) {
+    if (typeof id === 'string' && id.length > 0) ids.push(id)
+  }
+  return ids
+}
+
+export function orderedMembers(placeIds: readonly string[], places: SlimPlace[]): SlimPlace[] {
+  const byId = new Map<string, SlimPlace>()
+  if (Array.isArray(places)) {
+    for (const place of places) {
+      if (place && typeof place.id === 'string') byId.set(place.id, place)
+    }
+  }
   const out: SlimPlace[] = []
+  if (!Array.isArray(placeIds)) return out
   for (const id of placeIds) {
+    if (typeof id !== 'string') continue
     const place = byId.get(id)
-    if (place && place.closed !== true) out.push(place)
+    if (!place || place.closed === true) continue
+    if (!place.name || !Array.isArray(place.cuisine)) continue
+    if (!Number.isFinite(place.lat) || !Number.isFinite(place.lng)) continue
+    out.push(place)
   }
   return out
+}
+
+/**
+ * Places for a stored Cheap eats row.
+ * Null means the row is missing or unusable, and the caller should use the computed list.
+ * An empty array is a real stored list with nothing left to show.
+ */
+export function usableCheapMembers(row: HouseCollection | null, places: SlimPlace[]): SlimPlace[] | null {
+  if (!row) return null
+  const ids = renderableIds(row.placeIds)
+  if (!ids) return null
+  if (ids.length === 0) return []
+  const known = ids.some((id) => places.some((place) => place.id === id))
+  if (!known) return null
+  return orderedMembers(ids, places)
 }
 
 export function movedPlaceIds(placeIds: string[], visibleIds: string[], placeId: string, direction: -1 | 1): string[] | null {
@@ -175,6 +210,7 @@ export function suggestionsFor(
   }
   const byCuisine = new Map<string, string[]>()
   for (const place of open) {
+    if (!Array.isArray(place.cuisine)) continue
     for (const cuisine of place.cuisine) {
       const name = cuisine.trim()
       if (!name || name.toLowerCase() === CHEAP_EATS_TITLE.toLowerCase()) continue
@@ -201,11 +237,12 @@ export function publicChips(
 ): PublicChip[] {
   const chips: PublicChip[] = []
   const storedCheap = storedCheapEats(collections, city)
-  if (storedCheap) {
+  const storedMembers = storedCheap ? usableCheapMembers(storedCheap, places) : null
+  if (storedCheap && storedMembers) {
     chips.push({
       slug: CHEAP_EATS_SLUG,
       title: storedCheap.title,
-      count: orderedMembers(storedCheap.placeIds, places).length,
+      count: storedMembers.length,
     })
   } else if (allowComputed) {
     const cheap = cheapEatsFor(places, city, score)
@@ -215,7 +252,7 @@ export function publicChips(
     .filter((row) => row.published && row.city === city && row.slug !== CHEAP_EATS_SLUG)
     .sort((a, b) => a.position - b.position || a.title.localeCompare(b.title))
   for (const row of stored) {
-    chips.push({ slug: row.slug, title: row.title, count: orderedMembers(row.placeIds, places).length })
+    chips.push({ slug: row.slug, title: row.title, count: orderedMembers(renderableIds(row.placeIds) ?? [], places).length })
   }
   return chips
 }

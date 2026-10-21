@@ -11,7 +11,8 @@ import { cityPath, type CityId } from '../lib/city.ts'
 import { publicChips } from '../lib/collections.ts'
 import { useCityCatalog } from '../lib/use-city.ts'
 import { homeHitList, RIGHT_NOW_FALLBACK } from '../lib/photo-queue.ts'
-import { hoursPhrase, isOpen } from '../lib/hours.ts'
+import { hoursPhraseAt } from '../lib/hours.ts'
+import { pacificWall, suggestNow } from '../lib/meals.ts'
 import { usePageMeta } from '../lib/meta.ts'
 import { useApp } from '../state/AppState.tsx'
 import type { GuideGroup, SlimPlace } from '../types.ts'
@@ -38,20 +39,18 @@ function diverse(places: SlimPlace[], limit: number): SlimPlace[] {
   return picked
 }
 
-function whyNow(place: SlimPlace): string {
-  const phrase = hoursPhrase(place.periods)
+function whyNow(place: SlimPlace, day: number, mins: number): string {
+  const phrase = hoursPhraseAt(place.periods, day, mins)
   if (phrase?.startsWith('Open now · until ')) {
     return `Open till ${phrase.slice('Open now · until '.length)} · ${place.neighborhood}`
   }
-  return `${place.neighborhood} · ${place.cuisine[0]}`
+  const kind = place.cuisine?.[0]
+  return kind ? `${place.neighborhood} · ${kind}` : place.neighborhood
 }
 
-function rightNow(city: CityId, places: SlimPlace[]): { places: SlimPlace[]; open: boolean } {
-  const open = diverse(places.filter((place) => isOpen(place.periods)), 6)
-  if (open.length >= 3) return { places: open, open: true }
-  if (city !== 'seattle') return { places: diverse(places, 6), open: false }
-  const editorial = RIGHT_NOW_FALLBACK.map((id) => slimById(id)).filter((place): place is SlimPlace => place != null)
-  return { places: editorial, open: false }
+function closedNow(city: CityId, places: SlimPlace[]): SlimPlace[] {
+  if (city !== 'seattle') return diverse(places, 6)
+  return RIGHT_NOW_FALLBACK.map((id) => slimById(id)).filter((place): place is SlimPlace => place != null)
 }
 
 export function HomeBelow() {
@@ -90,7 +89,9 @@ export function HomeBelow() {
     ? guides.filter((guide) => guide.group === 'Cuisine' || guide.group === 'Occasion').slice(0, 6)
     : occasionSlugs.map((slug) => guides.find((guide) => guide.slug === slug)).filter((guide) => guide != null)
   const hits = east || la || sf ? places : homeHitList(places)
-  const now = rightNow(city, places)
+  const wall = pacificWall()
+  const suggestion = suggestNow(places, app.gustoScore, wall)
+  const nowPlaces = suggestion.live ? suggestion.places : closedNow(city, places)
   const neighborhoods = guides.filter((guide) => guide.group === 'Neighborhoods').slice(0, 8)
   const chips = publicChips(city, places, app.collections, app.gustoScore, app.collectionsStatus !== 'loading')
   const house = Boolean(app.user?.isOwner)
@@ -128,13 +129,13 @@ export function HomeBelow() {
         ) : null}
         <section className="mt-10" aria-labelledby="right-now">
           <h2 id="right-now" className="font-serif text-4xl italic">Where to eat right now</h2>
-          <p className="mt-2 max-w-xl">
-            {now.open
-              ? 'Open at this hour, spread across neighborhoods.'
-              : "Editor's picks for the next time you are hungry. Nothing on the list is open at this hour, so these are not a live open-now claim."}
-          </p>
+          {suggestion.live ? (
+            <p className="mt-2 text-sm font-bold">{suggestion.label}</p>
+          ) : (
+            <p className="mt-2 max-w-xl">Editor's picks for the next time you are hungry. Nothing on the list is open at this hour, so these are not a live open-now claim.</p>
+          )}
           <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-            {now.places.map((place, index) => (
+            {nowPlaces.map((place, index) => (
               <Reveal key={place.id} delay={Math.min(index, 6) * 0.04}>
               <Link to={cityPath(`/place/${place.id}`)} className="hit-card" viewTransition={!reduceMotion}>
                 <div className="relative h-32 overflow-hidden bg-navy [&_.place-art]:aspect-auto [&_.place-art]:h-full" style={reduceMotion ? undefined : { viewTransitionName: `place-${place.id}` }}>
@@ -144,7 +145,7 @@ export function HomeBelow() {
                 <div className="place-card-body">
                   <div className="min-w-0">
                     <h3 className="font-serif text-2xl italic leading-tight">{place.name}</h3>
-                    <p className="mt-2 text-sm">{whyNow(place)}</p>
+                    <p className="mt-2 text-sm">{whyNow(place, wall.day, wall.mins)}</p>
                   </div>
                   <span className="score-col"><ScoreBadge score={app.gustoScore(place.id)} size="sm" /></span>
                 </div>

@@ -83,6 +83,19 @@ function ZoomButtons() {
   )
 }
 
+function whenIdle(work: () => void): number {
+  if (typeof window.requestIdleCallback === 'function') return window.requestIdleCallback(work, { timeout: 700 })
+  return window.setTimeout(work, 1)
+}
+
+function cancelIdle(id: number) {
+  if (typeof window.cancelIdleCallback === 'function' && typeof window.requestIdleCallback === 'function') {
+    window.cancelIdleCallback(id)
+    return
+  }
+  window.clearTimeout(id)
+}
+
 function Basemap() {
   const map = useMap()
 
@@ -93,6 +106,7 @@ function Basemap() {
 
     const start = () => {
       void (async () => {
+      try {
       await import('../lib/setup-maplibre.ts')
       await import('maplibre-gl/dist/maplibre-gl.css')
       const { maplibreGL } = await import('@maplibre/maplibre-gl-leaflet')
@@ -102,27 +116,38 @@ function Basemap() {
       layer = created
       const gl = (created as { getMaplibreMap?: () => { resize: () => void; once: (event: string, fn: () => void) => void } }).getMaplibreMap?.()
       const nudge = () => {
-        map.invalidateSize()
-        gl?.resize()
+        try {
+          map.invalidateSize()
+          gl?.resize()
+        } catch {
+          // The map can already be gone when a tile load finishes.
+        }
       }
       gl?.once('load', nudge)
       gl?.once('idle', nudge)
       nudge()
+      } catch {
+        // A basemap failure leaves the list up.
+      }
       })()
     }
 
-    idleId = window.requestIdleCallback(start, { timeout: 700 })
+    idleId = whenIdle(start)
 
     const observer = new ResizeObserver(() => {
-      map.invalidateSize()
-      const gl = (layer as { getMaplibreMap?: () => { resize: () => void } } | null)?.getMaplibreMap?.()
-      gl?.resize()
+      try {
+        map.invalidateSize()
+        const gl = (layer as { getMaplibreMap?: () => { resize: () => void } } | null)?.getMaplibreMap?.()
+        gl?.resize()
+      } catch {
+        // The map can already be gone when the sheet resizes.
+      }
     })
     observer.observe(map.getContainer())
 
     return () => {
       cancelled = true
-      window.cancelIdleCallback(idleId)
+      cancelIdle(idleId)
       observer.disconnect()
       if (!layer) return
       try {
@@ -237,23 +262,27 @@ function FitPins({
     pump = window.requestAnimationFrame(addBatch)
     const fit = () => {
       if (cancelled) return
-      map.invalidateSize()
-      const size = map.getSize()
-      if (size.y < 200 || size.x < 200) return
-      const key = `${idKey}:${size.x}x${size.y}`
-      if (seenIds.current === key) return
-      seenIds.current = key
-      const finite = places.filter((place) => Number.isFinite(place.lat) && Number.isFinite(place.lng))
-      if (finite.length === 1) {
-        map.setView([finite[0].lat, finite[0].lng], 15)
-      } else if (finite.length > 1) {
-        map.fitBounds(latLngBounds(finite.map((place) => [place.lat, place.lng])), {
-          padding: [36, 36],
-          maxZoom: 14,
-          animate: false,
-        })
-      } else {
-        map.fitBounds(fallbackBounds(places), { padding: [28, 28], maxZoom: 12, animate: false })
+      try {
+        map.invalidateSize()
+        const size = map.getSize()
+        if (size.y < 200 || size.x < 200) return
+        const key = `${idKey}:${size.x}x${size.y}`
+        if (seenIds.current === key) return
+        seenIds.current = key
+        const finite = places.filter((place) => Number.isFinite(place.lat) && Number.isFinite(place.lng))
+        if (finite.length === 1) {
+          map.setView([finite[0].lat, finite[0].lng], 15)
+        } else if (finite.length > 1) {
+          map.fitBounds(latLngBounds(finite.map((place) => [place.lat, place.lng])), {
+            padding: [36, 36],
+            maxZoom: 14,
+            animate: false,
+          })
+        } else {
+          map.fitBounds(fallbackBounds(places), { padding: [28, 28], maxZoom: 12, animate: false })
+        }
+      } catch {
+        // Leaflet throws from getZoom when the map is removed mid-fit.
       }
     }
     map.on('resize', fit)
