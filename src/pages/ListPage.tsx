@@ -7,6 +7,7 @@ import { ScoreBadge } from '../components/ScoreBadge.tsx'
 import { StoryShareButton } from '../components/StoryShareButton.tsx'
 import { SlidingRow } from '../components/SlidingRow.tsx'
 import { slimById } from '../content/load.ts'
+import { GUIDE_OVER_MESSAGE, GUIDE_PLACE_LIMIT, guideCountLabel } from '../lib/collections.ts'
 import { demoFriendsEnabled } from '../lib/demo.ts'
 import { milesBetween, priceLabel } from '../lib/format.ts'
 import { readPosition } from '../lib/geo.ts'
@@ -107,7 +108,8 @@ export function ListPage() {
 
   return (
     <main id="main" tabIndex={-1} className="mx-auto max-w-3xl px-4 pt-24 pb-16 outline-none">
-      <p className="text-xs font-bold uppercase tracking-wide">{demoFriendsEnabled && guide.demo ? 'Seeded list' : visibility === 'public' ? 'Public list' : visibility === 'friends' ? 'Friends list' : 'Private list'} · {rows.length === guide.placeIds.length ? `${guide.placeIds.length} places` : `${rows.length} of ${guide.placeIds.length} places`}</p>
+      <p className="text-xs font-bold uppercase tracking-wide">{demoFriendsEnabled && guide.demo ? 'Seeded list' : visibility === 'public' ? 'Public list' : visibility === 'friends' ? 'Friends list' : 'Private list'} · {rows.length === guide.placeIds.length ? guideCountLabel(guide.placeIds.length) : `${rows.length} of ${guideCountLabel(guide.placeIds.length)}`}</p>
+      {guide.placeIds.length > GUIDE_PLACE_LIMIT ? <p className="mt-2 text-sm" role="status">{GUIDE_OVER_MESSAGE}</p> : null}
       <div className="mt-2 flex flex-wrap items-center justify-between gap-3">
         <h1 className="font-serif text-5xl italic">{guide.emoji ? `${guide.emoji} ` : ''}{guide.title}</h1>
         <StoryShareButton

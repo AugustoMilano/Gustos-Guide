@@ -8,6 +8,43 @@ export const CHEAP_EATS_TITLE = 'Cheap eats'
 export const FAVORITES_TITLE = "Gusto's favorites"
 export const FAVORITES_SCORE = 8.5
 
+/** Every curated guide, collection, and list stops at this many places. */
+export const GUIDE_PLACE_LIMIT = 25
+export const GUIDE_LIMIT_MESSAGE = '25 places is the limit.'
+export const GUIDE_OVER_MESSAGE = 'Already past 25. Every place stays on this list.'
+
+export function guideCountLabel(count: number): string {
+  return `${count}/${GUIDE_PLACE_LIMIT}`
+}
+
+/**
+ * Keep at most 25 ids. When any id has his score, the kept rows are the highest
+ * scores, ties and missing scores staying in their current order. Otherwise the
+ * first 25 of the current order.
+ */
+export function capPlaceIds(placeIds: string[], score?: (id: string) => number | null): string[] {
+  const unique: string[] = []
+  for (const id of placeIds) {
+    if (id && !unique.includes(id)) unique.push(id)
+  }
+  if (unique.length <= GUIDE_PLACE_LIMIT) return unique
+  const hasScore = Boolean(score && unique.some((id) => typeof score(id) === 'number'))
+  if (!hasScore || !score) return unique.slice(0, GUIDE_PLACE_LIMIT)
+  return unique
+    .map((id, index) => ({ id, index, value: score(id) }))
+    .sort((a, b) => {
+      const aScore = typeof a.value === 'number' ? a.value : null
+      const bScore = typeof b.value === 'number' ? b.value : null
+      if (aScore == null && bScore == null) return a.index - b.index
+      if (aScore == null) return 1
+      if (bScore == null) return -1
+      if (bScore !== aScore) return bScore - aScore
+      return a.index - b.index
+    })
+    .slice(0, GUIDE_PLACE_LIMIT)
+    .map((row) => row.id)
+}
+
 const RESERVED_SLUGS = [CHEAP_EATS_SLUG]
 
 export type CollectionsStatus = 'loading' | 'ready' | 'missing' | 'offline' | 'error'
@@ -117,7 +154,7 @@ export function suggestionsFor(
       out.push({
         key: 'favorites',
         title: FAVORITES_TITLE,
-        placeIds: favorites.map((place) => place.id),
+        placeIds: capPlaceIds(favorites.map((place) => place.id), score),
       })
     }
   }
@@ -135,7 +172,7 @@ export function suggestionsFor(
     .filter(([name, ids]) => ids.length > 0 && !taken.has(name.toLowerCase()))
     .sort((a, b) => b[1].length - a[1].length || a[0].localeCompare(b[0]))
   for (const [name, ids] of cuisines) {
-    out.push({ key: `cuisine:${name}`, title: name, placeIds: ids })
+    out.push({ key: `cuisine:${name}`, title: name, placeIds: capPlaceIds(ids, score) })
   }
   return out
 }
