@@ -174,7 +174,7 @@ function FitPins({
   useEffect(() => {
     const group: MarkerClusterGroup = window.L.markerClusterGroup({
       showCoverageOnHover: false,
-      maxClusterRadius: 46,
+      maxClusterRadius: 80,
       spiderfyOnMaxZoom: true,
       iconCreateFunction: (cluster) => {
         const count = cluster.getChildCount()
