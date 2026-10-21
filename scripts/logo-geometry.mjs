@@ -1,154 +1,100 @@
-// Geometric Gusto mark. A capital G in one rounded stroke, crossbar at the
-// right middle, and the top of the arc leaving into a fork. Not traced from art.
+// Geometric Gusto mark. A capital G whose stroke runs from the crossbar,
+// around the bottom and left, over the top, and ends in a fork. Not traced.
 
 export const NAVY = '#141F4D'
 export const CORAL = '#FF5330'
 export const CREAM = '#EEE3D6'
 
-const CX = 22.4
-const CY = 39.2
-const R = 12.6
-const FORK_DEG = 98
-const STROKE = 4.8
-const BAR_IN = 2.8
+const R = 12.7
+const CX = 23.4
+const CY = 37.6
+const STROKE = 5.7
+const END = 100
+const UP = 14
+const NECK = 1.3
+const PALM = 2.5
+const PALM_W = 9.6
+const TINE_W = 1.65
+const TINE_GAP = 1.4
+const TINE_LEN = 10.4
+const BAR_IN = 2.4
 
-function onCircle(deg) {
-  const rad = (deg * Math.PI) / 180
-  return [CX + R * Math.cos(rad), CY - R * Math.sin(rad)]
-}
-
-function tangent(deg) {
-  const rad = (deg * Math.PI) / 180
-  const x = Math.sin(rad)
-  const y = Math.cos(rad)
-  const len = Math.hypot(x, y)
-  return [x / len, y / len]
+function rad(deg) {
+  return (deg * Math.PI) / 180
 }
 
 function round(n) {
   return Math.round(n * 100) / 100
 }
 
-function fork(tines) {
-  const [ex, ey] = onCircle(FORK_DEG)
-  const [tx, ty] = tangent(FORK_DEG)
-  const neck = 1.6
-  const palmX = ex + tx * neck
-  const palmY = ey + ty * neck
-  const pitch = tines === 3 ? 8.4 : 7
-  const length = tines === 3 ? 10 : 11
-  const nx = -ty
-  const ny = tx
-  const lines = []
-  const tips = []
-  for (let i = 0; i < tines; i += 1) {
-    const offset = (i - (tines - 1) / 2) * pitch
-    const x0 = palmX + nx * offset
-    const y0 = palmY + ny * offset
-    const x1 = x0 + tx * length
-    const y1 = y0 + ty * length
-    lines.push(`M ${round(x0)} ${round(y0)} L ${round(x1)} ${round(y1)}`)
-    tips.push([x0, y0], [x1, y1])
-  }
-  return { lines, palmX, palmY, ex, ey, tips }
+function onCircle(deg) {
+  return [CX + R * Math.cos(rad(deg)), CY - R * Math.sin(rad(deg))]
 }
 
-function markBounds(tines, stroke) {
-  const pts = []
-  for (let deg = 0; deg >= FORK_DEG - 360; deg -= 2) pts.push(onCircle(((deg % 360) + 360) % 360))
-  const head = fork(tines)
-  pts.push([head.ex, head.ey], [head.palmX, head.palmY], ...head.tips)
+function layout(tines) {
   const [sx, sy] = onCircle(0)
-  pts.push([sx, sy], [CX + BAR_IN, sy])
-  const pad = stroke / 2
+  const [ex, ey] = onCircle(END)
+  const dir = [Math.cos(rad(UP)), -Math.sin(rad(UP))]
+  const perp = [-dir[1], dir[0]]
+  const down = perp[1] > 0 ? perp : [-perp[0], -perp[1]]
+  const add = (p, v, s) => [p[0] + v[0] * s, p[1] + v[1] * s]
+  const neckEnd = add([ex, ey], dir, NECK)
+  const palmEnd = add(neckEnd, dir, PALM)
+  const tineW = tines === 3 ? 2.35 : TINE_W
+  const gap = tines === 3 ? 1.55 : TINE_GAP
+  const pitch = tineW + gap
+  const palmW = tines === 3 ? 11.6 : PALM_W
+  const lines = []
+  const tips = []
+  const bury = tines === 3 ? 2.8 : 1.7
+  for (let i = 0; i < tines; i += 1) {
+    const off = (i - (tines - 1) / 2) * pitch
+    const base = add(add(palmEnd, dir, -bury), down, off)
+    const tip = add(base, dir, TINE_LEN)
+    lines.push(`M ${round(base[0])} ${round(base[1])} L ${round(tip[0])} ${round(tip[1])}`)
+    tips.push(base, tip)
+  }
+  return { sx, sy, ex, ey, dir, neckEnd, palmEnd, lines, tips, tineW, palmW }
+}
+
+function bounds(part) {
+  const pts = []
+  for (let deg = 0; deg >= END - 360; deg -= 3) pts.push(onCircle(((deg % 360) + 360) % 360))
+  pts.push([part.sx, part.sy], [CX + BAR_IN, part.sy], [part.ex, part.ey], part.palmEnd, ...part.tips)
+  const pad = part.palmW / 2
   const xs = pts.map((p) => p[0])
   const ys = pts.map((p) => p[1])
   const minX = Math.min(...xs) - pad
-  const maxX = Math.max(...xs) + pad
+  const maxX = Math.max(...xs) + part.tineW / 2
   const minY = Math.min(...ys) - pad
-  const maxY = Math.max(...ys) + pad
-  return { minX, maxX, minY, maxY, cx: (minX + maxX) / 2, cy: (minY + maxY) / 2 }
-}
-
-/** Bowl and fork neck. The crossbar is its own spur so the join does not bulge past the bowl. */
-export function spinePath() {
-  const [sx, sy] = onCircle(0)
-  const { ex, ey, palmX, palmY } = fork(4)
-  return `M ${round(sx)} ${round(sy)} A ${R} ${R} 0 1 1 ${round(ex)} ${round(ey)} L ${round(palmX)} ${round(palmY)}`
-}
-
-export function barPath() {
-  const [sx, sy] = onCircle(0)
-  const innerX = CX + BAR_IN
-  return `M ${round(sx)} ${round(sy)} L ${round(innerX)} ${round(sy)}`
-}
-
-export function tinePaths(tines) {
-  return fork(tines).lines
-}
-
-export function smallMarkMarkup() {
-  const stroke = 4.35
-  const tines = 3
-  const [ex, ey] = onCircle(FORK_DEG)
-  const [tx, ty] = tangent(FORK_DEG)
-  const palmX = ex + tx * 1.6
-  const palmY = ey + ty * 1.6
-  const pitch = 8.4
-  const length = 7.6
-  const nx = -ty
-  const ny = tx
-  const lines = []
-  const tips = [[ex, ey], [palmX, palmY]]
-  for (let i = 0; i < tines; i += 1) {
-    const offset = (i - 1) * pitch
-    const x0 = palmX + nx * offset
-    const y0 = palmY + ny * offset
-    const x1 = x0 + tx * length
-    const y1 = y0 + ty * length
-    lines.push(`M ${round(x0)} ${round(y0)} L ${round(x1)} ${round(y1)}`)
-    tips.push([x0, y0], [x1, y1])
+  const maxY = Math.max(...ys) + STROKE / 2
+  return {
+    dx: round(32 - (minX + maxX) / 2),
+    dy: round(32 - (minY + maxY) / 2),
   }
-  const [sx, sy] = onCircle(0)
-  const innerX = CX + 1.4
-  tips.push([sx, sy], [innerX, sy])
-  for (let deg = 0; deg >= FORK_DEG - 360; deg -= 4) tips.push(onCircle(((deg % 360) + 360) % 360))
-  const pad = stroke / 2
-  const minX = Math.min(...tips.map((p) => p[0])) - pad
-  const maxX = Math.max(...tips.map((p) => p[0])) + pad
-  const minY = Math.min(...tips.map((p) => p[1])) - pad
-  const maxY = Math.max(...tips.map((p) => p[1])) + pad
-  const dx = round(32 - (minX + maxX) / 2)
-  const dy = round(32 - (minY + maxY) / 2)
-  const spine = `M ${round(sx)} ${round(sy)} A ${R} ${R} 0 1 1 ${round(ex)} ${round(ey)} L ${round(palmX)} ${round(palmY)}`
-  const bar = `M ${round(sx)} ${round(sy)} L ${round(innerX)} ${round(sy)}`
-  return `<g transform="translate(${dx} ${dy})" fill="none" stroke="${CORAL}" stroke-width="${stroke}" stroke-linecap="round" stroke-linejoin="round">
-    <path d="${spine}"/>
-    <path d="${bar}"/>
-    <path d="${lines.join(' ')}"/>
+}
+
+export function markMarkup({ tines = 4 } = {}) {
+  const part = layout(tines)
+  const { dx, dy } = bounds(part)
+  const arc = `M ${round(part.sx)} ${round(part.sy)} A ${R} ${R} 0 1 1 ${round(part.ex)} ${round(part.ey)}`
+  const bar = `M ${round(part.sx - STROKE * 0.08)} ${round(part.sy)} L ${round(CX + BAR_IN)} ${round(part.sy)}`
+  const neck = `M ${round(part.ex)} ${round(part.ey)} L ${round(part.neckEnd[0])} ${round(part.neckEnd[1])}`
+  const palm = `M ${round(part.ex + part.dir[0] * 0.35)} ${round(part.ey + part.dir[1] * 0.35)} L ${round(part.palmEnd[0])} ${round(part.palmEnd[1])}`
+  return `<g transform="translate(${dx} ${dy})">
+    <path d="${arc}" fill="none" stroke="${CORAL}" stroke-width="${STROKE}" stroke-linecap="round"/>
+    <path d="${bar}" fill="none" stroke="${CORAL}" stroke-width="${STROKE}" stroke-linecap="round"/>
+    <path d="${neck}" fill="none" stroke="${CORAL}" stroke-width="${STROKE}" stroke-linecap="round"/>
+    <path d="${palm}" fill="none" stroke="${CORAL}" stroke-width="${part.palmW}" stroke-linecap="round"/>
+    <path d="${part.lines.join(' ')}" fill="none" stroke="${CORAL}" stroke-width="${part.tineW}" stroke-linecap="round"/>
   </g>`
 }
 
-export function markMarkup({ tines = 4, stroke = STROKE } = {}) {
-  const spine = spinePath()
-  const tinesD = tinePaths(tines).join(' ')
-  const box = markBounds(tines, stroke)
-  const dx = round(32 - box.cx)
-  const dy = round(32 - box.cy + 0.2)
-  return `<g transform="translate(${dx} ${dy})" fill="none" stroke="${CORAL}" stroke-width="${stroke}" stroke-linecap="round" stroke-linejoin="round">
-    <path d="${spine}"/>
-    <path d="${barPath()}"/>
-    <path d="${tinesD}"/>
-  </g>`
-}
-
-export function tileSvg({ tines = 4, size = 64, small = false } = {}) {
-  const radius = 14
-  const mark = small ? smallMarkMarkup() : markMarkup({ tines })
+export function tileSvg({ tines = 4, size = 64 } = {}) {
   return `<?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" width="${size}" height="${size}" viewBox="0 0 64 64" role="img" aria-label="Gusto's Guide">
-  <rect width="64" height="64" rx="${radius}" fill="${NAVY}"/>
-  ${mark}
+  <rect width="64" height="64" rx="14" fill="${NAVY}"/>
+  ${markMarkup({ tines })}
 </svg>
 `
 }
@@ -161,19 +107,14 @@ export function markSvg({ tines = 4 } = {}) {
 `
 }
 
-/** Three tines and a heavier bowl, so the mark still reads at 16px. */
+/** Three heavier tines, drawn to stay separate at 16px. */
 export function faviconSvg() {
   return `<?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="Gusto's Guide">
   <rect width="32" height="32" rx="7" fill="${NAVY}"/>
-  <circle cx="13.2" cy="19.2" r="8.6" fill="${CORAL}"/>
-  <circle cx="13.2" cy="19.2" r="4.7" fill="${NAVY}"/>
-  <path d="M13.2 10.6h12.2V16.4H17.2c-1.2 0-2.2-1-2.2-2.2V10.6z" fill="${NAVY}"/>
-  <rect x="13.2" y="16.15" width="8.4" height="3.35" rx="1.67" fill="${CORAL}"/>
-  <path d="M16.6 14.2c1.2-1.6 2.4-2.6 3.8-3.2" fill="none" stroke="${CORAL}" stroke-width="2.5" stroke-linecap="round"/>
-  <rect x="19.2" y="4.15" width="9.2" height="2.35" rx="1.17" fill="${CORAL}"/>
-  <rect x="20.1" y="8.05" width="9.2" height="2.35" rx="1.17" fill="${CORAL}"/>
-  <rect x="20.6" y="11.95" width="8.2" height="2.35" rx="1.17" fill="${CORAL}"/>
+  <g transform="translate(1.2 1.1) scale(0.46)">
+    ${markMarkup({ tines: 3 })}
+  </g>
 </svg>
 `
 }
