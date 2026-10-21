@@ -2,7 +2,7 @@ import type { CityId } from './city.ts'
 import { uniqueSlug } from './format.ts'
 import type { SlimPlace } from '../types.ts'
 
-/** Live collection. Membership is price $, not a stored row. */
+/** Live collection. A stored cheap-eats row replaces this ranking. */
 export const CHEAP_EATS_SLUG = 'cheap-eats'
 export const CHEAP_EATS_TITLE = 'Cheap eats'
 export const FAVORITES_TITLE = "Gusto's favorites"
@@ -53,10 +53,53 @@ export function isCheapEat(place: { price?: number; closed?: boolean }): boolean
   return place.closed !== true && place.price === 1
 }
 
-export function cheapEatsFor(places: SlimPlace[], city: CityId): SlimPlace[] {
+function yelpRank(place: { publicRating?: { value: number; count: number; source: string } }): { rating: number | null; count: number | null } {
+  const rating = place.publicRating
+  if (!rating || rating.source !== 'Yelp') return { rating: null, count: null }
+  return {
+    rating: typeof rating.value === 'number' ? rating.value : null,
+    count: typeof rating.count === 'number' ? rating.count : null,
+  }
+}
+
+/** House score, then Yelp rating, then Yelp review count. Missing numbers sort last. */
+export function compareCheapEats(
+  a: SlimPlace,
+  b: SlimPlace,
+  score: (id: string) => number | null,
+): number {
+  const aRaw = score(a.id)
+  const bRaw = score(b.id)
+  const aHouse = typeof aRaw === 'number' ? aRaw : null
+  const bHouse = typeof bRaw === 'number' ? bRaw : null
+  if (aHouse == null && bHouse != null) return 1
+  if (aHouse != null && bHouse == null) return -1
+  if (aHouse != null && bHouse != null && aHouse !== bHouse) return bHouse - aHouse
+  const aYelp = yelpRank(a)
+  const bYelp = yelpRank(b)
+  if (aYelp.rating == null && bYelp.rating != null) return 1
+  if (aYelp.rating != null && bYelp.rating == null) return -1
+  if (aYelp.rating != null && bYelp.rating != null && aYelp.rating !== bYelp.rating) return bYelp.rating - aYelp.rating
+  if (aYelp.count == null && bYelp.count != null) return 1
+  if (aYelp.count != null && bYelp.count == null) return -1
+  if (aYelp.count != null && bYelp.count != null && aYelp.count !== bYelp.count) return bYelp.count - aYelp.count
+  return a.name.localeCompare(b.name)
+}
+
+/** Top 25 open $ places. His score, then Yelp rating, then Yelp review count. */
+export function cheapEatsFor(
+  places: SlimPlace[],
+  city: CityId,
+  score: (id: string) => number | null = () => null,
+): SlimPlace[] {
   return places
     .filter((place) => collectionCity(place) === city && isCheapEat(place))
-    .sort((a, b) => a.name.localeCompare(b.name))
+    .sort((a, b) => compareCheapEats(a, b, score))
+    .slice(0, FLAGSHIP_AIM)
+}
+
+export function storedCheapEats(collections: HouseCollection[], city: CityId, owner = false): HouseCollection | null {
+  return collections.find((row) => row.city === city && row.slug === CHEAP_EATS_SLUG && (owner || row.published)) ?? null
 }
 
 export function orderedMembers(placeIds: string[], places: SlimPlace[]): SlimPlace[] {
@@ -96,7 +139,8 @@ export function cleanBlurb(value: string): string | null {
 export function titleProblem(title: string, cityTitles: string[], ignore?: string): string | null {
   if (!title) return 'Add a title.'
   if (title.length > 40) return 'Keep the title to 40 characters.'
-  if (title.toLowerCase() === CHEAP_EATS_TITLE.toLowerCase()) return 'Cheap eats is already on the list.'
+  const keepingCheapEats = ignore?.toLowerCase() === CHEAP_EATS_TITLE.toLowerCase()
+  if (title.toLowerCase() === CHEAP_EATS_TITLE.toLowerCase() && !keepingCheapEats) return 'Cheap eats is already on the list.'
   const taken = cityTitles.some((item) => item !== ignore && item.toLowerCase() === title.toLowerCase())
   if (taken) return 'That title is already a collection in this city.'
   return null
@@ -148,12 +192,27 @@ export function suggestionsFor(
   return out
 }
 
-export function publicChips(city: CityId, places: SlimPlace[], collections: HouseCollection[]): PublicChip[] {
+export function publicChips(
+  city: CityId,
+  places: SlimPlace[],
+  collections: HouseCollection[],
+  score: (id: string) => number | null = () => null,
+  allowComputed = true,
+): PublicChip[] {
   const chips: PublicChip[] = []
-  const cheap = cheapEatsFor(places, city)
-  if (cheap.length) chips.push({ slug: CHEAP_EATS_SLUG, title: CHEAP_EATS_TITLE, count: cheap.length })
+  const storedCheap = storedCheapEats(collections, city)
+  if (storedCheap) {
+    chips.push({
+      slug: CHEAP_EATS_SLUG,
+      title: storedCheap.title,
+      count: orderedMembers(storedCheap.placeIds, places).length,
+    })
+  } else if (allowComputed) {
+    const cheap = cheapEatsFor(places, city, score)
+    if (cheap.length) chips.push({ slug: CHEAP_EATS_SLUG, title: CHEAP_EATS_TITLE, count: cheap.length })
+  }
   const stored = collections
-    .filter((row) => row.published && row.city === city)
+    .filter((row) => row.published && row.city === city && row.slug !== CHEAP_EATS_SLUG)
     .sort((a, b) => a.position - b.position || a.title.localeCompare(b.title))
   for (const row of stored) {
     chips.push({ slug: row.slug, title: row.title, count: orderedMembers(row.placeIds, places).length })

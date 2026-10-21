@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react'
+import { useState } from 'react'
 import { motion, useReducedMotion } from 'framer-motion'
 import { Link, useParams } from 'react-router-dom'
 import { GuideMap } from '../components/GuideMap.tsx'
@@ -26,16 +26,16 @@ export function CollectionPage() {
   const [note, setNote] = useState('')
   const [editing, setEditing] = useState(false)
   const [confirmDelete, setConfirmDelete] = useState(false)
-  const live = slug === CHEAP_EATS_SLUG
+  const isCheap = slug === CHEAP_EATS_SLUG
   const stored = app.collections.find((row) => row.city === city && row.slug === slug && (row.published || app.user?.isOwner))
-  const loading = !live && app.collectionsStatus === 'loading'
-  const members = useMemo(() => {
-    if (live) return cheapEatsFor(places, city)
-    if (!stored) return []
-    return orderedMembers(stored.placeIds, places)
-  }, [live, places, city, stored])
-  const heading = live ? CHEAP_EATS_TITLE : stored?.title ?? 'Collection'
-  const blurb = !live && stored?.blurb ? stored.blurb : ''
+  const loading = app.collectionsStatus === 'loading'
+  const members = stored
+    ? orderedMembers(stored.placeIds, places)
+    : isCheap
+      ? cheapEatsFor(places, city, app.gustoScore)
+      : []
+  const heading = stored?.title ?? (isCheap ? CHEAP_EATS_TITLE : 'Collection')
+  const blurb = stored?.blurb ?? ''
   const owner = Boolean(app.user?.isOwner && stored)
   usePageMeta(
     `${heading} · Gusto's Guide`,
@@ -52,7 +52,7 @@ export function CollectionPage() {
     )
   }
 
-  if (!live && !stored) {
+  if (!isCheap && !stored) {
     return (
       <main id="main" tabIndex={-1} className="mx-auto max-w-3xl px-4 pt-28 outline-none">
         <h1 className="font-serif text-5xl italic">That collection is not on this list.</h1>
@@ -74,7 +74,7 @@ export function CollectionPage() {
             <h1 className="mt-0.5 font-serif text-3xl italic leading-none">{heading}</h1>
             <p className="mt-1 text-sm tabular-nums">{members.length} places</p>
             {app.user?.isOwner ? (
-              <p className="mt-1 text-sm">{flagshipAimHint(live ? members.length : stored?.placeIds.length ?? members.length)}</p>
+              <p className="mt-1 text-sm">{flagshipAimHint(stored ? stored.placeIds.length : members.length)}</p>
             ) : null}
           </motion.div>
           <button

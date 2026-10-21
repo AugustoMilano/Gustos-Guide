@@ -58,13 +58,14 @@ create table if not exists public.house_marks (
 );
 
 -- House collections. Public read. Owner writes via is_house_owner().
--- Cheap eats is not a row: it is every open place priced $.
+-- Cheap eats may be stored as slug cheap-eats, one row per city.
+-- With no row, the client ranks the top 25 open places priced $.
 -- blurb stays null unless the owner writes a note. Titles are short labels.
 create table if not exists public.collections (
   id uuid primary key default gen_random_uuid(),
   city text not null check (city in ('seattle', 'eastside', 'la')),
   title text not null check (char_length(title) between 1 and 40 and title = btrim(title)),
-  slug text not null check (slug ~ '^[a-z0-9]+(?:-[a-z0-9]+)*$' and slug <> 'cheap-eats'),
+  slug text not null check (slug ~ '^[a-z0-9]+(?:-[a-z0-9]+)*$'),
   blurb text check (blurb is null or (char_length(blurb) between 1 and 280 and blurb = btrim(blurb))),
   position int not null default 0 check (position >= 0),
   created_by uuid not null references public.profiles (id),
