@@ -93,6 +93,19 @@ export function Header() {
   }, [picker, showAreas, city])
 
   useEffect(() => {
+    const bar = document.querySelector('.site-header')
+    if (!bar) return
+    const apply = () => {
+      const height = Math.ceil(bar.getBoundingClientRect().height)
+      document.documentElement.style.setProperty('--header-offset', `${height}px`)
+    }
+    apply()
+    const observer = new ResizeObserver(apply)
+    observer.observe(bar)
+    return () => observer.disconnect()
+  }, [])
+
+  useEffect(() => {
     const onScroll = () => {
       const hero = document.querySelector('.hero')
       const bar = document.querySelector('.site-header')
