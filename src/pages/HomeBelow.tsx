@@ -85,7 +85,7 @@ export function HomeBelow() {
   const hits = east || la ? places : homeHitList(places)
   const now = rightNow(city, places)
   const neighborhoods = guides.filter((guide) => guide.group === 'Neighborhoods').slice(0, 8)
-  const chips = publicChips(city, places, app.collections)
+  const chips = publicChips(city, places, app.collections, app.gustoScore, app.collectionsStatus !== 'loading')
   const house = Boolean(app.user?.isOwner)
   const toGo = Object.values(app.statuses).filter((status) => status === 'togo').length
   const recent = Object.entries(app.scores)
