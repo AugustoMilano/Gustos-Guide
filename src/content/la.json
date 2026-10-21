@@ -254,10 +254,12 @@
       "updatedAt": "2026-10-20",
       "photos": [
         {
-          "source": "illustration",
-          "isIllustration": true,
-          "alt": "Illustration suggesting Italian at Bestia",
-          "credit": "Illustration"
+          "source": "wikimedia",
+          "url": "/photos/bestia.jpg",
+          "alt": "Bestia in Downtown",
+          "credit": "Missvain",
+          "creditUrl": "https://commons.wikimedia.org/wiki/File:Bestia_-_February_2024_-_Sarah_Stierch_02.jpg",
+          "license": "CC BY 4.0"
         }
       ],
       "phone": "+1 (213) 514-5724",
@@ -791,7 +793,8 @@
         "count": 530,
         "source": "Yelp"
       },
-      "yelpSlug": "c0pfOA5RQTBCN4PByu8Wzw"
+      "yelpSlug": "c0pfOA5RQTBCN4PByu8Wzw",
+      "website": "https://www.blinkiesdonuts.com/"
     },
     {
       "id": "mamie",
@@ -980,7 +983,7 @@
       "city": "la",
       "name": "Paderia Bakehouse",
       "neighborhood": "Santa Monica",
-      "address": "3032 Wilshire Blvd, Unit E",
+      "address": "3032 Wilshire Blvd, Unit E, Santa Monica, CA 90403",
       "lat": 34.0393795,
       "lng": -118.4725386,
       "cuisine": [
@@ -1056,10 +1059,12 @@
       "updatedAt": "2026-10-20",
       "photos": [
         {
-          "source": "illustration",
-          "isIllustration": true,
-          "alt": "Illustration suggesting Deli at Langer's",
-          "credit": "Illustration"
+          "source": "wikimedia",
+          "url": "/photos/langers.jpg",
+          "alt": "Langer's in Westlake",
+          "credit": "Josh Lim (Sky Harbor)",
+          "creditUrl": "https://commons.wikimedia.org/wiki/File:Langer%27s_Deli_from_Langer%27s_Square_(cropped).jpg",
+          "license": "CC BY-SA 4.0"
         }
       ],
       "phone": "+1 (213) 483-8050",
@@ -1280,7 +1285,7 @@
       "city": "la",
       "name": "SUGARFISH",
       "neighborhood": "Downtown",
-      "address": "600 W 7th St, Unit 150",
+      "address": "600 W 7th St, Unit 150, Los Angeles, CA 90017",
       "lat": 34.0473707,
       "lng": -118.2569663,
       "cuisine": [
@@ -1309,7 +1314,8 @@
       "applePlaceUrl": "https://maps.apple.com/place?auid=13780764325173306588",
       "guideSlugs": [
         "downtown-la",
-        "la-sushi"
+        "la-sushi",
+        "la-date-night"
       ],
       "muid": "13780764325173306588",
       "hoursLabel": "",
@@ -1327,7 +1333,8 @@
         }
       ],
       "phone": "+1 (213) 627-3000",
-      "website": "https://sugarfishsushi.com/locations/dtla/"
+      "website": "https://sugarfishsushi.com/locations/dtla/",
+      "price": 3
     },
     {
       "id": "mastros-steakhouse",
@@ -1486,7 +1493,8 @@
       "applePlaceUrl": "https://maps.apple.com/place?auid=2508930283999374581",
       "guideSlugs": [
         "santa-monica",
-        "la-italian"
+        "la-italian",
+        "la-date-night"
       ],
       "muid": "2508930283999374581",
       "hoursLabel": "",
@@ -1505,14 +1513,15 @@
       ],
       "phone": "+1 (310) 394-5550",
       "website": "https://www.caporestaurant.com/",
-      "_n": 1
+      "_n": 1,
+      "price": 4
     },
     {
       "id": "bavel",
       "city": "la",
       "name": "Bavel",
       "neighborhood": "Downtown",
-      "address": "500 Mateo St, Unit 102",
+      "address": "500 Mateo St, Unit 102, Los Angeles, CA 90013",
       "lat": 34.0414318,
       "lng": -118.2329535,
       "cuisine": [
@@ -1601,7 +1610,8 @@
       "appleMapsUrl": "https://maps.apple.com/?daddr=34.07571,-118.384094&q=The%20Ivy",
       "applePlaceUrl": "https://maps.apple.com/place?auid=15814501971855265537",
       "guideSlugs": [
-        "beverly-grove"
+        "beverly-grove",
+        "la-date-night"
       ],
       "muid": "15814501971855265537",
       "hoursLabel": "",
@@ -1612,14 +1622,17 @@
       "updatedAt": "2026-10-20",
       "photos": [
         {
-          "source": "illustration",
-          "isIllustration": true,
-          "alt": "Illustration suggesting American at The Ivy",
-          "credit": "Illustration"
+          "source": "wikimedia",
+          "url": "/photos/the-ivy.jpg",
+          "alt": "The Ivy in Beverly Grove",
+          "credit": "Thunsolved",
+          "creditUrl": "https://commons.wikimedia.org/wiki/File:The_Ivy_Inside.jpg",
+          "license": "CC BY-SA 4.0"
         }
       ],
       "phone": "+1 (310) 274-8303",
-      "website": "https://www.theivyrestaurants.com/"
+      "website": "https://www.theivyrestaurants.com/",
+      "price": 4
     },
     {
       "id": "scopa-italian-roots",
@@ -1661,7 +1674,8 @@
       "applePlaceUrl": "https://maps.apple.com/place?auid=2376689188220182838",
       "guideSlugs": [
         "venice",
-        "la-italian"
+        "la-italian",
+        "la-date-night"
       ],
       "muid": "2376689188220182838",
       "hoursLabel": "",
@@ -1679,14 +1693,15 @@
         }
       ],
       "phone": "+1 (310) 821-1100",
-      "website": "https://www.scopaitalianroots.com/"
+      "website": "https://www.scopaitalianroots.com/",
+      "price": 3
     },
     {
       "id": "kazunori",
       "city": "la",
       "name": "KazuNori",
       "neighborhood": "Santa Monica",
-      "address": "120 Broadway, Unit 104",
+      "address": "120 Broadway, Unit 104, Santa Monica, CA 90401",
       "lat": 34.0130744,
       "lng": -118.4958043,
       "cuisine": [
@@ -1980,10 +1995,12 @@
       "updatedAt": "2026-10-20",
       "photos": [
         {
-          "source": "illustration",
-          "isIllustration": true,
-          "alt": "Illustration suggesting Bakery at Magnolia Bakery",
-          "credit": "Illustration"
+          "source": "flickr",
+          "url": "/photos/magnolia-bakery.jpg",
+          "alt": "Magnolia Bakery in Beverly Grove",
+          "credit": "Rachel from Cupcakes Take the Cake",
+          "creditUrl": "https://www.flickr.com/photos/23088039@N08/5409450726",
+          "license": "CC BY 2.0"
         }
       ],
       "phone": "+1 (323) 951-0636",
@@ -2124,7 +2141,7 @@
       "city": "la",
       "name": "Howlin' Ray's",
       "neighborhood": "Downtown",
-      "address": "727 N Broadway, Unit 128",
+      "address": "727 N Broadway, Unit 128, Los Angeles, CA 90012",
       "lat": 34.0614838,
       "lng": -118.2397019,
       "cuisine": [
@@ -2226,7 +2243,7 @@
       "city": "la",
       "name": "UOVO Pasta",
       "neighborhood": "Santa Monica",
-      "address": "1320 Second St, Unit A",
+      "address": "1320 Second St, Unit A, Santa Monica, CA 90401",
       "lat": 34.0157497,
       "lng": -118.4982609,
       "cuisine": [
@@ -2673,7 +2690,8 @@
       "appleMapsUrl": "https://maps.apple.com/?daddr=34.0666408,-118.4007012&q=CUT",
       "applePlaceUrl": "https://maps.apple.com/place?auid=4143677027367854145",
       "guideSlugs": [
-        "beverly-hills"
+        "beverly-hills",
+        "la-date-night"
       ],
       "muid": "4143677027367854145",
       "hoursLabel": "",
@@ -2691,7 +2709,8 @@
         }
       ],
       "phone": "+1 (310) 276-8500",
-      "website": "https://wolfgangpuck.com/dining/cut-beverly-hills/"
+      "website": "https://wolfgangpuck.com/dining/cut-beverly-hills/",
+      "price": 4
     },
     {
       "id": "the-henry",
@@ -2762,7 +2781,8 @@
         }
       ],
       "phone": "+1 (424) 204-1595",
-      "website": "https://www.thehenryrestaurant.com/locations/the-henry-west-hollywood/"
+      "website": "https://www.thehenryrestaurant.com/locations/the-henry-west-hollywood/",
+      "price": 2
     },
     {
       "id": "pasta-bar",
@@ -2861,7 +2881,8 @@
       "applePlaceUrl": "https://maps.apple.com/place?auid=6335182075125816361",
       "guideSlugs": [
         "santa-monica",
-        "la-italian"
+        "la-italian",
+        "la-date-night"
       ],
       "muid": "6335182075125816361",
       "hoursLabel": "",
@@ -2879,14 +2900,15 @@
         }
       ],
       "phone": "+1 (310) 314-0144",
-      "website": "http://www.piccoloristoranti.com/"
+      "website": "http://www.piccoloristoranti.com/",
+      "price": 3
     },
     {
       "id": "joey-dtla",
       "city": "la",
       "name": "JOEY DTLA",
       "neighborhood": "Downtown",
-      "address": "700 W 7th, Unit S430",
+      "address": "700 W 7th, Unit S430, Los Angeles, CA 90017",
       "lat": 34.047917,
       "lng": -118.2580322,
       "cuisine": [
@@ -3006,7 +3028,7 @@
       "city": "la",
       "name": "SunLife Organics",
       "neighborhood": "Malibu",
-      "address": "29169 Heathercliff Rd, Unit 110",
+      "address": "29169 Heathercliff Rd, Unit 110, Malibu, CA 90265",
       "lat": 34.0210751,
       "lng": -118.8094426,
       "cuisine": [
@@ -3176,7 +3198,7 @@
       "city": "la",
       "name": "Hayato",
       "neighborhood": "Downtown",
-      "address": "1320 E 7th St, Unit 126",
+      "address": "1320 E 7th St, Unit 126, Los Angeles, CA 90021",
       "lat": 34.0340258,
       "lng": -118.2418692,
       "cuisine": [
@@ -3467,10 +3489,12 @@
       "updatedAt": "2026-10-20",
       "photos": [
         {
-          "source": "illustration",
-          "isIllustration": true,
-          "alt": "Illustration suggesting Steak at Gwen",
-          "credit": "Illustration"
+          "source": "wikimedia",
+          "url": "/photos/gwen.jpg",
+          "alt": "Gwen in Hollywood",
+          "credit": "Clyde Charles Brown",
+          "creditUrl": "https://commons.wikimedia.org/wiki/File:Gwen_restaurant_in_Los_Angeles,_California,_US.jpg",
+          "license": "CC BY-SA 4.0"
         }
       ],
       "phone": "+1 (323) 946-7500",
@@ -3513,7 +3537,8 @@
       "appleMapsUrl": "https://maps.apple.com/?daddr=34.0901364,-118.3891654&q=Ardor",
       "applePlaceUrl": "https://maps.apple.com/place?auid=799252348062235531",
       "guideSlugs": [
-        "west-hollywood"
+        "west-hollywood",
+        "la-date-night"
       ],
       "muid": "799252348062235531",
       "hoursLabel": "",
@@ -3532,7 +3557,8 @@
       ],
       "phone": "+1 (424) 310-1197",
       "website": "https://www.ardorweho.com",
-      "_n": 5
+      "_n": 5,
+      "price": 4
     },
     {
       "id": "dudley-market",
@@ -3817,7 +3843,8 @@
       "appleMapsUrl": "https://maps.apple.com/?daddr=34.0832732,-118.3389115&q=Osteria%20Mozza",
       "applePlaceUrl": "https://maps.apple.com/place?auid=12655659477764317602",
       "guideSlugs": [
-        "la-italian"
+        "la-italian",
+        "la-date-night"
       ],
       "muid": "12655659477764317602",
       "hoursLabel": "",
@@ -3828,14 +3855,17 @@
       "updatedAt": "2026-10-20",
       "photos": [
         {
-          "source": "illustration",
-          "isIllustration": true,
-          "alt": "Illustration suggesting Italian at Osteria Mozza",
-          "credit": "Illustration"
+          "source": "wikimedia",
+          "url": "/photos/osteria-mozza.jpg",
+          "alt": "Osteria Mozza in Melrose",
+          "credit": "Josh Lim (Sky Harbor)",
+          "creditUrl": "https://commons.wikimedia.org/wiki/File:Osteria_Mozza_exterior.jpg",
+          "license": "CC BY-SA 4.0"
         }
       ],
       "phone": "+1 (323) 297-0100",
-      "website": "https://www.osteriamozza.com/location/los-angeles-osteria-mozza/"
+      "website": "https://www.osteriamozza.com/location/los-angeles-osteria-mozza/",
+      "price": 4
     },
     {
       "id": "gjusta",
@@ -3941,7 +3971,8 @@
       "appleMapsUrl": "https://maps.apple.com/?daddr=34.0675285,-118.4024432&q=Ocean%20Prime",
       "applePlaceUrl": "https://maps.apple.com/place?auid=14329005120270941135",
       "guideSlugs": [
-        "beverly-hills"
+        "beverly-hills",
+        "la-date-night"
       ],
       "muid": "14329005120270941135",
       "hoursLabel": "",
@@ -3959,7 +3990,8 @@
         }
       ],
       "phone": "+1 (310) 859-4818",
-      "website": "https://www.ocean-prime.com/locations/beverly-hills"
+      "website": "https://www.ocean-prime.com/locations/beverly-hills",
+      "price": 3
     },
     {
       "id": "gracias-madre",
@@ -4062,7 +4094,9 @@
       "gustoScore": null,
       "appleMapsUrl": "https://maps.apple.com/?daddr=34.0242051,-118.3818242&q=Vespertine",
       "applePlaceUrl": "https://maps.apple.com/place?auid=12697609669732689390",
-      "guideSlugs": [],
+      "guideSlugs": [
+        "la-date-night"
+      ],
       "muid": "12697609669732689390",
       "hoursLabel": "",
       "blurb": "At 3599 Hayden Ave, Vespertine serves New American, Culver City.",
@@ -4072,14 +4106,17 @@
       "updatedAt": "2026-10-20",
       "photos": [
         {
-          "source": "illustration",
-          "isIllustration": true,
-          "alt": "Illustration suggesting New American at Vespertine",
-          "credit": "Illustration"
+          "source": "wikimedia",
+          "url": "/photos/vespertine.jpg",
+          "alt": "Vespertine in Culver City",
+          "credit": "Archit73",
+          "creditUrl": "https://commons.wikimedia.org/wiki/File:Vespertine_-_Eric_Owen_Moss.jpg",
+          "license": "CC BY-SA 4.0"
         }
       ],
       "phone": "+1 (323) 320-4023",
-      "website": "http://vespertine.la"
+      "website": "http://vespertine.la",
+      "price": 4
     },
     {
       "id": "ysabel",
@@ -4157,7 +4194,8 @@
         }
       ],
       "phone": "+1 (323) 366-2940",
-      "_n": 2
+      "_n": 2,
+      "website": "https://www.ysabel.la/"
     },
     {
       "id": "malibu-farm-restaurant",
@@ -4233,7 +4271,7 @@
       "city": "la",
       "name": "Holbox",
       "neighborhood": "South Los Angeles",
-      "address": "3655 S Grand Ave, Unit C9",
+      "address": "3655 S Grand Ave, Unit C9, Los Angeles, CA 90007",
       "lat": 34.0175147,
       "lng": -118.2784394,
       "cuisine": [
@@ -4351,7 +4389,7 @@
       "city": "la",
       "name": "71Above",
       "neighborhood": "Downtown",
-      "address": "633 W 5th St, FL 71",
+      "address": "633 W 5th St, FL 71, Los Angeles, CA 90071",
       "lat": 34.0510736,
       "lng": -118.2544216,
       "cuisine": [
@@ -4508,7 +4546,8 @@
       "appleMapsUrl": "https://maps.apple.com/?daddr=34.0910294,-118.3635932&q=Delilah",
       "applePlaceUrl": "https://maps.apple.com/place?auid=6292923969026967216",
       "guideSlugs": [
-        "west-hollywood"
+        "west-hollywood",
+        "la-date-night"
       ],
       "muid": "6292923969026967216",
       "hoursLabel": "",
@@ -4527,7 +4566,8 @@
       ],
       "phone": "+1 (323) 745-0600",
       "website": "https://www.delilahrestaurants.com/location/los-angeles/",
-      "_n": 4
+      "_n": 4,
+      "price": 4
     },
     {
       "id": "pinks-hot-dogs",
@@ -4592,10 +4632,12 @@
       "updatedAt": "2026-10-20",
       "photos": [
         {
-          "source": "illustration",
-          "isIllustration": true,
-          "alt": "Illustration suggesting Hot dogs at Pink's Hot Dogs",
-          "credit": "Illustration"
+          "source": "wikimedia",
+          "url": "/photos/pinks-hot-dogs.jpg",
+          "alt": "Pink's Hot Dogs in Hollywood",
+          "credit": "Spatms",
+          "creditUrl": "https://commons.wikimedia.org/wiki/File:Pink%27s_Hot_Dogs,_North_La_Brea_Ave,_Los_Angeles,_June_2024.jpg",
+          "license": "CC BY-SA 4.0"
         }
       ],
       "phone": "+1 (323) 931-4223",
@@ -4604,7 +4646,7 @@
     {
       "id": "the-rooftop-beverly-hills",
       "city": "la",
-      "name": "The Rooftop Beverly HIlls",
+      "name": "The Rooftop Beverly Hills",
       "neighborhood": "Beverly Hills",
       "address": "9850 Wilshire Blvd, Beverly Hills, CA 90210",
       "lat": 34.0667177,
@@ -4613,7 +4655,7 @@
         "Asian"
       ],
       "placeType": "restaurant",
-      "oneLiner": "The Rooftop Beverly HIlls sits at 9850 Wilshire Blvd. Asian, Beverly Hills.",
+      "oneLiner": "The Rooftop Beverly Hills sits at 9850 Wilshire Blvd. Asian, Beverly Hills.",
       "perfectFor": [],
       "periods": [
         {
@@ -4639,7 +4681,7 @@
       ],
       "muid": "12388748944013377774",
       "hoursLabel": "",
-      "blurb": "The Rooftop Beverly HIlls sits at 9850 Wilshire Blvd. Asian, Beverly Hills.",
+      "blurb": "The Rooftop Beverly Hills sits at 9850 Wilshire Blvd. Asian, Beverly Hills.",
       "orderThis": [],
       "ids": {
         "yelp": "RQoD2ucHJJQpCevVNPlLxQ"
@@ -4721,10 +4763,12 @@
       "updatedAt": "2026-10-20",
       "photos": [
         {
-          "source": "illustration",
-          "isIllustration": true,
-          "alt": "Illustration suggesting Sushi at Sushi Fumi",
-          "credit": "Illustration"
+          "source": "flickr",
+          "url": "/photos/sushi-fumi.jpg",
+          "alt": "Sushi Fumi in West Hollywood",
+          "credit": "gruntzooki",
+          "creditUrl": "https://www.flickr.com/photos/37996580417@N01/54568477348",
+          "license": "CC BY-SA 2.0"
         }
       ],
       "price": 2,
@@ -4915,7 +4959,7 @@
       "city": "la",
       "name": "Marmalade Cafe",
       "neighborhood": "Calabasas",
-      "address": "4783 Commons Way, Unit E",
+      "address": "4783 Commons Way, Unit E, Calabasas, CA 91302",
       "lat": 34.1531568,
       "lng": -118.6462549,
       "cuisine": [
@@ -5059,7 +5103,7 @@
       "city": "la",
       "name": "Carlitos Gardel Argentine Steakhouse",
       "neighborhood": "Beverly Grove",
-      "address": "7963 Melrose Ave, Los Angeles CA 90046",
+      "address": "7963 Melrose Ave, Los Angeles, CA 90046",
       "lat": 34.0839102,
       "lng": -118.3631988,
       "cuisine": [
@@ -5092,7 +5136,8 @@
       "appleMapsUrl": "https://maps.apple.com/?daddr=34.0839102,-118.3631988&q=Carlitos%20Gardel%20Argentine%20Steakhouse",
       "applePlaceUrl": "https://maps.apple.com/place?auid=4041018172213943783",
       "guideSlugs": [
-        "beverly-grove"
+        "beverly-grove",
+        "la-date-night"
       ],
       "muid": "4041018172213943783",
       "hoursLabel": "",
@@ -5110,7 +5155,8 @@
         }
       ],
       "phone": "+1 (323) 655-0891",
-      "website": "https://www.facebook.com/gardelsmelrose"
+      "website": "https://www.facebook.com/gardelsmelrose",
+      "price": 4
     },
     {
       "id": "vin-folk",
@@ -5340,10 +5386,12 @@
       "updatedAt": "2026-10-20",
       "photos": [
         {
-          "source": "illustration",
-          "isIllustration": true,
-          "alt": "Illustration suggesting Market at Grand Central Market",
-          "credit": "Illustration"
+          "source": "wikimedia",
+          "url": "/photos/grand-central-market.jpg",
+          "alt": "Grand Central Market in Downtown",
+          "credit": "Esun",
+          "creditUrl": "https://commons.wikimedia.org/wiki/File:Produce_in_the_Grand_Central_Market.jpg",
+          "license": "Public domain"
         }
       ],
       "phone": "+1 (213) 359-6007",
@@ -5704,10 +5752,12 @@
       "updatedAt": "2026-10-20",
       "photos": [
         {
-          "source": "illustration",
-          "isIllustration": true,
-          "alt": "Illustration suggesting Tacos at Guisados",
-          "credit": "Illustration"
+          "source": "wikimedia",
+          "url": "/photos/guisados.jpg",
+          "alt": "Guisados in Echo Park",
+          "credit": "U.S. Department of State from United States",
+          "creditUrl": "https://commons.wikimedia.org/wiki/File:Secretary_Blinken_Meets_with_Members_of_Los_Angeles%E2%80%99_Diaspora_Communities_at_Guisados_Restaurant_in_Los_Angeles_(52132056537).jpg",
+          "license": "Public domain"
         }
       ],
       "phone": "+1 (213) 250-7600",
@@ -5772,10 +5822,12 @@
       "updatedAt": "2026-10-20",
       "photos": [
         {
-          "source": "illustration",
-          "isIllustration": true,
-          "alt": "Illustration suggesting French at République",
-          "credit": "Illustration"
+          "source": "wikimedia",
+          "url": "/photos/republique.jpg",
+          "alt": "République in Miracle Mile",
+          "credit": "Eric Polk",
+          "creditUrl": "https://commons.wikimedia.org/wiki/File:R%C3%A9publique_Restaurant.jpg",
+          "license": "CC BY-SA 4.0"
         }
       ],
       "phone": "+1 (310) 362-6115",
@@ -5878,7 +5930,8 @@
       "appleMapsUrl": "https://maps.apple.com/?daddr=34.0836322,-118.3301514&q=Providence",
       "applePlaceUrl": "https://maps.apple.com/place?auid=8562327284573157580",
       "guideSlugs": [
-        "hollywood"
+        "hollywood",
+        "la-date-night"
       ],
       "muid": "8562327284573157580",
       "hoursLabel": "",
@@ -5896,7 +5949,8 @@
         }
       ],
       "phone": "+1 (323) 460-4170",
-      "website": "https://providencela.com"
+      "website": "https://providencela.com",
+      "price": 4
     },
     {
       "id": "doans-bakery",
@@ -6325,7 +6379,8 @@
       "appleMapsUrl": "https://maps.apple.com/?daddr=34.0127825,-118.4961158&q=Meat%20On%20Ocean",
       "applePlaceUrl": "https://maps.apple.com/place?auid=5476325175131856207",
       "guideSlugs": [
-        "santa-monica"
+        "santa-monica",
+        "la-date-night"
       ],
       "muid": "5476325175131856207",
       "hoursLabel": "",
@@ -6344,7 +6399,8 @@
       ],
       "phone": "+1 (310) 773-3366",
       "website": "http://www.meatonocean.com",
-      "_n": 1
+      "_n": 1,
+      "price": 3
     },
     {
       "id": "saddle-ranch-chop-house",
@@ -6491,7 +6547,7 @@
       "city": "la",
       "name": "CAVA",
       "neighborhood": "Santa Monica",
-      "address": "1318 Second St, Ste A",
+      "address": "1318 Second St, Ste A, Santa Monica, CA 90401",
       "lat": 34.0156683,
       "lng": -118.4982347,
       "cuisine": [
@@ -6671,7 +6727,9 @@
       "gustoScore": null,
       "appleMapsUrl": "https://maps.apple.com/?daddr=33.8588373,-118.3909615&q=Baran%27s%202239",
       "applePlaceUrl": "https://maps.apple.com/place?auid=5124635232378356114",
-      "guideSlugs": [],
+      "guideSlugs": [
+        "la-date-night"
+      ],
       "muid": "5124635232378356114",
       "hoursLabel": "",
       "blurb": "502 Pacific Coast Hwy — Baran's 2239, Persian, Hermosa Beach.",
@@ -6688,7 +6746,8 @@
         }
       ],
       "phone": "+1 (424) 247-8468",
-      "website": "https://www.barans2239.com/"
+      "website": "https://www.barans2239.com/",
+      "price": 3
     },
     {
       "id": "polo-lounge",
@@ -6747,10 +6806,12 @@
       "updatedAt": "2026-10-20",
       "photos": [
         {
-          "source": "illustration",
-          "isIllustration": true,
-          "alt": "Illustration suggesting New American at Polo Lounge",
-          "credit": "Illustration"
+          "source": "wikimedia",
+          "url": "/photos/polo-lounge.jpg",
+          "alt": "Polo Lounge in Beverly Hills",
+          "credit": "Alan Light",
+          "creditUrl": "https://commons.wikimedia.org/wiki/File:Polo_Lounge,_inside_(3715406002).jpg",
+          "license": "CC BY 2.0"
         }
       ],
       "phone": "+1 (310) 887-2777",
@@ -6801,10 +6862,12 @@
       "updatedAt": "2026-10-20",
       "photos": [
         {
-          "source": "illustration",
-          "isIllustration": true,
-          "alt": "Illustration suggesting Donuts at Randy's Donuts",
-          "credit": "Illustration"
+          "source": "wikimedia",
+          "url": "/photos/randys-donuts.jpg",
+          "alt": "Randy's Donuts in Inglewood",
+          "credit": "John Margolies",
+          "creditUrl": "https://commons.wikimedia.org/wiki/File:Randy%27s_Donuts,_Inglewood,_California_LCCN2017709530.tif",
+          "license": "Public domain"
         }
       ],
       "phone": "+1 (310) 645-4707",
@@ -6861,10 +6924,12 @@
       "updatedAt": "2026-10-20",
       "photos": [
         {
-          "source": "illustration",
-          "isIllustration": true,
-          "alt": "Illustration suggesting Tacos at Blue Plate Taco",
-          "credit": "Illustration"
+          "source": "wikimedia",
+          "url": "/photos/blue-plate-taco.jpg",
+          "alt": "Blue Plate Taco in Santa Monica",
+          "credit": "Freedompics",
+          "creditUrl": "https://commons.wikimedia.org/wiki/File:Blue_Plate_Taco_Restaurant_%26_Bar_on_Ocean_in_Santa_Monica.jpg",
+          "license": "CC BY-SA 4.0"
         }
       ],
       "phone": "+1 (310) 458-2985",
@@ -6991,7 +7056,8 @@
       "applePlaceUrl": "https://maps.apple.com/place?auid=16055349255234839544",
       "guideSlugs": [
         "west-hollywood",
-        "la-italian"
+        "la-italian",
+        "la-date-night"
       ],
       "muid": "16055349255234839544",
       "hoursLabel": "",
@@ -7009,7 +7075,8 @@
         }
       ],
       "phone": "+1 (310) 432-2000",
-      "website": "http://www.cecconiswesthollywood.com"
+      "website": "http://www.cecconiswesthollywood.com",
+      "price": 3
     },
     {
       "id": "tesla-diner",
@@ -7055,10 +7122,12 @@
       "updatedAt": "2026-10-20",
       "photos": [
         {
-          "source": "illustration",
-          "isIllustration": true,
-          "alt": "Illustration suggesting Diner at Tesla Diner",
-          "credit": "Illustration"
+          "source": "wikimedia",
+          "url": "/photos/tesla-diner.jpg",
+          "alt": "Tesla Diner in Hollywood",
+          "credit": "Connor Caine",
+          "creditUrl": "https://commons.wikimedia.org/wiki/File:Tesla_Diner_on_Connor_Caine.jpg",
+          "license": "CC BY 3.0"
         }
       ],
       "phone": "+1 (877) 798-3752",
@@ -7095,7 +7164,8 @@
       "appleMapsUrl": "https://maps.apple.com/?daddr=34.0245296,-118.4913692&q=M%C3%A9lisse",
       "applePlaceUrl": "https://maps.apple.com/place?auid=7239587844585916040",
       "guideSlugs": [
-        "santa-monica"
+        "santa-monica",
+        "la-date-night"
       ],
       "muid": "7239587844585916040",
       "hoursLabel": "",
@@ -7113,7 +7183,8 @@
         }
       ],
       "phone": "+1 (310) 395-0881",
-      "website": "https://www.citrinandmelisse.com/melissemenu"
+      "website": "https://www.citrinandmelisse.com/melissemenu",
+      "price": 3
     },
     {
       "id": "the-donut-man",
@@ -7582,10 +7653,12 @@
       "updatedAt": "2026-10-20",
       "photos": [
         {
-          "source": "illustration",
-          "isIllustration": true,
-          "alt": "Illustration suggesting Cheese at The Cheese Store",
-          "credit": "Illustration"
+          "source": "wikimedia",
+          "url": "/photos/the-cheese-store.jpg",
+          "alt": "The Cheese Store in Beverly Hills",
+          "credit": "Alexis Doine",
+          "creditUrl": "https://commons.wikimedia.org/wiki/File:The_Cheese_Store_of_Beverly_Hills_(interior_view).JPG",
+          "license": "CC0"
         }
       ],
       "phone": "+1 (310) 278-2855",
@@ -7637,7 +7710,8 @@
       "applePlaceUrl": "https://maps.apple.com/place?auid=256088094907533205",
       "guideSlugs": [
         "venice",
-        "la-italian"
+        "la-italian",
+        "la-date-night"
       ],
       "muid": "256088094907533205",
       "hoursLabel": "",
@@ -7655,7 +7729,8 @@
         }
       ],
       "phone": "+1 (310) 399-9010",
-      "website": "https://www.barriquevenice.com/"
+      "website": "https://www.barriquevenice.com/",
+      "price": 3
     },
     {
       "id": "saltie-girl",
@@ -7708,7 +7783,8 @@
       "appleMapsUrl": "https://maps.apple.com/?daddr=34.0926284,-118.3795473&q=Saltie%20Girl",
       "applePlaceUrl": "https://maps.apple.com/place?auid=3161693718013554139",
       "guideSlugs": [
-        "west-hollywood"
+        "west-hollywood",
+        "la-date-night"
       ],
       "muid": "3161693718013554139",
       "hoursLabel": "",
@@ -7727,7 +7803,8 @@
       ],
       "phone": "+1 (310) 734-7296",
       "website": "https://www.saltiegirl.com/",
-      "_n": 1
+      "_n": 1,
+      "price": 3
     },
     {
       "id": "zinque",
@@ -7953,7 +8030,8 @@
       "appleMapsUrl": "https://maps.apple.com/?daddr=34.0676351,-118.3975352&q=Spago",
       "applePlaceUrl": "https://maps.apple.com/place?auid=5633281116901464201",
       "guideSlugs": [
-        "beverly-hills"
+        "beverly-hills",
+        "la-date-night"
       ],
       "muid": "5633281116901464201",
       "hoursLabel": "",
@@ -7971,13 +8049,14 @@
         }
       ],
       "phone": "+1 (310) 385-0880",
-      "website": "https://wolfgangpuck.com/restaurants/spago-beverly-hills/"
+      "website": "https://wolfgangpuck.com/restaurants/spago-beverly-hills/",
+      "price": 4
     },
     {
       "id": "tiki-ti",
       "city": "la",
       "name": "Tiki-Ti",
-      "neighborhood": "East Hollywood",
+      "neighborhood": "Los Feliz",
       "address": "4427 W Sunset Blvd, Los Angeles, CA 90027",
       "lat": 34.0974683,
       "lng": -118.2857881,
@@ -8124,7 +8203,8 @@
       "appleMapsUrl": "https://maps.apple.com/?daddr=34.0141276,-118.4975025&q=Water%20Grill",
       "applePlaceUrl": "https://maps.apple.com/place?auid=13839146432849478806",
       "guideSlugs": [
-        "santa-monica"
+        "santa-monica",
+        "la-date-night"
       ],
       "muid": "13839146432849478806",
       "hoursLabel": "",
@@ -8142,7 +8222,8 @@
         }
       ],
       "phone": "+1 (310) 394-5669",
-      "website": "https://www.watergrill.com/"
+      "website": "https://www.watergrill.com/",
+      "price": 3
     },
     {
       "id": "homestate",
@@ -8202,7 +8283,7 @@
       "city": "la",
       "name": "Amboy",
       "neighborhood": "Downtown",
-      "address": "727 N Broadway, Unit 117",
+      "address": "727 N Broadway, Unit 117, Los Angeles, CA 90012",
       "lat": 34.0613347,
       "lng": -118.2395947,
       "cuisine": [
@@ -8773,8 +8854,8 @@
         },
         {
           "placeId": "the-rooftop-beverly-hills",
-          "pullQuote": "The Rooftop Beverly HIlls sits at 9850 Wilshire Blvd. Asian, Beverly Hills.",
-          "blurb": "The Rooftop Beverly HIlls sits at 9850 Wilshire Blvd. Asian, Beverly Hills.",
+          "pullQuote": "The Rooftop Beverly Hills sits at 9850 Wilshire Blvd. Asian, Beverly Hills.",
+          "blurb": "The Rooftop Beverly Hills sits at 9850 Wilshire Blvd. Asian, Beverly Hills.",
           "copySource": "draft"
         },
         {
@@ -9559,14 +9640,140 @@
         },
         {
           "placeId": "the-rooftop-beverly-hills",
-          "pullQuote": "The Rooftop Beverly HIlls sits at 9850 Wilshire Blvd. Asian, Beverly Hills.",
-          "blurb": "The Rooftop Beverly HIlls sits at 9850 Wilshire Blvd. Asian, Beverly Hills.",
+          "pullQuote": "The Rooftop Beverly Hills sits at 9850 Wilshire Blvd. Asian, Beverly Hills.",
+          "blurb": "The Rooftop Beverly Hills sits at 9850 Wilshire Blvd. Asian, Beverly Hills.",
           "copySource": "draft"
         },
         {
           "placeId": "jean-georges-beverly-hills",
           "pullQuote": "9850 Wilshire Blvd — Jean-Georges Beverly Hills, Californian, Beverly Hills.",
           "blurb": "9850 Wilshire Blvd — Jean-Georges Beverly Hills, Californian, Beverly Hills.",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "sugarfish",
+          "pullQuote": "600 W 7th St — SUGARFISH, Sushi, Downtown.",
+          "blurb": "600 W 7th St — SUGARFISH, Sushi, Downtown.",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "capo",
+          "pullQuote": "Capo sits at 1810 Ocean Ave. Italian, Santa Monica.",
+          "blurb": "Capo sits at 1810 Ocean Ave. Italian, Santa Monica.",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "the-ivy",
+          "pullQuote": "The Ivy, 113 N Robertson Blvd. American in Beverly Grove.",
+          "blurb": "The Ivy, 113 N Robertson Blvd. American in Beverly Grove.",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "scopa-italian-roots",
+          "pullQuote": "At 2905 Washington Blvd, Scopa Italian Roots serves Italian, Venice.",
+          "blurb": "At 2905 Washington Blvd, Scopa Italian Roots serves Italian, Venice.",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "cut",
+          "pullQuote": "CUT sits at 9500 Wilshire Blvd. Fine dining, Beverly Hills.",
+          "blurb": "CUT sits at 9500 Wilshire Blvd. Fine dining, Beverly Hills.",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "piccolo-santa-monica",
+          "pullQuote": "Italian from Piccolo Santa Monica at 2127 Lincoln Blvd, Santa Monica.",
+          "blurb": "Italian from Piccolo Santa Monica at 2127 Lincoln Blvd, Santa Monica.",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "ardor",
+          "pullQuote": "Ardor serves New American at 9040 W Sunset Blvd, West Hollywood.",
+          "blurb": "Ardor serves New American at 9040 W Sunset Blvd, West Hollywood.",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "osteria-mozza",
+          "pullQuote": "Italian from Osteria Mozza at 6602 Melrose Ave, Melrose.",
+          "blurb": "Italian from Osteria Mozza at 6602 Melrose Ave, Melrose.",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "ocean-prime",
+          "pullQuote": "Beverly Hills: Ocean Prime serves Seafood at 9595 Wilshire Blvd.",
+          "blurb": "Beverly Hills: Ocean Prime serves Seafood at 9595 Wilshire Blvd.",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "vespertine",
+          "pullQuote": "At 3599 Hayden Ave, Vespertine serves New American, Culver City.",
+          "blurb": "At 3599 Hayden Ave, Vespertine serves New American, Culver City.",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "delilah",
+          "pullQuote": "New American from Delilah at 7969 Santa Monica Blvd, West Hollywood.",
+          "blurb": "New American from Delilah at 7969 Santa Monica Blvd, West Hollywood.",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "carlitos-gardel-argentine-steakhouse",
+          "pullQuote": "Carlitos Gardel Argentine Steakhouse sits at 7963 Melrose Ave. Argentine, Beverly Grove.",
+          "blurb": "Carlitos Gardel Argentine Steakhouse sits at 7963 Melrose Ave. Argentine, Beverly Grove.",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "providence",
+          "pullQuote": "Hollywood: Providence serves Seafood at 5955 Melrose Ave.",
+          "blurb": "Hollywood: Providence serves Seafood at 5955 Melrose Ave.",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "meat-on-ocean",
+          "pullQuote": "Meat On Ocean sits at 1501 Ocean Ave. Steak, Santa Monica.",
+          "blurb": "Meat On Ocean sits at 1501 Ocean Ave. Steak, Santa Monica.",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "barans-2239",
+          "pullQuote": "502 Pacific Coast Hwy — Baran's 2239, Persian, Hermosa Beach.",
+          "blurb": "502 Pacific Coast Hwy — Baran's 2239, Persian, Hermosa Beach.",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "cecconis-west-hollywood",
+          "pullQuote": "Cecconi's West Hollywood, 8764 Melrose Ave. Italian in West Hollywood.",
+          "blurb": "Cecconi's West Hollywood, 8764 Melrose Ave. Italian in West Hollywood.",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "melisse",
+          "pullQuote": "Mélisse sits at 1104 Wilshire Blvd. Californian, Santa Monica.",
+          "blurb": "Mélisse sits at 1104 Wilshire Blvd. Californian, Santa Monica.",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "barrique",
+          "pullQuote": "Barrique serves Italian at 796 Main St in Venice.",
+          "blurb": "Barrique serves Italian at 796 Main St in Venice.",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "saltie-girl",
+          "pullQuote": "Saltie Girl sits at 8615 W Sunset Blvd. Seafood, West Hollywood.",
+          "blurb": "Saltie Girl sits at 8615 W Sunset Blvd. Seafood, West Hollywood.",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "spago",
+          "pullQuote": "Spago, 176 N Canon Dr. Californian in Beverly Hills.",
+          "blurb": "Spago, 176 N Canon Dr. Californian in Beverly Hills.",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "water-grill",
+          "pullQuote": "1401 Ocean Ave — Water Grill, Seafood, Santa Monica.",
+          "blurb": "1401 Ocean Ave — Water Grill, Seafood, Santa Monica.",
           "copySource": "draft"
         }
       ]
