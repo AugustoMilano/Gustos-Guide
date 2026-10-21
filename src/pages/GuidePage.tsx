@@ -139,7 +139,7 @@ export function GuidePage() {
         <AreaKicker />
         <div className="mt-2 flex flex-wrap items-center justify-between gap-x-4 gap-y-2">
           <Link to={cityPath('/guides')} className="inline-flex min-h-11 items-center text-sm font-bold">← All guides</Link>
-          <div className="flex flex-wrap items-center gap-2">
+          <div className="guide-tools flex flex-wrap items-center gap-2">
             <p className="text-xs font-bold tracking-[0.14em] uppercase">{guide.group} · Updated {guide.updatedAt}</p>
             <ShareButton title={guide.title} url={pageShareUrl(`/guide/${guide.slug}`)} />
             <StoryShareButton

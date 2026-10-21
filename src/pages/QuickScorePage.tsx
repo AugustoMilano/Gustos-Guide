@@ -223,7 +223,7 @@ export function QuickScorePage() {
           </div>
           <details className="glass mt-3 p-3">
             <summary className="min-h-11 cursor-pointer text-sm font-bold">Filters</summary>
-            <div className="mt-2 grid grid-cols-3 gap-2">
+            <div className="mt-2 grid grid-cols-1 gap-2 sm:grid-cols-3">
               <label className="field">
                 <span>Region</span>
                 <select value={region} onChange={(event) => setRegion(event.target.value as QuickRegion)}>
