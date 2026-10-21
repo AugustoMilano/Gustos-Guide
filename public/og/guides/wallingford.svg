@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
   <rect width="1200" height="630" fill="#141F4D"/>
-  <g transform="translate(72 36) scale(0.92)"><g transform="translate(9.6 -0.99)" fill="none" stroke="#FF5330" stroke-width="4.8" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M 35 39.2 A 12.6 12.6 0 1 1 20.65 26.72 L 22.23 26.5"/>
-    <path d="M 35 39.2 L 25.2 39.2"/>
-    <path d="M 20.77 16.1 L 31.66 14.57 M 21.74 23.03 L 32.64 21.5 M 22.72 29.97 L 33.61 28.43 M 23.69 36.9 L 34.59 35.37"/>
+  <g transform="translate(72 36) scale(0.92)"><g transform="translate(10.59 -0.99)">
+    <path d="M 36.1 37.6 A 12.7 12.7 0 1 1 21.19 25.09" fill="none" stroke="#FF5330" stroke-width="5.7" stroke-linecap="round"/>
+    <path d="M 35.64 37.6 L 25.8 37.6" fill="none" stroke="#FF5330" stroke-width="5.7" stroke-linecap="round"/>
+    <path d="M 21.19 25.09 L 22.46 24.78" fill="none" stroke="#FF5330" stroke-width="5.7" stroke-linecap="round"/>
+    <path d="M 21.53 25.01 L 24.88 24.17" fill="none" stroke="#FF5330" stroke-width="9.6" stroke-linecap="round"/>
+    <path d="M 22.13 20.15 L 32.22 17.63 M 22.86 23.11 L 32.95 20.59 M 23.6 26.06 L 33.69 23.55 M 24.34 29.02 L 34.43 26.51" fill="none" stroke="#FF5330" stroke-width="1.65" stroke-linecap="round"/>
   </g></g>
   <text x="140" y="78" fill="#EEE3D6" font-family="Georgia, serif" font-size="28" font-style="italic">Gusto's Guide</text>
   <text x="72" y="180" fill="#EEE3D6" font-family="Georgia, serif" font-size="68">Wallingford</text>
