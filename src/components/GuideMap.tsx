@@ -127,13 +127,15 @@ function FitPins({
       showCoverageOnHover: false,
       maxClusterRadius: 46,
       spiderfyOnMaxZoom: true,
-      iconCreateFunction: (cluster) =>
-        divIcon({
+      iconCreateFunction: (cluster) => {
+        const count = cluster.getChildCount()
+        return divIcon({
           className: 'gusto-cluster',
-          html: `<span>${cluster.getChildCount()}</span>`,
+          html: `<span class="${count >= 100 ? 'is-wide' : ''}">${count}</span>`,
           iconSize: [44, 44],
           iconAnchor: [22, 22],
-        }),
+        })
+      },
     })
     markers.current = new Map()
 

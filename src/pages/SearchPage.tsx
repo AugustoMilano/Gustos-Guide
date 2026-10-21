@@ -67,25 +67,35 @@ export function SearchPage() {
       </button>
       {error ? <p className="mt-2 text-sm">{error}</p> : null}
       {origin ? <p className="mt-2 text-sm">Sorting places by distance from you.</p> : null}
-      <section className="mt-8">
-        <h2 className="font-serif text-3xl italic">Guides</h2>
-        <ul className="mt-2 grid gap-3 sm:grid-cols-2">{guides.slice(0, 12).map((guide) => <li key={guide.slug}><Link className="guide-card" to={cityPath(`/guide/${guide.slug}`)} viewTransition={!reduceMotion}><p className="text-xs font-bold tracking-[0.14em] uppercase">{guide.group}</p><h3 className="mt-2 font-serif text-2xl italic leading-none">{guide.title}</h3></Link></li>)}</ul>
-      </section>
+      {guides.length ? (
+        <section className="mt-8">
+          <h2 className="font-serif text-3xl italic">Guides</h2>
+          <ul className="mt-2 grid gap-3 sm:grid-cols-2">{guides.slice(0, 12).map((guide) => <li key={guide.slug}><Link className="guide-card" to={cityPath(`/guide/${guide.slug}`)} viewTransition={!reduceMotion}><p className="text-xs font-bold tracking-[0.14em] uppercase">{guide.group}</p><h3 className="mt-2 font-serif text-2xl italic leading-none">{guide.title}</h3></Link></li>)}</ul>
+        </section>
+      ) : null}
+      {neighborhoods.length ? (
+        <section className="mt-6">
+          <h2 className="font-serif text-3xl italic">Neighborhoods</h2>
+          <p className="mt-2 flex flex-wrap gap-2">{neighborhoods.slice(0, 16).map((name) => {
+            const slug = guideByTitle.get(name.toLowerCase()) ?? hoodGuide[name.toLowerCase()]
+            return <Link key={name} className="chip inline-flex items-center" to={slug ? cityPath(`/guide/${slug}`) : cityPath(`/search?q=${encodeURIComponent(name)}`)}>{name}</Link>
+          })}</p>
+        </section>
+      ) : null}
+      {cuisines.length ? (
+        <section className="mt-6">
+          <h2 className="font-serif text-3xl italic">Cuisines</h2>
+          <p className="mt-2 flex flex-wrap gap-2">{cuisines.slice(0, 16).map((name) => <Link key={name} className="chip inline-flex items-center" to={cityPath(`/search?q=${encodeURIComponent(name)}`)}>{name}</Link>)}</p>
+        </section>
+      ) : null}
       <section className="mt-6">
-        <h2 className="font-serif text-3xl italic">Neighborhoods</h2>
-        <p className="mt-2 flex flex-wrap gap-2">{neighborhoods.slice(0, 16).map((name) => {
-          const slug = guideByTitle.get(name.toLowerCase()) ?? hoodGuide[name.toLowerCase()]
-          return <Link key={name} className="chip inline-flex items-center" to={slug ? cityPath(`/guide/${slug}`) : cityPath(`/search?q=${encodeURIComponent(name)}`)}>{name}</Link>
-        })}</p>
-      </section>
-      <section className="mt-6">
-        <h2 className="font-serif text-3xl italic">Cuisines</h2>
-        <p className="mt-2 flex flex-wrap gap-2">{cuisines.slice(0, 16).map((name) => <Link key={name} className="chip inline-flex items-center" to={cityPath(`/search?q=${encodeURIComponent(name)}`)}>{name}</Link>)}</p>
-      </section>
-      <section className="mt-6">
-        <h2 className="font-serif text-3xl italic">{places.length} places</h2>
-        {query && places.length === 0 && guides.length === 0 ? (
-          <p className="mt-3">Nothing matches “{q}”. <Link className="font-bold" to={cityPath('/guides')}>Browse the guides</Link> or <Link className="font-bold" to={cityPath('/explore')}>open the map</Link>.</p>
+        {places.length ? <h2 className="font-serif text-3xl italic">{places.length} places</h2> : null}
+        {query && places.length === 0 ? (
+          guides.length || neighborhoods.length || cuisines.length ? (
+            <p className="mt-3">No places match “{q}”.</p>
+          ) : (
+            <p className="mt-3">Nothing matches “{q}”. <Link className="font-bold" to={cityPath('/guides')}>Browse the guides</Link> or <Link className="font-bold" to={cityPath('/explore')}>open the map</Link>.</p>
+          )
         ) : null}
         <ul className="mt-3 space-y-3">
           {places.slice(0, 40).map((place) => (
