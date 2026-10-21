@@ -90,6 +90,7 @@ export function Header() {
   const [more, setMore] = useState(false)
   const [bell, setBell] = useState(false)
   const unread = notices.filter((notice) => !notice.read).length
+  const bellLabel = unread ? `Notifications, ${unread} unread` : 'Notifications'
   const navigate = useNavigate()
   const location = useLocation()
   const city = useCityId()
@@ -277,12 +278,13 @@ export function Header() {
             type="button"
             className="relative min-h-11 px-2"
             ref={bellDesktop}
-            aria-label={unread ? `Notifications, ${unread} unread` : 'Notifications'}
+            aria-label={bellLabel}
+            title={bellLabel}
             aria-expanded={bell}
             aria-controls="notifications-panel"
             onClick={toggleBell}
           >
-            Alerts{unread ? ` ${unread}` : ''}
+            Notifications{unread ? ` ${unread}` : ''}
           </button>
           {user ? (
             <>
@@ -302,7 +304,8 @@ export function Header() {
           type="button"
           ref={bellMobile}
           className="bell-btn glass-icon relative ml-auto inline-flex min-h-11 min-w-11 items-center justify-center px-2 lg:hidden"
-          aria-label={unread ? `Notifications, ${unread} unread` : 'Notifications'}
+          aria-label={bellLabel}
+          title={bellLabel}
           aria-expanded={bell}
           aria-controls="notifications-panel"
           onClick={toggleBell}
