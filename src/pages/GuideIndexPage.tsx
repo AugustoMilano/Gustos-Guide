@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { AreaKicker } from '../components/AreaKicker.tsx'
 import { catalog } from '../content/load.ts'
 import { cityPath } from '../lib/city.ts'
+import { countPlaces } from '../lib/format.ts'
 import { usePageMeta } from '../lib/meta.ts'
 import { useCityCatalog } from '../lib/use-city.ts'
 import type { GuideGroup } from '../types.ts'
@@ -53,7 +54,7 @@ export function GuideIndexPage() {
                 style={reduceMotion ? undefined : { animationDelay: `${Math.min(index, 6) * 40}ms` }}
                 viewTransition={!reduceMotion}
               >
-                <p className="text-xs font-bold uppercase tracking-[0.14em] tabular-nums">{guide.count} places</p>
+                <p className="text-xs font-bold uppercase tracking-[0.14em] tabular-nums">{countPlaces(guide.count)}</p>
                 <h3 className="mt-2 font-serif text-3xl italic">{guide.title}</h3>
                 <p className="mt-2 line-clamp-3 text-sm">{guide.dek}</p>
               </Link>

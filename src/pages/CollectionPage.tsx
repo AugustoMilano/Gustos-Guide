@@ -8,7 +8,7 @@ import { PlaceThumb } from '../components/PlaceThumb.tsx'
 import { ScoreBadge } from '../components/ScoreBadge.tsx'
 import { areaTitle, cityPath } from '../lib/city.ts'
 import { CHEAP_EATS_SLUG, CHEAP_EATS_TITLE, cheapEatsFor, cleanTitle, flagshipAimHint, movedPlaceIds, orderedMembers, renderableIds, usableCheapMembers } from '../lib/collections.ts'
-import { priceLabel } from '../lib/format.ts'
+import { countPlaces, priceLabel } from '../lib/format.ts'
 import { usePageMeta } from '../lib/meta.ts'
 import { useCityCatalog } from '../lib/use-city.ts'
 import { useApp } from '../state/AppState.tsx'
@@ -42,7 +42,7 @@ export function CollectionPage() {
   const owner = Boolean(app.user?.isOwner && stored && usingStored && storedIds)
   usePageMeta(
     `${heading} · Gusto's Guide`,
-    blurb || `${members.length} places · ${areaTitle(city)}`,
+    blurb || `${countPlaces(members.length)} · ${areaTitle(city)}`,
     './og/og.png',
   )
 
@@ -75,7 +75,7 @@ export function CollectionPage() {
           >
             <p className="area-kicker">{areaTitle(city)}</p>
             <h1 className="mt-0.5 font-serif text-3xl italic leading-none">{heading}</h1>
-            <p className="mt-1 text-sm tabular-nums">{members.length} places</p>
+            <p className="mt-1 text-sm tabular-nums">{countPlaces(members.length)}</p>
             {app.user?.isOwner ? (
               <p className="mt-1 text-sm">{flagshipAimHint(usingStored && storedIds ? storedIds.length : members.length)}</p>
             ) : null}

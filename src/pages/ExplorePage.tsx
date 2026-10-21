@@ -9,7 +9,7 @@ import { ScoreBadge, scoreBand } from '../components/ScoreBadge.tsx'
 import { areaPhrase, areaTitle, cityPath } from '../lib/city.ts'
 import { useCityCatalog } from '../lib/use-city.ts'
 import { isOpen } from '../lib/hours.ts'
-import { priceLabel } from '../lib/format.ts'
+import { countPlaces, priceLabel } from '../lib/format.ts'
 import { usePageMeta } from '../lib/meta.ts'
 import { useApp } from '../state/AppState.tsx'
 import type { SlimPlace } from '../types.ts'
@@ -98,7 +98,7 @@ export function ExplorePage() {
         <div className="explore-bar panel-pad flex items-center justify-between gap-2 border-b-2 border-ink py-2">
           <p className="min-w-0">
             <span className="area-kicker">{areaTitle(city)}</span>
-            <span className="mt-0.5 block font-serif text-2xl italic leading-none">{listed.length} places</span>
+            <span className="mt-0.5 block font-serif text-2xl italic leading-none">{countPlaces(listed.length)}</span>
           </p>
           <button
             type="button"

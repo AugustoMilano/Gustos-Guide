@@ -8,7 +8,7 @@ import { ScoreBadge } from '../components/ScoreBadge.tsx'
 import { AreaKicker } from '../components/AreaKicker.tsx'
 import { areaPhrase, cityPath } from '../lib/city.ts'
 import { useCityCatalog } from '../lib/use-city.ts'
-import { milesBetween, priceLabel, publicReference } from '../lib/format.ts'
+import { countPlaces, milesBetween, priceLabel, publicReference } from '../lib/format.ts'
 import { readPosition } from '../lib/geo.ts'
 import { usePageMeta } from '../lib/meta.ts'
 import { clearRecent, readRecent, rememberSearch } from '../lib/recent-search.ts'
@@ -197,7 +197,7 @@ export function SearchPage() {
                     >
                       <p className="text-xs font-bold uppercase tracking-[0.14em]">{guide.group}</p>
                       <h3 className="mt-2 font-serif text-2xl italic"><MatchText text={guide.title} query={draft} /></h3>
-                      <p className="mt-2 text-sm font-bold tabular-nums">{guide.count} places</p>
+                      <p className="mt-2 text-sm font-bold tabular-nums">{countPlaces(guide.count)}</p>
                     </Link>
                   </li>
                 )
@@ -257,7 +257,7 @@ export function SearchPage() {
         <section className="mt-6">
           {places.length ? (
             <div className="flex items-baseline justify-between gap-3">
-              <h2 className="font-serif text-3xl italic">{places.length} places</h2>
+              <h2 className="font-serif text-3xl italic">{countPlaces(places.length)}</h2>
               {places.length > shownPlaces.length ? <p className="text-sm font-bold">Showing {shownPlaces.length}</p> : null}
             </div>
           ) : null}

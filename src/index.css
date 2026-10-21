@@ -410,6 +410,12 @@ textarea {
     justify-self: center;
     width: calc((100% - var(--gutter)) / 2);
   }
+
+  /* One card in the section is the whole row, not a stub in the middle. */
+  .card-grid > :last-child:nth-child(2n + 1):only-child {
+    justify-self: stretch;
+    width: auto;
+  }
 }
 
 @media (min-width: 80rem) {
@@ -425,6 +431,12 @@ textarea {
 
   .card-grid-3 > :last-child:nth-child(3n + 1) {
     grid-column: 2;
+  }
+
+  .card-grid-3 > :last-child:nth-child(3n + 1):only-child {
+    grid-column: 1 / -1;
+    justify-self: stretch;
+    width: auto;
   }
 }
 

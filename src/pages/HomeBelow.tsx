@@ -8,6 +8,7 @@ import { ScoreBadge } from '../components/ScoreBadge.tsx'
 import { slimById } from '../content/load.ts'
 import { OwnerCollections } from '../components/OwnerCollections.tsx'
 import { cityPath, type CityId } from '../lib/city.ts'
+import { countPlaces } from '../lib/format.ts'
 import { publicChips } from '../lib/collections.ts'
 import { useCityCatalog } from '../lib/use-city.ts'
 import { homeHitList, RIGHT_NOW_FALLBACK } from '../lib/photo-queue.ts'
@@ -51,7 +52,7 @@ function whyNow(place: SlimPlace, day: number, mins: number): string {
 function GuideCardCopy({ count, title, dek }: { count: number; title: string; dek: string }) {
   return (
     <>
-      <p className="text-xs font-bold uppercase tracking-[0.14em] tabular-nums">{count} places</p>
+      <p className="text-xs font-bold uppercase tracking-[0.14em] tabular-nums">{countPlaces(count)}</p>
       <h3 className="mt-2 font-serif text-3xl italic">{title}</h3>
       <p className="mt-2 text-sm">{dek}</p>
     </>
@@ -234,13 +235,13 @@ export function HomeBelow() {
           <p className="mt-2 max-w-xl">{la ? 'Every Los Angeles room on the guide so far.' : sf ? 'Every San Francisco and Bay Area room on the guide so far.' : east ? 'Every Eastside room on the guide so far.' : 'The rooms people already cross town for, one neighborhood at a time.'}</p>
           <div className="mt-4 flex gap-3 overflow-x-auto pb-2">
             {hits.map((place) => (
-              <Link key={place.id} to={cityPath(`/place/${place.id}`)} className="hit-card w-56 shrink-0" viewTransition={!reduceMotion}>
+              <Link key={place.id} to={cityPath(`/place/${place.id}`)} className="hit-card w-72 shrink-0" viewTransition={!reduceMotion}>
                 <div className="h-28 overflow-hidden bg-navy [&_.place-art]:aspect-auto [&_.place-art]:h-full">
-                  <PlaceThumb place={place} uploads={photos} sizes="224px" />
+                  <PlaceThumb place={place} uploads={photos} sizes="288px" />
                 </div>
                 <div className="card-body">
                   <p className="text-xs font-bold tracking-[0.14em] uppercase">{place.neighborhood}</p>
-                  <h3 className="mt-1 font-serif text-2xl italic leading-none">{place.name}</h3>
+                  <h3 className="mt-1 font-serif text-2xl italic leading-[1.15] text-balance">{place.name}</h3>
                   <p className="mt-2 text-sm">{place.cuisine[0]}</p>
                 </div>
               </Link>

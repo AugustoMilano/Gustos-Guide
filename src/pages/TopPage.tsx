@@ -80,7 +80,7 @@ export function TopPage() {
                     <PlaceThumb place={row.place} uploads={app.photos} eager={row.rank === 1} />
                   </span>
                   <span className="mt-2 block font-serif text-xl italic leading-tight sm:text-2xl">{row.place.name}</span>
-                  <span className="mt-1 block text-[11px] font-bold tracking-wide uppercase">{row.place.neighborhood}</span>
+                  <span className="mt-1 block text-xs font-bold tracking-wide uppercase">{row.place.neighborhood}</span>
                   <span className="podium-score">{row.score.toFixed(1)}</span>
                 </Link>
               </motion.div>

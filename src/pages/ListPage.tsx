@@ -8,7 +8,7 @@ import { StoryShareButton } from '../components/StoryShareButton.tsx'
 import { SlidingRow } from '../components/SlidingRow.tsx'
 import { slimById } from '../content/load.ts'
 import { demoFriendsEnabled } from '../lib/demo.ts'
-import { milesBetween, priceLabel } from '../lib/format.ts'
+import { countPlaces, milesBetween, priceLabel } from '../lib/format.ts'
 import { readPosition } from '../lib/geo.ts'
 import { isOpen } from '../lib/hours.ts'
 import { listColor, listOgSvg } from '../lib/lists.ts'
@@ -31,7 +31,7 @@ export function ListPage() {
   const [origin, setOrigin] = useState<{ lat: number; lng: number } | null>(null)
   const [whereError, setWhereError] = useState('')
   const [copied, setCopied] = useState(false)
-  const detail = guide ? `${guide.placeIds.length} places on this list` : 'A list on Gusto’s Guide.'
+  const detail = guide ? `${countPlaces(guide.placeIds.length)} on this list` : 'A list on Gusto’s Guide.'
   usePageMeta(
     `${title} · Gusto's Guide`,
     detail,
@@ -107,7 +107,7 @@ export function ListPage() {
 
   return (
     <main id="main" tabIndex={-1} className="mx-auto max-w-3xl px-4 pt-24 pb-16 outline-none">
-      <p className="text-xs font-bold uppercase tracking-wide">{demoFriendsEnabled && guide.demo ? 'Seeded list' : visibility === 'public' ? 'Public list' : visibility === 'friends' ? 'Friends list' : 'Private list'} · {rows.length === guide.placeIds.length ? `${guide.placeIds.length} places` : `${rows.length} of ${guide.placeIds.length} places`}</p>
+      <p className="text-xs font-bold uppercase tracking-wide">{demoFriendsEnabled && guide.demo ? 'Seeded list' : visibility === 'public' ? 'Public list' : visibility === 'friends' ? 'Friends list' : 'Private list'} · {rows.length === guide.placeIds.length ? countPlaces(guide.placeIds.length) : `${rows.length} of ${countPlaces(guide.placeIds.length)}`}</p>
       <div className="mt-2 flex flex-wrap items-center justify-between gap-3">
         <h1 className="font-serif text-5xl italic">{guide.emoji ? `${guide.emoji} ` : ''}{guide.title}</h1>
         <StoryShareButton
