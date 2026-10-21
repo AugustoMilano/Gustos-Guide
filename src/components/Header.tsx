@@ -2,7 +2,7 @@ import { useEffect, useRef, useState, type FormEvent, type RefObject } from 'rea
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
 import { dragSheet } from '../lib/motion.ts'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
-import { areaPhrase, cityPath, isCityPicker, readRegionMemory, regionName, regionOf, writeRegionMemory } from '../lib/city.ts'
+import { areaPhrase, cityPath, isCityPicker, readRegionMemory, regionOf, writeRegionMemory, type CityId } from '../lib/city.ts'
 import { useCityId } from '../lib/use-city.ts'
 import { AreaKicker } from './AreaKicker.tsx'
 import { CitySwitcher } from './CitySwitcher.tsx'
@@ -45,6 +45,15 @@ function useDismiss(open: boolean, close: () => void, refs: RefObject<HTMLElemen
       if (onScroll) window.removeEventListener('scroll', scroll)
     }
   }, [open, onScroll, refs])
+}
+
+const CityButton = motion.create(Link)
+const SPRING = { type: 'spring' as const, stiffness: 420, damping: 32 }
+
+function citySwitchLabel(city: CityId) {
+  if (city === 'eastside') return 'Eastside'
+  if (city === 'la') return 'Los Angeles'
+  return 'Seattle'
 }
 
 function BellIcon() {
@@ -154,17 +163,41 @@ export function Header() {
     <header className={`site-header${onHero ? ' on-hero' : ''}${scrolled && !onHero ? ' is-scrolled' : ''}`}>
       <div className="header-bar mx-auto flex w-full max-w-[100rem] items-center gap-3 px-4 py-3">
         <div className="brand-lockup">
-          {picker ? null : (
-            <Link to="/cities" className="region-back">
-              <svg aria-hidden="true" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M15 6 9 12l6 6" />
-              </svg>
-              {regionName(city)}
-            </Link>
-          )}
           <Link to={cityPath('/', linkCity)} className="wordmark shrink-0 font-serif text-2xl italic leading-none sm:text-3xl">
             Gusto's Guide
           </Link>
+          {picker ? null : (
+            <CityButton
+              to="/cities"
+              className="region-back"
+              aria-label={`Switch city, now ${citySwitchLabel(city)}`}
+              initial="rest"
+              whileHover={reduceMotion ? undefined : 'hover'}
+              whileTap={reduceMotion ? undefined : 'press'}
+              variants={{
+                rest: { scale: 1 },
+                hover: { scale: 1.04 },
+                press: { scale: 0.96 },
+              }}
+              transition={reduceMotion ? { duration: 0 } : SPRING}
+            >
+              <motion.span
+                className="region-chevron"
+                aria-hidden="true"
+                variants={{
+                  rest: { x: 0 },
+                  hover: { x: -3 },
+                  press: { x: -1 },
+                }}
+                transition={reduceMotion ? { duration: 0 } : SPRING}
+              >
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M15 6 9 12l6 6" />
+                </svg>
+              </motion.span>
+              {citySwitchLabel(city)}
+            </CityButton>
+          )}
         </div>
         {showAreas ? <CitySwitcher /> : null}
         <form onSubmit={search} className="site-search ml-auto hidden w-44 shrink-0 lg:block min-[1400px]:w-60">
