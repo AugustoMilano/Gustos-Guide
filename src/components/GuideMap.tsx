@@ -19,18 +19,28 @@ const LOS_ANGELES = latLngBounds(
   [34.34, -118.1],
 )
 const SAN_FRANCISCO = latLngBounds(
-  [37.7, -122.53],
-  [37.95, -122.35],
+  [37.7, -122.52],
+  [37.83, -122.35],
+)
+const EAST_BAY = latLngBounds(
+  [37.5, -122.35],
+  [37.95, -121.8],
 )
 const PENINSULA = latLngBounds(
   [37.15, -122.55],
-  [37.75, -121.75],
+  [37.7, -121.75],
+)
+const NORTH_BAY = latLngBounds(
+  [37.82, -122.58],
+  [38.0, -122.42],
 )
 
 function fallbackBounds(places: MapPlace[]) {
   const place = places.find((item) => Number.isFinite(item.lat) && Number.isFinite(item.lng))
   if (place && place.lat < 36) return LOS_ANGELES
   if (place && place.lat < 42) {
+    if (place.lat >= 37.84 && place.lng <= -122.4) return NORTH_BAY
+    if (place.lng > -122.35 && place.lat > 37.55) return EAST_BAY
     if (place.lat < 37.7 || place.lng > -122.25) return PENINSULA
     return SAN_FRANCISCO
   }

@@ -1,6 +1,5 @@
 -- Allow the Peninsula on house collections.
--- East Bay and North Bay are not separate areas: each has fewer than 8 places,
--- so they stay inside San Francisco or the Peninsula. See the cheap-eats migration.
+-- 20261022050000_collections_city_bay.sql adds eastbay and northbay on top of this check.
 
 do $$
 declare

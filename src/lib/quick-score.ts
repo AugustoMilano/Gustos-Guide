@@ -1,13 +1,21 @@
 import type { SlimPlace } from '../types.ts'
+import { asCityId, type CityId } from './city.ts'
 
 export type HouseMark = 'havent'
-export type QuickRegion = 'all' | 'seattle' | 'eastside' | 'la' | 'sf' | 'peninsula'
+export type QuickRegion = 'all' | CityId
 
-const CITY_ORDER = { seattle: 0, eastside: 1, la: 2, sf: 3, peninsula: 4 } as const
+const CITY_ORDER = {
+  seattle: 0,
+  eastside: 1,
+  la: 2,
+  sf: 3,
+  eastbay: 4,
+  peninsula: 5,
+  northbay: 6,
+} as const satisfies Record<CityId, number>
 
-export function cityOf(place: { city?: string }): 'seattle' | 'eastside' | 'la' | 'sf' | 'peninsula' {
-  if (place.city === 'la' || place.city === 'eastside' || place.city === 'sf' || place.city === 'peninsula') return place.city
-  return 'seattle'
+export function cityOf(place: { city?: string }): CityId {
+  return asCityId(place.city)
 }
 
 /** Digits typed on the keyboard. "8" is 8.0, "87" is 8.7, "10" is 10.0. */

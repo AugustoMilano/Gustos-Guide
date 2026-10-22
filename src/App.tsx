@@ -10,7 +10,7 @@ import { HomePage } from './pages/HomePage.tsx'
 import { LegalPage } from './pages/LegalPage.tsx'
 import { NotFoundPage } from './pages/NotFoundPage.tsx'
 import { InstallHint } from './components/InstallHint.tsx'
-import { barePath } from './lib/city.ts'
+import { barePath, CITY_PREFIXES } from './lib/city.ts'
 import { directLegalSlug } from './lib/site.ts'
 import { useApp } from './state/AppState.tsx'
 
@@ -192,7 +192,7 @@ function Shell() {
         ) : (
         <Routes>
           <Route path="/cities" element={<CitiesPage />} />
-          {['', '/seattle', '/eastside', '/la', '/sf', '/peninsula'].flatMap((prefix) => [
+          {['', ...CITY_PREFIXES].flatMap((prefix) => [
             <Route key={`${prefix}-home`} path={prefix || '/'} element={<HomePage />} />,
             <Route key={`${prefix}-explore`} path={`${prefix}/explore`} element={<ExplorePage />} />,
             <Route key={`${prefix}-guides`} path={`${prefix}/guides`} element={<GuideIndexPage />} />,

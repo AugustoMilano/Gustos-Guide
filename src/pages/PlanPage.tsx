@@ -11,7 +11,7 @@ import { GoldenFork } from '../components/GoldenFork.tsx'
 import { ScoreBadge } from '../components/ScoreBadge.tsx'
 import { AreaKicker } from '../components/AreaKicker.tsx'
 import { catalog, slimById } from '../content/load.ts'
-import { cityPath } from '../lib/city.ts'
+import { cityPath, type CityId } from '../lib/city.ts'
 import { useCityCatalog } from '../lib/use-city.ts'
 import { demoFriendsEnabled } from '../lib/demo.ts'
 import { priceLabel, publicReference } from '../lib/format.ts'
@@ -211,6 +211,16 @@ function initials(name: string): string {
     .toUpperCase()
 }
 
+function whereQuestion(city: CityId): string {
+  if (city === 'la') return 'Where in Los Angeles?'
+  if (city === 'peninsula') return 'Where on the Peninsula?'
+  if (city === 'eastbay') return 'Where in the East Bay?'
+  if (city === 'northbay') return 'Where in the North Bay?'
+  if (city === 'sf') return 'Where in San Francisco?'
+  if (city === 'eastside') return 'Where on the Eastside?'
+  return 'Where in Seattle?'
+}
+
 export function PlanWizardPage() {
   const app = useApp()
   const navigate = useNavigate()
@@ -321,7 +331,7 @@ export function PlanWizardPage() {
       ) : null}
       {step === 1 ? (
         <section className="mt-6" aria-label="Area">
-          <h2 className="font-serif text-3xl italic">{city === 'la' ? 'Where in Los Angeles?' : city === 'peninsula' ? 'Where on the Peninsula?' : city === 'sf' ? 'Where in San Francisco?' : city === 'eastside' ? 'Where on the Eastside?' : 'Where in Seattle?'}</h2>
+          <h2 className="font-serif text-3xl italic">{whereQuestion(city)}</h2>
           <div className="mt-3 flex flex-wrap gap-2">
             <button type="button" className="chip" aria-pressed={area === 'any'} onClick={() => setArea('any')}>Anywhere</button>
             {neighborhoods.map((item) => (
