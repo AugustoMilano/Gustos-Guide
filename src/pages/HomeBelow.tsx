@@ -54,7 +54,7 @@ function GuideCardCopy({ count, title, dek }: { count: number; title: string; de
     <>
       <p className="text-xs font-bold uppercase tracking-[0.14em] tabular-nums">{countPlaces(count)}</p>
       <h3 className="mt-2 font-serif text-3xl italic">{title}</h3>
-      <p className="mt-2 text-sm">{dek}</p>
+      {dek ? <p className="mt-2 text-sm">{dek}</p> : null}
     </>
   )
 }
