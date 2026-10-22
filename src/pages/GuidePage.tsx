@@ -126,7 +126,7 @@ export function GuidePage() {
   }
   if (!guide) {
     return (
-      <main id="main" tabIndex={-1} className="mx-auto max-w-6xl px-4 pt-20 outline-none" aria-busy="true">
+      <main id="main" tabIndex={-1} className="mx-auto min-h-dvh max-w-6xl px-4 pt-20 outline-none" aria-busy="true">
         <p className="sr-only">Loading</p>
         <p className="text-xs font-bold tracking-[0.14em] uppercase">{summary?.group}</p>
         <h1 className="mt-1 font-serif text-4xl italic leading-none sm:text-5xl">{summary?.title}</h1>

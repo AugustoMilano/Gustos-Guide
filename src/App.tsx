@@ -137,7 +137,7 @@ function BackToTop() {
 
 function PageSkeleton() {
   return (
-    <main id="main" className="mx-auto max-w-6xl px-4 pt-24" aria-busy="true" aria-live="polite">
+    <main id="main" className="mx-auto min-h-dvh max-w-6xl px-4 pt-24" aria-busy="true" aria-live="polite">
       <p className="sr-only">Loading</p>
       <div className="skeleton h-12 w-2/3 max-w-md" />
       <div className="skeleton mt-4 h-6 w-1/2 max-w-sm" />
