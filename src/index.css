@@ -97,6 +97,8 @@
 
 html {
   color-scheme: light;
+  /* Canvas behind the status bar. Navy only while the home hero is up; cream otherwise, including dark mode. */
+  background: #fffaf3;
   scroll-behavior: smooth;
   scroll-padding-top: calc(var(--header-offset) + var(--space-2));
   --header-offset: 4.75rem;
@@ -157,6 +159,20 @@ html {
   --count-w: 4.75rem;
   --shot: 4rem;
   --score-num-w: 3rem;
+}
+
+html[data-status='navy'] {
+  background: #141f4d;
+}
+
+@media (prefers-color-scheme: dark) {
+  html {
+    background: #fffaf3;
+  }
+
+  html[data-status='navy'] {
+    background: #141f4d;
+  }
 }
 
 @media (max-width: 639px) {
@@ -1803,6 +1819,25 @@ textarea {
   box-shadow: none;
   backdrop-filter: none;
   -webkit-backdrop-filter: none;
+}
+
+/* The safe-area strip is part of the header, so standalone iOS paints the clock
+   on the same color as the bar. Opaque, because the glass fill is translucent
+   and a navy page behind it reads as a separate band. */
+.site-header::before {
+  content: '';
+  position: absolute;
+  z-index: 0;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: env(safe-area-inset-top, 0px);
+  background: #fffaf3;
+  pointer-events: none;
+}
+
+.site-header.on-hero::before {
+  background: #141f4d;
 }
 
 .site-header.on-hero :focus-visible {
