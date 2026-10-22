@@ -293,12 +293,24 @@ function fromFiles() {
   const dive = new Set(
     guides.find((guide) => guide.slug === 'fun-dive-bars')?.entries.map((entry) => entry.blurb) ?? [],
   )
+  // Accepted while these bars were on Best Fun & Dive Bars. The blurb stays on the place.
+  const formerDive = new Set([
+    'the-5-point-cafe',
+    'blue-moon',
+    'white-horse-tavern',
+    'the-roanoke',
+    'loretta-s-northwesterner',
+    'bait-shop',
+    'add-a-ball',
+    'unicorn',
+    'marco-polo-bar-grill',
+  ])
   const lines = [
     ...Object.values(places).map((place) => ({ text: place.oneLiner, placeId: place.id })),
     ...guides.flatMap((guide) => guide.entries.map((entry) => ({ text: entry.pullQuote, placeId: entry.placeId }))),
   ]
   const blurbs = [
-    ...Object.values(places).map((place) => ({ text: place.blurb, placeId: place.id, name: place.name, exempt: dive.has(place.blurb) })),
+    ...Object.values(places).map((place) => ({ text: place.blurb, placeId: place.id, name: place.name, exempt: dive.has(place.blurb) || formerDive.has(place.id) })),
     ...guides.flatMap((guide) =>
       guide.entries.map((entry) => ({
         text: entry.blurb,
