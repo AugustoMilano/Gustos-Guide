@@ -166,7 +166,7 @@ export function CollectionPage() {
                     <ScoreBadge score={app.gustoScore(place.id)} size="sm" />
                   </span>
                 </Link>
-                <div className="relative z-10 mt-2 flex flex-wrap gap-2">
+                <div className="action-row relative z-10 mt-2">
                   <MapLinks place={place} />
                   {owner && stored ? (
                     <>
