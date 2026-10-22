@@ -69,13 +69,16 @@ export function HomeBelow() {
   const east = city === 'eastside'
   const la = city === 'la'
   const sf = city === 'sf'
+  const pen = city === 'peninsula'
   usePageMeta(
     "Gusto's Guide",
     la
       ? 'Eat across Los Angeles: Venice, Santa Monica, West Hollywood, Downtown, and the rooms on the list.'
       : sf
-        ? 'Eat across San Francisco and the Bay Area, from the neighborhoods and cuisines on this list.'
-        : east
+        ? 'Eat across San Francisco, from the neighborhoods and cuisines on this list.'
+        : pen
+          ? 'Eat across the Peninsula and South Bay, from Palo Alto to San Jose.'
+          : east
           ? 'Eat across the Eastside: Bellevue, Kirkland, Redmond, Issaquah, and Bothell.'
           : 'Eat your way through Seattle: pizza, oysters, coffee, neighborhood dinners, and the bars worth the hill.',
     './og/og.png',
@@ -95,11 +98,15 @@ export function HomeBelow() {
       : OCCASIONS
   const featured = sf
     ? guides.filter((guide) => guide.group === 'Neighborhoods' || guide.group === 'Cuisine').slice(0, 8)
-    : featuredSlugs.map((slug) => guides.find((guide) => guide.slug === slug)).filter((guide) => guide != null)
+    : pen
+      ? guides.filter((guide) => guide.group === 'Neighborhoods').slice(0, 8)
+      : featuredSlugs.map((slug) => guides.find((guide) => guide.slug === slug)).filter((guide) => guide != null)
   const occasions = sf
     ? guides.filter((guide) => guide.group === 'Cuisine' || guide.group === 'Occasion').slice(0, 6)
-    : occasionSlugs.map((slug) => guides.find((guide) => guide.slug === slug)).filter((guide) => guide != null)
-  const hits = east || la || sf ? places : homeHitList(places)
+    : pen
+      ? guides.filter((guide) => guide.group === 'Neighborhoods').slice(0, 6)
+      : occasionSlugs.map((slug) => guides.find((guide) => guide.slug === slug)).filter((guide) => guide != null)
+  const hits = east || la || sf || pen ? places : homeHitList(places)
   const wall = pacificWall()
   const suggestion = suggestNow(places, app.gustoScore, wall)
   const nowPlaces = suggestion.live ? suggestion.places : closedNow(city, places)
@@ -166,7 +173,7 @@ export function HomeBelow() {
           </div>
         </section>
         <section className="mt-10" aria-labelledby="occasions">
-          <h2 id="occasions" className="font-serif text-4xl italic">{east || la || sf ? 'Start here' : 'Guides by occasion'}</h2>
+          <h2 id="occasions" className="font-serif text-4xl italic">{east || la || sf || pen ? 'Start here' : 'Guides by occasion'}</h2>
           <div className="card-grid card-grid-3 mt-4">
             {occasions.map((guide, index) => (
               <Reveal key={guide.slug} className="h-full" delay={Math.min(index, 6) * 0.04}>
@@ -178,8 +185,8 @@ export function HomeBelow() {
           </div>
         </section>
         {app.user ? (
-          <section className="glass glass-dark mt-10 p-5" aria-labelledby={la ? 'your-la' : sf ? 'your-sf' : east ? 'your-eastside' : 'your-seattle'}>
-            <h2 id={la ? 'your-la' : sf ? 'your-sf' : east ? 'your-eastside' : 'your-seattle'} className="font-serif text-4xl italic">{la ? 'Your Los Angeles' : sf ? 'Your San Francisco' : east ? 'Your Eastside' : 'Your Seattle'}</h2>
+          <section className="glass glass-dark mt-10 p-5" aria-labelledby={la ? 'your-la' : pen ? 'your-peninsula' : sf ? 'your-sf' : east ? 'your-eastside' : 'your-seattle'}>
+            <h2 id={la ? 'your-la' : pen ? 'your-peninsula' : sf ? 'your-sf' : east ? 'your-eastside' : 'your-seattle'} className="font-serif text-4xl italic">{la ? 'Your Los Angeles' : pen ? 'Your Peninsula' : sf ? 'Your San Francisco' : east ? 'Your Eastside' : 'Your Seattle'}</h2>
             <p className="mt-2">{toGo} on your To go list.</p>
             <h3 className="mt-4 font-serif text-2xl italic">Recently rated</h3>
             {recent.length ? (
@@ -206,7 +213,7 @@ export function HomeBelow() {
         ) : null}
         <section className="mt-10" aria-labelledby="hood-teaser">
           <div className="flex items-end justify-between gap-3">
-            <h2 id="hood-teaser" className="font-serif text-4xl italic">{east ? 'Cities' : 'Neighborhoods'}</h2>
+            <h2 id="hood-teaser" className="font-serif text-4xl italic">{east || pen ? 'Cities' : 'Neighborhoods'}</h2>
             <Link to={cityPath('/explore')} className="text-sm font-bold">Open the map</Link>
           </div>
           <p className="mt-2 max-w-xl">The full list, all {places.length} places, is on the explore map.</p>
@@ -231,8 +238,8 @@ export function HomeBelow() {
           </div>
         </section>
         <section className="mt-10">
-          <h2 className="font-serif text-4xl italic">{la ? 'The Los Angeles list' : sf ? 'The San Francisco list' : east ? 'The Eastside list' : 'The hit list'}</h2>
-          <p className="mt-2 max-w-xl">{la ? 'Every Los Angeles room on the guide so far.' : sf ? 'Every San Francisco and Bay Area room on the guide so far.' : east ? 'Every Eastside room on the guide so far.' : 'The rooms people already cross town for, one neighborhood at a time.'}</p>
+          <h2 className="font-serif text-4xl italic">{la ? 'The Los Angeles list' : pen ? 'The Peninsula list' : sf ? 'The San Francisco list' : east ? 'The Eastside list' : 'The hit list'}</h2>
+          <p className="mt-2 max-w-xl">{la ? 'Every Los Angeles room on the guide so far.' : pen ? 'Every Peninsula and South Bay room on the guide so far.' : sf ? 'Every San Francisco room on the guide so far.' : east ? 'Every Eastside room on the guide so far.' : 'The rooms people already cross town for, one neighborhood at a time.'}</p>
           <div className="mt-4 flex gap-3 overflow-x-auto pb-2">
             {hits.map((place) => (
               <Link key={place.id} to={cityPath(`/place/${place.id}`)} className="hit-card w-72 shrink-0" viewTransition={!reduceMotion}>

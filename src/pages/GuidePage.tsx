@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from 'react'
-import { Link, useParams } from 'react-router-dom'
+import { Link, Navigate, useParams } from 'react-router-dom'
 import { AreaKicker } from '../components/AreaKicker.tsx'
 import { GuideEntryCard, GuideStrip } from '../components/GuideEntries.tsx'
 import { ShareButton } from '../components/ShareButton.tsx'
@@ -8,6 +8,7 @@ import { SlidingRow } from '../components/SlidingRow.tsx'
 import { SignInSheet } from '../components/SignInSheet.tsx'
 import { catalog, loadGuide } from '../content/load.ts'
 import { cityPath } from '../lib/city.ts'
+import { useCityId } from '../lib/use-city.ts'
 import { flagshipAimHint } from '../lib/collections.ts'
 import { countPlaces, pageShareUrl } from '../lib/format.ts'
 import { renderGuideStory } from '../lib/story-card.ts'
@@ -20,6 +21,7 @@ import type { Guide, SlimPlace, VisitStatus } from '../types.ts'
 
 export function GuidePage() {
   const { slug = '' } = useParams()
+  const urlCity = useCityId()
   const { statuses, setStatus, user, photos, friendScore, gustoScore } = useApp()
   const [guide, setGuide] = useState<Guide | null>(null)
   const [missing, setMissing] = useState(false)
@@ -94,6 +96,9 @@ export function GuidePage() {
   })
 
   const summary = catalog.guides.find((item) => item.slug === slug)
+  if (summary?.city && summary.city !== urlCity) {
+    return <Navigate to={cityPath(`/guide/${summary.slug}`, summary.city)} replace />
+  }
 
   function onToggle(placeId: string, status: VisitStatus) {
     if (!user) setSignInOpen(true)

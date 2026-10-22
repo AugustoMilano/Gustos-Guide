@@ -1,6 +1,6 @@
 import { useLocation } from 'react-router-dom'
 import { catalog } from '../content/load.ts'
-import { cityFromPath, type CityId } from './city.ts'
+import { asCityId, cityFromPath, type CityId } from './city.ts'
 import type { GuideSummary, SlimPlace } from '../types.ts'
 
 export function useCityId(): CityId {
@@ -9,10 +9,7 @@ export function useCityId(): CityId {
 }
 
 export function placeCity(place: { city?: string }): CityId {
-  if (place.city === 'la') return 'la'
-  if (place.city === 'eastside') return 'eastside'
-  if (place.city === 'sf') return 'sf'
-  return 'seattle'
+  return asCityId(place.city)
 }
 
 export function isListed(place: { closed?: boolean }): boolean {

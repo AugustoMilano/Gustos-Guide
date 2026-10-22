@@ -41,7 +41,7 @@ export function TopPage() {
           ? "Seattle and the Eastside, ranked by Augusto's exact Gusto's Score."
           : region === 'la'
             ? "Los Angeles, ranked by Augusto's exact Gusto's Score."
-            : "San Francisco and the Bay Area, ranked by Augusto's exact Gusto's Score."}
+            : "San Francisco and the Peninsula, ranked by Augusto's exact Gusto's Score."}
         {' '}Owner scores only. A place with no score stays off the list.
       </p>
       <div className="mt-4 flex flex-wrap gap-2">

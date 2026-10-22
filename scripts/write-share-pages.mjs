@@ -205,7 +205,7 @@ for (const place of sf.places) {
     image,
     imageAlt: place.photos?.[0]?.alt || place.name,
     sharePath: `/share/place/${place.id}/`,
-    hashPath: `/sf/place/${place.id}`,
+    hashPath: `/${place.city === 'peninsula' ? 'peninsula' : 'sf'}/place/${place.id}`,
   }))
 }
 
@@ -221,7 +221,7 @@ for (const guide of sf.guides) {
     image,
     imageAlt: guide.title,
     sharePath: `/share/guide/${guide.slug}/`,
-    hashPath: `/sf/guide/${guide.slug}`,
+    hashPath: `/${guide.city === 'peninsula' ? 'peninsula' : 'sf'}/guide/${guide.slug}`,
   }))
 }
 

@@ -1,12 +1,12 @@
 import { useEffect, useMemo, useState } from 'react'
 import { useReducedMotion } from 'framer-motion'
-import { Link, useParams } from 'react-router-dom'
+import { Link, Navigate, useParams } from 'react-router-dom'
 import { PlaceGallery } from '../components/PlaceGallery.tsx'
 import { PlaceThumb } from '../components/PlaceThumb.tsx'
 import { SignInSheet } from '../components/SignInSheet.tsx'
 import { catalog, loadPlace, slimById } from '../content/load.ts'
 import { areaTitle, cityPath } from '../lib/city.ts'
-import { placeCity, placesForCity } from '../lib/use-city.ts'
+import { placeCity, placesForCity, useCityId } from '../lib/use-city.ts'
 import { demoFriendsEnabled } from '../lib/demo.ts'
 import { displayPhotos } from '../lib/gallery.ts'
 import { CollectionMembership } from '../components/CollectionMembership.tsx'
@@ -29,6 +29,7 @@ import type { Place } from '../types.ts'
 
 export function PlacePage() {
   const { slug = '' } = useParams()
+  const urlCity = useCityId()
   const app = useApp()
   const slim = slimById(slug)
   const [full, setFull] = useState<Place | null>(null)
@@ -70,6 +71,10 @@ export function PlacePage() {
       .slice(0, 4)
       .map((row) => row.item)
   }, [place])
+
+  if (place && placeCity(place) !== urlCity) {
+    return <Navigate to={cityPath(`/place/${place.id}`, placeCity(place))} replace />
+  }
 
   if (!place) {
     return (

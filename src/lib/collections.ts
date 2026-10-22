@@ -1,4 +1,4 @@
-import type { CityId } from './city.ts'
+import { asCityId, type CityId } from './city.ts'
 import { uniqueSlug } from './format.ts'
 import type { SlimPlace } from '../types.ts'
 
@@ -45,8 +45,7 @@ export type PublicChip = {
 
 /** City on the place itself. Eastside stays Eastside; it does not fold into Seattle. */
 export function collectionCity(place: { city?: string }): CityId {
-  if (place.city === 'la' || place.city === 'eastside' || place.city === 'sf') return place.city
-  return 'seattle'
+  return asCityId(place.city)
 }
 
 export function isCheapEat(place: { price?: number; closed?: boolean }): boolean {

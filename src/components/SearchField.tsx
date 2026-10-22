@@ -1,6 +1,6 @@
 import { useEffect, useId, useMemo, useRef, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { cityPath, type CityId } from '../lib/city.ts'
+import { asCityId, cityPath, type CityId } from '../lib/city.ts'
 import { clearRecent, readRecent, rememberSearch } from '../lib/recent-search.ts'
 import { useCityId } from '../lib/use-city-id.ts'
 import { MatchText } from './MatchText.tsx'
@@ -10,10 +10,7 @@ type HitGuide = { slug: string; title: string; group: string; city?: string }
 type Hit = { key: string; label: string; detail: string; href: string }
 
 function cityOf(place: { city?: string }): CityId {
-  if (place.city === 'la') return 'la'
-  if (place.city === 'eastside') return 'eastside'
-  if (place.city === 'sf') return 'sf'
-  return 'seattle'
+  return asCityId(place.city)
 }
 
 export function SearchField({

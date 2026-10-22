@@ -18,15 +18,22 @@ const LOS_ANGELES = latLngBounds(
   [33.7, -118.72],
   [34.34, -118.1],
 )
-const BAY_AREA = latLngBounds(
-  [37.2, -122.55],
-  [37.95, -121.75],
+const SAN_FRANCISCO = latLngBounds(
+  [37.7, -122.53],
+  [37.95, -122.35],
+)
+const PENINSULA = latLngBounds(
+  [37.15, -122.55],
+  [37.75, -121.75],
 )
 
 function fallbackBounds(places: MapPlace[]) {
-  const lat = places.find((place) => Number.isFinite(place.lat))?.lat
-  if (lat != null && lat >= 36 && lat < 42) return BAY_AREA
-  if (lat != null && lat < 36) return LOS_ANGELES
+  const place = places.find((item) => Number.isFinite(item.lat) && Number.isFinite(item.lng))
+  if (place && place.lat < 36) return LOS_ANGELES
+  if (place && place.lat < 42) {
+    if (place.lat < 37.7 || place.lng > -122.25) return PENINSULA
+    return SAN_FRANCISCO
+  }
   return SEATTLE
 }
 
