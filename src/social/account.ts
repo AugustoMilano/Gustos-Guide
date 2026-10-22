@@ -159,7 +159,11 @@ export function guideVisibility(guide: UserGuide): GuideVisibility {
 }
 
 export async function loadOwnerPhotos(client: SupabaseClient): Promise<LivePhoto[]> {
-  const { data, error } = await client.from('place_photos').select('id, place_id, user_id, storage_path, width, height').eq('is_owner', true)
+  const { data, error } = await client
+    .from('place_photos')
+    .select('id, place_id, user_id, storage_path, width, height, created_at')
+    .eq('is_owner', true)
+    .order('created_at', { ascending: false })
   if (error || !data) return []
   const photos: LivePhoto[] = []
   for (const row of data) {
