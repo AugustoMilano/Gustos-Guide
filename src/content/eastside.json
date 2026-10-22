@@ -8834,6 +8834,65 @@
         "source": "Yelp"
       },
       "yelpSlug": "WcqJvWCwGrBzmVhMHzwjzA"
+    },
+    {
+      "id": "burgermaster",
+      "city": "eastside",
+      "name": "Burgermaster",
+      "neighborhood": "Northwest Bellevue",
+      "address": "10606 NE Northup Way, Bellevue, WA 98004",
+      "lat": 47.642185,
+      "lng": -122.19886,
+      "cuisine": [
+        "Burgers"
+      ],
+      "placeType": "counter",
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "start": 420,
+          "end": 1380
+        },
+        {
+          "days": [
+            5,
+            6
+          ],
+          "start": 420,
+          "end": 1440
+        }
+      ],
+      "gustoScore": null,
+      "website": "https://burgermaster.com/menus/bellevue/",
+      "phone": "+1 (425) 827-9566",
+      "appleMapsUrl": "https://maps.apple.com/?daddr=47.642185,-122.19886&q=Burgermaster",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=7205519918905417088",
+      "guideSlugs": [
+        "bellevue"
+      ],
+      "muid": "7205519918905417088",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-10-22",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Burgers at Burgermaster",
+          "credit": "Illustration"
+        }
+      ]
     }
   ],
   "guides": [
@@ -9335,6 +9394,12 @@
         },
         {
           "placeId": "ezells-famous-chicken",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "burgermaster",
           "pullQuote": "",
           "blurb": "",
           "copySource": "draft"
