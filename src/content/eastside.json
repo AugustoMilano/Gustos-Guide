@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-20",
+  "updatedAt": "2026-10-22",
   "places": [
     {
       "id": "bis-on-main",
@@ -5343,6 +5343,3497 @@
       "yelpSlug": "BqbOCQmNqQigkPANakQuHg",
       "phone": "+1 (425) 242-1350",
       "price": 2
+    },
+    {
+      "id": "la-mar-bellevue",
+      "city": "eastside",
+      "name": "La Mar",
+      "neighborhood": "Downtown Bellevue",
+      "address": "10508 Main St, Bellevue, WA 98004",
+      "lat": 47.6103421,
+      "lng": -122.1994921,
+      "cuisine": [
+        "Peruvian"
+      ],
+      "placeType": "restaurant",
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "start": 690,
+          "end": 1260
+        },
+        {
+          "days": [
+            5,
+            6
+          ],
+          "start": 690,
+          "end": 1290
+        }
+      ],
+      "gustoScore": null,
+      "website": "https://www.lamarcebicheria.com/bellevue/",
+      "phone": "+1 (425) 675-0301",
+      "appleMapsUrl": "https://maps.apple.com/?daddr=47.6103421,-122.1994921&q=La%20Mar",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=3069510952369669870",
+      "guideSlugs": [
+        "bellevue"
+      ],
+      "muid": "3069510952369669870",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-10-22",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Peruvian at La Mar",
+          "credit": "Illustration"
+        }
+      ]
+    },
+    {
+      "id": "ascend-prime-steak-and-sushi",
+      "city": "eastside",
+      "name": "Ascend Prime Steak & Sushi",
+      "neighborhood": "Downtown Bellevue",
+      "address": "10400 NE 4th St, Unit 3100, Bellevue, WA 98004",
+      "lat": 47.6140987,
+      "lng": -122.2008181,
+      "cuisine": [
+        "Steak"
+      ],
+      "placeType": "steakhouse",
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            0,
+            6
+          ],
+          "start": 600,
+          "end": 840
+        },
+        {
+          "days": [
+            0
+          ],
+          "start": 960,
+          "end": 1350
+        },
+        {
+          "days": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "start": 900,
+          "end": 1350
+        },
+        {
+          "days": [
+            5
+          ],
+          "start": 900,
+          "end": 1380
+        },
+        {
+          "days": [
+            6
+          ],
+          "start": 960,
+          "end": 1380
+        }
+      ],
+      "gustoScore": null,
+      "website": "https://ascendprime.com/",
+      "phone": "+1 (425) 625-2080",
+      "appleMapsUrl": "https://maps.apple.com/?daddr=47.6140987,-122.2008181&q=Ascend%20Prime%20Steak%20%26%20Sushi",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=5316906510073088576",
+      "guideSlugs": [
+        "bellevue"
+      ],
+      "muid": "5316906510073088576",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-10-22",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Steak at Ascend Prime Steak & Sushi",
+          "credit": "Illustration"
+        }
+      ]
+    },
+    {
+      "id": "daniels-broiler",
+      "city": "eastside",
+      "name": "Daniel's Broiler",
+      "neighborhood": "Downtown Bellevue",
+      "address": "10500 NE 8th St, FL 21, Bellevue, WA 98004",
+      "lat": 47.6182852,
+      "lng": -122.2006595,
+      "cuisine": [
+        "Steak"
+      ],
+      "placeType": "steakhouse",
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "start": 960,
+          "end": 1320
+        }
+      ],
+      "gustoScore": null,
+      "website": "https://danielsbroiler.com",
+      "phone": "+1 (425) 462-4662",
+      "appleMapsUrl": "https://maps.apple.com/?daddr=47.6182852,-122.2006595&q=Daniel's%20Broiler",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=7146954780601002084",
+      "guideSlugs": [
+        "bellevue"
+      ],
+      "muid": "7146954780601002084",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-10-22",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Steak at Daniel's Broiler",
+          "credit": "Illustration"
+        }
+      ]
+    },
+    {
+      "id": "cantina-monarca",
+      "city": "eastside",
+      "name": "Cantina Monarca",
+      "neighborhood": "Downtown Bellevue",
+      "address": "504 Bellevue Way NE, Bellevue, WA 98004",
+      "lat": 47.6147975,
+      "lng": -122.2013869,
+      "cuisine": [
+        "Mexican"
+      ],
+      "placeType": "restaurant",
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            0
+          ],
+          "start": 660,
+          "end": 1320
+        },
+        {
+          "days": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "start": 660,
+          "end": 1350
+        },
+        {
+          "days": [
+            5,
+            6
+          ],
+          "start": 660,
+          "end": 1440
+        }
+      ],
+      "gustoScore": null,
+      "website": "https://www.cantinamonarca.com",
+      "phone": "+1 (425) 531-7206",
+      "appleMapsUrl": "https://maps.apple.com/?daddr=47.6147975,-122.2013869&q=Cantina%20Monarca",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=11273114961645947120",
+      "guideSlugs": [
+        "bellevue"
+      ],
+      "muid": "11273114961645947120",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-10-22",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Mexican at Cantina Monarca",
+          "credit": "Illustration"
+        }
+      ]
+    },
+    {
+      "id": "carmines",
+      "city": "eastside",
+      "name": "Carmine's",
+      "neighborhood": "Old Bellevue",
+      "address": "88 102nd Ave NE, Bellevue, WA 98004",
+      "lat": 47.6110925,
+      "lng": -122.2039104,
+      "cuisine": [
+        "Italian"
+      ],
+      "placeType": "restaurant",
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "start": 690,
+          "end": 900
+        },
+        {
+          "days": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "start": 1020,
+          "end": 1320
+        },
+        {
+          "days": [
+            5,
+            6
+          ],
+          "start": 1020,
+          "end": 1380
+        }
+      ],
+      "gustoScore": null,
+      "website": "https://carminesbellevue.com",
+      "phone": "+1 (425) 786-0160",
+      "appleMapsUrl": "https://maps.apple.com/?daddr=47.6110925,-122.2039104&q=Carmine's",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=2529173839404394188",
+      "guideSlugs": [
+        "bellevue"
+      ],
+      "muid": "2529173839404394188",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-10-22",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Italian at Carmine's",
+          "credit": "Illustration"
+        }
+      ]
+    },
+    {
+      "id": "minamoto",
+      "city": "eastside",
+      "name": "Minamoto Japanese Restaurant",
+      "neighborhood": "Downtown Bellevue",
+      "address": "11061 NE Ninth St, Bellevue, WA 98004",
+      "lat": 47.61811,
+      "lng": -122.1922,
+      "cuisine": [
+        "Japanese"
+      ],
+      "placeType": "restaurant",
+      "price": 3,
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            2,
+            3,
+            4
+          ],
+          "start": 660,
+          "end": 900
+        },
+        {
+          "days": [
+            2,
+            3,
+            4
+          ],
+          "start": 990,
+          "end": 1290
+        },
+        {
+          "days": [
+            6
+          ],
+          "start": 780,
+          "end": 1350
+        },
+        {
+          "days": [
+            0
+          ],
+          "start": 780,
+          "end": 1290
+        },
+        {
+          "days": [
+            5
+          ],
+          "start": 690,
+          "end": 900
+        },
+        {
+          "days": [
+            5
+          ],
+          "start": 990,
+          "end": 1350
+        }
+      ],
+      "gustoScore": null,
+      "website": "http://www.minamotowa.com",
+      "phone": "+1 (425) 999-3338",
+      "appleMapsUrl": "https://maps.apple.com/?daddr=47.61811,-122.1922&q=Minamoto%20Japanese%20Restaurant",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=3098962773215072787",
+      "guideSlugs": [
+        "bellevue",
+        "eastside-asian"
+      ],
+      "muid": "3098962773215072787",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {
+        "yelp": "PGlSt5XYtysNMFcp6xg3Kw"
+      },
+      "copySource": "draft",
+      "updatedAt": "2026-10-22",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Japanese at Minamoto Japanese Restaurant",
+          "credit": "Illustration"
+        }
+      ],
+      "publicRating": {
+        "value": 3.8,
+        "count": 412,
+        "source": "Yelp"
+      },
+      "yelpSlug": "PGlSt5XYtysNMFcp6xg3Kw"
+    },
+    {
+      "id": "water-grill-bellevue",
+      "city": "eastside",
+      "name": "Water Grill",
+      "neighborhood": "Downtown Bellevue",
+      "address": "700 Bellevue Way NE, Bellevue, WA 98004",
+      "lat": 47.6169661,
+      "lng": -122.2013426,
+      "cuisine": [
+        "Seafood"
+      ],
+      "placeType": "restaurant",
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "start": 660,
+          "end": 1320
+        },
+        {
+          "days": [
+            5,
+            6
+          ],
+          "start": 660,
+          "end": 1380
+        }
+      ],
+      "gustoScore": null,
+      "website": "https://www.watergrill.com/",
+      "phone": "+1 (425) 799-2800",
+      "appleMapsUrl": "https://maps.apple.com/?daddr=47.6169661,-122.2013426&q=Water%20Grill",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=7691577076781214141",
+      "guideSlugs": [
+        "bellevue"
+      ],
+      "muid": "7691577076781214141",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-10-22",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Seafood at Water Grill",
+          "credit": "Illustration"
+        }
+      ]
+    },
+    {
+      "id": "cantinetta-bellevue",
+      "city": "eastside",
+      "name": "Cantinetta",
+      "neighborhood": "Old Bellevue",
+      "address": "10038 Main St, Bellevue, WA 98004",
+      "lat": 47.610305,
+      "lng": -122.204964,
+      "cuisine": [
+        "Italian"
+      ],
+      "placeType": "restaurant",
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            0,
+            2,
+            3,
+            4
+          ],
+          "start": 1020,
+          "end": 1320
+        },
+        {
+          "days": [
+            5,
+            6
+          ],
+          "start": 1020,
+          "end": 1380
+        }
+      ],
+      "gustoScore": null,
+      "website": "http://www.cantinetta.com/",
+      "phone": "+1 (425) 233-6040",
+      "appleMapsUrl": "https://maps.apple.com/?daddr=47.610305,-122.204964&q=Cantinetta",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=13305845763669911672",
+      "guideSlugs": [
+        "bellevue"
+      ],
+      "muid": "13305845763669911672",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-10-22",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Italian at Cantinetta",
+          "credit": "Illustration"
+        }
+      ]
+    },
+    {
+      "id": "stk-bellevue",
+      "city": "eastside",
+      "name": "STK Steakhouse",
+      "neighborhood": "Downtown Bellevue",
+      "address": "610 Bellevue Way NE, Unit 110, Bellevue, WA 98004",
+      "lat": 47.6157829,
+      "lng": -122.2010779,
+      "cuisine": [
+        "Steak"
+      ],
+      "placeType": "steakhouse",
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "start": 660,
+          "end": 1380
+        },
+        {
+          "days": [
+            5,
+            6
+          ],
+          "start": 660,
+          "end": 1440
+        }
+      ],
+      "gustoScore": null,
+      "website": "https://stksteakhouse.com/venues/bellevue/",
+      "phone": "+1 (425) 209-1016",
+      "appleMapsUrl": "https://maps.apple.com/?daddr=47.6157829,-122.2010779&q=STK%20Steakhouse",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=4976013561576575976",
+      "guideSlugs": [
+        "bellevue"
+      ],
+      "muid": "4976013561576575976",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-10-22",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Steak at STK Steakhouse",
+          "credit": "Illustration"
+        }
+      ]
+    },
+    {
+      "id": "earls-kitchen-bar",
+      "city": "eastside",
+      "name": "Earls Kitchen + Bar",
+      "neighborhood": "Downtown Bellevue",
+      "address": "700 Bellevue Way NE, Unit 130, Bellevue, WA 98004",
+      "lat": 47.6163741,
+      "lng": -122.201373,
+      "cuisine": [
+        "American"
+      ],
+      "placeType": "restaurant",
+      "price": 3,
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            0,
+            6
+          ],
+          "start": 0,
+          "end": 60
+        },
+        {
+          "days": [
+            0,
+            6
+          ],
+          "start": 600,
+          "end": 1440
+        },
+        {
+          "days": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "start": 690,
+          "end": 1440
+        }
+      ],
+      "gustoScore": null,
+      "website": "https://www.earls.ca/locations/bellevue",
+      "phone": "+1 (425) 452-3275",
+      "appleMapsUrl": "https://maps.apple.com/?daddr=47.6163741,-122.201373&q=Earls%20Kitchen%20%2B%20Bar",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=14508377034778846098",
+      "guideSlugs": [
+        "bellevue"
+      ],
+      "muid": "14508377034778846098",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {
+        "yelp": "6wrvQqQwkeQnokD7kPX-rQ"
+      },
+      "copySource": "draft",
+      "updatedAt": "2026-10-22",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting American at Earls Kitchen + Bar",
+          "credit": "Illustration"
+        }
+      ],
+      "publicRating": {
+        "value": 3.5,
+        "count": 1685,
+        "source": "Yelp"
+      },
+      "yelpSlug": "6wrvQqQwkeQnokD7kPX-rQ"
+    },
+    {
+      "id": "barons-sino-kitchen-and-bar",
+      "city": "eastside",
+      "name": "Baron's Sino Kitchen & Bar",
+      "neighborhood": "Downtown Bellevue",
+      "address": "500 Bellevue Way NE, Unit 210, Bellevue, WA 98004",
+      "lat": 47.6146986,
+      "lng": -122.2012691,
+      "cuisine": [
+        "Chinese"
+      ],
+      "placeType": "restaurant",
+      "price": 3,
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            0,
+            6
+          ],
+          "start": 690,
+          "end": 900
+        },
+        {
+          "days": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "start": 990,
+          "end": 1260
+        },
+        {
+          "days": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "start": 690,
+          "end": 870
+        },
+        {
+          "days": [
+            5,
+            6
+          ],
+          "start": 990,
+          "end": 1320
+        }
+      ],
+      "gustoScore": null,
+      "website": "http://www.baronsbellevue.com",
+      "phone": "+1 (425) 500-8888",
+      "appleMapsUrl": "https://maps.apple.com/?daddr=47.6146986,-122.2012691&q=Baron's%20Sino%20Kitchen%20%26%20Bar",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=11961842432109648709",
+      "guideSlugs": [
+        "bellevue",
+        "eastside-asian"
+      ],
+      "muid": "11961842432109648709",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {
+        "yelp": "jr8iTFk9-lbvftvjtueUVA"
+      },
+      "copySource": "draft",
+      "updatedAt": "2026-10-22",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Chinese at Baron's Sino Kitchen & Bar",
+          "credit": "Illustration"
+        }
+      ],
+      "publicRating": {
+        "value": 3.7,
+        "count": 1010,
+        "source": "Yelp"
+      },
+      "yelpSlug": "jr8iTFk9-lbvftvjtueUVA"
+    },
+    {
+      "id": "farzi-cafe",
+      "city": "eastside",
+      "name": "Farzi Cafe",
+      "neighborhood": "Bellevue Square",
+      "address": "515 Bellevue Square, Bellevue, WA 98004",
+      "lat": 47.6166361,
+      "lng": -122.2019452,
+      "cuisine": [
+        "Indian"
+      ],
+      "placeType": "restaurant",
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "start": 690,
+          "end": 1320
+        },
+        {
+          "days": [
+            5,
+            6
+          ],
+          "start": 690,
+          "end": 1380
+        }
+      ],
+      "gustoScore": null,
+      "website": "https://farzicafeusa.com/",
+      "phone": "+1 (425) 590-9276",
+      "appleMapsUrl": "https://maps.apple.com/?daddr=47.6166361,-122.2019452&q=Farzi%20Cafe",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=9320440476220755053",
+      "guideSlugs": [
+        "bellevue"
+      ],
+      "muid": "9320440476220755053",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {
+        "yelp": "rsLN4EKGuZZklUmsd5N0wA"
+      },
+      "copySource": "draft",
+      "updatedAt": "2026-10-22",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Indian at Farzi Cafe",
+          "credit": "Illustration"
+        }
+      ],
+      "publicRating": {
+        "value": 3.9,
+        "count": 369,
+        "source": "Yelp"
+      },
+      "yelpSlug": "rsLN4EKGuZZklUmsd5N0wA"
+    },
+    {
+      "id": "hokkaido-ramen-santouka",
+      "city": "eastside",
+      "name": "Hokkaido Ramen Santouka",
+      "neighborhood": "Old Bellevue",
+      "address": "103 Bellevue Way NE, Unit 3, Bellevue, WA 98004",
+      "lat": 47.6113818,
+      "lng": -122.202065,
+      "cuisine": [
+        "Japanese"
+      ],
+      "placeType": "restaurant",
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "start": 660,
+          "end": 1260
+        },
+        {
+          "days": [
+            5,
+            6
+          ],
+          "start": 660,
+          "end": 1320
+        }
+      ],
+      "gustoScore": null,
+      "website": "https://www.santouka-usa.com/locations",
+      "phone": "+1 (425) 462-0141",
+      "appleMapsUrl": "https://maps.apple.com/?daddr=47.6113818,-122.202065&q=Hokkaido%20Ramen%20Santouka",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=14397719807160244876",
+      "guideSlugs": [
+        "bellevue",
+        "eastside-asian"
+      ],
+      "muid": "14397719807160244876",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-10-22",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Japanese at Hokkaido Ramen Santouka",
+          "credit": "Illustration"
+        }
+      ]
+    },
+    {
+      "id": "japonessa",
+      "city": "eastside",
+      "name": "Japonessa Sushi Cocina",
+      "neighborhood": "Downtown Bellevue",
+      "address": "500 Bellevue Way NE, Unit 130, Bellevue, WA 98004",
+      "lat": 47.6146986,
+      "lng": -122.2012691,
+      "cuisine": [
+        "Japanese"
+      ],
+      "placeType": "restaurant",
+      "price": 2,
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "start": 660,
+          "end": 1320
+        },
+        {
+          "days": [
+            5,
+            6
+          ],
+          "start": 660,
+          "end": 1380
+        }
+      ],
+      "gustoScore": null,
+      "website": "http://www.japonessa.com",
+      "phone": "+1 (425) 454-1585",
+      "appleMapsUrl": "https://maps.apple.com/?daddr=47.6146986,-122.2012691&q=Japonessa%20Sushi%20Cocina",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=235237345928053165",
+      "guideSlugs": [
+        "bellevue",
+        "eastside-asian"
+      ],
+      "muid": "235237345928053165",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {
+        "yelp": "LM28Dlj_2UVnv8wTCm8H_A"
+      },
+      "copySource": "draft",
+      "updatedAt": "2026-10-22",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Japanese at Japonessa Sushi Cocina",
+          "credit": "Illustration"
+        }
+      ],
+      "publicRating": {
+        "value": 4.0,
+        "count": 1370,
+        "source": "Yelp"
+      },
+      "yelpSlug": "LM28Dlj_2UVnv8wTCm8H_A"
+    },
+    {
+      "id": "desi-tadka",
+      "city": "eastside",
+      "name": "Desi Tadka Indian Grill",
+      "neighborhood": "Downtown Bellevue",
+      "address": "304 105th Ave NE, Bellevue, WA 98004",
+      "lat": 47.6128152,
+      "lng": -122.1998672,
+      "cuisine": [
+        "Indian"
+      ],
+      "placeType": "restaurant",
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            0,
+            5,
+            6
+          ],
+          "start": 570,
+          "end": 1380
+        },
+        {
+          "days": [
+            1,
+            2
+          ],
+          "start": 690,
+          "end": 900
+        },
+        {
+          "days": [
+            1,
+            2
+          ],
+          "start": 990,
+          "end": 1320
+        },
+        {
+          "days": [
+            3,
+            4
+          ],
+          "start": 690,
+          "end": 1320
+        }
+      ],
+      "gustoScore": null,
+      "website": "https://desitadkabellevue.com",
+      "phone": "+1 (206) 430-5557",
+      "appleMapsUrl": "https://maps.apple.com/?daddr=47.6128152,-122.1998672&q=Desi%20Tadka%20Indian%20Grill",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=2651018645555388686",
+      "guideSlugs": [
+        "bellevue"
+      ],
+      "muid": "2651018645555388686",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-10-22",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Indian at Desi Tadka Indian Grill",
+          "credit": "Illustration"
+        }
+      ]
+    },
+    {
+      "id": "dough-zone-bellevue",
+      "city": "eastside",
+      "name": "Dough Zone",
+      "neighborhood": "Old Bellevue",
+      "address": "10300 Main St, Bellevue, WA 98004",
+      "lat": 47.6103329,
+      "lng": -122.202483,
+      "cuisine": [
+        "Chinese"
+      ],
+      "placeType": "restaurant",
+      "price": 2,
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "start": 660,
+          "end": 1320
+        }
+      ],
+      "gustoScore": null,
+      "website": "https://www.doughzonedumplinghouse.com",
+      "phone": "+1 (425) 454-3333",
+      "appleMapsUrl": "https://maps.apple.com/?daddr=47.6103329,-122.202483&q=Dough%20Zone",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=10388261190878961191",
+      "guideSlugs": [
+        "bellevue",
+        "eastside-asian"
+      ],
+      "muid": "10388261190878961191",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {
+        "yelp": "JcZK6blIVjIdozoDAPZupg"
+      },
+      "copySource": "draft",
+      "updatedAt": "2026-10-22",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Chinese at Dough Zone",
+          "credit": "Illustration"
+        }
+      ],
+      "publicRating": {
+        "value": 4.0,
+        "count": 440,
+        "source": "Yelp"
+      },
+      "yelpSlug": "JcZK6blIVjIdozoDAPZupg"
+    },
+    {
+      "id": "rolls-and-rolls",
+      "city": "eastside",
+      "name": "Rolls & Rolls Plus Sushi",
+      "neighborhood": "Downtown Bellevue",
+      "address": "11011 NE 12th St, Unit C1, Bellevue, WA 98004",
+      "lat": 47.6208532,
+      "lng": -122.1934872,
+      "cuisine": [
+        "Japanese"
+      ],
+      "placeType": "restaurant",
+      "price": 2,
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "start": 630,
+          "end": 870
+        },
+        {
+          "days": [
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "start": 960,
+          "end": 1260
+        }
+      ],
+      "gustoScore": null,
+      "website": "http://rollsandrolls.blogspot.com",
+      "phone": "+1 (425) 454-4313",
+      "appleMapsUrl": "https://maps.apple.com/?daddr=47.6208532,-122.1934872&q=Rolls%20%26%20Rolls%20Plus%20Sushi",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=17184319331265813298",
+      "guideSlugs": [
+        "bellevue",
+        "eastside-asian"
+      ],
+      "muid": "17184319331265813298",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {
+        "yelp": "tEmGi5s6tJkEFNGNQm0CXw"
+      },
+      "copySource": "draft",
+      "updatedAt": "2026-10-22",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Japanese at Rolls & Rolls Plus Sushi",
+          "credit": "Illustration"
+        }
+      ],
+      "publicRating": {
+        "value": 4.3,
+        "count": 273,
+        "source": "Yelp"
+      },
+      "yelpSlug": "tEmGi5s6tJkEFNGNQm0CXw"
+    },
+    {
+      "id": "ezells-famous-chicken",
+      "city": "eastside",
+      "name": "Ezell's Famous Chicken",
+      "neighborhood": "Crossroads",
+      "address": "1645 140th Ave NE, Unit A3, Bellevue, WA 98005",
+      "lat": 47.6257619,
+      "lng": -122.154732,
+      "cuisine": [
+        "Chicken"
+      ],
+      "placeType": "restaurant",
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            0
+          ],
+          "start": 660,
+          "end": 1200
+        },
+        {
+          "days": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "start": 630,
+          "end": 1260
+        },
+        {
+          "days": [
+            5,
+            6
+          ],
+          "start": 630,
+          "end": 1320
+        }
+      ],
+      "gustoScore": null,
+      "website": "https://ezellschicken.com",
+      "phone": "+1 (425) 643-2670",
+      "appleMapsUrl": "https://maps.apple.com/?daddr=47.6257619,-122.154732&q=Ezell's%20Famous%20Chicken",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=11695178579399116619",
+      "guideSlugs": [
+        "bellevue"
+      ],
+      "muid": "11695178579399116619",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-10-22",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Chicken at Ezell's Famous Chicken",
+          "credit": "Illustration"
+        }
+      ]
+    },
+    {
+      "id": "fern-thai-on-main",
+      "city": "eastside",
+      "name": "Fern Thai on Main",
+      "neighborhood": "Old Bellevue",
+      "address": "10134 Main St, Bellevue, WA 98004",
+      "lat": 47.6103937,
+      "lng": -122.204626,
+      "cuisine": [
+        "Thai"
+      ],
+      "placeType": "restaurant",
+      "price": 2,
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            0
+          ],
+          "start": 660,
+          "end": 1290
+        },
+        {
+          "days": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "start": 660,
+          "end": 900
+        },
+        {
+          "days": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "start": 960,
+          "end": 1290
+        },
+        {
+          "days": [
+            5
+          ],
+          "start": 960,
+          "end": 1320
+        },
+        {
+          "days": [
+            6
+          ],
+          "start": 660,
+          "end": 1320
+        }
+      ],
+      "gustoScore": null,
+      "website": "https://www.fernthaionmain.com",
+      "phone": "+1 (425) 326-1624",
+      "appleMapsUrl": "https://maps.apple.com/?daddr=47.6103937,-122.204626&q=Fern%20Thai%20on%20Main",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=13234509355135903354",
+      "guideSlugs": [
+        "bellevue",
+        "eastside-asian"
+      ],
+      "muid": "13234509355135903354",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {
+        "yelp": "RQ1V_eNdeZGGWkUcHvDLZA"
+      },
+      "copySource": "draft",
+      "updatedAt": "2026-10-22",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Thai at Fern Thai on Main",
+          "credit": "Illustration"
+        }
+      ],
+      "publicRating": {
+        "value": 4.1,
+        "count": 832,
+        "source": "Yelp"
+      },
+      "yelpSlug": "RQ1V_eNdeZGGWkUcHvDLZA"
+    },
+    {
+      "id": "fob-poke-bar-bellevue",
+      "city": "eastside",
+      "name": "FOB Poke Bar",
+      "neighborhood": "Downtown Bellevue",
+      "address": "333 108th Ave NE, Bellevue, WA 98004",
+      "lat": 47.6134912,
+      "lng": -122.1968793,
+      "cuisine": [
+        "Poke"
+      ],
+      "placeType": "restaurant",
+      "price": 2,
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "start": 660,
+          "end": 1200
+        }
+      ],
+      "gustoScore": null,
+      "website": "https://fobpokebar.com",
+      "phone": "+1 (425) 528-9888",
+      "appleMapsUrl": "https://maps.apple.com/?daddr=47.6134912,-122.1968793&q=FOB%20Poke%20Bar",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=3517824207168419144",
+      "guideSlugs": [
+        "bellevue"
+      ],
+      "muid": "3517824207168419144",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {
+        "yelp": "VO7EDbbpZNWE7U5MyWafww"
+      },
+      "copySource": "draft",
+      "updatedAt": "2026-10-22",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Poke at FOB Poke Bar",
+          "credit": "Illustration"
+        }
+      ],
+      "publicRating": {
+        "value": 4.3,
+        "count": 293,
+        "source": "Yelp"
+      },
+      "yelpSlug": "VO7EDbbpZNWE7U5MyWafww"
+    },
+    {
+      "id": "pagliacci-pizza",
+      "city": "eastside",
+      "name": "Pagliacci Pizza",
+      "neighborhood": "Downtown Bellevue",
+      "address": "10600 Main St, Bellevue, WA 98004",
+      "lat": 47.6103973,
+      "lng": -122.1984014,
+      "cuisine": [
+        "Pizza"
+      ],
+      "placeType": "restaurant",
+      "price": 2,
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "start": 660,
+          "end": 1320
+        },
+        {
+          "days": [
+            5,
+            6
+          ],
+          "start": 660,
+          "end": 1380
+        }
+      ],
+      "gustoScore": null,
+      "website": "https://www.pagliacci.com/locations/bellevue-main-street",
+      "phone": "+1 (206) 726-1717",
+      "appleMapsUrl": "https://maps.apple.com/?daddr=47.6103973,-122.1984014&q=Pagliacci%20Pizza",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=18196189739224874619",
+      "guideSlugs": [
+        "bellevue"
+      ],
+      "muid": "18196189739224874619",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {
+        "yelp": "_VXBAStiPUvPR2uCTIZv0Q"
+      },
+      "copySource": "draft",
+      "updatedAt": "2026-10-22",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Pizza at Pagliacci Pizza",
+          "credit": "Illustration"
+        }
+      ],
+      "publicRating": {
+        "value": 3.8,
+        "count": 266,
+        "source": "Yelp"
+      },
+      "yelpSlug": "_VXBAStiPUvPR2uCTIZv0Q"
+    },
+    {
+      "id": "central-bar-restaurant",
+      "city": "eastside",
+      "name": "Central Bar + Restaurant",
+      "neighborhood": "Downtown Bellevue",
+      "address": "528 Bellevue Way NE, Bellevue, WA 98004",
+      "lat": 47.6154357,
+      "lng": -122.2007292,
+      "cuisine": [
+        "American"
+      ],
+      "placeType": "restaurant",
+      "price": 2,
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            0
+          ],
+          "start": 600,
+          "end": 1320
+        },
+        {
+          "days": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "start": 660,
+          "end": 1320
+        },
+        {
+          "days": [
+            5
+          ],
+          "start": 660,
+          "end": 1440
+        },
+        {
+          "days": [
+            6
+          ],
+          "start": 600,
+          "end": 1440
+        }
+      ],
+      "gustoScore": null,
+      "website": "https://www.centralbar.com",
+      "phone": "+1 (425) 578-7878",
+      "appleMapsUrl": "https://maps.apple.com/?daddr=47.6154357,-122.2007292&q=Central%20Bar%20%2B%20Restaurant",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=17092655385343306061",
+      "guideSlugs": [
+        "bellevue"
+      ],
+      "muid": "17092655385343306061",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {
+        "yelp": "hlCBEBEK1LjgaRAioQRuIQ"
+      },
+      "copySource": "draft",
+      "updatedAt": "2026-10-22",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting American at Central Bar + Restaurant",
+          "credit": "Illustration"
+        }
+      ],
+      "publicRating": {
+        "value": 4.0,
+        "count": 376,
+        "source": "Yelp"
+      },
+      "yelpSlug": "hlCBEBEK1LjgaRAioQRuIQ"
+    },
+    {
+      "id": "broiler-bay",
+      "city": "eastside",
+      "name": "Broiler Bay Hamburgers",
+      "neighborhood": "Downtown Bellevue",
+      "address": "10636 Main St, Bellevue, WA 98004",
+      "lat": 47.6105012,
+      "lng": -122.1976849,
+      "cuisine": [
+        "Burgers"
+      ],
+      "placeType": "restaurant",
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "start": 660,
+          "end": 1200
+        }
+      ],
+      "gustoScore": null,
+      "phone": "+1 (425) 646-3474",
+      "appleMapsUrl": "https://maps.apple.com/?daddr=47.6105012,-122.1976849&q=Broiler%20Bay%20Hamburgers",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=70696049156331835",
+      "guideSlugs": [
+        "bellevue"
+      ],
+      "muid": "70696049156331835",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-10-22",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Burgers at Broiler Bay Hamburgers",
+          "credit": "Illustration"
+        }
+      ]
+    },
+    {
+      "id": "wild-ginger",
+      "city": "eastside",
+      "name": "Wild Ginger",
+      "neighborhood": "Downtown Bellevue",
+      "address": "508 Bellevue Way NE, Bellevue, WA 98004",
+      "lat": 47.6150248,
+      "lng": -122.2014434,
+      "cuisine": [
+        "Thai"
+      ],
+      "placeType": "restaurant",
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            0
+          ],
+          "start": 900,
+          "end": 1260
+        },
+        {
+          "days": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "start": 690,
+          "end": 1260
+        },
+        {
+          "days": [
+            5
+          ],
+          "start": 690,
+          "end": 1320
+        },
+        {
+          "days": [
+            6
+          ],
+          "start": 900,
+          "end": 1320
+        }
+      ],
+      "gustoScore": null,
+      "website": "https://www.wildginger.net/locations-bellevue",
+      "phone": "+1 (425) 495-8889",
+      "appleMapsUrl": "https://maps.apple.com/?daddr=47.6150248,-122.2014434&q=Wild%20Ginger",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=14795579837206651278",
+      "guideSlugs": [
+        "bellevue",
+        "eastside-asian"
+      ],
+      "muid": "14795579837206651278",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-10-22",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Thai at Wild Ginger",
+          "credit": "Illustration"
+        }
+      ]
+    },
+    {
+      "id": "castilla",
+      "city": "eastside",
+      "name": "Castilla",
+      "neighborhood": "Bellevue Square",
+      "address": "504 Bellevue Square, Bellevue, WA 98004",
+      "lat": 47.6164153,
+      "lng": -122.2020463,
+      "cuisine": [
+        "Spanish"
+      ],
+      "placeType": "restaurant",
+      "price": 2,
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "start": 690,
+          "end": 1320
+        },
+        {
+          "days": [
+            5,
+            6
+          ],
+          "start": 690,
+          "end": 1380
+        }
+      ],
+      "gustoScore": null,
+      "website": "https://www.castillarestaurant.com",
+      "phone": "+1 (425) 625-2931",
+      "appleMapsUrl": "https://maps.apple.com/?daddr=47.6164153,-122.2020463&q=Castilla",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=5870001278058099555",
+      "guideSlugs": [
+        "bellevue"
+      ],
+      "muid": "5870001278058099555",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {
+        "yelp": "E2BYo2gg0rmhWCY1JkcTpA"
+      },
+      "copySource": "draft",
+      "updatedAt": "2026-10-22",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Spanish at Castilla",
+          "credit": "Illustration"
+        }
+      ],
+      "publicRating": {
+        "value": 3.9,
+        "count": 837,
+        "source": "Yelp"
+      },
+      "yelpSlug": "E2BYo2gg0rmhWCY1JkcTpA"
+    },
+    {
+      "id": "civility-and-unrest",
+      "city": "eastside",
+      "name": "Civility & Unrest",
+      "neighborhood": "Downtown Bellevue",
+      "address": "10455 Bellevue Way NE, Bellevue, WA 98004",
+      "lat": 47.614966,
+      "lng": -122.200585,
+      "cuisine": [
+        "Cocktails"
+      ],
+      "placeType": "bar",
+      "price": 3,
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "start": 960,
+          "end": 1440
+        }
+      ],
+      "gustoScore": null,
+      "website": "https://www.civilityandunrest.com",
+      "phone": "+1 (425) 454-7076",
+      "appleMapsUrl": "https://maps.apple.com/?daddr=47.614966,-122.200585&q=Civility%20%26%20Unrest",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=4431814629018651525",
+      "guideSlugs": [
+        "bellevue"
+      ],
+      "muid": "4431814629018651525",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {
+        "yelp": "doYe8sfMOJVaQefeyR1Omg"
+      },
+      "copySource": "draft",
+      "updatedAt": "2026-10-22",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Cocktails at Civility & Unrest",
+          "credit": "Illustration"
+        }
+      ],
+      "publicRating": {
+        "value": 3.8,
+        "count": 177,
+        "source": "Yelp"
+      },
+      "yelpSlug": "doYe8sfMOJVaQefeyR1Omg"
+    },
+    {
+      "id": "kura-revolving-sushi",
+      "city": "eastside",
+      "name": "Kura Revolving Sushi Bar",
+      "neighborhood": "Wilburton",
+      "address": "266 116th Ave NE, Bellevue, WA 98004",
+      "lat": 47.6118706,
+      "lng": -122.184894,
+      "cuisine": [
+        "Japanese"
+      ],
+      "placeType": "restaurant",
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            0
+          ],
+          "start": 630,
+          "end": 1320
+        },
+        {
+          "days": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "start": 660,
+          "end": 1320
+        },
+        {
+          "days": [
+            5
+          ],
+          "start": 660,
+          "end": 1380
+        },
+        {
+          "days": [
+            6
+          ],
+          "start": 630,
+          "end": 1380
+        }
+      ],
+      "gustoScore": null,
+      "website": "https://kurasushi.com/locations/bellevue-wa",
+      "phone": "+1 (360) 822-9333",
+      "appleMapsUrl": "https://maps.apple.com/?daddr=47.6118706,-122.184894&q=Kura%20Revolving%20Sushi%20Bar",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=3351618210874800921",
+      "guideSlugs": [
+        "bellevue",
+        "eastside-asian"
+      ],
+      "muid": "3351618210874800921",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-10-22",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Japanese at Kura Revolving Sushi Bar",
+          "credit": "Illustration"
+        }
+      ]
+    },
+    {
+      "id": "520-bar-and-grill",
+      "city": "eastside",
+      "name": "520 Bar and Grill",
+      "neighborhood": "Old Bellevue",
+      "address": "10146 Main St, Bellevue, WA 98004",
+      "lat": 47.6102649,
+      "lng": -122.204366,
+      "cuisine": [
+        "American"
+      ],
+      "placeType": "restaurant",
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            0
+          ],
+          "start": 600,
+          "end": 1320
+        },
+        {
+          "days": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "start": 660,
+          "end": 1320
+        },
+        {
+          "days": [
+            5
+          ],
+          "start": 660,
+          "end": 1440
+        },
+        {
+          "days": [
+            6
+          ],
+          "start": 600,
+          "end": 1440
+        }
+      ],
+      "gustoScore": null,
+      "website": "http://www.520barandgrill.com",
+      "phone": "+1 (425) 450-0520",
+      "appleMapsUrl": "https://maps.apple.com/?daddr=47.6102649,-122.204366&q=520%20Bar%20and%20Grill",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=13217783101883786373",
+      "guideSlugs": [
+        "bellevue"
+      ],
+      "muid": "13217783101883786373",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-10-22",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting American at 520 Bar and Grill",
+          "credit": "Illustration"
+        }
+      ]
+    },
+    {
+      "id": "joey-bellevue",
+      "city": "eastside",
+      "name": "Joey Bellevue",
+      "neighborhood": "Downtown Bellevue",
+      "address": "800 Bellevue Way NE, Ste 118, Bellevue, WA 98004",
+      "lat": 47.6177439,
+      "lng": -122.2013966,
+      "cuisine": [
+        "American"
+      ],
+      "placeType": "restaurant",
+      "price": 3,
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            0,
+            6
+          ],
+          "start": 0,
+          "end": 60
+        },
+        {
+          "days": [
+            0,
+            1,
+            2,
+            3,
+            5,
+            6
+          ],
+          "start": 660,
+          "end": 1440
+        },
+        {
+          "days": [
+            4
+          ],
+          "start": 690,
+          "end": 1440
+        }
+      ],
+      "gustoScore": null,
+      "website": "https://joeyrestaurants.com/location/joey-bellevue",
+      "phone": "+1 (425) 637-1177",
+      "appleMapsUrl": "https://maps.apple.com/?daddr=47.6177439,-122.2013966&q=Joey%20Bellevue",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=9629498083750129956",
+      "guideSlugs": [
+        "bellevue"
+      ],
+      "muid": "9629498083750129956",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {
+        "yelp": "PzFJNls55DcBsWJOU2O0BQ"
+      },
+      "copySource": "draft",
+      "updatedAt": "2026-10-22",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting American at Joey Bellevue",
+          "credit": "Illustration"
+        }
+      ],
+      "publicRating": {
+        "value": 3.9,
+        "count": 1720,
+        "source": "Yelp"
+      },
+      "yelpSlug": "PzFJNls55DcBsWJOU2O0BQ"
+    },
+    {
+      "id": "semicolon-cafe",
+      "city": "eastside",
+      "name": "Semicolon Cafe",
+      "neighborhood": "Downtown Bellevue",
+      "address": "10451 NE 2nd St, Ste 3, Bellevue, WA 98004",
+      "lat": 47.611842,
+      "lng": -122.200963,
+      "cuisine": [
+        "Coffee"
+      ],
+      "placeType": "cafe",
+      "price": 2,
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "start": 480,
+          "end": 1020
+        }
+      ],
+      "gustoScore": null,
+      "website": "http://semicoloncafe.com",
+      "phone": "+1 (425) 223-5932",
+      "appleMapsUrl": "https://maps.apple.com/?daddr=47.611842,-122.200963&q=Semicolon%20Cafe",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=17374801430124812803",
+      "guideSlugs": [
+        "bellevue"
+      ],
+      "muid": "17374801430124812803",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {
+        "yelp": "ha6_Tq1CGGVT11vDqr3oYQ"
+      },
+      "copySource": "draft",
+      "updatedAt": "2026-10-22",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Coffee at Semicolon Cafe",
+          "credit": "Illustration"
+        }
+      ],
+      "publicRating": {
+        "value": 3.8,
+        "count": 459,
+        "source": "Yelp"
+      },
+      "yelpSlug": "ha6_Tq1CGGVT11vDqr3oYQ"
+    },
+    {
+      "id": "spark-pizza",
+      "city": "eastside",
+      "name": "Spark Pizza",
+      "neighborhood": "Downtown Redmond",
+      "address": "8110 164th Ave NE, Redmond, WA 98052",
+      "lat": 47.6756832,
+      "lng": -122.1212469,
+      "cuisine": [
+        "Pizza"
+      ],
+      "placeType": "restaurant",
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            0
+          ],
+          "start": 720,
+          "end": 1200
+        },
+        {
+          "days": [
+            2,
+            3,
+            4
+          ],
+          "start": 900,
+          "end": 1200
+        },
+        {
+          "days": [
+            5
+          ],
+          "start": 900,
+          "end": 1260
+        },
+        {
+          "days": [
+            6
+          ],
+          "start": 720,
+          "end": 1260
+        }
+      ],
+      "gustoScore": null,
+      "website": "https://www.sparkpizzaredmond.com",
+      "phone": "+1 (425) 898-4106",
+      "appleMapsUrl": "https://maps.apple.com/?daddr=47.6756832,-122.1212469&q=Spark%20Pizza",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=17099670497557362085",
+      "guideSlugs": [
+        "redmond"
+      ],
+      "muid": "17099670497557362085",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-10-22",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Pizza at Spark Pizza",
+          "credit": "Illustration"
+        }
+      ]
+    },
+    {
+      "id": "a-ma-chicken-rice",
+      "city": "eastside",
+      "name": "A Ma Chicken Rice",
+      "neighborhood": "Redmond Town Center",
+      "address": "7405 168th Ave NE, Unit 140, Redmond, WA 98052",
+      "lat": 47.6701668,
+      "lng": -122.1169424,
+      "cuisine": [
+        "Chinese"
+      ],
+      "placeType": "restaurant",
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            0,
+            5,
+            6
+          ],
+          "start": 660,
+          "end": 1260
+        },
+        {
+          "days": [
+            1,
+            3,
+            4
+          ],
+          "start": 660,
+          "end": 960
+        }
+      ],
+      "gustoScore": null,
+      "website": "http://www.amachickenrice.com",
+      "phone": "+1 (425) 242-0297",
+      "appleMapsUrl": "https://maps.apple.com/?daddr=47.6701668,-122.1169424&q=A%20Ma%20Chicken%20Rice",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=12451992952103954038",
+      "guideSlugs": [
+        "redmond",
+        "eastside-asian"
+      ],
+      "muid": "12451992952103954038",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-10-22",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Chinese at A Ma Chicken Rice",
+          "credit": "Illustration"
+        }
+      ]
+    },
+    {
+      "id": "jacks-bbq",
+      "city": "eastside",
+      "name": "Jack's BBQ",
+      "neighborhood": "Overlake",
+      "address": "2115 Bel-Red Rd, Redmond, WA 98052",
+      "lat": 47.629293,
+      "lng": -122.1355933,
+      "cuisine": [
+        "Barbecue"
+      ],
+      "placeType": "restaurant",
+      "price": 2,
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            0,
+            6
+          ],
+          "start": 600,
+          "end": 1260
+        },
+        {
+          "days": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "start": 420,
+          "end": 1260
+        }
+      ],
+      "gustoScore": null,
+      "website": "https://jacksbbq.com/redmond",
+      "phone": "+1 (425) 296-1950",
+      "appleMapsUrl": "https://maps.apple.com/?daddr=47.629293,-122.1355933&q=Jack's%20BBQ",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=5925508658690327011",
+      "guideSlugs": [
+        "redmond"
+      ],
+      "muid": "5925508658690327011",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {
+        "yelp": "nVfPfOTY3Y7d86mqFpSp4A"
+      },
+      "copySource": "draft",
+      "updatedAt": "2026-10-22",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Barbecue at Jack's BBQ",
+          "credit": "Illustration"
+        }
+      ],
+      "publicRating": {
+        "value": 4.3,
+        "count": 220,
+        "source": "Yelp"
+      },
+      "yelpSlug": "nVfPfOTY3Y7d86mqFpSp4A"
+    },
+    {
+      "id": "just-poke-redmond",
+      "city": "eastside",
+      "name": "Just Poké",
+      "neighborhood": "Overlake",
+      "address": "7345 164th Ave NE, Unit I-147, Redmond, WA 98052",
+      "lat": 47.6697893,
+      "lng": -122.1217326,
+      "cuisine": [
+        "Poke"
+      ],
+      "placeType": "restaurant",
+      "price": 2,
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "start": 660,
+          "end": 1200
+        }
+      ],
+      "gustoScore": null,
+      "website": "https://justpoke.com/locations/redmond",
+      "phone": "+1 (425) 242-0889",
+      "appleMapsUrl": "https://maps.apple.com/?daddr=47.6697893,-122.1217326&q=Just%20Pok%C3%A9",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=9074736504933963122",
+      "guideSlugs": [
+        "redmond"
+      ],
+      "muid": "9074736504933963122",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {
+        "yelp": "hpjM3AwjmrYYk_GrfnDWEw"
+      },
+      "copySource": "draft",
+      "updatedAt": "2026-10-22",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Poke at Just Poké",
+          "credit": "Illustration"
+        }
+      ],
+      "publicRating": {
+        "value": 3.9,
+        "count": 198,
+        "source": "Yelp"
+      },
+      "yelpSlug": "hpjM3AwjmrYYk_GrfnDWEw"
+    },
+    {
+      "id": "noburu-ramen-and-sushi",
+      "city": "eastside",
+      "name": "Noburu Ramen and Sushi",
+      "neighborhood": "Downtown Redmond",
+      "address": "8900 161st Ave NE, Unit 170, Redmond, WA 98052",
+      "lat": 47.681429,
+      "lng": -122.1228994,
+      "cuisine": [
+        "Japanese"
+      ],
+      "placeType": "restaurant",
+      "price": 2,
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            0,
+            6
+          ],
+          "start": 660,
+          "end": 1260
+        },
+        {
+          "days": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "start": 660,
+          "end": 870
+        },
+        {
+          "days": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "start": 990,
+          "end": 1260
+        }
+      ],
+      "gustoScore": null,
+      "website": "https://nobururamen.com",
+      "phone": "+1 (425) 202-7231",
+      "appleMapsUrl": "https://maps.apple.com/?daddr=47.681429,-122.1228994&q=Noburu%20Ramen%20and%20Sushi",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=506101582495902557",
+      "guideSlugs": [
+        "redmond",
+        "eastside-asian"
+      ],
+      "muid": "506101582495902557",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {
+        "yelp": "tjDtfz5vcbSrX8zO-G5fww"
+      },
+      "copySource": "draft",
+      "updatedAt": "2026-10-22",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Japanese at Noburu Ramen and Sushi",
+          "credit": "Illustration"
+        }
+      ],
+      "publicRating": {
+        "value": 4.0,
+        "count": 111,
+        "source": "Yelp"
+      },
+      "yelpSlug": "tjDtfz5vcbSrX8zO-G5fww"
+    },
+    {
+      "id": "kobuta-and-ookami-redmond",
+      "city": "eastside",
+      "name": "Kobuta & Ookami",
+      "neighborhood": "Downtown Redmond",
+      "address": "17026 Avondale Way, Redmond, WA 98052",
+      "lat": 47.6730241,
+      "lng": -122.1125382,
+      "cuisine": [
+        "Japanese"
+      ],
+      "placeType": "restaurant",
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            0
+          ],
+          "start": 720,
+          "end": 900
+        },
+        {
+          "days": [
+            0,
+            2,
+            3,
+            4
+          ],
+          "start": 1020,
+          "end": 1260
+        },
+        {
+          "days": [
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "start": 660,
+          "end": 900
+        },
+        {
+          "days": [
+            5,
+            6
+          ],
+          "start": 1020,
+          "end": 1290
+        }
+      ],
+      "gustoScore": null,
+      "website": "https://www.kobutaandookami.com",
+      "phone": "+1 (425) 522-4612",
+      "appleMapsUrl": "https://maps.apple.com/?daddr=47.6730241,-122.1125382&q=Kobuta%20%26%20Ookami",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=13848089538661986467",
+      "guideSlugs": [
+        "redmond",
+        "eastside-asian"
+      ],
+      "muid": "13848089538661986467",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-10-22",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Japanese at Kobuta & Ookami",
+          "credit": "Illustration"
+        }
+      ]
+    },
+    {
+      "id": "matador-redmond",
+      "city": "eastside",
+      "name": "Matador",
+      "neighborhood": "Downtown Redmond",
+      "address": "7824 Leary Way NE, Redmond, WA 98052",
+      "lat": 47.6732958,
+      "lng": -122.1230592,
+      "cuisine": [
+        "Mexican"
+      ],
+      "placeType": "restaurant",
+      "price": 2,
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            0,
+            6
+          ],
+          "start": 0,
+          "end": 60
+        },
+        {
+          "days": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "start": 660,
+          "end": 1440
+        }
+      ],
+      "gustoScore": null,
+      "website": "https://matadorrestaurants.com/locations/redmond",
+      "phone": "+1 (425) 883-2855",
+      "appleMapsUrl": "https://maps.apple.com/?daddr=47.6732958,-122.1230592&q=Matador",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=7686808905765432222",
+      "guideSlugs": [
+        "redmond"
+      ],
+      "muid": "7686808905765432222",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {
+        "yelp": "1fSx9o5xWGWbetN0aRbF3A"
+      },
+      "copySource": "draft",
+      "updatedAt": "2026-10-22",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Mexican at Matador",
+          "credit": "Illustration"
+        }
+      ],
+      "publicRating": {
+        "value": 3.5,
+        "count": 1189,
+        "source": "Yelp"
+      },
+      "yelpSlug": "1fSx9o5xWGWbetN0aRbF3A"
+    },
+    {
+      "id": "el-encanto",
+      "city": "eastside",
+      "name": "El Encanto",
+      "neighborhood": "Carillon Point",
+      "address": "1170 Carillon Point Rd, Kirkland, WA 98033",
+      "lat": 47.6568288,
+      "lng": -122.2076913,
+      "cuisine": [
+        "Mexican"
+      ],
+      "placeType": "restaurant",
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            0,
+            6
+          ],
+          "start": 660,
+          "end": 900
+        },
+        {
+          "days": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "start": 960,
+          "end": 1320
+        }
+      ],
+      "gustoScore": null,
+      "website": "https://www.elencantousa.com",
+      "phone": "+1 (425) 202-7114",
+      "appleMapsUrl": "https://maps.apple.com/?daddr=47.6568288,-122.2076913&q=El%20Encanto",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=13336795398944121119",
+      "guideSlugs": [
+        "kirkland"
+      ],
+      "muid": "13336795398944121119",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-10-22",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Mexican at El Encanto",
+          "credit": "Illustration"
+        }
+      ]
+    },
+    {
+      "id": "vinason-pho-kitchen",
+      "city": "eastside",
+      "name": "Vinason Pho Kitchen",
+      "neighborhood": "Downtown Kirkland",
+      "address": "499 Urban Plaza, Kirkland, WA 98033",
+      "lat": 47.6781755,
+      "lng": -122.1985334,
+      "cuisine": [
+        "Vietnamese"
+      ],
+      "placeType": "restaurant",
+      "price": 2,
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "start": 660,
+          "end": 1200
+        }
+      ],
+      "gustoScore": null,
+      "website": "https://vinason.net/kirkland",
+      "phone": "+1 (425) 896-8037",
+      "appleMapsUrl": "https://maps.apple.com/?daddr=47.6781755,-122.1985334&q=Vinason%20Pho%20Kitchen",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=2010749036812995121",
+      "guideSlugs": [
+        "kirkland",
+        "eastside-asian"
+      ],
+      "muid": "2010749036812995121",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {
+        "yelp": "riOFLfbHHiUUP232mVjOcw"
+      },
+      "copySource": "draft",
+      "updatedAt": "2026-10-22",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Vietnamese at Vinason Pho Kitchen",
+          "credit": "Illustration"
+        }
+      ],
+      "publicRating": {
+        "value": 3.8,
+        "count": 172,
+        "source": "Yelp"
+      },
+      "yelpSlug": "riOFLfbHHiUUP232mVjOcw"
+    },
+    {
+      "id": "the-box",
+      "city": "eastside",
+      "name": "The Box",
+      "neighborhood": "Totem Lake",
+      "address": "12305 120th Ave NE, Ste C, Kirkland, WA 98034",
+      "lat": 47.7091746,
+      "lng": -122.1850844,
+      "cuisine": [
+        "Burgers"
+      ],
+      "placeType": "restaurant",
+      "price": 2,
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            2,
+            3,
+            5,
+            6
+          ],
+          "start": 660,
+          "end": 1200
+        }
+      ],
+      "gustoScore": null,
+      "website": "https://theboxonwheels.com",
+      "phone": "+1 (425) 821-0777",
+      "appleMapsUrl": "https://maps.apple.com/?daddr=47.7091746,-122.1850844&q=The%20Box",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=854099418095128901",
+      "guideSlugs": [
+        "kirkland"
+      ],
+      "muid": "854099418095128901",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {
+        "yelp": "I19qXowDVY_h9FYvHfCpxQ"
+      },
+      "copySource": "draft",
+      "updatedAt": "2026-10-22",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Burgers at The Box",
+          "credit": "Illustration"
+        }
+      ],
+      "publicRating": {
+        "value": 4.6,
+        "count": 548,
+        "source": "Yelp"
+      },
+      "yelpSlug": "I19qXowDVY_h9FYvHfCpxQ"
+    },
+    {
+      "id": "island-soul-kirkland",
+      "city": "eastside",
+      "name": "Island Soul",
+      "neighborhood": "Downtown Kirkland",
+      "address": "312 Central Way, Ste 103, Kirkland, WA 98033",
+      "lat": 47.6777988,
+      "lng": -122.2026843,
+      "cuisine": [
+        "Caribbean"
+      ],
+      "placeType": "restaurant",
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [],
+      "gustoScore": null,
+      "website": "https://www.arleanasrestaurant.com",
+      "phone": "+1 (425) 559-5077",
+      "appleMapsUrl": "https://maps.apple.com/?daddr=47.6777988,-122.2026843&q=Island%20Soul",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=818513977931819334",
+      "guideSlugs": [
+        "kirkland"
+      ],
+      "muid": "818513977931819334",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-10-22",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Caribbean at Island Soul",
+          "credit": "Illustration"
+        }
+      ]
+    },
+    {
+      "id": "cactus-kirkland",
+      "city": "eastside",
+      "name": "Cactus",
+      "neighborhood": "Downtown Kirkland",
+      "address": "121 Park Ln, Kirkland, WA 98033",
+      "lat": 47.6760893,
+      "lng": -122.2057281,
+      "cuisine": [
+        "Mexican"
+      ],
+      "placeType": "restaurant",
+      "price": 2,
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            0
+          ],
+          "start": 600,
+          "end": 1260
+        },
+        {
+          "days": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "start": 660,
+          "end": 1260
+        },
+        {
+          "days": [
+            5
+          ],
+          "start": 660,
+          "end": 1320
+        },
+        {
+          "days": [
+            6
+          ],
+          "start": 600,
+          "end": 1320
+        }
+      ],
+      "gustoScore": null,
+      "website": "https://www.cactusrestaurants.com/location/locations-kirkland",
+      "phone": "+1 (425) 893-9799",
+      "appleMapsUrl": "https://maps.apple.com/?daddr=47.6760893,-122.2057281&q=Cactus",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=8020372993932764017",
+      "guideSlugs": [
+        "kirkland"
+      ],
+      "muid": "8020372993932764017",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {
+        "yelp": "zuth6hd6zEyH5WN9NS6G_A"
+      },
+      "copySource": "draft",
+      "updatedAt": "2026-10-22",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Mexican at Cactus",
+          "credit": "Illustration"
+        }
+      ],
+      "publicRating": {
+        "value": 4.1,
+        "count": 1381,
+        "source": "Yelp"
+      },
+      "yelpSlug": "zuth6hd6zEyH5WN9NS6G_A"
+    },
+    {
+      "id": "shawns-cafe-and-bakery",
+      "city": "eastside",
+      "name": "Shawn's Cafe and Bakery",
+      "neighborhood": "Mercer Heights",
+      "address": "7420 SE 24th St, Unit 3, Mercer Island, WA 98040",
+      "lat": 47.5893132,
+      "lng": -122.2394872,
+      "cuisine": [
+        "Bakery"
+      ],
+      "placeType": "bakery",
+      "price": 1,
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            3,
+            4
+          ],
+          "start": 360,
+          "end": 840
+        },
+        {
+          "days": [
+            0,
+            6
+          ],
+          "start": 480,
+          "end": 840
+        },
+        {
+          "days": [
+            5
+          ],
+          "start": 360,
+          "end": 900
+        }
+      ],
+      "gustoScore": null,
+      "website": "https://www.shawnscafe.com",
+      "phone": "+1 (206) 232-3221",
+      "appleMapsUrl": "https://maps.apple.com/?daddr=47.5893132,-122.2394872&q=Shawn's%20Cafe%20and%20Bakery",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=10290159749305833107",
+      "guideSlugs": [
+        "mercer-island"
+      ],
+      "muid": "10290159749305833107",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {
+        "yelp": "xdhDwRlPOw6pFElsArS0Bg"
+      },
+      "copySource": "draft",
+      "updatedAt": "2026-10-22",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Bakery at Shawn's Cafe and Bakery",
+          "credit": "Illustration"
+        }
+      ],
+      "publicRating": {
+        "value": 4.6,
+        "count": 171,
+        "source": "Yelp"
+      },
+      "yelpSlug": "xdhDwRlPOw6pFElsArS0Bg"
+    },
+    {
+      "id": "paparepas",
+      "city": "eastside",
+      "name": "Paparepas",
+      "neighborhood": "Cascade",
+      "address": "17034 116th Ave SE, Renton, WA 98058",
+      "lat": 47.4504355,
+      "lng": -122.1856212,
+      "cuisine": [
+        "Venezuelan"
+      ],
+      "placeType": "restaurant",
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "start": 660,
+          "end": 1320
+        },
+        {
+          "days": [
+            5,
+            6
+          ],
+          "start": 660,
+          "end": 1440
+        }
+      ],
+      "gustoScore": null,
+      "website": "https://www.paparepas.com",
+      "appleMapsUrl": "https://maps.apple.com/?daddr=47.4504355,-122.1856212&q=Paparepas",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=2020282391247799612",
+      "guideSlugs": [
+        "renton"
+      ],
+      "muid": "2020282391247799612",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {
+        "yelp": "xqp6xGjEDR3lgpl54v9JWQ"
+      },
+      "copySource": "draft",
+      "updatedAt": "2026-10-22",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Venezuelan at Paparepas",
+          "credit": "Illustration"
+        }
+      ],
+      "publicRating": {
+        "value": 4.8,
+        "count": 75,
+        "source": "Yelp"
+      },
+      "yelpSlug": "xqp6xGjEDR3lgpl54v9JWQ"
+    },
+    {
+      "id": "the-coalman",
+      "city": "eastside",
+      "name": "The Coalman",
+      "neighborhood": "May Creek",
+      "address": "6977 Coal Creek Pkwy SE, Newcastle, WA 98059",
+      "lat": 47.538197,
+      "lng": -122.166451,
+      "cuisine": [
+        "Wine"
+      ],
+      "placeType": "bar",
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [],
+      "gustoScore": null,
+      "website": "https://www.thecoalmancafeandbar.com",
+      "phone": "+1 (425) 698-1371",
+      "appleMapsUrl": "https://maps.apple.com/?daddr=47.538197,-122.166451&q=The%20Coalman",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=339338550956342545",
+      "guideSlugs": [],
+      "muid": "339338550956342545",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-10-22",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Wine at The Coalman",
+          "credit": "Illustration"
+        }
+      ]
+    },
+    {
+      "id": "naan-n-curry",
+      "city": "eastside",
+      "name": "Naan-N-Curry",
+      "neighborhood": "Downtown Issaquah",
+      "address": "1420 NW Gilman Blvd, Unit N3, Issaquah, WA 98027",
+      "lat": 47.5460516,
+      "lng": -122.0583859,
+      "cuisine": [
+        "Indian"
+      ],
+      "placeType": "restaurant",
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            0
+          ],
+          "start": 690,
+          "end": 1200
+        },
+        {
+          "days": [
+            1
+          ],
+          "start": 960,
+          "end": 1260
+        },
+        {
+          "days": [
+            2,
+            3,
+            4,
+            5
+          ],
+          "start": 660,
+          "end": 1260
+        },
+        {
+          "days": [
+            6
+          ],
+          "start": 690,
+          "end": 1260
+        }
+      ],
+      "gustoScore": null,
+      "website": "http://www.naanncurry.com",
+      "phone": "+1 (425) 392-4725",
+      "appleMapsUrl": "https://maps.apple.com/?daddr=47.5460516,-122.0583859&q=Naan-N-Curry",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=907267375096408052",
+      "guideSlugs": [
+        "issaquah"
+      ],
+      "muid": "907267375096408052",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-10-22",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Indian at Naan-N-Curry",
+          "credit": "Illustration"
+        }
+      ]
+    },
+    {
+      "id": "xochi",
+      "city": "eastside",
+      "name": "Xochi",
+      "neighborhood": "Downtown Issaquah",
+      "address": "145 NW Gilman Blvd, Issaquah, WA 98027",
+      "lat": 47.5386841,
+      "lng": -122.0382035,
+      "cuisine": [
+        "Mexican"
+      ],
+      "placeType": "restaurant",
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            2,
+            3,
+            4,
+            5
+          ],
+          "start": 660,
+          "end": 960
+        },
+        {
+          "days": [
+            6
+          ],
+          "start": 720,
+          "end": 960
+        }
+      ],
+      "gustoScore": null,
+      "website": "http://www.wearexochi.com",
+      "appleMapsUrl": "https://maps.apple.com/?daddr=47.5386841,-122.0382035&q=Xochi",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=15416145406464543184",
+      "guideSlugs": [
+        "issaquah"
+      ],
+      "muid": "15416145406464543184",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-10-22",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Mexican at Xochi",
+          "credit": "Illustration"
+        }
+      ]
+    },
+    {
+      "id": "mowood",
+      "city": "eastside",
+      "name": "MOWOOD",
+      "neighborhood": "Downtown Redmond",
+      "address": "16595 Redmond Way, Suite 165, Redmond, WA 98052",
+      "lat": 47.6723929,
+      "lng": -122.1197057,
+      "cuisine": [
+        "Coffee"
+      ],
+      "placeType": "cafe",
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "start": 660,
+          "end": 1140
+        }
+      ],
+      "gustoScore": null,
+      "website": "http://www.mowoodcoffee.com",
+      "phone": "+1 (206) 754-1560",
+      "appleMapsUrl": "https://maps.apple.com/?daddr=47.6723929,-122.1197057&q=MOWOOD",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=7662505556252534199",
+      "guideSlugs": [
+        "redmond"
+      ],
+      "muid": "7662505556252534199",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {
+        "yelp": "TVRmksTQkCXOkLh5in11ew"
+      },
+      "copySource": "draft",
+      "updatedAt": "2026-10-22",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Coffee at MOWOOD",
+          "credit": "Illustration"
+        }
+      ],
+      "publicRating": {
+        "value": 4.3,
+        "count": 96,
+        "source": "Yelp"
+      },
+      "yelpSlug": "TVRmksTQkCXOkLh5in11ew"
+    },
+    {
+      "id": "din-tai-fung-bellevue",
+      "city": "eastside",
+      "name": "Din Tai Fung",
+      "neighborhood": "Downtown Bellevue",
+      "address": "10455 NE 8th St, Bellevue, WA 98004",
+      "lat": 47.6171883,
+      "lng": -122.2007779,
+      "cuisine": [
+        "Chinese"
+      ],
+      "placeType": "restaurant",
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            0
+          ],
+          "start": 630,
+          "end": 1260
+        },
+        {
+          "days": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "start": 660,
+          "end": 1260
+        },
+        {
+          "days": [
+            5
+          ],
+          "start": 660,
+          "end": 1320
+        },
+        {
+          "days": [
+            6
+          ],
+          "start": 630,
+          "end": 1320
+        }
+      ],
+      "gustoScore": null,
+      "website": "https://dintaifungusa.com/us/locations/bellevue.html",
+      "phone": "+1 (425) 698-1095",
+      "appleMapsUrl": "https://maps.apple.com/?daddr=47.6171883,-122.2007779&q=Din%20Tai%20Fung",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=15528763534139621446",
+      "guideSlugs": [
+        "bellevue",
+        "eastside-asian"
+      ],
+      "muid": "15528763534139621446",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-10-22",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Chinese at Din Tai Fung",
+          "credit": "Illustration"
+        }
+      ]
+    },
+    {
+      "id": "falafel-fresh",
+      "city": "eastside",
+      "name": "Falafel Fresh",
+      "neighborhood": "Downtown Kirkland",
+      "address": "117 Lake St S, Kirkland, WA 98033",
+      "lat": 47.6749418,
+      "lng": -122.2064957,
+      "cuisine": [
+        "Middle Eastern"
+      ],
+      "placeType": "restaurant",
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "start": 600,
+          "end": 1320
+        }
+      ],
+      "gustoScore": null,
+      "website": "http://falafelfresh.org",
+      "phone": "+1 (425) 636-8250",
+      "appleMapsUrl": "https://maps.apple.com/?daddr=47.6749418,-122.2064957&q=Falafel%20Fresh",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=5857915667564025131",
+      "guideSlugs": [
+        "kirkland"
+      ],
+      "muid": "5857915667564025131",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {
+        "yelp": "sY676lHoVhQnEkqihEdoiQ"
+      },
+      "copySource": "draft",
+      "updatedAt": "2026-10-22",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Middle Eastern at Falafel Fresh",
+          "credit": "Illustration"
+        }
+      ],
+      "publicRating": {
+        "value": 4.4,
+        "count": 94,
+        "source": "Yelp"
+      },
+      "yelpSlug": "sY676lHoVhQnEkqihEdoiQ"
+    },
+    {
+      "id": "ramen-nori",
+      "city": "eastside",
+      "name": "Ramen Nori",
+      "neighborhood": "Wilburton",
+      "address": "13112 NE 20th St, Unit 200, Bellevue, WA 98005",
+      "lat": 47.6287886,
+      "lng": -122.1656272,
+      "cuisine": [
+        "Japanese"
+      ],
+      "placeType": "restaurant",
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            0,
+            6
+          ],
+          "start": 720,
+          "end": 870
+        },
+        {
+          "days": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "start": 1020,
+          "end": 1260
+        },
+        {
+          "days": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "start": 690,
+          "end": 840
+        },
+        {
+          "days": [
+            5,
+            6
+          ],
+          "start": 1020,
+          "end": 1290
+        }
+      ],
+      "gustoScore": null,
+      "website": "https://www.ramennoribellevue.com",
+      "phone": "+1 (425) 242-0532",
+      "appleMapsUrl": "https://maps.apple.com/?daddr=47.6287886,-122.1656272&q=Ramen%20Nori",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=13611242735207683381",
+      "guideSlugs": [
+        "bellevue",
+        "eastside-asian"
+      ],
+      "muid": "13611242735207683381",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-10-22",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Japanese at Ramen Nori",
+          "credit": "Illustration"
+        }
+      ]
+    },
+    {
+      "id": "rusty-pelican-cafe",
+      "city": "eastside",
+      "name": "Rusty Pelican Cafe",
+      "neighborhood": "Woodinville Village",
+      "address": "13590 NE Village Square Dr, Woodinville, WA 98072",
+      "lat": 47.7517969,
+      "lng": -122.1584147,
+      "cuisine": [
+        "American"
+      ],
+      "placeType": "restaurant",
+      "price": 2,
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "start": 480,
+          "end": 900
+        }
+      ],
+      "gustoScore": null,
+      "website": "https://rustypelicancafe.com/woodinville/",
+      "phone": "+1 (425) 286-6660",
+      "appleMapsUrl": "https://maps.apple.com/?daddr=47.7517969,-122.1584147&q=Rusty%20Pelican%20Cafe",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=580695866003012463",
+      "guideSlugs": [
+        "woodinville"
+      ],
+      "muid": "580695866003012463",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {
+        "yelp": "WcqJvWCwGrBzmVhMHzwjzA"
+      },
+      "copySource": "draft",
+      "updatedAt": "2026-10-22",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting American at Rusty Pelican Cafe",
+          "credit": "Illustration"
+        }
+      ],
+      "publicRating": {
+        "value": 4.0,
+        "count": 378,
+        "source": "Yelp"
+      },
+      "yelpSlug": "WcqJvWCwGrBzmVhMHzwjzA"
     }
   ],
   "guides": [
@@ -5478,7 +8969,7 @@
       "dek": "Downtown, Overlake, the Willows, and southeast Redmond.",
       "group": "Neighborhoods",
       "intro": "Redmond rooms from Cleveland Street out to Overlake, Northeast 95th, and the southeast side of town.",
-      "updatedAt": "2026-10-20",
+      "updatedAt": "2026-10-22",
       "ranked": false,
       "city": "eastside",
       "entries": [
@@ -5535,6 +9026,54 @@
           "pullQuote": "Brewpub on Northeast 95th. The beer is made in the building.",
           "blurb": "Brewpub on Northeast 95th. The beer is made in the building.",
           "copySource": "draft"
+        },
+        {
+          "placeId": "spark-pizza",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "a-ma-chicken-rice",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "jacks-bbq",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "just-poke-redmond",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "noburu-ramen-and-sushi",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "kobuta-and-ookami-redmond",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "matador-redmond",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "mowood",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
         }
       ]
     },
@@ -5544,7 +9083,7 @@
       "dek": "Front Street and the Issaquah Highlands.",
       "group": "Neighborhoods",
       "intro": "JaK's Grill and the other Front Street rooms, plus Amarone up on Park Drive in the Highlands.",
-      "updatedAt": "2026-10-20",
+      "updatedAt": "2026-10-22",
       "ranked": false,
       "city": "eastside",
       "entries": [
@@ -5588,6 +9127,18 @@
           "placeId": "levitate-gastropub",
           "pullQuote": "Gastropub on Front Street, a few doors from the pastrami shop.",
           "blurb": "Gastropub on Front Street, a few doors from the pastrami shop.",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "naan-n-curry",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "xochi",
+          "pullQuote": "",
+          "blurb": "",
           "copySource": "draft"
         }
       ]
@@ -5652,7 +9203,7 @@
       "dek": "Old Bellevue, downtown, Factoria, Bel-Red, and Lake Bellevue.",
       "group": "Neighborhoods",
       "intro": "Bellevue rooms with a street address, from Main Street out to Factoria, Bel-Red, and the Spring District.",
-      "updatedAt": "2026-10-20",
+      "updatedAt": "2026-10-22",
       "ranked": false,
       "city": "eastside",
       "entries": [
@@ -5775,6 +9326,198 @@
           "pullQuote": "Hand-pulled biang biang noodles on Bellevue Way by the mall.",
           "blurb": "Hand-pulled biang biang noodles on Bellevue Way by the mall.",
           "copySource": "draft"
+        },
+        {
+          "placeId": "la-mar-bellevue",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "ascend-prime-steak-and-sushi",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "daniels-broiler",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "cantina-monarca",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "carmines",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "minamoto",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "water-grill-bellevue",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "cantinetta-bellevue",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "stk-bellevue",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "earls-kitchen-bar",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "barons-sino-kitchen-and-bar",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "farzi-cafe",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "hokkaido-ramen-santouka",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "japonessa",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "desi-tadka",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "dough-zone-bellevue",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "rolls-and-rolls",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "ezells-famous-chicken",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "fern-thai-on-main",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "fob-poke-bar-bellevue",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "pagliacci-pizza",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "central-bar-restaurant",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "broiler-bay",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "wild-ginger",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "castilla",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "civility-and-unrest",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "kura-revolving-sushi",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "520-bar-and-grill",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "joey-bellevue",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "semicolon-cafe",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "din-tai-fung-bellevue",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "ramen-nori",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
         }
       ]
     },
@@ -5784,7 +9527,7 @@
       "dek": "Downtown, the marina, Juanita, Carillon Point, and Totem Lake.",
       "group": "Neighborhoods",
       "intro": "Kirkland restaurants with a published address, from Lake Street and Carillon Point out to Juanita and Totem Lake.",
-      "updatedAt": "2026-10-20",
+      "updatedAt": "2026-10-22",
       "ranked": false,
       "city": "eastside",
       "entries": [
@@ -5877,6 +9620,42 @@
           "pullQuote": "Market counter and brunch on 9th Avenue, just uphill from downtown.",
           "blurb": "Market counter and brunch on 9th Avenue, just uphill from downtown.",
           "copySource": "draft"
+        },
+        {
+          "placeId": "el-encanto",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "vinason-pho-kitchen",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "the-box",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "island-soul-kirkland",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "cactus-kirkland",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "falafel-fresh",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
         }
       ]
     },
@@ -5886,7 +9665,7 @@
       "dek": "The Hollywood district and Village Square.",
       "group": "Neighborhoods",
       "intro": "Restaurants along the Woodinville-Redmond Road and at Village Square, a short hop from the tasting rooms.",
-      "updatedAt": "2026-10-20",
+      "updatedAt": "2026-10-22",
       "ranked": false,
       "city": "eastside",
       "entries": [
@@ -5919,6 +9698,12 @@
           "pullQuote": "A brewery taproom pouring on the Woodinville-Redmond Road.",
           "blurb": "A brewery taproom pouring on the Woodinville-Redmond Road.",
           "copySource": "draft"
+        },
+        {
+          "placeId": "rusty-pelican-cafe",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
         }
       ]
     },
@@ -5928,7 +9713,7 @@
       "dek": "The town center and the north-end roadhouse.",
       "group": "Neighborhoods",
       "intro": "Mercer Island places in the town center, plus the Roanoke Inn on 72nd Avenue Southeast.",
-      "updatedAt": "2026-10-20",
+      "updatedAt": "2026-10-22",
       "ranked": false,
       "city": "eastside",
       "entries": [
@@ -5961,6 +9746,12 @@
           "pullQuote": "Burgers and a tap list on 76th Avenue Southeast.",
           "blurb": "Burgers and a tap list on 76th Avenue Southeast.",
           "copySource": "draft"
+        },
+        {
+          "placeId": "shawns-cafe-and-bakery",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
         }
       ]
     },
@@ -5970,7 +9761,7 @@
       "dek": "Downtown Renton rooms with a street address.",
       "group": "Neighborhoods",
       "intro": "Downtown Renton: the steakhouse on Houser Way, pizza and coffee on South 3rd, and a few rooms nearby.",
-      "updatedAt": "2026-10-20",
+      "updatedAt": "2026-10-22",
       "ranked": false,
       "city": "eastside",
       "entries": [
@@ -6002,6 +9793,12 @@
           "placeId": "boon-boona-coffee",
           "pullQuote": "Boon Boona coffee on South 3rd, in downtown Renton.",
           "blurb": "Boon Boona coffee on South 3rd, in downtown Renton.",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "paparepas",
+          "pullQuote": "",
+          "blurb": "",
           "copySource": "draft"
         }
       ]
@@ -6096,7 +9893,7 @@
       "dek": "Thai, Chinese, Japanese, Korean, Vietnamese, Sichuan, and Taiwanese.",
       "group": "Cuisine",
       "intro": "Eastside Asian restaurants from Old Bellevue and Lake Bellevue out to Totem Lake, Issaquah, and downtown Bothell.",
-      "updatedAt": "2026-10-20",
+      "updatedAt": "2026-10-22",
       "ranked": false,
       "city": "eastside",
       "entries": [
@@ -6194,6 +9991,96 @@
           "placeId": "big-fish-sushi",
           "pullQuote": "Sushi on Inglewood Hill Road, up on the Sammamish plateau.",
           "blurb": "Sushi on Inglewood Hill Road, up on the Sammamish plateau.",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "minamoto",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "barons-sino-kitchen-and-bar",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "hokkaido-ramen-santouka",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "japonessa",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "dough-zone-bellevue",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "rolls-and-rolls",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "fern-thai-on-main",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "wild-ginger",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "kura-revolving-sushi",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "a-ma-chicken-rice",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "noburu-ramen-and-sushi",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "kobuta-and-ookami-redmond",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "vinason-pho-kitchen",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "din-tai-fung-bellevue",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "ramen-nori",
+          "pullQuote": "",
+          "blurb": "",
           "copySource": "draft"
         }
       ]
