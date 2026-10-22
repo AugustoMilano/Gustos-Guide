@@ -15,7 +15,7 @@ export function FeedPage() {
   const [signIn, setSignIn] = useState(false)
   usePageMeta(
     "Feed · Gusto's Guide",
-    'What you and your friends have saved, ranked, and photographed in Seattle.',
+    'What you and your friends have saved, ranked, and photographed in the cities we cover.',
     './og/og.png',
   )
   const names = new Map<string, string>([[app.user?.id ?? '', app.user?.name ?? '']])

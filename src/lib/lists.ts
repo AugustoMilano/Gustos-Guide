@@ -22,7 +22,7 @@ export function listOgSvg(title: string, detail: string, emoji: string, color: s
     <text x="140" y="220" font-family="Georgia, serif" font-size="92" fill="#181818">${emoji || '🍽'}</text>
     <text x="140" y="360" font-family="Georgia, serif" font-size="72" font-style="italic" fill="#181818">${safeTitle}</text>
     <text x="140" y="440" font-family="Georgia, serif" font-size="36" fill="#181818">${safeDetail}</text>
-    <text x="140" y="510" font-family="Georgia, serif" font-size="28" fill="#141f4d">Gusto's Guide · Seattle</text>
+    <text x="140" y="510" font-family="Georgia, serif" font-size="28" fill="#141f4d">Gusto's Guide</text>
   </svg>`
   return `data:image/svg+xml,${encodeURIComponent(svg)}`
 }

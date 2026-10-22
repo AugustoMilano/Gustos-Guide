@@ -908,16 +908,17 @@ for (const sub of themes.find((theme) => theme.sub_guides).sub_guides) {
     members = [...members, ...sodo]
   }
   const slug = slugify(label)
+  const title = label === 'Queen Anne (incl. Lower Queen Anne)' ? 'Queen Anne' : label
   let places = flagshipPlaces(slug, diversify(sortDraft(resolveMembers(members)), FLAGSHIP_AIM, 3))
   addGuide({
     slug,
-    title: label,
-    dek: `Where to eat and drink in ${label}, from a weeknight to a night you bothered to dress for.`,
+    title,
+    dek: `Where to eat and drink in ${title}, from a weeknight to a night you bothered to dress for.`,
     group: 'Neighborhoods',
     ranked: false,
     angle: 'neighborhood',
     places,
-    intro: intro(label, `Where to eat and drink in ${label}, from a weeknight to a night you bothered to dress for.`, places, 'neighborhood'),
+    intro: intro(title, `Where to eat and drink in ${title}, from a weeknight to a night you bothered to dress for.`, places, 'neighborhood'),
   })
 }
 
