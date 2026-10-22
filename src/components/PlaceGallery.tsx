@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState, type PointerEvent as ReactPointerEvent } from 'react'
 import { PhotoFrame } from './PhotoFrame.tsx'
+import { ThumbImg } from './ThumbImg.tsx'
 import type { DisplayPhoto } from '../lib/gallery.ts'
 
 export function PlaceGallery({
@@ -74,7 +75,7 @@ export function PlaceGallery({
               aria-label={`Photo ${shotIndex + 1} of ${photos.length}`}
               onClick={() => onChange(shotIndex)}
             >
-              {shot.url && !shot.illustration ? <img src={shot.url} alt="" loading="lazy" decoding="async" className="h-full w-full object-cover" /> : <span>Illustration</span>}
+              {shot.url && !shot.illustration ? <ThumbImg url={shot.url} sizes="104px" /> : <span>Illustration</span>}
             </button>
           ))}
         </div>

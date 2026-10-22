@@ -64,6 +64,7 @@ function yourId(city: CityId): string {
   if (city === 'peninsula') return 'your-peninsula'
   if (city === 'eastbay') return 'your-eastbay'
   if (city === 'northbay') return 'your-northbay'
+  if (city === 'sandiego') return 'your-sandiego'
   if (city === 'sf') return 'your-sf'
   if (city === 'eastside') return 'your-eastside'
   return 'your-seattle'
@@ -74,6 +75,7 @@ function yourTitle(city: CityId): string {
   if (city === 'peninsula') return 'Your Peninsula'
   if (city === 'eastbay') return 'Your East Bay'
   if (city === 'northbay') return 'Your North Bay'
+  if (city === 'sandiego') return 'Your San Diego'
   if (city === 'sf') return 'Your San Francisco'
   if (city === 'eastside') return 'Your Eastside'
   return 'Your Seattle'
@@ -84,6 +86,7 @@ function listTitle(city: CityId): string {
   if (city === 'peninsula') return 'The Peninsula list'
   if (city === 'eastbay') return 'The East Bay list'
   if (city === 'northbay') return 'The North Bay list'
+  if (city === 'sandiego') return 'The San Diego list'
   if (city === 'sf') return 'The San Francisco list'
   if (city === 'eastside') return 'The Eastside list'
   return 'The hit list'
@@ -94,6 +97,7 @@ function listDek(city: CityId): string {
   if (city === 'peninsula') return 'Every Peninsula and South Bay room on the guide so far.'
   if (city === 'eastbay') return 'Every East Bay room on the guide so far.'
   if (city === 'northbay') return 'Every North Bay room on the guide so far.'
+  if (city === 'sandiego') return 'Every place on the San Diego list so far.'
   if (city === 'sf') return 'Every San Francisco room on the guide so far.'
   if (city === 'eastside') return 'Every Eastside room on the guide so far.'
   return 'The rooms people already cross town for, one neighborhood at a time.'
@@ -112,10 +116,13 @@ export function HomeBelow() {
   const pen = city === 'peninsula'
   const eastBay = city === 'eastbay'
   const north = city === 'northbay'
+  const sd = city === 'sandiego'
   const towns = pen || eastBay || north
   usePageMeta(
     "Gusto's Guide",
-    la
+    sd
+      ? 'Eat across San Diego: the city, La Jolla, Coronado, Chula Vista, and North County.'
+      : la
       ? 'Eat across Los Angeles: Venice, Santa Monica, West Hollywood, Downtown, and the rooms on the list.'
       : sf
         ? 'Eat across San Francisco, from the neighborhoods and cuisines on this list.'
@@ -143,17 +150,17 @@ export function HomeBelow() {
     : east
       ? featuredSlugs
       : OCCASIONS
-  const featured = sf
+  const featured = sf || sd
     ? guides.filter((guide) => guide.group === 'Neighborhoods' || guide.group === 'Cuisine').slice(0, 8)
     : towns
       ? guides.filter((guide) => guide.group === 'Neighborhoods').slice(0, 8)
       : featuredSlugs.map((slug) => guides.find((guide) => guide.slug === slug)).filter((guide) => guide != null)
-  const occasions = sf
+  const occasions = sf || sd
     ? guides.filter((guide) => guide.group === 'Cuisine' || guide.group === 'Occasion').slice(0, 6)
     : towns
       ? guides.filter((guide) => guide.group === 'Neighborhoods').slice(0, 6)
       : occasionSlugs.map((slug) => guides.find((guide) => guide.slug === slug)).filter((guide) => guide != null)
-  const hits = east || la || sf || towns ? places : homeHitList(places)
+  const hits = east || la || sf || towns || sd ? places : homeHitList(places)
   const wall = pacificWall()
   const suggestion = suggestNow(places, app.gustoScore, wall)
   const nowPlaces = suggestion.live ? suggestion.places : closedNow(city, places)
@@ -220,7 +227,7 @@ export function HomeBelow() {
           </div>
         </section>
         <section className="home-section" aria-labelledby="occasions">
-          <h2 id="occasions" className="font-serif text-4xl italic">{east || la || sf || towns ? 'Start here' : 'Guides by occasion'}</h2>
+          <h2 id="occasions" className="font-serif text-4xl italic">{east || la || sf || towns || sd ? 'Start here' : 'Guides by occasion'}</h2>
           <div className="card-grid card-grid-3">
             {occasions.map((guide, index) => (
               <Reveal key={guide.slug} className="h-full" delay={Math.min(index, 6) * 0.04}>

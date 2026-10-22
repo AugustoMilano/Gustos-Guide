@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { MapContainer, useMap } from 'react-leaflet'
+import 'leaflet/dist/leaflet.css'
 import { circleMarker, divIcon, latLngBounds, marker, type Layer, type CircleMarker, type MarkerClusterGroup } from 'leaflet'
 import { readPosition } from '../lib/geo.ts'
 import '../lib/setup-leaflet.ts'

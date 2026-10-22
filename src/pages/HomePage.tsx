@@ -19,6 +19,13 @@ const BAY_FALLBACK: Partial<Record<CityId, string[]>> = {
 function tickerFor(city: CityId) {
   if (city === 'la') return ['Venice', 'Santa Monica', 'West Hollywood', 'Beverly Hills', 'Downtown', 'Hollywood', 'Malibu', 'Sushi']
   if (city === 'eastside') return ['Bellevue', 'Kirkland waterfront', 'Juanita', 'Redmond', 'Issaquah', 'Bothell', 'Houghton', 'The Bravern']
+  if (city === 'sandiego') {
+    const titles = catalog.guides
+      .filter((guide) => guide.city === city && (guide.group === 'Neighborhoods' || guide.group === 'Cuisine'))
+      .slice(0, 8)
+      .map((guide) => guide.title)
+    return titles.length ? titles : ['Little Italy', 'Coronado', 'La Jolla', 'North Park']
+  }
   if (city === 'sf' || city === 'eastbay' || city === 'peninsula' || city === 'northbay') {
     const titles = catalog.guides
       .filter((guide) => guide.city === city && (guide.group === 'Neighborhoods' || guide.group === 'Cuisine'))
@@ -35,6 +42,7 @@ function heroTitle(city: CityId): string {
   if (city === 'eastbay') return 'Eat across the East Bay.'
   if (city === 'peninsula') return 'Eat across the Peninsula.'
   if (city === 'northbay') return 'Eat across the North Bay.'
+  if (city === 'sandiego') return 'Eat across San Diego.'
   if (city === 'eastside') return 'Eat across the Eastside.'
   return 'Eat your way through Seattle.'
 }
@@ -43,6 +51,14 @@ function heroDek(city: CityId, hoods: string[]): string {
   if (city === 'la') return 'Venice, Santa Monica, West Hollywood, Beverly Hills, Downtown, and Hollywood, from the same list.'
   if (city === 'eastside') return 'Bellevue, Kirkland, Redmond, Issaquah, and Bothell, on the same map as Seattle.'
   if (city === 'seattle') return 'From a 7am bun to the last good stool on Pike. Pizza, oysters, teriyaki, and the bars worth the hill.'
+  if (city === 'sandiego') {
+    const named = hoods.length > 1
+      ? `${hoods.slice(0, -1).join(', ')}, and ${hoods[hoods.length - 1]}`
+      : hoods.join('')
+    return named
+      ? `${named}, with Chula Vista and North County on the same list.`
+      : 'San Diego, La Jolla, Coronado, Chula Vista, and North County on one list.'
+  }
   if (!hoods.length) {
     if (city === 'eastbay') return 'Berkeley, Fremont, and Pleasanton.'
     if (city === 'peninsula') return 'Palo Alto, Santa Clara, San Jose, and the coast.'
@@ -63,6 +79,7 @@ function heroMeta(city: CityId, hoods: string[]): string {
   if (city === 'la') return 'Eat across Los Angeles: Venice, Santa Monica, West Hollywood, Downtown, and the rooms on the list.'
   if (city === 'eastside') return 'Eat across the Eastside: Bellevue, Kirkland, Redmond, Issaquah, and Bothell.'
   if (city === 'seattle') return 'Eat your way through Seattle: pizza, oysters, coffee, neighborhood dinners, and the bars worth the hill.'
+  if (city === 'sandiego') return 'Eat across San Diego: the city, La Jolla, Coronado, Chula Vista, and North County.'
   const named = hoods.length ? `: ${hoods.join(', ')}` : ''
   if (city === 'eastbay') return `Eat across the East Bay${named}.`
   if (city === 'peninsula') return `Eat across the Peninsula and South Bay${named}.`

@@ -216,6 +216,7 @@ function whereQuestion(city: CityId): string {
   if (city === 'peninsula') return 'Where on the Peninsula?'
   if (city === 'eastbay') return 'Where in the East Bay?'
   if (city === 'northbay') return 'Where in the North Bay?'
+  if (city === 'sandiego') return 'Where in San Diego?'
   if (city === 'sf') return 'Where in San Francisco?'
   if (city === 'eastside') return 'Where on the Eastside?'
   return 'Where in Seattle?'

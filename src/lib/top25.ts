@@ -47,7 +47,7 @@ function scoreKey(scoreOf: (placeId: string) => number | null): string {
 function build(scoreOf: (placeId: string) => number | null): Cache {
   const map = new Map<string, ForkAward>()
   const boards = {} as Cache['boards']
-  for (const region of ['seattle', 'la', 'sf'] as const) {
+  for (const region of ['seattle', 'la', 'sf', 'sandiego'] as const) {
     const ranked = catalog.places
       .filter((place) => isListed(place) && regionOf(placeCity(place)) === region)
       .flatMap((place) => {
