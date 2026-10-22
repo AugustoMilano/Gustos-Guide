@@ -69,7 +69,7 @@ export function GuideIndexPage() {
               >
                 <p className="text-xs font-bold uppercase tracking-[0.14em] tabular-nums">{countPlaces(guide.count)}</p>
                 <h3 className="mt-2 font-serif text-3xl italic">{guide.title}</h3>
-                <p className="mt-2 line-clamp-3 text-sm">{guide.dek}</p>
+                {guide.dek ? <p className="mt-2 line-clamp-3 text-sm">{guide.dek}</p> : null}
               </Link>
             ))}
           </div>
