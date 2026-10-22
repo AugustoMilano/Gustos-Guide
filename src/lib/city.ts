@@ -1,4 +1,4 @@
-export type CityId = 'seattle' | 'eastside' | 'la' | 'sf' | 'peninsula'
+export type CityId = 'seattle' | 'eastside' | 'la' | 'sf' | 'eastbay' | 'peninsula' | 'northbay'
 export type RegionId = 'seattle' | 'la' | 'sf'
 
 export type City = {
@@ -13,7 +13,9 @@ const AREAS: Record<CityId, City> = {
   eastside: { id: 'eastside', name: 'Eastside', ready: true },
   la: { id: 'la', name: 'Los Angeles', ready: true },
   sf: { id: 'sf', name: 'San Francisco', ready: true },
+  eastbay: { id: 'eastbay', name: 'East Bay', ready: true },
   peninsula: { id: 'peninsula', name: 'Peninsula', ready: true },
+  northbay: { id: 'northbay', name: 'North Bay', ready: true },
 }
 
 export type Region = {
@@ -26,14 +28,26 @@ export type Region = {
 export const REGIONS: Region[] = [
   { id: 'seattle', name: 'Seattle', detail: 'Seattle + Eastside', areas: ['seattle', 'eastside'] },
   { id: 'la', name: 'Los Angeles', detail: 'Los Angeles', areas: ['la'] },
-  { id: 'sf', name: 'San Francisco', detail: 'San Francisco + Peninsula', areas: ['sf', 'peninsula'] },
+  {
+    id: 'sf',
+    name: 'San Francisco',
+    detail: 'San Francisco, East Bay, Peninsula, North Bay',
+    areas: ['sf', 'eastbay', 'peninsula', 'northbay'],
+  },
 ]
 
 export const ACTIVE_CITY: CityId = 'seattle'
 
 const CITY_IDS = new Set<string>(Object.keys(AREAS))
 
+/** Longest prefix first so `/eastside` is not read as a shorter id. */
+export const CITY_PREFIXES = (Object.keys(AREAS) as CityId[])
+  .map((id) => `/${id}`)
+  .sort((a, b) => b.length - a.length)
+
 const MEMORY_KEY = 'gusto.region.v1'
+
+const BAY = new Set<CityId>(['sf', 'eastbay', 'peninsula', 'northbay'])
 
 export function asCityId(value: string | undefined | null): CityId {
   if (value && CITY_IDS.has(value)) return value as CityId
@@ -42,7 +56,7 @@ export function asCityId(value: string | undefined | null): CityId {
 
 export function regionOf(city: CityId): RegionId {
   if (city === 'la') return 'la'
-  if (city === 'sf' || city === 'peninsula') return 'sf'
+  if (BAY.has(city)) return 'sf'
   return 'seattle'
 }
 
@@ -51,10 +65,14 @@ export function areasFor(city: CityId): City[] {
   return (region?.areas ?? ['seattle']).map((id) => AREAS[id])
 }
 
-/** Name of the region, even when the open area is the Eastside or the Peninsula. */
+export function areaName(city: CityId): string {
+  return AREAS[city].name
+}
+
+/** Name of the region, even when the open area is the Eastside or the East Bay. */
 export function regionName(city: CityId): string {
   if (city === 'la') return 'Los Angeles'
-  if (city === 'sf' || city === 'peninsula') return 'San Francisco'
+  if (BAY.has(city)) return 'San Francisco'
   return 'Seattle'
 }
 
@@ -62,7 +80,9 @@ export function areaTitle(city: CityId): string {
   if (city === 'eastside') return 'The Eastside'
   if (city === 'la') return 'Los Angeles'
   if (city === 'sf') return 'San Francisco'
+  if (city === 'eastbay') return 'The East Bay'
   if (city === 'peninsula') return 'The Peninsula'
+  if (city === 'northbay') return 'The North Bay'
   return 'Seattle'
 }
 
@@ -71,7 +91,9 @@ export function areaPhrase(city: CityId): string {
   if (city === 'eastside') return 'the Eastside'
   if (city === 'la') return 'Los Angeles'
   if (city === 'sf') return 'San Francisco'
+  if (city === 'eastbay') return 'the East Bay'
   if (city === 'peninsula') return 'the Peninsula'
+  if (city === 'northbay') return 'the North Bay'
   return 'Seattle'
 }
 
@@ -93,7 +115,6 @@ export function writeRegionMemory(area: CityId) {
 }
 
 const PLAIN = new Set(['/terms', '/privacy', '/cities'])
-const PREFIXES = (Object.keys(AREAS) as CityId[]).map((id) => `/${id}`)
 
 export function isCityPicker(pathname: string): boolean {
   const path = (pathname.split('?')[0] || '/').replace(/\/$/, '') || '/'
@@ -102,9 +123,8 @@ export function isCityPicker(pathname: string): boolean {
 
 export function cityFromPath(pathname: string): CityId {
   const path = (pathname.split('?')[0] || '/').replace(/\/$/, '') || '/'
-  for (const id of Object.keys(AREAS) as CityId[]) {
-    const prefix = `/${id}`
-    if (path === prefix || path.startsWith(`${prefix}/`)) return id
+  for (const prefix of CITY_PREFIXES) {
+    if (path === prefix || path.startsWith(`${prefix}/`)) return prefix.slice(1) as CityId
   }
   return 'seattle'
 }
@@ -120,14 +140,14 @@ export function cityPath(path: string, city: CityId = currentCity()): string {
   const [pathname = '/', search = ''] = hashless.split('?')
   const query = search ? `?${search}` : ''
   if (pathname.startsWith('/auth') || PLAIN.has(pathname)) return `${pathname}${query}`
-  if (PREFIXES.some((prefix) => pathname === prefix || pathname.startsWith(`${prefix}/`))) return `${pathname}${query}`
+  if (CITY_PREFIXES.some((prefix) => pathname === prefix || pathname.startsWith(`${prefix}/`))) return `${pathname}${query}`
   const prefix = `/${city}`
   if (pathname === '/' || pathname === '') return `${prefix}${query}`
   return `${prefix}${pathname.startsWith('/') ? pathname : `/${pathname}`}${query}`
 }
 
 export function barePath(pathname: string): string {
-  for (const prefix of PREFIXES) {
+  for (const prefix of CITY_PREFIXES) {
     if (pathname === prefix) return '/'
     if (pathname.startsWith(`${prefix}/`)) return pathname.slice(prefix.length)
   }

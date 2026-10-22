@@ -205,7 +205,7 @@ export function QuickScorePage() {
     <main id="main" tabIndex={-1} className="quick-score mx-auto max-w-xl px-4 pt-24 pb-16 outline-none">
       <p className="text-sm font-bold tracking-wide text-navy uppercase">House</p>
       <h1 className="mt-1 font-serif text-4xl italic sm:text-5xl">Quick score</h1>
-      <p className="mt-2 text-sm">{scored} of {total} scored. Seattle, the Eastside, Los Angeles, San Francisco, and the Peninsula.</p>
+      <p className="mt-2 text-sm">{scored} of {total} scored. Seattle, the Eastside, Los Angeles, San Francisco, the East Bay, the Peninsula, and the North Bay.</p>
       {app.announcement ? <p className="mt-3 text-sm" role="status">{app.announcement}</p> : null}
       <div
         className="quick-meter mt-3"
@@ -243,7 +243,9 @@ export function QuickScorePage() {
                   <option value="eastside">Eastside</option>
                   <option value="la">Los Angeles</option>
                   <option value="sf">San Francisco</option>
+                  <option value="eastbay">East Bay</option>
                   <option value="peninsula">Peninsula</option>
+                  <option value="northbay">North Bay</option>
                 </select>
               </label>
               <label className="field">

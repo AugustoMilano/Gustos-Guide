@@ -1,3 +1,4 @@
+import { useEffect, useRef } from 'react'
 import { motion, useReducedMotion } from 'framer-motion'
 import { useNavigate } from 'react-router-dom'
 import { areaTitle, areasFor, cityPath } from '../lib/city.ts'
@@ -10,8 +11,16 @@ export function CitySwitcher() {
   const city = useCityId()
   const navigate = useNavigate()
   const reduce = useReducedMotion()
+  const bar = useRef<HTMLDivElement>(null)
+  useEffect(() => {
+    const root = bar.current
+    const selected = root?.querySelector('[aria-pressed="true"]')
+    if (!root || !(selected instanceof HTMLElement)) return
+    const left = selected.offsetLeft - (root.clientWidth - selected.offsetWidth) / 2
+    root.scrollTo({ left: Math.max(0, left), behavior: 'auto' })
+  }, [city])
   return (
-    <div className="city-switch city-switch-bar" role="group" aria-label={`Area, ${areaTitle(city)} selected`}>
+    <div ref={bar} className="city-switch city-switch-bar" role="group" aria-label={`Area, ${areaTitle(city)} selected`}>
       {areasFor(city).filter((item) => item.ready).map((item) => {
         const on = item.id === city
         return (

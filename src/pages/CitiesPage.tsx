@@ -11,7 +11,7 @@ export function CitiesPage() {
   const memory = readRegionMemory()
   usePageMeta(
     "Choose a city · Gusto's Guide",
-    'Seattle covers the city and the Eastside. San Francisco covers the city and the Peninsula. Los Angeles is its own list.',
+    'Seattle covers the city and the Eastside. San Francisco covers the city, the East Bay, the Peninsula, and the North Bay. Los Angeles is its own list.',
   )
 
   function open(region: RegionId) {
@@ -26,7 +26,7 @@ export function CitiesPage() {
       <p className="area-kicker">Gusto's Guide</p>
       <h1 className="mt-2 font-serif text-6xl italic">Choose a city</h1>
       <p className="mt-3 max-w-xl">
-        Seattle includes the Eastside, with the coral switch once you are inside. San Francisco includes the Peninsula and South Bay the same way. Los Angeles is its own list. The city you opened last is marked.
+        Seattle includes the Eastside, with the coral switch once you are inside. San Francisco includes the East Bay, the Peninsula and South Bay, and the North Bay the same way. Los Angeles is its own list. The city you opened last is marked.
       </p>
       <div className="mt-6 grid gap-3">
         {REGIONS.map((region, index) => {

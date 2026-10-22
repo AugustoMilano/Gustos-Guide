@@ -2,7 +2,7 @@ import { useEffect, useRef, useState, type RefObject } from 'react'
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
 import { dragSheet } from '../lib/motion.ts'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
-import { areaPhrase, areasFor, cityPath, isCityPicker, readRegionMemory, writeRegionMemory, type CityId } from '../lib/city.ts'
+import { areaName as areaLabel, areaPhrase, areasFor, CITY_PREFIXES, cityPath, isCityPicker, readRegionMemory, writeRegionMemory } from '../lib/city.ts'
 import { SearchField } from './SearchField.tsx'
 import { useCityId } from '../lib/use-city-id.ts'
 import { AreaKicker } from './AreaKicker.tsx'
@@ -52,13 +52,7 @@ function useDismiss(open: boolean, close: () => void, refs: RefObject<HTMLElemen
 const CityButton = motion.create(Link)
 const SPRING = { type: 'spring' as const, stiffness: 420, damping: 32 }
 
-function citySwitchLabel(city: CityId) {
-  if (city === 'eastside') return 'Eastside'
-  if (city === 'la') return 'Los Angeles'
-  if (city === 'sf') return 'San Francisco'
-  if (city === 'peninsula') return 'Peninsula'
-  return 'Seattle'
-}
+const HOME_PATHS = new Set(['/', ...CITY_PREFIXES])
 
 function OfflineBanner() {
   const [offline, setOffline] = useState(() => typeof navigator !== 'undefined' && !navigator.onLine)
@@ -113,7 +107,7 @@ export function Header() {
   const [moreRefs] = useState(() => [morePanel, moreButton])
   const reduceMotion = useReducedMotion()
   const [scrolled, setScrolled] = useState(false)
-  const [onHero, setOnHero] = useState(() => ['/', '/seattle', '/eastside', '/la', '/sf', '/peninsula'].includes(location.pathname))
+  const [onHero, setOnHero] = useState(() => HOME_PATHS.has(location.pathname))
   const route = `${location.pathname}${location.search}`
 
   useEffect(() => {
@@ -186,7 +180,7 @@ export function Header() {
             <CityButton
               to="/cities"
               className="region-back"
-              aria-label={`Switch city, now ${citySwitchLabel(city)}`}
+              aria-label={`Switch city, now ${areaLabel(city)}`}
               initial="rest"
               whileHover={reduceMotion ? undefined : 'hover'}
               whileTap={reduceMotion ? undefined : 'press'}
@@ -211,7 +205,7 @@ export function Header() {
                   <path d="M15 6 9 12l6 6" />
                 </svg>
               </motion.span>
-              {citySwitchLabel(city)}
+              {areaLabel(city)}
             </CityButton>
           )}
         </div>

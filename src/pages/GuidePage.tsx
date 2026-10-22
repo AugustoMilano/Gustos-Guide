@@ -19,6 +19,12 @@ import { originCanonical } from '../lib/site.ts'
 import { useApp } from '../state/AppState.tsx'
 import type { Guide, SlimPlace, VisitStatus } from '../types.ts'
 
+/** Neighborhood lists that moved when East Bay became its own area. */
+const GUIDE_MOVED: Record<string, string> = {
+  'peninsula-fremont': 'eastbay-fremont',
+  'peninsula-pleasanton': 'eastbay-pleasanton',
+}
+
 export function GuidePage() {
   const { slug = '' } = useParams()
   const urlCity = useCityId()
@@ -96,6 +102,11 @@ export function GuidePage() {
   })
 
   const summary = catalog.guides.find((item) => item.slug === slug)
+  const movedSlug = GUIDE_MOVED[slug]
+  const moved = movedSlug ? catalog.guides.find((item) => item.slug === movedSlug) : undefined
+  if (moved?.city) {
+    return <Navigate to={cityPath(`/guide/${moved.slug}`, moved.city)} replace />
+  }
   if (summary?.city && summary.city !== urlCity) {
     return <Navigate to={cityPath(`/guide/${summary.slug}`, summary.city)} replace />
   }

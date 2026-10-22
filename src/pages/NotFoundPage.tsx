@@ -1,7 +1,7 @@
 import { useState, type FormEvent } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { AreaKicker } from '../components/AreaKicker.tsx'
-import { areaPhrase, cityPath } from '../lib/city.ts'
+import { areaPhrase, CITY_PREFIXES, cityPath } from '../lib/city.ts'
 import { useCityId } from '../lib/use-city-id.ts'
 import { usePageMeta } from '../lib/meta.ts'
 
@@ -16,7 +16,8 @@ export function NotFoundPage() {
     const q = query.trim()
     const path = q ? `/search?q=${encodeURIComponent(q)}` : '/search'
     // Unprefixed misses stay on the Seattle search URL the rest of the site already uses.
-    const prefixed = ['/la', '/eastside', '/seattle', '/peninsula', '/sf'].some((prefix) => window.location.hash.includes(prefix))
+    const hash = window.location.hash
+    const prefixed = CITY_PREFIXES.some((prefix) => hash.includes(prefix))
     navigate(prefixed ? cityPath(path, city) : path)
   }
 
