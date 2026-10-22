@@ -3462,10 +3462,12 @@ img.is-pending,
 
 .guide-entry {
   scroll-margin-top: calc(var(--header-offset) + 0.75rem);
+  padding: var(--space-5);
 }
 
-.guide-entry.is-hot {
-  box-shadow: inset 3px 0 0 #ff5330;
+.guide-entry.is-hot,
+.explore-card.is-hot {
+  box-shadow: inset 4px 0 0 var(--color-coral), 0 10px 28px rgb(20 31 77 / 8%);
 }
 
 .guide-sticky {
@@ -3522,14 +3524,27 @@ img.is-pending,
 .place-actions,
 .action-row {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(8.5rem, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: var(--space-2);
   align-items: stretch;
+}
+
+@media (min-width: 768px) {
+  .guide-entry .action-row,
+  .place-identity .action-row,
+  .place-actions {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
 }
 
 .place-actions .btn,
 .action-row .btn {
   width: 100%;
+  height: 44px;
+  min-height: 44px;
+  padding: 0 10px;
+  line-height: 1.15;
+  white-space: normal;
 }
 
 .score-line {
@@ -3751,10 +3766,6 @@ img.is-pending,
 
 .explore-bar { top: 0; }
 .explore-filters { top: 4.4rem; }
-
-.explore-card.is-hot {
-  box-shadow: inset 3px 0 0 #ff5330;
-}
 
 .btn,
 .chip,
@@ -4266,7 +4277,7 @@ mark {
 }
 
 .explore-card {
-  padding: var(--row-pad);
+  padding: var(--space-2) var(--space-5);
 }
 
 .explore-list .panel-pad {

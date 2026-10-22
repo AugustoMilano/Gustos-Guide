@@ -85,7 +85,11 @@ export function compareCheapEats(
   return (a.name || '').localeCompare(b.name || '')
 }
 
-/** Top 25 open $ places. His score, then Yelp rating, then Yelp review count. */
+/**
+ * Top 25 open $ places when no stored list is usable.
+ * Gusto's Score descending. Unscored places stay after scored ones.
+ * Ties keep the catalog order this list was filtered from.
+ */
 export function cheapEatsFor(
   places: SlimPlace[],
   city: CityId,
@@ -93,7 +97,16 @@ export function cheapEatsFor(
 ): SlimPlace[] {
   return places
     .filter((place) => collectionCity(place) === city && isCheapEat(place))
-    .sort((a, b) => compareCheapEats(a, b, score))
+    .sort((a, b) => {
+      const aRaw = score(a.id)
+      const bRaw = score(b.id)
+      const aHouse = typeof aRaw === 'number' ? aRaw : null
+      const bHouse = typeof bRaw === 'number' ? bRaw : null
+      if (aHouse == null && bHouse != null) return 1
+      if (aHouse != null && bHouse == null) return -1
+      if (aHouse != null && bHouse != null && aHouse !== bHouse) return bHouse - aHouse
+      return 0
+    })
     .slice(0, FLAGSHIP_AIM)
 }
 

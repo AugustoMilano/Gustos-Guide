@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-20",
+  "updatedAt": "2026-10-22",
   "places": [
     {
       "id": "katana",
@@ -8401,6 +8401,145 @@
       "phone": "+1 (740) 866-1328",
       "website": "https://communitygoodsmenu.us",
       "yelpSlug": "community-goods-los-angeles"
+    },
+    {
+      "id": "easy-street-burgers",
+      "city": "la",
+      "name": "Easy Street Burgers",
+      "neighborhood": "Studio City",
+      "address": "4143 Lankershim Blvd, Studio City, CA 91602",
+      "lat": 34.1452873,
+      "lng": -118.3630189,
+      "cuisine": [
+        "Burgers"
+      ],
+      "placeType": "restaurant",
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "start": 660,
+          "end": 1380
+        }
+      ],
+      "gustoScore": null,
+      "website": "https://easystreetburgers.com/",
+      "phone": "+1 (818) 966-3009",
+      "appleMapsUrl": "https://maps.apple.com/?daddr=34.1452873,-118.3630189&q=Easy%20Street%20Burgers",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=7669782249312720561",
+      "guideSlugs": [],
+      "muid": "7669782249312720561",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-10-22",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Burgers at Easy Street Burgers",
+          "credit": "Illustration"
+        }
+      ]
+    },
+    {
+      "id": "daves-hot-chicken",
+      "city": "la",
+      "name": "Dave's Hot Chicken",
+      "neighborhood": "East Hollywood",
+      "address": "970 N Western Ave, Los Angeles, CA 90029",
+      "lat": 34.0880373,
+      "lng": -118.3089973,
+      "cuisine": [
+        "Chicken"
+      ],
+      "placeType": "restaurant",
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "start": 600,
+          "end": 1440
+        }
+      ],
+      "gustoScore": null,
+      "website": "https://restaurants.daveshotchicken.com/ca/los-angeles/best-hot-chicken-sandwich-on-western-ave/",
+      "phone": "+1 (323) 536-9711",
+      "appleMapsUrl": "https://maps.apple.com/?daddr=34.0880373,-118.3089973&q=Dave's%20Hot%20Chicken",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=14119141921696136180",
+      "guideSlugs": [],
+      "muid": "14119141921696136180",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-10-22",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Chicken at Dave's Hot Chicken",
+          "credit": "Illustration"
+        }
+      ]
+    },
+    {
+      "id": "marmalade-cafe",
+      "city": "la",
+      "name": "Marmalade Cafe",
+      "neighborhood": "Calabasas",
+      "address": "4783 Commons Way, Unit E, Calabasas, CA 91302",
+      "lat": 34.1531568,
+      "lng": -118.6462549,
+      "cuisine": [
+        "New American"
+      ],
+      "placeType": "restaurant",
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [],
+      "gustoScore": null,
+      "website": "https://marmaladecafe.com",
+      "phone": "+1 (818) 225-9092",
+      "appleMapsUrl": "https://maps.apple.com/?daddr=34.1531568,-118.6462549&q=Marmalade%20Cafe",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=2035593264181625167",
+      "guideSlugs": [],
+      "muid": "2035593264181625167",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-10-22",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting New American at Marmalade Cafe",
+          "credit": "Illustration"
+        }
+      ]
     }
   ],
   "guides": [
@@ -8414,6 +8553,24 @@
       "ranked": false,
       "city": "la",
       "entries": [
+        {
+          "placeId": "heavy-handed",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "elephante",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "blue-plate-taco",
+          "pullQuote": "Blue Plate Taco sits at 1515 Ocean Ave. Tacos, Santa Monica.",
+          "blurb": "Blue Plate Taco sits at 1515 Ocean Ave. Tacos, Santa Monica.",
+          "copySource": "draft"
+        },
         {
           "placeId": "tar-roses",
           "pullQuote": "Californian from Tar & Roses at 602 Santa Monica Blvd, Santa Monica.",
@@ -8448,12 +8605,6 @@
           "placeId": "layla-bagels-coffee",
           "pullQuote": "1614 Ocean Park Blvd — Layla Bagels & Coffee, Bagels, Santa Monica.",
           "blurb": "1614 Ocean Park Blvd — Layla Bagels & Coffee, Bagels, Santa Monica.",
-          "copySource": "draft"
-        },
-        {
-          "placeId": "heavy-handed",
-          "pullQuote": "",
-          "blurb": "",
           "copySource": "draft"
         },
         {
@@ -8529,12 +8680,6 @@
           "copySource": "draft"
         },
         {
-          "placeId": "blue-plate-taco",
-          "pullQuote": "Blue Plate Taco sits at 1515 Ocean Ave. Tacos, Santa Monica.",
-          "blurb": "Blue Plate Taco sits at 1515 Ocean Ave. Tacos, Santa Monica.",
-          "copySource": "draft"
-        },
-        {
           "placeId": "melisse",
           "pullQuote": "Mélisse sits at 1104 Wilshire Blvd. Californian, Santa Monica.",
           "blurb": "Mélisse sits at 1104 Wilshire Blvd. Californian, Santa Monica.",
@@ -8544,12 +8689,6 @@
           "placeId": "water-grill",
           "pullQuote": "1401 Ocean Ave — Water Grill, Seafood, Santa Monica.",
           "blurb": "1401 Ocean Ave — Water Grill, Seafood, Santa Monica.",
-          "copySource": "draft"
-        },
-        {
-          "placeId": "elephante",
-          "pullQuote": "",
-          "blurb": "",
           "copySource": "draft"
         }
       ]
@@ -8564,6 +8703,12 @@
       "ranked": false,
       "city": "la",
       "entries": [
+        {
+          "placeId": "catch",
+          "pullQuote": "Seafood from CATCH at 8715 Melrose Ave, West Hollywood.",
+          "blurb": "Seafood from CATCH at 8715 Melrose Ave, West Hollywood.",
+          "copySource": "draft"
+        },
         {
           "placeId": "katana",
           "pullQuote": "Katana sits at 8439 W Sunset Blvd. Sushi, West Hollywood.",
@@ -8586,12 +8731,6 @@
           "placeId": "mamie",
           "pullQuote": "7900 Santa Monica Blvd — Mamie, Italian, West Hollywood.",
           "blurb": "7900 Santa Monica Blvd — Mamie, Italian, West Hollywood.",
-          "copySource": "draft"
-        },
-        {
-          "placeId": "catch",
-          "pullQuote": "Seafood from CATCH at 8715 Melrose Ave, West Hollywood.",
-          "blurb": "Seafood from CATCH at 8715 Melrose Ave, West Hollywood.",
           "copySource": "draft"
         },
         {
@@ -8685,6 +8824,12 @@
       "city": "la",
       "entries": [
         {
+          "placeId": "spago",
+          "pullQuote": "Spago, 176 N Canon Dr. Californian in Beverly Hills.",
+          "blurb": "Spago, 176 N Canon Dr. Californian in Beverly Hills.",
+          "copySource": "draft"
+        },
+        {
           "placeId": "parakeet-cafe",
           "pullQuote": "",
           "blurb": "",
@@ -8760,12 +8905,6 @@
           "placeId": "the-cheese-store",
           "pullQuote": "The Cheese Store sits at 9705 S Santa Monica Blvd. Cheese, Beverly Hills.",
           "blurb": "The Cheese Store sits at 9705 S Santa Monica Blvd. Cheese, Beverly Hills.",
-          "copySource": "draft"
-        },
-        {
-          "placeId": "spago",
-          "pullQuote": "Spago, 176 N Canon Dr. Californian in Beverly Hills.",
-          "blurb": "Spago, 176 N Canon Dr. Californian in Beverly Hills.",
           "copySource": "draft"
         }
       ]
@@ -8877,15 +9016,27 @@
       "city": "la",
       "entries": [
         {
-          "placeId": "allantico-vinaio",
+          "placeId": "venice-flake",
+          "pullQuote": "Venice Flake sits at 513 Rose Ave. Brunch, Venice.",
+          "blurb": "Venice Flake sits at 513 Rose Ave. Brunch, Venice.",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "levain-bakery",
           "pullQuote": "",
           "blurb": "",
           "copySource": "draft"
         },
         {
-          "placeId": "venice-flake",
-          "pullQuote": "Venice Flake sits at 513 Rose Ave. Brunch, Venice.",
-          "blurb": "Venice Flake sits at 513 Rose Ave. Brunch, Venice.",
+          "placeId": "eggslut-2",
+          "pullQuote": "Eggslut sits at 1611 Pacific Ave. Brunch, Venice.",
+          "blurb": "Eggslut sits at 1611 Pacific Ave. Brunch, Venice.",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "allantico-vinaio",
+          "pullQuote": "",
+          "blurb": "",
           "copySource": "draft"
         },
         {
@@ -8925,21 +9076,9 @@
           "copySource": "draft"
         },
         {
-          "placeId": "levain-bakery",
-          "pullQuote": "",
-          "blurb": "",
-          "copySource": "draft"
-        },
-        {
           "placeId": "barrique",
           "pullQuote": "",
           "blurb": "",
-          "copySource": "draft"
-        },
-        {
-          "placeId": "eggslut-2",
-          "pullQuote": "Eggslut sits at 1611 Pacific Ave. Brunch, Venice.",
-          "blurb": "Eggslut sits at 1611 Pacific Ave. Brunch, Venice.",
           "copySource": "draft"
         }
       ]
@@ -9021,6 +9160,12 @@
       "city": "la",
       "entries": [
         {
+          "placeId": "malibu-farm-restaurant",
+          "pullQuote": "23000 Pacific Coast Hwy — Malibu Farm Restaurant, New American, Malibu.",
+          "blurb": "23000 Pacific Coast Hwy — Malibu Farm Restaurant, New American, Malibu.",
+          "copySource": "draft"
+        },
+        {
           "placeId": "starbucks-coffee-company-2",
           "pullQuote": "Malibu address for Starbucks Coffee Company is 23755 Malibu Rd, Coffee.",
           "blurb": "Malibu address for Starbucks Coffee Company is 23755 Malibu Rd, Coffee.",
@@ -9030,12 +9175,6 @@
           "placeId": "sunlife-organics",
           "pullQuote": "SunLife Organics, 29169 Heathercliff Rd. Juice in Malibu.",
           "blurb": "SunLife Organics, 29169 Heathercliff Rd. Juice in Malibu.",
-          "copySource": "draft"
-        },
-        {
-          "placeId": "malibu-farm-restaurant",
-          "pullQuote": "23000 Pacific Coast Hwy — Malibu Farm Restaurant, New American, Malibu.",
-          "blurb": "23000 Pacific Coast Hwy — Malibu Farm Restaurant, New American, Malibu.",
           "copySource": "draft"
         },
         {
@@ -9177,6 +9316,18 @@
       "city": "la",
       "entries": [
         {
+          "placeId": "jon-vinnys",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "elephante",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
           "placeId": "pizzana",
           "pullQuote": "Pizzana, 460 N Robertson Blvd. Pizza in West Hollywood.",
           "blurb": "Pizzana, 460 N Robertson Blvd. Pizza in West Hollywood.",
@@ -9249,12 +9400,6 @@
           "copySource": "draft"
         },
         {
-          "placeId": "jon-vinnys",
-          "pullQuote": "",
-          "blurb": "",
-          "copySource": "draft"
-        },
-        {
           "placeId": "apollonias-pizzeria",
           "pullQuote": "Mid-Wilshire address for Apollonia's Pizzeria is 5176 Wilshire Blvd, Pizza.",
           "blurb": "Mid-Wilshire address for Apollonia's Pizzeria is 5176 Wilshire Blvd, Pizza.",
@@ -9295,12 +9440,6 @@
           "pullQuote": "",
           "blurb": "",
           "copySource": "draft"
-        },
-        {
-          "placeId": "elephante",
-          "pullQuote": "",
-          "blurb": "",
-          "copySource": "draft"
         }
       ]
     },
@@ -9315,6 +9454,18 @@
       "city": "la",
       "entries": [
         {
+          "placeId": "sabys-cafe",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "blue-plate-taco",
+          "pullQuote": "Blue Plate Taco sits at 1515 Ocean Ave. Tacos, Santa Monica.",
+          "blurb": "Blue Plate Taco sits at 1515 Ocean Ave. Tacos, Santa Monica.",
+          "copySource": "draft"
+        },
+        {
           "placeId": "angels-tijuana-tacos",
           "pullQuote": "Angel’s Tijuana Tacos, 1185 Sunset Blvd. Tacos in Echo Park.",
           "blurb": "Angel’s Tijuana Tacos, 1185 Sunset Blvd. Tacos in Echo Park.",
@@ -9322,12 +9473,6 @@
         },
         {
           "placeId": "javiers",
-          "pullQuote": "",
-          "blurb": "",
-          "copySource": "draft"
-        },
-        {
-          "placeId": "sabys-cafe",
           "pullQuote": "",
           "blurb": "",
           "copySource": "draft"
@@ -9342,12 +9487,6 @@
           "placeId": "casa-madera",
           "pullQuote": "Casa Madera sits at 8440 W Sunset Blvd. Mexican, West Hollywood.",
           "blurb": "Casa Madera sits at 8440 W Sunset Blvd. Mexican, West Hollywood.",
-          "copySource": "draft"
-        },
-        {
-          "placeId": "blue-plate-taco",
-          "pullQuote": "Blue Plate Taco sits at 1515 Ocean Ave. Tacos, Santa Monica.",
-          "blurb": "Blue Plate Taco sits at 1515 Ocean Ave. Tacos, Santa Monica.",
           "copySource": "draft"
         },
         {
@@ -9368,6 +9507,12 @@
       "ranked": false,
       "city": "la",
       "entries": [
+        {
+          "placeId": "levain-bakery",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
         {
           "placeId": "freddo",
           "pullQuote": "Koreatown address for Freddo is 273 S Western Ave, Gelato.",
@@ -9441,12 +9586,6 @@
           "copySource": "draft"
         },
         {
-          "placeId": "levain-bakery",
-          "pullQuote": "",
-          "blurb": "",
-          "copySource": "draft"
-        },
-        {
           "placeId": "community-goods",
           "pullQuote": "Community Goods, 710 N Edinburgh Ave. Coffee in Beverly Grove.",
           "blurb": "Community Goods, 710 N Edinburgh Ave. Coffee in Beverly Grove.",
@@ -9465,6 +9604,18 @@
       "city": "la",
       "entries": [
         {
+          "placeId": "spago",
+          "pullQuote": "Spago, 176 N Canon Dr. Californian in Beverly Hills.",
+          "blurb": "Spago, 176 N Canon Dr. Californian in Beverly Hills.",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "malibu-farm-restaurant",
+          "pullQuote": "23000 Pacific Coast Hwy — Malibu Farm Restaurant, New American, Malibu.",
+          "blurb": "23000 Pacific Coast Hwy — Malibu Farm Restaurant, New American, Malibu.",
+          "copySource": "draft"
+        },
+        {
           "placeId": "katana",
           "pullQuote": "Katana sits at 8439 W Sunset Blvd. Sushi, West Hollywood.",
           "blurb": "Katana sits at 8439 W Sunset Blvd. Sushi, West Hollywood.",
@@ -9480,12 +9631,6 @@
           "placeId": "the-penthouse",
           "pullQuote": "The Penthouse sits at 1111 Second St. New American, Santa Monica.",
           "blurb": "The Penthouse sits at 1111 Second St. New American, Santa Monica.",
-          "copySource": "draft"
-        },
-        {
-          "placeId": "malibu-farm-restaurant",
-          "pullQuote": "23000 Pacific Coast Hwy — Malibu Farm Restaurant, New American, Malibu.",
-          "blurb": "23000 Pacific Coast Hwy — Malibu Farm Restaurant, New American, Malibu.",
           "copySource": "draft"
         },
         {
@@ -9612,12 +9757,6 @@
           "placeId": "saltie-girl",
           "pullQuote": "Saltie Girl sits at 8615 W Sunset Blvd. Seafood, West Hollywood.",
           "blurb": "Saltie Girl sits at 8615 W Sunset Blvd. Seafood, West Hollywood.",
-          "copySource": "draft"
-        },
-        {
-          "placeId": "spago",
-          "pullQuote": "Spago, 176 N Canon Dr. Californian in Beverly Hills.",
-          "blurb": "Spago, 176 N Canon Dr. Californian in Beverly Hills.",
           "copySource": "draft"
         },
         {

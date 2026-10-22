@@ -287,7 +287,7 @@ export function GuideEntryCard({
   }
   const hotClass = hot ? ' is-hot' : ''
   const compact = (
-    <article id={`entry-${place.id}`} className={`guide-entry scroll-mt-24 border-t-2 border-ink pt-5${hotClass}`} {...point}>
+    <article id={`entry-${place.id}`} className={`guide-entry scroll-mt-24 border-t-2 border-ink${hotClass}`} {...point}>
       {title}
       <div className="mt-3 flex items-start gap-3">
         <figure className="w-24 shrink-0">
@@ -326,7 +326,7 @@ export function GuideEntryCard({
   const stagger = Math.min(index, 6) * 0.05
   if (artOnly) return index === 0 ? compact : <Reveal delay={stagger}>{compact}</Reveal>
   const body = layout === 0 ? (
-    <article id={`entry-${place.id}`} className={`guide-entry scroll-mt-24 border-t-2 border-ink pt-5${hotClass}`} {...point}>
+    <article id={`entry-${place.id}`} className={`guide-entry scroll-mt-24 border-t-2 border-ink${hotClass}`} {...point}>
       {title}
       <div className="mt-4">{image}</div>
       {rest}
@@ -334,7 +334,7 @@ export function GuideEntryCard({
   ) : (
     <article
       id={`entry-${place.id}`}
-      className={`guide-entry scroll-mt-24 grid gap-4 border-t-2 border-ink pt-5 md:grid-cols-2 md:items-center md:gap-6${hotClass}`}
+      className={`guide-entry scroll-mt-24 grid gap-4 border-t-2 border-ink md:grid-cols-2 md:items-center md:gap-6${hotClass}`}
       {...point}
     >
       {layout === 2 ? copy : image}
