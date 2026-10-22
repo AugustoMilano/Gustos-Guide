@@ -280,6 +280,12 @@ test.describe('controls', () => {
     await expect(page.locator('.site-header')).not.toHaveClass(/on-hero/)
     await expect.poll(() => page.evaluate(() => document.documentElement.dataset.status)).toBe('cream')
     await expect.poll(() => page.evaluate(() => getComputedStyle(document.documentElement).backgroundColor)).toMatch(/255,\s*250,\s*243/)
+    await expect.poll(() => page.evaluate(() => {
+      const style = getComputedStyle(document.querySelector('.site-header')!)
+      const solid = style.backgroundColor === 'rgb(255, 250, 243)'
+      const flat = style.backdropFilter === 'none' || style.backdropFilter === ''
+      return solid && flat
+    })).toBe(true)
     await expect.poll(() => page.evaluate(() => getComputedStyle(document.querySelector('.site-header')!, '::before').backgroundColor)).toMatch(/255,\s*250,\s*243/)
     await expect.poll(() => page.evaluate(() => [...document.querySelectorAll('meta[name="theme-color"]')].every((node) => node.getAttribute('content') === '#FFFAF3'))).toBe(true)
     await tap(page.locator('.back-to-top'))
