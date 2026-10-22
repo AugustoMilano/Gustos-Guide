@@ -15,6 +15,7 @@ function guideIndexTitle(city: string): string {
   if (city === 'peninsula') return 'Peninsula guides'
   if (city === 'eastbay') return 'East Bay guides'
   if (city === 'northbay') return 'North Bay guides'
+  if (city === 'sandiego') return 'San Diego guides'
   if (city === 'sf') return 'San Francisco guides'
   if (city === 'eastside') return 'Eastside guides'
   return 'Seattle guides'
@@ -26,6 +27,7 @@ function guideIndexMeta(city: string): string {
   if (city === 'peninsula') return 'Peninsula and South Bay guides, grouped by city.'
   if (city === 'eastbay') return 'East Bay guides for Berkeley, Fremont, and Pleasanton.'
   if (city === 'northbay') return 'North Bay guides for Sausalito, Tiburon, Corte Madera, and Larkspur.'
+  if (city === 'sandiego') return 'San Diego guides for Little Italy, Coronado, La Jolla, North Park, and East Village.'
   if (city === 'eastside') return 'Eastside guides for Bellevue, the Kirkland waterfront, Redmond, Issaquah, and Bothell.'
   return 'Seattle guides for pizza, neighborhoods, late nights, and the bars worth crossing town for.'
 }
@@ -36,6 +38,7 @@ function guideIndexDek(city: string): string {
   if (city === 'peninsula') return 'Palo Alto, Santa Clara, San Jose, and the other cities on this list.'
   if (city === 'eastbay') return 'Berkeley, Fremont, and Pleasanton.'
   if (city === 'northbay') return 'Sausalito, Tiburon, Corte Madera, and Larkspur.'
+  if (city === 'sandiego') return 'Little Italy, Coronado, La Jolla, North Park, and East Village.'
   if (city === 'eastside') return 'Bellevue, Kirkland, Redmond, Issaquah, and Bothell.'
   return `Updated ${catalog.updatedAt}. Pizza, neighborhoods, late nights, and the bars worth crossing town for.`
 }

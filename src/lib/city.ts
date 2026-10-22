@@ -1,5 +1,5 @@
-export type CityId = 'seattle' | 'eastside' | 'la' | 'sf' | 'eastbay' | 'peninsula' | 'northbay'
-export type RegionId = 'seattle' | 'la' | 'sf'
+export type CityId = 'seattle' | 'eastside' | 'la' | 'sf' | 'eastbay' | 'peninsula' | 'northbay' | 'sandiego'
+export type RegionId = 'seattle' | 'la' | 'sf' | 'sandiego'
 
 export type City = {
   id: CityId
@@ -16,6 +16,7 @@ const AREAS: Record<CityId, City> = {
   eastbay: { id: 'eastbay', name: 'East Bay', ready: true },
   peninsula: { id: 'peninsula', name: 'Peninsula', ready: true },
   northbay: { id: 'northbay', name: 'North Bay', ready: true },
+  sandiego: { id: 'sandiego', name: 'San Diego', ready: true },
 }
 
 export type Region = {
@@ -34,6 +35,7 @@ export const REGIONS: Region[] = [
     detail: 'San Francisco, East Bay, Peninsula, North Bay',
     areas: ['sf', 'eastbay', 'peninsula', 'northbay'],
   },
+  { id: 'sandiego', name: 'San Diego', detail: 'San Diego, La Jolla, Coronado, North County', areas: ['sandiego'] },
 ]
 
 export const ACTIVE_CITY: CityId = 'seattle'
@@ -56,6 +58,7 @@ export function asCityId(value: string | undefined | null): CityId {
 
 export function regionOf(city: CityId): RegionId {
   if (city === 'la') return 'la'
+  if (city === 'sandiego') return 'sandiego'
   if (BAY.has(city)) return 'sf'
   return 'seattle'
 }
@@ -72,6 +75,7 @@ export function areaName(city: CityId): string {
 /** Name of the region, even when the open area is the Eastside or the East Bay. */
 export function regionName(city: CityId): string {
   if (city === 'la') return 'Los Angeles'
+  if (city === 'sandiego') return 'San Diego'
   if (BAY.has(city)) return 'San Francisco'
   return 'Seattle'
 }
@@ -83,6 +87,7 @@ export function areaTitle(city: CityId): string {
   if (city === 'eastbay') return 'The East Bay'
   if (city === 'peninsula') return 'The Peninsula'
   if (city === 'northbay') return 'The North Bay'
+  if (city === 'sandiego') return 'San Diego'
   return 'Seattle'
 }
 
@@ -94,6 +99,7 @@ export function areaPhrase(city: CityId): string {
   if (city === 'eastbay') return 'the East Bay'
   if (city === 'peninsula') return 'the Peninsula'
   if (city === 'northbay') return 'the North Bay'
+  if (city === 'sandiego') return 'San Diego'
   return 'Seattle'
 }
 

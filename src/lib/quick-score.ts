@@ -12,6 +12,7 @@ const CITY_ORDER = {
   eastbay: 4,
   peninsula: 5,
   northbay: 6,
+  sandiego: 7,
 } as const satisfies Record<CityId, number>
 
 export function cityOf(place: { city?: string }): CityId {

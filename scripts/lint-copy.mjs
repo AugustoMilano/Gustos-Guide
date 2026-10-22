@@ -289,6 +289,7 @@ function fromFiles() {
   const eastside = JSON.parse(readFileSync(join(root, 'src/content/eastside.json'), 'utf8'))
   const la = JSON.parse(readFileSync(join(root, 'src/content/la.json'), 'utf8'))
   const sf = JSON.parse(readFileSync(join(root, 'src/content/sf.json'), 'utf8'))
+  const sd = JSON.parse(readFileSync(join(root, 'src/content/sd.json'), 'utf8'))
   const dive = new Set(
     guides.find((guide) => guide.slug === 'fun-dive-bars')?.entries.map((entry) => entry.blurb) ?? [],
   )
@@ -307,18 +308,20 @@ function fromFiles() {
       })),
     ),
   ]
-  const regional = [...eastside.places, ...la.places, ...sf.places]
+  const regional = [...eastside.places, ...la.places, ...sf.places, ...sd.places]
   const regionalTexts = [
     ...regional.map((place) => place.oneLiner),
     ...eastside.guides.flatMap((guide) => guide.entries.map((entry) => entry.pullQuote)),
     ...la.guides.flatMap((guide) => guide.entries.map((entry) => entry.pullQuote)),
     ...sf.guides.flatMap((guide) => guide.entries.map((entry) => entry.pullQuote)),
+    ...sd.guides.flatMap((guide) => guide.entries.map((entry) => entry.pullQuote)),
   ]
   const regionalBlurbs = [
     ...regional.map((place) => place.blurb),
     ...eastside.guides.flatMap((guide) => guide.entries.map((entry) => entry.blurb)),
     ...la.guides.flatMap((guide) => guide.entries.map((entry) => entry.blurb)),
     ...sf.guides.flatMap((guide) => guide.entries.map((entry) => entry.blurb)),
+    ...sd.guides.flatMap((guide) => guide.entries.map((entry) => entry.blurb)),
   ]
   for (const text of regionalTexts) {
     const line = String(text || '').trim()

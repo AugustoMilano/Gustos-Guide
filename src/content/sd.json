@@ -1,0 +1,4307 @@
+{
+  "updatedAt": "2026-10-22",
+  "places": [
+    {
+      "id": "a-r-valentien",
+      "city": "sandiego",
+      "name": "A.R. Valentien",
+      "neighborhood": "Torrey Pines",
+      "address": "11480 N Torrey Pines Rd, La Jolla, CA 92037",
+      "lat": 32.9040038,
+      "lng": -117.2444837,
+      "cuisine": [
+        "Fine dining"
+      ],
+      "placeType": "restaurant",
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "start": 480,
+          "end": 1380
+        },
+        {
+          "days": [
+            5,
+            6
+          ],
+          "start": 480,
+          "end": 1440
+        }
+      ],
+      "gustoScore": null,
+      "appleMapsUrl": "https://maps.apple.com/?daddr=32.9040038,-117.2444837&q=A.R.%20Valentien",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=4340113628441536143",
+      "guideSlugs": [
+        "sd-new-american"
+      ],
+      "muid": "4340113628441536143",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-10-22",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Fine dining at A.R. Valentien",
+          "credit": "Illustration"
+        }
+      ],
+      "phone": "+1 (858) 777-6635",
+      "website": "https://www.lodgetorreypines.com/ar-valentien"
+    },
+    {
+      "id": "market-restaurant-bar",
+      "city": "sandiego",
+      "name": "Market Restaurant + Bar",
+      "neighborhood": "Del Mar",
+      "address": "3702 Via de la Valle, Del Mar, CA 92014",
+      "lat": 32.9830372,
+      "lng": -117.230144,
+      "cuisine": [
+        "New American"
+      ],
+      "placeType": "restaurant",
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            0,
+            2,
+            3,
+            4
+          ],
+          "start": 1020,
+          "end": 1290
+        },
+        {
+          "days": [
+            5,
+            6
+          ],
+          "start": 1020,
+          "end": 1320
+        }
+      ],
+      "gustoScore": null,
+      "appleMapsUrl": "https://maps.apple.com/?daddr=32.9830372,-117.230144&q=Market%20Restaurant%20%2B%20Bar",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=2659127510969177030",
+      "guideSlugs": [
+        "sd-new-american"
+      ],
+      "muid": "2659127510969177030",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-10-22",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting New American at Market Restaurant + Bar",
+          "credit": "Illustration"
+        }
+      ],
+      "phone": "+1 (858) 523-0007",
+      "website": "http://marketdelmar.com"
+    },
+    {
+      "id": "paradisaea",
+      "city": "sandiego",
+      "name": "Paradisaea",
+      "neighborhood": "La Jolla",
+      "address": "5680 La Jolla Blvd, La Jolla, CA 92037",
+      "lat": 32.8153593,
+      "lng": -117.2707891,
+      "cuisine": [
+        "New American"
+      ],
+      "placeType": "restaurant",
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            0,
+            2,
+            3,
+            4
+          ],
+          "start": 960,
+          "end": 1260
+        },
+        {
+          "days": [
+            5,
+            6
+          ],
+          "start": 960,
+          "end": 1320
+        }
+      ],
+      "gustoScore": null,
+      "appleMapsUrl": "https://maps.apple.com/?daddr=32.8153593,-117.2707891&q=Paradisaea",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=455037696111828205",
+      "guideSlugs": [
+        "sd-la-jolla",
+        "sd-new-american"
+      ],
+      "muid": "455037696111828205",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-10-22",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting New American at Paradisaea",
+          "credit": "Illustration"
+        }
+      ],
+      "phone": "+1 (858) 255-8011",
+      "website": "https://www.paradisaea.com"
+    },
+    {
+      "id": "cowboy-star",
+      "city": "sandiego",
+      "name": "Cowboy Star",
+      "neighborhood": "Gaslamp",
+      "address": "640 10th Ave, San Diego, CA 92101",
+      "lat": 32.7121367,
+      "lng": -117.1557891,
+      "cuisine": [
+        "New American"
+      ],
+      "placeType": "restaurant",
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            0
+          ],
+          "start": 960,
+          "end": 1290
+        },
+        {
+          "days": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "start": 900,
+          "end": 1350
+        },
+        {
+          "days": [
+            6
+          ],
+          "start": 960,
+          "end": 1350
+        }
+      ],
+      "gustoScore": null,
+      "appleMapsUrl": "https://maps.apple.com/?daddr=32.7121367,-117.1557891&q=Cowboy%20Star",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=11470877853509806197",
+      "guideSlugs": [
+        "sd-new-american"
+      ],
+      "muid": "11470877853509806197",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-10-22",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting New American at Cowboy Star",
+          "credit": "Illustration"
+        }
+      ],
+      "phone": "+1 (619) 450-5880",
+      "website": "https://www.cowboystarsd.com"
+    },
+    {
+      "id": "raised-by-wolves",
+      "city": "sandiego",
+      "name": "Raised By Wolves",
+      "neighborhood": "University City",
+      "address": "4301 La Jolla Village Dr, Unit 2030",
+      "lat": 32.872142,
+      "lng": -117.2128275,
+      "cuisine": [
+        "Cocktails"
+      ],
+      "placeType": "bar",
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            0,
+            6
+          ],
+          "start": 0,
+          "end": 60
+        },
+        {
+          "days": [
+            0
+          ],
+          "start": 900,
+          "end": 1380
+        },
+        {
+          "days": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "start": 960,
+          "end": 1380
+        },
+        {
+          "days": [
+            5,
+            6
+          ],
+          "start": 900,
+          "end": 1440
+        }
+      ],
+      "gustoScore": null,
+      "appleMapsUrl": "https://maps.apple.com/?daddr=32.872142,-117.2128275&q=Raised%20By%20Wolves",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=5918718280026415320",
+      "guideSlugs": [],
+      "muid": "5918718280026415320",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-10-22",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Cocktails at Raised By Wolves",
+          "credit": "Illustration"
+        }
+      ],
+      "phone": "+1 (619) 629-0243",
+      "website": "https://raisedxwolves.com"
+    },
+    {
+      "id": "marisi",
+      "city": "sandiego",
+      "name": "Marisi",
+      "neighborhood": "La Jolla",
+      "address": "1044 Wall St, La Jolla, CA 92037",
+      "lat": 32.8471174,
+      "lng": -117.2735361,
+      "cuisine": [
+        "Italian"
+      ],
+      "placeType": "restaurant",
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            0,
+            6
+          ],
+          "start": 660,
+          "end": 840
+        },
+        {
+          "days": [
+            0
+          ],
+          "start": 990,
+          "end": 1260
+        },
+        {
+          "days": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "start": 1020,
+          "end": 1260
+        },
+        {
+          "days": [
+            5,
+            6
+          ],
+          "start": 990,
+          "end": 1320
+        }
+      ],
+      "gustoScore": null,
+      "appleMapsUrl": "https://maps.apple.com/?daddr=32.8471174,-117.2735361&q=Marisi",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=7499744486729838598",
+      "guideSlugs": [
+        "sd-la-jolla",
+        "sd-italian"
+      ],
+      "muid": "7499744486729838598",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-10-22",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Italian at Marisi",
+          "credit": "Illustration"
+        }
+      ],
+      "phone": "+1 (858) 401-6787",
+      "website": "https://www.marisilajolla.com/"
+    },
+    {
+      "id": "queenstown-public-house",
+      "city": "sandiego",
+      "name": "Queenstown Public House",
+      "neighborhood": "Little Italy",
+      "address": "1557 Columbia St, San Diego, CA 92101",
+      "lat": 32.7217998,
+      "lng": -117.1671939,
+      "cuisine": [
+        "American"
+      ],
+      "placeType": "restaurant",
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            0
+          ],
+          "start": 540,
+          "end": 1260
+        },
+        {
+          "days": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "start": 660,
+          "end": 1260
+        },
+        {
+          "days": [
+            5
+          ],
+          "start": 660,
+          "end": 1320
+        },
+        {
+          "days": [
+            6
+          ],
+          "start": 540,
+          "end": 1320
+        }
+      ],
+      "gustoScore": null,
+      "appleMapsUrl": "https://maps.apple.com/?daddr=32.7217998,-117.1671939&q=Queenstown%20Public%20House",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=10200452758997595503",
+      "guideSlugs": [
+        "sd-little-italy",
+        "sd-new-american"
+      ],
+      "muid": "10200452758997595503",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {
+        "yelp": "YLCrLRRDiec35o2FmBxipA"
+      },
+      "copySource": "draft",
+      "updatedAt": "2026-10-22",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting American at Queenstown Public House",
+          "credit": "Illustration"
+        }
+      ],
+      "price": 2,
+      "phone": "+1 (619) 546-0444",
+      "website": "https://queenstownpublichouse.com",
+      "publicRating": {
+        "value": 4.2,
+        "count": 2915,
+        "source": "Yelp"
+      },
+      "yelpSlug": "YLCrLRRDiec35o2FmBxipA"
+    },
+    {
+      "id": "la-perla-cocina-mexicana-3",
+      "city": "sandiego",
+      "name": "La Perla Cocina Mexicana #3",
+      "neighborhood": "Roseville-Fleet Ridge",
+      "address": "1224 Rosecrans St, San Diego, CA 92106",
+      "lat": 32.7231718,
+      "lng": -117.2309929,
+      "cuisine": [
+        "Mexican"
+      ],
+      "placeType": "restaurant",
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "start": 480,
+          "end": 1200
+        },
+        {
+          "days": [
+            6
+          ],
+          "start": 480,
+          "end": 1080
+        }
+      ],
+      "gustoScore": null,
+      "appleMapsUrl": "https://maps.apple.com/?daddr=32.7231718,-117.2309929&q=La%20Perla%20Cocina%20Mexicana%20%233",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=11078731675688830723",
+      "guideSlugs": [
+        "sd-mexican"
+      ],
+      "muid": "11078731675688830723",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-10-22",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Mexican at La Perla Cocina Mexicana #3",
+          "credit": "Illustration"
+        }
+      ],
+      "phone": "+1 (619) 795-0063",
+      "website": "https://www.facebook.com/people/La-Perla-Cocina-Mexicana-3/100054619801594/"
+    },
+    {
+      "id": "cesarina",
+      "city": "sandiego",
+      "name": "Cesarina",
+      "neighborhood": "Point Loma Heights",
+      "address": "4161 Voltaire St, San Diego, CA 92107",
+      "lat": 32.7433292,
+      "lng": -117.2345924,
+      "cuisine": [
+        "Italian"
+      ],
+      "placeType": "restaurant",
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "start": 720,
+          "end": 900
+        },
+        {
+          "days": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "start": 960,
+          "end": 1290
+        },
+        {
+          "days": [
+            5
+          ],
+          "start": 720,
+          "end": 1290
+        },
+        {
+          "days": [
+            0,
+            6
+          ],
+          "start": 660,
+          "end": 1290
+        }
+      ],
+      "gustoScore": null,
+      "appleMapsUrl": "https://maps.apple.com/?daddr=32.7433292,-117.2345924&q=Cesarina",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=14490252183106204634",
+      "guideSlugs": [
+        "sd-italian"
+      ],
+      "muid": "14490252183106204634",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-10-22",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Italian at Cesarina",
+          "credit": "Illustration"
+        }
+      ],
+      "phone": "+1 (619) 226-6222",
+      "website": "https://cesarinarestaurant.com"
+    },
+    {
+      "id": "barrio-dogg",
+      "city": "sandiego",
+      "name": "Barrio Dogg",
+      "neighborhood": "Barrio Logan",
+      "address": "2234 Logan Ave, San Diego, CA 92113",
+      "lat": 32.6977281,
+      "lng": -117.1385801,
+      "cuisine": [
+        "Hot dogs"
+      ],
+      "placeType": "restaurant",
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [],
+      "gustoScore": null,
+      "appleMapsUrl": "https://maps.apple.com/?daddr=32.6977281,-117.1385801&q=Barrio%20Dogg",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=2904697606814888126",
+      "guideSlugs": [],
+      "muid": "2904697606814888126",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-10-22",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Hot dogs at Barrio Dogg",
+          "credit": "Illustration"
+        }
+      ],
+      "phone": "+1 (619) 546-7889",
+      "website": "https://barriodogg.com/"
+    },
+    {
+      "id": "atelier-manna",
+      "city": "sandiego",
+      "name": "Atelier Manna",
+      "neighborhood": "Leucadia",
+      "address": "1076 N Coast Hwy 101, Ste 101",
+      "lat": 33.0675082,
+      "lng": -117.303506,
+      "cuisine": [
+        "Brunch"
+      ],
+      "placeType": "restaurant",
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            0,
+            3,
+            4,
+            5,
+            6
+          ],
+          "start": 540,
+          "end": 840
+        }
+      ],
+      "gustoScore": null,
+      "appleMapsUrl": "https://maps.apple.com/?daddr=33.0675082,-117.303506&q=Atelier%20Manna",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=11003965028836290813",
+      "guideSlugs": [],
+      "muid": "11003965028836290813",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-10-22",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Brunch at Atelier Manna",
+          "credit": "Illustration"
+        }
+      ],
+      "phone": "+1 (760) 230-1237",
+      "website": "https://www.atelier-manna.com/"
+    },
+    {
+      "id": "soichi",
+      "city": "sandiego",
+      "name": "Soichi",
+      "neighborhood": "University Heights",
+      "address": "2121 Adams Ave, San Diego, CA 92116",
+      "lat": 32.7627114,
+      "lng": -117.1418792,
+      "cuisine": [
+        "Sushi"
+      ],
+      "placeType": "restaurant",
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            0,
+            3,
+            4,
+            5,
+            6
+          ],
+          "start": 990,
+          "end": 1290
+        }
+      ],
+      "gustoScore": null,
+      "appleMapsUrl": "https://maps.apple.com/?daddr=32.7627114,-117.1418792&q=Soichi",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=16177805186096638282",
+      "guideSlugs": [
+        "sd-japanese"
+      ],
+      "muid": "16177805186096638282",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-10-22",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Sushi at Soichi",
+          "credit": "Illustration"
+        }
+      ],
+      "phone": "+1 (619) 677-2220",
+      "website": "https://www.soichisushi.com"
+    },
+    {
+      "id": "mikes-taco-club",
+      "city": "sandiego",
+      "name": "Mike's Taco Club",
+      "neighborhood": "Ocean Beach",
+      "address": "5060 Newport Ave, Ocean Beach, CA 92107",
+      "lat": 32.7476311,
+      "lng": -117.2520318,
+      "cuisine": [
+        "Mexican"
+      ],
+      "placeType": "restaurant",
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "start": 540,
+          "end": 1260
+        },
+        {
+          "days": [
+            5,
+            6
+          ],
+          "start": 540,
+          "end": 1320
+        }
+      ],
+      "gustoScore": null,
+      "appleMapsUrl": "https://maps.apple.com/?daddr=32.7476311,-117.2520318&q=Mike%27s%20Taco%20Club",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=13318992299447292133",
+      "guideSlugs": [
+        "sd-mexican"
+      ],
+      "muid": "13318992299447292133",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-10-22",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Mexican at Mike's Taco Club",
+          "credit": "Illustration"
+        }
+      ],
+      "phone": "+1 (619) 223-3540",
+      "website": "http://www.mikestacoclub.com"
+    },
+    {
+      "id": "mabels-gone-fishing",
+      "city": "sandiego",
+      "name": "Mabel’s Gone Fishing",
+      "neighborhood": "North Park",
+      "address": "3770 30th St, San Diego, CA 92104",
+      "lat": 32.7467679,
+      "lng": -117.130265,
+      "cuisine": [
+        "Seafood"
+      ],
+      "placeType": "restaurant",
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "start": 960,
+          "end": 1380
+        }
+      ],
+      "gustoScore": null,
+      "appleMapsUrl": "https://maps.apple.com/?daddr=32.7467679,-117.130265&q=Mabel%E2%80%99s%20Gone%20Fishing",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=16313381790808105428",
+      "guideSlugs": [
+        "sd-north-park",
+        "sd-seafood"
+      ],
+      "muid": "16313381790808105428",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-10-22",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Seafood at Mabel’s Gone Fishing",
+          "credit": "Illustration"
+        }
+      ],
+      "phone": "+1 (619) 228-9851",
+      "website": "https://www.mabelsgonefishing.com/home"
+    },
+    {
+      "id": "ironside",
+      "city": "sandiego",
+      "name": "Ironside",
+      "neighborhood": "Little Italy",
+      "address": "1654 India St, San Diego, CA 92101",
+      "lat": 32.7226753,
+      "lng": -117.1685672,
+      "cuisine": [
+        "Seafood"
+      ],
+      "placeType": "restaurant",
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            0
+          ],
+          "start": 660,
+          "end": 1320
+        },
+        {
+          "days": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "start": 690,
+          "end": 1320
+        },
+        {
+          "days": [
+            5
+          ],
+          "start": 690,
+          "end": 1380
+        },
+        {
+          "days": [
+            6
+          ],
+          "start": 660,
+          "end": 1380
+        }
+      ],
+      "gustoScore": null,
+      "appleMapsUrl": "https://maps.apple.com/?daddr=32.7226753,-117.1685672&q=Ironside",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=1720518847222796937",
+      "guideSlugs": [
+        "sd-little-italy",
+        "sd-seafood"
+      ],
+      "muid": "1720518847222796937",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-10-22",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Seafood at Ironside",
+          "credit": "Illustration"
+        }
+      ],
+      "phone": "+1 (619) 269-3033",
+      "website": "https://ironsidefishandoyster.com/"
+    },
+    {
+      "id": "quixote",
+      "city": "sandiego",
+      "name": "Quixote",
+      "neighborhood": "University Heights",
+      "address": "2223 El Cajon Blvd, San Diego, CA 92104",
+      "lat": 32.7547214,
+      "lng": -117.1405756,
+      "cuisine": [
+        "Mexican"
+      ],
+      "placeType": "restaurant",
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "start": 720,
+          "end": 1440
+        }
+      ],
+      "gustoScore": null,
+      "appleMapsUrl": "https://maps.apple.com/?daddr=32.7547214,-117.1405756&q=Quixote",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=9150791872155835725",
+      "guideSlugs": [
+        "sd-mexican"
+      ],
+      "muid": "9150791872155835725",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-10-22",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Mexican at Quixote",
+          "credit": "Illustration"
+        }
+      ],
+      "phone": "+1 (619) 975-3889",
+      "website": "http://www.lafayettehotelsd.com/"
+    },
+    {
+      "id": "c-level",
+      "city": "sandiego",
+      "name": "C Level",
+      "neighborhood": "Harbor Island",
+      "address": "880 Harbor Island Dr, San Diego, CA 92101",
+      "lat": 32.7240962,
+      "lng": -117.1884111,
+      "cuisine": [
+        "Californian"
+      ],
+      "placeType": "restaurant",
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "start": 690,
+          "end": 1260
+        }
+      ],
+      "gustoScore": null,
+      "appleMapsUrl": "https://maps.apple.com/?daddr=32.7240962,-117.1884111&q=C%20Level",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=13514361044318391395",
+      "guideSlugs": [
+        "sd-new-american"
+      ],
+      "muid": "13514361044318391395",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-10-22",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Californian at C Level",
+          "credit": "Illustration"
+        }
+      ],
+      "phone": "+1 (619) 298-6802",
+      "website": "https://www.clevelsd.com"
+    },
+    {
+      "id": "ciccia-osteria",
+      "city": "sandiego",
+      "name": "Ciccia Osteria",
+      "neighborhood": "Barrio Logan",
+      "address": "2233 Logan Ave, San Diego, CA 92113",
+      "lat": 32.697473,
+      "lng": -117.1388285,
+      "cuisine": [
+        "Italian"
+      ],
+      "placeType": "restaurant",
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            0,
+            1,
+            3,
+            4,
+            5,
+            6
+          ],
+          "start": 990,
+          "end": 1275
+        },
+        {
+          "days": [
+            0,
+            6
+          ],
+          "start": 720,
+          "end": 855
+        }
+      ],
+      "gustoScore": null,
+      "appleMapsUrl": "https://maps.apple.com/?daddr=32.697473,-117.1388285&q=Ciccia%20Osteria",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=1075380182506602164",
+      "guideSlugs": [
+        "sd-italian"
+      ],
+      "muid": "1075380182506602164",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-10-22",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Italian at Ciccia Osteria",
+          "credit": "Illustration"
+        }
+      ],
+      "phone": "+1 (619) 674-4069",
+      "website": "https://www.cicciasandiego.com"
+    },
+    {
+      "id": "the-plot",
+      "city": "sandiego",
+      "name": "The Plot",
+      "neighborhood": "South Oceanside",
+      "address": "1733 S Coast Hwy, Oceanside, CA 92054",
+      "lat": 33.1758221,
+      "lng": -117.3628889,
+      "cuisine": [
+        "Vegan"
+      ],
+      "placeType": "restaurant",
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "start": 660,
+          "end": 900
+        },
+        {
+          "days": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "start": 960,
+          "end": 1260
+        }
+      ],
+      "gustoScore": null,
+      "appleMapsUrl": "https://maps.apple.com/?daddr=33.1758221,-117.3628889&q=The%20Plot",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=17029299200294595120",
+      "guideSlugs": [],
+      "muid": "17029299200294595120",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-10-22",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Vegan at The Plot",
+          "credit": "Illustration"
+        }
+      ],
+      "phone": "+1 (442) 266-8200",
+      "website": "http://www.theplotrestaurant.com"
+    },
+    {
+      "id": "herb-wood",
+      "city": "sandiego",
+      "name": "Herb & Wood",
+      "neighborhood": "Harborview",
+      "address": "2210 Kettner Blvd, San Diego, CA 92101",
+      "lat": 32.727265,
+      "lng": -117.1709973,
+      "cuisine": [
+        "Californian"
+      ],
+      "placeType": "restaurant",
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "start": 1020,
+          "end": 1260
+        },
+        {
+          "days": [
+            5,
+            6
+          ],
+          "start": 1020,
+          "end": 1290
+        }
+      ],
+      "gustoScore": null,
+      "appleMapsUrl": "https://maps.apple.com/?daddr=32.727265,-117.1709973&q=Herb%20%26%20Wood",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=426482982705018864",
+      "guideSlugs": [
+        "sd-new-american"
+      ],
+      "muid": "426482982705018864",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-10-22",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Californian at Herb & Wood",
+          "credit": "Illustration"
+        }
+      ],
+      "phone": "+1 (619) 955-8495",
+      "website": "https://www.herbandwood.com/"
+    },
+    {
+      "id": "izola",
+      "city": "sandiego",
+      "name": "Izola",
+      "neighborhood": "East Village",
+      "address": "1429 Island Ave, San Diego, CA 92101",
+      "lat": 32.7103123,
+      "lng": -117.1517913,
+      "cuisine": [
+        "Bakery"
+      ],
+      "placeType": "bakery",
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "start": 420,
+          "end": 840
+        }
+      ],
+      "gustoScore": null,
+      "appleMapsUrl": "https://maps.apple.com/?daddr=32.7103123,-117.1517913&q=Izola",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=8660312458094793134",
+      "guideSlugs": [
+        "sd-east-village"
+      ],
+      "muid": "8660312458094793134",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-10-22",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Bakery at Izola",
+          "credit": "Illustration"
+        }
+      ],
+      "phone": "+1 (619) 289-8358",
+      "website": "https://www.izolabakery.com"
+    },
+    {
+      "id": "javiers-2",
+      "city": "sandiego",
+      "name": "Javier's",
+      "neighborhood": "University City",
+      "address": "4301 La Jolla Village Dr, Unit 1000",
+      "lat": 32.8723455,
+      "lng": -117.2126805,
+      "cuisine": [
+        "Mexican"
+      ],
+      "placeType": "restaurant",
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "start": 690,
+          "end": 1320
+        },
+        {
+          "days": [
+            5,
+            6
+          ],
+          "start": 690,
+          "end": 1380
+        }
+      ],
+      "gustoScore": null,
+      "appleMapsUrl": "https://maps.apple.com/?daddr=32.8723455,-117.2126805&q=Javier%27s",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=7875898337778950364",
+      "guideSlugs": [
+        "sd-mexican"
+      ],
+      "muid": "7875898337778950364",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-10-22",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Mexican at Javier's",
+          "credit": "Illustration"
+        }
+      ],
+      "phone": "+1 (858) 200-2222",
+      "website": "https://www.javiersfinestfoods.com/la-jolla"
+    },
+    {
+      "id": "fernandez-restaurant-birrieria",
+      "city": "sandiego",
+      "name": "Fernandez Restaurant Birrieria",
+      "neighborhood": "Nestor",
+      "address": "2265 Flower Ave, Ste D",
+      "lat": 32.5756857,
+      "lng": -117.0844638,
+      "cuisine": [
+        "Mexican"
+      ],
+      "placeType": "restaurant",
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            0,
+            3,
+            4,
+            5,
+            6
+          ],
+          "start": 360,
+          "end": 840
+        }
+      ],
+      "gustoScore": null,
+      "appleMapsUrl": "https://maps.apple.com/?daddr=32.5756857,-117.0844638&q=Fernandez%20Restaurant%20Birrieria",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=15586723412606941230",
+      "guideSlugs": [
+        "sd-mexican"
+      ],
+      "muid": "15586723412606941230",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-10-22",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Mexican at Fernandez Restaurant Birrieria",
+          "credit": "Illustration"
+        }
+      ],
+      "phone": "+1 (619) 628-8235",
+      "website": "https://www.edfernandezbirrieria.com/"
+    },
+    {
+      "id": "morning-glory",
+      "city": "sandiego",
+      "name": "Morning Glory",
+      "neighborhood": "Little Italy",
+      "address": "550 W Date St, San Diego, CA 92101",
+      "lat": 32.7231492,
+      "lng": -117.1681273,
+      "cuisine": [
+        "Brunch"
+      ],
+      "placeType": "restaurant",
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            0,
+            6
+          ],
+          "start": 480,
+          "end": 960
+        },
+        {
+          "days": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "start": 480,
+          "end": 900
+        }
+      ],
+      "gustoScore": null,
+      "appleMapsUrl": "https://maps.apple.com/?daddr=32.7231492,-117.1681273&q=Morning%20Glory",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=7912336818008713396",
+      "guideSlugs": [
+        "sd-little-italy"
+      ],
+      "muid": "7912336818008713396",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-10-22",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Brunch at Morning Glory",
+          "credit": "Illustration"
+        }
+      ],
+      "phone": "+1 (619) 629-0302",
+      "website": "https://morningglorybreakfast.com"
+    },
+    {
+      "id": "island-prime",
+      "city": "sandiego",
+      "name": "Island Prime",
+      "neighborhood": "Harbor Island",
+      "address": "880 Harbor Island Dr, San Diego, CA 92101",
+      "lat": 32.7241066,
+      "lng": -117.188608,
+      "cuisine": [
+        "Steak"
+      ],
+      "placeType": "restaurant",
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "start": 1020,
+          "end": 1260
+        },
+        {
+          "days": [
+            6
+          ],
+          "start": 960,
+          "end": 1260
+        }
+      ],
+      "gustoScore": null,
+      "appleMapsUrl": "https://maps.apple.com/?daddr=32.7241066,-117.188608&q=Island%20Prime",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=16630278860105124920",
+      "guideSlugs": [],
+      "muid": "16630278860105124920",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-10-22",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Steak at Island Prime",
+          "credit": "Illustration"
+        }
+      ],
+      "phone": "+1 (619) 298-6802",
+      "website": "https://www.cohnrestaurants.com/islandprime"
+    },
+    {
+      "id": "malibu-farm-san-diego",
+      "city": "sandiego",
+      "name": "Malibu Farm San Diego",
+      "neighborhood": "Marina",
+      "address": "831 W Harbor Dr, San Diego, CA 92101",
+      "lat": 32.7086236,
+      "lng": -117.1695957,
+      "cuisine": [
+        "American"
+      ],
+      "placeType": "restaurant",
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "start": 540,
+          "end": 1260
+        }
+      ],
+      "gustoScore": null,
+      "appleMapsUrl": "https://maps.apple.com/?daddr=32.7086236,-117.1695957&q=Malibu%20Farm%20San%20Diego",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=3520533899406332415",
+      "guideSlugs": [
+        "sd-new-american"
+      ],
+      "muid": "3520533899406332415",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {
+        "yelp": "S1Ir-iP996tW4BBAv1Cahg"
+      },
+      "copySource": "draft",
+      "updatedAt": "2026-10-22",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting American at Malibu Farm San Diego",
+          "credit": "Illustration"
+        }
+      ],
+      "phone": "+1 (619) 695-2300",
+      "website": "https://www.malibu-farm.com/seaport-san-diego/",
+      "publicRating": {
+        "value": 4.5,
+        "count": 2429,
+        "source": "Yelp"
+      },
+      "yelpSlug": "S1Ir-iP996tW4BBAv1Cahg"
+    },
+    {
+      "id": "the-taco-stand",
+      "city": "sandiego",
+      "name": "The Taco Stand",
+      "neighborhood": "Columbia",
+      "address": "645 B St, San Diego, CA 92101",
+      "lat": 32.7176318,
+      "lng": -117.1586336,
+      "cuisine": [
+        "Tacos"
+      ],
+      "placeType": "restaurant",
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            0
+          ],
+          "start": 660,
+          "end": 1260
+        },
+        {
+          "days": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "start": 540,
+          "end": 1260
+        },
+        {
+          "days": [
+            5
+          ],
+          "start": 540,
+          "end": 1320
+        },
+        {
+          "days": [
+            6
+          ],
+          "start": 660,
+          "end": 1320
+        }
+      ],
+      "gustoScore": null,
+      "appleMapsUrl": "https://maps.apple.com/?daddr=32.7176318,-117.1586336&q=The%20Taco%20Stand",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=6091492745694697608",
+      "guideSlugs": [
+        "sd-mexican"
+      ],
+      "muid": "6091492745694697608",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-10-22",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Tacos at The Taco Stand",
+          "credit": "Illustration"
+        }
+      ],
+      "phone": "+1 (619) 546-0570",
+      "website": "https://www.letstaco.com/location/san-diego-downtown"
+    },
+    {
+      "id": "jeune-et-jolie",
+      "city": "sandiego",
+      "name": "Jeune et Jolie",
+      "neighborhood": "Carlsbad",
+      "address": "2659 State St, Carlsbad, CA 92008",
+      "lat": 33.1630001,
+      "lng": -117.3517499,
+      "cuisine": [
+        "French"
+      ],
+      "placeType": "restaurant",
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            0
+          ],
+          "start": 990,
+          "end": 1320
+        },
+        {
+          "days": [
+            3,
+            4,
+            5,
+            6
+          ],
+          "start": 1020,
+          "end": 1320
+        }
+      ],
+      "gustoScore": null,
+      "appleMapsUrl": "https://maps.apple.com/?daddr=33.1630001,-117.3517499&q=Jeune%20et%20Jolie",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=11192071225459034709",
+      "guideSlugs": [],
+      "muid": "11192071225459034709",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-10-22",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting French at Jeune et Jolie",
+          "credit": "Illustration"
+        }
+      ],
+      "phone": "+1 (760) 637-5266",
+      "website": "https://www.jeune-jolie.com"
+    },
+    {
+      "id": "himitsu",
+      "city": "sandiego",
+      "name": "Himitsu",
+      "neighborhood": "La Jolla",
+      "address": "1030-G Torrey Pines Rd, La Jolla, CA 92037",
+      "lat": 32.8428524,
+      "lng": -117.2724653,
+      "cuisine": [
+        "Japanese"
+      ],
+      "placeType": "restaurant",
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            2,
+            3,
+            4,
+            5
+          ],
+          "start": 690,
+          "end": 870
+        },
+        {
+          "days": [
+            2,
+            3,
+            4
+          ],
+          "start": 1020,
+          "end": 1290
+        },
+        {
+          "days": [
+            5
+          ],
+          "start": 1020,
+          "end": 1305
+        },
+        {
+          "days": [
+            6
+          ],
+          "start": 690,
+          "end": 1305
+        }
+      ],
+      "gustoScore": null,
+      "appleMapsUrl": "https://maps.apple.com/?daddr=32.8428524,-117.2724653&q=Himitsu",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=11471312987921454573",
+      "guideSlugs": [
+        "sd-la-jolla",
+        "sd-japanese"
+      ],
+      "muid": "11471312987921454573",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-10-22",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Japanese at Himitsu",
+          "credit": "Illustration"
+        }
+      ],
+      "phone": "+1 (858) 263-4463",
+      "website": "http://himitsusd.com"
+    },
+    {
+      "id": "mikes-red-tacos",
+      "city": "sandiego",
+      "name": "Mike's Red Tacos",
+      "neighborhood": "Loma Portal",
+      "address": "3365 Rosecrans St, Unit D",
+      "lat": 32.7485778,
+      "lng": -117.2060047,
+      "cuisine": [
+        "Tacos"
+      ],
+      "placeType": "restaurant",
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "start": 600,
+          "end": 1380
+        },
+        {
+          "days": [
+            5,
+            6
+          ],
+          "start": 600,
+          "end": 1440
+        }
+      ],
+      "gustoScore": null,
+      "appleMapsUrl": "https://maps.apple.com/?daddr=32.7485778,-117.2060047&q=Mike%27s%20Red%20Tacos",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=15831726813199588266",
+      "guideSlugs": [
+        "sd-mexican"
+      ],
+      "muid": "15831726813199588266",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {
+        "yelp": "QMfwDVpspp8yuPdx3FfGBw"
+      },
+      "copySource": "draft",
+      "updatedAt": "2026-10-22",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Tacos at Mike's Red Tacos",
+          "credit": "Illustration"
+        }
+      ],
+      "price": 2,
+      "phone": "+1 (619) 228-9032",
+      "website": "https://www.mikesredtacos.com",
+      "publicRating": {
+        "value": 4.8,
+        "count": 1203,
+        "source": "Yelp"
+      },
+      "yelpSlug": "QMfwDVpspp8yuPdx3FfGBw"
+    },
+    {
+      "id": "lucha-libre-taco-shop",
+      "city": "sandiego",
+      "name": "Lucha Libre Taco Shop",
+      "neighborhood": "Mission Hills",
+      "address": "1810 W Washington St, San Diego, CA 92103",
+      "lat": 32.7432206,
+      "lng": -117.181621,
+      "cuisine": [
+        "Mexican"
+      ],
+      "placeType": "restaurant",
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "start": 540,
+          "end": 1320
+        },
+        {
+          "days": [
+            5,
+            6
+          ],
+          "start": 540,
+          "end": 1380
+        }
+      ],
+      "gustoScore": null,
+      "appleMapsUrl": "https://maps.apple.com/?daddr=32.7432206,-117.181621&q=Lucha%20Libre%20Taco%20Shop",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=5467564659289334009",
+      "guideSlugs": [
+        "sd-mexican"
+      ],
+      "muid": "5467564659289334009",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {
+        "yelp": "EGj92CH6mWFiRvHB1zyMAw"
+      },
+      "copySource": "draft",
+      "updatedAt": "2026-10-22",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Mexican at Lucha Libre Taco Shop",
+          "credit": "Illustration"
+        }
+      ],
+      "price": 2,
+      "phone": "+1 (619) 296-8226",
+      "website": "https://www.luchalibretacoshop.com",
+      "publicRating": {
+        "value": 3.8,
+        "count": 8998,
+        "source": "Yelp"
+      },
+      "yelpSlug": "EGj92CH6mWFiRvHB1zyMAw"
+    },
+    {
+      "id": "wrench-rodent-seabasstropub",
+      "city": "sandiego",
+      "name": "Wrench & Rodent Seabasstropub",
+      "neighborhood": "South Oceanside",
+      "address": "1815 S Coast Hwy, Oceanside, CA 92054",
+      "lat": 33.1745834,
+      "lng": -117.3619088,
+      "cuisine": [
+        "Sushi"
+      ],
+      "placeType": "restaurant",
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            0,
+            5,
+            6
+          ],
+          "start": 960,
+          "end": 1260
+        },
+        {
+          "days": [
+            3,
+            4
+          ],
+          "start": 960,
+          "end": 1230
+        }
+      ],
+      "gustoScore": null,
+      "appleMapsUrl": "https://maps.apple.com/?daddr=33.1745834,-117.3619088&q=Wrench%20%26%20Rodent%20Seabasstropub",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=2620201967920882553",
+      "guideSlugs": [
+        "sd-japanese"
+      ],
+      "muid": "2620201967920882553",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-10-22",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Sushi at Wrench & Rodent Seabasstropub",
+          "credit": "Illustration"
+        }
+      ],
+      "phone": "+1 (760) 271-0531",
+      "website": "https://www.seabasstropub.com"
+    },
+    {
+      "id": "puesto",
+      "city": "sandiego",
+      "name": "Puesto",
+      "neighborhood": "Hotel Circle",
+      "address": "5010 Mission Center Rd, San Diego, CA 92108",
+      "lat": 32.7670751,
+      "lng": -117.1539108,
+      "cuisine": [
+        "Mexican"
+      ],
+      "placeType": "restaurant",
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "start": 660,
+          "end": 1260
+        },
+        {
+          "days": [
+            5,
+            6
+          ],
+          "start": 660,
+          "end": 1320
+        }
+      ],
+      "gustoScore": null,
+      "appleMapsUrl": "https://maps.apple.com/?daddr=32.7670751,-117.1539108&q=Puesto",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=17884982881893772474",
+      "guideSlugs": [
+        "sd-mexican"
+      ],
+      "muid": "17884982881893772474",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-10-22",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Mexican at Puesto",
+          "credit": "Illustration"
+        }
+      ],
+      "phone": "+1 (619) 333-2167",
+      "website": "https://www.eatpuesto.com"
+    },
+    {
+      "id": "buona-forchetta",
+      "city": "sandiego",
+      "name": "Buona Forchetta",
+      "neighborhood": "South Park",
+      "address": "3001 Beech St, San Diego, CA 92102",
+      "lat": 32.7211009,
+      "lng": -117.1300329,
+      "cuisine": [
+        "Italian"
+      ],
+      "placeType": "restaurant",
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            0
+          ],
+          "start": 720,
+          "end": 1290
+        },
+        {
+          "days": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "start": 720,
+          "end": 900
+        },
+        {
+          "days": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "start": 1020,
+          "end": 1290
+        },
+        {
+          "days": [
+            5
+          ],
+          "start": 1020,
+          "end": 1320
+        },
+        {
+          "days": [
+            6
+          ],
+          "start": 720,
+          "end": 1320
+        }
+      ],
+      "gustoScore": null,
+      "appleMapsUrl": "https://maps.apple.com/?daddr=32.7211009,-117.1300329&q=Buona%20Forchetta",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=5632682297129567454",
+      "guideSlugs": [
+        "sd-italian"
+      ],
+      "muid": "5632682297129567454",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-10-22",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Italian at Buona Forchetta",
+          "credit": "Illustration"
+        }
+      ],
+      "phone": "+1 (619) 381-4844",
+      "website": "https://buonaforchettasd.com/buona-forchetta-south-park/"
+    },
+    {
+      "id": "animae",
+      "city": "sandiego",
+      "name": "Animae",
+      "neighborhood": "Marina",
+      "address": "969 Pacific Hwy, San Diego, CA 92101",
+      "lat": 32.7152808,
+      "lng": -117.1707728,
+      "cuisine": [
+        "Steak"
+      ],
+      "placeType": "restaurant",
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "start": 1020,
+          "end": 1260
+        },
+        {
+          "days": [
+            5,
+            6
+          ],
+          "start": 1020,
+          "end": 1290
+        }
+      ],
+      "gustoScore": null,
+      "appleMapsUrl": "https://maps.apple.com/?daddr=32.7152808,-117.1707728&q=Animae",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=10699676153498701983",
+      "guideSlugs": [],
+      "muid": "10699676153498701983",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-10-22",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Steak at Animae",
+          "credit": "Illustration"
+        }
+      ],
+      "phone": "+1 (619) 432-1225",
+      "website": "https://www.animaesd.com"
+    },
+    {
+      "id": "matsu-2",
+      "city": "sandiego",
+      "name": "Matsu",
+      "neighborhood": "Oceanside",
+      "address": "626 S Tremont St, Oceanside, CA 92054",
+      "lat": 33.1884729,
+      "lng": -117.3741853,
+      "cuisine": [
+        "Japanese"
+      ],
+      "placeType": "restaurant",
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [],
+      "gustoScore": null,
+      "appleMapsUrl": "https://maps.apple.com/?daddr=33.1884729,-117.3741853&q=Matsu",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=17112650180481988281",
+      "guideSlugs": [
+        "sd-japanese"
+      ],
+      "muid": "17112650180481988281",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-10-22",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Japanese at Matsu",
+          "credit": "Illustration"
+        }
+      ],
+      "phone": "+1 (760) 681-6152",
+      "website": "https://www.facebook.com/EatMatsu/"
+    },
+    {
+      "id": "tacos-el-gordo",
+      "city": "sandiego",
+      "name": "Tacos El Gordo",
+      "neighborhood": "Chula Vista",
+      "address": "556 Broadway, Chula Vista, CA 91910",
+      "lat": 32.6290778,
+      "lng": -117.0889102,
+      "cuisine": [
+        "Mexican"
+      ],
+      "placeType": "restaurant",
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            0,
+            6
+          ],
+          "start": 0,
+          "end": 240
+        },
+        {
+          "days": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "start": 600,
+          "end": 1440
+        },
+        {
+          "days": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "start": 0,
+          "end": 120
+        }
+      ],
+      "gustoScore": null,
+      "appleMapsUrl": "https://maps.apple.com/?daddr=32.6290778,-117.0889102&q=Tacos%20El%20Gordo",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=7237492061976026130",
+      "guideSlugs": [
+        "sd-mexican"
+      ],
+      "muid": "7237492061976026130",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-10-22",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Mexican at Tacos El Gordo",
+          "credit": "Illustration"
+        }
+      ],
+      "phone": "+1 (619) 271-7222",
+      "website": "http://tacoselgordobc.com"
+    },
+    {
+      "id": "the-mission",
+      "city": "sandiego",
+      "name": "The Mission",
+      "neighborhood": "East Village",
+      "address": "1250 J St, San Diego, CA 92101",
+      "lat": 32.7095818,
+      "lng": -117.152978,
+      "cuisine": [
+        "Brunch"
+      ],
+      "placeType": "restaurant",
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "start": 420,
+          "end": 840
+        }
+      ],
+      "gustoScore": null,
+      "appleMapsUrl": "https://maps.apple.com/?daddr=32.7095818,-117.152978&q=The%20Mission",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=5580270773849293180",
+      "guideSlugs": [
+        "sd-east-village"
+      ],
+      "muid": "5580270773849293180",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-10-22",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Brunch at The Mission",
+          "credit": "Illustration"
+        }
+      ],
+      "phone": "+1 (619) 232-7662",
+      "website": "https://themissionsd.com/"
+    },
+    {
+      "id": "lola-55",
+      "city": "sandiego",
+      "name": "Lola 55",
+      "neighborhood": "East Village",
+      "address": "1290 F St, San Diego, CA 92101",
+      "lat": 32.7138423,
+      "lng": -117.1530571,
+      "cuisine": [
+        "Tacos"
+      ],
+      "placeType": "restaurant",
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            0
+          ],
+          "start": 600,
+          "end": 1260
+        },
+        {
+          "days": [
+            2,
+            3,
+            4
+          ],
+          "start": 720,
+          "end": 1260
+        },
+        {
+          "days": [
+            5,
+            6
+          ],
+          "start": 720,
+          "end": 1320
+        }
+      ],
+      "gustoScore": null,
+      "appleMapsUrl": "https://maps.apple.com/?daddr=32.7138423,-117.1530571&q=Lola%2055",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=18331288822718280039",
+      "guideSlugs": [
+        "sd-east-village",
+        "sd-mexican"
+      ],
+      "muid": "18331288822718280039",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-10-22",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Tacos at Lola 55",
+          "credit": "Illustration"
+        }
+      ],
+      "phone": "+1 (619) 542-9155",
+      "website": "https://www.lola55.com"
+    },
+    {
+      "id": "callie",
+      "city": "sandiego",
+      "name": "Callie",
+      "neighborhood": "East Village",
+      "address": "1195 Island Ave, San Diego, CA 92101",
+      "lat": 32.7101824,
+      "lng": -117.153968,
+      "cuisine": [
+        "Mediterranean"
+      ],
+      "placeType": "restaurant",
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            0,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "start": 1020,
+          "end": 1380
+        }
+      ],
+      "gustoScore": null,
+      "appleMapsUrl": "https://maps.apple.com/?daddr=32.7101824,-117.153968&q=Callie",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=6594295803942374928",
+      "guideSlugs": [
+        "sd-east-village"
+      ],
+      "muid": "6594295803942374928",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-10-22",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Mediterranean at Callie",
+          "credit": "Illustration"
+        }
+      ],
+      "phone": "+1 (619) 255-9696",
+      "website": "https://calliesd.com"
+    },
+    {
+      "id": "stk",
+      "city": "sandiego",
+      "name": "STK",
+      "neighborhood": "Columbia",
+      "address": "600 F St, San Diego, CA 92101",
+      "lat": 32.713813,
+      "lng": -117.158798,
+      "cuisine": [
+        "Steak"
+      ],
+      "placeType": "restaurant",
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            0
+          ],
+          "start": 540,
+          "end": 1380
+        },
+        {
+          "days": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "start": 870,
+          "end": 1380
+        },
+        {
+          "days": [
+            5
+          ],
+          "start": 870,
+          "end": 1440
+        },
+        {
+          "days": [
+            6
+          ],
+          "start": 540,
+          "end": 1440
+        }
+      ],
+      "gustoScore": null,
+      "appleMapsUrl": "https://maps.apple.com/?daddr=32.713813,-117.158798&q=STK",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=18268485684900983130",
+      "guideSlugs": [],
+      "muid": "18268485684900983130",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {
+        "yelp": "hjDhGkPBkgOnxCvD5z6hFg"
+      },
+      "copySource": "draft",
+      "updatedAt": "2026-10-22",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Steak at STK",
+          "credit": "Illustration"
+        }
+      ],
+      "price": 4,
+      "phone": "+1 (619) 354-5988",
+      "website": "https://stksteakhouse.com/venues/san-diego/",
+      "publicRating": {
+        "value": 4.6,
+        "count": 5421,
+        "source": "Yelp"
+      },
+      "yelpSlug": "hjDhGkPBkgOnxCvD5z6hFg"
+    },
+    {
+      "id": "born-raised",
+      "city": "sandiego",
+      "name": "Born & Raised",
+      "neighborhood": "Little Italy",
+      "address": "1909 India St, San Diego, CA 92101",
+      "lat": 32.7246509,
+      "lng": -117.1684706,
+      "cuisine": [
+        "Steak"
+      ],
+      "placeType": "restaurant",
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            0,
+            6
+          ],
+          "start": 960,
+          "end": 1440
+        },
+        {
+          "days": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "start": 900,
+          "end": 1440
+        },
+        {
+          "days": [
+            5,
+            6
+          ],
+          "start": 0,
+          "end": 60
+        }
+      ],
+      "gustoScore": null,
+      "appleMapsUrl": "https://maps.apple.com/?daddr=32.7246509,-117.1684706&q=Born%20%26%20Raised",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=1322039371098006462",
+      "guideSlugs": [
+        "sd-little-italy"
+      ],
+      "muid": "1322039371098006462",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-10-22",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Steak at Born & Raised",
+          "credit": "Illustration"
+        }
+      ],
+      "phone": "+1 (619) 202-4577",
+      "website": "https://bornandraisedsteak.com"
+    },
+    {
+      "id": "campfire",
+      "city": "sandiego",
+      "name": "Campfire",
+      "neighborhood": "Carlsbad",
+      "address": "2725 State St, Carlsbad, CA 92008",
+      "lat": 33.1620154,
+      "lng": -117.3510271,
+      "cuisine": [
+        "New American"
+      ],
+      "placeType": "restaurant",
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            0
+          ],
+          "start": 960,
+          "end": 1260
+        },
+        {
+          "days": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "start": 1020,
+          "end": 1320
+        },
+        {
+          "days": [
+            5,
+            6
+          ],
+          "start": 1005,
+          "end": 1380
+        }
+      ],
+      "gustoScore": null,
+      "appleMapsUrl": "https://maps.apple.com/?daddr=33.1620154,-117.3510271&q=Campfire",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=5586468343210624175",
+      "guideSlugs": [
+        "sd-new-american"
+      ],
+      "muid": "5586468343210624175",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-10-22",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting New American at Campfire",
+          "credit": "Illustration"
+        }
+      ],
+      "phone": "+1 (760) 637-5121",
+      "website": "https://thisiscampfire.com"
+    },
+    {
+      "id": "little-frenchie",
+      "city": "sandiego",
+      "name": "Little Frenchie",
+      "neighborhood": "Coronado",
+      "address": "1166 Orange Ave, Coronado, CA 92118",
+      "lat": 32.6839964,
+      "lng": -117.1792829,
+      "cuisine": [
+        "French"
+      ],
+      "placeType": "restaurant",
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "start": 540,
+          "end": 1260
+        },
+        {
+          "days": [
+            5,
+            6
+          ],
+          "start": 540,
+          "end": 1320
+        }
+      ],
+      "gustoScore": null,
+      "appleMapsUrl": "https://maps.apple.com/?daddr=32.6839964,-117.1792829&q=Little%20Frenchie",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=16292433040569542246",
+      "guideSlugs": [
+        "sd-coronado"
+      ],
+      "muid": "16292433040569542246",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-10-22",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting French at Little Frenchie",
+          "credit": "Illustration"
+        }
+      ],
+      "phone": "+1 (619) 374-7988",
+      "website": "https://littlefrenchiesd.com"
+    },
+    {
+      "id": "wayfarer-bread",
+      "city": "sandiego",
+      "name": "Wayfarer Bread",
+      "neighborhood": "La Jolla",
+      "address": "5525 La Jolla Blvd, La Jolla, CA 92037",
+      "lat": 32.8130082,
+      "lng": -117.2684902,
+      "cuisine": [
+        "Bakery"
+      ],
+      "placeType": "bakery",
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            0,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "start": 480,
+          "end": 870
+        }
+      ],
+      "gustoScore": null,
+      "appleMapsUrl": "https://maps.apple.com/?daddr=32.8130082,-117.2684902&q=Wayfarer%20Bread",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=13056372261377867150",
+      "guideSlugs": [
+        "sd-la-jolla"
+      ],
+      "muid": "13056372261377867150",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-10-22",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Bakery at Wayfarer Bread",
+          "credit": "Illustration"
+        }
+      ],
+      "phone": "+1 (858) 454-1924",
+      "website": "https://www.wayfarerbread.com"
+    },
+    {
+      "id": "water-grill-2",
+      "city": "sandiego",
+      "name": "Water Grill",
+      "neighborhood": "Gaslamp",
+      "address": "615 J St, San Diego, CA 92101",
+      "lat": 32.7092073,
+      "lng": -117.1589273,
+      "cuisine": [
+        "Seafood"
+      ],
+      "placeType": "restaurant",
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "start": 690,
+          "end": 1320
+        },
+        {
+          "days": [
+            5,
+            6
+          ],
+          "start": 690,
+          "end": 1380
+        }
+      ],
+      "gustoScore": null,
+      "appleMapsUrl": "https://maps.apple.com/?daddr=32.7092073,-117.1589273&q=Water%20Grill",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=6460702306996912277",
+      "guideSlugs": [
+        "sd-seafood"
+      ],
+      "muid": "6460702306996912277",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-10-22",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Seafood at Water Grill",
+          "credit": "Illustration"
+        }
+      ],
+      "phone": "+1 (619) 717-6992",
+      "website": "https://www.watergrill.com/"
+    },
+    {
+      "id": "cucina-urbana",
+      "city": "sandiego",
+      "name": "Cucina Urbana",
+      "neighborhood": "Park West",
+      "address": "505 Laurel St, San Diego, CA 92101",
+      "lat": 32.7310828,
+      "lng": -117.1600378,
+      "cuisine": [
+        "Italian"
+      ],
+      "placeType": "restaurant",
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "start": 960,
+          "end": 1230
+        },
+        {
+          "days": [
+            5
+          ],
+          "start": 270,
+          "end": 1290
+        },
+        {
+          "days": [
+            6
+          ],
+          "start": 960,
+          "end": 1290
+        }
+      ],
+      "gustoScore": null,
+      "appleMapsUrl": "https://maps.apple.com/?daddr=32.7310828,-117.1600378&q=Cucina%20Urbana",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=7018736579285521735",
+      "guideSlugs": [
+        "sd-italian"
+      ],
+      "muid": "7018736579285521735",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-10-22",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Italian at Cucina Urbana",
+          "credit": "Illustration"
+        }
+      ],
+      "phone": "+1 (619) 239-2222",
+      "website": "https://www.urbankitchengroup.com/cucina-urbana-bankers-hill/"
+    },
+    {
+      "id": "wolf-in-the-woods",
+      "city": "sandiego",
+      "name": "Wolf in the Woods",
+      "neighborhood": "Mission Hills",
+      "address": "1920 Fort Stockton Dr, Mission Hills, CA 92103",
+      "lat": 32.75299,
+      "lng": -117.1830898,
+      "cuisine": [
+        "Wine"
+      ],
+      "placeType": "bar",
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "start": 960,
+          "end": 1260
+        }
+      ],
+      "gustoScore": null,
+      "appleMapsUrl": "https://maps.apple.com/?daddr=32.75299,-117.1830898&q=Wolf%20in%20the%20Woods",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=8182031294251279452",
+      "guideSlugs": [],
+      "muid": "8182031294251279452",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-10-22",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Wine at Wolf in the Woods",
+          "credit": "Illustration"
+        }
+      ],
+      "phone": "+1 (619) 234-2597",
+      "website": "https://www.thewolfinthewoods.com"
+    },
+    {
+      "id": "trattoria-cori-pastificio",
+      "city": "sandiego",
+      "name": "Trattoria Cori Pastificio",
+      "neighborhood": "North Park",
+      "address": "2977 Upas St, San Diego, CA 92104",
+      "lat": 32.7409288,
+      "lng": -117.129761,
+      "cuisine": [
+        "Italian"
+      ],
+      "placeType": "restaurant",
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            0
+          ],
+          "start": 990,
+          "end": 1260
+        },
+        {
+          "days": [
+            1,
+            2,
+            4
+          ],
+          "start": 1020,
+          "end": 1260
+        },
+        {
+          "days": [
+            5,
+            6
+          ],
+          "start": 1020,
+          "end": 1290
+        }
+      ],
+      "gustoScore": null,
+      "appleMapsUrl": "https://maps.apple.com/?daddr=32.7409288,-117.129761&q=Trattoria%20Cori%20Pastificio",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=247988518298324781",
+      "guideSlugs": [
+        "sd-north-park",
+        "sd-italian"
+      ],
+      "muid": "247988518298324781",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-10-22",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Italian at Trattoria Cori Pastificio",
+          "credit": "Illustration"
+        }
+      ],
+      "phone": "+1 (619) 573-6159",
+      "website": "https://www.coripasta.com"
+    },
+    {
+      "id": "serea",
+      "city": "sandiego",
+      "name": "Serea",
+      "neighborhood": "Coronado",
+      "address": "1500 Orange Ave, Coronado, CA 92118",
+      "lat": 32.6807752,
+      "lng": -117.1787435,
+      "cuisine": [
+        "Mediterranean"
+      ],
+      "placeType": "restaurant",
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "start": 1020,
+          "end": 1260
+        },
+        {
+          "days": [
+            5,
+            6
+          ],
+          "start": 1020,
+          "end": 1320
+        }
+      ],
+      "gustoScore": null,
+      "appleMapsUrl": "https://maps.apple.com/?daddr=32.6807752,-117.1787435&q=Serea",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=16459391718052093083",
+      "guideSlugs": [
+        "sd-coronado"
+      ],
+      "muid": "16459391718052093083",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-10-22",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Mediterranean at Serea",
+          "credit": "Illustration"
+        }
+      ],
+      "phone": "+1 (619) 435-6611",
+      "website": "https://sereasandiego.com/"
+    },
+    {
+      "id": "lobster-west-coronado",
+      "city": "sandiego",
+      "name": "Lobster West - Coronado",
+      "neighborhood": "Coronado",
+      "address": "1033 B Ave, Coronado, CA 92118",
+      "lat": 32.6838963,
+      "lng": -117.1780142,
+      "cuisine": [
+        "Seafood"
+      ],
+      "placeType": "restaurant",
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "start": 660,
+          "end": 1200
+        }
+      ],
+      "gustoScore": null,
+      "appleMapsUrl": "https://maps.apple.com/?daddr=32.6838963,-117.1780142&q=Lobster%20West%20-%20Coronado",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=13956123408003808668",
+      "guideSlugs": [
+        "sd-coronado",
+        "sd-seafood"
+      ],
+      "muid": "13956123408003808668",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {
+        "yelp": "Gp33RPbHaYGRkS-FBfcNyw"
+      },
+      "copySource": "draft",
+      "updatedAt": "2026-10-22",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Seafood at Lobster West - Coronado",
+          "credit": "Illustration"
+        }
+      ],
+      "price": 2,
+      "phone": "+1 (619) 675-0002",
+      "website": "http://www.lobsterwest.com",
+      "publicRating": {
+        "value": 4.3,
+        "count": 1577,
+        "source": "Yelp"
+      },
+      "yelpSlug": "Gp33RPbHaYGRkS-FBfcNyw"
+    },
+    {
+      "id": "addison",
+      "city": "sandiego",
+      "name": "Addison",
+      "neighborhood": "Del Mar Mesa",
+      "address": "5200 Grand del Mar Way, San Diego, CA 92130",
+      "lat": 32.9415767,
+      "lng": -117.1990702,
+      "cuisine": [
+        "New American"
+      ],
+      "placeType": "restaurant",
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "start": 1020,
+          "end": 1260
+        }
+      ],
+      "gustoScore": null,
+      "appleMapsUrl": "https://maps.apple.com/?daddr=32.9415767,-117.1990702&q=Addison",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=10315991027775599892",
+      "guideSlugs": [
+        "sd-new-american"
+      ],
+      "muid": "10315991027775599892",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-10-22",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting New American at Addison",
+          "credit": "Illustration"
+        }
+      ],
+      "phone": "+1 (858) 314-1900",
+      "website": "https://www.addisondelmar.com"
+    },
+    {
+      "id": "city-tacos",
+      "city": "sandiego",
+      "name": "City Tacos",
+      "neighborhood": "North Park",
+      "address": "3028 University Ave, San Diego, CA 92104",
+      "lat": 32.7486947,
+      "lng": -117.1294188,
+      "cuisine": [
+        "Tacos"
+      ],
+      "placeType": "restaurant",
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "start": 660,
+          "end": 1320
+        }
+      ],
+      "gustoScore": null,
+      "appleMapsUrl": "https://maps.apple.com/?daddr=32.7486947,-117.1294188&q=City%20Tacos",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=5421634460078555342",
+      "guideSlugs": [
+        "sd-north-park",
+        "sd-mexican"
+      ],
+      "muid": "5421634460078555342",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-10-22",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Tacos at City Tacos",
+          "credit": "Illustration"
+        }
+      ],
+      "phone": "+1 (619) 296-2303",
+      "website": "https://citytacossd.com/locations-north-park/"
+    },
+    {
+      "id": "civico-1845",
+      "city": "sandiego",
+      "name": "Civico 1845",
+      "neighborhood": "Little Italy",
+      "address": "1845 India St, San Diego, CA 92101",
+      "lat": 32.7242958,
+      "lng": -117.1683744,
+      "cuisine": [
+        "Italian"
+      ],
+      "placeType": "restaurant",
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            0
+          ],
+          "start": 720,
+          "end": 1260
+        },
+        {
+          "days": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "start": 960,
+          "end": 1260
+        },
+        {
+          "days": [
+            5
+          ],
+          "start": 960,
+          "end": 1320
+        },
+        {
+          "days": [
+            6
+          ],
+          "start": 720,
+          "end": 1320
+        }
+      ],
+      "gustoScore": null,
+      "appleMapsUrl": "https://maps.apple.com/?daddr=32.7242958,-117.1683744&q=Civico%201845",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=15840913257944585125",
+      "guideSlugs": [
+        "sd-little-italy",
+        "sd-italian"
+      ],
+      "muid": "15840913257944585125",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-10-22",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Italian at Civico 1845",
+          "credit": "Illustration"
+        }
+      ],
+      "phone": "+1 (619) 431-5990",
+      "website": "http://www.civico1845.com"
+    },
+    {
+      "id": "nado-gelato",
+      "city": "sandiego",
+      "name": "Nado Gelato",
+      "neighborhood": "Coronado",
+      "address": "1017 C Ave, Coronado, CA 92118",
+      "lat": 32.684872,
+      "lng": -117.178741,
+      "cuisine": [
+        "Gelato"
+      ],
+      "placeType": "dessert",
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "start": 600,
+          "end": 1320
+        },
+        {
+          "days": [
+            5,
+            6
+          ],
+          "start": 600,
+          "end": 1380
+        }
+      ],
+      "gustoScore": null,
+      "appleMapsUrl": "https://maps.apple.com/?daddr=32.684872,-117.178741&q=Nado%20Gelato",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=1618278721447382395",
+      "guideSlugs": [
+        "sd-coronado"
+      ],
+      "muid": "1618278721447382395",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {
+        "yelp": "1gtlOhCqltlwmn_M-Gj8uA"
+      },
+      "copySource": "draft",
+      "updatedAt": "2026-10-22",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Gelato at Nado Gelato",
+          "credit": "Illustration"
+        }
+      ],
+      "price": 2,
+      "phone": "+1 (619) 522-9053",
+      "website": "https://www.gelato101.com/coronando",
+      "publicRating": {
+        "value": 4.5,
+        "count": 754,
+        "source": "Yelp"
+      },
+      "yelpSlug": "1gtlOhCqltlwmn_M-Gj8uA"
+    },
+    {
+      "id": "juniper-ivy",
+      "city": "sandiego",
+      "name": "Juniper & Ivy",
+      "neighborhood": "Harborview",
+      "address": "2228 Kettner Blvd, San Diego, CA 92101",
+      "lat": 32.7274591,
+      "lng": -117.171244,
+      "cuisine": [
+        "New American"
+      ],
+      "placeType": "restaurant",
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "start": 1020,
+          "end": 1260
+        },
+        {
+          "days": [
+            5,
+            6
+          ],
+          "start": 1020,
+          "end": 1320
+        }
+      ],
+      "gustoScore": null,
+      "appleMapsUrl": "https://maps.apple.com/?daddr=32.7274591,-117.171244&q=Juniper%20%26%20Ivy",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=13797004766600831284",
+      "guideSlugs": [
+        "sd-new-american"
+      ],
+      "muid": "13797004766600831284",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-10-22",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting New American at Juniper & Ivy",
+          "credit": "Illustration"
+        }
+      ],
+      "phone": "+1 (619) 269-9036",
+      "website": "https://juniperandivy.com"
+    },
+    {
+      "id": "tribute-pizza",
+      "city": "sandiego",
+      "name": "Tribute Pizza",
+      "neighborhood": "North Park",
+      "address": "3077 North Park Way, San Diego, CA 92104",
+      "lat": 32.7472337,
+      "lng": -117.1279495,
+      "cuisine": [
+        "Pizza"
+      ],
+      "placeType": "restaurant",
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            0
+          ],
+          "start": 900,
+          "end": 1200
+        },
+        {
+          "days": [
+            2,
+            3,
+            4
+          ],
+          "start": 960,
+          "end": 1200
+        },
+        {
+          "days": [
+            5,
+            6
+          ],
+          "start": 960,
+          "end": 1260
+        }
+      ],
+      "gustoScore": null,
+      "appleMapsUrl": "https://maps.apple.com/?daddr=32.7472337,-117.1279495&q=Tribute%20Pizza",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=9474737386479642698",
+      "guideSlugs": [
+        "sd-north-park",
+        "sd-italian"
+      ],
+      "muid": "9474737386479642698",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-10-22",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Pizza at Tribute Pizza",
+          "credit": "Illustration"
+        }
+      ],
+      "phone": "+1 (619) 450-4505",
+      "website": "https://tributepizza.com"
+    },
+    {
+      "id": "nine-ten",
+      "city": "sandiego",
+      "name": "NINE-TEN",
+      "neighborhood": "La Jolla",
+      "address": "910 Prospect St, La Jolla, CA 92037",
+      "lat": 32.8472898,
+      "lng": -117.2752319,
+      "cuisine": [
+        "New American"
+      ],
+      "placeType": "restaurant",
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "start": 690,
+          "end": 1260
+        }
+      ],
+      "gustoScore": null,
+      "appleMapsUrl": "https://maps.apple.com/?daddr=32.8472898,-117.2752319&q=NINE-TEN",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=8390643966710498850",
+      "guideSlugs": [
+        "sd-la-jolla",
+        "sd-new-american"
+      ],
+      "muid": "8390643966710498850",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-10-22",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting New American at NINE-TEN",
+          "credit": "Illustration"
+        }
+      ],
+      "phone": "+1 (858) 964-5400",
+      "website": "http://www.nine-ten.com"
+    },
+    {
+      "id": "mothership",
+      "city": "sandiego",
+      "name": "Mothership",
+      "neighborhood": "North Park",
+      "address": "2310 30th St, San Diego, CA 92104",
+      "lat": 32.730005,
+      "lng": -117.129777,
+      "cuisine": [
+        "Cocktails"
+      ],
+      "placeType": "bar",
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            0,
+            6
+          ],
+          "start": 870,
+          "end": 1440
+        },
+        {
+          "days": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "start": 990,
+          "end": 1440
+        }
+      ],
+      "gustoScore": null,
+      "appleMapsUrl": "https://maps.apple.com/?daddr=32.730005,-117.129777&q=Mothership",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=17194890795595741590",
+      "guideSlugs": [
+        "sd-north-park"
+      ],
+      "muid": "17194890795595741590",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-10-22",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Cocktails at Mothership",
+          "credit": "Illustration"
+        }
+      ],
+      "phone": "+1 (619) 630-2187",
+      "website": "https://mothershiptrip.com"
+    },
+    {
+      "id": "artifact-at-mingei",
+      "city": "sandiego",
+      "name": "ARTIFACT at Mingei",
+      "neighborhood": "Balboa Park",
+      "address": "1439 El Prado, San Diego, CA 92101",
+      "lat": 32.731125,
+      "lng": -117.1510138,
+      "cuisine": [
+        "New American"
+      ],
+      "placeType": "restaurant",
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            0,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "start": 690,
+          "end": 870
+        },
+        {
+          "days": [
+            5
+          ],
+          "start": 1020,
+          "end": 1230
+        }
+      ],
+      "gustoScore": null,
+      "appleMapsUrl": "https://maps.apple.com/?daddr=32.731125,-117.1510138&q=ARTIFACT%20at%20Mingei",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=15012107706854006020",
+      "guideSlugs": [
+        "sd-new-american"
+      ],
+      "muid": "15012107706854006020",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-10-22",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting New American at ARTIFACT at Mingei",
+          "credit": "Illustration"
+        }
+      ],
+      "phone": "+1 (619) 331-3569",
+      "website": "https://www.urbankitchengroup.com/artifact-at-mingei/"
+    },
+    {
+      "id": "kettner-exchange",
+      "city": "sandiego",
+      "name": "Kettner Exchange",
+      "neighborhood": "Little Italy",
+      "address": "2001 Kettner Blvd, San Diego, CA 92101",
+      "lat": 32.7253741,
+      "lng": -117.1697313,
+      "cuisine": [
+        "New American"
+      ],
+      "placeType": "restaurant",
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            0,
+            6
+          ],
+          "start": 0,
+          "end": 60
+        },
+        {
+          "days": [
+            0
+          ],
+          "start": 660,
+          "end": 1440
+        },
+        {
+          "days": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "start": 1020,
+          "end": 1440
+        }
+      ],
+      "gustoScore": null,
+      "appleMapsUrl": "https://maps.apple.com/?daddr=32.7253741,-117.1697313&q=Kettner%20Exchange",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=7653526095111918375",
+      "guideSlugs": [
+        "sd-little-italy",
+        "sd-new-american"
+      ],
+      "muid": "7653526095111918375",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-10-22",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting New American at Kettner Exchange",
+          "credit": "Illustration"
+        }
+      ],
+      "phone": "+1 (619) 255-2001",
+      "website": "https://www.kettnerexchange.com"
+    },
+    {
+      "id": "nobu-del-coronado",
+      "city": "sandiego",
+      "name": "Nobu Del Coronado",
+      "neighborhood": "Coronado",
+      "address": "1500 Orange Ave, Coronado, CA 92118",
+      "lat": 32.6810803,
+      "lng": -117.1782262,
+      "cuisine": [
+        "Japanese"
+      ],
+      "placeType": "restaurant",
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            0,
+            6
+          ],
+          "start": 600,
+          "end": 1260
+        },
+        {
+          "days": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "start": 960,
+          "end": 1260
+        }
+      ],
+      "gustoScore": null,
+      "appleMapsUrl": "https://maps.apple.com/?daddr=32.6810803,-117.1782262&q=Nobu%20Del%20Coronado",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=5822832654445036112",
+      "guideSlugs": [
+        "sd-coronado",
+        "sd-japanese"
+      ],
+      "muid": "5822832654445036112",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-10-22",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Japanese at Nobu Del Coronado",
+          "credit": "Illustration"
+        }
+      ],
+      "phone": "+1 (619) 435-6611",
+      "website": "https://www.hoteldel.com/dine/nobu/"
+    }
+  ],
+  "guides": [
+    {
+      "slug": "sd-little-italy",
+      "title": "Little Italy",
+      "dek": "6 places.",
+      "group": "Neighborhoods",
+      "intro": "",
+      "updatedAt": "2026-10-22",
+      "ranked": false,
+      "city": "sandiego",
+      "entries": [
+        {
+          "placeId": "queenstown-public-house",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "ironside",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "morning-glory",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "born-raised",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "civico-1845",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "kettner-exchange",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        }
+      ]
+    },
+    {
+      "slug": "sd-coronado",
+      "title": "Coronado",
+      "dek": "5 places.",
+      "group": "Neighborhoods",
+      "intro": "",
+      "updatedAt": "2026-10-22",
+      "ranked": false,
+      "city": "sandiego",
+      "entries": [
+        {
+          "placeId": "little-frenchie",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "serea",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "lobster-west-coronado",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "nado-gelato",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "nobu-del-coronado",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        }
+      ]
+    },
+    {
+      "slug": "sd-la-jolla",
+      "title": "La Jolla",
+      "dek": "5 places.",
+      "group": "Neighborhoods",
+      "intro": "",
+      "updatedAt": "2026-10-22",
+      "ranked": false,
+      "city": "sandiego",
+      "entries": [
+        {
+          "placeId": "paradisaea",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "marisi",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "himitsu",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "wayfarer-bread",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "nine-ten",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        }
+      ]
+    },
+    {
+      "slug": "sd-north-park",
+      "title": "North Park",
+      "dek": "5 places.",
+      "group": "Neighborhoods",
+      "intro": "",
+      "updatedAt": "2026-10-22",
+      "ranked": false,
+      "city": "sandiego",
+      "entries": [
+        {
+          "placeId": "mabels-gone-fishing",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "trattoria-cori-pastificio",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "city-tacos",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "tribute-pizza",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "mothership",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        }
+      ]
+    },
+    {
+      "slug": "sd-east-village",
+      "title": "East Village",
+      "dek": "4 places.",
+      "group": "Neighborhoods",
+      "intro": "",
+      "updatedAt": "2026-10-22",
+      "ranked": false,
+      "city": "sandiego",
+      "entries": [
+        {
+          "placeId": "izola",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "the-mission",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "lola-55",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "callie",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        }
+      ]
+    },
+    {
+      "slug": "sd-mexican",
+      "title": "Mexican",
+      "dek": "12 places.",
+      "group": "Cuisine",
+      "intro": "",
+      "updatedAt": "2026-10-22",
+      "ranked": false,
+      "city": "sandiego",
+      "entries": [
+        {
+          "placeId": "la-perla-cocina-mexicana-3",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "mikes-taco-club",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "quixote",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "javiers-2",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "fernandez-restaurant-birrieria",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "the-taco-stand",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "mikes-red-tacos",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "lucha-libre-taco-shop",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "puesto",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "tacos-el-gordo",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "lola-55",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "city-tacos",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        }
+      ]
+    },
+    {
+      "slug": "sd-italian",
+      "title": "Italian",
+      "dek": "8 places.",
+      "group": "Cuisine",
+      "intro": "",
+      "updatedAt": "2026-10-22",
+      "ranked": false,
+      "city": "sandiego",
+      "entries": [
+        {
+          "placeId": "marisi",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "cesarina",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "ciccia-osteria",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "buona-forchetta",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "cucina-urbana",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "trattoria-cori-pastificio",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "civico-1845",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "tribute-pizza",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        }
+      ]
+    },
+    {
+      "slug": "sd-japanese",
+      "title": "Japanese",
+      "dek": "5 places.",
+      "group": "Cuisine",
+      "intro": "",
+      "updatedAt": "2026-10-22",
+      "ranked": false,
+      "city": "sandiego",
+      "entries": [
+        {
+          "placeId": "soichi",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "himitsu",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "wrench-rodent-seabasstropub",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "matsu-2",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "nobu-del-coronado",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        }
+      ]
+    },
+    {
+      "slug": "sd-new-american",
+      "title": "New American",
+      "dek": "14 places.",
+      "group": "Cuisine",
+      "intro": "",
+      "updatedAt": "2026-10-22",
+      "ranked": false,
+      "city": "sandiego",
+      "entries": [
+        {
+          "placeId": "a-r-valentien",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "market-restaurant-bar",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "paradisaea",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "cowboy-star",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "queenstown-public-house",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "c-level",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "herb-wood",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "malibu-farm-san-diego",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "campfire",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "addison",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "juniper-ivy",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "nine-ten",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "artifact-at-mingei",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "kettner-exchange",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        }
+      ]
+    },
+    {
+      "slug": "sd-seafood",
+      "title": "Seafood",
+      "dek": "4 places.",
+      "group": "Cuisine",
+      "intro": "",
+      "updatedAt": "2026-10-22",
+      "ranked": false,
+      "city": "sandiego",
+      "entries": [
+        {
+          "placeId": "mabels-gone-fishing",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "ironside",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "water-grill-2",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "lobster-west-coronado",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        }
+      ]
+    }
+  ]
+}
