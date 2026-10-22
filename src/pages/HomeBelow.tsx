@@ -169,16 +169,16 @@ export function HomeBelow() {
     <>
       <motion.div
         key={city}
-        className="mx-auto max-w-6xl px-4 py-10"
+        className="home-sections mx-auto max-w-6xl px-4"
         initial={reduceMotion ? false : { opacity: 0, y: 12 }}
         animate={{ opacity: 1, y: 0 }}
         transition={reduceMotion ? { duration: 0 } : { type: 'spring', stiffness: 420, damping: 32 }}
       >
         {chips.length || house ? (
-          <section aria-labelledby="collections">
+          <section className="home-section" aria-labelledby="collections">
             <h2 id="collections" className="font-serif text-4xl italic">Collections</h2>
             {chips.length ? (
-              <ul className="mt-4 flex flex-wrap gap-2">
+              <ul className="flex flex-wrap gap-2">
                 {chips.map((chip) => (
                   <li key={chip.slug}>
                     <Link className="chip inline-flex items-center gap-2" to={cityPath(`/collection/${chip.slug}`)}>
@@ -192,14 +192,14 @@ export function HomeBelow() {
             {house ? <OwnerCollections /> : null}
           </section>
         ) : null}
-        <section className="mt-10" aria-labelledby="right-now">
+        <section className="home-section" aria-labelledby="right-now">
           <h2 id="right-now" className="font-serif text-4xl italic">Where to eat right now</h2>
           {suggestion.live ? (
-            <p className="mt-2 text-sm font-bold">{suggestion.label}</p>
+            <p className="text-sm font-bold">{suggestion.label}</p>
           ) : (
-            <p className="mt-2 max-w-xl">Editor's picks for the next time you are hungry. Nothing on the list is open at this hour, so these are not a live open-now claim.</p>
+            <p className="max-w-xl">Editor's picks for the next time you are hungry. Nothing on the list is open at this hour, so these are not a live open-now claim.</p>
           )}
-          <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
             {nowPlaces.map((place, index) => (
               <Reveal key={place.id} delay={Math.min(index, 6) * 0.04}>
               <Link to={cityPath(`/place/${place.id}`)} className="hit-card" viewTransition={!reduceMotion}>
@@ -219,9 +219,9 @@ export function HomeBelow() {
             ))}
           </div>
         </section>
-        <section className="mt-10" aria-labelledby="occasions">
+        <section className="home-section" aria-labelledby="occasions">
           <h2 id="occasions" className="font-serif text-4xl italic">{east || la || sf || towns ? 'Start here' : 'Guides by occasion'}</h2>
-          <div className="card-grid card-grid-3 mt-4">
+          <div className="card-grid card-grid-3">
             {occasions.map((guide, index) => (
               <Reveal key={guide.slug} className="h-full" delay={Math.min(index, 6) * 0.04}>
               <Link to={cityPath(`/guide/${guide.slug}`)} className="guide-card" viewTransition={!reduceMotion}>
@@ -232,12 +232,12 @@ export function HomeBelow() {
           </div>
         </section>
         {app.user ? (
-          <section className="glass glass-dark mt-10 p-5" aria-labelledby={yourId(city)}>
+          <section className="home-section glass glass-dark p-4" aria-labelledby={yourId(city)}>
             <h2 id={yourId(city)} className="font-serif text-4xl italic">{yourTitle(city)}</h2>
-            <p className="mt-2">{toGo} on your To go list.</p>
-            <h3 className="mt-4 font-serif text-2xl italic">Recently rated</h3>
+            <p>{toGo} on your To go list.</p>
+            <h3 className="font-serif text-2xl italic">Recently rated</h3>
             {recent.length ? (
-              <ul className="mt-2 space-y-2">
+              <ul className="space-y-2">
                 {recent.map((row) => (
                   <li key={row.place!.id}>
                     <Link className="plan-tray-item" to={cityPath(`/place/${row.place!.id}`)} viewTransition={!reduceMotion}>
@@ -248,35 +248,34 @@ export function HomeBelow() {
                   </li>
                 ))}
               </ul>
-            ) : <p className="mt-2">Nothing ranked yet. <Link className="font-bold text-cream underline" to={cityPath('/rank')}>Rank a place</Link> and it will land here.</p>}
-            <h3 className="mt-4 font-serif text-2xl italic">Plans</h3>
-            <ul className="mt-2 space-y-2">
+            ) : <p>Nothing ranked yet. <Link className="font-bold text-cream underline" to={cityPath('/rank')}>Rank a place</Link> and it will land here.</p>}
+            <h3 className="font-serif text-2xl italic">Plans</h3>
+            <ul className="space-y-2">
               {app.plans.slice(0, 3).map((plan) => (
                 <li key={plan.id}><PlanCard planId={plan.id} /></li>
               ))}
             </ul>
-            <Link to={cityPath('/plans/wizard')} className="btn btn-coral mt-4">Plan dinner</Link>
+            <Link to={cityPath('/plans/wizard')} className="btn btn-coral">Plan dinner</Link>
           </section>
         ) : null}
-        <section className="mt-10" aria-labelledby="hood-teaser">
-          <div className="flex items-end justify-between gap-3">
+        <section className="home-section" aria-labelledby="hood-teaser">
+          <div className="section-head">
             <h2 id="hood-teaser" className="font-serif text-4xl italic">{east || towns ? 'Cities' : 'Neighborhoods'}</h2>
             <Link to={cityPath('/explore')} className="text-sm font-bold">Open the map</Link>
           </div>
-          <p className="mt-2 max-w-xl">The full list, all {places.length} places, is on the explore map.</p>
-          <Link to={cityPath('/explore')} className="btn mt-4">Open the map</Link>
-          <ul className="mt-4 flex flex-wrap gap-2">
+          <p className="max-w-xl">The full list, all {places.length} places, is on the explore map.</p>
+          <ul className="home-chips">
             {neighborhoods.map((guide) => (
               <li key={guide.slug}><Link className="chip inline-flex items-center" to={cityPath(`/guide/${guide.slug}`)}>{guide.title}</Link></li>
             ))}
           </ul>
         </section>
-        <section className="mt-10">
-          <div className="flex items-end justify-between gap-3">
+        <section className="home-section">
+          <div className="section-head">
             <h2 className="font-serif text-4xl italic">Featured guides</h2>
             <Link to={cityPath('/guides')} className="text-sm font-bold">All guides</Link>
           </div>
-          <div className="mt-4 flex gap-3 overflow-x-auto pb-2">
+          <div className="home-strip">
             {featured.map((guide) => (
               <Link key={guide.slug} to={cityPath(`/guide/${guide.slug}`)} className="guide-card w-80 shrink-0" viewTransition={!reduceMotion}>
                 <GuideCardCopy count={guide.count} title={guide.title} dek={guide.dek} />
@@ -284,10 +283,10 @@ export function HomeBelow() {
             ))}
           </div>
         </section>
-        <section className="mt-10">
+        <section className="home-section">
           <h2 className="font-serif text-4xl italic">{listTitle(city)}</h2>
-          <p className="mt-2 max-w-xl">{listDek(city)}</p>
-          <div className="mt-4 flex gap-3 overflow-x-auto pb-2">
+          <p className="max-w-xl">{listDek(city)}</p>
+          <div className="home-strip">
             {hits.map((place) => (
               <Link key={place.id} to={cityPath(`/place/${place.id}`)} className="hit-card w-72 shrink-0" viewTransition={!reduceMotion}>
                 <div className="h-28 overflow-hidden bg-navy [&_.place-art]:aspect-auto [&_.place-art]:h-full">
@@ -306,16 +305,16 @@ export function HomeBelow() {
           const rows = guides.filter((guide) => guide.group === group).slice(0, group === 'Neighborhoods' ? 6 : 4)
           if (!rows.length) return null
           return (
-          <section key={group} className="mt-10">
+          <section key={group} className="home-section">
             <h2 className="font-serif text-4xl italic">{group}</h2>
-            <div className={`card-grid mt-4${rows.length % 3 === 0 ? ' card-grid-3' : ''}`}>
+            <div className={`card-grid${rows.length % 3 === 0 ? ' card-grid-3' : ''}`}>
               {rows.map((guide) => (
                 <Link key={guide.slug} to={cityPath(`/guide/${guide.slug}`)} className="guide-card" viewTransition={!reduceMotion}>
                   <GuideCardCopy count={guide.count} title={guide.title} dek={guide.dek} />
                 </Link>
               ))}
             </div>
-            <Link to={cityPath('/guides')} className="mt-3 inline-block text-sm font-bold">All {group.toLowerCase()} guides</Link>
+            <Link to={cityPath('/guides')} className="inline-block text-sm font-bold">All {group.toLowerCase()} guides</Link>
           </section>
           )
         })}

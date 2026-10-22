@@ -404,17 +404,9 @@ textarea {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  /* A leftover card stays the same width and sits in the middle of the last row. */
-  .card-grid > :last-child:nth-child(2n + 1) {
+  /* One card in the section is the whole row. A leftover card stays in the first column. */
+  .card-grid > :only-child {
     grid-column: 1 / -1;
-    justify-self: center;
-    width: calc((100% - var(--gutter)) / 2);
-  }
-
-  /* One card in the section is the whole row, not a stub in the middle. */
-  .card-grid > :last-child:nth-child(2n + 1):only-child {
-    justify-self: stretch;
-    width: auto;
   }
 }
 
@@ -423,21 +415,68 @@ textarea {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
-  .card-grid-3 > :last-child:nth-child(2n + 1) {
-    grid-column: auto;
-    justify-self: stretch;
-    width: auto;
-  }
-
-  .card-grid-3 > :last-child:nth-child(3n + 1) {
-    grid-column: 2;
-  }
-
-  .card-grid-3 > :last-child:nth-child(3n + 1):only-child {
+  .card-grid-3 > :only-child {
     grid-column: 1 / -1;
-    justify-self: stretch;
-    width: auto;
   }
+}
+
+.home-sections {
+  padding-block: var(--space-6);
+}
+
+.home-sections > section + section {
+  margin-top: var(--space-6);
+}
+
+.home-sections > section > * + * {
+  margin-top: var(--space-4);
+}
+
+.home-sections > section {
+  min-width: 0;
+  max-width: 100%;
+}
+
+.section-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-3);
+  min-width: 0;
+}
+
+.section-head > h2 {
+  min-width: 0;
+}
+
+.section-head > a {
+  flex: none;
+  white-space: nowrap;
+}
+
+.home-strip,
+.home-chips {
+  display: flex;
+  min-width: 0;
+  max-width: 100%;
+  overflow-x: auto;
+  padding-bottom: var(--space-2);
+}
+
+.home-strip {
+  gap: var(--gutter);
+}
+
+.home-chips {
+  gap: var(--space-2);
+}
+
+.home-chips > li {
+  flex: none;
+}
+
+.home-chips .chip {
+  white-space: nowrap;
 }
 
 .toc-card {
