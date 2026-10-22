@@ -1,7 +1,7 @@
 {
   "name": "Gusto's Guide",
   "short_name": "Gusto",
-  "description": "A Seattle restaurant guide with house lists, a map, and your own ranks.",
+  "description": "A guide to restaurants and places in the cities we cover, with house lists, a map, and your own ranks.",
   "id": "https://gustosguide.com/",
   "start_url": "https://gustosguide.com/",
   "scope": "https://gustosguide.com/",

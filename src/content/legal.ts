@@ -10,7 +10,7 @@ export const terms: LegalDoc = {
   title: 'Terms',
   description: 'The short terms for using Gusto’s Guide.',
   paragraphs: [
-    'Gusto’s Guide is Augusto’s Seattle restaurant guide. These terms cover gustosguide.com and the same site on its pages.dev address.',
+    'Gusto’s Guide is Augusto’s guide to restaurants and places in the cities we cover. These terms cover gustosguide.com and the same site on its pages.dev address.',
     'The writing is personal opinion. A restaurant can close, move, or change its hours. Check before you go.',
     'You can read the guide without an account. If you sign in, with email or with X, you are responsible for the lists, statuses, plans, comments, and photos you add.',
     'Post only words and photos that are yours, or that you have permission to share. Don’t post someone else’s private information.',

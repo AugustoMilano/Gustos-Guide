@@ -56,8 +56,8 @@ function card(title, dek) {
 
 const ogDir = join(root, 'public/og/guides')
 mkdirSync(ogDir, { recursive: true })
-writeFileSync(join(root, 'public/og/og.svg'), card("Gusto's Guide", 'Eat your way through Seattle.'))
-writeFileSync(join(root, 'public/og/place.svg'), card('A Seattle place', 'From the house guide.'))
+writeFileSync(join(root, 'public/og/og.svg'), card("Gusto's Guide", 'Restaurants and places in the cities we cover.'))
+writeFileSync(join(root, 'public/og/place.svg'), card('A place', 'From the house guide.'))
 for (const guide of [...index.guides, ...eastside.guides, ...la.guides, ...sf.guides]) {
   writeFileSync(join(ogDir, `${guide.slug}.svg`), card(guide.title, guide.dek || 'A guide from Gusto.'))
 }
