@@ -9,6 +9,7 @@ import { AreaKicker } from './AreaKicker.tsx'
 import { CitySwitcher } from './CitySwitcher.tsx'
 import { LogoMark } from './LogoMark.tsx'
 import { SignInSheet } from './SignInSheet.tsx'
+import { setStatusBar } from '../lib/status-bar.ts'
 import { useApp } from '../state/AppState.tsx'
 
 function prefetch(path: string) {
@@ -135,8 +136,10 @@ export function Header() {
       const bar = document.querySelector('.site-header')
       const heroBottom = hero?.getBoundingClientRect().bottom ?? 0
       const barHeight = bar?.getBoundingClientRect().height ?? 0
-      setOnHero(heroBottom > barHeight * 0.45)
+      const heroOn = heroBottom > barHeight * 0.45
+      setOnHero(heroOn)
       setScrolled(window.scrollY > 12)
+      setStatusBar(heroOn ? 'navy' : 'cream')
     }
     onScroll()
     window.addEventListener('scroll', onScroll, { passive: true })
