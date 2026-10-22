@@ -3369,7 +3369,18 @@ img.is-pending,
 }
 
 .site-footer {
-  padding-bottom: max(0px, env(safe-area-inset-bottom));
+  padding-bottom: 0;
+}
+
+.made-in {
+  margin: 0;
+  padding: var(--space-4) var(--page-pad) calc(var(--space-4) + env(safe-area-inset-bottom));
+  background: var(--color-cream);
+  color: var(--color-muted);
+  font-size: var(--text-xs);
+  font-weight: 500;
+  line-height: 1.33;
+  text-align: center;
 }
 
 .guide-entry {

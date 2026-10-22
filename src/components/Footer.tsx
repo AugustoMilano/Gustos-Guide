@@ -51,6 +51,7 @@ export function Footer() {
           </p>
         </div>
       </div>
+      <p className="made-in">Made in Seattle</p>
     </footer>
   )
 }
