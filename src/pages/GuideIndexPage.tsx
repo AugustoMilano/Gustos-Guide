@@ -16,26 +16,31 @@ export function GuideIndexPage() {
   const east = city === 'eastside'
   const la = city === 'la'
   const sf = city === 'sf'
+  const pen = city === 'peninsula'
   usePageMeta(
     "Guides · Gusto's Guide",
     la
       ? 'Los Angeles guides for Venice, Santa Monica, West Hollywood, Downtown, and a few cuisines.'
       : sf
-        ? 'San Francisco and Bay Area guides, grouped by neighborhood and cuisine.'
-        : east
+        ? 'San Francisco guides, grouped by neighborhood and cuisine.'
+        : pen
+          ? 'Peninsula and South Bay guides, grouped by city.'
+          : east
           ? 'Eastside guides for Bellevue, the Kirkland waterfront, Redmond, Issaquah, and Bothell.'
           : 'Seattle guides for pizza, neighborhoods, late nights, and the bars worth crossing town for.',
   )
   return (
     <main id="main" tabIndex={-1} className="mx-auto max-w-6xl px-4 pt-24 pb-16 outline-none">
       <AreaKicker />
-      <h1 className="mt-2 font-serif text-6xl italic">{la ? 'Los Angeles guides' : sf ? 'San Francisco guides' : east ? 'Eastside guides' : 'Seattle guides'}</h1>
+      <h1 className="mt-2 font-serif text-6xl italic">{la ? 'Los Angeles guides' : pen ? 'Peninsula guides' : sf ? 'San Francisco guides' : east ? 'Eastside guides' : 'Seattle guides'}</h1>
       <p className="mt-3 max-w-2xl">
         {la
           ? 'Venice, Santa Monica, West Hollywood, Beverly Hills, Downtown, and Hollywood.'
           : sf
-            ? 'Neighborhoods and cuisines from the San Francisco and Bay Area list.'
-            : east
+            ? 'Neighborhoods and cuisines from the San Francisco list.'
+            : pen
+              ? 'Palo Alto, Santa Clara, San Jose, and the other cities on this list.'
+              : east
               ? 'Bellevue, Kirkland, Redmond, Issaquah, and Bothell.'
               : `Updated ${catalog.updatedAt}. Pizza, neighborhoods, late nights, and the bars worth crossing town for.`}
       </p>

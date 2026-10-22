@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-21",
+  "updatedAt": "2026-10-22",
   "places": [
     {
       "id": "roka-akor",
@@ -362,7 +362,7 @@
     },
     {
       "id": "barbara-s-fishtrap",
-      "city": "sf",
+      "city": "peninsula",
       "name": "Barbara's Fishtrap",
       "neighborhood": "Half Moon Bay",
       "address": "281 Capistrano Rd, Half Moon Bay, CA 94019",
@@ -1075,7 +1075,7 @@
     },
     {
       "id": "salt-straw-sf",
-      "city": "sf",
+      "city": "peninsula",
       "name": "Salt & Straw",
       "neighborhood": "Santa Clara",
       "address": "2855 Stevens Creek Blvd, Santa Clara, CA 95050",
@@ -1203,7 +1203,7 @@
     },
     {
       "id": "restaurant-gish",
-      "city": "sf",
+      "city": "peninsula",
       "name": "Restaurant Gish",
       "neighborhood": "Santa Clara",
       "address": "1998 Homestead Rd, Unit 113, Santa Clara, CA 95050",
@@ -1926,7 +1926,7 @@
     },
     {
       "id": "taco-bell-cantina",
-      "city": "sf",
+      "city": "peninsula",
       "name": "Taco Bell Cantina",
       "neighborhood": "Pacifica",
       "address": "5200 Coast Hwy, Pacifica, CA 94044",
@@ -3139,7 +3139,7 @@
     },
     {
       "id": "billy-roy-s-burger-co",
-      "city": "sf",
+      "city": "peninsula",
       "name": "Billy Roy's Burger Co",
       "neighborhood": "Fremont",
       "address": "3909 Thornton Ave, Fremont, CA 94536",
@@ -3807,7 +3807,7 @@
     },
     {
       "id": "nobu-sf",
-      "city": "sf",
+      "city": "peninsula",
       "name": "Nobu",
       "neighborhood": "Palo Alto",
       "address": "180 Hamilton Ave, Palo Alto, CA 94301",
@@ -3990,7 +3990,7 @@
     },
     {
       "id": "the-press-an-artisan-cafe",
-      "city": "sf",
+      "city": "peninsula",
       "name": "The Press An Artisan Cafe",
       "neighborhood": "Pleasanton",
       "address": "1987 Santa Rita Rd, Suite C, Pleasanton, CA 94588",
@@ -4631,7 +4631,7 @@
     },
     {
       "id": "mastro-s-steakhouse",
-      "city": "sf",
+      "city": "peninsula",
       "name": "Mastro's Steakhouse",
       "neighborhood": "Santa Clara",
       "address": "2855 Stevens Creek Blvd, Unit 1860, Santa Clara, CA 95050",
@@ -6067,7 +6067,7 @@
     },
     {
       "id": "ramen-nagi",
-      "city": "sf",
+      "city": "peninsula",
       "name": "Ramen Nagi",
       "neighborhood": "Palo Alto",
       "address": "541 Bryant St, Palo Alto, CA 94301",
@@ -7158,7 +7158,7 @@
     },
     {
       "id": "taverna",
-      "city": "sf",
+      "city": "peninsula",
       "name": "Taverna",
       "neighborhood": "Palo Alto",
       "address": "800 Emerson St, Palo Alto, CA 94301",
@@ -7294,7 +7294,7 @@
     },
     {
       "id": "la-foret-restaurant",
-      "city": "sf",
+      "city": "peninsula",
       "name": "La Foret Restaurant",
       "neighborhood": "San Jose",
       "address": "21747 Bertram Rd, San Jose, CA 95120",
@@ -7662,7 +7662,7 @@
     },
     {
       "id": "elia",
-      "city": "sf",
+      "city": "peninsula",
       "name": "Elia",
       "neighborhood": "Pleasanton",
       "address": "310 Main St, Unit A, Pleasanton, CA 94566",
@@ -8563,7 +8563,7 @@
     {
       "slug": "sf-french",
       "title": "French",
-      "dek": "O' By Claude Le Tohic at 165 O'Farrell St, and 5 more French stops.",
+      "dek": "O' By Claude Le Tohic at 165 O'Farrell St, and 4 more French stops.",
       "group": "Cuisine",
       "intro": "O' By Claude Le Tohic is at 165 O'Farrell St. Mijoté is at 2400 Harrison St.",
       "updatedAt": "2026-10-21",
@@ -8599,31 +8599,19 @@
           "pullQuote": "Atelier Crenn sits at 3127 Fillmore St. French, Cow Hollow.",
           "blurb": "Atelier Crenn sits at 3127 Fillmore St. French, Cow Hollow.",
           "copySource": "draft"
-        },
-        {
-          "placeId": "la-foret-restaurant",
-          "pullQuote": "French at La Foret Restaurant, 21747 Bertram Rd, San Jose.",
-          "blurb": "French at La Foret Restaurant, 21747 Bertram Rd, San Jose.",
-          "copySource": "draft"
         }
       ]
     },
     {
       "slug": "sf-seafood",
       "title": "Seafood",
-      "dek": "Barbara's Fishtrap at 281 Capistrano Rd, and 5 more Seafood stops.",
+      "dek": "Scoma's in Fisherman's Wharf, and 4 more.",
       "group": "Cuisine",
-      "intro": "Barbara's Fishtrap is at 281 Capistrano Rd. Scoma's is at 1965 Al Scoma Way.",
+      "intro": "Scoma's is at 1965 Al Scoma Way.",
       "updatedAt": "2026-10-21",
       "ranked": false,
       "city": "sf",
       "entries": [
-        {
-          "placeId": "barbara-s-fishtrap",
-          "pullQuote": "281 Capistrano Rd in Half Moon Bay is the address for Barbara's Fishtrap. Seafood.",
-          "blurb": "281 Capistrano Rd in Half Moon Bay is the address for Barbara's Fishtrap. Seafood.",
-          "copySource": "draft"
-        },
         {
           "placeId": "scoma-s",
           "pullQuote": "Scoma's at 1965 Al Scoma Way in Fisherman's Wharf. Seafood.",
@@ -8701,9 +8689,9 @@
     {
       "slug": "sf-japanese",
       "title": "Japanese",
-      "dek": "Roka Akor at 801 Montgomery St, and 4 more Japanese stops.",
+      "dek": "Roka Akor at 801 Montgomery St, and 3 more Japanese stops.",
       "group": "Cuisine",
-      "intro": "Roka Akor is at 801 Montgomery St. Nobu is at 180 Hamilton Ave.",
+      "intro": "Roka Akor is at 801 Montgomery St.",
       "updatedAt": "2026-10-21",
       "ranked": false,
       "city": "sf",
@@ -8712,12 +8700,6 @@
           "placeId": "roka-akor",
           "pullQuote": "Roka Akor sits at 801 Montgomery St. Japanese, Jackson Square.",
           "blurb": "Roka Akor sits at 801 Montgomery St. Japanese, Jackson Square.",
-          "copySource": "draft"
-        },
-        {
-          "placeId": "nobu-sf",
-          "pullQuote": "Nobu sits at 180 Hamilton Ave. Japanese, Palo Alto.",
-          "blurb": "Nobu sits at 180 Hamilton Ave. Japanese, Palo Alto.",
           "copySource": "draft"
         },
         {
@@ -8743,7 +8725,7 @@
     {
       "slug": "sf-steakhouse",
       "title": "Steakhouse",
-      "dek": "John's Grill at 63 Ellis St, and 4 more Steakhouse stops.",
+      "dek": "John's Grill at 63 Ellis St, and 3 more Steakhouse stops.",
       "group": "Cuisine",
       "intro": "John's Grill is at 63 Ellis St. Niku Steakhouse is at 61 Division St.",
       "updatedAt": "2026-10-21",
@@ -8760,12 +8742,6 @@
           "placeId": "niku-steakhouse",
           "pullQuote": "Steakhouse at Niku Steakhouse, 61 Division St, Design District.",
           "blurb": "Steakhouse at Niku Steakhouse, 61 Division St, Design District.",
-          "copySource": "draft"
-        },
-        {
-          "placeId": "mastro-s-steakhouse",
-          "pullQuote": "Mastro's Steakhouse at 2855 Stevens Creek Blvd in Santa Clara. Steakhouse.",
-          "blurb": "Mastro's Steakhouse at 2855 Stevens Creek Blvd in Santa Clara. Steakhouse.",
           "copySource": "draft"
         },
         {
@@ -8857,7 +8833,7 @@
     {
       "slug": "sf-date-night",
       "title": "Date night",
-      "dek": "Roka Akor at 801 Montgomery St, and 2 more marked $$$ or $$$$. Scores are still blank.",
+      "dek": "Roka Akor at 801 Montgomery St, and 1 more marked $$$ or $$$$. Scores are still blank.",
       "group": "Occasion",
       "intro": "Rooms marked $$$ or $$$$ on the published price band. Scores are still blank.",
       "updatedAt": "2026-10-21",
@@ -8871,15 +8847,165 @@
           "copySource": "draft"
         },
         {
+          "placeId": "osso-steakhouse",
+          "pullQuote": "Steakhouse at Osso Steakhouse, 1177 California St, Downtown.",
+          "blurb": "Steakhouse at Osso Steakhouse, 1177 California St, Downtown.",
+          "copySource": "draft"
+        }
+      ]
+    },
+    {
+      "slug": "peninsula-fremont",
+      "title": "Fremont",
+      "dek": "Billy Roy's Burger Co in Fremont.",
+      "group": "Neighborhoods",
+      "intro": "Billy Roy's Burger Co at 3909 Thornton Ave in Fremont. Burger.",
+      "updatedAt": "2026-10-22",
+      "ranked": false,
+      "city": "peninsula",
+      "entries": [
+        {
+          "placeId": "billy-roy-s-burger-co",
+          "pullQuote": "Billy Roy's Burger Co at 3909 Thornton Ave in Fremont. Burger.",
+          "blurb": "Billy Roy's Burger Co at 3909 Thornton Ave in Fremont. Burger.",
+          "copySource": "draft"
+        }
+      ]
+    },
+    {
+      "slug": "peninsula-half-moon-bay",
+      "title": "Half Moon Bay",
+      "dek": "Barbara's Fishtrap in Half Moon Bay.",
+      "group": "Neighborhoods",
+      "intro": "281 Capistrano Rd in Half Moon Bay is the address for Barbara's Fishtrap. Seafood.",
+      "updatedAt": "2026-10-22",
+      "ranked": false,
+      "city": "peninsula",
+      "entries": [
+        {
+          "placeId": "barbara-s-fishtrap",
+          "pullQuote": "281 Capistrano Rd in Half Moon Bay is the address for Barbara's Fishtrap. Seafood.",
+          "blurb": "281 Capistrano Rd in Half Moon Bay is the address for Barbara's Fishtrap. Seafood.",
+          "copySource": "draft"
+        }
+      ]
+    },
+    {
+      "slug": "peninsula-pacifica",
+      "title": "Pacifica",
+      "dek": "Taco Bell Cantina in Pacifica.",
+      "group": "Neighborhoods",
+      "intro": "Taco Bell Cantina sits at 5200 Coast Hwy. Fast Food, Pacifica.",
+      "updatedAt": "2026-10-22",
+      "ranked": false,
+      "city": "peninsula",
+      "entries": [
+        {
+          "placeId": "taco-bell-cantina",
+          "pullQuote": "Taco Bell Cantina sits at 5200 Coast Hwy. Fast Food, Pacifica.",
+          "blurb": "Taco Bell Cantina sits at 5200 Coast Hwy. Fast Food, Pacifica.",
+          "copySource": "draft"
+        }
+      ]
+    },
+    {
+      "slug": "peninsula-palo-alto",
+      "title": "Palo Alto",
+      "dek": "Nobu, Ramen Nagi, and Taverna.",
+      "group": "Neighborhoods",
+      "intro": "Nobu sits at 180 Hamilton Ave. Japanese, Palo Alto. Palo Alto: Ramen Nagi at 541 Bryant St. Ramen. Taverna at 800 Emerson St in Palo Alto. Greek.",
+      "updatedAt": "2026-10-22",
+      "ranked": false,
+      "city": "peninsula",
+      "entries": [
+        {
+          "placeId": "nobu-sf",
+          "pullQuote": "Nobu sits at 180 Hamilton Ave. Japanese, Palo Alto.",
+          "blurb": "Nobu sits at 180 Hamilton Ave. Japanese, Palo Alto.",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "ramen-nagi",
+          "pullQuote": "Palo Alto: Ramen Nagi at 541 Bryant St. Ramen.",
+          "blurb": "Palo Alto: Ramen Nagi at 541 Bryant St. Ramen.",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "taverna",
+          "pullQuote": "Taverna at 800 Emerson St in Palo Alto. Greek.",
+          "blurb": "Taverna at 800 Emerson St in Palo Alto. Greek.",
+          "copySource": "draft"
+        }
+      ]
+    },
+    {
+      "slug": "peninsula-pleasanton",
+      "title": "Pleasanton",
+      "dek": "Elia and The Press An Artisan Cafe.",
+      "group": "Neighborhoods",
+      "intro": "Elia at 310 Main St in Pleasanton. Greek. The Press An Artisan Cafe, 1987 Santa Rita Rd. Coffee in Pleasanton.",
+      "updatedAt": "2026-10-22",
+      "ranked": false,
+      "city": "peninsula",
+      "entries": [
+        {
+          "placeId": "elia",
+          "pullQuote": "Elia at 310 Main St in Pleasanton. Greek.",
+          "blurb": "Elia at 310 Main St in Pleasanton. Greek.",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "the-press-an-artisan-cafe",
+          "pullQuote": "The Press An Artisan Cafe, 1987 Santa Rita Rd. Coffee in Pleasanton.",
+          "blurb": "The Press An Artisan Cafe, 1987 Santa Rita Rd. Coffee in Pleasanton.",
+          "copySource": "draft"
+        }
+      ]
+    },
+    {
+      "slug": "peninsula-san-jose",
+      "title": "San Jose",
+      "dek": "La Foret Restaurant in San Jose.",
+      "group": "Neighborhoods",
+      "intro": "French at La Foret Restaurant, 21747 Bertram Rd, San Jose.",
+      "updatedAt": "2026-10-22",
+      "ranked": false,
+      "city": "peninsula",
+      "entries": [
+        {
+          "placeId": "la-foret-restaurant",
+          "pullQuote": "French at La Foret Restaurant, 21747 Bertram Rd, San Jose.",
+          "blurb": "French at La Foret Restaurant, 21747 Bertram Rd, San Jose.",
+          "copySource": "draft"
+        }
+      ]
+    },
+    {
+      "slug": "peninsula-santa-clara",
+      "title": "Santa Clara",
+      "dek": "Mastro's Steakhouse, Restaurant Gish, and Salt & Straw.",
+      "group": "Neighborhoods",
+      "intro": "Mastro's Steakhouse at 2855 Stevens Creek Blvd in Santa Clara. Steakhouse. Restaurant Gish, 1998 Homestead Rd. Korean in Santa Clara. Ice Cream from Salt & Straw at 2855 Stevens Creek Blvd, Santa Clara.",
+      "updatedAt": "2026-10-22",
+      "ranked": false,
+      "city": "peninsula",
+      "entries": [
+        {
+          "placeId": "mastro-s-steakhouse",
+          "pullQuote": "Mastro's Steakhouse at 2855 Stevens Creek Blvd in Santa Clara. Steakhouse.",
+          "blurb": "Mastro's Steakhouse at 2855 Stevens Creek Blvd in Santa Clara. Steakhouse.",
+          "copySource": "draft"
+        },
+        {
           "placeId": "restaurant-gish",
           "pullQuote": "Restaurant Gish, 1998 Homestead Rd. Korean in Santa Clara.",
           "blurb": "Restaurant Gish, 1998 Homestead Rd. Korean in Santa Clara.",
           "copySource": "draft"
         },
         {
-          "placeId": "osso-steakhouse",
-          "pullQuote": "Steakhouse at Osso Steakhouse, 1177 California St, Downtown.",
-          "blurb": "Steakhouse at Osso Steakhouse, 1177 California St, Downtown.",
+          "placeId": "salt-straw-sf",
+          "pullQuote": "Ice Cream from Salt & Straw at 2855 Stevens Creek Blvd, Santa Clara.",
+          "blurb": "Ice Cream from Salt & Straw at 2855 Stevens Creek Blvd, Santa Clara.",
           "copySource": "draft"
         }
       ]

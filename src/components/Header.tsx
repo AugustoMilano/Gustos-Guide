@@ -2,7 +2,7 @@ import { useEffect, useRef, useState, type RefObject } from 'react'
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
 import { dragSheet } from '../lib/motion.ts'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
-import { areaPhrase, cityPath, isCityPicker, readRegionMemory, regionOf, writeRegionMemory, type CityId } from '../lib/city.ts'
+import { areaPhrase, areasFor, cityPath, isCityPicker, readRegionMemory, writeRegionMemory, type CityId } from '../lib/city.ts'
 import { SearchField } from './SearchField.tsx'
 import { useCityId } from '../lib/use-city-id.ts'
 import { AreaKicker } from './AreaKicker.tsx'
@@ -56,6 +56,7 @@ function citySwitchLabel(city: CityId) {
   if (city === 'eastside') return 'Eastside'
   if (city === 'la') return 'Los Angeles'
   if (city === 'sf') return 'San Francisco'
+  if (city === 'peninsula') return 'Peninsula'
   return 'Seattle'
 }
 
@@ -99,7 +100,7 @@ export function Header() {
   const picker = isCityPicker(location.pathname)
   const linkCity = picker ? readRegionMemory().area : city
   const areaName = areaPhrase(linkCity)
-  const showAreas = !picker && regionOf(city) === 'seattle'
+  const showAreas = !picker && areasFor(city).length > 1
   const bellPanel = useRef<HTMLDivElement>(null)
   const bellDesktop = useRef<HTMLButtonElement>(null)
   const bellMobile = useRef<HTMLButtonElement>(null)
@@ -112,7 +113,7 @@ export function Header() {
   const [moreRefs] = useState(() => [morePanel, moreButton])
   const reduceMotion = useReducedMotion()
   const [scrolled, setScrolled] = useState(false)
-  const [onHero, setOnHero] = useState(() => ['/', '/seattle', '/eastside', '/la', '/sf'].includes(location.pathname))
+  const [onHero, setOnHero] = useState(() => ['/', '/seattle', '/eastside', '/la', '/sf', '/peninsula'].includes(location.pathname))
   const route = `${location.pathname}${location.search}`
 
   useEffect(() => {

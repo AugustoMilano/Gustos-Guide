@@ -1,12 +1,12 @@
 import type { SlimPlace } from '../types.ts'
 
 export type HouseMark = 'havent'
-export type QuickRegion = 'all' | 'seattle' | 'eastside' | 'la' | 'sf'
+export type QuickRegion = 'all' | 'seattle' | 'eastside' | 'la' | 'sf' | 'peninsula'
 
-const CITY_ORDER = { seattle: 0, eastside: 1, la: 2, sf: 3 } as const
+const CITY_ORDER = { seattle: 0, eastside: 1, la: 2, sf: 3, peninsula: 4 } as const
 
-export function cityOf(place: { city?: string }): 'seattle' | 'eastside' | 'la' | 'sf' {
-  if (place.city === 'la' || place.city === 'eastside' || place.city === 'sf') return place.city
+export function cityOf(place: { city?: string }): 'seattle' | 'eastside' | 'la' | 'sf' | 'peninsula' {
+  if (place.city === 'la' || place.city === 'eastside' || place.city === 'sf' || place.city === 'peninsula') return place.city
   return 'seattle'
 }
 

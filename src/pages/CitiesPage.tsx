@@ -1,6 +1,6 @@
 import { motion, useReducedMotion } from 'framer-motion'
 import { useNavigate } from 'react-router-dom'
-import { REGIONS, readRegionMemory, writeRegionMemory, type RegionId } from '../lib/city.ts'
+import { cityPath, readRegionMemory, REGIONS, writeRegionMemory, type RegionId } from '../lib/city.ts'
 import { usePageMeta } from '../lib/meta.ts'
 
 const SPRING = { type: 'spring' as const, stiffness: 420, damping: 32 }
@@ -11,13 +11,14 @@ export function CitiesPage() {
   const memory = readRegionMemory()
   usePageMeta(
     "Choose a city · Gusto's Guide",
-    'Seattle covers the city and the Eastside. Los Angeles and San Francisco are their own lists.',
+    'Seattle covers the city and the Eastside. San Francisco covers the city and the Peninsula. Los Angeles is its own list.',
   )
 
   function open(region: RegionId) {
-    const area = region === 'la' ? 'la' : region === 'sf' ? 'sf' : memory.region === 'seattle' ? memory.area : 'seattle'
+    const regionAreas = REGIONS.find((item) => item.id === region)?.areas ?? ['seattle']
+    const area = memory.region === region && regionAreas.includes(memory.area) ? memory.area : regionAreas[0]
     writeRegionMemory(area)
-    navigate(area === 'la' ? '/la' : area === 'sf' ? '/sf' : area === 'eastside' ? '/eastside' : '/seattle')
+    navigate(cityPath('/', area))
   }
 
   return (
@@ -25,7 +26,7 @@ export function CitiesPage() {
       <p className="area-kicker">Gusto's Guide</p>
       <h1 className="mt-2 font-serif text-6xl italic">Choose a city</h1>
       <p className="mt-3 max-w-xl">
-        Seattle includes the Eastside, with the coral switch once you are inside. Los Angeles and San Francisco are their own lists. The city you opened last is marked.
+        Seattle includes the Eastside, with the coral switch once you are inside. San Francisco includes the Peninsula and South Bay the same way. Los Angeles is its own list. The city you opened last is marked.
       </p>
       <div className="mt-6 grid gap-3">
         {REGIONS.map((region, index) => {

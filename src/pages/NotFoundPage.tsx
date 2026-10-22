@@ -16,7 +16,7 @@ export function NotFoundPage() {
     const q = query.trim()
     const path = q ? `/search?q=${encodeURIComponent(q)}` : '/search'
     // Unprefixed misses stay on the Seattle search URL the rest of the site already uses.
-    const prefixed = window.location.hash.includes('/la') || window.location.hash.includes('/eastside') || window.location.hash.includes('/seattle') || window.location.hash.includes('/sf')
+    const prefixed = ['/la', '/eastside', '/seattle', '/peninsula', '/sf'].some((prefix) => window.location.hash.includes(prefix))
     navigate(prefixed ? cityPath(path, city) : path)
   }
 

@@ -24,7 +24,7 @@ export type CollectionWrite = { ok: true } | { ok: false; missing: boolean; mess
 type CollectionFail = { ok: false; missing: boolean; message: string }
 
 function asCity(value: string): CityId | null {
-  if (value === 'seattle' || value === 'eastside' || value === 'la' || value === 'sf') return value
+  if (value === 'seattle' || value === 'eastside' || value === 'la' || value === 'sf' || value === 'peninsula') return value
   return null
 }
 
