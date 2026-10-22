@@ -105,7 +105,7 @@ export function PlacePage() {
   }
 
   return (
-    <main id="main" tabIndex={-1} className="mx-auto max-w-6xl px-4 pt-24 pb-16 outline-none">
+    <main id="main" tabIndex={-1} className="mx-auto min-h-dvh max-w-6xl px-4 pt-24 pb-16 outline-none">
       <div>
       <div className="place-grid">
         <PlaceGallery

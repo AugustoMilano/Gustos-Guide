@@ -26,7 +26,7 @@ export function ListShareCard({
       <div className="min-w-0">
         <p className="text-xs font-bold tracking-[0.14em] uppercase">Share card</p>
         <p className="mt-1 font-serif text-3xl italic leading-none">{guide.emoji ? `${guide.emoji} ` : ''}{guide.title}</p>
-        <p className="mt-2 text-sm">{guide.placeIds.length} {guide.placeIds.length === 1 ? 'place' : 'places'} · {who} · Seattle</p>
+        <p className="mt-2 text-sm">{guide.placeIds.length} {guide.placeIds.length === 1 ? 'place' : 'places'} · {who}</p>
         <button type="button" className="btn mt-3 text-sm" onClick={onCopy}>{copied ? 'Copied' : 'Copy share link'}</button>
       </div>
     </div>

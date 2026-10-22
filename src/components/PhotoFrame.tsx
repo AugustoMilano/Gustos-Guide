@@ -17,7 +17,7 @@ export function PhotoFrame({
   const [failed, setFailed] = useState(false)
   const [readySrc, setReadySrc] = useState('')
   const art = photo.illustration || !photo.url || failed
-  const picture = photo.url && !photo.illustration ? responsivePhoto(photo.url, '(min-width: 1024px) 60vw, 100vw') : null
+  const picture = photo.url && !photo.illustration ? responsivePhoto(photo.url, '(min-width: 1024px) 36rem, calc(100vw - 2rem)') : null
   const src = picture?.src ?? ''
   const ready = src !== '' && readySrc === src
   return (
@@ -25,19 +25,26 @@ export function PhotoFrame({
       {art || !picture ? (
         <PlaceArt id={photo.placeId} cuisine={photo.cuisine} neighborhood={photo.neighborhood} />
       ) : (
-        <img
-          {...picture}
-          alt={photo.alt}
-          loading={priority ? 'eager' : 'lazy'}
-          decoding="async"
-          fetchPriority={priority ? 'high' : undefined}
-          className={`place-art object-cover${ready ? '' : ' is-pending'}`}
-          ref={(node) => {
-            if (node?.complete && node.naturalWidth > 0) setReadySrc(src)
-          }}
-          onLoad={() => setReadySrc(src)}
-          onError={() => setFailed(true)}
-        />
+        <picture>
+          {picture.webpSrcSet ? <source type="image/webp" srcSet={picture.webpSrcSet} sizes={picture.sizes} /> : null}
+          <img
+            src={picture.src}
+            srcSet={picture.srcSet}
+            sizes={picture.sizes}
+            width={picture.width}
+            height={picture.height}
+            alt={photo.alt}
+            loading={priority ? 'eager' : 'lazy'}
+            decoding="async"
+            fetchPriority={priority ? 'high' : undefined}
+            className={`place-art object-cover${ready ? '' : ' is-pending'}`}
+            ref={(node) => {
+              if (node?.complete && node.naturalWidth > 0) setReadySrc(src)
+            }}
+            onLoad={() => setReadySrc(src)}
+            onError={() => setFailed(true)}
+          />
+        </picture>
       )}
       <figcaption>
         {!art && photo.caption ? `${photo.caption} · ` : null}

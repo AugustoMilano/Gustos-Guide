@@ -27,21 +27,26 @@ export function PlaceThumb({
   const src = picture.src ?? ''
   const ready = readySrc === src
   return (
-    <img
-      ref={(node) => {
-        if (node?.complete && node.naturalWidth > 0) setReadySrc(src)
-      }}
-      src={picture.src}
-      srcSet={picture.srcSet}
-      sizes={picture.srcSet ? picture.sizes : undefined}
-      alt=""
-      draggable={false}
-      className={`h-full w-full object-cover${ready ? '' : ' is-pending'}`}
-      loading={eager || priority ? 'eager' : 'lazy'}
-      decoding="async"
-      fetchPriority={priority ? 'high' : undefined}
-      onLoad={() => setReadySrc(src)}
-      onError={() => setFailed(true)}
-    />
+    <picture>
+      {picture.webpSrcSet ? <source type="image/webp" srcSet={picture.webpSrcSet} sizes={picture.sizes} /> : null}
+      <img
+        ref={(node) => {
+          if (node?.complete && node.naturalWidth > 0) setReadySrc(src)
+        }}
+        src={picture.src}
+        srcSet={picture.srcSet}
+        sizes={picture.sizes}
+        width={picture.width}
+        height={picture.height}
+        alt=""
+        draggable={false}
+        className={`h-full w-full object-cover${ready ? '' : ' is-pending'}`}
+        loading={eager || priority ? 'eager' : 'lazy'}
+        decoding="async"
+        fetchPriority={priority ? 'high' : undefined}
+        onLoad={() => setReadySrc(src)}
+        onError={() => setFailed(true)}
+      />
+    </picture>
   )
 }

@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import { cityPath } from '../lib/city.ts'
 import { PlaceArt } from './PlaceArt.tsx'
 import { PlaceThumb } from './PlaceThumb.tsx'
+import { ThumbImg } from './ThumbImg.tsx'
 import { Reveal } from './Reveal.tsx'
 import { displayPhotos, type DisplayPhoto, type LivePhoto } from '../lib/gallery.ts'
 import { responsivePhoto } from '../lib/responsivePhoto.ts'
@@ -74,7 +75,7 @@ export function GuideStrip({
                 }}
               >
                 <div className="toc-shot relative h-24 overflow-hidden bg-navy [&_.place-art]:aspect-auto [&_.place-art]:h-full">
-                  <PlaceThumb place={place} uploads={uploads} eager={index < 2} sizes="240px" />
+                  <PlaceThumb place={place} uploads={uploads} eager={index < 2} sizes="208px" />
                   <span className="entry-index absolute top-2 left-2 -rotate-6 border-2 border-ink bg-coral text-xs font-bold shadow-[2px_2px_0_#181818]">{number}</span>
                   <GoldenFork placeId={place.id} overlay />
                 </div>
@@ -100,6 +101,38 @@ export function GuideStrip({
   )
 }
 
+function GuideShotImg({
+  url,
+  alt,
+  priority,
+  onError,
+}: {
+  url: string
+  alt: string
+  priority: boolean
+  onError: () => void
+}) {
+  const picture = responsivePhoto(url, '(min-width: 1024px) 40vw, calc(100vw - 2rem)')
+  return (
+    <picture>
+      {picture.webpSrcSet ? <source type="image/webp" srcSet={picture.webpSrcSet} sizes={picture.sizes} /> : null}
+      <img
+        src={picture.src}
+        srcSet={picture.srcSet}
+        sizes={picture.sizes}
+        width={picture.width}
+        height={picture.height}
+        alt={alt}
+        className="h-full w-full object-cover"
+        loading={priority ? 'eager' : 'lazy'}
+        decoding="async"
+        fetchPriority={priority ? 'high' : undefined}
+        onError={onError}
+      />
+    </picture>
+  )
+}
+
 function Shot({
   place,
   photo,
@@ -112,22 +145,15 @@ function Shot({
   priority?: boolean
 }) {
   const [failed, setFailed] = useState(false)
-  const art = photo?.illustration || !photo?.url || failed
+  const shotUrl = photo?.url
+  const art = photo?.illustration || !shotUrl || failed
   return (
     <figure className="min-w-0">
       <div className={`guide-shot relative overflow-hidden border-2 border-ink bg-navy ${tall ? 'h-72 sm:h-96' : 'h-64 sm:h-80'} [&_.place-art]:aspect-auto [&_.place-art]:h-full`}>
-        {art ? (
+        {art || !photo || !shotUrl ? (
           <PlaceArt id={place.id} cuisine={place.cuisine[0] ?? 'Seattle'} neighborhood={place.neighborhood} />
         ) : (
-          <img
-            {...responsivePhoto(photo.url, '(min-width: 1024px) 40vw, 100vw')}
-            alt={photo.alt}
-            className="h-full w-full object-cover"
-            loading={priority ? 'eager' : 'lazy'}
-            decoding="async"
-            fetchPriority={priority ? 'high' : undefined}
-            onError={() => setFailed(true)}
-          />
+          <GuideShotImg url={shotUrl} alt={photo.alt} priority={priority} onError={() => setFailed(true)} />
         )}
       </div>
       <figcaption className="border-x-2 border-b-2 border-ink bg-[#fffaf3] px-2 py-1 text-xs font-bold">
@@ -192,7 +218,7 @@ export function GuideEntryCard({
               onClick={() => setActive(shotIndex)}
               aria-label={`Photo ${shotIndex + 1} of ${place.name}`}
             >
-              {shot.url && !shot.illustration ? <img {...responsivePhoto(shot.url, '64px')} alt="" className="h-full w-full object-cover" loading="lazy" decoding="async" /> : <span className="text-[10px] font-bold">Art</span>}
+              {shot.url && !shot.illustration ? <ThumbImg url={shot.url} /> : <span className="text-[10px] font-bold">Art</span>}
             </button>
           ))}
         </div>
