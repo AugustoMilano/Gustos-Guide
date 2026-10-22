@@ -91,7 +91,8 @@ export function GuidePage() {
     if (openNow && !isOpen(place.periods)) return false
     return true
   })
-  const ordered = sort === 'guide' ? shown : shown.slice().sort((a, b) => {
+  const pinned = guide?.pinned === true
+  const ordered = pinned || sort === 'guide' ? shown : shown.slice().sort((a, b) => {
     const left = gustoScore(a.place.id)
     const right = gustoScore(b.place.id)
     if (left == null && right == null) return a.number - b.number
@@ -171,10 +172,12 @@ export function GuidePage() {
                 }),
               })}
             />
-            <SlidingRow label="Sort this guide">
-              <button type="button" className="sort-chip" aria-pressed={sort === 'guide'} onClick={() => setSort('guide')}>Guide order</button>
-              <button type="button" className="sort-chip" aria-pressed={sort === 'score'} onClick={() => setSort('score')}>Gusto's Score</button>
-            </SlidingRow>
+            {pinned ? null : (
+              <SlidingRow label="Sort this guide">
+                <button type="button" className="sort-chip" aria-pressed={sort === 'guide'} onClick={() => setSort('guide')}>Guide order</button>
+                <button type="button" className="sort-chip" aria-pressed={sort === 'score'} onClick={() => setSort('score')}>Gusto's Score</button>
+              </SlidingRow>
+            )}
           </div>
         </div>
         <h1 className="mt-1 font-serif text-4xl italic leading-none sm:text-5xl">{guide.title}</h1>
