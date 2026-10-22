@@ -8848,15 +8848,9 @@
       "city": "eastside",
       "entries": [
         {
-          "placeId": "bis-on-main",
-          "pullQuote": "",
-          "blurb": "",
-          "copySource": "draft"
-        },
-        {
-          "placeId": "monsoon-bellevue",
-          "pullQuote": "",
-          "blurb": "",
+          "placeId": "john-howie-steak",
+          "pullQuote": "Steakhouse in the Bravern. The lunch service is currently closed.",
+          "blurb": "Steakhouse in the Bravern. The lunch service is currently closed.",
           "copySource": "draft"
         },
         {
@@ -8866,9 +8860,15 @@
           "copySource": "draft"
         },
         {
-          "placeId": "john-howie-steak",
-          "pullQuote": "Steakhouse in the Bravern. The lunch service is currently closed.",
-          "blurb": "Steakhouse in the Bravern. The lunch service is currently closed.",
+          "placeId": "bis-on-main",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "monsoon-bellevue",
+          "pullQuote": "",
+          "blurb": "",
           "copySource": "draft"
         },
         {
@@ -8902,6 +8902,12 @@
       "city": "eastside",
       "entries": [
         {
+          "placeId": "como",
+          "pullQuote": "Lombardy-style Italian at Carillon Point, dinner beside the lake.",
+          "blurb": "Lombardy-style Italian at Carillon Point, dinner beside the lake.",
+          "copySource": "draft"
+        },
+        {
           "placeId": "the-slip",
           "pullQuote": "Waterfront dining at Marina Beach Park. Burgers have been served here since 1996.",
           "blurb": "Waterfront dining at Marina Beach Park. Burgers have been served here since 1996.",
@@ -8917,12 +8923,6 @@
           "placeId": "anthonys-homeport",
           "pullQuote": "Seafood at the south end of Lake Street, on the marina.",
           "blurb": "Seafood at the south end of Lake Street, on the marina.",
-          "copySource": "draft"
-        },
-        {
-          "placeId": "como",
-          "pullQuote": "Lombardy-style Italian at Carillon Point, dinner beside the lake.",
-          "blurb": "Lombardy-style Italian at Carillon Point, dinner beside the lake.",
           "copySource": "draft"
         }
       ]
@@ -8974,7 +8974,55 @@
       "city": "eastside",
       "entries": [
         {
+          "placeId": "spark-pizza",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
           "placeId": "woodblock",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "ooba-tooba",
+          "pullQuote": "Burritos and Mexican plates on Northeast 83rd, north of downtown.",
+          "blurb": "Burritos and Mexican plates on Northeast 83rd, north of downtown.",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "a-ma-chicken-rice",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "jacks-bbq",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "just-poke-redmond",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "noburu-ramen-and-sushi",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "kobuta-and-ookami-redmond",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "matador-redmond",
           "pullQuote": "",
           "blurb": "",
           "copySource": "draft"
@@ -9016,57 +9064,9 @@
           "copySource": "draft"
         },
         {
-          "placeId": "ooba-tooba",
-          "pullQuote": "Burritos and Mexican plates on Northeast 83rd, north of downtown.",
-          "blurb": "Burritos and Mexican plates on Northeast 83rd, north of downtown.",
-          "copySource": "draft"
-        },
-        {
           "placeId": "black-raven-brewing",
           "pullQuote": "Brewpub on Northeast 95th. The beer is made in the building.",
           "blurb": "Brewpub on Northeast 95th. The beer is made in the building.",
-          "copySource": "draft"
-        },
-        {
-          "placeId": "spark-pizza",
-          "pullQuote": "",
-          "blurb": "",
-          "copySource": "draft"
-        },
-        {
-          "placeId": "a-ma-chicken-rice",
-          "pullQuote": "",
-          "blurb": "",
-          "copySource": "draft"
-        },
-        {
-          "placeId": "jacks-bbq",
-          "pullQuote": "",
-          "blurb": "",
-          "copySource": "draft"
-        },
-        {
-          "placeId": "just-poke-redmond",
-          "pullQuote": "",
-          "blurb": "",
-          "copySource": "draft"
-        },
-        {
-          "placeId": "noburu-ramen-and-sushi",
-          "pullQuote": "",
-          "blurb": "",
-          "copySource": "draft"
-        },
-        {
-          "placeId": "kobuta-and-ookami-redmond",
-          "pullQuote": "",
-          "blurb": "",
-          "copySource": "draft"
-        },
-        {
-          "placeId": "matador-redmond",
-          "pullQuote": "",
-          "blurb": "",
           "copySource": "draft"
         },
         {
@@ -9087,6 +9087,18 @@
       "ranked": false,
       "city": "eastside",
       "entries": [
+        {
+          "placeId": "naan-n-curry",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "xochi",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
         {
           "placeId": "jaks-grill",
           "pullQuote": "",
@@ -9127,18 +9139,6 @@
           "placeId": "levitate-gastropub",
           "pullQuote": "Gastropub on Front Street, a few doors from the pastrami shop.",
           "blurb": "Gastropub on Front Street, a few doors from the pastrami shop.",
-          "copySource": "draft"
-        },
-        {
-          "placeId": "naan-n-curry",
-          "pullQuote": "",
-          "blurb": "",
-          "copySource": "draft"
-        },
-        {
-          "placeId": "xochi",
-          "pullQuote": "",
-          "blurb": "",
           "copySource": "draft"
         }
       ]
@@ -9208,126 +9208,6 @@
       "city": "eastside",
       "entries": [
         {
-          "placeId": "bis-on-main",
-          "pullQuote": "",
-          "blurb": "",
-          "copySource": "draft"
-        },
-        {
-          "placeId": "monsoon-bellevue",
-          "pullQuote": "",
-          "blurb": "",
-          "copySource": "draft"
-        },
-        {
-          "placeId": "seastar-restaurant-and-raw-bar",
-          "pullQuote": "",
-          "blurb": "",
-          "copySource": "draft"
-        },
-        {
-          "placeId": "john-howie-steak",
-          "pullQuote": "Steakhouse in the Bravern. The lunch service is currently closed.",
-          "blurb": "Steakhouse in the Bravern. The lunch service is currently closed.",
-          "copySource": "draft"
-        },
-        {
-          "placeId": "tavern-hall",
-          "pullQuote": "",
-          "blurb": "",
-          "copySource": "draft"
-        },
-        {
-          "placeId": "regent-bakery-and-cafe",
-          "pullQuote": "Asian bakery and cafe on 120th Avenue Northeast, in Bellevue since 2000.",
-          "blurb": "Asian bakery and cafe on 120th Avenue Northeast, in Bellevue since 2000.",
-          "copySource": "draft"
-        },
-        {
-          "placeId": "facing-east",
-          "pullQuote": "Takeout on Bel-Red Road since the December 2021 move from downtown.",
-          "blurb": "Takeout on Bel-Red Road since the December 2021 move from downtown.",
-          "copySource": "draft"
-        },
-        {
-          "placeId": "13-coins",
-          "pullQuote": "Bellevue Way diner with breakfast from seven and a late weekend close.",
-          "blurb": "Bellevue Way diner with breakfast from seven and a late weekend close.",
-          "copySource": "draft"
-        },
-        {
-          "placeId": "bellevue-brewing",
-          "pullQuote": "A brewpub on Northeast District Way in the Spring District.",
-          "blurb": "A brewpub on Northeast District Way in the Spring District.",
-          "copySource": "draft"
-        },
-        {
-          "placeId": "arayas-place",
-          "pullQuote": "Vegan Thai on Main Street, and the mock duck is the order.",
-          "blurb": "Vegan Thai on Main Street, and the mock duck is the order.",
-          "copySource": "draft"
-        },
-        {
-          "placeId": "third-culture-coffee",
-          "pullQuote": "Coffee roaster on 102nd Avenue Northeast in downtown Bellevue.",
-          "blurb": "Coffee roaster on 102nd Avenue Northeast in downtown Bellevue.",
-          "copySource": "draft"
-        },
-        {
-          "placeId": "cascadia-pizza",
-          "pullQuote": "Wood-fired pies on 130th, in the Bel-Red warehouse blocks.",
-          "blurb": "Wood-fired pies on 130th, in the Bel-Red warehouse blocks.",
-          "copySource": "draft"
-        },
-        {
-          "placeId": "farine-bakery",
-          "pullQuote": "Belgian bakery on Northeast 10th, with kouign-amann in the case.",
-          "blurb": "Belgian bakery on Northeast 10th, with kouign-amann in the case.",
-          "copySource": "draft"
-        },
-        {
-          "placeId": "fogo-de-chao",
-          "pullQuote": "Brazilian churrasco on Bellevue Way, served rodizio style.",
-          "blurb": "Brazilian churrasco on Bellevue Way, served rodizio style.",
-          "copySource": "draft"
-        },
-        {
-          "placeId": "ginza",
-          "pullQuote": "A long-running sushi room just south of Main, off 102nd.",
-          "blurb": "A long-running sushi room just south of Main, off 102nd.",
-          "copySource": "draft"
-        },
-        {
-          "placeId": "i-love-sushi",
-          "pullQuote": "Sushi on Lake Bellevue Drive, with a deck over the water.",
-          "blurb": "Sushi on Lake Bellevue Drive, with a deck over the water.",
-          "copySource": "draft"
-        },
-        {
-          "placeId": "katsu-burger",
-          "pullQuote": "Katsu sandwiches and burgers at the Factoria shop on 38th.",
-          "blurb": "Katsu sandwiches and burgers at the Factoria shop on 38th.",
-          "copySource": "draft"
-        },
-        {
-          "placeId": "peony",
-          "pullQuote": "Hong Kong-style Chinese on Main, in the old downtown blocks.",
-          "blurb": "Hong Kong-style Chinese on Main, in the old downtown blocks.",
-          "copySource": "draft"
-        },
-        {
-          "placeId": "takai-by-kashiba",
-          "pullQuote": "Shiro Kashiba's sushi counter on Bellevue Way. Book the omakase.",
-          "blurb": "Shiro Kashiba's sushi counter on Bellevue Way. Book the omakase.",
-          "copySource": "draft"
-        },
-        {
-          "placeId": "xian-noodles",
-          "pullQuote": "Hand-pulled biang biang noodles on Bellevue Way by the mall.",
-          "blurb": "Hand-pulled biang biang noodles on Bellevue Way by the mall.",
-          "copySource": "draft"
-        },
-        {
           "placeId": "la-mar-bellevue",
           "pullQuote": "",
           "blurb": "",
@@ -9388,6 +9268,12 @@
           "copySource": "draft"
         },
         {
+          "placeId": "john-howie-steak",
+          "pullQuote": "Steakhouse in the Bravern. The lunch service is currently closed.",
+          "blurb": "Steakhouse in the Bravern. The lunch service is currently closed.",
+          "copySource": "draft"
+        },
+        {
           "placeId": "barons-sino-kitchen-and-bar",
           "pullQuote": "",
           "blurb": "",
@@ -9395,6 +9281,12 @@
         },
         {
           "placeId": "farzi-cafe",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "seastar-restaurant-and-raw-bar",
           "pullQuote": "",
           "blurb": "",
           "copySource": "draft"
@@ -9424,6 +9316,18 @@
           "copySource": "draft"
         },
         {
+          "placeId": "fob-poke-bar-bellevue",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "pagliacci-pizza",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
           "placeId": "rolls-and-rolls",
           "pullQuote": "",
           "blurb": "",
@@ -9437,18 +9341,6 @@
         },
         {
           "placeId": "fern-thai-on-main",
-          "pullQuote": "",
-          "blurb": "",
-          "copySource": "draft"
-        },
-        {
-          "placeId": "fob-poke-bar-bellevue",
-          "pullQuote": "",
-          "blurb": "",
-          "copySource": "draft"
-        },
-        {
-          "placeId": "pagliacci-pizza",
           "pullQuote": "",
           "blurb": "",
           "copySource": "draft"
@@ -9469,6 +9361,12 @@
           "placeId": "wild-ginger",
           "pullQuote": "",
           "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "fogo-de-chao",
+          "pullQuote": "Brazilian churrasco on Bellevue Way, served rodizio style.",
+          "blurb": "Brazilian churrasco on Bellevue Way, served rodizio style.",
           "copySource": "draft"
         },
         {
@@ -9502,9 +9400,111 @@
           "copySource": "draft"
         },
         {
+          "placeId": "peony",
+          "pullQuote": "Hong Kong-style Chinese on Main, in the old downtown blocks.",
+          "blurb": "Hong Kong-style Chinese on Main, in the old downtown blocks.",
+          "copySource": "draft"
+        },
+        {
           "placeId": "semicolon-cafe",
           "pullQuote": "",
           "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "bis-on-main",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "monsoon-bellevue",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "tavern-hall",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "regent-bakery-and-cafe",
+          "pullQuote": "Asian bakery and cafe on 120th Avenue Northeast, in Bellevue since 2000.",
+          "blurb": "Asian bakery and cafe on 120th Avenue Northeast, in Bellevue since 2000.",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "facing-east",
+          "pullQuote": "Takeout on Bel-Red Road since the December 2021 move from downtown.",
+          "blurb": "Takeout on Bel-Red Road since the December 2021 move from downtown.",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "13-coins",
+          "pullQuote": "Bellevue Way diner with breakfast from seven and a late weekend close.",
+          "blurb": "Bellevue Way diner with breakfast from seven and a late weekend close.",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "bellevue-brewing",
+          "pullQuote": "A brewpub on Northeast District Way in the Spring District.",
+          "blurb": "A brewpub on Northeast District Way in the Spring District.",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "arayas-place",
+          "pullQuote": "Vegan Thai on Main Street, and the mock duck is the order.",
+          "blurb": "Vegan Thai on Main Street, and the mock duck is the order.",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "third-culture-coffee",
+          "pullQuote": "Coffee roaster on 102nd Avenue Northeast in downtown Bellevue.",
+          "blurb": "Coffee roaster on 102nd Avenue Northeast in downtown Bellevue.",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "cascadia-pizza",
+          "pullQuote": "Wood-fired pies on 130th, in the Bel-Red warehouse blocks.",
+          "blurb": "Wood-fired pies on 130th, in the Bel-Red warehouse blocks.",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "farine-bakery",
+          "pullQuote": "Belgian bakery on Northeast 10th, with kouign-amann in the case.",
+          "blurb": "Belgian bakery on Northeast 10th, with kouign-amann in the case.",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "ginza",
+          "pullQuote": "A long-running sushi room just south of Main, off 102nd.",
+          "blurb": "A long-running sushi room just south of Main, off 102nd.",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "i-love-sushi",
+          "pullQuote": "Sushi on Lake Bellevue Drive, with a deck over the water.",
+          "blurb": "Sushi on Lake Bellevue Drive, with a deck over the water.",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "katsu-burger",
+          "pullQuote": "Katsu sandwiches and burgers at the Factoria shop on 38th.",
+          "blurb": "Katsu sandwiches and burgers at the Factoria shop on 38th.",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "takai-by-kashiba",
+          "pullQuote": "Shiro Kashiba's sushi counter on Bellevue Way. Book the omakase.",
+          "blurb": "Shiro Kashiba's sushi counter on Bellevue Way. Book the omakase.",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "xian-noodles",
+          "pullQuote": "Hand-pulled biang biang noodles on Bellevue Way by the mall.",
+          "blurb": "Hand-pulled biang biang noodles on Bellevue Way by the mall.",
           "copySource": "draft"
         },
         {
@@ -9531,6 +9531,54 @@
       "ranked": false,
       "city": "eastside",
       "entries": [
+        {
+          "placeId": "el-encanto",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "deru-market",
+          "pullQuote": "Market counter and brunch on 9th Avenue, just uphill from downtown.",
+          "blurb": "Market counter and brunch on 9th Avenue, just uphill from downtown.",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "sparrow",
+          "pullQuote": "Brunch and dinner in Juanita, off Northeast 120th Place.",
+          "blurb": "Brunch and dinner in Juanita, off Northeast 120th Place.",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "vinason-pho-kitchen",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "the-box",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "island-soul-kirkland",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "cactus-kirkland",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "como",
+          "pullQuote": "Lombardy-style Italian at Carillon Point, dinner beside the lake.",
+          "blurb": "Lombardy-style Italian at Carillon Point, dinner beside the lake.",
+          "copySource": "draft"
+        },
         {
           "placeId": "the-slip",
           "pullQuote": "Waterfront dining at Marina Beach Park. Burgers have been served here since 1996.",
@@ -9568,12 +9616,6 @@
           "copySource": "draft"
         },
         {
-          "placeId": "como",
-          "pullQuote": "Lombardy-style Italian at Carillon Point, dinner beside the lake.",
-          "blurb": "Lombardy-style Italian at Carillon Point, dinner beside the lake.",
-          "copySource": "draft"
-        },
-        {
           "placeId": "feast",
           "pullQuote": "",
           "blurb": "",
@@ -9598,12 +9640,6 @@
           "copySource": "draft"
         },
         {
-          "placeId": "sparrow",
-          "pullQuote": "Brunch and dinner in Juanita, off Northeast 120th Place.",
-          "blurb": "Brunch and dinner in Juanita, off Northeast 120th Place.",
-          "copySource": "draft"
-        },
-        {
           "placeId": "spicy-talk-bistro",
           "pullQuote": "Sichuan cooking on 120th Avenue Northeast, out by Totem Lake.",
           "blurb": "Sichuan cooking on 120th Avenue Northeast, out by Totem Lake.",
@@ -9613,42 +9649,6 @@
           "placeId": "volterra",
           "pullQuote": "Italian on Kirkland Avenue, the Eastside room of the Ballard original.",
           "blurb": "Italian on Kirkland Avenue, the Eastside room of the Ballard original.",
-          "copySource": "draft"
-        },
-        {
-          "placeId": "deru-market",
-          "pullQuote": "Market counter and brunch on 9th Avenue, just uphill from downtown.",
-          "blurb": "Market counter and brunch on 9th Avenue, just uphill from downtown.",
-          "copySource": "draft"
-        },
-        {
-          "placeId": "el-encanto",
-          "pullQuote": "",
-          "blurb": "",
-          "copySource": "draft"
-        },
-        {
-          "placeId": "vinason-pho-kitchen",
-          "pullQuote": "",
-          "blurb": "",
-          "copySource": "draft"
-        },
-        {
-          "placeId": "the-box",
-          "pullQuote": "",
-          "blurb": "",
-          "copySource": "draft"
-        },
-        {
-          "placeId": "island-soul-kirkland",
-          "pullQuote": "",
-          "blurb": "",
-          "copySource": "draft"
-        },
-        {
-          "placeId": "cactus-kirkland",
-          "pullQuote": "",
-          "blurb": "",
           "copySource": "draft"
         },
         {
@@ -9718,6 +9718,12 @@
       "city": "eastside",
       "entries": [
         {
+          "placeId": "shawns-cafe-and-bakery",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
           "placeId": "barrels-wine-bar",
           "pullQuote": "Wine bar in the town center, on Southeast 27th Street.",
           "blurb": "Wine bar in the town center, on Southeast 27th Street.",
@@ -9746,12 +9752,6 @@
           "pullQuote": "Burgers and a tap list on 76th Avenue Southeast.",
           "blurb": "Burgers and a tap list on 76th Avenue Southeast.",
           "copySource": "draft"
-        },
-        {
-          "placeId": "shawns-cafe-and-bakery",
-          "pullQuote": "",
-          "blurb": "",
-          "copySource": "draft"
         }
       ]
     },
@@ -9765,6 +9765,12 @@
       "ranked": false,
       "city": "eastside",
       "entries": [
+        {
+          "placeId": "paparepas",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
         {
           "placeId": "melrose-grill",
           "pullQuote": "Steakhouse on Houser Way, in Renton's old downtown.",
@@ -9793,12 +9799,6 @@
           "placeId": "boon-boona-coffee",
           "pullQuote": "Boon Boona coffee on South 3rd, in downtown Renton.",
           "blurb": "Boon Boona coffee on South 3rd, in downtown Renton.",
-          "copySource": "draft"
-        },
-        {
-          "placeId": "paparepas",
-          "pullQuote": "",
-          "blurb": "",
           "copySource": "draft"
         }
       ]
@@ -9898,6 +9898,90 @@
       "city": "eastside",
       "entries": [
         {
+          "placeId": "minamoto",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "a-ma-chicken-rice",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "barons-sino-kitchen-and-bar",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "hokkaido-ramen-santouka",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "japonessa",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "vinason-pho-kitchen",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "dough-zone-bellevue",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "noburu-ramen-and-sushi",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "rolls-and-rolls",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "fern-thai-on-main",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "kobuta-and-ookami-redmond",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "wild-ginger",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "kura-revolving-sushi",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "peony",
+          "pullQuote": "Hong Kong-style Chinese on Main, in the old downtown blocks.",
+          "blurb": "Hong Kong-style Chinese on Main, in the old downtown blocks.",
+          "copySource": "draft"
+        },
+        {
           "placeId": "monsoon-bellevue",
           "pullQuote": "",
           "blurb": "",
@@ -9919,12 +10003,6 @@
           "placeId": "ginza",
           "pullQuote": "A long-running sushi room just south of Main, off 102nd.",
           "blurb": "A long-running sushi room just south of Main, off 102nd.",
-          "copySource": "draft"
-        },
-        {
-          "placeId": "peony",
-          "pullQuote": "Hong Kong-style Chinese on Main, in the old downtown blocks.",
-          "blurb": "Hong Kong-style Chinese on Main, in the old downtown blocks.",
           "copySource": "draft"
         },
         {
@@ -9994,84 +10072,6 @@
           "copySource": "draft"
         },
         {
-          "placeId": "minamoto",
-          "pullQuote": "",
-          "blurb": "",
-          "copySource": "draft"
-        },
-        {
-          "placeId": "barons-sino-kitchen-and-bar",
-          "pullQuote": "",
-          "blurb": "",
-          "copySource": "draft"
-        },
-        {
-          "placeId": "hokkaido-ramen-santouka",
-          "pullQuote": "",
-          "blurb": "",
-          "copySource": "draft"
-        },
-        {
-          "placeId": "japonessa",
-          "pullQuote": "",
-          "blurb": "",
-          "copySource": "draft"
-        },
-        {
-          "placeId": "dough-zone-bellevue",
-          "pullQuote": "",
-          "blurb": "",
-          "copySource": "draft"
-        },
-        {
-          "placeId": "rolls-and-rolls",
-          "pullQuote": "",
-          "blurb": "",
-          "copySource": "draft"
-        },
-        {
-          "placeId": "fern-thai-on-main",
-          "pullQuote": "",
-          "blurb": "",
-          "copySource": "draft"
-        },
-        {
-          "placeId": "wild-ginger",
-          "pullQuote": "",
-          "blurb": "",
-          "copySource": "draft"
-        },
-        {
-          "placeId": "kura-revolving-sushi",
-          "pullQuote": "",
-          "blurb": "",
-          "copySource": "draft"
-        },
-        {
-          "placeId": "a-ma-chicken-rice",
-          "pullQuote": "",
-          "blurb": "",
-          "copySource": "draft"
-        },
-        {
-          "placeId": "noburu-ramen-and-sushi",
-          "pullQuote": "",
-          "blurb": "",
-          "copySource": "draft"
-        },
-        {
-          "placeId": "kobuta-and-ookami-redmond",
-          "pullQuote": "",
-          "blurb": "",
-          "copySource": "draft"
-        },
-        {
-          "placeId": "vinason-pho-kitchen",
-          "pullQuote": "",
-          "blurb": "",
-          "copySource": "draft"
-        },
-        {
           "placeId": "din-tai-fung-bellevue",
           "pullQuote": "",
           "blurb": "",
@@ -10096,18 +10096,6 @@
       "city": "eastside",
       "entries": [
         {
-          "placeId": "13-coins",
-          "pullQuote": "Bellevue Way diner with breakfast from seven and a late weekend close.",
-          "blurb": "Bellevue Way diner with breakfast from seven and a late weekend close.",
-          "copySource": "draft"
-        },
-        {
-          "placeId": "farine-bakery",
-          "pullQuote": "Belgian bakery on Northeast 10th, with kouign-amann in the case.",
-          "blurb": "Belgian bakery on Northeast 10th, with kouign-amann in the case.",
-          "copySource": "draft"
-        },
-        {
           "placeId": "deru-market",
           "pullQuote": "Market counter and brunch on 9th Avenue, just uphill from downtown.",
           "blurb": "Market counter and brunch on 9th Avenue, just uphill from downtown.",
@@ -10117,6 +10105,18 @@
           "placeId": "sparrow",
           "pullQuote": "Brunch and dinner in Juanita, off Northeast 120th Place.",
           "blurb": "Brunch and dinner in Juanita, off Northeast 120th Place.",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "13-coins",
+          "pullQuote": "Bellevue Way diner with breakfast from seven and a late weekend close.",
+          "blurb": "Bellevue Way diner with breakfast from seven and a late weekend close.",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "farine-bakery",
+          "pullQuote": "Belgian bakery on Northeast 10th, with kouign-amann in the case.",
+          "blurb": "Belgian bakery on Northeast 10th, with kouign-amann in the case.",
           "copySource": "draft"
         },
         {
@@ -10150,18 +10150,6 @@
       "city": "eastside",
       "entries": [
         {
-          "placeId": "cafe-juanita",
-          "pullQuote": "Prix-fixe Northern Italian tasting menus in the Juanita neighborhood.",
-          "blurb": "Prix-fixe Northern Italian tasting menus in the Juanita neighborhood.",
-          "copySource": "draft"
-        },
-        {
-          "placeId": "bis-on-main",
-          "pullQuote": "",
-          "blurb": "",
-          "copySource": "draft"
-        },
-        {
           "placeId": "john-howie-steak",
           "pullQuote": "Steakhouse in the Bravern. The lunch service is currently closed.",
           "blurb": "Steakhouse in the Bravern. The lunch service is currently closed.",
@@ -10174,12 +10162,6 @@
           "copySource": "draft"
         },
         {
-          "placeId": "takai-by-kashiba",
-          "pullQuote": "Shiro Kashiba's sushi counter on Bellevue Way. Book the omakase.",
-          "blurb": "Shiro Kashiba's sushi counter on Bellevue Way. Book the omakase.",
-          "copySource": "draft"
-        },
-        {
           "placeId": "fogo-de-chao",
           "pullQuote": "Brazilian churrasco on Bellevue Way, served rodizio style.",
           "blurb": "Brazilian churrasco on Bellevue Way, served rodizio style.",
@@ -10189,6 +10171,24 @@
           "placeId": "como",
           "pullQuote": "Lombardy-style Italian at Carillon Point, dinner beside the lake.",
           "blurb": "Lombardy-style Italian at Carillon Point, dinner beside the lake.",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "cafe-juanita",
+          "pullQuote": "Prix-fixe Northern Italian tasting menus in the Juanita neighborhood.",
+          "blurb": "Prix-fixe Northern Italian tasting menus in the Juanita neighborhood.",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "bis-on-main",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "takai-by-kashiba",
+          "pullQuote": "Shiro Kashiba's sushi counter on Bellevue Way. Book the omakase.",
+          "blurb": "Shiro Kashiba's sushi counter on Bellevue Way. Book the omakase.",
           "copySource": "draft"
         },
         {

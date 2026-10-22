@@ -3856,6 +3856,12 @@
       "city": "sandiego",
       "entries": [
         {
+          "placeId": "rovino",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
           "placeId": "queenstown-public-house",
           "pullQuote": "",
           "blurb": "",
@@ -3887,12 +3893,6 @@
         },
         {
           "placeId": "kettner-exchange",
-          "pullQuote": "",
-          "blurb": "",
-          "copySource": "draft"
-        },
-        {
-          "placeId": "rovino",
           "pullQuote": "",
           "blurb": "",
           "copySource": "draft"
@@ -4156,6 +4156,12 @@
       "city": "sandiego",
       "entries": [
         {
+          "placeId": "rovino",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
           "placeId": "marisi",
           "pullQuote": "",
           "blurb": "",
@@ -4199,12 +4205,6 @@
         },
         {
           "placeId": "tribute-pizza",
-          "pullQuote": "",
-          "blurb": "",
-          "copySource": "draft"
-        },
-        {
-          "placeId": "rovino",
           "pullQuote": "",
           "blurb": "",
           "copySource": "draft"
