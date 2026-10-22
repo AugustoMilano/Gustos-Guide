@@ -1,5 +1,6 @@
--- Augusto's Gusto's Scores for Eastside rooms added 2026-10-22.
+-- Augusto's Gusto's Scores for rooms added 2026-10-22.
 -- updated_by is whoever last scored place_id maiz. No row is written if that score is missing.
+-- venice-flake was already on the Los Angeles list, so this records the score without a second pin.
 
 insert into public.house_scores (place_id, score, updated_by)
 select seed.place_id, seed.score, owner.updated_by
@@ -51,7 +52,12 @@ join (values
   ('paparepas'::text, 7.6::numeric),
   ('the-coalman'::text, 7.0::numeric),
   ('naan-n-curry'::text, 6.9::numeric),
-  ('xochi'::text, 6.9::numeric)
+  ('xochi'::text, 6.9::numeric),
+  ('venice-flake'::text, 9.0::numeric),
+  ('easy-street-burgers'::text, 8.5::numeric),
+  ('daves-hot-chicken'::text, 8.5::numeric),
+  ('marmalade-cafe'::text, 4.9::numeric),
+  ('rovino'::text, 8.2::numeric)
 ) as seed(place_id, score) on owner.place_id = 'maiz'
 on conflict (place_id) do update
 set score = excluded.score,

@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-20",
+  "updatedAt": "2026-10-22",
   "places": [
     {
       "id": "katana",
@@ -8401,6 +8401,145 @@
       "phone": "+1 (740) 866-1328",
       "website": "https://communitygoodsmenu.us",
       "yelpSlug": "community-goods-los-angeles"
+    },
+    {
+      "id": "easy-street-burgers",
+      "city": "la",
+      "name": "Easy Street Burgers",
+      "neighborhood": "Studio City",
+      "address": "4143 Lankershim Blvd, Studio City, CA 91602",
+      "lat": 34.1452873,
+      "lng": -118.3630189,
+      "cuisine": [
+        "Burgers"
+      ],
+      "placeType": "restaurant",
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "start": 660,
+          "end": 1380
+        }
+      ],
+      "gustoScore": null,
+      "website": "https://easystreetburgers.com/",
+      "phone": "+1 (818) 966-3009",
+      "appleMapsUrl": "https://maps.apple.com/?daddr=34.1452873,-118.3630189&q=Easy%20Street%20Burgers",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=7669782249312720561",
+      "guideSlugs": [],
+      "muid": "7669782249312720561",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-10-22",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Burgers at Easy Street Burgers",
+          "credit": "Illustration"
+        }
+      ]
+    },
+    {
+      "id": "daves-hot-chicken",
+      "city": "la",
+      "name": "Dave's Hot Chicken",
+      "neighborhood": "East Hollywood",
+      "address": "970 N Western Ave, Los Angeles, CA 90029",
+      "lat": 34.0880373,
+      "lng": -118.3089973,
+      "cuisine": [
+        "Chicken"
+      ],
+      "placeType": "restaurant",
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "start": 600,
+          "end": 1440
+        }
+      ],
+      "gustoScore": null,
+      "website": "https://restaurants.daveshotchicken.com/ca/los-angeles/best-hot-chicken-sandwich-on-western-ave/",
+      "phone": "+1 (323) 536-9711",
+      "appleMapsUrl": "https://maps.apple.com/?daddr=34.0880373,-118.3089973&q=Dave's%20Hot%20Chicken",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=14119141921696136180",
+      "guideSlugs": [],
+      "muid": "14119141921696136180",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-10-22",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Chicken at Dave's Hot Chicken",
+          "credit": "Illustration"
+        }
+      ]
+    },
+    {
+      "id": "marmalade-cafe",
+      "city": "la",
+      "name": "Marmalade Cafe",
+      "neighborhood": "Calabasas",
+      "address": "4783 Commons Way, Unit E, Calabasas, CA 91302",
+      "lat": 34.1531568,
+      "lng": -118.6462549,
+      "cuisine": [
+        "New American"
+      ],
+      "placeType": "restaurant",
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [],
+      "gustoScore": null,
+      "website": "https://marmaladecafe.com",
+      "phone": "+1 (818) 225-9092",
+      "appleMapsUrl": "https://maps.apple.com/?daddr=34.1531568,-118.6462549&q=Marmalade%20Cafe",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=2035593264181625167",
+      "guideSlugs": [],
+      "muid": "2035593264181625167",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-10-22",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting New American at Marmalade Cafe",
+          "credit": "Illustration"
+        }
+      ]
     }
   ],
   "guides": [

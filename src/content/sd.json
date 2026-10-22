@@ -3772,13 +3772,83 @@
       ],
       "phone": "+1 (619) 435-6611",
       "website": "https://www.hoteldel.com/dine/nobu/"
+    },
+    {
+      "id": "rovino",
+      "city": "sandiego",
+      "name": "Rovino",
+      "neighborhood": "Little Italy",
+      "address": "2034 Kettner Blvd, San Diego, CA 92101",
+      "lat": 32.725523,
+      "lng": -117.1702141,
+      "cuisine": [
+        "Italian"
+      ],
+      "placeType": "restaurant",
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            0
+          ],
+          "start": 720,
+          "end": 1260
+        },
+        {
+          "days": [
+            3,
+            4
+          ],
+          "start": 1020,
+          "end": 1260
+        },
+        {
+          "days": [
+            5
+          ],
+          "start": 1020,
+          "end": 1320
+        },
+        {
+          "days": [
+            6
+          ],
+          "start": 720,
+          "end": 1320
+        }
+      ],
+      "gustoScore": null,
+      "website": "https://rovinosd.com",
+      "phone": "+1 (619) 269-9341",
+      "appleMapsUrl": "https://maps.apple.com/?daddr=32.725523,-117.1702141&q=Rovino",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=2162492693962336527",
+      "guideSlugs": [
+        "sd-little-italy",
+        "sd-italian"
+      ],
+      "muid": "2162492693962336527",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-10-22",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Italian at Rovino",
+          "credit": "Illustration"
+        }
+      ]
     }
   ],
   "guides": [
     {
       "slug": "sd-little-italy",
       "title": "Little Italy",
-      "dek": "6 places.",
+      "dek": "7 places.",
       "group": "Neighborhoods",
       "intro": "",
       "updatedAt": "2026-10-22",
@@ -3817,6 +3887,12 @@
         },
         {
           "placeId": "kettner-exchange",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "rovino",
           "pullQuote": "",
           "blurb": "",
           "copySource": "draft"
@@ -4072,7 +4148,7 @@
     {
       "slug": "sd-italian",
       "title": "Italian",
-      "dek": "8 places.",
+      "dek": "9 places.",
       "group": "Cuisine",
       "intro": "",
       "updatedAt": "2026-10-22",
@@ -4123,6 +4199,12 @@
         },
         {
           "placeId": "tribute-pizza",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "rovino",
           "pullQuote": "",
           "blurb": "",
           "copySource": "draft"
