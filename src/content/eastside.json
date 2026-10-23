@@ -8774,66 +8774,6 @@
       ]
     },
     {
-      "id": "rusty-pelican-cafe",
-      "city": "eastside",
-      "name": "Rusty Pelican Cafe",
-      "neighborhood": "Woodinville Village",
-      "address": "13590 NE Village Square Dr, Woodinville, WA 98072",
-      "lat": 47.7517969,
-      "lng": -122.1584147,
-      "cuisine": [
-        "American"
-      ],
-      "placeType": "restaurant",
-      "price": 2,
-      "oneLiner": "",
-      "perfectFor": [],
-      "periods": [
-        {
-          "days": [
-            0,
-            1,
-            2,
-            3,
-            4,
-            5,
-            6
-          ],
-          "start": 480,
-          "end": 900
-        }
-      ],
-      "gustoScore": null,
-      "website": "https://rustypelicancafe.com/woodinville/",
-      "phone": "+1 (425) 286-6660",
-      "appleMapsUrl": "https://maps.apple.com/?daddr=47.7517969,-122.1584147&q=Rusty%20Pelican%20Cafe",
-      "applePlaceUrl": "https://maps.apple.com/place?auid=580695866003012463",
-      "guideSlugs": [],
-      "muid": "580695866003012463",
-      "hoursLabel": "",
-      "blurb": "",
-      "orderThis": [],
-      "ids": {
-        "yelp": "WcqJvWCwGrBzmVhMHzwjzA"
-      },
-      "copySource": "draft",
-      "updatedAt": "2026-10-22",
-      "photos": [
-        {
-          "source": "illustration",
-          "isIllustration": true,
-          "alt": "Illustration suggesting American at Rusty Pelican Cafe",
-          "credit": "Illustration"
-        }
-      ],
-      "publicRating": {
-        "value": 4.0,
-        "count": 378,
-        "source": "Yelp"
-      },
-      "yelpSlug": "WcqJvWCwGrBzmVhMHzwjzA"
-    },
-    {
       "id": "burgermaster",
       "city": "eastside",
       "name": "Burgermaster",
