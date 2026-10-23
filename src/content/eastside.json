@@ -8808,9 +8808,7 @@
       "phone": "+1 (425) 286-6660",
       "appleMapsUrl": "https://maps.apple.com/?daddr=47.7517969,-122.1584147&q=Rusty%20Pelican%20Cafe",
       "applePlaceUrl": "https://maps.apple.com/place?auid=580695866003012463",
-      "guideSlugs": [
-        "woodinville"
-      ],
+      "guideSlugs": [],
       "muid": "580695866003012463",
       "hoursLabel": "",
       "blurb": "",
@@ -9730,8 +9728,9 @@
       "dek": "The Hollywood district and Village Square.",
       "group": "Neighborhoods",
       "intro": "Restaurants along the Woodinville-Redmond Road and at Village Square, a short hop from the tasting rooms.",
-      "updatedAt": "2026-10-22",
+      "updatedAt": "2026-10-23",
       "ranked": false,
+      "pinned": true,
       "city": "eastside",
       "entries": [
         {
@@ -9762,12 +9761,6 @@
           "placeId": "watts-brewing",
           "pullQuote": "A brewery taproom pouring on the Woodinville-Redmond Road.",
           "blurb": "A brewery taproom pouring on the Woodinville-Redmond Road.",
-          "copySource": "draft"
-        },
-        {
-          "placeId": "rusty-pelican-cafe",
-          "pullQuote": "",
-          "blurb": "",
           "copySource": "draft"
         }
       ]
