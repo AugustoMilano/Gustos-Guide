@@ -3905,7 +3905,7 @@
       "dek": "5 places.",
       "group": "Neighborhoods",
       "intro": "",
-      "updatedAt": "2026-10-22",
+      "updatedAt": "2026-10-23",
       "ranked": false,
       "city": "sandiego",
       "entries": [
@@ -3922,6 +3922,12 @@
           "copySource": "draft"
         },
         {
+          "placeId": "nobu-del-coronado",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
           "placeId": "lobster-west-coronado",
           "pullQuote": "",
           "blurb": "",
@@ -3932,14 +3938,9 @@
           "pullQuote": "",
           "blurb": "",
           "copySource": "draft"
-        },
-        {
-          "placeId": "nobu-del-coronado",
-          "pullQuote": "",
-          "blurb": "",
-          "copySource": "draft"
         }
-      ]
+      ],
+      "pinned": true
     },
     {
       "slug": "sd-la-jolla",
