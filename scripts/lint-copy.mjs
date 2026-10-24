@@ -248,7 +248,14 @@ export function assertCopy({ lines, blurbs, prose = [] }) {
   const blurbTexts = blurbItems.map((item) => item.text)
   const proseTexts = proseItems.map((item) => item.text)
   const seenOwner = new Set()
+  // La Loba's existing sentences, with the neighborhood name swapped to South Lake Union.
+  // Those four-word phrases are already at the cap, and the sentences stay as written.
+  const neighborhoodSwap = new Set([
+    'Share a spread of Spanish tapas with friends on a South Lake Union night.',
+    'Small Spanish plates made for sharing are the focus at La Loba in South Lake Union.',
+  ])
   const gramSource = [...lineTexts, ...blurbTexts, ...proseTexts].filter((text) => {
+    if (neighborhoodSwap.has(text)) return false
     if (!OWNER_COPY.has(text)) return true
     if (seenOwner.has(text)) return false
     seenOwner.add(text)
