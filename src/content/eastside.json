@@ -1400,71 +1400,6 @@
       "price": 1
     },
     {
-      "id": "cascadia-pizza",
-      "city": "eastside",
-      "name": "Cascadia Pizza Co.",
-      "neighborhood": "Bel-Red",
-      "address": "1820 130th Avenue Northeast, Bellevue, WA 98005",
-      "lat": 47.626576,
-      "lng": -122.1662253,
-      "cuisine": [
-        "Pizza"
-      ],
-      "placeType": "restaurant",
-      "oneLiner": "Wood-fired pies on 130th, in the Bel-Red warehouse blocks.",
-      "perfectFor": [],
-      "periods": [
-        {
-          "days": [
-            0,
-            1,
-            2,
-            3,
-            4
-          ],
-          "start": 690,
-          "end": 1260
-        },
-        {
-          "days": [
-            5,
-            6
-          ],
-          "start": 690,
-          "end": 1320
-        }
-      ],
-      "gustoScore": null,
-      "website": "https://www.cascadiapizzaco.com/",
-      "appleMapsUrl": "https://maps.apple.com/?daddr=47.626576,-122.1662253&q=Cascadia%20Pizza%20Co.",
-      "guideSlugs": [],
-      "muid": "",
-      "hoursLabel": "",
-      "blurb": "",
-      "orderThis": [],
-      "ids": {
-        "yelp": "ssSXXTx_xOiMGrmu_33-pg"
-      },
-      "copySource": "draft",
-      "updatedAt": "2026-10-20",
-      "photos": [
-        {
-          "source": "illustration",
-          "isIllustration": true,
-          "alt": "Illustration suggesting Pizza at Cascadia Pizza Co.",
-          "credit": "Illustration"
-        }
-      ],
-      "publicRating": {
-        "value": 4.5,
-        "count": 167,
-        "source": "Yelp"
-      },
-      "yelpSlug": "ssSXXTx_xOiMGrmu_33-pg",
-      "phone": "+1 (425) 274-2100",
-      "price": 2
-    },
-    {
       "id": "farine-bakery",
       "city": "eastside",
       "name": "Farine Bakery",
@@ -1745,65 +1680,6 @@
         "source": "Yelp"
       },
       "yelpSlug": "bcjWiEonA4lVLf7md6N6PA",
-      "price": 2
-    },
-    {
-      "id": "katsu-burger",
-      "city": "eastside",
-      "name": "Katsu Burger",
-      "neighborhood": "Factoria",
-      "address": "12700 Southeast 38th Street, Bellevue, WA 98006",
-      "lat": 47.576761,
-      "lng": -122.1703267,
-      "cuisine": [
-        "Burgers"
-      ],
-      "placeType": "restaurant",
-      "oneLiner": "Katsu sandwiches and burgers at the Factoria shop on 38th.",
-      "perfectFor": [],
-      "periods": [
-        {
-          "days": [
-            0,
-            1,
-            2,
-            3,
-            4,
-            5,
-            6
-          ],
-          "start": 660,
-          "end": 1260
-        }
-      ],
-      "gustoScore": null,
-      "website": "https://www.katsuburger.com/",
-      "phone": "+1 (425) 971-7228",
-      "appleMapsUrl": "https://maps.apple.com/?daddr=47.576761,-122.1703267&q=Katsu%20Burger",
-      "guideSlugs": [],
-      "muid": "",
-      "hoursLabel": "",
-      "blurb": "",
-      "orderThis": [],
-      "ids": {
-        "yelp": "QOYPgNeaTMIvn-9crMovVg"
-      },
-      "copySource": "draft",
-      "updatedAt": "2026-10-20",
-      "photos": [
-        {
-          "source": "illustration",
-          "isIllustration": true,
-          "alt": "Illustration suggesting Burgers at Katsu Burger",
-          "credit": "Illustration"
-        }
-      ],
-      "publicRating": {
-        "value": 4.1,
-        "count": 569,
-        "source": "Yelp"
-      },
-      "yelpSlug": "QOYPgNeaTMIvn-9crMovVg",
       "price": 2
     },
     {
@@ -2741,62 +2617,6 @@
           "credit": "Illustration"
         }
       ]
-    },
-    {
-      "id": "matts-rotisserie",
-      "city": "eastside",
-      "name": "Matts' Rotisserie & Oyster Lounge",
-      "neighborhood": "Overlake",
-      "address": "16551 Northeast 74th Street, Redmond, WA 98052",
-      "lat": 47.6697211,
-      "lng": -122.1200345,
-      "cuisine": [
-        "American"
-      ],
-      "placeType": "restaurant",
-      "oneLiner": "Rotisserie chicken and an oyster bar on 74th in Overlake.",
-      "perfectFor": [],
-      "periods": [
-        {
-          "days": [
-            1,
-            2,
-            3,
-            4
-          ],
-          "start": 660,
-          "end": 1260
-        },
-        {
-          "days": [
-            5,
-            6
-          ],
-          "start": 660,
-          "end": 600
-        }
-      ],
-      "gustoScore": null,
-      "website": "https://www.mattsrotisserie.com/",
-      "phone": "+1 (425) 376-0909",
-      "appleMapsUrl": "https://maps.apple.com/?daddr=47.6697211,-122.1200345&q=Matts'%20Rotisserie%20%26%20Oyster%20Lounge",
-      "guideSlugs": [],
-      "muid": "",
-      "hoursLabel": "",
-      "blurb": "",
-      "orderThis": [],
-      "ids": {},
-      "copySource": "draft",
-      "updatedAt": "2026-10-20",
-      "photos": [
-        {
-          "source": "illustration",
-          "isIllustration": true,
-          "alt": "Illustration suggesting American at Matts' Rotisserie & Oyster Lounge",
-          "credit": "Illustration"
-        }
-      ],
-      "price": 3
     },
     {
       "id": "ristorante-tropea",
@@ -7586,66 +7406,6 @@
         "source": "Yelp"
       },
       "yelpSlug": "nVfPfOTY3Y7d86mqFpSp4A"
-    },
-    {
-      "id": "just-poke-redmond",
-      "city": "eastside",
-      "name": "Just Poké",
-      "neighborhood": "Overlake",
-      "address": "7345 164th Ave NE, Unit I-147, Redmond, WA 98052",
-      "lat": 47.6697893,
-      "lng": -122.1217326,
-      "cuisine": [
-        "Poke"
-      ],
-      "placeType": "restaurant",
-      "price": 2,
-      "oneLiner": "",
-      "perfectFor": [],
-      "periods": [
-        {
-          "days": [
-            0,
-            1,
-            2,
-            3,
-            4,
-            5,
-            6
-          ],
-          "start": 660,
-          "end": 1200
-        }
-      ],
-      "gustoScore": null,
-      "website": "https://justpoke.com/locations/redmond",
-      "phone": "+1 (425) 242-0889",
-      "appleMapsUrl": "https://maps.apple.com/?daddr=47.6697893,-122.1217326&q=Just%20Pok%C3%A9",
-      "applePlaceUrl": "https://maps.apple.com/place?auid=9074736504933963122",
-      "guideSlugs": [],
-      "muid": "9074736504933963122",
-      "hoursLabel": "",
-      "blurb": "",
-      "orderThis": [],
-      "ids": {
-        "yelp": "hpjM3AwjmrYYk_GrfnDWEw"
-      },
-      "copySource": "draft",
-      "updatedAt": "2026-10-22",
-      "photos": [
-        {
-          "source": "illustration",
-          "isIllustration": true,
-          "alt": "Illustration suggesting Poke at Just Poké",
-          "credit": "Illustration"
-        }
-      ],
-      "publicRating": {
-        "value": 3.9,
-        "count": 198,
-        "source": "Yelp"
-      },
-      "yelpSlug": "hpjM3AwjmrYYk_GrfnDWEw"
     },
     {
       "id": "noburu-ramen-and-sushi",

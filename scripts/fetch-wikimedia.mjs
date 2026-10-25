@@ -1,6 +1,7 @@
 import { readFileSync, writeFileSync, mkdirSync, existsSync } from 'node:fs'
 import { dirname, join } from 'node:path'
 import { fileURLToPath } from 'node:url'
+import { permanentlyExcluded } from './permanent-exclusions.mjs'
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..')
 const cachePath = join(root, 'data/wikimedia-cache.json')
@@ -244,10 +245,12 @@ function targets() {
   const east = JSON.parse(readFileSync(join(root, 'src/content/eastside.json'), 'utf8'))
   const rows = []
   for (const place of Object.values(places)) {
+    if (permanentlyExcluded(place)) continue
     if (place.photos?.some((photo) => photo.source === 'wikimedia' && photo.url)) continue
     rows.push({ ...place, cityName: 'Seattle', bucket: 'seattle' })
   }
   for (const place of east.places) {
+    if (permanentlyExcluded(place)) continue
     if (place.photos?.some((photo) => photo.source === 'wikimedia' && photo.url)) continue
     rows.push({ ...place, cityName: cityOf(place), bucket: 'eastside' })
   }
@@ -270,6 +273,7 @@ async function download(url) {
 let writeLock = Promise.resolve()
 function remember(id, photo, hit) {
   writeLock = writeLock.then(() => {
+  if (permanentlyExcluded({ id })) throw new Error(`${id} is permanently excluded`)
   const places = JSON.parse(readFileSync(join(root, 'src/content/places.json'), 'utf8'))
   const index = JSON.parse(readFileSync(join(root, 'src/content/index.json'), 'utf8'))
   const east = JSON.parse(readFileSync(join(root, 'src/content/eastside.json'), 'utf8'))

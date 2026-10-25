@@ -2,6 +2,7 @@ import { readFileSync, writeFileSync, mkdirSync } from 'node:fs'
 import { dirname, join } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { assertCopy, truncatedNameHit } from './lint-copy.mjs'
+import { exclusionIds, permanentlyExcluded } from './permanent-exclusions.mjs'
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..')
 
@@ -135,6 +136,7 @@ function isLaunch(place) {
     place.resolved &&
     (place.kind === 'food' || place.kind === 'drinks') &&
     !place.excluded &&
+    !permanentlyExcluded(place) &&
     !isShuttered(place) &&
     !place.outside_seattle &&
     !place.duplicate_of &&
@@ -216,6 +218,7 @@ function isHidden(place) {
     place.resolved &&
     (place.kind === 'food' || place.kind === 'drinks') &&
     !place.excluded &&
+    !permanentlyExcluded(place) &&
     !place.closed &&
     place.outside_seattle &&
     !place.duplicate_of
@@ -1157,13 +1160,28 @@ const sourceByMuid = new Map(rawPlaces.filter((place) => place?.muid).map((place
 const leaks = []
 for (const place of Object.values(full)) {
   const source = sourceByMuid.get(place.muid)
-  if (!source || source.closed || source.excluded || source.outside_seattle || source.duplicate_of || source.hidden_reason || source.hours_type === 'PERMANENT_CLOSURE' || shutteredNames.has(normName(place.name))) {
+  if (!source || source.closed || source.excluded || permanentlyExcluded(source) || permanentlyExcluded(place) || source.outside_seattle || source.duplicate_of || source.hidden_reason || source.hours_type === 'PERMANENT_CLOSURE' || shutteredNames.has(normName(place.name))) {
     leaks.push(place.name)
   }
+}
+for (const place of hidden) {
+  if (permanentlyExcluded(place)) leaks.push(`hidden:${place.name}`)
 }
 for (const guide of guides) {
   for (const entry of guide.entries) {
     if (!full[entry.placeId]) leaks.push(`${guide.slug}:${entry.placeId}`)
+    if (exclusionIds().has(entry.placeId)) leaks.push(`${guide.slug}:${entry.placeId}`)
+  }
+}
+for (const file of ['eastside.json', 'la.json', 'sf.json', 'sd.json']) {
+  const regional = JSON.parse(readFileSync(join(root, 'src/content', file), 'utf8'))
+  for (const place of regional.places) {
+    if (permanentlyExcluded(place)) leaks.push(`${file}:${place.id}`)
+  }
+  for (const guide of regional.guides) {
+    for (const entry of guide.entries) {
+      if (exclusionIds().has(entry.placeId) || permanentlyExcluded(entry)) leaks.push(`${file}:${guide.slug}:${entry.placeId}`)
+    }
   }
 }
 if (leaks.length) {

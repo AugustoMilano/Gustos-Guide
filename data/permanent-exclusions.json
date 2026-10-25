@@ -1,0 +1,29 @@
+{
+  "note": "Places Augusto removed for good. Every import skips these ids and names. Rusty Pelican Cafe is the original entry.",
+  "places": [
+    {
+      "id": "rusty-pelican-cafe",
+      "name": "Rusty Pelican Cafe"
+    },
+    {
+      "id": "dark-room",
+      "name": "Dark Room"
+    },
+    {
+      "id": "cascadia-pizza",
+      "name": "Cascadia Pizza Co."
+    },
+    {
+      "id": "katsu-burger",
+      "name": "Katsu Burger"
+    },
+    {
+      "id": "matts-rotisserie",
+      "name": "Matts' Rotisserie & Oyster Lounge"
+    },
+    {
+      "id": "just-poke-redmond",
+      "name": "Just Poké"
+    }
+  ]
+}
