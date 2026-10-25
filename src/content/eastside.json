@@ -126,7 +126,6 @@
       "phone": "+1 (425) 635-1112",
       "appleMapsUrl": "https://maps.apple.com/?daddr=47.6099608,-122.2032267&q=Monsoon%20Bellevue",
       "guideSlugs": [
-        "best-of-bellevue",
         "bellevue",
         "eastside-asian"
       ],
@@ -298,7 +297,6 @@
       "phone": "+1 (425) 454-7500",
       "appleMapsUrl": "https://maps.apple.com/?daddr=47.6165675,-122.202069&q=Tavern%20Hall",
       "guideSlugs": [
-        "best-of-bellevue",
         "bellevue"
       ],
       "muid": "",
@@ -357,8 +355,6 @@
       "phone": "+1 (425) 378-1498",
       "appleMapsUrl": "https://maps.apple.com/?daddr=47.6162309,-122.1808153&q=Regent%20Bakery%20and%20Cafe",
       "guideSlugs": [
-        "best-of-bellevue",
-        "bellevue",
         "eastside-coffee"
       ],
       "muid": "",
@@ -436,8 +432,6 @@
       "phone": "+1 (425) 688-2986",
       "appleMapsUrl": "https://maps.apple.com/?daddr=47.6208959,-122.1705706&q=Facing%20East",
       "guideSlugs": [
-        "best-of-bellevue",
-        "bellevue",
         "eastside-asian"
       ],
       "muid": "",
@@ -1159,7 +1153,6 @@
       "phone": "+1 (425) 455-1313",
       "appleMapsUrl": "https://maps.apple.com/?daddr=47.6182022,-122.2013198&q=13%20Coins",
       "guideSlugs": [
-        "bellevue",
         "eastside-brunch"
       ],
       "muid": "",
@@ -1314,7 +1307,6 @@
       "phone": "+1 (425) 454-2440",
       "appleMapsUrl": "https://maps.apple.com/?daddr=47.6102752,-122.2030425&q=Araya's%20Place",
       "guideSlugs": [
-        "bellevue",
         "eastside-asian"
       ],
       "muid": "",
@@ -1445,9 +1437,7 @@
       "gustoScore": null,
       "website": "https://www.cascadiapizzaco.com/",
       "appleMapsUrl": "https://maps.apple.com/?daddr=47.626576,-122.1662253&q=Cascadia%20Pizza%20Co.",
-      "guideSlugs": [
-        "bellevue"
-      ],
+      "guideSlugs": [],
       "muid": "",
       "hoursLabel": "",
       "blurb": "",
@@ -1507,7 +1497,6 @@
       "website": "https://www.farinecafe.com/",
       "appleMapsUrl": "https://maps.apple.com/?daddr=47.6195371,-122.1913429&q=Farine%20Bakery",
       "guideSlugs": [
-        "bellevue",
         "eastside-coffee",
         "eastside-brunch"
       ],
@@ -1731,7 +1720,6 @@
       "phone": "+1 (425) 455-9090",
       "appleMapsUrl": "https://maps.apple.com/?daddr=47.6191274,-122.1818316&q=I%20Love%20Sushi",
       "guideSlugs": [
-        "bellevue",
         "eastside-asian"
       ],
       "muid": "",
@@ -1792,9 +1780,7 @@
       "website": "https://www.katsuburger.com/",
       "phone": "+1 (425) 971-7228",
       "appleMapsUrl": "https://maps.apple.com/?daddr=47.576761,-122.1703267&q=Katsu%20Burger",
-      "guideSlugs": [
-        "bellevue"
-      ],
+      "guideSlugs": [],
       "muid": "",
       "hoursLabel": "",
       "blurb": "",
@@ -1860,7 +1846,6 @@
       "phone": "+1 (425) 502-7652",
       "appleMapsUrl": "https://maps.apple.com/?daddr=47.6100322,-122.2026916&q=Peony",
       "guideSlugs": [
-        "bellevue",
         "eastside-asian"
       ],
       "muid": "",
@@ -1974,7 +1959,6 @@
       "phone": "+1 (425) 286-8888",
       "appleMapsUrl": "https://maps.apple.com/?daddr=47.6197288,-122.2027458&q=Xi'an%20Noodles",
       "guideSlugs": [
-        "bellevue",
         "eastside-asian"
       ],
       "muid": "",
@@ -2048,8 +2032,7 @@
       "phone": "+1 (425) 822-0225",
       "appleMapsUrl": "https://maps.apple.com/?daddr=47.6742361,-122.206514&q=Anthony's%20HomePort",
       "guideSlugs": [
-        "kirkland-waterfront",
-        "kirkland"
+        "kirkland-waterfront"
       ],
       "muid": "",
       "hoursLabel": "",
@@ -2797,9 +2780,7 @@
       "website": "https://www.mattsrotisserie.com/",
       "phone": "+1 (425) 376-0909",
       "appleMapsUrl": "https://maps.apple.com/?daddr=47.6697211,-122.1200345&q=Matts'%20Rotisserie%20%26%20Oyster%20Lounge",
-      "guideSlugs": [
-        "redmond"
-      ],
+      "guideSlugs": [],
       "muid": "",
       "hoursLabel": "",
       "blurb": "",
@@ -2868,7 +2849,6 @@
       "phone": "+1 (425) 448-9982",
       "appleMapsUrl": "https://maps.apple.com/?daddr=47.6779991,-122.122344&q=Ristorante%20Tropea",
       "guideSlugs": [
-        "redmond",
         "eastside-date-night"
       ],
       "muid": "",
@@ -3059,7 +3039,6 @@
       "website": "https://rubinsteinbagels.com/",
       "appleMapsUrl": "https://maps.apple.com/?daddr=47.674712,-122.125854&q=Rubinstein%20Bagels",
       "guideSlugs": [
-        "redmond",
         "eastside-coffee",
         "eastside-brunch"
       ],
@@ -3207,7 +3186,6 @@
       "phone": "+1 (425) 881-3020",
       "appleMapsUrl": "https://maps.apple.com/?daddr=47.6855472,-122.1446573&q=Black%20Raven%20Brewing",
       "guideSlugs": [
-        "redmond",
         "eastside-breweries"
       ],
       "muid": "",
@@ -5465,7 +5443,8 @@
       "appleMapsUrl": "https://maps.apple.com/?daddr=47.6140987,-122.2008181&q=Ascend%20Prime%20Steak%20%26%20Sushi",
       "applePlaceUrl": "https://maps.apple.com/place?auid=5316906510073088576",
       "guideSlugs": [
-        "bellevue"
+        "bellevue",
+        "best-of-bellevue"
       ],
       "muid": "5316906510073088576",
       "hoursLabel": "",
@@ -5992,7 +5971,8 @@
       "appleMapsUrl": "https://maps.apple.com/?daddr=47.6163741,-122.201373&q=Earls%20Kitchen%20%2B%20Bar",
       "applePlaceUrl": "https://maps.apple.com/place?auid=14508377034778846098",
       "guideSlugs": [
-        "bellevue"
+        "bellevue",
+        "best-of-bellevue"
       ],
       "muid": "14508377034778846098",
       "hoursLabel": "",
@@ -7642,9 +7622,7 @@
       "phone": "+1 (425) 242-0889",
       "appleMapsUrl": "https://maps.apple.com/?daddr=47.6697893,-122.1217326&q=Just%20Pok%C3%A9",
       "applePlaceUrl": "https://maps.apple.com/place?auid=9074736504933963122",
-      "guideSlugs": [
-        "redmond"
-      ],
+      "guideSlugs": [],
       "muid": "9074736504933963122",
       "hoursLabel": "",
       "blurb": "",
@@ -8755,7 +8733,8 @@
       "applePlaceUrl": "https://maps.apple.com/place?auid=13611242735207683381",
       "guideSlugs": [
         "bellevue",
-        "eastside-asian"
+        "eastside-asian",
+        "best-of-bellevue"
       ],
       "muid": "13611242735207683381",
       "hoursLabel": "",
@@ -8840,10 +8819,23 @@
       "dek": "Bellevue rooms with a published address, from Old Bellevue to Bel-Red.",
       "group": "Best of",
       "intro": "Bis on Main and Monsoon Bellevue are on Main Street. Seastar Restaurant & Raw Bar is on 108th Avenue Northeast. John Howie Steak is in the Bravern. Tavern Hall is in Bellevue Square. Regent Bakery and Cafe is on 120th Avenue Northeast. Facing East is takeout on Bel-Red Road.",
-      "updatedAt": "2026-10-20",
+      "updatedAt": "2026-10-25",
       "ranked": false,
+      "pinned": true,
       "city": "eastside",
       "entries": [
+        {
+          "placeId": "ascend-prime-steak-and-sushi",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "bis-on-main",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
         {
           "placeId": "john-howie-steak",
           "pullQuote": "Steakhouse in the Bravern. The lunch service is currently closed.",
@@ -8857,33 +8849,15 @@
           "copySource": "draft"
         },
         {
-          "placeId": "bis-on-main",
+          "placeId": "earls-kitchen-bar",
           "pullQuote": "",
           "blurb": "",
           "copySource": "draft"
         },
         {
-          "placeId": "monsoon-bellevue",
+          "placeId": "ramen-nori",
           "pullQuote": "",
           "blurb": "",
-          "copySource": "draft"
-        },
-        {
-          "placeId": "tavern-hall",
-          "pullQuote": "",
-          "blurb": "",
-          "copySource": "draft"
-        },
-        {
-          "placeId": "regent-bakery-and-cafe",
-          "pullQuote": "Asian bakery and cafe on 120th Avenue Northeast, in Bellevue since 2000.",
-          "blurb": "Asian bakery and cafe on 120th Avenue Northeast, in Bellevue since 2000.",
-          "copySource": "draft"
-        },
-        {
-          "placeId": "facing-east",
-          "pullQuote": "Takeout on Bel-Red Road since the December 2021 move from downtown.",
-          "blurb": "Takeout on Bel-Red Road since the December 2021 move from downtown.",
           "copySource": "draft"
         }
       ]
@@ -8966,10 +8940,17 @@
       "dek": "Downtown, Overlake, the Willows, and southeast Redmond.",
       "group": "Neighborhoods",
       "intro": "Redmond rooms from Cleveland Street out to Overlake, Northeast 95th, and the southeast side of town.",
-      "updatedAt": "2026-10-22",
+      "updatedAt": "2026-10-25",
       "ranked": false,
+      "pinned": true,
       "city": "eastside",
       "entries": [
+        {
+          "placeId": "woodblock",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
         {
           "placeId": "spark-pizza",
           "pullQuote": "",
@@ -8977,7 +8958,7 @@
           "copySource": "draft"
         },
         {
-          "placeId": "woodblock",
+          "placeId": "a-ma-chicken-rice",
           "pullQuote": "",
           "blurb": "",
           "copySource": "draft"
@@ -8989,7 +8970,13 @@
           "copySource": "draft"
         },
         {
-          "placeId": "a-ma-chicken-rice",
+          "placeId": "kobuta-and-ookami-redmond",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "mowood",
           "pullQuote": "",
           "blurb": "",
           "copySource": "draft"
@@ -9001,19 +8988,7 @@
           "copySource": "draft"
         },
         {
-          "placeId": "just-poke-redmond",
-          "pullQuote": "",
-          "blurb": "",
-          "copySource": "draft"
-        },
-        {
           "placeId": "noburu-ramen-and-sushi",
-          "pullQuote": "",
-          "blurb": "",
-          "copySource": "draft"
-        },
-        {
-          "placeId": "kobuta-and-ookami-redmond",
           "pullQuote": "",
           "blurb": "",
           "copySource": "draft"
@@ -9031,18 +9006,6 @@
           "copySource": "draft"
         },
         {
-          "placeId": "matts-rotisserie",
-          "pullQuote": "Rotisserie chicken and an oyster bar on 74th in Overlake.",
-          "blurb": "Rotisserie chicken and an oyster bar on 74th in Overlake.",
-          "copySource": "draft"
-        },
-        {
-          "placeId": "ristorante-tropea",
-          "pullQuote": "Southern Italian dinner on 164th Avenue Northeast in Overlake.",
-          "blurb": "Southern Italian dinner on 164th Avenue Northeast in Overlake.",
-          "copySource": "draft"
-        },
-        {
           "placeId": "the-british-pantry",
           "pullQuote": "Tea, pastries, and a British grocery on 161st Avenue.",
           "blurb": "Tea, pastries, and a British grocery on 161st Avenue.",
@@ -9052,24 +9015,6 @@
           "placeId": "postdoc-brewing",
           "pullQuote": "Small brewery taproom on 65th Street, east of downtown Redmond.",
           "blurb": "Small brewery taproom on 65th Street, east of downtown Redmond.",
-          "copySource": "draft"
-        },
-        {
-          "placeId": "rubinstein-bagels",
-          "pullQuote": "Boiled bagels on Cleveland Street in downtown Redmond.",
-          "blurb": "Boiled bagels on Cleveland Street in downtown Redmond.",
-          "copySource": "draft"
-        },
-        {
-          "placeId": "black-raven-brewing",
-          "pullQuote": "Brewpub on Northeast 95th. The beer is made in the building.",
-          "blurb": "Brewpub on Northeast 95th. The beer is made in the building.",
-          "copySource": "draft"
-        },
-        {
-          "placeId": "mowood",
-          "pullQuote": "",
-          "blurb": "",
           "copySource": "draft"
         }
       ]
@@ -9200,8 +9145,9 @@
       "dek": "Old Bellevue, downtown, Factoria, Bel-Red, and Lake Bellevue.",
       "group": "Neighborhoods",
       "intro": "Bellevue rooms with a street address, from Main Street out to Factoria, Bel-Red, and the Spring District.",
-      "updatedAt": "2026-10-22",
+      "updatedAt": "2026-10-25",
       "ranked": false,
+      "pinned": true,
       "city": "eastside",
       "entries": [
         {
@@ -9247,19 +9193,25 @@
           "copySource": "draft"
         },
         {
-          "placeId": "cantinetta-bellevue",
-          "pullQuote": "",
-          "blurb": "",
-          "copySource": "draft"
-        },
-        {
           "placeId": "stk-bellevue",
           "pullQuote": "",
           "blurb": "",
           "copySource": "draft"
         },
         {
+          "placeId": "cantinetta-bellevue",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
           "placeId": "earls-kitchen-bar",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "japonessa",
           "pullQuote": "",
           "blurb": "",
           "copySource": "draft"
@@ -9290,12 +9242,6 @@
         },
         {
           "placeId": "hokkaido-ramen-santouka",
-          "pullQuote": "",
-          "blurb": "",
-          "copySource": "draft"
-        },
-        {
-          "placeId": "japonessa",
           "pullQuote": "",
           "blurb": "",
           "copySource": "draft"
@@ -9403,12 +9349,6 @@
           "copySource": "draft"
         },
         {
-          "placeId": "peony",
-          "pullQuote": "Hong Kong-style Chinese on Main, in the old downtown blocks.",
-          "blurb": "Hong Kong-style Chinese on Main, in the old downtown blocks.",
-          "copySource": "draft"
-        },
-        {
           "placeId": "semicolon-cafe",
           "pullQuote": "",
           "blurb": "",
@@ -9433,33 +9373,9 @@
           "copySource": "draft"
         },
         {
-          "placeId": "regent-bakery-and-cafe",
-          "pullQuote": "Asian bakery and cafe on 120th Avenue Northeast, in Bellevue since 2000.",
-          "blurb": "Asian bakery and cafe on 120th Avenue Northeast, in Bellevue since 2000.",
-          "copySource": "draft"
-        },
-        {
-          "placeId": "facing-east",
-          "pullQuote": "Takeout on Bel-Red Road since the December 2021 move from downtown.",
-          "blurb": "Takeout on Bel-Red Road since the December 2021 move from downtown.",
-          "copySource": "draft"
-        },
-        {
-          "placeId": "13-coins",
-          "pullQuote": "Bellevue Way diner with breakfast from seven and a late weekend close.",
-          "blurb": "Bellevue Way diner with breakfast from seven and a late weekend close.",
-          "copySource": "draft"
-        },
-        {
           "placeId": "bellevue-brewing",
           "pullQuote": "A brewpub on Northeast District Way in the Spring District.",
           "blurb": "A brewpub on Northeast District Way in the Spring District.",
-          "copySource": "draft"
-        },
-        {
-          "placeId": "arayas-place",
-          "pullQuote": "Vegan Thai on Main Street, and the mock duck is the order.",
-          "blurb": "Vegan Thai on Main Street, and the mock duck is the order.",
           "copySource": "draft"
         },
         {
@@ -9469,45 +9385,15 @@
           "copySource": "draft"
         },
         {
-          "placeId": "cascadia-pizza",
-          "pullQuote": "Wood-fired pies on 130th, in the Bel-Red warehouse blocks.",
-          "blurb": "Wood-fired pies on 130th, in the Bel-Red warehouse blocks.",
-          "copySource": "draft"
-        },
-        {
-          "placeId": "farine-bakery",
-          "pullQuote": "Belgian bakery on Northeast 10th, with kouign-amann in the case.",
-          "blurb": "Belgian bakery on Northeast 10th, with kouign-amann in the case.",
-          "copySource": "draft"
-        },
-        {
           "placeId": "ginza",
           "pullQuote": "A long-running sushi room just south of Main, off 102nd.",
           "blurb": "A long-running sushi room just south of Main, off 102nd.",
           "copySource": "draft"
         },
         {
-          "placeId": "i-love-sushi",
-          "pullQuote": "Sushi on Lake Bellevue Drive, with a deck over the water.",
-          "blurb": "Sushi on Lake Bellevue Drive, with a deck over the water.",
-          "copySource": "draft"
-        },
-        {
-          "placeId": "katsu-burger",
-          "pullQuote": "Katsu sandwiches and burgers at the Factoria shop on 38th.",
-          "blurb": "Katsu sandwiches and burgers at the Factoria shop on 38th.",
-          "copySource": "draft"
-        },
-        {
           "placeId": "takai-by-kashiba",
           "pullQuote": "Shiro Kashiba's sushi counter on Bellevue Way. Book the omakase.",
           "blurb": "Shiro Kashiba's sushi counter on Bellevue Way. Book the omakase.",
-          "copySource": "draft"
-        },
-        {
-          "placeId": "xian-noodles",
-          "pullQuote": "Hand-pulled biang biang noodles on Bellevue Way by the mall.",
-          "blurb": "Hand-pulled biang biang noodles on Bellevue Way by the mall.",
           "copySource": "draft"
         },
         {
@@ -9530,16 +9416,11 @@
       "dek": "Downtown, the marina, Juanita, Carillon Point, and Totem Lake.",
       "group": "Neighborhoods",
       "intro": "Kirkland restaurants with a published address, from Lake Street and Carillon Point out to Juanita and Totem Lake.",
-      "updatedAt": "2026-10-22",
+      "updatedAt": "2026-10-25",
       "ranked": false,
+      "pinned": true,
       "city": "eastside",
       "entries": [
-        {
-          "placeId": "el-encanto",
-          "pullQuote": "",
-          "blurb": "",
-          "copySource": "draft"
-        },
         {
           "placeId": "deru-market",
           "pullQuote": "Market counter and brunch on 9th Avenue, just uphill from downtown.",
@@ -9554,6 +9435,12 @@
         },
         {
           "placeId": "vinason-pho-kitchen",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "el-encanto",
           "pullQuote": "",
           "blurb": "",
           "copySource": "draft"
@@ -9604,12 +9491,6 @@
           "placeId": "cafe-juanita",
           "pullQuote": "Prix-fixe Northern Italian tasting menus in the Juanita neighborhood.",
           "blurb": "Prix-fixe Northern Italian tasting menus in the Juanita neighborhood.",
-          "copySource": "draft"
-        },
-        {
-          "placeId": "anthonys-homeport",
-          "pullQuote": "Seafood at the south end of Lake Street, on the marina.",
-          "blurb": "Seafood at the south end of Lake Street, on the marina.",
           "copySource": "draft"
         },
         {
