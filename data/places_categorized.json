@@ -10711,7 +10711,9 @@
   "duplicate_of": null,
   "closed_note": null,
   "notes": null,
-  "location_count_in_list": 1
+  "location_count_in_list": 1,
+  "excluded": true,
+  "exclude_reason": "removed by Augusto Oct 25 2026"
  },
  {
   "order": 220,

@@ -1,6 +1,7 @@
 import { readFileSync } from 'node:fs'
 import { dirname, join } from 'node:path'
 import { fileURLToPath } from 'node:url'
+import { exclusionIds, permanentlyExcluded } from './permanent-exclusions.mjs'
 
 const N = 4
 export const LINE_THRESHOLD = 0.34
@@ -292,6 +293,7 @@ export function assertCopy({ lines, blurbs, prose = [] }) {
 function fromFiles() {
   const root = join(dirname(fileURLToPath(import.meta.url)), '..')
   const places = JSON.parse(readFileSync(join(root, 'src/content/places.json'), 'utf8'))
+  const index = JSON.parse(readFileSync(join(root, 'src/content/index.json'), 'utf8'))
   const guides = JSON.parse(readFileSync(join(root, 'src/content/guides.json'), 'utf8'))
   const eastside = JSON.parse(readFileSync(join(root, 'src/content/eastside.json'), 'utf8'))
   const la = JSON.parse(readFileSync(join(root, 'src/content/la.json'), 'utf8'))
@@ -327,6 +329,16 @@ function fromFiles() {
       })),
     ),
   ]
+  const banned = []
+  for (const place of [...Object.values(places), ...index.places, ...eastside.places, ...la.places, ...sf.places, ...sd.places]) {
+    if (permanentlyExcluded(place)) banned.push(place.id || place.name)
+  }
+  for (const guide of [...guides, ...eastside.guides, ...la.guides, ...sf.guides, ...sd.guides]) {
+    for (const entry of guide.entries) {
+      if (exclusionIds().has(entry.placeId) || permanentlyExcluded(entry)) banned.push(`${guide.slug}:${entry.placeId}`)
+    }
+  }
+  if (banned.length) fail('Permanently excluded place is still in the catalog', banned.slice(0, 12).join(', '))
   const regional = [...eastside.places, ...la.places, ...sf.places, ...sd.places]
   const regionalTexts = [
     ...regional.map((place) => place.oneLiner),
