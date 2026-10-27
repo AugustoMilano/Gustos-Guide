@@ -16,7 +16,6 @@ const DIVE = [
   'bait-shop',
   'king-s-hardware',
   'add-a-ball',
-  'unicorn',
   'flatstick-pub',
   'rhein-haus',
   'ozzie-s',

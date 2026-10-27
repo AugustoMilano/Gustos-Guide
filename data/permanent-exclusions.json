@@ -1,5 +1,5 @@
 {
-  "note": "Places Augusto removed for good. Every import skips these ids and names. Rusty Pelican Cafe is the original entry.",
+  "note": "Places Augusto removed for good. Every import skips these ids and names. Rusty Pelican Cafe is the original entry. keepIds is a different city's room that shares a name and stays.",
   "places": [
     {
       "id": "rusty-pelican-cafe",
@@ -24,6 +24,31 @@
     {
       "id": "just-poke-redmond",
       "name": "Just Poké"
+    },
+    {
+      "id": "seattle-meowtropolitan",
+      "name": "Seattle Meowtropolitan"
+    },
+    {
+      "id": "joe-the-juice",
+      "name": "JOE & THE JUICE",
+      "keepIds": ["joe-the-juice-sf"]
+    },
+    {
+      "id": "unicorn",
+      "name": "Unicorn"
+    },
+    {
+      "id": "pacha-collective",
+      "name": "Pacha Collective"
+    },
+    {
+      "id": "pie-bar",
+      "name": "Pie Bar"
+    },
+    {
+      "id": "sugar-bakery-cafe",
+      "name": "Sugar Bakery & Cafe"
     }
   ]
 }
