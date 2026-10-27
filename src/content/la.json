@@ -9599,7 +9599,7 @@
       "dek": "Rooms marked $$$ or $$$$ on the published price band. Scores are still blank.",
       "group": "Occasion",
       "intro": "Katana is at 8439 W Sunset Blvd. BOA Steakhouse is at 9200 Sunset Blvd.",
-      "updatedAt": "2026-10-20",
+      "updatedAt": "2026-10-27",
       "ranked": false,
       "city": "la",
       "entries": [
@@ -9607,6 +9607,12 @@
           "placeId": "spago",
           "pullQuote": "Spago, 176 N Canon Dr. Californian in Beverly Hills.",
           "blurb": "Spago, 176 N Canon Dr. Californian in Beverly Hills.",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "the-ivy",
+          "pullQuote": "The Ivy, 113 N Robertson Blvd. American in Beverly Grove.",
+          "blurb": "The Ivy, 113 N Robertson Blvd. American in Beverly Grove.",
           "copySource": "draft"
         },
         {
@@ -9655,12 +9661,6 @@
           "placeId": "capo",
           "pullQuote": "Capo sits at 1810 Ocean Ave. Italian, Santa Monica.",
           "blurb": "Capo sits at 1810 Ocean Ave. Italian, Santa Monica.",
-          "copySource": "draft"
-        },
-        {
-          "placeId": "the-ivy",
-          "pullQuote": "The Ivy, 113 N Robertson Blvd. American in Beverly Grove.",
-          "blurb": "The Ivy, 113 N Robertson Blvd. American in Beverly Grove.",
           "copySource": "draft"
         },
         {

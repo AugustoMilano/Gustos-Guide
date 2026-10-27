@@ -29,17 +29,27 @@ function slugify(value) {
 }
 
 const ids = new Set(permanentExclusions.map((place) => place.id))
-const names = new Set(permanentExclusions.map((place) => normName(place.name)))
+const byName = new Map(permanentExclusions.map((place) => [normName(place.name), place]))
+const bySlug = new Map(permanentExclusions.map((place) => [place.id, place]))
 
 export function exclusionIds() {
   return ids
+}
+
+function kept(place, entry) {
+  const keep = entry?.keepIds
+  if (!keep) return false
+  return (place.id && keep.includes(place.id)) || (place.placeId && keep.includes(place.placeId))
 }
 
 export function permanentlyExcluded(place) {
   if (!place) return false
   if (place.id && ids.has(place.id)) return true
   if (place.placeId && ids.has(place.placeId)) return true
-  if (place.name && names.has(normName(place.name))) return true
-  if (place.name && ids.has(slugify(place.name))) return true
+  if (!place.name) return false
+  const named = byName.get(normName(place.name))
+  if (named && !kept(place, named)) return true
+  const slugged = bySlug.get(slugify(place.name))
+  if (slugged && !kept(place, slugged)) return true
   return false
 }
