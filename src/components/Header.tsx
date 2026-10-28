@@ -352,6 +352,11 @@ export function Header() {
               setMore(false)
             }}
           />
+          {user ? (
+            <button type="button" className="btn" onClick={signOut}>Sign out {user.name}</button>
+          ) : (
+            <button type="button" className="btn btn-coral" onClick={() => { setMenu(false); setOpen(true) }}>Sign in</button>
+          )}
           <AreaKicker />
           <Link viewTransition={!reduceMotion} to={cityPath('/explore', linkCity)} onClick={() => setMenu(false)} onFocus={() => prefetch('/explore')}>Explore</Link>
           <Link viewTransition={!reduceMotion} to={cityPath('/guides', linkCity)} onClick={() => setMenu(false)}>Guides</Link>
@@ -368,16 +373,11 @@ export function Header() {
             Notifications{unread ? ` (${unread})` : ''}
           </button>
           {user ? (
-            <>
-              <Link viewTransition={!reduceMotion} to={cityPath(`/u/${user.handle}`, linkCity)} className="inline-flex items-center gap-2" onClick={() => setMenu(false)}>
-                {user.avatarUrl ? <img src={user.avatarUrl} alt="" width={32} height={32} loading="lazy" decoding="async" referrerPolicy="no-referrer" className="h-8 w-8 rounded-full object-cover" /> : null}
-                {user.name}
-              </Link>
-              <button type="button" className="btn" onClick={signOut}>Sign out {user.name}</button>
-            </>
-          ) : (
-            <button type="button" className="btn btn-coral" onClick={() => { setMenu(false); setOpen(true) }}>Sign in</button>
-          )}
+            <Link viewTransition={!reduceMotion} to={cityPath(`/u/${user.handle}`, linkCity)} className="inline-flex items-center gap-2" onClick={() => setMenu(false)}>
+              {user.avatarUrl ? <img src={user.avatarUrl} alt="" width={32} height={32} loading="lazy" decoding="async" referrerPolicy="no-referrer" className="h-8 w-8 rounded-full object-cover" /> : null}
+              {user.name}
+            </Link>
+          ) : null}
         </motion.nav>
       ) : null}
       </AnimatePresence>
