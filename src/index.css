@@ -458,7 +458,7 @@ textarea {
 
 .section-head {
   display: flex;
-  align-items: baseline;
+  align-items: center;
   justify-content: space-between;
   gap: var(--space-3);
   min-width: 0;
@@ -468,8 +468,12 @@ textarea {
   min-width: 0;
 }
 
-.section-head > a {
+.section-head > a,
+.home-section > a {
+  display: inline-flex;
+  align-items: center;
   flex: none;
+  min-height: 44px;
   white-space: nowrap;
 }
 
@@ -861,10 +865,8 @@ textarea {
 
 .leaflet-control-attribution a {
   color: #141f4d;
-  display: inline-flex;
-  align-items: center;
-  min-height: 44px;
-  padding: 0 8px;
+  text-decoration: underline;
+  text-underline-offset: 2px;
 }
 
 .gusto-pin-wrap {
@@ -1284,6 +1286,10 @@ textarea {
     max-height: 4.25rem;
     overflow: hidden;
   }
+
+  .explore-map .leaflet-bottom {
+    bottom: 4.75rem;
+  }
 }
 
 @media (min-width: 768px) {
@@ -1389,9 +1395,10 @@ textarea {
   left: max(12px, env(safe-area-inset-left));
   box-sizing: border-box;
   width: auto;
-  max-height: min(70dvh, calc(100dvh - var(--header-offset) - 12px));
+  max-height: calc(100dvh - 12.25rem - env(safe-area-inset-bottom, 0px));
   margin: 0;
   padding: 16px;
+  overscroll-behavior: contain;
   background: #fffaf3;
   color: #181818;
 }
@@ -3447,6 +3454,12 @@ img.is-pending,
 
 .site-footer {
   padding-bottom: 0;
+}
+
+.site-footer a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
 }
 
 .made-in {
