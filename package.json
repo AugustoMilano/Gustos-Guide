@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "node scripts/lint-copy.mjs && node --experimental-strip-types scripts/write-legal.mjs && node scripts/write-sitemap.mjs && node scripts/write-og-png.mjs && node scripts/write-share-pages.mjs && tsc -b && vite build && node scripts/stamp-sw.mjs",
+    "build": "node scripts/lint-copy.mjs && node --experimental-strip-types scripts/write-legal.mjs && node scripts/write-sitemap.mjs && node scripts/write-og-png.mjs && node scripts/write-share-pages.mjs && node scripts/write-slim-catalog.mjs && tsc -b && vite build && node scripts/stamp-sw.mjs",
     "deploy:cf": "wrangler pages deploy dist --project-name gustos-guide",
     "lint": "oxlint && node scripts/lint-copy.mjs",
     "test:e2e": "playwright test",

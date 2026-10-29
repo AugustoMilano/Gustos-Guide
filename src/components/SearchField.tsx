@@ -38,7 +38,8 @@ export function SearchField({
 
   function loadCatalog() {
     if (places) return
-    void import('../content/load.ts').then((mod) => {
+    void import('../content/load.ts').then(async (mod) => {
+      await mod.catalogReady
       setPlaces(mod.catalog.places)
       setGuides(mod.catalog.guides)
     })

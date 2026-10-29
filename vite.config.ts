@@ -1,4 +1,5 @@
-import { existsSync, readFileSync } from 'node:fs'
+import { spawnSync } from 'node:child_process'
+import { existsSync, readFileSync, readdirSync, writeFileSync } from 'node:fs'
 import { join } from 'node:path'
 import tailwindcss from '@tailwindcss/vite'
 import react from '@vitejs/plugin-react'
@@ -130,6 +131,25 @@ export default defineConfig({
       },
       configurePreviewServer(server) {
         server.middlewares.use(legalPaths)
+      },
+    },
+    {
+      name: 'slim-catalog',
+      buildStart() {
+        const result = spawnSync(process.execPath, ['scripts/write-slim-catalog.mjs'], { stdio: 'inherit' })
+        if (result.status !== 0) throw new Error('slim catalog')
+      },
+      closeBundle() {
+        const assets = join(process.cwd(), 'dist/assets')
+        if (!existsSync(assets)) return
+        const name = readdirSync(assets).find((file) => file.startsWith('slim-catalog-') && file.endsWith('.json'))
+        const htmlPath = join(process.cwd(), 'dist/index.html')
+        if (!name || !existsSync(htmlPath)) return
+        const href = `./assets/${name}`
+        const html = readFileSync(htmlPath, 'utf8')
+        if (html.includes(href)) return
+        const tag = `    <link rel="preload" href="${href}" as="fetch" crossorigin />\n`
+        writeFileSync(htmlPath, html.replace('</head>', `${tag}  </head>`))
       },
     },
     react(),

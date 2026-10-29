@@ -31,13 +31,13 @@ function heroDek(city: CityId): string {
 }
 
 export function HomePage() {
-  const { city, guides } = useCityCatalog()
+  const { city, guides, ready, failed } = useCityCatalog()
   const [draft, setDraft] = useState('')
   usePageMeta("Gusto's Guide", heroDek(city), './og/og.png')
   const query = draft.trim()
   const result = useMemo(
-    () => (query ? smartSearch(query, city, catalog.places, catalog.guides) : null),
-    [query, city],
+    () => (query && ready ? smartSearch(query, city, catalog.places, catalog.guides) : null),
+    [query, city, ready],
   )
   const featured = featuredSlugs(city)
     .map((slug) => guides.find((guide) => guide.slug === slug))
@@ -66,11 +66,19 @@ export function HomePage() {
         </div>
       </section>
       <div className="mx-auto max-w-6xl px-4 pt-8 pb-16">
-        {result ? <SmartResults query={query} result={result} /> : (
+        {query && !ready ? (
+          <div className="mt-6 grid gap-2" aria-hidden="true">
+            <div className="skeleton home-pending" />
+            <div className="skeleton home-pending" />
+            <div className="skeleton home-pending" />
+          </div>
+        ) : result ? <SmartResults query={query} result={result} /> : (
           <>
             <section aria-labelledby="featured-guides">
               <h2 id="featured-guides" className="font-serif text-4xl italic">Featured guides</h2>
+              {failed ? <p className="mt-4">The guide list didn't load. <button type="button" className="btn" onClick={() => window.location.reload()}>Try again</button></p> : null}
               <div className="home-featured mt-4">
+                {!ready && !failed ? Array.from({ length: 6 }, (_, index) => <div key={index} className="skeleton" aria-hidden="true" />) : null}
                 {featured.map((guide) => (
                   <Link key={guide.slug} to={cityPath(`/guide/${guide.slug}`)} className="guide-card">
                     <p className="text-xs font-bold uppercase tracking-[0.14em] tabular-nums">{countPlaces(guide.count)}</p>
