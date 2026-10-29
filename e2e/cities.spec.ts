@@ -25,7 +25,7 @@ test('city picker, Seattle urls, and Los Angeles', async ({ page }) => {
   await page.goto('/#/', { waitUntil: 'domcontentloaded' })
   await expect(page.getByRole('heading', { level: 1 })).toContainText('Seattle')
   await expect(page.locator('.city-switch')).toBeVisible()
-  await expect(page.getByRole('link', { name: 'Browse the guides' })).toBeVisible()
+  await expect(page.getByRole('link', { name: 'Browse all guides' })).toBeVisible()
   await expect(page.locator('.region-back')).toContainText('Seattle')
   const back = await page.locator('.region-back').boundingBox()
   expect(back?.height ?? 0).toBeGreaterThanOrEqual(44)
