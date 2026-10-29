@@ -28,6 +28,12 @@
 /sw.js
   Cache-Control: no-cache, no-store, must-revalidate
 
+/hop.htm
+  Cache-Control: no-cache
+
+/hop.js
+  Cache-Control: no-cache
+
 /*
   X-Content-Type-Options: nosniff
   Referrer-Policy: strict-origin-when-cross-origin
