@@ -46,7 +46,7 @@ function clientRedirects(): RedirectRule[] {
     .map((line) => line.trim())
     .filter((line) => line && !line.startsWith('#'))
     .map((line) => line.split(/\s+/))
-    .filter((cols) => cols.length >= 3 && cols[2] === '200' && cols[1] === '/route/index.html')
+    .filter((cols) => cols.length >= 3 && cols[2] === '200' && cols[1] === '/hop.htm')
     .map((cols) => ({ parts: cols[0].split('/'), target: cols[1] }))
   return redirectRules
 }
@@ -61,9 +61,24 @@ function directoryIndex(pathname: string): string | null {
 function clientRewrite(pathname: string): string | null {
   const parts = pathname.split('/')
   for (const rule of clientRedirects()) {
-    if (rule.parts.length !== parts.length) continue
-    const matched = rule.parts.every((part, index) => part.startsWith(':') ? parts[index].length > 0 : part === parts[index])
-    if (matched) return rule.target
+    let index = 0
+    let matched = true
+    for (; index < rule.parts.length; index += 1) {
+      const part = rule.parts[index]
+      if (part === '*') {
+        const rest = parts.slice(index).filter(Boolean)
+        matched = rest.length > 0 && index === rule.parts.length - 1
+        index = parts.length
+        break
+      }
+      if (part.startsWith(':')) {
+        if (!parts[index]) matched = false
+      } else if (part !== parts[index]) {
+        matched = false
+      }
+      if (!matched) break
+    }
+    if (matched && parts.slice(index).every((part) => part === '')) return rule.target
   }
   return null
 }
@@ -93,12 +108,11 @@ const legalPaths: Connect.NextHandleFunction = (req, res, next) => {
     const clean = path.endsWith('/') ? path.slice(0, -1) : path
     req.url = `${clean}/index.html${search}`
   }
-  // Direct /guides, /search, /tonight, and the other hash routes. Cloudflare
-  // serves guides/index.html or a 200 rewrite to the same hop. Preview has
-  // no _redirects engine, so apply that table here.
+  // Direct client routes rewrite to hop.htm, which sends the browser to
+  // /#/that-path. Pages pretty-URLs an index.html target into a 308, so
+  // preview applies the same hop.htm table instead.
   if ((req.url || '').split('?')[0] === path) {
-    const indexed = directoryIndex(path)
-    const rewritten = indexed || clientRewrite(path)
+    const rewritten = clientRewrite(path) || directoryIndex(path)
     if (rewritten) req.url = `${rewritten}${search}`
   }
   next()
