@@ -23,6 +23,51 @@ function notFoundPage(): string {
   return '<!doctype html><title>Page not found</title><h1>That page is not on the menu.</h1>'
 }
 
+function publishedFile(rel: string): boolean {
+  return ['dist', 'public'].some((root) => existsSync(join(process.cwd(), root, rel)))
+}
+
+type RedirectRule = { parts: string[]; target: string }
+
+let redirectRules: RedirectRule[] | null = null
+
+function clientRedirects(): RedirectRule[] {
+  if (redirectRules) return redirectRules
+  let text = ''
+  for (const root of ['public', 'dist']) {
+    const file = join(process.cwd(), root, '_redirects')
+    if (existsSync(file)) {
+      text = readFileSync(file, 'utf8')
+      break
+    }
+  }
+  redirectRules = text
+    .split('\n')
+    .map((line) => line.trim())
+    .filter((line) => line && !line.startsWith('#'))
+    .map((line) => line.split(/\s+/))
+    .filter((cols) => cols.length >= 3 && cols[2] === '200' && cols[1] === '/route/index.html')
+    .map((cols) => ({ parts: cols[0].split('/'), target: cols[1] }))
+  return redirectRules
+}
+
+function directoryIndex(pathname: string): string | null {
+  const clean = pathname.replace(/\/+$/, '') || '/'
+  if (clean === '/') return null
+  const rel = `${clean.slice(1)}/index.html`
+  return publishedFile(rel) ? `/${rel}` : null
+}
+
+function clientRewrite(pathname: string): string | null {
+  const parts = pathname.split('/')
+  for (const rule of clientRedirects()) {
+    if (rule.parts.length !== parts.length) continue
+    const matched = rule.parts.every((part, index) => part.startsWith(':') ? parts[index].length > 0 : part === parts[index])
+    if (matched) return rule.target
+  }
+  return null
+}
+
 // /terms and /privacy are real HTML files. Rewrite the extensionless path
 // before Vite's SPA fallback so dev and preview serve the same documents
 // Cloudflare Pages serves from terms/index.html and privacy/index.html.
@@ -47,6 +92,14 @@ const legalPaths: Connect.NextHandleFunction = (req, res, next) => {
     }
     const clean = path.endsWith('/') ? path.slice(0, -1) : path
     req.url = `${clean}/index.html${search}`
+  }
+  // Direct /guides, /search, /tonight, and the other hash routes. Cloudflare
+  // serves guides/index.html or a 200 rewrite to the same hop. Preview has
+  // no _redirects engine, so apply that table here.
+  if ((req.url || '').split('?')[0] === path) {
+    const indexed = directoryIndex(path)
+    const rewritten = indexed || clientRewrite(path)
+    if (rewritten) req.url = `${rewritten}${search}`
   }
   next()
 }
