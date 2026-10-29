@@ -1,5 +1,9 @@
-# Cloudflare Pages. Hashed Vite files are safe to keep for a year.
+# Hashed Vite files, including the slim catalog JSON, can stay for a year.
+# Do not set no-transform here. Pages compresses these with gzip and brotli.
 /assets/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/assets/*.json
   Cache-Control: public, max-age=31536000, immutable
 
 # Catalog photos keep their filenames. A year is safe because a new crop is a new file.
@@ -32,6 +36,9 @@
   Cache-Control: no-cache
 
 /hop.js
+  Cache-Control: no-cache
+
+/status.js
   Cache-Control: no-cache
 
 /*

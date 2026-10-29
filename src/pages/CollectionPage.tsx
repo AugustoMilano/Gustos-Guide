@@ -1,7 +1,7 @@
-import { useState } from 'react'
+import { lazy, Suspense, useState } from 'react'
 import { motion, useReducedMotion } from 'framer-motion'
 import { Link, useParams } from 'react-router-dom'
-import { GuideMap } from '../components/GuideMap.tsx'
+const GuideMap = lazy(() => import('../components/GuideMap.tsx').then((module) => ({ default: module.GuideMap })))
 import { GoldenFork } from '../components/GoldenFork.tsx'
 import { MapLinks } from '../components/MapLinks.tsx'
 import { PlaceThumb } from '../components/PlaceThumb.tsx'
@@ -208,19 +208,21 @@ export function CollectionPage() {
         </div>
       </section>
       <div className="explore-map">
-        <GuideMap
-          places={members}
-          statuses={app.statuses}
-          activeId={activeId}
-          onHover={setActiveId}
-          onSelect={(id) => {
-            setActiveId(id)
-            setSheet(true)
-            window.requestAnimationFrame(() => {
-              document.getElementById(`collection-${id}`)?.scrollIntoView({ block: 'nearest', behavior: reduce ? 'auto' : 'smooth' })
-            })
-          }}
-        />
+        <Suspense fallback={<div className="map-frame skeleton h-full" aria-hidden="true" />}>
+          <GuideMap
+            places={members}
+            statuses={app.statuses}
+            activeId={activeId}
+            onHover={setActiveId}
+            onSelect={(id) => {
+              setActiveId(id)
+              setSheet(true)
+              window.requestAnimationFrame(() => {
+                document.getElementById(`collection-${id}`)?.scrollIntoView({ block: 'nearest', behavior: reduce ? 'auto' : 'smooth' })
+              })
+            }}
+          />
+        </Suspense>
       </div>
     </main>
   )

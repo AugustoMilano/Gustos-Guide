@@ -1,4 +1,4 @@
-import { lazy, Suspense, useEffect, useRef, useState } from 'react'
+import { lazy, Suspense, useEffect, useRef, useState, useSyncExternalStore } from 'react'
 import { Route, Routes, useLocation, useNavigate } from 'react-router-dom'
 import { CollectionErrorBoundary } from './components/CollectionErrorBoundary.tsx'
 import { Footer } from './components/Footer.tsx'
@@ -10,6 +10,7 @@ import { HomePage } from './pages/HomePage.tsx'
 import { LegalPage } from './pages/LegalPage.tsx'
 import { NotFoundPage } from './pages/NotFoundPage.tsx'
 import { InstallHint } from './components/InstallHint.tsx'
+import { catalogPhase, subscribeCatalog } from './content/load.ts'
 import { barePath, CITY_PREFIXES } from './lib/city.ts'
 import { directLegalSlug } from './lib/site.ts'
 import { useApp } from './state/AppState.tsx'
@@ -166,30 +167,21 @@ function AuthErrorSheet() {
   )
 }
 
-function Shell() {
-  const { announcement, importOffer, acceptImport, dismissImport } = useApp()
+function CatalogRoutes() {
+  const phase = useSyncExternalStore(subscribeCatalog, catalogPhase, catalogPhase)
   const { pathname } = useLocation()
-  const legal = directLegalSlug()
+  if (barePath(pathname) !== '/' && phase <= 0) {
+    if (phase < 0) {
+      return (
+        <main id="main" tabIndex={-1} className="mx-auto max-w-3xl px-4 pt-28 outline-none">
+          <h1 className="font-serif text-5xl italic">The guide list didn't load.</h1>
+          <p className="mt-4"><button type="button" className="btn" onClick={() => window.location.reload()}>Try again</button></p>
+        </main>
+      )
+    }
+    return <PageSkeleton />
+  }
   return (
-    <>
-      <ScrollManager />
-      <EdgeBack />
-      <button
-        type="button"
-        className="skip"
-        onClick={() => {
-          const main = document.getElementById('main')
-          main?.focus()
-          main?.scrollIntoView()
-        }}
-      >
-        Skip to content
-      </button>
-      <Header />
-      <Suspense fallback={<PageSkeleton />}>
-        {legal ? (
-          <LegalPage slug={legal} />
-        ) : (
         <Routes>
           <Route path="/cities" element={<CitiesPage />} />
           {['', ...CITY_PREFIXES].flatMap((prefix) => [
@@ -219,6 +211,34 @@ function Shell() {
           <Route path="/privacy" element={<LegalPage slug="privacy" />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
+  )
+}
+
+function Shell() {
+  const { announcement, importOffer, acceptImport, dismissImport } = useApp()
+  const { pathname } = useLocation()
+  const legal = directLegalSlug()
+  return (
+    <>
+      <ScrollManager />
+      <EdgeBack />
+      <button
+        type="button"
+        className="skip"
+        onClick={() => {
+          const main = document.getElementById('main')
+          main?.focus()
+          main?.scrollIntoView()
+        }}
+      >
+        Skip to content
+      </button>
+      <Header />
+      <Suspense fallback={<PageSkeleton />}>
+        {legal ? (
+          <LegalPage slug={legal} />
+        ) : (
+          <CatalogRoutes />
         )}
       </Suspense>
       {barePath(pathname) === '/explore' || barePath(pathname).startsWith('/collection/') ? null : <Footer />}

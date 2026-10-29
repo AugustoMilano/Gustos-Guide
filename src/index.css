@@ -472,9 +472,14 @@ textarea {
 }
 
 .home-featured .guide-card,
-.home-shortcut {
+.home-shortcut,
+.home-featured .skeleton {
   height: 100%;
   min-height: 9.5rem;
+}
+
+.home-pending {
+  min-height: 4.5rem;
 }
 
 .home-search .glass-input {

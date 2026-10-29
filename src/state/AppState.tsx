@@ -265,7 +265,8 @@ export function AppProvider({ children }: { children: ReactNode }) {
   }
 
   useEffect(() => {
-    void import('../content/load.ts').then((mod) => {
+    void import('../content/load.ts').then(async (mod) => {
+      await mod.catalogReady
       for (const place of mod.catalog.places) placeNames.set(place.id, place.name)
     })
   }, [])

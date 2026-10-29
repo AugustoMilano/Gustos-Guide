@@ -1,5 +1,6 @@
+import { useSyncExternalStore } from 'react'
 import { useLocation } from 'react-router-dom'
-import { catalog } from '../content/load.ts'
+import { catalog, catalogPhase, subscribeCatalog } from '../content/load.ts'
 import { asCityId, cityFromPath, type CityId } from './city.ts'
 import type { GuideSummary, SlimPlace } from '../types.ts'
 
@@ -24,7 +25,8 @@ export function guidesForCity(city: CityId): GuideSummary[] {
   return catalog.guides.filter((guide) => (guide.city ?? 'seattle') === city)
 }
 
-export function useCityCatalog(): { city: CityId; places: SlimPlace[]; guides: GuideSummary[] } {
+export function useCityCatalog(): { city: CityId; places: SlimPlace[]; guides: GuideSummary[]; ready: boolean; failed: boolean } {
+  const phase = useSyncExternalStore(subscribeCatalog, catalogPhase, catalogPhase)
   const city = useCityId()
-  return { city, places: placesForCity(city), guides: guidesForCity(city) }
+  return { city, places: placesForCity(city), guides: guidesForCity(city), ready: phase > 0, failed: phase < 0 }
 }

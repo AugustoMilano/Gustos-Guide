@@ -1,7 +1,9 @@
-import { useEffect, useMemo, useRef, useState } from 'react'
+import { lazy, Suspense, useEffect, useMemo, useRef, useState } from 'react'
 import { useReducedMotion } from 'framer-motion'
 import { Link } from 'react-router-dom'
-import { GuideMap, type MapBounds } from '../components/GuideMap.tsx'
+import type { MapBounds } from '../components/GuideMap.tsx'
+
+const GuideMap = lazy(() => import('../components/GuideMap.tsx').then((module) => ({ default: module.GuideMap })))
 import { MapLinks } from '../components/MapLinks.tsx'
 import { PlaceThumb } from '../components/PlaceThumb.tsx'
 import { GoldenFork } from '../components/GoldenFork.tsx'
@@ -212,6 +214,7 @@ export function ExplorePage() {
         </div>
       </section>
       <div className="explore-map">
+        <Suspense fallback={<div className="map-frame skeleton h-full" aria-hidden="true" />}>
         <GuideMap
           places={filtered}
           statuses={app.statuses}
@@ -230,6 +233,7 @@ export function ExplorePage() {
             setPending(true)
           }}
         />
+        </Suspense>
         {pending ? (
           <button
             type="button"
