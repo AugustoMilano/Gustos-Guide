@@ -1,40 +1,12 @@
-import { lazy, Suspense } from 'react'
+import { useMemo, useState } from 'react'
 import { Link } from 'react-router-dom'
+import { SmartResults, featuredSlugs } from '../components/SmartResults.tsx'
 import { catalog } from '../content/load.ts'
 import { cityPath, type CityId } from '../lib/city.ts'
+import { countPlaces } from '../lib/format.ts'
 import { usePageMeta } from '../lib/meta.ts'
-import { useCityId } from '../lib/use-city-id.ts'
-
-const HomeBelow = lazy(() => import('./HomeBelow.tsx').then((module) => ({ default: module.HomeBelow })))
-
-const TICKER = ['Pizza', 'Oysters', 'Capitol Hill', 'Ballard', 'Date night', 'Cheap eats', 'Cocktail bars', 'Fun & dive bars', 'Brunch', 'Georgetown', 'Fremont', 'Late night', 'Seafood']
-
-const BAY_FALLBACK: Partial<Record<CityId, string[]>> = {
-  sf: ['San Francisco'],
-  eastbay: ['Berkeley', 'Fremont', 'Pleasanton'],
-  peninsula: ['Palo Alto', 'Santa Clara', 'San Jose'],
-  northbay: ['Sausalito', 'Tiburon', 'Corte Madera', 'Larkspur'],
-}
-
-function tickerFor(city: CityId) {
-  if (city === 'la') return ['Venice', 'Santa Monica', 'West Hollywood', 'Beverly Hills', 'Downtown', 'Hollywood', 'Malibu', 'Sushi']
-  if (city === 'eastside') return ['Bellevue', 'Kirkland waterfront', 'Juanita', 'Redmond', 'Issaquah', 'Bothell', 'Houghton', 'The Bravern']
-  if (city === 'sandiego') {
-    const titles = catalog.guides
-      .filter((guide) => guide.city === city && (guide.group === 'Neighborhoods' || guide.group === 'Cuisine'))
-      .slice(0, 8)
-      .map((guide) => guide.title)
-    return titles.length ? titles : ['Little Italy', 'Coronado', 'La Jolla', 'North Park']
-  }
-  if (city === 'sf' || city === 'eastbay' || city === 'peninsula' || city === 'northbay') {
-    const titles = catalog.guides
-      .filter((guide) => guide.city === city && (guide.group === 'Neighborhoods' || guide.group === 'Cuisine'))
-      .slice(0, 8)
-      .map((guide) => guide.title)
-    return titles.length ? titles : BAY_FALLBACK[city] ?? ['San Francisco']
-  }
-  return TICKER
-}
+import { smartSearch } from '../lib/smart-search.ts'
+import { useCityCatalog } from '../lib/use-city.ts'
 
 function heroTitle(city: CityId): string {
   if (city === 'la') return 'Eat across Los Angeles.'
@@ -47,91 +19,83 @@ function heroTitle(city: CityId): string {
   return 'Eat your way through Seattle.'
 }
 
-function heroDek(city: CityId, hoods: string[]): string {
+function heroDek(city: CityId): string {
   if (city === 'la') return 'Venice, Santa Monica, West Hollywood, Beverly Hills, Downtown, and Hollywood, from the same list.'
   if (city === 'eastside') return 'Bellevue, Kirkland, Redmond, Issaquah, and Bothell, on the same map as Seattle.'
   if (city === 'seattle') return 'From a 7am bun to the last good stool on Pike. Pizza, oysters, teriyaki, and the bars worth the hill.'
-  if (city === 'sandiego') {
-    const named = hoods.length > 1
-      ? `${hoods.slice(0, -1).join(', ')}, and ${hoods[hoods.length - 1]}`
-      : hoods.join('')
-    return named
-      ? `${named}, with Chula Vista and North County on the same list.`
-      : 'San Diego, La Jolla, Coronado, Chula Vista, and North County on one list.'
-  }
-  if (!hoods.length) {
-    if (city === 'eastbay') return 'Berkeley, Fremont, and Pleasanton.'
-    if (city === 'peninsula') return 'Palo Alto, Santa Clara, San Jose, and the coast.'
-    if (city === 'northbay') return 'Sausalito, Tiburon, Corte Madera, and Larkspur.'
-    return 'Neighborhoods and cuisines on the San Francisco list.'
-  }
-  const tail = city === 'sf'
-    ? 'San Francisco neighborhoods'
-    : city === 'eastbay'
-      ? 'East Bay stops'
-      : city === 'northbay'
-        ? 'North Bay stops'
-        : 'Peninsula and South Bay stops'
-  return `${hoods.join(', ')}, and the other ${tail} on this list.`
-}
-
-function heroMeta(city: CityId, hoods: string[]): string {
-  if (city === 'la') return 'Eat across Los Angeles: Venice, Santa Monica, West Hollywood, Downtown, and the rooms on the list.'
-  if (city === 'eastside') return 'Eat across the Eastside: Bellevue, Kirkland, Redmond, Issaquah, and Bothell.'
-  if (city === 'seattle') return 'Eat your way through Seattle: pizza, oysters, coffee, neighborhood dinners, and the bars worth the hill.'
-  if (city === 'sandiego') return 'Eat across San Diego: the city, La Jolla, Coronado, Chula Vista, and North County.'
-  const named = hoods.length ? `: ${hoods.join(', ')}` : ''
-  if (city === 'eastbay') return `Eat across the East Bay${named}.`
-  if (city === 'peninsula') return `Eat across the Peninsula and South Bay${named}.`
-  if (city === 'northbay') return `Eat across the North Bay${named}.`
-  return `Eat across San Francisco${named}.`
-}
-
-function HomeSkeleton() {
-  return (
-    <div className="mx-auto max-w-6xl px-4 py-10" aria-busy="true">
-      <p className="sr-only">Loading the list</p>
-      <div className="skeleton h-10 w-64" />
-      <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-        <div className="skeleton h-52" />
-        <div className="skeleton h-52" />
-        <div className="skeleton h-52" />
-      </div>
-    </div>
-  )
+  if (city === 'sandiego') return 'San Diego, La Jolla, Coronado, Chula Vista, and North County on one list.'
+  if (city === 'eastbay') return 'Berkeley, Fremont, and Pleasanton.'
+  if (city === 'peninsula') return 'Palo Alto, Santa Clara, San Jose, and the coast.'
+  if (city === 'northbay') return 'Sausalito, Tiburon, Corte Madera, and Larkspur.'
+  return 'Neighborhoods and cuisines on the San Francisco list.'
 }
 
 export function HomePage() {
-  const city = useCityId()
-  const hoods = catalog.guides.filter((guide) => guide.city === city && guide.group === 'Neighborhoods').slice(0, 4).map((guide) => guide.title)
-  usePageMeta("Gusto's Guide", heroMeta(city, hoods), './og/og.png')
-  const ticker = tickerFor(city)
+  const { city, guides } = useCityCatalog()
+  const [draft, setDraft] = useState('')
+  usePageMeta("Gusto's Guide", heroDek(city), './og/og.png')
+  const query = draft.trim()
+  const result = useMemo(
+    () => (query ? smartSearch(query, city, catalog.places, catalog.guides) : null),
+    [query, city],
+  )
+  const featured = featuredSlugs(city)
+    .map((slug) => guides.find((guide) => guide.slug === slug))
+    .filter((guide) => guide != null)
+    .slice(0, 6)
+
   return (
     <main id="main" tabIndex={-1} className="home-main outline-none">
       <section className="hero on-navy relative overflow-hidden">
-        <div className="hero-copy relative mx-auto max-w-6xl px-4 pt-28 pb-14 sm:pt-32">
-          <h1 className="max-w-3xl font-serif text-5xl italic leading-[1.05] text-cream sm:text-7xl">{heroTitle(city)}</h1>
-          <p className="hero-dek">{heroDek(city, hoods)}</p>
-          <div className="mt-6 flex flex-wrap gap-3">
-            <Link to={cityPath('/guides')} className="btn btn-coral">Browse the guides</Link>
-            <Link to={cityPath('/search')} className="btn">Search the list</Link>
-          </div>
+        <div className="hero-copy relative mx-auto max-w-6xl px-4 pt-28 pb-10 sm:pt-32">
+          <h1 className="max-w-3xl font-serif text-5xl italic leading-[1.05] text-cream sm:text-6xl">{heroTitle(city)}</h1>
+          <p className="hero-dek">{heroDek(city)}</p>
+          <form className="mt-6" role="search" onSubmit={(event) => event.preventDefault()}>
+            <label className="field home-search" htmlFor="home-search">
+              <span className="text-cream">Search guides and places</span>
+              <input
+                id="home-search"
+                className="glass-input w-full"
+                value={draft}
+                autoComplete="off"
+                placeholder="Try a date night, brunch, or a neighborhood"
+                onChange={(event) => setDraft(event.target.value)}
+              />
+            </label>
+          </form>
         </div>
       </section>
-      <div className="marquee" aria-hidden="true">
-        <div className="marquee-track">
-          {[0, 1].map((copy) => (
-            <div key={copy} className="marquee-group">
-              {ticker.map((item) => (
-                <span key={`${copy}-${item}`} className="font-serif text-xl italic">{item} ·</span>
-              ))}
-            </div>
-          ))}
-        </div>
+      <div className="mx-auto max-w-6xl px-4 pt-8 pb-16">
+        {result ? <SmartResults query={query} result={result} /> : (
+          <>
+            <section aria-labelledby="featured-guides">
+              <h2 id="featured-guides" className="font-serif text-4xl italic">Featured guides</h2>
+              <div className="home-featured mt-4">
+                {featured.map((guide) => (
+                  <Link key={guide.slug} to={cityPath(`/guide/${guide.slug}`)} className="guide-card">
+                    <p className="text-xs font-bold uppercase tracking-[0.14em] tabular-nums">{countPlaces(guide.count)}</p>
+                    <h3 className="mt-2 font-serif text-3xl italic">{guide.title}</h3>
+                    {guide.dek ? <p className="mt-2 line-clamp-2 text-sm">{guide.dek}</p> : null}
+                  </Link>
+                ))}
+              </div>
+            </section>
+            <section className="home-shortcuts mt-6" aria-label="Tonight and Top 25">
+              <Link to={cityPath('/tonight')} className="guide-card home-shortcut">
+                <p className="text-xs font-bold uppercase tracking-[0.14em]">Open now</p>
+                <h2 className="mt-2 font-serif text-3xl italic">Tonight</h2>
+              </Link>
+              <Link to={cityPath('/top')} className="guide-card home-shortcut">
+                <p className="text-xs font-bold uppercase tracking-[0.14em]">Ranked</p>
+                <h2 className="mt-2 font-serif text-3xl italic">Top 25</h2>
+              </Link>
+            </section>
+            <p className="mt-8">
+              <Link to={cityPath('/guides')} className="btn btn-coral">Browse all guides</Link>
+            </p>
+          </>
+        )}
       </div>
-      <Suspense fallback={<HomeSkeleton />}>
-        <HomeBelow />
-      </Suspense>
     </main>
   )
 }

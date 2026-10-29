@@ -1,17 +1,12 @@
 import { useEffect, useId, useMemo, useRef, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { asCityId, cityPath, type CityId } from '../lib/city.ts'
 import { clearRecent, readRecent, rememberSearch } from '../lib/recent-search.ts'
+import { smartSearch } from '../lib/smart-search.ts'
 import { useCityId } from '../lib/use-city-id.ts'
+import type { GuideSummary, SlimPlace } from '../types.ts'
 import { MatchText } from './MatchText.tsx'
 
-type HitPlace = { id: string; name: string; neighborhood: string; cuisine: string[]; city?: string; closed?: boolean }
-type HitGuide = { slug: string; title: string; group: string; city?: string }
 type Hit = { key: string; label: string; detail: string; href: string }
-
-function cityOf(place: { city?: string }): CityId {
-  return asCityId(place.city)
-}
 
 export function SearchField({
   id,
@@ -35,8 +30,8 @@ export function SearchField({
   const listId = useId()
   const [open, setOpen] = useState(false)
   const [active, setActive] = useState(-1)
-  const [places, setPlaces] = useState<HitPlace[] | null>(null)
-  const [guides, setGuides] = useState<HitGuide[] | null>(null)
+  const [places, setPlaces] = useState<SlimPlace[] | null>(null)
+  const [guides, setGuides] = useState<GuideSummary[] | null>(null)
   const [recents, setRecents] = useState<string[]>(() => readRecent())
   const root = useRef<HTMLFormElement>(null)
   const query = value.trim().toLowerCase()
@@ -51,25 +46,14 @@ export function SearchField({
 
   const hits = useMemo(() => {
     if (!query || !places || !guides) return []
-    const placeHits: Hit[] = places
-      .filter((place) => !place.closed && cityOf(place) === city && `${place.name} ${place.neighborhood} ${place.cuisine.join(' ')}`.toLowerCase().includes(query))
-      .slice(0, 6)
-      .map((place) => ({
-        key: place.id,
-        label: place.name,
-        detail: [place.cuisine[0], place.neighborhood].filter(Boolean).join(' · '),
-        href: cityPath(`/place/${place.id}`, city),
-      }))
-    const guideHits: Hit[] = guides
-      .filter((guide) => (guide.city ?? 'seattle') === city && `${guide.title} ${guide.group}`.toLowerCase().includes(query))
-      .slice(0, 3)
-      .map((guide) => ({
-        key: guide.slug,
-        label: guide.title,
-        detail: guide.group,
-        href: cityPath(`/guide/${guide.slug}`, city),
-      }))
-    return [...placeHits, ...guideHits]
+    const found = smartSearch(query, city, places, guides)
+    const rows = [...found.guides, ...found.places, ...found.suggestions].slice(0, 8)
+    return rows.map((hit) => ({
+      key: `${hit.kind}-${hit.id}`,
+      label: hit.title,
+      detail: hit.why,
+      href: hit.href,
+    }))
   }, [query, places, guides, city])
 
   const rows: Hit[] = query

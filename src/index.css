@@ -447,8 +447,59 @@ textarea {
   margin-top: var(--space-6);
 }
 
-.home-sections > section > * + * {
-  margin-top: var(--space-4);
+.home-featured,
+.home-shortcuts {
+  display: grid;
+  align-items: stretch;
+  gap: var(--gutter);
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.home-shortcuts {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+@media (min-width: 40rem) {
+  .home-featured {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 64rem) {
+  .home-featured {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.home-featured .guide-card,
+.home-shortcut {
+  height: 100%;
+  min-height: 9.5rem;
+}
+
+.home-search .glass-input {
+  min-height: 44px;
+}
+
+.smart-hit {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  min-height: 4.5rem;
+  padding: var(--row-pad) var(--card-pad);
+  border: 2px solid #181818;
+  background: var(--color-card);
+}
+
+.smart-hit-meta {
+  flex: none;
+  max-width: 8.5rem;
+  text-align: right;
+  font-size: var(--text-xs);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 
 .home-sections > section {
@@ -1456,6 +1507,10 @@ textarea {
 .hero {
   background: #141f4d;
   color: #fffaf3;
+}
+
+.home-main .hero {
+  min-height: 0;
 }
 
 .hero-copy {
