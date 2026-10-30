@@ -35,12 +35,12 @@ function photoFrom(code: string, name: string): CatalogPhoto {
   }
   const flag = code[0]
   const url = code.slice(2)
-  const source = flag === 'f' ? 'flickr' : flag === 'q' ? 'foursquare' : 'wikimedia'
+  const source = flag === 'g' ? 'gusto' : flag === 'f' ? 'flickr' : flag === 'q' ? 'foursquare' : 'wikimedia'
   return {
     source,
     ...(url ? { url } : {}),
-    alt: url ? `Photo of ${name}` : `Illustration of ${name}`,
-    credit: '',
+    alt: url ? (flag === 'g' ? `Photo of ${name} by Gusto` : `Photo of ${name}`) : `Illustration of ${name}`,
+    credit: flag === 'g' ? 'Photo by Gusto' : '',
     ...(flag === 'i' ? { isIllustration: true } : {}),
   }
 }

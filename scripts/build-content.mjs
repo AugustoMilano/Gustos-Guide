@@ -11,7 +11,7 @@ function previousWikimedia() {
   try {
     const prev = JSON.parse(readFileSync(join(root, 'src/content/places.json'), 'utf8'))
     for (const place of Object.values(prev)) {
-      const photos = (place.photos ?? []).filter((photo) => photo.source === 'wikimedia' && photo.url)
+      const photos = (place.photos ?? []).filter((photo) => (photo.source === 'gusto' || photo.source === 'wikimedia') && photo.url).sort((a, b) => (a.source === 'gusto' ? 0 : 1) - (b.source === 'gusto' ? 0 : 1))
       if (photos.length) map.set(place.muid ? `muid:${place.muid}` : place.id, photos)
     }
   } catch {

@@ -66,6 +66,19 @@ export function displayPhotos(
       neighborhood: place.neighborhood,
       placeId: place.id,
     }))
+  // Augusto's own photos shipped in the catalog rank with his uploads, ahead of everything else.
+  const house = catalog
+    .filter((photo) => photo.source === 'gusto' && photo.url)
+    .map((photo) => ({
+      key: photo.url ?? `${place.id}-gusto`,
+      url: photo.url,
+      alt: photo.alt || `Photo of ${place.name} by Gusto`,
+      credit: 'Photo by Gusto',
+      illustration: false,
+      cuisine: place.cuisine[0] ?? 'Restaurant',
+      neighborhood: place.neighborhood,
+      placeId: place.id,
+    }))
   const friends = uploads
     .filter((photo) => photo.placeId === place.id && !photo.owner)
     .map((photo) => ({
@@ -92,7 +105,7 @@ export function displayPhotos(
       neighborhood: place.neighborhood,
       placeId: place.id,
     }))
-  const photos = [...owner, ...friends, ...commons]
+  const photos = [...owner, ...house, ...friends, ...commons]
   if (photos.length) return photos
   return [
     {

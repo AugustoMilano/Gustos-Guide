@@ -20,7 +20,7 @@ function joinList(values) {
 
 function photoCode(photo) {
   if (!photo?.source) return ''
-  const flag = { wikimedia: 'w', flickr: 'f', illustration: 'i', foursquare: 'q' }[photo.source]
+  const flag = { gusto: 'g', wikimedia: 'w', flickr: 'f', illustration: 'i', foursquare: 'q' }[photo.source]
   if (!flag) throw new Error(`photo source ${photo.source}`)
   const url = photo.url || ''
   if (url.includes(SEP)) throw new Error('separator in photo url')

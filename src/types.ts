@@ -4,7 +4,8 @@ export type GuideGroup = 'Best of' | 'Cuisine' | 'Occasion' | 'Neighborhoods' | 
 export type Bucket = 'loved' | 'liked' | 'fine' | 'didnt'
 
 export type CatalogPhoto = {
-  source: 'wikimedia' | 'flickr' | 'illustration' | 'foursquare'
+  /** gusto: Augusto's own photo, credited 'Photo by Gusto'. */
+  source: 'gusto' | 'wikimedia' | 'flickr' | 'illustration' | 'foursquare'
   url?: string
   alt: string
   credit: string
