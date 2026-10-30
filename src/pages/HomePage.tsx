@@ -6,6 +6,7 @@ import { cityPath, type CityId } from '../lib/city.ts'
 import { countPlaces } from '../lib/format.ts'
 import { usePageMeta } from '../lib/meta.ts'
 import { smartSearch } from '../lib/smart-search.ts'
+import { useApp } from '../state/AppState.tsx'
 import { useCityCatalog } from '../lib/use-city.ts'
 
 function heroTitle(city: CityId): string {
@@ -35,9 +36,10 @@ export function HomePage() {
   const [draft, setDraft] = useState('')
   usePageMeta("Gusto's Guide", heroDek(city), './og/og.png')
   const query = draft.trim()
+  const { gustoScore } = useApp()
   const result = useMemo(
-    () => (query && ready ? smartSearch(query, city, catalog.places, catalog.guides) : null),
-    [query, city, ready],
+    () => (query && ready ? smartSearch(query, city, catalog.places, catalog.guides, gustoScore) : null),
+    [query, city, ready, gustoScore],
   )
   const featured = featuredSlugs(city)
     .map((slug) => guides.find((guide) => guide.slug === slug))

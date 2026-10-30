@@ -9,6 +9,7 @@ import { readPosition } from '../lib/geo.ts'
 import { usePageMeta } from '../lib/meta.ts'
 import { clearRecent, readRecent } from '../lib/recent-search.ts'
 import { smartSearch } from '../lib/smart-search.ts'
+import { useApp } from '../state/AppState.tsx'
 import { useCityCatalog } from '../lib/use-city.ts'
 
 export function SearchPage() {
@@ -27,9 +28,10 @@ export function SearchPage() {
   }, [q])
 
   const query = draft.trim()
+  const { gustoScore } = useApp()
   const result = useMemo(() => {
     if (!query) return null
-    const found = smartSearch(query, city, catalog.places, catalog.guides)
+    const found = smartSearch(query, city, catalog.places, catalog.guides, gustoScore)
     if (!origin) return found
     const places = found.places
       .map((hit) => {
@@ -39,7 +41,7 @@ export function SearchPage() {
       })
       .sort((a, b) => a.score - b.score)
     return { ...found, places }
-  }, [query, city, origin, cityPlaces])
+  }, [gustoScore, query, city, origin, cityPlaces])
 
   function type(value: string) {
     setDraft(value)
