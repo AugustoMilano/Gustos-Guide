@@ -9,7 +9,7 @@ import { AreaKicker } from './AreaKicker.tsx'
 import { CitySwitcher } from './CitySwitcher.tsx'
 import { LogoMark } from './LogoMark.tsx'
 import { SignInSheet } from './SignInSheet.tsx'
-import { setStatusBar } from '../lib/status-bar.ts'
+import { setStatusBar, watchThemeColor } from '../lib/status-bar.ts'
 import { useApp } from '../state/AppState.tsx'
 
 function prefetch(path: string) {
@@ -149,6 +149,8 @@ export function Header() {
       window.removeEventListener('resize', onScroll)
     }
   }, [route])
+
+  useEffect(() => watchThemeColor(), [])
 
   useDismiss(bell, () => setBell(false), bellRefs, true)
   useDismiss(menu, () => setMenu(false), menuRefs)
