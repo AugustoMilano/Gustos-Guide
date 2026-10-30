@@ -1835,5 +1835,53 @@
   "tendon-kohaku": {
     "pullQuote": "Black truffle carbonara udon with bacon, egg yolk and Parmesan.",
     "blurb": "Come for the black truffle carbonara udon: Parmesan cream, bacon, black pepper and an egg yolk. The tempura bowls over rice can come second."
+  },
+  "catch": {
+    "pullQuote": "Truffle sashimi and the Catch Roll under a retractable roof.",
+    "blurb": "Start with the truffle sashimi: tuna and hamachi, chili ponzu, black truffle purée and Kaluga caviar. The rooftop looks out to the Hollywood Hills."
+  },
+  "la-mar-bellevue": {
+    "pullQuote": "Gastón Acurio's cebiche bar, on Main Street in Bellevue.",
+    "blurb": "Order cebiche first, like the Cebiche Nissei from the cebiche bar, then lomo saltado. It's Acurio's first Northwest restaurant."
+  },
+  "ascend-prime-steak-and-sushi": {
+    "pullQuote": "A5 wagyu and omakase, 31 floors above Bellevue.",
+    "blurb": "Come for the wagyu: Miyazaki A5 filet by the ounce, or a three-cut tenderloin flight in the lounge. The sushi bar runs a premium omakase."
+  },
+  "daniels-broiler": {
+    "pullQuote": "Prime filet on the 21st floor, Bellevue's steakhouse since 1989.",
+    "blurb": "Order the Daniel's Cut, a 12-ounce Prime filet under the house steak butter. The decks face the Seattle skyline and the Olympics."
+  },
+  "cantina-monarca": {
+    "pullQuote": "Handmade-tortilla tacos and over 100 tequilas in Bellevue.",
+    "blurb": "Get the Baja sea bass taco, battered and fried with apple slaw, and a pork belly taco next to it. The tequila list runs past 100 bottles."
+  },
+  "carmines": {
+    "pullQuote": "Il Terrazzo Carmine's veal scaloppine, by Downtown Park.",
+    "blurb": "Order the veal scaloppine with lemon and capers, the family's Il Terrazzo classic. The glass wall opens onto a patio facing Downtown Park."
+  },
+  "minamoto": {
+    "pullQuote": "Seasonal omakase from New York's Iki alumni, in Bellevue.",
+    "blurb": "Book the omakase: 15 to 18 seasonal courses at two seatings, reserved at least three days ahead. The regular menu covers sushi, tempura and wagyu."
+  },
+  "water-grill-bellevue": {
+    "pullQuote": "Live Dungeness crab by the pound and a raw bar on Bellevue Way.",
+    "blurb": "In season, order the live Washington Dungeness, steamed and sold by the pound. Start at the raw bar, and expect the menu to change daily with the catch."
+  },
+  "limoncello": {
+    "pullQuote": "Stacked Italian deli sandwiches on Sutter Street.",
+    "blurb": "Order the Siciliano: ham, salami and pistachio mortadella with provolone and pepperoncini. There's pizza and an Italian grocery shelf too."
+  },
+  "republique": {
+    "pullQuote": "The Manzkes' bakery and bistro in Chaplin's 1929 building.",
+    "blurb": "Come in the morning for Margarita Manzke's pastries; she won a James Beard Award for them in 2023. At night the back room turns into a French dinner."
+  },
+  "spago": {
+    "pullQuote": "Wolfgang Puck's flagship, home of the smoked salmon pizza.",
+    "blurb": "Ask for the smoked salmon pizza with dill crème fraîche and caviar, a Puck original. The menu is Californian, with a tasting menu."
+  },
+  "cantinetta-bellevue": {
+    "pullQuote": "Handmade tagliatelle carbonara on Bellevue's Main Street.",
+    "blurb": "Order the tagliatelle carbonara or the pappardelle Bolognese, the two signature pastas. The fall menu adds pici cacio e pepe."
   }
 }

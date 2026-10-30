@@ -5154,7 +5154,7 @@
         "Peruvian"
       ],
       "placeType": "restaurant",
-      "oneLiner": "",
+      "oneLiner": "Gastón Acurio's cebiche bar, on Main Street in Bellevue.",
       "perfectFor": [],
       "periods": [
         {
@@ -5188,8 +5188,17 @@
       ],
       "muid": "3069510952369669870",
       "hoursLabel": "",
-      "blurb": "",
-      "orderThis": [],
+      "blurb": "Order cebiche first, like the Cebiche Nissei from the cebiche bar, then lomo saltado. It's Acurio's first Northwest restaurant.",
+      "orderThis": [
+        {
+          "dish": "Cebiche Nissei",
+          "note": "From the cebiche bar."
+        },
+        {
+          "dish": "Lomo Saltado",
+          "note": "Wok-seared beef tenderloin, fries and rice."
+        }
+      ],
       "ids": {},
       "copySource": "draft",
       "updatedAt": "2026-10-22",
@@ -5214,7 +5223,7 @@
         "Steak"
       ],
       "placeType": "steakhouse",
-      "oneLiner": "",
+      "oneLiner": "A5 wagyu and omakase, 31 floors above Bellevue.",
       "perfectFor": [],
       "periods": [
         {
@@ -5268,8 +5277,17 @@
       ],
       "muid": "5316906510073088576",
       "hoursLabel": "",
-      "blurb": "",
-      "orderThis": [],
+      "blurb": "Come for the wagyu: Miyazaki A5 filet by the ounce, or a three-cut tenderloin flight in the lounge. The sushi bar runs a premium omakase.",
+      "orderThis": [
+        {
+          "dish": "Wagyu Beef Flight",
+          "note": "Kagoshima, Australian and American tenderloin."
+        },
+        {
+          "dish": "Premium Omakase",
+          "note": "The sushi bar's chef's choice."
+        }
+      ],
       "ids": {},
       "copySource": "draft",
       "updatedAt": "2026-10-22",
@@ -5294,7 +5312,7 @@
         "Steak"
       ],
       "placeType": "steakhouse",
-      "oneLiner": "",
+      "oneLiner": "Prime filet on the 21st floor, Bellevue's steakhouse since 1989.",
       "perfectFor": [],
       "periods": [
         {
@@ -5321,8 +5339,17 @@
       ],
       "muid": "7146954780601002084",
       "hoursLabel": "",
-      "blurb": "",
-      "orderThis": [],
+      "blurb": "Order the Daniel's Cut, a 12-ounce Prime filet under the house steak butter. The decks face the Seattle skyline and the Olympics.",
+      "orderThis": [
+        {
+          "dish": "Daniel's Cut Filet Mignon",
+          "note": "12 oz Prime, signature steak butter."
+        },
+        {
+          "dish": "Flight of Filet Mignon",
+          "note": "Prime, A5 and domestic wagyu filets."
+        }
+      ],
       "ids": {},
       "copySource": "draft",
       "updatedAt": "2026-10-22",
@@ -5347,7 +5374,7 @@
         "Mexican"
       ],
       "placeType": "restaurant",
-      "oneLiner": "",
+      "oneLiner": "Handmade-tortilla tacos and over 100 tequilas in Bellevue.",
       "perfectFor": [],
       "periods": [
         {
@@ -5386,8 +5413,17 @@
       ],
       "muid": "11273114961645947120",
       "hoursLabel": "",
-      "blurb": "",
-      "orderThis": [],
+      "blurb": "Get the Baja sea bass taco, battered and fried with apple slaw, and a pork belly taco next to it. The tequila list runs past 100 bottles.",
+      "orderThis": [
+        {
+          "dish": "Baja Sea Bass taco",
+          "note": "Fried sea bass, apple slaw, chipotle aioli."
+        },
+        {
+          "dish": "Sakura Pork Belly taco",
+          "note": "Achiote sear, tropical pico, guacamole."
+        }
+      ],
       "ids": {},
       "copySource": "draft",
       "updatedAt": "2026-10-22",
@@ -5412,7 +5448,7 @@
         "Italian"
       ],
       "placeType": "restaurant",
-      "oneLiner": "",
+      "oneLiner": "Il Terrazzo Carmine's veal scaloppine, by Downtown Park.",
       "perfectFor": [],
       "periods": [
         {
@@ -5455,8 +5491,17 @@
       ],
       "muid": "2529173839404394188",
       "hoursLabel": "",
-      "blurb": "",
-      "orderThis": [],
+      "blurb": "Order the veal scaloppine with lemon and capers, the family's Il Terrazzo classic. The glass wall opens onto a patio facing Downtown Park.",
+      "orderThis": [
+        {
+          "dish": "Scaloppine di Vitello",
+          "note": "Veal, lemon, capers, polenta."
+        },
+        {
+          "dish": "Rigatoni Bolognese",
+          "note": "Veal, pork and beef ragù."
+        }
+      ],
       "ids": {},
       "copySource": "draft",
       "updatedAt": "2026-10-22",
@@ -5482,7 +5527,7 @@
       ],
       "placeType": "restaurant",
       "price": 3,
-      "oneLiner": "",
+      "oneLiner": "Seasonal omakase from New York's Iki alumni, in Bellevue.",
       "perfectFor": [],
       "periods": [
         {
@@ -5543,8 +5588,13 @@
       ],
       "muid": "3098962773215072787",
       "hoursLabel": "",
-      "blurb": "",
-      "orderThis": [],
+      "blurb": "Book the omakase: 15 to 18 seasonal courses at two seatings, reserved at least three days ahead. The regular menu covers sushi, tempura and wagyu.",
+      "orderThis": [
+        {
+          "dish": "Omakase",
+          "note": "15–18 seasonal courses."
+        }
+      ],
       "ids": {
         "yelp": "PGlSt5XYtysNMFcp6xg3Kw"
       },
@@ -5577,7 +5627,7 @@
         "Seafood"
       ],
       "placeType": "restaurant",
-      "oneLiner": "",
+      "oneLiner": "Live Dungeness crab by the pound and a raw bar on Bellevue Way.",
       "perfectFor": [],
       "periods": [
         {
@@ -5610,8 +5660,17 @@
       ],
       "muid": "7691577076781214141",
       "hoursLabel": "",
-      "blurb": "",
-      "orderThis": [],
+      "blurb": "In season, order the live Washington Dungeness, steamed and sold by the pound. Start at the raw bar, and expect the menu to change daily with the catch.",
+      "orderThis": [
+        {
+          "dish": "Live Dungeness Crab",
+          "note": "Steamed, with drawn butter, by the pound."
+        },
+        {
+          "dish": "Bigeye Tuna Poke",
+          "note": "Soy, avocado, wasabi tobiko."
+        }
+      ],
       "ids": {},
       "copySource": "draft",
       "updatedAt": "2026-10-22",
@@ -5636,7 +5695,7 @@
         "Italian"
       ],
       "placeType": "restaurant",
-      "oneLiner": "",
+      "oneLiner": "Handmade tagliatelle carbonara on Bellevue's Main Street.",
       "perfectFor": [],
       "periods": [
         {
@@ -5668,8 +5727,17 @@
       ],
       "muid": "13305845763669911672",
       "hoursLabel": "",
-      "blurb": "",
-      "orderThis": [],
+      "blurb": "Order the tagliatelle carbonara or the pappardelle Bolognese, the two signature pastas. The fall menu adds pici cacio e pepe.",
+      "orderThis": [
+        {
+          "dish": "Tagliatelle Carbonara",
+          "note": "A signature pasta."
+        },
+        {
+          "dish": "Pappardelle alla Bolognese",
+          "note": "A signature pasta."
+        }
+      ],
       "ids": {},
       "copySource": "draft",
       "updatedAt": "2026-10-22",
@@ -8670,8 +8738,8 @@
       "entries": [
         {
           "placeId": "ascend-prime-steak-and-sushi",
-          "pullQuote": "",
-          "blurb": "",
+          "pullQuote": "A5 wagyu and omakase, 31 floors above Bellevue.",
+          "blurb": "Come for the wagyu: Miyazaki A5 filet by the ounce, or a three-cut tenderloin flight in the lounge. The sushi bar runs a premium omakase.",
           "copySource": "draft"
         },
         {
@@ -8996,44 +9064,44 @@
       "entries": [
         {
           "placeId": "la-mar-bellevue",
-          "pullQuote": "",
-          "blurb": "",
+          "pullQuote": "Gastón Acurio's cebiche bar, on Main Street in Bellevue.",
+          "blurb": "Order cebiche first, like the Cebiche Nissei from the cebiche bar, then lomo saltado. It's Acurio's first Northwest restaurant.",
           "copySource": "draft"
         },
         {
           "placeId": "ascend-prime-steak-and-sushi",
-          "pullQuote": "",
-          "blurb": "",
+          "pullQuote": "A5 wagyu and omakase, 31 floors above Bellevue.",
+          "blurb": "Come for the wagyu: Miyazaki A5 filet by the ounce, or a three-cut tenderloin flight in the lounge. The sushi bar runs a premium omakase.",
           "copySource": "draft"
         },
         {
           "placeId": "daniels-broiler",
-          "pullQuote": "",
-          "blurb": "",
+          "pullQuote": "Prime filet on the 21st floor, Bellevue's steakhouse since 1989.",
+          "blurb": "Order the Daniel's Cut, a 12-ounce Prime filet under the house steak butter. The decks face the Seattle skyline and the Olympics.",
           "copySource": "draft"
         },
         {
           "placeId": "cantina-monarca",
-          "pullQuote": "",
-          "blurb": "",
+          "pullQuote": "Handmade-tortilla tacos and over 100 tequilas in Bellevue.",
+          "blurb": "Get the Baja sea bass taco, battered and fried with apple slaw, and a pork belly taco next to it. The tequila list runs past 100 bottles.",
           "copySource": "draft"
         },
         {
           "placeId": "carmines",
-          "pullQuote": "",
-          "blurb": "",
+          "pullQuote": "Il Terrazzo Carmine's veal scaloppine, by Downtown Park.",
+          "blurb": "Order the veal scaloppine with lemon and capers, the family's Il Terrazzo classic. The glass wall opens onto a patio facing Downtown Park.",
           "copySource": "draft"
         },
         {
           "placeId": "minamoto",
-          "pullQuote": "",
-          "blurb": "",
+          "pullQuote": "Seasonal omakase from New York's Iki alumni, in Bellevue.",
+          "blurb": "Book the omakase: 15 to 18 seasonal courses at two seatings, reserved at least three days ahead. The regular menu covers sushi, tempura and wagyu.",
           "copySource": "draft"
         },
         {
           "placeId": "water-grill-bellevue",
-          "pullQuote": "",
-          "blurb": "",
+          "pullQuote": "Live Dungeness crab by the pound and a raw bar on Bellevue Way.",
+          "blurb": "In season, order the live Washington Dungeness, steamed and sold by the pound. Start at the raw bar, and expect the menu to change daily with the catch.",
           "copySource": "draft"
         },
         {
@@ -9044,8 +9112,8 @@
         },
         {
           "placeId": "cantinetta-bellevue",
-          "pullQuote": "",
-          "blurb": "",
+          "pullQuote": "Handmade tagliatelle carbonara on Bellevue's Main Street.",
+          "blurb": "Order the tagliatelle carbonara or the pappardelle Bolognese, the two signature pastas. The fall menu adds pici cacio e pepe.",
           "copySource": "draft"
         },
         {
@@ -9622,8 +9690,8 @@
       "entries": [
         {
           "placeId": "minamoto",
-          "pullQuote": "",
-          "blurb": "",
+          "pullQuote": "Seasonal omakase from New York's Iki alumni, in Bellevue.",
+          "blurb": "Book the omakase: 15 to 18 seasonal courses at two seatings, reserved at least three days ahead. The regular menu covers sushi, tempura and wagyu.",
           "copySource": "draft"
         },
         {
