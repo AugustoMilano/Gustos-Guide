@@ -1842,13 +1842,13 @@
       960
     ]
   },
-  "storyville-coffee-company.jpg": {
-    "w": 1600,
-    "h": 1200,
+  "storyville-coffee-company-upright.jpg": {
+    "w": 1200,
+    "h": 1600,
     "widths": [
       480,
       960,
-      1600
+      1200
     ],
     "webp": [
       200,
