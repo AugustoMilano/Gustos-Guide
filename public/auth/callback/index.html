@@ -20,38 +20,14 @@
         font-size: 2.5rem;
         padding: 1.5rem;
       }
+      body { grid-template-rows: auto auto; align-content: center; }
+      .late { visibility: hidden; text-align: center; animation: late 0s 8s forwards; }
+      @keyframes late { to { visibility: visible; } }
     </style>
   </head>
   <body>
     <h1>Signing you in…</h1>
-    <script>
-      ;(function () {
-        var loc = window.location
-        if (loc.hostname === 'www.gustosguide.com') {
-          var apex = new URL(loc.href)
-          apex.hostname = 'gustosguide.com'
-          loc.replace(apex.toString())
-          return
-        }
-        var url = new URL(loc.href)
-        var hash = url.hash.charAt(0) === '#' ? url.hash.slice(1) : ''
-        var route = ''
-        if (hash.charAt(0) === '/' || hash.charAt(0) === '!') {
-          route = url.hash
-        } else if (hash) {
-          var params = new URLSearchParams(hash)
-          params.forEach(function (value, key) {
-            if (!url.searchParams.has(key)) url.searchParams.set(key, value)
-          })
-        }
-        if (!route) {
-          try {
-            var saved = sessionStorage.getItem('gusto.auth.return') || ''
-            if (saved.indexOf('#/') === 0 && saved.indexOf('://') === -1) route = saved
-          } catch (e) {}
-        }
-        loc.replace(url.origin + '/' + url.search + (route || ''))
-      })()
-    </script>
+    <p class="late">Taking too long? <a href="/">Try again</a></p>
+    <script src="/auth-callback.js"></script>
   </body>
 </html>
