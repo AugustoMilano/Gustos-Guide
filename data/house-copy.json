@@ -1831,5 +1831,9 @@
   "zig-zag-cafe": {
     "pullQuote": "Order a classic cocktail and the lamb pastitsio, then share a booth.",
     "blurb": "Zig Zag Café is known for cocktails, but skipping the Greek food here would be a mistake. Go for the lamb pastitsio, marinated chicken kebabs with a side of tzatziki, and a sesame-rich hummus. Booths force you onto the same side. It stays open late, and happy hour is a classic."
+  },
+  "tendon-kohaku": {
+    "pullQuote": "Thin, crisp tempura over rice, and a carbonara udon to share.",
+    "blurb": "Tendon Kohaku sets thin, crisp tempura over Hokkaido rice. Add the black truffle carbonara udon, with bacon, Parmesan and an egg yolk, for the table."
   }
 }

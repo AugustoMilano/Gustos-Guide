@@ -8583,8 +8583,11 @@
         "Japanese"
       ],
       "placeType": "restaurant",
-      "oneLiner": "",
-      "perfectFor": [],
+      "oneLiner": "Thin, crisp tempura over rice, and a carbonara udon to share.",
+      "perfectFor": [
+        "Lunch",
+        "Weeknight Dinner"
+      ],
       "periods": [
         {
           "days": [
@@ -8615,7 +8618,7 @@
       ],
       "gustoScore": null,
       "website": "https://tendonkohakuusa.com",
-      "phone": "+1 (425) 625-0232",
+      "phone": "+1 (425) 357-7179",
       "appleMapsUrl": "https://maps.apple.com/?daddr=47.6129848,-122.1992202&q=Tendon%20Kohaku",
       "applePlaceUrl": "https://maps.apple.com/place?auid=4888838625112793601",
       "guideSlugs": [
@@ -8623,8 +8626,17 @@
       ],
       "muid": "4888838625112793601",
       "hoursLabel": "",
-      "blurb": "",
-      "orderThis": [],
+      "blurb": "Tendon Kohaku sets thin, crisp tempura over Hokkaido rice. Add the black truffle carbonara udon, with bacon, Parmesan and an egg yolk, for the table.",
+      "orderThis": [
+        {
+          "dish": "Kohaku Tendon Set",
+          "note": "Prawns, squid, kabocha and lotus root over rice."
+        },
+        {
+          "dish": "Carbonara Udon",
+          "note": "Bacon, Parmesan cream and an egg yolk."
+        }
+      ],
       "ids": {},
       "copySource": "draft",
       "updatedAt": "2026-10-29",
