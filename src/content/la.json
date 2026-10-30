@@ -7919,6 +7919,24 @@
       "updatedAt": "2026-10-20",
       "photos": [
         {
+          "source": "gusto",
+          "url": "/photos/spago-gusto-1.jpg",
+          "alt": "Smoked salmon pizza with salmon roe and chives at Spago",
+          "credit": "Photo by Gusto"
+        },
+        {
+          "source": "gusto",
+          "url": "/photos/spago-gusto-2.jpg",
+          "alt": "Lamb chop with Brussels sprouts at Spago",
+          "credit": "Photo by Gusto"
+        },
+        {
+          "source": "gusto",
+          "url": "/photos/spago-gusto-3.jpg",
+          "alt": "Basque cheesecake with mandarin and cream at Spago",
+          "credit": "Photo by Gusto"
+        },
+        {
           "source": "wikimedia",
           "url": "/photos/spago.jpg",
           "alt": "Spago in Beverly Hills",
