@@ -8570,6 +8570,78 @@
           "credit": "Illustration"
         }
       ]
+    },
+    {
+      "id": "tendon-kohaku",
+      "city": "eastside",
+      "name": "Tendon Kohaku",
+      "neighborhood": "Downtown Bellevue",
+      "address": "233 106th Ave NE, Bellevue, WA 98004",
+      "lat": 47.6129848,
+      "lng": -122.1992202,
+      "cuisine": [
+        "Japanese"
+      ],
+      "placeType": "restaurant",
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "start": 660,
+          "end": 900
+        },
+        {
+          "days": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "start": 1020,
+          "end": 1290
+        }
+      ],
+      "gustoScore": null,
+      "website": "https://tendonkohakuusa.com",
+      "phone": "+1 (425) 625-0232",
+      "appleMapsUrl": "https://maps.apple.com/?daddr=47.6129848,-122.1992202&q=Tendon%20Kohaku",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=4888838625112793601",
+      "guideSlugs": [
+        "eastside-asian"
+      ],
+      "muid": "4888838625112793601",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-10-29",
+      "photos": [
+        {
+          "source": "gusto",
+          "url": "/photos/tendon-kohaku-gusto-1.jpg",
+          "alt": "Truffle carbonara with bacon and egg yolk at Tendon Kohaku",
+          "credit": "Photo by Gusto"
+        },
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Japanese at Tendon Kohaku",
+          "credit": "Illustration"
+        }
+      ]
     }
   ],
   "guides": [
@@ -9544,6 +9616,12 @@
         },
         {
           "placeId": "a-ma-chicken-rice",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "tendon-kohaku",
           "pullQuote": "",
           "blurb": "",
           "copySource": "draft"
