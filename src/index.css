@@ -4436,3 +4436,44 @@ mark {
     justify-self: end;
   }
 }
+
+/* Search inputs: typed text is navy on the light fills, never inherited from a
+   navy hero. Safari also needs -webkit-text-fill-color. */
+#home-search,
+#page-search,
+.site-search input,
+.menu-sheet input,
+.site-header.on-hero .menu-sheet .glass-input {
+  color: #141f4d;
+  -webkit-text-fill-color: #141f4d;
+  caret-color: #ff5330;
+}
+
+#home-search::placeholder,
+#page-search::placeholder,
+.site-search input::placeholder,
+.menu-sheet input::placeholder {
+  color: rgb(20 31 77 / 62%);
+  -webkit-text-fill-color: rgb(20 31 77 / 62%);
+  opacity: 1;
+}
+
+/* The header search over the navy hero has a dark translucent fill: keep it cream. */
+.site-header.on-hero #site-search {
+  color: #fffaf3;
+  -webkit-text-fill-color: #fffaf3;
+  caret-color: #fffaf3;
+}
+
+.site-header.on-hero #site-search::placeholder {
+  color: rgb(255 250 243 / 72%);
+  -webkit-text-fill-color: rgb(255 250 243 / 72%);
+}
+
+#home-search:-webkit-autofill,
+#page-search:-webkit-autofill,
+.site-search input:-webkit-autofill,
+.menu-sheet input:-webkit-autofill {
+  -webkit-text-fill-color: #141f4d;
+  caret-color: #ff5330;
+}
