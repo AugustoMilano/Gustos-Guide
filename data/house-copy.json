@@ -1883,5 +1883,73 @@
   "cantinetta-bellevue": {
     "pullQuote": "Handmade tagliatelle carbonara on Bellevue's Main Street.",
     "blurb": "Order the tagliatelle carbonara or the pappardelle Bolognese, the two signature pastas. The fall menu adds pici cacio e pepe."
+  },
+  "jon-vinnys": {
+    "pullQuote": "Spicy fusilli and an L.A. Woman pizza on Fairfax.",
+    "blurb": "Get the spicy fusilli in vodka sauce with basil and parmesan, plus the L.A. Woman pizza topped with cold local burrata."
+  },
+  "heavy-handed": {
+    "pullQuote": "Short-rib cheeseburgers and beef-tallow fries on Main Street.",
+    "blurb": "Order a double: ground short rib, American cheese, caramelized onions, house pickles and heavy sauce. The fries are cooked in beef tallow."
+  },
+  "venice-flake": {
+    "pullQuote": "Breakfast burritos and croissant sandwiches on Rose Ave.",
+    "blurb": "Get the bacon burrito with eggs, American cheese and the house tomatillo salsa, or the Super-Crojo on a croissant. It closes at 3."
+  },
+  "elephante": {
+    "pullQuote": "Coastal Italian pizzas and pasta on a Santa Monica rooftop.",
+    "blurb": "Start with the soppressata pizza, with chili oil and honey, and a handmade pasta like the vodka canestri. It's a rooftop two blocks from the beach."
+  },
+  "levain-bakery": {
+    "pullQuote": "Six-ounce chocolate chip walnut cookies on Abbot Kinney.",
+    "blurb": "Order the chocolate chip walnut, the six-ounce cookie that made the New York bakery famous. This Abbot Kinney shop opened in April 2025."
+  },
+  "spark-pizza": {
+    "pullQuote": "Pepperoni cups and spicy honey on a 48-hour dough.",
+    "blurb": "Order Honey & Spice & Everything Nice: pepperoni cups, Ferndale mozzarella, basil and spicy honey. The crust sits between Neapolitan and New York."
+  },
+  "the-ivy": {
+    "pullQuote": "Crab cakes on the flower-filled Robertson patio since 1980.",
+    "blurb": "Order the crab cakes and Ricky's fried chicken, with whipped potatoes, grilled corn and mango chutney. The patio has been the draw since 1980."
+  },
+  "easy-street-burgers": {
+    "pullQuote": "Smashed cheeseburgers with wild sauce in Studio City.",
+    "blurb": "Order a double cheeseburger: smashed patties, pickles, grilled onions and wild sauce. The Jalapeño Monster swaps in Swiss and jalapeños."
+  },
+  "sabys-cafe": {
+    "pullQuote": "Breakfast burritos and blue corn tacos in Mar Vista.",
+    "blurb": "Get the chipotle breakfast burrito with eggs, potatoes, avocado and grilled onions. At lunch, the blue corn quesadilla comes with quesillo."
+  },
+  "stk-bellevue": {
+    "pullQuote": "Wagyu Lil' Brgs and steak to a DJ set in Lincoln Square.",
+    "blurb": "Start with the Lil' Brgs, wagyu sliders with special sauce on sesame buns, then a steak. A DJ plays through dinner."
+  },
+  "daves-hot-chicken": {
+    "pullQuote": "Nashville hot tenders from the original East Hollywood stand.",
+    "blurb": "Get the sliders on potato buns with kale slaw and pickles, at any of seven heat levels from Not Hot to Reaper. It began in a parking lot here in 2017."
+  },
+  "woodblock": {
+    "pullQuote": "Brisket gnocchi and a thousand-bottle whiskey wall in Redmond.",
+    "blurb": "Order the brisket gnocchi, made with slow-roasted brisket and gnocchi rolled by hand almost every day. The bar holds about a thousand bottles."
+  },
+  "malibu-farm-restaurant": {
+    "pullQuote": "Swedish mini pancakes at the foot of the Malibu Pier.",
+    "blurb": "Come for brunch and order the Swedish mini pancakes with berry compote and whipped cream. The vegan chop salad is the lunch standby."
+  },
+  "shawns-cafe-and-bakery": {
+    "pullQuote": "Scratch-made bagels and Friday challah on Mercer Island.",
+    "blurb": "Come for fresh bagels, croissants and pretzel rolls baked from scratch daily. Pre-order the challah, which is ready Fridays after 11."
+  },
+  "ooba-tooba": {
+    "pullQuote": "Grilled chicken burritos with minted rice in Redmond.",
+    "blurb": "Order the grilled chicken burrito with minted rice, white beans and chipotle crema. The chipotle pork tacos are the menu's customer favorite."
+  },
+  "a-ma-chicken-rice": {
+    "pullQuote": "Hainanese chicken rice and Phnom Penh noodle soup in Redmond.",
+    "blurb": "Order the Hainanese chicken rice, cooked in the stock from the poached bird, with ginger-garlic sauce. The kuy teav Phnom Penh is the soup to add."
+  },
+  "rovino": {
+    "pullQuote": "Rotisserie half chicken and handmade pasta in Little Italy.",
+    "blurb": "Order the half rotisserie chicken with roasted vegetables and potatoes, then a housemade pasta. It takes walk-ins at the bar."
   }
 }

@@ -739,7 +739,7 @@
         "American"
       ],
       "placeType": "restaurant",
-      "oneLiner": "",
+      "oneLiner": "Brisket gnocchi and a thousand-bottle whiskey wall in Redmond.",
       "perfectFor": [],
       "periods": [
         {
@@ -783,8 +783,17 @@
       ],
       "muid": "",
       "hoursLabel": "",
-      "blurb": "",
-      "orderThis": [],
+      "blurb": "Order the brisket gnocchi, made with slow-roasted brisket and gnocchi rolled by hand almost every day. The bar holds about a thousand bottles.",
+      "orderThis": [
+        {
+          "dish": "Brisket Gnocchi",
+          "note": "Slow-roasted brisket, hand-rolled gnocchi."
+        },
+        {
+          "dish": "Scotch Egg",
+          "note": "A day-one favorite."
+        }
+      ],
       "ids": {},
       "copySource": "draft",
       "updatedAt": "2026-10-20",
@@ -2899,7 +2908,7 @@
         "Mexican"
       ],
       "placeType": "restaurant",
-      "oneLiner": "Burritos and Mexican plates on Northeast 83rd, north of downtown.",
+      "oneLiner": "Grilled chicken burritos with minted rice in Redmond.",
       "perfectFor": [],
       "periods": [
         {
@@ -2925,8 +2934,17 @@
       ],
       "muid": "",
       "hoursLabel": "",
-      "blurb": "",
-      "orderThis": [],
+      "blurb": "Order the grilled chicken burrito with minted rice, white beans and chipotle crema. The chipotle pork tacos are the menu's customer favorite.",
+      "orderThis": [
+        {
+          "dish": "Grilled Chicken Burrito",
+          "note": "Minted rice, white beans, chipotle crema."
+        },
+        {
+          "dish": "Chipotle Pork Tacos",
+          "note": "Chipotle sour cream, guacamole, habanero salsa."
+        }
+      ],
       "ids": {
         "yelp": "Kx-pwf-GQ9FX8ti5E87l0w"
       },
@@ -5762,7 +5780,7 @@
         "Steak"
       ],
       "placeType": "steakhouse",
-      "oneLiner": "",
+      "oneLiner": "Wagyu Lil' Brgs and steak to a DJ set in Lincoln Square.",
       "perfectFor": [],
       "periods": [
         {
@@ -5795,8 +5813,13 @@
       ],
       "muid": "4976013561576575976",
       "hoursLabel": "",
-      "blurb": "",
-      "orderThis": [],
+      "blurb": "Start with the Lil' Brgs, wagyu sliders with special sauce on sesame buns, then a steak. A DJ plays through dinner.",
+      "orderThis": [
+        {
+          "dish": "Lil' Brgs",
+          "note": "Wagyu, special sauce, sesame bun."
+        }
+      ],
       "ids": {},
       "copySource": "draft",
       "updatedAt": "2026-10-22",
@@ -7290,7 +7313,7 @@
         "Pizza"
       ],
       "placeType": "restaurant",
-      "oneLiner": "",
+      "oneLiner": "Pepperoni cups and spicy honey on a 48-hour dough.",
       "perfectFor": [],
       "periods": [
         {
@@ -7334,8 +7357,17 @@
       ],
       "muid": "17099670497557362085",
       "hoursLabel": "",
-      "blurb": "",
-      "orderThis": [],
+      "blurb": "Order Honey & Spice & Everything Nice: pepperoni cups, Ferndale mozzarella, basil and spicy honey. The crust sits between Neapolitan and New York.",
+      "orderThis": [
+        {
+          "dish": "Honey & Spice & Everything Nice",
+          "note": "Pepperoni cups, spicy honey."
+        },
+        {
+          "dish": "The Classic Margherita",
+          "note": "Tomato, Ferndale mozzarella, basil."
+        }
+      ],
       "ids": {},
       "copySource": "draft",
       "updatedAt": "2026-10-22",
@@ -7360,7 +7392,7 @@
         "Chinese"
       ],
       "placeType": "restaurant",
-      "oneLiner": "",
+      "oneLiner": "Hainanese chicken rice and Phnom Penh noodle soup in Redmond.",
       "perfectFor": [],
       "periods": [
         {
@@ -7393,8 +7425,17 @@
       ],
       "muid": "12451992952103954038",
       "hoursLabel": "",
-      "blurb": "",
-      "orderThis": [],
+      "blurb": "Order the Hainanese chicken rice, cooked in the stock from the poached bird, with ginger-garlic sauce. The kuy teav Phnom Penh is the soup to add.",
+      "orderThis": [
+        {
+          "dish": "Hainanese Chicken Rice",
+          "note": "Poached chicken, ginger-garlic sauce, broth."
+        },
+        {
+          "dish": "Kuy Teav Phnom Penh",
+          "note": "Rice noodles, sliced pork, shrimp."
+        }
+      ],
       "ids": {},
       "copySource": "draft",
       "updatedAt": "2026-10-22",
@@ -8017,7 +8058,7 @@
       ],
       "placeType": "bakery",
       "price": 1,
-      "oneLiner": "",
+      "oneLiner": "Scratch-made bagels and Friday challah on Mercer Island.",
       "perfectFor": [],
       "periods": [
         {
@@ -8054,8 +8095,17 @@
       ],
       "muid": "10290159749305833107",
       "hoursLabel": "",
-      "blurb": "",
-      "orderThis": [],
+      "blurb": "Come for fresh bagels, croissants and pretzel rolls baked from scratch daily. Pre-order the challah, which is ready Fridays after 11.",
+      "orderThis": [
+        {
+          "dish": "Challah",
+          "note": "Fridays, ready after 11 a.m."
+        },
+        {
+          "dish": "Bagels",
+          "note": "Baked fresh daily."
+        }
+      ],
       "ids": {
         "yelp": "xdhDwRlPOw6pFElsArS0Bg"
       },
@@ -8859,26 +8909,26 @@
       "entries": [
         {
           "placeId": "woodblock",
-          "pullQuote": "",
-          "blurb": "",
+          "pullQuote": "Brisket gnocchi and a thousand-bottle whiskey wall in Redmond.",
+          "blurb": "Order the brisket gnocchi, made with slow-roasted brisket and gnocchi rolled by hand almost every day. The bar holds about a thousand bottles.",
           "copySource": "draft"
         },
         {
           "placeId": "spark-pizza",
-          "pullQuote": "",
-          "blurb": "",
+          "pullQuote": "Pepperoni cups and spicy honey on a 48-hour dough.",
+          "blurb": "Order Honey & Spice & Everything Nice: pepperoni cups, Ferndale mozzarella, basil and spicy honey. The crust sits between Neapolitan and New York.",
           "copySource": "draft"
         },
         {
           "placeId": "a-ma-chicken-rice",
-          "pullQuote": "",
-          "blurb": "",
+          "pullQuote": "Hainanese chicken rice and Phnom Penh noodle soup in Redmond.",
+          "blurb": "Order the Hainanese chicken rice, cooked in the stock from the poached bird, with ginger-garlic sauce. The kuy teav Phnom Penh is the soup to add.",
           "copySource": "draft"
         },
         {
           "placeId": "ooba-tooba",
-          "pullQuote": "Burritos and Mexican plates on Northeast 83rd, north of downtown.",
-          "blurb": "Burritos and Mexican plates on Northeast 83rd, north of downtown.",
+          "pullQuote": "Grilled chicken burritos with minted rice in Redmond.",
+          "blurb": "Order the grilled chicken burrito with minted rice, white beans and chipotle crema. The chipotle pork tacos are the menu's customer favorite.",
           "copySource": "draft"
         },
         {
@@ -9106,8 +9156,8 @@
         },
         {
           "placeId": "stk-bellevue",
-          "pullQuote": "",
-          "blurb": "",
+          "pullQuote": "Wagyu Lil' Brgs and steak to a DJ set in Lincoln Square.",
+          "blurb": "Start with the Lil' Brgs, wagyu sliders with special sauce on sesame buns, then a steak. A DJ plays through dinner.",
           "copySource": "draft"
         },
         {
@@ -9510,8 +9560,8 @@
       "entries": [
         {
           "placeId": "shawns-cafe-and-bakery",
-          "pullQuote": "",
-          "blurb": "",
+          "pullQuote": "Scratch-made bagels and Friday challah on Mercer Island.",
+          "blurb": "Come for fresh bagels, croissants and pretzel rolls baked from scratch daily. Pre-order the challah, which is ready Fridays after 11.",
           "copySource": "draft"
         },
         {
@@ -9696,8 +9746,8 @@
         },
         {
           "placeId": "a-ma-chicken-rice",
-          "pullQuote": "",
-          "blurb": "",
+          "pullQuote": "Hainanese chicken rice and Phnom Penh noodle soup in Redmond.",
+          "blurb": "Order the Hainanese chicken rice, cooked in the stock from the poached bird, with ginger-garlic sauce. The kuy teav Phnom Penh is the soup to add.",
           "copySource": "draft"
         },
         {

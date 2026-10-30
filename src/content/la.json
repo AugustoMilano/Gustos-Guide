@@ -279,7 +279,7 @@
         "Brunch"
       ],
       "placeType": "restaurant",
-      "oneLiner": "Venice Flake sits at 513 Rose Ave. Brunch, Venice.",
+      "oneLiner": "Breakfast burritos and croissant sandwiches on Rose Ave.",
       "perfectFor": [],
       "periods": [
         {
@@ -304,8 +304,17 @@
       ],
       "muid": "8571130373043536585",
       "hoursLabel": "",
-      "blurb": "Venice Flake sits at 513 Rose Ave. Brunch, Venice.",
-      "orderThis": [],
+      "blurb": "Get the bacon burrito with eggs, American cheese and the house tomatillo salsa, or the Super-Crojo on a croissant. It closes at 3.",
+      "orderThis": [
+        {
+          "dish": "Bacon Burrito",
+          "note": "Eggs, American cheese, tomatillo salsa."
+        },
+        {
+          "dish": "Super-Crojo",
+          "note": "Bacon, smoked gouda, egg, croissant."
+        }
+      ],
       "ids": {
         "yelp": "aJcW2gFFYYP8H1kNvUeoRQ"
       },
@@ -1559,7 +1568,7 @@
         "American"
       ],
       "placeType": "restaurant",
-      "oneLiner": "The Ivy, 113 N Robertson Blvd. American in Beverly Grove.",
+      "oneLiner": "Crab cakes on the flower-filled Robertson patio since 1980.",
       "perfectFor": [],
       "periods": [
         {
@@ -1591,8 +1600,17 @@
       ],
       "muid": "15814501971855265537",
       "hoursLabel": "",
-      "blurb": "The Ivy, 113 N Robertson Blvd. American in Beverly Grove.",
-      "orderThis": [],
+      "blurb": "Order the crab cakes and Ricky's fried chicken, with whipped potatoes, grilled corn and mango chutney. The patio has been the draw since 1980.",
+      "orderThis": [
+        {
+          "dish": "The Best Crab Cakes",
+          "note": "The house starter."
+        },
+        {
+          "dish": "Ricky's Fried Chicken",
+          "note": "Whipped potatoes, corn, mango chutney."
+        }
+      ],
       "ids": {},
       "copySource": "draft",
       "updatedAt": "2026-10-20",
@@ -2008,7 +2026,7 @@
         "Burgers"
       ],
       "placeType": "restaurant",
-      "oneLiner": "",
+      "oneLiner": "Short-rib cheeseburgers and beef-tallow fries on Main Street.",
       "perfectFor": [],
       "periods": [
         {
@@ -2033,8 +2051,17 @@
       ],
       "muid": "16057293261797551039",
       "hoursLabel": "",
-      "blurb": "",
-      "orderThis": [],
+      "blurb": "Order a double: ground short rib, American cheese, caramelized onions, house pickles and heavy sauce. The fries are cooked in beef tallow.",
+      "orderThis": [
+        {
+          "dish": "Double",
+          "note": "Short rib, onions, pickles, heavy sauce."
+        },
+        {
+          "dish": "Heavy Fries",
+          "note": "Tallow fries, cheese, onions, sauce."
+        }
+      ],
       "ids": {},
       "copySource": "draft",
       "updatedAt": "2026-10-20",
@@ -4133,7 +4160,7 @@
         "New American"
       ],
       "placeType": "restaurant",
-      "oneLiner": "23000 Pacific Coast Hwy — Malibu Farm Restaurant, New American, Malibu.",
+      "oneLiner": "Swedish mini pancakes at the foot of the Malibu Pier.",
       "perfectFor": [],
       "periods": [
         {
@@ -4165,8 +4192,17 @@
       ],
       "muid": "697893718901763513",
       "hoursLabel": "",
-      "blurb": "23000 Pacific Coast Hwy — Malibu Farm Restaurant, New American, Malibu.",
-      "orderThis": [],
+      "blurb": "Come for brunch and order the Swedish mini pancakes with berry compote and whipped cream. The vegan chop salad is the lunch standby.",
+      "orderThis": [
+        {
+          "dish": "Swedish Mini Pancakes",
+          "note": "Whipped cream, berry compote."
+        },
+        {
+          "dish": "Vegan Chop Salad",
+          "note": "Kale, squash, beets, quinoa."
+        }
+      ],
       "ids": {
         "yelp": "pjXxukY-PNnB6WFxZNQ_RQ"
       },
@@ -4843,7 +4879,7 @@
         "Italian"
       ],
       "placeType": "restaurant",
-      "oneLiner": "",
+      "oneLiner": "Spicy fusilli and an L.A. Woman pizza on Fairfax.",
       "perfectFor": [],
       "periods": [
         {
@@ -4868,8 +4904,17 @@
       ],
       "muid": "11412134156890109169",
       "hoursLabel": "",
-      "blurb": "",
-      "orderThis": [],
+      "blurb": "Get the spicy fusilli in vodka sauce with basil and parmesan, plus the L.A. Woman pizza topped with cold local burrata.",
+      "orderThis": [
+        {
+          "dish": "Spicy Fusilli",
+          "note": "Vodka sauce, basil, parmesan."
+        },
+        {
+          "dish": "L.A. Woman",
+          "note": "Burrata, tomato, basil, sea salt."
+        }
+      ],
       "ids": {},
       "copySource": "draft",
       "updatedAt": "2026-10-20",
@@ -4950,7 +4995,7 @@
         "Mexican"
       ],
       "placeType": "restaurant",
-      "oneLiner": "",
+      "oneLiner": "Breakfast burritos and blue corn tacos in Mar Vista.",
       "perfectFor": [],
       "periods": [
         {
@@ -4975,8 +5020,17 @@
       ],
       "muid": "11123673120530541346",
       "hoursLabel": "",
-      "blurb": "",
-      "orderThis": [],
+      "blurb": "Get the chipotle breakfast burrito with eggs, potatoes, avocado and grilled onions. At lunch, the blue corn quesadilla comes with quesillo.",
+      "orderThis": [
+        {
+          "dish": "Chipotle Breakfast Burrito",
+          "note": "Eggs, potato, avocado, chipotle."
+        },
+        {
+          "dish": "Mar Y Tierra",
+          "note": "Fried shrimp and sirloin burrito."
+        }
+      ],
       "ids": {},
       "copySource": "draft",
       "updatedAt": "2026-10-20",
@@ -4989,7 +5043,7 @@
         }
       ],
       "phone": "+1 (740) 518-3583",
-      "website": "https://sabyscafe.toast.site",
+      "website": "https://sabyscafe.com",
       "yelpSlug": "sabys-coffee-and-kitchen-los-angeles-4"
     },
     {
@@ -7314,7 +7368,7 @@
         "Bakery"
       ],
       "placeType": "bakery",
-      "oneLiner": "",
+      "oneLiner": "Six-ounce chocolate chip walnut cookies on Abbot Kinney.",
       "perfectFor": [],
       "periods": [
         {
@@ -7340,8 +7394,17 @@
       ],
       "muid": "17622490193033595065",
       "hoursLabel": "",
-      "blurb": "",
-      "orderThis": [],
+      "blurb": "Order the chocolate chip walnut, the six-ounce cookie that made the New York bakery famous. This Abbot Kinney shop opened in April 2025.",
+      "orderThis": [
+        {
+          "dish": "Chocolate Chip Walnut",
+          "note": "The original six-ounce cookie."
+        },
+        {
+          "dish": "Dark Chocolate Peanut Butter Chip",
+          "note": "A house signature."
+        }
+      ],
       "ids": {
         "yelp": "VA24h4dewR5qWMXAZKm0Pg"
       },
@@ -8264,7 +8327,7 @@
         "Italian"
       ],
       "placeType": "restaurant",
-      "oneLiner": "",
+      "oneLiner": "Coastal Italian pizzas and pasta on a Santa Monica rooftop.",
       "perfectFor": [],
       "periods": [
         {
@@ -8304,8 +8367,17 @@
       ],
       "muid": "18377350448936773189",
       "hoursLabel": "",
-      "blurb": "",
-      "orderThis": [],
+      "blurb": "Start with the soppressata pizza, with chili oil and honey, and a handmade pasta like the vodka canestri. It's a rooftop two blocks from the beach.",
+      "orderThis": [
+        {
+          "dish": "Soppressata Pizza",
+          "note": "Cured pork, chili oil, honey."
+        },
+        {
+          "dish": "Vodka Sauce Pasta",
+          "note": "Canestri, Calabrian chili, basil."
+        }
+      ],
       "ids": {},
       "copySource": "draft",
       "updatedAt": "2026-10-20",
@@ -8451,7 +8523,7 @@
         "Burgers"
       ],
       "placeType": "restaurant",
-      "oneLiner": "",
+      "oneLiner": "Smashed cheeseburgers with wild sauce in Studio City.",
       "perfectFor": [],
       "periods": [
         {
@@ -8476,8 +8548,17 @@
       "guideSlugs": [],
       "muid": "7669782249312720561",
       "hoursLabel": "",
-      "blurb": "",
-      "orderThis": [],
+      "blurb": "Order a double cheeseburger: smashed patties, pickles, grilled onions and wild sauce. The Jalapeño Monster swaps in Swiss and jalapeños.",
+      "orderThis": [
+        {
+          "dish": "Cheese Burger",
+          "note": "Smashed patty, onions, wild sauce."
+        },
+        {
+          "dish": "Jalapeño Monster",
+          "note": "Swiss, jalapeños, grilled onions."
+        }
+      ],
       "ids": {},
       "copySource": "draft",
       "updatedAt": "2026-10-22",
@@ -8502,7 +8583,7 @@
         "Chicken"
       ],
       "placeType": "restaurant",
-      "oneLiner": "",
+      "oneLiner": "Nashville hot tenders from the original East Hollywood stand.",
       "perfectFor": [],
       "periods": [
         {
@@ -8527,8 +8608,17 @@
       "guideSlugs": [],
       "muid": "14119141921696136180",
       "hoursLabel": "",
-      "blurb": "",
-      "orderThis": [],
+      "blurb": "Get the sliders on potato buns with kale slaw and pickles, at any of seven heat levels from Not Hot to Reaper. It began in a parking lot here in 2017.",
+      "orderThis": [
+        {
+          "dish": "Slider",
+          "note": "Potato bun, kale slaw, pickles, Dave's sauce."
+        },
+        {
+          "dish": "Tenders",
+          "note": "Spiced to order, seven heat levels."
+        }
+      ],
       "ids": {},
       "copySource": "draft",
       "updatedAt": "2026-10-22",
@@ -8592,14 +8682,14 @@
       "entries": [
         {
           "placeId": "heavy-handed",
-          "pullQuote": "",
-          "blurb": "",
+          "pullQuote": "Short-rib cheeseburgers and beef-tallow fries on Main Street.",
+          "blurb": "Order a double: ground short rib, American cheese, caramelized onions, house pickles and heavy sauce. The fries are cooked in beef tallow.",
           "copySource": "draft"
         },
         {
           "placeId": "elephante",
-          "pullQuote": "",
-          "blurb": "",
+          "pullQuote": "Coastal Italian pizzas and pasta on a Santa Monica rooftop.",
+          "blurb": "Start with the soppressata pizza, with chili oil and honey, and a handmade pasta like the vodka canestri. It's a rooftop two blocks from the beach.",
           "copySource": "draft"
         },
         {
@@ -9054,14 +9144,14 @@
       "entries": [
         {
           "placeId": "venice-flake",
-          "pullQuote": "Venice Flake sits at 513 Rose Ave. Brunch, Venice.",
-          "blurb": "Venice Flake sits at 513 Rose Ave. Brunch, Venice.",
+          "pullQuote": "Breakfast burritos and croissant sandwiches on Rose Ave.",
+          "blurb": "Get the bacon burrito with eggs, American cheese and the house tomatillo salsa, or the Super-Crojo on a croissant. It closes at 3.",
           "copySource": "draft"
         },
         {
           "placeId": "levain-bakery",
-          "pullQuote": "",
-          "blurb": "",
+          "pullQuote": "Six-ounce chocolate chip walnut cookies on Abbot Kinney.",
+          "blurb": "Order the chocolate chip walnut, the six-ounce cookie that made the New York bakery famous. This Abbot Kinney shop opened in April 2025.",
           "copySource": "draft"
         },
         {
@@ -9198,8 +9288,8 @@
       "entries": [
         {
           "placeId": "malibu-farm-restaurant",
-          "pullQuote": "23000 Pacific Coast Hwy — Malibu Farm Restaurant, New American, Malibu.",
-          "blurb": "23000 Pacific Coast Hwy — Malibu Farm Restaurant, New American, Malibu.",
+          "pullQuote": "Swedish mini pancakes at the foot of the Malibu Pier.",
+          "blurb": "Come for brunch and order the Swedish mini pancakes with berry compote and whipped cream. The vegan chop salad is the lunch standby.",
           "copySource": "draft"
         },
         {
@@ -9246,8 +9336,8 @@
       "entries": [
         {
           "placeId": "the-ivy",
-          "pullQuote": "The Ivy, 113 N Robertson Blvd. American in Beverly Grove.",
-          "blurb": "The Ivy, 113 N Robertson Blvd. American in Beverly Grove.",
+          "pullQuote": "Crab cakes on the flower-filled Robertson patio since 1980.",
+          "blurb": "Order the crab cakes and Ricky's fried chicken, with whipped potatoes, grilled corn and mango chutney. The patio has been the draw since 1980.",
           "copySource": "draft"
         },
         {
@@ -9354,14 +9444,14 @@
       "entries": [
         {
           "placeId": "jon-vinnys",
-          "pullQuote": "",
-          "blurb": "",
+          "pullQuote": "Spicy fusilli and an L.A. Woman pizza on Fairfax.",
+          "blurb": "Get the spicy fusilli in vodka sauce with basil and parmesan, plus the L.A. Woman pizza topped with cold local burrata.",
           "copySource": "draft"
         },
         {
           "placeId": "elephante",
-          "pullQuote": "",
-          "blurb": "",
+          "pullQuote": "Coastal Italian pizzas and pasta on a Santa Monica rooftop.",
+          "blurb": "Start with the soppressata pizza, with chili oil and honey, and a handmade pasta like the vodka canestri. It's a rooftop two blocks from the beach.",
           "copySource": "draft"
         },
         {
@@ -9492,8 +9582,8 @@
       "entries": [
         {
           "placeId": "sabys-cafe",
-          "pullQuote": "",
-          "blurb": "",
+          "pullQuote": "Breakfast burritos and blue corn tacos in Mar Vista.",
+          "blurb": "Get the chipotle breakfast burrito with eggs, potatoes, avocado and grilled onions. At lunch, the blue corn quesadilla comes with quesillo.",
           "copySource": "draft"
         },
         {
@@ -9546,8 +9636,8 @@
       "entries": [
         {
           "placeId": "levain-bakery",
-          "pullQuote": "",
-          "blurb": "",
+          "pullQuote": "Six-ounce chocolate chip walnut cookies on Abbot Kinney.",
+          "blurb": "Order the chocolate chip walnut, the six-ounce cookie that made the New York bakery famous. This Abbot Kinney shop opened in April 2025.",
           "copySource": "draft"
         },
         {
@@ -9648,14 +9738,14 @@
         },
         {
           "placeId": "the-ivy",
-          "pullQuote": "The Ivy, 113 N Robertson Blvd. American in Beverly Grove.",
-          "blurb": "The Ivy, 113 N Robertson Blvd. American in Beverly Grove.",
+          "pullQuote": "Crab cakes on the flower-filled Robertson patio since 1980.",
+          "blurb": "Order the crab cakes and Ricky's fried chicken, with whipped potatoes, grilled corn and mango chutney. The patio has been the draw since 1980.",
           "copySource": "draft"
         },
         {
           "placeId": "malibu-farm-restaurant",
-          "pullQuote": "23000 Pacific Coast Hwy — Malibu Farm Restaurant, New American, Malibu.",
-          "blurb": "23000 Pacific Coast Hwy — Malibu Farm Restaurant, New American, Malibu.",
+          "pullQuote": "Swedish mini pancakes at the foot of the Malibu Pier.",
+          "blurb": "Come for brunch and order the Swedish mini pancakes with berry compote and whipped cream. The vegan chop salad is the lunch standby.",
           "copySource": "draft"
         },
         {
