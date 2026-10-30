@@ -8583,7 +8583,7 @@
         "Japanese"
       ],
       "placeType": "restaurant",
-      "oneLiner": "Thin, crisp tempura over rice, and a carbonara udon to share.",
+      "oneLiner": "Black truffle carbonara udon with bacon, egg yolk and Parmesan.",
       "perfectFor": [
         "Lunch",
         "Weeknight Dinner"
@@ -8626,15 +8626,15 @@
       ],
       "muid": "4888838625112793601",
       "hoursLabel": "",
-      "blurb": "Tendon Kohaku sets thin, crisp tempura over Hokkaido rice. Add the black truffle carbonara udon, with bacon, Parmesan and an egg yolk, for the table.",
+      "blurb": "Come for the black truffle carbonara udon: Parmesan cream, bacon, black pepper and an egg yolk. The tempura bowls over rice can come second.",
       "orderThis": [
+        {
+          "dish": "Black Truffle Carbonara Udon",
+          "note": "Bacon, Parmesan cream and an egg yolk."
+        },
         {
           "dish": "Kohaku Tendon Set",
           "note": "Prawns, squid, kabocha and lotus root over rice."
-        },
-        {
-          "dish": "Carbonara Udon",
-          "note": "Bacon, Parmesan cream and an egg yolk."
         }
       ],
       "ids": {},
