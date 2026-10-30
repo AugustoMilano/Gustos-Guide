@@ -456,7 +456,35 @@ textarea {
 }
 
 .home-shortcuts {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: minmax(0, 1fr);
+}
+
+@media (min-width: 40rem) {
+  .home-shortcuts {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* Sized to content; the grid row keeps both cards the same height. */
+.home-shortcut {
+  height: 100%;
+  min-height: var(--hit);
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+}
+
+.home-shortcut-copy {
+  display: block;
+  min-width: 0;
+}
+
+.home-shortcut-arrow {
+  flex: none;
+  width: var(--icon-md);
+  height: var(--icon-md);
+  opacity: 0.7;
 }
 
 @media (min-width: 40rem) {
@@ -472,7 +500,6 @@ textarea {
 }
 
 .home-featured .guide-card,
-.home-shortcut,
 .home-featured .skeleton {
   height: 100%;
   min-height: 9.5rem;
