@@ -158,7 +158,7 @@
         "Seafood"
       ],
       "placeType": "restaurant",
-      "oneLiner": "",
+      "oneLiner": "John Howie's cedar plank salmon and a full raw bar.",
       "perfectFor": [],
       "periods": [
         {
@@ -186,8 +186,17 @@
       ],
       "muid": "",
       "hoursLabel": "",
-      "blurb": "",
-      "orderThis": [],
+      "blurb": "Order the cedar plank salmon with smoked broccoli and citrus rice, or the Super Dave Roll from the raw bar. John Howie opened it in 2002.",
+      "orderThis": [
+        {
+          "dish": "Cedar Plank Salmon",
+          "note": "Smoked broccoli, citrus rice."
+        },
+        {
+          "dish": "Super Dave Roll",
+          "note": "Dungeness crab, scallop, salmon, tobikko."
+        }
+      ],
       "ids": {},
       "copySource": "draft",
       "updatedAt": "2026-10-20",
@@ -214,7 +223,7 @@
       ],
       "placeType": "steakhouse",
       "price": 4,
-      "oneLiner": "Steakhouse in the Bravern. The lunch service is currently closed.",
+      "oneLiner": "28-day aged Prime filet, grilled over mesquite at The Bravern.",
       "perfectFor": [],
       "periods": [
         {
@@ -248,8 +257,17 @@
       ],
       "muid": "",
       "hoursLabel": "",
-      "blurb": "Steakhouse in the Bravern. The lunch service is currently closed.",
-      "orderThis": [],
+      "blurb": "Order the USDA Prime filet, custom-aged 28 days and grilled over mesquite, then splurge on A5 Wagyu by the ounce. Finish with the coconut cream pie.",
+      "orderThis": [
+        {
+          "dish": "Prime Filet Mignon",
+          "note": "28-day custom-aged, grilled over mesquite."
+        },
+        {
+          "dish": "White Chocolate Coconut Cream Pie",
+          "note": "Chef Howie's recipe, for two."
+        }
+      ],
       "ids": {},
       "copySource": "draft",
       "updatedAt": "2026-10-20",
@@ -2371,7 +2389,7 @@
         "American"
       ],
       "placeType": "restaurant",
-      "oneLiner": "Brunch and dinner in Juanita, off Northeast 120th Place.",
+      "oneLiner": "Lamb quesa-birria tacos on a big Juanita patio.",
       "perfectFor": [],
       "periods": [
         {
@@ -2416,8 +2434,17 @@
       ],
       "muid": "",
       "hoursLabel": "",
-      "blurb": "",
-      "orderThis": [],
+      "blurb": "Order the lamb quesa-birria tacos and the Northwest mussels with sausage. The 4,500-square-foot patio is dog-friendly and open all year.",
+      "orderThis": [
+        {
+          "dish": "Lamb Quesa-Birria Tacos",
+          "note": "A house signature."
+        },
+        {
+          "dish": "PNW Mussels & Sausage",
+          "note": "A house signature."
+        }
+      ],
       "ids": {},
       "copySource": "draft",
       "updatedAt": "2026-10-20",
@@ -2586,7 +2613,7 @@
         "American"
       ],
       "placeType": "restaurant",
-      "oneLiner": "Market counter and brunch on 9th Avenue, just uphill from downtown.",
+      "oneLiner": "Fig-and-pistachio meatloaf and giant cake slices in Kirkland.",
       "perfectFor": [],
       "periods": [
         {
@@ -2613,8 +2640,17 @@
       ],
       "muid": "",
       "hoursLabel": "",
-      "blurb": "",
-      "orderThis": [],
+      "blurb": "Order the fig and pistachio meatloaf or a wood-fired pizza, then a huge slice of dark chocolate or coconut cake from the deli case.",
+      "orderThis": [
+        {
+          "dish": "Fig & Pistachio Meatloaf",
+          "note": "Fig balsamic, arugula."
+        },
+        {
+          "dish": "DERU Farm Salad",
+          "note": "Roasted carrots, feta, pepitas."
+        }
+      ],
       "ids": {},
       "copySource": "draft",
       "updatedAt": "2026-10-20",
@@ -5922,7 +5958,7 @@
       ],
       "placeType": "restaurant",
       "price": 3,
-      "oneLiner": "",
+      "oneLiner": "Shanghainese smoked mackerel, served under a glass cloche in Bellevue.",
       "perfectFor": [],
       "periods": [
         {
@@ -5975,8 +6011,17 @@
       ],
       "muid": "11961842432109648709",
       "hoursLabel": "",
-      "blurb": "",
-      "orderThis": [],
+      "blurb": "Order the Shanghainese smoked mackerel, brought to the table under a glass cloche, and the wok-fried seafood noodles. The dining room is on Lincoln Square's second floor.",
+      "orderThis": [
+        {
+          "dish": "Shanghainese Smoked Mackerel",
+          "note": "Served under a glass cloche."
+        },
+        {
+          "dish": "Wok-Fried Seafood Noodles",
+          "note": "Pictured on the house site."
+        }
+      ],
       "ids": {
         "yelp": "jr8iTFk9-lbvftvjtueUVA"
       },
@@ -6009,7 +6054,7 @@
         "Indian"
       ],
       "placeType": "restaurant",
-      "oneLiner": "",
+      "oneLiner": "Modern Indian plates, from dal makhani to salmon tikka.",
       "perfectFor": [],
       "periods": [
         {
@@ -6042,8 +6087,17 @@
       ],
       "muid": "9320440476220755053",
       "hoursLabel": "",
-      "blurb": "",
-      "orderThis": [],
+      "blurb": "Order the double-butter dal makhani, simmered 18 hours, and the salmon tikka with XO jhalmuri. It was Farzi's first U.S. location when it opened in 2023.",
+      "orderThis": [
+        {
+          "dish": "Double Butter Dal Makhani",
+          "note": "Black lentils, 18 hours simmered."
+        },
+        {
+          "dish": "Big Glory Bay Salmon Tikka",
+          "note": "XO jhalmuri, achari beurre blanc."
+        }
+      ],
       "ids": {
         "yelp": "rsLN4EKGuZZklUmsd5N0wA"
       },
@@ -6076,7 +6130,7 @@
         "Japanese"
       ],
       "placeType": "restaurant",
-      "oneLiner": "",
+      "oneLiner": "Shio ramen with pork cheek on the side.",
       "perfectFor": [],
       "periods": [
         {
@@ -6110,8 +6164,17 @@
       ],
       "muid": "14397719807160244876",
       "hoursLabel": "",
-      "blurb": "",
-      "orderThis": [],
+      "blurb": "Order the tonkotsu shio, the house's signature, with the toroniku: pork cheek served on a separate plate to dip in the broth. No reservations.",
+      "orderThis": [
+        {
+          "dish": "Tonkotsu Shio Ramen",
+          "note": "Silky pork broth, salt tare."
+        },
+        {
+          "dish": "Toroniku Ramen",
+          "note": "Pork cheek on the side."
+        }
+      ],
       "ids": {},
       "copySource": "draft",
       "updatedAt": "2026-10-22",
@@ -6279,7 +6342,7 @@
       ],
       "placeType": "restaurant",
       "price": 2,
-      "oneLiner": "",
+      "oneLiner": "Xiao long bao and Q-Bao from the chain that began in Bellevue.",
       "perfectFor": [],
       "periods": [
         {
@@ -6307,8 +6370,17 @@
       ],
       "muid": "10388261190878961191",
       "hoursLabel": "",
-      "blurb": "",
-      "orderThis": [],
+      "blurb": "Order the xiao long bao and the Q-Bao, pan-fried soup buns with crisp bottoms. Dough Zone started in Bellevue in 2014.",
+      "orderThis": [
+        {
+          "dish": "Xiao Long Bao",
+          "note": "Pork soup dumplings."
+        },
+        {
+          "dish": "Q-Bao",
+          "note": "Pan-fried pork buns."
+        }
+      ],
       "ids": {
         "yelp": "JcZK6blIVjIdozoDAPZupg"
       },
@@ -7755,7 +7827,7 @@
         "Mexican"
       ],
       "placeType": "restaurant",
-      "oneLiner": "",
+      "oneLiner": "Durango family recipes and margaritas on Lake Washington.",
       "perfectFor": [],
       "periods": [
         {
@@ -7790,8 +7862,17 @@
       ],
       "muid": "13336795398944121119",
       "hoursLabel": "",
-      "blurb": "",
-      "orderThis": [],
+      "blurb": "Chef Gabriel Chavez cooks the food of his native Durango here. Try the chile en nogada or the Dungeness crab dobladas, and sit outside facing the lake.",
+      "orderThis": [
+        {
+          "dish": "Chile en Nogada",
+          "note": "Poblano, carne, walnut crema, pomegranate."
+        },
+        {
+          "dish": "Dobladas de Jaiba",
+          "note": "Crab-stuffed tortillas, ancho crema."
+        }
+      ],
       "ids": {},
       "copySource": "draft",
       "updatedAt": "2026-10-22",

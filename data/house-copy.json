@@ -316,8 +316,8 @@
     "blurb": "Carmelo's Tacos presses its own hefty tortillas and fills them with well-marinated carne asada or a chorizo, potato, and nopal mix that sticks with you. Burrito people should know the cheese gets a quick sear on the griddle before it goes in. It's cheap, it's fast, and the Capitol Hill counter keeps going late."
   },
   "carmine-s": {
-    "pullQuote": "Downtown Italian for when the group wants pasta and a proper sit-down dinner.",
-    "blurb": "Carmine's brings a sit-down Italian menu to the Downtown core."
+    "pullQuote": "Rigatoni Bolognese under the soaring rotunda windows downtown.",
+    "blurb": "Order the rigatoni Bolognese, a Carmine family classic, or the newer osso buco ravioli. It's the Smeraldo family's downtown room, after Il Terrazzo."
   },
   "charlotte-restaurant-lounge": {
     "pullQuote": "Book it for the skyline views and a dinner that feels like an occasion.",
@@ -388,8 +388,8 @@
     "blurb": "Cornelly makes a strong case for an Italian dinner date on Capitol Hill."
   },
   "cortina": {
-    "pullQuote": "A reliable downtown Italian option when the plan calls for a sit-down meal nearby.",
-    "blurb": "Cortina brings an Italian menu to the office towers of Downtown Seattle."
+    "pullQuote": "Bucatini and bone-marrow meatballs at Two Union Square.",
+    "blurb": "Get the bucatini with beef-and-ricotta meatballs in a marrow-enriched tomato sauce. The pasta is made fresh daily, and the pizza dough proofs for three days."
   },
   "cotto-belltown": {
     "pullQuote": "Late Italian in Belltown for when a bar menu just won't do.",
@@ -668,8 +668,8 @@
     "blurb": "Fresh cookies are the whole point at Hello Robin, a Capitol Hill shop baking everything from classic chocolate chip to a blueberry pancake version. Buy them baked, take home dough, or have two pressed around a scoop of Molly Moon's. An espresso bar makes it an easy afternoon treat."
   },
   "hey-bagel": {
-    "pullQuote": "Start a U District morning here with a bagel that won't cost much.",
-    "blurb": "Inexpensive bagels and early hours make Hey Bagel a handy U District morning stop."
+    "pullQuote": "Hot, never-toasted bagels to rip and dip in schmear.",
+    "blurb": "Get the everything bagel hot and tear it into a tub of spicy scallion schmear. No slicing, no sandwiches. Named best bagel at BagelFest West 2026."
   },
   "hi-spot-cafe": {
     "pullQuote": "Order the breakfast burrito and plan to skip lunch entirely.",
@@ -704,8 +704,8 @@
     "blurb": "Come in with friends or solo, best turkey sandwich around."
   },
   "il-bistro": {
-    "pullQuote": "Duck out of the market crowds for a sit-down Italian dinner.",
-    "blurb": "IL Bistro gives Pike Place Market a proper Italian dining room away from the snack stalls."
+    "pullQuote": "Cioppino in a candlelit grotto under Pike Place.",
+    "blurb": "Order the cioppino or the rigatoni Bolognese in this candlelit room down a cobblestone alley under the market, open for more than 50 years."
   },
   "il-nido": {
     "pullQuote": "This is where West Seattle goes for anniversaries and unfussy pasta nights alike.",
@@ -808,12 +808,12 @@
     "blurb": "L'Oursin pairs a Wes Anderson palette with a playful streak, but this Central District French restaurant cooks seriously. Raw scallops and the fish of the day nod to its seafood roots, while panisse with harissa dip keeps things unpredictable. The steak frites is great, and the witty wine notes make choosing a bottle part of the fun."
   },
   "la-fontana-siciliana": {
-    "pullQuote": "Book a Belltown dinner here when you're craving Sicilian cooking.",
-    "blurb": "Belltown diners head to La Fontana Siciliana for Italian food with a Sicilian accent."
+    "pullQuote": "Mushroom fettuccine beside the Belltown courtyard fountain, since 1994.",
+    "blurb": "Order the fettuccine ai funghi, the best seller, or the squid-ink linguine with salmon. There's been a table by the courtyard fountain since 1994."
   },
   "la-loba": {
-    "pullQuote": "Share a spread of Spanish tapas with friends on a South Lake Union night.",
-    "blurb": "Small Spanish plates made for sharing are the focus at La Loba in South Lake Union."
+    "pullQuote": "Salmon candy montaditos and Barcelona tapas at 1 Hotel.",
+    "blurb": "Start with the smoked salmon candy montadito, with truffle cream cheese and local honey. Chef Oscar Amador Edo cooked at El Bulli."
   },
   "la-marea": {
     "pullQuote": "Order the ahi tostada with salsa macha and a crisp saison.",
@@ -1312,8 +1312,8 @@
     "blurb": "Sushi is the focus at Rondo Japanese, a Japanese spot on Capitol Hill."
   },
   "roquette": {
-    "pullQuote": "Belltown cocktail hour gets a little more polished in this small bar.",
-    "blurb": "For a stirred drink in Belltown, Roquette is a cocktail bar to keep on your list."
+    "pullQuote": "French-spirit cocktails from Erik Hakkinen on First Ave.",
+    "blurb": "Erik Hakkinen's Belltown bar leans on cognac and calvados, and it's open until 1 or 2am every night."
   },
   "rosellini-s": {
     "pullQuote": "Order the croissant, then come back tomorrow for another one.",
@@ -1567,8 +1567,8 @@
     "blurb": "Early risers in Belltown can grab inexpensive coffee at The Brim Coffee Shop, which also has a rooftop for sipping it."
   },
   "the-butcher-s-table": {
-    "pullQuote": "A polished steakhouse for when you want serious beef without the downtown scene.",
-    "blurb": "Steak is the whole point at The Butcher's Table, a polished spot in the Denny Triangle near South Lake Union."
+    "pullQuote": "Mishima Reserve Wagyu steaks from the Beecher's family.",
+    "blurb": "Order a Mishima Reserve American Wagyu steak. The company that raises the beef also owns Beecher's, and a butcher case sells the same cuts."
   },
   "the-capital-grille": {
     "pullQuote": "A classic special-occasion steakhouse for impressing your parents, ideally on their dime.",
@@ -1951,5 +1951,41 @@
   "rovino": {
     "pullQuote": "Rotisserie half chicken and handmade pasta in Little Italy.",
     "blurb": "Order the half rotisserie chicken with roasted vegetables and potatoes, then a housemade pasta. It takes walk-ins at the bar."
+  },
+  "john-howie-steak": {
+    "pullQuote": "28-day aged Prime filet, grilled over mesquite at The Bravern.",
+    "blurb": "Order the USDA Prime filet, custom-aged 28 days and grilled over mesquite, then splurge on A5 Wagyu by the ounce. Finish with the coconut cream pie."
+  },
+  "barons-sino-kitchen-and-bar": {
+    "pullQuote": "Shanghainese smoked mackerel, served under a glass cloche in Bellevue.",
+    "blurb": "Order the Shanghainese smoked mackerel, brought to the table under a glass cloche, and the wok-fried seafood noodles. The dining room is on Lincoln Square's second floor."
+  },
+  "deru-market": {
+    "pullQuote": "Fig-and-pistachio meatloaf and giant cake slices in Kirkland.",
+    "blurb": "Order the fig and pistachio meatloaf or a wood-fired pizza, then a huge slice of dark chocolate or coconut cake from the deli case."
+  },
+  "sparrow": {
+    "pullQuote": "Lamb quesa-birria tacos on a big Juanita patio.",
+    "blurb": "Order the lamb quesa-birria tacos and the Northwest mussels with sausage. The 4,500-square-foot patio is dog-friendly and open all year."
+  },
+  "farzi-cafe": {
+    "pullQuote": "Modern Indian plates, from dal makhani to salmon tikka.",
+    "blurb": "Order the double-butter dal makhani, simmered 18 hours, and the salmon tikka with XO jhalmuri. It was Farzi's first U.S. location when it opened in 2023."
+  },
+  "seastar-restaurant-and-raw-bar": {
+    "pullQuote": "John Howie's cedar plank salmon and a full raw bar.",
+    "blurb": "Order the cedar plank salmon with smoked broccoli and citrus rice, or the Super Dave Roll from the raw bar. John Howie opened it in 2002."
+  },
+  "hokkaido-ramen-santouka": {
+    "pullQuote": "Shio ramen with pork cheek on the side.",
+    "blurb": "Order the tonkotsu shio, the house's signature, with the toroniku: pork cheek served on a separate plate to dip in the broth. No reservations."
+  },
+  "el-encanto": {
+    "pullQuote": "Durango family recipes and margaritas on Lake Washington.",
+    "blurb": "Chef Gabriel Chavez cooks the food of his native Durango here. Try the chile en nogada or the Dungeness crab dobladas, and sit outside facing the lake."
+  },
+  "dough-zone-bellevue": {
+    "pullQuote": "Xiao long bao and Q-Bao from the chain that began in Bellevue.",
+    "blurb": "Order the xiao long bao and the Q-Bao, pan-fried soup buns with crisp bottoms. Dough Zone started in Bellevue in 2014."
   }
 }
