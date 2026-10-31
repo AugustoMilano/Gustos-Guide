@@ -1411,12 +1411,11 @@ textarea {
   -webkit-backdrop-filter: blur(24px) saturate(180%);
 }
 
-/* Sheets carry forms and long text, so they take a denser tint than the
-   resting glass; the page behind stays a soft blur, not a second layer of copy. */
+/* Sheets carry forms and long text, so they sit on the solid cream fill. The
+   glass edge, sheen and shadow stay; the blurred page behind is the backdrop's job.
+   Any see-through fill let hero headlines read through the sign-in form. */
 .modal-panel {
-  background: rgb(255 250 243 / 96%);
-  backdrop-filter: blur(32px) saturate(180%);
-  -webkit-backdrop-filter: blur(32px) saturate(180%);
+  background: #fffaf3;
 }
 
 .glass,
