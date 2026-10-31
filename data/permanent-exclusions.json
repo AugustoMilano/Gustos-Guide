@@ -49,6 +49,11 @@
     {
       "id": "sugar-bakery-cafe",
       "name": "Sugar Bakery & Cafe"
+    },
+    {
+      "id": "island-soul-kirkland",
+      "name": "Island Soul",
+      "keepIds": ["island-soul-restaurant"]
     }
   ]
 }

@@ -184,8 +184,8 @@
     "blurb": "Bell's Cookie Co bakes cookies near Green Lake and keeps ice cream around for a full dessert run."
   },
   "ben-paris": {
-    "pullQuote": "A downtown New American spot that works for a breakfast meeting.",
-    "blurb": "Downtown breakfast meetings work well at Ben Paris, which serves New American plates from early morning."
+    "pullQuote": "Sesame-honey fried chicken and hush puppies in The State Hotel by Pike.",
+    "blurb": "Order the buttermilk fried chicken with sesame honey and the hush puppies. Breakfast starts at 7 in this tall, brass-trimmed room steps from Pike Place."
   },
   "ben-s-bread-co": {
     "pullQuote": "Phinney Ridge locals line up early for loaves and pastries at this bakery.",
@@ -256,8 +256,8 @@
     "blurb": "Game days in Belltown mean a crowd at Buckley's, a sports bar with plenty of room for groups and a kitchen open late."
   },
   "cactus": {
-    "pullQuote": "Hit the happy hour here for tacos and a cold drink near the lake.",
-    "blurb": "By the south end of the lake, Cactus is a solid call for tacos, especially once happy hour rolls around."
+    "pullQuote": "Butternut squash enchiladas and margaritas at the corner of Terry and Harrison.",
+    "blurb": "Order the butternut squash enchiladas with apricot-chocolate mole rojo, or the brisket tacos on fresh corn tortillas. Weekend brunch runs 10 to 2."
   },
   "cafe-campagne": {
     "pullQuote": "Come for weekend brunch, when the room is loud and the bread is crusty.",
@@ -548,8 +548,8 @@
     "blurb": "Firn mixes drinks high above Pioneer Square and keeps going late."
   },
   "fob-poke-bar": {
-    "pullQuote": "",
-    "blurb": "FOB Poke Bar builds Hawaiian-style bowls at a casual Belltown counter."
+    "pullQuote": "Build-your-own poke bowls with house FOB sauce on Blanchard Street.",
+    "blurb": "Build a salmon or tuna bowl over rice or greens, and finish it with the house FOB sauce, a Hawaiian shoyu blend, and the zesty mango."
   },
   "fob-sushi-bar": {
     "pullQuote": "Belltown sushi that can stand alone on a crowded list of contenders.",
@@ -776,8 +776,8 @@
     "blurb": "Fremont's Kamonegi ends dinner indecision fast with a pairing of soba and tempura that's hard to beat. The noodles are made by hand, the tempura is crisp, and after a long day of choices it feels good to let the kitchen lead. Book it for a low-key date night."
   },
   "kangaroo-kiwi": {
-    "pullQuote": "Bring a big group here for beers and pub food in Ballard.",
-    "blurb": "Big groups, cold beer, and bar food that runs late make Kangaroo & Kiwi an easy Ballard pick."
+    "pullQuote": "Aussie meat pies, rugby and a raised Ballard patio in an old library.",
+    "blurb": "Order the pie, beans, chips and gravy, an Aussie meat pie with Heinz beans, and take it to the raised patio over Market Street. Rugby and Premier League are on the screens."
   },
   "katsu-ya": {
     "pullQuote": "Keep this casual Japanese spot in mind when you're around South Lake Union.",
@@ -996,8 +996,8 @@
     "blurb": "Maximilien serves French food in Pike Place Market, with windows looking out over Elliott Bay."
   },
   "mean-sandwich": {
-    "pullQuote": "A cheap Ballard lunch counter where the sandwiches carry the whole show.",
-    "blurb": "An inexpensive Ballard sandwich counter, Mean Sandwich is a reliable lunch with no fuss."
+    "pullQuote": "Griddled corned beef with mint and pickled cabbage, from a Momofuku alum.",
+    "blurb": "Order the Mean: thick griddled corned beef, house yellow mustard, pickled red cabbage and fresh mint on a challah bun. It comes with the salt-and-pepper potato skins."
   },
   "mee-sum-pastry": {
     "pullQuote": "Get the steamed barbecue pork bao and eat it walking through the stalls.",
@@ -1515,8 +1515,8 @@
     "blurb": "Take 5 Urban Market has the Moon Pies and fruit sodas of a proper corner store, plus a short sandwich menu that deserves real attention. The reuben swaps kraut for creamy slaw and gets a crisp layer of griddled swiss, and the sriracha chicken melt brings plenty of avocado and actual heat. Still, the one you will crave is the chicken caesar, packed with bacon, tomato, and crouton bits."
   },
   "tall-grass-bakery": {
-    "pullQuote": "Pick up an early-morning loaf here on your way through Ballard.",
-    "blurb": "An inexpensive Ballard bakery that opens early, Tall Grass Bakery is a reliable stop for bread and baked goods."
+    "pullQuote": "Organic baguettes, levain and rye, baked in Ballard since 2000.",
+    "blurb": "Pick up a classic baguette or the pain au levain, both made with organic flour. The Ballard shop is open Wednesday to Sunday, 9 to 6."
   },
   "taneda": {
     "pullQuote": "Book a solo seat for the multi-course kaiseki and sushi meal of your year.",
@@ -1987,5 +1987,49 @@
   "dough-zone-bellevue": {
     "pullQuote": "Xiao long bao and Q-Bao from the chain that began in Bellevue.",
     "blurb": "Order the xiao long bao and the Q-Bao, pan-fried soup buns with crisp bottoms. Dough Zone started in Bellevue in 2014."
+  },
+  "pacific-inn-pub": {
+    "pullQuote": "Panko-crusted cod and Cajun fried shrimp at a Fremont dive since 1981.",
+    "blurb": "Order the fish and chips: thin Pacific cod in a peppery, garlicky panko crust. Add the Cajun fried shrimp and eat on the deck; the pub is 21 and over."
+  },
+  "hot-mamas-pizza": {
+    "pullQuote": "New York-style pesto slices on Pine Street since 1995, open late.",
+    "blurb": "Get a slice of the pesto pie, the house's famous one, or the House Combo if you want meat. It's been on Capitol Hill since 1995 and stays open until midnight on weekends."
+  },
+  "slice-box-pizza": {
+    "pullQuote": "Sicilian pepperoni squares and cupped-pepperoni New York slices for a SoDo lunch.",
+    "blurb": "Get the Sicilian pepperoni square, then a New York cheese slice with a crisp, foldable crust. It's a weekday lunch counter, not a dinner spot."
+  },
+  "the-box": {
+    "pullQuote": "Da Hilo Boy burger and loco moco from a Kirkland food-truck chef.",
+    "blurb": "Order Da Hilo Boy, with a fried egg, bacon confit, mushroom duxelles and peppercorn gravy, or the loco moco. Chef Reis Llaneza started with a food truck."
+  },
+  "jacks-bbq": {
+    "pullQuote": "Central Texas brisket and beef ribs on Bel-Red, open since 2024.",
+    "blurb": "Order the Double R Ranch brisket, smoked low and slow, and the dino beef rib if it's Thursday or Sunday. Breakfast tacos start at 7 on weekdays."
+  },
+  "desi-tadka": {
+    "pullQuote": "Vegetarian Punjabi thalis and chole bhature on 105th Avenue in Bellevue.",
+    "blurb": "Order the chole bhature, chickpeas with two puffed fried breads, or a matar paneer thali. The whole menu is vegetarian, with no-onion, no-garlic options."
+  },
+  "ezells-famous-chicken": {
+    "pullQuote": "Spicy fried chicken thighs and sweet dinner rolls, Oprah's Seattle order.",
+    "blurb": "Get it spicy, with dark meat, the way Oprah orders it, plus the sweet fresh-baked rolls. Ezell's has been frying chicken in Seattle since 1984."
+  },
+  "burgermaster": {
+    "pullQuote": "Carhop drive-in burgers made with grass-fed beef, a family business since 1952.",
+    "blurb": "Turn on your headlights and a carhop takes your order at the car. The beef is grass-fed, and the tartar sauce is still Phil Jensen's 1952 recipe."
+  },
+  "xochi": {
+    "pullQuote": "Mexico City braised tacos de guisado from a trailer on Gilman Boulevard.",
+    "blurb": "Order the chicken tinga and the rajas, poblanos in sour cream. Sandra Diaz stews every filling, and half the board is vegetarian."
+  },
+  "cactus-kirkland": {
+    "pullQuote": "Achiote pork tacos and Santa Fe-style stacked enchiladas near Kirkland's Park Lane.",
+    "blurb": "Order the achiote pork tacos, with a dash of pineapple, or the stacked seafood enchiladas in sherry cream. The flan has been dessert here for decades."
+  },
+  "fob-poke-bar-bellevue": {
+    "pullQuote": "Fresh-cut salmon poke bowls with wasabi aioli in downtown Bellevue.",
+    "blurb": "Pick fresh-cut salmon or tuna, add the homemade wasabi aioli and edamame, and choose rice or greens as the base. It's quick for a downtown lunch."
   }
 }

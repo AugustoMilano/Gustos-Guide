@@ -6268,7 +6268,7 @@
         "Indian"
       ],
       "placeType": "restaurant",
-      "oneLiner": "",
+      "oneLiner": "Vegetarian Punjabi thalis and chole bhature on 105th Avenue in Bellevue.",
       "perfectFor": [],
       "periods": [
         {
@@ -6307,7 +6307,7 @@
       ],
       "gustoScore": null,
       "website": "https://desitadkabellevue.com",
-      "phone": "+1 (206) 430-5557",
+      "phone": "+1 (425) 679-6868",
       "appleMapsUrl": "https://maps.apple.com/?daddr=47.6128152,-122.1998672&q=Desi%20Tadka%20Indian%20Grill",
       "applePlaceUrl": "https://maps.apple.com/place?auid=2651018645555388686",
       "guideSlugs": [
@@ -6315,8 +6315,17 @@
       ],
       "muid": "2651018645555388686",
       "hoursLabel": "",
-      "blurb": "",
-      "orderThis": [],
+      "blurb": "Order the chole bhature, chickpeas with two puffed fried breads, or a matar paneer thali. The whole menu is vegetarian, with no-onion, no-garlic options.",
+      "orderThis": [
+        {
+          "dish": "Chole Bhature",
+          "note": "Spiced chickpeas, two fried breads."
+        },
+        {
+          "dish": "Samosa Chaat",
+          "note": "Samosas, mint, tamarind, yogurt."
+        }
+      ],
       "ids": {},
       "copySource": "draft",
       "updatedAt": "2026-10-22",
@@ -6485,7 +6494,7 @@
         "Chicken"
       ],
       "placeType": "restaurant",
-      "oneLiner": "",
+      "oneLiner": "Spicy fried chicken thighs and sweet dinner rolls, Oprah's Seattle order.",
       "perfectFor": [],
       "periods": [
         {
@@ -6524,8 +6533,17 @@
       ],
       "muid": "11695178579399116619",
       "hoursLabel": "",
-      "blurb": "",
-      "orderThis": [],
+      "blurb": "Get it spicy, with dark meat, the way Oprah orders it, plus the sweet fresh-baked rolls. Ezell's has been frying chicken in Seattle since 1984.",
+      "orderThis": [
+        {
+          "dish": "Spicy Thighs",
+          "note": "Creole marinade, cayenne crust."
+        },
+        {
+          "dish": "Dinner Rolls",
+          "note": "Fresh-baked, a little sweet."
+        }
+      ],
       "ids": {},
       "copySource": "draft",
       "updatedAt": "2026-10-22",
@@ -6643,7 +6661,7 @@
       ],
       "placeType": "restaurant",
       "price": 2,
-      "oneLiner": "",
+      "oneLiner": "Fresh-cut salmon poke bowls with wasabi aioli in downtown Bellevue.",
       "perfectFor": [],
       "periods": [
         {
@@ -6670,7 +6688,7 @@
       ],
       "muid": "3517824207168419144",
       "hoursLabel": "",
-      "blurb": "",
+      "blurb": "Pick fresh-cut salmon or tuna, add the homemade wasabi aioli and edamame, and choose rice or greens as the base. It's quick for a downtown lunch.",
       "orderThis": [],
       "ids": {
         "yelp": "VO7EDbbpZNWE7U5MyWafww"
@@ -7533,7 +7551,7 @@
       ],
       "placeType": "restaurant",
       "price": 2,
-      "oneLiner": "",
+      "oneLiner": "Central Texas brisket and beef ribs on Bel-Red, open since 2024.",
       "perfectFor": [],
       "periods": [
         {
@@ -7566,8 +7584,17 @@
       ],
       "muid": "5925508658690327011",
       "hoursLabel": "",
-      "blurb": "",
-      "orderThis": [],
+      "blurb": "Order the Double R Ranch brisket, smoked low and slow, and the dino beef rib if it's Thursday or Sunday. Breakfast tacos start at 7 on weekdays.",
+      "orderThis": [
+        {
+          "dish": "Brisket",
+          "note": "Double R Ranch, sliced or chopped."
+        },
+        {
+          "dish": "Beef Rib",
+          "note": "Thursdays and Sundays, until sold out."
+        }
+      ],
       "ids": {
         "yelp": "nVfPfOTY3Y7d86mqFpSp4A"
       },
@@ -7961,7 +7988,7 @@
       ],
       "placeType": "restaurant",
       "price": 2,
-      "oneLiner": "",
+      "oneLiner": "Da Hilo Boy burger and loco moco from a Kirkland food-truck chef.",
       "perfectFor": [],
       "periods": [
         {
@@ -7985,8 +8012,17 @@
       ],
       "muid": "854099418095128901",
       "hoursLabel": "",
-      "blurb": "",
-      "orderThis": [],
+      "blurb": "Order Da Hilo Boy, with a fried egg, bacon confit, mushroom duxelles and peppercorn gravy, or the loco moco. Chef Reis Llaneza started with a food truck.",
+      "orderThis": [
+        {
+          "dish": "Da Hilo Boy",
+          "note": "Fried egg, bacon confit, peppercorn gravy."
+        },
+        {
+          "dish": "Loco Moco",
+          "note": "Two patties, eggs, gravy, rice."
+        }
+      ],
       "ids": {
         "yelp": "I19qXowDVY_h9FYvHfCpxQ"
       },
@@ -8008,45 +8044,6 @@
       "yelpSlug": "I19qXowDVY_h9FYvHfCpxQ"
     },
     {
-      "id": "island-soul-kirkland",
-      "city": "eastside",
-      "name": "Island Soul",
-      "neighborhood": "Downtown Kirkland",
-      "address": "312 Central Way, Ste 103, Kirkland, WA 98033",
-      "lat": 47.6777988,
-      "lng": -122.2026843,
-      "cuisine": [
-        "Caribbean"
-      ],
-      "placeType": "restaurant",
-      "oneLiner": "",
-      "perfectFor": [],
-      "periods": [],
-      "gustoScore": null,
-      "website": "https://www.arleanasrestaurant.com",
-      "phone": "+1 (425) 559-5077",
-      "appleMapsUrl": "https://maps.apple.com/?daddr=47.6777988,-122.2026843&q=Island%20Soul",
-      "applePlaceUrl": "https://maps.apple.com/place?auid=818513977931819334",
-      "guideSlugs": [
-        "kirkland"
-      ],
-      "muid": "818513977931819334",
-      "hoursLabel": "",
-      "blurb": "",
-      "orderThis": [],
-      "ids": {},
-      "copySource": "draft",
-      "updatedAt": "2026-10-22",
-      "photos": [
-        {
-          "source": "illustration",
-          "isIllustration": true,
-          "alt": "Illustration suggesting Caribbean at Island Soul",
-          "credit": "Illustration"
-        }
-      ]
-    },
-    {
       "id": "cactus-kirkland",
       "city": "eastside",
       "name": "Cactus",
@@ -8059,7 +8056,7 @@
       ],
       "placeType": "restaurant",
       "price": 2,
-      "oneLiner": "",
+      "oneLiner": "Achiote pork tacos and Santa Fe-style stacked enchiladas near Kirkland's Park Lane.",
       "perfectFor": [],
       "periods": [
         {
@@ -8104,8 +8101,17 @@
       ],
       "muid": "8020372993932764017",
       "hoursLabel": "",
-      "blurb": "",
-      "orderThis": [],
+      "blurb": "Order the achiote pork tacos, with a dash of pineapple, or the stacked seafood enchiladas in sherry cream. The flan has been dessert here for decades.",
+      "orderThis": [
+        {
+          "dish": "Achiote Pork Tacos",
+          "note": "Pineapple, pickled red onion."
+        },
+        {
+          "dish": "Seafood Enchiladas",
+          "note": "Prawns, scallops, sherry cream."
+        }
+      ],
       "ids": {
         "yelp": "zuth6hd6zEyH5WN9NS6G_A"
       },
@@ -8289,7 +8295,6 @@
       "perfectFor": [],
       "periods": [],
       "gustoScore": null,
-      "website": "https://www.thecoalmancafeandbar.com",
       "phone": "+1 (425) 698-1371",
       "appleMapsUrl": "https://maps.apple.com/?daddr=47.538197,-122.166451&q=The%20Coalman",
       "applePlaceUrl": "https://maps.apple.com/place?auid=339338550956342545",
@@ -8393,7 +8398,7 @@
         "Mexican"
       ],
       "placeType": "restaurant",
-      "oneLiner": "",
+      "oneLiner": "Mexico City braised tacos de guisado from a trailer on Gilman Boulevard.",
       "perfectFor": [],
       "periods": [
         {
@@ -8423,8 +8428,17 @@
       ],
       "muid": "15416145406464543184",
       "hoursLabel": "",
-      "blurb": "",
-      "orderThis": [],
+      "blurb": "Order the chicken tinga and the rajas, poblanos in sour cream. Sandra Diaz stews every filling, and half the board is vegetarian.",
+      "orderThis": [
+        {
+          "dish": "Chicken Tinga",
+          "note": "Chipotle sauce, pickled onions."
+        },
+        {
+          "dish": "Rajas",
+          "note": "Poblano peppers in sour cream."
+        }
+      ],
       "ids": {},
       "copySource": "draft",
       "updatedAt": "2026-10-22",
@@ -8723,7 +8737,7 @@
         "Burgers"
       ],
       "placeType": "counter",
-      "oneLiner": "",
+      "oneLiner": "Carhop drive-in burgers made with grass-fed beef, a family business since 1952.",
       "perfectFor": [],
       "periods": [
         {
@@ -8756,7 +8770,7 @@
       ],
       "muid": "7205519918905417088",
       "hoursLabel": "",
-      "blurb": "",
+      "blurb": "Turn on your headlights and a carhop takes your order at the car. The beef is grass-fed, and the tartar sauce is still Phil Jensen's 1952 recipe.",
       "orderThis": [],
       "ids": {},
       "copySource": "draft",
@@ -9490,12 +9504,6 @@
         },
         {
           "placeId": "the-box",
-          "pullQuote": "",
-          "blurb": "",
-          "copySource": "draft"
-        },
-        {
-          "placeId": "island-soul-kirkland",
           "pullQuote": "",
           "blurb": "",
           "copySource": "draft"
