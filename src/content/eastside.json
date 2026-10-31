@@ -1491,7 +1491,7 @@
         "Brazilian"
       ],
       "placeType": "restaurant",
-      "oneLiner": "Brazilian churrasco on Bellevue Way, served rodizio style.",
+      "oneLiner": "Tableside-carved picanha and endless churrasco at a Brazilian steakhouse on Bellevue Way.",
       "perfectFor": [],
       "periods": [
         {
@@ -1536,8 +1536,17 @@
       ],
       "muid": "",
       "hoursLabel": "",
-      "blurb": "",
-      "orderThis": [],
+      "blurb": "Come hungry for the picanha, the prime top sirloin carved at the table. The Market Table of salads, cheeses and cured meats comes with it.",
+      "orderThis": [
+        {
+          "dish": "Picanha",
+          "note": "Rock-salted top sirloin, carved tableside."
+        },
+        {
+          "dish": "Market Table",
+          "note": "Salads, cheeses, cured meats."
+        }
+      ],
       "ids": {},
       "copySource": "draft",
       "updatedAt": "2026-10-20",
@@ -1721,7 +1730,7 @@
         "Chinese"
       ],
       "placeType": "restaurant",
-      "oneLiner": "Hong Kong-style Chinese on Main, in the old downtown blocks.",
+      "oneLiner": "Five-spice crispy duck and Tung Po pork belly at a stylish Main Street Chinese restaurant.",
       "perfectFor": [],
       "periods": [
         {
@@ -1753,8 +1762,17 @@
       ],
       "muid": "",
       "hoursLabel": "",
-      "blurb": "",
-      "orderThis": [],
+      "blurb": "Order the whole five-spice crispy duck to roll in pancakes, and the Tung Po pork belly with steamed buns. Glass rooms suit groups.",
+      "orderThis": [
+        {
+          "dish": "Five-Spice Crispy Duck",
+          "note": "Deboned, crackling skin, pancakes."
+        },
+        {
+          "dish": "Tung Po Pork Belly",
+          "note": "Ginger-soy glaze, steamed buns."
+        }
+      ],
       "ids": {
         "yelp": "grempm7OaF3ZE_3gtYgdAQ"
       },
@@ -2026,7 +2044,7 @@
         "Italian"
       ],
       "placeType": "restaurant",
-      "oneLiner": "Lombardy-style Italian at Carillon Point, dinner beside the lake.",
+      "oneLiner": "Handmade pasta like wild boar pappardelle, with Lake Washington views at Carillon Point.",
       "perfectFor": [],
       "periods": [
         {
@@ -2060,8 +2078,13 @@
       ],
       "muid": "",
       "hoursLabel": "",
-      "blurb": "",
-      "orderThis": [],
+      "blurb": "Order a handmade pasta, like the wild boar pappardelle, and ask for a window or patio table over the lake. The cooking is from Lombardy.",
+      "orderThis": [
+        {
+          "dish": "Pappardelle with Wild Boar Ragu",
+          "note": "Handmade pasta, Calabrian chili."
+        }
+      ],
       "ids": {},
       "copySource": "draft",
       "updatedAt": "2026-10-20",
@@ -4858,7 +4881,7 @@
         "Lebanese"
       ],
       "placeType": "restaurant",
-      "oneLiner": "Lebanese plates on Southeast 4th, in the Sammamish town center.",
+      "oneLiner": "Hummus, kafta kabobs and warm house-baked pita at a halal Lebanese spot in Sammamish.",
       "perfectFor": [],
       "periods": [
         {
@@ -4884,8 +4907,17 @@
       ],
       "muid": "",
       "hoursLabel": "",
-      "blurb": "",
-      "orderThis": [],
+      "blurb": "Start with the hummus and warm pita, then the kafta kabob of ground beef and lamb. The meats are halal and the pita is baked in-house.",
+      "orderThis": [
+        {
+          "dish": "Hummus",
+          "note": "Tahini, garlic, lemon, olive oil."
+        },
+        {
+          "dish": "Kafta Kabob",
+          "note": "Ground beef and lamb, rice, tzatziki."
+        }
+      ],
       "ids": {
         "yelp": "MQMyrnwXlbiNqGwfbLRnLQ"
       },
@@ -5881,7 +5913,7 @@
       ],
       "placeType": "restaurant",
       "price": 3,
-      "oneLiner": "",
+      "oneLiner": "Cajun blackened chicken and sticky Korean ribs in a big Lincoln Square room.",
       "perfectFor": [],
       "periods": [
         {
@@ -5923,8 +5955,17 @@
       ],
       "muid": "14508377034778846098",
       "hoursLabel": "",
-      "blurb": "",
-      "orderThis": [],
+      "blurb": "Order the Cajun blackened chicken, the chain's long-running signature, and share the sticky Korean ribs. It's a big room that fits a mixed group.",
+      "orderThis": [
+        {
+          "dish": "Cajun Blackened Chicken",
+          "note": "Garlic butter, warm potato salad."
+        },
+        {
+          "dish": "Sticky Korean Ribs",
+          "note": "Gochujang glaze, crispy onions."
+        }
+      ],
       "ids": {
         "yelp": "6wrvQqQwkeQnokD7kPX-rQ"
       },
@@ -6200,7 +6241,7 @@
       ],
       "placeType": "restaurant",
       "price": 2,
-      "oneLiner": "",
+      "oneLiner": "The Bellevue Roll and jalapeño-lime sushi at Lincoln Square's loud Latin-accented sushi bar.",
       "perfectFor": [],
       "periods": [
         {
@@ -6234,8 +6275,17 @@
       ],
       "muid": "235237345928053165",
       "hoursLabel": "",
-      "blurb": "",
-      "orderThis": [],
+      "blurb": "Start with the Bellevue Roll, eel and shrimp under tobiko, then the Wicked Sensation with its jalapeño-lime glaze. Happy hour runs twice daily.",
+      "orderThis": [
+        {
+          "dish": "Bellevue Roll",
+          "note": "Eel, shrimp, cucumber, tobiko."
+        },
+        {
+          "dish": "Wicked Sensation",
+          "note": "Spicy tuna, jalapeño-lime glaze."
+        }
+      ],
       "ids": {
         "yelp": "LM28Dlj_2UVnv8wTCm8H_A"
       },
@@ -6569,7 +6619,7 @@
       ],
       "placeType": "restaurant",
       "price": 2,
-      "oneLiner": "",
+      "oneLiner": "Crispy garlic chicken and pad Thai at a family-style Thai spot on Main.",
       "perfectFor": [],
       "periods": [
         {
@@ -6626,8 +6676,17 @@
       ],
       "muid": "13234509355135903354",
       "hoursLabel": "",
-      "blurb": "",
-      "orderThis": [],
+      "blurb": "Order the crispy garlic chicken and a plate of pad Thai to share. The room on Old Bellevue's Main Street suits an easy weeknight dinner.",
+      "orderThis": [
+        {
+          "dish": "Crispy Garlic Chicken",
+          "note": "The house favorite."
+        },
+        {
+          "dish": "Pad Thai",
+          "note": "A classic, done well."
+        }
+      ],
       "ids": {
         "yelp": "RQ1V_eNdeZGGWkUcHvDLZA"
       },
@@ -6723,7 +6782,7 @@
       ],
       "placeType": "restaurant",
       "price": 2,
-      "oneLiner": "",
+      "oneLiner": "A Brooklyn Bridge pie from Seattle's hometown pizza chain, on Bellevue's Main Street.",
       "perfectFor": [],
       "periods": [
         {
@@ -6756,8 +6815,13 @@
       ],
       "muid": "18196189739224874619",
       "hoursLabel": "",
-      "blurb": "",
-      "orderThis": [],
+      "blurb": "Order the Brooklyn Bridge, with Cascioppo sausage, mushrooms, olives, peppers and onions. Pagliacci has made pizza in Seattle since 1979.",
+      "orderThis": [
+        {
+          "dish": "Brooklyn Bridge",
+          "note": "Sausage, mushrooms, olives, peppers."
+        }
+      ],
       "ids": {
         "yelp": "_VXBAStiPUvPR2uCTIZv0Q"
       },
@@ -6791,7 +6855,7 @@
       ],
       "placeType": "restaurant",
       "price": 2,
-      "oneLiner": "",
+      "oneLiner": "Tempura portobello fries and halibut tacos on a BAM Alley patio in Bellevue.",
       "perfectFor": [],
       "periods": [
         {
@@ -6836,8 +6900,17 @@
       ],
       "muid": "17092655385343306061",
       "hoursLabel": "",
-      "blurb": "",
-      "orderThis": [],
+      "blurb": "Start with the portobello fries, the house's signature appetizer, then the seared halibut tacos. Happy hour runs daily from 2 to 5.",
+      "orderThis": [
+        {
+          "dish": "Portobello Fries",
+          "note": "Tempura-battered, garlic aioli."
+        },
+        {
+          "dish": "Halibut Tacos",
+          "note": "Seared halibut, slaw, pineapple salsa."
+        }
+      ],
       "ids": {
         "yelp": "hlCBEBEK1LjgaRAioQRuIQ"
       },
@@ -6870,7 +6943,7 @@
         "Burgers"
       ],
       "placeType": "restaurant",
-      "oneLiner": "",
+      "oneLiner": "Charbroiled bacon cheeseburgers and crackly onion rings on Main Street since 1989.",
       "perfectFor": [],
       "periods": [
         {
@@ -6896,8 +6969,17 @@
       ],
       "muid": "70696049156331835",
       "hoursLabel": "",
-      "blurb": "",
-      "orderThis": [],
+      "blurb": "Get the bacon cheeseburger on its huge sesame bun, with fry sauce and onion rings. Add a milkshake; the room hasn't changed much since 1989.",
+      "orderThis": [
+        {
+          "dish": "Bacon Cheeseburger",
+          "note": "Charbroiled, American cheese, sesame bun."
+        },
+        {
+          "dish": "Onion Rings",
+          "note": "Crunchy, oily, worth it."
+        }
+      ],
       "ids": {},
       "copySource": "draft",
       "updatedAt": "2026-10-22",
@@ -6922,7 +7004,7 @@
         "Thai"
       ],
       "placeType": "restaurant",
-      "oneLiner": "",
+      "oneLiner": "Fragrant duck with steamed buns and seven flavor beef at Wild Ginger Bellevue.",
       "perfectFor": [],
       "periods": [
         {
@@ -6968,8 +7050,17 @@
       ],
       "muid": "14795579837206651278",
       "hoursLabel": "",
-      "blurb": "",
-      "orderThis": [],
+      "blurb": "Order the fragrant duck, twice cooked with Sichuan peppercorn and served with bao and plum sauce. Add the seven flavor beef.",
+      "orderThis": [
+        {
+          "dish": "Fragrant Duck",
+          "note": "Twice cooked, bao, plum sauce."
+        },
+        {
+          "dish": "Seven Flavor Beef",
+          "note": "Lemongrass, peanuts, basil, chilies."
+        }
+      ],
       "ids": {},
       "copySource": "draft",
       "updatedAt": "2026-10-22",
@@ -6995,7 +7086,7 @@
       ],
       "placeType": "restaurant",
       "price": 2,
-      "oneLiner": "",
+      "oneLiner": "Paella mixta and patatas bravas at a Bellevue Square Spanish tapas bar.",
       "perfectFor": [],
       "periods": [
         {
@@ -7028,8 +7119,17 @@
       ],
       "muid": "5870001278058099555",
       "hoursLabel": "",
-      "blurb": "",
-      "orderThis": [],
+      "blurb": "Order the paella mixta early, since it takes about 30 minutes, then patatas bravas and chorizo empanadas. There are more than 40 tapas.",
+      "orderThis": [
+        {
+          "dish": "Paella Mixta",
+          "note": "Saffron rice, seafood, chicken, chorizo; serves two."
+        },
+        {
+          "dish": "Patatas Bravas",
+          "note": "Crisp potatoes, spicy sauce."
+        }
+      ],
       "ids": {
         "yelp": "E2BYo2gg0rmhWCY1JkcTpA"
       },
@@ -7063,7 +7163,7 @@
       ],
       "placeType": "bar",
       "price": 3,
-      "oneLiner": "",
+      "oneLiner": "Bartender's-choice cocktails in a dim speakeasy tucked into the W Bellevue.",
       "perfectFor": [],
       "periods": [
         {
@@ -7088,8 +7188,13 @@
       ],
       "muid": "4431814629018651525",
       "hoursLabel": "",
-      "blurb": "",
-      "orderThis": [],
+      "blurb": "Name a spirit and let the bartender build you a drink; this bar is known for off-menu cocktails. The back room, Unrest, opens Thursday to Saturday.",
+      "orderThis": [
+        {
+          "dish": "Bartender's Choice",
+          "note": "Name a spirit; they build the drink."
+        }
+      ],
       "ids": {
         "yelp": "doYe8sfMOJVaQefeyR1Omg"
       },
@@ -7122,7 +7227,7 @@
         "Japanese"
       ],
       "placeType": "restaurant",
-      "oneLiner": "",
+      "oneLiner": "Conveyor-belt sushi and a prize capsule for every 15 plates near Wilburton.",
       "perfectFor": [],
       "periods": [
         {
@@ -7168,7 +7273,7 @@
       ],
       "muid": "3351618210874800921",
       "hoursLabel": "",
-      "blurb": "",
+      "blurb": "Grab plates off the belt or order on the touchscreen; every 15 plates earns a Bikkura Pon prize. It's a fun pick with kids.",
       "orderThis": [],
       "ids": {},
       "copySource": "draft",
@@ -7194,7 +7299,7 @@
         "American"
       ],
       "placeType": "restaurant",
-      "oneLiner": "",
+      "oneLiner": "The 520 Burger and big hot wings at an Old Bellevue bar and grill.",
       "perfectFor": [],
       "periods": [
         {
@@ -7239,8 +7344,17 @@
       ],
       "muid": "13217783101883786373",
       "hoursLabel": "",
-      "blurb": "",
-      "orderThis": [],
+      "blurb": "Order the 520 Burger, flame-grilled with Swiss or Tillamook cheddar on brioche. Add the hot wings in the house's secret sauce.",
+      "orderThis": [
+        {
+          "dish": "520 Burger",
+          "note": "Fresh-ground, flame-grilled, brioche bun."
+        },
+        {
+          "dish": "Hot Wings",
+          "note": "Secret hot sauce, ranch or gorgonzola."
+        }
+      ],
       "ids": {},
       "copySource": "draft",
       "updatedAt": "2026-10-22",
@@ -7266,7 +7380,7 @@
       ],
       "placeType": "restaurant",
       "price": 3,
-      "oneLiner": "",
+      "oneLiner": "The JOEY classic steak with crispy mashed potatoes at Bellevue Place.",
       "perfectFor": [],
       "periods": [
         {
@@ -7307,8 +7421,17 @@
       ],
       "muid": "9629498083750129956",
       "hoursLabel": "",
-      "blurb": "",
-      "orderThis": [],
+      "blurb": "Order the classic steak, a prime sirloin with loaded crispy mashed potatoes, or the steak and sushi. It's a polished room with a patio.",
+      "orderThis": [
+        {
+          "dish": "Classic Steak",
+          "note": "7 oz prime sirloin, crispy mash."
+        },
+        {
+          "dish": "Steak & Sushi",
+          "note": "Steak tataki plus a roll."
+        }
+      ],
       "ids": {
         "yelp": "PzFJNls55DcBsWJOU2O0BQ"
       },
@@ -7342,7 +7465,7 @@
       ],
       "placeType": "cafe",
       "price": 2,
-      "oneLiner": "",
+      "oneLiner": "Bulgogi brioche sandwiches and tiramisu lattes at a calm downtown Bellevue cafe.",
       "perfectFor": [],
       "periods": [
         {
@@ -7360,7 +7483,7 @@
         }
       ],
       "gustoScore": null,
-      "website": "http://semicoloncafe.com",
+      "website": "https://www.semicolonbellevue.com/",
       "phone": "+1 (425) 223-5932",
       "appleMapsUrl": "https://maps.apple.com/?daddr=47.611842,-122.200963&q=Semicolon%20Cafe",
       "applePlaceUrl": "https://maps.apple.com/place?auid=17374801430124812803",
@@ -7369,8 +7492,17 @@
       ],
       "muid": "17374801430124812803",
       "hoursLabel": "",
-      "blurb": "",
-      "orderThis": [],
+      "blurb": "Get the bulgogi sandwich on toasted brioche and a tiramisu latte. Save room for the ube mini cheesecake, made with purple sweet potato.",
+      "orderThis": [
+        {
+          "dish": "Bulgogi Sandwich",
+          "note": "Toasted brioche."
+        },
+        {
+          "dish": "Ube Mini Cheesecake",
+          "note": "Purple sweet potato, vanilla cheesecake."
+        }
+      ],
       "ids": {
         "yelp": "ha6_Tq1CGGVT11vDqr3oYQ"
       },
@@ -7628,7 +7760,7 @@
       ],
       "placeType": "restaurant",
       "price": 2,
-      "oneLiner": "",
+      "oneLiner": "Black garlic Noburu Black ramen with chashu and egg, plus sushi, in Redmond.",
       "perfectFor": [],
       "periods": [
         {
@@ -7673,8 +7805,17 @@
       ],
       "muid": "506101582495902557",
       "hoursLabel": "",
-      "blurb": "",
-      "orderThis": [],
+      "blurb": "Order the Noburu Black, a tonkotsu-style bowl with black garlic oil, chashu and a seasoned egg. Rolls fill the other half of the menu.",
+      "orderThis": [
+        {
+          "dish": "Noburu Black",
+          "note": "Black garlic oil, chashu, seasoned egg."
+        },
+        {
+          "dish": "Tonkotsu Ramen",
+          "note": "The same toppings, no garlic oil."
+        }
+      ],
       "ids": {
         "yelp": "tjDtfz5vcbSrX8zO-G5fww"
       },
@@ -7707,7 +7848,7 @@
         "Japanese"
       ],
       "placeType": "restaurant",
-      "oneLiner": "",
+      "oneLiner": "Mozzarella-stuffed tomato and cheese katsu at the Redmond branch of the Capitol Hill shop.",
       "perfectFor": [],
       "periods": [
         {
@@ -7758,8 +7899,17 @@
       ],
       "muid": "13848089538661986467",
       "hoursLabel": "",
-      "blurb": "",
-      "orderThis": [],
+      "blurb": "Get the tomato and cheese katsu: thin pork wrapped around mozzarella, under a tomato miso sauce. Every set comes with rice, miso soup and cabbage.",
+      "orderThis": [
+        {
+          "dish": "Mozzarella Tomato & Cheese Katsu",
+          "note": "Pork, mozzarella, tomato miso sauce."
+        },
+        {
+          "dish": "Katsu Nabe",
+          "note": "Cutlet simmered with egg in a clay pot."
+        }
+      ],
       "ids": {},
       "copySource": "draft",
       "updatedAt": "2026-10-22",
@@ -7785,7 +7935,7 @@
       ],
       "placeType": "restaurant",
       "price": 2,
-      "oneLiner": "",
+      "oneLiner": "Enchiladas divorciadas and a deep tequila list in Redmond's old City Hall building.",
       "perfectFor": [],
       "periods": [
         {
@@ -7820,8 +7970,17 @@
       ],
       "muid": "7686808905765432222",
       "hoursLabel": "",
-      "blurb": "",
-      "orderThis": [],
+      "blurb": "Order the enchiladas divorciadas, half salsa verde and half salsa roja, with a tequila flight. The brick building was Redmond's City Hall from 1915 to 1927.",
+      "orderThis": [
+        {
+          "dish": "Enchiladas Divorciadas",
+          "note": "Salsa verde, salsa roja, braised chicken."
+        },
+        {
+          "dish": "Tequila Flight",
+          "note": "From a long list of agaves."
+        }
+      ],
       "ids": {
         "yelp": "1fSx9o5xWGWbetN0aRbF3A"
       },
@@ -7925,7 +8084,7 @@
       ],
       "placeType": "restaurant",
       "price": 2,
-      "oneLiner": "",
+      "oneLiner": "Short rib pho in a 24-hour broth, steps from Kirkland's Peter Kirk Park.",
       "perfectFor": [],
       "periods": [
         {
@@ -7953,8 +8112,13 @@
       ],
       "muid": "2010749036812995121",
       "hoursLabel": "",
-      "blurb": "",
-      "orderThis": [],
+      "blurb": "Order the short rib pho, built on the house broth that braises for 24 hours. There are vegan and gluten-free bowls too.",
+      "orderThis": [
+        {
+          "dish": "Short Rib Pho",
+          "note": "Braised short rib, 24-hour broth."
+        }
+      ],
       "ids": {
         "yelp": "riOFLfbHHiUUP232mVjOcw"
       },
@@ -8225,7 +8389,7 @@
         "Venezuelan"
       ],
       "placeType": "restaurant",
-      "oneLiner": "",
+      "oneLiner": "Reina pepiada arepas stuffed with chicken-avocado salad at a Venezuelan spot in Renton.",
       "perfectFor": [],
       "periods": [
         {
@@ -8257,8 +8421,13 @@
       ],
       "muid": "2020282391247799612",
       "hoursLabel": "",
-      "blurb": "",
-      "orderThis": [],
+      "blurb": "Order the reina pepiada, a griddled arepa filled with chicken salad and avocado. The Renton storefront also runs a food truck.",
+      "orderThis": [
+        {
+          "dish": "Reina Pepiada",
+          "note": "Chicken salad and avocado in an arepa."
+        }
+      ],
       "ids": {
         "yelp": "xqp6xGjEDR3lgpl54v9JWQ"
       },
@@ -8280,42 +8449,6 @@
       "yelpSlug": "xqp6xGjEDR3lgpl54v9JWQ"
     },
     {
-      "id": "the-coalman",
-      "city": "eastside",
-      "name": "The Coalman",
-      "neighborhood": "May Creek",
-      "address": "6977 Coal Creek Pkwy SE, Newcastle, WA 98059",
-      "lat": 47.538197,
-      "lng": -122.166451,
-      "cuisine": [
-        "Wine"
-      ],
-      "placeType": "bar",
-      "oneLiner": "",
-      "perfectFor": [],
-      "periods": [],
-      "gustoScore": null,
-      "phone": "+1 (425) 698-1371",
-      "appleMapsUrl": "https://maps.apple.com/?daddr=47.538197,-122.166451&q=The%20Coalman",
-      "applePlaceUrl": "https://maps.apple.com/place?auid=339338550956342545",
-      "guideSlugs": [],
-      "muid": "339338550956342545",
-      "hoursLabel": "",
-      "blurb": "",
-      "orderThis": [],
-      "ids": {},
-      "copySource": "draft",
-      "updatedAt": "2026-10-22",
-      "photos": [
-        {
-          "source": "illustration",
-          "isIllustration": true,
-          "alt": "Illustration suggesting Wine at The Coalman",
-          "credit": "Illustration"
-        }
-      ]
-    },
-    {
       "id": "naan-n-curry",
       "city": "eastside",
       "name": "Naan-N-Curry",
@@ -8327,7 +8460,7 @@
         "Indian"
       ],
       "placeType": "restaurant",
-      "oneLiner": "",
+      "oneLiner": "Lamb dum biryani with saffron rice and fried onions in quilted Issaquah booths.",
       "perfectFor": [],
       "periods": [
         {
@@ -8372,8 +8505,17 @@
       ],
       "muid": "907267375096408052",
       "hoursLabel": "",
-      "blurb": "",
-      "orderThis": [],
+      "blurb": "Order the lamb dum biryani, then malai boti or balti chicken from the Pakistani side of the menu. The biryani is even better as leftovers.",
+      "orderThis": [
+        {
+          "dish": "Lamb Dum Biryani",
+          "note": "Saffron rice, tender lamb, fried onions."
+        },
+        {
+          "dish": "Malai Boti",
+          "note": "Charred, creamy chicken kebab."
+        }
+      ],
       "ids": {},
       "copySource": "draft",
       "updatedAt": "2026-10-22",
@@ -8907,8 +9049,8 @@
         },
         {
           "placeId": "earls-kitchen-bar",
-          "pullQuote": "",
-          "blurb": "",
+          "pullQuote": "Cajun blackened chicken and sticky Korean ribs in a big Lincoln Square room.",
+          "blurb": "Order the Cajun blackened chicken, the chain's long-running signature, and share the sticky Korean ribs. It's a big room that fits a mixed group.",
           "copySource": "draft"
         },
         {
@@ -9028,8 +9170,8 @@
         },
         {
           "placeId": "kobuta-and-ookami-redmond",
-          "pullQuote": "",
-          "blurb": "",
+          "pullQuote": "Mozzarella-stuffed tomato and cheese katsu at the Redmond branch of the Capitol Hill shop.",
+          "blurb": "Get the tomato and cheese katsu: thin pork wrapped around mozzarella, under a tomato miso sauce. Every set comes with rice, miso soup and cabbage.",
           "copySource": "draft"
         },
         {
@@ -9046,14 +9188,14 @@
         },
         {
           "placeId": "noburu-ramen-and-sushi",
-          "pullQuote": "",
-          "blurb": "",
+          "pullQuote": "Black garlic Noburu Black ramen with chashu and egg, plus sushi, in Redmond.",
+          "blurb": "Order the Noburu Black, a tonkotsu-style bowl with black garlic oil, chashu and a seasoned egg. Rolls fill the other half of the menu.",
           "copySource": "draft"
         },
         {
           "placeId": "matador-redmond",
-          "pullQuote": "",
-          "blurb": "",
+          "pullQuote": "Enchiladas divorciadas and a deep tequila list in Redmond's old City Hall building.",
+          "blurb": "Order the enchiladas divorciadas, half salsa verde and half salsa roja, with a tequila flight. The brick building was Redmond's City Hall from 1915 to 1927.",
           "copySource": "draft"
         },
         {
@@ -9088,8 +9230,8 @@
       "entries": [
         {
           "placeId": "naan-n-curry",
-          "pullQuote": "",
-          "blurb": "",
+          "pullQuote": "Lamb dum biryani with saffron rice and fried onions in quilted Issaquah booths.",
+          "blurb": "Order the lamb dum biryani, then malai boti or balti chicken from the Pakistani side of the menu. The biryani is even better as leftovers.",
           "copySource": "draft"
         },
         {
@@ -9263,14 +9405,14 @@
         },
         {
           "placeId": "earls-kitchen-bar",
-          "pullQuote": "",
-          "blurb": "",
+          "pullQuote": "Cajun blackened chicken and sticky Korean ribs in a big Lincoln Square room.",
+          "blurb": "Order the Cajun blackened chicken, the chain's long-running signature, and share the sticky Korean ribs. It's a big room that fits a mixed group.",
           "copySource": "draft"
         },
         {
           "placeId": "japonessa",
-          "pullQuote": "",
-          "blurb": "",
+          "pullQuote": "The Bellevue Roll and jalapeño-lime sushi at Lincoln Square's loud Latin-accented sushi bar.",
+          "blurb": "Start with the Bellevue Roll, eel and shrimp under tobiko, then the Wicked Sensation with its jalapeño-lime glaze. Happy hour runs twice daily.",
           "copySource": "draft"
         },
         {
@@ -9323,8 +9465,8 @@
         },
         {
           "placeId": "pagliacci-pizza",
-          "pullQuote": "",
-          "blurb": "",
+          "pullQuote": "A Brooklyn Bridge pie from Seattle's hometown pizza chain, on Bellevue's Main Street.",
+          "blurb": "Order the Brooklyn Bridge, with Cascioppo sausage, mushrooms, olives, peppers and onions. Pagliacci has made pizza in Seattle since 1979.",
           "copySource": "draft"
         },
         {
@@ -9347,26 +9489,26 @@
         },
         {
           "placeId": "fern-thai-on-main",
-          "pullQuote": "",
-          "blurb": "",
+          "pullQuote": "Crispy garlic chicken and pad Thai at a family-style Thai spot on Main.",
+          "blurb": "Order the crispy garlic chicken and a plate of pad Thai to share. The room on Old Bellevue's Main Street suits an easy weeknight dinner.",
           "copySource": "draft"
         },
         {
           "placeId": "central-bar-restaurant",
-          "pullQuote": "",
-          "blurb": "",
+          "pullQuote": "Tempura portobello fries and halibut tacos on a BAM Alley patio in Bellevue.",
+          "blurb": "Start with the portobello fries, the house's signature appetizer, then the seared halibut tacos. Happy hour runs daily from 2 to 5.",
           "copySource": "draft"
         },
         {
           "placeId": "broiler-bay",
-          "pullQuote": "",
-          "blurb": "",
+          "pullQuote": "Charbroiled bacon cheeseburgers and crackly onion rings on Main Street since 1989.",
+          "blurb": "Get the bacon cheeseburger on its huge sesame bun, with fry sauce and onion rings. Add a milkshake; the room hasn't changed much since 1989.",
           "copySource": "draft"
         },
         {
           "placeId": "wild-ginger",
-          "pullQuote": "",
-          "blurb": "",
+          "pullQuote": "Fragrant duck with steamed buns and seven flavor beef at Wild Ginger Bellevue.",
+          "blurb": "Order the fragrant duck, twice cooked with Sichuan peppercorn and served with bao and plum sauce. Add the seven flavor beef.",
           "copySource": "draft"
         },
         {
@@ -9377,38 +9519,38 @@
         },
         {
           "placeId": "castilla",
-          "pullQuote": "",
-          "blurb": "",
+          "pullQuote": "Paella mixta and patatas bravas at a Bellevue Square Spanish tapas bar.",
+          "blurb": "Order the paella mixta early, since it takes about 30 minutes, then patatas bravas and chorizo empanadas. There are more than 40 tapas.",
           "copySource": "draft"
         },
         {
           "placeId": "civility-and-unrest",
-          "pullQuote": "",
-          "blurb": "",
+          "pullQuote": "Bartender's-choice cocktails in a dim speakeasy tucked into the W Bellevue.",
+          "blurb": "Name a spirit and let the bartender build you a drink; this bar is known for off-menu cocktails. The back room, Unrest, opens Thursday to Saturday.",
           "copySource": "draft"
         },
         {
           "placeId": "kura-revolving-sushi",
-          "pullQuote": "",
-          "blurb": "",
+          "pullQuote": "Conveyor-belt sushi and a prize capsule for every 15 plates near Wilburton.",
+          "blurb": "Grab plates off the belt or order on the touchscreen; every 15 plates earns a Bikkura Pon prize. It's a fun pick with kids.",
           "copySource": "draft"
         },
         {
           "placeId": "520-bar-and-grill",
-          "pullQuote": "",
-          "blurb": "",
+          "pullQuote": "The 520 Burger and big hot wings at an Old Bellevue bar and grill.",
+          "blurb": "Order the 520 Burger, flame-grilled with Swiss or Tillamook cheddar on brioche. Add the hot wings in the house's secret sauce.",
           "copySource": "draft"
         },
         {
           "placeId": "joey-bellevue",
-          "pullQuote": "",
-          "blurb": "",
+          "pullQuote": "The JOEY classic steak with crispy mashed potatoes at Bellevue Place.",
+          "blurb": "Order the classic steak, a prime sirloin with loaded crispy mashed potatoes, or the steak and sushi. It's a polished room with a patio.",
           "copySource": "draft"
         },
         {
           "placeId": "semicolon-cafe",
-          "pullQuote": "",
-          "blurb": "",
+          "pullQuote": "Bulgogi brioche sandwiches and tiramisu lattes at a calm downtown Bellevue cafe.",
+          "blurb": "Get the bulgogi sandwich on toasted brioche and a tiramisu latte. Save room for the ube mini cheesecake, made with purple sweet potato.",
           "copySource": "draft"
         },
         {
@@ -9492,8 +9634,8 @@
         },
         {
           "placeId": "vinason-pho-kitchen",
-          "pullQuote": "",
-          "blurb": "",
+          "pullQuote": "Short rib pho in a 24-hour broth, steps from Kirkland's Peter Kirk Park.",
+          "blurb": "Order the short rib pho, built on the house broth that braises for 24 hours. There are vegan and gluten-free bowls too.",
           "copySource": "draft"
         },
         {
@@ -9697,8 +9839,8 @@
       "entries": [
         {
           "placeId": "paparepas",
-          "pullQuote": "",
-          "blurb": "",
+          "pullQuote": "Reina pepiada arepas stuffed with chicken-avocado salad at a Venezuelan spot in Renton.",
+          "blurb": "Order the reina pepiada, a griddled arepa filled with chicken salad and avocado. The Renton storefront also runs a food truck.",
           "copySource": "draft"
         },
         {
@@ -9859,14 +10001,14 @@
         },
         {
           "placeId": "japonessa",
-          "pullQuote": "",
-          "blurb": "",
+          "pullQuote": "The Bellevue Roll and jalapeño-lime sushi at Lincoln Square's loud Latin-accented sushi bar.",
+          "blurb": "Start with the Bellevue Roll, eel and shrimp under tobiko, then the Wicked Sensation with its jalapeño-lime glaze. Happy hour runs twice daily.",
           "copySource": "draft"
         },
         {
           "placeId": "vinason-pho-kitchen",
-          "pullQuote": "",
-          "blurb": "",
+          "pullQuote": "Short rib pho in a 24-hour broth, steps from Kirkland's Peter Kirk Park.",
+          "blurb": "Order the short rib pho, built on the house broth that braises for 24 hours. There are vegan and gluten-free bowls too.",
           "copySource": "draft"
         },
         {
@@ -9877,8 +10019,8 @@
         },
         {
           "placeId": "noburu-ramen-and-sushi",
-          "pullQuote": "",
-          "blurb": "",
+          "pullQuote": "Black garlic Noburu Black ramen with chashu and egg, plus sushi, in Redmond.",
+          "blurb": "Order the Noburu Black, a tonkotsu-style bowl with black garlic oil, chashu and a seasoned egg. Rolls fill the other half of the menu.",
           "copySource": "draft"
         },
         {
@@ -9889,26 +10031,26 @@
         },
         {
           "placeId": "fern-thai-on-main",
-          "pullQuote": "",
-          "blurb": "",
+          "pullQuote": "Crispy garlic chicken and pad Thai at a family-style Thai spot on Main.",
+          "blurb": "Order the crispy garlic chicken and a plate of pad Thai to share. The room on Old Bellevue's Main Street suits an easy weeknight dinner.",
           "copySource": "draft"
         },
         {
           "placeId": "kobuta-and-ookami-redmond",
-          "pullQuote": "",
-          "blurb": "",
+          "pullQuote": "Mozzarella-stuffed tomato and cheese katsu at the Redmond branch of the Capitol Hill shop.",
+          "blurb": "Get the tomato and cheese katsu: thin pork wrapped around mozzarella, under a tomato miso sauce. Every set comes with rice, miso soup and cabbage.",
           "copySource": "draft"
         },
         {
           "placeId": "wild-ginger",
-          "pullQuote": "",
-          "blurb": "",
+          "pullQuote": "Fragrant duck with steamed buns and seven flavor beef at Wild Ginger Bellevue.",
+          "blurb": "Order the fragrant duck, twice cooked with Sichuan peppercorn and served with bao and plum sauce. Add the seven flavor beef.",
           "copySource": "draft"
         },
         {
           "placeId": "kura-revolving-sushi",
-          "pullQuote": "",
-          "blurb": "",
+          "pullQuote": "Conveyor-belt sushi and a prize capsule for every 15 plates near Wilburton.",
+          "blurb": "Grab plates off the belt or order on the touchscreen; every 15 plates earns a Bikkura Pon prize. It's a fun pick with kids.",
           "copySource": "draft"
         },
         {
