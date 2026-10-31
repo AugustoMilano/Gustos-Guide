@@ -1414,7 +1414,7 @@ textarea {
 /* Sheets carry forms and long text, so they take a denser tint than the
    resting glass; the page behind stays a soft blur, not a second layer of copy. */
 .modal-panel {
-  background: rgb(255 250 243 / 90%);
+  background: rgb(255 250 243 / 96%);
   backdrop-filter: blur(32px) saturate(180%);
   -webkit-backdrop-filter: blur(32px) saturate(180%);
 }
