@@ -1,3 +1,4 @@
+import { isRestaurant } from '../lib/restaurant.ts'
 import { onePerBrand } from '../lib/brand.ts'
 import { Link, useParams } from 'react-router-dom'
 import { PlaceThumb } from '../components/PlaceThumb.tsx'
@@ -51,7 +52,7 @@ export function ProfilePage() {
     ? Object.entries(mineScores).filter(([id]) => slimById(id)).map(([id, score]) => ({ id, name: slimById(id)?.name ?? id, score }))
     : Object.entries(person?.scores ?? {}).map(([id, score]) => ({ id, name: slimById(id)?.name ?? id, score }))
   scoreRows.sort((a, b) => b.score - a.score)
-  const top = onePerBrand(scoreRows, (row) => row.name).slice(0, 10)
+  const top = onePerBrand(scoreRows.filter((row) => { const spot = slimById(row.id); return spot != null && isRestaurant(spot) }), (row) => row.name).slice(0, 10)
   const cuisines = topCuisines(beenPlaces)
   const match = person && !mine ? app.tasteMatch(person.id) : null
   const shared = person ? Object.keys(app.scores).filter((id) => person.scores[id] !== undefined).length : 0
