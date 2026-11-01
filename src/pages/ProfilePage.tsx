@@ -42,8 +42,12 @@ export function ProfilePage() {
   const mineTogo = new Set(Object.entries(app.statuses).filter(([, status]) => status === 'togo').map(([id]) => id))
   const overlap = friend ? togoIds.filter((id) => mineTogo.has(id)) : []
   const beenPlaces = beenIds.map((id) => slimById(id)).filter((place): place is SlimPlace => place != null)
+  // The owner scores places as Gusto's Score (house_scores), not through Rank, so his own
+  // Top 10 falls back to those when he has no personal rankings.
+  const ownScores: Record<string, number> = Object.fromEntries(Object.entries(app.scores).map(([id, score]) => [id, score.score]))
+  const mineScores = mine && app.user?.isOwner && Object.keys(ownScores).length === 0 ? app.houseScores : ownScores
   const scoreRows: Row[] = mine
-    ? Object.entries(app.scores).map(([id, score]) => ({ id, name: slimById(id)?.name ?? id, score: score.score }))
+    ? Object.entries(mineScores).filter(([id]) => slimById(id)).map(([id, score]) => ({ id, name: slimById(id)?.name ?? id, score }))
     : Object.entries(person?.scores ?? {}).map(([id, score]) => ({ id, name: slimById(id)?.name ?? id, score }))
   scoreRows.sort((a, b) => b.score - a.score)
   const top = scoreRows.slice(0, 10)

@@ -124,6 +124,7 @@ type AppValue = {
   friendScore: (placeId: string) => { average: number | null; loved: number; count: number; demo: boolean }
   friendMarks: (placeId: string) => { id: string; name: string; handle: string; score: number }[]
   gustoScore: (placeId: string) => number | null
+  houseScores: Record<string, number>
   setHouseScore: (placeId: string, score: number | null) => void
   houseMark: (placeId: string) => HouseMark | null
   setHouseMark: (placeId: string, status: HouseMark | null) => void
@@ -1453,6 +1454,7 @@ export function AppProvider({ children }: { children: ReactNode }) {
     friendScore,
     friendMarks,
     gustoScore,
+    houseScores: house,
     setHouseScore,
     houseMark,
     setHouseMark,
