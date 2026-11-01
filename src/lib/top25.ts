@@ -1,3 +1,4 @@
+import { brandKey } from './brand.ts'
 import { catalog } from '../content/load.ts'
 import { regionOf, type RegionId } from './city.ts'
 import type { ForkMetal } from './fork-mark.ts'
@@ -55,6 +56,7 @@ function build(scoreOf: (placeId: string) => number | null): Cache {
         return typeof score === 'number' ? [{ place, score }] : []
       })
       .sort((a, b) => (a.score === b.score ? a.place.name.localeCompare(b.place.name) : b.score - a.score))
+      .filter((row, _i, all) => all.find((other) => brandKey(other.place.name) === brandKey(row.place.name)) === row)
     const shown: TopRow[] = ranked.slice(0, TOP).map((row, index) => {
       const rank = index + 1
       const metal = metalForRank(rank)

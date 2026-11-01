@@ -4549,3 +4549,11 @@ mark {
   text-underline-offset: 3px;
   opacity: 0.75;
 }
+
+/* Name in the menu account row reads as full-contrast text, like the nav items. */
+.menu-sheet .menu-account-link,
+.site-header.on-hero .menu-sheet .menu-account-link {
+  color: #181818;
+  opacity: 1;
+  font-weight: 700;
+}
