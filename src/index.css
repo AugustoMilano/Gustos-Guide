@@ -4565,3 +4565,9 @@ mark {
     width: min(24rem, calc(100% - 24px));
   }
 }
+
+/* The sheet's top sheen sits above unpositioned children; lift the content so Sign in reads at full contrast. */
+.menu-sheet > * {
+  position: relative;
+  z-index: 1;
+}

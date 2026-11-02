@@ -66,6 +66,10 @@
     {
       "id": "franz-bakery-outlet",
       "name": "Franz Bakery Outlet"
+    },
+    {
+      "id": "the-independent-pizzeria",
+      "name": "The Independent Pizzeria"
     }
   ]
 }
