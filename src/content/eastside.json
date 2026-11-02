@@ -3257,7 +3257,50 @@
       "placeType": "restaurant",
       "oneLiner": "Thai on Front Street, tucked into downtown Issaquah.",
       "perfectFor": [],
-      "periods": [],
+      "periods": [
+        {
+          "days": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "start": 690,
+          "end": 870
+        },
+        {
+          "days": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "start": 960,
+          "end": 1200
+        },
+        {
+          "days": [
+            5
+          ],
+          "start": 960,
+          "end": 1260
+        },
+        {
+          "days": [
+            6
+          ],
+          "start": 720,
+          "end": 1260
+        },
+        {
+          "days": [
+            0
+          ],
+          "start": 720,
+          "end": 1200
+        }
+      ],
       "gustoScore": null,
       "website": "https://www.sipthaibistro.com/",
       "phone": "+1 (425) 657-0839",
