@@ -18,13 +18,13 @@ function heroTitle(city: CityId): string {
   if (city === 'peninsula') return 'Eat across the Peninsula.'
   if (city === 'northbay') return 'Eat across the North Bay.'
   if (city === 'sandiego') return 'Eat across San Diego.'
-  if (city === 'eastside') return 'Eat across the Eastside.'
+  if (city === 'eastside') return 'Eat across Seattle’s Eastside.'
   return 'Eat your way through Seattle.'
 }
 
 function heroDek(city: CityId): string {
   if (city === 'la') return 'Venice, Santa Monica, West Hollywood, Beverly Hills, Downtown, and Hollywood, from the same list.'
-  if (city === 'eastside') return 'Bellevue, Kirkland, Redmond, and Issaquah, on the same map as Seattle.'
+  if (city === 'eastside') return 'Bellevue, Kirkland, Redmond, and Issaquah, across the lake from Seattle.'
   if (city === 'seattle') return 'From a 7am bun to the last good stool on Pike. Pizza, oysters, teriyaki, and the bars worth the hill.'
   if (city === 'sandiego') return 'San Diego, La Jolla, Coronado, Chula Vista, and North County on one list.'
   if (city === 'eastbay') return 'Berkeley, Fremont, and Pleasanton.'

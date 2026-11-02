@@ -29,7 +29,7 @@ function guideIndexTitle(city: string): string {
   if (city === 'northbay') return 'North Bay guides'
   if (city === 'sandiego') return 'San Diego guides'
   if (city === 'sf') return 'San Francisco guides'
-  if (city === 'eastside') return 'Eastside guides'
+  if (city === 'eastside') return 'Seattle’s Eastside guides'
   return 'Seattle guides'
 }
 

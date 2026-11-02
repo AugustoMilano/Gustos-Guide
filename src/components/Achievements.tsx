@@ -15,8 +15,7 @@ const GROUPS: AchievementGroup[] = ['Ultimate', 'Milestones', 'Cities', 'Guides'
 const GUIDE_PREVIEW = 6
 
 const GUIDE_AREAS = [
-  { id: 'seattle', title: 'Seattle', cities: ['seattle'] },
-  { id: 'eastside', title: 'Eastside', cities: ['eastside'] },
+  { id: 'seattle', title: 'Seattle', cities: ['seattle', 'eastside'] },
   { id: 'la', title: 'Los Angeles', cities: ['la'] },
   { id: 'bay', title: 'SF Bay Area', cities: ['sf', 'eastbay', 'peninsula', 'northbay'] },
   { id: 'sandiego', title: 'San Diego', cities: ['sandiego'] },
@@ -141,12 +140,17 @@ export function Achievements({ been, rated, userId, gustoScore, mine, city, who 
     }
   }, [])
 
-  const items = useMemo(
+  const computed = useMemo(
     () => (guides && catalogLoaded ? computeAchievements({ been, rated, guides, placeOf: slimById, gustoScore }) : []),
     [guides, catalogLoaded, been, rated, gustoScore],
   )
+  const computedEarned = computed.filter((a) => a.earned && !a.legacy).map((a) => a.id)
+  const { dates, fresh, clearFresh } = useEarnedDates(mine ? userId : null, computedEarned, computed.length > 0)
+  // Once earned, always earned (a city can gain guides later). Retired Eastside medals show only if already earned.
+  const items = computed
+    .map((a) => (!a.earned && dates[a.id] ? { ...a, earned: true, have: a.goal } : a))
+    .filter((a) => !a.legacy || Boolean(dates[a.id]))
   const earnedIds = items.filter((a) => a.earned).map((a) => a.id)
-  const { dates, fresh, clearFresh } = useEarnedDates(mine ? userId : null, earnedIds, items.length > 0)
 
   useEffect(() => {
     if (fresh.length && !open) setOpen({ id: fresh.find((id) => id === 'ultimate-all') ?? fresh.find((id) => id.startsWith('ultimate-')) ?? fresh[fresh.length - 1], celebrate: true })

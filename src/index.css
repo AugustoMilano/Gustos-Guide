@@ -4920,3 +4920,5 @@ mark {
 
 /* Root landing: the city picker fills the first screen. */
 .city-landing { min-height: 100svh; display: flex; flex-direction: column; justify-content: center; }
+.city-switch-inline { max-width: 100%; overflow-x: auto; scrollbar-width: none; }
+.city-switch-inline::-webkit-scrollbar { display: none; }

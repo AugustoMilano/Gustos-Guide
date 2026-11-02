@@ -16,6 +16,8 @@ export type Achievement = {
   ring: 'coral' | 'leaf' | 'sky' | 'gold'
   spec: BadgeSpec
   guide?: { slug: string; city: NonNullable<Guide['city']> }
+  /** Retired when the Eastside folded into Seattle. Shown only to people who already earned it. */
+  legacy?: boolean
 }
 
 export type AchievementInput = {
@@ -39,9 +41,10 @@ const RATED_STEPS: [number, string][] = [
 ]
 const BEEN_METAL = ['bronze', 'bronze', 'silver', 'silver', 'gold', 'platinum']
 
-const AREAS: { id: string; title: string; cities: string[]; glyph: BadgeSpec['glyph']; enamel: BadgeSpec['enamel']; ink?: string }[] = [
-  { id: 'seattle', title: 'Seattle', cities: ['seattle'], glyph: 'needle', enamel: 'navy' },
-  { id: 'eastside', title: 'Eastside', cities: ['eastside'], glyph: 'mountain', enamel: 'jade' },
+// Seattle covers the Eastside too. The old Eastside medals keep their ids as legacy rows so earned ones stay.
+const AREAS: { id: string; title: string; cities: string[]; glyph: BadgeSpec['glyph']; enamel: BadgeSpec['enamel']; ink?: string; legacy?: boolean }[] = [
+  { id: 'seattle', title: 'Seattle', cities: ['seattle', 'eastside'], glyph: 'needle', enamel: 'navy' },
+  { id: 'eastside', title: 'the Eastside', cities: ['eastside'], glyph: 'mountain', enamel: 'jade', legacy: true },
   { id: 'la', title: 'Los Angeles', cities: ['la'], glyph: 'palm', enamel: 'sunrise' },
   { id: 'bay', title: 'SF Bay Area', cities: ['sf', 'eastbay', 'peninsula', 'northbay'], glyph: 'goldengate', enamel: 'midnight', ink: '#ff6a3d' },
   { id: 'sandiego', title: 'San Diego', cities: ['sandiego'], glyph: 'beach', enamel: 'ocean', ink: '#ffe9b8' },
@@ -101,12 +104,12 @@ export function computeAchievements(input: AchievementInput): Achievement[] {
   let areasDone = 0
   for (const area of AREAS) {
     const have = places.filter((p) => area.cities.includes(placeCity(p))).length
-    if (have > 0) areasDone += 1
-    out.push({ id: `city-${area.id}`, group: 'Cities', title: area.title, blurb: `Mark a place Been in ${area.title}.`, ring: 'sky', ...step(have, 1),
+    if (have > 0 && !area.legacy) areasDone += 1
+    out.push({ id: `city-${area.id}`, legacy: area.legacy, group: 'Cities', title: area.legacy ? 'Eastside' : area.title, blurb: `Mark a place Been in ${area.title}.`, ring: 'sky', ...step(have, 1),
       spec: { key: `city-${area.id}`, label: area.title, glyph: area.glyph, shape: 'circle', metal: 'silver', enamel: area.enamel, ink: area.ink } })
   }
-  out.push({ id: 'city-all', group: 'Cities', title: 'Five-City Tour', blurb: 'Eat in all five: Seattle, Eastside, Los Angeles, the Bay Area and San Diego.', ring: 'sky', ...step(areasDone, 5),
-    spec: { key: 'city-all', label: 'Five-City Tour', glyph: 'map', numeral: '5', shape: 'rosette', metal: 'gold', enamel: 'navy' } })
+  out.push({ id: 'city-all', group: 'Cities', title: 'Four-City Tour', blurb: 'Eat in all four: Seattle, Los Angeles, the Bay Area and San Diego.', ring: 'sky', ...step(areasDone, 4),
+    spec: { key: 'city-all', label: 'Four-City Tour', glyph: 'map', numeral: '4', shape: 'rosette', metal: 'gold', enamel: 'navy' } })
 
   for (const guide of input.guides) {
     const ids = guide.entries.map((e) => e.placeId).filter((id) => { const p = input.placeOf(id); return p != null && isListed(p) })
@@ -121,7 +124,7 @@ export function computeAchievements(input: AchievementInput): Achievement[] {
   for (const area of AREAS) {
     const rows = guideRows.filter((a) => area.cities.includes(a.guide?.city ?? 'seattle'))
     if (!rows.length) continue
-    ultimate.push({ id: `ultimate-${area.id}`, group: 'Ultimate', title: `All of ${area.title}`, blurb: `Complete every ${area.title} guide.`, ring: 'gold', ...step(done(rows), rows.length),
+    ultimate.push({ id: `ultimate-${area.id}`, legacy: area.legacy, group: 'Ultimate', title: `All of ${area.title}`, blurb: `Complete every ${area.title} guide.`, ring: 'gold', ...step(done(rows), rows.length),
       spec: { key: `ultimate-${area.id}`, label: `All of ${area.title}`, glyph: area.glyph, shape: 'rosette', enamel: area.enamel, ink: area.ink, ultimate: true } })
   }
   const STATES = [
@@ -135,7 +138,7 @@ export function computeAchievements(input: AchievementInput): Achievement[] {
     ultimate.push({ id: `ultimate-${state.id}`, group: 'Ultimate', title: `All of ${state.title}`, blurb: `Complete every guide in ${state.title}.`, ring: 'gold', ...step(done(rows), rows.length),
       spec: { key: `ultimate-${state.id}`, label: state.title, glyph: state.glyph, shape: 'burst', enamel: state.enamel, ultimate: true } })
   }
-  const everything = [...out, ...ultimate]
+  const everything = [...out, ...ultimate].filter((a) => !a.legacy)
   ultimate.push({ id: 'ultimate-all', group: 'Ultimate', title: 'Completionist', blurb: 'Earn every other medal on Gusto’s Guide.', ring: 'gold', ...step(done(everything), everything.length),
     spec: { key: 'ultimate-all', label: 'Completionist', glyph: 'crown', shape: 'scallop', enamel: 'midnight', ink: '#ffd87a', ultimate: true } })
   return [...ultimate, ...out]
