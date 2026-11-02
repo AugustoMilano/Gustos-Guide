@@ -4582,10 +4582,15 @@ mark {
   padding-top: var(--space-4);
 }
 
-/* Same rank slot for every title so names line up at #1 and #43 alike. */
+/* Same rank slot for every title so names line up at #1 and #43 alike; wrapped lines hang under the name. */
+.entry-head h3:has(> .rank-slot) {
+  display: flex;
+  align-items: baseline;
+}
+
 .rank-slot {
-  display: inline-block;
-  min-width: 1.4em;
+  flex: none;
+  width: 1.1em;
   margin-right: var(--space-2);
   font-variant-numeric: tabular-nums;
 }
