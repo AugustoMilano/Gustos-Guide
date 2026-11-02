@@ -2895,67 +2895,6 @@
       "phone": "+1 (425) 658-4963"
     },
     {
-      "id": "rubinstein-bagels",
-      "city": "eastside",
-      "name": "Rubinstein Bagels",
-      "neighborhood": "Downtown Redmond",
-      "address": "16050 Cleveland Street, Redmond, WA 98052",
-      "lat": 47.674712,
-      "lng": -122.125854,
-      "cuisine": [
-        "Bagels"
-      ],
-      "placeType": "cafe",
-      "oneLiner": "Boiled bagels on Cleveland Street in downtown Redmond.",
-      "perfectFor": [],
-      "periods": [
-        {
-          "days": [
-            0,
-            1,
-            2,
-            3,
-            4,
-            5,
-            6
-          ],
-          "start": 420,
-          "end": 900
-        }
-      ],
-      "gustoScore": null,
-      "website": "https://rubinsteinbagels.com/",
-      "appleMapsUrl": "https://maps.apple.com/?daddr=47.674712,-122.125854&q=Rubinstein%20Bagels",
-      "guideSlugs": [
-        "eastside-coffee",
-        "eastside-brunch"
-      ],
-      "muid": "",
-      "hoursLabel": "",
-      "blurb": "",
-      "orderThis": [],
-      "ids": {
-        "yelp": "P95aRg5I-_eY4lcKIRpJww"
-      },
-      "copySource": "draft",
-      "updatedAt": "2026-10-20",
-      "photos": [
-        {
-          "source": "illustration",
-          "isIllustration": true,
-          "alt": "Illustration suggesting Bagels at Rubinstein Bagels",
-          "credit": "Illustration"
-        }
-      ],
-      "publicRating": {
-        "value": 3.4,
-        "count": 226,
-        "source": "Yelp"
-      },
-      "yelpSlug": "P95aRg5I-_eY4lcKIRpJww",
-      "phone": "+1 (425) 979-7950"
-    },
-    {
       "id": "ooba-tooba",
       "city": "eastside",
       "name": "Ooba Tooba",
@@ -3257,7 +3196,50 @@
       "placeType": "restaurant",
       "oneLiner": "Thai on Front Street, tucked into downtown Issaquah.",
       "perfectFor": [],
-      "periods": [],
+      "periods": [
+        {
+          "days": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "start": 690,
+          "end": 870
+        },
+        {
+          "days": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "start": 960,
+          "end": 1200
+        },
+        {
+          "days": [
+            5
+          ],
+          "start": 960,
+          "end": 1260
+        },
+        {
+          "days": [
+            6
+          ],
+          "start": 720,
+          "end": 1260
+        },
+        {
+          "days": [
+            0
+          ],
+          "start": 720,
+          "end": 1200
+        }
+      ],
       "gustoScore": null,
       "website": "https://www.sipthaibistro.com/",
       "phone": "+1 (425) 657-0839",
@@ -9946,12 +9928,6 @@
           "copySource": "draft"
         },
         {
-          "placeId": "rubinstein-bagels",
-          "pullQuote": "Boiled bagels on Cleveland Street in downtown Redmond.",
-          "blurb": "Boiled bagels on Cleveland Street in downtown Redmond.",
-          "copySource": "draft"
-        },
-        {
           "placeId": "boon-boona-coffee",
           "pullQuote": "Boon Boona coffee on South 3rd, in downtown Renton.",
           "blurb": "Boon Boona coffee on South 3rd, in downtown Renton.",
@@ -10195,12 +10171,6 @@
           "placeId": "farine-bakery",
           "pullQuote": "Belgian bakery on Northeast 10th, with kouign-amann in the case.",
           "blurb": "Belgian bakery on Northeast 10th, with kouign-amann in the case.",
-          "copySource": "draft"
-        },
-        {
-          "placeId": "rubinstein-bagels",
-          "pullQuote": "Boiled bagels on Cleveland Street in downtown Redmond.",
-          "blurb": "Boiled bagels on Cleveland Street in downtown Redmond.",
           "copySource": "draft"
         },
         {
