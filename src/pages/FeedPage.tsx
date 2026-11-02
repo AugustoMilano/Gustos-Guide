@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { AreaKicker } from '../components/AreaKicker.tsx'
 import { FriendEmpty } from '../components/FriendEmpty.tsx'
+import { PullToRefresh } from '../components/PullToRefresh.tsx'
 import { PlaceThumb } from '../components/PlaceThumb.tsx'
 import { SignInSheet } from '../components/SignInSheet.tsx'
 import { catalog } from '../content/load.ts'
@@ -28,6 +29,7 @@ export function FeedPage() {
   ].sort((a, b) => b.count - a.count)
 
   return (
+    <PullToRefresh onRefresh={app.refresh}>
     <main id="main" tabIndex={-1} className="mx-auto grid max-w-6xl gap-8 px-4 pt-24 pb-16 outline-none lg:grid-cols-[minmax(0,1fr)_280px]">
       <div>
         <AreaKicker />
@@ -158,5 +160,6 @@ export function FeedPage() {
       </aside>
       <SignInSheet open={signIn} onClose={() => setSignIn(false)} />
     </main>
+    </PullToRefresh>
   )
 }

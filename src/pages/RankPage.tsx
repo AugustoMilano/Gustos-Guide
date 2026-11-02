@@ -1,3 +1,4 @@
+import { bounceMark } from '../lib/motion.ts'
 import { useMemo, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { AreaKicker } from '../components/AreaKicker.tsx'
@@ -56,7 +57,7 @@ export function RankPage() {
             </Link>
             <div className="mt-2 flex flex-wrap gap-2">
               {BUCKETS.map((bucket) => (
-                <button key={bucket.id} type="button" className="btn text-sm" onClick={() => (app.user ? app.startRank(place.id, bucket.id) : setSignIn(true))}>
+                <button key={bucket.id} type="button" className="btn status-mark text-sm" onClick={(event) => { if (!app.user) { setSignIn(true); return } bounceMark(event); app.startRank(place.id, bucket.id) }}>
                   {bucket.label}
                 </button>
               ))}

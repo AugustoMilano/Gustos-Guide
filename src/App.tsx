@@ -9,6 +9,7 @@ import { CitiesPage } from './pages/CitiesPage.tsx'
 import { HomePage } from './pages/HomePage.tsx'
 import { LegalPage } from './pages/LegalPage.tsx'
 import { NotFoundPage } from './pages/NotFoundPage.tsx'
+import { TabBar } from './components/TabBar.tsx'
 import { InstallHint } from './components/InstallHint.tsx'
 import { catalogPhase, subscribeCatalog } from './content/load.ts'
 import { barePath, CITY_PREFIXES } from './lib/city.ts'
@@ -244,6 +245,7 @@ function Shell() {
       {barePath(pathname) === '/explore' || barePath(pathname).startsWith('/collection/') ? null : <Footer />}
       <InstallHint />
       <BackToTop />
+      <TabBar />
       {importOffer ? <ImportLocalSheet offer={importOffer} onAccept={() => void acceptImport()} onDismiss={dismissImport} /> : null}
       <AuthErrorSheet />
       <div className="sr-only" aria-live="polite">{announcement}</div>
