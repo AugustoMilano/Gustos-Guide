@@ -1,5 +1,6 @@
 import { spawnSync } from 'node:child_process'
-import { existsSync, readFileSync, readdirSync, writeFileSync } from 'node:fs'
+import { createHash } from 'node:crypto'
+import { existsSync, readFileSync, readdirSync, renameSync, statSync, writeFileSync } from 'node:fs'
 import { join } from 'node:path'
 import tailwindcss from '@tailwindcss/vite'
 import react from '@vitejs/plugin-react'
@@ -137,6 +138,36 @@ export default defineConfig({
             '$1-webkit-backdrop-filter:$2;backdrop-filter:$2',
           )
         }
+      },
+      // The CSS file name was hashed before the rewrite above. Rename each stylesheet by a hash of
+      // its final bytes and update every reference, so a changed stylesheet always gets a new URL.
+      writeBundle(options) {
+        const out = options.dir ?? 'dist'
+        const assets = join(out, 'assets')
+        if (!existsSync(assets)) return
+        const renames: [string, string][] = []
+        for (const name of readdirSync(assets)) {
+          const match = name.match(/^(.*)-[\w-]{8}\.css$/)
+          if (!match) continue
+          const hash = createHash('sha256').update(readFileSync(join(assets, name))).digest('base64url').slice(0, 8)
+          const next = `${match[1]}-${hash}.css`
+          if (next === name) continue
+          renameSync(join(assets, name), join(assets, next))
+          renames.push([name, next])
+        }
+        if (!renames.length) return
+        const walk = (dir: string) => {
+          for (const entry of readdirSync(dir)) {
+            const file = join(dir, entry)
+            if (statSync(file).isDirectory()) { walk(file); continue }
+            if (!/\.(html|htm|js|mjs|json|webmanifest|txt)$/.test(entry)) continue
+            const text = readFileSync(file, 'utf8')
+            let next = text
+            for (const [from, to] of renames) next = next.split(from).join(to)
+            if (next !== text) writeFileSync(file, next)
+          }
+        }
+        walk(out)
       },
     },
     {
