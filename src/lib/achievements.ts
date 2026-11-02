@@ -39,12 +39,12 @@ const RATED_STEPS: [number, string][] = [
 ]
 const BEEN_METAL = ['bronze', 'bronze', 'silver', 'silver', 'gold', 'platinum']
 
-const AREAS: { id: string; title: string; cities: string[]; glyph: BadgeSpec['glyph']; enamel: BadgeSpec['enamel'] }[] = [
+const AREAS: { id: string; title: string; cities: string[]; glyph: BadgeSpec['glyph']; enamel: BadgeSpec['enamel']; ink?: string }[] = [
   { id: 'seattle', title: 'Seattle', cities: ['seattle'], glyph: 'needle', enamel: 'navy' },
   { id: 'eastside', title: 'Eastside', cities: ['eastside'], glyph: 'mountain', enamel: 'jade' },
   { id: 'la', title: 'Los Angeles', cities: ['la'], glyph: 'palm', enamel: 'sunrise' },
-  { id: 'bay', title: 'SF Bay Area', cities: ['sf', 'eastbay', 'peninsula', 'northbay'], glyph: 'goldengate', enamel: 'coral' },
-  { id: 'sandiego', title: 'San Diego', cities: ['sandiego'], glyph: 'beach', enamel: 'ocean' },
+  { id: 'bay', title: 'SF Bay Area', cities: ['sf', 'eastbay', 'peninsula', 'northbay'], glyph: 'goldengate', enamel: 'midnight', ink: '#ff6a3d' },
+  { id: 'sandiego', title: 'San Diego', cities: ['sandiego'], glyph: 'beach', enamel: 'ocean', ink: '#ffe9b8' },
 ]
 
 function step(have: number, goal: number) {
@@ -103,7 +103,7 @@ export function computeAchievements(input: AchievementInput): Achievement[] {
     const have = places.filter((p) => area.cities.includes(placeCity(p))).length
     if (have > 0) areasDone += 1
     out.push({ id: `city-${area.id}`, group: 'Cities', title: area.title, blurb: `Mark a place Been in ${area.title}.`, ring: 'sky', ...step(have, 1),
-      spec: { key: `city-${area.id}`, label: area.title, glyph: area.glyph, shape: 'circle', metal: 'silver', enamel: area.enamel } })
+      spec: { key: `city-${area.id}`, label: area.title, glyph: area.glyph, shape: 'circle', metal: 'silver', enamel: area.enamel, ink: area.ink } })
   }
   out.push({ id: 'city-all', group: 'Cities', title: 'Five-City Tour', blurb: 'Eat in all five: Seattle, Eastside, Los Angeles, the Bay Area and San Diego.', ring: 'sky', ...step(areasDone, 5),
     spec: { key: 'city-all', label: 'Five-City Tour', glyph: 'map', numeral: '5', shape: 'rosette', metal: 'gold', enamel: 'navy' } })
