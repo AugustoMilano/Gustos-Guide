@@ -220,8 +220,8 @@ export function Achievements({ been, rated, userId, gustoScore, mine, city, who 
 function TileGrid({ list, dates, onOpen, big = false }: { list: Achievement[]; dates: Dates; onOpen: (id: string) => void; big?: boolean }) {
   return (
     <ul className={`ach-grid mt-3 ${big ? 'ach-grid-ultimate' : ''}`}>
-      {list.map((a) => (
-        <li key={a.id}>
+      {list.map((a, i) => (
+        <li key={a.id} className="stagger-in" style={{ '--i': Math.min(i, 8) } as React.CSSProperties}>
           <button type="button" className="ach-tile" onClick={() => onOpen(a.id)} aria-label={`${a.title}. ${a.earned ? `Earned${dates[a.id] ? ` ${formatEarned(dates[a.id], true)}` : ''}` : `${a.have} of ${a.goal}`}`}>
             <BadgeRing a={a} size={big ? 128 : 96} />
             <span className="ach-name">{a.title}</span>

@@ -4786,3 +4786,21 @@ mark {
 @media (prefers-reduced-motion: reduce) {
   .ach-badge.is-ultimate.is-earned::after { animation: none; }
 }
+
+/* Motion batch: staggered entrances, map pin drop. Transform and opacity only. */
+@media (prefers-reduced-motion: no-preference) {
+  .stagger-in {
+    animation: stagger-rise 0.6s cubic-bezier(0.34, 1.4, 0.64, 1) backwards;
+    animation-delay: calc(var(--i, 0) * 45ms);
+  }
+  .gusto-pin { animation: pin-drop 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) backwards; transform-origin: 50% 100%; }
+}
+@keyframes stagger-rise {
+  from { opacity: 0; transform: translateY(12px) scale(0.97); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes pin-drop {
+  0% { opacity: 0; transform: translateY(-24px) scale(0.8); }
+  60% { opacity: 1; transform: translateY(0) scale(1.06, 0.92); }
+  100% { transform: none; }
+}
