@@ -203,7 +203,7 @@ export function PlaceArt({ id, cuisine, neighborhood }: { id: string; cuisine: s
   const motif = motifFor(cuisine, hash)
   const tag = neighborhood.slice(0, 3).toUpperCase()
   return (
-    <svg className="place-art" viewBox="0 0 800 600" role="img" aria-label={`Illustration of ${cuisine}`}>
+    <svg className="place-art" viewBox="0 0 800 600" preserveAspectRatio="xMidYMid slice" role="img" aria-label={`Illustration of ${cuisine}`}>
       <rect width="800" height="600" fill={bg} />
       <Pattern kind={hash % 4} color={c} />
       <circle cx={120 + (hash % 90)} cy={90 + (hash % 40)} r="70" fill={a} opacity="0.85" />

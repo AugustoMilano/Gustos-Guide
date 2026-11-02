@@ -11,7 +11,7 @@ function previousWikimedia() {
   try {
     const prev = JSON.parse(readFileSync(join(root, 'src/content/places.json'), 'utf8'))
     for (const place of Object.values(prev)) {
-      const photos = (place.photos ?? []).filter((photo) => photo.source === 'wikimedia' && photo.url)
+      const photos = (place.photos ?? []).filter((photo) => (photo.source === 'gusto' || photo.source === 'wikimedia') && photo.url).sort((a, b) => (a.source === 'gusto' ? 0 : 1) - (b.source === 'gusto' ? 0 : 1))
       if (photos.length) map.set(place.muid ? `muid:${place.muid}` : place.id, photos)
     }
   } catch {
@@ -213,9 +213,22 @@ function applyLocationOverrides(places, chosen) {
 
 applyLocationOverrides(rawPlaces, loadLocationOverrides())
 
+// Places listed by hand in a regional file (eastside.json and the rest) are live there,
+// so the Seattle import must not re-hide them as outside_seattle.
+const regionalMuids = new Set(
+  ['eastside.json', 'la.json', 'sf.json', 'sd.json'].flatMap((file) => {
+    try {
+      return JSON.parse(readFileSync(join(root, 'src/content', file), 'utf8')).places.map((place) => String(place.muid || '')).filter(Boolean)
+    } catch {
+      return []
+    }
+  }),
+)
+
 function isHidden(place) {
   return (
     place.resolved &&
+    !regionalMuids.has(String(place.muid || '')) &&
     (place.kind === 'food' || place.kind === 'drinks') &&
     !place.excluded &&
     !permanentlyExcluded(place) &&

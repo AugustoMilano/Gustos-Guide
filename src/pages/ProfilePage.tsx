@@ -1,8 +1,10 @@
+import { isRestaurant } from '../lib/restaurant.ts'
+import { onePerBrand } from '../lib/brand.ts'
 import { Link, useParams } from 'react-router-dom'
 import { PlaceThumb } from '../components/PlaceThumb.tsx'
 import { slimById } from '../content/load.ts'
-import { areaTitle, cityPath } from '../lib/city.ts'
-import { placesForCity, useCityId } from '../lib/use-city.ts'
+import { areaPhrase, areaTitle, cityPath } from '../lib/city.ts'
+import { placeCity, placesForCity, useCityId } from '../lib/use-city.ts'
 import { usePageMeta } from '../lib/meta.ts'
 import { useApp } from '../state/AppState.tsx'
 import type { SlimPlace } from '../types.ts'
@@ -42,11 +44,15 @@ export function ProfilePage() {
   const mineTogo = new Set(Object.entries(app.statuses).filter(([, status]) => status === 'togo').map(([id]) => id))
   const overlap = friend ? togoIds.filter((id) => mineTogo.has(id)) : []
   const beenPlaces = beenIds.map((id) => slimById(id)).filter((place): place is SlimPlace => place != null)
+  // The owner scores places as Gusto's Score (house_scores), not through Rank, so his own
+  // Top 10 falls back to those when he has no personal rankings.
+  const ownScores: Record<string, number> = Object.fromEntries(Object.entries(app.scores).map(([id, score]) => [id, score.score]))
+  const mineScores = mine && app.user?.isOwner && Object.keys(ownScores).length === 0 ? app.houseScores : ownScores
   const scoreRows: Row[] = mine
-    ? Object.entries(app.scores).map(([id, score]) => ({ id, name: slimById(id)?.name ?? id, score: score.score }))
+    ? Object.entries(mineScores).filter(([id]) => slimById(id)).map(([id, score]) => ({ id, name: slimById(id)?.name ?? id, score }))
     : Object.entries(person?.scores ?? {}).map(([id, score]) => ({ id, name: slimById(id)?.name ?? id, score }))
   scoreRows.sort((a, b) => b.score - a.score)
-  const top = scoreRows.slice(0, 10)
+  const top = onePerBrand(scoreRows.filter((row) => { const spot = slimById(row.id); return spot != null && placeCity(spot) === city && isRestaurant(spot) }), (row) => row.name).slice(0, 10)
   const cuisines = topCuisines(beenPlaces)
   const match = person && !mine ? app.tasteMatch(person.id) : null
   const shared = person ? Object.keys(app.scores).filter((id) => person.scores[id] !== undefined).length : 0
@@ -115,7 +121,7 @@ export function ProfilePage() {
         {beenPlaces.length ? <p>{beenPlaces.length} places marked Been.</p> : <p>No been pins yet.</p>}
         <Link className="btn mt-3" to={cityPath('/explore')}>Open the map</Link>
       </div>
-      <h2 className="mt-8 font-serif text-3xl italic">Top 10</h2>
+      <h2 className="mt-8 font-serif text-3xl italic">Top 10 in {areaPhrase(city)}</h2>
       {top.length ? (
         <ol className="mt-3 space-y-2">
           {top.map((row, index) => (

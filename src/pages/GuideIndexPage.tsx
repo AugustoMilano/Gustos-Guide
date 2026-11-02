@@ -8,6 +8,7 @@ import { cityPath } from '../lib/city.ts'
 import { countPlaces } from '../lib/format.ts'
 import { usePageMeta } from '../lib/meta.ts'
 import { smartSearch } from '../lib/smart-search.ts'
+import { useApp } from '../state/AppState.tsx'
 import { useCityCatalog } from '../lib/use-city.ts'
 import type { GuideGroup } from '../types.ts'
 
@@ -61,16 +62,17 @@ export function GuideIndexPage() {
   const [group, setGroup] = useState<GuideGroup | 'All'>('All')
   usePageMeta("Guides · Gusto's Guide", guideIndexMeta(city))
   const query = draft.trim()
+  const { gustoScore } = useApp()
   const result = useMemo(() => {
     if (!query) return null
-    const found = smartSearch(query, city, catalog.places, catalog.guides)
+    const found = smartSearch(query, city, catalog.places, catalog.guides, gustoScore)
     if (group === 'All') return found
     return {
       ...found,
       guides: found.guides.filter((hit) => hit.group === group),
       suggestions: found.suggestions.filter((hit) => hit.group === group),
     }
-  }, [query, city, group])
+  }, [query, city, group, gustoScore])
   const visibleGroups = GROUPS.filter((item) => guides.some((guide) => guide.group === item))
 
   return (

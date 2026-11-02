@@ -125,6 +125,21 @@ export default defineConfig({
   base: './',
   plugins: [
     {
+      // The CSS minifier keeps only -webkit-backdrop-filter, so Chrome and Android lose the glass blur.
+      // Put the standard property back next to every prefixed declaration.
+      name: 'standard-backdrop-filter',
+      enforce: 'post',
+      generateBundle(_options, bundle) {
+        for (const file of Object.values(bundle)) {
+          if (file.type !== 'asset' || !file.fileName.endsWith('.css') || typeof file.source !== 'string') continue
+          file.source = file.source.replace(
+            /([{;])-webkit-backdrop-filter:([^;}]+)(?=[;}])(?!;backdrop-filter:)/g,
+            '$1-webkit-backdrop-filter:$2;backdrop-filter:$2',
+          )
+        }
+      },
+    },
+    {
       name: 'legal-pages',
       configureServer(server) {
         server.middlewares.use(legalPaths)

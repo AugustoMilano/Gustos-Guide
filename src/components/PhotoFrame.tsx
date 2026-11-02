@@ -21,7 +21,7 @@ export function PhotoFrame({
   const src = picture?.src ?? ''
   const ready = src !== '' && readySrc === src
   return (
-    <figure className={`photo-frame ${compact || art ? 'is-compact' : ''}`} style={transitionName ? { viewTransitionName: transitionName } : undefined}>
+    <figure className={`photo-frame ${compact ? 'is-compact' : ''}${art ? ' is-art' : ''}`} style={transitionName ? { viewTransitionName: transitionName } : undefined}>
       {art || !picture ? (
         <PlaceArt id={photo.placeId} cuisine={photo.cuisine} neighborhood={photo.neighborhood} />
       ) : (

@@ -3776,7 +3776,7 @@
     {
       "id": "rovino",
       "city": "sandiego",
-      "name": "Rovino",
+      "name": "RoVino",
       "neighborhood": "Little Italy",
       "address": "2034 Kettner Blvd, San Diego, CA 92101",
       "lat": 32.725523,
@@ -3785,7 +3785,7 @@
         "Italian"
       ],
       "placeType": "restaurant",
-      "oneLiner": "",
+      "oneLiner": "Rotisserie half chicken and handmade pasta in Little Italy.",
       "perfectFor": [],
       "periods": [
         {
@@ -3821,7 +3821,7 @@
       "gustoScore": null,
       "website": "https://rovinosd.com",
       "phone": "+1 (619) 269-9341",
-      "appleMapsUrl": "https://maps.apple.com/?daddr=32.725523,-117.1702141&q=Rovino",
+      "appleMapsUrl": "https://maps.apple.com/?daddr=32.725523,-117.1702141&q=RoVino",
       "applePlaceUrl": "https://maps.apple.com/place?auid=2162492693962336527",
       "guideSlugs": [
         "sd-little-italy",
@@ -3829,8 +3829,17 @@
       ],
       "muid": "2162492693962336527",
       "hoursLabel": "",
-      "blurb": "",
-      "orderThis": [],
+      "blurb": "Order the half rotisserie chicken with roasted vegetables and potatoes, then a housemade pasta. It takes walk-ins at the bar.",
+      "orderThis": [
+        {
+          "dish": "Pollo Arrosto",
+          "note": "Half chicken, roasted vegetables, potatoes."
+        },
+        {
+          "dish": "Arancini",
+          "note": "Angus beef, sugo, pecorino."
+        }
+      ],
       "ids": {},
       "copySource": "draft",
       "updatedAt": "2026-10-22",
@@ -3838,7 +3847,7 @@
         {
           "source": "illustration",
           "isIllustration": true,
-          "alt": "Illustration suggesting Italian at Rovino",
+          "alt": "Illustration suggesting Italian at RoVino",
           "credit": "Illustration"
         }
       ]
@@ -3857,8 +3866,8 @@
       "entries": [
         {
           "placeId": "rovino",
-          "pullQuote": "",
-          "blurb": "",
+          "pullQuote": "Rotisserie half chicken and handmade pasta in Little Italy.",
+          "blurb": "Order the half rotisserie chicken with roasted vegetables and potatoes, then a housemade pasta. It takes walk-ins at the bar.",
           "copySource": "draft"
         },
         {
@@ -4158,8 +4167,8 @@
       "entries": [
         {
           "placeId": "rovino",
-          "pullQuote": "",
-          "blurb": "",
+          "pullQuote": "Rotisserie half chicken and handmade pasta in Little Italy.",
+          "blurb": "Order the half rotisserie chicken with roasted vegetables and potatoes, then a housemade pasta. It takes walk-ins at the bar.",
           "copySource": "draft"
         },
         {

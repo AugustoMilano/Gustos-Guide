@@ -2,6 +2,7 @@ import { useEffect, useId, useMemo, useRef, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { clearRecent, readRecent, rememberSearch } from '../lib/recent-search.ts'
 import { smartSearch } from '../lib/smart-search.ts'
+import { useApp } from '../state/AppState.tsx'
 import { useCityId } from '../lib/use-city-id.ts'
 import type { GuideSummary, SlimPlace } from '../types.ts'
 import { MatchText } from './MatchText.tsx'
@@ -45,9 +46,10 @@ export function SearchField({
     })
   }
 
+  const { gustoScore } = useApp()
   const hits = useMemo(() => {
     if (!query || !places || !guides) return []
-    const found = smartSearch(query, city, places, guides)
+    const found = smartSearch(query, city, places, guides, gustoScore)
     const rows = [...found.guides, ...found.places, ...found.suggestions].slice(0, 8)
     return rows.map((hit) => ({
       key: `${hit.kind}-${hit.id}`,
@@ -55,7 +57,7 @@ export function SearchField({
       detail: hit.why,
       href: hit.href,
     }))
-  }, [query, places, guides, city])
+  }, [gustoScore, query, places, guides, city])
 
   const rows: Hit[] = query
     ? hits

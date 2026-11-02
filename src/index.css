@@ -456,7 +456,35 @@ textarea {
 }
 
 .home-shortcuts {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: minmax(0, 1fr);
+}
+
+@media (min-width: 40rem) {
+  .home-shortcuts {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* Sized to content; the grid row keeps both cards the same height. */
+.home-shortcut {
+  height: 100%;
+  min-height: var(--hit);
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+}
+
+.home-shortcut-copy {
+  display: block;
+  min-width: 0;
+}
+
+.home-shortcut-arrow {
+  flex: none;
+  width: var(--icon-md);
+  height: var(--icon-md);
+  opacity: 0.7;
 }
 
 @media (min-width: 40rem) {
@@ -472,7 +500,6 @@ textarea {
 }
 
 .home-featured .guide-card,
-.home-shortcut,
 .home-featured .skeleton {
   height: 100%;
   min-height: 9.5rem;
@@ -1384,6 +1411,13 @@ textarea {
   -webkit-backdrop-filter: blur(24px) saturate(180%);
 }
 
+/* Sheets carry forms and long text, so they sit on the solid cream fill. The
+   glass edge, sheen and shadow stay; the blurred page behind is the backdrop's job.
+   Any see-through fill let hero headlines read through the sign-in form. */
+.modal-panel {
+  background: #fffaf3;
+}
+
 .glass,
 .menu-sheet,
 .hit-card,
@@ -1905,9 +1939,14 @@ textarea {
   top: 0;
   right: 0;
   left: 0;
-  height: env(safe-area-inset-top, 0px);
-  background-color: var(--status-bar, #fffaf3);
+  /* Opaque top edge, safe area plus 1px, so Safari 26 samples the header's state color. */
+  height: calc(env(safe-area-inset-top, 0px) + 1px);
+  background-color: #fffaf3;
   pointer-events: none;
+}
+
+.site-header.on-hero::before {
+  background-color: #141f4d;
 }
 
 .site-header.on-hero :focus-visible {
@@ -2154,7 +2193,7 @@ textarea {
   }
 }
 
-@media (min-width: 1024px) and (max-width: 1399px) {
+@media (min-width: 1280px) and (max-width: 1399px) {
   .nav-more {
     display: block;
   }
@@ -4429,5 +4468,100 @@ mark {
   .place-card-body.is-dense .score-col {
     grid-row: 1;
     justify-self: end;
+  }
+}
+
+/* Search inputs: typed text is navy on the light fills, never inherited from a
+   navy hero. Safari also needs -webkit-text-fill-color. */
+#home-search,
+#page-search,
+.site-search input,
+.menu-sheet input,
+.site-header.on-hero .menu-sheet .glass-input {
+  color: #141f4d;
+  -webkit-text-fill-color: #141f4d;
+  caret-color: #ff5330;
+}
+
+#home-search::placeholder,
+#page-search::placeholder,
+.site-search input::placeholder,
+.menu-sheet input::placeholder {
+  color: rgb(20 31 77 / 62%);
+  -webkit-text-fill-color: rgb(20 31 77 / 62%);
+  opacity: 1;
+}
+
+/* The header search over the navy hero has a dark translucent fill: keep it cream. */
+.site-header.on-hero #site-search {
+  color: #fffaf3;
+  -webkit-text-fill-color: #fffaf3;
+  caret-color: #fffaf3;
+}
+
+.site-header.on-hero #site-search::placeholder {
+  color: rgb(255 250 243 / 72%);
+  -webkit-text-fill-color: rgb(255 250 243 / 72%);
+}
+
+#home-search:-webkit-autofill,
+#page-search:-webkit-autofill,
+.site-search input:-webkit-autofill,
+.menu-sheet input:-webkit-autofill {
+  -webkit-text-fill-color: #141f4d;
+  caret-color: #ff5330;
+}
+
+/* Signed-in account row at the top of the phone menu: profile link plus a quiet Sign out. */
+.menu-account {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+}
+
+.menu-account-link {
+  display: inline-flex;
+  flex: 1;
+  min-width: 0;
+  min-height: 44px;
+  align-items: center;
+  gap: 8px;
+}
+
+.menu-account-initial {
+  display: inline-grid;
+  width: 32px;
+  height: 32px;
+  flex: none;
+  place-items: center;
+  border-radius: 9999px;
+  background: #141f4d;
+  color: #fffaf3;
+}
+
+.menu-account-out {
+  min-height: 44px;
+  padding: 0 8px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  opacity: 0.75;
+}
+
+/* Name in the menu account row reads as full-contrast text, like the nav items. */
+.menu-sheet .menu-account-link,
+.site-header.on-hero .menu-sheet .menu-account-link {
+  color: #181818;
+  opacity: 1;
+  font-weight: 700;
+}
+
+/* Tablet widths: the menu opens as a right-aligned sheet under the Menu button, not a full-width slab. */
+@media (min-width: 768px) {
+  .menu-sheet {
+    left: auto;
+    width: min(24rem, calc(100% - 24px));
   }
 }

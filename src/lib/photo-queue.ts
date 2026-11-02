@@ -34,7 +34,7 @@ export function homeHitList(places: SlimPlace[]): SlimPlace[] {
 }
 
 function hasCatalogPhoto(place: SlimPlace): boolean {
-  return (place.photo?.source === 'wikimedia' || place.photo?.source === 'flickr') && Boolean(place.photo.url)
+  return (place.photo?.source === 'gusto' || place.photo?.source === 'wikimedia' || place.photo?.source === 'flickr') && Boolean(place.photo.url)
 }
 
 export function photoQueue(places: SlimPlace[], guides: RankedGuide[], uploads: LivePhoto[]): PhotoNeed[] {

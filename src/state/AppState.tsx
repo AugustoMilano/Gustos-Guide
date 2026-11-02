@@ -32,6 +32,9 @@ import { scanLocalBundle, type LocalBundle } from '../social/importLocal.ts'
 import { authProviders, removePlacePhoto, savePlacePhoto, sendMagicLink, signInWithProvider, supabaseClient } from '../social/supabase.ts'
 import type { Activity, Bucket, Comment, GuideVisibility, Notice, Plan, RankScore, SessionUser, UserGuide, VisitStatus } from '../types.ts'
 
+// Augusto's Supabase user id. A session for it marks this device so cfa.js skips analytics.
+const OWNER_ANALYTICS_ID = '6b6b61b0-983d-4772-9d80-836d3c43c235'
+
 const SESSION_KEY = 'gusto.session.v1'
 const HOUSE_KEY = 'gusto.house.v1'
 const MARK_KEY = 'gusto.house-marks.v1'
@@ -121,6 +124,7 @@ type AppValue = {
   friendScore: (placeId: string) => { average: number | null; loved: number; count: number; demo: boolean }
   friendMarks: (placeId: string) => { id: string; name: string; handle: string; score: number }[]
   gustoScore: (placeId: string) => number | null
+  houseScores: Record<string, number>
   setHouseScore: (placeId: string, score: number | null) => void
   houseMark: (placeId: string) => HouseMark | null
   setHouseMark: (placeId: string, status: HouseMark | null) => void
@@ -397,6 +401,9 @@ export function AppProvider({ children }: { children: ReactNode }) {
     if (!remote) return
     const { data } = remote.auth.onAuthStateChange((event, session) => {
       if (event === 'TOKEN_REFRESHED') return
+      if (session?.user?.id === OWNER_ANALYTICS_ID) {
+        try { localStorage.setItem('gg_owner', '1') } catch { /* storage off */ }
+      }
       setTimeout(() => {
         void hydrateRef.current(session?.user ?? null)
       }, 0)
@@ -1447,6 +1454,7 @@ export function AppProvider({ children }: { children: ReactNode }) {
     friendScore,
     friendMarks,
     gustoScore,
+    houseScores: house,
     setHouseScore,
     houseMark,
     setHouseMark,

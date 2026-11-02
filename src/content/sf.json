@@ -5501,7 +5501,7 @@
         "Deli"
       ],
       "placeType": "deli",
-      "oneLiner": "1400 Sutter St — Limoncello, Deli, Lower Pacific Heights.",
+      "oneLiner": "Stacked Italian deli sandwiches on Sutter Street.",
       "perfectFor": [],
       "periods": [
         {
@@ -5530,8 +5530,17 @@
       "guideSlugs": [],
       "muid": "2018538862183947712",
       "hoursLabel": "",
-      "blurb": "1400 Sutter St — Limoncello, Deli, Lower Pacific Heights.",
-      "orderThis": [],
+      "blurb": "Order the Siciliano: ham, salami and pistachio mortadella with provolone and pepperoncini. There's pizza and an Italian grocery shelf too.",
+      "orderThis": [
+        {
+          "dish": "The Siciliano",
+          "note": "Ham, salami, mortadella, provolone."
+        },
+        {
+          "dish": "The Goodfella",
+          "note": "Roast beef, prosciutto, salami, provolone."
+        }
+      ],
       "ids": {},
       "copySource": "draft",
       "updatedAt": "2026-10-21",

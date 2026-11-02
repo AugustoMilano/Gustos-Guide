@@ -2,10 +2,13 @@ import { useMemo, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { SmartResults, featuredSlugs } from '../components/SmartResults.tsx'
 import { catalog } from '../content/load.ts'
-import { cityPath, type CityId } from '../lib/city.ts'
+import { cityPath, regionOf, type CityId } from '../lib/city.ts'
 import { countPlaces } from '../lib/format.ts'
+import { isOpen } from '../lib/hours.ts'
+import { regionBoard } from '../lib/top25.ts'
 import { usePageMeta } from '../lib/meta.ts'
 import { smartSearch } from '../lib/smart-search.ts'
+import { useApp } from '../state/AppState.tsx'
 import { useCityCatalog } from '../lib/use-city.ts'
 
 function heroTitle(city: CityId): string {
@@ -30,14 +33,43 @@ function heroDek(city: CityId): string {
   return 'Neighborhoods and cuisines on the San Francisco list.'
 }
 
+function openNowLine(count: number): string {
+  if (count === 0) return 'Nothing open right now'
+  return `${count} ${count === 1 ? 'place' : 'places'} open now`
+}
+
+function topLine(city: CityId, count: number): string {
+  const region = regionOf(city)
+  const where = region === 'seattle'
+    ? 'Seattle and the Eastside'
+    : region === 'la'
+      ? 'Los Angeles'
+      : region === 'sandiego'
+        ? 'San Diego'
+        : 'San Francisco and the Bay'
+  return `The ${count} best in ${where}, ranked by Gusto's Score`
+}
+
+function Chevron() {
+  return (
+    <svg className="home-shortcut-arrow" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false">
+      <path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" strokeWidth="2.25" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  )
+}
+
 export function HomePage() {
-  const { city, guides, ready, failed } = useCityCatalog()
+  const { city, guides, places, ready, failed } = useCityCatalog()
   const [draft, setDraft] = useState('')
   usePageMeta("Gusto's Guide", heroDek(city), './og/og.png')
   const query = draft.trim()
+  const { gustoScore } = useApp()
+  // Same rule as the Tonight page: a place is open when its published hours say so right now.
+  const openCount = useMemo(() => (ready ? places.filter((place) => isOpen(place.periods)).length : 0), [places, ready])
+  const topCount = useMemo(() => regionBoard(regionOf(city), gustoScore).shown.length, [city, gustoScore])
   const result = useMemo(
-    () => (query && ready ? smartSearch(query, city, catalog.places, catalog.guides) : null),
-    [query, city, ready],
+    () => (query && ready ? smartSearch(query, city, catalog.places, catalog.guides, gustoScore) : null),
+    [query, city, ready, gustoScore],
   )
   const featured = featuredSlugs(city)
     .map((slug) => guides.find((guide) => guide.slug === slug))
@@ -90,12 +122,20 @@ export function HomePage() {
             </section>
             <section className="home-shortcuts mt-6" aria-label="Tonight and Top 25">
               <Link to={cityPath('/tonight')} className="guide-card home-shortcut">
-                <p className="text-xs font-bold uppercase tracking-[0.14em]">Open now</p>
-                <h2 className="mt-2 font-serif text-3xl italic">Tonight</h2>
+                <span className="home-shortcut-copy">
+                  <p className="text-xs font-bold uppercase tracking-[0.14em]">Open now</p>
+                  <h2 className="mt-2 font-serif text-3xl italic">Tonight</h2>
+                  {ready ? <p className="mt-2 text-sm tabular-nums">{openNowLine(openCount)}</p> : null}
+                </span>
+                <Chevron />
               </Link>
               <Link to={cityPath('/top')} className="guide-card home-shortcut">
-                <p className="text-xs font-bold uppercase tracking-[0.14em]">Ranked</p>
-                <h2 className="mt-2 font-serif text-3xl italic">Top 25</h2>
+                <span className="home-shortcut-copy">
+                  <p className="text-xs font-bold uppercase tracking-[0.14em]">Ranked</p>
+                  <h2 className="mt-2 font-serif text-3xl italic">Top 25</h2>
+                  {topCount ? <p className="mt-2 text-sm tabular-nums">{topLine(city, topCount)}</p> : null}
+                </span>
+                <Chevron />
               </Link>
             </section>
             <p className="mt-8">
