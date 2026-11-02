@@ -94,6 +94,8 @@ export const GLYPHS = {
   needle: 'M12 1.5v3 M7 7.5h10 M8 7.5c.3-1.8 2-3 4-3s3.7 1.2 4 3 M7 7.5c.6 1.3 2.6 2 5 2s4.4-.7 5-2 M10.5 9.4 9 21 M13.5 9.4 15 21 M12 9.5v11.5 M9.6 15.5h4.8 M7 21h10 M9.3 18.5h5.4',
   goldengate: 'M5 16V2.5 M7 16V2.5 M4.5 2.5h3 M5 6.5h2 M5 10.5h2 M17 16V2.5 M19 16V2.5 M16.5 2.5h3 M17 6.5h2 M17 10.5h2 M.5 11Q3 6 6 3.5Q12 16 18 3.5Q21 6 23.5 11 M9.5 12.5V8.8 M12 12.5V9.8 M14.5 12.5V8.8 M.5 12.5h23 M1 19c2.2-1.3 4.3 1.3 6.5 0s4.3 1.3 6.5 0 4.3 1.3 6.5 0 2 .6 3 0',
   beach: 'M18 3.5a2.5 2.5 0 1 0 .01 0z M18 .5v.8 M21.8 6h-.8 M20.7 3.3l-.6.6 M14.2 6h.8 M2.5 12a6.5 6.5 0 0 1 13 0z M9 5.5v-1 M6 12c0-3.6 1.4-6.5 3-6.5s3 2.9 3 6.5 M9 12v8.5 M12.5 16c1.6-1.1 3.2 1.1 4.8 0s3.2 1.1 4.8 0 M14 18.6c1.3-.8 2.6.8 3.9 0s2.6.8 3.9 0 M1 21.5c4.5-2.7 17.5-2.7 22 0',
+  washington: 'M2.5 5.5h4l.8 1.6 1.4-.4.3-2.2h12.5v13H2.5z M5 8.5c1 .5 1.5 1.8 1 3 M15 9.5l.9 1.8 2 .3-1.4 1.4.3 2-1.8-.9-1.8.9.3-2-1.4-1.4 2-.3z',
+  california: 'M5 2.5h6.5v7.5l8.5 9.5-.8 2.5h-5.4l-.6-2.4-5.6-5.1-1.6-4.6.2-4.5z M9.5 6.5l.6 1.2 1.3.2-1 .9.3 1.3-1.2-.6-1.2.6.3-1.3-1-.9 1.3-.2z',
   spark: 'M12 2v6 M12 16v6 M2 12h6 M16 12h6 M5 5l3.5 3.5 M15.5 15.5 19 19 M5 19l3.5-3.5 M15.5 8.5 19 5',
 } as const
 
@@ -109,6 +111,8 @@ export type BadgeSpec = {
   numeral?: string
   /** Glyph colour when it should differ from the enamel's ink, e.g. Golden Gate orange. */
   ink?: string
+  /** Ultimate tier: iridescent rim and a ray crown behind the medal. */
+  ultimate?: boolean
 }
 
 export function hashOf(text: string): number {
@@ -118,6 +122,19 @@ export function hashOf(text: string): number {
     h = Math.imul(h, 16777619)
   }
   return h >>> 0
+}
+
+const IRIDESCENT: Metal = { name: 'iridescent', stops: ['#fffaf0', '#b9e8ff', '#c79bff', '#ffd2ec'] }
+
+function rays(id: string): string {
+  const n = 32
+  const pts: string[] = []
+  for (let i = 0; i < n * 2; i += 1) {
+    const t = (i / (n * 2)) * Math.PI * 2 - Math.PI / 2
+    const r = i % 2 === 0 ? 59.5 : 50
+    pts.push(`${(60 + r * Math.cos(t)).toFixed(2)} ${(60 + r * Math.sin(t)).toFixed(2)}`)
+  }
+  return `<path d="M${pts.join('L')}Z" fill="url(#${id}g)"/>`
 }
 
 const SHAPES: Shape[] = ['circle', 'hex', 'oct', 'pent', 'diamond', 'rosette', 'burst', 'scallop', 'squircle', 'heptagon']
@@ -172,7 +189,7 @@ export function badgeSvg(spec: BadgeSpec): string {
   const h = hashOf(spec.key)
   const shape = spec.shape ?? SHAPES[h % SHAPES.length]
   const lobes = [10, 12, 14, 16, 18, 20][(h >>> 4) % 6]
-  const metal = METALS.find((m) => m.name === spec.metal) ?? METALS[(h >>> 8) % METALS.length]
+  const metal = spec.ultimate ? IRIDESCENT : METALS.find((m) => m.name === spec.metal) ?? METALS[(h >>> 8) % METALS.length]
   const enamelKeys = Object.keys(ENAMELS)
   const enamel = ENAMELS[spec.enamel ?? enamelKeys[(h >>> 12) % enamelKeys.length]]
   const pattern = (h >>> 16) % 4
@@ -209,6 +226,7 @@ export function badgeSvg(spec: BadgeSpec): string {
 <filter id="${id}e" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="1" stdDeviation=".6" flood-color="#000" flood-opacity=".35"/></filter>
 <path id="${id}t" d="M ${60 - textR} 60 A ${textR} ${textR} 0 0 0 ${60 + textR} 60"/>
 </defs>
+${spec.ultimate ? `<linearGradient id="${id}g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff3c4"/><stop offset=".3" stop-color="#ffc8e8"/><stop offset=".55" stop-color="#b7e3ff"/><stop offset=".8" stop-color="#d8c2ff"/><stop offset="1" stop-color="#ffe7a3"/></linearGradient>${rays(id)}` : ''}
 <path d="${shapePath(shape, R, lobes)}" fill="url(#${id}m)"/>
 <path d="${shapePath(shape, R - 1, lobes)}" fill="none" stroke="#fff" stroke-opacity=".6" stroke-width="1"/>
 ${deco}
@@ -314,7 +332,7 @@ export function badgeBackSvg(spec: BadgeSpec, metalName: string): string {
   const h = hashOf(spec.key)
   const shape = spec.shape ?? SHAPES[h % SHAPES.length]
   const lobes = [10, 12, 14, 16, 18, 20][(h >>> 4) % 6]
-  const metal = METALS.find((m) => m.name === metalName) ?? METALS[(h >>> 8) % METALS.length]
+  const metal = spec.ultimate ? IRIDESCENT : METALS.find((m) => m.name === metalName) ?? METALS[(h >>> 8) % METALS.length]
   const [m0, m1, m2, m3] = metal.stops
   const id = `k${h.toString(36)}`
   return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" aria-hidden="true"><defs>
@@ -337,6 +355,7 @@ export function badgeEdge(spec: BadgeSpec): { svg: string } {
 }
 
 export function badgeMetal(spec: BadgeSpec): string {
+  if (spec.ultimate) return 'platinum'
   const h = hashOf(spec.key)
   return (METALS.find((m) => m.name === spec.metal) ?? METALS[(h >>> 8) % METALS.length]).name
 }

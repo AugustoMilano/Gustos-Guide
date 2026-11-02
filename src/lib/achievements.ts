@@ -3,7 +3,7 @@ import { isListed, placeCity } from './use-city.ts'
 import { regionBoard } from './top25.ts'
 import type { Guide, SlimPlace } from '../types.ts'
 
-export type AchievementGroup = 'Milestones' | 'Cities' | 'Guides'
+export type AchievementGroup = 'Ultimate' | 'Milestones' | 'Cities' | 'Guides'
 
 export type Achievement = {
   id: string
@@ -13,7 +13,7 @@ export type Achievement = {
   have: number
   goal: number
   earned: boolean
-  ring: 'coral' | 'leaf' | 'sky'
+  ring: 'coral' | 'leaf' | 'sky' | 'gold'
   spec: BadgeSpec
   guide?: { slug: string; city: NonNullable<Guide['city']> }
 }
@@ -114,7 +114,31 @@ export function computeAchievements(input: AchievementInput): Achievement[] {
     out.push({ id: `guide-${guide.slug}`, group: 'Guides', title: guide.title, blurb: `Mark every place in ${guide.title} Been.`, ring: 'coral', ...step(ids.filter((id) => beenSet.has(id)).length, ids.length),
       spec: guideBadge(guide.slug, guide.title), guide: { slug: guide.slug, city: guide.city ?? 'seattle' } })
   }
-  return out
+  // Ultimate tier, from guide completion: every guide in a city, in a state, then every medal.
+  const guideRows = out.filter((a) => a.group === 'Guides')
+  const ultimate: Achievement[] = []
+  const done = (rows: Achievement[]) => rows.filter((a) => a.earned).length
+  for (const area of AREAS) {
+    const rows = guideRows.filter((a) => area.cities.includes(a.guide?.city ?? 'seattle'))
+    if (!rows.length) continue
+    ultimate.push({ id: `ultimate-${area.id}`, group: 'Ultimate', title: `All of ${area.title}`, blurb: `Complete every ${area.title} guide.`, ring: 'gold', ...step(done(rows), rows.length),
+      spec: { key: `ultimate-${area.id}`, label: `All of ${area.title}`, glyph: area.glyph, shape: 'rosette', enamel: area.enamel, ink: area.ink, ultimate: true } })
+  }
+  const STATES = [
+    { id: 'wa', title: 'Washington', areas: ['seattle', 'eastside'], glyph: 'washington' as const, enamel: 'jade' as const },
+    { id: 'ca', title: 'California', areas: ['la', 'bay', 'sandiego'], glyph: 'california' as const, enamel: 'sunrise' as const },
+  ]
+  for (const state of STATES) {
+    const cities = AREAS.filter((a) => state.areas.includes(a.id)).flatMap((a) => a.cities)
+    const rows = guideRows.filter((a) => cities.includes(a.guide?.city ?? 'seattle'))
+    if (!rows.length) continue
+    ultimate.push({ id: `ultimate-${state.id}`, group: 'Ultimate', title: `All of ${state.title}`, blurb: `Complete every guide in ${state.title}.`, ring: 'gold', ...step(done(rows), rows.length),
+      spec: { key: `ultimate-${state.id}`, label: state.title, glyph: state.glyph, shape: 'burst', enamel: state.enamel, ultimate: true } })
+  }
+  const everything = [...out, ...ultimate]
+  ultimate.push({ id: 'ultimate-all', group: 'Ultimate', title: 'Completionist', blurb: 'Earn every other medal on Gusto’s Guide.', ring: 'gold', ...step(done(everything), everything.length),
+    spec: { key: 'ultimate-all', label: 'Completionist', glyph: 'crown', shape: 'scallop', enamel: 'midnight', ink: '#ffd87a', ultimate: true } })
+  return [...ultimate, ...out]
 }
 
 export function achievementArt(a: Pick<Achievement, 'spec'>): string {

@@ -10,7 +10,7 @@ const EDGE_LAYERS = 7
  * then springs to the nearest face. At rest it idles with a slight tilt and a moving shine.
  * Reduced motion: no spin or idle; a tap flips it.
  */
-export function Medal3D({ a, engraved, size = 224 }: { a: Achievement; engraved: { top: string; middle: string; bottom?: string }; size?: number }) {
+export function Medal3D({ a, engraved, size = 224 }: { a: Achievement; engraved: { top: string; date?: string; middle: string; bottom?: string }; size?: number }) {
   const reduce = useReducedMotion()
   const rotor = useRef<HTMLDivElement>(null)
   const state = useRef({ angle: 0, v: 0, dragging: false, lastX: 0, lastT: 0, startX: 0, moved: false, t0: performance.now(), raf: 0 })
@@ -103,6 +103,7 @@ export function Medal3D({ a, engraved, size = 224 }: { a: Achievement; engraved:
           <span className="medal3d-art" dangerouslySetInnerHTML={{ __html: badgeBackSvg(a.spec, metal) }} />
           <span className={`medal3d-engrave medal3d-engrave-${metal}`}>
             <span className="medal3d-eng-top">{engraved.top}</span>
+            {engraved.date ? <span className="medal3d-eng-date">{engraved.date}</span> : null}
             <span className="medal3d-eng-mid">{engraved.middle}</span>
             {engraved.bottom ? <span className="medal3d-eng-bot">{engraved.bottom}</span> : null}
           </span>

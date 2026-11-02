@@ -65,7 +65,7 @@ export function GuideStrip({
       <div className="strip-scroll mt-3 flex snap-x items-stretch gap-3 overflow-x-auto pb-3">
         {rows.map(({ place, number, score, vibe }, index) => {
           return (
-            <article key={place.id} className="toc-card flex w-52 shrink-0 snap-start flex-col border-2 border-ink bg-[#fffaf3] sm:w-60">
+            <article key={place.id} style={{ '--i': Math.min(index, 8) } as React.CSSProperties} className="stagger-in toc-card flex w-52 shrink-0 snap-start flex-col border-2 border-ink bg-[#fffaf3] sm:w-60">
               <a
                 href={`#entry-${place.id}`}
                 className="flex h-full min-w-0 flex-col"
