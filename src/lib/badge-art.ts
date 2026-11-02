@@ -92,8 +92,8 @@ export const GLYPHS = {
   rings: 'M8 8a5 5 0 1 0 .01 0z M16 8a5 5 0 1 0 .01 0z M12 14a5 5 0 1 0 .01 0z',
   map: 'M3 6l6-2 6 2 6-2v14l-6 2-6-2-6 2z M9 4v14 M15 6v14',
   needle: 'M12 1.5v3 M7 7.5h10 M8 7.5c.3-1.8 2-3 4-3s3.7 1.2 4 3 M7 7.5c.6 1.3 2.6 2 5 2s4.4-.7 5-2 M10.5 9.4 9 21 M13.5 9.4 15 21 M12 9.5v11.5 M9.6 15.5h4.8 M7 21h10 M9.3 18.5h5.4',
-  goldengate: 'M6 21V4 M18 21V4 M5 4h2 M17 4h2 M5 8h2 M17 8h2 M5 12.5h2 M17 12.5h2 M1 6c2.5 5 4 7 5 7.5 M6 4.5c2 6.5 4 9 6 9s4-2.5 6-9 M18 6.5c1 1.5 3 5 5 7 M1 15h22 M9 11v4 M12 13.5V15 M15 11v4 M1 19c2-1 4 1 6 0s4 1 6 0 4 1 6 0 3 .5 4 0',
-  beach: 'M17 3.5a2.5 2.5 0 1 0 .01 0z M6 17c.5-4 1.5-7 3.5-9.5 M9.5 7.5C8 5.5 5 5.5 3.5 7 M9.5 7.5c.5-2.5 3.5-3.5 5.5-2.5 M9.5 7.5c-2 .5-3.5 2.5-3.5 4.5 M9.5 7.5c2 0 3.5 1.5 4 3.5 M2 17.5c3-1.5 6-1.5 9 0s7 1.5 11 0 M2 21h20 M14 14.5c1.5-1 3-1 4.5 0s3 1 3.5 0',
+  goldengate: 'M5 16V2.5 M7 16V2.5 M4.5 2.5h3 M5 6.5h2 M5 10.5h2 M17 16V2.5 M19 16V2.5 M16.5 2.5h3 M17 6.5h2 M17 10.5h2 M.5 11Q3 6 6 3.5Q12 16 18 3.5Q21 6 23.5 11 M9.5 12.5V8.8 M12 12.5V9.8 M14.5 12.5V8.8 M.5 12.5h23 M1 19c2.2-1.3 4.3 1.3 6.5 0s4.3 1.3 6.5 0 4.3 1.3 6.5 0 2 .6 3 0',
+  beach: 'M18 3.5a2.5 2.5 0 1 0 .01 0z M18 .5v.8 M21.8 6h-.8 M20.7 3.3l-.6.6 M14.2 6h.8 M2.5 12a6.5 6.5 0 0 1 13 0z M9 5.5v-1 M6 12c0-3.6 1.4-6.5 3-6.5s3 2.9 3 6.5 M9 12v8.5 M12.5 16c1.6-1.1 3.2 1.1 4.8 0s3.2 1.1 4.8 0 M14 18.6c1.3-.8 2.6.8 3.9 0s2.6.8 3.9 0 M1 21.5c4.5-2.7 17.5-2.7 22 0',
   spark: 'M12 2v6 M12 16v6 M2 12h6 M16 12h6 M5 5l3.5 3.5 M15.5 15.5 19 19 M5 19l3.5-3.5 M15.5 8.5 19 5',
 } as const
 
@@ -107,6 +107,8 @@ export type BadgeSpec = {
   metal?: Metal['name']
   /** Big centre numeral for milestone medals, e.g. "25". */
   numeral?: string
+  /** Glyph colour when it should differ from the enamel's ink, e.g. Golden Gate orange. */
+  ink?: string
 }
 
 export function hashOf(text: string): number {
@@ -213,7 +215,7 @@ ${deco}
 <path d="${shapePath(shape, face + 1.6, lobes)}" fill="url(#${id}r)"/>
 <path d="${shapePath(shape, face, lobes)}" fill="url(#${id}f)"/>
 <g clip-path="url(#${id}c)"><ellipse cx="46" cy="30" rx="56" ry="30" fill="url(#${id}s)" transform="rotate(-18 46 30)"/></g>
-<g transform="translate(${gx} ${gy}) scale(${glyphScale})" filter="url(#${id}e)"><path d="${GLYPHS[spec.glyph]}" fill="none" stroke="${enamel.ink}" stroke-width="${(1.7 / glyphScale) * 1.25}" stroke-linecap="round" stroke-linejoin="round"/></g>
+<g transform="translate(${gx} ${gy}) scale(${glyphScale})" filter="url(#${id}e)"><path d="${GLYPHS[spec.glyph]}" fill="none" stroke="${spec.ink ?? enamel.ink}" stroke-width="${(1.7 / glyphScale) * 1.25}" stroke-linecap="round" stroke-linejoin="round"/></g>
 ${numeral}
 <text font-family="Inter,system-ui,sans-serif" font-weight="800" font-size="${size}" letter-spacing="${size > 7 ? 1.1 : 0.6}" fill="${enamel.ink}" fill-opacity=".92" text-anchor="middle"><textPath href="#${id}t" startOffset="50%">${escapeXml(label)}</textPath></text>
 </svg>`
