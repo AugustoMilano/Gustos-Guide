@@ -4924,3 +4924,4 @@ mark {
 .city-switch-inline::-webkit-scrollbar { display: none; }
 .city-switch-inline .city-switch-btn { flex: none; padding: 0 0.75rem; white-space: nowrap; }
 .city-switch-inline .city-switch-label { white-space: nowrap; }
+.city-switch-inline .city-switch-label { word-spacing: 0.16em; }
