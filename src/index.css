@@ -4654,7 +4654,8 @@ mark {
 }
 .ach-tile:has(.is-locked) .ach-meta { color: rgb(24 24 24 / 0.6); }
 .ach-sheet { display: flex; flex-direction: column; align-items: center; padding: var(--space-4) var(--space-2) var(--space-2); }
-.ach-hero { position: relative; margin-top: var(--space-2); overflow: hidden; border-radius: 9999px; }
+.ach-hero { position: relative; margin-top: var(--space-2); }
+.ach-hero-medal { position: absolute; inset: 24px; display: grid; place-items: center; }
 .ach-date {
   margin-top: var(--space-2);
   border-radius: 9999px;
@@ -4685,3 +4686,68 @@ mark {
 }
 .ach-city { border-top: 1px solid rgb(24 24 24 / 0.12); padding-top: var(--space-4); }
 .ach-city-head { display: flex; align-items: baseline; justify-content: space-between; gap: var(--space-2); }
+
+/* 3D medal */
+.medal3d {
+  position: relative;
+  perspective: 900px;
+  touch-action: pan-y;
+  cursor: grab;
+  user-select: none;
+  -webkit-user-select: none;
+}
+.medal3d:active { cursor: grabbing; }
+.medal3d-rotor {
+  position: absolute;
+  inset: 0;
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+.medal3d-edge,
+.medal3d-face {
+  position: absolute;
+  inset: 0;
+  display: block;
+}
+.medal3d-edge svg,
+.medal3d-art svg { display: block; width: 100%; height: 100%; }
+.medal3d-face {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+.medal3d-front { transform: translateZ(4px); }
+.medal3d-back { transform: rotateY(180deg) translateZ(4px); }
+.medal3d-art { position: absolute; inset: 0; }
+.medal3d-front.is-locked .medal3d-art { filter: grayscale(1) contrast(0.9) brightness(1.05); opacity: 0.6; }
+.medal3d-shine {
+  position: absolute;
+  inset: 6%;
+  border-radius: 9999px;
+  background: linear-gradient(calc(100deg + var(--shine, 0) * 1deg), transparent 35%, rgb(255 255 255 / 0.42) 50%, transparent 65%);
+  mix-blend-mode: soft-light;
+  pointer-events: none;
+}
+.medal3d-engrave {
+  position: absolute;
+  inset: 24%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-1);
+  text-align: center;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: rgb(60 45 20 / 0.55);
+  /* Cut into the metal: light lip below, shadow above. */
+  text-shadow: 0 1px 0 rgb(255 255 255 / 0.65), 0 -1px 0 rgb(0 0 0 / 0.28);
+}
+.medal3d-engrave-silver,
+.medal3d-engrave-platinum { color: rgb(40 48 58 / 0.55); }
+.medal3d-eng-top { font-size: 11px; }
+.medal3d-eng-mid { font-family: var(--font-serif, 'Times New Roman', serif); font-size: 19px; font-style: italic; letter-spacing: 0.02em; line-height: 1.1; text-transform: none; }
+.medal3d-eng-bot { font-size: 10px; letter-spacing: 0.12em; }
+@media (prefers-reduced-motion: reduce) {
+  .medal3d-rotor { transition: transform 0.01s; }
+}

@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { motion, useReducedMotion } from 'framer-motion'
 import { Modal } from './Modal.tsx'
+import { Medal3D } from './Medal3D.tsx'
 import { catalogReady, loadGuides, slimById } from '../content/load.ts'
 import { achievementArt, computeAchievements, type Achievement, type AchievementGroup } from '../lib/achievements.ts'
 import { cityPath } from '../lib/city.ts'
@@ -34,6 +35,11 @@ function guideAreas(list: Achievement[], current: string) {
 
 export function formatEarned(iso: string, long = false): string {
   return new Date(iso).toLocaleDateString('en-US', { month: long ? 'long' : 'short', day: 'numeric', year: 'numeric' })
+}
+
+function engraveDate(iso: string): string {
+  const d = new Date(iso)
+  return `${d.toLocaleDateString('en-US', { month: 'short' }).toUpperCase()} ${d.getDate()} ${d.getFullYear()}`
 }
 
 function localKey(userId: string) {
@@ -104,13 +110,14 @@ function useEarnedDates(userId: string | null, earnedIds: string[], ready: boole
   return { dates, fresh, clearFresh: () => setFresh([]) }
 }
 
-export function Achievements({ been, rated, userId, gustoScore, mine, city }: {
+export function Achievements({ been, rated, userId, gustoScore, mine, city, who }: {
   been: string[]
   rated: string[]
   userId: string | null
   gustoScore: (id: string) => number | null
   mine: boolean
   city: string
+  who?: string
 }) {
   const [guides, setGuides] = useState<Guide[] | null>(null)
   const [catalogLoaded, setCatalogLoaded] = useState(false)
@@ -198,7 +205,7 @@ export function Achievements({ been, rated, userId, gustoScore, mine, city }: {
         )
       })}
       {current ? (
-        <AchievementSheet a={current} date={dates[current.id]} celebrate={open?.celebrate ?? false} onClose={() => { setOpen(null); if (open?.celebrate) clearFresh() }} />
+        <AchievementSheet a={current} who={who} date={dates[current.id]} celebrate={open?.celebrate ?? false} onClose={() => { setOpen(null); if (open?.celebrate) clearFresh() }} />
       ) : null}
     </section>
   )
@@ -226,7 +233,7 @@ const RING: Record<Achievement['ring'], [string, string]> = {
   sky: ['#1d6fe0', '#9cd2ff'],
 }
 
-export function BadgeRing({ a, size }: { a: Achievement; size: number }) {
+export function BadgeRing({ a, size, bare = false }: { a: Achievement; size: number; bare?: boolean }) {
   const r = 46
   const c = 2 * Math.PI * r
   const pct = a.earned ? 1 : a.have / a.goal
@@ -243,12 +250,12 @@ export function BadgeRing({ a, size }: { a: Achievement; size: number }) {
           <circle cx="50" cy="50" r={r} fill="none" stroke={`url(#${gid})`} strokeWidth="5" strokeLinecap="round" strokeDasharray={`${Math.max(0.02, pct) * c} ${c}`} transform="rotate(-90 50 50)" />
         ) : null}
       </svg>
-      <span className="ach-art" dangerouslySetInnerHTML={{ __html: achievementArt(a) }} />
+      {bare ? null : <span className="ach-art" dangerouslySetInnerHTML={{ __html: achievementArt(a) }} />}
     </span>
   )
 }
 
-function AchievementSheet({ a, date, celebrate, onClose }: { a: Achievement; date?: string; celebrate: boolean; onClose: () => void }) {
+function AchievementSheet({ a, date, celebrate, onClose, who }: { a: Achievement; date?: string; celebrate: boolean; onClose: () => void; who?: string }) {
   const reduce = useReducedMotion()
   return (
     <Modal onClose={onClose} label={a.title}>
@@ -260,8 +267,16 @@ function AchievementSheet({ a, date, celebrate, onClose }: { a: Achievement; dat
           animate={{ scale: 1, rotate: 0, opacity: 1 }}
           transition={reduce ? { duration: 0 } : { type: 'spring', stiffness: 260, damping: celebrate ? 11 : 18 }}
         >
-          <BadgeRing a={a} size={224} />
-          {a.earned ? <span className="ach-shine" aria-hidden="true" /> : null}
+          <BadgeRing a={a} size={240} bare />
+          <span className="ach-hero-medal">
+            <Medal3D
+              a={a}
+              size={192}
+              engraved={a.earned
+                ? { top: date ? engraveDate(date) : 'Earned', middle: a.title, bottom: who }
+                : { top: 'Not yet earned', middle: a.title, bottom: `${a.have} of ${a.goal}` }}
+            />
+          </span>
         </motion.div>
         <h2 className="mt-4 text-center font-serif text-4xl italic leading-tight">{a.title}</h2>
         {a.earned ? (
@@ -270,6 +285,7 @@ function AchievementSheet({ a, date, celebrate, onClose }: { a: Achievement; dat
           <p className="ach-date ach-date-locked">{a.have} of {a.goal}</p>
         )}
         <p className="mt-2 text-center">{a.blurb}</p>
+        <p className="mt-1 text-center text-xs font-bold tracking-wide uppercase opacity-70">Drag the medal to turn it over</p>
         {!a.earned ? (
           <div className="ach-bar mt-4" role="progressbar" aria-valuemin={0} aria-valuemax={a.goal} aria-valuenow={a.have}>
             <span style={{ width: `${(a.have / a.goal) * 100}%` }} />

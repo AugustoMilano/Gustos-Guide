@@ -303,3 +303,35 @@ function shortLabel(title: string): string {
     .trim()
     .slice(0, 26)
 }
+
+/** The medal's reverse: same silhouette and rim, all metal, ready for engraving. */
+export function badgeBackSvg(spec: BadgeSpec, metalName: string): string {
+  const h = hashOf(spec.key)
+  const shape = spec.shape ?? SHAPES[h % SHAPES.length]
+  const lobes = [10, 12, 14, 16, 18, 20][(h >>> 4) % 6]
+  const metal = METALS.find((m) => m.name === metalName) ?? METALS[(h >>> 8) % METALS.length]
+  const [m0, m1, m2, m3] = metal.stops
+  const id = `k${h.toString(36)}`
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" aria-hidden="true"><defs>
+<linearGradient id="${id}a" x1="1" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${m0}"/><stop offset=".4" stop-color="${m1}"/><stop offset=".7" stop-color="${m3}"/><stop offset="1" stop-color="${m2}"/></linearGradient>
+<radialGradient id="${id}b" cx=".6" cy=".35" r=".9"><stop offset="0" stop-color="${m0}"/><stop offset=".6" stop-color="${m3}"/><stop offset="1" stop-color="${m1}"/></radialGradient>
+</defs>
+<path d="${shapePath(shape, 54, lobes)}" fill="url(#${id}a)"/>
+<path d="${shapePath(shape, 46, lobes)}" fill="url(#${id}b)" stroke="${m2}" stroke-opacity=".5" stroke-width="1"/>
+<path d="${shapePath(shape, 45, lobes)}" fill="none" stroke="#fff" stroke-opacity=".55" stroke-width=".8"/>
+</svg>`
+}
+
+/** Edge colour for the medal's thickness. */
+export function badgeEdge(spec: BadgeSpec): { svg: string } {
+  const h = hashOf(spec.key)
+  const shape = spec.shape ?? SHAPES[h % SHAPES.length]
+  const lobes = [10, 12, 14, 16, 18, 20][(h >>> 4) % 6]
+  const metal = METALS.find((m) => m.name === spec.metal) ?? METALS[(h >>> 8) % METALS.length]
+  return { svg: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" aria-hidden="true"><path d="${shapePath(shape, 54, lobes)}" fill="${metal.stops[2]}"/></svg>` }
+}
+
+export function badgeMetal(spec: BadgeSpec): string {
+  const h = hashOf(spec.key)
+  return (METALS.find((m) => m.name === spec.metal) ?? METALS[(h >>> 8) % METALS.length]).name
+}
