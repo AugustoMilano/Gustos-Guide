@@ -62,6 +62,10 @@
     {
       "id": "rubinstein-bagels",
       "name": "Rubinstein Bagels"
+    },
+    {
+      "id": "franz-bakery-outlet",
+      "name": "Franz Bakery Outlet"
     }
   ]
 }
