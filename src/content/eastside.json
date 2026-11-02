@@ -5940,6 +5940,12 @@
           "copySource": "draft"
         },
         {
+          "placeId": "daniels-broiler",
+          "pullQuote": "Prime filet on the 21st floor, Bellevue's steakhouse since 1989.",
+          "blurb": "Order the Daniel's Cut, a 12-ounce Prime filet under the house steak butter. The decks face the Seattle skyline and the Olympics.",
+          "copySource": "draft"
+        },
+        {
           "placeId": "water-grill-bellevue",
           "pullQuote": "Live Dungeness crab by the pound and a raw bar on Bellevue Way.",
           "blurb": "In season, order the live Washington Dungeness, steamed and sold by the pound. Start at the raw bar, and expect the menu to change daily with the catch.",
@@ -5949,12 +5955,6 @@
           "placeId": "la-mar-bellevue",
           "pullQuote": "Gastón Acurio's cebiche bar, on Main Street in Bellevue.",
           "blurb": "Order cebiche first, like the Cebiche Nissei from the cebiche bar, then lomo saltado. It's Acurio's first Northwest restaurant.",
-          "copySource": "draft"
-        },
-        {
-          "placeId": "daniels-broiler",
-          "pullQuote": "Prime filet on the 21st floor, Bellevue's steakhouse since 1989.",
-          "blurb": "Order the Daniel's Cut, a 12-ounce Prime filet under the house steak butter. The decks face the Seattle skyline and the Olympics.",
           "copySource": "draft"
         },
         {
