@@ -334,204 +334,6 @@
       ]
     },
     {
-      "id": "regent-bakery-and-cafe",
-      "city": "eastside",
-      "name": "Regent Bakery and Cafe",
-      "neighborhood": "Bel-Red",
-      "address": "677 120th Ave NE, Ste 9A, Bellevue, WA 98005",
-      "lat": 47.6162309,
-      "lng": -122.1808153,
-      "cuisine": [
-        "Bakery"
-      ],
-      "placeType": "bakery",
-      "oneLiner": "Asian bakery and cafe on 120th Avenue Northeast, in Bellevue since 2000.",
-      "perfectFor": [],
-      "periods": [
-        {
-          "days": [
-            1,
-            2,
-            3,
-            4,
-            5,
-            6
-          ],
-          "start": 540,
-          "end": 1140
-        },
-        {
-          "days": [
-            0
-          ],
-          "start": 600,
-          "end": 1080
-        }
-      ],
-      "gustoScore": null,
-      "website": "http://www.regentbakeryandcafe.com/bellevue",
-      "phone": "+1 (425) 378-1498",
-      "appleMapsUrl": "https://maps.apple.com/?daddr=47.6162309,-122.1808153&q=Regent%20Bakery%20and%20Cafe",
-      "guideSlugs": [
-        "eastside-coffee"
-      ],
-      "muid": "",
-      "hoursLabel": "",
-      "blurb": "Asian bakery and cafe on 120th Avenue Northeast, in Bellevue since 2000.",
-      "orderThis": [],
-      "ids": {},
-      "copySource": "draft",
-      "updatedAt": "2026-10-20",
-      "photos": [
-        {
-          "source": "illustration",
-          "isIllustration": true,
-          "alt": "Illustration suggesting Bakery at Regent Bakery and Cafe",
-          "credit": "Illustration"
-        }
-      ]
-    },
-    {
-      "id": "facing-east",
-      "city": "eastside",
-      "name": "Facing East",
-      "neighborhood": "Spring District",
-      "address": "12736 Bel-Red Road, Bellevue, WA 98005",
-      "lat": 47.6208959,
-      "lng": -122.1705706,
-      "cuisine": [
-        "Taiwanese"
-      ],
-      "placeType": "takeout",
-      "oneLiner": "Takeout on Bel-Red Road since the December 2021 move from downtown.",
-      "perfectFor": [],
-      "periods": [
-        {
-          "days": [
-            0,
-            1,
-            2,
-            3,
-            4
-          ],
-          "start": 690,
-          "end": 900
-        },
-        {
-          "days": [
-            0,
-            1,
-            2,
-            3,
-            4
-          ],
-          "start": 1020,
-          "end": 1230
-        },
-        {
-          "days": [
-            5,
-            6
-          ],
-          "start": 690,
-          "end": 900
-        },
-        {
-          "days": [
-            5,
-            6
-          ],
-          "start": 1020,
-          "end": 1260
-        }
-      ],
-      "gustoScore": null,
-      "website": "https://www.facingeastbellevue.com/",
-      "phone": "+1 (425) 688-2986",
-      "appleMapsUrl": "https://maps.apple.com/?daddr=47.6208959,-122.1705706&q=Facing%20East",
-      "guideSlugs": [
-        "eastside-asian"
-      ],
-      "muid": "",
-      "hoursLabel": "",
-      "blurb": "Takeout on Bel-Red Road since the December 2021 move from downtown.",
-      "orderThis": [],
-      "ids": {},
-      "copySource": "draft",
-      "updatedAt": "2026-10-20",
-      "photos": [
-        {
-          "source": "illustration",
-          "isIllustration": true,
-          "alt": "Illustration suggesting Taiwanese at Facing East",
-          "credit": "Illustration"
-        }
-      ]
-    },
-    {
-      "id": "the-slip",
-      "city": "eastside",
-      "name": "The Slip",
-      "neighborhood": "Downtown Kirkland",
-      "address": "80 Kirkland Ave, Kirkland, WA 98033",
-      "lat": 47.6754189,
-      "lng": -122.2071877,
-      "cuisine": [
-        "American"
-      ],
-      "placeType": "restaurant",
-      "oneLiner": "Waterfront dining at Marina Beach Park. Burgers have been served here since 1996.",
-      "perfectFor": [
-        "Waterfront"
-      ],
-      "periods": [
-        {
-          "days": [
-            0,
-            1,
-            2,
-            3
-          ],
-          "start": 720,
-          "end": 1200
-        },
-        {
-          "days": [
-            4,
-            5,
-            6
-          ],
-          "start": 660,
-          "end": 1260
-        }
-      ],
-      "gustoScore": null,
-      "website": "https://theslipkirkland.com/",
-      "phone": "+1 (425) 952-0256",
-      "appleMapsUrl": "https://maps.apple.com/?daddr=47.6754189,-122.2071877&q=The%20Slip",
-      "guideSlugs": [
-        "kirkland-waterfront",
-        "best-of-kirkland",
-        "kirkland"
-      ],
-      "muid": "",
-      "hoursLabel": "",
-      "blurb": "Waterfront dining at Marina Beach Park. Burgers have been served here since 1996.",
-      "orderThis": [],
-      "ids": {},
-      "copySource": "draft",
-      "updatedAt": "2026-10-20",
-      "photos": [
-        {
-          "source": "illustration",
-          "isIllustration": true,
-          "alt": "Illustration suggesting American at The Slip",
-          "credit": "Illustration"
-        }
-      ],
-      "price": 2
-    },
-    {
       "id": "beachhouse-bar-and-grill",
       "city": "eastside",
       "name": "BeachHouse Bar + Grill",
@@ -824,321 +626,6 @@
         }
       ],
       "price": 2
-    },
-    {
-      "id": "pomegranate-bistro",
-      "city": "eastside",
-      "name": "Pomegranate Bistro",
-      "neighborhood": "Southeast Redmond",
-      "address": "18005 NE 68th Street, A-150, Redmond, WA 98052",
-      "lat": 47.6664353,
-      "lng": -122.0991773,
-      "cuisine": [
-        "American"
-      ],
-      "placeType": "restaurant",
-      "oneLiner": "",
-      "perfectFor": [],
-      "periods": [
-        {
-          "days": [
-            1
-          ],
-          "start": 480,
-          "end": 900
-        },
-        {
-          "days": [
-            2,
-            3,
-            4,
-            5
-          ],
-          "start": 480,
-          "end": 1260
-        },
-        {
-          "days": [
-            6
-          ],
-          "start": 540,
-          "end": 1260
-        },
-        {
-          "days": [
-            0
-          ],
-          "start": 540,
-          "end": 900
-        }
-      ],
-      "gustoScore": null,
-      "website": "https://pomegranatebistro.com/",
-      "phone": "+1 (425) 556-5972",
-      "appleMapsUrl": "https://maps.apple.com/?daddr=47.6664353,-122.0991773&q=Pomegranate%20Bistro",
-      "guideSlugs": [
-        "redmond"
-      ],
-      "muid": "",
-      "hoursLabel": "",
-      "blurb": "",
-      "orderThis": [],
-      "ids": {},
-      "copySource": "draft",
-      "updatedAt": "2026-10-20",
-      "photos": [
-        {
-          "source": "illustration",
-          "isIllustration": true,
-          "alt": "Illustration suggesting American at Pomegranate Bistro",
-          "credit": "Illustration"
-        }
-      ],
-      "price": 2
-    },
-    {
-      "id": "jaks-grill",
-      "city": "eastside",
-      "name": "JaK's Grill",
-      "neighborhood": "Downtown Issaquah",
-      "address": "14 Front Street N, Issaquah, WA 98027",
-      "lat": 47.5303803,
-      "lng": -122.0363951,
-      "cuisine": [
-        "Steak"
-      ],
-      "placeType": "steakhouse",
-      "price": 3,
-      "oneLiner": "",
-      "perfectFor": [],
-      "periods": [
-        {
-          "days": [
-            1
-          ],
-          "start": 960,
-          "end": 1260
-        },
-        {
-          "days": [
-            2,
-            3,
-            4
-          ],
-          "start": 660,
-          "end": 840
-        },
-        {
-          "days": [
-            2,
-            3,
-            4
-          ],
-          "start": 960,
-          "end": 1260
-        },
-        {
-          "days": [
-            5
-          ],
-          "start": 660,
-          "end": 840
-        },
-        {
-          "days": [
-            5
-          ],
-          "start": 960,
-          "end": 1320
-        },
-        {
-          "days": [
-            6
-          ],
-          "start": 600,
-          "end": 840
-        },
-        {
-          "days": [
-            6
-          ],
-          "start": 960,
-          "end": 1320
-        },
-        {
-          "days": [
-            0
-          ],
-          "start": 600,
-          "end": 840
-        },
-        {
-          "days": [
-            0
-          ],
-          "start": 960,
-          "end": 1260
-        }
-      ],
-      "gustoScore": null,
-      "website": "https://www.jaksgrill.com/location/jaks-grill-issaquah/",
-      "phone": "+1 (425) 472-3920",
-      "appleMapsUrl": "https://maps.apple.com/?daddr=47.5303803,-122.0363951&q=JaK's%20Grill",
-      "guideSlugs": [
-        "issaquah"
-      ],
-      "muid": "",
-      "hoursLabel": "",
-      "blurb": "",
-      "orderThis": [],
-      "ids": {},
-      "copySource": "draft",
-      "updatedAt": "2026-10-20",
-      "photos": [
-        {
-          "source": "illustration",
-          "isIllustration": true,
-          "alt": "Illustration suggesting Steak at JaK's Grill",
-          "credit": "Illustration"
-        }
-      ]
-    },
-    {
-      "id": "beardslee-public-house",
-      "city": "eastside",
-      "name": "Beardslee Public House",
-      "neighborhood": "Downtown Bothell",
-      "address": "19116 Beardslee Blvd, Bothell, WA 98011",
-      "lat": 47.7664248,
-      "lng": -122.1916265,
-      "cuisine": [
-        "American"
-      ],
-      "placeType": "brewery",
-      "oneLiner": "Public house on Beardslee Boulevard. The beer is brewed in the building.",
-      "perfectFor": [],
-      "periods": [
-        {
-          "days": [
-            0
-          ],
-          "start": 630,
-          "end": 1230
-        },
-        {
-          "days": [
-            6
-          ],
-          "start": 630,
-          "end": 1260
-        },
-        {
-          "days": [
-            2,
-            3,
-            4
-          ],
-          "start": 720,
-          "end": 1230
-        },
-        {
-          "days": [
-            5
-          ],
-          "start": 720,
-          "end": 1260
-        },
-        {
-          "days": [
-            1
-          ],
-          "start": 930,
-          "end": 1230
-        }
-      ],
-      "gustoScore": null,
-      "website": "https://beardsleeph.com/",
-      "phone": "+1 (425) 286-1001",
-      "appleMapsUrl": "https://maps.apple.com/?daddr=47.7664248,-122.1916265&q=Beardslee%20Public%20House",
-      "guideSlugs": [
-        "bothell",
-        "eastside-breweries"
-      ],
-      "muid": "",
-      "hoursLabel": "",
-      "blurb": "Public house on Beardslee Boulevard. The beer is brewed in the building.",
-      "orderThis": [],
-      "ids": {},
-      "copySource": "draft",
-      "updatedAt": "2026-10-20",
-      "photos": [
-        {
-          "source": "illustration",
-          "isIllustration": true,
-          "alt": "Illustration suggesting American at Beardslee Public House",
-          "credit": "Illustration"
-        }
-      ],
-      "price": 2
-    },
-    {
-      "id": "amaro-bistro",
-      "city": "eastside",
-      "name": "Amaro Bistro",
-      "neighborhood": "Wayne",
-      "address": "18333 Bothell Way NE, Ste 105, Bothell, WA 98011",
-      "lat": 47.7613428,
-      "lng": -122.2080504,
-      "cuisine": [
-        "Italian"
-      ],
-      "placeType": "restaurant",
-      "price": 2,
-      "oneLiner": "Italian dining room on Bothell Way, and the sister restaurant to Il Bistro.",
-      "perfectFor": [],
-      "periods": [
-        {
-          "days": [
-            0,
-            1,
-            2,
-            3,
-            4
-          ],
-          "start": 960,
-          "end": 1260
-        },
-        {
-          "days": [
-            5,
-            6
-          ],
-          "start": 960,
-          "end": 1320
-        }
-      ],
-      "gustoScore": null,
-      "website": "https://amarorestaurant.com/",
-      "phone": "+1 (425) 485-2300",
-      "appleMapsUrl": "https://maps.apple.com/?daddr=47.7613428,-122.2080504&q=Amaro%20Bistro",
-      "guideSlugs": [
-        "bothell"
-      ],
-      "muid": "",
-      "hoursLabel": "",
-      "blurb": "Italian dining room on Bothell Way, and the sister restaurant to Il Bistro.",
-      "orderThis": [],
-      "ids": {},
-      "copySource": "draft",
-      "updatedAt": "2026-10-20",
-      "photos": [
-        {
-          "source": "illustration",
-          "isIllustration": true,
-          "alt": "Illustration suggesting Italian at Amaro Bistro",
-          "credit": "Illustration"
-        }
-      ]
     },
     {
       "id": "13-coins",
@@ -2228,9 +1715,7 @@
       "website": "https://vivipizzeria.com/",
       "phone": "+1 (425) 408-0711",
       "appleMapsUrl": "https://maps.apple.com/?daddr=47.7330596,-122.1427072&q=Vivi%20Pizzeria",
-      "guideSlugs": [
-        "woodinville"
-      ],
+      "guideSlugs": [],
       "muid": "",
       "hoursLabel": "",
       "blurb": "",
@@ -2411,9 +1896,7 @@
       "website": "https://www.tanoor.com/",
       "phone": "+1 (425) 961-0831",
       "appleMapsUrl": "https://maps.apple.com/?daddr=47.6057085,-122.0370143&q=Tanoor",
-      "guideSlugs": [
-        "sammamish"
-      ],
+      "guideSlugs": [],
       "muid": "",
       "hoursLabel": "",
       "blurb": "Start with the hummus and warm pita, then the kafta kabob of ground beef and lamb. The meats are halal and the pita is baked in-house.",
@@ -5636,9 +5119,7 @@
       "website": "https://www.paparepas.com",
       "appleMapsUrl": "https://maps.apple.com/?daddr=47.4504355,-122.1856212&q=Paparepas",
       "applePlaceUrl": "https://maps.apple.com/place?auid=2020282391247799612",
-      "guideSlugs": [
-        "renton"
-      ],
+      "guideSlugs": [],
       "muid": "2020282391247799612",
       "hoursLabel": "",
       "blurb": "Order the reina pepiada, a griddled arepa filled with chicken salad and avocado. The Renton storefront also runs a food truck.",
@@ -6302,12 +5783,6 @@
           "pullQuote": "Lombardy-style Italian at Carillon Point, dinner beside the lake.",
           "blurb": "Lombardy-style Italian at Carillon Point, dinner beside the lake.",
           "copySource": "draft"
-        },
-        {
-          "placeId": "the-slip",
-          "pullQuote": "Waterfront dining at Marina Beach Park. Burgers have been served here since 1996.",
-          "blurb": "Waterfront dining at Marina Beach Park. Burgers have been served here since 1996.",
-          "copySource": "draft"
         }
       ],
       "pinned": true
@@ -6326,12 +5801,6 @@
           "placeId": "beachhouse-bar-and-grill",
           "pullQuote": "",
           "blurb": "",
-          "copySource": "draft"
-        },
-        {
-          "placeId": "the-slip",
-          "pullQuote": "Waterfront dining at Marina Beach Park. Burgers have been served here since 1996.",
-          "blurb": "Waterfront dining at Marina Beach Park. Burgers have been served here since 1996.",
           "copySource": "draft"
         },
         {
@@ -6425,12 +5894,6 @@
           "pullQuote": "Enchiladas divorciadas and a deep tequila list in Redmond's old City Hall building.",
           "blurb": "Order the enchiladas divorciadas, half salsa verde and half salsa roja, with a tequila flight. The brick building was Redmond's City Hall from 1915 to 1927.",
           "copySource": "draft"
-        },
-        {
-          "placeId": "pomegranate-bistro",
-          "pullQuote": "",
-          "blurb": "",
-          "copySource": "draft"
         }
       ]
     },
@@ -6454,37 +5917,6 @@
           "placeId": "xochi",
           "pullQuote": "",
           "blurb": "",
-          "copySource": "draft"
-        },
-        {
-          "placeId": "jaks-grill",
-          "pullQuote": "",
-          "blurb": "",
-          "copySource": "draft"
-        }
-      ],
-      "pinned": true
-    },
-    {
-      "slug": "bothell",
-      "title": "Bothell",
-      "dek": "Downtown Bothell, Wayne, and Canyon Park.",
-      "group": "Neighborhoods",
-      "intro": "Bothell restaurants from Main Street out to Wayne and the Bothell-Everett Highway.",
-      "updatedAt": "2026-10-20",
-      "ranked": false,
-      "city": "eastside",
-      "entries": [
-        {
-          "placeId": "beardslee-public-house",
-          "pullQuote": "Public house on Beardslee Boulevard. The beer is brewed in the building.",
-          "blurb": "Public house on Beardslee Boulevard. The beer is brewed in the building.",
-          "copySource": "draft"
-        },
-        {
-          "placeId": "amaro-bistro",
-          "pullQuote": "Italian dining room on Bothell Way, and the sister restaurant to Il Bistro.",
-          "blurb": "Italian dining room on Bothell Way, and the sister restaurant to Il Bistro.",
           "copySource": "draft"
         }
       ],
@@ -6833,12 +6265,6 @@
           "copySource": "draft"
         },
         {
-          "placeId": "the-slip",
-          "pullQuote": "Waterfront dining at Marina Beach Park. Burgers have been served here since 1996.",
-          "blurb": "Waterfront dining at Marina Beach Park. Burgers have been served here since 1996.",
-          "copySource": "draft"
-        },
-        {
           "placeId": "ristorante-paradiso",
           "pullQuote": "",
           "blurb": "",
@@ -6848,25 +6274,6 @@
           "placeId": "cafe-juanita",
           "pullQuote": "Prix-fixe Northern Italian tasting menus in the Juanita neighborhood.",
           "blurb": "Prix-fixe Northern Italian tasting menus in the Juanita neighborhood.",
-          "copySource": "draft"
-        }
-      ]
-    },
-    {
-      "slug": "woodinville",
-      "title": "Woodinville",
-      "dek": "The Hollywood district and Village Square.",
-      "group": "Neighborhoods",
-      "intro": "Restaurants along the Woodinville-Redmond Road and at Village Square, a short hop from the tasting rooms.",
-      "updatedAt": "2026-10-23",
-      "ranked": false,
-      "pinned": true,
-      "city": "eastside",
-      "entries": [
-        {
-          "placeId": "vivi-pizzeria",
-          "pullQuote": "Neapolitan pizza on 148th Avenue, in the warehouse district.",
-          "blurb": "Neapolitan pizza on 148th Avenue, in the warehouse district.",
           "copySource": "draft"
         }
       ]
@@ -6903,44 +6310,6 @@
       "pinned": true
     },
     {
-      "slug": "renton",
-      "title": "Renton",
-      "dek": "Downtown Renton rooms with a street address.",
-      "group": "Neighborhoods",
-      "intro": "Downtown Renton: the steakhouse on Houser Way, pizza and coffee on South 3rd, and a few rooms nearby.",
-      "updatedAt": "2026-10-22",
-      "ranked": false,
-      "city": "eastside",
-      "entries": [
-        {
-          "placeId": "paparepas",
-          "pullQuote": "Reina pepiada arepas stuffed with chicken-avocado salad at a Venezuelan spot in Renton.",
-          "blurb": "Order the reina pepiada, a griddled arepa filled with chicken salad and avocado. The Renton storefront also runs a food truck.",
-          "copySource": "draft"
-        }
-      ],
-      "pinned": true
-    },
-    {
-      "slug": "sammamish",
-      "title": "Sammamish",
-      "dek": "The town center, Klahanie, and Inglewood Hill.",
-      "group": "Neighborhoods",
-      "intro": "Sammamish restaurants with a street address, from Southeast 4th out to Klahanie and Inglewood Hill Road.",
-      "updatedAt": "2026-10-20",
-      "ranked": false,
-      "city": "eastside",
-      "entries": [
-        {
-          "placeId": "tanoor",
-          "pullQuote": "Lebanese plates on Southeast 4th, in the Sammamish town center.",
-          "blurb": "Lebanese plates on Southeast 4th, in the Sammamish town center.",
-          "copySource": "draft"
-        }
-      ],
-      "pinned": true
-    },
-    {
       "slug": "eastside-coffee",
       "title": "Eastside coffee",
       "dek": "Cafes, a bakery, and bagels.",
@@ -6960,12 +6329,6 @@
           "placeId": "third-culture-coffee",
           "pullQuote": "Coffee roaster on 102nd Avenue Northeast in downtown Bellevue.",
           "blurb": "Coffee roaster on 102nd Avenue Northeast in downtown Bellevue.",
-          "copySource": "draft"
-        },
-        {
-          "placeId": "regent-bakery-and-cafe",
-          "pullQuote": "Asian bakery and cafe on 120th Avenue Northeast, in Bellevue since 2000.",
-          "blurb": "Asian bakery and cafe on 120th Avenue Northeast, in Bellevue since 2000.",
           "copySource": "draft"
         }
       ],
@@ -7093,12 +6456,6 @@
           "placeId": "peony",
           "pullQuote": "Hong Kong-style Chinese on Main, in the old downtown blocks.",
           "blurb": "Hong Kong-style Chinese on Main, in the old downtown blocks.",
-          "copySource": "draft"
-        },
-        {
-          "placeId": "facing-east",
-          "pullQuote": "Takeout on Bel-Red Road since the December 2021 move from downtown.",
-          "blurb": "Takeout on Bel-Red Road since the December 2021 move from downtown.",
           "copySource": "draft"
         },
         {
@@ -7234,12 +6591,6 @@
           "placeId": "bellevue-brewing",
           "pullQuote": "A brewpub on Northeast District Way in the Spring District.",
           "blurb": "A brewpub on Northeast District Way in the Spring District.",
-          "copySource": "draft"
-        },
-        {
-          "placeId": "beardslee-public-house",
-          "pullQuote": "Public house on Beardslee Boulevard. The beer is brewed in the building.",
-          "blurb": "Public house on Beardslee Boulevard. The beer is brewed in the building.",
           "copySource": "draft"
         }
       ],

@@ -53,7 +53,7 @@ export function SmartResults({
 export function featuredSlugs(city: CityId): string[] {
   const lists: Record<CityId, string[]> = {
     seattle: ['pike-place', 'date-night', 'best-pizza', 'late-night', 'cocktail-bars', 'bring-the-parents'],
-    eastside: ['best-of-bellevue', 'bellevue', 'kirkland-waterfront', 'eastside-date-night', 'woodinville', 'eastside-brunch'],
+    eastside: ['best-of-bellevue', 'bellevue', 'kirkland-waterfront', 'eastside-date-night', 'eastside-brunch'],
     la: ['la-date-night', 'santa-monica', 'venice', 'beverly-grove', 'la-sushi', 'downtown-la'],
     sf: ['sf-date-night', 'sf-mission-district', 'sf-north-beach', 'sf-italian', 'sf-seafood', 'sf-embarcadero'],
     eastbay: ['eastbay-berkeley', 'eastbay-fremont', 'eastbay-pleasanton'],
