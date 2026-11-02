@@ -1,9 +1,13 @@
 export function bounceMark(event: { currentTarget: HTMLElement }) {
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
   const button = event.currentTarget
-  button.classList.remove('is-pop')
-  void button.offsetWidth
-  button.classList.add('is-pop')
+  // Add the class after React re-renders the button (its className changes on toggle), or it gets wiped.
+  requestAnimationFrame(() => {
+    button.classList.remove('is-pop')
+    void button.offsetWidth
+    button.classList.add('is-pop')
+    button.addEventListener('animationend', () => button.classList.remove('is-pop'), { once: true })
+  })
 }
 
 export function dragSheet(

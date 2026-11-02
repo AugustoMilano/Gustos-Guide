@@ -4814,7 +4814,13 @@ mark {
     border-radius: 28px;
     padding: var(--space-1);
   }
-  body { padding-bottom: calc(80px + env(safe-area-inset-bottom)); }
+  /* The navy footer runs under the tab bar so the page ends seamlessly. */
+  .made-in {
+    background: var(--color-navy);
+    color: rgb(255 250 243 / 0.72);
+    padding-bottom: calc(96px + env(safe-area-inset-bottom));
+  }
+  .tab-bar { background-color: rgb(255 250 243 / 0.86); }
   .back-to-top { bottom: calc(88px + env(safe-area-inset-bottom)); }
 }
 .tab-cell { min-width: 0; }
