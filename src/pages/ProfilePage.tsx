@@ -1,10 +1,11 @@
 import { isRestaurant } from '../lib/restaurant.ts'
 import { onePerBrand } from '../lib/brand.ts'
 import { Link, useParams } from 'react-router-dom'
+import { CitySwitcher } from '../components/CitySwitcher.tsx'
 import { Achievements } from '../components/Achievements.tsx'
 import { PlaceThumb } from '../components/PlaceThumb.tsx'
 import { slimById } from '../content/load.ts'
-import { areaPhrase, areaTitle, cityPath } from '../lib/city.ts'
+import { areaPhrase, areaTitle, areasFor, cityPath } from '../lib/city.ts'
 import { placeCity, placesForCity, useCityId } from '../lib/use-city.ts'
 import { usePageMeta } from '../lib/meta.ts'
 import { useApp } from '../state/AppState.tsx'
@@ -131,7 +132,10 @@ export function ProfilePage() {
         {beenPlaces.length ? <p>{beenPlaces.length} places marked Been.</p> : <p>No been pins yet.</p>}
         <Link className="btn mt-3" to={cityPath('/explore')}>Open the map</Link>
       </div>
-      <h2 className="mt-8 font-serif text-3xl italic">Top 10 in {areaPhrase(city)}</h2>
+      <div className="top10-head mt-8">
+        <h2 className="font-serif text-3xl italic">Top 10 in {areaPhrase(city)}</h2>
+        {areasFor(city).filter((item) => item.ready).length > 1 ? <CitySwitcher inline /> : null}
+      </div>
       {top.length ? (
         <ol className="mt-3 space-y-2">
           {top.map((row, index) => (

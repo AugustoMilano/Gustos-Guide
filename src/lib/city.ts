@@ -124,7 +124,8 @@ const PLAIN = new Set(['/terms', '/privacy', '/cities'])
 
 export function isCityPicker(pathname: string): boolean {
   const path = (pathname.split('?')[0] || '/').replace(/\/$/, '') || '/'
-  return path === '/cities'
+  // The bare root opens on the city picker; each city's home lives under its prefix.
+  return path === '/cities' || path === '/'
 }
 
 export function cityFromPath(pathname: string): CityId {

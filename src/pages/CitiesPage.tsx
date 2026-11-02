@@ -5,7 +5,7 @@ import { usePageMeta } from '../lib/meta.ts'
 
 const SPRING = { type: 'spring' as const, stiffness: 420, damping: 32 }
 
-export function CitiesPage() {
+export function CitiesPage({ landing = false }: { landing?: boolean } = {}) {
   const navigate = useNavigate()
   const reduce = useReducedMotion()
   const memory = readRegionMemory()
@@ -22,12 +22,22 @@ export function CitiesPage() {
   }
 
   return (
-    <main id="main" tabIndex={-1} className="mx-auto max-w-3xl px-4 pt-28 pb-16 outline-none">
+    <main id="main" tabIndex={-1} className={`mx-auto max-w-3xl px-4 pt-28 pb-16 outline-none${landing ? ' city-landing' : ''}`}>
+      <motion.div
+        initial={reduce ? false : { opacity: 0, y: 16 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={reduce ? { duration: 0 } : SPRING}
+      >
       <p className="area-kicker">Gusto's Guide</p>
-      <h1 className="mt-2 font-serif text-6xl italic">Choose a city</h1>
+      <h1 className="mt-2 font-serif text-6xl italic">{landing ? 'Where are you eating?' : 'Choose a city'}</h1>
+      {landing ? (
+        <p className="mt-3 max-w-xl">Pick a city to open its guide. Seattle includes the Eastside; San Francisco takes in the whole Bay.</p>
+      ) : (
       <p className="mt-3 max-w-xl">
         Seattle includes the Eastside, with the coral switch once you are inside. San Francisco includes the East Bay, the Peninsula and South Bay, and the North Bay the same way. Los Angeles is its own list. San Diego is its own list too: La Jolla, Coronado, Chula Vista, and North County stay on it, without a second city. The city you opened last is marked.
       </p>
+      )}
+      </motion.div>
       <div className="mt-6 grid gap-3">
         {REGIONS.map((region, index) => {
           const on = memory.region === region.id
@@ -40,7 +50,7 @@ export function CitiesPage() {
               onClick={() => open(region.id)}
               initial={reduce ? false : { opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={reduce ? { duration: 0 } : { ...SPRING, delay: index * 0.05 }}
+              transition={reduce ? { duration: 0 } : { ...SPRING, delay: (landing ? 0.12 : 0) + index * 0.06 }}
             >
               <span className="min-w-0 text-left">
                 <span className="block font-serif text-4xl italic leading-none">{region.name}</span>
