@@ -75,10 +75,11 @@ export function TopPage() {
               >
                 <Link
                   to={cityPath(`/place/${row.place.id}`, placeCity(row.place))}
+                  viewTransition={!reduce}
                   className={`top-podium-card glass${row.rank === 1 ? ' is-first' : ''}`}
                 >
                   <GoldenFork placeId={row.place.id} size="lg" />
-                  <span className="top-podium-shot">
+                  <span className="top-podium-shot" style={reduce ? undefined : { viewTransitionName: `place-${row.place.id}` }}>
                     <PlaceThumb place={row.place} uploads={app.photos} eager={row.rank === 1} />
                   </span>
                   <span className="mt-2 block font-serif text-xl italic leading-tight sm:text-2xl">{row.place.name}</span>
@@ -97,9 +98,9 @@ export function TopPage() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={reduce ? { duration: 0 } : { type: 'spring', stiffness: 420, damping: 34, delay: Math.min(index, 10) * 0.035 }}
                 >
-                  <Link to={cityPath(`/place/${row.place.id}`, placeCity(row.place))} className="top-row glass">
+                  <Link to={cityPath(`/place/${row.place.id}`, placeCity(row.place))} viewTransition={!reduce} className="top-row glass">
                     <span className="top-rank">{row.rank}</span>
-                    <span className="top-row-shot">
+                    <span className="top-row-shot" style={reduce ? undefined : { viewTransitionName: `place-${row.place.id}` }}>
                       <PlaceThumb place={row.place} uploads={app.photos} />
                       <GoldenFork placeId={row.place.id} overlay />
                     </span>

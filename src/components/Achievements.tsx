@@ -268,7 +268,7 @@ function AchievementSheet({ a, date, celebrate, onClose, who }: { a: Achievement
     <Modal onClose={onClose} label={a.title}>
       <div className={`ach-sheet ${celebrate ? 'is-celebrating' : ''}`}>
         {celebrate ? <p className="text-xs font-bold tracking-[0.14em] uppercase text-coral">{a.spec.ultimate ? 'Ultimate medal' : 'New achievement'}</p> : null}
-        {celebrate && !reduce ? <Confetti count={a.spec.ultimate ? 48 : 22} /> : null}
+        {celebrate && !reduce ? <Confetti count={a.spec.ultimate ? 48 : 22} gold={a.spec.ultimate === true} /> : null}
         <motion.div
           className="ach-hero"
           initial={reduce ? false : { scale: 0.55, rotate: celebrate ? -14 : -4, opacity: 0 }}
@@ -311,9 +311,9 @@ function AchievementSheet({ a, date, celebrate, onClose, who }: { a: Achievement
 const CONFETTI = ['#ff5330', '#ffd87a', '#16a34a', '#1d6fe0', '#c79bff', '#ff9ec7']
 
 /** A one-shot burst; transform and opacity only. */
-function Confetti({ count }: { count: number }) {
+function Confetti({ count, gold = false }: { count: number; gold?: boolean }) {
   return (
-    <span className="confetti" aria-hidden="true">
+    <span className={`confetti${gold ? ' is-gold' : ''}`} aria-hidden="true">
       {Array.from({ length: count }, (_, i) => {
         const angle = (i / count) * Math.PI * 2 + (i % 3) * 0.2
         const dist = 110 + ((i * 37) % 90)

@@ -73,6 +73,8 @@ type AppValue = {
   signOut: () => void
   statuses: Record<string, VisitStatus>
   setStatus: (placeId: string, status: VisitStatus) => void
+  /** Reload this account from the server (pull-to-refresh). */
+  refresh: () => Promise<void>
   guides: UserGuide[]
   createGuide: (title: string) => void
   renameGuide: (id: string, title: string) => void
@@ -1403,6 +1405,10 @@ export function AppProvider({ children }: { children: ReactNode }) {
     signOut,
     statuses: doc.statuses,
     setStatus,
+    refresh: async () => {
+      if (!remote) return
+      await hydrateRef.current((await remote.auth.getUser()).data.user)
+    },
     guides,
     createGuide,
     renameGuide,
