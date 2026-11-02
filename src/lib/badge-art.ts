@@ -91,6 +91,9 @@ export const GLYPHS = {
   dumpling: 'M3 15c0-5 4-8 9-8s9 3 9 8z M7 9.5l1 2 M10.5 8l.5 2.5 M14 8l-.5 2.5 M17.5 9.5l-1 2',
   rings: 'M8 8a5 5 0 1 0 .01 0z M16 8a5 5 0 1 0 .01 0z M12 14a5 5 0 1 0 .01 0z',
   map: 'M3 6l6-2 6 2 6-2v14l-6 2-6-2-6 2z M9 4v14 M15 6v14',
+  needle: 'M12 1.5v3 M7 7.5h10 M8 7.5c.3-1.8 2-3 4-3s3.7 1.2 4 3 M7 7.5c.6 1.3 2.6 2 5 2s4.4-.7 5-2 M10.5 9.4 9 21 M13.5 9.4 15 21 M12 9.5v11.5 M9.6 15.5h4.8 M7 21h10 M9.3 18.5h5.4',
+  goldengate: 'M6 21V4 M18 21V4 M5 4h2 M17 4h2 M5 8h2 M17 8h2 M5 12.5h2 M17 12.5h2 M1 6c2.5 5 4 7 5 7.5 M6 4.5c2 6.5 4 9 6 9s4-2.5 6-9 M18 6.5c1 1.5 3 5 5 7 M1 15h22 M9 11v4 M12 13.5V15 M15 11v4 M1 19c2-1 4 1 6 0s4 1 6 0 4 1 6 0 3 .5 4 0',
+  beach: 'M17 3.5a2.5 2.5 0 1 0 .01 0z M6 17c.5-4 1.5-7 3.5-9.5 M9.5 7.5C8 5.5 5 5.5 3.5 7 M9.5 7.5c.5-2.5 3.5-3.5 5.5-2.5 M9.5 7.5c-2 .5-3.5 2.5-3.5 4.5 M9.5 7.5c2 0 3.5 1.5 4 3.5 M2 17.5c3-1.5 6-1.5 9 0s7 1.5 11 0 M2 21h20 M14 14.5c1.5-1 3-1 4.5 0s3 1 3.5 0',
   spark: 'M12 2v6 M12 16v6 M2 12h6 M16 12h6 M5 5l3.5 3.5 M15.5 15.5 19 19 M5 19l3.5-3.5 M15.5 8.5 19 5',
 } as const
 
@@ -302,4 +305,36 @@ function shortLabel(title: string): string {
     .replace(/\s+/g, ' ')
     .trim()
     .slice(0, 26)
+}
+
+/** The medal's reverse: same silhouette and rim, all metal, ready for engraving. */
+export function badgeBackSvg(spec: BadgeSpec, metalName: string): string {
+  const h = hashOf(spec.key)
+  const shape = spec.shape ?? SHAPES[h % SHAPES.length]
+  const lobes = [10, 12, 14, 16, 18, 20][(h >>> 4) % 6]
+  const metal = METALS.find((m) => m.name === metalName) ?? METALS[(h >>> 8) % METALS.length]
+  const [m0, m1, m2, m3] = metal.stops
+  const id = `k${h.toString(36)}`
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" aria-hidden="true"><defs>
+<linearGradient id="${id}a" x1="1" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${m0}"/><stop offset=".4" stop-color="${m1}"/><stop offset=".7" stop-color="${m3}"/><stop offset="1" stop-color="${m2}"/></linearGradient>
+<radialGradient id="${id}b" cx=".6" cy=".35" r=".9"><stop offset="0" stop-color="${m0}"/><stop offset=".6" stop-color="${m3}"/><stop offset="1" stop-color="${m1}"/></radialGradient>
+</defs>
+<path d="${shapePath(shape, 54, lobes)}" fill="url(#${id}a)"/>
+<path d="${shapePath(shape, 46, lobes)}" fill="url(#${id}b)" stroke="${m2}" stroke-opacity=".5" stroke-width="1"/>
+<path d="${shapePath(shape, 45, lobes)}" fill="none" stroke="#fff" stroke-opacity=".55" stroke-width=".8"/>
+</svg>`
+}
+
+/** Edge colour for the medal's thickness. */
+export function badgeEdge(spec: BadgeSpec): { svg: string } {
+  const h = hashOf(spec.key)
+  const shape = spec.shape ?? SHAPES[h % SHAPES.length]
+  const lobes = [10, 12, 14, 16, 18, 20][(h >>> 4) % 6]
+  const metal = METALS.find((m) => m.name === spec.metal) ?? METALS[(h >>> 8) % METALS.length]
+  return { svg: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" aria-hidden="true"><path d="${shapePath(shape, 54, lobes)}" fill="${metal.stops[2]}"/></svg>` }
+}
+
+export function badgeMetal(spec: BadgeSpec): string {
+  const h = hashOf(spec.key)
+  return (METALS.find((m) => m.name === spec.metal) ?? METALS[(h >>> 8) % METALS.length]).name
 }

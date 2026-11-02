@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { motion, useReducedMotion } from 'framer-motion'
 import { Modal } from './Modal.tsx'
+import { Medal3D } from './Medal3D.tsx'
 import { catalogReady, loadGuides, slimById } from '../content/load.ts'
 import { achievementArt, computeAchievements, type Achievement, type AchievementGroup } from '../lib/achievements.ts'
 import { cityPath } from '../lib/city.ts'
@@ -11,10 +12,34 @@ import type { Guide } from '../types.ts'
 type Dates = Record<string, string>
 
 const GROUPS: AchievementGroup[] = ['Milestones', 'Cities', 'Guides']
-const GUIDE_PREVIEW = 12
+const GUIDE_PREVIEW = 6
+
+const GUIDE_AREAS = [
+  { id: 'seattle', title: 'Seattle', cities: ['seattle'] },
+  { id: 'eastside', title: 'Eastside', cities: ['eastside'] },
+  { id: 'la', title: 'Los Angeles', cities: ['la'] },
+  { id: 'bay', title: 'SF Bay Area', cities: ['sf', 'eastbay', 'peninsula', 'northbay'] },
+  { id: 'sandiego', title: 'San Diego', cities: ['sandiego'] },
+]
+
+/** Guide medals by city; the city in the switcher comes first. Earned, then closest to done, then untouched. */
+function guideAreas(list: Achievement[], current: string) {
+  const groups = GUIDE_AREAS.map((area) => ({ area, rows: list.filter((a) => area.cities.includes(a.guide?.city ?? 'seattle')) }))
+  const other = list.filter((a) => !GUIDE_AREAS.some((area) => area.cities.includes(a.guide?.city ?? 'seattle')))
+  if (other.length) groups.push({ area: { id: 'other', title: 'Across cities', cities: [] }, rows: other })
+  for (const g of groups) g.rows.sort((a, b) => Number(b.earned) - Number(a.earned) || b.have / b.goal - a.have / a.goal)
+  const first = groups.findIndex((g) => g.area.cities.includes(current))
+  if (first > 0) groups.unshift(...groups.splice(first, 1))
+  return groups.filter((g) => g.rows.length)
+}
 
 export function formatEarned(iso: string, long = false): string {
   return new Date(iso).toLocaleDateString('en-US', { month: long ? 'long' : 'short', day: 'numeric', year: 'numeric' })
+}
+
+function engraveDate(iso: string): string {
+  const d = new Date(iso)
+  return `${d.toLocaleDateString('en-US', { month: 'short' }).toUpperCase()} ${d.getDate()} ${d.getFullYear()}`
 }
 
 function localKey(userId: string) {
@@ -85,17 +110,19 @@ function useEarnedDates(userId: string | null, earnedIds: string[], ready: boole
   return { dates, fresh, clearFresh: () => setFresh([]) }
 }
 
-export function Achievements({ been, rated, userId, gustoScore, mine }: {
+export function Achievements({ been, rated, userId, gustoScore, mine, city, who }: {
   been: string[]
   rated: string[]
   userId: string | null
   gustoScore: (id: string) => number | null
   mine: boolean
+  city: string
+  who?: string
 }) {
   const [guides, setGuides] = useState<Guide[] | null>(null)
   const [catalogLoaded, setCatalogLoaded] = useState(false)
   const [open, setOpen] = useState<{ id: string; celebrate: boolean } | null>(null)
-  const [allGuides, setAllGuides] = useState(false)
+  const [openAreas, setOpenAreas] = useState<Record<string, boolean>>({})
 
   useEffect(() => {
     let live = true
@@ -142,34 +169,61 @@ export function Achievements({ been, rated, userId, gustoScore, mine }: {
         <p className="text-xs font-bold tracking-[0.14em] uppercase">{earnedCount} of {items.length} earned</p>
       </div>
       {GROUPS.map((group) => {
-        let list = items.filter((a) => a.group === group)
-        if (group === 'Guides') list = list.slice().sort((a, b) => Number(b.earned) - Number(a.earned) || b.have / b.goal - a.have / a.goal)
-        const total = list.length
-        if (group === 'Guides' && !allGuides) list = list.slice(0, GUIDE_PREVIEW)
+        const list = items.filter((a) => a.group === group)
+        if (group !== 'Guides') {
+          return (
+            <div key={group} className="mt-6">
+              <h3 className="text-xs font-bold tracking-[0.14em] uppercase">{group}</h3>
+              <TileGrid list={list} dates={dates} onOpen={(id) => setOpen({ id, celebrate: false })} />
+            </div>
+          )
+        }
         return (
-          <div key={group} className="mt-6">
-            <h3 className="text-xs font-bold tracking-[0.14em] uppercase">{group}{group === 'Guides' ? ' · finish every place' : ''}</h3>
-            <ul className="ach-grid mt-3">
-              {list.map((a) => (
-                <li key={a.id}>
-                  <button type="button" className="ach-tile" onClick={() => setOpen({ id: a.id, celebrate: false })} aria-label={`${a.title}. ${a.earned ? `Earned${dates[a.id] ? ` ${formatEarned(dates[a.id], true)}` : ''}` : `${a.have} of ${a.goal}`}`}>
-                    <BadgeRing a={a} size={96} />
-                    <span className="ach-name">{a.title}</span>
-                    <span className="ach-meta">{a.earned ? (dates[a.id] ? formatEarned(dates[a.id]) : 'Earned') : `${a.have}/${a.goal}`}</span>
-                  </button>
-                </li>
-              ))}
-            </ul>
-            {group === 'Guides' && total > GUIDE_PREVIEW ? (
-              <button type="button" className="btn mt-4" onClick={() => setAllGuides((v) => !v)}>{allGuides ? 'Show fewer' : `Show all ${total} guides`}</button>
-            ) : null}
+          <div key={group} className="mt-8">
+            <h3 className="font-serif text-2xl italic">Guides</h3>
+            <p className="mt-1 text-sm">Mark every place in a guide Been to earn its medal.</p>
+            {guideAreas(list, city).map(({ area, rows }) => {
+              const earned = rows.filter((a) => a.earned).length
+              const expanded = openAreas[area.id] === true
+              const shown = expanded ? rows : rows.slice(0, GUIDE_PREVIEW)
+              return (
+                <section key={area.id} className="ach-city mt-6" aria-labelledby={`ach-${area.id}`}>
+                  <div className="ach-city-head">
+                    <h4 id={`ach-${area.id}`} className="text-xs font-bold tracking-[0.14em] uppercase">{area.title}</h4>
+                    <p className="text-xs font-bold tabular-nums">{earned} of {rows.length} earned</p>
+                  </div>
+                  <TileGrid list={shown} dates={dates} onOpen={(id) => setOpen({ id, celebrate: false })} />
+                  {rows.length > GUIDE_PREVIEW ? (
+                    <button type="button" className="btn mt-3" aria-expanded={expanded} onClick={() => setOpenAreas((prev) => ({ ...prev, [area.id]: !expanded }))}>
+                      {expanded ? `Show fewer` : `Show all ${rows.length} in ${area.title}`}
+                    </button>
+                  ) : null}
+                </section>
+              )
+            })}
           </div>
         )
       })}
       {current ? (
-        <AchievementSheet a={current} date={dates[current.id]} celebrate={open?.celebrate ?? false} onClose={() => { setOpen(null); if (open?.celebrate) clearFresh() }} />
+        <AchievementSheet a={current} who={who} date={dates[current.id]} celebrate={open?.celebrate ?? false} onClose={() => { setOpen(null); if (open?.celebrate) clearFresh() }} />
       ) : null}
     </section>
+  )
+}
+
+function TileGrid({ list, dates, onOpen }: { list: Achievement[]; dates: Dates; onOpen: (id: string) => void }) {
+  return (
+    <ul className="ach-grid mt-3">
+      {list.map((a) => (
+        <li key={a.id}>
+          <button type="button" className="ach-tile" onClick={() => onOpen(a.id)} aria-label={`${a.title}. ${a.earned ? `Earned${dates[a.id] ? ` ${formatEarned(dates[a.id], true)}` : ''}` : `${a.have} of ${a.goal}`}`}>
+            <BadgeRing a={a} size={96} />
+            <span className="ach-name">{a.title}</span>
+            <span className="ach-meta">{a.earned ? (dates[a.id] ? formatEarned(dates[a.id]) : 'Earned') : `${a.have}/${a.goal}`}</span>
+          </button>
+        </li>
+      ))}
+    </ul>
   )
 }
 
@@ -179,7 +233,7 @@ const RING: Record<Achievement['ring'], [string, string]> = {
   sky: ['#1d6fe0', '#9cd2ff'],
 }
 
-export function BadgeRing({ a, size }: { a: Achievement; size: number }) {
+export function BadgeRing({ a, size, bare = false }: { a: Achievement; size: number; bare?: boolean }) {
   const r = 46
   const c = 2 * Math.PI * r
   const pct = a.earned ? 1 : a.have / a.goal
@@ -196,12 +250,12 @@ export function BadgeRing({ a, size }: { a: Achievement; size: number }) {
           <circle cx="50" cy="50" r={r} fill="none" stroke={`url(#${gid})`} strokeWidth="5" strokeLinecap="round" strokeDasharray={`${Math.max(0.02, pct) * c} ${c}`} transform="rotate(-90 50 50)" />
         ) : null}
       </svg>
-      <span className="ach-art" dangerouslySetInnerHTML={{ __html: achievementArt(a) }} />
+      {bare ? null : <span className="ach-art" dangerouslySetInnerHTML={{ __html: achievementArt(a) }} />}
     </span>
   )
 }
 
-function AchievementSheet({ a, date, celebrate, onClose }: { a: Achievement; date?: string; celebrate: boolean; onClose: () => void }) {
+function AchievementSheet({ a, date, celebrate, onClose, who }: { a: Achievement; date?: string; celebrate: boolean; onClose: () => void; who?: string }) {
   const reduce = useReducedMotion()
   return (
     <Modal onClose={onClose} label={a.title}>
@@ -213,8 +267,16 @@ function AchievementSheet({ a, date, celebrate, onClose }: { a: Achievement; dat
           animate={{ scale: 1, rotate: 0, opacity: 1 }}
           transition={reduce ? { duration: 0 } : { type: 'spring', stiffness: 260, damping: celebrate ? 11 : 18 }}
         >
-          <BadgeRing a={a} size={224} />
-          {a.earned ? <span className="ach-shine" aria-hidden="true" /> : null}
+          <BadgeRing a={a} size={240} bare />
+          <span className="ach-hero-medal">
+            <Medal3D
+              a={a}
+              size={192}
+              engraved={a.earned
+                ? { top: date ? engraveDate(date) : 'Earned', middle: a.title, bottom: who }
+                : { top: 'Not yet earned', middle: a.title, bottom: `${a.have} of ${a.goal}` }}
+            />
+          </span>
         </motion.div>
         <h2 className="mt-4 text-center font-serif text-4xl italic leading-tight">{a.title}</h2>
         {a.earned ? (
@@ -223,6 +285,7 @@ function AchievementSheet({ a, date, celebrate, onClose }: { a: Achievement; dat
           <p className="ach-date ach-date-locked">{a.have} of {a.goal}</p>
         )}
         <p className="mt-2 text-center">{a.blurb}</p>
+        <p className="mt-1 text-center text-xs font-bold tracking-wide uppercase opacity-70">Drag the medal to turn it over</p>
         {!a.earned ? (
           <div className="ach-bar mt-4" role="progressbar" aria-valuemin={0} aria-valuemax={a.goal} aria-valuenow={a.have}>
             <span style={{ width: `${(a.have / a.goal) * 100}%` }} />

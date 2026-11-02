@@ -91,6 +91,8 @@ export function ProfilePage() {
         userId={mine ? app.user?.id ?? null : null}
         gustoScore={app.gustoScore}
         mine={mine}
+        city={city}
+        who={mine ? (app.user?.handle ? `@${app.user.handle}` : app.user?.name) : person?.name ?? friend?.name}
       />
       {!mine ? (
         <>
