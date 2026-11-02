@@ -51,7 +51,7 @@ export function GuideStrip({
   statuses,
   onToggle,
 }: {
-  rows: { place: SlimPlace; number: number; score: number | null; vibe?: string }[]
+  rows: { place: SlimPlace; number: number | null; score: number | null; vibe?: string }[]
   uploads: LivePhoto[]
   statuses: Record<string, VisitStatus>
   onToggle: (placeId: string, status: VisitStatus) => void
@@ -76,7 +76,7 @@ export function GuideStrip({
               >
                 <div className="toc-shot relative h-24 overflow-hidden bg-navy [&_.place-art]:aspect-auto [&_.place-art]:h-full">
                   <PlaceThumb place={place} uploads={uploads} eager={index < 2} sizes="208px" />
-                  <span className="entry-index absolute top-2 left-2 -rotate-6 border-2 border-ink bg-coral text-xs font-bold shadow-[2px_2px_0_#181818]">{number}</span>
+                  {number != null ? <span className="entry-index absolute top-2 left-2 -rotate-6 border-2 border-ink bg-coral text-xs font-bold shadow-[2px_2px_0_#181818]">{number}</span> : null}
                   <GoldenFork placeId={place.id} overlay />
                 </div>
                 <div className="toc-pad flex flex-1 flex-col">
@@ -182,7 +182,7 @@ export function GuideEntryCard({
   place: SlimPlace
   entry: GuideEntry
   index: number
-  number: number
+  number: number | null
   uploads: LivePhoto[]
   status?: VisitStatus
   friends: { average: number | null; loved: number; count: number; demo?: boolean }
@@ -202,7 +202,7 @@ export function GuideEntryCard({
   const layout = index % 3
   const image = (
     <div className="relative min-w-0">
-      <span className="entry-index entry-index-lg absolute top-3 left-3 z-10 -rotate-6 border-2 border-ink bg-coral font-serif text-2xl italic shadow-[3px_3px_0_#181818]">{number}</span>
+      {number != null ? <span className="entry-index entry-index-lg absolute top-3 left-3 z-10 -rotate-6 border-2 border-ink bg-coral font-serif text-2xl italic shadow-[3px_3px_0_#181818]">{number}</span> : null}
       <Link to={cityPath(`/place/${place.id}`)} className="block" aria-label={place.name} viewTransition={!reduceMotion}>
         <span className="block" style={reduceMotion ? undefined : { viewTransitionName: `place-${place.id}` }}>
           <Shot place={place} photo={photo} tall={layout === 0} priority={index === 0} />
@@ -230,7 +230,7 @@ export function GuideEntryCard({
     <div className="min-w-0">
       <div className="entry-head">
         <h3 className={`max-w-full font-serif italic text-balance leading-[1.15] ${splitTitle ? 'text-3xl sm:text-4xl' : 'text-3xl sm:text-4xl lg:text-5xl'}`}>
-          <span className="mr-2 text-coral not-italic">{number}</span>
+          {number != null ? <span className="mr-2 text-coral not-italic">{number}</span> : null}
           <Link to={cityPath(`/place/${place.id}`)} viewTransition={!reduceMotion}>{place.name}</Link>
         </h3>
         <span className="score-col">

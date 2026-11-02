@@ -102,6 +102,12 @@ export function GuidePage() {
     return a.number - b.number
   })
 
+  const ranked = ordered.filter(({ place }) => gustoScore(place.id) != null)
+  const toVisit = ordered.filter(({ place }) => gustoScore(place.id) == null)
+  const stripRows = [
+    ...ranked.map(({ place, number, entry }) => ({ place, number: number as number | null, score: gustoScore(place.id), vibe: entry.vibe })),
+    ...toVisit.map(({ place, entry }) => ({ place, number: null, score: null, vibe: entry.vibe })),
+  ]
   const summary = catalog.guides.find((item) => item.slug === slug)
   const movedSlug = GUIDE_MOVED[slug]
   const moved = movedSlug ? catalog.guides.find((item) => item.slug === movedSlug) : undefined
@@ -260,11 +266,11 @@ export function GuidePage() {
           </div>
         ) : null}
         <div className="mt-4">
-          <GuideStrip rows={ordered.map(({ place, number, entry }) => ({ place, number, score: gustoScore(place.id), vibe: entry.vibe }))} uploads={photos} statuses={statuses} onToggle={onToggle} />
+          <GuideStrip rows={stripRows} uploads={photos} statuses={statuses} onToggle={onToggle} />
         </div>
         <div className="mt-5 grid gap-8">
             {ordered.length === 0 ? <p className="border-t-2 border-ink pt-4 font-serif text-2xl italic">Nothing on this list matches. Loosen a filter.</p> : null}
-            {ordered.map(({ entry, place, number }, index) => (
+            {ranked.map(({ entry, place, number }, index) => (
               <GuideEntryCard
                 key={place.id}
                 place={place}
@@ -282,6 +288,32 @@ export function GuidePage() {
                 onPoint={setActiveId}
               />
             ))}
+            {toVisit.length > 0 ? (
+              <section aria-labelledby="yet-to-visit" className="yet-to-visit grid gap-8">
+                <div className="yet-head">
+                  <h2 id="yet-to-visit" className="font-serif text-3xl italic">Yet to visit</h2>
+                  <p className="text-xs font-bold tracking-[0.14em] uppercase">Saved, not scored yet</p>
+                </div>
+                {toVisit.map(({ entry, place }, i) => (
+                  <GuideEntryCard
+                key={place.id}
+                place={place}
+                entry={entry}
+                index={ranked.length + i}
+                number={null}
+                uploads={photos}
+                status={statuses[place.id]}
+                friends={friendScore(place.id)}
+                score={gustoScore(place.id)}
+                signedIn={Boolean(user)}
+                onToggle={(status) => onToggle(place.id, status)}
+                onNeedSignIn={() => setSignInOpen(true)}
+                hot={activeId === place.id}
+                onPoint={setActiveId}
+              />
+                ))}
+              </section>
+            ) : null}
         </div>
         <p className="mt-8"><Link className="btn" to={cityPath('/explore')}>Open the map</Link></p>
         <SignInSheet open={signInOpen} onClose={() => setSignInOpen(false)} />
