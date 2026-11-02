@@ -28,14 +28,14 @@ export type Region = {
 
 export const REGIONS: Region[] = [
   { id: 'seattle', name: 'Seattle', detail: 'Seattle, Bellevue, Kirkland, Redmond', areas: ['seattle', 'eastside'] },
-  { id: 'la', name: 'Los Angeles', detail: 'Los Angeles', areas: ['la'] },
+  { id: 'la', name: 'Los Angeles', detail: 'Santa Monica, West Hollywood, Beverly Hills, Venice', areas: ['la'] },
   {
     id: 'sf',
     name: 'San Francisco',
-    detail: 'San Francisco, East Bay, Peninsula, North Bay',
+    detail: 'San Francisco, Palo Alto, Santa Clara, Sausalito',
     areas: ['sf', 'eastbay', 'peninsula', 'northbay'],
   },
-  { id: 'sandiego', name: 'San Diego', detail: 'San Diego, La Jolla, Coronado, North County', areas: ['sandiego'] },
+  { id: 'sandiego', name: 'San Diego', detail: 'San Diego, La Jolla, Coronado, Oceanside', areas: ['sandiego'] },
 ]
 
 export const ACTIVE_CITY: CityId = 'seattle'
