@@ -4746,8 +4746,9 @@ mark {
 .medal3d-engrave-silver,
 .medal3d-engrave-platinum { color: rgb(40 48 58 / 0.55); }
 .medal3d-eng-top { font-size: 11px; }
-.medal3d-eng-mid { font-family: var(--font-serif, 'Times New Roman', serif); font-size: 19px; font-style: italic; letter-spacing: 0.02em; line-height: 1.1; text-transform: none; }
-.medal3d-eng-bot { font-size: 10px; letter-spacing: 0.12em; }
+.medal3d-eng-date { font-size: 18px; letter-spacing: 0.08em; line-height: 1.1; }
+.medal3d-eng-mid { font-family: var(--font-serif, 'Times New Roman', serif); font-size: 15px; font-style: italic; letter-spacing: 0.02em; line-height: 1.1; text-transform: none; }
+.medal3d-eng-bot { font-size: 8px; letter-spacing: 0.12em; opacity: 0.85; }
 @media (prefers-reduced-motion: reduce) {
   .medal3d-rotor { transition: transform 0.01s; }
 }

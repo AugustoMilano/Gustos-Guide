@@ -39,7 +39,7 @@ export function formatEarned(iso: string, long = false): string {
 
 function engraveDate(iso: string): string {
   const d = new Date(iso)
-  return `${d.toLocaleDateString('en-US', { month: 'short' }).toUpperCase()} ${d.getDate()} ${d.getFullYear()}`
+  return `${d.toLocaleDateString('en-US', { month: 'short' }).toUpperCase()} ${d.getDate()}, ${d.getFullYear()}`
 }
 
 function localKey(userId: string) {
@@ -76,24 +76,29 @@ function useEarnedDates(userId: string | null, earnedIds: string[], ready: boole
     let cancelled = false
     const run = async () => {
       const remote = supabaseClient()
-      let known: Dates = readLocal(userId) ?? {}
+      const local: Dates = readLocal(userId) ?? {}
+      let known: Dates = { ...local }
+      let server: Dates | null = null
       if (remote) {
         const { data, error } = await remote.from('user_achievements').select('badge_id, earned_at').eq('user_id', userId)
-        if (error) return
-        known = Object.fromEntries((data ?? []).map((row: { badge_id: string; earned_at: string }) => [row.badge_id, row.earned_at]))
+        // The server's date wins; if it can't be read, this browser's dates still show.
+        if (!error) {
+          server = Object.fromEntries((data ?? []).map((row: { badge_id: string; earned_at: string }) => [row.badge_id, row.earned_at]))
+          known = { ...local, ...server }
+        }
       }
       // Celebrate only once there is a record to compare to; a first load just files what was already earned.
       const hadAny = Object.keys(known).length > 0 || readLocal(userId) != null
       const missing = earnedIds.filter((id) => !known[id])
-      if (missing.length) {
-        const now = new Date().toISOString()
-        if (remote) {
-          const { error } = await remote
-            .from('user_achievements')
-            .upsert(missing.map((badge_id) => ({ user_id: userId, badge_id, earned_at: now })), { onConflict: 'user_id,badge_id', ignoreDuplicates: true })
-          if (error) return
-        }
-        for (const id of missing) known[id] = now
+      const now = new Date().toISOString()
+      for (const id of missing) known[id] = now
+      // Store on the server anything it lacks, keeping a date this browser saw first.
+      const toSave = server ? earnedIds.filter((id) => !server[id]) : []
+      if (remote && toSave.length) {
+        const { error } = await remote
+          .from('user_achievements')
+          .upsert(toSave.map((badge_id) => ({ user_id: userId, badge_id, earned_at: known[badge_id] })), { onConflict: 'user_id,badge_id', ignoreDuplicates: true })
+        if (error) console.warn('Could not save achievement dates', error.message)
       }
       writeLocal(userId, known)
       if (cancelled) return
@@ -273,8 +278,8 @@ function AchievementSheet({ a, date, celebrate, onClose, who }: { a: Achievement
               a={a}
               size={192}
               engraved={a.earned
-                ? { top: date ? engraveDate(date) : 'Earned', middle: a.title, bottom: who }
-                : { top: 'Not yet earned', middle: a.title, bottom: `${a.have} of ${a.goal}` }}
+                ? { top: 'Earned', date: date ? engraveDate(date) : undefined, middle: a.title, bottom: who }
+                : { top: 'Not yet earned', date: `${a.have} of ${a.goal}`, middle: a.title }}
             />
           </span>
         </motion.div>
@@ -285,7 +290,6 @@ function AchievementSheet({ a, date, celebrate, onClose, who }: { a: Achievement
           <p className="ach-date ach-date-locked">{a.have} of {a.goal}</p>
         )}
         <p className="mt-2 text-center">{a.blurb}</p>
-        <p className="mt-1 text-center text-xs font-bold tracking-wide uppercase opacity-70">Drag the medal to turn it over</p>
         {!a.earned ? (
           <div className="ach-bar mt-4" role="progressbar" aria-valuemin={0} aria-valuemax={a.goal} aria-valuenow={a.have}>
             <span style={{ width: `${(a.have / a.goal) * 100}%` }} />
