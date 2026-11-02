@@ -8,7 +8,7 @@ import { ThumbImg } from './ThumbImg.tsx'
 import { Reveal } from './Reveal.tsx'
 import { displayPhotos, type DisplayPhoto, type LivePhoto } from '../lib/gallery.ts'
 import { responsivePhoto } from '../lib/responsivePhoto.ts'
-import { GoldenFork } from './GoldenFork.tsx'
+import { ForkMark, GoldenFork } from './GoldenFork.tsx'
 import { ScoreBadge } from './ScoreBadge.tsx'
 import { MapLinks } from './MapLinks.tsx'
 import { demoFriendsEnabled } from '../lib/demo.ts'
@@ -76,14 +76,14 @@ export function GuideStrip({
               >
                 <div className="toc-shot relative h-24 overflow-hidden bg-navy [&_.place-art]:aspect-auto [&_.place-art]:h-full">
                   <PlaceThumb place={place} uploads={uploads} eager={index < 2} sizes="208px" />
-                  {number != null ? <span className="entry-index absolute top-2 left-2 -rotate-6 border-2 border-ink bg-coral text-xs font-bold shadow-[2px_2px_0_#181818]">{number}</span> : null}
+                  <RankMedal number={number} size="sm" className="absolute top-2 left-2 z-10" />
                   <GoldenFork placeId={place.id} overlay />
                 </div>
                 <div className="toc-pad flex flex-1 flex-col">
                   <div className="toc-badge">
                     <ScoreBadge score={score} size="sm" />
                   </div>
-                  <h3 className="mt-2 line-clamp-2 min-h-[2.6rem] font-serif text-xl italic leading-tight">{place.name}</h3>
+                  <h3 className="mt-2 line-clamp-2 min-h-[2.6rem] font-serif text-xl italic leading-tight">{number != null ? <span className="mr-1.5 text-coral not-italic">{number}</span> : null}{place.name}</h3>
                   <p className="mt-2 line-clamp-2 min-h-[2rem] text-xs font-bold tracking-wide uppercase">
                     {[place.neighborhood, place.cuisine[0], priceLabel(place.price)].filter(Boolean).join(' · ')}
                   </p>
@@ -202,7 +202,7 @@ export function GuideEntryCard({
   const layout = index % 3
   const image = (
     <div className="relative min-w-0">
-      {number != null ? <span className="entry-index entry-index-lg absolute top-3 left-3 z-10 -rotate-6 border-2 border-ink bg-coral font-serif text-2xl italic shadow-[3px_3px_0_#181818]">{number}</span> : null}
+      <RankMedal number={number} size="md" className="absolute top-3 left-3 z-10" />
       <Link to={cityPath(`/place/${place.id}`)} className="block" aria-label={place.name} viewTransition={!reduceMotion}>
         <span className="block" style={reduceMotion ? undefined : { viewTransitionName: `place-${place.id}` }}>
           <Shot place={place} photo={photo} tall={layout === 0} priority={index === 0} />
@@ -343,4 +343,16 @@ export function GuideEntryCard({
   )
   if (index === 0) return body
   return <Reveal delay={stagger}>{body}</Reveal>
+}
+
+const MEDALS = ['gold', 'silver', 'bronze'] as const
+
+/** Gold, silver and bronze medal for guide ranks 1 to 3; ranks 4 and below rely on the plain number in the title. */
+function RankMedal({ number, size, className }: { number: number | null; size: 'sm' | 'md'; className: string }) {
+  if (number == null || number > 3) return null
+  return (
+    <span className={className}>
+      <ForkMark metal={MEDALS[number - 1]} rank={number} gem={number === 1} size={size} label={`Number ${number} in this guide`} />
+    </span>
+  )
 }
