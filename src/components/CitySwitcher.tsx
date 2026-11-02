@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react'
 import { motion, useReducedMotion } from 'framer-motion'
-import { useNavigate } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import { areaTitle, areasFor, cityPath } from '../lib/city.ts'
 import { useCityId } from '../lib/use-city-id.ts'
 
@@ -10,6 +10,9 @@ const SPRING = { type: 'spring' as const, stiffness: 420, damping: 32 }
 export function CitySwitcher() {
   const city = useCityId()
   const navigate = useNavigate()
+  const { pathname } = useLocation()
+  // A profile stays open when the area changes, so its Top 10 follows the switcher.
+  const profile = pathname.match(/\/u\/[^/]+\/?$/)?.[0]
   const reduce = useReducedMotion()
   const bar = useRef<HTMLDivElement>(null)
   useEffect(() => {
@@ -31,7 +34,7 @@ export function CitySwitcher() {
             aria-pressed={on}
             aria-current={on ? 'true' : undefined}
             onClick={() => {
-              if (!on) navigate(cityPath('/', item.id))
+              if (!on) navigate(cityPath(profile ?? '/', item.id))
             }}
           >
             {on ? (
