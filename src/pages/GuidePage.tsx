@@ -1,3 +1,4 @@
+import { readPosition } from '../lib/geo.ts'
 import { useEffect, useMemo, useState } from 'react'
 import { Link, Navigate, useParams } from 'react-router-dom'
 import { AreaKicker } from '../components/AreaKicker.tsx'
@@ -39,7 +40,17 @@ export function GuidePage() {
   const [desktop, setDesktop] = useState(() => window.matchMedia('(min-width: 1024px)').matches)
   const [signInOpen, setSignInOpen] = useState(false)
   const [filtersOpen, setFiltersOpen] = useState(false)
-  const [sort, setSort] = useState<'guide' | 'score'>('guide')
+  const [sort, setSort] = useState<'guide' | 'score' | 'near'>('guide')
+  const [here, setHere] = useState<{ lat: number; lng: number } | null>(null)
+  const [nearNote, setNearNote] = useState<string | null>(null)
+  function sortNear() {
+    setNearNote('Finding you…')
+    readPosition().then((pos) => {
+      setHere(pos)
+      setSort('near')
+      setNearNote(null)
+    }, (error: Error) => setNearNote(error.message))
+  }
   const [activeId, setActiveId] = useState<string | null>(null)
 
   useEffect(() => {
@@ -92,7 +103,9 @@ export function GuidePage() {
     return true
   })
   const pinned = guide?.pinned === true
-  const ordered = pinned || sort === 'guide' ? shown : shown.slice().sort((a, b) => {
+  const ordered = sort === 'near' && here
+    ? shown.slice().sort((a, b) => milesBetween(here, a.place) - milesBetween(here, b.place))
+    : pinned || sort === 'guide' ? shown : shown.slice().sort((a, b) => {
     const left = gustoScore(a.place.id)
     const right = gustoScore(b.place.id)
     if (left == null && right == null) return a.number - b.number
@@ -178,12 +191,12 @@ export function GuidePage() {
                 }),
               })}
             />
-            {pinned ? null : (
-              <SlidingRow label="Sort this guide">
-                <button type="button" className="sort-chip" aria-pressed={sort === 'guide'} onClick={() => setSort('guide')}>Guide order</button>
-                <button type="button" className="sort-chip" aria-pressed={sort === 'score'} onClick={() => setSort('score')}>Gusto's Score</button>
-              </SlidingRow>
-            )}
+            <SlidingRow label="Sort this guide">
+              <button type="button" className="sort-chip" aria-pressed={sort === 'guide'} onClick={() => setSort('guide')}>Guide order</button>
+              {pinned ? null : <button type="button" className="sort-chip" aria-pressed={sort === 'score'} onClick={() => setSort('score')}>Gusto's Score</button>}
+              <button type="button" className="sort-chip" aria-pressed={sort === 'near'} onClick={sortNear}>Near me</button>
+            </SlidingRow>
+            {nearNote ? <p className="w-full text-sm" role="status">{nearNote}</p> : null}
           </div>
         </div>
         <h1 className="mt-1 font-serif text-4xl italic leading-none sm:text-5xl">{guide.title}</h1>
@@ -377,4 +390,12 @@ function FilterFields({
       </button>
     </>
   )
+}
+
+function milesBetween(a: { lat: number; lng: number }, b: { lat: number; lng: number }): number {
+  const rad = Math.PI / 180
+  const dLat = (b.lat - a.lat) * rad
+  const dLng = (b.lng - a.lng) * rad
+  const h = Math.sin(dLat / 2) ** 2 + Math.cos(a.lat * rad) * Math.cos(b.lat * rad) * Math.sin(dLng / 2) ** 2
+  return 3958.8 * 2 * Math.asin(Math.sqrt(h))
 }
