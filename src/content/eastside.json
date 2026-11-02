@@ -9336,18 +9336,6 @@
       "city": "eastside",
       "entries": [
         {
-          "placeId": "carmines",
-          "pullQuote": "Il Terrazzo Carmine's veal scaloppine, by Downtown Park.",
-          "blurb": "Order the veal scaloppine with lemon and capers, the family's Il Terrazzo classic. The glass wall opens onto a patio facing Downtown Park.",
-          "copySource": "draft"
-        },
-        {
-          "placeId": "minamoto",
-          "pullQuote": "Seasonal omakase from New York's Iki alumni, in Bellevue.",
-          "blurb": "Book the omakase: 15 to 18 seasonal courses at two seatings, reserved at least three days ahead. The regular menu covers sushi, tempura and wagyu.",
-          "copySource": "draft"
-        },
-        {
           "placeId": "ascend-prime-steak-and-sushi",
           "pullQuote": "A5 wagyu and omakase, 31 floors above Bellevue.",
           "blurb": "Come for the wagyu: Miyazaki A5 filet by the ounce, or a three-cut tenderloin flight in the lounge. The sushi bar runs a premium omakase.",
@@ -9372,6 +9360,12 @@
           "copySource": "draft"
         },
         {
+          "placeId": "carmines",
+          "pullQuote": "Il Terrazzo Carmine's veal scaloppine, by Downtown Park.",
+          "blurb": "Order the veal scaloppine with lemon and capers, the family's Il Terrazzo classic. The glass wall opens onto a patio facing Downtown Park.",
+          "copySource": "draft"
+        },
+        {
           "placeId": "din-tai-fung-bellevue",
           "pullQuote": "",
           "blurb": "",
@@ -9381,6 +9375,12 @@
           "placeId": "stk-bellevue",
           "pullQuote": "Wagyu Lil' Brgs and steak to a DJ set in Lincoln Square.",
           "blurb": "Start with the Lil' Brgs, wagyu sliders with special sauce on sesame buns, then a steak. A DJ plays through dinner.",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "minamoto",
+          "pullQuote": "Seasonal omakase from New York's Iki alumni, in Bellevue.",
+          "blurb": "Book the omakase: 15 to 18 seasonal courses at two seatings, reserved at least three days ahead. The regular menu covers sushi, tempura and wagyu.",
           "copySource": "draft"
         },
         {
@@ -9954,15 +9954,15 @@
       "city": "eastside",
       "entries": [
         {
-          "placeId": "minamoto",
-          "pullQuote": "Seasonal omakase from New York's Iki alumni, in Bellevue.",
-          "blurb": "Book the omakase: 15 to 18 seasonal courses at two seatings, reserved at least three days ahead. The regular menu covers sushi, tempura and wagyu.",
-          "copySource": "draft"
-        },
-        {
           "placeId": "din-tai-fung-bellevue",
           "pullQuote": "",
           "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "minamoto",
+          "pullQuote": "Seasonal omakase from New York's Iki alumni, in Bellevue.",
+          "blurb": "Book the omakase: 15 to 18 seasonal courses at two seatings, reserved at least three days ahead. The regular menu covers sushi, tempura and wagyu.",
           "copySource": "draft"
         },
         {
