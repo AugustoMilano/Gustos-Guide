@@ -225,9 +225,9 @@ export function Header() {
             setMenu(false)
             setMore(false)
           }}
-          className="site-search ml-auto hidden w-44 shrink-0 lg:block min-[1400px]:w-60"
+          className="site-search ml-auto hidden w-44 shrink-0 xl:block min-[1400px]:w-60"
         />
-        <nav className="site-nav hidden items-center gap-1 text-sm font-bold lg:flex" aria-label="Primary">
+        <nav className="site-nav hidden items-center gap-1 text-sm font-bold xl:flex" aria-label="Primary">
           <Link viewTransition={!reduceMotion} to={cityPath('/explore', linkCity)} onMouseEnter={() => prefetch('/explore')} onFocus={() => prefetch('/explore')}>Explore</Link>
           <Link viewTransition={!reduceMotion} to={cityPath('/guides', linkCity)}>Guides</Link>
           <Link viewTransition={!reduceMotion} to={cityPath('/tonight', linkCity)}>Tonight</Link>
@@ -306,7 +306,7 @@ export function Header() {
         <button
           type="button"
           ref={bellMobile}
-          className="bell-btn glass-icon relative ml-auto inline-flex min-h-11 min-w-11 items-center justify-center px-2 lg:hidden"
+          className="bell-btn glass-icon relative ml-auto inline-flex min-h-11 min-w-11 items-center justify-center px-2 xl:hidden"
           aria-label={bellLabel}
           title={bellLabel}
           aria-expanded={bell}
@@ -319,7 +319,7 @@ export function Header() {
         <button
           type="button"
           ref={menuButton}
-          className="menu-btn glass-icon inline-flex min-h-11 items-center px-3 text-sm font-bold lg:hidden"
+          className="menu-btn glass-icon inline-flex min-h-11 items-center px-3 text-sm font-bold xl:hidden"
           aria-expanded={menu}
           aria-controls="mobile-menu"
           onClick={() => {
@@ -335,7 +335,7 @@ export function Header() {
         <motion.nav
           ref={menuPanel}
           id="mobile-menu"
-          className="menu-sheet glass grid max-h-[calc(100dvh-var(--header-offset)-0.75rem)] gap-2 overflow-y-auto text-sm font-bold lg:hidden"
+          className="menu-sheet glass grid max-h-[calc(100dvh-var(--header-offset)-0.75rem)] gap-2 overflow-y-auto text-sm font-bold xl:hidden"
           aria-label="Menu"
           style={{ transformOrigin: 'top right' }}
           initial={reduceMotion ? false : { opacity: 0, y: -10, scale: 0.92 }}

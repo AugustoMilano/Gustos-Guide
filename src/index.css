@@ -2193,7 +2193,7 @@ textarea {
   }
 }
 
-@media (min-width: 1024px) and (max-width: 1399px) {
+@media (min-width: 1280px) and (max-width: 1399px) {
   .nav-more {
     display: block;
   }
@@ -4556,4 +4556,12 @@ mark {
   color: #181818;
   opacity: 1;
   font-weight: 700;
+}
+
+/* Tablet widths: the menu opens as a right-aligned sheet under the Menu button, not a full-width slab. */
+@media (min-width: 768px) {
+  .menu-sheet {
+    left: auto;
+    width: min(24rem, calc(100% - 24px));
+  }
 }
