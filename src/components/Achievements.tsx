@@ -11,7 +11,7 @@ import type { Guide } from '../types.ts'
 
 type Dates = Record<string, string>
 
-const GROUPS: AchievementGroup[] = ['Milestones', 'Cities', 'Guides']
+const GROUPS: AchievementGroup[] = ['Ultimate', 'Milestones', 'Cities', 'Guides']
 const GUIDE_PREVIEW = 6
 
 const GUIDE_AREAS = [
@@ -149,7 +149,7 @@ export function Achievements({ been, rated, userId, gustoScore, mine, city, who 
   const { dates, fresh, clearFresh } = useEarnedDates(mine ? userId : null, earnedIds, items.length > 0)
 
   useEffect(() => {
-    if (fresh.length && !open) setOpen({ id: fresh[fresh.length - 1], celebrate: true })
+    if (fresh.length && !open) setOpen({ id: fresh.find((id) => id === 'ultimate-all') ?? fresh.find((id) => id.startsWith('ultimate-')) ?? fresh[fresh.length - 1], celebrate: true })
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [fresh])
 
@@ -179,7 +179,8 @@ export function Achievements({ been, rated, userId, gustoScore, mine, city, who 
           return (
             <div key={group} className="mt-6">
               <h3 className="text-xs font-bold tracking-[0.14em] uppercase">{group}</h3>
-              <TileGrid list={list} dates={dates} onOpen={(id) => setOpen({ id, celebrate: false })} />
+              {group === 'Ultimate' ? <p className="mt-1 text-sm">Finish a whole city, a whole state, or everything.</p> : null}
+              <TileGrid list={list} dates={dates} big={group === 'Ultimate'} onOpen={(id) => setOpen({ id, celebrate: false })} />
             </div>
           )
         }
@@ -216,13 +217,13 @@ export function Achievements({ been, rated, userId, gustoScore, mine, city, who 
   )
 }
 
-function TileGrid({ list, dates, onOpen }: { list: Achievement[]; dates: Dates; onOpen: (id: string) => void }) {
+function TileGrid({ list, dates, onOpen, big = false }: { list: Achievement[]; dates: Dates; onOpen: (id: string) => void; big?: boolean }) {
   return (
-    <ul className="ach-grid mt-3">
+    <ul className={`ach-grid mt-3 ${big ? 'ach-grid-ultimate' : ''}`}>
       {list.map((a) => (
         <li key={a.id}>
           <button type="button" className="ach-tile" onClick={() => onOpen(a.id)} aria-label={`${a.title}. ${a.earned ? `Earned${dates[a.id] ? ` ${formatEarned(dates[a.id], true)}` : ''}` : `${a.have} of ${a.goal}`}`}>
-            <BadgeRing a={a} size={96} />
+            <BadgeRing a={a} size={big ? 128 : 96} />
             <span className="ach-name">{a.title}</span>
             <span className="ach-meta">{a.earned ? (dates[a.id] ? formatEarned(dates[a.id]) : 'Earned') : `${a.have}/${a.goal}`}</span>
           </button>
@@ -236,6 +237,7 @@ const RING: Record<Achievement['ring'], [string, string]> = {
   coral: ['#ff5330', '#ffb199'],
   leaf: ['#16a34a', '#a6f4c5'],
   sky: ['#1d6fe0', '#9cd2ff'],
+  gold: ['#c98a00', '#ffd87a'],
 }
 
 export function BadgeRing({ a, size, bare = false }: { a: Achievement; size: number; bare?: boolean }) {
@@ -245,7 +247,7 @@ export function BadgeRing({ a, size, bare = false }: { a: Achievement; size: num
   const [from, to] = RING[a.ring]
   const gid = `ring-${a.id}`
   return (
-    <span className={`ach-badge ${a.earned ? 'is-earned' : 'is-locked'}`} style={{ width: size, height: size }}>
+    <span className={`ach-badge ${a.earned ? 'is-earned' : 'is-locked'}${a.spec.ultimate ? ' is-ultimate' : ''}`} style={{ width: size, height: size }}>
       <svg className="ach-ring" viewBox="0 0 100 100" aria-hidden="true">
         <defs>
           <linearGradient id={gid} x1="0" y1="0" x2="1" y2="1"><stop offset="0" stopColor={from} /><stop offset="1" stopColor={to} /></linearGradient>
@@ -265,7 +267,8 @@ function AchievementSheet({ a, date, celebrate, onClose, who }: { a: Achievement
   return (
     <Modal onClose={onClose} label={a.title}>
       <div className={`ach-sheet ${celebrate ? 'is-celebrating' : ''}`}>
-        {celebrate ? <p className="text-xs font-bold tracking-[0.14em] uppercase text-coral">New achievement</p> : null}
+        {celebrate ? <p className="text-xs font-bold tracking-[0.14em] uppercase text-coral">{a.spec.ultimate ? 'Ultimate medal' : 'New achievement'}</p> : null}
+        {celebrate && !reduce ? <Confetti count={a.spec.ultimate ? 48 : 22} /> : null}
         <motion.div
           className="ach-hero"
           initial={reduce ? false : { scale: 0.55, rotate: celebrate ? -14 : -4, opacity: 0 }}
@@ -304,3 +307,25 @@ function AchievementSheet({ a, date, celebrate, onClose, who }: { a: Achievement
   )
 }
 
+
+const CONFETTI = ['#ff5330', '#ffd87a', '#16a34a', '#1d6fe0', '#c79bff', '#ff9ec7']
+
+/** A one-shot burst; transform and opacity only. */
+function Confetti({ count }: { count: number }) {
+  return (
+    <span className="confetti" aria-hidden="true">
+      {Array.from({ length: count }, (_, i) => {
+        const angle = (i / count) * Math.PI * 2 + (i % 3) * 0.2
+        const dist = 110 + ((i * 37) % 90)
+        const style = {
+          '--dx': `${Math.cos(angle) * dist}px`,
+          '--dy': `${Math.sin(angle) * dist - 60}px`,
+          '--rot': `${(i * 67) % 360}deg`,
+          background: CONFETTI[i % CONFETTI.length],
+          animationDelay: `${(i % 6) * 18}ms`,
+        } as React.CSSProperties
+        return <span key={i} className={i % 2 ? 'confetti-bit is-round' : 'confetti-bit'} style={style} />
+      })}
+    </span>
+  )
+}
