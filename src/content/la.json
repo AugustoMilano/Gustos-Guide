@@ -8818,7 +8818,8 @@
           "blurb": "1401 Ocean Ave — Water Grill, Seafood, Santa Monica.",
           "copySource": "draft"
         }
-      ]
+      ],
+      "pinned": true
     },
     {
       "slug": "west-hollywood",
@@ -8938,7 +8939,8 @@
           "blurb": "Saltie Girl sits at 8615 W Sunset Blvd. Seafood, West Hollywood.",
           "copySource": "draft"
         }
-      ]
+      ],
+      "pinned": true
     },
     {
       "slug": "beverly-hills",
@@ -9034,7 +9036,8 @@
           "blurb": "The Cheese Store sits at 9705 S Santa Monica Blvd. Cheese, Beverly Hills.",
           "copySource": "draft"
         }
-      ]
+      ],
+      "pinned": true
     },
     {
       "slug": "downtown-la",
@@ -9130,7 +9133,8 @@
           "blurb": "Burgers from Amboy at 727 N Broadway, Downtown.",
           "copySource": "draft"
         }
-      ]
+      ],
+      "pinned": true
     },
     {
       "slug": "venice",
@@ -9208,7 +9212,8 @@
           "blurb": "",
           "copySource": "draft"
         }
-      ]
+      ],
+      "pinned": true
     },
     {
       "slug": "hollywood",
@@ -9274,7 +9279,8 @@
           "blurb": "",
           "copySource": "draft"
         }
-      ]
+      ],
+      "pinned": true
     },
     {
       "slug": "malibu",
@@ -9322,7 +9328,8 @@
           "blurb": "Calamigos Beach Club, 26025 Pacific Coast Hwy. Bar in Malibu.",
           "copySource": "draft"
         }
-      ]
+      ],
+      "pinned": true
     },
     {
       "slug": "beverly-grove",
@@ -9364,7 +9371,8 @@
           "blurb": "Community Goods, 710 N Edinburgh Ave. Coffee in Beverly Grove.",
           "copySource": "draft"
         }
-      ]
+      ],
+      "pinned": true
     },
     {
       "slug": "la-sushi",
@@ -9430,7 +9438,8 @@
           "blurb": "",
           "copySource": "draft"
         }
-      ]
+      ],
+      "pinned": true
     },
     {
       "slug": "la-italian",
@@ -9568,7 +9577,8 @@
           "blurb": "",
           "copySource": "draft"
         }
-      ]
+      ],
+      "pinned": true
     },
     {
       "slug": "la-mexican",
@@ -9622,7 +9632,8 @@
           "blurb": "East Hollywood address for HomeState is 4624 Hollywood Blvd, Tex-Mex.",
           "copySource": "draft"
         }
-      ]
+      ],
+      "pinned": true
     },
     {
       "slug": "la-coffee-bakeries",
@@ -9718,7 +9729,8 @@
           "blurb": "Community Goods, 710 N Edinburgh Ave. Coffee in Beverly Grove.",
           "copySource": "draft"
         }
-      ]
+      ],
+      "pinned": true
     },
     {
       "slug": "la-date-night",
@@ -9892,7 +9904,8 @@
           "blurb": "1401 Ocean Ave — Water Grill, Seafood, Santa Monica.",
           "copySource": "draft"
         }
-      ]
+      ],
+      "pinned": true
     }
   ]
 }

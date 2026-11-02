@@ -7983,7 +7983,8 @@
           "blurb": "Lazy Bear at 3416 19th St in Mission District. New American.",
           "copySource": "draft"
         }
-      ]
+      ],
+      "pinned": true
     },
     {
       "slug": "sf-embarcadero",
@@ -8049,7 +8050,8 @@
           "blurb": "Ozumo sits at 161 Steuart St. Japanese, Embarcadero.",
           "copySource": "draft"
         }
-      ]
+      ],
+      "pinned": true
     },
     {
       "slug": "sf-financial-district",
@@ -8103,7 +8105,8 @@
           "blurb": "Joe & The Juice sits at 235 Montgomery St. Juice and Smoothie Bar, Financial District.",
           "copySource": "draft"
         }
-      ]
+      ],
+      "pinned": true
     },
     {
       "slug": "sf-soma",
@@ -8151,7 +8154,8 @@
           "blurb": "Deli Board, 1058 Folsom St. Sandwich in SOMA.",
           "copySource": "draft"
         }
-      ]
+      ],
+      "pinned": true
     },
     {
       "slug": "sf-central-marina",
@@ -8187,7 +8191,8 @@
           "blurb": "2355 Chestnut St — A16, Neapolitan Pizza, Central Marina.",
           "copySource": "draft"
         }
-      ]
+      ],
+      "pinned": true
     },
     {
       "slug": "sf-cow-hollow",
@@ -8223,7 +8228,8 @@
           "blurb": "Atelier Crenn sits at 3127 Fillmore St. French, Cow Hollow.",
           "copySource": "draft"
         }
-      ]
+      ],
+      "pinned": true
     },
     {
       "slug": "sf-financial-district-south",
@@ -8259,7 +8265,8 @@
           "blurb": "Asian Fusion at Benu, 22 Hawthorne St, Financial District South.",
           "copySource": "draft"
         }
-      ]
+      ],
+      "pinned": true
     },
     {
       "slug": "sf-jackson-square",
@@ -8295,7 +8302,8 @@
           "blurb": "Californian from Quince at 470 Pacific Ave, Jackson Square.",
           "copySource": "draft"
         }
-      ]
+      ],
+      "pinned": true
     },
     {
       "slug": "sf-north-beach",
@@ -8331,7 +8339,8 @@
           "blurb": "Wine Bar at Bodega, 700 Columbus Ave, North Beach.",
           "copySource": "draft"
         }
-      ]
+      ],
+      "pinned": true
     },
     {
       "slug": "sf-russian-hill",
@@ -8367,7 +8376,8 @@
           "blurb": "Nisei, 2316 Polk St. Japanese in Russian Hill.",
           "copySource": "draft"
         }
-      ]
+      ],
+      "pinned": true
     },
     {
       "slug": "sf-new-american",
@@ -8445,7 +8455,8 @@
           "blurb": "Son & Garden sits at 700 Polk St. New American, Van Ness-Civic Center.",
           "copySource": "draft"
         }
-      ]
+      ],
+      "pinned": true
     },
     {
       "slug": "sf-italian",
@@ -8505,7 +8516,8 @@
           "blurb": "Italian at Original Joe's, 601 Union St, North Beach.",
           "copySource": "draft"
         }
-      ]
+      ],
+      "pinned": true
     },
     {
       "slug": "sf-mexican",
@@ -8565,7 +8577,8 @@
           "blurb": "Flores sits at 2030 Union St. Mexican, Cow Hollow.",
           "copySource": "draft"
         }
-      ]
+      ],
+      "pinned": true
     },
     {
       "slug": "sf-french",
@@ -8607,7 +8620,8 @@
           "blurb": "Atelier Crenn sits at 3127 Fillmore St. French, Cow Hollow.",
           "copySource": "draft"
         }
-      ]
+      ],
+      "pinned": true
     },
     {
       "slug": "sf-seafood",
@@ -8643,7 +8657,8 @@
           "blurb": "Angler, 132 The Embarcadero. Seafood in Embarcadero.",
           "copySource": "draft"
         }
-      ]
+      ],
+      "pinned": true
     },
     {
       "slug": "sf-bakery",
@@ -8685,7 +8700,8 @@
           "blurb": "Lung Fung Bakery sits at 1823 Clement St. Bakery, Central Richmond.",
           "copySource": "draft"
         }
-      ]
+      ],
+      "pinned": true
     },
     {
       "slug": "sf-japanese",
@@ -8721,7 +8737,8 @@
           "blurb": "Ozumo sits at 161 Steuart St. Japanese, Embarcadero.",
           "copySource": "draft"
         }
-      ]
+      ],
+      "pinned": true
     },
     {
       "slug": "sf-steakhouse",
@@ -8757,7 +8774,8 @@
           "blurb": "Steakhouse at Osso Steakhouse, 1177 California St, Downtown.",
           "copySource": "draft"
         }
-      ]
+      ],
+      "pinned": true
     },
     {
       "slug": "sf-american",
@@ -8781,7 +8799,8 @@
           "blurb": "American at The Melt, 925 Market St, SOMA.",
           "copySource": "draft"
         }
-      ]
+      ],
+      "pinned": true
     },
     {
       "slug": "sf-sandwich",
@@ -8817,7 +8836,8 @@
           "blurb": "Deli Board, 1058 Folsom St. Sandwich in SOMA.",
           "copySource": "draft"
         }
-      ]
+      ],
+      "pinned": true
     },
     {
       "slug": "sf-date-night",
@@ -8841,7 +8861,8 @@
           "blurb": "Steakhouse at Osso Steakhouse, 1177 California St, Downtown.",
           "copySource": "draft"
         }
-      ]
+      ],
+      "pinned": true
     },
     {
       "slug": "eastbay-fremont",
@@ -8859,7 +8880,8 @@
           "blurb": "Billy Roy's Burger Co at 3909 Thornton Ave in Fremont. Burger.",
           "copySource": "draft"
         }
-      ]
+      ],
+      "pinned": true
     },
     {
       "slug": "peninsula-half-moon-bay",
@@ -8877,7 +8899,8 @@
           "blurb": "281 Capistrano Rd in Half Moon Bay is the address for Barbara's Fishtrap. Seafood.",
           "copySource": "draft"
         }
-      ]
+      ],
+      "pinned": true
     },
     {
       "slug": "peninsula-pacifica",
@@ -8895,7 +8918,8 @@
           "blurb": "Taco Bell Cantina sits at 5200 Coast Hwy. Fast Food, Pacifica.",
           "copySource": "draft"
         }
-      ]
+      ],
+      "pinned": true
     },
     {
       "slug": "peninsula-palo-alto",
@@ -8925,7 +8949,8 @@
           "blurb": "Taverna at 800 Emerson St in Palo Alto. Greek.",
           "copySource": "draft"
         }
-      ]
+      ],
+      "pinned": true
     },
     {
       "slug": "eastbay-pleasanton",
@@ -8949,7 +8974,8 @@
           "blurb": "The Press An Artisan Cafe, 1987 Santa Rita Rd. Coffee in Pleasanton.",
           "copySource": "draft"
         }
-      ]
+      ],
+      "pinned": true
     },
     {
       "slug": "peninsula-san-jose",
@@ -8967,7 +8993,8 @@
           "blurb": "French at La Foret Restaurant, 21747 Bertram Rd, San Jose.",
           "copySource": "draft"
         }
-      ]
+      ],
+      "pinned": true
     },
     {
       "slug": "peninsula-santa-clara",
@@ -8997,7 +9024,8 @@
           "blurb": "Ice Cream from Salt & Straw at 2855 Stevens Creek Blvd, Santa Clara.",
           "copySource": "draft"
         }
-      ]
+      ],
+      "pinned": true
     },
     {
       "slug": "eastbay-berkeley",
@@ -9015,7 +9043,8 @@
           "blurb": "2433 Durant Ave — Yogurt Park, Ice Cream, Berkeley.",
           "copySource": "draft"
         }
-      ]
+      ],
+      "pinned": true
     },
     {
       "slug": "northbay-sausalito",
@@ -9045,7 +9074,8 @@
           "blurb": "The Spinnaker at 100 Spinnaker Dr in Sausalito. Seafood.",
           "copySource": "draft"
         }
-      ]
+      ],
+      "pinned": true
     },
     {
       "slug": "northbay-tiburon",
@@ -9063,7 +9093,8 @@
           "blurb": "American from Malibu Farm at 9 Main St, Tiburon.",
           "copySource": "draft"
         }
-      ]
+      ],
+      "pinned": true
     },
     {
       "slug": "northbay-corte-madera",
@@ -9081,7 +9112,8 @@
           "blurb": "Corte Madera: RH Rooftop Restaurant at RH Marin at 1618 Redwood Hwy. New American.",
           "copySource": "draft"
         }
-      ]
+      ],
+      "pinned": true
     },
     {
       "slug": "northbay-larkspur",
@@ -9099,7 +9131,8 @@
           "blurb": "American at Perry's, 234 Magnolia Ave, Larkspur.",
           "copySource": "draft"
         }
-      ]
+      ],
+      "pinned": true
     }
   ]
 }

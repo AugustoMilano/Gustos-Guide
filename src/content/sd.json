@@ -3906,7 +3906,8 @@
           "blurb": "",
           "copySource": "draft"
         }
-      ]
+      ],
+      "pinned": true
     },
     {
       "slug": "sd-coronado",
@@ -3991,7 +3992,8 @@
           "blurb": "",
           "copySource": "draft"
         }
-      ]
+      ],
+      "pinned": true
     },
     {
       "slug": "sd-north-park",
@@ -4033,7 +4035,8 @@
           "blurb": "",
           "copySource": "draft"
         }
-      ]
+      ],
+      "pinned": true
     },
     {
       "slug": "sd-east-village",
@@ -4069,7 +4072,8 @@
           "blurb": "",
           "copySource": "draft"
         }
-      ]
+      ],
+      "pinned": true
     },
     {
       "slug": "sd-mexican",
@@ -4153,7 +4157,8 @@
           "blurb": "",
           "copySource": "draft"
         }
-      ]
+      ],
+      "pinned": true
     },
     {
       "slug": "sd-italian",
@@ -4219,7 +4224,8 @@
           "blurb": "",
           "copySource": "draft"
         }
-      ]
+      ],
+      "pinned": true
     },
     {
       "slug": "sd-japanese",
@@ -4261,7 +4267,8 @@
           "blurb": "",
           "copySource": "draft"
         }
-      ]
+      ],
+      "pinned": true
     },
     {
       "slug": "sd-new-american",
@@ -4357,7 +4364,8 @@
           "blurb": "",
           "copySource": "draft"
         }
-      ]
+      ],
+      "pinned": true
     },
     {
       "slug": "sd-seafood",
@@ -4393,7 +4401,8 @@
           "blurb": "",
           "copySource": "draft"
         }
-      ]
+      ],
+      "pinned": true
     }
   ]
 }
