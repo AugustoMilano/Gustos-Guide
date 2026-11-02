@@ -11,7 +11,7 @@ export function CitiesPage({ landing = false }: { landing?: boolean } = {}) {
   const memory = readRegionMemory()
   usePageMeta(
     "Choose a city · Gusto's Guide",
-    'Seattle covers the city and the Eastside. San Francisco covers the city, the East Bay, the Peninsula, and the North Bay. Los Angeles is its own list. San Diego is its own list and also includes La Jolla, Coronado, Chula Vista, and North County.',
+    'Seattle covers the city plus Bellevue, Kirkland, and Redmond. San Francisco covers the city, the East Bay, the Peninsula, and the North Bay. Los Angeles is its own list. San Diego is its own list and also includes La Jolla, Coronado, Chula Vista, and North County.',
   )
 
   function open(region: RegionId) {
@@ -31,10 +31,10 @@ export function CitiesPage({ landing = false }: { landing?: boolean } = {}) {
       <p className="area-kicker">Gusto's Guide</p>
       <h1 className="mt-2 font-serif text-6xl italic">{landing ? 'Where are you eating?' : 'Choose a city'}</h1>
       {landing ? (
-        <p className="mt-3 max-w-xl">Pick a city to open its guide. Seattle includes the Eastside; San Francisco takes in the whole Bay.</p>
+        <p className="mt-3 max-w-xl">Pick a city to open its guide.</p>
       ) : (
       <p className="mt-3 max-w-xl">
-        Seattle includes the Eastside, with the coral switch once you are inside. San Francisco includes the East Bay, the Peninsula and South Bay, and the North Bay the same way. Los Angeles is its own list. San Diego is its own list too: La Jolla, Coronado, Chula Vista, and North County stay on it, without a second city. The city you opened last is marked.
+        Seattle includes Bellevue, Kirkland, and Redmond, with an Eastside switch once you are inside. San Francisco includes the East Bay, the Peninsula and South Bay, and the North Bay the same way. Los Angeles is its own list. San Diego is its own list too: La Jolla, Coronado, Chula Vista, and North County stay on it, without a second city. The city you opened last is marked.
       </p>
       )}
       </motion.div>

@@ -27,7 +27,7 @@ export type Region = {
 }
 
 export const REGIONS: Region[] = [
-  { id: 'seattle', name: 'Seattle', detail: 'Seattle + Eastside', areas: ['seattle', 'eastside'] },
+  { id: 'seattle', name: 'Seattle', detail: 'Seattle, Bellevue, Kirkland, Redmond', areas: ['seattle', 'eastside'] },
   { id: 'la', name: 'Los Angeles', detail: 'Los Angeles', areas: ['la'] },
   {
     id: 'sf',
@@ -81,7 +81,7 @@ export function regionName(city: CityId): string {
 }
 
 export function areaTitle(city: CityId): string {
-  if (city === 'eastside') return 'The Eastside'
+  if (city === 'eastside') return 'Seattle’s Eastside'
   if (city === 'la') return 'Los Angeles'
   if (city === 'sf') return 'San Francisco'
   if (city === 'eastbay') return 'The East Bay'
@@ -93,7 +93,7 @@ export function areaTitle(city: CityId): string {
 
 /** Phrase that can follow "Search" or "in". */
 export function areaPhrase(city: CityId): string {
-  if (city === 'eastside') return 'the Eastside'
+  if (city === 'eastside') return 'Seattle’s Eastside'
   if (city === 'la') return 'Los Angeles'
   if (city === 'sf') return 'San Francisco'
   if (city === 'eastbay') return 'the East Bay'

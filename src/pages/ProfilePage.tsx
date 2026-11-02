@@ -1,17 +1,20 @@
 import { isRestaurant } from '../lib/restaurant.ts'
 import { onePerBrand } from '../lib/brand.ts'
 import { Link, useParams } from 'react-router-dom'
-import { CitySwitcher } from '../components/CitySwitcher.tsx'
+import { motion, useReducedMotion } from 'framer-motion'
+import { useState } from 'react'
 import { Achievements } from '../components/Achievements.tsx'
 import { PlaceThumb } from '../components/PlaceThumb.tsx'
 import { slimById } from '../content/load.ts'
-import { areaPhrase, areaTitle, areasFor, cityPath } from '../lib/city.ts'
+import { areaTitle, cityPath, regionOf, REGIONS, type RegionId } from '../lib/city.ts'
 import { placeCity, placesForCity, useCityId } from '../lib/use-city.ts'
 import { usePageMeta } from '../lib/meta.ts'
 import { useApp } from '../state/AppState.tsx'
 import type { SlimPlace } from '../types.ts'
 
 type Row = { id: string; name: string; score: number }
+
+const SHORT: Record<RegionId, string> = { seattle: 'Seattle', la: 'LA', sf: 'SF Bay', sandiego: 'San Diego' }
 
 export function ProfilePage() {
   const { handle = '' } = useParams()
@@ -20,6 +23,10 @@ export function ProfilePage() {
   const friend = app.friends.find((user) => user.handle === handle)
   const mine = app.user?.handle === handle
   const city = useCityId()
+  const reduce = useReducedMotion()
+  // Top 10 area, picked right at the list. Starts on the city being browsed.
+  const [topRegion, setTopRegion] = useState<RegionId>(() => regionOf(city))
+  const region = REGIONS.find((item) => item.id === topRegion) ?? REGIONS[0]
   const area = areaTitle(city)
   usePageMeta(
     mine ? `${app.user?.name ?? 'You'} · Gusto's Guide` : person ? `${person.name} · Gusto's Guide` : friend ? `${friend.name} · Gusto's Guide` : 'Profile',
@@ -54,7 +61,7 @@ export function ProfilePage() {
     ? Object.entries(mineScores).filter(([id]) => slimById(id)).map(([id, score]) => ({ id, name: slimById(id)?.name ?? id, score }))
     : Object.entries(person?.scores ?? {}).map(([id, score]) => ({ id, name: slimById(id)?.name ?? id, score }))
   scoreRows.sort((a, b) => b.score - a.score)
-  const top = onePerBrand(scoreRows.filter((row) => { const spot = slimById(row.id); return spot != null && placeCity(spot) === city && isRestaurant(spot) }), (row) => row.name).slice(0, 10)
+  const top = onePerBrand(scoreRows.filter((row) => { const spot = slimById(row.id); return spot != null && region.areas.includes(placeCity(spot)) && isRestaurant(spot) }), (row) => row.name).slice(0, 10)
   const cuisines = topCuisines(beenPlaces)
   const match = person && !mine ? app.tasteMatch(person.id) : null
   const shared = person ? Object.keys(app.scores).filter((id) => person.scores[id] !== undefined).length : 0
@@ -133,8 +140,18 @@ export function ProfilePage() {
         <Link className="btn mt-3" to={cityPath('/explore')}>Open the map</Link>
       </div>
       <div className="top10-head mt-8">
-        <h2 className="font-serif text-3xl italic">Top 10 in {areaPhrase(city)}</h2>
-        {areasFor(city).filter((item) => item.ready).length > 1 ? <CitySwitcher inline /> : null}
+        <h2 className="font-serif text-3xl italic">Top 10 in {region.name}</h2>
+        <div className="city-switch city-switch-inline" role="group" aria-label={`Top 10 city, ${region.name} selected`}>
+          {REGIONS.map((item) => {
+            const on = item.id === region.id
+            return (
+              <button key={item.id} type="button" className="city-switch-btn" aria-pressed={on} onClick={() => setTopRegion(item.id)}>
+                {on ? <motion.span layoutId="top10-pill" className="city-switch-glint" transition={reduce ? { duration: 0 } : { type: 'spring', stiffness: 420, damping: 32 }} /> : null}
+                <span className="city-switch-label">{SHORT[item.id]}</span>
+              </button>
+            )
+          })}
+        </div>
       </div>
       {top.length ? (
         <ol className="mt-3 space-y-2">
