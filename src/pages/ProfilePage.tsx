@@ -1,6 +1,7 @@
 import { isRestaurant } from '../lib/restaurant.ts'
 import { onePerBrand } from '../lib/brand.ts'
 import { Link, useParams } from 'react-router-dom'
+import { Achievements } from '../components/Achievements.tsx'
 import { PlaceThumb } from '../components/PlaceThumb.tsx'
 import { slimById } from '../content/load.ts'
 import { areaPhrase, areaTitle, cityPath } from '../lib/city.ts'
@@ -84,6 +85,13 @@ export function ProfilePage() {
           ) : null}
         </section>
       )}
+      <Achievements
+        been={beenIds}
+        rated={mine ? Object.keys(app.scores) : Object.keys(person?.scores ?? {})}
+        userId={mine ? app.user?.id ?? null : null}
+        gustoScore={app.gustoScore}
+        mine={mine}
+      />
       {!mine ? (
         <>
           <h2 className="mt-8 font-serif text-3xl italic">Been</h2>
