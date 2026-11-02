@@ -91,6 +91,7 @@ export function ProfilePage() {
         userId={mine ? app.user?.id ?? null : null}
         gustoScore={app.gustoScore}
         mine={mine}
+        city={city}
       />
       {!mine ? (
         <>

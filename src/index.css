@@ -4683,3 +4683,5 @@ mark {
   .ach-shine { animation: none; display: none; }
   .ach-tile { transition: none; }
 }
+.ach-city { border-top: 1px solid rgb(24 24 24 / 0.12); padding-top: var(--space-4); }
+.ach-city-head { display: flex; align-items: baseline; justify-content: space-between; gap: var(--space-2); }
