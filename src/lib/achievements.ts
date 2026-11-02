@@ -40,11 +40,11 @@ const RATED_STEPS: [number, string][] = [
 const BEEN_METAL = ['bronze', 'bronze', 'silver', 'silver', 'gold', 'platinum']
 
 const AREAS: { id: string; title: string; cities: string[]; glyph: BadgeSpec['glyph']; enamel: BadgeSpec['enamel'] }[] = [
-  { id: 'seattle', title: 'Seattle', cities: ['seattle'], glyph: 'market', enamel: 'navy' },
+  { id: 'seattle', title: 'Seattle', cities: ['seattle'], glyph: 'needle', enamel: 'navy' },
   { id: 'eastside', title: 'Eastside', cities: ['eastside'], glyph: 'mountain', enamel: 'jade' },
   { id: 'la', title: 'Los Angeles', cities: ['la'], glyph: 'palm', enamel: 'sunrise' },
-  { id: 'bay', title: 'SF Bay Area', cities: ['sf', 'eastbay', 'peninsula', 'northbay'], glyph: 'bridge', enamel: 'coral' },
-  { id: 'sandiego', title: 'San Diego', cities: ['sandiego'], glyph: 'wave', enamel: 'ocean' },
+  { id: 'bay', title: 'SF Bay Area', cities: ['sf', 'eastbay', 'peninsula', 'northbay'], glyph: 'goldengate', enamel: 'coral' },
+  { id: 'sandiego', title: 'San Diego', cities: ['sandiego'], glyph: 'beach', enamel: 'ocean' },
 ]
 
 function step(have: number, goal: number) {
