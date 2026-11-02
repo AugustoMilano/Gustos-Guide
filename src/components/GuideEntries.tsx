@@ -230,7 +230,7 @@ export function GuideEntryCard({
     <div className="min-w-0">
       <div className="entry-head">
         <h3 className={`max-w-full font-serif italic text-balance leading-[1.15] ${splitTitle ? 'text-3xl sm:text-4xl' : 'text-3xl sm:text-4xl lg:text-5xl'}`}>
-          {number != null && number <= 3 ? <RankMedal number={number} size="sm" className="title-medal mr-2 inline-block align-middle" /> : number != null ? <span className="mr-2 text-coral not-italic">{number}</span> : null}
+          {number != null ? <span className="mr-2 text-coral not-italic">{number}</span> : null}
           <Link to={cityPath(`/place/${place.id}`)} viewTransition={!reduceMotion}>{place.name}</Link>
         </h3>
         <span className="score-col">
@@ -352,7 +352,7 @@ function RankMedal({ number, size, className }: { number: number | null; size: '
   if (number == null || number > 3) return null
   return (
     <span className={className}>
-      <ForkMark metal={MEDALS[number - 1]} rank={number} gem={number === 1} size={size} label={`Number ${number} in this guide`} />
+      <ForkMark metal={MEDALS[number - 1]} rank={number} gem={number === 1} size={size} caption="" label={`Number ${number} in this guide`} />
     </span>
   )
 }
