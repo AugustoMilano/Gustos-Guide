@@ -7,7 +7,7 @@ import { useCityId } from '../lib/use-city-id.ts'
 const SPRING = { type: 'spring' as const, stiffness: 420, damping: 32 }
 
 /** Solid accent pill on the selected area. One control, in the header on every width. */
-export function CitySwitcher() {
+export function CitySwitcher({ inline = false }: { inline?: boolean } = {}) {
   const city = useCityId()
   const navigate = useNavigate()
   const { pathname } = useLocation()
@@ -23,7 +23,7 @@ export function CitySwitcher() {
     root.scrollTo({ left: Math.max(0, left), behavior: 'auto' })
   }, [city])
   return (
-    <div ref={bar} className="city-switch city-switch-bar" role="group" aria-label={`Area, ${areaTitle(city)} selected`}>
+    <div ref={bar} className={inline ? 'city-switch city-switch-inline' : 'city-switch city-switch-bar'} role="group" aria-label={inline ? `Top 10 area, ${areaTitle(city)} selected` : `Area, ${areaTitle(city)} selected`}>
       {areasFor(city).filter((item) => item.ready).map((item) => {
         const on = item.id === city
         return (
@@ -34,12 +34,12 @@ export function CitySwitcher() {
             aria-pressed={on}
             aria-current={on ? 'true' : undefined}
             onClick={() => {
-              if (!on) navigate(cityPath(profile ?? '/', item.id))
+              if (!on) navigate(cityPath(profile ?? '/', item.id), inline ? { replace: true, state: { keepScroll: true } } : undefined)
             }}
           >
             {on ? (
               <motion.span
-                layoutId="city-pill"
+                layoutId={inline ? 'city-pill-inline' : 'city-pill'}
                 className="city-switch-glint"
                 transition={reduce ? { duration: 0 } : SPRING}
               />

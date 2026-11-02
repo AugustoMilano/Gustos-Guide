@@ -4913,3 +4913,10 @@ mark {
     animation-timing-function: cubic-bezier(0.32, 1.25, 0.6, 1);
   }
 }
+
+/* Profile Top 10: area picker sits beside the list title. */
+.top10-head { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 16px; }
+.city-switch-inline { display: inline-flex; flex: none; }
+
+/* Root landing: the city picker fills the first screen. */
+.city-landing { min-height: 100svh; display: flex; flex-direction: column; justify-content: center; }

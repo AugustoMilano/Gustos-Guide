@@ -54,7 +54,9 @@ function ScrollManager() {
   }, [])
   useEffect(() => {
     const key = location.key
-    const saved = positions.current.get(key) ?? 0
+    // The profile's Top 10 picker swaps area in place; stay where the reader is.
+    const keep = (location.state as { keepScroll?: boolean } | null)?.keepScroll
+    const saved = positions.current.get(key) ?? (keep ? window.scrollY : 0)
     let last = saved
     const root = document.documentElement
     const previous = root.style.scrollBehavior
@@ -185,8 +187,9 @@ function CatalogRoutes() {
   return (
         <Routes>
           <Route path="/cities" element={<CitiesPage />} />
+          <Route path="/" element={<CitiesPage landing />} />
           {['', ...CITY_PREFIXES].flatMap((prefix) => [
-            <Route key={`${prefix}-home`} path={prefix || '/'} element={<HomePage />} />,
+            ...(prefix ? [<Route key={`${prefix}-home`} path={prefix} element={<HomePage />} />] : []),
             <Route key={`${prefix}-explore`} path={`${prefix}/explore`} element={<ExplorePage />} />,
             <Route key={`${prefix}-guides`} path={`${prefix}/guides`} element={<GuideIndexPage />} />,
             <Route key={`${prefix}-guide`} path={`${prefix}/guide/:slug`} element={<GuidePage />} />,

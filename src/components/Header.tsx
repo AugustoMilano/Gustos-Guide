@@ -95,7 +95,9 @@ export function Header() {
   const picker = isCityPicker(location.pathname)
   const linkCity = picker ? readRegionMemory().area : city
   const areaName = areaPhrase(linkCity)
-  const showAreas = !picker && areasFor(city).length > 1
+  // Profiles carry their own picker beside the Top 10, so the header skips it there.
+  const onProfile = /\/u\/[^/]+\/?$/.test(location.pathname)
+  const showAreas = !picker && !onProfile && areasFor(city).length > 1
   const bellPanel = useRef<HTMLDivElement>(null)
   const bellDesktop = useRef<HTMLButtonElement>(null)
   const bellMobile = useRef<HTMLButtonElement>(null)
