@@ -230,7 +230,7 @@ export function GuideEntryCard({
     <div className="min-w-0">
       <div className="entry-head">
         <h3 className={`max-w-full font-serif italic text-balance leading-[1.15] ${splitTitle ? 'text-3xl sm:text-4xl' : 'text-3xl sm:text-4xl lg:text-5xl'}`}>
-          {number != null ? <span className="mr-2 text-coral not-italic">{number}</span> : null}
+          {number != null ? <span className="rank-slot text-coral not-italic">{number}</span> : null}
           <Link to={cityPath(`/place/${place.id}`)} viewTransition={!reduceMotion}>{place.name}</Link>
         </h3>
         <span className="score-col">

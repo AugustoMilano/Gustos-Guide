@@ -4581,3 +4581,11 @@ mark {
   border-top: 2px solid var(--color-ink);
   padding-top: var(--space-4);
 }
+
+/* Same rank slot for every title so names line up at #1 and #43 alike. */
+.rank-slot {
+  display: inline-block;
+  min-width: 1.4em;
+  margin-right: var(--space-2);
+  font-variant-numeric: tabular-nums;
+}
