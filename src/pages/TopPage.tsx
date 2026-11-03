@@ -44,6 +44,7 @@ export function TopPage() {
   usePageMeta(
     `Top 25 · ${name} · Gusto's Guide`,
     `The Golden Fork list for ${name}, ranked by Augusto's exact Gusto's Score.`,
+    `./og/top/${region}.png`,
   )
 
   return (

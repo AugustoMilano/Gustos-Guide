@@ -2,7 +2,7 @@ import { useMemo, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { SmartResults, featuredSlugs } from '../components/SmartResults.tsx'
 import { catalog } from '../content/load.ts'
-import { cityPath, regionOf, type CityId } from '../lib/city.ts'
+import { areaName, cityPath, regionOf, type CityId } from '../lib/city.ts'
 import { countPlaces } from '../lib/format.ts'
 import { isOpen } from '../lib/hours.ts'
 import { regionBoard } from '../lib/top25.ts'
@@ -79,7 +79,8 @@ function Chevron() {
 export function HomePage() {
   const { city, guides, places, ready, failed } = useCityCatalog()
   const [draft, setDraft] = useState('')
-  usePageMeta("Gusto's Guide", heroDek(city), './og/og.png')
+  // Per-city title and share card (C5); sub-areas use their region's card.
+  usePageMeta(`${areaName(city)} · Gusto's Guide`, heroDek(city), `./og/cities/${regionOf(city)}.png`)
   const query = draft.trim()
   const { gustoScore } = useApp()
   // Same rule as the Tonight page: a place is open when its published hours say so right now.

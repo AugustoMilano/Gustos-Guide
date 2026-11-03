@@ -36,7 +36,7 @@ export function ProfilePage() {
 
   if (!person && !friend && !mine) {
     return (
-      <main id="main" tabIndex={-1} className="mx-auto max-w-3xl px-4 pt-28 outline-none">
+      <main id="main" tabIndex={-1} className="mx-auto min-h-dvh max-w-3xl px-4 pt-28 outline-none">
         <h1 className="font-serif text-5xl italic">No one by that name.</h1>
         <p className="mt-3">Sign in to open your own profile.</p>
       </main>

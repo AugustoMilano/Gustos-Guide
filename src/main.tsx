@@ -27,6 +27,15 @@ if (import.meta.env.PROD && 'serviceWorker' in navigator) {
         else activateWhenHidden()
       })
       window.addEventListener('pagehide', () => registration.waiting?.postMessage({ type: 'SKIP_WAITING' }))
+      // A first visit loads its files before the worker runs. Hand it what this page already
+      // fetched, so the place opened on that visit also works offline (C4).
+      void navigator.serviceWorker.ready.then((ready) => {
+        const urls = performance
+          .getEntriesByType('resource')
+          .map((entry) => entry.name)
+          .filter((name) => name.startsWith(location.origin) && /\/(assets|pd|photos)\/|\/status\.js$/.test(new URL(name).pathname))
+        ready.active?.postMessage({ type: 'CACHE_URLS', urls })
+      })
     })
   })
 }

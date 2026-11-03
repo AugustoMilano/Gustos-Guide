@@ -184,8 +184,11 @@ function CatalogRoutes() {
     if (phase === 0 && bootId !== '' && bootPending(bootId)) return <PageSkeleton />
     if (phase < 0) {
       return (
-        <main id="main" tabIndex={-1} className="mx-auto max-w-3xl px-4 pt-28 outline-none">
+        <main id="main" tabIndex={-1} className="mx-auto min-h-dvh max-w-3xl px-4 pt-28 outline-none">
           <h1 className="font-serif text-5xl italic">The guide list didn't load.</h1>
+          {typeof navigator !== 'undefined' && !navigator.onLine ? (
+            <p className="mt-3 max-w-xl">You are offline. Open the guide once with a connection and it stays on this device.</p>
+          ) : null}
           <p className="mt-4"><button type="button" className="btn" onClick={() => window.location.reload()}>Try again</button></p>
         </main>
       )

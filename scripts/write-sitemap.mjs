@@ -66,6 +66,23 @@ for (const guide of [...index.guides, ...eastside.guides, ...la.guides, ...sf.gu
   writeFileSync(join(ogDir, `${guide.slug}.svg`), card(guide.title, guide.dek || 'A guide from Gusto.'))
 }
 
+// City and Top 25 share cards (C5). Mirrors the city picker in src/lib/city.ts.
+export const CITY_CARDS = [
+  { id: 'seattle', name: 'Seattle', detail: 'Seattle, Bellevue, Kirkland, and Redmond' },
+  { id: 'la', name: 'Los Angeles', detail: 'Santa Monica, West Hollywood, Beverly Hills, and Venice' },
+  { id: 'sf', name: 'San Francisco', detail: 'San Francisco, the East Bay, the Peninsula, and the North Bay' },
+  { id: 'sandiego', name: 'San Diego', detail: 'San Diego, La Jolla, Coronado, and Oceanside' },
+  { id: 'vancouver', name: 'Vancouver', detail: 'Downtown, Coal Harbour, Gastown, and Granville Island' },
+  { id: 'portland', name: 'Portland', detail: 'Downtown, the Pearl District, Nob Hill, and Old Town' },
+  { id: 'nyc', name: 'New York', detail: 'Manhattan and Brooklyn' },
+  { id: 'pullman', name: 'Pullman, WA', detail: 'Pullman, WA and Moscow, ID' },
+]
+for (const dir of ['cities', 'top']) mkdirSync(join(root, 'public/og', dir), { recursive: true })
+for (const city of CITY_CARDS) {
+  writeFileSync(join(root, 'public/og/cities', `${city.id}.svg`), card(city.name, `Where Augusto eats in ${city.detail}.`))
+  writeFileSync(join(root, 'public/og/top', `${city.id}.svg`), card(`Top 25 · ${city.name}`, `The Golden Fork list, ranked by Augusto's exact Gusto's Score.`))
+}
+
 const share = new Set([
   `${site}/`,
   `${site}/terms/`,
@@ -76,6 +93,10 @@ for (const place of [...index.places, ...eastside.places, ...la.places, ...sf.pl
 }
 for (const guide of [...index.guides, ...eastside.guides, ...la.guides, ...sf.guides, ...sd.guides, ...addedGuides]) {
   share.add(`${site}/share/guide/${encodeURIComponent(guide.slug)}/`)
+}
+for (const city of CITY_CARDS) {
+  share.add(`${site}/share/city/${city.id}/`)
+  share.add(`${site}/share/top/${city.id}/`)
 }
 const urls = [...share]
 const body = urls

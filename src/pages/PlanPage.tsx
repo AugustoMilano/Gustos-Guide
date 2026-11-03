@@ -55,7 +55,7 @@ export function PlanDetailPage() {
   const [time, setTime] = useState('')
   usePageMeta(plan ? `${plan.title} · Plan` : 'Plan', 'Vote on where to eat and whether you are coming.')
   if (!plan) {
-    return <main className="mx-auto max-w-3xl px-4 pt-28"><h1 className="font-serif text-5xl italic">That plan wandered off.</h1></main>
+    return <main id="main" tabIndex={-1} className="mx-auto min-h-dvh max-w-3xl px-4 pt-28 outline-none"><h1 className="font-serif text-5xl italic">That plan wandered off.</h1></main>
   }
   const names = new Map<string, string>()
   for (const user of app.demoUsers) names.set(user.id, user.name)

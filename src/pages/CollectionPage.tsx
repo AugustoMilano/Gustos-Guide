@@ -48,7 +48,7 @@ export function CollectionPage() {
 
   if (loading) {
     return (
-      <main id="main" tabIndex={-1} className="mx-auto max-w-3xl px-4 pt-28 outline-none" aria-busy="true">
+      <main id="main" tabIndex={-1} className="mx-auto min-h-dvh max-w-3xl px-4 pt-28 outline-none" aria-busy="true">
         <p className="sr-only">Loading</p>
         <div className="skeleton h-12 w-48" />
       </main>
@@ -57,7 +57,7 @@ export function CollectionPage() {
 
   if (!isCheap && !stored) {
     return (
-      <main id="main" tabIndex={-1} className="mx-auto max-w-3xl px-4 pt-28 outline-none">
+      <main id="main" tabIndex={-1} className="mx-auto min-h-dvh max-w-3xl px-4 pt-28 outline-none">
         <h1 className="font-serif text-5xl italic">That collection is not on this list.</h1>
         <Link to={cityPath('/')} className="btn mt-6">Home</Link>
       </main>

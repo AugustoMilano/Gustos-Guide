@@ -302,4 +302,31 @@ for (const file of added) {
   }
 }
 
+// City and Top 25 share pages (C5). No place names on these cards, so nothing excluded can appear.
+const CITY_SHARE = [
+  ['seattle', 'Seattle', 'Seattle, Bellevue, Kirkland, and Redmond'],
+  ['la', 'Los Angeles', 'Santa Monica, West Hollywood, Beverly Hills, and Venice'],
+  ['sf', 'San Francisco', 'San Francisco, the East Bay, the Peninsula, and the North Bay'],
+  ['sandiego', 'San Diego', 'San Diego, La Jolla, Coronado, and Oceanside'],
+  ['vancouver', 'Vancouver', 'Downtown, Coal Harbour, Gastown, and Granville Island'],
+  ['portland', 'Portland', 'Downtown, the Pearl District, Nob Hill, and Old Town'],
+  ['nyc', 'New York', 'Manhattan and Brooklyn'],
+  ['pullman', 'Pullman, WA', 'Pullman, WA and Moscow, ID'],
+]
+for (const [id, name, detail] of CITY_SHARE) {
+  for (const kind of ['city', 'top']) {
+    const dir = join(shareRoot, kind, id)
+    mkdirSync(dir, { recursive: true })
+    const top = kind === 'top'
+    writeFileSync(join(dir, 'index.html'), page({
+      title: top ? `Top 25 · ${name} · Gusto's Guide` : `${name} · Gusto's Guide`,
+      description: top ? `The Golden Fork list for ${name}, ranked by Augusto's exact Gusto's Score.` : `Where Augusto eats in ${detail}.`,
+      image: `${site}/og/${top ? 'top' : 'cities'}/${id}.png`,
+      imageAlt: top ? `Top 25 · ${name}` : name,
+      sharePath: `/share/${kind}/${id}/`,
+      hashPath: top ? `/${id}/top` : `/${id}`,
+    }))
+  }
+}
+
 console.log(`share pages ${index.places.length + eastside.places.length + la.places.length + sf.places.length + sd.places.length + added.reduce((n, file) => n + file.places.length, 0)} places, ${guides.length + eastside.guides.length + la.guides.length + sf.guides.length + sd.guides.length + added.reduce((n, file) => n + file.guides.length, 0)} guides, ${withPhoto} using an owner photo, ${places.size} known`)

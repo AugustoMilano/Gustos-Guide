@@ -25,6 +25,7 @@ import { usePageMeta } from '../lib/meta.ts'
 import { originCanonical } from '../lib/site.ts'
 import { howToGetIn } from '../lib/visit.ts'
 import { useApp } from '../state/AppState.tsx'
+import { readRecentPlaces, rememberPlace } from '../lib/recent-places.ts'
 import type { Place } from '../types.ts'
 
 export function PlacePage() {
@@ -81,14 +82,39 @@ export function PlacePage() {
       .map((row) => row.item)
   }, [place])
 
+  useEffect(() => {
+    if (place) rememberPlace(place.id)
+  }, [place])
+
   if (place && placeCity(place) !== urlCity) {
     return <Navigate to={cityPath(`/place/${place.id}`, placeCity(place))} replace />
   }
 
   if (!place) {
+    // Offline, an unopened place has nothing to show yet; point at the ones saved on this device (C4).
+    const offline = typeof navigator !== 'undefined' && !navigator.onLine
+    const saved = offline ? readRecentPlaces().map((id) => slimById(id) ?? null).filter((item) => item !== null).slice(0, 8) : []
     return (
-      <main id="main" tabIndex={-1} className="mx-auto max-w-3xl px-4 pt-28 outline-none">
-        <h1 className="font-serif text-5xl italic">That place is not on the list.</h1>
+      <main id="main" tabIndex={-1} className="mx-auto min-h-dvh max-w-3xl px-4 pt-28 outline-none">
+        <h1 className="font-serif text-5xl italic">{offline ? 'This place needs a connection.' : 'That place is not on the list.'}</h1>
+        {offline ? <p className="mt-3 max-w-xl">You are offline, and this place was not opened on this device yet.</p> : null}
+        {saved.length ? (
+          <section className="mt-6" aria-label="Opened on this device">
+            <h2 className="font-serif text-3xl italic">Opened on this device</h2>
+            <ul className="mt-3 grid gap-2">
+              {saved.map((item) => (
+                <li key={item.id}>
+                  <Link className="smart-hit" to={cityPath(`/place/${item.id}`, placeCity(item))}>
+                    <span className="min-w-0">
+                      <span className="block truncate font-serif text-2xl italic leading-tight">{item.name}</span>
+                      <span className="mt-1 block truncate text-sm">{item.neighborhood}</span>
+                    </span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </section>
+        ) : null}
         <Link to={cityPath('/search')} className="btn mt-6">Search</Link>
       </main>
     )

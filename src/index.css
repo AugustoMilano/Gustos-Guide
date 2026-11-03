@@ -5366,3 +5366,18 @@ main.pre-place .photo-frame:not(.is-compact) img.pre-place-img { width: calc(100
   .explore-head .explore-bar { position: relative; z-index: 1; padding-top: 4px; padding-bottom: 4px; }
   .explore-head .explore-bar .area-kicker { display: none; }
 }
+
+/* Install hint (C4): a 44px close target and an inline Share glyph. */
+.install-hint-close {
+  flex: none;
+  width: 44px;
+  height: 44px;
+  margin: -0.45rem -0.7rem -0.45rem 0;
+  border: 0;
+  background: transparent;
+  font-size: 1.5rem;
+  line-height: 1;
+  color: inherit;
+  pointer-events: auto;
+}
+.install-hint-share { display: inline; vertical-align: -2px; }
