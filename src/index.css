@@ -3005,27 +3005,6 @@ input[type='time'] {
   -webkit-backdrop-filter: blur(24px) saturate(180%);
 }
 
-.city-card-mark {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 44px;
-  min-width: 44px;
-  padding: 0 0.9rem;
-  border-radius: 999px;
-  background: transparent;
-  color: #5c534c;
-  font-size: 0.78rem;
-  font-weight: 800;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-}
-
-.city-card-mark.is-on {
-  background: #ff5330;
-  color: #181818;
-}
-
 .city-switch {
   display: inline-flex;
   align-items: center;
@@ -4925,3 +4904,11 @@ mark {
 .city-switch-inline .city-switch-btn { flex: none; padding: 0 0.75rem; white-space: nowrap; }
 .city-switch-inline .city-switch-label { white-space: nowrap; }
 .city-switch-inline .city-switch-label { word-spacing: 0.16em; }
+
+/* City cards: the last-opened city gets a coral hairline and a small tag beside its name; every card ends in a chevron. */
+.city-card[aria-current='true'] { border-color: rgb(255 83 48 / 45%); box-shadow: 0 10px 28px rgb(20 31 77 / 8%), 0 0 0 1px rgb(255 83 48 / 18%), inset 0 1px 0 rgb(255 255 255 / 80%); }
+.city-card-title { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; }
+.city-card-tag { display: inline-flex; align-items: center; height: 24px; padding: 0 8px; border-radius: 999px; background: rgb(255 83 48 / 12%); color: #b8331a; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.01em; white-space: nowrap; }
+.city-card-chevron { flex: none; color: #8a7f76; transition: transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1); }
+@media (hover: hover) { .city-card:hover .city-card-chevron { transform: translateX(2px); } }
+@media (prefers-reduced-motion: reduce) { .city-card-chevron { transition: none; } }

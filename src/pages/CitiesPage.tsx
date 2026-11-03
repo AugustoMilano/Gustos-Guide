@@ -47,16 +47,22 @@ export function CitiesPage({ landing = false }: { landing?: boolean } = {}) {
               type="button"
               className="city-card"
               aria-current={on ? 'true' : undefined}
+              aria-label={on ? `${region.name}, last opened. ${region.detail}` : undefined}
               onClick={() => open(region.id)}
               initial={reduce ? false : { opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={reduce ? { duration: 0 } : { ...SPRING, delay: (landing ? 0.12 : 0) + index * 0.06 }}
             >
               <span className="min-w-0 text-left">
-                <span className="block font-serif text-4xl italic leading-none">{region.name}</span>
+                <span className="city-card-title">
+                  <span className="font-serif text-4xl italic leading-none">{region.name}</span>
+                  {on ? <span className="city-card-tag">Last opened</span> : null}
+                </span>
                 <span className="mt-2 block text-sm">{region.detail}</span>
               </span>
-              <span className={`city-card-mark${on ? ' is-on' : ''}`}>{on ? 'Last opened' : 'Open'}</span>
+              <svg className="city-card-chevron" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true">
+                <path d="M6 3.5 10.5 8 6 12.5" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
             </motion.button>
           )
         })}
