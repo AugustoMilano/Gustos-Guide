@@ -61,7 +61,8 @@ export function PlacePage() {
     }
   }, [slug])
 
-  const place = full ?? slim
+  // After a client-side hop to another place, `full` still holds the previous one until the effect runs.
+  const place = (full && full.id === slug ? full : null) ?? slim
 
   const photos = useMemo(() => (place ? displayPhotos(place, app.photos) : []), [place, app.photos])
   const ownerImage = photos.find((photo) => photo.shareUrl)?.shareUrl
