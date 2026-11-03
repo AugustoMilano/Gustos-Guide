@@ -1,4 +1,5 @@
-import { motion, useReducedMotion } from 'framer-motion'
+import { m, useReducedMotion } from 'framer-motion'
+import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { cityPath, readRegionMemory, REGIONS, writeRegionMemory, type RegionId } from '../lib/city.ts'
 import { usePageMeta } from '../lib/meta.ts'
@@ -8,6 +9,9 @@ const SPRING = { type: 'spring' as const, stiffness: 420, damping: 32 }
 export function CitiesPage({ landing = false }: { landing?: boolean } = {}) {
   const navigate = useNavigate()
   const reduce = useReducedMotion()
+  // When index.html already painted this heading, keep it still instead of fading it in again.
+  const [painted] = useState(() => landing && document.documentElement.dataset.prerender === '1')
+  useEffect(() => { delete document.documentElement.dataset.prerender }, [])
   const memory = readRegionMemory()
   usePageMeta(
     "Choose a city · Gusto's Guide",
@@ -23,8 +27,8 @@ export function CitiesPage({ landing = false }: { landing?: boolean } = {}) {
 
   return (
     <main id="main" tabIndex={-1} className={`mx-auto max-w-3xl px-4 pt-28 pb-16 outline-none${landing ? ' city-landing' : ''}`}>
-      <motion.div
-        initial={reduce ? false : { opacity: 0, y: 16 }}
+      <m.div
+        initial={reduce || painted ? false : { opacity: 0, y: 16 }}
         animate={{ opacity: 1, y: 0 }}
         transition={reduce ? { duration: 0 } : SPRING}
       >
@@ -37,19 +41,18 @@ export function CitiesPage({ landing = false }: { landing?: boolean } = {}) {
         Seattle includes Bellevue, Kirkland, and Redmond, with an Eastside switch once you are inside. San Francisco includes the East Bay, the Peninsula and South Bay, and the North Bay the same way. Los Angeles is its own list. San Diego is its own list too: La Jolla, Coronado, Chula Vista, and North County stay on it, without a second city. The city you opened last is marked.
       </p>
       )}
-      </motion.div>
+      </m.div>
       <div className="mt-6 grid gap-3">
         {REGIONS.map((region, index) => {
           const on = memory.region === region.id
           return (
-            <motion.button
+            <m.button
               key={region.id}
               type="button"
               className="city-card"
               aria-current={on ? 'true' : undefined}
-              aria-label={on ? `${region.name}, last opened. ${region.detail}` : undefined}
               onClick={() => open(region.id)}
-              initial={reduce ? false : { opacity: 0, y: 12 }}
+              initial={reduce || painted ? false : { opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={reduce ? { duration: 0 } : { ...SPRING, delay: (landing ? 0.12 : 0) + index * 0.06 }}
             >
@@ -63,7 +66,7 @@ export function CitiesPage({ landing = false }: { landing?: boolean } = {}) {
               <svg className="city-card-chevron" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true">
                 <path d="M6 3.5 10.5 8 6 12.5" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
-            </motion.button>
+            </m.button>
           )
         })}
       </div>

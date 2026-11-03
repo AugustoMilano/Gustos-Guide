@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react'
-import { motion, useReducedMotion } from 'framer-motion'
+import { m, useReducedMotion } from 'framer-motion'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { areaTitle, areasFor, cityPath } from '../lib/city.ts'
 import { useCityId } from '../lib/use-city-id.ts'
@@ -38,7 +38,7 @@ export function CitySwitcher({ inline = false }: { inline?: boolean } = {}) {
             }}
           >
             {on ? (
-              <motion.span
+              <m.span
                 layoutId={inline ? 'city-pill-inline' : 'city-pill'}
                 className="city-switch-glint"
                 transition={reduce ? { duration: 0 } : SPRING}

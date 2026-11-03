@@ -1,12 +1,12 @@
 import { useEffect, useMemo, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { motion, useReducedMotion } from 'framer-motion'
+import { m, useReducedMotion } from 'framer-motion'
 import { Modal } from './Modal.tsx'
 import { Medal3D } from './Medal3D.tsx'
 import { catalogReady, loadGuides, slimById } from '../content/load.ts'
 import { achievementArt, computeAchievements, type Achievement, type AchievementGroup } from '../lib/achievements.ts'
 import { cityPath } from '../lib/city.ts'
-import { supabaseClient } from '../social/supabase.ts'
+import { loadSupabase } from '../social/supabase.ts'
 import type { Guide } from '../types.ts'
 
 type Dates = Record<string, string>
@@ -74,7 +74,7 @@ function useEarnedDates(userId: string | null, earnedIds: string[], ready: boole
     if (!userId || !ready) return
     let cancelled = false
     const run = async () => {
-      const remote = supabaseClient()
+      const remote = await loadSupabase()
       const local: Dates = readLocal(userId) ?? {}
       let known: Dates = { ...local }
       let server: Dates | null = null
@@ -275,7 +275,7 @@ function AchievementSheet({ a, date, celebrate, onClose, who }: { a: Achievement
       <div className={`ach-sheet ${celebrate ? 'is-celebrating' : ''}`}>
         {celebrate ? <p className="text-xs font-bold tracking-[0.14em] uppercase text-coral">{a.spec.ultimate ? 'Ultimate medal' : 'New achievement'}</p> : null}
         {celebrate && !reduce ? <Confetti count={a.spec.ultimate ? 48 : 22} gold={a.spec.ultimate === true} /> : null}
-        <motion.div
+        <m.div
           className="ach-hero"
           initial={reduce ? false : { scale: 0.55, rotate: celebrate ? -14 : -4, opacity: 0 }}
           animate={{ scale: 1, rotate: 0, opacity: 1 }}
@@ -291,7 +291,7 @@ function AchievementSheet({ a, date, celebrate, onClose, who }: { a: Achievement
                 : { top: 'Not yet earned', date: `${a.have} of ${a.goal}`, middle: a.title }}
             />
           </span>
-        </motion.div>
+        </m.div>
         <h2 className="mt-4 text-center font-serif text-4xl italic leading-tight">{a.title}</h2>
         {a.earned ? (
           <p className="ach-date">{date ? `Earned ${formatEarned(date, true)}` : 'Earned'}</p>

@@ -1,5 +1,5 @@
 import { useId } from 'react'
-import { motion, useReducedMotion } from 'framer-motion'
+import { m, useReducedMotion } from 'framer-motion'
 import { forkSvg, type ForkMetal } from '../lib/fork-mark.ts'
 import { awardFor } from '../lib/top25.ts'
 import { useApp } from '../state/AppState.tsx'
@@ -28,7 +28,7 @@ export function ForkMark({
   const reduce = useReducedMotion()
   const text = caption ?? (metal === 'navy' ? 'Top 25' : rank ? `#${rank}` : '')
   return (
-    <motion.span
+    <m.span
       className={`fork-badge fork-${size}${metal === 'navy' ? ' fork-navy' : ''}${overlay ? ' fork-on-photo' : ''}`}
       role="img"
       aria-label={label}
@@ -38,7 +38,7 @@ export function ForkMark({
     >
       <span className="fork-svg" dangerouslySetInnerHTML={{ __html: forkSvg(metal, { id, gem }) }} />
       {text ? <span className="fork-caption">{text}</span> : null}
-    </motion.span>
+    </m.span>
   )
 }
 

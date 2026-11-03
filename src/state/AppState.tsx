@@ -1,5 +1,5 @@
 import { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState, type ReactNode } from 'react'
-import type { User } from '@supabase/supabase-js'
+import type { SupabaseClient, User } from '@supabase/supabase-js'
 import type { CityId } from '../lib/city.ts'
 import {
   blurbProblem,
@@ -29,7 +29,7 @@ import {
   unpublishedNote,
 } from '../social/collection-store.ts'
 import { scanLocalBundle, type LocalBundle } from '../social/importLocal.ts'
-import { authProviders, removePlacePhoto, savePlacePhoto, sendMagicLink, signInWithProvider, supabaseClient } from '../social/supabase.ts'
+import { authProviders, loadSupabase, removePlacePhoto, savePlacePhoto, sendMagicLink, signInWithProvider, supabaseClient, supabaseConfigured } from '../social/supabase.ts'
 import type { Activity, Bucket, Comment, GuideVisibility, Notice, Plan, RankScore, SessionUser, UserGuide, VisitStatus } from '../types.ts'
 
 // Augusto's Supabase user id. A session for it marks this device so cfa.js skips analytics.
@@ -151,7 +151,7 @@ type AppValue = {
 const Ctx = createContext<AppValue | null>(null)
 
 function emptyDoc(): Doc {
-  const live = Boolean(supabaseClient())
+  const live = supabaseConfigured
   return {
     statuses: {},
     guides: [],
@@ -188,7 +188,13 @@ function loadDoc(id: string): Doc {
 }
 
 export function AppProvider({ children }: { children: ReactNode }) {
-  const remote = useMemo(() => supabaseClient(), [])
+  const [remote, setRemote] = useState<SupabaseClient | null>(() => supabaseClient())
+  useEffect(() => {
+    if (!supabaseConfigured || remote) return
+    let live = true
+    void loadSupabase().then((client) => { if (live) setRemote(client) })
+    return () => { live = false }
+  }, [remote])
   const providers = useMemo(() => authProviders(), [])
   const [user, setUser] = useState<SessionUser | null>(null)
   const [doc, setDoc] = useState<Doc>(emptyDoc)
@@ -202,7 +208,7 @@ export function AppProvider({ children }: { children: ReactNode }) {
   const [marks, setMarks] = useState<Record<string, HouseMark>>({})
   const [collections, setCollections] = useState<HouseCollection[]>([])
   const collectionsRef = useRef<HouseCollection[]>([])
-  const [collectionsStatus, setCollectionsStatus] = useState<CollectionsStatus>(remote ? 'loading' : 'offline')
+  const [collectionsStatus, setCollectionsStatus] = useState<CollectionsStatus>(supabaseConfigured ? 'loading' : 'offline')
   const collectionsStatusRef = useRef(collectionsStatus)
   const [collectionsMessage, setCollectionsMessage] = useState('')
   const marksRef = useRef(marks)
@@ -391,7 +397,7 @@ export function AppProvider({ children }: { children: ReactNode }) {
   }, [remote, user?.isOwner])
 
   useEffect(() => {
-    if (remote) return
+    if (supabaseConfigured) return
     const raw = localStorage.getItem(SESSION_KEY)
     if (!raw) return
     const session = JSON.parse(raw) as SessionUser
@@ -414,7 +420,7 @@ export function AppProvider({ children }: { children: ReactNode }) {
   }, [remote])
 
   useEffect(() => {
-    if (remote) return
+    if (supabaseConfigured) return
     let cancelled = false
     const urls: string[] = []
     void readPhotos().then((rows) => {
@@ -523,15 +529,17 @@ export function AppProvider({ children }: { children: ReactNode }) {
   }
 
   async function emailLink(email: string) {
-    if (!remote) throw new Error('Supabase is not configured.')
-    await sendMagicLink(remote, email)
+    const client = remote ?? await loadSupabase()
+    if (!client) throw new Error('Supabase is not configured.')
+    await sendMagicLink(client, email)
     setAnnouncement('Check your email for a sign-in link.')
   }
 
   async function providerSignIn(provider: 'apple' | 'google' | 'x') {
-    if (!remote) throw new Error('Supabase is not configured.')
+    const client = remote ?? await loadSupabase()
+    if (!client) throw new Error('Supabase is not configured.')
     if (!providers.includes(provider)) throw new Error('That sign-in is not turned on.')
-    await signInWithProvider(remote, provider)
+    await signInWithProvider(client, provider)
   }
 
   function signOut() {
@@ -748,7 +756,7 @@ export function AppProvider({ children }: { children: ReactNode }) {
   }
 
   function toggleFollow(userId: string) {
-    if (remote) return
+    if (supabaseConfigured) return
     const following = doc.following.includes(userId) ? doc.following.filter((id) => id !== userId) : [...doc.following, userId]
     persist({ ...doc, following })
   }

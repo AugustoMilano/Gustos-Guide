@@ -1,6 +1,13 @@
 import { useEffect, useLayoutEffect, useRef, useState, type KeyboardEvent, type PointerEvent } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
-import { animate, motion, useMotionValue, useReducedMotion, useSpring, useTransform, useVelocity } from 'framer-motion'
+import { m, useMotionValue, useReducedMotion, useSpring, useTransform, useVelocity } from 'framer-motion'
+
+// The imperative animator is the heaviest part of the motion library, so it loads on first use
+// (a tab tap or the first scroll that minimizes the bar), not with the first paint.
+type Animatable = Parameters<typeof import('framer-motion').animate>[0]
+function springTo(value: Animatable, target: number) {
+  void import('framer-motion').then(({ animate }) => { animate(value as never, target, SNAP as never) })
+}
 import { barePath, cityPath } from '../lib/city.ts'
 import { useApp } from '../state/AppState.tsx'
 
@@ -80,7 +87,7 @@ export function TabBar() {
     if (!cell || drag.current) return
     const target = PAD + Math.max(active, 0) * cell
     if (reduce || x.get() === 0) x.set(target)
-    else animate(x, target, SNAP)
+    else springTo(x, target)
   }, [active, cell, reduce, x])
 
   // Shrink while reading down the page; return on the way up (iOS 26 minimize).
@@ -141,7 +148,7 @@ export function TabBar() {
     const index = cancel ? Math.max(active, 0) : indexAt(event.clientX)
     const target = PAD + index * cell
     if (reduce) x.set(target)
-    else animate(x, target, SNAP)
+    else springTo(x, target)
     if (!cancel) {
       skipClick.current = true
       window.setTimeout(() => { skipClick.current = false }, 400)
@@ -187,7 +194,7 @@ export function TabBar() {
       >
         <span className="lg-sheen" aria-hidden="true" />
         {cell ? (
-          <motion.span
+          <m.span
             className={`lg-lens${pressed ? ' is-lifted' : ''}`}
             aria-hidden="true"
             style={{ x, width: cell, scaleX: reduce ? 1 : scaleX, scaleY: reduce ? 1 : scaleY, opacity: active < 0 && !pressed ? 0 : 1 }}

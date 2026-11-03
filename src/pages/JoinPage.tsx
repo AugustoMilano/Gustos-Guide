@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { SignInSheet } from '../components/SignInSheet.tsx'
 import { usePageMeta } from '../lib/meta.ts'
-import { previewInvite, supabaseClient } from '../social/supabase.ts'
+import { previewInvite, loadSupabase } from '../social/supabase.ts'
 import { useApp } from '../state/AppState.tsx'
 
 type LocalInvite = { token: string; name: string; handle: string }
@@ -36,10 +36,9 @@ export function JoinPage() {
   )
 
   useEffect(() => {
-    const client = supabaseClient()
-    if (!client || !token) return
+    if (!token) return
     let cancel = false
-    void previewInvite(client, token).then((row) => {
+    void loadSupabase().then((client) => (client ? previewInvite(client, token) : null)).then((row) => {
       if (cancel || !row) return
       setRemoteTitle(row.title)
       setRemoteKind(row.kind)
