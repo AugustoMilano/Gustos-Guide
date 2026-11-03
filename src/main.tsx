@@ -13,21 +13,19 @@ if (window.location.hostname === 'www.gustosguide.com') {
   window.location.replace(url.toString())
 }
 
+// Service worker updates never reload the page. A new version waits, takes over while the page
+// is in the background, and the next open simply loads it.
 if (import.meta.env.PROD && 'serviceWorker' in navigator) {
-  const hadController = Boolean(navigator.serviceWorker.controller)
-  let reloading = false
-  if (hadController) {
-    navigator.serviceWorker.addEventListener('controllerchange', () => {
-      if (reloading) return
-      reloading = true
-      window.location.reload()
-    })
-  }
   window.addEventListener('load', () => {
     void navigator.serviceWorker.register('./sw.js', { updateViaCache: 'none' }).then((registration) => {
+      const activateWhenHidden = () => {
+        if (document.visibilityState === 'hidden') registration.waiting?.postMessage({ type: 'SKIP_WAITING' })
+      }
       document.addEventListener('visibilitychange', () => {
         if (document.visibilityState === 'visible') void registration.update()
+        else activateWhenHidden()
       })
+      window.addEventListener('pagehide', () => registration.waiting?.postMessage({ type: 'SKIP_WAITING' }))
     })
   })
 }

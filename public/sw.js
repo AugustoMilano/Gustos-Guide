@@ -14,9 +14,14 @@ self.addEventListener('install', (event) => {
   event.waitUntil(
     caches
       .open(CACHE)
-      .then((cache) => cache.addAll(SHELL))
-      .then(() => self.skipWaiting()),
+      .then((cache) => cache.addAll(SHELL)),
   )
+  // A first install has nothing to replace and activates at once. An update waits: the page
+  // asks for it only when it is hidden, so an open page never swaps or reloads under the reader.
+})
+
+self.addEventListener('message', (event) => {
+  if (event.data && event.data.type === 'SKIP_WAITING') self.skipWaiting()
 })
 
 self.addEventListener('activate', (event) => {
