@@ -1,3 +1,4 @@
+import { formatDay } from '../lib/day.ts'
 import { useMemo, useState } from 'react'
 import { useReducedMotion } from 'framer-motion'
 import { Link } from 'react-router-dom'
@@ -52,7 +53,7 @@ function guideIndexDek(city: string): string {
   if (city === 'northbay') return 'Sausalito, Tiburon, Corte Madera, and Larkspur.'
   if (city === 'sandiego') return 'Little Italy, Coronado, La Jolla, North Park, and East Village.'
   if (city === 'eastside') return 'Bellevue, Kirkland, Redmond, and Issaquah.'
-  return `Updated ${catalog.updatedAt}. Pizza, neighborhoods, late nights, and the bars worth crossing town for.`
+  return `Updated ${formatDay(catalog.updatedAt)}. Pizza, neighborhoods, late nights, and the bars worth crossing town for.`
 }
 
 export function GuideIndexPage() {
