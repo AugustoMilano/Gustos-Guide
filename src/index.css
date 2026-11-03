@@ -203,7 +203,8 @@ html[data-status='navy'] {
 body {
   margin: 0;
   min-height: 100dvh;
-  background: #eee3d6;
+  /* iPad Safari tints its top bar from the body background. The page paper lives on #root. */
+  background-color: var(--status-bar, #fffaf3);
   color: #181818;
   font-family: var(--font-sans);
   overflow-x: clip;
@@ -211,6 +212,20 @@ body {
 
 #root {
   min-height: 100dvh;
+  background-color: #eee3d6;
+}
+
+/* Opaque strip on the top edge. Safari 26 ignores ::before and theme-color; it reads a fixed
+   element's own background, within a few pixels of the viewport top. */
+.top-chrome {
+  position: fixed;
+  z-index: 45;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: max(8px, env(safe-area-inset-top, 0px));
+  background-color: var(--status-bar, #fffaf3);
+  pointer-events: none;
 }
 
 ::selection {
@@ -1920,8 +1935,8 @@ textarea {
   border-color: transparent;
 }
 
-/* Solid bar, including the safe-area padding behind the clock. Same color as
-   --status-bar, so a scrolled cream header cannot leave a navy strip. */
+/* Safe-area fill behind the clock. iPad Safari does not sample this pseudo;
+   #top-chrome and the body background carry the same color. */
 .site-header.on-hero {
   background-color: var(--status-bar, #141f4d);
   color: #fffaf3;
@@ -1939,7 +1954,7 @@ textarea {
   top: 0;
   right: 0;
   left: 0;
-  /* Opaque top edge, safe area plus 1px, so Safari 26 samples the header's state color. */
+  /* Opaque top edge over the safe area. Sampling is done by #top-chrome, not this pseudo. */
   height: calc(env(safe-area-inset-top, 0px) + 1px);
   background-color: #fffaf3;
   pointer-events: none;
