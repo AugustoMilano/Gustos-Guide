@@ -260,6 +260,44 @@
 /sandiego/my /hop.htm 200
 /sandiego/my/ /hop.htm 200
 
+# Permanently excluded places: their old share cards go home.
+/share/place/rusty-pelican-cafe/ / 301
+/share/place/rusty-pelican-cafe / 301
+/share/place/dark-room/ / 301
+/share/place/dark-room / 301
+/share/place/cascadia-pizza/ / 301
+/share/place/cascadia-pizza / 301
+/share/place/katsu-burger/ / 301
+/share/place/katsu-burger / 301
+/share/place/matts-rotisserie/ / 301
+/share/place/matts-rotisserie / 301
+/share/place/just-poke-redmond/ / 301
+/share/place/just-poke-redmond / 301
+/share/place/seattle-meowtropolitan/ / 301
+/share/place/seattle-meowtropolitan / 301
+/share/place/joe-the-juice/ / 301
+/share/place/joe-the-juice / 301
+/share/place/unicorn/ / 301
+/share/place/unicorn / 301
+/share/place/pacha-collective/ / 301
+/share/place/pacha-collective / 301
+/share/place/pie-bar/ / 301
+/share/place/pie-bar / 301
+/share/place/sugar-bakery-cafe/ / 301
+/share/place/sugar-bakery-cafe / 301
+/share/place/island-soul-kirkland/ / 301
+/share/place/island-soul-kirkland / 301
+/share/place/the-coalman/ / 301
+/share/place/the-coalman / 301
+/share/place/rubinstein-bagels/ / 301
+/share/place/rubinstein-bagels / 301
+/share/place/franz-bakery-outlet/ / 301
+/share/place/franz-bakery-outlet / 301
+/share/place/the-independent-pizzeria/ / 301
+/share/place/the-independent-pizzeria / 301
+/share/place/island-soul-restaurant/ / 301
+/share/place/island-soul-restaurant / 301
+
 # Share cards. These placeholders stay above the other dynamic rules.
 /share/place/:id /share/place/:id/index.html 200
 /share/guide/:slug /share/guide/:slug/index.html 200
