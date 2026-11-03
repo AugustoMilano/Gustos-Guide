@@ -70,11 +70,15 @@ export function useBottomSheet(
     }
     const end = () => {
       if (!drag) return
-      const { y, v } = drag
+      const { y, v, base: drag0 } = drag
       drag = null
       const o = offsets()
       let target: Detent
-      if (Math.abs(v) > 0.5) {
+      const travel = y - drag0
+      if (v > 0.5 || travel > o.peek * 0.4) {
+        // A fast or long pull down always goes all the way to peek.
+        target = 'peek'
+      } else if (Math.abs(v) > 0.5) {
         // Fling: go one detent in the flick's direction from where the finger let go.
         const above = ORDER.filter((d) => o[d] < y - 1)
         const below = ORDER.filter((d) => o[d] > y + 1)
