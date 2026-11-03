@@ -119,7 +119,7 @@ export function PlacePage() {
           <p className="mt-2 text-xs font-bold tracking-[0.14em] uppercase">{[place.cuisine.join(' · '), place.neighborhood].filter(Boolean).join(' · ')}</p>
           <h1 className="mt-1 font-serif text-5xl italic leading-none sm:text-6xl">{place.name}</h1>
           {place.closed ? <p className="closed-banner mt-3" role="status">Closed.</p> : null}
-          {place.oneLiner ? <p className="review-headline mt-4 border-2 border-ink bg-[#fffaf3] px-4 py-3 font-serif text-2xl italic leading-snug">“{place.oneLiner}”</p> : null}
+          {place.oneLiner ? <p className="review-headline mt-4 px-4 py-3 font-serif text-2xl italic leading-snug">“{place.oneLiner}”</p> : null}
           <div className="mt-3 flex flex-wrap items-center gap-3">
             <ScoreBadge score={app.gustoScore(place.id)} />
             <GoldenFork placeId={place.id} size="md" />

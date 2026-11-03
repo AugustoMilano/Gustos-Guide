@@ -5093,3 +5093,41 @@ mark {
 /* Guide entry titles: the link's hit area reaches 44px without moving the type. */
 .entry-head h3 a { position: relative; }
 .entry-head h3 a::after { content: ''; position: absolute; inset: -6px -4px; }
+
+/* Soft glass everywhere the old hard ink boxes were (cards, search rows, fields, photo frames). */
+.card,
+.smart-hit {
+  border: 1px solid rgb(255 255 255 / 70%);
+  border-radius: 20px;
+  background: rgb(255 250 243 / 62%);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  box-shadow: 0 12px 32px rgb(20 31 77 / 12%), inset 0 1px 0 rgb(255 255 255 / 75%);
+}
+.soft-field {
+  border: 1px solid rgb(24 24 24 / 12%);
+  border-radius: 14px;
+  background: rgb(255 250 243 / 80%);
+  box-shadow: inset 0 1px 2px rgb(20 31 77 / 6%);
+}
+.soft-field:focus-visible { outline: 2px solid var(--color-coral); outline-offset: 1px; }
+.soft-media { border-radius: 14px; }
+.guide-shot { border-radius: 20px; }
+.entry-quote:not(.border-l-4) { border-radius: 16px; }
+
+/* Guide sort: one segmented control under the title, sized like Share and Story. */
+.sort-seg .city-switch-btn { min-height: 44px; padding: 0 16px; font-size: 0.95rem; font-weight: 700; color: #3d3630; }
+.sort-seg { max-width: 100%; overflow-x: auto; scrollbar-width: none; }
+.sort-seg::-webkit-scrollbar { display: none; }
+
+/* No score yet: a quiet outline, not a solid block. */
+.score-badge.is-muted {
+  background: transparent;
+  border: 1px dashed rgb(24 24 24 / 22%);
+  box-shadow: none;
+  color: rgb(24 24 24 / 55%);
+}
+.score-badge.is-muted strong { font-size: 0.85rem; font-weight: 650; font-family: inherit; font-style: normal; }
+@media (prefers-reduced-motion: no-preference) {
+  .card:hover { box-shadow: 0 16px 36px rgb(20 31 77 / 16%), inset 0 1px 0 rgb(255 255 255 / 75%); }
+}

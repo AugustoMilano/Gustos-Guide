@@ -70,7 +70,7 @@ export function ProfilePage() {
     <main id="main" tabIndex={-1} className="mx-auto max-w-3xl px-4 pt-24 pb-16 outline-none">
       <p className="text-xs font-bold uppercase tracking-wide">{mine ? 'Your profile' : 'Friend'}</p>
       <h1 className="font-serif text-5xl italic">{mine ? app.user?.name : person?.name ?? friend?.name}</h1>
-      {mine && app.user?.avatarUrl ? <img src={app.user.avatarUrl} alt="" width={64} height={64} referrerPolicy="no-referrer" className="mt-4 h-16 w-16 rounded-full border-2 border-ink object-cover" /> : null}
+      {mine && app.user?.avatarUrl ? <img src={app.user.avatarUrl} alt="" width={64} height={64} referrerPolicy="no-referrer" className="mt-4 h-16 w-16 rounded-full border-2 border-white shadow-sm object-cover" /> : null}
       {mine && app.user?.handle ? <p className="mt-2 text-sm font-bold">Signed in as @{app.user.handle}</p> : null}
       <p className="mt-2">
         {mine ? (app.supabase ? 'Signed in' : 'Signed in on this browser') : person ? `${person.neighborhood} · streak ${person.streak} weeks` : `@${friend?.handle ?? handle}`}
@@ -79,7 +79,7 @@ export function ProfilePage() {
       {mine ? (
         <p className="mt-3 max-w-xl">This is you. Taste match appears on a friend’s profile after you have both scored at least three of the same places.</p>
       ) : (
-        <section className="mt-4 border-2 border-ink p-4" aria-labelledby="taste-match">
+        <section className="mt-4 glass p-4" aria-labelledby="taste-match">
           <h2 id="taste-match" className="font-serif text-3xl italic">Taste match</h2>
           <p className="mt-2">
             {match === null

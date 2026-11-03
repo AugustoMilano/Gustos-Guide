@@ -31,7 +31,7 @@ export function NotFoundPage() {
         <label className="sr-only" htmlFor="missing-search">Search {areaPhrase(city)}</label>
         <input
           id="missing-search"
-          className="min-h-11 min-w-0 flex-1 border-2 border-ink bg-cream px-3"
+          className="min-h-11 min-w-0 flex-1 soft-field bg-cream px-3"
           value={query}
           onChange={(event) => setQuery(event.target.value)}
           placeholder="Pizza, Ballard, Canlis"

@@ -161,7 +161,7 @@ function AuthErrorSheet() {
       <div className="p-5">
         <h2 className="font-serif text-4xl italic">Couldn't sign in</h2>
         <p className="mt-3 text-sm">The link came back without a session. This is the note from sign-in, so it can be matched to the auth log:</p>
-        <p className="mt-3 break-words border-2 border-ink bg-cream p-3 text-sm" role="alert">{authError}</p>
+        <p className="mt-3 break-words glass p-3 text-sm" role="alert">{authError}</p>
         <button type="button" className="btn btn-coral mt-4" onClick={clearAuthError}>
           Close
         </button>
