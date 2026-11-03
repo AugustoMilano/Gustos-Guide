@@ -111,7 +111,7 @@ export function installCougEggs() {
     if (!title(event)) return
     window.clearTimeout(hold)
     hold = window.setTimeout(() => {
-      cougToast('Wave the flag.')
+      cougToast("Ol' Crimson.")
       found('hold')
     }, 700)
   })
