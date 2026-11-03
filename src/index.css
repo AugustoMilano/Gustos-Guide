@@ -5418,3 +5418,32 @@ html[data-area='pullman'] .hero { background: linear-gradient(160deg, #981e32 0%
 .coug-confetti i { position: absolute; top: -12px; width: 8px; height: 14px; border-radius: 2px; animation: coug-fall 2.2s cubic-bezier(0.2, 0.6, 0.4, 1) forwards; }
 @keyframes coug-fall { to { transform: translate3d(var(--drift), 105vh, 0) rotate(var(--spin)); opacity: 0.9; } }
 @media (prefers-reduced-motion: reduce) { .coug-toast { transition: none; } .coug-confetti { display: none; } }
+/* More Coug eggs: a drawn football (no team marks) and a crimson and gray stripe wave. */
+.coug-spiral {
+  position: fixed; left: -64px; top: 38vh; z-index: 89; pointer-events: none;
+  width: 56px; height: 34px; border-radius: 50%; background: #7a1828;
+  box-shadow: inset 0 0 0 3px #981e32;
+  animation: coug-throw 1.6s cubic-bezier(0.3, 0.1, 0.3, 1) forwards;
+}
+.coug-spiral::after {
+  content: ''; position: absolute; left: 16px; right: 16px; top: 15px; height: 4px; border-radius: 2px;
+  background: repeating-linear-gradient(90deg, #fff 0 3px, transparent 3px 6px);
+}
+@keyframes coug-throw {
+  0% { transform: translate(0, 0) rotate(-20deg); }
+  50% { transform: translate(55vw, -22vh) rotate(0deg); }
+  100% { transform: translate(115vw, 4vh) rotate(25deg); }
+}
+.coug-wave {
+  position: fixed; left: 0; right: 0; top: 0; height: 18px; z-index: 89; pointer-events: none;
+  background: repeating-linear-gradient(90deg, #981e32 0 28px, #a7a9ac 28px 56px);
+  transform-origin: top; animation: coug-flag 2.2s ease-in-out forwards;
+}
+@keyframes coug-flag {
+  0% { transform: scaleY(0); opacity: 0; }
+  15% { transform: scaleY(1); opacity: 1; }
+  30%, 60% { transform: scaleY(1) skewX(-12deg); }
+  45%, 75% { transform: scaleY(1) skewX(12deg); }
+  100% { transform: scaleY(0); opacity: 0; }
+}
+@media (prefers-reduced-motion: reduce) { .coug-spiral, .coug-wave { display: none; } }

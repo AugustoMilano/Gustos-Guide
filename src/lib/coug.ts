@@ -65,6 +65,28 @@ export function cougBurst(text = 'Go Cougs!') {
   window.setTimeout(() => layer.remove(), 2600)
 }
 
+/** A drawn football spirals across the screen. Reduced motion: the message only. */
+export function cougSpiral() {
+  cougToast("It's game day.")
+  if (reduced()) return
+  const ball = document.createElement('div')
+  ball.className = 'coug-spiral'
+  ball.setAttribute('aria-hidden', 'true')
+  document.body.appendChild(ball)
+  window.setTimeout(() => ball.remove(), 1800)
+}
+
+/** Crimson and gray stripes ripple across the top of the page, like a flag in the wind. */
+export function cougWave() {
+  cougToast("Ol' Crimson is flying.")
+  if (reduced()) return
+  const flag = document.createElement('div')
+  flag.className = 'coug-wave'
+  flag.setAttribute('aria-hidden', 'true')
+  document.body.appendChild(flag)
+  window.setTimeout(() => flag.remove(), 2400)
+}
+
 /** Called whenever the open area changes. */
 export function cougArea(area: string) {
   if (lastArea === 'pullman' && area === 'moscow') {
@@ -81,9 +103,16 @@ export function installCougEggs() {
   document.addEventListener('input', (event) => {
     const target = event.target
     if (!(target instanceof HTMLInputElement)) return
-    if (/^\s*go\s*cougs!?\s*$/i.test(target.value)) {
+    const text = target.value.trim().toLowerCase().replace(/\s+/g, ' ')
+    if (/^go ?cougs!?$/.test(text)) {
       cougBurst()
       found('search')
+    } else if (text === 'game day' || text === 'gameday') {
+      cougSpiral()
+      found('spiral')
+    } else if (text === 'crimson') {
+      cougWave()
+      found('wave')
     }
   })
   let taps = 0
@@ -91,8 +120,28 @@ export function installCougEggs() {
   let hold = 0
   const title = (event: Event) => {
     const el = event.target instanceof Element ? event.target.closest('.hero h1, main h1') : null
-    return el && document.documentElement.dataset.area === 'pullman' ? el : null
+    // The Game day guide's title has its own six-tap touchdown instead.
+    const gameDay = /\/guides?\/pul-game-day/.test(location.pathname + location.hash)
+    return el && !gameDay && document.documentElement.dataset.area === 'pullman' ? el : null
   }
+  // Six taps on the Game day guide's title: a touchdown.
+  let tdTaps = 0
+  let tdFirst = 0
+  document.addEventListener('click', (event) => {
+    const el = event.target instanceof Element ? event.target.closest('main h1') : null
+    if (!el || !/\/guides?\/pul-game-day/.test(location.pathname + location.hash)) return
+    const now = Date.now()
+    if (now - tdFirst > 3000) {
+      tdFirst = now
+      tdTaps = 0
+    }
+    tdTaps += 1
+    if (tdTaps >= 6) {
+      tdTaps = 0
+      cougBurst('Touchdown! +6')
+      found('touchdown')
+    }
+  })
   document.addEventListener('click', (event) => {
     if (!title(event)) return
     const now = Date.now()

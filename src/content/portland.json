@@ -92,7 +92,9 @@
       "hoursLabel": "",
       "blurb": "",
       "orderThis": [],
-      "ids": {},
+      "ids": {
+        "yelp": "s-aztPntmWfceezqTkorpg"
+      },
       "copySource": "draft",
       "updatedAt": "2026-11-03",
       "photos": [
@@ -104,7 +106,13 @@
         }
       ],
       "phone": "+1 (503) 248-2202",
-      "website": "https://kensartisan.com"
+      "website": "https://kensartisan.com",
+      "publicRating": {
+        "value": 4.4,
+        "count": 1060,
+        "source": "Yelp"
+      },
+      "yelpSlug": "s-aztPntmWfceezqTkorpg"
     },
     {
       "id": "le-pigeon",
@@ -209,7 +217,9 @@
       "hoursLabel": "",
       "blurb": "",
       "orderThis": [],
-      "ids": {},
+      "ids": {
+        "yelp": "eUbq0uNxRlXQ6sy7phM7yA"
+      },
       "copySource": "draft",
       "updatedAt": "2026-11-03",
       "photos": [
@@ -221,7 +231,13 @@
         }
       ],
       "phone": "+1 (503) 219-9000",
-      "website": "http://www.lechonpdx.com"
+      "website": "http://www.lechonpdx.com",
+      "publicRating": {
+        "value": 4.5,
+        "count": 2223,
+        "source": "Yelp"
+      },
+      "yelpSlug": "eUbq0uNxRlXQ6sy7phM7yA"
     },
     {
       "id": "kachka",
@@ -286,7 +302,9 @@
       "hoursLabel": "",
       "blurb": "",
       "orderThis": [],
-      "ids": {},
+      "ids": {
+        "yelp": "cq58hTPKAs03dPmPPIKVQQ"
+      },
       "copySource": "draft",
       "updatedAt": "2026-11-03",
       "photos": [
@@ -298,7 +316,13 @@
         }
       ],
       "phone": "+1 (503) 235-0059",
-      "website": "https://www.kachkapdx.com/"
+      "website": "https://www.kachkapdx.com/",
+      "publicRating": {
+        "value": 4.3,
+        "count": 1367,
+        "source": "Yelp"
+      },
+      "yelpSlug": "cq58hTPKAs03dPmPPIKVQQ"
     },
     {
       "id": "republica",
@@ -699,7 +723,9 @@
       "hoursLabel": "",
       "blurb": "",
       "orderThis": [],
-      "ids": {},
+      "ids": {
+        "yelp": "z4Rus95P2glp8YMo42XD5A"
+      },
       "copySource": "draft",
       "updatedAt": "2026-11-03",
       "photos": [
@@ -711,7 +737,13 @@
         }
       ],
       "phone": "+1 (971) 344-2564",
-      "website": "https://www.langbaanportland.com"
+      "website": "https://www.langbaanportland.com",
+      "publicRating": {
+        "value": 4.4,
+        "count": 325,
+        "source": "Yelp"
+      },
+      "yelpSlug": "z4Rus95P2glp8YMo42XD5A"
     },
     {
       "id": "urdaneta",
@@ -756,7 +788,9 @@
       "hoursLabel": "",
       "blurb": "",
       "orderThis": [],
-      "ids": {},
+      "ids": {
+        "yelp": "xv9nKiglddMKORzkgm3B8A"
+      },
       "copySource": "draft",
       "updatedAt": "2026-11-03",
       "photos": [
@@ -770,7 +804,13 @@
         }
       ],
       "phone": "+1 (503) 288-1990",
-      "website": "https://www.urdanetapdx.com"
+      "website": "https://www.urdanetapdx.com",
+      "publicRating": {
+        "value": 4.6,
+        "count": 450,
+        "source": "Yelp"
+      },
+      "yelpSlug": "xv9nKiglddMKORzkgm3B8A"
     },
     {
       "id": "kens-artisan-pizza",
@@ -880,7 +920,9 @@
       "hoursLabel": "",
       "blurb": "",
       "orderThis": [],
-      "ids": {},
+      "ids": {
+        "yelp": "0WqROvvlHjvpeHIP0fg9EQ"
+      },
       "copySource": "draft",
       "updatedAt": "2026-11-03",
       "photos": [
@@ -892,7 +934,13 @@
         }
       ],
       "phone": "+1 (971) 717-5271",
-      "website": "http://www.pdxsliders.com"
+      "website": "http://www.pdxsliders.com",
+      "publicRating": {
+        "value": 4.5,
+        "count": 1308,
+        "source": "Yelp"
+      },
+      "yelpSlug": "0WqROvvlHjvpeHIP0fg9EQ"
     },
     {
       "id": "taste-tickler",
@@ -1062,7 +1110,9 @@
       "hoursLabel": "",
       "blurb": "",
       "orderThis": [],
-      "ids": {},
+      "ids": {
+        "yelp": "cvLkq3hxRKH--995r1gv4A"
+      },
       "copySource": "draft",
       "updatedAt": "2026-11-03",
       "photos": [
@@ -1074,7 +1124,13 @@
         }
       ],
       "phone": "+1 (503) 222-0906",
-      "website": "https://www.sesamecollective.com/mec"
+      "website": "https://www.sesamecollective.com/mec",
+      "publicRating": {
+        "value": 4.4,
+        "count": 1148,
+        "source": "Yelp"
+      },
+      "yelpSlug": "cvLkq3hxRKH--995r1gv4A"
     },
     {
       "id": "eem",
@@ -1564,7 +1620,9 @@
       "hoursLabel": "",
       "blurb": "",
       "orderThis": [],
-      "ids": {},
+      "ids": {
+        "yelp": "4ZjHsu_bNxPyPqSOq2fw4g"
+      },
       "copySource": "draft",
       "updatedAt": "2026-11-03",
       "photos": [
@@ -1576,7 +1634,13 @@
         }
       ],
       "phone": "+1 (503) 850-8915",
-      "website": "https://q-portland.com"
+      "website": "https://q-portland.com",
+      "publicRating": {
+        "value": 4.6,
+        "count": 1065,
+        "source": "Yelp"
+      },
+      "yelpSlug": "4ZjHsu_bNxPyPqSOq2fw4g"
     },
     {
       "id": "voodoo-doughnut-pdx",
@@ -1673,7 +1737,9 @@
       "hoursLabel": "",
       "blurb": "",
       "orderThis": [],
-      "ids": {},
+      "ids": {
+        "yelp": "oM-slnbPCoTqxxGKo7fx3A"
+      },
       "copySource": "draft",
       "updatedAt": "2026-11-03",
       "photos": [
@@ -1685,7 +1751,13 @@
         }
       ],
       "phone": "+1 (503) 227-8794",
-      "website": "https://elgaucho.com/portland/"
+      "website": "https://elgaucho.com/portland/",
+      "publicRating": {
+        "value": 4,
+        "count": 885,
+        "source": "Yelp"
+      },
+      "yelpSlug": "oM-slnbPCoTqxxGKo7fx3A"
     },
     {
       "id": "maurice",
@@ -1780,7 +1852,9 @@
       "hoursLabel": "",
       "blurb": "",
       "orderThis": [],
-      "ids": {},
+      "ids": {
+        "yelp": "Z7NJmbcZT8fbj2vHR2BFSg"
+      },
       "copySource": "draft",
       "updatedAt": "2026-11-03",
       "photos": [
@@ -1792,7 +1866,13 @@
         }
       ],
       "phone": "+1 (503) 782-1611",
-      "website": "https://terramaepdx.com"
+      "website": "https://terramaepdx.com",
+      "publicRating": {
+        "value": 4.5,
+        "count": 180,
+        "source": "Yelp"
+      },
+      "yelpSlug": "Z7NJmbcZT8fbj2vHR2BFSg"
     },
     {
       "id": "stumptown-coffee-roasters",
@@ -1832,7 +1912,9 @@
       "hoursLabel": "",
       "blurb": "",
       "orderThis": [],
-      "ids": {},
+      "ids": {
+        "yelp": "3KJ-vK3xNUALksxjOrVPQQ"
+      },
       "copySource": "draft",
       "updatedAt": "2026-11-03",
       "photos": [
@@ -1846,7 +1928,13 @@
         }
       ],
       "phone": "+1 (855) 711-3385",
-      "website": "https://www.stumptowncoffee.com/locations/portland/downtown"
+      "website": "https://www.stumptowncoffee.com/locations/portland/downtown",
+      "publicRating": {
+        "value": 4.1,
+        "count": 1202,
+        "source": "Yelp"
+      },
+      "yelpSlug": "3KJ-vK3xNUALksxjOrVPQQ"
     },
     {
       "id": "coava-coffee-roasters",
@@ -1898,7 +1986,9 @@
       "hoursLabel": "",
       "blurb": "",
       "orderThis": [],
-      "ids": {},
+      "ids": {
+        "yelp": "y6sI90IwOrUlhH0nlUbXXg"
+      },
       "copySource": "draft",
       "updatedAt": "2026-11-03",
       "photos": [
@@ -1910,7 +2000,13 @@
         }
       ],
       "phone": "+1 (503) 894-8134",
-      "website": "https://coavacoffee.com"
+      "website": "https://coavacoffee.com",
+      "publicRating": {
+        "value": 4.4,
+        "count": 914,
+        "source": "Yelp"
+      },
+      "yelpSlug": "y6sI90IwOrUlhH0nlUbXXg"
     },
     {
       "id": "ruse-brewing-crust-collective",
@@ -2094,7 +2190,9 @@
       "hoursLabel": "",
       "blurb": "",
       "orderThis": [],
-      "ids": {},
+      "ids": {
+        "yelp": "GGJJY0u7nvh4qzO3aSOkcg"
+      },
       "copySource": "draft",
       "updatedAt": "2026-11-03",
       "photos": [
@@ -2106,7 +2204,13 @@
         }
       ],
       "phone": "+1 (503) 841-6195",
-      "website": "https://www.campanapdx.com"
+      "website": "https://www.campanapdx.com",
+      "publicRating": {
+        "value": 4.5,
+        "count": 178,
+        "source": "Yelp"
+      },
+      "yelpSlug": "GGJJY0u7nvh4qzO3aSOkcg"
     },
     {
       "id": "screen-door",
@@ -2303,7 +2407,9 @@
       "hoursLabel": "",
       "blurb": "",
       "orderThis": [],
-      "ids": {},
+      "ids": {
+        "yelp": "n73rxa6e6-fTIxQzfv4BuA"
+      },
       "copySource": "draft",
       "updatedAt": "2026-11-03",
       "photos": [
@@ -2315,14 +2421,20 @@
         }
       ],
       "phone": "+1 (503) 464-1122",
-      "website": "https://www.mothersbistro.com/"
+      "website": "https://www.mothersbistro.com/",
+      "publicRating": {
+        "value": 4.3,
+        "count": 5336,
+        "source": "Yelp"
+      },
+      "yelpSlug": "n73rxa6e6-fTIxQzfv4BuA"
     }
   ],
   "guides": [
     {
       "slug": "pdx-downtown",
       "title": "Downtown",
-      "dek": "",
+      "dek": "Downtown Portland: steak at El Gaucho and Portland City Grill, Jake's Grill, Bellpine, brunch at Mother's Bistro & Bar, and MÅURICE for dessert.",
       "group": "Neighborhoods",
       "intro": "",
       "updatedAt": "2026-11-03",
@@ -2377,7 +2489,7 @@
     {
       "slug": "pdx-pearl-district",
       "title": "Pearl District",
-      "dek": "",
+      "dek": "Five in the Pearl: Peruvian at Andina, Mexican at Republica, Mediterranean Exploration Company, Lilia Comedor, and Deschutes Brewery.",
       "group": "Neighborhoods",
       "intro": "",
       "updatedAt": "2026-11-03",
@@ -2420,7 +2532,7 @@
     {
       "slug": "pdx-new-american",
       "title": "New American",
-      "dek": "",
+      "dek": "New American from Le Pigeon on Lower Burnside and Olympia Provisions in the Southeast Warehouse District to Lilia Comedor in the Pearl and Bellpine downtown.",
       "group": "Cuisine",
       "intro": "",
       "updatedAt": "2026-11-03",
@@ -2469,7 +2581,7 @@
     {
       "slug": "pdx-pizza",
       "title": "Pizza",
-      "dek": "",
+      "dek": "Five for pizza: Ken's Artisan Pizza in Kerns, Lovely's Fifty Fifty on Mississippi, Ruse Brewing Crust Collective in Nob Hill, No Saint in Vernon, and Elephants Delicatessen.",
       "group": "Cuisine",
       "intro": "",
       "updatedAt": "2026-11-03",
@@ -2512,7 +2624,7 @@
     {
       "slug": "pdx-health-food",
       "title": "Health food",
-      "dek": "",
+      "dek": "Four lighter picks: Thai at Langbaan and pizza at Ruse Brewing Crust Collective in Nob Hill, No Saint in Vernon, and Q Restaurant & Bar downtown.",
       "group": "Cuisine",
       "intro": "",
       "updatedAt": "2026-11-03",

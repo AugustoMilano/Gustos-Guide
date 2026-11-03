@@ -121,7 +121,9 @@
       "hoursLabel": "",
       "blurb": "",
       "orderThis": [],
-      "ids": {},
+      "ids": {
+        "yelp": "GuRCEraOanOwaxetXuyX2Q"
+      },
       "copySource": "draft",
       "updatedAt": "2026-11-03",
       "photos": [
@@ -133,7 +135,13 @@
         }
       ],
       "phone": "+1 (509) 715-1021",
-      "website": "https://crybabycafe.com"
+      "website": "https://crybabycafe.com",
+      "publicRating": {
+        "value": 4.7,
+        "count": 11,
+        "source": "Yelp"
+      },
+      "yelpSlug": "GuRCEraOanOwaxetXuyX2Q"
     },
     {
       "id": "panhandle-cone-coffee",
@@ -248,7 +256,9 @@
       "hoursLabel": "",
       "blurb": "",
       "orderThis": [],
-      "ids": {},
+      "ids": {
+        "yelp": "cdS0-cHBxC-M5YjzLTRklA"
+      },
       "copySource": "draft",
       "updatedAt": "2026-11-03",
       "photos": [
@@ -260,7 +270,13 @@
         }
       ],
       "phone": "+1 (509) 332-6934",
-      "website": "https://www.facebook.com/tintantacos1/"
+      "website": "https://www.facebook.com/tintantacos1/",
+      "publicRating": {
+        "value": 3.6,
+        "count": 59,
+        "source": "Yelp"
+      },
+      "yelpSlug": "cdS0-cHBxC-M5YjzLTRklA"
     },
     {
       "id": "tokyo-seoul",
@@ -312,7 +328,9 @@
       "hoursLabel": "",
       "blurb": "",
       "orderThis": [],
-      "ids": {},
+      "ids": {
+        "yelp": "ZS-LuUOzuPohqAehBLVtIQ"
+      },
       "copySource": "draft",
       "updatedAt": "2026-11-03",
       "photos": [
@@ -324,7 +342,13 @@
         }
       ],
       "phone": "+1 (509) 332-6223",
-      "website": null
+      "website": null,
+      "publicRating": {
+        "value": 3.6,
+        "count": 195,
+        "source": "Yelp"
+      },
+      "yelpSlug": "ZS-LuUOzuPohqAehBLVtIQ"
     },
     {
       "id": "the-breakfast-club",
@@ -375,7 +399,9 @@
       "hoursLabel": "",
       "blurb": "",
       "orderThis": [],
-      "ids": {},
+      "ids": {
+        "yelp": "vFPmKFBFNb-J-fjzdBGmEg"
+      },
       "copySource": "draft",
       "updatedAt": "2026-11-03",
       "photos": [
@@ -387,7 +413,13 @@
         }
       ],
       "phone": "+1 (208) 882-6481",
-      "website": "https://thebreakfastclubmoscow.com"
+      "website": "https://thebreakfastclubmoscow.com",
+      "publicRating": {
+        "value": 4.5,
+        "count": 455,
+        "source": "Yelp"
+      },
+      "yelpSlug": "vFPmKFBFNb-J-fjzdBGmEg"
     },
     {
       "id": "mingles-bar-and-grill",
@@ -439,7 +471,9 @@
       "hoursLabel": "",
       "blurb": "",
       "orderThis": [],
-      "ids": {},
+      "ids": {
+        "yelp": "-TIeopNfadWgEcTfYCgJLQ"
+      },
       "copySource": "draft",
       "updatedAt": "2026-11-03",
       "photos": [
@@ -451,7 +485,13 @@
         }
       ],
       "phone": "+1 (208) 882-2050",
-      "website": "https://www.facebook.com/mingles.moscow/"
+      "website": "https://www.facebook.com/mingles.moscow/",
+      "publicRating": {
+        "value": 3,
+        "count": 42,
+        "source": "Yelp"
+      },
+      "yelpSlug": "-TIeopNfadWgEcTfYCgJLQ"
     },
     {
       "id": "paradise-grill-and-cafe",
@@ -516,7 +556,9 @@
       "hoursLabel": "",
       "blurb": "",
       "orderThis": [],
-      "ids": {},
+      "ids": {
+        "yelp": "bKj6IGQOB92EFAZYfzvWTw"
+      },
       "copySource": "draft",
       "updatedAt": "2026-11-03",
       "photos": [
@@ -528,7 +570,13 @@
         }
       ],
       "phone": "+1 (208) 882-5660",
-      "website": "http://www.paradisegrillandcafe.com/?fbclid=IwAR27mVUYk1Qj6pd-s05OMHZSgTpOigx_rDb6WgTAPxbDJuXcvp6yCmZw4Mk#home"
+      "website": "http://www.paradisegrillandcafe.com/?fbclid=IwAR27mVUYk1Qj6pd-s05OMHZSgTpOigx_rDb6WgTAPxbDJuXcvp6yCmZw4Mk#home",
+      "publicRating": {
+        "value": 4.5,
+        "count": 89,
+        "source": "Yelp"
+      },
+      "yelpSlug": "bKj6IGQOB92EFAZYfzvWTw"
     },
     {
       "id": "valhalla-bar-and-grill",
@@ -731,7 +779,9 @@
       "hoursLabel": "",
       "blurb": "",
       "orderThis": [],
-      "ids": {},
+      "ids": {
+        "yelp": "vw2HdOg6fpw6yg-OpY9XLw"
+      },
       "copySource": "draft",
       "updatedAt": "2026-11-03",
       "photos": [
@@ -743,7 +793,13 @@
         }
       ],
       "phone": "+1 (509) 339-6096",
-      "website": "https://melapullman.wixsite.com/mela"
+      "website": "https://melapullman.wixsite.com/mela",
+      "publicRating": {
+        "value": 4.8,
+        "count": 35,
+        "source": "Yelp"
+      },
+      "yelpSlug": "vw2HdOg6fpw6yg-OpY9XLw"
     },
     {
       "id": "hunga-dunga",
@@ -787,7 +843,9 @@
       "hoursLabel": "",
       "blurb": "",
       "orderThis": [],
-      "ids": {},
+      "ids": {
+        "yelp": "E7xj4eGdrd_QydQpLAj2GA"
+      },
       "copySource": "draft",
       "updatedAt": "2026-11-03",
       "photos": [
@@ -799,7 +857,13 @@
         }
       ],
       "phone": "+1 (208) 596-4855",
-      "website": "https://hungadungabrewing.com"
+      "website": "https://hungadungabrewing.com",
+      "publicRating": {
+        "value": 4.3,
+        "count": 51,
+        "source": "Yelp"
+      },
+      "yelpSlug": "E7xj4eGdrd_QydQpLAj2GA"
     },
     {
       "id": "roost-coffee-market",
@@ -859,7 +923,9 @@
       "hoursLabel": "",
       "blurb": "",
       "orderThis": [],
-      "ids": {},
+      "ids": {
+        "yelp": "bXmpGQYAOwANpHxqeFosgQ"
+      },
       "copySource": "draft",
       "updatedAt": "2026-11-03",
       "photos": [
@@ -871,7 +937,13 @@
         }
       ],
       "phone": "+1 (509) 332-8534",
-      "website": "https://www.roostcoffeepullman.com"
+      "website": "https://www.roostcoffeepullman.com",
+      "publicRating": {
+        "value": 4.7,
+        "count": 119,
+        "source": "Yelp"
+      },
+      "yelpSlug": "bXmpGQYAOwANpHxqeFosgQ"
     },
     {
       "id": "moscow-alehouse",
@@ -910,7 +982,9 @@
       "hoursLabel": "",
       "blurb": "",
       "orderThis": [],
-      "ids": {},
+      "ids": {
+        "yelp": "cy949zdBohv8xElwjSi6IQ"
+      },
       "copySource": "draft",
       "updatedAt": "2026-11-03",
       "photos": [
@@ -922,7 +996,13 @@
         }
       ],
       "phone": "+1 (208) 882-2739",
-      "website": "https://www.moscowalehouse.com"
+      "website": "https://www.moscowalehouse.com",
+      "publicRating": {
+        "value": 3.6,
+        "count": 136,
+        "source": "Yelp"
+      },
+      "yelpSlug": "cy949zdBohv8xElwjSi6IQ"
     },
     {
       "id": "einstein-bros-bagels",
@@ -1036,7 +1116,9 @@
       "hoursLabel": "",
       "blurb": "",
       "orderThis": [],
-      "ids": {},
+      "ids": {
+        "yelp": "TgnmzNeoFYfvC1gZg-XcKg"
+      },
       "copySource": "draft",
       "updatedAt": "2026-11-03",
       "photos": [
@@ -1048,7 +1130,13 @@
         }
       ],
       "phone": "+1 (509) 334-5423",
-      "website": null
+      "website": null,
+      "publicRating": {
+        "value": 4.4,
+        "count": 49,
+        "source": "Yelp"
+      },
+      "yelpSlug": "TgnmzNeoFYfvC1gZg-XcKg"
     },
     {
       "id": "the-emporium",
@@ -1211,7 +1299,9 @@
       "hoursLabel": "",
       "blurb": "",
       "orderThis": [],
-      "ids": {},
+      "ids": {
+        "yelp": "7MzfU_54QVRMrF4TSf5_LA"
+      },
       "copySource": "draft",
       "updatedAt": "2026-11-03",
       "photos": [
@@ -1223,7 +1313,13 @@
         }
       ],
       "phone": "+1 (509) 334-7437",
-      "website": "https://www.facebook.com/PorchLightPizza/"
+      "website": "https://www.facebook.com/PorchLightPizza/",
+      "publicRating": {
+        "value": 4.2,
+        "count": 270,
+        "source": "Yelp"
+      },
+      "yelpSlug": "7MzfU_54QVRMrF4TSf5_LA"
     },
     {
       "id": "one-world-cafe",
@@ -1265,7 +1361,9 @@
       "hoursLabel": "",
       "blurb": "",
       "orderThis": [],
-      "ids": {},
+      "ids": {
+        "yelp": "zbyTwN7QzKoIi8bl3mEd6w"
+      },
       "copySource": "draft",
       "updatedAt": "2026-11-03",
       "photos": [
@@ -1277,7 +1375,13 @@
         }
       ],
       "phone": "+1 (208) 883-3537",
-      "website": "https://owc-moscow.com/"
+      "website": "https://owc-moscow.com/",
+      "publicRating": {
+        "value": 4.1,
+        "count": 84,
+        "source": "Yelp"
+      },
+      "yelpSlug": "zbyTwN7QzKoIi8bl3mEd6w"
     },
     {
       "id": "the-coug",
@@ -1324,7 +1428,9 @@
       "hoursLabel": "",
       "blurb": "",
       "orderThis": [],
-      "ids": {},
+      "ids": {
+        "yelp": "XsLdwB4Dm1VCO-XL2fB9Tg"
+      },
       "copySource": "draft",
       "updatedAt": "2026-11-03",
       "photos": [
@@ -1336,7 +1442,13 @@
         }
       ],
       "phone": "+1 (509) 332-1265",
-      "website": "https://thecougarcottage.com"
+      "website": "https://thecougarcottage.com",
+      "publicRating": {
+        "value": 3.8,
+        "count": 80,
+        "source": "Yelp"
+      },
+      "yelpSlug": "XsLdwB4Dm1VCO-XL2fB9Tg"
     },
     {
       "id": "the-old-european-restaurant",
@@ -1384,7 +1496,9 @@
       "hoursLabel": "",
       "blurb": "",
       "orderThis": [],
-      "ids": {},
+      "ids": {
+        "yelp": "8mslZ_WatZFsm2dWtGaepg"
+      },
       "copySource": "draft",
       "updatedAt": "2026-11-03",
       "photos": [
@@ -1396,7 +1510,13 @@
         }
       ],
       "phone": "+1 (509) 223-0183",
-      "website": "https://www.oldeuropean-restaurant.com"
+      "website": "https://www.oldeuropean-restaurant.com",
+      "publicRating": {
+        "value": 3.8,
+        "count": 346,
+        "source": "Yelp"
+      },
+      "yelpSlug": "8mslZ_WatZFsm2dWtGaepg"
     },
     {
       "id": "neill-s-coffee-ice-cream",
@@ -1498,7 +1618,9 @@
       "hoursLabel": "",
       "blurb": "",
       "orderThis": [],
-      "ids": {},
+      "ids": {
+        "yelp": "mtSRwa5i_oWZV-ivC5wJdA"
+      },
       "copySource": "draft",
       "updatedAt": "2026-11-03",
       "photos": [
@@ -1510,7 +1632,13 @@
         }
       ],
       "phone": "+1 (509) 335-2141",
-      "website": "http://creamery.wsu.edu/ferdinands-ice-cream-shoppe/"
+      "website": "http://creamery.wsu.edu/ferdinands-ice-cream-shoppe/",
+      "publicRating": {
+        "value": 4.5,
+        "count": 185,
+        "source": "Yelp"
+      },
+      "yelpSlug": "mtSRwa5i_oWZV-ivC5wJdA"
     },
     {
       "id": "south-fork-public-house",
@@ -1555,7 +1683,9 @@
       "hoursLabel": "",
       "blurb": "",
       "orderThis": [],
-      "ids": {},
+      "ids": {
+        "yelp": "nwm52AiNv4JvOe5RcGOD8w"
+      },
       "copySource": "draft",
       "updatedAt": "2026-11-03",
       "photos": [
@@ -1567,7 +1697,13 @@
         }
       ],
       "phone": "+1 (509) 332-3675",
-      "website": "http://www.southforkpublichouse.com"
+      "website": "http://www.southforkpublichouse.com",
+      "publicRating": {
+        "value": 4.1,
+        "count": 549,
+        "source": "Yelp"
+      },
+      "yelpSlug": "nwm52AiNv4JvOe5RcGOD8w"
     },
     {
       "id": "the-black-cypress",
@@ -1612,7 +1748,9 @@
       "hoursLabel": "",
       "blurb": "",
       "orderThis": [],
-      "ids": {},
+      "ids": {
+        "yelp": "ngPyNa4zEZxAceDnxGPEQw"
+      },
       "copySource": "draft",
       "updatedAt": "2026-11-03",
       "photos": [
@@ -1624,7 +1762,13 @@
         }
       ],
       "phone": "+1 (509) 334-5800",
-      "website": "http://www.theblackcypress.com"
+      "website": "http://www.theblackcypress.com",
+      "publicRating": {
+        "value": 4.4,
+        "count": 416,
+        "source": "Yelp"
+      },
+      "yelpSlug": "ngPyNa4zEZxAceDnxGPEQw"
     },
     {
       "id": "barm-wallops",
@@ -1678,7 +1822,9 @@
       "hoursLabel": "",
       "blurb": "",
       "orderThis": [],
-      "ids": {},
+      "ids": {
+        "yelp": "Vy-8Gai6hwg5M3Vj_wYTuw"
+      },
       "copySource": "draft",
       "updatedAt": "2026-11-03",
       "photos": [
@@ -1690,7 +1836,13 @@
         }
       ],
       "phone": "+1 (509) 339-6075",
-      "website": "https://www.yelp.com/biz/barm-and-wallops-pullman"
+      "website": "https://www.yelp.com/biz/barm-and-wallops-pullman",
+      "publicRating": {
+        "value": 4.9,
+        "count": 14,
+        "source": "Yelp"
+      },
+      "yelpSlug": "Vy-8Gai6hwg5M3Vj_wYTuw"
     },
     {
       "id": "rico-s-public-house",
@@ -1750,7 +1902,9 @@
       "hoursLabel": "",
       "blurb": "",
       "orderThis": [],
-      "ids": {},
+      "ids": {
+        "yelp": "w4lP_27QO4Zn9r3mSecZcQ"
+      },
       "copySource": "draft",
       "updatedAt": "2026-11-03",
       "photos": [
@@ -1762,7 +1916,13 @@
         }
       ],
       "phone": "+1 (509) 332-6566",
-      "website": "https://ricospubpullman.com/"
+      "website": "https://ricospubpullman.com/",
+      "publicRating": {
+        "value": 3.6,
+        "count": 219,
+        "source": "Yelp"
+      },
+      "yelpSlug": "w4lP_27QO4Zn9r3mSecZcQ"
     },
     {
       "id": "knead-cafe-patisserie",
@@ -1872,7 +2032,9 @@
       "hoursLabel": "",
       "blurb": "",
       "orderThis": [],
-      "ids": {},
+      "ids": {
+        "yelp": "XU4tdSCJQGuyfObTyOyelg"
+      },
       "copySource": "draft",
       "updatedAt": "2026-11-03",
       "photos": [
@@ -1884,7 +2046,13 @@
         }
       ],
       "phone": "+1 (208) 882-2694",
-      "website": "http://www.maialina.com"
+      "website": "http://www.maialina.com",
+      "publicRating": {
+        "value": 4.1,
+        "count": 404,
+        "source": "Yelp"
+      },
+      "yelpSlug": "XU4tdSCJQGuyfObTyOyelg"
     },
     {
       "id": "la-casa-lopez",
@@ -1972,7 +2140,9 @@
       "hoursLabel": "",
       "blurb": "",
       "orderThis": [],
-      "ids": {},
+      "ids": {
+        "yelp": "Zuko-M09VVXPBdJcspIAhA"
+      },
       "copySource": "draft",
       "updatedAt": "2026-11-03",
       "photos": [
@@ -1984,7 +2154,13 @@
         }
       ],
       "phone": "+1 (208) 596-4422",
-      "website": "http://moscowtapped.com"
+      "website": "http://moscowtapped.com",
+      "publicRating": {
+        "value": 4.2,
+        "count": 287,
+        "source": "Yelp"
+      },
+      "yelpSlug": "Zuko-M09VVXPBdJcspIAhA"
     },
     {
       "id": "merry-cellars",
@@ -2022,7 +2198,9 @@
       "hoursLabel": "",
       "blurb": "",
       "orderThis": [],
-      "ids": {},
+      "ids": {
+        "yelp": "VMMd44o9PJyqpLzKC1oaAA"
+      },
       "copySource": "draft",
       "updatedAt": "2026-11-03",
       "photos": [
@@ -2034,7 +2212,13 @@
         }
       ],
       "phone": "+1 (509) 338-4699",
-      "website": "https://merrycellars.com"
+      "website": "https://merrycellars.com",
+      "publicRating": {
+        "value": 4.8,
+        "count": 17,
+        "source": "Yelp"
+      },
+      "yelpSlug": "VMMd44o9PJyqpLzKC1oaAA"
     },
     {
       "id": "beef-company",
@@ -2080,7 +2264,9 @@
       "hoursLabel": "",
       "blurb": "",
       "orderThis": [],
-      "ids": {},
+      "ids": {
+        "yelp": "QM0GSLxL4y8Nr9fRN3ilqQ"
+      },
       "copySource": "draft",
       "updatedAt": "2026-11-03",
       "photos": [
@@ -2092,7 +2278,13 @@
         }
       ],
       "phone": "+1 (760) 650-5284",
-      "website": "https://www.yelp.com/biz/beef-and-company-pullman"
+      "website": "https://www.yelp.com/biz/beef-and-company-pullman",
+      "publicRating": {
+        "value": 4.9,
+        "count": 19,
+        "source": "Yelp"
+      },
+      "yelpSlug": "QM0GSLxL4y8Nr9fRN3ilqQ"
     },
     {
       "id": "pups-cups-cafe",
@@ -2146,7 +2338,9 @@
       "hoursLabel": "",
       "blurb": "",
       "orderThis": [],
-      "ids": {},
+      "ids": {
+        "yelp": "c4mwtkCMFVHm2f8E141h6g"
+      },
       "copySource": "draft",
       "updatedAt": "2026-11-03",
       "photos": [
@@ -2158,7 +2352,13 @@
         }
       ],
       "phone": "+1 (509) 715-1005",
-      "website": "https://www.pupsncups.net"
+      "website": "https://www.pupsncups.net",
+      "publicRating": {
+        "value": 4.4,
+        "count": 46,
+        "source": "Yelp"
+      },
+      "yelpSlug": "c4mwtkCMFVHm2f8E141h6g"
     },
     {
       "id": "taqueria-las-torres",
@@ -2255,7 +2455,9 @@
       "hoursLabel": "",
       "blurb": "",
       "orderThis": [],
-      "ids": {},
+      "ids": {
+        "yelp": "kkngbnvHemKfKA6VFTt56w"
+      },
       "copySource": "draft",
       "updatedAt": "2026-11-03",
       "photos": [
@@ -2267,7 +2469,13 @@
         }
       ],
       "phone": "+1 (208) 882-5914",
-      "website": "https://www.moscownectar.com"
+      "website": "https://www.moscownectar.com",
+      "publicRating": {
+        "value": 4,
+        "count": 212,
+        "source": "Yelp"
+      },
+      "yelpSlug": "kkngbnvHemKfKA6VFTt56w"
     },
     {
       "id": "lodgepole",
@@ -2310,7 +2518,9 @@
       "hoursLabel": "",
       "blurb": "",
       "orderThis": [],
-      "ids": {},
+      "ids": {
+        "yelp": "DGeW7ncGLa2bgIB_qx6XWw"
+      },
       "copySource": "draft",
       "updatedAt": "2026-11-03",
       "photos": [
@@ -2322,7 +2532,13 @@
         }
       ],
       "phone": "+1 (208) 882-2268",
-      "website": "https://lodgepolerestaurant.com"
+      "website": "https://lodgepolerestaurant.com",
+      "publicRating": {
+        "value": 4.3,
+        "count": 255,
+        "source": "Yelp"
+      },
+      "yelpSlug": "DGeW7ncGLa2bgIB_qx6XWw"
     },
     {
       "id": "moscow-bagel-and-deli",
@@ -2374,7 +2590,9 @@
       "hoursLabel": "",
       "blurb": "",
       "orderThis": [],
-      "ids": {},
+      "ids": {
+        "yelp": "rg_onojF6dzwT64d_SosQA"
+      },
       "copySource": "draft",
       "updatedAt": "2026-11-03",
       "photos": [
@@ -2386,7 +2604,13 @@
         }
       ],
       "phone": "+1 (208) 882-5242",
-      "website": "https://www.moscowbagel.com"
+      "website": "https://www.moscowbagel.com",
+      "publicRating": {
+        "value": 4.4,
+        "count": 211,
+        "source": "Yelp"
+      },
+      "yelpSlug": "rg_onojF6dzwT64d_SosQA"
     },
     {
       "id": "doms-donuts",
@@ -2489,7 +2713,9 @@
       "hoursLabel": "",
       "blurb": "",
       "orderThis": [],
-      "ids": {},
+      "ids": {
+        "yelp": "-EhtXQONG-hlm2AsvpKuOA"
+      },
       "copySource": "draft",
       "updatedAt": "2026-11-03",
       "photos": [
@@ -2501,14 +2727,20 @@
         }
       ],
       "phone": "+1 (509) 715-1003",
-      "website": "http://thelandpullman.com"
+      "website": "http://thelandpullman.com",
+      "publicRating": {
+        "value": 4.1,
+        "count": 77,
+        "source": "Yelp"
+      },
+      "yelpSlug": "-EhtXQONG-hlm2AsvpKuOA"
     }
   ],
   "guides": [
     {
       "slug": "pul-game-day",
       "title": "Game day in Pullman",
-      "dek": "Before and after kickoff, near Martin Stadium and downtown.",
+      "dek": "Thirteen for a Pullman game day: breakfast at The Old European and Dom's Donuts, sandwiches at Heros N Sports and Beef & Company, pizza at Porch Light, pints at Paradise Creek Brewery, and The Coug.",
       "group": "Occasion",
       "intro": "",
       "updatedAt": "2026-11-03",
@@ -2599,7 +2831,7 @@
     {
       "slug": "pul-cafe",
       "title": "Cafe",
-      "dek": "",
+      "dek": "Four Pullman cafés: Crybaby Café, Roost Coffee & Market, Pups & Cups Cafe, and Einstein Bros. Bagels.",
       "group": "Cuisine",
       "intro": "",
       "updatedAt": "2026-11-03",
@@ -2636,7 +2868,7 @@
     {
       "slug": "mos-cafe",
       "title": "Cafe",
-      "dek": "",
+      "dek": "Four across the border in Moscow: One World Cafe, The Silos Coffee & Social, Paradise Grill and Cafe, and Dutch Bros Coffee.",
       "group": "Cuisine",
       "intro": "",
       "updatedAt": "2026-11-03",
