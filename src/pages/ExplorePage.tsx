@@ -1,4 +1,4 @@
-import { lazy, Suspense, useEffect, useMemo, useRef, useState } from 'react'
+import { lazy, Suspense, useEffect, useMemo, useRef, useState, type TouchEvent } from 'react'
 import { useReducedMotion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import type { MapBounds } from '../components/GuideMap.tsx'
@@ -60,6 +60,21 @@ export function ExplorePage() {
   const [area, setArea] = useState<MapBounds | null>(null)
   const [pending, setPending] = useState(false)
   const [sheet, setSheet] = useState(false)
+  const [filtersOpen, setFiltersOpen] = useState(false)
+  const scroller = useRef<HTMLDivElement>(null)
+  const swipe = useRef<{ y: number; top: boolean } | null>(null)
+  // Swipes are read on touchend from passive listeners, so native scrolling is never blocked.
+  const swipeStart = (event: TouchEvent) => {
+    swipe.current = { y: event.touches[0].clientY, top: (scroller.current?.scrollTop ?? 0) <= 0 }
+  }
+  const swipeEnd = (fromList: boolean) => (event: TouchEvent) => {
+    const start = swipe.current
+    swipe.current = null
+    if (!start) return
+    const dy = event.changedTouches[0].clientY - start.y
+    if (!fromList && dy < -24) setSheet(true)
+    else if (dy > (fromList ? 72 : 24) && start.top) setSheet(false)
+  }
   const [activeId, setActiveId] = useState<string | null>(null)
   const armedAt = useRef(Number.POSITIVE_INFINITY)
   const latest = useRef<MapBounds | null>(null)
@@ -93,6 +108,7 @@ export function ExplorePage() {
     <main id="main" tabIndex={-1} className="explore-shell outline-none">
       <h1 className="sr-only">Explore {areaName}</h1>
       <section className={`explore-list ${sheet ? 'is-open' : 'is-peek'}`} aria-label="Places in this view">
+        <div className="explore-head" onTouchStart={swipeStart} onTouchEnd={swipeEnd(false)}>
         <button type="button" className="explore-grab" aria-expanded={sheet} onClick={() => setSheet((value) => !value)}>
           <span aria-hidden="true" />
           <span className="sr-only">{sheet ? 'Show the map' : 'Show the list'}</span>
@@ -111,8 +127,23 @@ export function ExplorePage() {
             {sheet ? 'Map' : 'List'}
           </button>
         </div>
-        <div className={sheet ? '' : 'max-md:hidden'}>
-          <form className="explore-filters panel-pad grid grid-cols-2 gap-2 py-3" aria-label="Map filters">
+        </div>
+        <div
+          ref={scroller}
+          className={`explore-scroll ${sheet ? '' : 'max-md:hidden'}`}
+          onTouchStart={swipeStart}
+          onTouchEnd={swipeEnd(true)}
+        >
+          <button
+            type="button"
+            className="explore-filter-toggle btn mx-3 mt-3 text-sm md:hidden"
+            aria-expanded={filtersOpen}
+            aria-controls="explore-filters"
+            onClick={() => setFiltersOpen((value) => !value)}
+          >
+            {filtersOpen ? 'Hide filters' : 'Filters'}
+          </button>
+          <form id="explore-filters" className={`explore-filters panel-pad grid grid-cols-2 gap-2 py-3 ${filtersOpen ? '' : 'max-md:hidden'}`} aria-label="Map filters">
             <label className="field">
               <span>Cuisine</span>
               <select value={cuisine} onChange={(event) => { setCuisine(event.target.value); resetArea() }}>
