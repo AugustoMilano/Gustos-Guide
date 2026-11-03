@@ -38,7 +38,7 @@ export function MyGuidesPage() {
       {app.user ? (
         <form className="mt-4 flex flex-wrap gap-2" onSubmit={(event) => { event.preventDefault(); app.createGuide(title); setTitle('') }}>
           <label className="sr-only" htmlFor="new-list">New list title</label>
-          <input id="new-list" className="min-h-11 min-w-0 flex-1 basis-40 border-2 border-ink bg-cream px-3" value={title} onChange={(event) => setTitle(event.target.value)} placeholder="New list" />
+          <input id="new-list" className="min-h-11 min-w-0 flex-1 basis-40 soft-field bg-cream px-3" value={title} onChange={(event) => setTitle(event.target.value)} placeholder="New list" />
           <button className="btn btn-coral" type="submit">Create</button>
         </form>
       ) : (
@@ -61,7 +61,7 @@ export function MyGuidesPage() {
       {shared.length === 0 ? <p className="mt-2 text-sm">No shared lists yet. Add a collaborator from a list you made.</p> : null}
       <ul className="mt-3 space-y-3">
         {shared.map((guide) => (
-          <li key={guide.id} className="border-2 border-ink p-3">
+          <li key={guide.id} className="glass p-3">
             <Link className="font-serif text-2xl italic" to={`/list/${guide.id}`}>{guide.title}</Link>
             <p className="text-sm">{[demoFriendsEnabled && guide.demo ? 'Seeded' : '', countPlaces(guide.placeIds.length), guide.isPublic === false ? 'Private' : 'Public'].filter(Boolean).join(' · ')}</p>
           </li>
@@ -104,7 +104,7 @@ function GuideEditor({
     <section className="feed-card mt-6">
       <div className="flex gap-3">
         {cover ? (
-          <span className="h-20 w-24 shrink-0 overflow-hidden border-2 border-ink bg-navy [&_.place-art]:aspect-auto [&_.place-art]:h-full">
+          <span className="h-20 w-24 shrink-0 overflow-hidden soft-media bg-navy [&_.place-art]:aspect-auto [&_.place-art]:h-full">
             <PlaceThumb place={cover} uploads={app.photos} sizes="96px" />
           </span>
         ) : null}
@@ -145,7 +145,7 @@ function GuideEditor({
             }}
           >
             <label className="sr-only" htmlFor={`collab-${guide.id}`}>Collaborator username</label>
-            <input id={`collab-${guide.id}`} className="min-h-11 border-2 border-ink bg-cream px-2" value={friendHandle} onChange={(event) => setFriendHandle(event.target.value)} placeholder="Username" />
+            <input id={`collab-${guide.id}`} className="min-h-11 soft-field bg-cream px-2" value={friendHandle} onChange={(event) => setFriendHandle(event.target.value)} placeholder="Username" />
             <button type="submit" className="btn text-sm">Add collaborator</button>
           </form>
         ) : demoFriendsEnabled ? (
@@ -171,7 +171,7 @@ function GuideEditor({
               if (!place) return null
               const on = (guide.coverPlaceId ?? guide.placeIds[0]) === id
               return (
-                <button key={id} type="button" className={`h-16 w-20 shrink-0 overflow-hidden border-2 ${on ? 'border-coral' : 'border-ink'}`} aria-pressed={on} aria-label={`Cover ${place.name}`} onClick={() => app.setGuideCover(guide.id, id)}>
+                <button key={id} type="button" className={`h-16 w-20 shrink-0 overflow-hidden rounded-[10px] border-2 ${on ? 'border-coral' : 'border-transparent'}`} aria-pressed={on} aria-label={`Cover ${place.name}`} onClick={() => app.setGuideCover(guide.id, id)}>
                   <PlaceThumb place={place} uploads={app.photos} sizes="80px" />
                 </button>
               )

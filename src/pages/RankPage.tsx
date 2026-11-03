@@ -43,7 +43,7 @@ export function RankPage() {
       <label className="field mt-4"><span>Find a place</span><input value={query} onChange={(event) => setQuery(event.target.value)} /></label>
       <ul className="mt-4 space-y-3">
         {matches.map((place) => (
-          <li key={place.id} className="border-2 border-ink p-3">
+          <li key={place.id} className="glass p-3">
             <Link to={cityPath(`/place/${place.id}`)} className="place-row">
               <span className="place-row-shot">
                 <PlaceThumb place={place} uploads={app.photos} />
@@ -66,7 +66,7 @@ export function RankPage() {
         ))}
       </ul>
       {app.compare && current && opponent ? (
-        <section className="mt-8 border-2 border-ink bg-white p-4" aria-labelledby="prefer-heading">
+        <section className="mt-8 glass p-4" aria-labelledby="prefer-heading">
           <h2 id="prefer-heading" className="font-serif text-4xl italic">Which did you prefer?</h2>
           <p className="mt-2">{current.name} or {opponent.name}?</p>
           <div className="mt-3 flex flex-wrap gap-2">

@@ -65,7 +65,7 @@ export function GuideStrip({
       <div className="strip-scroll mt-3 flex snap-x items-stretch gap-3 overflow-x-auto pb-3">
         {rows.map(({ place, number, score, vibe }, index) => {
           return (
-            <article key={place.id} style={{ '--i': Math.min(index, 8) } as React.CSSProperties} className="stagger-in toc-card flex w-52 shrink-0 snap-start flex-col border-2 border-ink bg-[#fffaf3] sm:w-60">
+            <article key={place.id} style={{ '--i': Math.min(index, 8) } as React.CSSProperties} className="stagger-in toc-card flex w-52 shrink-0 snap-start flex-col sm:w-60">
               <a
                 href={`#entry-${place.id}`}
                 className="flex h-full min-w-0 flex-col"
@@ -149,14 +149,14 @@ function Shot({
   const art = photo?.illustration || !shotUrl || failed
   return (
     <figure className="min-w-0">
-      <div className={`guide-shot relative overflow-hidden border-2 border-ink bg-navy ${tall ? 'h-72 sm:h-96' : 'h-64 sm:h-80'} [&_.place-art]:aspect-auto [&_.place-art]:h-full`}>
+      <div className={`guide-shot relative overflow-hidden soft-media bg-navy ${tall ? 'h-72 sm:h-96' : 'h-64 sm:h-80'} [&_.place-art]:aspect-auto [&_.place-art]:h-full`}>
         {art || !photo || !shotUrl ? (
           <PlaceArt id={place.id} cuisine={place.cuisine[0] ?? 'Seattle'} neighborhood={place.neighborhood} />
         ) : (
           <GuideShotImg url={shotUrl} alt={photo.alt} priority={priority} onError={() => setFailed(true)} />
         )}
       </div>
-      <figcaption className="border-x-2 border-b-2 border-ink bg-[#fffaf3] px-2 py-1 text-xs font-bold">
+      <figcaption className="mt-1 px-1 text-xs font-bold">
         {!art && photo?.caption ? `${photo.caption} · ` : null}
         {art ? 'Illustration' : photo?.credit}
       </figcaption>
@@ -214,7 +214,7 @@ export function GuideEntryCard({
             <button
               key={shot.key}
               type="button"
-              className={`h-11 min-h-11 w-16 min-w-11 overflow-hidden border-2 ${shotIndex === active ? 'border-coral' : 'border-ink'} bg-cream`}
+              className={`h-11 min-h-11 w-16 min-w-11 overflow-hidden rounded-[10px] border-2 ${shotIndex === active ? 'border-coral' : 'border-transparent'} bg-cream`}
               onClick={() => setActive(shotIndex)}
               aria-label={`Photo ${shotIndex + 1} of ${place.name}`}
             >
@@ -246,7 +246,7 @@ export function GuideEntryCard({
   const rest = (
     <div className="min-w-0">
       {entry.pullQuote ? (
-      <blockquote className={`entry-quote mt-4 ${layout === 1 ? 'border-l-4 border-coral pl-4' : 'border-2 border-ink bg-[#fffaf3] px-4 py-3'}`}>
+      <blockquote className={`entry-quote mt-4 ${layout === 1 ? 'border-l-4 border-coral pl-4' : 'glass bg-[#fffaf3] px-4 py-3'}`}>
         “{entry.pullQuote}”
       </blockquote>
       ) : null}
@@ -287,12 +287,12 @@ export function GuideEntryCard({
   }
   const hotClass = hot ? ' is-hot' : ''
   const compact = (
-    <article id={`entry-${place.id}`} className={`guide-entry scroll-mt-24 border-t-2 border-ink${hotClass}`} {...point}>
+    <article id={`entry-${place.id}`} className={`guide-entry scroll-mt-24 border-t border-ink/10${hotClass}`} {...point}>
       {title}
       <div className="mt-3 flex items-start gap-3">
         <figure className="w-24 shrink-0">
           <Link to={cityPath(`/place/${place.id}`)} className="block" aria-label={place.name} viewTransition={!reduceMotion}>
-            <div className="h-24 w-24 overflow-hidden border-2 border-ink bg-navy [&_.place-art]:aspect-auto [&_.place-art]:h-full">
+            <div className="h-24 w-24 overflow-hidden soft-media bg-navy [&_.place-art]:aspect-auto [&_.place-art]:h-full">
               <PlaceArt id={place.id} cuisine={place.cuisine[0] ?? 'Seattle'} neighborhood={place.neighborhood} />
             </div>
           </Link>
@@ -326,7 +326,7 @@ export function GuideEntryCard({
   const stagger = Math.min(index, 6) * 0.05
   if (artOnly) return index === 0 ? compact : <Reveal delay={stagger}>{compact}</Reveal>
   const body = layout === 0 ? (
-    <article id={`entry-${place.id}`} className={`guide-entry scroll-mt-24 border-t-2 border-ink${hotClass}`} {...point}>
+    <article id={`entry-${place.id}`} className={`guide-entry scroll-mt-24 border-t border-ink/10${hotClass}`} {...point}>
       {title}
       <div className="mt-4">{image}</div>
       {rest}
@@ -334,7 +334,7 @@ export function GuideEntryCard({
   ) : (
     <article
       id={`entry-${place.id}`}
-      className={`guide-entry scroll-mt-24 grid gap-4 border-t-2 border-ink md:grid-cols-2 md:items-center md:gap-6${hotClass}`}
+      className={`guide-entry scroll-mt-24 grid gap-4 border-t border-ink/10 md:grid-cols-2 md:items-center md:gap-6${hotClass}`}
       {...point}
     >
       {layout === 2 ? copy : image}

@@ -64,7 +64,7 @@ export function FeedPage() {
                 <p className="mt-1">{activity.text}</p>
                 {place ? (
                   <Link className="mt-2 flex items-center gap-3" to={`/place/${place.id}`}>
-                    <span className="h-28 w-36 shrink-0 overflow-hidden border-2 border-ink bg-navy [&_.place-art]:aspect-auto [&_.place-art]:h-full">
+                    <span className="h-28 w-36 shrink-0 overflow-hidden soft-media bg-navy [&_.place-art]:aspect-auto [&_.place-art]:h-full">
                       <PlaceThumb place={place} uploads={app.photos} />
                     </span>
                     <span className="font-serif text-2xl italic leading-none">{place.name}</span>
@@ -80,7 +80,7 @@ export function FeedPage() {
                   <h2 className="text-sm font-bold">Comments · {app.comments.filter((comment) => comment.activityId === activity.id).length}</h2>
                   <ul className="mt-2 space-y-2 text-sm">
                     {app.comments.filter((comment) => comment.activityId === activity.id).map((comment) => (
-                      <li key={comment.id} className="border-l-2 border-ink pl-2">
+                      <li key={comment.id} className="border-l-2 border-ink/15 pl-2">
                         <strong>{names.get(comment.userId) ?? 'You'}</strong>
                         {demoFriendsEnabled && app.demoUsers.some((user) => user.id === comment.userId) ? ' · Seeded' : ''}
                         <span className="mt-1 block">{comment.text}</span>
@@ -100,7 +100,7 @@ export function FeedPage() {
                     setDrafts((current) => ({ ...current, [activity.id]: '' }))
                   }}
                 >
-                  <input className="min-h-11 flex-1 border-2 border-ink bg-cream px-2" value={drafts[activity.id] ?? ''} onChange={(event) => setDrafts((current) => ({ ...current, [activity.id]: event.target.value }))} placeholder="Comment" />
+                  <input className="min-h-11 flex-1 soft-field bg-cream px-2" value={drafts[activity.id] ?? ''} onChange={(event) => setDrafts((current) => ({ ...current, [activity.id]: event.target.value }))} placeholder="Comment" />
                   <button className="btn text-sm" type="submit">Post</button>
                 </form>
               </li>

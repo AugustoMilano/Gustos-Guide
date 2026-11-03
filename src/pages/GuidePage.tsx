@@ -1,3 +1,4 @@
+import { motion, useReducedMotion } from 'framer-motion'
 import { formatDay } from '../lib/day.ts'
 import { readPosition } from '../lib/geo.ts'
 import { useEffect, useMemo, useState } from 'react'
@@ -6,7 +7,6 @@ import { AreaKicker } from '../components/AreaKicker.tsx'
 import { GuideEntryCard, GuideStrip } from '../components/GuideEntries.tsx'
 import { ShareButton } from '../components/ShareButton.tsx'
 import { StoryShareButton } from '../components/StoryShareButton.tsx'
-import { SlidingRow } from '../components/SlidingRow.tsx'
 import { SignInSheet } from '../components/SignInSheet.tsx'
 import { catalog, loadGuide } from '../content/load.ts'
 import { cityPath } from '../lib/city.ts'
@@ -28,6 +28,7 @@ const GUIDE_MOVED: Record<string, string> = {
 }
 
 export function GuidePage() {
+  const reduceMotion = useReducedMotion()
   const { slug = '' } = useParams()
   const urlCity = useCityId()
   const { statuses, setStatus, user, photos, friendScore, gustoScore } = useApp()
@@ -191,16 +192,19 @@ export function GuidePage() {
                 }),
               })}
             />
-            <SlidingRow label="Sort this guide">
-              <button type="button" className="sort-chip" aria-pressed={sort === 'guide'} onClick={() => setSort('guide')}>Guide order</button>
-              {pinned ? null : <button type="button" className="sort-chip" aria-pressed={sort === 'score'} onClick={() => setSort('score')}>Gusto's Score</button>}
-              <button type="button" className="sort-chip" aria-pressed={sort === 'near'} onClick={sortNear}>Near me</button>
-            </SlidingRow>
-            {nearNote ? <p className="w-full text-sm" role="status">{nearNote}</p> : null}
           </div>
         </div>
         <p className="mt-2 text-xs font-bold tracking-[0.14em] uppercase">{guide.group} · Updated {formatDay(guide.updatedAt)}</p>
         <h1 className="mt-1 font-serif text-4xl italic leading-none sm:text-5xl">{guide.title}</h1>
+        <div className="city-switch sort-seg mt-3" role="group" aria-label="Sort this guide">
+          {([['guide', 'Guide order'], ...(pinned ? [] : [['score', "Gusto's Score"]]), ['near', 'Near me']] as [typeof sort, string][]).map(([id, label]) => (
+            <button key={id} type="button" className="city-switch-btn" aria-pressed={sort === id} onClick={() => (id === 'near' ? sortNear() : setSort(id))}>
+              {sort === id ? <motion.span layoutId="sort-pill" className="city-switch-glint" transition={reduceMotion ? { duration: 0 } : { type: 'spring', stiffness: 420, damping: 32 }} /> : null}
+              <span className="city-switch-label">{label}</span>
+            </button>
+          ))}
+        </div>
+            {nearNote ? <p className="mt-2 text-sm" role="status">{nearNote}</p> : null}
         <p className="mt-2 text-sm font-bold">{ordered.length === rows.length ? countPlaces(rows.length) : `${ordered.length} of ${countPlaces(rows.length)}`}</p>
         {user?.isOwner ? <p className="mt-1 text-sm">{flagshipAimHint(rows.length)}</p> : null}
         {guide.dek ? <p className="mt-2 line-clamp-1 max-w-2xl font-serif text-xl italic">{guide.dek}</p> : null}
@@ -256,7 +260,7 @@ export function GuidePage() {
         {filtersOpen ? (
           <div className="fixed inset-0 z-50 flex items-end">
             <button type="button" className="absolute inset-0 bg-ink/50" aria-label="Close filters" onClick={() => setFiltersOpen(false)} />
-            <div className="bottom-sheet relative max-h-[85dvh] w-full overflow-auto border-t-2 border-ink bg-cream p-4">
+            <div className="bottom-sheet relative max-h-[85dvh] w-full overflow-auto border-t border-ink/10 bg-cream p-4">
               <h2 className="font-serif text-3xl italic">Filters</h2>
               <div className="mt-3 grid gap-2">
                 <FilterFields
@@ -283,7 +287,7 @@ export function GuidePage() {
           <GuideStrip rows={stripRows} uploads={photos} statuses={statuses} onToggle={onToggle} />
         </div>
         <div className="mt-5 grid gap-8">
-            {ordered.length === 0 ? <p className="border-t-2 border-ink pt-4 font-serif text-2xl italic">Nothing on this list matches. Loosen a filter.</p> : null}
+            {ordered.length === 0 ? <p className="border-t border-ink/10 pt-4 font-serif text-2xl italic">Nothing on this list matches. Loosen a filter.</p> : null}
             {ranked.map(({ entry, place, number }, index) => (
               <GuideEntryCard
                 key={place.id}
@@ -367,22 +371,22 @@ function FilterFields({
 }) {
   return (
     <>
-      <select className="border-2 border-ink bg-cream px-2 py-2" value={neighborhood} onChange={(event) => setNeighborhood(event.target.value)} aria-label="Neighborhood">
+      <select className="soft-field bg-cream px-2 py-2" value={neighborhood} onChange={(event) => setNeighborhood(event.target.value)} aria-label="Neighborhood">
         <option value="">All neighborhoods</option>
         {neighborhoods.map((item) => <option key={item}>{item}</option>)}
       </select>
-      <select className="border-2 border-ink bg-cream px-2 py-2" value={cuisine} onChange={(event) => setCuisine(event.target.value)} aria-label="Cuisine">
+      <select className="soft-field bg-cream px-2 py-2" value={cuisine} onChange={(event) => setCuisine(event.target.value)} aria-label="Cuisine">
         <option value="">All cuisines</option>
         {cuisines.map((item) => <option key={item}>{item}</option>)}
       </select>
-      <select className="border-2 border-ink bg-cream px-2 py-2" value={price} onChange={(event) => setPrice(Number(event.target.value))} aria-label="Price">
+      <select className="soft-field bg-cream px-2 py-2" value={price} onChange={(event) => setPrice(Number(event.target.value))} aria-label="Price">
         <option value={0}>Any price</option>
         <option value={1}>$</option>
         <option value={2}>$$</option>
         <option value={3}>$$$</option>
         <option value={4}>$$$$</option>
       </select>
-      <select className="border-2 border-ink bg-cream px-2 py-2" value={tag} onChange={(event) => setTag(event.target.value)} aria-label="Perfect for">
+      <select className="soft-field bg-cream px-2 py-2" value={tag} onChange={(event) => setTag(event.target.value)} aria-label="Perfect for">
         <option value="">Perfect for</option>
         {tags.map((item) => <option key={item}>{item}</option>)}
       </select>
