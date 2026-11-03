@@ -4,7 +4,7 @@ import { forkSvg, type ForkMetal } from '../lib/fork-mark.ts'
 import { awardFor } from '../lib/top25.ts'
 import { useApp } from '../state/AppState.tsx'
 
-const REGION_LABEL = { seattle: 'Seattle', la: 'Los Angeles', sf: 'San Francisco', sandiego: 'San Diego' } as const
+const REGION_LABEL = { seattle: 'Seattle', la: 'Los Angeles', sf: 'San Francisco', sandiego: 'San Diego', vancouver: 'Vancouver', portland: 'Portland', nyc: 'New York', pullman: 'Pullman, WA' } as const
 
 export function ForkMark({
   metal,

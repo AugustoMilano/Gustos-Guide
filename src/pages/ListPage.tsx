@@ -68,7 +68,7 @@ export function ListPage() {
   }, [guide, openNow, prices, sort, origin, app])
 
   if (!guide) {
-    return <main id="main" tabIndex={-1} className="mx-auto max-w-3xl px-4 pt-28 outline-none"><h1 className="font-serif text-5xl italic">That list is not here.</h1></main>
+    return <main id="main" tabIndex={-1} className="mx-auto min-h-dvh max-w-3xl px-4 pt-28 outline-none"><h1 className="font-serif text-5xl italic">That list is not here.</h1></main>
   }
   const visibility = guide.visibility ?? (guide.isPublic === false ? 'private' : 'public')
   const owner = Boolean(app.user && guide.ownerId === app.user.id)

@@ -18,6 +18,8 @@ export type Achievement = {
   guide?: { slug: string; city: NonNullable<Guide['city']> }
   /** Retired when the Eastside folded into Seattle. Shown only to people who already earned it. */
   legacy?: boolean
+  /** Secret medal: not listed until it is earned. */
+  hidden?: boolean
 }
 
 export type AchievementInput = {
@@ -26,6 +28,8 @@ export type AchievementInput = {
   guides: Guide[]
   placeOf: (id: string) => SlimPlace | undefined
   gustoScore: (id: string) => number | null
+  /** Pullman Easter eggs found in this browser (own profile only). */
+  eggs?: string[]
 }
 
 const BEEN_STEPS: [number, string, string][] = [
@@ -48,6 +52,10 @@ const AREAS: { id: string; title: string; cities: string[]; glyph: BadgeSpec['gl
   { id: 'la', title: 'Los Angeles', cities: ['la'], glyph: 'palm', enamel: 'sunrise' },
   { id: 'bay', title: 'SF Bay Area', cities: ['sf', 'eastbay', 'peninsula', 'northbay'], glyph: 'goldengate', enamel: 'midnight', ink: '#ff6a3d' },
   { id: 'sandiego', title: 'San Diego', cities: ['sandiego'], glyph: 'beach', enamel: 'ocean', ink: '#ffe9b8' },
+  { id: 'vancouver', title: 'Vancouver', cities: ['vancouver'], glyph: 'mountain', enamel: 'teal' },
+  { id: 'portland', title: 'Portland', cities: ['portland'], glyph: 'bridge', enamel: 'plum' },
+  { id: 'nyc', title: 'New York', cities: ['nyc'], glyph: 'skyline', enamel: 'graphite', ink: '#ffd36b' },
+  { id: 'pullman', title: 'Pullman and Moscow', cities: ['pullman', 'moscow'], glyph: 'tree', enamel: 'ruby' },
 ]
 
 function step(have: number, goal: number) {
@@ -80,7 +88,7 @@ export function computeAchievements(input: AchievementInput): Achievement[] {
   }))
 
   // Gusto's Score boards. Users' Been marks never change these; they only read them.
-  const boards = (['seattle', 'la', 'sf', 'sandiego'] as const).map((region) => regionBoard(region, input.gustoScore).shown)
+  const boards = (['seattle', 'la', 'sf', 'sandiego', 'vancouver', 'portland', 'nyc', 'pullman'] as const).map((region) => regionBoard(region, input.gustoScore).shown)
   const numberOne = boards.some((board) => board[0] && beenSet.has(board[0].place.id))
   out.push({ id: 'number-one', group: 'Milestones', title: 'Number One', blurb: 'Eat at a city’s #1 on Gusto’s Top 25.', ring: 'leaf', ...step(numberOne ? 1 : 0, 1),
     spec: { key: 'number-one', label: 'Number One', glyph: 'crown', shape: 'burst', metal: 'gold', enamel: 'coral' } })
@@ -108,8 +116,20 @@ export function computeAchievements(input: AchievementInput): Achievement[] {
     out.push({ id: `city-${area.id}`, legacy: area.legacy, group: 'Cities', title: area.legacy ? 'Eastside' : area.title, blurb: `Mark a place Been in ${area.title}.`, ring: 'sky', ...step(have, 1),
       spec: { key: `city-${area.id}`, label: area.title, glyph: area.glyph, shape: 'circle', metal: 'silver', enamel: area.enamel, ink: area.ink } })
   }
-  out.push({ id: 'city-all', group: 'Cities', title: 'Four-City Tour', blurb: 'Eat in all four: Seattle, Los Angeles, the Bay Area and San Diego.', ring: 'sky', ...step(areasDone, 4),
+  // Any four of the guide's cities count; the badge name and goal stay the same (earned ones stay earned).
+  out.push({ id: 'city-all', group: 'Cities', title: 'Four-City Tour', blurb: 'Eat in four of the guide’s cities.', ring: 'sky', ...step(areasDone, 4),
     spec: { key: 'city-all', label: 'Four-City Tour', glyph: 'map', numeral: '4', shape: 'rosette', metal: 'gold', enamel: 'navy' } })
+
+  // Pullman, WA: Coug game days. Crimson and gray paw medals.
+  const gameDay = inGuides(/^pul-game-day$/)
+  out.push({ id: 'game-day-regular', group: 'Cities', title: 'Game Day Regular', blurb: 'Eat at 5 places on Game day in Pullman.', ring: 'sky', ...step(input.been.filter((id) => gameDay.has(id)).length, 5),
+    spec: { key: 'game-day-regular', label: 'Game Day', glyph: 'football', numeral: '5', shape: 'hex', metal: 'silver', enamel: 'crimson' } })
+  const palouse = ['pullman', 'moscow'].filter((c) => places.some((p) => placeCity(p) === c)).length
+  out.push({ id: 'palouse-explorer', group: 'Cities', title: 'Palouse Explorer', blurb: 'Mark a place Been in both Pullman, WA and Moscow, ID.', ring: 'sky', ...step(palouse, 2),
+    spec: { key: 'palouse-explorer', label: 'Palouse', glyph: 'paw', shape: 'oct', metal: 'silver', enamel: 'crimson', ink: '#d9dadb' } })
+  const eggs = new Set(input.eggs ?? []).size
+  out.push({ id: 'wave-the-flag', hidden: true, group: 'Cities', title: "Ol' Crimson", blurb: 'Find three of the Pullman Easter eggs.', ring: 'gold', ...step(eggs, 3),
+    spec: { key: 'wave-the-flag', label: "Ol' Crimson", glyph: 'flag', shape: 'burst', metal: 'gold', enamel: 'crimson' } })
 
   for (const guide of input.guides) {
     const ids = guide.entries.map((e) => e.placeId).filter((id) => { const p = input.placeOf(id); return p != null && isListed(p) })

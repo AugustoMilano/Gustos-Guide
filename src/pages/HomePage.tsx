@@ -2,7 +2,7 @@ import { useMemo, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { SmartResults, featuredSlugs } from '../components/SmartResults.tsx'
 import { catalog } from '../content/load.ts'
-import { cityPath, regionOf, type CityId } from '../lib/city.ts'
+import { areaName, cityPath, regionOf, type CityId } from '../lib/city.ts'
 import { countPlaces } from '../lib/format.ts'
 import { isOpen } from '../lib/hours.ts'
 import { regionBoard } from '../lib/top25.ts'
@@ -18,6 +18,11 @@ function heroTitle(city: CityId): string {
   if (city === 'peninsula') return 'Eat across the Peninsula.'
   if (city === 'northbay') return 'Eat across the North Bay.'
   if (city === 'sandiego') return 'Eat across San Diego.'
+  if (city === 'vancouver') return 'Eat across Vancouver.'
+  if (city === 'portland') return 'Eat across Portland.'
+  if (city === 'nyc') return 'Eat across New York.'
+  if (city === 'pullman') return 'Eat across Pullman.'
+  if (city === 'moscow') return 'Eat across Moscow.'
   if (city === 'eastside') return 'Eat across Seattle’s Eastside.'
   return 'Eat your way through Seattle.'
 }
@@ -27,6 +32,11 @@ function heroDek(city: CityId): string {
   if (city === 'eastside') return 'Bellevue, Kirkland, Redmond, and Issaquah, across the lake from Seattle.'
   if (city === 'seattle') return 'From a 7am bun to the last good stool on Pike. Pizza, oysters, teriyaki, and the bars worth the hill.'
   if (city === 'sandiego') return 'San Diego, La Jolla, Coronado, Chula Vista, and North County on one list.'
+  if (city === 'vancouver') return 'Downtown, Coal Harbour, Gastown, Granville Island, and the West End.'
+  if (city === 'portland') return 'Downtown, the Pearl District, Nob Hill, and Old Town-Chinatown.'
+  if (city === 'nyc') return 'Tribeca, SoHo, the West Village, Midtown, and Brooklyn.'
+  if (city === 'pullman') return 'Go Cougs. Breakfast, pubs, and quick bites near Martin Stadium and downtown.'
+  if (city === 'moscow') return 'Moscow, with Pullman, WA one switch away.'
   if (city === 'eastbay') return 'Berkeley, Fremont, and Pleasanton.'
   if (city === 'peninsula') return 'Palo Alto, Santa Clara, San Jose, and the coast.'
   if (city === 'northbay') return 'Sausalito, Tiburon, Corte Madera, and Larkspur.'
@@ -46,7 +56,15 @@ function topLine(city: CityId, count: number): string {
       ? 'Los Angeles'
       : region === 'sandiego'
         ? 'San Diego'
-        : 'San Francisco and the Bay'
+        : region === 'vancouver'
+          ? 'Vancouver'
+          : region === 'portland'
+            ? 'Portland'
+            : region === 'nyc'
+              ? 'New York'
+              : region === 'pullman'
+                ? 'Pullman and Moscow'
+                : 'San Francisco and the Bay'
   return `The ${count} best in ${where}, ranked by Gusto's Score`
 }
 
@@ -61,7 +79,8 @@ function Chevron() {
 export function HomePage() {
   const { city, guides, places, ready, failed } = useCityCatalog()
   const [draft, setDraft] = useState('')
-  usePageMeta("Gusto's Guide", heroDek(city), './og/og.png')
+  // Per-city title and share card (C5); sub-areas use their region's card.
+  usePageMeta(`${areaName(city)} · Gusto's Guide`, heroDek(city), `./og/cities/${regionOf(city)}.png`)
   const query = draft.trim()
   const { gustoScore } = useApp()
   // Same rule as the Tonight page: a place is open when its published hours say so right now.

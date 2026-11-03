@@ -1,13 +1,13 @@
 import { useEffect, useMemo, useState } from 'react'
 import { Link, useSearchParams } from 'react-router-dom'
 import { AreaKicker } from '../components/AreaKicker.tsx'
-import { SmartResults } from '../components/SmartResults.tsx'
+import { featuredSlugs, SmartResults } from '../components/SmartResults.tsx'
 import { catalog } from '../content/load.ts'
 import { areaPhrase, cityPath } from '../lib/city.ts'
 import { milesBetween } from '../lib/format.ts'
 import { readPosition } from '../lib/geo.ts'
 import { usePageMeta } from '../lib/meta.ts'
-import { clearRecent, readRecent } from '../lib/recent-search.ts'
+import { clearRecent, readRecent, rememberSearch } from '../lib/recent-search.ts'
 import { smartSearch } from '../lib/smart-search.ts'
 import { useApp } from '../state/AppState.tsx'
 import { useCityCatalog } from '../lib/use-city.ts'
@@ -28,6 +28,10 @@ export function SearchPage() {
   }, [q])
 
   const query = draft.trim()
+  const featured = useMemo(
+    () => featuredSlugs(city).map((slug) => catalog.guides.find((guide) => guide.slug === slug)).filter((guide) => guide !== undefined),
+    [city],
+  )
   const { gustoScore } = useApp()
   const result = useMemo(() => {
     if (!query) return null
@@ -97,10 +101,22 @@ export function SearchPage() {
       </button>
       {error ? <p className="mt-2 text-sm" role="alert">{error}</p> : null}
       {origin ? <p className="mt-2 text-sm">Sorting places by distance from you.</p> : null}
-      {result ? <SmartResults query={query} result={result} /> : (
-        <p className="mt-6">
-          <Link className="btn" to={cityPath('/guides')}>Browse the guides</Link>
-        </p>
+      {result ? <SmartResults query={query} result={result} onPick={() => setRecents(rememberSearch(query))} /> : (
+        <section className="mt-6" aria-label="Start with a guide">
+          {featured.length ? (
+            <>
+              <h2 className="font-serif text-3xl italic">Start with a guide</h2>
+              <p className="mt-2 flex flex-wrap gap-2">
+                {featured.map((guide) => (
+                  <Link key={guide.slug} className="chip inline-flex items-center" to={cityPath(`/guide/${guide.slug}`)}>{guide.title}</Link>
+                ))}
+              </p>
+            </>
+          ) : null}
+          <p className="mt-4">
+            <Link className="btn" to={cityPath('/guides')}>Browse the guides</Link>
+          </p>
+        </section>
       )}
     </main>
   )

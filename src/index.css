@@ -3178,17 +3178,18 @@ h2.font-serif,
     display: grid;
     grid-template-columns: minmax(0, 1fr) auto auto;
     column-gap: 0.5rem;
-    row-gap: 0.45rem;
+    row-gap: 0.5rem;
     align-items: center;
   }
 
   .header-bar .brand-lockup {
     grid-column: 1;
     grid-row: 1;
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 0.35rem 0.5rem;
+    /* Phones: the city pill always gets its own row under the logo, left-aligned. */
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: flex-start;
+    gap: 0.5rem;
     min-width: 0;
   }
 
@@ -3206,6 +3207,12 @@ h2.font-serif,
   .header-bar .menu-btn {
     grid-column: 3;
     grid-row: 1;
+  }
+
+  /* Bell and Menu stay on the logo row; the city pill sits on the row below. */
+  .header-bar .bell-btn,
+  .header-bar .menu-btn {
+    align-self: start;
   }
 
   .header-bar .city-switch-bar {
@@ -5314,15 +5321,85 @@ html[data-prerender='top'] main.pre-top { display: block; padding-top: calc(var(
 html[data-pre-region='seattle'] .pre-top-r[data-r='seattle'],
 html[data-pre-region='la'] .pre-top-r[data-r='la'],
 html[data-pre-region='sf'] .pre-top-r[data-r='sf'],
-html[data-pre-region='sandiego'] .pre-top-r[data-r='sandiego'] { display: block; }
-html[data-prerender='top'][data-pre-region='la'], html[data-prerender='top'][data-pre-region='sandiego'] { --header-offset: 69px; }
-@media (max-width: 443px) { html[data-prerender='top'][data-pre-region='la'], html[data-prerender='top'][data-pre-region='sandiego'] { --header-offset: 119px; } }
-html[data-prerender='top'][data-pre-region='seattle'] { --header-offset: 77px; }
-@media (min-width: 1400px) and (max-width: 1405px) { html[data-prerender='top'][data-pre-region='seattle'] { --header-offset: 125px; } }
-@media (max-width: 663px) { html[data-prerender='top'][data-pre-region='seattle'] { --header-offset: 125px; } }
-@media (max-width: 639px) { html[data-prerender='top'][data-pre-region='seattle'] { --header-offset: 129px; } }
-@media (max-width: 413px) { html[data-prerender='top'][data-pre-region='seattle'] { --header-offset: 178px; } }
-html[data-prerender='top'][data-pre-region='sf'] { --header-offset: 125px; }
-@media (min-width: 966px) and (max-width: 1279px) { html[data-prerender='top'][data-pre-region='sf'] { --header-offset: 77px; } }
-@media (max-width: 639px) { html[data-prerender='top'][data-pre-region='sf'] { --header-offset: 129px; } }
-@media (max-width: 457px) { html[data-prerender='top'][data-pre-region='sf'] { --header-offset: 178px; } }
+html[data-pre-region='sandiego'] .pre-top-r[data-r='sandiego'],
+html[data-pre-region='vancouver'] .pre-top-r[data-r='vancouver'],
+html[data-pre-region='portland'] .pre-top-r[data-r='portland'],
+html[data-pre-region='nyc'] .pre-top-r[data-r='nyc'],
+html[data-pre-region='pullman'] .pre-top-r[data-r='pullman'] { display: block; }
+html[data-prerender][data-pre-region='la'], html[data-prerender][data-pre-region='sandiego'], html[data-prerender][data-pre-region='vancouver'], html[data-prerender][data-pre-region='portland'], html[data-prerender][data-pre-region='nyc'] { --header-offset: 69px; }
+@media (max-width: 639px) { html[data-prerender][data-pre-region='la'], html[data-prerender][data-pre-region='sandiego'], html[data-prerender][data-pre-region='vancouver'], html[data-prerender][data-pre-region='portland'], html[data-prerender][data-pre-region='nyc'] { --header-offset: 121px; } }
+html[data-prerender][data-pre-region='seattle'] { --header-offset: 77px; }
+@media (min-width: 1400px) and (max-width: 1405px) { html[data-prerender][data-pre-region='seattle'] { --header-offset: 125px; } }
+@media (max-width: 663px) { html[data-prerender][data-pre-region='seattle'] { --header-offset: 125px; } }
+@media (max-width: 639px) { html[data-prerender][data-pre-region='seattle'] { --header-offset: 181px; } }
+html[data-prerender][data-pre-region='sf'] { --header-offset: 125px; }
+@media (min-width: 966px) and (max-width: 1279px) { html[data-prerender][data-pre-region='sf'] { --header-offset: 77px; } }
+@media (max-width: 639px) { html[data-prerender][data-pre-region='sf'] { --header-offset: 181px; } }
+html[data-prerender][data-pre-region='pullman'] { --header-offset: 77px; }
+@media (max-width: 1503px) and (min-width: 1400px), (max-width: 1303px) and (min-width: 1280px), (max-width: 755px) { html[data-prerender][data-pre-region='pullman'] { --header-offset: 125px; } }
+@media (max-width: 639px) { html[data-prerender][data-pre-region='pullman'] { --header-offset: 181px; } }
+
+/* Static place hero (C1): status.js fills the photo once the place's own record lands, so the
+   largest paint does not wait for the app. Same boxes as PlaceGallery > PhotoFrame. */
+main.pre-place { display: none; }
+html[data-prerender='place'] main.pre-place { display: block; padding-top: calc(var(--header-offset) + 1rem); }
+/* LCP sizes the app's gallery image a hair larger than this static copy (paint-rect snapping), so
+   the later React paint of the same photo would be reported instead of this first one. One extra CSS
+   pixel of width, inside the frame's 2px border, keeps the first, real paint as the measured one. */
+main.pre-place .photo-frame:not(.is-compact) img.pre-place-img { width: calc(100% + 1px); max-width: none; margin-right: -1px; }
+
+/* C2: lower peek on small phones so more map shows. The handle row shrinks to 28px of layout, but
+   its button keeps a 44px tap target by reaching 16px down into the quiet middle of the count bar
+   (the count sits left, the List button right). The area name is already in the site header, so the
+   sheet drops its kicker there. Applies at every detent so the measured peek offset stays true. */
+@media (max-width: 767px) and (max-height: 700px) {
+  .explore-head .explore-grab {
+    position: relative;
+    z-index: 2;
+    width: 8.5rem;
+    min-height: 44px;
+    height: 44px;
+    margin: 0 auto -16px;
+    align-items: flex-start;
+    padding-top: 12px;
+  }
+  .explore-head .explore-bar { position: relative; z-index: 1; padding-top: 4px; padding-bottom: 4px; }
+  .explore-head .explore-bar .area-kicker { display: none; }
+}
+
+/* Install hint (C4): a 44px close target and an inline Share glyph. */
+.install-hint-close {
+  flex: none;
+  width: 44px;
+  height: 44px;
+  margin: -0.45rem -0.7rem -0.45rem 0;
+  border: 0;
+  background: transparent;
+  font-size: 1.5rem;
+  line-height: 1;
+  color: inherit;
+  pointer-events: auto;
+}
+.install-hint-share { display: inline; vertical-align: -2px; }
+/* Pullman, WA: crimson and gray for Coug game days. Colors only, no marks. Moscow stays neutral. */
+html[data-area='pullman'] { --color-coral: #981e32; }
+html[data-area='pullman'] .hero,
+html[data-area='pullman'] .marquee { background: #981e32; }
+html[data-area='pullman'] .site-header.on-hero::before { background-color: #981e32; }
+html[data-area='pullman'] .btn-coral { color: #fff; box-shadow: 0 var(--space-2) 18px rgb(152 30 50 / 28%); }
+html[data-area='pullman'] .site-header.on-hero .btn-coral { background: #fffaf3; color: #981e32; }
+html[data-area='pullman'] .city-switch-glint { background: #d9dadb; box-shadow: 0 6px 16px rgb(94 106 113 / 35%); }
+html[data-area='pullman'] .site-header.on-hero .city-switch { background: rgb(40 8 14 / 35%); }
+html[data-area='pullman'] .hero { background: linear-gradient(160deg, #981e32 0%, #7a1828 62%, #4d5054 100%); }
+.coug-toast {
+  position: fixed; left: 50%; bottom: calc(env(safe-area-inset-bottom, 0px) + 6.5rem); z-index: 90;
+  transform: translate(-50%, 1rem); opacity: 0; pointer-events: none;
+  min-height: 44px; display: flex; align-items: center; padding: 0 1.25rem; border-radius: 999px;
+  background: #981e32; color: #fff; font-weight: 800; letter-spacing: 0.02em;
+  box-shadow: 0 10px 30px rgb(77 80 84 / 35%); transition: opacity 200ms, transform 200ms;
+}
+.coug-toast.is-on { opacity: 1; transform: translate(-50%, 0); }
+.coug-confetti { position: fixed; inset: 0; z-index: 89; pointer-events: none; overflow: hidden; }
+.coug-confetti i { position: absolute; top: -12px; width: 8px; height: 14px; border-radius: 2px; animation: coug-fall 2.2s cubic-bezier(0.2, 0.6, 0.4, 1) forwards; }
+@keyframes coug-fall { to { transform: translate3d(var(--drift), 105vh, 0) rotate(var(--spin)); opacity: 0.9; } }
+@media (prefers-reduced-motion: reduce) { .coug-toast { transition: none; } .coug-confetti { display: none; } }

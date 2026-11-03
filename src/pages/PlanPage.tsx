@@ -55,7 +55,7 @@ export function PlanDetailPage() {
   const [time, setTime] = useState('')
   usePageMeta(plan ? `${plan.title} · Plan` : 'Plan', 'Vote on where to eat and whether you are coming.')
   if (!plan) {
-    return <main className="mx-auto max-w-3xl px-4 pt-28"><h1 className="font-serif text-5xl italic">That plan wandered off.</h1></main>
+    return <main id="main" tabIndex={-1} className="mx-auto min-h-dvh max-w-3xl px-4 pt-28 outline-none"><h1 className="font-serif text-5xl italic">That plan wandered off.</h1></main>
   }
   const names = new Map<string, string>()
   for (const user of app.demoUsers) names.set(user.id, user.name)
@@ -217,6 +217,11 @@ function whereQuestion(city: CityId): string {
   if (city === 'eastbay') return 'Where in the East Bay?'
   if (city === 'northbay') return 'Where in the North Bay?'
   if (city === 'sandiego') return 'Where in San Diego?'
+  if (city === 'vancouver') return 'Where in Vancouver?'
+  if (city === 'portland') return 'Where in Portland?'
+  if (city === 'nyc') return 'Where in New York?'
+  if (city === 'pullman') return 'Where in Pullman?'
+  if (city === 'moscow') return 'Where in Moscow?'
   if (city === 'sf') return 'Where in San Francisco?'
   if (city === 'eastside') return 'Where on the Eastside?'
   return 'Where in Seattle?'

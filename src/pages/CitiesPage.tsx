@@ -15,7 +15,7 @@ export function CitiesPage({ landing = false }: { landing?: boolean } = {}) {
   const memory = readRegionMemory()
   usePageMeta(
     "Choose a city · Gusto's Guide",
-    'Seattle covers the city plus Bellevue, Kirkland, and Redmond. San Francisco covers the city, the East Bay, the Peninsula, and the North Bay. Los Angeles is its own list. San Diego is its own list and also includes La Jolla, Coronado, Chula Vista, and North County.',
+    'Seattle covers the city plus Bellevue, Kirkland, and Redmond. San Francisco covers the city, the East Bay, the Peninsula, and the North Bay. Los Angeles is its own list. San Diego is its own list and also includes La Jolla, Coronado, Chula Vista, and North County. Vancouver, Portland, and New York are their own lists. Pullman, WA includes Moscow, ID.',
   )
 
   function open(region: RegionId) {
@@ -38,7 +38,7 @@ export function CitiesPage({ landing = false }: { landing?: boolean } = {}) {
         <p className="mt-3 max-w-xl">Pick a city to open its guide.</p>
       ) : (
       <p className="mt-3 max-w-xl">
-        Seattle includes Bellevue, Kirkland, and Redmond, with an Eastside switch once you are inside. San Francisco includes the East Bay, the Peninsula and South Bay, and the North Bay the same way. Los Angeles is its own list. San Diego is its own list too: La Jolla, Coronado, Chula Vista, and North County stay on it, without a second city. The city you opened last is marked.
+        Seattle includes Bellevue, Kirkland, and Redmond, with an Eastside switch once you are inside. San Francisco includes the East Bay, the Peninsula and South Bay, and the North Bay the same way. Los Angeles is its own list. San Diego is its own list too: La Jolla, Coronado, Chula Vista, and North County stay on it, without a second city. Vancouver, Portland, and New York are their own lists. Pullman, WA has a Moscow, ID switch once you are inside. The city you opened last is marked.
       </p>
       )}
       </m.div>

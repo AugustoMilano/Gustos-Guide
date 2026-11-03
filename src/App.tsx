@@ -11,7 +11,7 @@ import { LegalPage } from './pages/LegalPage.tsx'
 import { NotFoundPage } from './pages/NotFoundPage.tsx'
 import { TabBar } from './components/TabBar.tsx'
 import { InstallHint } from './components/InstallHint.tsx'
-import { catalogPhase, subscribeCatalog } from './content/load.ts'
+import { bootPending, bootPlace, bootSettled, catalogPhase, subscribeCatalog } from './content/load.ts'
 import { barePath, CITY_PREFIXES } from './lib/city.ts'
 import { directLegalSlug } from './lib/site.ts'
 import { useApp } from './state/AppState.tsx'
@@ -173,11 +173,22 @@ function AuthErrorSheet() {
 function CatalogRoutes() {
   const phase = useSyncExternalStore(subscribeCatalog, catalogPhase, catalogPhase)
   const { pathname } = useLocation()
-  if (barePath(pathname) !== '/' && phase <= 0) {
+  const [, setBootTick] = useState(0)
+  useEffect(() => {
+    void bootSettled().then(() => setBootTick((n) => n + 1))
+  }, [])
+  // A place deep link renders from its own record while the catalog waits (C1).
+  const bootId = /^\/place\/([a-z0-9-]+)/.exec(barePath(pathname))?.[1] ?? ''
+  const fromBoot = phase === 0 && bootId !== '' && bootPlace(bootId) !== undefined
+  if (barePath(pathname) !== '/' && phase <= 0 && !fromBoot) {
+    if (phase === 0 && bootId !== '' && bootPending(bootId)) return <PageSkeleton />
     if (phase < 0) {
       return (
-        <main id="main" tabIndex={-1} className="mx-auto max-w-3xl px-4 pt-28 outline-none">
+        <main id="main" tabIndex={-1} className="mx-auto min-h-dvh max-w-3xl px-4 pt-28 outline-none">
           <h1 className="font-serif text-5xl italic">The guide list didn't load.</h1>
+          {typeof navigator !== 'undefined' && !navigator.onLine ? (
+            <p className="mt-3 max-w-xl">You are offline. Open the guide once with a connection and it stays on this device.</p>
+          ) : null}
           <p className="mt-4"><button type="button" className="btn" onClick={() => window.location.reload()}>Try again</button></p>
         </main>
       )

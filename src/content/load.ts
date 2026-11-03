@@ -49,7 +49,21 @@ function publish(file: SlimFile) {
   emit(1)
 }
 
-export const catalogReady: Promise<void> = fetch(catalogUrl, { credentials: 'same-origin' })
+type PlaceBoot = { id: string; data: Promise<Place | null>; done: boolean; value: Place | null }
+const boot = (globalThis as { __placeBoot?: PlaceBoot }).__placeBoot
+
+// A place deep link renders from its own small file first; the 100 KB catalog waits until the page
+// has loaded so it does not compete with the hero photo (C1). Every other route fetches it at once.
+function afterLoad(): Promise<void> {
+  if (!boot || typeof document === 'undefined') return Promise.resolve()
+  return new Promise((resolve) => {
+    const go = () => setTimeout(resolve, 0)
+    if (document.readyState === 'complete') go()
+    else window.addEventListener('load', go, { once: true })
+  })
+}
+
+export const catalogReady: Promise<void> = afterLoad().then(() => fetch(catalogUrl, { credentials: 'same-origin' }))
   .then((response) => {
     if (!response.ok) throw new Error('catalog')
     return response.json() as Promise<SlimFile>
@@ -58,6 +72,21 @@ export const catalogReady: Promise<void> = fetch(catalogUrl, { credentials: 'sam
   .catch(() => {
     emit(-1)
   })
+
+/** The deep-linked place's own record when it has already arrived (C1). */
+export function bootPlace(id: string): Place | undefined {
+  return boot && boot.id === id && boot.done && boot.value?.id === id ? boot.value : undefined
+}
+
+/** True while the deep-linked place's own record is still in flight. */
+export function bootPending(id: string): boolean {
+  return Boolean(boot && boot.id === id && !boot.done)
+}
+
+/** Resolves when the deep-linked place's own record settles (immediately when there is none). */
+export function bootSettled(): Promise<unknown> {
+  return boot ? boot.data : Promise.resolve()
+}
 
 export function slimById(id: string): SlimPlace | undefined {
   return placeById.get(id)
@@ -74,6 +103,10 @@ function regions(): Promise<RegionFile[]> {
     import('./la.json'),
     import('./sf.json'),
     import('./sd.json'),
+    import('./vancouver.json'),
+    import('./portland.json'),
+    import('./nyc.json'),
+    import('./palouse.json'),
   ]).then((modules) => modules.map((module) => module.default as RegionFile))
 }
 
@@ -94,6 +127,10 @@ export function loadGuides(): Promise<Guide[]> {
 }
 
 export async function loadPlace(id: string): Promise<Place | undefined> {
+  if (boot && boot.id === id) {
+    const own = await boot.data
+    if (own && own.id === id) return own
+  }
   const places = await loadPlaces()
   return places[id]
 }

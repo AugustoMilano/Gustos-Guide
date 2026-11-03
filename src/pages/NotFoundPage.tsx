@@ -22,7 +22,7 @@ export function NotFoundPage() {
   }
 
   return (
-    <main id="main" tabIndex={-1} className="mx-auto max-w-3xl px-4 pt-28 outline-none">
+    <main id="main" tabIndex={-1} className="mx-auto min-h-dvh max-w-3xl px-4 pt-28 outline-none">
       <AreaKicker />
       <p className="mt-2 text-xs font-bold tracking-[0.14em] uppercase">404</p>
       <h1 className="mt-2 font-serif text-5xl italic">That page is not on the menu.</h1>

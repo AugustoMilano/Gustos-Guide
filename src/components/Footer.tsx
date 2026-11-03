@@ -8,6 +8,11 @@ function footerLine(city: CityId): string {
   if (city === 'eastbay') return 'The East Bay, from Berkeley to Pleasanton.'
   if (city === 'peninsula') return 'The Peninsula and South Bay, from Palo Alto to San Jose.'
   if (city === 'northbay') return 'The North Bay, from Sausalito to Larkspur.'
+  if (city === 'vancouver') return 'Vancouver, from the places on this list.'
+  if (city === 'portland') return 'Portland, from the places on this list.'
+  if (city === 'nyc') return 'New York, from the places on this list.'
+  if (city === 'pullman') return 'Pullman, WA, with Moscow, ID across the state line.'
+  if (city === 'moscow') return 'Moscow, ID, with Pullman, WA across the state line.'
   if (city === 'sandiego') return 'San Diego, La Jolla, Coronado, Chula Vista, and North County, on one list.'
   if (city === 'eastside') return 'Seattle’s Eastside, from Old Bellevue to the lake.'
   return 'Seattle, from the first coffee to the last stool.'
@@ -17,7 +22,7 @@ export function Footer() {
   const city = useCityId()
   const { pathname } = useLocation()
   const line = isCityPicker(pathname)
-    ? 'Seattle, Los Angeles, San Francisco with the East Bay, the Peninsula, and the North Bay, or San Diego.'
+    ? 'Seattle, Los Angeles, San Francisco with the East Bay, the Peninsula, and the North Bay, San Diego, Vancouver, Portland, New York, or Pullman and Moscow.'
     : footerLine(city)
   return (
     <footer className="site-footer on-navy mt-16 bg-navy text-cream">

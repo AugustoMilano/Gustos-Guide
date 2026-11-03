@@ -140,7 +140,7 @@ export function GuidePage() {
 
   if (missing || (!guide && !summary)) {
     return (
-      <main id="main" tabIndex={-1} className="mx-auto max-w-3xl px-4 pt-28 outline-none">
+      <main id="main" tabIndex={-1} className="mx-auto min-h-dvh max-w-3xl px-4 pt-28 outline-none">
         <h1 className="font-serif text-5xl italic">That guide is not on the list.</h1>
         <Link to={cityPath('/guides')} className="btn mt-6">All guides</Link>
       </main>

@@ -5,11 +5,20 @@ import { AreaKicker } from '../components/AreaKicker.tsx'
 import { ForkMark, GoldenFork } from '../components/GoldenFork.tsx'
 import { ScoreBadge } from '../components/ScoreBadge.tsx'
 import { PlaceThumb } from '../components/PlaceThumb.tsx'
-import { cityPath, regionName, regionOf } from '../lib/city.ts'
+import { cityPath, regionName, regionOf, type RegionId } from '../lib/city.ts'
 import { usePageMeta } from '../lib/meta.ts'
 import { regionBoard, type TopRow } from '../lib/top25.ts'
 import { placeCity, useCityId } from '../lib/use-city.ts'
 import { useApp } from '../state/AppState.tsx'
+
+const TOP_REGIONS = ['seattle', 'la', 'sf', 'sandiego', 'vancouver', 'portland', 'nyc', 'pullman'] as const satisfies readonly RegionId[]
+const TOP_LABEL: Record<RegionId, string> = { seattle: 'Seattle', la: 'Los Angeles', sf: 'San Francisco', sandiego: 'San Diego', vancouver: 'Vancouver', portland: 'Portland', nyc: 'New York', pullman: 'Pullman, WA' }
+const TOP_INTRO: Partial<Record<RegionId, string>> = {
+  vancouver: "Vancouver, ranked by Augusto's exact Gusto's Score.",
+  portland: "Portland, ranked by Augusto's exact Gusto's Score.",
+  nyc: "New York, ranked by Augusto's exact Gusto's Score.",
+  pullman: "Pullman, WA and Moscow, ID, ranked by Augusto's exact Gusto's Score.",
+}
 
 function podiumOrder(rows: TopRow[]): TopRow[] {
   if (rows.length >= 3) return [rows[1], rows[0], rows[2]]
@@ -24,16 +33,18 @@ export function TopPage() {
   const board = regionBoard(region, app.gustoScore)
   const reduce = useReducedMotion()
   const name = regionName(city)
-  const others = (['seattle', 'la', 'sf', 'sandiego'] as const).filter((item) => item !== region)
+  const others = TOP_REGIONS.filter((item) => item !== region)
   const podium = podiumOrder(board.shown)
   const rest = board.shown.slice(Math.min(3, board.shown.length))
   // index.html painted a static copy of this intro (fix77); React's identical markup has replaced it.
   useEffect(() => {
     if (document.documentElement.dataset.prerender === 'top') delete document.documentElement.dataset.prerender
+    delete document.documentElement.dataset.preRegion
   }, [])
   usePageMeta(
     `Top 25 · ${name} · Gusto's Guide`,
     `The Golden Fork list for ${name}, ranked by Augusto's exact Gusto's Score.`,
+    `./og/top/${region}.png`,
   )
 
   return (
@@ -48,14 +59,16 @@ export function TopPage() {
             ? "Los Angeles, ranked by Augusto's exact Gusto's Score."
             : region === 'sandiego'
               ? "San Diego, ranked by Augusto's exact Gusto's Score."
-              : "San Francisco, the East Bay, the Peninsula, and the North Bay, ranked by Augusto's exact Gusto's Score."}
+              : region === 'sf'
+                ? "San Francisco, the East Bay, the Peninsula, and the North Bay, ranked by Augusto's exact Gusto's Score."
+                : TOP_INTRO[region]}
         {' '}Restaurants only, one per brand. Owner scores only; a place with no score stays off the list.
       </p>
       <div className="mt-4 flex flex-wrap gap-2">
         <Link className="btn text-sm" to={cityPath('/rank')}>Rank a place</Link>
         {others.map((item) => (
-          <Link key={item} className="btn text-sm" to={item === 'la' ? '/la/top' : item === 'sf' ? '/sf/top' : item === 'sandiego' ? '/sandiego/top' : '/seattle/top'}>
-            {item === 'la' ? 'Los Angeles Top 25' : item === 'sf' ? 'San Francisco Top 25' : item === 'sandiego' ? 'San Diego Top 25' : 'Seattle Top 25'}
+          <Link key={item} className="btn text-sm" to={`/${item}/top`}>
+            {TOP_LABEL[item]} Top 25
           </Link>
         ))}
       </div>

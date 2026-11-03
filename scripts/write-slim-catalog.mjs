@@ -86,9 +86,10 @@ export function writeSlimCatalog() {
   const la = read('la.json')
   const sf = read('sf.json')
   const sd = read('sd.json')
+  const added = ['vancouver.json', 'portland.json', 'nyc.json', 'palouse.json'].map(read)
   const places = index.places.map(placeRow)
   const guides = index.guides.map(guideRow)
-  for (const file of [eastside, la, sf, sd]) {
+  for (const file of [eastside, la, sf, sd, ...added]) {
     for (const place of file.places) places.push(placeRow(place))
     for (const guide of file.guides) guides.push(guideRow(guide))
   }
@@ -98,6 +99,7 @@ export function writeSlimCatalog() {
     ...la.places.map((place) => place.id),
     ...sf.places.map((place) => place.id),
     ...sd.places.map((place) => place.id),
+    ...added.flatMap((file) => file.places.map((place) => place.id)),
   ]
   const sourceGuides = [
     ...index.guides.map((guide) => guide.slug),
@@ -105,6 +107,7 @@ export function writeSlimCatalog() {
     ...la.guides.map((guide) => guide.slug),
     ...sf.guides.map((guide) => guide.slug),
     ...sd.guides.map((guide) => guide.slug),
+    ...added.flatMap((file) => file.guides.map((guide) => guide.slug)),
   ]
   if (places.map((row) => row[0]).join('\n') !== sourceIds.join('\n')) throw new Error('place order changed')
   if (guides.map((row) => row[0]).join('\n') !== sourceGuides.join('\n')) throw new Error('guide order changed')

@@ -1,6 +1,6 @@
 import { spawnSync } from 'node:child_process'
 import { createHash } from 'node:crypto'
-import { existsSync, readFileSync, readdirSync, renameSync, rmSync, statSync, writeFileSync } from 'node:fs'
+import { existsSync, mkdirSync, readFileSync, readdirSync, renameSync, rmSync, statSync, writeFileSync } from 'node:fs'
 import { join } from 'node:path'
 import tailwindcss from '@tailwindcss/vite'
 import react from '@vitejs/plugin-react'
@@ -189,13 +189,10 @@ export default defineConfig({
         const assets = join(process.cwd(), 'dist/assets')
         if (!existsSync(assets)) return
         const name = readdirSync(assets).find((file) => file.startsWith('slim-catalog-') && file.endsWith('.json'))
-        const htmlPath = join(process.cwd(), 'dist/index.html')
-        if (!name || !existsSync(htmlPath)) return
-        const href = `./assets/${name}`
-        const html = readFileSync(htmlPath, 'utf8')
-        if (html.includes(href)) return
-        const tag = `    <link rel="preload" href="${href}" as="fetch" fetchpriority="low" crossorigin />\n`
-        writeFileSync(htmlPath, html.replace('</head>', `${tag}  </head>`))
+        // status.js adds the preload (low priority) on every route except place deep links (C1).
+        const statusPath = join(process.cwd(), 'dist/status.js')
+        if (!name || !existsSync(statusPath)) return
+        writeFileSync(statusPath, readFileSync(statusPath, 'utf8').replace("/*CATALOG*/''", JSON.stringify(`/assets/${name}`)))
       },
     },
     react(),
@@ -232,9 +229,9 @@ export default defineConfig({
         // arrives. Same pick as displayPhotos() without uploads: Gusto's own shot, then commons.
         const sizes = JSON.parse(readFileSync('src/content/photo-sizes.json', 'utf8')) as Record<string, { w: number; webp?: number[] }>
         const heroes: Record<string, string> = {}
-        for (const name of ['places', 'eastside', 'la', 'sf', 'sd']) {
+        for (const name of ['places', 'eastside', 'la', 'sf', 'sd', 'vancouver', 'portland', 'nyc', 'palouse']) {
           const data = JSON.parse(readFileSync(`src/content/${name}.json`, 'utf8'))
-          const list = (Array.isArray(data) ? data : Object.values(data)) as { id?: string; photo?: { source?: string; url?: string }; photos?: { source?: string; url?: string }[] }[]
+          const list = (Array.isArray(data) ? data : Array.isArray(data.places) ? data.places : Object.values(data)) as { id?: string; photo?: { source?: string; url?: string }; photos?: { source?: string; url?: string }[] }[]
           for (const place of list) {
             if (!place || typeof place !== 'object' || !place.id) continue
             const catalog = (place.photos?.length ? place.photos : place.photo ? [place.photo] : []).filter((p) => p && typeof p === 'object' && p.url)
@@ -246,7 +243,27 @@ export default defineConfig({
             heroes[place.id] = entry.webp.map((w) => (w === entry.w ? `/photos/${stem}.webp ${w}w` : `/photos/${stem}.${w}.webp ${w}w`)).join(', ')
           }
         }
-        writeFileSync(join(dist, 'heroes.json'), JSON.stringify(heroes))
+                // Place deep links (C1): one small file per place so the page renders without the 245 KB
+        // of region data or the 100 KB catalog. Same records the app already ships, unchanged.
+        const pd = join(dist, 'pd')
+        mkdirSync(pd, { recursive: true })
+        for (const name of ['places', 'eastside', 'la', 'sf', 'sd', 'vancouver', 'portland', 'nyc', 'palouse']) {
+          const data = JSON.parse(readFileSync(`src/content/${name}.json`, 'utf8'))
+          const list = (Array.isArray(data) ? data : Array.isArray(data.places) ? data.places : Object.values(data)) as { id?: string }[]
+          for (const place of list) {
+            if (!place || typeof place !== 'object' || !place.id || !/^[a-z0-9-]+$/.test(place.id)) continue
+            writeFileSync(join(pd, `${place.id}.json`), JSON.stringify({ place }))
+          }
+        }
+        // Hero srcsets ride in status.js so the photo starts with the first request wave (C1).
+        // 1 = the standard /photos/<id>.<w>.webp set at 200/400/720/960.
+        const compact: Record<string, string | 1> = {}
+        for (const [id, set] of Object.entries(heroes)) {
+          const standard = [200, 400, 720, 960].map((w) => `/photos/${id}.${w}.webp ${w}w`).join(', ')
+          compact[id] = set === standard ? 1 : set
+        }
+        const statusNow = readFileSync(statusPath, 'utf8')
+        writeFileSync(statusPath, statusNow.replace('/*HEROES*/{}', JSON.stringify(compact)))
       },
     },
     {
@@ -271,7 +288,11 @@ export default defineConfig({
       name: 'chunk-priority',
       transformIndexHtml: {
         order: 'post',
-        handler: (html) => html.replace(/<link rel="modulepreload" crossorigin href=/g, '<link rel="modulepreload" fetchpriority="low" crossorigin href='),
+        // The entry script yields too: every first paint (landing, Top 25, place hero) is static now.
+        handler: (html) =>
+          html
+            .replace(/<link rel="modulepreload" crossorigin href=/g, '<link rel="modulepreload" fetchpriority="low" crossorigin href=')
+            .replace(/<script type="module" crossorigin src=/g, '<script type="module" fetchpriority="low" crossorigin src='),
       },
     },
   ],

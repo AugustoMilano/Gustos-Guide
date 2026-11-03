@@ -1,0 +1,2540 @@
+{
+  "updatedAt": "2026-11-03",
+  "places": [
+    {
+      "id": "lilia-comedor",
+      "city": "portland",
+      "name": "Lilia Comedor",
+      "neighborhood": "Pearl District",
+      "address": "422 NW 8th Ave, Portland, OR 97209",
+      "lat": 45.5263161,
+      "lng": -122.6783128,
+      "cuisine": [
+        "New American",
+        "Pacific Northwestern"
+      ],
+      "placeType": "restaurant",
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "start": 1020,
+          "end": 1260
+        }
+      ],
+      "gustoScore": null,
+      "appleMapsUrl": "https://maps.apple.com/?daddr=45.5263161,-122.6783128&q=Lilia%20Comedor",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=12295051703892209323",
+      "guideSlugs": [
+        "pdx-pearl-district",
+        "pdx-new-american"
+      ],
+      "muid": "12295051703892209323",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-11-03",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting New American at Lilia Comedor",
+          "credit": "Illustration"
+        }
+      ],
+      "phone": "+1 (541) 900-5836",
+      "website": "https://www.liliapdx.com"
+    },
+    {
+      "id": "ken-s-artisan-bakery",
+      "city": "portland",
+      "name": "Ken's Artisan Bakery",
+      "neighborhood": "Nob Hill",
+      "address": "338 NW 21st Ave, Portland, OR 97209",
+      "lat": 45.5253877,
+      "lng": -122.6942074,
+      "cuisine": [
+        "Bakery",
+        "Cafe"
+      ],
+      "placeType": "bakery",
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "start": 480,
+          "end": 960
+        }
+      ],
+      "gustoScore": null,
+      "appleMapsUrl": "https://maps.apple.com/?daddr=45.5253877,-122.6942074&q=Ken's%20Artisan%20Bakery",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=15891128271979862352",
+      "guideSlugs": [],
+      "muid": "15891128271979862352",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-11-03",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Bakery at Ken's Artisan Bakery",
+          "credit": "Illustration"
+        }
+      ],
+      "phone": "+1 (503) 248-2202",
+      "website": "https://kensartisan.com"
+    },
+    {
+      "id": "le-pigeon",
+      "city": "portland",
+      "name": "Le Pigeon",
+      "neighborhood": "Lower Burnside",
+      "address": "738 E Burnside St, Portland, OR 97214",
+      "lat": 45.5227662,
+      "lng": -122.6578516,
+      "cuisine": [
+        "French",
+        "New American"
+      ],
+      "placeType": "restaurant",
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            0
+          ],
+          "start": 960,
+          "end": 1320
+        },
+        {
+          "days": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "start": 1020,
+          "end": 1320
+        }
+      ],
+      "gustoScore": null,
+      "appleMapsUrl": "https://maps.apple.com/?daddr=45.5227662,-122.6578516&q=Le%20Pigeon",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=13266707657248041117",
+      "guideSlugs": [
+        "pdx-new-american"
+      ],
+      "muid": "13266707657248041117",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-11-03",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting French at Le Pigeon",
+          "credit": "Illustration"
+        }
+      ],
+      "phone": "+1 (503) 546-8796",
+      "website": "https://www.lepigeon.com"
+    },
+    {
+      "id": "lechon",
+      "city": "portland",
+      "name": "LeChon",
+      "neighborhood": "Old Town-Chinatown",
+      "address": "113 SW Naito Pkwy, Portland, OR 97204",
+      "lat": 45.5212985,
+      "lng": -122.6708803,
+      "cuisine": [
+        "Small plates",
+        "Argentinian"
+      ],
+      "placeType": "restaurant",
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "start": 960,
+          "end": 1260
+        },
+        {
+          "days": [
+            5,
+            6
+          ],
+          "start": 960,
+          "end": 1320
+        }
+      ],
+      "gustoScore": null,
+      "appleMapsUrl": "https://maps.apple.com/?daddr=45.5212985,-122.6708803&q=LeChon",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=9159673742032977657",
+      "guideSlugs": [],
+      "muid": "9159673742032977657",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-11-03",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Small plates at LeChon",
+          "credit": "Illustration"
+        }
+      ],
+      "phone": "+1 (503) 219-9000",
+      "website": "http://www.lechonpdx.com"
+    },
+    {
+      "id": "kachka",
+      "city": "portland",
+      "name": "Kachka",
+      "neighborhood": "Southeast Warehouse District",
+      "address": "960 SE 11th Ave, Portland, OR 97214",
+      "lat": 45.5157397,
+      "lng": -122.654531,
+      "cuisine": [
+        "Russian",
+        "Cocktails"
+      ],
+      "placeType": "restaurant",
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "start": 660,
+          "end": 840
+        },
+        {
+          "days": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "start": 960,
+          "end": 1260
+        },
+        {
+          "days": [
+            5,
+            6
+          ],
+          "start": 660,
+          "end": 840
+        },
+        {
+          "days": [
+            5,
+            6
+          ],
+          "start": 960,
+          "end": 1320
+        }
+      ],
+      "gustoScore": null,
+      "appleMapsUrl": "https://maps.apple.com/?daddr=45.5157397,-122.654531&q=Kachka",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=8852593154763883613",
+      "guideSlugs": [],
+      "muid": "8852593154763883613",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-11-03",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Russian at Kachka",
+          "credit": "Illustration"
+        }
+      ],
+      "phone": "+1 (503) 235-0059",
+      "website": "https://www.kachkapdx.com/"
+    },
+    {
+      "id": "republica",
+      "city": "portland",
+      "name": "Republica",
+      "neighborhood": "Pearl District",
+      "address": "100 NW 10th Ave, Portland, OR 97209",
+      "lat": 45.5238467,
+      "lng": -122.6809412,
+      "cuisine": [
+        "Mexican"
+      ],
+      "placeType": "restaurant",
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            0
+          ],
+          "start": 600,
+          "end": 900
+        },
+        {
+          "days": [
+            4,
+            5,
+            6
+          ],
+          "start": 600,
+          "end": 900
+        }
+      ],
+      "gustoScore": null,
+      "appleMapsUrl": "https://maps.apple.com/?daddr=45.5238467,-122.6809412&q=Republica",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=10287164070689481658",
+      "guideSlugs": [
+        "pdx-pearl-district"
+      ],
+      "muid": "10287164070689481658",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-11-03",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Mexican at Republica",
+          "credit": "Illustration"
+        }
+      ],
+      "phone": "+1 (503) 984-5706",
+      "website": "https://mexico-forward.com"
+    },
+    {
+      "id": "andina",
+      "city": "portland",
+      "name": "Andina",
+      "neighborhood": "Pearl District",
+      "address": "1314 NW Glisan St, Portland, OR 97209",
+      "lat": 45.5263573,
+      "lng": -122.6845909,
+      "cuisine": [
+        "Peruvian",
+        "Wine"
+      ],
+      "placeType": "restaurant",
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "start": 1020,
+          "end": 1260
+        }
+      ],
+      "gustoScore": null,
+      "appleMapsUrl": "https://maps.apple.com/?daddr=45.5263573,-122.6845909&q=Andina",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=11123007842042683319",
+      "guideSlugs": [
+        "pdx-pearl-district"
+      ],
+      "muid": "11123007842042683319",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-11-03",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Peruvian at Andina",
+          "credit": "Illustration"
+        }
+      ],
+      "phone": "+1 (503) 228-9535",
+      "website": "https://www.andinarestaurant.com/"
+    },
+    {
+      "id": "jake-s-grill",
+      "city": "portland",
+      "name": "Jake's Grill",
+      "neighborhood": "Downtown",
+      "address": "611 SW 10th Ave, Portland, OR 97205",
+      "lat": 45.5205525,
+      "lng": -122.6820979,
+      "cuisine": [
+        "BBQ",
+        "Fine dining"
+      ],
+      "placeType": "restaurant",
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            0
+          ],
+          "start": 450,
+          "end": 1260
+        },
+        {
+          "days": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "start": 420,
+          "end": 1260
+        },
+        {
+          "days": [
+            5
+          ],
+          "start": 420,
+          "end": 1320
+        },
+        {
+          "days": [
+            6
+          ],
+          "start": 450,
+          "end": 1320
+        }
+      ],
+      "gustoScore": null,
+      "appleMapsUrl": "https://maps.apple.com/?daddr=45.5205525,-122.6820979&q=Jake's%20Grill",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=4540416631901434667",
+      "guideSlugs": [
+        "pdx-downtown"
+      ],
+      "muid": "4540416631901434667",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-11-03",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting BBQ at Jake's Grill",
+          "credit": "Illustration"
+        }
+      ],
+      "phone": "+1 (503) 220-1850",
+      "website": "https://www.jakesgrill.com/"
+    },
+    {
+      "id": "portland-city-grill",
+      "city": "portland",
+      "name": "Portland City Grill",
+      "neighborhood": "Downtown",
+      "address": "111 SW 5th Ave, FL 30, Portland, OR 97204",
+      "lat": 45.522661,
+      "lng": -122.6759684,
+      "cuisine": [
+        "New American",
+        "Steak"
+      ],
+      "placeType": "restaurant",
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            0,
+            1,
+            2
+          ],
+          "start": 960,
+          "end": 1260
+        },
+        {
+          "days": [
+            3
+          ],
+          "start": 690,
+          "end": 1260
+        },
+        {
+          "days": [
+            4,
+            5
+          ],
+          "start": 690,
+          "end": 1320
+        },
+        {
+          "days": [
+            6
+          ],
+          "start": 960,
+          "end": 1320
+        }
+      ],
+      "gustoScore": null,
+      "appleMapsUrl": "https://maps.apple.com/?daddr=45.522661,-122.6759684&q=Portland%20City%20Grill",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=3770656743609358254",
+      "guideSlugs": [
+        "pdx-downtown",
+        "pdx-new-american"
+      ],
+      "muid": "3770656743609358254",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-11-03",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting New American at Portland City Grill",
+          "credit": "Illustration"
+        }
+      ],
+      "phone": "+1 (503) 450-0030",
+      "website": "https://www.portlandcitygrill.com/"
+    },
+    {
+      "id": "elephants-delicatessen",
+      "city": "portland",
+      "name": "Elephants Delicatessen",
+      "neighborhood": "Portland",
+      "address": "115 NW 22nd Ave, Portland, OR 97210",
+      "lat": 45.5238651,
+      "lng": -122.6965516,
+      "cuisine": [
+        "Deli",
+        "Pizza"
+      ],
+      "placeType": "deli",
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [],
+      "gustoScore": null,
+      "appleMapsUrl": "https://maps.apple.com/?daddr=45.5238651,-122.6965516&q=Elephants%20Delicatessen",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=9843744514142069152",
+      "guideSlugs": [
+        "pdx-pizza"
+      ],
+      "muid": "9843744514142069152",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-11-03",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Deli at Elephants Delicatessen",
+          "credit": "Illustration"
+        }
+      ],
+      "phone": "+1 (503) 299-6304",
+      "website": "https://www.elephantsdeli.com/locations/nw-22nd/"
+    },
+    {
+      "id": "nimblefish",
+      "city": "portland",
+      "name": "Nimblefish",
+      "neighborhood": "Colonial Heights",
+      "address": "1524 SE 20th Ave, Portland, OR 97214",
+      "lat": 45.5118982,
+      "lng": -122.6450247,
+      "cuisine": [
+        "Sushi",
+        "Japanese"
+      ],
+      "placeType": "restaurant",
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "start": 1020,
+          "end": 1320
+        }
+      ],
+      "gustoScore": null,
+      "appleMapsUrl": "https://maps.apple.com/?daddr=45.5118982,-122.6450247&q=Nimblefish",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=12078530428039598919",
+      "guideSlugs": [],
+      "muid": "12078530428039598919",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-11-03",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Sushi at Nimblefish",
+          "credit": "Illustration"
+        }
+      ],
+      "phone": "+1 (503) 719-4064",
+      "website": "https://www.nimblefishpdx.com"
+    },
+    {
+      "id": "langbaan",
+      "city": "portland",
+      "name": "Langbaan",
+      "neighborhood": "Nob Hill",
+      "address": "1818 NW 23rd Pl, Portland, OR 97210",
+      "lat": 45.535777,
+      "lng": -122.6996949,
+      "cuisine": [
+        "Thai",
+        "Health food"
+      ],
+      "placeType": "restaurant",
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            0
+          ],
+          "start": 1020,
+          "end": 1185
+        },
+        {
+          "days": [
+            3,
+            4
+          ],
+          "start": 1020,
+          "end": 1185
+        },
+        {
+          "days": [
+            5,
+            6
+          ],
+          "start": 1050,
+          "end": 1215
+        }
+      ],
+      "gustoScore": null,
+      "appleMapsUrl": "https://maps.apple.com/?daddr=45.535777,-122.6996949&q=Langbaan",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=9644357589547853620",
+      "guideSlugs": [
+        "pdx-health-food"
+      ],
+      "muid": "9644357589547853620",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-11-03",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Thai at Langbaan",
+          "credit": "Illustration"
+        }
+      ],
+      "phone": "+1 (971) 344-2564",
+      "website": "https://www.langbaanportland.com"
+    },
+    {
+      "id": "urdaneta",
+      "city": "portland",
+      "name": "Urdaneta",
+      "neighborhood": "Alberta Arts District",
+      "address": "3033 NE Alberta St, Portland, OR 97211",
+      "lat": 45.5591169,
+      "lng": -122.6340983,
+      "cuisine": [
+        "Spanish",
+        "Small plates"
+      ],
+      "placeType": "restaurant",
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            0
+          ],
+          "start": 1020,
+          "end": 1320
+        },
+        {
+          "days": [
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "start": 1020,
+          "end": 1320
+        }
+      ],
+      "gustoScore": null,
+      "appleMapsUrl": "https://maps.apple.com/?daddr=45.5591169,-122.6340983&q=Urdaneta",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=6858148896689613585",
+      "guideSlugs": [],
+      "muid": "6858148896689613585",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-11-03",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Spanish at Urdaneta",
+          "credit": "Illustration"
+        }
+      ],
+      "phone": "+1 (503) 288-1990",
+      "website": "https://www.urdanetapdx.com"
+    },
+    {
+      "id": "kens-artisan-pizza",
+      "city": "portland",
+      "name": "Ken’s Artisan Pizza",
+      "neighborhood": "Kerns",
+      "address": "304 SE 28th Ave, Portland, OR 97214",
+      "lat": 45.5205863,
+      "lng": -122.6371408,
+      "cuisine": [
+        "Pizza"
+      ],
+      "placeType": "restaurant",
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            0
+          ],
+          "start": 990,
+          "end": 1260
+        },
+        {
+          "days": [
+            2,
+            3,
+            4
+          ],
+          "start": 1020,
+          "end": 1260
+        },
+        {
+          "days": [
+            5,
+            6
+          ],
+          "start": 1020,
+          "end": 1320
+        }
+      ],
+      "gustoScore": null,
+      "appleMapsUrl": "https://maps.apple.com/?daddr=45.5205863,-122.6371408&q=Ken’s%20Artisan%20Pizza",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=17531790366307368782",
+      "guideSlugs": [
+        "pdx-pizza"
+      ],
+      "muid": "17531790366307368782",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-11-03",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Pizza at Ken’s Artisan Pizza",
+          "credit": "Illustration"
+        }
+      ],
+      "phone": "+1 (503) 517-9951",
+      "website": "https://kensartisan.com"
+    },
+    {
+      "id": "pdx-sliders",
+      "city": "portland",
+      "name": "PDX Sliders",
+      "neighborhood": "Sellwood-Moreland",
+      "address": "1605 SE Bybee Blvd, Portland, OR 97202",
+      "lat": 45.473841,
+      "lng": -122.6497609,
+      "cuisine": [
+        "Burgers",
+        "Street food"
+      ],
+      "placeType": "restaurant",
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "start": 660,
+          "end": 1320
+        },
+        {
+          "days": [
+            4,
+            5,
+            6
+          ],
+          "start": 660,
+          "end": 1380
+        }
+      ],
+      "gustoScore": null,
+      "appleMapsUrl": "https://maps.apple.com/?daddr=45.473841,-122.6497609&q=PDX%20Sliders",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=6676928413480345993",
+      "guideSlugs": [],
+      "muid": "6676928413480345993",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-11-03",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Burgers at PDX Sliders",
+          "credit": "Illustration"
+        }
+      ],
+      "phone": "+1 (971) 717-5271",
+      "website": "http://www.pdxsliders.com"
+    },
+    {
+      "id": "taste-tickler",
+      "city": "portland",
+      "name": "Taste Tickler",
+      "neighborhood": "Broadway District",
+      "address": "1704 NE 14th Ave, Portland, OR 97212",
+      "lat": 45.5352001,
+      "lng": -122.6513742,
+      "cuisine": [
+        "Sandwiches",
+        "Korean"
+      ],
+      "placeType": "restaurant",
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "start": 660,
+          "end": 1140
+        }
+      ],
+      "gustoScore": null,
+      "appleMapsUrl": "https://maps.apple.com/?daddr=45.5352001,-122.6513742&q=Taste%20Tickler",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=1303837808594010845",
+      "guideSlugs": [],
+      "muid": "1303837808594010845",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-11-03",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Sandwiches at Taste Tickler",
+          "credit": "Illustration"
+        }
+      ],
+      "phone": "+1 (503) 282-3681",
+      "website": "https://taste-tickler.com"
+    },
+    {
+      "id": "olympia-provisions",
+      "city": "portland",
+      "name": "Olympia Provisions",
+      "neighborhood": "Southeast Warehouse District",
+      "address": "107 SE Washington St, Portland, OR 97214",
+      "lat": 45.5189776,
+      "lng": -122.6642418,
+      "cuisine": [
+        "Wine",
+        "New American"
+      ],
+      "placeType": "restaurant",
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            0
+          ],
+          "start": 600,
+          "end": 1260
+        },
+        {
+          "days": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "start": 660,
+          "end": 1260
+        },
+        {
+          "days": [
+            5
+          ],
+          "start": 660,
+          "end": 1320
+        },
+        {
+          "days": [
+            6
+          ],
+          "start": 600,
+          "end": 1320
+        }
+      ],
+      "gustoScore": null,
+      "appleMapsUrl": "https://maps.apple.com/?daddr=45.5189776,-122.6642418&q=Olympia%20Provisions",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=10421262631200498125",
+      "guideSlugs": [
+        "pdx-new-american"
+      ],
+      "muid": "10421262631200498125",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-11-03",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Wine at Olympia Provisions",
+          "credit": "Illustration"
+        }
+      ],
+      "phone": "+1 (503) 954-3663",
+      "website": "https://www.olympiaprovisions.com/pages/olympia-provisions-southeast"
+    },
+    {
+      "id": "mediterranean-exploration-company",
+      "city": "portland",
+      "name": "Mediterranean Exploration Company",
+      "neighborhood": "Pearl District",
+      "address": "333 NW 13th Ave, Portland, OR 97209",
+      "lat": 45.5255738,
+      "lng": -122.6844973,
+      "cuisine": [
+        "Mediterranean"
+      ],
+      "placeType": "restaurant",
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            0
+          ],
+          "start": 960,
+          "end": 1260
+        },
+        {
+          "days": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "start": 960,
+          "end": 1320
+        }
+      ],
+      "gustoScore": null,
+      "appleMapsUrl": "https://maps.apple.com/?daddr=45.5255738,-122.6844973&q=Mediterranean%20Exploration%20Company",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=13016648021767125641",
+      "guideSlugs": [
+        "pdx-pearl-district"
+      ],
+      "muid": "13016648021767125641",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-11-03",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Mediterranean at Mediterranean Exploration Company",
+          "credit": "Illustration"
+        }
+      ],
+      "phone": "+1 (503) 222-0906",
+      "website": "https://www.sesamecollective.com/mec"
+    },
+    {
+      "id": "eem",
+      "city": "portland",
+      "name": "EEM",
+      "neighborhood": "Boise",
+      "address": "3808 N Williams Ave, Unit 127, Portland, OR 97227",
+      "lat": 45.5506615,
+      "lng": -122.6664804,
+      "cuisine": [
+        "Thai",
+        "BBQ"
+      ],
+      "placeType": "restaurant",
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "start": 660,
+          "end": 1260
+        },
+        {
+          "days": [
+            5,
+            6
+          ],
+          "start": 660,
+          "end": 1320
+        }
+      ],
+      "gustoScore": null,
+      "appleMapsUrl": "https://maps.apple.com/?daddr=45.5506615,-122.6664804&q=EEM",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=1258987577735118436",
+      "guideSlugs": [],
+      "muid": "1258987577735118436",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-11-03",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Thai at EEM",
+          "credit": "Illustration"
+        }
+      ],
+      "phone": "+1 (971) 295-1645",
+      "website": "https://www.eempdx.com/"
+    },
+    {
+      "id": "salty-s",
+      "city": "portland",
+      "name": "Salty's",
+      "neighborhood": "Portland",
+      "address": "3839 NE Marine Dr, Portland, OR 97211",
+      "lat": 45.6008839,
+      "lng": -122.6245826,
+      "cuisine": [
+        "Seafood",
+        "Steak"
+      ],
+      "placeType": "restaurant",
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            0
+          ],
+          "start": 540,
+          "end": 810
+        },
+        {
+          "days": [
+            0
+          ],
+          "start": 960,
+          "end": 1200
+        },
+        {
+          "days": [
+            1
+          ],
+          "start": 960,
+          "end": 1230
+        },
+        {
+          "days": [
+            2,
+            3,
+            4
+          ],
+          "start": 720,
+          "end": 1230
+        },
+        {
+          "days": [
+            5
+          ],
+          "start": 720,
+          "end": 1260
+        },
+        {
+          "days": [
+            6
+          ],
+          "start": 660,
+          "end": 1260
+        }
+      ],
+      "gustoScore": null,
+      "appleMapsUrl": "https://maps.apple.com/?daddr=45.6008839,-122.6245826&q=Salty's",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=11600741822171227389",
+      "guideSlugs": [],
+      "muid": "11600741822171227389",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-11-03",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Seafood at Salty's",
+          "credit": "Illustration"
+        }
+      ],
+      "phone": "+1 (503) 288-4444",
+      "website": "https://www.saltys.com/portland/"
+    },
+    {
+      "id": "deschutes-brewery",
+      "city": "portland",
+      "name": "Deschutes Brewery",
+      "neighborhood": "Pearl District",
+      "address": "210 NW 11th Ave, Portland, OR 97209",
+      "lat": 45.5245477,
+      "lng": -122.6819015,
+      "cuisine": [
+        "Brewery",
+        "Pub"
+      ],
+      "placeType": "restaurant",
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            0
+          ],
+          "start": 660,
+          "end": 1260
+        },
+        {
+          "days": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "start": 690,
+          "end": 1260
+        },
+        {
+          "days": [
+            5
+          ],
+          "start": 690,
+          "end": 1320
+        },
+        {
+          "days": [
+            6
+          ],
+          "start": 660,
+          "end": 1320
+        }
+      ],
+      "gustoScore": null,
+      "appleMapsUrl": "https://maps.apple.com/?daddr=45.5245477,-122.6819015&q=Deschutes%20Brewery",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=13140395182774290328",
+      "guideSlugs": [
+        "pdx-pearl-district"
+      ],
+      "muid": "13140395182774290328",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-11-03",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Brewery at Deschutes Brewery",
+          "credit": "Illustration"
+        }
+      ],
+      "phone": "+1 (503) 296-4906",
+      "website": "https://www.deschutesbrewery.com/visit-us/portland-public-house/"
+    },
+    {
+      "id": "jacqueline",
+      "city": "portland",
+      "name": "Jacqueline",
+      "neighborhood": "Hosford-Abernethy",
+      "address": "2500 SE Clinton St, Portland, OR 97202",
+      "lat": 45.5031963,
+      "lng": -122.6402682,
+      "cuisine": [
+        "Seafood"
+      ],
+      "placeType": "restaurant",
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "start": 1020,
+          "end": 1260
+        }
+      ],
+      "gustoScore": null,
+      "appleMapsUrl": "https://maps.apple.com/?daddr=45.5031963,-122.6402682&q=Jacqueline",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=18287004260203738015",
+      "guideSlugs": [],
+      "muid": "18287004260203738015",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-11-03",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Seafood at Jacqueline",
+          "credit": "Illustration"
+        }
+      ],
+      "phone": "+1 (503) 327-8637",
+      "website": "https://jacquelinepdx.com"
+    },
+    {
+      "id": "lovely-s-fifty-fifty",
+      "city": "portland",
+      "name": "Lovely's Fifty Fifty",
+      "neighborhood": "Mississippi",
+      "address": "4039 N Mississippi Ave, Ste 101, Portland, OR 97217",
+      "lat": 45.5528934,
+      "lng": -122.6758504,
+      "cuisine": [
+        "Pizza",
+        "Dessert"
+      ],
+      "placeType": "dessert",
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "start": 1020,
+          "end": 1320
+        }
+      ],
+      "gustoScore": null,
+      "appleMapsUrl": "https://maps.apple.com/?daddr=45.5528934,-122.6758504&q=Lovely's%20Fifty%20Fifty",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=2859200553955373906",
+      "guideSlugs": [
+        "pdx-pizza"
+      ],
+      "muid": "2859200553955373906",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-11-03",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Pizza at Lovely's Fifty Fifty",
+          "credit": "Illustration"
+        }
+      ],
+      "phone": "+1 (503) 281-4060",
+      "website": "https://www.lovelys5050.com"
+    },
+    {
+      "id": "bellpine",
+      "city": "portland",
+      "name": "Bellpine",
+      "neighborhood": "Downtown",
+      "address": "900 SW Washington St, Portland, OR 97205",
+      "lat": 45.5210781,
+      "lng": -122.680838,
+      "cuisine": [
+        "New American"
+      ],
+      "placeType": "restaurant",
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "start": 420,
+          "end": 1320
+        },
+        {
+          "days": [
+            5,
+            6
+          ],
+          "start": 420,
+          "end": 1380
+        }
+      ],
+      "gustoScore": null,
+      "appleMapsUrl": "https://maps.apple.com/?daddr=45.5210781,-122.680838&q=Bellpine",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=16424289263118996481",
+      "guideSlugs": [
+        "pdx-downtown",
+        "pdx-new-american"
+      ],
+      "muid": "16424289263118996481",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-11-03",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting New American at Bellpine",
+          "credit": "Illustration"
+        }
+      ],
+      "phone": "+1 (971) 900-4442",
+      "website": "https://www.bellpinepdx.com/"
+    },
+    {
+      "id": "kann",
+      "city": "portland",
+      "name": "kann",
+      "neighborhood": "East Burnside",
+      "address": "548 SE Ash St, Portland, OR 97214",
+      "lat": 45.5213324,
+      "lng": -122.659901,
+      "cuisine": [
+        "Haitian",
+        "Caribbean"
+      ],
+      "placeType": "restaurant",
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            0
+          ],
+          "start": 960,
+          "end": 1140
+        },
+        {
+          "days": [
+            3
+          ],
+          "start": 960,
+          "end": 1140
+        },
+        {
+          "days": [
+            4,
+            5,
+            6
+          ],
+          "start": 960,
+          "end": 1290
+        }
+      ],
+      "gustoScore": null,
+      "appleMapsUrl": "https://maps.apple.com/?daddr=45.5213324,-122.659901&q=kann",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=7221381082698316086",
+      "guideSlugs": [],
+      "muid": "7221381082698316086",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-11-03",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Haitian at kann",
+          "credit": "Illustration"
+        }
+      ],
+      "phone": "+1 (503) 702-0290",
+      "website": "https://kannrestaurant.com"
+    },
+    {
+      "id": "q-restaurant-bar",
+      "city": "portland",
+      "name": "Q Restaurant & Bar",
+      "neighborhood": "Downtown",
+      "address": "828 SW Second Ave, Portland, OR 97204",
+      "lat": 45.5167824,
+      "lng": -122.6749063,
+      "cuisine": [
+        "New American",
+        "Health food"
+      ],
+      "placeType": "restaurant",
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            2,
+            3,
+            4,
+            5
+          ],
+          "start": 690,
+          "end": 1260
+        },
+        {
+          "days": [
+            6
+          ],
+          "start": 960,
+          "end": 1260
+        }
+      ],
+      "gustoScore": null,
+      "appleMapsUrl": "https://maps.apple.com/?daddr=45.5167824,-122.6749063&q=Q%20Restaurant%20&%20Bar",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=11977983363656035479",
+      "guideSlugs": [
+        "pdx-downtown",
+        "pdx-new-american",
+        "pdx-health-food"
+      ],
+      "muid": "11977983363656035479",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-11-03",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting New American at Q Restaurant & Bar",
+          "credit": "Illustration"
+        }
+      ],
+      "phone": "+1 (503) 850-8915",
+      "website": "https://q-portland.com"
+    },
+    {
+      "id": "voodoo-doughnut-pdx",
+      "city": "portland",
+      "name": "Voodoo Doughnut",
+      "neighborhood": "Old Town-Chinatown",
+      "address": "22 SW 3rd Ave, Portland, OR 97204",
+      "lat": 45.5226483,
+      "lng": -122.6731427,
+      "cuisine": [
+        "Donuts",
+        "Bakery"
+      ],
+      "placeType": "dessert",
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "start": 360,
+          "end": 1440
+        }
+      ],
+      "gustoScore": null,
+      "appleMapsUrl": "https://maps.apple.com/?daddr=45.5226483,-122.6731427&q=Voodoo%20Doughnut",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=14138041420961450060",
+      "guideSlugs": [],
+      "muid": "14138041420961450060",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-11-03",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Donuts at Voodoo Doughnut",
+          "credit": "Illustration"
+        }
+      ],
+      "phone": "+1 (503) 241-4704",
+      "website": "https://www.voodoodoughnut.com"
+    },
+    {
+      "id": "el-gaucho-pdx",
+      "city": "portland",
+      "name": "El Gaucho",
+      "neighborhood": "Downtown",
+      "address": "319 SW Broadway, Portland, OR 97205",
+      "lat": 45.5215614,
+      "lng": -122.6785777,
+      "cuisine": [
+        "Steak"
+      ],
+      "placeType": "restaurant",
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            2,
+            3,
+            4
+          ],
+          "start": 990,
+          "end": 1320
+        },
+        {
+          "days": [
+            5,
+            6
+          ],
+          "start": 990,
+          "end": 1380
+        }
+      ],
+      "gustoScore": null,
+      "appleMapsUrl": "https://maps.apple.com/?daddr=45.5215614,-122.6785777&q=El%20Gaucho",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=3691023567733584127",
+      "guideSlugs": [
+        "pdx-downtown"
+      ],
+      "muid": "3691023567733584127",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-11-03",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Steak at El Gaucho",
+          "credit": "Illustration"
+        }
+      ],
+      "phone": "+1 (503) 227-8794",
+      "website": "https://elgaucho.com/portland/"
+    },
+    {
+      "id": "maurice",
+      "city": "portland",
+      "name": "MÅURICE",
+      "neighborhood": "Downtown",
+      "address": "921 SW Oak St, Portland, OR 97205",
+      "lat": 45.5227169,
+      "lng": -122.6804889,
+      "cuisine": [
+        "French",
+        "Dessert"
+      ],
+      "placeType": "dessert",
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            3,
+            4,
+            5,
+            6
+          ],
+          "start": 600,
+          "end": 960
+        }
+      ],
+      "gustoScore": null,
+      "appleMapsUrl": "https://maps.apple.com/?daddr=45.5227169,-122.6804889&q=MÅURICE",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=17352611501639059309",
+      "guideSlugs": [
+        "pdx-downtown"
+      ],
+      "muid": "17352611501639059309",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-11-03",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting French at MÅURICE",
+          "credit": "Illustration"
+        }
+      ],
+      "phone": "+1 (503) 208-4177",
+      "website": "http://mauricepdx.com/maison/"
+    },
+    {
+      "id": "terra-mae",
+      "city": "portland",
+      "name": "Terra Mae",
+      "neighborhood": "King",
+      "address": "1150 NE Alberta St, Portland, OR 97211",
+      "lat": 45.5588508,
+      "lng": -122.6541728,
+      "cuisine": [
+        "Cocktails",
+        "Japanese"
+      ],
+      "placeType": "restaurant",
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            2,
+            3,
+            4
+          ],
+          "start": 1020,
+          "end": 1260
+        },
+        {
+          "days": [
+            5,
+            6
+          ],
+          "start": 1020,
+          "end": 1320
+        }
+      ],
+      "gustoScore": null,
+      "appleMapsUrl": "https://maps.apple.com/?daddr=45.5588508,-122.6541728&q=Terra%20Mae",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=7929174789552378083",
+      "guideSlugs": [],
+      "muid": "7929174789552378083",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-11-03",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Cocktails at Terra Mae",
+          "credit": "Illustration"
+        }
+      ],
+      "phone": "+1 (503) 782-1611",
+      "website": "https://terramaepdx.com"
+    },
+    {
+      "id": "stumptown-coffee-roasters",
+      "city": "portland",
+      "name": "Stumptown Coffee Roasters",
+      "neighborhood": "Old Town-Chinatown",
+      "address": "128 SW Third Ave, Portland, OR 97204",
+      "lat": 45.5217833,
+      "lng": -122.6734518,
+      "cuisine": [
+        "Coffee",
+        "Cafe"
+      ],
+      "placeType": "cafe",
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "start": 420,
+          "end": 1020
+        }
+      ],
+      "gustoScore": null,
+      "appleMapsUrl": "https://maps.apple.com/?daddr=45.5217833,-122.6734518&q=Stumptown%20Coffee%20Roasters",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=12716123553800523399",
+      "guideSlugs": [],
+      "muid": "12716123553800523399",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-11-03",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Coffee at Stumptown Coffee Roasters",
+          "credit": "Illustration"
+        }
+      ],
+      "phone": "+1 (855) 711-3385",
+      "website": "https://www.stumptowncoffee.com/locations/portland/downtown"
+    },
+    {
+      "id": "coava-coffee-roasters",
+      "city": "portland",
+      "name": "Coava Coffee Roasters",
+      "neighborhood": "Southeast Warehouse District",
+      "address": "1300 SE Grand Ave, Unit A, Portland, OR 97214",
+      "lat": 45.513446,
+      "lng": -122.660439,
+      "cuisine": [
+        "Coffee",
+        "Cafe"
+      ],
+      "placeType": "cafe",
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            0
+          ],
+          "start": 420,
+          "end": 1080
+        },
+        {
+          "days": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "start": 360,
+          "end": 1080
+        },
+        {
+          "days": [
+            6
+          ],
+          "start": 420,
+          "end": 1080
+        }
+      ],
+      "gustoScore": null,
+      "appleMapsUrl": "https://maps.apple.com/?daddr=45.513446,-122.660439&q=Coava%20Coffee%20Roasters",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=3574528002939766542",
+      "guideSlugs": [],
+      "muid": "3574528002939766542",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-11-03",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Coffee at Coava Coffee Roasters",
+          "credit": "Illustration"
+        }
+      ],
+      "phone": "+1 (503) 894-8134",
+      "website": "https://coavacoffee.com"
+    },
+    {
+      "id": "ruse-brewing-crust-collective",
+      "city": "portland",
+      "name": "Ruse Brewing Crust Collective",
+      "neighborhood": "Nob Hill",
+      "address": "1505 NW 21st Ave, Portland, OR 97209",
+      "lat": 45.5335891,
+      "lng": -122.695033,
+      "cuisine": [
+        "Pizza",
+        "Health food"
+      ],
+      "placeType": "restaurant",
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "start": 690,
+          "end": 1260
+        },
+        {
+          "days": [
+            5,
+            6
+          ],
+          "start": 690,
+          "end": 1320
+        }
+      ],
+      "gustoScore": null,
+      "appleMapsUrl": "https://maps.apple.com/?daddr=45.5335891,-122.695033&q=Ruse%20Brewing%20Crust%20Collective",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=3766073023727131698",
+      "guideSlugs": [
+        "pdx-pizza",
+        "pdx-health-food"
+      ],
+      "muid": "3766073023727131698",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-11-03",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Pizza at Ruse Brewing Crust Collective",
+          "credit": "Illustration"
+        }
+      ],
+      "phone": "+1 (971) 888-5021",
+      "website": "https://www.crustcollective.com"
+    },
+    {
+      "id": "no-saint",
+      "city": "portland",
+      "name": "No Saint",
+      "neighborhood": "Vernon",
+      "address": "1603 NE Killingsworth St\nPortland, OR 97211\nUnited States",
+      "lat": 45.5629012,
+      "lng": -122.6488631,
+      "cuisine": [
+        "Pizza",
+        "Health food"
+      ],
+      "placeType": "restaurant",
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            0
+          ],
+          "start": 600,
+          "end": 840
+        },
+        {
+          "days": [
+            0
+          ],
+          "start": 1020,
+          "end": 1260
+        },
+        {
+          "days": [
+            3,
+            4,
+            5
+          ],
+          "start": 1020,
+          "end": 1260
+        },
+        {
+          "days": [
+            6
+          ],
+          "start": 600,
+          "end": 840
+        },
+        {
+          "days": [
+            6
+          ],
+          "start": 1020,
+          "end": 1260
+        }
+      ],
+      "gustoScore": null,
+      "appleMapsUrl": "https://maps.apple.com/?daddr=45.5629012,-122.6488631&q=No%20Saint",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=4118590969890160443",
+      "guideSlugs": [
+        "pdx-pizza",
+        "pdx-health-food"
+      ],
+      "muid": "4118590969890160443",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-11-03",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Pizza at No Saint",
+          "credit": "Illustration"
+        }
+      ],
+      "phone": "+1 (503) 206-8321",
+      "website": "https://www.nosaintpdx.com"
+    },
+    {
+      "id": "campana",
+      "city": "portland",
+      "name": "Campana",
+      "neighborhood": "Woodlawn",
+      "address": "901 NE Oneonta St, Portland, OR 97211",
+      "lat": 45.5720029,
+      "lng": -122.6567569,
+      "cuisine": [
+        "Italian",
+        "Pasta"
+      ],
+      "placeType": "restaurant",
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            0
+          ],
+          "start": 1020,
+          "end": 1260
+        },
+        {
+          "days": [
+            3,
+            4,
+            5,
+            6
+          ],
+          "start": 1020,
+          "end": 1260
+        }
+      ],
+      "gustoScore": null,
+      "appleMapsUrl": "https://maps.apple.com/?daddr=45.5720029,-122.6567569&q=Campana",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=3433260475372174700",
+      "guideSlugs": [],
+      "muid": "3433260475372174700",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-11-03",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Italian at Campana",
+          "credit": "Illustration"
+        }
+      ],
+      "phone": "+1 (503) 841-6195",
+      "website": "https://www.campanapdx.com"
+    },
+    {
+      "id": "screen-door",
+      "city": "portland",
+      "name": "Screen Door",
+      "neighborhood": "Kerns",
+      "address": "2337 E Burnside St, Portland, OR 97214",
+      "lat": 45.5229811,
+      "lng": -122.6416264,
+      "cuisine": [
+        "Southern",
+        "Brunch"
+      ],
+      "placeType": "restaurant",
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "start": 510,
+          "end": 840
+        },
+        {
+          "days": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "start": 990,
+          "end": 1260
+        }
+      ],
+      "gustoScore": null,
+      "appleMapsUrl": "https://maps.apple.com/?daddr=45.5229811,-122.6416264&q=Screen%20Door",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=12945593517349032593",
+      "guideSlugs": [],
+      "muid": "12945593517349032593",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-11-03",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Southern at Screen Door",
+          "credit": "Illustration"
+        }
+      ],
+      "phone": "+1 (503) 542-0880",
+      "website": "https://screendoorrestaurant.com"
+    },
+    {
+      "id": "nostrana",
+      "city": "portland",
+      "name": "Nostrana",
+      "neighborhood": "Buckman",
+      "address": "1401 SE Morrison St, Unit 101, Portland, OR 97214",
+      "lat": 45.5176343,
+      "lng": -122.6514188,
+      "cuisine": [
+        "Italian",
+        "Wine"
+      ],
+      "placeType": "restaurant",
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "start": 1020,
+          "end": 1260
+        },
+        {
+          "days": [
+            5,
+            6
+          ],
+          "start": 990,
+          "end": 1320
+        }
+      ],
+      "gustoScore": null,
+      "appleMapsUrl": "https://maps.apple.com/?daddr=45.5176343,-122.6514188&q=Nostrana",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=15522795026117533140",
+      "guideSlugs": [],
+      "muid": "15522795026117533140",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-11-03",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Italian at Nostrana",
+          "credit": "Illustration"
+        }
+      ],
+      "phone": "+1 (503) 234-2427",
+      "website": "https://nostrana.com"
+    },
+    {
+      "id": "mothers-bistro-bar",
+      "city": "portland",
+      "name": "Mother’s Bistro & Bar",
+      "neighborhood": "Downtown",
+      "address": "121 SW Third Ave, Portland, OR 97204",
+      "lat": 45.5219535,
+      "lng": -122.6736812,
+      "cuisine": [
+        "Brunch",
+        "French"
+      ],
+      "placeType": "restaurant",
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            0
+          ],
+          "start": 540,
+          "end": 840
+        },
+        {
+          "days": [
+            2
+          ],
+          "start": 1020,
+          "end": 1260
+        },
+        {
+          "days": [
+            3,
+            4
+          ],
+          "start": 540,
+          "end": 840
+        },
+        {
+          "days": [
+            3,
+            4
+          ],
+          "start": 1020,
+          "end": 1260
+        },
+        {
+          "days": [
+            5,
+            6
+          ],
+          "start": 540,
+          "end": 840
+        },
+        {
+          "days": [
+            5,
+            6
+          ],
+          "start": 1020,
+          "end": 1320
+        }
+      ],
+      "gustoScore": null,
+      "appleMapsUrl": "https://maps.apple.com/?daddr=45.5219535,-122.6736812&q=Mother’s%20Bistro%20&%20Bar",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=10365772272670531060",
+      "guideSlugs": [
+        "pdx-downtown"
+      ],
+      "muid": "10365772272670531060",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-11-03",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Brunch at Mother’s Bistro & Bar",
+          "credit": "Illustration"
+        }
+      ],
+      "phone": "+1 (503) 464-1122",
+      "website": "https://www.mothersbistro.com/"
+    }
+  ],
+  "guides": [
+    {
+      "slug": "pdx-downtown",
+      "title": "Downtown",
+      "dek": "",
+      "group": "Neighborhoods",
+      "intro": "",
+      "updatedAt": "2026-11-03",
+      "ranked": false,
+      "city": "portland",
+      "entries": [
+        {
+          "placeId": "jake-s-grill",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "portland-city-grill",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "bellpine",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "q-restaurant-bar",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "el-gaucho-pdx",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "maurice",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "mothers-bistro-bar",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        }
+      ],
+      "pinned": true
+    },
+    {
+      "slug": "pdx-pearl-district",
+      "title": "Pearl District",
+      "dek": "",
+      "group": "Neighborhoods",
+      "intro": "",
+      "updatedAt": "2026-11-03",
+      "ranked": false,
+      "city": "portland",
+      "entries": [
+        {
+          "placeId": "lilia-comedor",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "republica",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "andina",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "mediterranean-exploration-company",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "deschutes-brewery",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        }
+      ],
+      "pinned": true
+    },
+    {
+      "slug": "pdx-new-american",
+      "title": "New American",
+      "dek": "",
+      "group": "Cuisine",
+      "intro": "",
+      "updatedAt": "2026-11-03",
+      "ranked": false,
+      "city": "portland",
+      "entries": [
+        {
+          "placeId": "lilia-comedor",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "le-pigeon",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "portland-city-grill",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "olympia-provisions",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "bellpine",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "q-restaurant-bar",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        }
+      ],
+      "pinned": true
+    },
+    {
+      "slug": "pdx-pizza",
+      "title": "Pizza",
+      "dek": "",
+      "group": "Cuisine",
+      "intro": "",
+      "updatedAt": "2026-11-03",
+      "ranked": false,
+      "city": "portland",
+      "entries": [
+        {
+          "placeId": "elephants-delicatessen",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "kens-artisan-pizza",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "lovely-s-fifty-fifty",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "ruse-brewing-crust-collective",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "no-saint",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        }
+      ],
+      "pinned": true
+    },
+    {
+      "slug": "pdx-health-food",
+      "title": "Health food",
+      "dek": "",
+      "group": "Cuisine",
+      "intro": "",
+      "updatedAt": "2026-11-03",
+      "ranked": false,
+      "city": "portland",
+      "entries": [
+        {
+          "placeId": "langbaan",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "q-restaurant-bar",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "ruse-brewing-crust-collective",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "no-saint",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        }
+      ],
+      "pinned": true
+    }
+  ]
+}

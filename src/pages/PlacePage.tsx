@@ -1,10 +1,10 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useMemo, useState, useSyncExternalStore } from 'react'
 import { useReducedMotion } from 'framer-motion'
 import { Link, Navigate, useParams } from 'react-router-dom'
 import { PlaceGallery } from '../components/PlaceGallery.tsx'
 import { PlaceThumb } from '../components/PlaceThumb.tsx'
 import { SignInSheet } from '../components/SignInSheet.tsx'
-import { catalog, loadPlace, slimById } from '../content/load.ts'
+import { bootPlace, catalog, catalogPhase, loadPlace, slimById, subscribeCatalog } from '../content/load.ts'
 import { areaTitle, cityPath } from '../lib/city.ts'
 import { placeCity, placesForCity, useCityId } from '../lib/use-city.ts'
 import { demoFriendsEnabled } from '../lib/demo.ts'
@@ -25,23 +25,33 @@ import { usePageMeta } from '../lib/meta.ts'
 import { originCanonical } from '../lib/site.ts'
 import { howToGetIn } from '../lib/visit.ts'
 import { useApp } from '../state/AppState.tsx'
+import { readRecentPlaces, rememberPlace } from '../lib/recent-places.ts'
 import type { Place } from '../types.ts'
 
 export function PlacePage() {
   const { slug = '' } = useParams()
   const urlCity = useCityId()
   const app = useApp()
+  // Re-render when the deferred catalog lands so guides, awards and nearby places fill in.
+  useSyncExternalStore(subscribeCatalog, catalogPhase, catalogPhase)
   const slim = slimById(slug)
-  const [full, setFull] = useState<Place | null>(null)
+  const [full, setFull] = useState<Place | null>(() => bootPlace(slug) ?? null)
   const [active, setActive] = useState(0)
   const [error, setError] = useState('')
   const [signIn, setSignIn] = useState(false)
   const [busy, setBusy] = useState(false)
   const reduceMotion = useReducedMotion()
 
+  // index.html may have painted this place's hero before the app (C1); React's gallery has replaced it.
+  useEffect(() => {
+    const root = document.documentElement
+    if (root.dataset.prerender === 'place') delete root.dataset.prerender
+    delete root.dataset.preRegion
+  }, [])
+
   useEffect(() => {
     let cancelled = false
-    setFull(null)
+    setFull(bootPlace(slug) ?? null)
     setActive(0)
     void loadPlace(slug).then((next) => {
       if (!cancelled && next) setFull(next)
@@ -72,14 +82,39 @@ export function PlacePage() {
       .map((row) => row.item)
   }, [place])
 
+  useEffect(() => {
+    if (place) rememberPlace(place.id)
+  }, [place])
+
   if (place && placeCity(place) !== urlCity) {
     return <Navigate to={cityPath(`/place/${place.id}`, placeCity(place))} replace />
   }
 
   if (!place) {
+    // Offline, an unopened place has nothing to show yet; point at the ones saved on this device (C4).
+    const offline = typeof navigator !== 'undefined' && !navigator.onLine
+    const saved = offline ? readRecentPlaces().map((id) => slimById(id) ?? null).filter((item) => item !== null).slice(0, 8) : []
     return (
-      <main id="main" tabIndex={-1} className="mx-auto max-w-3xl px-4 pt-28 outline-none">
-        <h1 className="font-serif text-5xl italic">That place is not on the list.</h1>
+      <main id="main" tabIndex={-1} className="mx-auto min-h-dvh max-w-3xl px-4 pt-28 outline-none">
+        <h1 className="font-serif text-5xl italic">{offline ? 'This place needs a connection.' : 'That place is not on the list.'}</h1>
+        {offline ? <p className="mt-3 max-w-xl">You are offline, and this place was not opened on this device yet.</p> : null}
+        {saved.length ? (
+          <section className="mt-6" aria-label="Opened on this device">
+            <h2 className="font-serif text-3xl italic">Opened on this device</h2>
+            <ul className="mt-3 grid gap-2">
+              {saved.map((item) => (
+                <li key={item.id}>
+                  <Link className="smart-hit" to={cityPath(`/place/${item.id}`, placeCity(item))}>
+                    <span className="min-w-0">
+                      <span className="block truncate font-serif text-2xl italic leading-tight">{item.name}</span>
+                      <span className="mt-1 block truncate text-sm">{item.neighborhood}</span>
+                    </span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </section>
+        ) : null}
         <Link to={cityPath('/search')} className="btn mt-6">Search</Link>
       </main>
     )

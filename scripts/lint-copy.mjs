@@ -298,7 +298,9 @@ function fromFiles() {
   const eastside = JSON.parse(readFileSync(join(root, 'src/content/eastside.json'), 'utf8'))
   const la = JSON.parse(readFileSync(join(root, 'src/content/la.json'), 'utf8'))
   const sf = JSON.parse(readFileSync(join(root, 'src/content/sf.json'), 'utf8'))
-  const sd = JSON.parse(readFileSync(join(root, 'src/content/sd.json'), 'utf8'))
+  const sdBase = JSON.parse(readFileSync(join(root, 'src/content/sd.json'), 'utf8'))
+  const added = ['vancouver', 'portland', 'nyc', 'palouse'].map((name) => JSON.parse(readFileSync(join(root, `src/content/${name}.json`), 'utf8')))
+  const sd = { places: [...sdBase.places, ...added.flatMap((file) => file.places)], guides: [...sdBase.guides, ...added.flatMap((file) => file.guides)] }
   const dive = new Set(
     guides.find((guide) => guide.slug === 'fun-dive-bars')?.entries.map((entry) => entry.blurb) ?? [],
   )

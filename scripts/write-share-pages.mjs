@@ -11,6 +11,12 @@ const eastside = JSON.parse(readFileSync(join(root, 'src/content/eastside.json')
 const la = JSON.parse(readFileSync(join(root, 'src/content/la.json'), 'utf8'))
 const sf = JSON.parse(readFileSync(join(root, 'src/content/sf.json'), 'utf8'))
 const sd = JSON.parse(readFileSync(join(root, 'src/content/sd.json'), 'utf8'))
+const added = [
+  ['vancouver', 'vancouver', 'A Vancouver guide.'],
+  ['portland', 'portland', 'A Portland guide.'],
+  ['nyc', 'nyc', 'A New York guide.'],
+  ['palouse', 'pullman', 'A Pullman and Moscow guide.'],
+].map(([name, city, fallback]) => ({ city, fallback, ...JSON.parse(readFileSync(join(root, `src/content/${name}.json`), 'utf8')) }))
 
 function escapeHtml(value) {
   return String(value)
@@ -97,6 +103,7 @@ for (const place of eastside.places) fullPlaces[place.id] = place
 for (const place of la.places) fullPlaces[place.id] = place
 for (const place of sf.places) fullPlaces[place.id] = place
 for (const place of sd.places) fullPlaces[place.id] = place
+for (const file of added) for (const place of file.places) fullPlaces[place.id] = place
 
 function catalogImage(place) {
   const lead = place?.photos?.find((photo) => (photo.source === 'wikimedia' || photo.source === 'flickr') && photo.url)
@@ -263,4 +270,63 @@ for (const guide of sd.guides) {
   }))
 }
 
-console.log(`share pages ${index.places.length + eastside.places.length + la.places.length + sf.places.length + sd.places.length} places, ${guides.length + eastside.guides.length + la.guides.length + sf.guides.length + sd.guides.length} guides, ${withPhoto} using an owner photo, ${places.size} known`)
+for (const file of added) {
+  for (const place of file.places) {
+    const image = photos.get(place.id) || catalogImage(place)
+    if (photos.has(place.id)) withPhoto += 1
+    const dir = join(shareRoot, 'place', place.id)
+    mkdirSync(dir, { recursive: true })
+    writeFileSync(join(dir, 'index.html'), page({
+      title: `${place.name} · Gusto's Guide`,
+      description: place.oneLiner || `${place.name} in ${place.neighborhood}.`,
+      image,
+      imageAlt: place.photos?.[0]?.alt || place.name,
+      sharePath: `/share/place/${place.id}/`,
+      hashPath: `/${place.city || file.city}/place/${place.id}`,
+    }))
+  }
+  for (const guide of file.guides) {
+    const first = guide.entries.map((entry) => photos.get(entry.placeId)).find(Boolean)
+    const image = first || `${site}/og/guides/${guide.slug}.png`
+    if (first) withPhoto += 1
+    const dir = join(shareRoot, 'guide', guide.slug)
+    mkdirSync(dir, { recursive: true })
+    writeFileSync(join(dir, 'index.html'), page({
+      title: `${guide.title} · Gusto's Guide`,
+      description: guide.dek || file.fallback,
+      image,
+      imageAlt: guide.title,
+      sharePath: `/share/guide/${guide.slug}/`,
+      hashPath: `/${guide.city || file.city}/guide/${guide.slug}`,
+    }))
+  }
+}
+
+// City and Top 25 share pages (C5). No place names on these cards, so nothing excluded can appear.
+const CITY_SHARE = [
+  ['seattle', 'Seattle', 'Seattle, Bellevue, Kirkland, and Redmond'],
+  ['la', 'Los Angeles', 'Santa Monica, West Hollywood, Beverly Hills, and Venice'],
+  ['sf', 'San Francisco', 'San Francisco, the East Bay, the Peninsula, and the North Bay'],
+  ['sandiego', 'San Diego', 'San Diego, La Jolla, Coronado, and Oceanside'],
+  ['vancouver', 'Vancouver', 'Downtown, Coal Harbour, Gastown, and Granville Island'],
+  ['portland', 'Portland', 'Downtown, the Pearl District, Nob Hill, and Old Town'],
+  ['nyc', 'New York', 'Manhattan and Brooklyn'],
+  ['pullman', 'Pullman, WA', 'Pullman, WA and Moscow, ID'],
+]
+for (const [id, name, detail] of CITY_SHARE) {
+  for (const kind of ['city', 'top']) {
+    const dir = join(shareRoot, kind, id)
+    mkdirSync(dir, { recursive: true })
+    const top = kind === 'top'
+    writeFileSync(join(dir, 'index.html'), page({
+      title: top ? `Top 25 · ${name} · Gusto's Guide` : `${name} · Gusto's Guide`,
+      description: top ? `The Golden Fork list for ${name}, ranked by Augusto's exact Gusto's Score.` : `Where Augusto eats in ${detail}.`,
+      image: `${site}/og/${top ? 'top' : 'cities'}/${id}.png`,
+      imageAlt: top ? `Top 25 · ${name}` : name,
+      sharePath: `/share/${kind}/${id}/`,
+      hashPath: top ? `/${id}/top` : `/${id}`,
+    }))
+  }
+}
+
+console.log(`share pages ${index.places.length + eastside.places.length + la.places.length + sf.places.length + sd.places.length + added.reduce((n, file) => n + file.places.length, 0)} places, ${guides.length + eastside.guides.length + la.guides.length + sf.guides.length + sd.guides.length + added.reduce((n, file) => n + file.guides.length, 0)} guides, ${withPhoto} using an owner photo, ${places.size} known`)

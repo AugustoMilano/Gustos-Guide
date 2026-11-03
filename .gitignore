@@ -31,3 +31,5 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+/public/og/cities/*.png
+/public/og/top/*.png
