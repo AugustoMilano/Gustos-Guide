@@ -308,7 +308,7 @@ export function Header() {
         <button
           type="button"
           ref={bellMobile}
-          className="bell-btn glass-icon relative ml-auto inline-flex min-h-11 min-w-11 items-center justify-center px-2 xl:hidden"
+          className={`bell-btn glass-icon${unread ? ' has-unread' : ''} relative ml-auto inline-flex min-h-11 min-w-11 items-center justify-center px-2 xl:hidden`}
           aria-label={bellLabel}
           title={bellLabel}
           aria-expanded={bell}
