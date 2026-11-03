@@ -1,10 +1,10 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useMemo, useState, useSyncExternalStore } from 'react'
 import { useReducedMotion } from 'framer-motion'
 import { Link, Navigate, useParams } from 'react-router-dom'
 import { PlaceGallery } from '../components/PlaceGallery.tsx'
 import { PlaceThumb } from '../components/PlaceThumb.tsx'
 import { SignInSheet } from '../components/SignInSheet.tsx'
-import { catalog, loadPlace, slimById } from '../content/load.ts'
+import { bootPlace, catalog, catalogPhase, loadPlace, slimById, subscribeCatalog } from '../content/load.ts'
 import { areaTitle, cityPath } from '../lib/city.ts'
 import { placeCity, placesForCity, useCityId } from '../lib/use-city.ts'
 import { demoFriendsEnabled } from '../lib/demo.ts'
@@ -31,17 +31,26 @@ export function PlacePage() {
   const { slug = '' } = useParams()
   const urlCity = useCityId()
   const app = useApp()
+  // Re-render when the deferred catalog lands so guides, awards and nearby places fill in.
+  useSyncExternalStore(subscribeCatalog, catalogPhase, catalogPhase)
   const slim = slimById(slug)
-  const [full, setFull] = useState<Place | null>(null)
+  const [full, setFull] = useState<Place | null>(() => bootPlace(slug) ?? null)
   const [active, setActive] = useState(0)
   const [error, setError] = useState('')
   const [signIn, setSignIn] = useState(false)
   const [busy, setBusy] = useState(false)
   const reduceMotion = useReducedMotion()
 
+  // index.html may have painted this place's hero before the app (C1); React's gallery has replaced it.
+  useEffect(() => {
+    const root = document.documentElement
+    if (root.dataset.prerender === 'place') delete root.dataset.prerender
+    delete root.dataset.preRegion
+  }, [])
+
   useEffect(() => {
     let cancelled = false
-    setFull(null)
+    setFull(bootPlace(slug) ?? null)
     setActive(0)
     void loadPlace(slug).then((next) => {
       if (!cancelled && next) setFull(next)

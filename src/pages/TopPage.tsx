@@ -30,6 +30,7 @@ export function TopPage() {
   // index.html painted a static copy of this intro (fix77); React's identical markup has replaced it.
   useEffect(() => {
     if (document.documentElement.dataset.prerender === 'top') delete document.documentElement.dataset.prerender
+    delete document.documentElement.dataset.preRegion
   }, [])
   usePageMeta(
     `Top 25 · ${name} · Gusto's Guide`,

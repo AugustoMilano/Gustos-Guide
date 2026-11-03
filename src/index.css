@@ -5315,14 +5315,23 @@ html[data-pre-region='seattle'] .pre-top-r[data-r='seattle'],
 html[data-pre-region='la'] .pre-top-r[data-r='la'],
 html[data-pre-region='sf'] .pre-top-r[data-r='sf'],
 html[data-pre-region='sandiego'] .pre-top-r[data-r='sandiego'] { display: block; }
-html[data-prerender='top'][data-pre-region='la'], html[data-prerender='top'][data-pre-region='sandiego'] { --header-offset: 69px; }
-@media (max-width: 443px) { html[data-prerender='top'][data-pre-region='la'], html[data-prerender='top'][data-pre-region='sandiego'] { --header-offset: 119px; } }
-html[data-prerender='top'][data-pre-region='seattle'] { --header-offset: 77px; }
-@media (min-width: 1400px) and (max-width: 1405px) { html[data-prerender='top'][data-pre-region='seattle'] { --header-offset: 125px; } }
-@media (max-width: 663px) { html[data-prerender='top'][data-pre-region='seattle'] { --header-offset: 125px; } }
-@media (max-width: 639px) { html[data-prerender='top'][data-pre-region='seattle'] { --header-offset: 129px; } }
-@media (max-width: 413px) { html[data-prerender='top'][data-pre-region='seattle'] { --header-offset: 178px; } }
-html[data-prerender='top'][data-pre-region='sf'] { --header-offset: 125px; }
-@media (min-width: 966px) and (max-width: 1279px) { html[data-prerender='top'][data-pre-region='sf'] { --header-offset: 77px; } }
-@media (max-width: 639px) { html[data-prerender='top'][data-pre-region='sf'] { --header-offset: 129px; } }
-@media (max-width: 457px) { html[data-prerender='top'][data-pre-region='sf'] { --header-offset: 178px; } }
+html[data-prerender][data-pre-region='la'], html[data-prerender][data-pre-region='sandiego'] { --header-offset: 69px; }
+@media (max-width: 443px) { html[data-prerender][data-pre-region='la'], html[data-prerender][data-pre-region='sandiego'] { --header-offset: 119px; } }
+html[data-prerender][data-pre-region='seattle'] { --header-offset: 77px; }
+@media (min-width: 1400px) and (max-width: 1405px) { html[data-prerender][data-pre-region='seattle'] { --header-offset: 125px; } }
+@media (max-width: 663px) { html[data-prerender][data-pre-region='seattle'] { --header-offset: 125px; } }
+@media (max-width: 639px) { html[data-prerender][data-pre-region='seattle'] { --header-offset: 129px; } }
+@media (max-width: 413px) { html[data-prerender][data-pre-region='seattle'] { --header-offset: 178px; } }
+html[data-prerender][data-pre-region='sf'] { --header-offset: 125px; }
+@media (min-width: 966px) and (max-width: 1279px) { html[data-prerender][data-pre-region='sf'] { --header-offset: 77px; } }
+@media (max-width: 639px) { html[data-prerender][data-pre-region='sf'] { --header-offset: 129px; } }
+@media (max-width: 457px) { html[data-prerender][data-pre-region='sf'] { --header-offset: 178px; } }
+
+/* Static place hero (C1): status.js fills the photo once the place's own record lands, so the
+   largest paint does not wait for the app. Same boxes as PlaceGallery > PhotoFrame. */
+main.pre-place { display: none; }
+html[data-prerender='place'] main.pre-place { display: block; padding-top: calc(var(--header-offset) + 1rem); }
+/* LCP sizes the app's gallery image a hair larger than this static copy (paint-rect snapping), so
+   the later React paint of the same photo would be reported instead of this first one. One extra CSS
+   pixel of width, inside the frame's 2px border, keeps the first, real paint as the measured one. */
+main.pre-place .photo-frame:not(.is-compact) img.pre-place-img { width: calc(100% + 1px); max-width: none; margin-right: -1px; }

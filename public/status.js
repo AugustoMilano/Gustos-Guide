@@ -30,6 +30,8 @@
   // Deep links to heavy routes: fetch their chunks alongside the entry bundle (list stamped at build).
   var routes = /*ROUTE_PRELOADS*/{}
   var bare = path.replace(/^\/(seattle|eastside|la|sf|eastbay|peninsula|northbay|sandiego)(?=\/|$)/, '') || '/'
+  // Place deep links skip chunk preloads: the static hero is the first paint there, and its photo
+  // needs the bandwidth more than code the app fetches a moment later anyway (C1).
   var want = bare === '/top' ? routes.top : null
   if (want) {
     for (var j = 0; j < want.length; j++) {
@@ -39,21 +41,63 @@
       document.head.appendChild(link)
     }
   }
-  // Place deep links: preload the hero photo (same srcset and sizes as PhotoFrame) in parallel
-  // with the app instead of after the catalog. Only a hint; the page still picks its own photo.
+  // Place deep links (C1): fetch the place's own small record so the page renders before the
+  // catalog and region data, and preload its hero photo the moment the record lands.
   var placeId = bare.indexOf('/place/') === 0 ? bare.slice(7).split('/')[0] : ''
-  if (placeId && window.fetch) {
-    fetch('/heroes.json', { credentials: 'same-origin' }).then(function (r) { return r.ok ? r.json() : {} }).then(function (map) {
-      var set = map[decodeURIComponent(placeId)]
-      if (!set) return
+  var catalogHref = /*CATALOG*/''
+  if (catalogHref && !placeId) {
+    var pre = document.createElement('link')
+    pre.rel = 'preload'
+    pre.as = 'fetch'
+    pre.href = catalogHref
+    pre.crossOrigin = 'anonymous'
+    pre.setAttribute('fetchpriority', 'low')
+    document.head.appendChild(pre)
+  }
+  if (placeId && window.fetch && /^[a-z0-9-]+$/.test(placeId)) {
+    var placeRegion = { la: 'la', sandiego: 'sandiego', sf: 'sf', eastbay: 'sf', peninsula: 'sf', northbay: 'sf' }[cityId] || 'seattle'
+    var root = document.documentElement
+    root.dataset.preRegion = placeRegion
+    root.dataset.header = placeRegion === 'la' || placeRegion === 'sandiego' ? 'single' : 'areas'
+    var heroes = /*HEROES*/{}
+    var hero = heroes[placeId] === 1 ? [200, 400, 720, 960].map(function (w) { return '/photos/' + placeId + '.' + w + '.webp ' + w + 'w' }).join(', ') : heroes[placeId]
+    if (hero) {
+      // Same srcset and sizes as PhotoFrame, so the page reuses this download.
       var hint = document.createElement('link')
       hint.rel = 'preload'
       hint.as = 'image'
       hint.type = 'image/webp'
-      hint.setAttribute('imagesrcset', set)
+      hint.setAttribute('imagesrcset', hero)
       hint.setAttribute('imagesizes', '(min-width: 1024px) 36rem, calc(100vw - 2rem)')
       hint.setAttribute('fetchpriority', 'high')
       document.head.appendChild(hint)
-    }).catch(function () {})
+      // Paint the hero from static HTML in the exact box the gallery will use; the app replaces it.
+      // Nothing sits above the photo on this route, so nothing can shift.
+      // DOMContentLoaded waits for the app's module script, so watch for the static markup instead.
+      var tries = 0
+      var showHero = function () {
+        var img = document.querySelector('.pre-place-img')
+        if (!img) {
+          if (++tries < 600 && !document.querySelector('#root [data-reactroot], #root > :not(.pre-landing):not(.pre-top):not(.pre-place)')) setTimeout(showHero, 16)
+          return
+        }
+        if (!document.querySelector('#root > main.pre-place')) return
+        img.setAttribute('sizes', '(min-width: 1024px) 37rem, calc(100vw - 1.5rem)')
+        img.setAttribute('srcset', hero)
+        root.dataset.prerender = 'place'
+      }
+      showHero()
+    }
+    var placeBoot = { id: placeId, done: false, value: null }
+    placeBoot.data = fetch('/pd/' + placeId + '.json', { credentials: 'same-origin' })
+      .then(function (r) { return r.ok ? r.json() : null })
+      .catch(function () { return null })
+      .then(function (file) {
+        var v = file && file.place ? file.place : null
+        placeBoot.value = v
+        placeBoot.done = true
+        return v
+      })
+    window.__placeBoot = placeBoot
   }
 })()
