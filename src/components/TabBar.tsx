@@ -97,16 +97,21 @@ export function TabBar() {
 
   if (hidden) return null
 
+  // Pointer position in the bar's own (unscaled) pixels, so the minimized scale never skews the lens.
+  const localX = (clientX: number) => {
+    const root = bar.current
+    if (!root) return 0
+    const rect = root.getBoundingClientRect()
+    const scale = rect.width / (root.clientWidth || rect.width) || 1
+    return (clientX - rect.left) / scale
+  }
   const indexAt = (clientX: number) => {
-    const rect = bar.current?.getBoundingClientRect()
-    if (!rect || !cell) return 0
-    return Math.max(0, Math.min(tabs.length - 1, Math.floor((clientX - rect.left - PAD) / cell)))
+    if (!cell) return 0
+    return Math.max(0, Math.min(tabs.length - 1, Math.floor((localX(clientX) - PAD) / cell)))
   }
   const follow = (clientX: number) => {
-    const rect = bar.current?.getBoundingClientRect()
-    if (!rect) return
-    const left = clientX - rect.left - cell / 2
-    x.set(Math.max(PAD - 4, Math.min(rect.width - PAD - cell + 4, left)))
+    const width = bar.current?.clientWidth ?? 0
+    x.set(Math.max(PAD, Math.min(width - PAD - cell, localX(clientX) - cell / 2)))
   }
 
   const onPointerDown = (event: PointerEvent<HTMLDivElement>) => {
