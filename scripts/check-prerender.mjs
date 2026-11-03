@@ -16,6 +16,23 @@ for (const text of ['Where are you eating?', 'Pick a city to open its guide.']) 
   if (!html.includes(text)) problems.push(`index.html no longer says "${text}"`)
 }
 if (regions.length !== (html.match(/class="city-card"/g) ?? []).length) problems.push('city count differs')
+// Top 25 intro copy (fix77): every sentence in TopPage must appear verbatim in the static shell.
+const top = readFileSync('src/pages/TopPage.tsx', 'utf8')
+const unesc = (s) => s.replace(/&#39;/g, "'")
+const topHtml = unesc(html)
+const topCopy = [...top.matchAll(/"([^"]*ranked by Augusto[^"]*)"/g)].map((m) => m[1])
+topCopy.push('Restaurants only, one per brand. Owner scores only; a place with no score stays off the list.', 'Golden Fork · 2026')
+if (topCopy.length !== 6) problems.push(`expected 4 Top intros, found ${topCopy.length - 2}`)
+for (const text of topCopy) {
+  if (!top.includes(text)) problems.push(`TopPage no longer says "${text}"`)
+  if (!topHtml.includes(text)) problems.push(`index.html Top shell missing "${text}"`)
+}
+for (const name of ['Seattle', 'Los Angeles', 'San Francisco', 'San Diego']) if (!topHtml.includes(`Top 25 · ${name}</h1>`)) problems.push(`Top shell missing ${name}`)
+const status = readFileSync('public/status.js', 'utf8')
+for (const t of [...city.matchAll(/return '([^']+)'/g)].map((m) => m[1]).filter((t) => /^[A-Z]/.test(t))) {
+  const js = t.replace('’', '\\u2019')
+  if (!status.includes(`'${js}'`)) problems.push(`status.js missing area title ${t}`)
+}
 if (problems.length) {
   console.error('prerender drift:\n' + problems.join('\n'))
   process.exit(1)

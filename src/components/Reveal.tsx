@@ -1,4 +1,4 @@
-import { motion, useReducedMotion } from 'framer-motion'
+import { m, useReducedMotion } from 'framer-motion'
 import type { ReactNode } from 'react'
 import { cx } from '../lib/format.ts'
 
@@ -14,7 +14,7 @@ export function Reveal({
   const reduce = useReducedMotion()
   if (reduce) return <div className={className}>{children}</div>
   return (
-    <motion.div
+    <m.div
       className={cx(className)}
       initial={{ opacity: 0, y: 18 }}
       whileInView={{ opacity: 1, y: 0 }}
@@ -22,6 +22,6 @@ export function Reveal({
       transition={{ type: 'spring', stiffness: 380, damping: 32, delay }}
     >
       {children}
-    </motion.div>
+    </m.div>
   )
 }

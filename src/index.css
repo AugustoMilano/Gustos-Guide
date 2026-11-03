@@ -5306,3 +5306,23 @@ mark {
 main.pre-landing { display: none; }
 html[data-prerender='1'] main.pre-landing { display: flex; }
 html[data-prerender='1'] { --header-offset: 69px; }
+
+/* Static Top 25 intro (fix77). Offsets are the measured header heights per region and width so the
+   React page lands on the same pixels. */
+main.pre-top, .pre-top-r { display: none; }
+html[data-prerender='top'] main.pre-top { display: block; padding-top: calc(var(--header-offset) + 1rem); }
+html[data-pre-region='seattle'] .pre-top-r[data-r='seattle'],
+html[data-pre-region='la'] .pre-top-r[data-r='la'],
+html[data-pre-region='sf'] .pre-top-r[data-r='sf'],
+html[data-pre-region='sandiego'] .pre-top-r[data-r='sandiego'] { display: block; }
+html[data-prerender='top'][data-pre-region='la'], html[data-prerender='top'][data-pre-region='sandiego'] { --header-offset: 69px; }
+@media (max-width: 443px) { html[data-prerender='top'][data-pre-region='la'], html[data-prerender='top'][data-pre-region='sandiego'] { --header-offset: 119px; } }
+html[data-prerender='top'][data-pre-region='seattle'] { --header-offset: 77px; }
+@media (min-width: 1400px) and (max-width: 1405px) { html[data-prerender='top'][data-pre-region='seattle'] { --header-offset: 125px; } }
+@media (max-width: 663px) { html[data-prerender='top'][data-pre-region='seattle'] { --header-offset: 125px; } }
+@media (max-width: 639px) { html[data-prerender='top'][data-pre-region='seattle'] { --header-offset: 129px; } }
+@media (max-width: 413px) { html[data-prerender='top'][data-pre-region='seattle'] { --header-offset: 178px; } }
+html[data-prerender='top'][data-pre-region='sf'] { --header-offset: 125px; }
+@media (min-width: 966px) and (max-width: 1279px) { html[data-prerender='top'][data-pre-region='sf'] { --header-offset: 77px; } }
+@media (max-width: 639px) { html[data-prerender='top'][data-pre-region='sf'] { --header-offset: 129px; } }
+@media (max-width: 457px) { html[data-prerender='top'][data-pre-region='sf'] { --header-offset: 178px; } }

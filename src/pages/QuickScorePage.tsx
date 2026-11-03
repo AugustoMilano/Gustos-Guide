@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
+import { AnimatePresence, m, useReducedMotion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { CollectionMembership } from '../components/CollectionMembership.tsx'
 import { PlaceThumb } from '../components/PlaceThumb.tsx'
@@ -267,7 +267,7 @@ export function QuickScorePage() {
           </details>
           {place ? (
             <AnimatePresence mode="wait" initial={false}>
-              <motion.article
+              <m.article
                 key={place.id}
                 className="mt-4"
                 initial={reduce ? false : { x: direction * 72, opacity: 0 }}
@@ -276,7 +276,7 @@ export function QuickScorePage() {
                 transition={reduce ? { duration: 0 } : { type: 'spring', stiffness: 420, damping: 34 }}
               >
                 <div className="glass quick-card overflow-hidden">
-                  <motion.div
+                  <m.div
                     className="quick-photo relative h-24 cursor-grab overflow-hidden bg-navy sm:h-64"
                     drag={reduce ? false : 'x'}
                     dragConstraints={{ left: 0, right: 0 }}
@@ -298,7 +298,7 @@ export function QuickScorePage() {
                     </div>
                     <span className={`quick-nudge is-left${nudge === 'left' ? ' is-on' : ''}`}>Haven't been</span>
                     <span className={`quick-nudge is-right${nudge === 'right' ? ' is-on' : ''}`}>Score</span>
-                  </motion.div>
+                  </m.div>
                   <div className="p-4">
                     <h2 className="font-serif text-4xl italic leading-none">
                       <Link to={cityPath(`/place/${place.id}`)}>{place.name}</Link>
@@ -353,7 +353,7 @@ export function QuickScorePage() {
                     {pending == null ? 'Save score' : `Save ${pending.toFixed(1)}`}
                   </button>
                 </div>
-              </motion.article>
+              </m.article>
             </AnimatePresence>
           ) : (
             <p className="mt-6 font-serif text-3xl italic">Nothing in this pass.</p>

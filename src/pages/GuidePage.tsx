@@ -1,4 +1,4 @@
-import { motion, useReducedMotion } from 'framer-motion'
+import { m, useReducedMotion } from 'framer-motion'
 import { formatDay } from '../lib/day.ts'
 import { readPosition } from '../lib/geo.ts'
 import { useEffect, useMemo, useState } from 'react'
@@ -199,7 +199,7 @@ export function GuidePage() {
         <div className="city-switch sort-seg mt-3" role="group" aria-label="Sort this guide">
           {([['guide', 'Guide order'], ...(pinned ? [] : [['score', "Gusto's Score"]]), ['near', 'Near me']] as [typeof sort, string][]).map(([id, label]) => (
             <button key={id} type="button" className="city-switch-btn" aria-pressed={sort === id} onClick={() => (id === 'near' ? sortNear() : setSort(id))}>
-              {sort === id ? <motion.span layoutId="sort-pill" className="city-switch-glint" transition={reduceMotion ? { duration: 0 } : { type: 'spring', stiffness: 420, damping: 32 }} /> : null}
+              {sort === id ? <m.span layoutId="sort-pill" className="city-switch-glint" transition={reduceMotion ? { duration: 0 } : { type: 'spring', stiffness: 420, damping: 32 }} /> : null}
               <span className="city-switch-label">{label}</span>
             </button>
           ))}

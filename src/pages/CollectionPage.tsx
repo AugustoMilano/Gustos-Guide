@@ -1,5 +1,5 @@
 import { lazy, Suspense, useState } from 'react'
-import { motion, useReducedMotion } from 'framer-motion'
+import { m, useReducedMotion } from 'framer-motion'
 import { Link, useParams } from 'react-router-dom'
 const GuideMap = lazy(() => import('../components/GuideMap.tsx').then((module) => ({ default: module.GuideMap })))
 import { GoldenFork } from '../components/GoldenFork.tsx'
@@ -68,7 +68,7 @@ export function CollectionPage() {
     <main id="main" tabIndex={-1} className="explore-shell outline-none">
       <section className={`explore-list ${sheet ? '' : 'is-peek'}`} aria-label={heading}>
         <div className="explore-bar panel-pad flex items-end justify-between gap-3 border-b border-ink/10">
-          <motion.div
+          <m.div
             initial={reduce ? false : { opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={reduce ? { duration: 0 } : SPRING}
@@ -79,7 +79,7 @@ export function CollectionPage() {
             {app.user?.isOwner ? (
               <p className="mt-1 text-sm">{flagshipAimHint(usingStored && storedIds ? storedIds.length : members.length)}</p>
             ) : null}
-          </motion.div>
+          </m.div>
           <button
             type="button"
             className="btn text-sm sheet-toggle"
