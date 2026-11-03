@@ -87,10 +87,7 @@
       "gustoScore": null,
       "appleMapsUrl": "https://maps.apple.com/?daddr=45.5253877,-122.6942074&q=Ken's%20Artisan%20Bakery",
       "applePlaceUrl": "https://maps.apple.com/place?auid=15891128271979862352",
-      "guideSlugs": [
-        "pdx-nob-hill",
-        "pdx-cafe"
-      ],
+      "guideSlugs": [],
       "muid": "15891128271979862352",
       "hoursLabel": "",
       "blurb": "",
@@ -149,8 +146,7 @@
       "appleMapsUrl": "https://maps.apple.com/?daddr=45.5227662,-122.6578516&q=Le%20Pigeon",
       "applePlaceUrl": "https://maps.apple.com/place?auid=13266707657248041117",
       "guideSlugs": [
-        "pdx-new-american",
-        "pdx-french"
+        "pdx-new-american"
       ],
       "muid": "13266707657248041117",
       "hoursLabel": "",
@@ -208,9 +204,7 @@
       "gustoScore": null,
       "appleMapsUrl": "https://maps.apple.com/?daddr=45.5212985,-122.6708803&q=LeChon",
       "applePlaceUrl": "https://maps.apple.com/place?auid=9159673742032977657",
-      "guideSlugs": [
-        "pdx-old-town-chinatown"
-      ],
+      "guideSlugs": [],
       "muid": "9159673742032977657",
       "hoursLabel": "",
       "blurb": "",
@@ -695,7 +689,6 @@
       "appleMapsUrl": "https://maps.apple.com/?daddr=45.535777,-122.6996949&q=Langbaan",
       "applePlaceUrl": "https://maps.apple.com/place?auid=9644357589547853620",
       "guideSlugs": [
-        "pdx-nob-hill",
         "pdx-health-food"
       ],
       "muid": "9644357589547853620",
@@ -1610,9 +1603,7 @@
       "gustoScore": null,
       "appleMapsUrl": "https://maps.apple.com/?daddr=45.5226483,-122.6731427&q=Voodoo%20Doughnut",
       "applePlaceUrl": "https://maps.apple.com/place?auid=14138041420961450060",
-      "guideSlugs": [
-        "pdx-old-town-chinatown"
-      ],
+      "guideSlugs": [],
       "muid": "14138041420961450060",
       "hoursLabel": "",
       "blurb": "",
@@ -1719,8 +1710,7 @@
       "appleMapsUrl": "https://maps.apple.com/?daddr=45.5227169,-122.6804889&q=MÅURICE",
       "applePlaceUrl": "https://maps.apple.com/place?auid=17352611501639059309",
       "guideSlugs": [
-        "pdx-downtown",
-        "pdx-french"
+        "pdx-downtown"
       ],
       "muid": "17352611501639059309",
       "hoursLabel": "",
@@ -1829,10 +1819,7 @@
       "gustoScore": null,
       "appleMapsUrl": "https://maps.apple.com/?daddr=45.5217833,-122.6734518&q=Stumptown%20Coffee%20Roasters",
       "applePlaceUrl": "https://maps.apple.com/place?auid=12716123553800523399",
-      "guideSlugs": [
-        "pdx-old-town-chinatown",
-        "pdx-cafe"
-      ],
+      "guideSlugs": [],
       "muid": "12716123553800523399",
       "hoursLabel": "",
       "blurb": "",
@@ -1896,9 +1883,7 @@
       "gustoScore": null,
       "appleMapsUrl": "https://maps.apple.com/?daddr=45.513446,-122.660439&q=Coava%20Coffee%20Roasters",
       "applePlaceUrl": "https://maps.apple.com/place?auid=3574528002939766542",
-      "guideSlugs": [
-        "pdx-cafe"
-      ],
+      "guideSlugs": [],
       "muid": "3574528002939766542",
       "hoursLabel": "",
       "blurb": "",
@@ -1957,7 +1942,6 @@
       "appleMapsUrl": "https://maps.apple.com/?daddr=45.5335891,-122.695033&q=Ruse%20Brewing%20Crust%20Collective",
       "applePlaceUrl": "https://maps.apple.com/place?auid=3766073023727131698",
       "guideSlugs": [
-        "pdx-nob-hill",
         "pdx-pizza",
         "pdx-health-food"
       ],
@@ -2303,8 +2287,7 @@
       "appleMapsUrl": "https://maps.apple.com/?daddr=45.5219535,-122.6736812&q=Mother’s%20Bistro%20&%20Bar",
       "applePlaceUrl": "https://maps.apple.com/place?auid=10365772272670531060",
       "guideSlugs": [
-        "pdx-downtown",
-        "pdx-french"
+        "pdx-downtown"
       ],
       "muid": "10365772272670531060",
       "hoursLabel": "",
@@ -2417,68 +2400,6 @@
         },
         {
           "placeId": "deschutes-brewery",
-          "pullQuote": "",
-          "blurb": "",
-          "copySource": "draft"
-        }
-      ],
-      "pinned": true
-    },
-    {
-      "slug": "pdx-nob-hill",
-      "title": "Nob Hill",
-      "dek": "",
-      "group": "Neighborhoods",
-      "intro": "",
-      "updatedAt": "2026-11-03",
-      "ranked": false,
-      "city": "portland",
-      "entries": [
-        {
-          "placeId": "ken-s-artisan-bakery",
-          "pullQuote": "",
-          "blurb": "",
-          "copySource": "draft"
-        },
-        {
-          "placeId": "langbaan",
-          "pullQuote": "",
-          "blurb": "",
-          "copySource": "draft"
-        },
-        {
-          "placeId": "ruse-brewing-crust-collective",
-          "pullQuote": "",
-          "blurb": "",
-          "copySource": "draft"
-        }
-      ],
-      "pinned": true
-    },
-    {
-      "slug": "pdx-old-town-chinatown",
-      "title": "Old Town-Chinatown",
-      "dek": "",
-      "group": "Neighborhoods",
-      "intro": "",
-      "updatedAt": "2026-11-03",
-      "ranked": false,
-      "city": "portland",
-      "entries": [
-        {
-          "placeId": "lechon",
-          "pullQuote": "",
-          "blurb": "",
-          "copySource": "draft"
-        },
-        {
-          "placeId": "voodoo-doughnut-pdx",
-          "pullQuote": "",
-          "blurb": "",
-          "copySource": "draft"
-        },
-        {
-          "placeId": "stumptown-coffee-roasters",
           "pullQuote": "",
           "blurb": "",
           "copySource": "draft"
@@ -2608,68 +2529,6 @@
         },
         {
           "placeId": "no-saint",
-          "pullQuote": "",
-          "blurb": "",
-          "copySource": "draft"
-        }
-      ],
-      "pinned": true
-    },
-    {
-      "slug": "pdx-cafe",
-      "title": "Cafe",
-      "dek": "",
-      "group": "Cuisine",
-      "intro": "",
-      "updatedAt": "2026-11-03",
-      "ranked": false,
-      "city": "portland",
-      "entries": [
-        {
-          "placeId": "ken-s-artisan-bakery",
-          "pullQuote": "",
-          "blurb": "",
-          "copySource": "draft"
-        },
-        {
-          "placeId": "stumptown-coffee-roasters",
-          "pullQuote": "",
-          "blurb": "",
-          "copySource": "draft"
-        },
-        {
-          "placeId": "coava-coffee-roasters",
-          "pullQuote": "",
-          "blurb": "",
-          "copySource": "draft"
-        }
-      ],
-      "pinned": true
-    },
-    {
-      "slug": "pdx-french",
-      "title": "French",
-      "dek": "",
-      "group": "Cuisine",
-      "intro": "",
-      "updatedAt": "2026-11-03",
-      "ranked": false,
-      "city": "portland",
-      "entries": [
-        {
-          "placeId": "le-pigeon",
-          "pullQuote": "",
-          "blurb": "",
-          "copySource": "draft"
-        },
-        {
-          "placeId": "maurice",
-          "pullQuote": "",
-          "blurb": "",
-          "copySource": "draft"
-        },
-        {
-          "placeId": "mothers-bistro-bar",
           "pullQuote": "",
           "blurb": "",
           "copySource": "draft"

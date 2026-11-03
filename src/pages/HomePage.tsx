@@ -35,7 +35,7 @@ function heroDek(city: CityId): string {
   if (city === 'vancouver') return 'Downtown, Coal Harbour, Gastown, Granville Island, and the West End.'
   if (city === 'portland') return 'Downtown, the Pearl District, Nob Hill, and Old Town-Chinatown.'
   if (city === 'nyc') return 'Tribeca, SoHo, the West Village, Midtown, and Brooklyn.'
-  if (city === 'pullman') return 'Pullman, with Moscow, ID one switch away.'
+  if (city === 'pullman') return 'Go Cougs. Breakfast, pubs, and quick bites near Martin Stadium and downtown.'
   if (city === 'moscow') return 'Moscow, with Pullman, WA one switch away.'
   if (city === 'eastbay') return 'Berkeley, Fremont, and Pleasanton.'
   if (city === 'peninsula') return 'Palo Alto, Santa Clara, San Jose, and the coast.'

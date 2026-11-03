@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from 'react'
+import { cougEggsFound } from '../lib/coug.ts'
 import { Link } from 'react-router-dom'
 import { m, useReducedMotion } from 'framer-motion'
 import { Modal } from './Modal.tsx'
@@ -131,6 +132,12 @@ export function Achievements({ been, rated, userId, gustoScore, mine, city, who 
   const [catalogLoaded, setCatalogLoaded] = useState(false)
   const [open, setOpen] = useState<{ id: string; celebrate: boolean } | null>(null)
   const [openAreas, setOpenAreas] = useState<Record<string, boolean>>({})
+  const [eggs, setEggs] = useState<string[]>(() => cougEggsFound())
+  useEffect(() => {
+    const on = () => setEggs(cougEggsFound())
+    window.addEventListener('gusto:coug-egg', on)
+    return () => window.removeEventListener('gusto:coug-egg', on)
+  }, [])
 
   useEffect(() => {
     let live = true
@@ -145,8 +152,8 @@ export function Achievements({ been, rated, userId, gustoScore, mine, city, who 
   }, [])
 
   const computed = useMemo(
-    () => (guides && catalogLoaded ? computeAchievements({ been, rated, guides, placeOf: slimById, gustoScore }) : []),
-    [guides, catalogLoaded, been, rated, gustoScore],
+    () => (guides && catalogLoaded ? computeAchievements({ been, rated, guides, placeOf: slimById, gustoScore, eggs: mine ? eggs : [] }) : []),
+    [guides, catalogLoaded, been, rated, gustoScore, mine, eggs],
   )
   const computedEarned = computed.filter((a) => a.earned && !a.legacy).map((a) => a.id)
   const { dates, fresh, clearFresh } = useEarnedDates(mine ? userId : null, computedEarned, computed.length > 0)
@@ -154,6 +161,7 @@ export function Achievements({ been, rated, userId, gustoScore, mine, city, who 
   const items = computed
     .map((a) => (!a.earned && dates[a.id] ? { ...a, earned: true, have: a.goal } : a))
     .filter((a) => !a.legacy || Boolean(dates[a.id]))
+    .filter((a) => !a.hidden || a.earned)
   const earnedIds = items.filter((a) => a.earned).map((a) => a.id)
 
   useEffect(() => {

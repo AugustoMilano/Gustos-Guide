@@ -21,7 +21,8 @@
       for (var k = 0; k < ranks.length; k++) ranks[k].setAttribute('href', cityM ? '#/' + cityId + '/rank' : '#/rank')
     })
   }
-  var color = navy ? '#141F4D' : '#FFFAF3'
+  document.documentElement.dataset.area = cityM ? cityId : ''
+  var color = navy ? (cityId === 'pullman' && cityM ? '#981E32' : '#141F4D') : '#FFFAF3'
   document.documentElement.dataset.status = navy ? 'navy' : 'cream'
   document.documentElement.style.setProperty('--status-bar', color)
   document.documentElement.style.backgroundColor = color

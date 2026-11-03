@@ -1627,70 +1627,6 @@
       "website": "https://wolfgangpuck.com/restaurants/cut-new-york/"
     },
     {
-      "id": "butterfield-market",
-      "city": "nyc",
-      "name": "Butterfield Market",
-      "neighborhood": "Upper East Side",
-      "address": "1114 Lexington Ave, New York, NY 10075",
-      "lat": 40.7741678,
-      "lng": -73.9596981,
-      "cuisine": [
-        "Market",
-        "Deli"
-      ],
-      "placeType": "market",
-      "oneLiner": "",
-      "perfectFor": [],
-      "periods": [
-        {
-          "days": [
-            0
-          ],
-          "start": 480,
-          "end": 1140
-        },
-        {
-          "days": [
-            1,
-            2,
-            3,
-            4,
-            5
-          ],
-          "start": 360,
-          "end": 1200
-        },
-        {
-          "days": [
-            6
-          ],
-          "start": 480,
-          "end": 1140
-        }
-      ],
-      "gustoScore": null,
-      "appleMapsUrl": "https://maps.apple.com/?daddr=40.7741678,-73.9596981&q=Butterfield%20Market",
-      "applePlaceUrl": "https://maps.apple.com/place?auid=7125045322547523860",
-      "guideSlugs": [],
-      "muid": "7125045322547523860",
-      "hoursLabel": "",
-      "blurb": "",
-      "orderThis": [],
-      "ids": {},
-      "copySource": "draft",
-      "updatedAt": "2026-11-03",
-      "photos": [
-        {
-          "source": "illustration",
-          "isIllustration": true,
-          "alt": "Illustration suggesting Market at Butterfield Market",
-          "credit": "Illustration"
-        }
-      ],
-      "phone": "+1 (212) 288-7800",
-      "website": "https://www.butterfieldmarket.com/locations"
-    },
-    {
       "id": "lucia",
       "city": "nyc",
       "name": "Lucia",
@@ -4622,6 +4558,56 @@
       ],
       "phone": "+1 (212) 777-1577",
       "website": "https://www.facebook.com/lefrenchdiner"
+    },
+    {
+      "id": "fiore-s-house-of-quality",
+      "city": "nyc",
+      "name": "Fiore's House of Quality",
+      "neighborhood": "Hoboken",
+      "address": "414 Adams St, Hoboken, NJ 07030",
+      "lat": 40.7429814,
+      "lng": -74.0361625,
+      "cuisine": [
+        "Market"
+      ],
+      "placeType": "market",
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "start": 480,
+          "end": 1080
+        }
+      ],
+      "gustoScore": null,
+      "appleMapsUrl": "https://maps.apple.com/?daddr=40.7429814,-74.0361625&q=Fiore's%20House%20of%20Quality",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=6580480476855610677",
+      "guideSlugs": [],
+      "muid": "6580480476855610677",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-11-03",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Market at Fiore's House of Quality",
+          "credit": "Illustration"
+        }
+      ],
+      "phone": "+1 (201) 420-1248",
+      "website": "https://www.yelp.com/biz/fiores-house-of-quality-hoboken-2"
     },
     {
       "id": "ai-fiori",

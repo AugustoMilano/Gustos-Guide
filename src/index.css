@@ -5366,3 +5366,26 @@ main.pre-place .photo-frame:not(.is-compact) img.pre-place-img { width: calc(100
   .explore-head .explore-bar { position: relative; z-index: 1; padding-top: 4px; padding-bottom: 4px; }
   .explore-head .explore-bar .area-kicker { display: none; }
 }
+
+/* Pullman, WA: crimson and gray for Coug game days. Colors only, no marks. Moscow stays neutral. */
+html[data-area='pullman'] { --color-coral: #981e32; }
+html[data-area='pullman'] .hero,
+html[data-area='pullman'] .marquee { background: #981e32; }
+html[data-area='pullman'] .site-header.on-hero::before { background-color: #981e32; }
+html[data-area='pullman'] .btn-coral { color: #fff; box-shadow: 0 var(--space-2) 18px rgb(152 30 50 / 28%); }
+html[data-area='pullman'] .site-header.on-hero .btn-coral { background: #fffaf3; color: #981e32; }
+html[data-area='pullman'] .city-switch-glint { background: #d9dadb; box-shadow: 0 6px 16px rgb(94 106 113 / 35%); }
+html[data-area='pullman'] .site-header.on-hero .city-switch { background: rgb(40 8 14 / 35%); }
+html[data-area='pullman'] .hero { background: linear-gradient(160deg, #981e32 0%, #7a1828 62%, #4d5054 100%); }
+.coug-toast {
+  position: fixed; left: 50%; bottom: calc(env(safe-area-inset-bottom, 0px) + 6.5rem); z-index: 90;
+  transform: translate(-50%, 1rem); opacity: 0; pointer-events: none;
+  min-height: 44px; display: flex; align-items: center; padding: 0 1.25rem; border-radius: 999px;
+  background: #981e32; color: #fff; font-weight: 800; letter-spacing: 0.02em;
+  box-shadow: 0 10px 30px rgb(77 80 84 / 35%); transition: opacity 200ms, transform 200ms;
+}
+.coug-toast.is-on { opacity: 1; transform: translate(-50%, 0); }
+.coug-confetti { position: fixed; inset: 0; z-index: 89; pointer-events: none; overflow: hidden; }
+.coug-confetti i { position: absolute; top: -12px; width: 8px; height: 14px; border-radius: 2px; animation: coug-fall 2.2s cubic-bezier(0.2, 0.6, 0.4, 1) forwards; }
+@keyframes coug-fall { to { transform: translate3d(var(--drift), 105vh, 0) rotate(var(--spin)); opacity: 0.9; } }
+@media (prefers-reduced-motion: reduce) { .coug-toast { transition: none; } .coug-confetti { display: none; } }
