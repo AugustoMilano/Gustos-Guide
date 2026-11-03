@@ -5166,3 +5166,73 @@ mark {
   .explore-card { isolation: isolate; background: #fffaf3; }
   .explore-map .leaflet-bottom { bottom: calc(4.75rem + 84px + env(safe-area-inset-bottom)); }
 }
+
+/* Map sheet, iOS WebKit structure (fix70).
+   Safari on iPhone only scrolls a nested element reliably when it has a definite height. The sheet
+   used to be the scroller itself, sized only by an animated max-height and flipped from
+   overflow:hidden (peek) to overflow:auto (open), so iOS often kept the old non-scrolling layer and
+   the swipe went nowhere, and in peek a swipe up did nothing at all. Now the sheet is a fixed-height
+   flex column: a header (handle + count) that you swipe to open or close, and one plain native
+   scroller under it with min-height:0. No listener ever calls preventDefault on touch. */
+.explore-head { flex: none; }
+.explore-scroll {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+}
+.explore-list .explore-filters { position: static; }
+@media (min-width: 768px) {
+  .explore-list { overflow: hidden; }
+}
+@media (max-width: 767px) {
+  .explore-list,
+  .explore-list.is-open,
+  .explore-list.is-peek {
+    top: auto;
+    max-height: none;
+    overflow: hidden;
+    touch-action: auto;
+    transition: none;
+    padding-bottom: 0;
+  }
+  .explore-list.is-open { top: 8px; }
+  .explore-head { touch-action: none; }
+  .explore-list.is-open .explore-scroll { padding-bottom: 8px; }
+}
+@media (max-width: 767px) and (prefers-reduced-motion: no-preference) {
+  .explore-list.is-open .explore-scroll { animation: sheet-in 420ms cubic-bezier(0.2, 1.2, 0.3, 1); }
+}
+@keyframes sheet-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Map sheet cards on phones: plain normal flow only. iOS WebKit paints positioned, z-indexed or
+   transformed children of a touch scroller on their own layers and can leave them at stale
+   positions while the list scrolls, which is how the Directions rows ended up over other cards.
+   So inside the scroller: no stretched-link overlay, no z-index, no transform, no will-change,
+   no sticky, no backdrop-filter. The row link and the two buttons sit in flow inside the card. */
+/* All widths: the iPad sidebar showed the same bug, buttons painting over the header. */
+  .explore-scroll .explore-card,
+  .explore-scroll .explore-card *,
+  .explore-scroll .explore-card:active,
+  .explore-scroll .btn,
+  .explore-scroll .btn:active {
+    transform: none !important;
+    will-change: auto !important;
+    transition: none !important;
+    animation: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+  .explore-scroll .explore-card { position: static; isolation: auto; overflow: visible; z-index: auto; }
+  .explore-scroll .explore-card .place-row::after { content: none !important; display: none !important; }
+  .explore-scroll .explore-card .action-row { position: static; z-index: auto; }
+  .explore-scroll .btn:active { opacity: 0.7; }
+.explore-head { position: relative; z-index: 2; background: #fffaf3; }
+.explore-scroll { position: relative; z-index: 1; isolation: isolate; overflow-x: hidden; }
+.explore-scroll .btn:not(.btn-coral):not(.btn-navy):not(.btn-leaf):not(.btn-x) { background: #f4ebe0; }
+.explore-scroll { contain: paint; }
+.explore-scroll .btn, .explore-scroll .btn::before, .explore-scroll .btn::after { filter: none !important; box-shadow: none; position: static; z-index: auto; }
