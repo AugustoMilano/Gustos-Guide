@@ -5125,7 +5125,7 @@ mark {
   background: transparent;
   border: 1px dashed rgb(24 24 24 / 22%);
   box-shadow: none;
-  color: rgb(24 24 24 / 55%);
+  color: rgb(24 24 24 / 68%);
 }
 .score-badge.is-muted strong { font-size: 0.85rem; font-weight: 650; font-family: inherit; font-style: normal; }
 @media (prefers-reduced-motion: no-preference) {
