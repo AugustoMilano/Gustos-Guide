@@ -13306,7 +13306,7 @@
     {
       "slug": "nyc-tribeca",
       "title": "Tribeca",
-      "dek": "",
+      "dek": "Thirty-seven in Tribeca, from Frenchette and The Odeon to Locanda Verde, Jungsik, Atera and Au Cheval, plus Zucker's Bagels and Los Tacos No. 1 for something quicker.",
       "group": "Neighborhoods",
       "intro": "",
       "updatedAt": "2026-11-03",
@@ -13541,7 +13541,7 @@
     {
       "slug": "nyc-west-village",
       "title": "West Village",
-      "dek": "",
+      "dek": "The West Village's Italian run, Via Carota, Don Angie, L'Artusi, Dante and Palma, plus Semma for South Indian, Decoy for Peking duck, and 4 Charles Prime Rib.",
       "group": "Neighborhoods",
       "intro": "",
       "updatedAt": "2026-11-03",
@@ -13656,7 +13656,7 @@
     {
       "slug": "nyc-soho",
       "title": "SoHo",
-      "dek": "",
+      "dek": "SoHo from Balthazar and Raoul's to Le Coucou, pizza at Rubirosa and Lucia, Fanelli Cafe, and pastry at Dominique Ansel Bakery.",
       "group": "Neighborhoods",
       "intro": "",
       "updatedAt": "2026-11-03",
@@ -13771,7 +13771,7 @@
     {
       "slug": "nyc-midtown-east",
       "title": "Midtown East",
-      "dek": "",
+      "dek": "Midtown East's grand rooms: The Modern, Le Pavillon, THE GRILL and The Polo Bar, steak at Smith & Wollensky and Sparks, and drinks at the King Cole Bar.",
       "group": "Neighborhoods",
       "intro": "",
       "updatedAt": "2026-11-03",
@@ -13868,7 +13868,7 @@
     {
       "slug": "nyc-lower-east-side",
       "title": "Lower East Side",
-      "dek": "",
+      "dek": "The Lower East Side: Katz's Delicatessen, Russ & Daughters, Una Pizza Napoletana, Dirt Candy, Sixty Three Clinton, and il laboratorio del gelato.",
       "group": "Neighborhoods",
       "intro": "",
       "updatedAt": "2026-11-03",
@@ -13947,7 +13947,7 @@
     {
       "slug": "nyc-italian",
       "title": "Italian",
-      "dek": "",
+      "dek": "Twenty-seven for Italian, from Carbone and Torrisi to Marea, Via Carota and Don Angie, plus Lilia in Brooklyn and Campagnola on the Upper East Side.",
       "group": "Cuisine",
       "intro": "",
       "updatedAt": "2026-11-03",
@@ -14122,7 +14122,7 @@
     {
       "slug": "nyc-french",
       "title": "French",
-      "dek": "",
+      "dek": "French across Manhattan: Le Bernardin, Daniel, Jean-Georges and Per Se, bistros like Raoul's and Pastis, and brasseries Frenchette and The Odeon.",
       "group": "Cuisine",
       "intro": "",
       "updatedAt": "2026-11-03",
@@ -14273,7 +14273,7 @@
     {
       "slug": "nyc-new-american",
       "title": "New American",
-      "dek": "",
+      "dek": "Twenty-two New American rooms, from Per Se and Daniel to Atera, Blue Hill in Greenwich Village, Manhatta in the Financial District, and Vinegar Hill House.",
       "group": "Cuisine",
       "intro": "",
       "updatedAt": "2026-11-03",
@@ -14418,7 +14418,7 @@
     {
       "slug": "nyc-steak",
       "title": "Steak",
-      "dek": "",
+      "dek": "Thirteen steakhouses: Keens in Koreatown, Delmonico's in the Financial District, COTE in the Flatiron, Sparks, Smith & Wollensky, and Wolfgang's in Tribeca.",
       "group": "Cuisine",
       "intro": "",
       "updatedAt": "2026-11-03",
@@ -14509,7 +14509,7 @@
     {
       "slug": "nyc-bakery",
       "title": "Bakery",
-      "dek": "",
+      "dek": "Eleven bakeries, from Levain and Dominique Ansel to Peter Pan Donut & Pastry Shop in Greenpoint, Rio De La Plata in Elmhurst, and Ceres in Little Italy.",
       "group": "Cuisine",
       "intro": "",
       "updatedAt": "2026-11-03",
