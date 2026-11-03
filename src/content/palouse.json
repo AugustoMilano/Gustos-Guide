@@ -1,0 +1,2702 @@
+{
+  "updatedAt": "2026-11-03",
+  "places": [
+    {
+      "id": "paradise-creek-brewery",
+      "city": "pullman",
+      "name": "Paradise Creek Brewery",
+      "neighborhood": "Pullman",
+      "address": "505 SE Riverview St, Pullman, WA 99163",
+      "lat": 46.7257401,
+      "lng": -117.169927,
+      "cuisine": [
+        "Brewery"
+      ],
+      "placeType": "bar",
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            2
+          ],
+          "start": 960,
+          "end": 1260
+        },
+        {
+          "days": [
+            3,
+            4
+          ],
+          "start": 960,
+          "end": 1230
+        },
+        {
+          "days": [
+            5
+          ],
+          "start": 900,
+          "end": 1260
+        },
+        {
+          "days": [
+            6
+          ],
+          "start": 900,
+          "end": 1200
+        }
+      ],
+      "gustoScore": null,
+      "appleMapsUrl": "https://maps.apple.com/?daddr=46.7257401,-117.169927&q=Paradise%20Creek%20Brewery",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=1945117186540121292",
+      "guideSlugs": [],
+      "muid": "1945117186540121292",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-11-03",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Brewery at Paradise Creek Brewery",
+          "credit": "Illustration"
+        }
+      ],
+      "phone": "+1 (509) 339-6894",
+      "website": "https://paradisecreekbrewery.com/trailside_taproom/"
+    },
+    {
+      "id": "crybaby-cafe",
+      "city": "pullman",
+      "name": "Crybaby Café",
+      "neighborhood": "Pullman",
+      "address": "600 NE Colorado St, Unit 100B, Pullman, WA 99163",
+      "lat": 46.7342262,
+      "lng": -117.1705819,
+      "cuisine": [
+        "Cafe"
+      ],
+      "placeType": "cafe",
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            0
+          ],
+          "start": 540,
+          "end": 1080
+        },
+        {
+          "days": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "start": 480,
+          "end": 1140
+        },
+        {
+          "days": [
+            6
+          ],
+          "start": 540,
+          "end": 1140
+        }
+      ],
+      "gustoScore": null,
+      "appleMapsUrl": "https://maps.apple.com/?daddr=46.7342262,-117.1705819&q=Crybaby%20Café",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=1253808997164867428",
+      "guideSlugs": [
+        "pul-cafe"
+      ],
+      "muid": "1253808997164867428",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-11-03",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Cafe at Crybaby Café",
+          "credit": "Illustration"
+        }
+      ],
+      "phone": "+1 (509) 715-1021",
+      "website": "https://crybabycafe.com"
+    },
+    {
+      "id": "panhandle-cone-coffee",
+      "city": "moscow",
+      "name": "Panhandle Cone & Coffee",
+      "neighborhood": "Moscow",
+      "address": "511 S Main St, Moscow, ID 83843",
+      "lat": 46.7308382,
+      "lng": -117.0017783,
+      "cuisine": [
+        "Ice cream",
+        "Dessert"
+      ],
+      "placeType": "dessert",
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            0
+          ],
+          "start": 540,
+          "end": 1260
+        },
+        {
+          "days": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "start": 660,
+          "end": 1260
+        },
+        {
+          "days": [
+            6
+          ],
+          "start": 540,
+          "end": 1260
+        }
+      ],
+      "gustoScore": null,
+      "appleMapsUrl": "https://maps.apple.com/?daddr=46.7308382,-117.0017783&q=Panhandle%20Cone%20&%20Coffee",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=4218196156805509511",
+      "guideSlugs": [],
+      "muid": "4218196156805509511",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-11-03",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Ice cream at Panhandle Cone & Coffee",
+          "credit": "Illustration"
+        }
+      ],
+      "phone": "+1 (208) 265-8996",
+      "website": "https://www.coneandcoffee.com/moscow"
+    },
+    {
+      "id": "tin-tan-tacos",
+      "city": "pullman",
+      "name": "Tin Tan Tacos",
+      "neighborhood": "Pullman",
+      "address": "600 NE Colorado St, Unit 100 A, Pullman, WA 99163",
+      "lat": 46.7340922,
+      "lng": -117.1705359,
+      "cuisine": [
+        "Mexican"
+      ],
+      "placeType": "restaurant",
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            0
+          ],
+          "start": 660,
+          "end": 1080
+        },
+        {
+          "days": [
+            1,
+            2,
+            3
+          ],
+          "start": 660,
+          "end": 1320
+        },
+        {
+          "days": [
+            4,
+            5,
+            6
+          ],
+          "start": 660,
+          "end": 1440
+        }
+      ],
+      "gustoScore": null,
+      "appleMapsUrl": "https://maps.apple.com/?daddr=46.7340922,-117.1705359&q=Tin%20Tan%20Tacos",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=12834837531320453719",
+      "guideSlugs": [],
+      "muid": "12834837531320453719",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-11-03",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Mexican at Tin Tan Tacos",
+          "credit": "Illustration"
+        }
+      ],
+      "phone": "+1 (509) 332-6934",
+      "website": "https://www.facebook.com/tintantacos1/"
+    },
+    {
+      "id": "tokyo-seoul",
+      "city": "pullman",
+      "name": "Tokyo Seoul",
+      "neighborhood": "Pullman",
+      "address": "905 E Main St, Pullman, WA 99163",
+      "lat": 46.7272434,
+      "lng": -117.1697559,
+      "cuisine": [
+        "Sushi",
+        "Japanese"
+      ],
+      "placeType": "restaurant",
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            0
+          ],
+          "start": 720,
+          "end": 1320
+        },
+        {
+          "days": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "start": 660,
+          "end": 1320
+        },
+        {
+          "days": [
+            6
+          ],
+          "start": 720,
+          "end": 1320
+        }
+      ],
+      "gustoScore": null,
+      "appleMapsUrl": "https://maps.apple.com/?daddr=46.7272434,-117.1697559&q=Tokyo%20Seoul",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=7258777359250352486",
+      "guideSlugs": [],
+      "muid": "7258777359250352486",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-11-03",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Sushi at Tokyo Seoul",
+          "credit": "Illustration"
+        }
+      ],
+      "phone": "+1 (509) 332-6223",
+      "website": null
+    },
+    {
+      "id": "the-breakfast-club",
+      "city": "moscow",
+      "name": "The Breakfast Club",
+      "neighborhood": "Moscow",
+      "address": "501 S Main St, Moscow, ID 83843",
+      "lat": 46.7310882,
+      "lng": -117.0017713,
+      "cuisine": [
+        "Brunch"
+      ],
+      "placeType": "restaurant",
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            0
+          ],
+          "start": 420,
+          "end": 840
+        },
+        {
+          "days": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "start": 435,
+          "end": 840
+        },
+        {
+          "days": [
+            6
+          ],
+          "start": 420,
+          "end": 840
+        }
+      ],
+      "gustoScore": null,
+      "appleMapsUrl": "https://maps.apple.com/?daddr=46.7310882,-117.0017713&q=The%20Breakfast%20Club",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=12064262271023543703",
+      "guideSlugs": [],
+      "muid": "12064262271023543703",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-11-03",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Brunch at The Breakfast Club",
+          "credit": "Illustration"
+        }
+      ],
+      "phone": "+1 (208) 882-6481",
+      "website": "https://thebreakfastclubmoscow.com"
+    },
+    {
+      "id": "mingles-bar-and-grill",
+      "city": "moscow",
+      "name": "Mingles Bar and Grill",
+      "neighborhood": "Moscow",
+      "address": "102 S Main St, Moscow, ID 83843",
+      "lat": 46.7334706,
+      "lng": -117.0009866,
+      "cuisine": [
+        "Bar and Grill",
+        "Japanese"
+      ],
+      "placeType": "restaurant",
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            0
+          ],
+          "start": 540,
+          "end": 1440
+        },
+        {
+          "days": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "start": 660,
+          "end": 1440
+        },
+        {
+          "days": [
+            6
+          ],
+          "start": 540,
+          "end": 1440
+        }
+      ],
+      "gustoScore": null,
+      "appleMapsUrl": "https://maps.apple.com/?daddr=46.7334706,-117.0009866&q=Mingles%20Bar%20and%20Grill",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=9668533751918497385",
+      "guideSlugs": [],
+      "muid": "9668533751918497385",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-11-03",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Bar and Grill at Mingles Bar and Grill",
+          "credit": "Illustration"
+        }
+      ],
+      "phone": "+1 (208) 882-2050",
+      "website": "https://www.facebook.com/mingles.moscow/"
+    },
+    {
+      "id": "paradise-grill-and-cafe",
+      "city": "moscow",
+      "name": "Paradise Grill and Cafe",
+      "neighborhood": "Moscow",
+      "address": "1902 W Pullman Rd, Moscow, ID 83843",
+      "lat": 46.733988,
+      "lng": -117.027848,
+      "cuisine": [
+        "Cafe"
+      ],
+      "placeType": "restaurant",
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            0
+          ],
+          "start": 660,
+          "end": 1080
+        },
+        {
+          "days": [
+            1
+          ],
+          "start": 660,
+          "end": 1140
+        },
+        {
+          "days": [
+            2
+          ],
+          "start": 660,
+          "end": 900
+        },
+        {
+          "days": [
+            3,
+            4
+          ],
+          "start": 660,
+          "end": 1140
+        },
+        {
+          "days": [
+            5,
+            6
+          ],
+          "start": 660,
+          "end": 1200
+        }
+      ],
+      "gustoScore": null,
+      "appleMapsUrl": "https://maps.apple.com/?daddr=46.733988,-117.027848&q=Paradise%20Grill%20and%20Cafe",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=16898603066479363683",
+      "guideSlugs": [
+        "mos-cafe"
+      ],
+      "muid": "16898603066479363683",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-11-03",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Cafe at Paradise Grill and Cafe",
+          "credit": "Illustration"
+        }
+      ],
+      "phone": "+1 (208) 882-5660",
+      "website": "http://www.paradisegrillandcafe.com/?fbclid=IwAR27mVUYk1Qj6pd-s05OMHZSgTpOigx_rDb6WgTAPxbDJuXcvp6yCmZw4Mk#home"
+    },
+    {
+      "id": "valhalla-bar-and-grill",
+      "city": "pullman",
+      "name": "Valhalla Bar and Grill",
+      "neighborhood": "Pullman",
+      "address": "1000 NE Colorado St, Pullman, WA 99163",
+      "lat": 46.7336325,
+      "lng": -117.1665706,
+      "cuisine": [
+        "Bar and Grill",
+        "Chicken"
+      ],
+      "placeType": "restaurant",
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            2,
+            3
+          ],
+          "start": 660,
+          "end": 1440
+        },
+        {
+          "days": [
+            4,
+            5,
+            6
+          ],
+          "start": 660,
+          "end": 1440
+        }
+      ],
+      "gustoScore": null,
+      "appleMapsUrl": "https://maps.apple.com/?daddr=46.7336325,-117.1665706&q=Valhalla%20Bar%20and%20Grill",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=13071346281824065949",
+      "guideSlugs": [],
+      "muid": "13071346281824065949",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-11-03",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Bar and Grill at Valhalla Bar and Grill",
+          "credit": "Illustration"
+        }
+      ],
+      "phone": "+1 (509) 334-7775",
+      "website": "http://www.valhallabarandgrill.com"
+    },
+    {
+      "id": "dutch-bros-coffee",
+      "city": "moscow",
+      "name": "Dutch Bros Coffee",
+      "neighborhood": "Moscow",
+      "address": "321 N Main St, Moscow, ID 83843",
+      "lat": 46.7369512,
+      "lng": -117.0018052,
+      "cuisine": [
+        "Coffee",
+        "Cafe"
+      ],
+      "placeType": "cafe",
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "start": 300,
+          "end": 1440
+        }
+      ],
+      "gustoScore": null,
+      "appleMapsUrl": "https://maps.apple.com/?daddr=46.7369512,-117.0018052&q=Dutch%20Bros%20Coffee",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=3073386067149287174",
+      "guideSlugs": [
+        "mos-cafe",
+        "mos-coffee"
+      ],
+      "muid": "3073386067149287174",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-11-03",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Coffee at Dutch Bros Coffee",
+          "credit": "Illustration"
+        }
+      ],
+      "phone": "+1 (877) 899-2767",
+      "website": "https://www.dutchbros.com/locations/id/moscow/321-n.-main-st."
+    },
+    {
+      "id": "the-silos-coffee-social",
+      "city": "moscow",
+      "name": "The Silos Coffee & Social",
+      "neighborhood": "Moscow",
+      "address": "625 N. Jackson Street, Moscow, ID 83843",
+      "lat": 46.7293674,
+      "lng": -117.0031339,
+      "cuisine": [
+        "Coffee",
+        "Cafe"
+      ],
+      "placeType": "cafe",
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "start": 300,
+          "end": 1320
+        }
+      ],
+      "gustoScore": null,
+      "appleMapsUrl": "https://maps.apple.com/?daddr=46.7293674,-117.0031339&q=The%20Silos%20Coffee%20&%20Social",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=2014626627637937380",
+      "guideSlugs": [
+        "mos-cafe",
+        "mos-coffee"
+      ],
+      "muid": "2014626627637937380",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-11-03",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Coffee at The Silos Coffee & Social",
+          "credit": "Illustration"
+        }
+      ],
+      "phone": "+1 (916) 796-3595",
+      "website": "https://thesiloscoffee.com"
+    },
+    {
+      "id": "mela-bangladeshi-cuisine",
+      "city": "pullman",
+      "name": "Mela Bangladeshi Cuisine",
+      "neighborhood": "Pullman",
+      "address": "350 E Main St, Pullman, WA 99163",
+      "lat": 46.7297883,
+      "lng": -117.178991,
+      "cuisine": [
+        "Bangladeshi",
+        "Health food"
+      ],
+      "placeType": "restaurant",
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "start": 960,
+          "end": 1260
+        }
+      ],
+      "gustoScore": null,
+      "appleMapsUrl": "https://maps.apple.com/?daddr=46.7297883,-117.178991&q=Mela%20Bangladeshi%20Cuisine",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=14072794604338846735",
+      "guideSlugs": [],
+      "muid": "14072794604338846735",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-11-03",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Bangladeshi at Mela Bangladeshi Cuisine",
+          "credit": "Illustration"
+        }
+      ],
+      "phone": "+1 (509) 339-6096",
+      "website": "https://melapullman.wixsite.com/mela"
+    },
+    {
+      "id": "hunga-dunga",
+      "city": "moscow",
+      "name": "Hunga Dunga",
+      "neighborhood": "Moscow",
+      "address": "333 N Jackson St, Moscow, ID 83843",
+      "lat": 46.7370574,
+      "lng": -117.0033751,
+      "cuisine": [
+        "Brewery"
+      ],
+      "placeType": "bar",
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "start": 960,
+          "end": 1260
+        },
+        {
+          "days": [
+            5,
+            6
+          ],
+          "start": 840,
+          "end": 1320
+        }
+      ],
+      "gustoScore": null,
+      "appleMapsUrl": "https://maps.apple.com/?daddr=46.7370574,-117.0033751&q=Hunga%20Dunga",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=3490234399220097258",
+      "guideSlugs": [],
+      "muid": "3490234399220097258",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-11-03",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Brewery at Hunga Dunga",
+          "credit": "Illustration"
+        }
+      ],
+      "phone": "+1 (208) 596-4855",
+      "website": "https://hungadungabrewing.com"
+    },
+    {
+      "id": "roost-coffee-market",
+      "city": "pullman",
+      "name": "Roost Coffee & Market",
+      "neighborhood": "Pullman",
+      "address": "125 SE Spring St, Unit 102, Pullman, WA 99163",
+      "lat": 46.7292865,
+      "lng": -117.1765709,
+      "cuisine": [
+        "Bakery",
+        "Cafe"
+      ],
+      "placeType": "bakery",
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            0
+          ],
+          "start": 420,
+          "end": 960
+        },
+        {
+          "days": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "start": 360,
+          "end": 960
+        },
+        {
+          "days": [
+            5
+          ],
+          "start": 360,
+          "end": 1020
+        },
+        {
+          "days": [
+            6
+          ],
+          "start": 420,
+          "end": 1020
+        }
+      ],
+      "gustoScore": null,
+      "appleMapsUrl": "https://maps.apple.com/?daddr=46.7292865,-117.1765709&q=Roost%20Coffee%20&%20Market",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=14667473062907851086",
+      "guideSlugs": [
+        "pul-cafe",
+        "pul-bakery"
+      ],
+      "muid": "14667473062907851086",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-11-03",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Bakery at Roost Coffee & Market",
+          "credit": "Illustration"
+        }
+      ],
+      "phone": "+1 (509) 332-8534",
+      "website": "https://www.roostcoffeepullman.com"
+    },
+    {
+      "id": "moscow-alehouse",
+      "city": "moscow",
+      "name": "Moscow Alehouse",
+      "neighborhood": "Moscow",
+      "address": "226 W Sixth St, Moscow, ID 83843",
+      "lat": 46.7302337,
+      "lng": -117.0037427,
+      "cuisine": [
+        "Pub"
+      ],
+      "placeType": "restaurant",
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "start": 660,
+          "end": 1320
+        }
+      ],
+      "gustoScore": null,
+      "appleMapsUrl": "https://maps.apple.com/?daddr=46.7302337,-117.0037427&q=Moscow%20Alehouse",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=17325931091337098049",
+      "guideSlugs": [],
+      "muid": "17325931091337098049",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-11-03",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Pub at Moscow Alehouse",
+          "credit": "Illustration"
+        }
+      ],
+      "phone": "+1 (208) 882-2739",
+      "website": "https://www.moscowalehouse.com"
+    },
+    {
+      "id": "einstein-bros-bagels",
+      "city": "pullman",
+      "name": "Einstein Bros. Bagels",
+      "neighborhood": "Pullman",
+      "address": "1302 NE Cougar Way\nPullman, WA 99163\nUnited States",
+      "lat": 46.7336473,
+      "lng": -117.1638358,
+      "cuisine": [
+        "Bagels",
+        "Cafe"
+      ],
+      "placeType": "bakery",
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            0
+          ],
+          "start": 630,
+          "end": 1320
+        },
+        {
+          "days": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "start": 450,
+          "end": 1320
+        },
+        {
+          "days": [
+            6
+          ],
+          "start": 630,
+          "end": 1320
+        }
+      ],
+      "gustoScore": null,
+      "appleMapsUrl": "https://maps.apple.com/?daddr=46.7336473,-117.1638358&q=Einstein%20Bros.%20Bagels",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=12842955764284774879",
+      "guideSlugs": [
+        "pul-cafe"
+      ],
+      "muid": "12842955764284774879",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-11-03",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Bagels at Einstein Bros. Bagels",
+          "credit": "Illustration"
+        }
+      ],
+      "phone": "+1 (509) 335-1381",
+      "website": "https://locations.einsteinbros.com/us/wa/pullman/1302-ne-cougar-way"
+    },
+    {
+      "id": "heros-n-sports",
+      "city": "pullman",
+      "name": "Heros N Sports",
+      "neighborhood": "Pullman",
+      "address": "245 NE Kamiaken St, Pullman, WA 99163",
+      "lat": 46.7308456,
+      "lng": -117.1794087,
+      "cuisine": [
+        "Sandwiches",
+        "Deli"
+      ],
+      "placeType": "deli",
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "start": 660,
+          "end": 1200
+        },
+        {
+          "days": [
+            6
+          ],
+          "start": 660,
+          "end": 900
+        }
+      ],
+      "gustoScore": null,
+      "appleMapsUrl": "https://maps.apple.com/?daddr=46.7308456,-117.1794087&q=Heros%20N%20Sports",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=9509074516963244744",
+      "guideSlugs": [
+        "pul-sandwiches"
+      ],
+      "muid": "9509074516963244744",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-11-03",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Sandwiches at Heros N Sports",
+          "credit": "Illustration"
+        }
+      ],
+      "phone": "+1 (509) 334-5423",
+      "website": null
+    },
+    {
+      "id": "the-emporium",
+      "city": "pullman",
+      "name": "The Emporium",
+      "neighborhood": "Pullman",
+      "address": "600 NE Colorado St, Pullman, WA 99163",
+      "lat": 46.7341812,
+      "lng": -117.1705819,
+      "cuisine": [
+        "Nightclub",
+        "Pub"
+      ],
+      "placeType": "bar",
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            2,
+            3
+          ],
+          "start": 1020,
+          "end": 1440
+        },
+        {
+          "days": [
+            4,
+            5,
+            6
+          ],
+          "start": 1020,
+          "end": 1440
+        }
+      ],
+      "gustoScore": null,
+      "appleMapsUrl": "https://maps.apple.com/?daddr=46.7341812,-117.1705819&q=The%20Emporium",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=3917410467384878183",
+      "guideSlugs": [
+        "pul-pub"
+      ],
+      "muid": "3917410467384878183",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-11-03",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Nightclub at The Emporium",
+          "credit": "Illustration"
+        }
+      ],
+      "phone": null,
+      "website": "https://pullmanemporium.com"
+    },
+    {
+      "id": "humble-burger",
+      "city": "moscow",
+      "name": "Humble Burger",
+      "neighborhood": "Moscow",
+      "address": "509 S Main St, Moscow, ID 83843",
+      "lat": 46.7308863,
+      "lng": -117.0017864,
+      "cuisine": [
+        "Burgers",
+        "Fast food"
+      ],
+      "placeType": "restaurant",
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "start": 660,
+          "end": 1200
+        }
+      ],
+      "gustoScore": null,
+      "appleMapsUrl": "https://maps.apple.com/?daddr=46.7308863,-117.0017864&q=Humble%20Burger",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=231909169002595043",
+      "guideSlugs": [],
+      "muid": "231909169002595043",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-11-03",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Burgers at Humble Burger",
+          "credit": "Illustration"
+        }
+      ],
+      "phone": "+1 (208) 596-0296",
+      "website": "https://humbleburger.com"
+    },
+    {
+      "id": "porch-light-pizza",
+      "city": "pullman",
+      "name": "Porch Light Pizza",
+      "neighborhood": "Pullman",
+      "address": "200 NE Kamiaken St, Pullman, WA 99163",
+      "lat": 46.730223,
+      "lng": -117.179399,
+      "cuisine": [
+        "Pizza",
+        "Health food"
+      ],
+      "placeType": "restaurant",
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "start": 660,
+          "end": 1200
+        },
+        {
+          "days": [
+            5
+          ],
+          "start": 660,
+          "end": 1260
+        },
+        {
+          "days": [
+            6
+          ],
+          "start": 660,
+          "end": 1200
+        }
+      ],
+      "gustoScore": null,
+      "appleMapsUrl": "https://maps.apple.com/?daddr=46.730223,-117.179399&q=Porch%20Light%20Pizza",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=17182734111577381200",
+      "guideSlugs": [],
+      "muid": "17182734111577381200",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-11-03",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Pizza at Porch Light Pizza",
+          "credit": "Illustration"
+        }
+      ],
+      "phone": "+1 (509) 334-7437",
+      "website": "https://www.facebook.com/PorchLightPizza/"
+    },
+    {
+      "id": "one-world-cafe",
+      "city": "moscow",
+      "name": "One World Cafe",
+      "neighborhood": "Moscow",
+      "address": "533 S Main St, Moscow, ID 83843",
+      "lat": 46.7302358,
+      "lng": -117.0017923,
+      "cuisine": [
+        "Coffee",
+        "Cafe"
+      ],
+      "placeType": "restaurant",
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "start": 390,
+          "end": 1140
+        }
+      ],
+      "gustoScore": null,
+      "appleMapsUrl": "https://maps.apple.com/?daddr=46.7302358,-117.0017923&q=One%20World%20Cafe",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=3380696865842125155",
+      "guideSlugs": [
+        "mos-cafe",
+        "mos-coffee"
+      ],
+      "muid": "3380696865842125155",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-11-03",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Coffee at One World Cafe",
+          "credit": "Illustration"
+        }
+      ],
+      "phone": "+1 (208) 883-3537",
+      "website": "https://owc-moscow.com/"
+    },
+    {
+      "id": "the-coug",
+      "city": "pullman",
+      "name": "The Coug",
+      "neighborhood": "Pullman",
+      "address": "900 NE Colorado St, Pullman, WA 99163",
+      "lat": 46.7336076,
+      "lng": -117.1676327,
+      "cuisine": [
+        "American"
+      ],
+      "placeType": "restaurant",
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            0
+          ],
+          "start": 720,
+          "end": 1440
+        },
+        {
+          "days": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "start": 660,
+          "end": 1440
+        }
+      ],
+      "gustoScore": null,
+      "appleMapsUrl": "https://maps.apple.com/?daddr=46.7336076,-117.1676327&q=The%20Coug",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=17706547699529074065",
+      "guideSlugs": [],
+      "muid": "17706547699529074065",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-11-03",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting American at The Coug",
+          "credit": "Illustration"
+        }
+      ],
+      "phone": "+1 (509) 332-1265",
+      "website": "https://thecougarcottage.com"
+    },
+    {
+      "id": "the-old-european-restaurant",
+      "city": "pullman",
+      "name": "The Old European Restaurant",
+      "neighborhood": "Pullman",
+      "address": "455 S Grand Ave, Pullman, WA 99163",
+      "lat": 46.7265972,
+      "lng": -117.1851627,
+      "cuisine": [
+        "Brunch",
+        "Diner"
+      ],
+      "placeType": "restaurant",
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            0
+          ],
+          "start": 420,
+          "end": 900
+        },
+        {
+          "days": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "start": 390,
+          "end": 840
+        }
+      ],
+      "gustoScore": null,
+      "appleMapsUrl": "https://maps.apple.com/?daddr=46.7265972,-117.1851627&q=The%20Old%20European%20Restaurant",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=15841121826330395400",
+      "guideSlugs": [],
+      "muid": "15841121826330395400",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-11-03",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Brunch at The Old European Restaurant",
+          "credit": "Illustration"
+        }
+      ],
+      "phone": "+1 (509) 223-0183",
+      "website": "https://www.oldeuropean-restaurant.com"
+    },
+    {
+      "id": "neill-s-coffee-ice-cream",
+      "city": "pullman",
+      "name": "Neill's Coffee & Ice Cream",
+      "neighborhood": "Pullman",
+      "address": "230 E Main St, Pullman, WA 99163",
+      "lat": 46.7298623,
+      "lng": -117.1808656,
+      "cuisine": [
+        "Ice cream",
+        "Dessert"
+      ],
+      "placeType": "dessert",
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            0
+          ],
+          "start": 510,
+          "end": 1020
+        },
+        {
+          "days": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "start": 420,
+          "end": 1200
+        },
+        {
+          "days": [
+            5,
+            6
+          ],
+          "start": 450,
+          "end": 1200
+        }
+      ],
+      "gustoScore": null,
+      "appleMapsUrl": "https://maps.apple.com/?daddr=46.7298623,-117.1808656&q=Neill's%20Coffee%20&%20Ice%20Cream",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=7272519683407210463",
+      "guideSlugs": [],
+      "muid": "7272519683407210463",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-11-03",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Ice cream at Neill's Coffee & Ice Cream",
+          "credit": "Illustration"
+        }
+      ],
+      "phone": "+1 (509) 715-1331",
+      "website": "https://neillscoffeeandicecream.wordpress.com"
+    },
+    {
+      "id": "ferdinand-s-ice-cream-shoppe",
+      "city": "pullman",
+      "name": "Ferdinand's Ice Cream Shoppe",
+      "neighborhood": "Pullman",
+      "address": "2035 NE Ferdinand's Ln, Pullman, WA 99164",
+      "lat": 46.732601,
+      "lng": -117.154905,
+      "cuisine": [
+        "Ice cream",
+        "Dessert"
+      ],
+      "placeType": "dessert",
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "start": 570,
+          "end": 990
+        }
+      ],
+      "gustoScore": null,
+      "appleMapsUrl": "https://maps.apple.com/?daddr=46.732601,-117.154905&q=Ferdinand's%20Ice%20Cream%20Shoppe",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=14231380430461977548",
+      "guideSlugs": [],
+      "muid": "14231380430461977548",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-11-03",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Ice cream at Ferdinand's Ice Cream Shoppe",
+          "credit": "Illustration"
+        }
+      ],
+      "phone": "+1 (509) 335-2141",
+      "website": "http://creamery.wsu.edu/ferdinands-ice-cream-shoppe/"
+    },
+    {
+      "id": "south-fork-public-house",
+      "city": "pullman",
+      "name": "South Fork Public House",
+      "neighborhood": "Pullman",
+      "address": "1680 S Grand Ave, Pullman, WA 99163",
+      "lat": 46.7133698,
+      "lng": -117.180717,
+      "cuisine": [
+        "Pub"
+      ],
+      "placeType": "restaurant",
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "start": 660,
+          "end": 1260
+        },
+        {
+          "days": [
+            5,
+            6
+          ],
+          "start": 660,
+          "end": 1290
+        }
+      ],
+      "gustoScore": null,
+      "appleMapsUrl": "https://maps.apple.com/?daddr=46.7133698,-117.180717&q=South%20Fork%20Public%20House",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=2521332968954205039",
+      "guideSlugs": [
+        "pul-pub"
+      ],
+      "muid": "2521332968954205039",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-11-03",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Pub at South Fork Public House",
+          "credit": "Illustration"
+        }
+      ],
+      "phone": "+1 (509) 332-3675",
+      "website": "http://www.southforkpublichouse.com"
+    },
+    {
+      "id": "the-black-cypress",
+      "city": "pullman",
+      "name": "The Black Cypress",
+      "neighborhood": "Pullman",
+      "address": "215 E Main St, Suite B, Pullman, WA 99161",
+      "lat": 46.7295281,
+      "lng": -117.1809874,
+      "cuisine": [
+        "New American",
+        "Mediterranean"
+      ],
+      "placeType": "restaurant",
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "start": 1020,
+          "end": 1260
+        },
+        {
+          "days": [
+            5,
+            6
+          ],
+          "start": 1020,
+          "end": 1320
+        }
+      ],
+      "gustoScore": null,
+      "appleMapsUrl": "https://maps.apple.com/?daddr=46.7295281,-117.1809874&q=The%20Black%20Cypress",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=15795529276367371614",
+      "guideSlugs": [],
+      "muid": "15795529276367371614",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-11-03",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting New American at The Black Cypress",
+          "credit": "Illustration"
+        }
+      ],
+      "phone": "+1 (509) 334-5800",
+      "website": "http://www.theblackcypress.com"
+    },
+    {
+      "id": "barm-wallops",
+      "city": "pullman",
+      "name": "Barm & Wallops",
+      "neighborhood": "Pullman",
+      "address": "1195 SE Bishop Blvd, Ste 1, Pullman, WA 99163",
+      "lat": 46.716374,
+      "lng": -117.1650582,
+      "cuisine": [
+        "Beer",
+        "Small plates"
+      ],
+      "placeType": "restaurant",
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            2,
+            3,
+            4,
+            5
+          ],
+          "start": 690,
+          "end": 840
+        },
+        {
+          "days": [
+            2,
+            3,
+            4,
+            5
+          ],
+          "start": 960,
+          "end": 1200
+        },
+        {
+          "days": [
+            6
+          ],
+          "start": 720,
+          "end": 1200
+        }
+      ],
+      "gustoScore": null,
+      "appleMapsUrl": "https://maps.apple.com/?daddr=46.716374,-117.1650582&q=Barm%20&%20Wallops",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=12135825698577705128",
+      "guideSlugs": [],
+      "muid": "12135825698577705128",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-11-03",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Beer at Barm & Wallops",
+          "credit": "Illustration"
+        }
+      ],
+      "phone": "+1 (509) 339-6075",
+      "website": "https://www.yelp.com/biz/barm-and-wallops-pullman"
+    },
+    {
+      "id": "rico-s-public-house",
+      "city": "pullman",
+      "name": "Rico's Public House",
+      "neighborhood": "Pullman",
+      "address": "200 E Main St, Pullman, WA 99163",
+      "lat": 46.729828,
+      "lng": -117.181282,
+      "cuisine": [
+        "Pub",
+        "Sandwiches"
+      ],
+      "placeType": "restaurant",
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            0
+          ],
+          "start": 600,
+          "end": 1440
+        },
+        {
+          "days": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "start": 660,
+          "end": 1440
+        },
+        {
+          "days": [
+            5
+          ],
+          "start": 660,
+          "end": 1440
+        },
+        {
+          "days": [
+            6
+          ],
+          "start": 600,
+          "end": 1440
+        }
+      ],
+      "gustoScore": null,
+      "appleMapsUrl": "https://maps.apple.com/?daddr=46.729828,-117.181282&q=Rico's%20Public%20House",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=522554912234791954",
+      "guideSlugs": [
+        "pul-sandwiches",
+        "pul-pub"
+      ],
+      "muid": "522554912234791954",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-11-03",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Pub at Rico's Public House",
+          "credit": "Illustration"
+        }
+      ],
+      "phone": "+1 (509) 332-6566",
+      "website": "https://ricospubpullman.com/"
+    },
+    {
+      "id": "knead-cafe-patisserie",
+      "city": "pullman",
+      "name": "Knead Café & Pâtisserie",
+      "neighborhood": "Pullman",
+      "address": "1490 NE North Fairway Rd, Unit A, Pullman, WA 99163",
+      "lat": 46.741934,
+      "lng": -117.1488261,
+      "cuisine": [
+        "Patisserie",
+        "Bakery"
+      ],
+      "placeType": "bakery",
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            0
+          ],
+          "start": 480,
+          "end": 900
+        },
+        {
+          "days": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "start": 420,
+          "end": 900
+        },
+        {
+          "days": [
+            6
+          ],
+          "start": 480,
+          "end": 900
+        }
+      ],
+      "gustoScore": null,
+      "appleMapsUrl": "https://maps.apple.com/?daddr=46.741934,-117.1488261&q=Knead%20Café%20&%20Pâtisserie",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=10653668693955535457",
+      "guideSlugs": [
+        "pul-bakery"
+      ],
+      "muid": "10653668693955535457",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-11-03",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Patisserie at Knead Café & Pâtisserie",
+          "credit": "Illustration"
+        }
+      ],
+      "phone": "+1 (509) 720-8435",
+      "website": "http://www.kneadcp.com"
+    },
+    {
+      "id": "maialina-pizzeria-napoletana",
+      "city": "moscow",
+      "name": "Maialina Pizzeria Napoletana",
+      "neighborhood": "Moscow",
+      "address": "602 S Main St, Moscow, ID 83843",
+      "lat": 46.7298923,
+      "lng": -117.0009245,
+      "cuisine": [
+        "Italian",
+        "Pizza"
+      ],
+      "placeType": "restaurant",
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "start": 660,
+          "end": 1290
+        },
+        {
+          "days": [
+            5,
+            6
+          ],
+          "start": 660,
+          "end": 1320
+        }
+      ],
+      "gustoScore": null,
+      "appleMapsUrl": "https://maps.apple.com/?daddr=46.7298923,-117.0009245&q=Maialina%20Pizzeria%20Napoletana",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=978935025687332971",
+      "guideSlugs": [],
+      "muid": "978935025687332971",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-11-03",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Italian at Maialina Pizzeria Napoletana",
+          "credit": "Illustration"
+        }
+      ],
+      "phone": "+1 (208) 882-2694",
+      "website": "http://www.maialina.com"
+    },
+    {
+      "id": "la-casa-lopez",
+      "city": "moscow",
+      "name": "La Casa Lopez",
+      "neighborhood": "Moscow",
+      "address": "415 S Main St, Moscow, ID 83843",
+      "lat": 46.7311802,
+      "lng": -117.0017767,
+      "cuisine": [
+        "Mexican"
+      ],
+      "placeType": "restaurant",
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "start": 720,
+          "end": 1260
+        }
+      ],
+      "gustoScore": null,
+      "appleMapsUrl": "https://maps.apple.com/?daddr=46.7311802,-117.0017767&q=La%20Casa%20Lopez",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=13110543016487082152",
+      "guideSlugs": [],
+      "muid": "13110543016487082152",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-11-03",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Mexican at La Casa Lopez",
+          "credit": "Illustration"
+        }
+      ],
+      "phone": "+1 (208) 883-0536",
+      "website": "https://lacasalopezrestaurant.com/"
+    },
+    {
+      "id": "tapped",
+      "city": "moscow",
+      "name": "Tapped",
+      "neighborhood": "Moscow",
+      "address": "210 S Main St, Moscow, ID 83843",
+      "lat": 46.7326693,
+      "lng": -117.0008594,
+      "cuisine": [
+        "Gastropub",
+        "Pub"
+      ],
+      "placeType": "bar",
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "start": 660,
+          "end": 1320
+        }
+      ],
+      "gustoScore": null,
+      "appleMapsUrl": "https://maps.apple.com/?daddr=46.7326693,-117.0008594&q=Tapped",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=1562106274404755350",
+      "guideSlugs": [],
+      "muid": "1562106274404755350",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-11-03",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Gastropub at Tapped",
+          "credit": "Illustration"
+        }
+      ],
+      "phone": "+1 (208) 596-4422",
+      "website": "http://moscowtapped.com"
+    },
+    {
+      "id": "merry-cellars",
+      "city": "pullman",
+      "name": "Merry Cellars",
+      "neighborhood": "Pullman",
+      "address": "1300 Henley Ct, Pullman, WA 99163",
+      "lat": 46.7511604,
+      "lng": -117.1565402,
+      "cuisine": [
+        "Restaurant"
+      ],
+      "placeType": "bar",
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "start": 720,
+          "end": 1080
+        }
+      ],
+      "gustoScore": null,
+      "appleMapsUrl": "https://maps.apple.com/?daddr=46.7511604,-117.1565402&q=Merry%20Cellars",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=12408159854732297913",
+      "guideSlugs": [],
+      "muid": "12408159854732297913",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-11-03",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Restaurant at Merry Cellars",
+          "credit": "Illustration"
+        }
+      ],
+      "phone": "+1 (509) 338-4699",
+      "website": "https://merrycellars.com"
+    },
+    {
+      "id": "beef-company",
+      "city": "pullman",
+      "name": "Beef & Company",
+      "neighborhood": "Pullman",
+      "address": "1105 SE Latah St, Pullman, WA 99163",
+      "lat": 46.724372,
+      "lng": -117.1670603,
+      "cuisine": [
+        "Sandwiches",
+        "Street food"
+      ],
+      "placeType": "restaurant",
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            2,
+            3,
+            4,
+            5
+          ],
+          "start": 690,
+          "end": 1140
+        },
+        {
+          "days": [
+            6
+          ],
+          "start": 690,
+          "end": 900
+        }
+      ],
+      "gustoScore": null,
+      "appleMapsUrl": "https://maps.apple.com/?daddr=46.724372,-117.1670603&q=Beef%20&%20Company",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=7472554607007637239",
+      "guideSlugs": [
+        "pul-sandwiches"
+      ],
+      "muid": "7472554607007637239",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-11-03",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Sandwiches at Beef & Company",
+          "credit": "Illustration"
+        }
+      ],
+      "phone": "+1 (760) 650-5284",
+      "website": "https://www.yelp.com/biz/beef-and-company-pullman"
+    },
+    {
+      "id": "pups-cups-cafe",
+      "city": "pullman",
+      "name": "Pups & Cups Cafe",
+      "neighborhood": "Pullman",
+      "address": "250 E Main St, Pullman, WA 99163",
+      "lat": 46.7297904,
+      "lng": -117.180212,
+      "cuisine": [
+        "Coffee",
+        "Cafe"
+      ],
+      "placeType": "cafe",
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            0
+          ],
+          "start": 420,
+          "end": 960
+        },
+        {
+          "days": [
+            2,
+            3
+          ],
+          "start": 420,
+          "end": 1020
+        },
+        {
+          "days": [
+            4,
+            5,
+            6
+          ],
+          "start": 420,
+          "end": 1260
+        }
+      ],
+      "gustoScore": null,
+      "appleMapsUrl": "https://maps.apple.com/?daddr=46.7297904,-117.180212&q=Pups%20&%20Cups%20Cafe",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=8112960737034593775",
+      "guideSlugs": [
+        "pul-cafe"
+      ],
+      "muid": "8112960737034593775",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-11-03",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Coffee at Pups & Cups Cafe",
+          "credit": "Illustration"
+        }
+      ],
+      "phone": "+1 (509) 715-1005",
+      "website": "https://www.pupsncups.net"
+    },
+    {
+      "id": "taqueria-las-torres",
+      "city": "pullman",
+      "name": "Taqueria Las Torres",
+      "neighborhood": "Pullman",
+      "address": "110 NE Whitman St, Pullman, WA 99163",
+      "lat": 46.7333605,
+      "lng": -117.1780515,
+      "cuisine": [
+        "Mexican",
+        "Street food"
+      ],
+      "placeType": "restaurant",
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "start": 660,
+          "end": 1230
+        }
+      ],
+      "gustoScore": null,
+      "appleMapsUrl": "https://maps.apple.com/?daddr=46.7333605,-117.1780515&q=Taqueria%20Las%20Torres",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=7109778744387596731",
+      "guideSlugs": [],
+      "muid": "7109778744387596731",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-11-03",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Mexican at Taqueria Las Torres",
+          "credit": "Illustration"
+        }
+      ],
+      "phone": "+1 (702) 720-7065",
+      "website": null
+    },
+    {
+      "id": "nectar",
+      "city": "moscow",
+      "name": "Nectar",
+      "neighborhood": "Moscow",
+      "address": "105 W Sixth St, Moscow, ID 83843",
+      "lat": 46.729941,
+      "lng": -117.0018625,
+      "cuisine": [
+        "Cocktails",
+        "Lounge"
+      ],
+      "placeType": "restaurant",
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            2,
+            3,
+            4
+          ],
+          "start": 960,
+          "end": 1260
+        },
+        {
+          "days": [
+            5,
+            6
+          ],
+          "start": 960,
+          "end": 1320
+        }
+      ],
+      "gustoScore": null,
+      "appleMapsUrl": "https://maps.apple.com/?daddr=46.729941,-117.0018625&q=Nectar",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=14592318664151368001",
+      "guideSlugs": [],
+      "muid": "14592318664151368001",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-11-03",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Cocktails at Nectar",
+          "credit": "Illustration"
+        }
+      ],
+      "phone": "+1 (208) 882-5914",
+      "website": "https://www.moscownectar.com"
+    },
+    {
+      "id": "lodgepole",
+      "city": "moscow",
+      "name": "Lodgepole",
+      "neighborhood": "Moscow",
+      "address": "106 N Main St, Moscow, ID 83843",
+      "lat": 46.733873,
+      "lng": -117.001177,
+      "cuisine": [
+        "American"
+      ],
+      "placeType": "restaurant",
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            0
+          ],
+          "start": 960,
+          "end": 1260
+        },
+        {
+          "days": [
+            3,
+            4,
+            5,
+            6
+          ],
+          "start": 960,
+          "end": 1260
+        }
+      ],
+      "gustoScore": null,
+      "appleMapsUrl": "https://maps.apple.com/?daddr=46.733873,-117.001177&q=Lodgepole",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=5908288002654641489",
+      "guideSlugs": [],
+      "muid": "5908288002654641489",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-11-03",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting American at Lodgepole",
+          "credit": "Illustration"
+        }
+      ],
+      "phone": "+1 (208) 882-2268",
+      "website": "https://lodgepolerestaurant.com"
+    },
+    {
+      "id": "moscow-bagel-and-deli",
+      "city": "moscow",
+      "name": "Moscow Bagel and Deli",
+      "neighborhood": "Moscow",
+      "address": "310 S Main St, Moscow, ID 83843",
+      "lat": 46.7320076,
+      "lng": -117.0010402,
+      "cuisine": [
+        "Bagels",
+        "Sandwiches"
+      ],
+      "placeType": "bakery",
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            0
+          ],
+          "start": 420,
+          "end": 900
+        },
+        {
+          "days": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "start": 420,
+          "end": 1140
+        },
+        {
+          "days": [
+            6
+          ],
+          "start": 420,
+          "end": 900
+        }
+      ],
+      "gustoScore": null,
+      "appleMapsUrl": "https://maps.apple.com/?daddr=46.7320076,-117.0010402&q=Moscow%20Bagel%20and%20Deli",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=11705112118182705428",
+      "guideSlugs": [],
+      "muid": "11705112118182705428",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-11-03",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Bagels at Moscow Bagel and Deli",
+          "credit": "Illustration"
+        }
+      ],
+      "phone": "+1 (208) 882-5242",
+      "website": "https://www.moscowbagel.com"
+    },
+    {
+      "id": "doms-donuts",
+      "city": "pullman",
+      "name": "Dom’s Donuts",
+      "neighborhood": "Pullman",
+      "address": "330 N Grand Ave, Pullman, WA 99163",
+      "lat": 46.7315595,
+      "lng": -117.1793906,
+      "cuisine": [
+        "Donuts",
+        "Bakery"
+      ],
+      "placeType": "dessert",
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            2,
+            3,
+            4,
+            5
+          ],
+          "start": 450,
+          "end": 720
+        },
+        {
+          "days": [
+            6
+          ],
+          "start": 480,
+          "end": 720
+        }
+      ],
+      "gustoScore": null,
+      "appleMapsUrl": "https://maps.apple.com/?daddr=46.7315595,-117.1793906&q=Dom’s%20Donuts",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=2204827760736469817",
+      "guideSlugs": [
+        "pul-bakery"
+      ],
+      "muid": "2204827760736469817",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-11-03",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Donuts at Dom’s Donuts",
+          "credit": "Illustration"
+        }
+      ],
+      "phone": "+1 (509) 530-1001",
+      "website": "http://www.getdomsdonuts.com"
+    },
+    {
+      "id": "the-land",
+      "city": "pullman",
+      "name": "The Land",
+      "neighborhood": "Pullman",
+      "address": "1525 NE Merman Dr, Pullman, WA 99163",
+      "lat": 46.743968,
+      "lng": -117.1541529,
+      "cuisine": [
+        "American"
+      ],
+      "placeType": "restaurant",
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "start": 660,
+          "end": 1440
+        },
+        {
+          "days": [
+            4,
+            5,
+            6
+          ],
+          "start": 660,
+          "end": 1440
+        }
+      ],
+      "gustoScore": null,
+      "appleMapsUrl": "https://maps.apple.com/?daddr=46.743968,-117.1541529&q=The%20Land",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=14464153283423279776",
+      "guideSlugs": [],
+      "muid": "14464153283423279776",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-11-03",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting American at The Land",
+          "credit": "Illustration"
+        }
+      ],
+      "phone": "+1 (509) 715-1003",
+      "website": "http://thelandpullman.com"
+    }
+  ],
+  "guides": [
+    {
+      "slug": "pul-cafe",
+      "title": "Cafe",
+      "dek": "",
+      "group": "Cuisine",
+      "intro": "",
+      "updatedAt": "2026-11-03",
+      "ranked": false,
+      "city": "pullman",
+      "entries": [
+        {
+          "placeId": "crybaby-cafe",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "roost-coffee-market",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "einstein-bros-bagels",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "pups-cups-cafe",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        }
+      ],
+      "pinned": true
+    },
+    {
+      "slug": "pul-bakery",
+      "title": "Bakery",
+      "dek": "",
+      "group": "Cuisine",
+      "intro": "",
+      "updatedAt": "2026-11-03",
+      "ranked": false,
+      "city": "pullman",
+      "entries": [
+        {
+          "placeId": "roost-coffee-market",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "knead-cafe-patisserie",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "doms-donuts",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        }
+      ],
+      "pinned": true
+    },
+    {
+      "slug": "pul-sandwiches",
+      "title": "Sandwiches",
+      "dek": "",
+      "group": "Cuisine",
+      "intro": "",
+      "updatedAt": "2026-11-03",
+      "ranked": false,
+      "city": "pullman",
+      "entries": [
+        {
+          "placeId": "heros-n-sports",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "rico-s-public-house",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "beef-company",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        }
+      ],
+      "pinned": true
+    },
+    {
+      "slug": "pul-pub",
+      "title": "Pub",
+      "dek": "",
+      "group": "Cuisine",
+      "intro": "",
+      "updatedAt": "2026-11-03",
+      "ranked": false,
+      "city": "pullman",
+      "entries": [
+        {
+          "placeId": "the-emporium",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "south-fork-public-house",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "rico-s-public-house",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        }
+      ],
+      "pinned": true
+    },
+    {
+      "slug": "mos-cafe",
+      "title": "Cafe",
+      "dek": "",
+      "group": "Cuisine",
+      "intro": "",
+      "updatedAt": "2026-11-03",
+      "ranked": false,
+      "city": "moscow",
+      "entries": [
+        {
+          "placeId": "paradise-grill-and-cafe",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "dutch-bros-coffee",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "the-silos-coffee-social",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "one-world-cafe",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        }
+      ],
+      "pinned": true
+    },
+    {
+      "slug": "mos-coffee",
+      "title": "Coffee",
+      "dek": "",
+      "group": "Cuisine",
+      "intro": "",
+      "updatedAt": "2026-11-03",
+      "ranked": false,
+      "city": "moscow",
+      "entries": [
+        {
+          "placeId": "dutch-bros-coffee",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "the-silos-coffee-social",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "one-world-cafe",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        }
+      ],
+      "pinned": true
+    }
+  ]
+}

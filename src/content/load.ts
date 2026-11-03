@@ -103,6 +103,10 @@ function regions(): Promise<RegionFile[]> {
     import('./la.json'),
     import('./sf.json'),
     import('./sd.json'),
+    import('./vancouver.json'),
+    import('./portland.json'),
+    import('./nyc.json'),
+    import('./palouse.json'),
   ]).then((modules) => modules.map((module) => module.default as RegionFile))
 }
 

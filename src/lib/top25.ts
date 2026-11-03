@@ -49,7 +49,7 @@ function scoreKey(scoreOf: (placeId: string) => number | null): string {
 function build(scoreOf: (placeId: string) => number | null): Cache {
   const map = new Map<string, ForkAward>()
   const boards = {} as Cache['boards']
-  for (const region of ['seattle', 'la', 'sf', 'sandiego'] as const) {
+  for (const region of ['seattle', 'la', 'sf', 'sandiego', 'vancouver', 'portland', 'nyc', 'pullman'] as const) {
     const ranked = catalog.places
       // Restaurants only, the same test the profile Top 10 uses; one per brand.
       .filter((place) => isListed(place) && isRestaurant(place) && regionOf(placeCity(place)) === region)

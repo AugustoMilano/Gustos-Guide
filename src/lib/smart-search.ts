@@ -118,6 +118,23 @@ const AREA_WORDS: { phrase: string; city: CityId }[] = [
   { phrase: 'north bay', city: 'northbay' },
   { phrase: 'corte madera', city: 'northbay' },
   { phrase: 'san diego', city: 'sandiego' },
+  { phrase: 'vancouver', city: 'vancouver' },
+  { phrase: 'coal harbour', city: 'vancouver' },
+  { phrase: 'gastown', city: 'vancouver' },
+  { phrase: 'granville island', city: 'vancouver' },
+  { phrase: 'kitsilano', city: 'vancouver' },
+  { phrase: 'portland', city: 'portland' },
+  { phrase: 'pearl district', city: 'portland' },
+  { phrase: 'nob hill', city: 'portland' },
+  { phrase: 'new york', city: 'nyc' },
+  { phrase: 'nyc', city: 'nyc' },
+  { phrase: 'manhattan', city: 'nyc' },
+  { phrase: 'brooklyn', city: 'nyc' },
+  { phrase: 'tribeca', city: 'nyc' },
+  { phrase: 'soho', city: 'nyc' },
+  { phrase: 'west village', city: 'nyc' },
+  { phrase: 'pullman', city: 'pullman' },
+  { phrase: 'moscow', city: 'moscow' },
   { phrase: 'la jolla', city: 'sandiego' },
   { phrase: 'little italy', city: 'sandiego' },
   { phrase: 'north park', city: 'sandiego' },
@@ -146,7 +163,7 @@ const AREA_WORDS: { phrase: string; city: CityId }[] = [
 ]
 
 /** Region names that only pick the scope; they are not neighborhoods to filter on. */
-const SCOPE_ONLY = new Set(['seattle', 'eastside', 'los angeles', 'san francisco', 'east bay', 'north bay', 'san diego'])
+const SCOPE_ONLY = new Set(['seattle', 'eastside', 'los angeles', 'san francisco', 'east bay', 'north bay', 'san diego', 'vancouver', 'portland', 'new york', 'nyc', 'manhattan', 'pullman', 'moscow'])
 
 const STOP = new Set(['a', 'an', 'the', 'to', 'for', 'in', 'on', 'by', 'at', 'of', 'and', 'or', 'with', 'somewhere', 'something', 'spot', 'spots', 'eats', 'eat', 'eating', 'food', 'place', 'places', 'good', 'best', 'great', 'take', 'taking', 'near', 'around', 'me', 'some', 'want', 'get', 'find', 'restaurant', 'restaurants', 'where', 'go', 'nice', 'top'])
 

@@ -216,7 +216,7 @@ applyLocationOverrides(rawPlaces, loadLocationOverrides())
 // Places listed by hand in a regional file (eastside.json and the rest) are live there,
 // so the Seattle import must not re-hide them as outside_seattle.
 const regionalMuids = new Set(
-  ['eastside.json', 'la.json', 'sf.json', 'sd.json'].flatMap((file) => {
+  ['eastside.json', 'la.json', 'sf.json', 'sd.json', 'vancouver.json', 'portland.json', 'nyc.json', 'palouse.json'].flatMap((file) => {
     try {
       return JSON.parse(readFileSync(join(root, 'src/content', file), 'utf8')).places.map((place) => String(place.muid || '')).filter(Boolean)
     } catch {
@@ -1186,7 +1186,7 @@ for (const guide of guides) {
     if (exclusionIds().has(entry.placeId)) leaks.push(`${guide.slug}:${entry.placeId}`)
   }
 }
-for (const file of ['eastside.json', 'la.json', 'sf.json', 'sd.json']) {
+for (const file of ['eastside.json', 'la.json', 'sf.json', 'sd.json', 'vancouver.json', 'portland.json', 'nyc.json', 'palouse.json']) {
   const regional = JSON.parse(readFileSync(join(root, 'src/content', file), 'utf8'))
   for (const place of regional.places) {
     if (permanentlyExcluded(place)) leaks.push(`${file}:${place.id}`)

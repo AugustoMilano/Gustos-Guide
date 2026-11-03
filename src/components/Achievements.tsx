@@ -19,6 +19,10 @@ const GUIDE_AREAS = [
   { id: 'la', title: 'Los Angeles', cities: ['la'] },
   { id: 'bay', title: 'SF Bay Area', cities: ['sf', 'eastbay', 'peninsula', 'northbay'] },
   { id: 'sandiego', title: 'San Diego', cities: ['sandiego'] },
+  { id: 'vancouver', title: 'Vancouver', cities: ['vancouver'] },
+  { id: 'portland', title: 'Portland', cities: ['portland'] },
+  { id: 'nyc', title: 'New York', cities: ['nyc'] },
+  { id: 'pullman', title: 'Pullman and Moscow', cities: ['pullman', 'moscow'] },
 ]
 
 /** Guide medals by city; the city in the switcher comes first. Earned, then closest to done, then untouched. */

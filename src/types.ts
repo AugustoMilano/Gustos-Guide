@@ -22,7 +22,7 @@ export type Period = { days: number[]; start: number; end: number }
 export type SlimPlace = {
   id: string
   /** Omitted places are Seattle. Eastside and Los Angeles are marked. */
-  city?: 'seattle' | 'eastside' | 'la' | 'sf' | 'eastbay' | 'peninsula' | 'northbay' | 'sandiego'
+  city?: 'seattle' | 'eastside' | 'la' | 'sf' | 'eastbay' | 'peninsula' | 'northbay' | 'sandiego' | 'vancouver' | 'portland' | 'nyc' | 'pullman' | 'moscow'
   name: string
   neighborhood: string
   address: string
@@ -78,7 +78,7 @@ export type Guide = {
   /** Manual order. Score sort does not reshuffle a pinned guide. */
   pinned?: boolean
   /** Omitted guides are Seattle. */
-  city?: 'seattle' | 'eastside' | 'la' | 'sf' | 'eastbay' | 'peninsula' | 'northbay' | 'sandiego'
+  city?: 'seattle' | 'eastside' | 'la' | 'sf' | 'eastbay' | 'peninsula' | 'northbay' | 'sandiego' | 'vancouver' | 'portland' | 'nyc' | 'pullman' | 'moscow'
   entries: GuideEntry[]
 }
 
@@ -91,7 +91,7 @@ export type GuideSummary = {
   ranked: boolean
   count: number
   /** Omitted guides are Seattle. */
-  city?: 'seattle' | 'eastside' | 'la' | 'sf' | 'eastbay' | 'peninsula' | 'northbay' | 'sandiego'
+  city?: 'seattle' | 'eastside' | 'la' | 'sf' | 'eastbay' | 'peninsula' | 'northbay' | 'sandiego' | 'vancouver' | 'portland' | 'nyc' | 'pullman' | 'moscow'
 }
 
 export type GuideVisibility = 'private' | 'friends' | 'public'
