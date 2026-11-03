@@ -50,7 +50,8 @@ export function TabBar() {
   const scaleX = useTransform([stretch, lift] as const, ([s, l]: number[]) => (1 + s) * l)
   const scaleY = useTransform([stretch, lift] as const, ([s, l]: number[]) => (1 - s * 0.45) * l)
 
-  const hidden = pathname === '/' || pathname === '/cities' || bare === '/explore' || bare.startsWith('/collection/')
+  // Shown on every page but the city picker, map and collection pages included, so every section stays one tap away.
+  const hidden = pathname === '/' || pathname === '/cities'
   const me = app.user?.handle ? `/u/${app.user.handle}` : '/my'
   const tabs = [
     { id: 'home', label: 'Home', to: '/', on: bare === '/' },
