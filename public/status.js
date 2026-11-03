@@ -8,4 +8,13 @@
   document.documentElement.style.backgroundColor = color
   var nodes = document.querySelectorAll('meta[name="theme-color"]')
   for (var i = 0; i < nodes.length; i++) nodes[i].setAttribute('content', color)
+  var paint = function () {
+    document.body.style.backgroundColor = color
+    var bar = document.getElementById('top-chrome')
+    if (!bar) return
+    bar.dataset.color = color
+    bar.style.backgroundColor = color
+  }
+  if (document.body) paint()
+  else document.addEventListener('DOMContentLoaded', paint)
 })()
