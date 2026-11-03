@@ -5236,3 +5236,28 @@ mark {
 .explore-scroll .btn:not(.btn-coral):not(.btn-navy):not(.btn-leaf):not(.btn-x) { background: #f4ebe0; }
 .explore-scroll { contain: paint; }
 .explore-scroll .btn, .explore-scroll .btn::before, .explore-scroll .btn::after { filter: none !important; box-shadow: none; position: static; z-index: auto; }
+
+/* Interactive map sheet on phones (fix71). One fixed full-tall panel from just under the status
+   bar (a 56px sliver of header stays for context) down to the tab bar. useBottomSheet moves it
+   between peek, half and full with transform: translateY on this element only, following the finger
+   and settling with the spring. Nothing inside the scroller is transformed (fix70 clipping). */
+@media (max-width: 767px) {
+  .explore-shell { z-index: 41; }
+  .lg-dock { z-index: 42; }
+  .explore-list,
+  .explore-list.is-open,
+  .explore-list.is-peek {
+    position: fixed;
+    top: calc(env(safe-area-inset-top) + 56px);
+    bottom: calc(84px + env(safe-area-inset-bottom));
+    max-height: none;
+    height: auto;
+    animation: none;
+    transform: translate3d(0, 100%, 0);
+    box-shadow: 0 -8px 32px rgb(20 31 77 / 18%);
+  }
+  .explore-list.is-open .explore-scroll { animation: none; }
+  .explore-scroll { overscroll-behavior-y: none; }
+  .explore-head { touch-action: none; cursor: grab; }
+  .explore-map .leaflet-bottom { bottom: calc(4.75rem + 84px + env(safe-area-inset-bottom)); }
+}

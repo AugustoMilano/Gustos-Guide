@@ -1,4 +1,4 @@
-import { lazy, Suspense, useEffect, useMemo, useRef, useState, type TouchEvent } from 'react'
+import { lazy, Suspense, useEffect, useMemo, useRef, useState } from 'react'
 import { useReducedMotion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import type { MapBounds } from '../components/GuideMap.tsx'
@@ -14,6 +14,7 @@ import { isOpen } from '../lib/hours.ts'
 import { countPlaces, priceLabel } from '../lib/format.ts'
 import { usePageMeta } from '../lib/meta.ts'
 import { useApp } from '../state/AppState.tsx'
+import { useBottomSheet, type Detent } from '../lib/use-bottom-sheet.ts'
 import type { SlimPlace } from '../types.ts'
 
 const BANDS = [
@@ -59,22 +60,17 @@ export function ExplorePage() {
   const [openNow, setOpenNow] = useState(false)
   const [area, setArea] = useState<MapBounds | null>(null)
   const [pending, setPending] = useState(false)
-  const [sheet, setSheet] = useState(false)
+  const [detent, setDetent] = useState<Detent>('peek')
+  const sheet = detent !== 'peek'
+  const setSheet = (next: boolean | ((value: boolean) => boolean)) => {
+    const open = typeof next === 'function' ? next(sheet) : next
+    setDetent(open ? 'full' : 'peek')
+  }
   const [filtersOpen, setFiltersOpen] = useState(false)
+  const sheetEl = useRef<HTMLElement>(null)
+  const headEl = useRef<HTMLDivElement>(null)
   const scroller = useRef<HTMLDivElement>(null)
-  const swipe = useRef<{ y: number; top: boolean } | null>(null)
-  // Swipes are read on touchend from passive listeners, so native scrolling is never blocked.
-  const swipeStart = (event: TouchEvent) => {
-    swipe.current = { y: event.touches[0].clientY, top: (scroller.current?.scrollTop ?? 0) <= 0 }
-  }
-  const swipeEnd = (fromList: boolean) => (event: TouchEvent) => {
-    const start = swipe.current
-    swipe.current = null
-    if (!start) return
-    const dy = event.changedTouches[0].clientY - start.y
-    if (!fromList && dy < -24) setSheet(true)
-    else if (dy > (fromList ? 72 : 24) && start.top) setSheet(false)
-  }
+  useBottomSheet(sheetEl, headEl, scroller, detent, setDetent)
   const [activeId, setActiveId] = useState<string | null>(null)
   const armedAt = useRef(Number.POSITIVE_INFINITY)
   const latest = useRef<MapBounds | null>(null)
@@ -107,8 +103,8 @@ export function ExplorePage() {
   return (
     <main id="main" tabIndex={-1} className="explore-shell outline-none">
       <h1 className="sr-only">Explore {areaName}</h1>
-      <section className={`explore-list ${sheet ? 'is-open' : 'is-peek'}`} aria-label="Places in this view">
-        <div className="explore-head" onTouchStart={swipeStart} onTouchEnd={swipeEnd(false)}>
+      <section ref={sheetEl} className={`explore-list is-${detent} ${sheet ? 'is-open' : 'is-peek'}`} aria-label="Places in this view">
+        <div ref={headEl} className="explore-head">
         <button type="button" className="explore-grab" aria-expanded={sheet} onClick={() => setSheet((value) => !value)}>
           <span aria-hidden="true" />
           <span className="sr-only">{sheet ? 'Show the map' : 'Show the list'}</span>
@@ -130,9 +126,8 @@ export function ExplorePage() {
         </div>
         <div
           ref={scroller}
-          className={`explore-scroll ${sheet ? '' : 'max-md:hidden'}`}
-          onTouchStart={swipeStart}
-          onTouchEnd={swipeEnd(true)}
+          className="explore-scroll"
+          aria-hidden={sheet ? undefined : true}
         >
           <button
             type="button"
