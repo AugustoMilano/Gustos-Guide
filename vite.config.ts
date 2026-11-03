@@ -193,6 +193,18 @@ export default defineConfig({
         const statusPath = join(process.cwd(), 'dist/status.js')
         if (!name || !existsSync(statusPath)) return
         writeFileSync(statusPath, readFileSync(statusPath, 'utf8').replace("/*CATALOG*/''", JSON.stringify(`/assets/${name}`)))
+        // D2: the app script and its modulepreloads move from index.html into status.js, which adds
+        // them at once on most routes but lets a place deep link's hero photo finish first, since
+        // Cloudflare shares the bandwidth evenly instead of honoring fetchpriority.
+        const htmlPath = join(process.cwd(), 'dist/index.html')
+        let html = readFileSync(htmlPath, 'utf8')
+        const entry = html.match(/<script type="module"[^>]*src="\.?\/(assets\/[^"]+)"><\/script>\n?\s*/)
+        if (!entry) throw new Error('boot: entry script not found')
+        const preloads = [...html.matchAll(/<link rel="modulepreload"[^>]*href="\.?\/(assets\/[^"]+)">\n?\s*/g)]
+        for (const match of [entry, ...preloads]) html = html.replace(match[0], '')
+        writeFileSync(htmlPath, html)
+        const boot = { entry: entry[1], preloads: preloads.map((match) => match[1]) }
+        writeFileSync(statusPath, readFileSync(statusPath, 'utf8').replace('/*BOOT*/null', JSON.stringify(boot)))
       },
     },
     react(),

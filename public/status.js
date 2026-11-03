@@ -54,6 +54,34 @@
   // Place deep links (C1): fetch the place's own small record so the page renders before the
   // catalog and region data, and preload its hero photo the moment the record lands.
   var placeId = bare.indexOf('/place/') === 0 ? bare.slice(7).split('/')[0] : ''
+  // D2: start the app (stamped at build: entry script and its modulepreloads). A module script
+  // added during parsing could run before #root exists, so the script waits for the document.
+  var bootFiles = /*BOOT*/null
+  var booted = false
+  var startApp = function () {
+    if (booted || !bootFiles) return
+    booted = true
+    var addScript = function () {
+      var script = document.createElement('script')
+      script.type = 'module'
+      script.crossOrigin = 'anonymous'
+      script.src = '/' + bootFiles.entry
+      document.head.appendChild(script)
+    }
+    for (var k = 0; k < bootFiles.preloads.length; k++) {
+      var mod = document.createElement('link')
+      mod.rel = 'modulepreload'
+      mod.crossOrigin = 'anonymous'
+      mod.href = '/' + bootFiles.preloads[k]
+      document.head.appendChild(mod)
+    }
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', addScript)
+    else addScript()
+  }
+  window.__gustoStartApp = startApp
+  // Safety net: the app starts within 2.5 s even if anything below throws.
+  setTimeout(startApp, 2500)
+  var waitForHero = false
   var catalogHref = /*CATALOG*/''
   if (catalogHref && !placeId) {
     var pre = document.createElement('link')
@@ -89,6 +117,10 @@
       hint.setAttribute('imagesrcset', hero)
       hint.setAttribute('imagesizes', '(min-width: 1024px) 36rem, calc(100vw - 2rem)')
       hint.setAttribute('fetchpriority', 'high')
+      // The app's code waits for this photo (or the 2.5 s safety net).
+      waitForHero = true
+      hint.onload = startApp
+      hint.onerror = startApp
       document.head.appendChild(hint)
       // Paint the hero from static HTML in the exact box the gallery will use; the app replaces it.
       // Nothing sits above the photo on this route, so nothing can shift.
@@ -119,4 +151,5 @@
       })
     window.__placeBoot = placeBoot
   }
+  if (!waitForHero) startApp()
 })()
