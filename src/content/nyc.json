@@ -525,7 +525,9 @@
       "hoursLabel": "",
       "blurb": "",
       "orderThis": [],
-      "ids": {},
+      "ids": {
+        "yelp": "fPjivOc2AVE5Pvqetv-row"
+      },
       "copySource": "draft",
       "updatedAt": "2026-11-03",
       "photos": [
@@ -537,7 +539,13 @@
         }
       ],
       "phone": null,
-      "website": "https://www.yelp.com/biz/centurion-new-york-new-york"
+      "website": "https://www.yelp.com/biz/centurion-new-york-new-york",
+      "publicRating": {
+        "value": 4.3,
+        "count": 87,
+        "source": "Yelp"
+      },
+      "yelpSlug": "fPjivOc2AVE5Pvqetv-row"
     },
     {
       "id": "ralph-s-coffee",
@@ -2138,7 +2146,9 @@
       "hoursLabel": "",
       "blurb": "",
       "orderThis": [],
-      "ids": {},
+      "ids": {
+        "yelp": "l44CFBTejwL0ElKmkH7xQQ"
+      },
       "copySource": "draft",
       "updatedAt": "2026-11-03",
       "photos": [
@@ -2150,7 +2160,13 @@
         }
       ],
       "phone": "+1 (212) 691-9700",
-      "website": "https://decoynyc.com"
+      "website": "https://decoynyc.com",
+      "publicRating": {
+        "value": 4.2,
+        "count": 461,
+        "source": "Yelp"
+      },
+      "yelpSlug": "l44CFBTejwL0ElKmkH7xQQ"
     },
     {
       "id": "catch-nyc",
@@ -2573,7 +2589,9 @@
       "hoursLabel": "",
       "blurb": "",
       "orderThis": [],
-      "ids": {},
+      "ids": {
+        "yelp": "Kj6rmgOpY1YCM3OFsm4R0w"
+      },
       "copySource": "draft",
       "updatedAt": "2026-11-03",
       "photos": [
@@ -2585,7 +2603,13 @@
         }
       ],
       "phone": "+1 (855) 282-4726",
-      "website": "https://aubiramsa.com"
+      "website": "https://aubiramsa.com",
+      "publicRating": {
+        "value": 4.6,
+        "count": 159,
+        "source": "Yelp"
+      },
+      "yelpSlug": "Kj6rmgOpY1YCM3OFsm4R0w"
     },
     {
       "id": "the-dead-rabbit",
@@ -3325,7 +3349,9 @@
       "hoursLabel": "",
       "blurb": "",
       "orderThis": [],
-      "ids": {},
+      "ids": {
+        "yelp": "pfmAcS-g6SiNG0KlLvrqnA"
+      },
       "copySource": "draft",
       "updatedAt": "2026-11-03",
       "photos": [
@@ -3337,7 +3363,13 @@
         }
       ],
       "phone": "+1 (212) 614-0146",
-      "website": "https://taogroup.com/venues/beauty-essex-new-york/"
+      "website": "https://taogroup.com/venues/beauty-essex-new-york/",
+      "publicRating": {
+        "value": 4,
+        "count": 4082,
+        "source": "Yelp"
+      },
+      "yelpSlug": "pfmAcS-g6SiNG0KlLvrqnA"
     },
     {
       "id": "starbucks-reserve-roastery",
@@ -3920,7 +3952,9 @@
       "hoursLabel": "",
       "blurb": "",
       "orderThis": [],
-      "ids": {},
+      "ids": {
+        "yelp": "z9sRnN1gPyxz9SJ52XDWoQ"
+      },
       "copySource": "draft",
       "updatedAt": "2026-11-03",
       "photos": [
@@ -3932,7 +3966,13 @@
         }
       ],
       "phone": "+1 (212) 364-3970",
-      "website": "https://www.chobani.com/about"
+      "website": "https://www.chobani.com/about",
+      "publicRating": {
+        "value": 4.3,
+        "count": 718,
+        "source": "Yelp"
+      },
+      "yelpSlug": "z9sRnN1gPyxz9SJ52XDWoQ"
     },
     {
       "id": "atomix",
@@ -4430,7 +4470,9 @@
       "hoursLabel": "",
       "blurb": "",
       "orderThis": [],
-      "ids": {},
+      "ids": {
+        "yelp": "GTniSQ46cO6SSUN_MbnIrQ"
+      },
       "copySource": "draft",
       "updatedAt": "2026-11-03",
       "photos": [
@@ -4442,7 +4484,13 @@
         }
       ],
       "phone": "+1 (646) 449-0826",
-      "website": "https://brickyardbarnyc.com"
+      "website": "https://brickyardbarnyc.com",
+      "publicRating": {
+        "value": 4.4,
+        "count": 186,
+        "source": "Yelp"
+      },
+      "yelpSlug": "GTniSQ46cO6SSUN_MbnIrQ"
     },
     {
       "id": "taiyaki-nyc",
@@ -5170,7 +5218,9 @@
       "hoursLabel": "",
       "blurb": "",
       "orderThis": [],
-      "ids": {},
+      "ids": {
+        "yelp": "k7DdoOr_vkFhaGtSOmHwFg"
+      },
       "copySource": "draft",
       "updatedAt": "2026-11-03",
       "photos": [
@@ -5182,7 +5232,13 @@
         }
       ],
       "phone": "+1 (212) 546-5300",
-      "website": "https://www.theplazany.com/dining/the-palm-court/"
+      "website": "https://www.theplazany.com/dining/the-palm-court/",
+      "publicRating": {
+        "value": 3.5,
+        "count": 673,
+        "source": "Yelp"
+      },
+      "yelpSlug": "k7DdoOr_vkFhaGtSOmHwFg"
     },
     {
       "id": "il-laboratorio-del-gelato",
@@ -5476,7 +5532,9 @@
       "hoursLabel": "",
       "blurb": "",
       "orderThis": [],
-      "ids": {},
+      "ids": {
+        "yelp": "hdiuRS9sVZSMReZm4oV5SA"
+      },
       "copySource": "draft",
       "updatedAt": "2026-11-03",
       "photos": [
@@ -5488,7 +5546,13 @@
         }
       ],
       "phone": "+1 (212) 367-1979",
-      "website": "http://www.daandreanyc.com/"
+      "website": "http://www.daandreanyc.com/",
+      "publicRating": {
+        "value": 4.4,
+        "count": 2850,
+        "source": "Yelp"
+      },
+      "yelpSlug": "hdiuRS9sVZSMReZm4oV5SA"
     },
     {
       "id": "joe-s-pizza",
@@ -5942,7 +6006,9 @@
       "hoursLabel": "",
       "blurb": "",
       "orderThis": [],
-      "ids": {},
+      "ids": {
+        "yelp": "x_oV9aGzq-lNmgPXU_tvbw"
+      },
       "copySource": "draft",
       "updatedAt": "2026-11-03",
       "photos": [
@@ -5954,7 +6020,13 @@
         }
       ],
       "phone": "+1 (212) 608-5844",
-      "website": "https://www.zuckersbagels.com"
+      "website": "https://www.zuckersbagels.com",
+      "publicRating": {
+        "value": 3.1,
+        "count": 873,
+        "source": "Yelp"
+      },
+      "yelpSlug": "x_oV9aGzq-lNmgPXU_tvbw"
     },
     {
       "id": "odo",
@@ -6481,7 +6553,9 @@
       "hoursLabel": "",
       "blurb": "",
       "orderThis": [],
-      "ids": {},
+      "ids": {
+        "yelp": "qU3ejLMndurKQTkM01gutg"
+      },
       "copySource": "draft",
       "updatedAt": "2026-11-03",
       "photos": [
@@ -6493,7 +6567,13 @@
         }
       ],
       "phone": "+1 (212) 544-9862",
-      "website": "https://zumarestaurant.com/locations/new-york/"
+      "website": "https://zumarestaurant.com/locations/new-york/",
+      "publicRating": {
+        "value": 3.6,
+        "count": 916,
+        "source": "Yelp"
+      },
+      "yelpSlug": "qU3ejLMndurKQTkM01gutg"
     },
     {
       "id": "roxy-bar",
@@ -9889,7 +9969,9 @@
       "hoursLabel": "",
       "blurb": "",
       "orderThis": [],
-      "ids": {},
+      "ids": {
+        "yelp": "a51CXBvHd2V0c1Kst3-4cg"
+      },
       "copySource": "draft",
       "updatedAt": "2026-11-03",
       "photos": [
@@ -9901,7 +9983,13 @@
         }
       ],
       "phone": "+1 (917) 970-0687",
-      "website": "http://www.sushibyscratchrestaurants.com/new-york"
+      "website": "http://www.sushibyscratchrestaurants.com/new-york",
+      "publicRating": {
+        "value": 4.2,
+        "count": 12,
+        "source": "Yelp"
+      },
+      "yelpSlug": "a51CXBvHd2V0c1Kst3-4cg"
     },
     {
       "id": "le-pavillon",
@@ -10015,7 +10103,9 @@
       "hoursLabel": "",
       "blurb": "",
       "orderThis": [],
-      "ids": {},
+      "ids": {
+        "yelp": "RTbltj7zrc3mL2CIQvNUpg"
+      },
       "copySource": "draft",
       "updatedAt": "2026-11-03",
       "photos": [
@@ -10027,7 +10117,13 @@
         }
       ],
       "phone": "+1 (212) 334-9435",
-      "website": "https://www.grandaisybakery.com"
+      "website": "https://www.grandaisybakery.com",
+      "publicRating": {
+        "value": 3.7,
+        "count": 171,
+        "source": "Yelp"
+      },
+      "yelpSlug": "RTbltj7zrc3mL2CIQvNUpg"
     },
     {
       "id": "the-grill",
@@ -12185,7 +12281,9 @@
       "hoursLabel": "",
       "blurb": "",
       "orderThis": [],
-      "ids": {},
+      "ids": {
+        "yelp": "_Jgmhw0ywyoGyglPwB1xGA"
+      },
       "copySource": "draft",
       "updatedAt": "2026-11-03",
       "photos": [
@@ -12197,7 +12295,13 @@
         }
       ],
       "phone": "+1 (646) 452-6868",
-      "website": "https://www.friendofafarmer.com"
+      "website": "https://www.friendofafarmer.com",
+      "publicRating": {
+        "value": 4.3,
+        "count": 184,
+        "source": "Yelp"
+      },
+      "yelpSlug": "_Jgmhw0ywyoGyglPwB1xGA"
     },
     {
       "id": "skirt-steak",
@@ -12870,7 +12974,9 @@
       "hoursLabel": "",
       "blurb": "",
       "orderThis": [],
-      "ids": {},
+      "ids": {
+        "yelp": "kA98xP8HiJ_-fVaM7RECLw"
+      },
       "copySource": "draft",
       "updatedAt": "2026-11-03",
       "photos": [
@@ -12882,7 +12988,13 @@
         }
       ],
       "phone": "+1 (212) 680-1111",
-      "website": "https://laughingmancoffee.com"
+      "website": "https://laughingmancoffee.com",
+      "publicRating": {
+        "value": 4.2,
+        "count": 346,
+        "source": "Yelp"
+      },
+      "yelpSlug": "kA98xP8HiJ_-fVaM7RECLw"
     },
     {
       "id": "delmonico-s",
