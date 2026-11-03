@@ -47,7 +47,9 @@
       "hoursLabel": "",
       "blurb": "",
       "orderThis": [],
-      "ids": {},
+      "ids": {
+        "yelp": "sUKh87XEmpy5n9BaLiQEIw"
+      },
       "copySource": "draft",
       "updatedAt": "2026-11-03",
       "photos": [
@@ -59,7 +61,13 @@
         }
       ],
       "phone": "+1 (604) 678-1217",
-      "website": "https://www.nandos.ca/find/davie-howe-downtown"
+      "website": "https://www.nandos.ca/find/davie-howe-downtown",
+      "publicRating": {
+        "value": 3.7,
+        "count": 250,
+        "source": "Yelp"
+      },
+      "yelpSlug": "sUKh87XEmpy5n9BaLiQEIw"
     },
     {
       "id": "st-lawrence",
@@ -161,7 +169,9 @@
       "hoursLabel": "",
       "blurb": "",
       "orderThis": [],
-      "ids": {},
+      "ids": {
+        "yelp": "OHMv-_cc0kmRCWV3kM44Bg"
+      },
       "copySource": "draft",
       "updatedAt": "2026-11-03",
       "photos": [
@@ -173,7 +183,13 @@
         }
       ],
       "phone": "+1 (604) 428-8414",
-      "website": "https://kosoo.ca"
+      "website": "https://kosoo.ca",
+      "publicRating": {
+        "value": 4.3,
+        "count": 179,
+        "source": "Yelp"
+      },
+      "yelpSlug": "OHMv-_cc0kmRCWV3kM44Bg"
     },
     {
       "id": "nightingale",
@@ -347,7 +363,9 @@
       "hoursLabel": "",
       "blurb": "",
       "orderThis": [],
-      "ids": {},
+      "ids": {
+        "yelp": "xOqfvlf_oVeAcqj2xHrx1w"
+      },
       "copySource": "draft",
       "updatedAt": "2026-11-03",
       "photos": [
@@ -359,7 +377,13 @@
         }
       ],
       "phone": "+1 (778) 379-8226",
-      "website": "http://tacofino.com"
+      "website": "http://tacofino.com",
+      "publicRating": {
+        "value": 3.7,
+        "count": 185,
+        "source": "Yelp"
+      },
+      "yelpSlug": "xOqfvlf_oVeAcqj2xHrx1w"
     },
     {
       "id": "cactus-club-cafe",
@@ -639,7 +663,9 @@
       "hoursLabel": "",
       "blurb": "",
       "orderThis": [],
-      "ids": {},
+      "ids": {
+        "yelp": "a7YBnJsJUSg5AnfDM9ZmYg"
+      },
       "copySource": "draft",
       "updatedAt": "2026-11-03",
       "photos": [
@@ -651,7 +677,13 @@
         }
       ],
       "phone": "+1 (604) 322-6465",
-      "website": "https://japadog.com/location"
+      "website": "https://japadog.com/location",
+      "publicRating": {
+        "value": 3.9,
+        "count": 970,
+        "source": "Yelp"
+      },
+      "yelpSlug": "a7YBnJsJUSg5AnfDM9ZmYg"
     },
     {
       "id": "gobo",
@@ -930,7 +962,9 @@
       "hoursLabel": "",
       "blurb": "",
       "orderThis": [],
-      "ids": {},
+      "ids": {
+        "yelp": "S-wgeQmV5v4g4wti05zUlQ"
+      },
       "copySource": "draft",
       "updatedAt": "2026-11-03",
       "photos": [
@@ -942,7 +976,13 @@
         }
       ],
       "phone": "+1 (604) 416-3936",
-      "website": "http://www.kohakutendon.com"
+      "website": "http://www.kohakutendon.com",
+      "publicRating": {
+        "value": 4.3,
+        "count": 221,
+        "source": "Yelp"
+      },
+      "yelpSlug": "S-wgeQmV5v4g4wti05zUlQ"
     },
     {
       "id": "karma-indian-bistro",
@@ -1060,7 +1100,9 @@
       "hoursLabel": "",
       "blurb": "",
       "orderThis": [],
-      "ids": {},
+      "ids": {
+        "yelp": "EZeVAQllPDJlYnec9YxzgQ"
+      },
       "copySource": "draft",
       "updatedAt": "2026-11-03",
       "photos": [
@@ -1072,7 +1114,13 @@
         }
       ],
       "phone": "+1 (604) 559-6181",
-      "website": "https://www.meochinatown.com"
+      "website": "https://www.meochinatown.com",
+      "publicRating": {
+        "value": 4,
+        "count": 20,
+        "source": "Yelp"
+      },
+      "yelpSlug": "EZeVAQllPDJlYnec9YxzgQ"
     },
     {
       "id": "nat-s-new-york-pizzeria",
@@ -1110,7 +1158,9 @@
       "hoursLabel": "",
       "blurb": "",
       "orderThis": [],
-      "ids": {},
+      "ids": {
+        "yelp": "XgOcemy8NPoxwi4LBOrqfw"
+      },
       "copySource": "draft",
       "updatedAt": "2026-11-03",
       "photos": [
@@ -1122,7 +1172,13 @@
         }
       ],
       "phone": "+1 (604) 737-0707",
-      "website": "https://www.natspizza.com/"
+      "website": "https://www.natspizza.com/",
+      "publicRating": {
+        "value": 3.7,
+        "count": 136,
+        "source": "Yelp"
+      },
+      "yelpSlug": "XgOcemy8NPoxwi4LBOrqfw"
     },
     {
       "id": "barbara-restaurant",
@@ -1354,7 +1410,9 @@
       "hoursLabel": "",
       "blurb": "",
       "orderThis": [],
-      "ids": {},
+      "ids": {
+        "yelp": "JgSGpSMHbGecAXs_o1rE_g"
+      },
       "copySource": "draft",
       "updatedAt": "2026-11-03",
       "photos": [
@@ -1366,7 +1424,13 @@
         }
       ],
       "phone": "+1 (604) 669-7769",
-      "website": "http://dinesty.ca/our-locations/vancouver-robson/"
+      "website": "http://dinesty.ca/our-locations/vancouver-robson/",
+      "publicRating": {
+        "value": 3.9,
+        "count": 1032,
+        "source": "Yelp"
+      },
+      "yelpSlug": "JgSGpSMHbGecAXs_o1rE_g"
     },
     {
       "id": "notch8",
@@ -1465,7 +1529,9 @@
       "hoursLabel": "",
       "blurb": "",
       "orderThis": [],
-      "ids": {},
+      "ids": {
+        "yelp": "CQAc8CFadjY8fv3mkaEWxw"
+      },
       "copySource": "draft",
       "updatedAt": "2026-11-03",
       "photos": [
@@ -1477,7 +1543,13 @@
         }
       ],
       "phone": "+1 (604) 620-2004",
-      "website": "http://rainorshineicecream.com"
+      "website": "http://rainorshineicecream.com",
+      "publicRating": {
+        "value": 4.1,
+        "count": 34,
+        "source": "Yelp"
+      },
+      "yelpSlug": "CQAc8CFadjY8fv3mkaEWxw"
     },
     {
       "id": "cafe-medina",
@@ -1585,7 +1657,9 @@
       "hoursLabel": "",
       "blurb": "",
       "orderThis": [],
-      "ids": {},
+      "ids": {
+        "yelp": "FgATf88_fEkJKLWR2aKmew"
+      },
       "copySource": "draft",
       "updatedAt": "2026-11-03",
       "photos": [
@@ -1597,7 +1671,13 @@
         }
       ],
       "phone": "+1 (604) 682-5566",
-      "website": "https://www.rosewoodhotels.com/en/hotel-georgia-vancouver/dining/1927-lobby-lounge"
+      "website": "https://www.rosewoodhotels.com/en/hotel-georgia-vancouver/dining/1927-lobby-lounge",
+      "publicRating": {
+        "value": 4.3,
+        "count": 54,
+        "source": "Yelp"
+      },
+      "yelpSlug": "FgATf88_fEkJKLWR2aKmew"
     },
     {
       "id": "maruhachi-ra-men",
@@ -1709,7 +1789,9 @@
       "hoursLabel": "",
       "blurb": "",
       "orderThis": [],
-      "ids": {},
+      "ids": {
+        "yelp": "g6F_Mdi63zQM5QBVygmJmg"
+      },
       "copySource": "draft",
       "updatedAt": "2026-11-03",
       "photos": [
@@ -1721,7 +1803,13 @@
         }
       ],
       "phone": "+1 (236) 466-0261",
-      "website": "https://thefryingpan604.com/"
+      "website": "https://thefryingpan604.com/",
+      "publicRating": {
+        "value": 4.4,
+        "count": 50,
+        "source": "Yelp"
+      },
+      "yelpSlug": "g6F_Mdi63zQM5QBVygmJmg"
     },
     {
       "id": "chocolats-favoris",
@@ -1779,7 +1867,9 @@
       "hoursLabel": "",
       "blurb": "",
       "orderThis": [],
-      "ids": {},
+      "ids": {
+        "yelp": "wq3crYVjwrR6G387Bkx7cw"
+      },
       "copySource": "draft",
       "updatedAt": "2026-11-03",
       "photos": [
@@ -1791,7 +1881,13 @@
         }
       ],
       "phone": "+1 (604) 336-6955",
-      "website": "http://www.chocolatsfavoris.com"
+      "website": "http://www.chocolatsfavoris.com",
+      "publicRating": {
+        "value": 3.9,
+        "count": 25,
+        "source": "Yelp"
+      },
+      "yelpSlug": "wq3crYVjwrR6G387Bkx7cw"
     },
     {
       "id": "angus-t",
@@ -1846,7 +1942,9 @@
       "hoursLabel": "",
       "blurb": "",
       "orderThis": [],
-      "ids": {},
+      "ids": {
+        "yelp": "uJNfd4CrU3dD7RjLnHzodg"
+      },
       "copySource": "draft",
       "updatedAt": "2026-11-03",
       "photos": [
@@ -1858,7 +1956,13 @@
         }
       ],
       "phone": "+1 (604) 559-5989",
-      "website": "http://angust.com"
+      "website": "http://angust.com",
+      "publicRating": {
+        "value": 4.3,
+        "count": 128,
+        "source": "Yelp"
+      },
+      "yelpSlug": "uJNfd4CrU3dD7RjLnHzodg"
     },
     {
       "id": "lee-s-donuts",
@@ -1913,7 +2017,9 @@
       "hoursLabel": "",
       "blurb": "",
       "orderThis": [],
-      "ids": {},
+      "ids": {
+        "yelp": "DF60u_0flQzqTcBqaLL4Iw"
+      },
       "copySource": "draft",
       "updatedAt": "2026-11-03",
       "photos": [
@@ -1925,7 +2031,13 @@
         }
       ],
       "phone": "+1 (236) 335-4021",
-      "website": "https://leesdonuts.ca"
+      "website": "https://leesdonuts.ca",
+      "publicRating": {
+        "value": 4.2,
+        "count": 570,
+        "source": "Yelp"
+      },
+      "yelpSlug": "DF60u_0flQzqTcBqaLL4Iw"
     },
     {
       "id": "tutto-restaurant-bar",
@@ -2043,7 +2155,9 @@
       "hoursLabel": "",
       "blurb": "",
       "orderThis": [],
-      "ids": {},
+      "ids": {
+        "yelp": "8epZBQPYacy1-KQULLABmg"
+      },
       "copySource": "draft",
       "updatedAt": "2026-11-03",
       "photos": [
@@ -2055,7 +2169,13 @@
         }
       ],
       "phone": "+1 (604) 623-3383",
-      "website": "http://www.alibi.ca"
+      "website": "http://www.alibi.ca",
+      "publicRating": {
+        "value": 4.2,
+        "count": 586,
+        "source": "Yelp"
+      },
+      "yelpSlug": "8epZBQPYacy1-KQULLABmg"
     },
     {
       "id": "the-beach-house-restaurant",
@@ -2216,7 +2336,9 @@
       "hoursLabel": "",
       "blurb": "",
       "orderThis": [],
-      "ids": {},
+      "ids": {
+        "yelp": "eDTuLgH0muqJg3bh-qnGfw"
+      },
       "copySource": "draft",
       "updatedAt": "2026-11-03",
       "photos": [
@@ -2228,7 +2350,13 @@
         }
       ],
       "phone": "+1 (604) 336-9001",
-      "website": "https://www.purebread.ca"
+      "website": "https://www.purebread.ca",
+      "publicRating": {
+        "value": 4,
+        "count": 81,
+        "source": "Yelp"
+      },
+      "yelpSlug": "eDTuLgH0muqJg3bh-qnGfw"
     },
     {
       "id": "italian-kitchen",
@@ -2341,7 +2469,9 @@
       "hoursLabel": "",
       "blurb": "",
       "orderThis": [],
-      "ids": {},
+      "ids": {
+        "yelp": "qifKceDXL5NjfX3DaxY__g"
+      },
       "copySource": "draft",
       "updatedAt": "2026-11-03",
       "photos": [
@@ -2353,7 +2483,13 @@
         }
       ],
       "phone": "+1 (604) 428-0697",
-      "website": "https://earnesticecream.com/locations/fraser-st/"
+      "website": "https://earnesticecream.com/locations/fraser-st/",
+      "publicRating": {
+        "value": 4.3,
+        "count": 534,
+        "source": "Yelp"
+      },
+      "yelpSlug": "qifKceDXL5NjfX3DaxY__g"
     },
     {
       "id": "the-mackenzie-room",
@@ -2460,7 +2596,9 @@
       "hoursLabel": "",
       "blurb": "",
       "orderThis": [],
-      "ids": {},
+      "ids": {
+        "yelp": "pwUPWowcRQPfMNJcBKQ66w"
+      },
       "copySource": "draft",
       "updatedAt": "2026-11-03",
       "photos": [
@@ -2472,7 +2610,13 @@
         }
       ],
       "phone": "+1 (604) 773-3823",
-      "website": "https://www.nemesis.coffee"
+      "website": "https://www.nemesis.coffee",
+      "publicRating": {
+        "value": 4.2,
+        "count": 149,
+        "source": "Yelp"
+      },
+      "yelpSlug": "pwUPWowcRQPfMNJcBKQ66w"
     },
     {
       "id": "sushi-hil",
@@ -2591,7 +2735,9 @@
       "hoursLabel": "",
       "blurb": "",
       "orderThis": [],
-      "ids": {},
+      "ids": {
+        "yelp": "NKPDVoMYufyWJVx9c6hqSQ"
+      },
       "copySource": "draft",
       "updatedAt": "2026-11-03",
       "photos": [
@@ -2603,7 +2749,13 @@
         }
       ],
       "phone": "+1 (604) 685-0613",
-      "website": "http://www.jjbeancoffee.com"
+      "website": "http://www.jjbeancoffee.com",
+      "publicRating": {
+        "value": 4.2,
+        "count": 65,
+        "source": "Yelp"
+      },
+      "yelpSlug": "NKPDVoMYufyWJVx9c6hqSQ"
     },
     {
       "id": "beavertails",
@@ -2642,7 +2794,9 @@
       "hoursLabel": "",
       "blurb": "",
       "orderThis": [],
-      "ids": {},
+      "ids": {
+        "yelp": "ITlatGHd5Bw0BZ8-UCcpHA"
+      },
       "copySource": "draft",
       "updatedAt": "2026-11-03",
       "photos": [
@@ -2654,7 +2808,13 @@
         }
       ],
       "phone": "+1 (604) 980-9311",
-      "website": "http://www.beavertailsinc.com"
+      "website": "http://www.beavertailsinc.com",
+      "publicRating": {
+        "value": 3.9,
+        "count": 15,
+        "source": "Yelp"
+      },
+      "yelpSlug": "ITlatGHd5Bw0BZ8-UCcpHA"
     },
     {
       "id": "top-of-vancouver-revolving-restaurant",
@@ -2798,7 +2958,9 @@
       "hoursLabel": "",
       "blurb": "",
       "orderThis": [],
-      "ids": {},
+      "ids": {
+        "yelp": "p8rb6IQ637goSkbyMbcOAg"
+      },
       "copySource": "draft",
       "updatedAt": "2026-11-03",
       "photos": [
@@ -2810,7 +2972,13 @@
         }
       ],
       "phone": "+1 (604) 742-1737",
-      "website": "http://smallvictory.ca"
+      "website": "http://smallvictory.ca",
+      "publicRating": {
+        "value": 3.9,
+        "count": 80,
+        "source": "Yelp"
+      },
+      "yelpSlug": "p8rb6IQ637goSkbyMbcOAg"
     },
     {
       "id": "arc-restaurant",
@@ -3074,7 +3242,9 @@
       "hoursLabel": "",
       "blurb": "",
       "orderThis": [],
-      "ids": {},
+      "ids": {
+        "yelp": "0S5mWN5r-dQsTSCDdzCrtg"
+      },
       "copySource": "draft",
       "updatedAt": "2026-11-03",
       "photos": [
@@ -3086,7 +3256,13 @@
         }
       ],
       "phone": "+1 (604) 566-0946",
-      "website": "https://ignitepizzeria.com"
+      "website": "https://ignitepizzeria.com",
+      "publicRating": {
+        "value": 4.6,
+        "count": 58,
+        "source": "Yelp"
+      },
+      "yelpSlug": "0S5mWN5r-dQsTSCDdzCrtg"
     },
     {
       "id": "minami-restaurant",
@@ -3129,7 +3305,9 @@
       "hoursLabel": "",
       "blurb": "",
       "orderThis": [],
-      "ids": {},
+      "ids": {
+        "yelp": "gV9lrbWr1CE1Jl0E58UO2g"
+      },
       "copySource": "draft",
       "updatedAt": "2026-11-03",
       "photos": [
@@ -3141,7 +3319,13 @@
         }
       ],
       "phone": "+1 (604) 685-8080",
-      "website": "http://www.minamirestaurant.com/"
+      "website": "http://www.minamirestaurant.com/",
+      "publicRating": {
+        "value": 4.1,
+        "count": 849,
+        "source": "Yelp"
+      },
+      "yelpSlug": "gV9lrbWr1CE1Jl0E58UO2g"
     },
     {
       "id": "the-roxy",
@@ -3200,7 +3384,9 @@
       "hoursLabel": "",
       "blurb": "",
       "orderThis": [],
-      "ids": {},
+      "ids": {
+        "yelp": "xl7TfBEcAMtUExMqWFKmJg"
+      },
       "copySource": "draft",
       "updatedAt": "2026-11-03",
       "photos": [
@@ -3212,7 +3398,13 @@
         }
       ],
       "phone": "+1 (604) 331-7999",
-      "website": "https://roxyvan.com"
+      "website": "https://roxyvan.com",
+      "publicRating": {
+        "value": 3.5,
+        "count": 141,
+        "source": "Yelp"
+      },
+      "yelpSlug": "xl7TfBEcAMtUExMqWFKmJg"
     },
     {
       "id": "bella-gelateria",
@@ -3258,7 +3450,9 @@
       "hoursLabel": "",
       "blurb": "",
       "orderThis": [],
-      "ids": {},
+      "ids": {
+        "yelp": "sCyqVDtWysnVwkUvyN-uUQ"
+      },
       "copySource": "draft",
       "updatedAt": "2026-11-03",
       "photos": [
@@ -3270,7 +3464,13 @@
         }
       ],
       "phone": "+1 (604) 569-1010",
-      "website": "http://www.bellagelateria.com"
+      "website": "http://www.bellagelateria.com",
+      "publicRating": {
+        "value": 4.2,
+        "count": 926,
+        "source": "Yelp"
+      },
+      "yelpSlug": "sCyqVDtWysnVwkUvyN-uUQ"
     },
     {
       "id": "mott-32",
@@ -3693,7 +3893,9 @@
       "hoursLabel": "",
       "blurb": "",
       "orderThis": [],
-      "ids": {},
+      "ids": {
+        "yelp": "RxiPusKlkh92t6pmhHf99Q"
+      },
       "copySource": "draft",
       "updatedAt": "2026-11-03",
       "photos": [
@@ -3705,7 +3907,13 @@
         }
       ],
       "phone": "+1 (604) 695-0000",
-      "website": "http://www.abreadaffair.com"
+      "website": "http://www.abreadaffair.com",
+      "publicRating": {
+        "value": 4.1,
+        "count": 132,
+        "source": "Yelp"
+      },
+      "yelpSlug": "RxiPusKlkh92t6pmhHf99Q"
     },
     {
       "id": "mello",
@@ -3748,7 +3956,9 @@
       "hoursLabel": "",
       "blurb": "",
       "orderThis": [],
-      "ids": {},
+      "ids": {
+        "yelp": "MbdhO2b7-88vSPrSfyqaRw"
+      },
       "copySource": "draft",
       "updatedAt": "2026-11-03",
       "photos": [
@@ -3760,7 +3970,13 @@
         }
       ],
       "phone": "+1 (604) 423-3556",
-      "website": "https://www.mellovancouver.com/"
+      "website": "https://www.mellovancouver.com/",
+      "publicRating": {
+        "value": 4.4,
+        "count": 332,
+        "source": "Yelp"
+      },
+      "yelpSlug": "MbdhO2b7-88vSPrSfyqaRw"
     },
     {
       "id": "lupo-restaurant",
@@ -4203,7 +4419,9 @@
       "hoursLabel": "",
       "blurb": "",
       "orderThis": [],
-      "ids": {},
+      "ids": {
+        "yelp": "Mfdo3zuB2P0xFQ40DLPaEQ"
+      },
       "copySource": "draft",
       "updatedAt": "2026-11-03",
       "photos": [
@@ -4215,7 +4433,13 @@
         }
       ],
       "phone": "+1 (604) 676-1007",
-      "website": "http://laquercia.ca/lufficio/"
+      "website": "http://laquercia.ca/lufficio/",
+      "publicRating": {
+        "value": 4.1,
+        "count": 227,
+        "source": "Yelp"
+      },
+      "yelpSlug": "Mfdo3zuB2P0xFQ40DLPaEQ"
     },
     {
       "id": "maxine-s-cafe-bar",
@@ -4897,7 +5121,9 @@
       "hoursLabel": "",
       "blurb": "",
       "orderThis": [],
-      "ids": {},
+      "ids": {
+        "yelp": "1__7JnVbXznFR35sTFTdBw"
+      },
       "copySource": "draft",
       "updatedAt": "2026-11-03",
       "photos": [
@@ -4909,7 +5135,13 @@
         }
       ],
       "phone": "+1 (604) 695-0111",
-      "website": "https://www.paul-bc.com"
+      "website": "https://www.paul-bc.com",
+      "publicRating": {
+        "value": 3.2,
+        "count": 168,
+        "source": "Yelp"
+      },
+      "yelpSlug": "1__7JnVbXznFR35sTFTdBw"
     },
     {
       "id": "breka-bakery-cafe",
@@ -5009,7 +5241,9 @@
       "hoursLabel": "",
       "blurb": "",
       "orderThis": [],
-      "ids": {},
+      "ids": {
+        "yelp": "mSwDxx41zMGprMVLvzLt9g"
+      },
       "copySource": "draft",
       "updatedAt": "2026-11-03",
       "photos": [
@@ -5021,7 +5255,13 @@
         }
       ],
       "phone": "+1 (604) 687-2739",
-      "website": "https://www.granvilleislandbrewing.ca/en-CA"
+      "website": "https://www.granvilleislandbrewing.ca/en-CA",
+      "publicRating": {
+        "value": 3.7,
+        "count": 413,
+        "source": "Yelp"
+      },
+      "yelpSlug": "mSwDxx41zMGprMVLvzLt9g"
     },
     {
       "id": "the-lobby-lounge-and-rawbar",
@@ -5183,7 +5423,9 @@
       "hoursLabel": "",
       "blurb": "",
       "orderThis": [],
-      "ids": {},
+      "ids": {
+        "yelp": "_tr_pU6BJTQAMq_O3y-8kA"
+      },
       "copySource": "draft",
       "updatedAt": "2026-11-03",
       "photos": [
@@ -5195,7 +5437,13 @@
         }
       ],
       "phone": "+1 (604) 670-2980",
-      "website": "https://yalesaloon.com"
+      "website": "https://yalesaloon.com",
+      "publicRating": {
+        "value": 3.1,
+        "count": 78,
+        "source": "Yelp"
+      },
+      "yelpSlug": "_tr_pU6BJTQAMq_O3y-8kA"
     },
     {
       "id": "labattoir",
@@ -5374,7 +5622,9 @@
       "hoursLabel": "",
       "blurb": "",
       "orderThis": [],
-      "ids": {},
+      "ids": {
+        "yelp": "WAoOGyNniFmpksKjPysagQ"
+      },
       "copySource": "draft",
       "updatedAt": "2026-11-03",
       "photos": [
@@ -5386,7 +5636,13 @@
         }
       ],
       "phone": "+1 (604) 801-5088",
-      "website": "http://www.fatmaonoodles.com"
+      "website": "http://www.fatmaonoodles.com",
+      "publicRating": {
+        "value": 4.4,
+        "count": 133,
+        "source": "Yelp"
+      },
+      "yelpSlug": "WAoOGyNniFmpksKjPysagQ"
     },
     {
       "id": "annalena",
@@ -5531,7 +5787,9 @@
       "hoursLabel": "",
       "blurb": "",
       "orderThis": [],
-      "ids": {},
+      "ids": {
+        "yelp": "GmEeIcJ9vR04kxzYgPMEgg"
+      },
       "copySource": "draft",
       "updatedAt": "2026-11-03",
       "photos": [
@@ -5543,7 +5801,13 @@
         }
       ],
       "phone": "+1 (604) 685-8678",
-      "website": "http://www.guu-izakaya.com"
+      "website": "http://www.guu-izakaya.com",
+      "publicRating": {
+        "value": 4.3,
+        "count": 1118,
+        "source": "Yelp"
+      },
+      "yelpSlug": "GmEeIcJ9vR04kxzYgPMEgg"
     },
     {
       "id": "parker-rooftop",
@@ -5590,7 +5854,9 @@
       "hoursLabel": "",
       "blurb": "",
       "orderThis": [],
-      "ids": {},
+      "ids": {
+        "yelp": "1sqnY52m11uWJFLzD-s5BA"
+      },
       "copySource": "draft",
       "updatedAt": "2026-11-03",
       "photos": [
@@ -5602,7 +5868,13 @@
         }
       ],
       "phone": "+1 (604) 696-6951",
-      "website": "https://parkerrooftop.com"
+      "website": "https://parkerrooftop.com",
+      "publicRating": {
+        "value": 4.1,
+        "count": 49,
+        "source": "Yelp"
+      },
+      "yelpSlug": "1sqnY52m11uWJFLzD-s5BA"
     },
     {
       "id": "the-flying-pig",
@@ -5663,7 +5935,9 @@
       "hoursLabel": "",
       "blurb": "",
       "orderThis": [],
-      "ids": {},
+      "ids": {
+        "yelp": "NdEPf2Ls5Ql3_nkwjqKvXA"
+      },
       "copySource": "draft",
       "updatedAt": "2026-11-03",
       "photos": [
@@ -5675,7 +5949,13 @@
         }
       ],
       "phone": "+1 (604) 568-1344",
-      "website": "https://www.theflyingpigvan.com"
+      "website": "https://www.theflyingpigvan.com",
+      "publicRating": {
+        "value": 4,
+        "count": 1440,
+        "source": "Yelp"
+      },
+      "yelpSlug": "NdEPf2Ls5Ql3_nkwjqKvXA"
     },
     {
       "id": "laowai",
@@ -5728,7 +6008,9 @@
       "hoursLabel": "",
       "blurb": "",
       "orderThis": [],
-      "ids": {},
+      "ids": {
+        "yelp": "T3HuPUChhSudCPGppG7zGw"
+      },
       "copySource": "draft",
       "updatedAt": "2026-11-03",
       "photos": [
@@ -5740,7 +6022,13 @@
         }
       ],
       "phone": null,
-      "website": "https://laowai.ca"
+      "website": "https://laowai.ca",
+      "publicRating": {
+        "value": 3.9,
+        "count": 28,
+        "source": "Yelp"
+      },
+      "yelpSlug": "T3HuPUChhSudCPGppG7zGw"
     },
     {
       "id": "brix-mortar",
@@ -5792,7 +6080,9 @@
       "hoursLabel": "",
       "blurb": "",
       "orderThis": [],
-      "ids": {},
+      "ids": {
+        "yelp": "kZN_-zju67rEQVUSaewRhA"
+      },
       "copySource": "draft",
       "updatedAt": "2026-11-03",
       "photos": [
@@ -5804,7 +6094,13 @@
         }
       ],
       "phone": "+1 (604) 915-9463",
-      "website": "https://www.brixandmortar.ca"
+      "website": "https://www.brixandmortar.ca",
+      "publicRating": {
+        "value": 4.1,
+        "count": 356,
+        "source": "Yelp"
+      },
+      "yelpSlug": "kZN_-zju67rEQVUSaewRhA"
     },
     {
       "id": "blue-water-cafe",
@@ -5854,7 +6150,9 @@
       "hoursLabel": "",
       "blurb": "",
       "orderThis": [],
-      "ids": {},
+      "ids": {
+        "yelp": "gt1BSfVFvzI-qHdJ3LUZug"
+      },
       "copySource": "draft",
       "updatedAt": "2026-11-03",
       "photos": [
@@ -5866,7 +6164,13 @@
         }
       ],
       "phone": "+1 (604) 688-8078",
-      "website": "https://bluewatercafe.ca/"
+      "website": "https://bluewatercafe.ca/",
+      "publicRating": {
+        "value": 4.4,
+        "count": 1227,
+        "source": "Yelp"
+      },
+      "yelpSlug": "gt1BSfVFvzI-qHdJ3LUZug"
     },
     {
       "id": "burger-crush",
@@ -6033,7 +6337,9 @@
       "hoursLabel": "",
       "blurb": "",
       "orderThis": [],
-      "ids": {},
+      "ids": {
+        "yelp": "JvnNRQgMv5EIBZOvtRtQPQ"
+      },
       "copySource": "draft",
       "updatedAt": "2026-11-03",
       "photos": [
@@ -6045,7 +6351,13 @@
         }
       ],
       "phone": "+1 (604) 685-5670",
-      "website": "http://www.siegelsbagels.com"
+      "website": "http://www.siegelsbagels.com",
+      "publicRating": {
+        "value": 3.9,
+        "count": 210,
+        "source": "Yelp"
+      },
+      "yelpSlug": "JvnNRQgMv5EIBZOvtRtQPQ"
     },
     {
       "id": "coast",
@@ -6140,7 +6452,9 @@
       "hoursLabel": "",
       "blurb": "",
       "orderThis": [],
-      "ids": {},
+      "ids": {
+        "yelp": "3jyz605NGvJV6uId5tjf9Q"
+      },
       "copySource": "draft",
       "updatedAt": "2026-11-03",
       "photos": [
@@ -6152,7 +6466,13 @@
         }
       ],
       "phone": "+1 (604) 559-9988",
-      "website": "https://www.devillecoffee.ca/vancouver-cafes"
+      "website": "https://www.devillecoffee.ca/vancouver-cafes",
+      "publicRating": {
+        "value": 3.9,
+        "count": 50,
+        "source": "Yelp"
+      },
+      "yelpSlug": "3jyz605NGvJV6uId5tjf9Q"
     },
     {
       "id": "dockside-restaurant",
@@ -6546,7 +6866,9 @@
       "hoursLabel": "",
       "blurb": "",
       "orderThis": [],
-      "ids": {},
+      "ids": {
+        "yelp": "crM1idgY_glhtxXT5kERNg"
+      },
       "copySource": "draft",
       "updatedAt": "2026-11-03",
       "photos": [
@@ -6558,7 +6880,13 @@
         }
       ],
       "phone": "+1 (604) 608-1677",
-      "website": "http://kingyo-izakaya.ca"
+      "website": "http://kingyo-izakaya.ca",
+      "publicRating": {
+        "value": 4.4,
+        "count": 1306,
+        "source": "Yelp"
+      },
+      "yelpSlug": "crM1idgY_glhtxXT5kERNg"
     },
     {
       "id": "earls-kitchen-bar-van",
@@ -6670,7 +6998,9 @@
       "hoursLabel": "",
       "blurb": "",
       "orderThis": [],
-      "ids": {},
+      "ids": {
+        "yelp": "QmkGDL-8zexdKV3Xcn8ZYg"
+      },
       "copySource": "draft",
       "updatedAt": "2026-11-03",
       "photos": [
@@ -6682,7 +7012,13 @@
         }
       ],
       "phone": "+1 (604) 423-3447",
-      "website": "https://eatoeb.com"
+      "website": "https://eatoeb.com",
+      "publicRating": {
+        "value": 4.3,
+        "count": 1042,
+        "source": "Yelp"
+      },
+      "yelpSlug": "QmkGDL-8zexdKV3Xcn8ZYg"
     },
     {
       "id": "jam-cafe",
@@ -6787,7 +7123,9 @@
       "hoursLabel": "",
       "blurb": "",
       "orderThis": [],
-      "ids": {},
+      "ids": {
+        "yelp": "SIdbZcE5gp63UjRN8tLr0g"
+      },
       "copySource": "draft",
       "updatedAt": "2026-11-03",
       "photos": [
@@ -6799,7 +7137,13 @@
         }
       ],
       "phone": "+1 (604) 428-6464",
-      "website": "https://www.theredaccordion.com"
+      "website": "https://www.theredaccordion.com",
+      "publicRating": {
+        "value": 4.6,
+        "count": 153,
+        "source": "Yelp"
+      },
+      "yelpSlug": "SIdbZcE5gp63UjRN8tLr0g"
     },
     {
       "id": "the-keg-steakhouse-bar",
@@ -6926,7 +7270,9 @@
       "hoursLabel": "",
       "blurb": "",
       "orderThis": [],
-      "ids": {},
+      "ids": {
+        "yelp": "VlV2pcklu5HY32F5MhIgIg"
+      },
       "copySource": "draft",
       "updatedAt": "2026-11-03",
       "photos": [
@@ -6938,7 +7284,13 @@
         }
       ],
       "phone": "+1 (778) 791-3444",
-      "website": "http://www.lepetitbelge.ca"
+      "website": "http://www.lepetitbelge.ca",
+      "publicRating": {
+        "value": 4.2,
+        "count": 421,
+        "source": "Yelp"
+      },
+      "yelpSlug": "VlV2pcklu5HY32F5MhIgIg"
     },
     {
       "id": "saku",
@@ -7002,7 +7354,9 @@
       "hoursLabel": "",
       "blurb": "",
       "orderThis": [],
-      "ids": {},
+      "ids": {
+        "yelp": "iid0VenH7rIp3AWuyQAAHw"
+      },
       "copySource": "draft",
       "updatedAt": "2026-11-03",
       "photos": [
@@ -7014,7 +7368,13 @@
         }
       ],
       "phone": "+1 (778) 379-5872",
-      "website": "https://www.sakuvancouver.com/"
+      "website": "https://www.sakuvancouver.com/",
+      "publicRating": {
+        "value": 4.5,
+        "count": 531,
+        "source": "Yelp"
+      },
+      "yelpSlug": "iid0VenH7rIp3AWuyQAAHw"
     },
     {
       "id": "tap-barrel",
@@ -7125,7 +7485,9 @@
       "hoursLabel": "",
       "blurb": "",
       "orderThis": [],
-      "ids": {},
+      "ids": {
+        "yelp": "dX6y4zA-1AtWsYnT4AZXNg"
+      },
       "copySource": "draft",
       "updatedAt": "2026-11-03",
       "photos": [
@@ -7137,7 +7499,13 @@
         }
       ],
       "phone": "+1 (604) 558-4444",
-      "website": "http://revolvercoffee.ca/"
+      "website": "http://revolvercoffee.ca/",
+      "publicRating": {
+        "value": 4.4,
+        "count": 669,
+        "source": "Yelp"
+      },
+      "yelpSlug": "dX6y4zA-1AtWsYnT4AZXNg"
     },
     {
       "id": "tableau-bar-bistro",
@@ -7582,7 +7950,9 @@
       "hoursLabel": "",
       "blurb": "",
       "orderThis": [],
-      "ids": {},
+      "ids": {
+        "yelp": "-naJRqkmbos0UeWApfEvtw"
+      },
       "copySource": "draft",
       "updatedAt": "2026-11-03",
       "photos": [
@@ -7594,7 +7964,13 @@
         }
       ],
       "phone": "+1 (604) 568-3322",
-      "website": "http://theparlourrestaurants.com"
+      "website": "http://theparlourrestaurants.com",
+      "publicRating": {
+        "value": 3.9,
+        "count": 503,
+        "source": "Yelp"
+      },
+      "yelpSlug": "-naJRqkmbos0UeWApfEvtw"
     },
     {
       "id": "ramen-danbo-van",
@@ -7636,7 +8012,9 @@
       "hoursLabel": "",
       "blurb": "",
       "orderThis": [],
-      "ids": {},
+      "ids": {
+        "yelp": "D1gkF04qqIz0nrrVmCF6ug"
+      },
       "copySource": "draft",
       "updatedAt": "2026-11-03",
       "photos": [
@@ -7648,7 +8026,13 @@
         }
       ],
       "phone": "+1 (778) 379-8977",
-      "website": "https://ramendanbo.com"
+      "website": "https://ramendanbo.com",
+      "publicRating": {
+        "value": 4.3,
+        "count": 570,
+        "source": "Yelp"
+      },
+      "yelpSlug": "D1gkF04qqIz0nrrVmCF6ug"
     }
   ],
   "guides": [
