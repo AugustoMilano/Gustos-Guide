@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState, type RefObject } from 'react'
-import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
+import { AnimatePresence, m, useReducedMotion } from 'framer-motion'
 import { dragSheet } from '../lib/motion.ts'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { regionName as areaLabel, areaPhrase, areasFor, CITY_PREFIXES, cityPath, isCityPicker, readRegionMemory, writeRegionMemory } from '../lib/city.ts'
@@ -50,7 +50,7 @@ function useDismiss(open: boolean, close: () => void, refs: RefObject<HTMLElemen
   }, [open, onScroll, refs])
 }
 
-const CityButton = motion.create(Link)
+const CityButton = m.create(Link)
 const SPRING = { type: 'spring' as const, stiffness: 420, damping: 32 }
 
 const HOME_PATHS = new Set(['/', ...CITY_PREFIXES])
@@ -198,7 +198,7 @@ export function Header() {
               }}
               transition={reduceMotion ? { duration: 0 } : SPRING}
             >
-              <motion.span
+              <m.span
                 className="region-chevron"
                 aria-hidden="true"
                 variants={{
@@ -211,7 +211,7 @@ export function Header() {
                 <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M15 6 9 12l6 6" />
                 </svg>
-              </motion.span>
+              </m.span>
               {areaLabel(city)}
             </CityButton>
           )}
@@ -256,7 +256,7 @@ export function Header() {
             </button>
             <AnimatePresence>
               {more ? (
-                <motion.div
+                <m.div
                   ref={morePanel}
                   id="more-menu"
                   className="more-sheet"
@@ -275,7 +275,7 @@ export function Header() {
                   {user?.isOwner ? <Link viewTransition={!reduceMotion} to={cityPath('/score', linkCity)} onClick={() => setMore(false)}>Scores</Link> : null}
                   {user?.isOwner ? <Link viewTransition={!reduceMotion} to={cityPath('/score/quick', linkCity)} onClick={() => setMore(false)}>Quick score</Link> : null}
                   {user?.isOwner ? <Link viewTransition={!reduceMotion} to={cityPath('/photos', linkCity)} onClick={() => setMore(false)}>Photos</Link> : null}
-                </motion.div>
+                </m.div>
               ) : null}
             </AnimatePresence>
           </div>
@@ -334,7 +334,7 @@ export function Header() {
       </div>
       <AnimatePresence>
       {menu ? (
-        <motion.nav
+        <m.nav
           ref={menuPanel}
           id="mobile-menu"
           className="menu-sheet glass grid max-h-[calc(100dvh-var(--header-offset)-0.75rem)] gap-2 overflow-y-auto text-sm font-bold xl:hidden"
@@ -382,12 +382,12 @@ export function Header() {
           <button type="button" className="text-left" aria-label="Notifications" onClick={() => { setMenu(false); setBell(true); markNoticesRead() }}>
             Notifications{unread ? ` (${unread})` : ''}
           </button>
-        </motion.nav>
+        </m.nav>
       ) : null}
       </AnimatePresence>
       <AnimatePresence>
       {bell ? (
-        <motion.div
+        <m.div
           ref={bellPanel}
           id="notifications-panel"
           className="notice-sheet"
@@ -422,7 +422,7 @@ export function Header() {
               ))}
             </ul>
           )}
-        </motion.div>
+        </m.div>
       ) : null}
       </AnimatePresence>
       <SignInSheet open={open} onClose={() => setOpen(false)} />

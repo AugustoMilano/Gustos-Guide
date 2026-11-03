@@ -1,6 +1,6 @@
 import { spawnSync } from 'node:child_process'
 import { createHash } from 'node:crypto'
-import { existsSync, readFileSync, readdirSync, renameSync, statSync, writeFileSync } from 'node:fs'
+import { existsSync, readFileSync, readdirSync, renameSync, rmSync, statSync, writeFileSync } from 'node:fs'
 import { join } from 'node:path'
 import tailwindcss from '@tailwindcss/vite'
 import react from '@vitejs/plugin-react'
@@ -194,12 +194,61 @@ export default defineConfig({
         const href = `./assets/${name}`
         const html = readFileSync(htmlPath, 'utf8')
         if (html.includes(href)) return
-        const tag = `    <link rel="preload" href="${href}" as="fetch" crossorigin />\n`
+        const tag = `    <link rel="preload" href="${href}" as="fetch" fetchpriority="low" crossorigin />\n`
         writeFileSync(htmlPath, html.replace('</head>', `${tag}  </head>`))
       },
     },
     react(),
     tailwindcss(),
+    {
+      // status.js runs in <head> before the app script. Give it each heavy route's chunk list so a
+      // deep link to Top 25 or a place starts those downloads in parallel with the entry bundle
+      // instead of after it.
+      name: 'route-preloads',
+      closeBundle() {
+        const dist = join(process.cwd(), 'dist')
+        const manifestPath = join(dist, '.vite/manifest.json')
+        const statusPath = join(dist, 'status.js')
+        if (!existsSync(manifestPath) || !existsSync(statusPath)) return
+        const manifest = JSON.parse(readFileSync(manifestPath, 'utf8')) as Record<string, { file: string; imports?: string[]; isEntry?: boolean }>
+        const entry = Object.values(manifest).find((chunk) => chunk.isEntry)
+        const skip = new Set([entry?.file, ...(entry?.imports ?? []).map((key) => manifest[key]?.file)])
+        const files = (key: string) => {
+          const out: string[] = []
+          const walk = (k: string) => {
+            const chunk = manifest[k]
+            if (!chunk || out.includes(chunk.file) || skip.has(chunk.file)) return
+            out.push(chunk.file)
+            for (const next of chunk.imports ?? []) walk(next)
+          }
+          walk(key)
+          return out
+        }
+        const routes = { top: files('src/pages/TopPage.tsx'), place: files('src/pages/PlacePage.tsx') }
+        const status = readFileSync(statusPath, 'utf8')
+        writeFileSync(statusPath, status.replace('/*ROUTE_PRELOADS*/{}', JSON.stringify(routes)))
+        rmSync(join(dist, '.vite'), { recursive: true, force: true })
+        // Place deep links: status.js reads this map to preload the hero photo before the catalog
+        // arrives. Same pick as displayPhotos() without uploads: Gusto's own shot, then commons.
+        const sizes = JSON.parse(readFileSync('src/content/photo-sizes.json', 'utf8')) as Record<string, { w: number; webp?: number[] }>
+        const heroes: Record<string, string> = {}
+        for (const name of ['places', 'eastside', 'la', 'sf', 'sd']) {
+          const data = JSON.parse(readFileSync(`src/content/${name}.json`, 'utf8'))
+          const list = (Array.isArray(data) ? data : Object.values(data)) as { id?: string; photo?: { source?: string; url?: string }; photos?: { source?: string; url?: string }[] }[]
+          for (const place of list) {
+            if (!place || typeof place !== 'object' || !place.id) continue
+            const catalog = (place.photos?.length ? place.photos : place.photo ? [place.photo] : []).filter((p) => p && typeof p === 'object' && p.url)
+            const pick = catalog.find((p) => p.source === 'gusto') ?? catalog.find((p) => p.source === 'wikimedia' || p.source === 'flickr')
+            const file = pick?.url?.startsWith('/photos/') ? pick.url.slice(8) : ''
+            const entry = sizes[file]
+            if (!entry?.webp?.length) continue
+            const stem = file.replace(/\.(jpe?g|png|webp)$/i, '')
+            heroes[place.id] = entry.webp.map((w) => (w === entry.w ? `/photos/${stem}.webp ${w}w` : `/photos/${stem}.${w}.webp ${w}w`)).join(', ')
+          }
+        }
+        writeFileSync(join(dist, 'heroes.json'), JSON.stringify(heroes))
+      },
+    },
     {
       name: 'perf-hints',
       transformIndexHtml(html) {
@@ -215,7 +264,18 @@ export default defineConfig({
         return html.replace('</head>', `    ${hints.join('\n    ')}\n  </head>`)
       },
     },
+    {
+      // Static landing and Top shells paint from HTML + CSS + fonts alone. With ~20 module chunks
+      // sharing the connection at equal priority, the stylesheet and fonts arrived late (fix77
+      // measured +0.4 s FCP), so shared chunk preloads yield to them.
+      name: 'chunk-priority',
+      transformIndexHtml: {
+        order: 'post',
+        handler: (html) => html.replace(/<link rel="modulepreload" crossorigin href=/g, '<link rel="modulepreload" fetchpriority="low" crossorigin href='),
+      },
+    },
   ],
+  build: { manifest: true },
   server: {
     host: '127.0.0.1',
     port: 4179,

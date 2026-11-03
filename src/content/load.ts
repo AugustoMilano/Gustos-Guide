@@ -49,7 +49,7 @@ function publish(file: SlimFile) {
   emit(1)
 }
 
-export const catalogReady: Promise<void> = fetch(catalogUrl, { credentials: 'omit' })
+export const catalogReady: Promise<void> = fetch(catalogUrl, { credentials: 'same-origin' })
   .then((response) => {
     if (!response.ok) throw new Error('catalog')
     return response.json() as Promise<SlimFile>

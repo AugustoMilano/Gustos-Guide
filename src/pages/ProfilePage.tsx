@@ -1,7 +1,7 @@
 import { isRestaurant } from '../lib/restaurant.ts'
 import { onePerBrand } from '../lib/brand.ts'
 import { Link, useParams } from 'react-router-dom'
-import { motion, useReducedMotion } from 'framer-motion'
+import { m, useReducedMotion } from 'framer-motion'
 import { useState } from 'react'
 import { Achievements } from '../components/Achievements.tsx'
 import { PlaceThumb } from '../components/PlaceThumb.tsx'
@@ -146,7 +146,7 @@ export function ProfilePage() {
             const on = item.id === region.id
             return (
               <button key={item.id} type="button" className="city-switch-btn" aria-pressed={on} onClick={() => setTopRegion(item.id)}>
-                {on ? <motion.span layoutId="top10-pill" className="city-switch-glint" transition={reduce ? { duration: 0 } : { type: 'spring', stiffness: 420, damping: 32 }} /> : null}
+                {on ? <m.span layoutId="top10-pill" className="city-switch-glint" transition={reduce ? { duration: 0 } : { type: 'spring', stiffness: 420, damping: 32 }} /> : null}
                 <span className="city-switch-label">{SHORT[item.id]}</span>
               </button>
             )

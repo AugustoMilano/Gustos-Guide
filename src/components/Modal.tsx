@@ -1,5 +1,5 @@
 import { useEffect, useId, useRef, type ReactNode, type RefObject } from 'react'
-import { motion, useReducedMotion } from 'framer-motion'
+import { m, useReducedMotion } from 'framer-motion'
 import { dragSheet } from '../lib/motion.ts'
 
 const FOCUSABLE =
@@ -109,7 +109,7 @@ export function Modal({
         aria-label="Close dialog"
         onClick={onClose}
       />
-      <motion.div
+      <m.div
         ref={panelRef}
         role="dialog"
         aria-modal="true"
@@ -126,7 +126,7 @@ export function Modal({
           </div>
         )}
         {children}
-      </motion.div>
+      </m.div>
     </div>
   )
 }

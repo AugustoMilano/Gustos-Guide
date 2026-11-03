@@ -1,4 +1,5 @@
 import { StrictMode } from 'react'
+import { LazyMotion } from 'framer-motion'
 import { createRoot } from 'react-dom/client'
 import { HashRouter } from 'react-router-dom'
 import { App } from './App.tsx'
@@ -30,11 +31,15 @@ if (import.meta.env.PROD && 'serviceWorker' in navigator) {
   })
 }
 
+const loadMotionFeatures = () => import('./lib/motion-features.ts').then((module) => module.default)
+
 if (window.location.hostname !== 'www.gustosguide.com') {
   settleAuthUrl()
   watchAuthHash()
   createRoot(document.getElementById('root')!).render(
     <StrictMode>
+      {/* m.* components render at once; their animation features arrive in a separate chunk. */}
+      <LazyMotion features={loadMotionFeatures} strict>
       <AppProvider>
         <AuthRouterGate>
           <HashRouter>
@@ -42,6 +47,7 @@ if (window.location.hostname !== 'www.gustosguide.com') {
           </HashRouter>
         </AuthRouterGate>
       </AppProvider>
+      </LazyMotion>
     </StrictMode>,
   )
 }

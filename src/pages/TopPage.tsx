@@ -1,4 +1,5 @@
-import { motion, useReducedMotion } from 'framer-motion'
+import { m, useReducedMotion } from 'framer-motion'
+import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { AreaKicker } from '../components/AreaKicker.tsx'
 import { ForkMark, GoldenFork } from '../components/GoldenFork.tsx'
@@ -26,6 +27,10 @@ export function TopPage() {
   const others = (['seattle', 'la', 'sf', 'sandiego'] as const).filter((item) => item !== region)
   const podium = podiumOrder(board.shown)
   const rest = board.shown.slice(Math.min(3, board.shown.length))
+  // index.html painted a static copy of this intro (fix77); React's identical markup has replaced it.
+  useEffect(() => {
+    if (document.documentElement.dataset.prerender === 'top') delete document.documentElement.dataset.prerender
+  }, [])
   usePageMeta(
     `Top 25 · ${name} · Gusto's Guide`,
     `The Golden Fork list for ${name}, ranked by Augusto's exact Gusto's Score.`,
@@ -67,7 +72,7 @@ export function TopPage() {
           ) : null}
           <div className={`top-podium mt-5${podium.length < 3 ? ' is-short' : ''}`} style={{ ['--podium' as string]: String(podium.length) }}>
             {podium.map((row) => (
-              <motion.div
+              <m.div
                 key={row.place.id}
                 className={`podium-col is-rank-${row.rank}`}
                 initial={reduce ? false : { opacity: 0, y: 28 }}
@@ -89,13 +94,13 @@ export function TopPage() {
                   <span className="podium-score">{row.score.toFixed(1)}</span>
                 </Link>
                 <span className="podium-step" aria-hidden="true">{row.rank}</span>
-              </motion.div>
+              </m.div>
             ))}
           </div>
           {rest.length ? (
             <ol className="mt-6 space-y-3">
               {rest.map((row, index) => (
-                <motion.li
+                <m.li
                   key={row.place.id}
                   initial={reduce ? false : { opacity: 0, y: 14 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -113,7 +118,7 @@ export function TopPage() {
                     </span>
                     <span className="score-col"><ScoreBadge score={row.score} size="sm" /></span>
                   </Link>
-                </motion.li>
+                </m.li>
               ))}
             </ol>
           ) : null}

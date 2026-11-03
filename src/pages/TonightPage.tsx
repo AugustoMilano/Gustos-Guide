@@ -1,5 +1,5 @@
 import { useMemo, useState } from 'react'
-import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
+import { AnimatePresence, m, useReducedMotion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { AreaKicker } from '../components/AreaKicker.tsx'
 import { PlaceThumb } from '../components/PlaceThumb.tsx'
@@ -107,7 +107,7 @@ export function TonightPage() {
           <div className="tonight-stage mt-5">
             <AnimatePresence mode="wait">
               {pick ? (
-                <motion.div
+                <m.div
                   key={pick.id}
                   initial={reduceMotion ? false : { opacity: 0, y: 28, scale: 0.96 }}
                   animate={{ opacity: 1, y: 0, scale: 1 }}
@@ -122,7 +122,7 @@ export function TonightPage() {
                       {pick.oneLiner ? <span className="mt-2 block text-sm italic">{pick.oneLiner}</span> : null}
                     </span>
                   </Link>
-                </motion.div>
+                </m.div>
               ) : (
                 <p className="font-serif text-3xl italic">{pool.length ? 'Tap shuffle.' : 'Nothing open matches. Mark more places To go, or loosen a filter.'}</p>
               )}
