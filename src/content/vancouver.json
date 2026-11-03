@@ -1906,7 +1906,8 @@
       "appleMapsUrl": "https://maps.apple.com/?daddr=49.272266,-123.135193&q=Lee's%20Donuts",
       "applePlaceUrl": "https://maps.apple.com/place?auid=9868710975876914115",
       "guideSlugs": [
-        "van-bakery"
+        "van-bakery",
+        "van-granville-island-public-market"
       ],
       "muid": "9868710975876914115",
       "hoursLabel": "",
@@ -2583,7 +2584,9 @@
       "gustoScore": null,
       "appleMapsUrl": "https://maps.apple.com/?daddr=49.27227,-123.135056&q=JJ%20Bean%20Coffee%20Roasters",
       "applePlaceUrl": "https://maps.apple.com/place?auid=12494294310013282055",
-      "guideSlugs": [],
+      "guideSlugs": [
+        "van-granville-island-public-market"
+      ],
       "muid": "12494294310013282055",
       "hoursLabel": "",
       "blurb": "",
@@ -3683,7 +3686,8 @@
       "appleMapsUrl": "https://maps.apple.com/?daddr=49.2724739,-123.13586&q=A%20Bread%20Affair",
       "applePlaceUrl": "https://maps.apple.com/place?auid=16123008406264485221",
       "guideSlugs": [
-        "van-bakery"
+        "van-bakery",
+        "van-granville-island-public-market"
       ],
       "muid": "16123008406264485221",
       "hoursLabel": "",
@@ -6022,7 +6026,9 @@
       "gustoScore": null,
       "appleMapsUrl": "https://maps.apple.com/?daddr=49.2726699,-123.135184&q=Siegel's%20Bagels",
       "applePlaceUrl": "https://maps.apple.com/place?auid=5234324338824913260",
-      "guideSlugs": [],
+      "guideSlugs": [
+        "van-granville-island-public-market"
+      ],
       "muid": "5234324338824913260",
       "hoursLabel": "",
       "blurb": "",
@@ -6187,7 +6193,8 @@
       "appleMapsUrl": "https://maps.apple.com/?daddr=49.2695029,-123.1312832&q=Dockside%20Restaurant",
       "applePlaceUrl": "https://maps.apple.com/place?auid=5259847347519297482",
       "guideSlugs": [
-        "van-seafood"
+        "van-seafood",
+        "van-granville-island-public-market"
       ],
       "muid": "5259847347519297482",
       "hoursLabel": "",
@@ -7518,57 +7525,6 @@
       "website": "http://www.boulevardvancouver.ca"
     },
     {
-      "id": "granville-island-public-market",
-      "city": "vancouver",
-      "name": "Granville Island Public Market",
-      "neighborhood": "Fairview",
-      "address": "1669 Johnston St, Vancouver BC V6H 3R9",
-      "lat": 49.2723186,
-      "lng": -123.1353015,
-      "cuisine": [
-        "Market"
-      ],
-      "placeType": "market",
-      "oneLiner": "",
-      "perfectFor": [],
-      "periods": [
-        {
-          "days": [
-            0,
-            1,
-            2,
-            3,
-            4,
-            5,
-            6
-          ],
-          "start": 540,
-          "end": 1080
-        }
-      ],
-      "gustoScore": null,
-      "appleMapsUrl": "https://maps.apple.com/?daddr=49.2723186,-123.1353015&q=Granville%20Island%20Public%20Market",
-      "applePlaceUrl": "https://maps.apple.com/place?auid=1540691266565992452",
-      "guideSlugs": [],
-      "muid": "1540691266565992452",
-      "hoursLabel": "",
-      "blurb": "",
-      "orderThis": [],
-      "ids": {},
-      "copySource": "draft",
-      "updatedAt": "2026-11-03",
-      "photos": [
-        {
-          "source": "illustration",
-          "isIllustration": true,
-          "alt": "Illustration suggesting Market at Granville Island Public Market",
-          "credit": "Illustration"
-        }
-      ],
-      "phone": "+1 (604) 666-6477",
-      "website": "https://granvilleisland.com/directory/granville-island-public-market"
-    },
-    {
       "id": "the-parlour",
       "city": "vancouver",
       "name": "The Parlour",
@@ -7696,6 +7652,49 @@
     }
   ],
   "guides": [
+    {
+      "slug": "van-granville-island-public-market",
+      "title": "Granville Island Public Market",
+      "dek": "",
+      "group": "Best of",
+      "intro": "",
+      "updatedAt": "2026-11-03",
+      "ranked": false,
+      "city": "vancouver",
+      "entries": [
+        {
+          "placeId": "lee-s-donuts",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "jj-bean-coffee-roasters",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "a-bread-affair",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "siegel-s-bagels",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "dockside-restaurant",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        }
+      ],
+      "pinned": true
+    },
     {
       "slug": "van-downtown",
       "title": "Downtown",

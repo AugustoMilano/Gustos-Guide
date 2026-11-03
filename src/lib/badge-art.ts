@@ -23,6 +23,7 @@ const ENAMELS: Record<string, Enamel> = {
   coral: { name: 'coral', inner: '#ff8a63', outer: '#e2401e', ink: '#fffaf3' },
   navy: { name: 'navy', inner: '#3a4f9c', outer: '#141f4d', ink: '#ffe9b8' },
   leaf: { name: 'leaf', inner: '#5fd17f', outer: '#16793a', ink: '#fffaf3' },
+  crimson: { name: 'crimson', inner: '#c22a44', outer: '#5c0f1d', ink: '#f2f2f3' },
   ruby: { name: 'ruby', inner: '#e9476a', outer: '#7d0f2c', ink: '#ffe9ef' },
   sapphire: { name: 'sapphire', inner: '#4fa3ff', outer: '#0d3f9c', ink: '#f2f8ff' },
   teal: { name: 'teal', inner: '#40d2c4', outer: '#0b6b6a', ink: '#f0fffd' },
@@ -81,6 +82,8 @@ export const GLYPHS = {
   tower: 'M12 2v4 M9 6h6l-1 4h-4z M10 10l-2 11h8l-2-11 M7 21h10 M11 14h2',
   anchor: 'M12 5a2 2 0 1 0 .01 0z M12 7v13 M8 10h8 M4 13c0 4 4 7 8 7s8-3 8-7 M4 13l-1.5 1.5 M20 13l1.5 1.5',
   star: 'M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1-4.4-4.3 6.1-.9z',
+  // Original geometric paw print: one pad and four toes. Not any school's mark.
+  paw: 'M8.4 16c0-2.3 1.6-3.8 3.6-3.8s3.6 1.5 3.6 3.8-1.6 3.9-3.6 3.9-3.6-1.6-3.6-3.9z M6.2 8.6a1.6 1.9 0 1 0 .01 0z M9.8 5.4a1.6 1.9 0 1 0 .01 0z M14.2 5.4a1.6 1.9 0 1 0 .01 0z M17.8 8.6a1.6 1.9 0 1 0 .01 0z',
   tree: 'M12 3 6 12h3l-4 6h14l-4-6h3z M12 18v3',
   baguette: 'M4 18 18 4a2.1 2.1 0 0 1 3 3L7 21a2.1 2.1 0 0 1-3-3z M9 11.5l2 2 M12 8.5l2 2 M15 5.5l2 2',
   flag: 'M5 21V4 M5 4h12l-2.5 4L17 12H5',

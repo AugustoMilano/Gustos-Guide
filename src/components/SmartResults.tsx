@@ -65,11 +65,11 @@ export function featuredSlugs(city: CityId): string[] {
     eastbay: ['eastbay-berkeley', 'eastbay-fremont', 'eastbay-pleasanton'],
     peninsula: ['peninsula-palo-alto', 'peninsula-san-jose', 'peninsula-half-moon-bay', 'peninsula-santa-clara'],
     northbay: ['northbay-sausalito', 'northbay-tiburon', 'northbay-larkspur', 'northbay-corte-madera'],
-    vancouver: ['van-downtown', 'van-coal-harbour', 'van-seafood', 'van-italian', 'van-japanese', 'van-robson-street'],
-    portland: ['pdx-downtown', 'pdx-pearl-district', 'pdx-new-american', 'pdx-pizza', 'pdx-nob-hill', 'pdx-french'],
+    vancouver: ['van-granville-island-public-market', 'van-downtown', 'van-coal-harbour', 'van-seafood', 'van-italian', 'van-japanese', 'van-robson-street'],
+    portland: ['pdx-downtown', 'pdx-pearl-district', 'pdx-new-american', 'pdx-pizza', 'pdx-health-food'],
     nyc: ['nyc-tribeca', 'nyc-west-village', 'nyc-soho', 'nyc-italian', 'nyc-french', 'nyc-steak'],
-    pullman: ['pul-cafe', 'pul-bakery', 'pul-sandwiches', 'pul-pub'],
-    moscow: ['mos-cafe', 'mos-coffee'],
+    pullman: ['pul-game-day', 'pul-cafe'],
+    moscow: ['mos-cafe'],
     sandiego: ['sd-little-italy', 'sd-coronado', 'sd-la-jolla', 'sd-seafood', 'sd-mexican', 'sd-north-park'],
   }
   return lists[city]

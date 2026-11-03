@@ -18,6 +18,8 @@ export type Achievement = {
   guide?: { slug: string; city: NonNullable<Guide['city']> }
   /** Retired when the Eastside folded into Seattle. Shown only to people who already earned it. */
   legacy?: boolean
+  /** Secret medal: not listed until it is earned. */
+  hidden?: boolean
 }
 
 export type AchievementInput = {
@@ -26,6 +28,8 @@ export type AchievementInput = {
   guides: Guide[]
   placeOf: (id: string) => SlimPlace | undefined
   gustoScore: (id: string) => number | null
+  /** Pullman Easter eggs found in this browser (own profile only). */
+  eggs?: string[]
 }
 
 const BEEN_STEPS: [number, string, string][] = [
@@ -115,6 +119,17 @@ export function computeAchievements(input: AchievementInput): Achievement[] {
   // Any four of the guide's cities count; the badge name and goal stay the same (earned ones stay earned).
   out.push({ id: 'city-all', group: 'Cities', title: 'Four-City Tour', blurb: 'Eat in four of the guide’s cities.', ring: 'sky', ...step(areasDone, 4),
     spec: { key: 'city-all', label: 'Four-City Tour', glyph: 'map', numeral: '4', shape: 'rosette', metal: 'gold', enamel: 'navy' } })
+
+  // Pullman, WA: Coug game days. Crimson and gray paw medals.
+  const gameDay = inGuides(/^pul-game-day$/)
+  out.push({ id: 'game-day-regular', group: 'Cities', title: 'Game Day Regular', blurb: 'Eat at 5 places on Game day in Pullman.', ring: 'sky', ...step(input.been.filter((id) => gameDay.has(id)).length, 5),
+    spec: { key: 'game-day-regular', label: 'Game Day', glyph: 'paw', numeral: '5', shape: 'hex', metal: 'silver', enamel: 'crimson' } })
+  const palouse = ['pullman', 'moscow'].filter((c) => places.some((p) => placeCity(p) === c)).length
+  out.push({ id: 'palouse-explorer', group: 'Cities', title: 'Palouse Explorer', blurb: 'Mark a place Been in both Pullman, WA and Moscow, ID.', ring: 'sky', ...step(palouse, 2),
+    spec: { key: 'palouse-explorer', label: 'Palouse', glyph: 'paw', shape: 'oct', metal: 'silver', enamel: 'crimson', ink: '#d9dadb' } })
+  const eggs = new Set(input.eggs ?? []).size
+  out.push({ id: 'wave-the-flag', hidden: true, group: 'Cities', title: 'Wave the Flag', blurb: 'Find three of the Pullman Easter eggs.', ring: 'gold', ...step(eggs, 3),
+    spec: { key: 'wave-the-flag', label: 'Wave the Flag', glyph: 'flag', shape: 'burst', metal: 'gold', enamel: 'crimson' } })
 
   for (const guide of input.guides) {
     const ids = guide.entries.map((e) => e.placeId).filter((id) => { const p = input.placeOf(id); return p != null && isListed(p) })

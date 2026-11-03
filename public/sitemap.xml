@@ -997,7 +997,6 @@
   <url><loc>https://gustosguide.com/share/place/vijs-restaurant/</loc></url>
   <url><loc>https://gustosguide.com/share/place/okeya-kyujiro/</loc></url>
   <url><loc>https://gustosguide.com/share/place/boulevard-van/</loc></url>
-  <url><loc>https://gustosguide.com/share/place/granville-island-public-market/</loc></url>
   <url><loc>https://gustosguide.com/share/place/the-parlour/</loc></url>
   <url><loc>https://gustosguide.com/share/place/ramen-danbo-van/</loc></url>
   <url><loc>https://gustosguide.com/share/place/lilia-comedor/</loc></url>
@@ -1063,7 +1062,6 @@
   <url><loc>https://gustosguide.com/share/place/smith-wollensky/</loc></url>
   <url><loc>https://gustosguide.com/share/place/blue-bottle-coffee/</loc></url>
   <url><loc>https://gustosguide.com/share/place/cut-nyc/</loc></url>
-  <url><loc>https://gustosguide.com/share/place/butterfield-market/</loc></url>
   <url><loc>https://gustosguide.com/share/place/lucia/</loc></url>
   <url><loc>https://gustosguide.com/share/place/carbone/</loc></url>
   <url><loc>https://gustosguide.com/share/place/dagon/</loc></url>
@@ -1109,6 +1107,7 @@
   <url><loc>https://gustosguide.com/share/place/brickyard/</loc></url>
   <url><loc>https://gustosguide.com/share/place/taiyaki-nyc/</loc></url>
   <url><loc>https://gustosguide.com/share/place/le-french-diner/</loc></url>
+  <url><loc>https://gustosguide.com/share/place/fiore-s-house-of-quality/</loc></url>
   <url><loc>https://gustosguide.com/share/place/ai-fiori/</loc></url>
   <url><loc>https://gustosguide.com/share/place/nobu-nyc/</loc></url>
   <url><loc>https://gustosguide.com/share/place/labeille-a-cote/</loc></url>
@@ -1400,6 +1399,7 @@
   <url><loc>https://gustosguide.com/share/guide/sd-japanese/</loc></url>
   <url><loc>https://gustosguide.com/share/guide/sd-new-american/</loc></url>
   <url><loc>https://gustosguide.com/share/guide/sd-seafood/</loc></url>
+  <url><loc>https://gustosguide.com/share/guide/van-granville-island-public-market/</loc></url>
   <url><loc>https://gustosguide.com/share/guide/van-downtown/</loc></url>
   <url><loc>https://gustosguide.com/share/guide/van-coal-harbour/</loc></url>
   <url><loc>https://gustosguide.com/share/guide/van-downtown-eastside/</loc></url>
@@ -1412,13 +1412,9 @@
   <url><loc>https://gustosguide.com/share/guide/van-french/</loc></url>
   <url><loc>https://gustosguide.com/share/guide/pdx-downtown/</loc></url>
   <url><loc>https://gustosguide.com/share/guide/pdx-pearl-district/</loc></url>
-  <url><loc>https://gustosguide.com/share/guide/pdx-nob-hill/</loc></url>
-  <url><loc>https://gustosguide.com/share/guide/pdx-old-town-chinatown/</loc></url>
   <url><loc>https://gustosguide.com/share/guide/pdx-new-american/</loc></url>
   <url><loc>https://gustosguide.com/share/guide/pdx-pizza/</loc></url>
   <url><loc>https://gustosguide.com/share/guide/pdx-health-food/</loc></url>
-  <url><loc>https://gustosguide.com/share/guide/pdx-cafe/</loc></url>
-  <url><loc>https://gustosguide.com/share/guide/pdx-french/</loc></url>
   <url><loc>https://gustosguide.com/share/guide/nyc-tribeca/</loc></url>
   <url><loc>https://gustosguide.com/share/guide/nyc-west-village/</loc></url>
   <url><loc>https://gustosguide.com/share/guide/nyc-soho/</loc></url>
@@ -1429,26 +1425,7 @@
   <url><loc>https://gustosguide.com/share/guide/nyc-new-american/</loc></url>
   <url><loc>https://gustosguide.com/share/guide/nyc-steak/</loc></url>
   <url><loc>https://gustosguide.com/share/guide/nyc-bakery/</loc></url>
+  <url><loc>https://gustosguide.com/share/guide/pul-game-day/</loc></url>
   <url><loc>https://gustosguide.com/share/guide/pul-cafe/</loc></url>
-  <url><loc>https://gustosguide.com/share/guide/pul-bakery/</loc></url>
-  <url><loc>https://gustosguide.com/share/guide/pul-sandwiches/</loc></url>
-  <url><loc>https://gustosguide.com/share/guide/pul-pub/</loc></url>
   <url><loc>https://gustosguide.com/share/guide/mos-cafe/</loc></url>
-  <url><loc>https://gustosguide.com/share/guide/mos-coffee/</loc></url>
-  <url><loc>https://gustosguide.com/share/city/seattle/</loc></url>
-  <url><loc>https://gustosguide.com/share/top/seattle/</loc></url>
-  <url><loc>https://gustosguide.com/share/city/la/</loc></url>
-  <url><loc>https://gustosguide.com/share/top/la/</loc></url>
-  <url><loc>https://gustosguide.com/share/city/sf/</loc></url>
-  <url><loc>https://gustosguide.com/share/top/sf/</loc></url>
-  <url><loc>https://gustosguide.com/share/city/sandiego/</loc></url>
-  <url><loc>https://gustosguide.com/share/top/sandiego/</loc></url>
-  <url><loc>https://gustosguide.com/share/city/vancouver/</loc></url>
-  <url><loc>https://gustosguide.com/share/top/vancouver/</loc></url>
-  <url><loc>https://gustosguide.com/share/city/portland/</loc></url>
-  <url><loc>https://gustosguide.com/share/top/portland/</loc></url>
-  <url><loc>https://gustosguide.com/share/city/nyc/</loc></url>
-  <url><loc>https://gustosguide.com/share/top/nyc/</loc></url>
-  <url><loc>https://gustosguide.com/share/city/pullman/</loc></url>
-  <url><loc>https://gustosguide.com/share/top/pullman/</loc></url>
 </urlset>

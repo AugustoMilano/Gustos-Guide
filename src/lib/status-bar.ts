@@ -1,12 +1,29 @@
+import { cougArea, installCougEggs } from './coug.ts'
+
 /** Colors the iOS status bar to match the sticky header. Same values in dark mode: the header stays light. */
 export const STATUS_NAVY = '#141F4D'
 export const STATUS_CREAM = '#FFFAF3'
+/** Pullman, WA wears crimson instead of navy (Coug game days). */
+export const STATUS_CRIMSON = '#981E32'
+
+/** Marks the open area on <html> so region themes can scope their CSS. */
+export function syncArea(): string {
+  if (typeof document === 'undefined') return ''
+  const m = (window.location.hash.replace(/^#/, '') || '/').match(/^\/([a-z]+)(?=\/|$)/)
+  const area = m ? m[1] : ''
+  const root = document.documentElement
+  if (root.dataset.area !== area) {
+    root.dataset.area = area
+    cougArea(area)
+  }
+  return area
+}
 
 export type StatusBarTone = 'navy' | 'cream'
 
 export function setStatusBar(tone: StatusBarTone) {
   if (typeof document === 'undefined') return
-  const color = tone === 'navy' ? STATUS_NAVY : STATUS_CREAM
+  const color = tone === 'navy' ? (syncArea() === 'pullman' ? STATUS_CRIMSON : STATUS_NAVY) : STATUS_CREAM
   const root = document.documentElement
   const bar = document.querySelector('.site-header')
   const metas = document.querySelectorAll('meta[name="theme-color"]')
@@ -64,11 +81,13 @@ let watching = false
 export function watchThemeColor() {
   if (watching || typeof window === 'undefined') return
   watching = true
+  installCougEggs()
   let frame = 0
   const schedule = () => {
     if (frame) return
     frame = requestAnimationFrame(() => {
       frame = 0
+      syncArea()
       syncThemeColor()
     })
   }
