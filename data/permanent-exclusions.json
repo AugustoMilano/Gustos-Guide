@@ -54,10 +54,7 @@
     },
     {
       "id": "island-soul-kirkland",
-      "name": "Island Soul",
-      "keepIds": [
-        "island-soul-restaurant"
-      ]
+      "name": "Island Soul"
     },
     {
       "id": "the-coalman",
