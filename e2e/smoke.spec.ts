@@ -249,7 +249,7 @@ test.describe('routes', () => {
 test.describe('controls', () => {
   test('home header, keyboard, scroll, and back to top', async ({ page }) => {
     const issues = watch(page)
-    await page.goto('/#/', { waitUntil: 'domcontentloaded' })
+    await page.goto('/#/seattle', { waitUntil: 'domcontentloaded' })
     await page.locator('h1').waitFor()
     await expect(page.locator('.site-header')).toHaveClass(/on-hero/)
     const header = await page.evaluate(() => {
@@ -262,6 +262,16 @@ test.describe('controls', () => {
     expect(header?.background ?? '').toMatch(/rgba?\(\s*20,\s*31,\s*77/)
     expect(header?.color ?? '').toMatch(/rgba?\(\s*255,\s*250,\s*243/)
     await expect.poll(() => page.evaluate(() => document.documentElement.dataset.status)).toBe('navy')
+    await expect.poll(() => page.evaluate(() => getComputedStyle(document.body).backgroundColor)).toMatch(/20,\s*31,\s*77/)
+    await expect.poll(() => page.evaluate(() => getComputedStyle(document.getElementById('root')!).backgroundColor)).toMatch(/238,\s*227,\s*214/)
+    await expect.poll(() => page.evaluate(() => {
+      const bar = document.getElementById('top-chrome')
+      if (!(bar instanceof HTMLElement)) return false
+      const style = getComputedStyle(bar)
+      const box = bar.getBoundingClientRect()
+      const flat = style.backdropFilter === 'none' || style.backdropFilter === ''
+      return style.position === 'fixed' && box.top === 0 && box.height >= 8 && box.width >= window.innerWidth * 0.8 && flat && style.backgroundColor === 'rgb(20, 31, 77)'
+    })).toBe(true)
     await expect.poll(() => page.evaluate(() => getComputedStyle(document.querySelector('.site-header')!, '::before').backgroundColor)).toMatch(/20,\s*31,\s*77/)
     await expect.poll(() => page.evaluate(() => {
       const colors = [...document.querySelectorAll('meta[name="theme-color"]')].map((node) => node.getAttribute('content'))
@@ -273,12 +283,21 @@ test.describe('controls', () => {
     await page.keyboard.press('Enter')
     await expect(page.locator('#main')).toBeFocused()
 
-    await page.waitForFunction(() => document.documentElement.scrollHeight > 1800)
+    await page.waitForFunction(() => document.documentElement.scrollHeight > window.innerHeight + 700)
     await scrollTo(page, 1100)
     await expect(page.locator('.back-to-top')).toBeVisible()
     await expect(page.locator('.site-header')).not.toHaveClass(/on-hero/)
     await expect.poll(() => page.evaluate(() => document.documentElement.dataset.status)).toBe('cream')
     await expect.poll(() => page.evaluate(() => getComputedStyle(document.documentElement).backgroundColor)).toMatch(/255,\s*250,\s*243/)
+    await expect.poll(() => page.evaluate(() => getComputedStyle(document.body).backgroundColor)).toMatch(/255,\s*250,\s*243/)
+    await expect.poll(() => page.evaluate(() => getComputedStyle(document.getElementById('root')!).backgroundColor)).toMatch(/238,\s*227,\s*214/)
+    await expect.poll(() => page.evaluate(() => {
+      const bar = document.getElementById('top-chrome')
+      if (!(bar instanceof HTMLElement)) return false
+      const style = getComputedStyle(bar)
+      const box = bar.getBoundingClientRect()
+      return style.position === 'fixed' && box.top === 0 && box.height >= 8 && style.backgroundColor === 'rgb(255, 250, 243)'
+    })).toBe(true)
     await expect.poll(() => page.evaluate(() => {
       const style = getComputedStyle(document.querySelector('.site-header')!)
       const solid = style.backgroundColor === 'rgb(255, 250, 243)'
@@ -300,7 +319,7 @@ test.describe('controls', () => {
     })
     await expect(page).toHaveURL(/#\/seattle\/guides/)
     await page.goBack()
-    await expect(page).toHaveURL(/#\/$|#\/$|#$/)
+    await expect(page).toHaveURL(/#\/seattle\/?$/)
     await expect.poll(() => page.evaluate(() => window.scrollY)).toBeGreaterThan(400)
     expect(issues, issues.join('\n')).toEqual([])
   })

@@ -21,14 +21,33 @@ export function syncArea(): string {
 
 export type StatusBarTone = 'navy' | 'cream'
 
+function sameColor(value: string, hex: string) {
+  const parsed = toHex(value)
+  return parsed === hex.toUpperCase()
+}
+
+/** iPad Safari keeps a tint until the sampled node is replaced, same as theme-color. */
+function paintTopChrome(color: string) {
+  const node = document.getElementById('top-chrome')
+  if (!(node instanceof HTMLElement)) return
+  if (node.dataset.color === color && sameColor(node.style.backgroundColor, color)) return
+  const next = node.cloneNode(false) as HTMLElement
+  next.dataset.color = color
+  next.style.backgroundColor = color
+  node.replaceWith(next)
+}
+
 export function setStatusBar(tone: StatusBarTone) {
   if (typeof document === 'undefined') return
   const color = tone === 'navy' ? (syncArea() === 'pullman' ? STATUS_CRIMSON : STATUS_NAVY) : STATUS_CREAM
   const root = document.documentElement
   const bar = document.querySelector('.site-header')
   const metas = document.querySelectorAll('meta[name="theme-color"]')
-  const barColored = bar instanceof HTMLElement && bar.style.backgroundColor !== ''
-  let synced = root.dataset.status === tone && root.style.getPropertyValue('--status-bar') === color && barColored
+  const chrome = document.getElementById('top-chrome')
+  const barColored = bar instanceof HTMLElement && sameColor(bar.style.backgroundColor, color)
+  const bodyColored = document.body ? sameColor(document.body.style.backgroundColor, color) : false
+  const chromeColored = chrome instanceof HTMLElement && chrome.dataset.color === color
+  let synced = root.dataset.status === tone && root.style.getPropertyValue('--status-bar') === color && barColored && bodyColored && chromeColored
   for (const node of metas) {
     if (node.getAttribute('content') !== color) synced = false
   }
@@ -36,6 +55,8 @@ export function setStatusBar(tone: StatusBarTone) {
   root.dataset.status = tone
   root.style.setProperty('--status-bar', color)
   root.style.backgroundColor = color
+  if (document.body) document.body.style.backgroundColor = color
+  paintTopChrome(color)
   if (bar instanceof HTMLElement) {
     bar.style.backgroundColor = color
     bar.style.backdropFilter = 'none'
@@ -60,10 +81,12 @@ export function syncThemeColor() {
   if (!(bar instanceof HTMLElement)) return
   const color = toHex(getComputedStyle(bar).backgroundColor)
   if (!color) return
-  // Safari 26 tints its top bar from the root background and a fixed element at the top edge.
-  // Mirror the header onto html only (never body).
+  // iPhone extends a fixed header's color into the status bar. iPad Safari does not: it tints
+  // from the body background and from a fixed element on the top edge. #root keeps the page paper.
   const root = document.documentElement
-  if (root.style.backgroundColor !== color) root.style.backgroundColor = color
+  if (!sameColor(root.style.backgroundColor, color)) root.style.backgroundColor = color
+  if (document.body && !sameColor(document.body.style.backgroundColor, color)) document.body.style.backgroundColor = color
+  paintTopChrome(color)
   const fresh = color === lastThemeColor
   lastThemeColor = color
   for (const node of document.querySelectorAll('meta[name="theme-color"]')) {
