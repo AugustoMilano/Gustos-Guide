@@ -80,7 +80,7 @@ export function computeAchievements(input: AchievementInput): Achievement[] {
   }))
 
   // Gusto's Score boards. Users' Been marks never change these; they only read them.
-  const boards = (['seattle', 'la', 'sf', 'sandiego'] as const).map((region) => regionBoard(region, input.gustoScore).shown)
+  const boards = (['seattle', 'la', 'sf', 'sandiego', 'vancouver', 'portland', 'nyc', 'pullman'] as const).map((region) => regionBoard(region, input.gustoScore).shown)
   const numberOne = boards.some((board) => board[0] && beenSet.has(board[0].place.id))
   out.push({ id: 'number-one', group: 'Milestones', title: 'Number One', blurb: 'Eat at a city’s #1 on Gusto’s Top 25.', ring: 'leaf', ...step(numberOne ? 1 : 0, 1),
     spec: { key: 'number-one', label: 'Number One', glyph: 'crown', shape: 'burst', metal: 'gold', enamel: 'coral' } })

@@ -14,7 +14,7 @@ import type { SlimPlace } from '../types.ts'
 
 type Row = { id: string; name: string; score: number }
 
-const SHORT: Record<RegionId, string> = { seattle: 'Seattle', la: 'LA', sf: 'SF Bay', sandiego: 'San Diego' }
+const SHORT: Record<RegionId, string> = { seattle: 'Seattle', la: 'LA', sf: 'SF Bay', sandiego: 'San Diego', vancouver: 'Vancouver', portland: 'Portland', nyc: 'NYC', pullman: 'Pullman' }
 
 export function ProfilePage() {
   const { handle = '' } = useParams()

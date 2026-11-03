@@ -1,5 +1,5 @@
-export type CityId = 'seattle' | 'eastside' | 'la' | 'sf' | 'eastbay' | 'peninsula' | 'northbay' | 'sandiego'
-export type RegionId = 'seattle' | 'la' | 'sf' | 'sandiego'
+export type CityId = 'seattle' | 'eastside' | 'la' | 'sf' | 'eastbay' | 'peninsula' | 'northbay' | 'sandiego' | 'vancouver' | 'portland' | 'nyc' | 'pullman' | 'moscow'
+export type RegionId = 'seattle' | 'la' | 'sf' | 'sandiego' | 'vancouver' | 'portland' | 'nyc' | 'pullman'
 
 export type City = {
   id: CityId
@@ -17,6 +17,11 @@ const AREAS: Record<CityId, City> = {
   peninsula: { id: 'peninsula', name: 'Peninsula', ready: true },
   northbay: { id: 'northbay', name: 'North Bay', ready: true },
   sandiego: { id: 'sandiego', name: 'San Diego', ready: true },
+  vancouver: { id: 'vancouver', name: 'Vancouver', ready: true },
+  portland: { id: 'portland', name: 'Portland', ready: true },
+  nyc: { id: 'nyc', name: 'New York', ready: true },
+  pullman: { id: 'pullman', name: 'Pullman, WA', ready: true },
+  moscow: { id: 'moscow', name: 'Moscow, ID', ready: true },
 }
 
 export type Region = {
@@ -36,6 +41,10 @@ export const REGIONS: Region[] = [
     areas: ['sf', 'eastbay', 'peninsula', 'northbay'],
   },
   { id: 'sandiego', name: 'San Diego', detail: 'San Diego, La Jolla, Coronado, Oceanside', areas: ['sandiego'] },
+  { id: 'vancouver', name: 'Vancouver', detail: 'Downtown, Coal Harbour, Gastown, Granville Island', areas: ['vancouver'] },
+  { id: 'portland', name: 'Portland', detail: 'Downtown, Pearl District, Nob Hill, Old Town', areas: ['portland'] },
+  { id: 'nyc', name: 'New York', detail: 'Manhattan and Brooklyn', areas: ['nyc'] },
+  { id: 'pullman', name: 'Pullman, WA', detail: 'Pullman, WA and Moscow, ID', areas: ['pullman', 'moscow'] },
 ]
 
 export const ACTIVE_CITY: CityId = 'seattle'
@@ -59,6 +68,10 @@ export function asCityId(value: string | undefined | null): CityId {
 export function regionOf(city: CityId): RegionId {
   if (city === 'la') return 'la'
   if (city === 'sandiego') return 'sandiego'
+  if (city === 'vancouver') return 'vancouver'
+  if (city === 'portland') return 'portland'
+  if (city === 'nyc') return 'nyc'
+  if (city === 'pullman' || city === 'moscow') return 'pullman'
   if (BAY.has(city)) return 'sf'
   return 'seattle'
 }
@@ -76,6 +89,10 @@ export function areaName(city: CityId): string {
 export function regionName(city: CityId): string {
   if (city === 'la') return 'Los Angeles'
   if (city === 'sandiego') return 'San Diego'
+  if (city === 'vancouver') return 'Vancouver'
+  if (city === 'portland') return 'Portland'
+  if (city === 'nyc') return 'New York'
+  if (city === 'pullman' || city === 'moscow') return 'Pullman, WA'
   if (BAY.has(city)) return 'San Francisco'
   return 'Seattle'
 }
@@ -88,6 +105,11 @@ export function areaTitle(city: CityId): string {
   if (city === 'peninsula') return 'The Peninsula'
   if (city === 'northbay') return 'The North Bay'
   if (city === 'sandiego') return 'San Diego'
+  if (city === 'vancouver') return 'Vancouver'
+  if (city === 'portland') return 'Portland'
+  if (city === 'nyc') return 'New York'
+  if (city === 'pullman') return 'Pullman, WA'
+  if (city === 'moscow') return 'Moscow, ID'
   return 'Seattle'
 }
 
@@ -100,6 +122,11 @@ export function areaPhrase(city: CityId): string {
   if (city === 'peninsula') return 'the Peninsula'
   if (city === 'northbay') return 'the North Bay'
   if (city === 'sandiego') return 'San Diego'
+  if (city === 'vancouver') return 'Vancouver'
+  if (city === 'portland') return 'Portland'
+  if (city === 'nyc') return 'New York'
+  if (city === 'pullman') return 'Pullman, WA'
+  if (city === 'moscow') return 'Moscow, ID'
   return 'Seattle'
 }
 

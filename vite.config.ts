@@ -229,7 +229,7 @@ export default defineConfig({
         // arrives. Same pick as displayPhotos() without uploads: Gusto's own shot, then commons.
         const sizes = JSON.parse(readFileSync('src/content/photo-sizes.json', 'utf8')) as Record<string, { w: number; webp?: number[] }>
         const heroes: Record<string, string> = {}
-        for (const name of ['places', 'eastside', 'la', 'sf', 'sd']) {
+        for (const name of ['places', 'eastside', 'la', 'sf', 'sd', 'vancouver', 'portland', 'nyc', 'palouse']) {
           const data = JSON.parse(readFileSync(`src/content/${name}.json`, 'utf8'))
           const list = (Array.isArray(data) ? data : Array.isArray(data.places) ? data.places : Object.values(data)) as { id?: string; photo?: { source?: string; url?: string }; photos?: { source?: string; url?: string }[] }[]
           for (const place of list) {
@@ -247,7 +247,7 @@ export default defineConfig({
         // of region data or the 100 KB catalog. Same records the app already ships, unchanged.
         const pd = join(dist, 'pd')
         mkdirSync(pd, { recursive: true })
-        for (const name of ['places', 'eastside', 'la', 'sf', 'sd']) {
+        for (const name of ['places', 'eastside', 'la', 'sf', 'sd', 'vancouver', 'portland', 'nyc', 'palouse']) {
           const data = JSON.parse(readFileSync(`src/content/${name}.json`, 'utf8'))
           const list = (Array.isArray(data) ? data : Array.isArray(data.places) ? data.places : Object.values(data)) as { id?: string }[]
           for (const place of list) {

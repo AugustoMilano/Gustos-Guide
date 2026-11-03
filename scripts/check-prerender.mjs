@@ -22,12 +22,12 @@ const unesc = (s) => s.replace(/&#39;/g, "'")
 const topHtml = unesc(html)
 const topCopy = [...top.matchAll(/"([^"]*ranked by Augusto[^"]*)"/g)].map((m) => m[1])
 topCopy.push('Restaurants only, one per brand. Owner scores only; a place with no score stays off the list.', 'Golden Fork · 2026')
-if (topCopy.length !== 6) problems.push(`expected 4 Top intros, found ${topCopy.length - 2}`)
+if (topCopy.length !== regions.length + 2) problems.push(`expected ${regions.length} Top intros, found ${topCopy.length - 2}`)
 for (const text of topCopy) {
   if (!top.includes(text)) problems.push(`TopPage no longer says "${text}"`)
   if (!topHtml.includes(text)) problems.push(`index.html Top shell missing "${text}"`)
 }
-for (const name of ['Seattle', 'Los Angeles', 'San Francisco', 'San Diego']) if (!topHtml.includes(`Top 25 · ${name}</h1>`)) problems.push(`Top shell missing ${name}`)
+for (const [name] of regions) if (!topHtml.includes(`Top 25 · ${name}</h1>`)) problems.push(`Top shell missing ${name}`)
 const status = readFileSync('public/status.js', 'utf8')
 for (const t of [...city.matchAll(/return '([^']+)'/g)].map((m) => m[1]).filter((t) => /^[A-Z]/.test(t))) {
   const js = t.replace('’', '\\u2019')

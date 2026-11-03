@@ -1,20 +1,20 @@
 ;(function () {
   var path = (location.hash.replace(/^#/, '') || '/').split('?')[0].replace(/\/$/, '') || '/'
-  var homes = { '/': 1, '/seattle': 1, '/eastside': 1, '/la': 1, '/sf': 1, '/eastbay': 1, '/peninsula': 1, '/northbay': 1, '/sandiego': 1 }
+  var homes = { '/': 1, '/seattle': 1, '/eastside': 1, '/la': 1, '/sf': 1, '/eastbay': 1, '/peninsula': 1, '/northbay': 1, '/sandiego': 1, '/vancouver': 1, '/portland': 1, '/nyc': 1, '/pullman': 1, '/moscow': 1 }
   var navy = homes[path] === 1
   // The landing heading ships as static HTML in index.html; it only shows on the landing route.
   if (path === '/') document.documentElement.dataset.prerender = '1'
   // Top 25 deep links: show the static intro shipped in index.html (fix77) until React replaces it.
-  var cityM = path.match(/^\/(seattle|eastside|la|sf|eastbay|peninsula|northbay|sandiego)(?=\/|$)/)
+  var cityM = path.match(/^\/(seattle|eastside|la|sf|eastbay|peninsula|northbay|sandiego|vancouver|portland|nyc|pullman|moscow)(?=\/|$)/)
   var cityId = cityM ? cityM[1] : 'seattle'
   if ((path.replace(/^\/[a-z]+(?=\/top$)/, '')) === '/top') {
-    var region = { la: 'la', sandiego: 'sandiego', sf: 'sf', eastbay: 'sf', peninsula: 'sf', northbay: 'sf' }[cityId] || 'seattle'
+    var region = { la: 'la', sandiego: 'sandiego', vancouver: 'vancouver', portland: 'portland', nyc: 'nyc', pullman: 'pullman', moscow: 'pullman', sf: 'sf', eastbay: 'sf', peninsula: 'sf', northbay: 'sf' }[cityId] || 'seattle'
     var de = document.documentElement
     de.dataset.prerender = 'top'
     de.dataset.preRegion = region
-    de.dataset.header = region === 'la' || region === 'sandiego' ? 'single' : 'areas'
+    de.dataset.header = region === 'la' || region === 'sandiego' || region === 'vancouver' || region === 'portland' || region === 'nyc' ? 'single' : 'areas'
     document.addEventListener('DOMContentLoaded', function () {
-      var areas = { seattle: 'Seattle', eastside: 'Seattle\u2019s Eastside', la: 'Los Angeles', sf: 'San Francisco', eastbay: 'The East Bay', peninsula: 'The Peninsula', northbay: 'The North Bay', sandiego: 'San Diego' }
+      var areas = { seattle: 'Seattle', eastside: 'Seattle\u2019s Eastside', la: 'Los Angeles', sf: 'San Francisco', eastbay: 'The East Bay', peninsula: 'The Peninsula', northbay: 'The North Bay', sandiego: 'San Diego', vancouver: 'Vancouver', portland: 'Portland', nyc: 'New York', pullman: 'Pullman, WA', moscow: 'Moscow, ID' }
       var kicker = document.querySelector('.pre-top-area')
       if (kicker) kicker.textContent = areas[cityId]
       var ranks = document.querySelectorAll('.pre-top-rank')
@@ -29,7 +29,7 @@
   for (var i = 0; i < nodes.length; i++) nodes[i].setAttribute('content', color)
   // Deep links to heavy routes: fetch their chunks alongside the entry bundle (list stamped at build).
   var routes = /*ROUTE_PRELOADS*/{}
-  var bare = path.replace(/^\/(seattle|eastside|la|sf|eastbay|peninsula|northbay|sandiego)(?=\/|$)/, '') || '/'
+  var bare = path.replace(/^\/(seattle|eastside|la|sf|eastbay|peninsula|northbay|sandiego|vancouver|portland|nyc|pullman|moscow)(?=\/|$)/, '') || '/'
   // Place deep links skip chunk preloads: the static hero is the first paint there, and its photo
   // needs the bandwidth more than code the app fetches a moment later anyway (C1).
   var want = bare === '/top' ? routes.top : null
@@ -55,10 +55,10 @@
     document.head.appendChild(pre)
   }
   if (placeId && window.fetch && /^[a-z0-9-]+$/.test(placeId)) {
-    var placeRegion = { la: 'la', sandiego: 'sandiego', sf: 'sf', eastbay: 'sf', peninsula: 'sf', northbay: 'sf' }[cityId] || 'seattle'
+    var placeRegion = { la: 'la', sandiego: 'sandiego', vancouver: 'vancouver', portland: 'portland', nyc: 'nyc', pullman: 'pullman', moscow: 'pullman', sf: 'sf', eastbay: 'sf', peninsula: 'sf', northbay: 'sf' }[cityId] || 'seattle'
     var root = document.documentElement
     root.dataset.preRegion = placeRegion
-    root.dataset.header = placeRegion === 'la' || placeRegion === 'sandiego' ? 'single' : 'areas'
+    root.dataset.header = placeRegion === 'la' || placeRegion === 'sandiego' || placeRegion === 'vancouver' || placeRegion === 'portland' || placeRegion === 'nyc' ? 'single' : 'areas'
     var heroes = /*HEROES*/{}
     var hero = heroes[placeId] === 1 ? [200, 400, 720, 960].map(function (w) { return '/photos/' + placeId + '.' + w + '.webp ' + w + 'w' }).join(', ') : heroes[placeId]
     if (hero) {

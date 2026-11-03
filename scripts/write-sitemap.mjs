@@ -9,6 +9,9 @@ const eastside = JSON.parse(readFileSync(join(root, 'src/content/eastside.json')
 const la = JSON.parse(readFileSync(join(root, 'src/content/la.json'), 'utf8'))
 const sf = JSON.parse(readFileSync(join(root, 'src/content/sf.json'), 'utf8'))
 const sd = JSON.parse(readFileSync(join(root, 'src/content/sd.json'), 'utf8'))
+const added = ['vancouver', 'portland', 'nyc', 'palouse'].map((name) => JSON.parse(readFileSync(join(root, `src/content/${name}.json`), 'utf8')))
+const addedPlaces = added.flatMap((file) => file.places)
+const addedGuides = added.flatMap((file) => file.guides)
 const site = (process.env.SITE_URL || 'https://gustosguide.com').replace(/\/$/, '')
 
 function escapeXml(value) {
@@ -59,7 +62,7 @@ const ogDir = join(root, 'public/og/guides')
 mkdirSync(ogDir, { recursive: true })
 writeFileSync(join(root, 'public/og/og.svg'), card("Gusto's Guide", 'Restaurants and places in the cities we cover.'))
 writeFileSync(join(root, 'public/og/place.svg'), card('A place', 'From the house guide.'))
-for (const guide of [...index.guides, ...eastside.guides, ...la.guides, ...sf.guides, ...sd.guides]) {
+for (const guide of [...index.guides, ...eastside.guides, ...la.guides, ...sf.guides, ...sd.guides, ...addedGuides]) {
   writeFileSync(join(ogDir, `${guide.slug}.svg`), card(guide.title, guide.dek || 'A guide from Gusto.'))
 }
 
@@ -68,10 +71,10 @@ const share = new Set([
   `${site}/terms/`,
   `${site}/privacy/`,
 ])
-for (const place of [...index.places, ...eastside.places, ...la.places, ...sf.places, ...sd.places]) {
+for (const place of [...index.places, ...eastside.places, ...la.places, ...sf.places, ...sd.places, ...addedPlaces]) {
   share.add(`${site}/share/place/${encodeURIComponent(place.id)}/`)
 }
-for (const guide of [...index.guides, ...eastside.guides, ...la.guides, ...sf.guides, ...sd.guides]) {
+for (const guide of [...index.guides, ...eastside.guides, ...la.guides, ...sf.guides, ...sd.guides, ...addedGuides]) {
   share.add(`${site}/share/guide/${encodeURIComponent(guide.slug)}/`)
 }
 const urls = [...share]
@@ -82,4 +85,4 @@ writeFileSync(
   join(root, 'public/sitemap.xml'),
   `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${body}\n</urlset>\n`,
 )
-console.log(`sitemap ${urls.length} urls, ${index.guides.length + eastside.guides.length + la.guides.length + sf.guides.length + sd.guides.length} guide cards, site ${site}`)
+console.log(`sitemap ${urls.length} urls, ${index.guides.length + eastside.guides.length + la.guides.length + sf.guides.length + sd.guides.length + addedGuides.length} guide cards, site ${site}`)
