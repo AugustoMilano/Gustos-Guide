@@ -3857,7 +3857,7 @@
     {
       "slug": "sd-little-italy",
       "title": "Little Italy",
-      "dek": "",
+      "dek": "Seven tables within a few blocks of each other: Italian at RoVino and Civico 1845, seafood at Ironside, steak at Born & Raised, and brunch at Morning Glory.",
       "group": "Neighborhoods",
       "intro": "",
       "updatedAt": "2026-10-22",
@@ -3912,7 +3912,7 @@
     {
       "slug": "sd-coronado",
       "title": "Coronado",
-      "dek": "",
+      "dek": "Coronado across the bay: French at Little Frenchie, Mediterranean at Serea, Nobu Del Coronado, Lobster West, and Nado Gelato to finish.",
       "group": "Neighborhoods",
       "intro": "",
       "updatedAt": "2026-10-23",
@@ -3955,7 +3955,7 @@
     {
       "slug": "sd-la-jolla",
       "title": "La Jolla",
-      "dek": "",
+      "dek": "La Jolla's dining rooms, from Japanese at Himitsu to Italian at Marisi and New American at Paradisaea and NINE-TEN, plus Wayfarer Bread.",
       "group": "Neighborhoods",
       "intro": "",
       "updatedAt": "2026-10-22",
@@ -3998,7 +3998,7 @@
     {
       "slug": "sd-north-park",
       "title": "North Park",
-      "dek": "",
+      "dek": "North Park's mix: seafood at Mabel's Gone Fishing, pasta at Trattoria Cori Pastificio, City Tacos, Tribute Pizza, and cocktails at Mothership.",
       "group": "Neighborhoods",
       "intro": "",
       "updatedAt": "2026-10-22",
@@ -4041,7 +4041,7 @@
     {
       "slug": "sd-east-village",
       "title": "East Village",
-      "dek": "",
+      "dek": "East Village from morning on: Izola's bakery, brunch at The Mission, tacos at Lola 55, and Mediterranean at Callie.",
       "group": "Neighborhoods",
       "intro": "",
       "updatedAt": "2026-10-22",
@@ -4078,7 +4078,7 @@
     {
       "slug": "sd-mexican",
       "title": "Mexican",
-      "dek": "",
+      "dek": "Twelve stops for Mexican and tacos, from Ocean Beach and Mission Hills to Chula Vista, including Tacos El Gordo, Mike's Taco Club, Quixote and Javier's.",
       "group": "Cuisine",
       "intro": "",
       "updatedAt": "2026-10-22",
@@ -4163,7 +4163,7 @@
     {
       "slug": "sd-italian",
       "title": "Italian",
-      "dek": "",
+      "dek": "Italian across town: RoVino and Civico 1845 in Little Italy, Ciccia Osteria in Barrio Logan, Buona Forchetta in South Park, Cesarina in Point Loma Heights, and Cucina Urbana in Park West.",
       "group": "Cuisine",
       "intro": "",
       "updatedAt": "2026-10-22",
@@ -4230,7 +4230,7 @@
     {
       "slug": "sd-japanese",
       "title": "Japanese",
-      "dek": "",
+      "dek": "Sushi and Japanese from University Heights to Oceanside: Soichi, Himitsu in La Jolla, Wrench & Rodent Seabasstropub, Matsu, and Nobu Del Coronado.",
       "group": "Cuisine",
       "intro": "",
       "updatedAt": "2026-10-22",
@@ -4273,7 +4273,7 @@
     {
       "slug": "sd-new-american",
       "title": "New American",
-      "dek": "",
+      "dek": "Fourteen New American and Californian rooms, from Addison and Market Restaurant + Bar near Del Mar to Juniper & Ivy and Herb & Wood in Harborview, A.R. Valentien at Torrey Pines, and ARTIFACT at Mingei in Balboa Park.",
       "group": "Cuisine",
       "intro": "",
       "updatedAt": "2026-10-22",
@@ -4370,7 +4370,7 @@
     {
       "slug": "sd-seafood",
       "title": "Seafood",
-      "dek": "",
+      "dek": "Four for seafood: Water Grill in the Gaslamp, Ironside in Little Italy, Mabel's Gone Fishing in North Park, and Lobster West on Coronado.",
       "group": "Cuisine",
       "intro": "",
       "updatedAt": "2026-10-22",
