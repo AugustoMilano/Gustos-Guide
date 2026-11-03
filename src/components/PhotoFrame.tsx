@@ -26,6 +26,7 @@ export function PhotoFrame({
         <PlaceArt id={photo.placeId} cuisine={photo.cuisine} neighborhood={photo.neighborhood} />
       ) : (
         <picture>
+          {picture.avifSrcSet ? <source type="image/avif" srcSet={picture.avifSrcSet} sizes={picture.sizes} /> : null}
           {picture.webpSrcSet ? <source type="image/webp" srcSet={picture.webpSrcSet} sizes={picture.sizes} /> : null}
           <img
             src={picture.src}

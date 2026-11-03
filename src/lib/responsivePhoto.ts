@@ -1,6 +1,6 @@
 import sizes from '../content/photo-sizes.json'
 
-type SizeEntry = { w: number; h: number; widths: number[]; webp?: number[] }
+type SizeEntry = { w: number; h: number; widths: number[]; webp?: number[]; avif?: number[] }
 
 const table = sizes as Record<string, SizeEntry>
 
@@ -21,9 +21,16 @@ export function responsivePhoto(url: string | undefined, sizesAttr: string) {
         .map((width) => (width === entry.w ? `/photos/${stem}.webp ${width}w` : `/photos/${stem}.${width}.webp ${width}w`))
         .join(', ')
     : undefined
+  // AVIF first (D2): about half the bytes of WebP at the same look; <picture> falls back to WebP, then JPEG.
+  const avifSrcSet = entry.avif?.length
+    ? entry.avif
+        .map((width) => (width === entry.w ? `/photos/${stem}.avif ${width}w` : `/photos/${stem}.${width}.avif ${width}w`))
+        .join(', ')
+    : undefined
   return {
     src: url,
     srcSet,
+    avifSrcSet,
     webpSrcSet,
     sizes: srcSet || webpSrcSet ? sizesAttr : undefined,
     width: entry.w,

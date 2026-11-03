@@ -332,10 +332,12 @@
       "updatedAt": "2026-11-03",
       "photos": [
         {
-          "source": "illustration",
-          "isIllustration": true,
-          "alt": "Illustration suggesting Tavern at Red Hook Tavern",
-          "credit": "Illustration"
+          "source": "wikimedia",
+          "url": "/photos/red-hook-tavern.jpg",
+          "alt": "Red Hook Tavern in Red Hook",
+          "credit": "Eden, Janine and Jim from New York City",
+          "creditUrl": "https://commons.wikimedia.org/wiki/File:Red_Hook_Tavern_(53022973914).jpg",
+          "license": "CC BY 2.0"
         }
       ],
       "phone": "+1 (917) 966-6094",
@@ -1491,10 +1493,12 @@
       "updatedAt": "2026-11-03",
       "photos": [
         {
-          "source": "illustration",
-          "isIllustration": true,
-          "alt": "Illustration suggesting Steak at Smith & Wollensky",
-          "credit": "Illustration"
+          "source": "wikimedia",
+          "url": "/photos/smith-wollensky.jpg",
+          "alt": "Smith & Wollensky in Midtown East",
+          "credit": "Rennboot",
+          "creditUrl": "https://commons.wikimedia.org/wiki/File:Smith_%26_Wollensky_New_York.jpg",
+          "license": "CC BY 3.0"
         }
       ],
       "phone": "+1 (212) 753-1530",
@@ -2636,10 +2640,12 @@
       "updatedAt": "2026-11-03",
       "photos": [
         {
-          "source": "illustration",
-          "isIllustration": true,
-          "alt": "Illustration suggesting Pub at The Dead Rabbit",
-          "credit": "Illustration"
+          "source": "wikimedia",
+          "url": "/photos/the-dead-rabbit.jpg",
+          "alt": "The Dead Rabbit in Financial District",
+          "credit": "loustejskal.com",
+          "creditUrl": "https://commons.wikimedia.org/wiki/File:Dead_Rabbit,_30_Water_St,_New_York,_NY.jpg",
+          "license": "CC BY 2.0"
         }
       ],
       "phone": "+1 (917) 540-5228",
@@ -2968,10 +2974,12 @@
       "updatedAt": "2026-11-03",
       "photos": [
         {
-          "source": "illustration",
-          "isIllustration": true,
-          "alt": "Illustration suggesting New American at abc kitchen",
-          "credit": "Illustration"
+          "source": "wikimedia",
+          "url": "/photos/abc-kitchen.jpg",
+          "alt": "abc kitchen in Flatiron District",
+          "credit": "Transpoman",
+          "creditUrl": "https://commons.wikimedia.org/wiki/File:ABC_Kitchen_NYC.jpg",
+          "license": "CC BY-SA 4.0"
         }
       ],
       "phone": "+1 (212) 475-5829",
@@ -3031,10 +3039,12 @@
       "updatedAt": "2026-11-03",
       "photos": [
         {
-          "source": "illustration",
-          "isIllustration": true,
-          "alt": "Illustration suggesting Cocktails at Double Chicken Please",
-          "credit": "Illustration"
+          "source": "wikimedia",
+          "url": "/photos/double-chicken-please.jpg",
+          "alt": "Double Chicken Please in Manhattan",
+          "credit": "KoRoBeNiKi",
+          "creditUrl": "https://commons.wikimedia.org/wiki/File:Double_Chicken_Please-_Cold_Pizza_Cocktail,_NYC,_2-24-2024.jpg",
+          "license": "CC BY 4.0"
         }
       ],
       "phone": null,
@@ -3388,10 +3398,12 @@
       "updatedAt": "2026-11-03",
       "photos": [
         {
-          "source": "illustration",
-          "isIllustration": true,
-          "alt": "Illustration suggesting Coffee at Starbucks Reserve Roastery",
-          "credit": "Illustration"
+          "source": "wikimedia",
+          "url": "/photos/starbucks-reserve-roastery.jpg",
+          "alt": "Starbucks Reserve Roastery in Chelsea",
+          "credit": "Silver Dovelet",
+          "creditUrl": "https://commons.wikimedia.org/wiki/File:Starbucks_Reserve_Roastery_New_York_Exterior_1.jpg",
+          "license": "CC BY-SA 4.0"
         }
       ],
       "phone": "+1 (212) 691-0531",
@@ -4325,10 +4337,12 @@
       "updatedAt": "2026-11-03",
       "photos": [
         {
-          "source": "illustration",
-          "isIllustration": true,
-          "alt": "Illustration suggesting Asian Fusion at TAO Downtown",
-          "credit": "Illustration"
+          "source": "wikimedia",
+          "url": "/photos/tao-downtown.jpg",
+          "alt": "TAO Downtown in Chelsea",
+          "credit": "InvadingInvader",
+          "creditUrl": "https://commons.wikimedia.org/wiki/File:Tao_Downtown_Restaurant_Interior_2024.jpg",
+          "license": "CC BY 4.0"
         }
       ],
       "phone": "+1 (212) 888-2724",
@@ -7977,10 +7991,12 @@
       "updatedAt": "2026-11-03",
       "photos": [
         {
-          "source": "illustration",
-          "isIllustration": true,
-          "alt": "Illustration suggesting Bakery at Magnolia Bakery",
-          "credit": "Illustration"
+          "source": "wikimedia",
+          "url": "/photos/magnolia-bakery-nyc.jpg",
+          "alt": "Magnolia Bakery in West Village",
+          "credit": "WestportWiki",
+          "creditUrl": "https://commons.wikimedia.org/wiki/File:Magnolia_Bakery,_401_Bleecker_Street,_New_York,_NY_10014,_USA_-_Jan_2013_C.JPG",
+          "license": "CC BY-SA 3.0"
         }
       ],
       "phone": "+1 (212) 462-2572",
@@ -8145,10 +8161,12 @@
       "updatedAt": "2026-11-03",
       "photos": [
         {
-          "source": "illustration",
-          "isIllustration": true,
-          "alt": "Illustration suggesting Cafe at Fanelli Cafe",
-          "credit": "Illustration"
+          "source": "wikimedia",
+          "url": "/photos/fanelli-cafe.jpg",
+          "alt": "Fanelli Cafe in SoHo",
+          "credit": "Ludovic Bertron from New York City, Usa",
+          "creditUrl": "https://commons.wikimedia.org/wiki/File:Fanelli_Cafe_(3419675337).jpg",
+          "license": "CC BY 2.0"
         }
       ],
       "phone": "+1 (212) 226-9412",
@@ -9266,10 +9284,12 @@
       "updatedAt": "2026-11-03",
       "photos": [
         {
-          "source": "illustration",
-          "isIllustration": true,
-          "alt": "Illustration suggesting Fine dining at Eleven Madison Park",
-          "credit": "Illustration"
+          "source": "wikimedia",
+          "url": "/photos/eleven-madison-park.jpg",
+          "alt": "Eleven Madison Park in Manhattan",
+          "credit": "City Foodsters",
+          "creditUrl": "https://commons.wikimedia.org/wiki/File:Eleven_Madison_Park_Sign_(9287287474).jpg",
+          "license": "CC BY 2.0"
         }
       ],
       "phone": "+1 (212) 889-0905",
@@ -10947,10 +10967,12 @@
       "updatedAt": "2026-11-03",
       "photos": [
         {
-          "source": "illustration",
-          "isIllustration": true,
-          "alt": "Illustration suggesting Seafood at Le Bernardin",
-          "credit": "Illustration"
+          "source": "wikimedia",
+          "url": "/photos/le-bernardin.jpg",
+          "alt": "Le Bernardin in Theater District",
+          "credit": "Arnold Gatilao",
+          "creditUrl": "https://commons.wikimedia.org/wiki/File:Interior_of_Le_Bernardin.jpg",
+          "license": "CC BY 2.0"
         }
       ],
       "phone": "+1 (212) 554-1515",
@@ -11390,10 +11412,12 @@
       "updatedAt": "2026-11-03",
       "photos": [
         {
-          "source": "illustration",
-          "isIllustration": true,
-          "alt": "Illustration suggesting Italian at Via Carota",
-          "credit": "Illustration"
+          "source": "wikimedia",
+          "url": "/photos/via-carota.jpg",
+          "alt": "Via Carota in West Village",
+          "credit": "MainlyTwelve",
+          "creditUrl": "https://commons.wikimedia.org/wiki/File:Via_Carota_exterior.jpg",
+          "license": "CC BY-SA 4.0"
         }
       ],
       "phone": "+1 (212) 255-1962",
@@ -11842,10 +11866,12 @@
       "updatedAt": "2026-11-03",
       "photos": [
         {
-          "source": "illustration",
-          "isIllustration": true,
-          "alt": "Illustration suggesting Irish at O'Hara's Restaurant & Pub",
-          "credit": "Illustration"
+          "source": "wikimedia",
+          "url": "/photos/o-hara-s-restaurant-pub.jpg",
+          "alt": "O'Hara's Restaurant & Pub in Manhattan",
+          "credit": "Paul Sableman",
+          "creditUrl": "https://commons.wikimedia.org/wiki/File:O%27Hara%27s_Restaurant_%26_Pub_(37912252701).jpg",
+          "license": "CC BY 2.0"
         }
       ],
       "phone": "+1 (212) 267-3032",
@@ -12350,10 +12376,12 @@
       "updatedAt": "2026-11-03",
       "photos": [
         {
-          "source": "illustration",
-          "isIllustration": true,
-          "alt": "Illustration suggesting Tavern at Minetta Tavern",
-          "credit": "Illustration"
+          "source": "wikimedia",
+          "url": "/photos/minetta-tavern.jpg",
+          "alt": "Minetta Tavern in Greenwich Village",
+          "credit": "Billie Grace Ward from New York, USA",
+          "creditUrl": "https://commons.wikimedia.org/wiki/File:Minetta_Tavern_(15675599174).jpg",
+          "license": "CC BY 2.0"
         }
       ],
       "phone": "+1 (212) 475-3850",

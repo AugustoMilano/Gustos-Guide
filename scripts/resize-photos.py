@@ -8,6 +8,9 @@ from pathlib import Path
 
 from PIL import Image
 
+# Busy night shots compress poorly; these take a lower AVIF quality to keep the hero light.
+AVIF_QUALITY = {'bestia-v2': 36}
+
 root = Path(__file__).resolve().parents[1]
 photos = root / 'public' / 'photos'
 out = {}
@@ -42,7 +45,15 @@ for path in sorted(photos.iterdir()):
             if not dest.exists():
                 image.save(dest, 'WEBP', quality=68, method=4)
             webp.append(width)
-    out[path.name] = {'w': width, 'h': height, 'widths': sorted(set(widths)), 'webp': sorted(set(webp))}
+        # AVIF (D2): same widths as WebP, new files, so the year-long photo cache never serves a stale copy.
+        avif = []
+        for target in sorted(set(webp)):
+            dest = path.with_name(f'{path.stem}.avif') if target == width else path.with_name(f'{path.stem}.{target}.avif')
+            if not dest.exists():
+                resized = image if target == width else image.resize((target, max(1, round(height * target / width))), Image.Resampling.LANCZOS)
+                resized.save(dest, 'AVIF', quality=AVIF_QUALITY.get(path.stem, 50), speed=6)
+            avif.append(target)
+    out[path.name] = {'w': width, 'h': height, 'widths': sorted(set(widths)), 'webp': sorted(set(webp)), 'avif': sorted(set(avif))}
 
 (root / 'src' / 'content' / 'photo-sizes.json').write_text(json.dumps(out, indent=2) + '\n')
 print(f'{len(out)} catalog photos')

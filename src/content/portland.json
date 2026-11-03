@@ -471,10 +471,12 @@
       "updatedAt": "2026-11-03",
       "photos": [
         {
-          "source": "illustration",
-          "isIllustration": true,
-          "alt": "Illustration suggesting BBQ at Jake's Grill",
-          "credit": "Illustration"
+          "source": "wikimedia",
+          "url": "/photos/jake-s-grill.jpg",
+          "alt": "Jake's Grill in Downtown",
+          "credit": "Another Believer",
+          "creditUrl": "https://commons.wikimedia.org/wiki/File:Jake%27s_Grill_entrance,_Portland,_Oregon_2012.JPG",
+          "license": "CC BY-SA 3.0"
         }
       ],
       "phone": "+1 (503) 220-1850",
@@ -584,10 +586,12 @@
       "updatedAt": "2026-11-03",
       "photos": [
         {
-          "source": "illustration",
-          "isIllustration": true,
-          "alt": "Illustration suggesting Deli at Elephants Delicatessen",
-          "credit": "Illustration"
+          "source": "wikimedia",
+          "url": "/photos/elephants-delicatessen.jpg",
+          "alt": "Elephants Delicatessen in Portland",
+          "credit": "Another Believer",
+          "creditUrl": "https://commons.wikimedia.org/wiki/File:Elephants_Delicatessen,_Northwest_District,_Portland,_Oregon,_2022.jpg",
+          "license": "CC BY-SA 4.0"
         }
       ],
       "phone": "+1 (503) 299-6304",
@@ -757,10 +761,12 @@
       "updatedAt": "2026-11-03",
       "photos": [
         {
-          "source": "illustration",
-          "isIllustration": true,
-          "alt": "Illustration suggesting Spanish at Urdaneta",
-          "credit": "Illustration"
+          "source": "wikimedia",
+          "url": "/photos/urdaneta.jpg",
+          "alt": "Urdaneta in Alberta Arts District",
+          "credit": "Another Believer",
+          "creditUrl": "https://commons.wikimedia.org/wiki/File:Urdaneta_(restaurant),_2022_2.jpg",
+          "license": "CC BY-SA 4.0"
         }
       ],
       "phone": "+1 (503) 288-1990",
@@ -1274,10 +1280,12 @@
       "updatedAt": "2026-11-03",
       "photos": [
         {
-          "source": "illustration",
-          "isIllustration": true,
-          "alt": "Illustration suggesting Brewery at Deschutes Brewery",
-          "credit": "Illustration"
+          "source": "wikimedia",
+          "url": "/photos/deschutes-brewery.jpg",
+          "alt": "Deschutes Brewery in Pearl District",
+          "credit": "Adam Jones, Ph.D.",
+          "creditUrl": "https://commons.wikimedia.org/wiki/File:Outside_Deschutes_Brewery_-_NW_Davis_St._-_Pearl_District_-_Portland_-_Oregon_-_USA.jpg",
+          "license": "CC BY-SA 3.0"
         }
       ],
       "phone": "+1 (503) 296-4906",
@@ -1829,10 +1837,12 @@
       "updatedAt": "2026-11-03",
       "photos": [
         {
-          "source": "illustration",
-          "isIllustration": true,
-          "alt": "Illustration suggesting Coffee at Stumptown Coffee Roasters",
-          "credit": "Illustration"
+          "source": "wikimedia",
+          "url": "/photos/stumptown-coffee-roasters.jpg",
+          "alt": "Stumptown Coffee Roasters in Old Town-Chinatown",
+          "credit": "Lpm",
+          "creditUrl": "https://commons.wikimedia.org/wiki/File:Stumptown_Coffee_Roasters_on_Stark.jpg",
+          "license": "CC BY-SA 4.0"
         }
       ],
       "phone": "+1 (855) 711-3385",

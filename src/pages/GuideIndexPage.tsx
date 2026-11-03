@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 import { AreaKicker } from '../components/AreaKicker.tsx'
 import { SmartResults } from '../components/SmartResults.tsx'
 import { catalog } from '../content/load.ts'
-import { cityPath } from '../lib/city.ts'
+import { areaName, cityPath, regionOf } from '../lib/city.ts'
 import { countPlaces } from '../lib/format.ts'
 import { usePageMeta } from '../lib/meta.ts'
 import { smartSearch } from '../lib/smart-search.ts'
@@ -76,7 +76,7 @@ export function GuideIndexPage() {
   const { city, guides } = useCityCatalog()
   const [draft, setDraft] = useState('')
   const [group, setGroup] = useState<GuideGroup | 'All'>('All')
-  usePageMeta("Guides · Gusto's Guide", guideIndexMeta(city))
+  usePageMeta(`${areaName(city)} guides · Gusto's Guide`, guideIndexMeta(city), `./og/cities/${regionOf(city)}.png`)
   const query = draft.trim()
   const { gustoScore } = useApp()
   const result = useMemo(() => {
