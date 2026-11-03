@@ -32,7 +32,9 @@
     {
       "id": "joe-the-juice",
       "name": "JOE & THE JUICE",
-      "keepIds": ["joe-the-juice-sf"]
+      "keepIds": [
+        "joe-the-juice-sf"
+      ]
     },
     {
       "id": "unicorn",
@@ -52,8 +54,7 @@
     },
     {
       "id": "island-soul-kirkland",
-      "name": "Island Soul",
-      "keepIds": ["island-soul-restaurant"]
+      "name": "Island Soul"
     },
     {
       "id": "the-coalman",
@@ -70,6 +71,11 @@
     {
       "id": "the-independent-pizzeria",
       "name": "The Independent Pizzeria"
+    },
+    {
+      "id": "island-soul-restaurant",
+      "name": "Island Soul Restaurant",
+      "note": "Columbia City location. Permanently excluded with Island Soul Kirkland; never re-add."
     }
   ]
 }

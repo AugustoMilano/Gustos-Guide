@@ -67,7 +67,7 @@ export function CollectionPage() {
   return (
     <main id="main" tabIndex={-1} className="explore-shell outline-none">
       <section className={`explore-list ${sheet ? '' : 'is-peek'}`} aria-label={heading}>
-        <div className="explore-bar panel-pad flex items-end justify-between gap-3 border-b-2 border-ink">
+        <div className="explore-bar panel-pad flex items-end justify-between gap-3 border-b border-ink/10">
           <motion.div
             initial={reduce ? false : { opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}

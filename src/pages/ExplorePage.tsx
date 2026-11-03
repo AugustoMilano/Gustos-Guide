@@ -97,7 +97,7 @@ export function ExplorePage() {
           <span aria-hidden="true" />
           <span className="sr-only">{sheet ? 'Show the map' : 'Show the list'}</span>
         </button>
-        <div className="explore-bar panel-pad flex items-center justify-between gap-2 border-b-2 border-ink py-2">
+        <div className="explore-bar panel-pad flex items-center justify-between gap-2 border-b border-ink/10 py-2">
           <p className="min-w-0">
             <span className="area-kicker">{areaTitle(city)}</span>
             <span className="mt-0.5 block font-serif text-2xl italic leading-none">{countPlaces(listed.length)}</span>
