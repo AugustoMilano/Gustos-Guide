@@ -47,7 +47,6 @@ export function CitiesPage({ landing = false }: { landing?: boolean } = {}) {
               type="button"
               className="city-card"
               aria-current={on ? 'true' : undefined}
-              aria-label={on ? `${region.name}, last opened. ${region.detail}` : undefined}
               onClick={() => open(region.id)}
               initial={reduce ? false : { opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
