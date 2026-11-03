@@ -1,4 +1,5 @@
 import { brandKey } from './brand.ts'
+import { isRestaurant } from './restaurant.ts'
 import { catalog } from '../content/load.ts'
 import { regionOf, type RegionId } from './city.ts'
 import type { ForkMetal } from './fork-mark.ts'
@@ -50,7 +51,8 @@ function build(scoreOf: (placeId: string) => number | null): Cache {
   const boards = {} as Cache['boards']
   for (const region of ['seattle', 'la', 'sf', 'sandiego'] as const) {
     const ranked = catalog.places
-      .filter((place) => isListed(place) && regionOf(placeCity(place)) === region)
+      // Restaurants only, the same test the profile Top 10 uses; one per brand.
+      .filter((place) => isListed(place) && isRestaurant(place) && regionOf(placeCity(place)) === region)
       .flatMap((place) => {
         const score = scoreOf(place.id)
         return typeof score === 'number' ? [{ place, score }] : []

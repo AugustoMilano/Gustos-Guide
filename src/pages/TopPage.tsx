@@ -66,12 +66,14 @@ export function TopPage() {
             <p className="glass mt-5 px-4 py-3 text-sm font-bold">{board.scored} of 25 scored. More coming.</p>
           ) : null}
           <div className={`top-podium mt-5${podium.length < 3 ? ' is-short' : ''}`} style={{ ['--podium' as string]: String(podium.length) }}>
-            {podium.map((row, index) => (
+            {podium.map((row) => (
               <motion.div
                 key={row.place.id}
-                initial={reduce ? false : { opacity: 0, y: 22 }}
+                className={`podium-col is-rank-${row.rank}`}
+                initial={reduce ? false : { opacity: 0, y: 28 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={reduce ? { duration: 0 } : { type: 'spring', stiffness: 420, damping: 32, delay: index * 0.05 }}
+                // Third rises first, then second, and the winner last.
+                transition={reduce ? { duration: 0 } : { type: 'spring', stiffness: 380, damping: 28, delay: (3 - row.rank) * 0.12 }}
               >
                 <Link
                   to={cityPath(`/place/${row.place.id}`, placeCity(row.place))}
@@ -82,10 +84,11 @@ export function TopPage() {
                   <span className="top-podium-shot" style={reduce ? undefined : { viewTransitionName: `place-${row.place.id}` }}>
                     <PlaceThumb place={row.place} uploads={app.photos} eager={row.rank === 1} />
                   </span>
-                  <span className="mt-2 block font-serif text-xl italic leading-tight sm:text-2xl">{row.place.name}</span>
-                  <span className="mt-1 block text-xs font-bold tracking-wide uppercase">{row.place.neighborhood}</span>
+                  <span className="podium-name font-serif text-xl italic leading-tight sm:text-2xl">{row.place.name}</span>
+                  <span className="podium-area text-xs font-bold tracking-wide uppercase">{row.place.neighborhood}</span>
                   <span className="podium-score">{row.score.toFixed(1)}</span>
                 </Link>
+                <span className="podium-step" aria-hidden="true">{row.rank}</span>
               </motion.div>
             ))}
           </div>
