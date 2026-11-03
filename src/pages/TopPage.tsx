@@ -38,13 +38,13 @@ export function TopPage() {
       <h1 className="mt-1 font-serif text-5xl italic leading-none sm:text-6xl">Top 25 · {name}</h1>
       <p className="mt-3 max-w-xl">
         {region === 'seattle'
-          ? "Seattle and the Eastside, ranked by Augusto's exact Gusto's Score."
+          ? "Seattle, Bellevue, Kirkland, and Redmond, ranked by Augusto's exact Gusto's Score."
           : region === 'la'
             ? "Los Angeles, ranked by Augusto's exact Gusto's Score."
             : region === 'sandiego'
               ? "San Diego, ranked by Augusto's exact Gusto's Score."
               : "San Francisco, the East Bay, the Peninsula, and the North Bay, ranked by Augusto's exact Gusto's Score."}
-        {' '}Owner scores only. A place with no score stays off the list.
+        {' '}Restaurants only, one per brand. Owner scores only; a place with no score stays off the list.
       </p>
       <div className="mt-4 flex flex-wrap gap-2">
         <Link className="btn text-sm" to={cityPath('/rank')}>Rank a place</Link>

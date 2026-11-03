@@ -24,9 +24,33 @@ export function authCallbackUrl(): string {
   return `${window.location.origin}/auth/callback`
 }
 
+/** Saved in this tab and in localStorage, so a magic link opened in a new tab still comes back here. */
 export function rememberAuthReturn(): void {
   const hash = window.location.hash
-  write(RETURN_KEY, safeRoute(hash.startsWith('#/') ? hash : '#/'))
+  const route = safeRoute(hash.startsWith('#/') ? hash : '#/')
+  write(RETURN_KEY, route)
+  try {
+    localStorage.setItem(RETURN_KEY, JSON.stringify({ route, at: Date.now() }))
+  } catch {
+    /* private mode */
+  }
+}
+
+/** The city picker is a front door, not a place to come back to. */
+function isPicker(hash: string): boolean {
+  const path = hash.replace(/^#/, '').split('?')[0].replace(/\/$/, '') || '/'
+  return path === '/' || path === '/cities'
+}
+
+/** Last city home (from the picker's memory), else Seattle. */
+function cityHome(): string {
+  try {
+    const raw = JSON.parse(localStorage.getItem('gusto.region.v1') || '{}') as { area?: string }
+    if (raw.area && /^[a-z]+$/.test(raw.area)) return `#/${raw.area}`
+  } catch {
+    /* empty */
+  }
+  return '#/seattle'
 }
 
 export function authRouterHeld(): boolean {
@@ -105,11 +129,16 @@ export function releaseAuthCallback(): void {
   const url = new URL(window.location.href)
   const hashRaw = url.hash.startsWith('#') ? url.hash.slice(1) : ''
   const hashIsRoute = hashRaw.startsWith('/') || hashRaw.startsWith('!')
-  if (!hashIsRoute) url.hash = readReturn()
+  if (!hashIsRoute || isPicker(url.hash)) url.hash = readReturn()
   for (const key of AUTH_KEYS) url.searchParams.delete(key)
   url.pathname = rootPath(url.pathname)
   replace(url)
   write(RETURN_KEY, null)
+  try {
+    localStorage.removeItem(RETURN_KEY)
+  } catch {
+    /* private mode */
+  }
   write(PENDING_KEY, null)
 }
 
@@ -128,12 +157,22 @@ function authErrorText(params: URLSearchParams): string | null {
 }
 
 function readReturn(): string {
-  return safeRoute(read(RETURN_KEY) || '#/')
+  let saved = read(RETURN_KEY)
+  if (!saved) {
+    try {
+      const stored = JSON.parse(localStorage.getItem(RETURN_KEY) || 'null') as { route?: string; at?: number } | null
+      if (stored?.route && stored.at && Date.now() - stored.at < 60 * 60 * 1000) saved = stored.route
+    } catch {
+      /* empty */
+    }
+  }
+  const route = safeRoute(saved || '#/')
+  return isPicker(route) ? cityHome() : route
 }
 
 function destination(url: URL): string {
   const raw = url.hash.startsWith('#') ? url.hash.slice(1) : ''
-  if (raw.startsWith('/') || raw.startsWith('!')) return safeRoute(url.hash)
+  if ((raw.startsWith('/') || raw.startsWith('!')) && !isPicker(url.hash)) return safeRoute(url.hash)
   return readReturn()
 }
 
