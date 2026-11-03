@@ -1,3 +1,4 @@
+import { formatDay } from '../lib/day.ts'
 import { readPosition } from '../lib/geo.ts'
 import { useEffect, useMemo, useState } from 'react'
 import { Link, Navigate, useParams } from 'react-router-dom'
@@ -178,7 +179,6 @@ export function GuidePage() {
         <div className="mt-2 flex flex-wrap items-center justify-between gap-x-4 gap-y-2">
           <Link to={cityPath('/guides')} className="inline-flex min-h-11 items-center text-sm font-bold">← All guides</Link>
           <div className="guide-tools flex flex-wrap items-center gap-2">
-            <p className="text-xs font-bold tracking-[0.14em] uppercase">{guide.group} · Updated {guide.updatedAt}</p>
             <ShareButton title={guide.title} url={pageShareUrl(`/guide/${guide.slug}`)} />
             <StoryShareButton
               filename={`${guide.slug}-story.png`}
@@ -199,6 +199,7 @@ export function GuidePage() {
             {nearNote ? <p className="w-full text-sm" role="status">{nearNote}</p> : null}
           </div>
         </div>
+        <p className="mt-2 text-xs font-bold tracking-[0.14em] uppercase">{guide.group} · Updated {formatDay(guide.updatedAt)}</p>
         <h1 className="mt-1 font-serif text-4xl italic leading-none sm:text-5xl">{guide.title}</h1>
         <p className="mt-2 text-sm font-bold">{ordered.length === rows.length ? countPlaces(rows.length) : `${ordered.length} of ${countPlaces(rows.length)}`}</p>
         {user?.isOwner ? <p className="mt-1 text-sm">{flagshipAimHint(rows.length)}</p> : null}

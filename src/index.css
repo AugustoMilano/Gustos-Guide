@@ -5089,3 +5089,7 @@ mark {
 .is-rank-2 .podium-step { height: 40px; background: linear-gradient(180deg, #d9dde3, #9aa3ad); color: #1f2730; }
 .is-rank-3 .podium-step { height: 24px; padding-top: 3px; font-size: 1.1rem; background: linear-gradient(180deg, #d79a6a, #9c5f33); color: #2d1606; }
 .top-podium.is-short .podium-step { height: 24px; }
+
+/* Guide entry titles: the link's hit area reaches 44px without moving the type. */
+.entry-head h3 a { position: relative; }
+.entry-head h3 a::after { content: ''; position: absolute; inset: -6px -4px; }

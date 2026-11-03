@@ -3857,7 +3857,7 @@
     {
       "slug": "sd-little-italy",
       "title": "Little Italy",
-      "dek": "7 places.",
+      "dek": "",
       "group": "Neighborhoods",
       "intro": "",
       "updatedAt": "2026-10-22",
@@ -3912,7 +3912,7 @@
     {
       "slug": "sd-coronado",
       "title": "Coronado",
-      "dek": "5 places.",
+      "dek": "",
       "group": "Neighborhoods",
       "intro": "",
       "updatedAt": "2026-10-23",
@@ -3955,7 +3955,7 @@
     {
       "slug": "sd-la-jolla",
       "title": "La Jolla",
-      "dek": "5 places.",
+      "dek": "",
       "group": "Neighborhoods",
       "intro": "",
       "updatedAt": "2026-10-22",
@@ -3998,7 +3998,7 @@
     {
       "slug": "sd-north-park",
       "title": "North Park",
-      "dek": "5 places.",
+      "dek": "",
       "group": "Neighborhoods",
       "intro": "",
       "updatedAt": "2026-10-22",
@@ -4041,7 +4041,7 @@
     {
       "slug": "sd-east-village",
       "title": "East Village",
-      "dek": "4 places.",
+      "dek": "",
       "group": "Neighborhoods",
       "intro": "",
       "updatedAt": "2026-10-22",
@@ -4078,7 +4078,7 @@
     {
       "slug": "sd-mexican",
       "title": "Mexican",
-      "dek": "12 places.",
+      "dek": "",
       "group": "Cuisine",
       "intro": "",
       "updatedAt": "2026-10-22",
@@ -4163,7 +4163,7 @@
     {
       "slug": "sd-italian",
       "title": "Italian",
-      "dek": "9 places.",
+      "dek": "",
       "group": "Cuisine",
       "intro": "",
       "updatedAt": "2026-10-22",
@@ -4230,7 +4230,7 @@
     {
       "slug": "sd-japanese",
       "title": "Japanese",
-      "dek": "5 places.",
+      "dek": "",
       "group": "Cuisine",
       "intro": "",
       "updatedAt": "2026-10-22",
@@ -4273,7 +4273,7 @@
     {
       "slug": "sd-new-american",
       "title": "New American",
-      "dek": "14 places.",
+      "dek": "",
       "group": "Cuisine",
       "intro": "",
       "updatedAt": "2026-10-22",
@@ -4370,7 +4370,7 @@
     {
       "slug": "sd-seafood",
       "title": "Seafood",
-      "dek": "4 places.",
+      "dek": "",
       "group": "Cuisine",
       "intro": "",
       "updatedAt": "2026-10-22",
