@@ -174,20 +174,19 @@ function stemText(value: string): string {
   return norm(value).split(' ').filter(Boolean).map(stem).join(' ')
 }
 
+/** Optimal string alignment distance: a swapped pair of letters ("tacso") counts as one edit. */
 function editDistance(left: string, right: string): number {
   if (Math.abs(left.length - right.length) > 2) return 3
-  const row = Array.from({ length: right.length + 1 }, (_, index) => index)
+  const rows: number[][] = Array.from({ length: left.length + 1 }, (_, i) => Array.from({ length: right.length + 1 }, (_, j) => (i === 0 ? j : j === 0 ? i : 0)))
   for (let i = 1; i <= left.length; i += 1) {
-    let previous = row[0]
-    row[0] = i
     for (let j = 1; j <= right.length; j += 1) {
-      const current = row[j]
       const cost = left[i - 1] === right[j - 1] ? 0 : 1
-      row[j] = Math.min(row[j] + 1, row[j - 1] + 1, previous + cost)
-      previous = current
+      let best = Math.min(rows[i - 1][j] + 1, rows[i][j - 1] + 1, rows[i - 1][j - 1] + cost)
+      if (i > 1 && j > 1 && left[i - 1] === right[j - 2] && left[i - 2] === right[j - 1]) best = Math.min(best, rows[i - 2][j - 2] + 1)
+      rows[i][j] = best
     }
   }
-  return row[right.length]
+  return rows[left.length][right.length]
 }
 
 function sharedPrefix(left: string, right: string): number {
@@ -196,13 +195,19 @@ function sharedPrefix(left: string, right: string): number {
   return index
 }
 
+/**
+ * Typo tolerance (C3): one slip for 4 to 7 letters, two from 8. A swapped pair counts as one slip.
+ * The first letter may be wrong ("kanlis") only on longer words with a single slip, and short words
+ * must keep their first two letters so "bar" never turns into "bao".
+ */
 function fuzzy(queryToken: string, word: string): boolean {
   if (queryToken === word) return true
   if (queryToken.length < 4 || word.length < 4) return false
-  if (queryToken[0] !== word[0]) return false
   const limit = queryToken.length >= 8 ? 2 : 1
-  if (editDistance(queryToken, word) > limit) return false
-  return sharedPrefix(queryToken, word) >= Math.min(3, queryToken.length - 1)
+  const distance = editDistance(queryToken, word)
+  if (distance > limit) return false
+  if (queryToken[0] !== word[0]) return queryToken.length >= 5 && distance === 1 && queryToken.slice(1) === word.slice(1)
+  return sharedPrefix(queryToken, word) >= (queryToken.length >= 6 ? 1 : 2)
 }
 
 /** True when the stemmed phrase appears as whole words in the stemmed haystack. */
@@ -278,7 +283,7 @@ const STEMMED = CONCEPTS.map((concept) => ({
 type StemmedConcept = (typeof STEMMED)[number]
 
 /** One unit of the query: a phrase or word, with the concepts and neighborhood it names. */
-type Term = { raw: string; concepts: StemmedConcept[]; hood: string | null; scopeOnly: boolean }
+type Term = { raw: string; concepts: StemmedConcept[]; hood: string | null; scopeOnly: boolean; known?: boolean }
 
 function parseTerms(query: string, neighborhoods: string[]): Term[] {
   let text = ` ${stemText(query)} `
@@ -308,7 +313,8 @@ function parseTerms(query: string, neighborhoods: string[]): Term[] {
     const hood = hoods.find((item) => item.key === word || fuzzy(word, item.key))?.name ?? null
     const area = AREA_WORDS.find((item) => stemText(item.phrase) === word)
     const scopeOnly = Boolean(area) && !hood && !concepts.length
-    terms.push({ raw: word, concepts, hood, scopeOnly })
+    // A word the guide already knows ("thai") never also matches names by close spelling ("That's").
+    terms.push({ raw: word, concepts, hood, scopeOnly, known: exact.length > 0 })
   }
   return terms.filter((term) => !term.scopeOnly)
 }
@@ -342,8 +348,8 @@ function matchTerm(term: Term, item: Prepared, guideHits: Map<string, string>): 
   if (item.name.startsWith(word) && (item.name.length === word.length || item.name[word.length] === ' ' || word.length >= 3)) take(T_PREFIX, 3, 'Place name')
   else if (hasPhrase(item.name, word)) take(T_NAME, 3, 'Place name')
   else if (word.length >= 3 && item.nameTokens.some((token) => token.startsWith(word))) take(T_NAME, 2, 'Place name')
-  else if (!word.includes(' ') && fuzzy(word, item.nameTokens[0])) take(T_PREFIX_FUZZY, 1, 'Close spelling')
-  else if (!word.includes(' ') && item.nameTokens.some((token) => fuzzy(word, token))) take(T_NAME_FUZZY, 1, 'Close spelling')
+  else if (!term.known && !word.includes(' ') && fuzzy(word, item.nameTokens[0])) take(T_PREFIX_FUZZY, 1, 'Close spelling')
+  else if (!term.known && !word.includes(' ') && item.nameTokens.some((token) => fuzzy(word, token))) take(T_NAME_FUZZY, 1, 'Close spelling')
   // Guides this place is in whose title names this term.
   for (const slug of item.guides) {
     const title = guideHits.get(slug)
@@ -436,7 +442,7 @@ function searchIn(scope: CityId, query: string, current: CityId, places: SlimPla
         reasons.push('Guide title')
         if (!guideTitleHits.has(term.raw)) guideTitleHits.set(term.raw, new Map())
         guideTitleHits.get(term.raw)?.set(guide.slug, guide.title)
-      } else if (!term.raw.includes(' ') && title.split(' ').some((token) => fuzzy(term.raw, token))) {
+      } else if (!term.known && !term.raw.includes(' ') && title.split(' ').some((token) => fuzzy(term.raw, token))) {
         score += 22
         hit = true
         reasons.push('Close spelling')
