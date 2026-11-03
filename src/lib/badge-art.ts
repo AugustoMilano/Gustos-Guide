@@ -84,6 +84,8 @@ export const GLYPHS = {
   star: 'M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1-4.4-4.3 6.1-.9z',
   // Original geometric paw print: one pad and four toes. Not any school's mark.
   paw: 'M8.4 16c0-2.3 1.6-3.8 3.6-3.8s3.6 1.5 3.6 3.8-1.6 3.9-3.6 3.9-3.6-1.6-3.6-3.9z M6.2 8.6a1.6 1.9 0 1 0 .01 0z M9.8 5.4a1.6 1.9 0 1 0 .01 0z M14.2 5.4a1.6 1.9 0 1 0 .01 0z M17.8 8.6a1.6 1.9 0 1 0 .01 0z',
+  // Plain football with a seam and three laces. No team marks.
+  football: 'M4.5 19.5C3.5 12 12 3.5 19.5 4.5 20.5 12 12 20.5 4.5 19.5z M9 15l6-6 M10 12l2 2 M11.5 10.5l2 2 M13 9l2 2',
   tree: 'M12 3 6 12h3l-4 6h14l-4-6h3z M12 18v3',
   baguette: 'M4 18 18 4a2.1 2.1 0 0 1 3 3L7 21a2.1 2.1 0 0 1-3-3z M9 11.5l2 2 M12 8.5l2 2 M15 5.5l2 2',
   flag: 'M5 21V4 M5 4h12l-2.5 4L17 12H5',

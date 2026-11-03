@@ -123,13 +123,13 @@ export function computeAchievements(input: AchievementInput): Achievement[] {
   // Pullman, WA: Coug game days. Crimson and gray paw medals.
   const gameDay = inGuides(/^pul-game-day$/)
   out.push({ id: 'game-day-regular', group: 'Cities', title: 'Game Day Regular', blurb: 'Eat at 5 places on Game day in Pullman.', ring: 'sky', ...step(input.been.filter((id) => gameDay.has(id)).length, 5),
-    spec: { key: 'game-day-regular', label: 'Game Day', glyph: 'paw', numeral: '5', shape: 'hex', metal: 'silver', enamel: 'crimson' } })
+    spec: { key: 'game-day-regular', label: 'Game Day', glyph: 'football', numeral: '5', shape: 'hex', metal: 'silver', enamel: 'crimson' } })
   const palouse = ['pullman', 'moscow'].filter((c) => places.some((p) => placeCity(p) === c)).length
   out.push({ id: 'palouse-explorer', group: 'Cities', title: 'Palouse Explorer', blurb: 'Mark a place Been in both Pullman, WA and Moscow, ID.', ring: 'sky', ...step(palouse, 2),
     spec: { key: 'palouse-explorer', label: 'Palouse', glyph: 'paw', shape: 'oct', metal: 'silver', enamel: 'crimson', ink: '#d9dadb' } })
   const eggs = new Set(input.eggs ?? []).size
-  out.push({ id: 'wave-the-flag', hidden: true, group: 'Cities', title: 'Wave the Flag', blurb: 'Find three of the Pullman Easter eggs.', ring: 'gold', ...step(eggs, 3),
-    spec: { key: 'wave-the-flag', label: 'Wave the Flag', glyph: 'flag', shape: 'burst', metal: 'gold', enamel: 'crimson' } })
+  out.push({ id: 'wave-the-flag', hidden: true, group: 'Cities', title: "Ol' Crimson", blurb: 'Find three of the Pullman Easter eggs.', ring: 'gold', ...step(eggs, 3),
+    spec: { key: 'wave-the-flag', label: "Ol' Crimson", glyph: 'flag', shape: 'burst', metal: 'gold', enamel: 'crimson' } })
 
   for (const guide of input.guides) {
     const ids = guide.entries.map((e) => e.placeId).filter((id) => { const p = input.placeOf(id); return p != null && isListed(p) })
