@@ -192,20 +192,22 @@ export function Achievements({ been, rated, userId, gustoScore, mine, city, who 
           <div key={group} className="mt-8">
             <h3 className="font-serif text-2xl italic">Guides</h3>
             <p className="mt-1 text-sm">Mark every place in a guide Been to earn its medal.</p>
-            {guideAreas(list, city).map(({ area, rows }) => {
+            {guideAreas(list, city).map(({ area, rows }, index) => {
               const earned = rows.filter((a) => a.earned).length
               const expanded = openAreas[area.id] === true
-              const shown = expanded ? rows : rows.slice(0, GUIDE_PREVIEW)
+              // The city being browsed opens with a preview; other cities stay folded under their own heading.
+              const home = index === 0
+              const shown = expanded ? rows : home ? rows.slice(0, GUIDE_PREVIEW) : []
               return (
                 <section key={area.id} className="ach-city mt-6" aria-labelledby={`ach-${area.id}`}>
                   <div className="ach-city-head">
                     <h4 id={`ach-${area.id}`} className="text-xs font-bold tracking-[0.14em] uppercase">{area.title}</h4>
                     <p className="text-xs font-bold tabular-nums">{earned} of {rows.length} earned</p>
                   </div>
-                  <TileGrid list={shown} dates={dates} onOpen={(id) => setOpen({ id, celebrate: false })} />
-                  {rows.length > GUIDE_PREVIEW ? (
-                    <button type="button" className="btn mt-3" aria-expanded={expanded} onClick={() => setOpenAreas((prev) => ({ ...prev, [area.id]: !expanded }))}>
-                      {expanded ? `Show fewer` : `Show all ${rows.length} in ${area.title}`}
+                  {shown.length ? <TileGrid list={shown} dates={dates} onOpen={(id) => setOpen({ id, celebrate: false })} /> : null}
+                  {!home || rows.length > GUIDE_PREVIEW ? (
+                    <button type="button" className="btn mt-3" aria-expanded={expanded} aria-controls={`ach-${area.id}`} onClick={() => setOpenAreas((prev) => ({ ...prev, [area.id]: !expanded }))}>
+                      {expanded ? `Hide ${area.title} guides` : home ? `Show all ${rows.length} ${area.title} guides` : `Show ${rows.length} ${area.title} guides`}
                     </button>
                   ) : null}
                 </section>

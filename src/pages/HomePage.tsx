@@ -41,7 +41,7 @@ function openNowLine(count: number): string {
 function topLine(city: CityId, count: number): string {
   const region = regionOf(city)
   const where = region === 'seattle'
-    ? 'Seattle and the Eastside'
+    ? 'Seattle, Bellevue, Kirkland, and Redmond'
     : region === 'la'
       ? 'Los Angeles'
       : region === 'sandiego'
