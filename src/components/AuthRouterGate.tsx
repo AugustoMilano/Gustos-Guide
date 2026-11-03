@@ -1,6 +1,6 @@
 import { useEffect, useState, type ReactNode } from 'react'
 import { authRouterHeld, releaseAuthCallback, takeAuthPending } from '../lib/auth-callback.ts'
-import { supabaseClient } from '../social/supabase.ts'
+import { loadSupabase } from '../social/supabase.ts'
 import { useApp } from '../state/AppState.tsx'
 
 export function AuthRouterGate({ children }: { children: ReactNode }) {
@@ -17,12 +17,6 @@ export function AuthRouterGate({ children }: { children: ReactNode }) {
       releaseAuthCallback()
       setReady(true)
     }
-    const client = supabaseClient()
-    if (!client) {
-      takeAuthPending()
-      finish(null)
-      return
-    }
     // Never hang on the callback screen: give the code exchange about 8 seconds.
     const timer = window.setTimeout(() => {
       if (cancel) return
@@ -31,7 +25,17 @@ export function AuthRouterGate({ children }: { children: ReactNode }) {
       releaseAuthCallback()
       setFailed('Sign-in is taking too long.')
     }, 8000)
-    void client.auth.getSession().then(({ data, error }) => {
+    void loadSupabase().then((client) => {
+      if (!client) {
+        window.clearTimeout(timer)
+        takeAuthPending()
+        finish(null)
+        return null
+      }
+      return client.auth.getSession()
+    }).then((result) => {
+      if (!result) return
+      const { data, error } = result
       window.clearTimeout(timer)
       const pending = takeAuthPending()
       if (data?.session) return finish(null)

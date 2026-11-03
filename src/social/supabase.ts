@@ -1,4 +1,4 @@
-import { createClient, type SupabaseClient } from '@supabase/supabase-js'
+import type { SupabaseClient } from '@supabase/supabase-js'
 import { authCallbackUrl, rememberAuthReturn } from '../lib/auth-callback.ts'
 
 const PLACE_BUCKET = 'place-photos'
@@ -33,24 +33,39 @@ export function authProviders(): AuthProviderName[] {
   return found
 }
 
-export function supabaseClient(): SupabaseClient | null {
-  if (cached !== undefined) return cached
-  const url = import.meta.env.VITE_SUPABASE_URL
-  const key = import.meta.env.VITE_SUPABASE_ANON_KEY
-  if (!url || !key) {
+/** Known at build time, so local mode vs Supabase mode never waits on a download. */
+export const supabaseConfigured = Boolean(import.meta.env.VITE_SUPABASE_URL && import.meta.env.VITE_SUPABASE_ANON_KEY)
+
+let loading: Promise<SupabaseClient | null> | null = null
+
+/**
+ * The Supabase SDK is loaded on demand, off the first-paint path. main.tsx starts this right after
+ * the first render, so it is normally ready well before anyone taps sign in.
+ */
+export function loadSupabase(): Promise<SupabaseClient | null> {
+  if (cached !== undefined) return Promise.resolve(cached)
+  if (!supabaseConfigured) {
     cached = null
-    return null
+    return Promise.resolve(null)
   }
-  cached = createClient(url, key, {
-    auth: {
-      // PKCE only. Implicit puts tokens in the hash, and the hash router treats that as a page.
-      flowType: 'pkce',
-      detectSessionInUrl: true,
-      persistSession: true,
-      autoRefreshToken: true,
-    },
+  loading ??= import('@supabase/supabase-js').then(({ createClient }) => {
+    cached = createClient(String(import.meta.env.VITE_SUPABASE_URL), String(import.meta.env.VITE_SUPABASE_ANON_KEY), {
+      auth: {
+        // PKCE only. Implicit puts tokens in the hash, and the hash router treats that as a page.
+        flowType: 'pkce',
+        detectSessionInUrl: true,
+        persistSession: true,
+        autoRefreshToken: true,
+      },
+    })
+    return cached
   })
-  return cached
+  return loading
+}
+
+/** The client once loaded; null before that or when Supabase is not configured. */
+export function supabaseClient(): SupabaseClient | null {
+  return cached ?? null
 }
 
 export function ownerPhotoUrl(path: string): string {

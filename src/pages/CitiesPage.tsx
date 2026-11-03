@@ -1,4 +1,5 @@
 import { motion, useReducedMotion } from 'framer-motion'
+import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { cityPath, readRegionMemory, REGIONS, writeRegionMemory, type RegionId } from '../lib/city.ts'
 import { usePageMeta } from '../lib/meta.ts'
@@ -8,6 +9,9 @@ const SPRING = { type: 'spring' as const, stiffness: 420, damping: 32 }
 export function CitiesPage({ landing = false }: { landing?: boolean } = {}) {
   const navigate = useNavigate()
   const reduce = useReducedMotion()
+  // When index.html already painted this heading, keep it still instead of fading it in again.
+  const [painted] = useState(() => landing && document.documentElement.dataset.prerender === '1')
+  useEffect(() => { delete document.documentElement.dataset.prerender }, [])
   const memory = readRegionMemory()
   usePageMeta(
     "Choose a city · Gusto's Guide",
@@ -24,7 +28,7 @@ export function CitiesPage({ landing = false }: { landing?: boolean } = {}) {
   return (
     <main id="main" tabIndex={-1} className={`mx-auto max-w-3xl px-4 pt-28 pb-16 outline-none${landing ? ' city-landing' : ''}`}>
       <motion.div
-        initial={reduce ? false : { opacity: 0, y: 16 }}
+        initial={reduce || painted ? false : { opacity: 0, y: 16 }}
         animate={{ opacity: 1, y: 0 }}
         transition={reduce ? { duration: 0 } : SPRING}
       >
@@ -48,7 +52,7 @@ export function CitiesPage({ landing = false }: { landing?: boolean } = {}) {
               className="city-card"
               aria-current={on ? 'true' : undefined}
               onClick={() => open(region.id)}
-              initial={reduce ? false : { opacity: 0, y: 12 }}
+              initial={reduce || painted ? false : { opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={reduce ? { duration: 0 } : { ...SPRING, delay: (landing ? 0.12 : 0) + index * 0.06 }}
             >

@@ -5300,3 +5300,9 @@ mark {
 .lightbox-stage { overflow: hidden; touch-action: pan-y; }
 .lightbox-stage.is-zoomed { touch-action: none; cursor: grab; }
 .lightbox-stage img { transform-origin: 50% 50%; user-select: none; -webkit-user-select: none; }
+
+/* Static landing heading in index.html (fix76): painted before the app script runs, replaced by
+   the identical React markup. Hidden on every other route so deep links never flash it. */
+main.pre-landing { display: none; }
+html[data-prerender='1'] main.pre-landing { display: flex; }
+html[data-prerender='1'] { --header-offset: 69px; }

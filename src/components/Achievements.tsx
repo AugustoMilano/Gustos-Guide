@@ -6,7 +6,7 @@ import { Medal3D } from './Medal3D.tsx'
 import { catalogReady, loadGuides, slimById } from '../content/load.ts'
 import { achievementArt, computeAchievements, type Achievement, type AchievementGroup } from '../lib/achievements.ts'
 import { cityPath } from '../lib/city.ts'
-import { supabaseClient } from '../social/supabase.ts'
+import { loadSupabase } from '../social/supabase.ts'
 import type { Guide } from '../types.ts'
 
 type Dates = Record<string, string>
@@ -74,7 +74,7 @@ function useEarnedDates(userId: string | null, earnedIds: string[], ready: boole
     if (!userId || !ready) return
     let cancelled = false
     const run = async () => {
-      const remote = supabaseClient()
+      const remote = await loadSupabase()
       const local: Dates = readLocal(userId) ?? {}
       let known: Dates = { ...local }
       let server: Dates | null = null
