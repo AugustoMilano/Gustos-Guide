@@ -5261,3 +5261,9 @@ mark {
   .explore-head { touch-action: none; cursor: grab; }
   .explore-map .leaflet-bottom { bottom: calc(4.75rem + 84px + env(safe-area-inset-bottom)); }
 }
+
+/* iPad and desktop: the sidebar is always open, so the sheet shortcuts do nothing there (fix72). */
+@media (min-width: 768px) {
+  .explore-bar .btn.md\:hidden,
+  .explore-filter-toggle { display: none !important; }
+}
