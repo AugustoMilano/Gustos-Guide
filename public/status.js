@@ -70,13 +70,22 @@
     root.dataset.preRegion = placeRegion
     root.dataset.header = placeRegion === 'la' || placeRegion === 'sandiego' || placeRegion === 'vancouver' || placeRegion === 'portland' || placeRegion === 'nyc' ? 'single' : 'areas'
     var heroes = /*HEROES*/{}
-    var hero = heroes[placeId] === 1 ? [200, 400, 720, 960].map(function (w) { return '/photos/' + placeId + '.' + w + '.webp ' + w + 'w' }).join(', ') : heroes[placeId]
+    // Entry: 1 = the standard /photos/<id>.<w>.webp set; 2 = the same with .avif files too; else
+    // [webp srcset, avif srcset or '']. AVIF only where the browser decodes it (Safari 16+, Chrome 85+, Firefox 93+).
+    var ua = navigator.userAgent
+    var avifOk = /Chrome\/(8[5-9]|9\d|\d{3})/.test(ua) || /Firefox\/(9[3-9]|\d{3})/.test(ua) || (/Version\/(1[6-9]|[2-9]\d)/.test(ua) && /Safari/.test(ua)) || /(iPhone|iPad); CPU( iPhone)? OS (1[6-9]|[2-9]\d)_/.test(ua)
+    var entry = heroes[placeId]
+    var std = function (ext) { return [200, 400, 720, 960].map(function (w) { return '/photos/' + placeId + '.' + w + '.' + ext + ' ' + w + 'w' }).join(', ') }
+    var webpSet = entry === 1 || entry === 2 ? std('webp') : entry ? entry[0] : ''
+    var avifSet = entry === 2 ? std('avif') : entry && entry !== 1 ? entry[1] : ''
+    var useAvif = avifOk && !!avifSet
+    var hero = useAvif ? avifSet : webpSet
     if (hero) {
       // Same srcset and sizes as PhotoFrame, so the page reuses this download.
       var hint = document.createElement('link')
       hint.rel = 'preload'
       hint.as = 'image'
-      hint.type = 'image/webp'
+      hint.type = useAvif ? 'image/avif' : 'image/webp'
       hint.setAttribute('imagesrcset', hero)
       hint.setAttribute('imagesizes', '(min-width: 1024px) 36rem, calc(100vw - 2rem)')
       hint.setAttribute('fetchpriority', 'high')
