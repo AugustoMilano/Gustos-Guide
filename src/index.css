@@ -5335,3 +5335,22 @@ html[data-prerender='place'] main.pre-place { display: block; padding-top: calc(
    the later React paint of the same photo would be reported instead of this first one. One extra CSS
    pixel of width, inside the frame's 2px border, keeps the first, real paint as the measured one. */
 main.pre-place .photo-frame:not(.is-compact) img.pre-place-img { width: calc(100% + 1px); max-width: none; margin-right: -1px; }
+
+/* C2: lower peek on small phones so more map shows. The handle row shrinks to 28px of layout, but
+   its button keeps a 44px tap target by reaching 16px down into the quiet middle of the count bar
+   (the count sits left, the List button right). The area name is already in the site header, so the
+   sheet drops its kicker there. Applies at every detent so the measured peek offset stays true. */
+@media (max-width: 767px) and (max-height: 700px) {
+  .explore-head .explore-grab {
+    position: relative;
+    z-index: 2;
+    width: 8.5rem;
+    min-height: 44px;
+    height: 44px;
+    margin: 0 auto -16px;
+    align-items: flex-start;
+    padding-top: 12px;
+  }
+  .explore-head .explore-bar { position: relative; z-index: 1; padding-top: 4px; padding-bottom: 4px; }
+  .explore-head .explore-bar .area-kicker { display: none; }
+}
