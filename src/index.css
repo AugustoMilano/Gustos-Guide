@@ -5320,7 +5320,11 @@ html[data-pre-region='portland'] .pre-top-r[data-r='portland'],
 html[data-pre-region='nyc'] .pre-top-r[data-r='nyc'],
 html[data-pre-region='pullman'] .pre-top-r[data-r='pullman'] { display: block; }
 html[data-prerender][data-pre-region='la'], html[data-prerender][data-pre-region='sandiego'], html[data-prerender][data-pre-region='vancouver'], html[data-prerender][data-pre-region='portland'], html[data-prerender][data-pre-region='nyc'] { --header-offset: 69px; }
-@media (max-width: 443px) { html[data-prerender][data-pre-region='la'], html[data-prerender][data-pre-region='sandiego'], html[data-prerender][data-pre-region='vancouver'], html[data-prerender][data-pre-region='portland'], html[data-prerender][data-pre-region='nyc'] { --header-offset: 119px; } }
+@media (max-width: 443px) { html[data-prerender][data-pre-region='la'], html[data-prerender][data-pre-region='sandiego'] { --header-offset: 119px; } }
+/* Measured per region: the shorter city names wrap at narrower widths. */
+@media (max-width: 434px) { html[data-prerender][data-pre-region='vancouver'] { --header-offset: 119px; } }
+@media (max-width: 425px) { html[data-prerender][data-pre-region='nyc'] { --header-offset: 119px; } }
+@media (max-width: 422px) { html[data-prerender][data-pre-region='portland'] { --header-offset: 119px; } }
 html[data-prerender][data-pre-region='seattle'] { --header-offset: 77px; }
 @media (min-width: 1400px) and (max-width: 1405px) { html[data-prerender][data-pre-region='seattle'] { --header-offset: 125px; } }
 @media (max-width: 663px) { html[data-prerender][data-pre-region='seattle'] { --header-offset: 125px; } }
@@ -5330,8 +5334,10 @@ html[data-prerender][data-pre-region='sf'] { --header-offset: 125px; }
 @media (min-width: 966px) and (max-width: 1279px) { html[data-prerender][data-pre-region='sf'] { --header-offset: 77px; } }
 @media (max-width: 639px) { html[data-prerender][data-pre-region='sf'] { --header-offset: 129px; } }
 @media (max-width: 457px) { html[data-prerender][data-pre-region='sf'] { --header-offset: 178px; } }
-html[data-prerender][data-pre-region='pullman'] { --header-offset: 125px; }
+html[data-prerender][data-pre-region='pullman'] { --header-offset: 77px; }
+@media (max-width: 1503px) and (min-width: 1400px), (max-width: 1303px) and (min-width: 1280px), (max-width: 755px) { html[data-prerender][data-pre-region='pullman'] { --header-offset: 125px; } }
 @media (max-width: 639px) { html[data-prerender][data-pre-region='pullman'] { --header-offset: 129px; } }
+@media (max-width: 448px) { html[data-prerender][data-pre-region='pullman'] { --header-offset: 178px; } }
 
 /* Static place hero (C1): status.js fills the photo once the place's own record lands, so the
    largest paint does not wait for the app. Same boxes as PlaceGallery > PhotoFrame. */

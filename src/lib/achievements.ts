@@ -48,6 +48,10 @@ const AREAS: { id: string; title: string; cities: string[]; glyph: BadgeSpec['gl
   { id: 'la', title: 'Los Angeles', cities: ['la'], glyph: 'palm', enamel: 'sunrise' },
   { id: 'bay', title: 'SF Bay Area', cities: ['sf', 'eastbay', 'peninsula', 'northbay'], glyph: 'goldengate', enamel: 'midnight', ink: '#ff6a3d' },
   { id: 'sandiego', title: 'San Diego', cities: ['sandiego'], glyph: 'beach', enamel: 'ocean', ink: '#ffe9b8' },
+  { id: 'vancouver', title: 'Vancouver', cities: ['vancouver'], glyph: 'mountain', enamel: 'teal' },
+  { id: 'portland', title: 'Portland', cities: ['portland'], glyph: 'bridge', enamel: 'plum' },
+  { id: 'nyc', title: 'New York', cities: ['nyc'], glyph: 'skyline', enamel: 'graphite', ink: '#ffd36b' },
+  { id: 'pullman', title: 'Pullman and Moscow', cities: ['pullman', 'moscow'], glyph: 'tree', enamel: 'ruby' },
 ]
 
 function step(have: number, goal: number) {
@@ -108,7 +112,8 @@ export function computeAchievements(input: AchievementInput): Achievement[] {
     out.push({ id: `city-${area.id}`, legacy: area.legacy, group: 'Cities', title: area.legacy ? 'Eastside' : area.title, blurb: `Mark a place Been in ${area.title}.`, ring: 'sky', ...step(have, 1),
       spec: { key: `city-${area.id}`, label: area.title, glyph: area.glyph, shape: 'circle', metal: 'silver', enamel: area.enamel, ink: area.ink } })
   }
-  out.push({ id: 'city-all', group: 'Cities', title: 'Four-City Tour', blurb: 'Eat in all four: Seattle, Los Angeles, the Bay Area and San Diego.', ring: 'sky', ...step(areasDone, 4),
+  // Any four of the guide's cities count; the badge name and goal stay the same (earned ones stay earned).
+  out.push({ id: 'city-all', group: 'Cities', title: 'Four-City Tour', blurb: 'Eat in four of the guide’s cities.', ring: 'sky', ...step(areasDone, 4),
     spec: { key: 'city-all', label: 'Four-City Tour', glyph: 'map', numeral: '4', shape: 'rosette', metal: 'gold', enamel: 'navy' } })
 
   for (const guide of input.guides) {
