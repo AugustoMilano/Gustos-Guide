@@ -76,6 +76,11 @@
       "id": "island-soul-restaurant",
       "name": "Island Soul Restaurant",
       "note": "Columbia City location. Permanently excluded with Island Soul Kirkland; never re-add."
+    },
+    {
+      "id": "dutch-bros-coffee",
+      "name": "Dutch Bros Coffee",
+      "note": "Moscow, ID location. Permanently removed by Augusto 2026-11-03; never re-add."
     }
   ]
 }
