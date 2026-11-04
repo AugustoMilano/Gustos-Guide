@@ -69,7 +69,7 @@ export function featuredSlugs(city: CityId): string[] {
     portland: ['pdx-downtown', 'pdx-pearl-district', 'pdx-new-american', 'pdx-pizza', 'pdx-health-food'],
     nyc: ['nyc-tribeca', 'nyc-west-village', 'nyc-soho', 'nyc-italian', 'nyc-french', 'nyc-steak'],
     pullman: ['pul-game-day', 'pul-cafe'],
-    moscow: ['mos-cafe'],
+    moscow: [],
     sandiego: ['sd-little-italy', 'sd-coronado', 'sd-la-jolla', 'sd-seafood', 'sd-mexican', 'sd-north-park'],
   }
   return lists[city]
