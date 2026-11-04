@@ -28,6 +28,7 @@ export function PlaceThumb({
   const ready = readySrc === src
   return (
     <picture>
+      {picture.avifSrcSet ? <source type="image/avif" srcSet={picture.avifSrcSet} sizes={picture.sizes} /> : null}
       {picture.webpSrcSet ? <source type="image/webp" srcSet={picture.webpSrcSet} sizes={picture.sizes} /> : null}
       <img
         ref={(node) => {

@@ -19,7 +19,7 @@ const CITIES = [
   'philadelphia', 'atlanta', 'sacramento', 'san diego', 'las vegas', 'montreal',
 ]
 
-function norm(value) {
+export function norm(value) {
   return String(value || '')
     .toLowerCase()
     .normalize('NFKD')
@@ -30,7 +30,7 @@ function norm(value) {
     .trim()
 }
 
-function stripHtml(value) {
+export function stripHtml(value) {
   return String(value || '').replace(/<[^>]+>/g, ' ').replace(/&quot;/g, ' ').replace(/&#\d+;/g, ' ')
 }
 
@@ -216,7 +216,7 @@ async function commons(params) {
   throw new Error('commons 429')
 }
 
-async function search(name, city) {
+export async function search(name, city) {
   const data = await commons({
     action: 'query',
     format: 'json',
@@ -257,7 +257,7 @@ function targets() {
   return rows
 }
 
-async function download(url) {
+export async function download(url) {
   const response = await fetch(url, { headers: { 'User-Agent': UA } })
   if (!response.ok) throw new Error(`download ${response.status}`)
   const bytes = Buffer.from(await response.arrayBuffer())

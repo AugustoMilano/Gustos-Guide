@@ -11,7 +11,7 @@ import { SignInSheet } from './SignInSheet.tsx'
 import { catalog } from '../content/load.ts'
 import { cityPath } from '../lib/city.ts'
 import { useCityCatalog } from '../lib/use-city.ts'
-import { isOpen } from '../lib/hours.ts'
+import { isPlaceOpen } from '../lib/hours.ts'
 import { useApp } from '../state/AppState.tsx'
 import type { SlimPlace } from '../types.ts'
 
@@ -110,10 +110,10 @@ export function PlanSheet({ open, onClose, seedPlaceId }: { open: boolean; onClo
       if (q && !`${place.name} ${place.neighborhood} ${place.cuisine.join(' ')}`.toLowerCase().includes(q)) return false
       if (filter.kind === 'togo') return toGo.has(place.id)
       if (filter.kind === 'friends') return friendIds.has(place.id)
-      if (filter.kind === 'open') return isOpen(place.periods, night)
+      if (filter.kind === 'open') return isPlaceOpen(place, night)
       if (filter.kind === 'hood') return place.neighborhood === filter.name
       if (filter.kind === 'guide') return place.guideSlugs.includes(filter.slug)
-      return toGo.has(place.id) || friendIds.has(place.id) || isOpen(place.periods, night)
+      return toGo.has(place.id) || friendIds.has(place.id) || isPlaceOpen(place, night)
     }
     const rows = places.filter(matches)
     if (filter.kind === 'mix' && !q) {

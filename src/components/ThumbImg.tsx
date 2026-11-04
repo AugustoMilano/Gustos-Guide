@@ -4,6 +4,7 @@ export function ThumbImg({ url, sizes = '64px' }: { url: string; sizes?: string 
   const picture = responsivePhoto(url, sizes)
   return (
     <picture>
+      {picture.avifSrcSet ? <source type="image/avif" srcSet={picture.avifSrcSet} sizes={picture.sizes} /> : null}
       {picture.webpSrcSet ? <source type="image/webp" srcSet={picture.webpSrcSet} sizes={picture.sizes} /> : null}
       <img
         src={picture.src}

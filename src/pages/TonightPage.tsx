@@ -8,7 +8,7 @@ import { SlidingRow } from '../components/SlidingRow.tsx'
 import { useCityCatalog } from '../lib/use-city.ts'
 import { milesBetween, priceLabel } from '../lib/format.ts'
 import { readPosition } from '../lib/geo.ts'
-import { isOpen } from '../lib/hours.ts'
+import { isPlaceOpen } from '../lib/hours.ts'
 import { usePageMeta } from '../lib/meta.ts'
 import { useApp } from '../state/AppState.tsx'
 import type { Price, SlimPlace } from '../types.ts'
@@ -27,7 +27,7 @@ export function TonightPage() {
   usePageMeta("Tonight · Gusto's Guide", 'Shuffle a To go place that is open now.', './og/og.png')
 
   const pool = useMemo(() => {
-    const togo = places.filter((place) => app.statuses[place.id] === 'togo' && isOpen(place.periods))
+    const togo = places.filter((place) => app.statuses[place.id] === 'togo' && isPlaceOpen(place))
     const priced = prices.length ? togo.filter((place) => place.price != null && prices.includes(place.price)) : togo
     const vibed = vibe ? priced.filter((place) => place.perfectFor.includes(vibe)) : priced
     const located = origin ? vibed.slice().sort((a, b) => milesBetween(origin, a) - milesBetween(origin, b)) : vibed

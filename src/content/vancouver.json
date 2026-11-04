@@ -120,10 +120,12 @@
       "updatedAt": "2026-11-03",
       "photos": [
         {
-          "source": "illustration",
-          "isIllustration": true,
-          "alt": "Illustration suggesting Brasserie at St. Lawrence",
-          "credit": "Illustration"
+          "source": "wikimedia",
+          "url": "/photos/st-lawrence.jpg",
+          "alt": "St. Lawrence in Downtown Eastside",
+          "credit": "Premeditated Chaos",
+          "creditUrl": "https://commons.wikimedia.org/wiki/File:St_lawrence_restaurant_interior.jpg",
+          "license": "CC BY-SA 4.0"
         }
       ],
       "phone": "+1 (604) 620-3800",
@@ -308,10 +310,12 @@
       "updatedAt": "2026-11-03",
       "photos": [
         {
-          "source": "illustration",
-          "isIllustration": true,
-          "alt": "Illustration suggesting Coffee at Bel Café",
-          "credit": "Illustration"
+          "source": "wikimedia",
+          "url": "/photos/bel-cafe.jpg",
+          "alt": "Bel Café in Financial District",
+          "credit": "GoToVan from Vancouver, Canada",
+          "creditUrl": "https://commons.wikimedia.org/wiki/File:Bel_Cafe_(40199527581).jpg",
+          "license": "CC BY 2.0"
         }
       ],
       "phone": "+1 (604) 673-7000",
@@ -435,10 +439,12 @@
       "updatedAt": "2026-11-03",
       "photos": [
         {
-          "source": "illustration",
-          "isIllustration": true,
-          "alt": "Illustration suggesting Cocktails at Cactus Club Cafe",
-          "credit": "Illustration"
+          "source": "wikimedia",
+          "url": "/photos/cactus-club-cafe.jpg",
+          "alt": "Cactus Club Cafe in Coal Harbour",
+          "credit": "User:Another Believer",
+          "creditUrl": "https://commons.wikimedia.org/wiki/File:Cactus_Club_Cafe,_Coal_Harbour,_Vancouver_(2013)_-_1.jpg",
+          "license": "CC BY-SA 1.0"
         }
       ],
       "phone": "+1 (778) 924-8899",
@@ -1482,10 +1488,12 @@
       "updatedAt": "2026-11-03",
       "photos": [
         {
-          "source": "illustration",
-          "isIllustration": true,
-          "alt": "Illustration suggesting Cocktails at Notch8",
-          "credit": "Illustration"
+          "source": "wikimedia",
+          "url": "/photos/notch8.jpg",
+          "alt": "Notch8 in Financial District",
+          "credit": "Canmenwalker",
+          "creditUrl": "https://commons.wikimedia.org/wiki/File:Fairmont_Hotel_Vancouver_Notch8_Restaurant_%26_Bar_2025.jpg",
+          "license": "CC BY 4.0"
         }
       ],
       "phone": "+1 (604) 662-1900",
@@ -2410,10 +2418,12 @@
       "updatedAt": "2026-11-03",
       "photos": [
         {
-          "source": "illustration",
-          "isIllustration": true,
-          "alt": "Illustration suggesting Italian at Italian Kitchen",
-          "credit": "Illustration"
+          "source": "wikimedia",
+          "url": "/photos/italian-kitchen.jpg",
+          "alt": "Italian Kitchen in Downtown",
+          "credit": "Ruth Hartnup from Vancouver, Canada",
+          "creditUrl": "https://commons.wikimedia.org/wiki/File:Mexican_Brunch_at_The_Italian_Kitchen_(10811116903).jpg",
+          "license": "CC BY 2.0"
         }
       ],
       "phone": "+1 (604) 687-2858",
@@ -2674,10 +2684,12 @@
       "updatedAt": "2026-11-03",
       "photos": [
         {
-          "source": "illustration",
-          "isIllustration": true,
-          "alt": "Illustration suggesting Sushi at Sushi Hil",
-          "credit": "Illustration"
+          "source": "wikimedia",
+          "url": "/photos/sushi-hil.jpg",
+          "alt": "Sushi Hil in South Main",
+          "credit": "Mx. Granger",
+          "creditUrl": "https://commons.wikimedia.org/wiki/File:Sushi_Hil.jpg",
+          "license": "CC0"
         }
       ],
       "phone": "+1 (236) 482-9060",
@@ -4029,10 +4041,12 @@
       "updatedAt": "2026-11-03",
       "photos": [
         {
-          "source": "illustration",
-          "isIllustration": true,
-          "alt": "Illustration suggesting Tuscan at Lupo Restaurant",
-          "credit": "Illustration"
+          "source": "wikimedia",
+          "url": "/photos/lupo-restaurant.jpg",
+          "alt": "Lupo Restaurant in Downtown",
+          "credit": "Guilice",
+          "creditUrl": "https://commons.wikimedia.org/wiki/File:Villa_del_Lupo_Restaurant.JPG",
+          "license": "CC BY-SA 3.0"
         }
       ],
       "phone": "+1 (604) 569-2535",
@@ -5365,10 +5379,12 @@
       "updatedAt": "2026-11-03",
       "photos": [
         {
-          "source": "illustration",
-          "isIllustration": true,
-          "alt": "Illustration suggesting Brunch at Hawksworth Restaurant",
-          "credit": "Illustration"
+          "source": "wikimedia",
+          "url": "/photos/hawksworth-restaurant.jpg",
+          "alt": "Hawksworth Restaurant in Financial District",
+          "credit": "Mx. Granger",
+          "creditUrl": "https://commons.wikimedia.org/wiki/File:Hawksworth_Restaurant_exterior.jpg",
+          "license": "CC0"
         }
       ],
       "phone": "+1 (604) 673-7000",
@@ -6288,10 +6304,12 @@
       "updatedAt": "2026-11-03",
       "photos": [
         {
-          "source": "illustration",
-          "isIllustration": true,
-          "alt": "Illustration suggesting Italian at Kissa Tanto",
-          "credit": "Illustration"
+          "source": "wikimedia",
+          "url": "/photos/kissa-tanto.jpg",
+          "alt": "Kissa Tanto in Downtown Eastside",
+          "credit": "Premeditated Chaos",
+          "creditUrl": "https://commons.wikimedia.org/wiki/File:Kissa_Tanto_sign_and_awning_from_side.jpg",
+          "license": "CC BY-SA 4.0"
         }
       ],
       "phone": "+1 (778) 379-8078",
@@ -7076,10 +7094,12 @@
       "updatedAt": "2026-11-03",
       "photos": [
         {
-          "source": "illustration",
-          "isIllustration": true,
-          "alt": "Illustration suggesting Brunch at Jam Cafe",
-          "credit": "Illustration"
+          "source": "wikimedia",
+          "url": "/photos/jam-cafe.jpg",
+          "alt": "Jam Cafe in Downtown",
+          "credit": "dronepicr",
+          "creditUrl": "https://commons.wikimedia.org/wiki/File:Jam_Cafe_Vancouver_(44722223141).jpg",
+          "license": "CC BY 2.0"
         }
       ],
       "phone": "+1 (778) 379-1992",

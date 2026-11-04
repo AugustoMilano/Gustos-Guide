@@ -193,6 +193,18 @@ export default defineConfig({
         const statusPath = join(process.cwd(), 'dist/status.js')
         if (!name || !existsSync(statusPath)) return
         writeFileSync(statusPath, readFileSync(statusPath, 'utf8').replace("/*CATALOG*/''", JSON.stringify(`/assets/${name}`)))
+        // D2: the app script and its modulepreloads move from index.html into status.js, which adds
+        // them at once on most routes but lets a place deep link's hero photo finish first, since
+        // Cloudflare shares the bandwidth evenly instead of honoring fetchpriority.
+        const htmlPath = join(process.cwd(), 'dist/index.html')
+        let html = readFileSync(htmlPath, 'utf8')
+        const entry = html.match(/<script type="module"[^>]*src="\.?\/(assets\/[^"]+)"><\/script>\n?\s*/)
+        if (!entry) throw new Error('boot: entry script not found')
+        const preloads = [...html.matchAll(/<link rel="modulepreload"[^>]*href="\.?\/(assets\/[^"]+)">\n?\s*/g)]
+        for (const match of [entry, ...preloads]) html = html.replace(match[0], '')
+        writeFileSync(htmlPath, html)
+        const boot = { entry: entry[1], preloads: preloads.map((match) => match[1]) }
+        writeFileSync(statusPath, readFileSync(statusPath, 'utf8').replace('/*BOOT*/null', JSON.stringify(boot)))
       },
     },
     react(),
@@ -227,8 +239,9 @@ export default defineConfig({
         rmSync(join(dist, '.vite'), { recursive: true, force: true })
         // Place deep links: status.js reads this map to preload the hero photo before the catalog
         // arrives. Same pick as displayPhotos() without uploads: Gusto's own shot, then commons.
-        const sizes = JSON.parse(readFileSync('src/content/photo-sizes.json', 'utf8')) as Record<string, { w: number; webp?: number[] }>
+        const sizes = JSON.parse(readFileSync('src/content/photo-sizes.json', 'utf8')) as Record<string, { w: number; webp?: number[]; avif?: number[] }>
         const heroes: Record<string, string> = {}
+        const avifHeroes: Record<string, string> = {}
         for (const name of ['places', 'eastside', 'la', 'sf', 'sd', 'vancouver', 'portland', 'nyc', 'palouse']) {
           const data = JSON.parse(readFileSync(`src/content/${name}.json`, 'utf8'))
           const list = (Array.isArray(data) ? data : Array.isArray(data.places) ? data.places : Object.values(data)) as { id?: string; photo?: { source?: string; url?: string }; photos?: { source?: string; url?: string }[] }[]
@@ -241,6 +254,7 @@ export default defineConfig({
             if (!entry?.webp?.length) continue
             const stem = file.replace(/\.(jpe?g|png|webp)$/i, '')
             heroes[place.id] = entry.webp.map((w) => (w === entry.w ? `/photos/${stem}.webp ${w}w` : `/photos/${stem}.${w}.webp ${w}w`)).join(', ')
+            if (entry.avif?.length) avifHeroes[place.id] = entry.avif.map((w) => (w === entry.w ? `/photos/${stem}.avif ${w}w` : `/photos/${stem}.${w}.avif ${w}w`)).join(', ')
           }
         }
                 // Place deep links (C1): one small file per place so the page renders without the 245 KB
@@ -257,10 +271,13 @@ export default defineConfig({
         }
         // Hero srcsets ride in status.js so the photo starts with the first request wave (C1).
         // 1 = the standard /photos/<id>.<w>.webp set at 200/400/720/960.
-        const compact: Record<string, string | 1> = {}
+        const compact: Record<string, 1 | 2 | [string, string]> = {}
         for (const [id, set] of Object.entries(heroes)) {
-          const standard = [200, 400, 720, 960].map((w) => `/photos/${id}.${w}.webp ${w}w`).join(', ')
-          compact[id] = set === standard ? 1 : set
+          const std = (ext: string) => [200, 400, 720, 960].map((w) => `/photos/${id}.${w}.${ext} ${w}w`).join(', ')
+          const avif = avifHeroes[id] ?? ''
+          if (set === std('webp') && !avif) compact[id] = 1
+          else if (set === std('webp') && avif === std('avif')) compact[id] = 2
+          else compact[id] = [set, avif]
         }
         const statusNow = readFileSync(statusPath, 'utf8')
         writeFileSync(statusPath, statusNow.replace('/*HEROES*/{}', JSON.stringify(compact)))

@@ -8,9 +8,10 @@ import { MapLinks } from '../components/MapLinks.tsx'
 import { PlaceThumb } from '../components/PlaceThumb.tsx'
 import { GoldenFork } from '../components/GoldenFork.tsx'
 import { ScoreBadge, scoreBand } from '../components/ScoreBadge.tsx'
-import { areaPhrase, areaTitle, cityPath } from '../lib/city.ts'
+import { areaName as cityName, areaPhrase, areaTitle, cityPath, regionOf } from '../lib/city.ts'
 import { useCityCatalog } from '../lib/use-city.ts'
-import { isOpen } from '../lib/hours.ts'
+import { hasHours, isPlaceOpen } from '../lib/hours.ts'
+import { distanceKm, formatDistance, locate, readNearMe, saveNearMe, type Spot } from '../lib/near-me.ts'
 import { countPlaces, priceLabel } from '../lib/format.ts'
 import { usePageMeta } from '../lib/meta.ts'
 import { useApp } from '../state/AppState.tsx'
@@ -40,7 +41,7 @@ function inside(place: SlimPlace, box: MapBounds): boolean {
 export function ExplorePage() {
   const { city, places } = useCityCatalog()
   const areaName = areaPhrase(city)
-  usePageMeta("Explore · Gusto's Guide", `Every ${areaName} place on the guide, on one map.`, './og/og.png')
+  usePageMeta(`Explore ${cityName(city)} · Gusto's Guide`, `Every ${areaName} place on the guide, on one map.`, `./og/cities/${regionOf(city)}.png`)
   const app = useApp()
   const reduceMotion = useReducedMotion()
   const cuisines = useMemo(() => {
@@ -57,7 +58,49 @@ export function ExplorePage() {
   const [price, setPrice] = useState('any')
   const [band, setBand] = useState('any')
   const [visit, setVisit] = useState('any')
-  const [openNow, setOpenNow] = useState(false)
+  const [openNow, setOpenNow] = useState(() => {
+    try {
+      return sessionStorage.getItem('gusto.open-now') === '1'
+    } catch {
+      return false
+    }
+  })
+  // Near me (E1): the reader's last fix this session, or null for the guide's own order.
+  const [near, setNear] = useState<Spot | null>(() => readNearMe())
+  const [locating, setLocating] = useState(false)
+  const [nearNote, setNearNote] = useState('')
+  const region = regionOf(city)
+
+  function toggleOpenNow() {
+    setOpenNow((value) => {
+      try {
+        sessionStorage.setItem('gusto.open-now', value ? '0' : '1')
+      } catch {
+        // Private mode: the filter still applies for this view.
+      }
+      return !value
+    })
+    resetArea()
+  }
+
+  async function toggleNear() {
+    if (near) {
+      setNear(null)
+      saveNearMe(null)
+      setNearNote('')
+      return
+    }
+    setLocating(true)
+    setNearNote('')
+    const result = await locate()
+    setLocating(false)
+    if ('spot' in result) {
+      setNear(result.spot)
+      saveNearMe(result.spot)
+    } else {
+      setNearNote(result.error === 'denied' ? 'Location is off for this site, so the list keeps its usual order.' : 'Your location is not available right now, so the list keeps its usual order.')
+    }
+  }
   const [area, setArea] = useState<MapBounds | null>(null)
   const [pending, setPending] = useState(false)
   const [detent, setDetent] = useState<Detent>('peek')
@@ -85,7 +128,7 @@ export function ExplorePage() {
     setPending(false)
   }
 
-  const filtered = places.filter((place) => {
+  const pool = places.filter((place) => {
     if (cuisine !== 'any' && !place.cuisine.includes(cuisine)) return false
     if (neighborhood !== 'any' && place.neighborhood !== neighborhood) return false
     if (price !== 'any' && place.price !== Number(price)) return false
@@ -94,10 +137,14 @@ export function ExplorePage() {
       if (app.statuses[place.id] !== visit) return false
     }
     if (visit === 'unmarked' && app.statuses[place.id]) return false
-    if (openNow && !isOpen(place.periods)) return false
     return true
   })
-  const listed = area ? filtered.filter((place) => inside(place, area)) : filtered
+  // Open now uses published hours only; places without hours are left out and counted (E2).
+  const unknownHours = openNow ? pool.filter((place) => !hasHours(place)).length : 0
+  const filtered = openNow ? pool.filter((place) => isPlaceOpen(place)) : pool
+  const inView = area ? filtered.filter((place) => inside(place, area)) : filtered
+  const distances = new Map(near ? inView.map((place) => [place.id, distanceKm(near, place)]) : [])
+  const listed = near ? [...inView].sort((a, b) => (distances.get(a.id) ?? 0) - (distances.get(b.id) ?? 0)) : inView
   const rows = listed.slice(0, 80)
 
   return (
@@ -114,6 +161,15 @@ export function ExplorePage() {
             <span className="area-kicker">{areaTitle(city)}</span>
             <span className="mt-0.5 block font-serif text-2xl italic leading-none">{countPlaces(listed.length)}</span>
           </p>
+          <div className="explore-chips" role="group" aria-label="Sort and filter">
+            <button type="button" className="chip glass-chip" aria-pressed={near ? 'true' : 'false'} aria-busy={locating || undefined} onClick={() => void toggleNear()}>
+              <svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path d="M14 2 2 7l5 2 2 5 5-12Z" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinejoin="round" /></svg>
+              {locating ? 'Locating' : 'Near me'}
+            </button>
+            <button type="button" className="chip glass-chip" aria-pressed={openNow ? 'true' : 'false'} onClick={toggleOpenNow}>
+              Open now
+            </button>
+          </div>
           <button
             type="button"
             className="btn text-sm md:hidden"
@@ -175,16 +231,16 @@ export function ExplorePage() {
                 <option value="unmarked">Unmarked</option>
               </select>
             </label>
-            <label className="flex min-h-11 items-center gap-2 text-sm font-bold">
-              <input className="open-check" type="checkbox" checked={openNow} onChange={(event) => { setOpenNow(event.target.checked); resetArea() }} />
-              Open now
-            </label>
           </form>
           {area ? (
             <p className="px-3 pb-2 text-sm">
               Searching this area.{' '}
               <button type="button" className="btn text-sm" onClick={resetArea}>Clear</button>
             </p>
+          ) : null}
+          {nearNote ? <p className="px-3 pb-2 text-sm" role="status">{nearNote}</p> : null}
+          {openNow && unknownHours ? (
+            <p className="px-3 pb-2 text-sm" role="status">{unknownHours === 1 ? '1 place has no published hours and is left out.' : `${unknownHours} places have no published hours and are left out.`}</p>
           ) : null}
           <ul className="panel-pad space-y-3 pb-4">
             {rows.map((place) => (
@@ -205,6 +261,7 @@ export function ExplorePage() {
                     <span className="mt-1 block text-xs font-bold tracking-wide uppercase">
                       {[place.cuisine[0], priceLabel(place.price), place.neighborhood].filter(Boolean).join(' · ')}
                     </span>
+                    {near ? <span className="mt-1 block text-sm">{formatDistance(distances.get(place.id) ?? 0, region)} away</span> : null}
                   </span>
                   <span className="score-col">
                     <ScoreBadge score={app.gustoScore(place.id)} size="sm" />
@@ -230,6 +287,11 @@ export function ExplorePage() {
                   setBand('any')
                   setVisit('any')
                   setOpenNow(false)
+                  try {
+                    sessionStorage.removeItem('gusto.open-now')
+                  } catch {
+                    // Nothing stored.
+                  }
                   resetArea()
                 }}
               >

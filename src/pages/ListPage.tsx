@@ -10,7 +10,7 @@ import { slimById } from '../content/load.ts'
 import { demoFriendsEnabled } from '../lib/demo.ts'
 import { countPlaces, milesBetween, priceLabel } from '../lib/format.ts'
 import { readPosition } from '../lib/geo.ts'
-import { isOpen } from '../lib/hours.ts'
+import { isPlaceOpen } from '../lib/hours.ts'
 import { listColor, listOgSvg } from '../lib/lists.ts'
 import { renderGuideStory } from '../lib/story-card.ts'
 import { awardFor } from '../lib/top25.ts'
@@ -48,7 +48,7 @@ export function ListPage() {
       })
       .filter((row): row is { place: SlimPlace; index: number; note: string } => row != null)
     const filtered = places.filter((row) => {
-      if (openNow && !isOpen(row.place.periods)) return false
+      if (openNow && !isPlaceOpen(row.place)) return false
       if (prices.length && (row.place.price == null || !prices.includes(row.place.price))) return false
       return true
     })
