@@ -10,7 +10,7 @@ import { GoldenFork } from '../components/GoldenFork.tsx'
 import { ScoreBadge, scoreBand } from '../components/ScoreBadge.tsx'
 import { areaName as cityName, areaPhrase, areaTitle, cityPath, regionOf } from '../lib/city.ts'
 import { useCityCatalog } from '../lib/use-city.ts'
-import { isOpen } from '../lib/hours.ts'
+import { isPlaceOpen } from '../lib/hours.ts'
 import { countPlaces, priceLabel } from '../lib/format.ts'
 import { usePageMeta } from '../lib/meta.ts'
 import { useApp } from '../state/AppState.tsx'
@@ -94,7 +94,7 @@ export function ExplorePage() {
       if (app.statuses[place.id] !== visit) return false
     }
     if (visit === 'unmarked' && app.statuses[place.id]) return false
-    if (openNow && !isOpen(place.periods)) return false
+    if (openNow && !isPlaceOpen(place)) return false
     return true
   })
   const listed = area ? filtered.filter((place) => inside(place, area)) : filtered

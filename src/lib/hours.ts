@@ -62,3 +62,44 @@ export function formatPeriods(periods: Period[]): string[] {
     return `${days} ${clock(period.start)}–${clock(period.end)}`
   })
 }
+
+/**
+ * Hours are published in each place's own local time (E2). New York runs on Eastern; every other
+ * city in the guide (Seattle, the Bay Area, Los Angeles, San Diego, Vancouver, Portland, Pullman and
+ * Moscow, Idaho's panhandle) is on Pacific.
+ */
+export function placeZone(city: string | undefined): string {
+  return city === 'nyc' ? 'America/New_York' : 'America/Los_Angeles'
+}
+
+const zoneFormats = new Map<string, Intl.DateTimeFormat>()
+const WEEKDAYS: Record<string, number> = { Sun: 0, Mon: 1, Tue: 2, Wed: 3, Thu: 4, Fri: 5, Sat: 6 }
+
+/** Day of week (0 = Sunday) and minutes past midnight at `now` in `zone`. */
+export function zonedClock(zone: string, now = new Date()): { day: number; mins: number } {
+  let format = zoneFormats.get(zone)
+  if (!format) {
+    format = new Intl.DateTimeFormat('en-US', { timeZone: zone, weekday: 'short', hour: '2-digit', minute: '2-digit', hourCycle: 'h23' })
+    zoneFormats.set(zone, format)
+  }
+  const parts = Object.fromEntries(format.formatToParts(now).map((part) => [part.type, part.value]))
+  return { day: WEEKDAYS[parts.weekday] ?? now.getDay(), mins: (Number(parts.hour) % 24) * 60 + Number(parts.minute) }
+}
+
+/** Whether the place has published hours at all. Unknown hours never count as open. */
+export function hasHours(place: { periods?: Period[] }): boolean {
+  return Boolean(place.periods?.length)
+}
+
+/** Open right now in the place's own timezone, from its published hours only. */
+export function isPlaceOpen(place: { periods?: Period[]; city?: string }, now = new Date()): boolean {
+  if (!place.periods?.length) return false
+  const { day, mins } = zonedClock(placeZone(place.city), now)
+  return isOpenAt(place.periods, day, mins)
+}
+
+export function placeHoursPhrase(place: { periods?: Period[]; city?: string }, now = new Date()): string | null {
+  if (!place.periods?.length) return null
+  const { day, mins } = zonedClock(placeZone(place.city), now)
+  return hoursPhraseAt(place.periods, day, mins)
+}

@@ -15,7 +15,7 @@ import { flagshipAimHint } from '../lib/collections.ts'
 import { countPlaces, pageShareUrl } from '../lib/format.ts'
 import { renderGuideStory } from '../lib/story-card.ts'
 import { awardFor } from '../lib/top25.ts'
-import { isOpen } from '../lib/hours.ts'
+import { isPlaceOpen } from '../lib/hours.ts'
 import { usePageMeta } from '../lib/meta.ts'
 import { originCanonical } from '../lib/site.ts'
 import { useApp } from '../state/AppState.tsx'
@@ -101,7 +101,7 @@ export function GuidePage() {
     if (cuisine && !place.cuisine.includes(cuisine)) return false
     if (price && place.price !== price) return false
     if (tag && !place.perfectFor.includes(tag) && entry.vibe !== tag) return false
-    if (openNow && !isOpen(place.periods)) return false
+    if (openNow && !isPlaceOpen(place)) return false
     return true
   })
   const pinned = guide?.pinned === true

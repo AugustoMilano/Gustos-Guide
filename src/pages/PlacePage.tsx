@@ -14,7 +14,7 @@ import { HouseScorePad } from '../components/HouseScorePad.tsx'
 import { GoldenFork } from '../components/GoldenFork.tsx'
 import { ScoreBadge } from '../components/ScoreBadge.tsx'
 import { StoryShareButton } from '../components/StoryShareButton.tsx'
-import { formatPeriods, hoursPhrase } from '../lib/hours.ts'
+import { formatPeriods, placeHoursPhrase } from '../lib/hours.ts'
 import { MapLinks } from '../components/MapLinks.tsx'
 import { ShareButton } from '../components/ShareButton.tsx'
 import { milesBetween, priceLabel, publicReference, shareUrl, yelpBizUrl } from '../lib/format.ts'
@@ -175,7 +175,7 @@ export function PlacePage() {
             {place.address ? <p className="place-address">{place.address}</p> : null}
             {place.closed ? <p>Closed.</p> : place.periods.length ? (
               <details className="place-hours">
-                <summary>{hoursPhrase(place.periods) ?? 'Hours'}</summary>
+                <summary>{placeHoursPhrase(place) ?? 'Hours'}</summary>
                 <ul>{formatPeriods(place.periods).map((line) => <li key={line}>{line}</li>)}</ul>
               </details>
             ) : <p>Hours are not posted. Call before you trek across town.</p>}

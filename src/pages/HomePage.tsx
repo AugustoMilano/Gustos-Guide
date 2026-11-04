@@ -4,7 +4,7 @@ import { SmartResults, featuredSlugs } from '../components/SmartResults.tsx'
 import { catalog } from '../content/load.ts'
 import { areaName, cityPath, regionOf, type CityId } from '../lib/city.ts'
 import { countPlaces } from '../lib/format.ts'
-import { isOpen } from '../lib/hours.ts'
+import { isPlaceOpen } from '../lib/hours.ts'
 import { regionBoard } from '../lib/top25.ts'
 import { usePageMeta } from '../lib/meta.ts'
 import { smartSearch } from '../lib/smart-search.ts'
@@ -84,7 +84,7 @@ export function HomePage() {
   const query = draft.trim()
   const { gustoScore } = useApp()
   // Same rule as the Tonight page: a place is open when its published hours say so right now.
-  const openCount = useMemo(() => (ready ? places.filter((place) => isOpen(place.periods)).length : 0), [places, ready])
+  const openCount = useMemo(() => (ready ? places.filter((place) => isPlaceOpen(place)).length : 0), [places, ready])
   const topCount = useMemo(() => regionBoard(regionOf(city), gustoScore).shown.length, [city, gustoScore])
   const result = useMemo(
     () => (query && ready ? smartSearch(query, city, catalog.places, catalog.guides, gustoScore) : null),
