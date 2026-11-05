@@ -316,7 +316,7 @@ export function Header() {
           onClick={toggleBell}
         >
           <BellIcon />
-          {unread ? <span className="absolute -top-1.5 -right-1.5 min-w-5 rounded-full bg-coral px-1 text-center text-xs font-bold leading-5">{unread}</span> : null}
+          {unread ? <span className="bell-count absolute -top-1.5 -right-1.5 min-w-5 rounded-full bg-coral px-1 text-center text-xs font-bold leading-5 text-white">{unread}</span> : null}
         </button>
         <button
           type="button"
