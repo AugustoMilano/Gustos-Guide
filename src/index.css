@@ -230,7 +230,7 @@ body {
 
 ::selection {
   background: #ff5330;
-  color: #181818;
+  color: #fffaf3;
 }
 
 :focus {
@@ -255,7 +255,7 @@ body {
   z-index: 80;
   transform: translateY(-150%);
   background: #ff5330;
-  color: #181818;
+  color: #fffaf3;
   border: 2px solid #181818;
   padding: 0.55rem 0.8rem;
   font-weight: 700;
@@ -291,7 +291,7 @@ textarea {
   justify-content: center;
   border: 2px solid #181818;
   background: #ff5330;
-  color: #181818;
+  color: #fffaf3;
   box-shadow: 3px 3px 0 #181818;
   padding: 0.35rem 0.55rem;
   font-size: 0.72rem;
@@ -772,7 +772,7 @@ textarea {
 
 .score-badge.tone-skip {
   background: #ff5330;
-  color: #181818;
+  color: #fffaf3;
 }
 
 .score-badge.is-muted {
@@ -1114,7 +1114,7 @@ textarea {
 
 .btn-coral {
   background: var(--color-coral);
-  color: var(--color-ink);
+  color: #fffaf3;
 }
 
 .btn-navy {
@@ -1527,7 +1527,7 @@ textarea {
 
 .btn-coral {
   background: var(--color-coral);
-  color: var(--color-ink);
+  color: #fffaf3;
   border-color: transparent;
   box-shadow: 0 var(--space-2) 18px rgb(255 83 48 / 28%);
 }
@@ -1982,7 +1982,7 @@ textarea {
 
 .site-header.on-hero .btn-coral {
   background: #ff5330;
-  color: #181818;
+  color: #fffaf3;
 }
 
 .site-header.on-hero .btn.btn-x {
@@ -2512,7 +2512,7 @@ input[type='time'] {
   flex: none;
   border-radius: 999px;
   background: #ff5330;
-  color: #181818;
+  color: #fffaf3;
   font-weight: 700;
   opacity: 0;
   transform: scale(0.6);
@@ -3085,19 +3085,21 @@ input[type='time'] {
   position: absolute;
   inset: 0;
   border-radius: inherit;
-  background: #ff5330;
-  box-shadow: 0 6px 16px rgb(255 83 48 / 38%);
+  background: #141f4d;
+  box-shadow:
+    0 6px 16px rgb(20 31 77 / 28%),
+    inset 0 1px 0 rgb(255 255 255 / 28%);
   z-index: 0;
 }
 
 .city-switch-btn[aria-pressed='true'] {
-  color: #181818;
+  color: #eee3d6;
   font-weight: 800;
 }
 
 .city-switch-btn[aria-pressed='true'] .city-mark {
-  background: #181818;
-  border-color: #181818;
+  background: currentColor;
+  border-color: currentColor;
   opacity: 1;
 }
 
@@ -3111,14 +3113,13 @@ input[type='time'] {
   color: #d9d0c4;
 }
 
-.site-header.on-hero .city-switch-btn[aria-pressed='true'],
-.site-header.on-hero .city-switch-btn[aria-pressed='true'] .city-mark {
-  color: #181818;
+.site-header.on-hero .city-switch-btn[aria-pressed='true'] {
+  color: #eee3d6;
 }
 
 .site-header.on-hero .city-switch-btn[aria-pressed='true'] .city-mark {
-  background: #181818;
-  border-color: #181818;
+  background: currentColor;
+  border-color: currentColor;
 }
 
 .area-kicker {
@@ -3354,7 +3355,7 @@ img.is-pending,
   }
 
   .city-switch-glint {
-    background: #ff5330;
+    background: #141f4d;
   }
 }
 
@@ -3996,7 +3997,7 @@ mark {
   padding: 0.3rem;
   border: 2px solid #181818;
   background: #ff5330;
-  color: #181818;
+  color: #fffaf3;
   box-shadow: 3px 3px 0 #181818;
   line-height: 1;
 }
@@ -4379,6 +4380,7 @@ mark {
   flex: none;
   border: 2px solid var(--color-ink);
   background: var(--color-coral);
+  color: #fffaf3;
   font-size: var(--text-sm);
   font-weight: 700;
   font-variant-numeric: tabular-nums;
@@ -5139,6 +5141,7 @@ mark {
 
 /* Guide sort: one segmented control under the title, sized like Share and Story. */
 .sort-seg .city-switch-btn { min-height: 44px; padding: 0 16px; font-size: 0.95rem; font-weight: 700; color: #3d3630; }
+.sort-seg .city-switch-btn[aria-pressed='true'] { color: #eee3d6; }
 .sort-seg { max-width: 100%; overflow-x: auto; scrollbar-width: none; }
 .sort-seg::-webkit-scrollbar { display: none; }
 
@@ -5311,6 +5314,8 @@ mark {
   @keyframes tab-bounce { 0% { transform: scale(0.82) translateY(2px); } 100% { transform: none; } }
 }
 
+.bell-count { color: #fff; }
+
 /* B4 place page (fix74): photo slides in from the side it came from; lightbox zoom. */
 @media (prefers-reduced-motion: no-preference) {
   .photo-stage.enter-next .photo-frame { animation: photo-in-next 420ms cubic-bezier(0.2, 1.15, 0.3, 1) backwards; }
@@ -5401,9 +5406,13 @@ html[data-area='pullman'] { --color-coral: #981e32; }
 html[data-area='pullman'] .hero,
 html[data-area='pullman'] .marquee { background: #981e32; }
 html[data-area='pullman'] .site-header.on-hero::before { background-color: #981e32; }
-html[data-area='pullman'] .btn-coral { color: #fff; box-shadow: 0 var(--space-2) 18px rgb(152 30 50 / 28%); }
+html[data-area='pullman'] .btn-coral { background: #981e32; color: #fff; box-shadow: 0 var(--space-2) 18px rgb(152 30 50 / 28%); }
 html[data-area='pullman'] .site-header.on-hero .btn-coral { background: #fffaf3; color: #981e32; }
 html[data-area='pullman'] .city-switch-glint { background: #d9dadb; box-shadow: 0 6px 16px rgb(94 106 113 / 35%); }
+/* Silver selected pill: ink type. Cream disappears on #d9dadb. */
+html[data-area='pullman'] .city-switch-btn[aria-pressed='true'],
+html[data-area='pullman'] .sort-seg .city-switch-btn[aria-pressed='true'],
+html[data-area='pullman'] .site-header.on-hero .city-switch-btn[aria-pressed='true'] { color: #181818; }
 html[data-area='pullman'] .site-header.on-hero .city-switch { background: rgb(40 8 14 / 35%); }
 html[data-area='pullman'] .hero { background: linear-gradient(160deg, #981e32 0%, #7a1828 62%, #4d5054 100%); }
 .coug-toast {
