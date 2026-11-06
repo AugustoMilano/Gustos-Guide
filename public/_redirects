@@ -437,6 +437,8 @@
 /share/place/the-independent-pizzeria / 301
 /share/place/island-soul-restaurant/ / 301
 /share/place/island-soul-restaurant / 301
+/share/place/84-yesler/ / 301
+/share/place/84-yesler / 301
 
 # Share cards. These placeholders stay above the other dynamic rules.
 /share/place/:id /share/place/:id/index.html 200
