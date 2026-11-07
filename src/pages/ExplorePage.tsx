@@ -1,4 +1,4 @@
-import { lazy, Suspense, useEffect, useMemo, useRef, useState } from 'react'
+import { lazy, Suspense, useEffect, useMemo, useRef, useState, useSyncExternalStore } from 'react'
 import { useReducedMotion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import type { MapBounds, MapCamera } from '../components/GuideMap.tsx'
@@ -35,6 +35,18 @@ function bandId(score: number | null): string {
   return scoreBand(score).tone
 }
 
+function usePhoneSheet() {
+  return useSyncExternalStore(
+    (notify) => {
+      const query = window.matchMedia('(max-width: 767px)')
+      query.addEventListener('change', notify)
+      return () => query.removeEventListener('change', notify)
+    },
+    () => window.matchMedia('(max-width: 767px)').matches,
+    () => false,
+  )
+}
+
 function inside(place: SlimPlace, box: MapBounds): boolean {
   return place.lat >= box.south && place.lat <= box.north && place.lng >= box.west && place.lng <= box.east
 }
@@ -45,6 +57,7 @@ export function ExplorePage() {
   usePageMeta(`Explore ${cityName(city)} · Gusto's Guide`, `Every ${areaName} place on the guide, on one map.`, `./og/cities/${regionOf(city)}.png`)
   const app = useApp()
   const reduceMotion = useReducedMotion()
+  const phoneSheet = usePhoneSheet()
   const cuisines = useMemo(() => {
     const set = new Set<string>()
     for (const place of places) for (const cuisine of place.cuisine) set.add(cuisine)
@@ -209,7 +222,7 @@ export function ExplorePage() {
   function searchThisArea() {
     if (latest.current) setArea(latest.current)
     setPending(false)
-    setDetent('half')
+    if (phoneSheet) setDetent('half')
   }
 
   return (
@@ -248,7 +261,7 @@ export function ExplorePage() {
         <div
           ref={scroller}
           className="explore-scroll"
-          aria-hidden={sheet ? undefined : true}
+          aria-hidden={phoneSheet && !sheet ? true : undefined}
         >
           <button
             type="button"
@@ -297,7 +310,7 @@ export function ExplorePage() {
               </select>
             </label>
           </form>
-          {pending && detent === 'full' ? (
+          {pending && phoneSheet && detent === 'full' ? (
             <p className="px-3 pt-3">
               <button type="button" className="btn btn-coral" onClick={searchThisArea}>Search this area</button>
             </p>
@@ -318,8 +331,9 @@ export function ExplorePage() {
                 key={place.id}
                 id={`explore-${place.id}`}
                 className={`explore-card relative border-2 bg-[#fffaf3] ${activeId === place.id ? 'is-hot border-coral' : 'border-ink'}`}
+                aria-current={pinnedId === place.id ? 'true' : undefined}
                 onMouseEnter={() => setActiveId(place.id)}
-                onMouseLeave={() => setActiveId((current) => (current === place.id ? null : current))}
+                onMouseLeave={() => setActiveId(pinnedId)}
               >
                 <Link to={cityPath(`/place/${place.id}`)} className="place-row after:absolute after:inset-0" viewTransition={!reduceMotion}>
                   <span className="place-row-shot" style={reduceMotion ? undefined : { viewTransitionName: `place-${place.id}` }}>
@@ -381,11 +395,11 @@ export function ExplorePage() {
           activeId={activeId}
           camera={openedAt.current}
           focus={near ? { lat: near.lat, lng: near.lng, zoom: 14 } : null}
-          onHover={setActiveId}
+          onHover={(id) => setActiveId(id ?? pinnedId)}
           onSelect={(id) => {
             setActiveId(id)
             setPinnedId(id)
-            setDetent('half')
+            if (phoneSheet) setDetent('half')
           }}
           onMoveEnd={(box) => {
             latest.current = box
@@ -397,7 +411,7 @@ export function ExplorePage() {
           }}
         />
         </Suspense>
-        {pending && detent !== 'full' ? (
+        {pending && (!phoneSheet || detent !== 'full') ? (
           <button type="button" className="btn btn-coral search-area" onClick={searchThisArea}>
             Search this area
           </button>

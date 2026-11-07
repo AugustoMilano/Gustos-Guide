@@ -43,8 +43,18 @@ export function useBottomSheet(
         el.style.transition = ''
         return
       }
-      el.style.transition = animate && !reduce.matches ? SPRING : 'none'
+      if (animate && !reduce.matches) {
+        el.style.transition = SPRING
+      } else {
+        // Jump, then arm the spring again so the next detent still moves.
+        // A resize observer was leaving the transition at none.
+        el.style.transition = 'none'
+      }
       el.style.transform = `translate3d(0, ${y}px, 0)`
+      if (!animate && !reduce.matches) {
+        void el.offsetHeight
+        el.style.transition = SPRING
+      }
       obstruct()
     }
     const obstruct = () => {
@@ -124,9 +134,14 @@ export function useBottomSheet(
     }
     window.addEventListener('resize', onResize)
     phone.addEventListener('change', onResize)
+    const header = document.querySelector('.site-header')
+    const watch = new ResizeObserver(onResize)
+    watch.observe(handle)
+    if (header) watch.observe(header)
     place(offsets()[current.current], false)
     obstruct()
     return () => {
+      watch.disconnect()
       handle.removeEventListener('touchstart', hStart)
       handle.removeEventListener('touchmove', hMove)
       handle.removeEventListener('touchend', end)
