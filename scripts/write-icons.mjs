@@ -77,7 +77,7 @@ function png(file) {
   return `data:image/png;base64,${readFileSync(file).toString('base64')}`
 }
 const preview = `<!doctype html>
-<html><body style="margin:0;background:${CREAM};color:#181818;font-family:Georgia,serif">
+<html><body style="margin:0;background:${CREAM};color:#181818;font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif">
   <div style="display:flex;align-items:end;gap:28px;padding:36px 36px 28px">
     <figure style="margin:0"><img width="512" height="512" alt="" src="${png('/tmp/logo-tile-512.png')}" style="display:block"/><figcaption style="margin-top:8px;font-family:sans-serif;font-size:14px">512</figcaption></figure>
     <figure style="margin:0"><img width="64" height="64" alt="" src="${png('/tmp/logo-tile-64.png')}" style="display:block;image-rendering:pixelated"/><figcaption style="margin-top:8px;font-family:sans-serif;font-size:14px">64</figcaption></figure>
