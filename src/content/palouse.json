@@ -549,7 +549,9 @@
       "gustoScore": null,
       "appleMapsUrl": "https://maps.apple.com/?daddr=46.733988,-117.027848&q=Paradise%20Grill%20and%20Cafe",
       "applePlaceUrl": "https://maps.apple.com/place?auid=16898603066479363683",
-      "guideSlugs": [],
+      "guideSlugs": [
+        "mos-cafe"
+      ],
       "muid": "16898603066479363683",
       "hoursLabel": "",
       "blurb": "",
@@ -666,7 +668,9 @@
       "gustoScore": null,
       "appleMapsUrl": "https://maps.apple.com/?daddr=46.7293674,-117.0031339&q=The%20Silos%20Coffee%20&%20Social",
       "applePlaceUrl": "https://maps.apple.com/place?auid=2014626627637937380",
-      "guideSlugs": [],
+      "guideSlugs": [
+        "mos-cafe"
+      ],
       "muid": "2014626627637937380",
       "hoursLabel": "",
       "blurb": "",
@@ -1296,7 +1300,9 @@
       "gustoScore": 6.9,
       "appleMapsUrl": "https://maps.apple.com/?daddr=46.7302358,-117.0017923&q=One%20World%20Cafe",
       "applePlaceUrl": "https://maps.apple.com/place?auid=3380696865842125155",
-      "guideSlugs": [],
+      "guideSlugs": [
+        "mos-cafe"
+      ],
       "muid": "3380696865842125155",
       "hoursLabel": "",
       "blurb": "",
@@ -2798,6 +2804,37 @@
         },
         {
           "placeId": "pups-cups-cafe",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        }
+      ],
+      "pinned": true
+    },
+    {
+      "slug": "mos-cafe",
+      "title": "Cafe",
+      "dek": "Three across the border in Moscow: One World Cafe, The Silos Coffee & Social, and Paradise Grill and Cafe.",
+      "group": "Cuisine",
+      "intro": "",
+      "updatedAt": "2026-11-03",
+      "ranked": false,
+      "city": "moscow",
+      "entries": [
+        {
+          "placeId": "paradise-grill-and-cafe",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "the-silos-coffee-social",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "one-world-cafe",
           "pullQuote": "",
           "blurb": "",
           "copySource": "draft"
