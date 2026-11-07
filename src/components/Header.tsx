@@ -2,7 +2,7 @@ import { useEffect, useRef, useState, type RefObject } from 'react'
 import { AnimatePresence, m, useReducedMotion } from 'framer-motion'
 import { dragSheet } from '../lib/motion.ts'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
-import { regionName as areaLabel, areaPhrase, areasFor, CITY_PREFIXES, cityPath, isCityPicker, readRegionMemory, writeRegionMemory } from '../lib/city.ts'
+import { barePath, regionName as areaLabel, areaPhrase, areasFor, CITY_PREFIXES, cityPath, isCityPicker, readRegionMemory, writeRegionMemory } from '../lib/city.ts'
 import { SearchField } from './SearchField.tsx'
 import { useCityId } from '../lib/use-city-id.ts'
 import { AreaKicker } from './AreaKicker.tsx'
@@ -115,9 +115,12 @@ export function Header() {
 
   useEffect(() => {
     const mode = picker ? 'picker' : showAreas ? 'areas' : 'single'
-    document.documentElement.dataset.header = mode
+    const root = document.documentElement
+    root.dataset.header = mode
+    // Short phones use this to fold the map header. Other routes keep the full phone header.
+    root.dataset.route = barePath(location.pathname).startsWith('/explore') ? 'explore' : 'page'
     if (!picker) writeRegionMemory(city)
-  }, [picker, showAreas, city])
+  }, [picker, showAreas, city, location.pathname])
 
   useEffect(() => {
     const bar = document.querySelector('.site-header')

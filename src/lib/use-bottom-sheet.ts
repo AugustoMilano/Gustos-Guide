@@ -43,8 +43,26 @@ export function useBottomSheet(
         el.style.transition = ''
         return
       }
-      el.style.transition = animate && !reduce.matches ? SPRING : 'none'
+      if (animate && !reduce.matches) {
+        el.style.transition = SPRING
+      } else {
+        // Jump, then arm the spring again so the next detent still moves.
+        // A resize observer was leaving the transition at none.
+        el.style.transition = 'none'
+      }
       el.style.transform = `translate3d(0, ${y}px, 0)`
+      if (!animate && !reduce.matches) {
+        void el.offsetHeight
+        el.style.transition = SPRING
+      }
+      obstruct()
+    }
+    const obstruct = () => {
+      const shell = el.closest('.explore-shell')
+      if (!(shell instanceof HTMLElement) || !phone.matches) return
+      const top = el.getBoundingClientRect().top
+      const bottom = shell.getBoundingClientRect().bottom
+      shell.style.setProperty('--explore-peek', `${Math.max(0, Math.round(bottom - top))}px`)
     }
     const settle = (to: Detent) => place(offsets()[to], true)
 
@@ -67,25 +85,25 @@ export function useBottomSheet(
       drag.lastT = now
       drag.y = y
       place(y, false)
+      obstruct()
     }
     const end = () => {
       if (!drag) return
       const { y, v, base: drag0 } = drag
       drag = null
       const o = offsets()
-      let target: Detent
       const travel = y - drag0
-      if (v > 0.5 || travel > o.peek * 0.4) {
-        // A fast or long pull down always goes all the way to peek.
-        target = 'peek'
-      } else if (Math.abs(v) > 0.5) {
-        // Fling: go one detent in the flick's direction from where the finger let go.
-        const above = ORDER.filter((d) => o[d] < y - 1)
-        const below = ORDER.filter((d) => o[d] > y + 1)
-        target = v < 0 ? (above.at(-1) ?? 'full') : (below[0] ?? 'peek')
+      let target: Detent
+      // One detent per gesture. A downward flick used to skip half and land on peek,
+      // so the middle stop was almost unreachable.
+      if (Math.abs(v) > 0.45 || Math.abs(travel) > 56) {
+        const index = ORDER.indexOf(current.current)
+        const down = v > 0.45 || (Math.abs(v) <= 0.45 && travel > 0)
+        const next = Math.max(0, Math.min(ORDER.length - 1, index + (down ? 1 : -1)))
+        target = ORDER[next]
       } else {
-        const projected = y + v * 160
-        target = ORDER.reduce((best, d) => (Math.abs(o[d] - projected) < Math.abs(o[best] - projected) ? d : best), 'peek' as Detent)
+        const projected = y + v * 120
+        target = ORDER.reduce((best, d) => (Math.abs(o[d] - projected) < Math.abs(o[best] - projected) ? d : best), current.current)
       }
       if (target === current.current) settle(target)
       else setRef.current(target)
@@ -110,11 +128,20 @@ export function useBottomSheet(
     list.addEventListener('touchmove', lMove, { passive: true })
     list.addEventListener('touchend', end)
     list.addEventListener('touchcancel', end)
-    const onResize = () => place(offsets()[current.current], false)
+    const onResize = () => {
+      place(offsets()[current.current], false)
+      obstruct()
+    }
     window.addEventListener('resize', onResize)
     phone.addEventListener('change', onResize)
+    const header = document.querySelector('.site-header')
+    const watch = new ResizeObserver(onResize)
+    watch.observe(handle)
+    if (header) watch.observe(header)
     place(offsets()[current.current], false)
+    obstruct()
     return () => {
+      watch.disconnect()
       handle.removeEventListener('touchstart', hStart)
       handle.removeEventListener('touchmove', hMove)
       handle.removeEventListener('touchend', end)
@@ -138,5 +165,11 @@ export function useBottomSheet(
     const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches
     el.style.transition = reduce ? 'none' : SPRING
     el.style.transform = `translate3d(0, ${y}px, 0)`
+    const shell = el.closest('.explore-shell')
+    if (shell instanceof HTMLElement) {
+      const top = el.getBoundingClientRect().top
+      const bottom = shell.getBoundingClientRect().bottom
+      shell.style.setProperty('--explore-peek', `${Math.max(0, Math.round(bottom - top))}px`)
+    }
   }, [detent, sheet, head])
 }
