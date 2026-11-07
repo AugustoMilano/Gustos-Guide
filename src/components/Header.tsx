@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, type RefObject } from 'react'
+import { useEffect, useLayoutEffect, useRef, useState, type RefObject } from 'react'
 import { AnimatePresence, m, useReducedMotion } from 'framer-motion'
 import { dragSheet } from '../lib/motion.ts'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
@@ -113,7 +113,7 @@ export function Header() {
   const [onHero, setOnHero] = useState(() => HOME_PATHS.has(location.pathname))
   const route = `${location.pathname}${location.search}`
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const mode = picker ? 'picker' : showAreas ? 'areas' : 'single'
     const root = document.documentElement
     root.dataset.header = mode
@@ -122,7 +122,7 @@ export function Header() {
     if (!picker) writeRegionMemory(city)
   }, [picker, showAreas, city, location.pathname])
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const bar = document.querySelector('.site-header')
     if (!bar) return
     const apply = () => {

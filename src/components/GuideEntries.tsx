@@ -246,12 +246,7 @@ export function GuideEntryCard({
   )
   const rest = (
     <div className="min-w-0">
-      {entry.pullQuote ? (
-      <blockquote className={`entry-quote mt-4 ${layout === 1 ? 'border-l-4 border-coral pl-4' : 'glass bg-[#fffaf3] px-4 py-3'}`}>
-        “{entry.pullQuote}”
-      </blockquote>
-      ) : null}
-      {entry.blurb !== entry.pullQuote ? <p className="mt-4 max-w-2xl text-lg leading-relaxed">{entry.blurb}</p> : null}
+      {entry.blurb ? <p className="mt-4 max-w-2xl text-lg leading-relaxed">{entry.blurb}</p> : null}
       <div className="mt-4 flex flex-wrap gap-2">
         {entry.vibe ? <span className="tag tag-vibe">{entry.vibe}</span> : null}
         {place.perfectFor.map((tag) => <span key={tag} className="tag">{tag}</span>)}
@@ -290,18 +285,15 @@ export function GuideEntryCard({
   const compact = (
     <article id={`entry-${place.id}`} className={`guide-entry scroll-mt-24 border-t border-ink/10${hotClass}`} {...point}>
       {title}
-      <div className="mt-3 flex items-start gap-3">
-        <figure className="w-24 shrink-0">
-          <Link to={cityPath(`/place/${place.id}`)} className="block" aria-label={place.name} viewTransition={!reduceMotion}>
-            <div className="h-24 w-24 overflow-hidden soft-media bg-navy [&_.place-art]:aspect-auto [&_.place-art]:h-full">
-              <PlaceArt id={place.id} cuisine={place.cuisine[0] ?? 'Seattle'} neighborhood={place.neighborhood} />
-            </div>
-          </Link>
-          <figcaption className="mt-1 text-[10px] font-bold tracking-wide uppercase">Illustration</figcaption>
-        </figure>
-        {entry.pullQuote ? <blockquote className="entry-quote min-w-0 flex-1 border-l-4 border-coral pl-3">“{entry.pullQuote}”</blockquote> : null}
-      </div>
-      {entry.blurb !== entry.pullQuote ? <p className="mt-4 max-w-2xl text-lg leading-relaxed">{entry.blurb}</p> : null}
+      <figure className="mt-3 w-24">
+        <Link to={cityPath(`/place/${place.id}`)} className="block" aria-label={place.name} viewTransition={!reduceMotion}>
+          <div className="h-24 w-24 overflow-hidden soft-media bg-navy [&_.place-art]:aspect-auto [&_.place-art]:h-full">
+            <PlaceArt id={place.id} cuisine={place.cuisine[0] ?? 'Seattle'} neighborhood={place.neighborhood} />
+          </div>
+        </Link>
+        <figcaption className="mt-1 text-[10px] font-bold tracking-wide uppercase">Illustration</figcaption>
+      </figure>
+      {entry.blurb ? <p className="mt-4 max-w-2xl text-lg leading-relaxed">{entry.blurb}</p> : null}
       <div className="mt-4 flex flex-wrap gap-2">
         {entry.vibe ? <span className="tag tag-vibe">{entry.vibe}</span> : null}
         {place.perfectFor.map((tag) => <span key={tag} className="tag">{tag}</span>)}
