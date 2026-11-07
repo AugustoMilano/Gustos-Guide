@@ -1,7 +1,8 @@
 import { lazy, Suspense, useEffect, useMemo, useRef, useState } from 'react'
 import { useReducedMotion } from 'framer-motion'
 import { Link } from 'react-router-dom'
-import type { MapBounds } from '../components/GuideMap.tsx'
+import type { MapBounds, MapCamera } from '../components/GuideMap.tsx'
+import { readExploreMemory, saveExploreMemory, type ExploreMemory } from '../lib/explore-memory.ts'
 
 const GuideMap = lazy(() => import('../components/GuideMap.tsx').then((module) => ({ default: module.GuideMap })))
 import { MapLinks } from '../components/MapLinks.tsx'
@@ -53,11 +54,14 @@ export function ExplorePage() {
     () => [...new Set(places.map((place) => place.neighborhood))].sort((a, b) => a.localeCompare(b)),
     [places],
   )
-  const [cuisine, setCuisine] = useState('any')
-  const [neighborhood, setNeighborhood] = useState('any')
-  const [price, setPrice] = useState('any')
-  const [band, setBand] = useState('any')
-  const [visit, setVisit] = useState('any')
+  const remembered = useRef<ExploreMemory | null>(null)
+  if (remembered.current === null) remembered.current = readExploreMemory(city)
+  const restored = remembered.current
+  const [cuisine, setCuisine] = useState(restored?.cuisine ?? 'any')
+  const [neighborhood, setNeighborhood] = useState(restored?.neighborhood ?? 'any')
+  const [price, setPrice] = useState(restored?.price ?? 'any')
+  const [band, setBand] = useState(restored?.band ?? 'any')
+  const [visit, setVisit] = useState(restored?.visit ?? 'any')
   const [openNow, setOpenNow] = useState(() => {
     try {
       return sessionStorage.getItem('gusto.open-now') === '1'
@@ -101,9 +105,13 @@ export function ExplorePage() {
       setNearNote(result.error === 'denied' ? 'Location is off for this site, so the list keeps its usual order.' : 'Your location is not available right now, so the list keeps its usual order.')
     }
   }
-  const [area, setArea] = useState<MapBounds | null>(null)
+  const [area, setArea] = useState<MapBounds | null>(restored?.area ?? null)
   const [pending, setPending] = useState(false)
-  const [detent, setDetent] = useState<Detent>('peek')
+  const [detent, setDetent] = useState<Detent>(restored?.detent ?? 'peek')
+  const [pinnedId, setPinnedId] = useState<string | null>(restored?.pinnedId ?? null)
+  const [boundCity, setBoundCity] = useState(city)
+  const camera = useRef<MapCamera | null>(restored?.camera ?? null)
+  const openedAt = useRef(camera.current)
   const sheet = detent !== 'peek'
   const setSheet = (next: boolean | ((value: boolean) => boolean)) => {
     const open = typeof next === 'function' ? next(sheet) : next
@@ -114,13 +122,63 @@ export function ExplorePage() {
   const headEl = useRef<HTMLDivElement>(null)
   const scroller = useRef<HTMLDivElement>(null)
   useBottomSheet(sheetEl, headEl, scroller, detent, setDetent)
-  const [activeId, setActiveId] = useState<string | null>(null)
+  const [activeId, setActiveId] = useState<string | null>(restored?.pinnedId ?? null)
   const armedAt = useRef(Number.POSITIVE_INFINITY)
   const latest = useRef<MapBounds | null>(null)
 
   useEffect(() => {
     armedAt.current = Date.now() + 900
   }, [])
+
+  if (boundCity !== city) {
+    const next = readExploreMemory(city)
+    remembered.current = next
+    setBoundCity(city)
+    setCuisine(next?.cuisine ?? 'any')
+    setNeighborhood(next?.neighborhood ?? 'any')
+    setPrice(next?.price ?? 'any')
+    setBand(next?.band ?? 'any')
+    setVisit(next?.visit ?? 'any')
+    setArea(next?.area ?? null)
+    setDetent(next?.detent ?? 'peek')
+    setPinnedId(next?.pinnedId ?? null)
+    setActiveId(next?.pinnedId ?? null)
+    camera.current = next?.camera ?? null
+    openedAt.current = camera.current
+  }
+
+  function remember() {
+    saveExploreMemory(city, {
+      cuisine,
+      neighborhood,
+      price,
+      band,
+      visit,
+      detent,
+      pinnedId,
+      scroll: pinnedId ? 0 : (scroller.current?.scrollTop ?? 0),
+      area,
+      camera: camera.current,
+    })
+  }
+
+  useEffect(() => {
+    remember()
+    return () => remember()
+    // remember reads the latest sheet scroll and camera from refs.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [city, cuisine, neighborhood, price, band, visit, detent, pinnedId, area])
+
+  useEffect(() => {
+    const node = scroller.current
+    if (!node) return
+    if (pinnedId) {
+      node.scrollTo({ top: 0, behavior: reduceMotion ? 'auto' : 'smooth' })
+      return
+    }
+    const y = remembered.current?.scroll ?? 0
+    if (y) node.scrollTop = y
+  }, [pinnedId, reduceMotion])
 
   function resetArea() {
     armedAt.current = Date.now() + 900
@@ -145,12 +203,19 @@ export function ExplorePage() {
   const inView = area ? filtered.filter((place) => inside(place, area)) : filtered
   const distances = new Map(near ? inView.map((place) => [place.id, distanceKm(near, place)]) : [])
   const listed = near ? [...inView].sort((a, b) => (distances.get(a.id) ?? 0) - (distances.get(b.id) ?? 0)) : inView
-  const rows = listed.slice(0, 80)
+  const picked = pinnedId ? filtered.find((place) => place.id === pinnedId) : undefined
+  const rows = picked ? [picked, ...listed.filter((place) => place.id !== picked.id)].slice(0, 80) : listed.slice(0, 80)
+
+  function searchThisArea() {
+    if (latest.current) setArea(latest.current)
+    setPending(false)
+    setDetent('half')
+  }
 
   return (
     <main id="main" tabIndex={-1} className="explore-shell outline-none">
       <h1 className="sr-only">Explore {areaName}</h1>
-      <section ref={sheetEl} className={`explore-list is-${detent} ${sheet ? 'is-open' : 'is-peek'}`} aria-label="Places in this view">
+      <section ref={sheetEl} className={`explore-list map-sheet is-${detent}${detent === 'peek' ? '' : ' is-open'}`} aria-label="Places in this view">
         <div ref={headEl} className="explore-head">
         <button type="button" className="explore-grab" aria-expanded={sheet} onClick={() => setSheet((value) => !value)}>
           <span aria-hidden="true" />
@@ -232,6 +297,11 @@ export function ExplorePage() {
               </select>
             </label>
           </form>
+          {pending && detent === 'full' ? (
+            <p className="px-3 pt-3">
+              <button type="button" className="btn btn-coral" onClick={searchThisArea}>Search this area</button>
+            </p>
+          ) : null}
           {area ? (
             <p className="px-3 pb-2 text-sm">
               Searching this area.{' '}
@@ -287,6 +357,7 @@ export function ExplorePage() {
                   setBand('any')
                   setVisit('any')
                   setOpenNow(false)
+                  setPinnedId(null)
                   try {
                     sessionStorage.removeItem('gusto.open-now')
                   } catch {
@@ -304,34 +375,30 @@ export function ExplorePage() {
       <div className="explore-map">
         <Suspense fallback={<div className="map-frame skeleton h-full" aria-hidden="true" />}>
         <GuideMap
+          key={city}
           places={filtered}
           statuses={app.statuses}
           activeId={activeId}
+          camera={openedAt.current}
+          focus={near ? { lat: near.lat, lng: near.lng, zoom: 14 } : null}
           onHover={setActiveId}
           onSelect={(id) => {
             setActiveId(id)
-            setSheet(true)
-            window.requestAnimationFrame(() => {
-              document.getElementById(`explore-${id}`)?.scrollIntoView({ block: 'nearest', behavior: reduceMotion ? 'auto' : 'smooth' })
-            })
+            setPinnedId(id)
+            setDetent('half')
           }}
           onMoveEnd={(box) => {
             latest.current = box
             if (Date.now() < armedAt.current) return
             setPending(true)
           }}
+          onCamera={(next) => {
+            camera.current = next
+          }}
         />
         </Suspense>
-        {pending ? (
-          <button
-            type="button"
-            className="btn btn-coral search-area"
-            onClick={() => {
-              if (latest.current) setArea(latest.current)
-              setPending(false)
-              setSheet(true)
-            }}
-          >
+        {pending && detent !== 'full' ? (
+          <button type="button" className="btn btn-coral search-area" onClick={searchThisArea}>
             Search this area
           </button>
         ) : null}

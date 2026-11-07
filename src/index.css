@@ -533,6 +533,8 @@ textarea {
   align-items: center;
   justify-content: space-between;
   gap: var(--space-3);
+  min-width: 0;
+  max-width: 100%;
   min-height: 4.5rem;
   padding: var(--row-pad) var(--card-pad);
   border: 2px solid #181818;
@@ -540,8 +542,10 @@ textarea {
 }
 
 .smart-hit-meta {
-  flex: none;
+  flex: 0 1 8.5rem;
   max-width: 8.5rem;
+  min-width: 0;
+  overflow-wrap: anywhere;
   text-align: right;
   font-size: var(--text-xs);
   font-weight: 700;
@@ -5287,29 +5291,32 @@ mark {
 .explore-scroll { contain: paint; }
 .explore-scroll .btn, .explore-scroll .btn::before, .explore-scroll .btn::after { filter: none !important; box-shadow: none; position: static; z-index: auto; }
 
-/* Interactive map sheet on phones (fix71). One fixed full-tall panel from just under the status
-   bar (a 56px sliver of header stays for context) down to the tab bar. useBottomSheet moves it
-   between peek, half and full with transform: translateY on this element only, following the finger
-   and settling with the spring. Nothing inside the scroller is transformed (fix70 clipping). */
+/* Interactive map sheet on phones. The panel starts below the real header (it used to assume a
+   56px bar and painted over the city switcher) and stops above the tab bar. useBottomSheet moves
+   only this element. Collection lists are not part of this gesture. */
 @media (max-width: 767px) {
-  .explore-shell { z-index: 41; }
+  .explore-shell { z-index: 32; }
   .lg-dock { z-index: 42; }
-  .explore-list,
-  .explore-list.is-open,
-  .explore-list.is-peek {
+  .explore-list.map-sheet,
+  .explore-list.map-sheet.is-open,
+  .explore-list.map-sheet.is-peek,
+  .explore-list.map-sheet.is-half,
+  .explore-list.map-sheet.is-full {
     position: fixed;
-    top: calc(env(safe-area-inset-top) + 56px);
+    top: var(--header-offset);
     bottom: calc(84px + env(safe-area-inset-bottom));
     max-height: none;
     height: auto;
+    overflow: hidden;
     animation: none;
     transform: translate3d(0, 100%, 0);
     box-shadow: 0 -8px 32px rgb(20 31 77 / 18%);
   }
-  .explore-list.is-open .explore-scroll { animation: none; }
-  .explore-scroll { overscroll-behavior-y: none; }
-  .explore-head { touch-action: none; cursor: grab; }
-  .explore-map .leaflet-bottom { bottom: calc(4.75rem + 84px + env(safe-area-inset-bottom)); }
+  .explore-list.map-sheet.is-open .explore-scroll { animation: none; }
+  .explore-list.map-sheet .explore-scroll { overscroll-behavior-y: none; }
+  .explore-list.map-sheet .explore-head { touch-action: none; cursor: grab; }
+  .explore-map .leaflet-bottom { bottom: calc(var(--explore-peek, 12.5rem) + 24px); }
+  .explore-map .search-area { bottom: calc(var(--explore-peek, 12.5rem) + 8px); }
 }
 
 /* iPad and desktop: the sidebar is always open, so the sheet shortcuts do nothing there (fix72). */
@@ -5404,11 +5411,11 @@ main.pre-place .photo-frame:not(.is-compact) img.pre-place-img { width: calc(100
     width: 8.5rem;
     min-height: 44px;
     height: 44px;
-    margin: 0 auto -16px;
+    margin: 0 auto;
     align-items: flex-start;
-    padding-top: 12px;
+    padding-top: 8px;
   }
-  .explore-head .explore-bar { position: relative; z-index: 1; padding-top: 4px; padding-bottom: 4px; }
+  .explore-head .explore-bar { position: relative; z-index: 1; padding-top: 0; padding-bottom: 8px; }
   .explore-head .explore-bar .area-kicker { display: none; }
 }
 
@@ -5501,9 +5508,9 @@ html[data-area='pullman'] .hero { background: linear-gradient(160deg, #981e32 0%
 .explore-chips .glass-chip {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
+  gap: 8px;
   min-height: 44px;
-  padding: 0 14px;
+  padding: 0 12px;
   border-radius: 999px;
   border: 1px solid rgb(255 255 255 / 0.6);
   background: linear-gradient(180deg, rgb(255 255 255 / 0.62), rgb(255 250 243 / 0.42));
@@ -5528,7 +5535,30 @@ html[data-area='pullman'] .explore-chips .glass-chip[aria-pressed='true'] { back
   .explore-chips .glass-chip { transition: none; }
   .explore-chips .glass-chip:active { transform: none; }
 }
-@media (max-width: 420px) {
-  .explore-chips .glass-chip { padding: 0 10px; font-size: 0.8125rem; }
-  .explore-chips .glass-chip svg { display: none; }
+@media (max-width: 767px) {
+  .explore-list.map-sheet .explore-bar {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-areas:
+      "count toggle"
+      "chips chips";
+    align-items: center;
+    column-gap: 8px;
+    row-gap: 8px;
+  }
+  .explore-list.map-sheet .explore-bar > p { grid-area: count; }
+  .explore-list.map-sheet .explore-bar > .btn { grid-area: toggle; justify-self: end; width: auto; }
+  .explore-list.map-sheet .explore-chips {
+    grid-area: chips;
+    width: 100%;
+    margin-left: 0;
+  }
+  .explore-list.map-sheet .explore-chips .glass-chip {
+    flex: 1 1 0;
+    justify-content: center;
+    min-width: 0;
+    padding: 0 12px;
+  }
 }
+
+.place-back { margin: 0 0 8px; }

@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState, useSyncExternalStore } from 'react'
 import { useReducedMotion } from 'framer-motion'
-import { Link, Navigate, useParams } from 'react-router-dom'
+import { Link, Navigate, useLocation, useNavigate, useParams } from 'react-router-dom'
 import { PlaceGallery } from '../components/PlaceGallery.tsx'
 import { PlaceThumb } from '../components/PlaceThumb.tsx'
 import { SignInSheet } from '../components/SignInSheet.tsx'
@@ -31,6 +31,8 @@ import type { Place } from '../types.ts'
 export function PlacePage() {
   const { slug = '' } = useParams()
   const urlCity = useCityId()
+  const navigate = useNavigate()
+  const location = useLocation()
   const app = useApp()
   // Re-render when the deferred catalog lands so guides, awards and nearby places fill in.
   useSyncExternalStore(subscribeCatalog, catalogPhase, catalogPhase)
@@ -140,9 +142,20 @@ export function PlacePage() {
     }
   }
 
+  function goBack() {
+    if (location.key !== 'default') {
+      navigate(-1)
+      return
+    }
+    if (place) navigate(cityPath('/explore', placeCity(place)))
+  }
+
   return (
     <main id="main" tabIndex={-1} className="mx-auto min-h-dvh max-w-6xl px-4 pt-24 pb-16 outline-none">
       <div>
+      <p className="place-back">
+        <button type="button" className="btn" onClick={goBack}>Back</button>
+      </p>
       <div className="place-grid">
         <PlaceGallery
           photos={photos}

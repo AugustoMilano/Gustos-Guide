@@ -49,6 +49,7 @@ function fallbackBounds(places: MapPlace[]) {
 }
 
 export type MapBounds = { south: number; north: number; west: number; east: number }
+export type MapCamera = { lat: number; lng: number; zoom: number }
 
 const BASEMAP_STYLE = 'https://tiles.openfreemap.org/styles/positron'
 
@@ -130,6 +131,45 @@ function Basemap() {
       const { maplibreGL } = await import('@maplibre/maplibre-gl-leaflet')
       if (cancelled) return
       const created = maplibreGL({ style: BASEMAP_STYLE, preserveDrawingBuffer: true } as object)
+      // The bridge reads the Leaflet zoom inside a frame callback with no map check.
+      // Opening a place mid-zoom used to throw after the map was already gone.
+      const bridge = created as unknown as {
+        _map: {
+          getZoom: () => number
+          getCenter: () => { lng: number; lat: number }
+          getBounds: () => { getNorthWest: () => { lat: number; lng: number } }
+          latLngToContainerPoint: (latlng: { lat: number; lng: number }) => unknown
+        } | null
+        _glMap: {
+          _actualCanvas: HTMLElement
+          once: (event: string, fn: () => void) => void
+          jumpTo: (options: { center: { lng: number; lat: number }; zoom: number }) => void
+        } | null
+        _resizeContainer: () => void
+        _zoomEnd: () => void
+        _transitionEnd: () => void
+      }
+      const zoomEnd = bridge._zoomEnd
+      bridge._zoomEnd = function () {
+        if (!bridge._map) return
+        zoomEnd.call(bridge)
+      }
+      bridge._transitionEnd = function () {
+        window.L.Util.requestAnimFrame(() => {
+          const live = bridge._map
+          const gl = bridge._glMap
+          if (!live || !gl?._actualCanvas) return
+          const zoom = live.getZoom()
+          const center = live.getCenter()
+          const offset = live.latLngToContainerPoint(live.getBounds().getNorthWest())
+          bridge._resizeContainer()
+          window.L.DomUtil.setTransform(gl._actualCanvas, offset as Parameters<typeof window.L.DomUtil.setTransform>[1], 1)
+          gl.once('moveend', () => {
+            if (bridge._map) bridge._zoomEnd()
+          })
+          gl.jumpTo({ center, zoom: zoom - 1 })
+        })
+      }
       created.addTo(map)
       layer = created
       const gl = (created as { getMaplibreMap?: () => { resize: () => void; once: (event: string, fn: () => void) => void } }).getMaplibreMap?.()
@@ -210,12 +250,16 @@ function FitPins({
   activeId,
   onHover,
   onSelect,
+  camera,
+  hold,
 }: {
   places: MapPlace[]
   statuses: Record<string, VisitStatus>
   activeId?: string | null
   onHover?: (id: string | null) => void
   onSelect?: (id: string) => void
+  camera?: MapCamera | null
+  hold?: boolean
 }) {
   const map = useMap()
   const seenIds = useRef('')
@@ -226,6 +270,9 @@ function FitPins({
   const focusRef = useRef<string | null>(null)
   hoverRef.current = onHover
   selectRef.current = onSelect
+  const cameraRef = useRef(camera ?? null)
+  const holdRef = useRef(Boolean(hold))
+  holdRef.current = Boolean(hold)
   const idKey = places.map((place) => place.id).join('|')
   const colorKey = places.map((place) => statuses[place.id] ?? 'none').join('|')
 
@@ -286,6 +333,17 @@ function FitPins({
         if (size.y < 200 || size.x < 200) return
         const key = `${idKey}:${size.x}x${size.y}`
         if (seenIds.current === key) return
+        if (holdRef.current) {
+          seenIds.current = key
+          return
+        }
+        const saved = cameraRef.current
+        if (saved) {
+          cameraRef.current = null
+          seenIds.current = key
+          map.setView([saved.lat, saved.lng], saved.zoom, { animate: false })
+          return
+        }
         seenIds.current = key
         const finite = places.filter((place) => Number.isFinite(place.lat) && Number.isFinite(place.lng))
         if (finite.length === 1) {
@@ -357,23 +415,52 @@ function FitPins({
   return null
 }
 
-function WatchBounds({ onMoveEnd }: { onMoveEnd?: (box: MapBounds) => void }) {
+function FocusSpot({ spot }: { spot?: MapCamera | null }) {
+  const map = useMap()
+  const seen = useRef('')
+
+  useEffect(() => {
+    if (!spot) return
+    const key = `${spot.lat.toFixed(4)},${spot.lng.toFixed(4)}`
+    if (seen.current === key) return
+    seen.current = key
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    try {
+      if (reduce) map.setView([spot.lat, spot.lng], 14, { animate: false })
+      else map.flyTo([spot.lat, spot.lng], 14, { duration: 0.7 })
+    } catch {
+      // The map can unmount while the camera is moving.
+    }
+  }, [spot, map])
+
+  return null
+}
+
+function WatchBounds({ onMoveEnd, onCamera }: { onMoveEnd?: (box: MapBounds) => void; onCamera?: (camera: MapCamera) => void }) {
   const map = useMap()
   const callback = useRef(onMoveEnd)
+  const cameraCallback = useRef(onCamera)
 
   useEffect(() => {
     callback.current = onMoveEnd
+    cameraCallback.current = onCamera
   })
 
   useEffect(() => {
     const report = () => {
-      const bounds = map.getBounds()
-      callback.current?.({
-        south: bounds.getSouth(),
-        north: bounds.getNorth(),
-        west: bounds.getWest(),
-        east: bounds.getEast(),
-      })
+      try {
+        const bounds = map.getBounds()
+        callback.current?.({
+          south: bounds.getSouth(),
+          north: bounds.getNorth(),
+          west: bounds.getWest(),
+          east: bounds.getEast(),
+        })
+        const center = map.getCenter()
+        cameraCallback.current?.({ lat: center.lat, lng: center.lng, zoom: map.getZoom() })
+      } catch {
+        // The map can already be gone when the route changes.
+      }
     }
     map.on('moveend', report)
     return () => {
@@ -392,16 +479,22 @@ export function GuideMap({
   places,
   statuses,
   onMoveEnd,
+  onCamera,
   activeId,
   onHover,
   onSelect,
+  camera,
+  focus,
 }: {
   places: MapPlace[]
   statuses: Record<string, VisitStatus>
   onMoveEnd?: (box: MapBounds) => void
+  onCamera?: (camera: MapCamera) => void
   activeId?: string | null
   onHover?: (id: string | null) => void
   onSelect?: (id: string) => void
+  camera?: MapCamera | null
+  focus?: MapCamera | null
 }) {
   if (!places.length) {
     return (
@@ -430,8 +523,9 @@ export function GuideMap({
       >
         <ZoomButtons />
         <Basemap />
-        <FitPins places={places} statuses={statuses} activeId={activeId} onHover={onHover} onSelect={onSelect} />
-        <WatchBounds onMoveEnd={onMoveEnd} />
+        <FitPins places={places} statuses={statuses} activeId={activeId} onHover={onHover} onSelect={onSelect} camera={camera} hold={Boolean(focus)} />
+        <FocusSpot spot={focus} />
+        <WatchBounds onMoveEnd={onMoveEnd} onCamera={onCamera} />
       </MapContainer>
       <div className="map-legend">
         <span>

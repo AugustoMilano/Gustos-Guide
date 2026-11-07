@@ -367,7 +367,7 @@ test.describe('controls', () => {
     await expect(page.getByRole('link', { name: /Open in (Google|Apple) Maps/ }).first()).toBeVisible()
     const yelp = page.getByRole('link', { name: 'Yelp' }).first()
     if (await yelp.count()) await expect(yelp).toHaveAttribute('href', /yelp\.com\/biz\//)
-    await tap(page.getByRole('button', { name: 'Share' }))
+    await tap(page.getByRole('button', { name: 'Share', exact: true }))
     await tap(page.getByRole('button', { name: 'Sign in to add a photo' }))
     await expect(page.getByRole('dialog', { name: 'Sign in' })).toBeVisible()
     await page.getByLabel('Name').fill('QA')
@@ -436,15 +436,39 @@ test.describe('controls', () => {
     expect(opened).toBeTruthy()
     await page.waitForTimeout(700)
     const popup = page.locator('.leaflet-popup')
-    if (await popup.count()) {
-      await expect(popup.getByRole('link', { name: /Open / }).first()).toBeVisible()
+    const popupLink = popup.getByRole('link', { name: /Open / }).first()
+    if (await popup.count() && await popupLink.isVisible()) {
+      await expect(popupLink).toBeVisible()
     } else {
-      await expect(page.locator('.gusto-pin-wrap, .gusto-cluster').first()).toBeVisible()
+      await expect(page.locator('.explore-card.is-hot, .gusto-pin-wrap, .gusto-cluster').first()).toBeVisible()
     }
-    if (info.project.name === 'webkit') await tap(page.getByRole('button', { name: 'List' }))
+    if (info.project.name === 'webkit') {
+      const peek = await page.evaluate(() => {
+        const count = document.querySelector('.explore-bar .font-serif')?.getBoundingClientRect()
+        const chips = document.querySelector('.explore-chips')?.getBoundingClientRect()
+        if (!count || !chips) return true
+        return count.bottom > chips.top + 1 && chips.bottom > count.top + 1 && count.right > chips.left + 1 && chips.right > count.left + 1
+      })
+      expect(peek).toBe(false)
+      await tap(page.getByRole('button', { name: 'Open now' }))
+      await expect(page.getByRole('button', { name: 'Open now' })).toHaveAttribute('aria-pressed', 'true')
+      await tap(page.getByRole('button', { name: 'List', exact: true }))
+      await expect(page.locator('.map-sheet.is-full')).toHaveCount(1)
+      const covered = await page.evaluate(() => {
+        const header = document.querySelector('.site-header')?.getBoundingClientRect().bottom ?? 0
+        const sheet = document.querySelector('.explore-list')?.getBoundingClientRect().top ?? 0
+        return sheet < header - 1
+      })
+      expect(covered).toBe(false)
+    }
     const card = page.locator('.explore-card a').first()
     await tap(card)
-    await expect(page).toHaveURL(/#\/place\//)
+    await expect(page).toHaveURL(/\/place\//)
+    await tap(page.getByRole('button', { name: 'Back', exact: true }))
+    await expect(page).toHaveURL(/explore/)
+    if (info.project.name === 'webkit') {
+      await expect(page.getByRole('button', { name: 'Open now' })).toHaveAttribute('aria-pressed', 'true')
+    }
     expect(issues, issues.join('\n')).toEqual([])
   })
 })
