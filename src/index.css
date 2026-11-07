@@ -458,6 +458,10 @@ textarea {
   background: var(--color-card);
 }
 
+main ul.grid > li {
+  min-width: 0;
+}
+
 .smart-hit-meta {
   flex: 0 1 8.5rem;
   max-width: 8.5rem;

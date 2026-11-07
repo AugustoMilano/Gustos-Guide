@@ -34442,5 +34442,31 @@
   "closed_note": null,
   "notes": null,
   "location_count_in_list": 1
+ },
+ {
+  "order": null,
+  "muid": "15457730981392205514",
+  "apple_url": "https://maps.apple.com/place?auid=15457730981392205514",
+  "resolved": true,
+  "name": "Hot Mama's Pizza",
+  "address": "700 E Pine St, Seattle, WA 98122",
+  "city": "Seattle",
+  "state": "WA",
+  "postcode": "98122",
+  "country": "US",
+  "lat": 47.6153796,
+  "lng": -122.3232636,
+  "phone": "+1 (206) 322-6444",
+  "website": "https://www.hot-mamaspizza.com/",
+  "closed": false,
+  "neighborhood": "Capitol Hill",
+  "outside_seattle": false,
+  "kind": "food",
+  "type": "restaurant",
+  "cuisine": "Pizza",
+  "duplicate_of": null,
+  "hidden_reason": "already published as hot-mamas-pizza",
+  "notes": "Apple Maps place card. Name and auid only; ratings and copy stay on the published place.",
+  "location_count_in_list": 1
  }
 ]

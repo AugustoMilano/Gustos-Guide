@@ -241,7 +241,7 @@ test.describe('routes', () => {
 
   test('neighborhood guides are in the guide set', () => {
     expect(NEIGHBORHOODS.length).toBeGreaterThan(10)
-    expect(GUIDES.length).toBe(50)
+    expect(GUIDES.length).toBe(51)
     expect(PLACES.length).toBeGreaterThanOrEqual(40)
   })
 })
@@ -332,7 +332,7 @@ test.describe('controls', () => {
     const share = page.getByRole('button', { name: 'Share' }).first()
     await tap(share)
     await expect(share).toHaveText(/Copied|Copy the link|Share/)
-    const sort = page.getByRole('button', { name: "Gusto's Score" })
+    const sort = page.getByRole('button', { name: 'Guide order' })
     const box = await sort.boundingBox()
     expect(box?.height ?? 0).toBeGreaterThanOrEqual(44)
     await tap(sort)
@@ -347,7 +347,7 @@ test.describe('controls', () => {
       await page.goBack()
     }
 
-    const photo = page.locator('a[href="#/place/the-5-point-cafe"]').first()
+    const photo = page.locator('a[href$="/place/pacific-inn-pub"]').first()
     await expect(photo).toBeVisible()
     await tap(page.getByRole('button', { name: 'To go' }).first())
     await expect(page.getByRole('dialog', { name: 'Sign in' })).toBeVisible()
@@ -480,7 +480,7 @@ test.describe('auth return', () => {
     const dialog = page.getByRole('dialog', { name: 'Sign-in problem' })
     await expect(dialog).toBeVisible()
     await expect(dialog.getByText('Database error saving new user')).toBeVisible()
-    await expect(page).toHaveURL(/#\/$/)
+    await expect(page).toHaveURL(/#\/seattle$/)
 
     await page.addInitScript(() => sessionStorage.setItem('gusto.auth.return', '#/explore'))
     await page.goto('/?code=test-code&sb_flow_id=flow-1', { waitUntil: 'domcontentloaded' })

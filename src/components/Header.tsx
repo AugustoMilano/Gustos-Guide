@@ -130,10 +130,14 @@ export function Header() {
       document.documentElement.style.setProperty('--header-offset', `${height}px`)
     }
     apply()
+    const frame = requestAnimationFrame(apply)
     const observer = new ResizeObserver(apply)
     observer.observe(bar)
-    return () => observer.disconnect()
-  }, [])
+    return () => {
+      cancelAnimationFrame(frame)
+      observer.disconnect()
+    }
+  }, [location.pathname, picker, showAreas])
 
   useEffect(() => {
     const onScroll = () => {

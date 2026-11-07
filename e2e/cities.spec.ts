@@ -23,6 +23,9 @@ function watch(page: Page) {
 test('city picker, Seattle urls, and Los Angeles', async ({ page }) => {
   const issues = watch(page)
   await page.goto('/#/', { waitUntil: 'domcontentloaded' })
+  await expect(page.getByRole('heading', { level: 1 })).toContainText('Where are you eating?')
+  await tap(page.getByRole('button', { name: /Seattle/ }))
+  await expect(page).toHaveURL(/#\/seattle$/)
   await expect(page.getByRole('heading', { level: 1 })).toContainText('Seattle')
   await expect(page.locator('.city-switch')).toBeVisible()
   await expect(page.getByRole('link', { name: 'Browse all guides' })).toBeVisible()
