@@ -13,7 +13,18 @@ npm run deploy:cf
 
 `deploy:cf` runs `wrangler pages deploy dist --project-name gustos-guide`.
 
-`npm run build` checks copy, writes the Terms and Privacy pages, writes `public/sitemap.xml` and Open Graph cards, typechecks, builds, then stamps `dist/sw.js` with the git commit. The sitemap, canonical URLs, and `robots.txt` use `https://gustosguide.com`. Set `SITE_URL` before the build only if a preview should list a different origin.
+`npm run build` checks copy, writes the Terms and Privacy pages, writes `public/sitemap.xml` and Open Graph cards, typechecks, builds, then stamps `dist/sw.js`. The sitemap, canonical URLs, and `robots.txt` use `https://gustosguide.com`. Set `SITE_URL` before the build only if a preview should list a different origin.
+
+The service-worker cache name is the commit that was built. In a git checkout, `scripts/stamp-sw.mjs` reads `git rev-parse HEAD`. A source archive has no `.git` directory, so set `GUSTO_BUILD_SHA` to that commit's full 40-character hex SHA before `npm run build`. When `GUSTO_BUILD_SHA` is set, git is not called. A blank value falls back to git. A short SHA, `HEAD`, or any other non-hex value stops the build. If the variable is unset and git cannot be read, the build stops. The script does not invent a SHA and does not need a git binary on the archive path.
+
+```bash
+export GUSTO_BUILD_SHA=<40-character commit sha>
+npm ci
+npm run build
+npm run deploy:cf
+```
+
+`node scripts/stamp-sw.test.mjs` checks the env stamp, the git fallback, and that a directory with no git fails closed.
 
 `public/_headers` is copied into `dist`. Files under `/assets/` (content-hashed) use `Cache-Control: public, max-age=31536000, immutable`. `/`, `/index.html`, and `/sw.js` use `Cache-Control: no-cache`, so the next visit revalidates the shell and the worker.
 

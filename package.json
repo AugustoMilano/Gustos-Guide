@@ -9,6 +9,7 @@
     "deploy:cf": "wrangler pages deploy dist --project-name gustos-guide",
     "lint": "oxlint && node scripts/lint-copy.mjs",
     "test:e2e": "playwright test",
+    "test:stamp": "node scripts/stamp-sw.test.mjs",
     "content": "node scripts/build-content.mjs",
     "photos": "node scripts/fetch-photos.mjs",
     "wikimedia": "node scripts/fetch-wikimedia.mjs",

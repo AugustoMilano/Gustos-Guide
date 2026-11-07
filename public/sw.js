@@ -1,4 +1,4 @@
-// Replaced in dist/sw.js by scripts/stamp-sw.mjs with the git commit.
+// Replaced in dist/sw.js by scripts/stamp-sw.mjs with GUSTO_BUILD_SHA, or git rev-parse HEAD.
 const CACHE = 'gusto-__GUSTO_BUILD__'
 const SHELL = [
   './',
