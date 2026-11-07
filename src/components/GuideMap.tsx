@@ -185,7 +185,7 @@ function Basemap() {
       const markReady = () => { if (!cancelled) setReady(true) }
       gl?.once('load', () => { nudge(); markReady() })
       gl?.once('idle', () => { nudge(); markReady() })
-      if (gl?.loaded()) markReady()
+      if (gl?.loaded?.()) markReady()
       nudge()
       } catch {
         // A basemap failure leaves the list up.
