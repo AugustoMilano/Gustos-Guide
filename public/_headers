@@ -35,14 +35,15 @@
 /hop.htm
   Cache-Control: no-cache
 
+# no-cache alone was ignored for these .js files (Pages sent max-age=14400). no-store matches sw.js, which Pages honors.
 /hop.js
-  Cache-Control: no-cache
+  Cache-Control: no-cache, no-store, must-revalidate
 
 /status.js
-  Cache-Control: no-cache
+  Cache-Control: no-cache, no-store, must-revalidate
 
 /cfa.js
-  Cache-Control: no-cache
+  Cache-Control: no-cache, no-store, must-revalidate
 
 /*
   X-Content-Type-Options: nosniff

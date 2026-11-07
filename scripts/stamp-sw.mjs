@@ -3,7 +3,7 @@
 // set GUSTO_BUILD_SHA to the full 40-character commit SHA before `npm run build`.
 // When GUSTO_BUILD_SHA is set it wins, and git is not called. The script never invents a SHA.
 import { execFileSync } from 'node:child_process'
-import { readFileSync, writeFileSync } from 'node:fs'
+import { existsSync, readFileSync, writeFileSync } from 'node:fs'
 import { resolve } from 'node:path'
 import { pathToFileURL } from 'node:url'
 
@@ -37,6 +37,13 @@ function readGitHead() {
   return execFileSync('git', ['rev-parse', 'HEAD'], { encoding: 'utf8' })
 }
 
+export function stampIndexBoot(html, sha) {
+  if (!SHA_RE.test(sha)) throw new Error('boot stamp requires the full 40-character hex commit SHA')
+  const next = html.replace(/src="(\.\/|\/)status\.js(?:\?[^"]*)?"/, `src="$1status.js?v=${sha}"`)
+  if (next === html) throw new Error('index.html is missing the status.js script')
+  return next
+}
+
 export function stampServiceWorker(file = 'dist/sw.js', sha = resolveBuildSha()) {
   const source = readFileSync(file, 'utf8')
   if (!source.includes('__GUSTO_BUILD__')) {
@@ -55,6 +62,8 @@ function isDirectRun() {
 if (isDirectRun()) {
   try {
     const sha = stampServiceWorker()
+    const indexPath = resolve('dist/index.html')
+    if (existsSync(indexPath)) writeFileSync(indexPath, stampIndexBoot(readFileSync(indexPath, 'utf8'), sha))
     console.log(`stamped sw.js ${sha}`)
   } catch (error) {
     console.error(error instanceof Error ? error.message : error)

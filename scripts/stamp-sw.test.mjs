@@ -4,7 +4,7 @@ import { mkdtempSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'nod
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 import { fileURLToPath } from 'node:url'
-import { resolveBuildSha } from './stamp-sw.mjs'
+import { resolveBuildSha, stampIndexBoot } from './stamp-sw.mjs'
 
 const script = fileURLToPath(new URL('./stamp-sw.mjs', import.meta.url))
 const good = 'fd775867464f41674c24ee70cbfbdac81aeab1dc'
@@ -105,6 +105,15 @@ check('an invalid env does not stamp', () => {
   } finally {
     rmSync(dir, { recursive: true, force: true })
   }
+})
+
+check('index.html boots status.js with the commit', () => {
+  const html = '<script src="./status.js"></script>'
+  const stamped = stampIndexBoot(html, good)
+  assert.equal(stamped, `<script src="./status.js?v=${good}"></script>`)
+  assert.equal(stampIndexBoot(stamped, other), `<script src="./status.js?v=${other}"></script>`)
+  assert.equal(stampIndexBoot('<script src="/status.js"></script>', good), `<script src="/status.js?v=${good}"></script>`)
+  assert.throws(() => stampIndexBoot('<script src="./app.js"></script>', good), /status\.js/)
 })
 
 if (failed) {
