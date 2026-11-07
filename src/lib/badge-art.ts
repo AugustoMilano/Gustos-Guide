@@ -219,7 +219,7 @@ export function badgeSvg(spec: BadgeSpec): string {
   const gy = spec.numeral ? 22 : 37
   const gx = 60 - 12 * glyphScale
   const numeral = spec.numeral
-    ? `<text x="60" y="${spec.numeral.length > 3 ? 72 : 75}" text-anchor="middle" font-family="'Instrument Serif','Times New Roman',serif" font-style="italic" font-size="${spec.numeral.length > 3 ? 26 : spec.numeral.length > 2 ? 32 : 38}" fill="${enamel.ink}" filter="url(#${id}e)">${spec.numeral}</text>`
+    ? `<text x="60" y="${spec.numeral.length > 3 ? 72 : 75}" text-anchor="middle" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif" font-style="normal" font-weight="650" font-size="${spec.numeral.length > 3 ? 26 : spec.numeral.length > 2 ? 32 : 38}" fill="${enamel.ink}" filter="url(#${id}e)">${spec.numeral}</text>`
     : ''
   const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" aria-hidden="true">
 <defs>

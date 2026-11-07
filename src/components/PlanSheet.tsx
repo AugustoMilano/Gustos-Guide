@@ -297,7 +297,7 @@ export function PlanSheet({ open, onClose, seedPlaceId }: { open: boolean; onClo
                       aria-pressed={on}
                       onClick={() => setInvited((current) => current.includes(person.id) ? current.filter((id) => id !== person.id) : [...current, person.id])}
                     >
-                      <span className="avatar" style={{ background: AVATAR[index % AVATAR.length] }}>{initials(person.name)}</span>
+                      <span className="avatar" style={{ background: AVATAR[index % AVATAR.length], color: AVATAR[index % AVATAR.length] === '#141f4d' ? '#fffaf3' : '#181818' }}>{initials(person.name)}</span>
                       <span className="truncate text-sm font-bold">{person.name.split(' ')[0]}</span>
                       {demoFriendsEnabled && person.demo ? <span className="text-[0.65rem] font-bold uppercase">Seeded</span> : null}
                     </button>

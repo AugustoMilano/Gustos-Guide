@@ -326,7 +326,7 @@ export function PlanWizardPage() {
                   aria-pressed={on}
                   onClick={() => setFriends((current) => current.includes(person.id) ? current.filter((id) => id !== person.id) : [...current, person.id])}
                 >
-                  <span className="avatar" style={{ background: AVATAR[index % AVATAR.length] }}>{initials(person.name)}</span>
+                  <span className="avatar" style={{ background: AVATAR[index % AVATAR.length], color: AVATAR[index % AVATAR.length] === '#141f4d' ? '#fffaf3' : '#181818' }}>{initials(person.name)}</span>
                   <span className="font-serif text-2xl italic leading-none">{person.name}</span>
                   <span className="text-xs font-bold uppercase tracking-wide">{demoFriendsEnabled && person.demo ? person.neighborhood : 'Friend'}</span>
                 </button>
@@ -417,7 +417,7 @@ export function PlanWizardPage() {
                       </span>
                       <span className="mt-2 flex items-center gap-1">
                         {fans.map((person, index) => (
-                          <span key={person.id} className="avatar avatar-sm" style={{ background: AVATAR[index % AVATAR.length] }} title={person.name}>{initials(person.name)}</span>
+                          <span key={person.id} className="avatar avatar-sm" style={{ background: AVATAR[index % AVATAR.length], color: AVATAR[index % AVATAR.length] === '#141f4d' ? '#fffaf3' : '#181818' }} title={person.name}>{initials(person.name)}</span>
                         ))}
                         {you ? <span className="avatar avatar-sm" style={{ background: '#181818' }} title="Your vote">You</span> : null}
                         <span className="score-num ml-auto">{tally}</span>

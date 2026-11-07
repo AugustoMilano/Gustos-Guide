@@ -160,7 +160,7 @@ test.describe('desktop panel parity', () => {
         const pins = [...document.querySelectorAll<HTMLElement>('.gusto-pin-wrap')]
         const hit = pins.find((el) => {
           const b = el.getBoundingClientRect()
-          return b.width > 8 && b.top > 80 && b.left > 380 && b.bottom < window.innerHeight - 40
+          return b.width > 8 && b.top > 80 && b.left > 380 && b.bottom < window.innerHeight - 8
         })
         if (!hit) return null
         const b = hit.getBoundingClientRect()

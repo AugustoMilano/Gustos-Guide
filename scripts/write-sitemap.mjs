@@ -42,16 +42,16 @@ function card(title, dek) {
   const titleLines = wrap(title, 22)
   const dekLines = wrap(dek, 42)
   const titleText = titleLines
-    .map((line, i) => `<text x="72" y="${180 + i * 78}" fill="#EEE3D6" font-family="Georgia, serif" font-size="68">${escapeXml(line)}</text>`)
+    .map((line, i) => `<text x="72" y="${180 + i * 78}" fill="#EEE3D6" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif" font-weight="600" font-size="68">${escapeXml(line)}</text>`)
     .join('')
   const dekText = dekLines
-    .map((line, i) => `<text x="72" y="${430 + i * 36}" fill="#FF5330" font-family="Georgia, serif" font-size="28">${escapeXml(line)}</text>`)
+    .map((line, i) => `<text x="72" y="${430 + i * 36}" fill="#FF5330" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif" font-weight="600" font-size="28">${escapeXml(line)}</text>`)
     .join('')
   return `<?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
   <rect width="1200" height="630" fill="#141F4D"/>
   <g transform="translate(72 36) scale(0.92)">${markMarkup()}</g>
-  <text x="140" y="78" fill="#EEE3D6" font-family="Georgia, serif" font-size="28" font-style="italic">Gusto's Guide</text>
+  <text x="140" y="78" fill="#EEE3D6" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif" font-weight="600" font-size="28" font-style="normal">Gusto's Guide</text>
   ${titleText}
   ${dekText}
 </svg>

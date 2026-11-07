@@ -6,6 +6,8 @@ const NAVY = '#141f4d'
 const CREAM = '#fffaf3'
 const CREAM_DIM = '#eee3d6'
 const CORAL = '#ff5330'
+const INK = '#181818'
+const SANS = 'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif'
 
 export type StoryPlace = {
   name: string
@@ -28,8 +30,6 @@ export type StoryItem = {
 const forkCache = new Map<string, HTMLImageElement>()
 
 async function loadFonts() {
-  await document.fonts.load('italic 120px "Instrument Serif"')
-  await document.fonts.load('700 28px "Instrument Sans"')
   await document.fonts.ready
 }
 
@@ -134,7 +134,7 @@ function frame(ctx: CanvasRenderingContext2D) {
   roundRect(ctx, 36, 36, W - 72, H - 72, 28)
   ctx.stroke()
   ctx.fillStyle = CREAM
-  ctx.font = 'italic 64px "Instrument Serif", Georgia, serif'
+  ctx.font = `600 64px ${SANS}`
   ctx.textAlign = 'left'
   ctx.textBaseline = 'alphabetic'
   ctx.fillText("Gusto's Guide", 84, 148)
@@ -165,7 +165,7 @@ export async function renderPlaceStory(place: StoryPlace): Promise<Blob> {
     ctx.fillStyle = '#0c1438'
     ctx.fillRect(x, y, w, h)
     ctx.fillStyle = 'rgba(255, 250, 243, 0.14)'
-    ctx.font = 'italic 180px "Instrument Serif", Georgia, serif'
+    ctx.font = `600 180px ${SANS}`
     ctx.textAlign = 'center'
     const mark = place.cuisine || place.neighborhood || 'Gusto'
     ctx.fillText(mark.slice(0, 18), W / 2, y + h / 2)
@@ -182,20 +182,20 @@ export async function renderPlaceStory(place: StoryPlace): Promise<Blob> {
     ctx.fill()
     ctx.restore()
     await drawFork(ctx, place.award.metal, place.award.rank === 1, bx + 24, by + 18, size - 64)
-    ctx.fillStyle = place.award.metal === 'navy' ? CORAL : NAVY
-    ctx.font = '700 22px "Instrument Sans", sans-serif'
+    ctx.fillStyle = place.award.metal === 'navy' ? INK : NAVY
+    ctx.font = `650 22px ${SANS}`
     ctx.textAlign = 'center'
-    ctx.fillText(place.award.metal === 'navy' ? 'TOP 25' : `#${place.award.rank}`, bx + size / 2, by + size - 30)
+    ctx.fillText(place.award.metal === 'navy' ? 'Top 25' : `#${place.award.rank}`, bx + size / 2, by + size - 30)
     ctx.textAlign = 'left'
   }
 
   let cursor = y + h + 86
   ctx.fillStyle = CREAM
   ctx.textAlign = 'left'
-  ctx.font = 'italic 92px "Instrument Serif", Georgia, serif'
+  ctx.font = `600 92px ${SANS}`
   let nameLines = wrap(ctx, place.name, w)
   if (nameLines.length > 3) {
-    ctx.font = 'italic 72px "Instrument Serif", Georgia, serif'
+    ctx.font = `600 72px ${SANS}`
     nameLines = wrap(ctx, place.name, w).slice(0, 3)
   }
   for (const line of nameLines.slice(0, 3)) {
@@ -204,27 +204,27 @@ export async function renderPlaceStory(place: StoryPlace): Promise<Blob> {
   }
   if (place.neighborhood) {
     ctx.fillStyle = CREAM_DIM
-    ctx.font = '700 28px "Instrument Sans", sans-serif'
-    ctx.fillText(place.neighborhood.toUpperCase(), x, cursor + 8)
+    ctx.font = `650 28px ${SANS}`
+    ctx.fillText(place.neighborhood, x, cursor + 8)
     cursor += 64
   }
   if (typeof place.score === 'number') {
     ctx.fillStyle = CORAL
-    ctx.font = '700 22px "Instrument Sans", sans-serif'
-    ctx.fillText("GUSTO'S SCORE", x, cursor + 12)
+    ctx.font = `650 22px ${SANS}`
+    ctx.fillText("Gusto's score", x, cursor + 12)
     ctx.fillStyle = CREAM
-    ctx.font = 'italic 128px "Instrument Serif", Georgia, serif'
+    ctx.font = `600 128px ${SANS}`
     ctx.fillText(place.score.toFixed(1), x, cursor + 132)
   }
   const credit = place.credit && place.credit !== 'Illustration' ? `Photo · ${place.credit}${place.license ? ` · ${place.license}` : ''}` : ''
   ctx.fillStyle = 'rgba(238, 227, 214, 0.72)'
-  ctx.font = '500 22px "Instrument Sans", sans-serif'
+  ctx.font = `500 22px ${SANS}`
   if (credit) {
     const line = credit.length > 78 ? `${credit.slice(0, 76)}…` : credit
     ctx.fillText(line, x, H - 148)
   }
   ctx.fillStyle = CORAL
-  ctx.font = '700 32px "Instrument Sans", sans-serif'
+  ctx.font = `650 32px ${SANS}`
   ctx.fillText('gustosguide.com', x, H - 88)
   return blobOf(node)
 }
@@ -234,10 +234,10 @@ export async function renderGuideStory(guide: { title: string; items: StoryItem[
   const { canvas: node, ctx } = canvas()
   frame(ctx)
   ctx.fillStyle = CREAM_DIM
-  ctx.font = '700 22px "Instrument Sans", sans-serif'
-  ctx.fillText('A GUIDE', 84, 230)
+  ctx.font = `650 22px ${SANS}`
+  ctx.fillText('A guide', 84, 230)
   ctx.fillStyle = CREAM
-  ctx.font = 'italic 84px "Instrument Serif", Georgia, serif'
+  ctx.font = `600 84px ${SANS}`
   const titleLines = wrap(ctx, guide.title, 900).slice(0, 3)
   let cursor = 320
   for (const line of titleLines) {
@@ -248,7 +248,7 @@ export async function renderGuideStory(guide: { title: string; items: StoryItem[
   const items = guide.items.slice(0, 8)
   if (!items.length) {
     ctx.fillStyle = CREAM_DIM
-    ctx.font = 'italic 48px "Instrument Serif", Georgia, serif'
+    ctx.font = `600 48px ${SANS}`
     ctx.fillText('Nothing listed yet.', 84, cursor + 40)
   }
   for (let index = 0; index < items.length; index += 1) {
@@ -262,20 +262,20 @@ export async function renderGuideStory(guide: { title: string; items: StoryItem[
     const forkX = right - forkSize
     const scoreRight = item.metal ? forkX - 18 : right
     ctx.fillStyle = CORAL
-    ctx.font = 'italic 48px "Instrument Serif", Georgia, serif'
+    ctx.font = `600 48px ${SANS}`
     ctx.textAlign = 'left'
     ctx.fillText(String(index + 1), 112, rowY + 72)
-    ctx.font = 'italic 40px "Instrument Serif", Georgia, serif'
+    ctx.font = `600 40px ${SANS}`
     const nameMax = scoreRight - (typeof item.score === 'number' ? 130 : 24) - 176
     const name = fit(ctx, item.name, Math.max(180, nameMax))
     ctx.fillStyle = CREAM
     ctx.fillText(name, 176, rowY + 50)
     ctx.fillStyle = CREAM_DIM
-    ctx.font = '700 18px "Instrument Sans", sans-serif'
-    ctx.fillText(fit(ctx, item.neighborhood.toUpperCase(), Math.max(180, nameMax)), 176, rowY + 84)
+    ctx.font = `650 18px ${SANS}`
+    ctx.fillText(fit(ctx, item.neighborhood, Math.max(180, nameMax)), 176, rowY + 84)
     if (typeof item.score === 'number') {
       ctx.fillStyle = CREAM
-      ctx.font = 'italic 44px "Instrument Serif", Georgia, serif'
+      ctx.font = `600 44px ${SANS}`
       ctx.textAlign = 'right'
       ctx.fillText(item.score.toFixed(1), scoreRight, rowY + 74)
       ctx.textAlign = 'left'
@@ -287,11 +287,11 @@ export async function renderGuideStory(guide: { title: string; items: StoryItem[
   }
   if (guide.items.length > 8) {
     ctx.fillStyle = CREAM_DIM
-    ctx.font = '700 24px "Instrument Sans", sans-serif'
+    ctx.font = `650 24px ${SANS}`
     ctx.fillText(`and ${guide.items.length - 8} more`, 84, Math.min(cursor + 20, H - 150))
   }
   ctx.fillStyle = CORAL
-  ctx.font = '700 32px "Instrument Sans", sans-serif'
+  ctx.font = `650 32px ${SANS}`
   ctx.fillText('gustosguide.com', 84, H - 88)
   return blobOf(node)
 }

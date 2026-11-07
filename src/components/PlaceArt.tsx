@@ -210,7 +210,7 @@ export function PlaceArt({ id, cuisine, neighborhood }: { id: string; cuisine: s
       <MotifShape motif={motif} a={a} b={b} c={c} tilt={tilt} />
       <g transform={`rotate(${(hash % 7) - 8} 150 500)`}>
         <rect x="70" y="470" width="150" height="48" fill={b} stroke="#181818" strokeWidth="6" />
-        <text x="145" y="502" textAnchor="middle" fontFamily="Instrument Sans, sans-serif" fontSize="24" fontWeight="700" fill="#181818">
+        <text x="145" y="502" textAnchor="middle" fontFamily="system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif" fontSize="24" fontWeight="700" fill="#181818">
           {tag}
         </text>
       </g>

@@ -53,8 +53,8 @@ function CuisineMark({ cuisine }: { cuisine: string }) {
           <path d="M560 300 q60-70 120 0" />
         </g>
       ) : null}
-      <text x="72" y="560" fill="#EEE3D6" fontFamily="Instrument Sans, sans-serif" fontSize="28" fontWeight="700">
-        {cuisine.toUpperCase()}
+      <text x="72" y="560" fill="#EEE3D6" fontFamily="system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif" fontSize="28" fontWeight="650">
+        {cuisine}
       </text>
     </svg>
   )
