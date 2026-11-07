@@ -1189,6 +1189,20 @@ main ul.grid > li {
   border: 0;
 }
 
+.map-loading {
+  position: absolute;
+  z-index: 500;
+  top: 12px;
+  left: 12px;
+  margin: 0;
+  padding: 6px 10px;
+  pointer-events: none;
+  border-radius: 999px;
+  background: #fffaf3;
+  color: #181818;
+  font: 600 12px/1.2 system-ui, sans-serif;
+}
+
 .search-area {
   position: absolute;
   z-index: 800;

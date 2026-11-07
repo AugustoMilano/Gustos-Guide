@@ -117,6 +117,7 @@ function cancelIdle(id: number) {
 
 function Basemap() {
   const map = useMap()
+  const [ready, setReady] = useState(false)
 
   useEffect(() => {
     let layer: Layer | null = null
@@ -172,7 +173,7 @@ function Basemap() {
       }
       created.addTo(map)
       layer = created
-      const gl = (created as { getMaplibreMap?: () => { resize: () => void; once: (event: string, fn: () => void) => void } }).getMaplibreMap?.()
+      const gl = (created as { getMaplibreMap?: () => { resize: () => void; loaded?: () => boolean; once: (event: string, fn: () => void) => void } }).getMaplibreMap?.()
       const nudge = () => {
         try {
           map.invalidateSize()
@@ -181,8 +182,10 @@ function Basemap() {
           // The map can already be gone when a tile load finishes.
         }
       }
-      gl?.once('load', nudge)
-      gl?.once('idle', nudge)
+      const markReady = () => { if (!cancelled) setReady(true) }
+      gl?.once('load', () => { nudge(); markReady() })
+      gl?.once('idle', () => { nudge(); markReady() })
+      if (gl?.loaded()) markReady()
       nudge()
       } catch {
         // A basemap failure leaves the list up.
@@ -216,7 +219,8 @@ function Basemap() {
     }
   }, [map])
 
-  return null
+  if (ready) return null
+  return <p className="map-loading" role="status">Loading the map</p>
 }
 
 const COLORS: Record<VisitStatus | 'none', string> = {

@@ -1,4 +1,10 @@
 ;(function () {
+  if (location.hostname === 'www.gustosguide.com') {
+    var apex = new URL(location.href)
+    apex.hostname = 'gustosguide.com'
+    location.replace(apex.toString())
+    return
+  }
   var path = (location.hash.replace(/^#/, '') || '/').split('?')[0].replace(/\/$/, '') || '/'
   var homes = { '/': 1, '/seattle': 1, '/eastside': 1, '/la': 1, '/sf': 1, '/eastbay': 1, '/peninsula': 1, '/northbay': 1, '/sandiego': 1, '/vancouver': 1, '/portland': 1, '/nyc': 1, '/pullman': 1, '/moscow': 1 }
   var navy = homes[path] === 1

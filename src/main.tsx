@@ -29,7 +29,7 @@ try {
 // A new worker calls skipWaiting and navigates clients that are still on the previous bundle.
 // This listener covers the next deploy: if a worker takes control of a page that already had one,
 // reload once so the new entry chunk runs. The first visit has no controller yet and does not reload.
-if (import.meta.env.PROD && 'serviceWorker' in navigator) {
+if (import.meta.env.PROD && 'serviceWorker' in navigator && window.location.hostname !== 'www.gustosguide.com') {
   const hadController = Boolean(navigator.serviceWorker.controller)
   if (hadController) {
     let reloading = false
