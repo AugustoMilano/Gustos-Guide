@@ -14,9 +14,55 @@ if (window.location.hostname === 'www.gustosguide.com') {
   window.location.replace(url.toString())
 }
 
-// Service worker updates never reload the page. A new version waits, takes over while the page
-// is in the background, and the next open simply loads it.
-if (import.meta.env.PROD && 'serviceWorker' in navigator) {
+// The worker adds this once so a controlled tab loads the new document instead of the frozen one.
+// Remove it without a second navigation. The hash, and anything saved in the browser, stays.
+try {
+  const current = new URL(window.location.href)
+  if (current.searchParams.has('gusto-build')) {
+    current.searchParams.delete('gusto-build')
+    history.replaceState(history.state, '', `${current.pathname}${current.search}${current.hash}`)
+  }
+} catch {
+  // A bad URL should not block the app.
+}
+
+// A new worker calls skipWaiting and navigates clients that are still on the previous bundle.
+// This listener covers the next deploy: if a worker takes control of a page that already had one,
+// reload once so the new entry chunk runs. The first visit has no controller yet and does not reload.
+if (import.meta.env.PROD && 'serviceWorker' in navigator && window.location.hostname !== 'www.gustosguide.com') {
+  const hadController = Boolean(navigator.serviceWorker.controller)
+  if (hadController) {
+    let reloading = false
+    navigator.serviceWorker.addEventListener('controllerchange', () => {
+      if (reloading) return
+      try {
+        if (sessionStorage.getItem('gusto-sw-reload') === '1') return
+        sessionStorage.setItem('gusto-sw-reload', '1')
+      } catch {
+        // Private mode can block storage. One reload is still safer than keeping the old bundle.
+      }
+      reloading = true
+      window.location.reload()
+    })
+  }
+  window.setTimeout(() => {
+    try {
+      sessionStorage.removeItem('gusto-chunk-reload')
+      sessionStorage.removeItem('gusto-sw-reload')
+    } catch {
+      // Ignore storage failures.
+    }
+  }, 10000)
+  window.addEventListener('vite:preloadError', ((event: Event) => {
+    event.preventDefault()
+    try {
+      if (sessionStorage.getItem('gusto-chunk-reload') === '1') return
+      sessionStorage.setItem('gusto-chunk-reload', '1')
+    } catch {
+      return
+    }
+    window.location.reload()
+  }) as EventListener)
   window.addEventListener('load', () => {
     void navigator.serviceWorker.register('./sw.js', { updateViaCache: 'none' }).then((registration) => {
       const activateWhenHidden = () => {
@@ -27,6 +73,7 @@ if (import.meta.env.PROD && 'serviceWorker' in navigator) {
         else activateWhenHidden()
       })
       window.addEventListener('pagehide', () => registration.waiting?.postMessage({ type: 'SKIP_WAITING' }))
+      void registration.update()
       // A first visit loads its files before the worker runs. Hand it what this page already
       // fetched, so the place opened on that visit also works offline (C4).
       void navigator.serviceWorker.ready.then((ready) => {

@@ -1,15 +1,17 @@
-import { lazy, Suspense, useEffect, useMemo, useRef, useState, useSyncExternalStore } from 'react'
+import { lazy, Suspense, useEffect, useId, useMemo, useRef, useState, useSyncExternalStore } from 'react'
 import { useReducedMotion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import type { MapBounds, MapCamera } from '../components/GuideMap.tsx'
 import { readExploreMemory, saveExploreMemory, type ExploreMemory } from '../lib/explore-memory.ts'
 
 const GuideMap = lazy(() => import('../components/GuideMap.tsx').then((module) => ({ default: module.GuideMap })))
+import { CuisinePicker } from '../components/CuisinePicker.tsx'
 import { MapLinks } from '../components/MapLinks.tsx'
 import { PlaceThumb } from '../components/PlaceThumb.tsx'
 import { GoldenFork } from '../components/GoldenFork.tsx'
 import { ScoreBadge, scoreBand } from '../components/ScoreBadge.tsx'
 import { areaName as cityName, areaPhrase, areaTitle, cityPath, regionOf } from '../lib/city.ts'
+import { cuisineLabel } from '../lib/cuisine-label.ts'
 import { useCityCatalog } from '../lib/use-city.ts'
 import { hasHours, isPlaceOpen } from '../lib/hours.ts'
 import { distanceKm, formatDistance, locate, readNearMe, saveNearMe, type Spot } from '../lib/near-me.ts'
@@ -131,6 +133,7 @@ export function ExplorePage() {
     setDetent(open ? 'full' : 'peek')
   }
   const [filtersOpen, setFiltersOpen] = useState(false)
+  const cuisineLabelId = useId()
   const sheetEl = useRef<HTMLElement>(null)
   const headEl = useRef<HTMLDivElement>(null)
   const scroller = useRef<HTMLDivElement>(null)
@@ -273,13 +276,10 @@ export function ExplorePage() {
             {filtersOpen ? 'Hide filters' : 'Filters'}
           </button>
           <form id="explore-filters" className={`explore-filters panel-pad grid grid-cols-2 gap-2 py-3 ${filtersOpen ? '' : 'max-md:hidden'}`} aria-label="Map filters">
-            <label className="field">
-              <span>Cuisine</span>
-              <select value={cuisine} onChange={(event) => { setCuisine(event.target.value); resetArea() }}>
-                <option value="any">Any</option>
-                {cuisines.map((item) => <option key={item}>{item}</option>)}
-              </select>
-            </label>
+            <div className="field">
+              <span id={cuisineLabelId}>Cuisine</span>
+              <CuisinePicker labelId={cuisineLabelId} value={cuisine} options={cuisines} onChange={(next) => { setCuisine(next); resetArea() }} />
+            </div>
             <label className="field">
               <span>Neighborhood</span>
               <select value={neighborhood} onChange={(event) => { setNeighborhood(event.target.value); resetArea() }}>
@@ -343,7 +343,7 @@ export function ExplorePage() {
                   <span className="place-row-copy">
                     <span className="block font-serif text-xl italic leading-tight">{place.name}</span>
                     <span className="mt-1 block text-xs font-bold tracking-wide uppercase">
-                      {[place.cuisine[0], priceLabel(place.price), place.neighborhood].filter(Boolean).join(' · ')}
+                      {[cuisineLabel(place.cuisine[0] ?? ''), priceLabel(place.price), place.neighborhood].filter(Boolean).join(' · ')}
                     </span>
                     {near ? <span className="mt-1 block text-sm">{formatDistance(distances.get(place.id) ?? 0, region)} away</span> : null}
                   </span>

@@ -1,7 +1,8 @@
-import { useEffect, useRef, useState, type RefObject } from 'react'
+import { useEffect, useLayoutEffect, useRef, useState, type RefObject } from 'react'
 import { AnimatePresence, m, useReducedMotion } from 'framer-motion'
 import { dragSheet } from '../lib/motion.ts'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
+import { accountAccessibleName, accountGreeting } from '../lib/account-label.ts'
 import { barePath, regionName as areaLabel, areaPhrase, areasFor, CITY_PREFIXES, cityPath, isCityPicker, readRegionMemory, writeRegionMemory } from '../lib/city.ts'
 import { SearchField } from './SearchField.tsx'
 import { useCityId } from '../lib/use-city-id.ts'
@@ -85,7 +86,6 @@ export function Header() {
   const [open, setOpen] = useState(false)
   const [query, setQuery] = useState('')
   const [menu, setMenu] = useState(false)
-  const [more, setMore] = useState(false)
   const [bell, setBell] = useState(false)
   const unread = notices.filter((notice) => !notice.read).length
   const bellLabel = unread ? `Notifications, ${unread} unread` : 'Notifications'
@@ -99,21 +99,17 @@ export function Header() {
   const onProfile = /\/u\/[^/]+\/?$/.test(location.pathname)
   const showAreas = !picker && !onProfile && areasFor(city).length > 1
   const bellPanel = useRef<HTMLDivElement>(null)
-  const bellDesktop = useRef<HTMLButtonElement>(null)
   const bellMobile = useRef<HTMLButtonElement>(null)
   const menuPanel = useRef<HTMLElement>(null)
   const menuButton = useRef<HTMLButtonElement>(null)
-  const morePanel = useRef<HTMLDivElement>(null)
-  const moreButton = useRef<HTMLButtonElement>(null)
-  const [bellRefs] = useState(() => [bellPanel, bellDesktop, bellMobile])
+  const [bellRefs] = useState(() => [bellPanel, bellMobile])
   const [menuRefs] = useState(() => [menuPanel, menuButton])
-  const [moreRefs] = useState(() => [morePanel, moreButton])
   const reduceMotion = useReducedMotion()
   const [scrolled, setScrolled] = useState(false)
   const [onHero, setOnHero] = useState(() => HOME_PATHS.has(location.pathname))
   const route = `${location.pathname}${location.search}`
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const mode = picker ? 'picker' : showAreas ? 'areas' : 'single'
     const root = document.documentElement
     root.dataset.header = mode
@@ -122,7 +118,7 @@ export function Header() {
     if (!picker) writeRegionMemory(city)
   }, [picker, showAreas, city, location.pathname])
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const bar = document.querySelector('.site-header')
     if (!bar) return
     const apply = () => {
@@ -130,10 +126,14 @@ export function Header() {
       document.documentElement.style.setProperty('--header-offset', `${height}px`)
     }
     apply()
+    const frame = requestAnimationFrame(apply)
     const observer = new ResizeObserver(apply)
     observer.observe(bar)
-    return () => observer.disconnect()
-  }, [])
+    return () => {
+      cancelAnimationFrame(frame)
+      observer.disconnect()
+    }
+  }, [location.pathname, picker, showAreas])
 
   useEffect(() => {
     const onScroll = () => {
@@ -158,8 +158,14 @@ export function Header() {
   useEffect(() => watchThemeColor(), [])
 
   useDismiss(bell, () => setBell(false), bellRefs, true)
-  useDismiss(menu, () => setMenu(false), menuRefs)
-  useDismiss(more, () => setMore(false), moreRefs, true)
+  useDismiss(menu, () => {
+    setMenu(false)
+    menuButton.current?.focus()
+  }, menuRefs)
+
+  useEffect(() => {
+    if (menu) menuPanel.current?.focus()
+  }, [menu])
 
   // Close both popovers when the route changes (adjusting state during render, not in an effect).
   const [lastRoute, setLastRoute] = useState(route)
@@ -167,12 +173,10 @@ export function Header() {
     setLastRoute(route)
     setBell(false)
     setMenu(false)
-    setMore(false)
   }
 
   function toggleBell() {
     setMenu(false)
-    setMore(false)
     if (!bell) markNoticesRead()
     setBell(!bell)
   }
@@ -228,79 +232,20 @@ export function Header() {
           onSubmit={(next) => {
             navigate(cityPath(`/search?q=${encodeURIComponent(next)}`, linkCity))
             setMenu(false)
-            setMore(false)
           }}
           className="site-search ml-auto hidden w-44 shrink-0 xl:block min-[1400px]:w-60"
         />
         <nav className="site-nav hidden items-center gap-1 text-sm font-bold xl:flex" aria-label="Primary">
-          <Link viewTransition={!reduceMotion} to={cityPath('/explore', linkCity)} onMouseEnter={() => prefetch('/explore')} onFocus={() => prefetch('/explore')}>Explore</Link>
-          <Link viewTransition={!reduceMotion} to={cityPath('/guides', linkCity)}>Guides</Link>
-          <Link viewTransition={!reduceMotion} to={cityPath('/tonight', linkCity)}>Tonight</Link>
-          <Link viewTransition={!reduceMotion} to={cityPath('/top', linkCity)}>Top 25</Link>
-          <Link viewTransition={!reduceMotion} className="nav-wide" to={cityPath('/feed', linkCity)}>Feed</Link>
-          <Link viewTransition={!reduceMotion} className="nav-wide" to={cityPath('/plans', linkCity)} onMouseEnter={() => prefetch('/plans/wizard')} onFocus={() => prefetch('/plans/wizard')}>Plans</Link>
-          <Link viewTransition={!reduceMotion} className="nav-wide" to={cityPath('/rank', linkCity)}>Rank</Link>
-          <Link viewTransition={!reduceMotion} className="nav-wide" to={cityPath('/my', linkCity)}>My guides</Link>
-          {user?.isOwner ? <Link viewTransition={!reduceMotion} className="nav-wide" to={cityPath('/score', linkCity)}>Scores</Link> : null}
-          {user?.isOwner ? <Link viewTransition={!reduceMotion} className="nav-wide" to={cityPath('/score/quick', linkCity)}>Quick</Link> : null}
-          {user?.isOwner ? <Link viewTransition={!reduceMotion} className="nav-wide" to={cityPath('/photos', linkCity)}>Photos</Link> : null}
-          <div className="nav-more relative">
-            <button
-              type="button"
-              ref={moreButton}
-              aria-expanded={more}
-              aria-controls="more-menu"
-              onClick={() => {
-                setBell(false)
-                setMore((value) => !value)
-              }}
-            >
-              More
-            </button>
-            <AnimatePresence>
-              {more ? (
-                <m.div
-                  ref={morePanel}
-                  id="more-menu"
-                  className="more-sheet"
-                  role="group"
-                  aria-label="More"
-                  initial={reduceMotion ? false : { opacity: 0, y: -8, scale: 0.96 }}
-                  animate={{ opacity: 1, y: 0, scale: 1 }}
-                  exit={reduceMotion ? undefined : { opacity: 0, y: -6, scale: 0.96 }}
-                  transition={{ type: 'spring', stiffness: 420, damping: 32 }}
-                >
-                  <Link viewTransition={!reduceMotion} to={cityPath('/feed', linkCity)} onClick={() => setMore(false)}>Feed</Link>
-                  <Link viewTransition={!reduceMotion} to={cityPath('/plans', linkCity)} onClick={() => setMore(false)} onFocus={() => prefetch('/plans/wizard')}>Plans</Link>
-                  <Link viewTransition={!reduceMotion} to={cityPath('/rank', linkCity)} onClick={() => setMore(false)}>Rank</Link>
-                  <Link viewTransition={!reduceMotion} to={cityPath('/top', linkCity)} onClick={() => setMore(false)}>Top 25</Link>
-                  <Link viewTransition={!reduceMotion} to={cityPath('/my', linkCity)} onClick={() => setMore(false)}>My guides</Link>
-                  {user?.isOwner ? <Link viewTransition={!reduceMotion} to={cityPath('/score', linkCity)} onClick={() => setMore(false)}>Scores</Link> : null}
-                  {user?.isOwner ? <Link viewTransition={!reduceMotion} to={cityPath('/score/quick', linkCity)} onClick={() => setMore(false)}>Quick score</Link> : null}
-                  {user?.isOwner ? <Link viewTransition={!reduceMotion} to={cityPath('/photos', linkCity)} onClick={() => setMore(false)}>Photos</Link> : null}
-                </m.div>
-              ) : null}
-            </AnimatePresence>
-          </div>
-          <button
-            type="button"
-            className="relative min-h-11 px-2"
-            ref={bellDesktop}
-            aria-label={bellLabel}
-            title={bellLabel}
-            aria-expanded={bell}
-            aria-controls="notifications-panel"
-            onClick={toggleBell}
-          >
-            Notifications{unread ? ` ${unread}` : ''}
-          </button>
+          <Link viewTransition={!reduceMotion} to={cityPath('/explore', linkCity)} aria-current={barePath(location.pathname) === '/explore' ? 'page' : undefined} onMouseEnter={() => prefetch('/explore')} onFocus={() => prefetch('/explore')}>Map</Link>
+          <Link viewTransition={!reduceMotion} to={cityPath('/guides', linkCity)} aria-current={barePath(location.pathname) === '/guides' || barePath(location.pathname).startsWith('/guide/') ? 'page' : undefined}>Guides</Link>
+          <Link viewTransition={!reduceMotion} to={cityPath('/tonight', linkCity)} aria-current={barePath(location.pathname) === '/tonight' ? 'page' : undefined}>Tonight</Link>
+          <Link viewTransition={!reduceMotion} to={cityPath('/top', linkCity)} aria-current={barePath(location.pathname) === '/top' ? 'page' : undefined}>Top 25</Link>
           {user ? (
             <>
-              <Link viewTransition={!reduceMotion} to={cityPath(`/u/${user.handle}`, linkCity)} className="inline-flex max-w-[10rem] items-center gap-2">
+              <Link viewTransition={!reduceMotion} to={cityPath(`/u/${user.handle}`, linkCity)} className="inline-flex max-w-[10rem] items-center gap-2" aria-label={accountAccessibleName(user)}>
                 {user.avatarUrl ? <img src={user.avatarUrl} alt="" width={32} height={32} loading="lazy" decoding="async" referrerPolicy="no-referrer" className="h-8 w-8 shrink-0 rounded-full object-cover" /> : null}
-                <span className="truncate">{user.name}</span>
+                <span className="truncate">{accountGreeting(user)}</span>
               </Link>
-              <button type="button" className="btn text-sm" onClick={signOut}>Sign out</button>
             </>
           ) : (
             <button type="button" className="btn btn-coral text-sm" onClick={() => setOpen(true)}>
@@ -311,7 +256,7 @@ export function Header() {
         <button
           type="button"
           ref={bellMobile}
-          className={`bell-btn glass-icon${unread ? ' has-unread' : ''} relative ml-auto inline-flex min-h-11 min-w-11 items-center justify-center px-2 xl:hidden`}
+          className={`bell-btn glass-icon${unread ? ' has-unread' : ''} relative ml-auto inline-flex min-h-11 min-w-11 items-center justify-center px-2`}
           aria-label={bellLabel}
           title={bellLabel}
           aria-expanded={bell}
@@ -324,7 +269,7 @@ export function Header() {
         <button
           type="button"
           ref={menuButton}
-          className="menu-btn glass-icon inline-flex min-h-11 items-center px-3 text-sm font-bold xl:hidden"
+          className="menu-btn glass-icon inline-flex min-h-11 items-center px-3 text-sm font-bold"
           aria-expanded={menu}
           aria-controls="mobile-menu"
           onClick={() => {
@@ -340,7 +285,8 @@ export function Header() {
         <m.nav
           ref={menuPanel}
           id="mobile-menu"
-          className="menu-sheet glass grid max-h-[calc(100dvh-var(--header-offset)-0.75rem)] gap-2 overflow-y-auto text-sm font-bold xl:hidden"
+          className="menu-sheet glass grid max-h-[calc(100dvh-var(--header-offset)-0.75rem)] gap-2 overflow-y-auto text-sm font-bold"
+          tabIndex={-1}
           aria-label="Menu"
           style={{ transformOrigin: 'top right' }}
           initial={reduceMotion ? false : { opacity: 0, y: -10, scale: 0.92 }}
@@ -356,14 +302,13 @@ export function Header() {
             onSubmit={(next) => {
               navigate(cityPath(`/search?q=${encodeURIComponent(next)}`, linkCity))
               setMenu(false)
-              setMore(false)
             }}
           />
           {user ? (
             <div className="menu-account">
-              <Link viewTransition={!reduceMotion} to={cityPath(`/u/${user.handle}`, linkCity)} className="menu-account-link" onClick={() => setMenu(false)}>
-                {user.avatarUrl ? <img src={user.avatarUrl} alt="" width={32} height={32} loading="lazy" decoding="async" referrerPolicy="no-referrer" className="h-8 w-8 rounded-full object-cover" /> : <span className="menu-account-initial" aria-hidden="true">{user.name.slice(0, 1)}</span>}
-                <span className="truncate">{user.name}</span>
+              <Link viewTransition={!reduceMotion} to={cityPath(`/u/${user.handle}`, linkCity)} className="menu-account-link" aria-label={accountAccessibleName(user)} onClick={() => setMenu(false)}>
+                {user.avatarUrl ? <img src={user.avatarUrl} alt="" width={32} height={32} loading="lazy" decoding="async" referrerPolicy="no-referrer" className="h-8 w-8 rounded-full object-cover" /> : <span className="menu-account-initial" aria-hidden="true">{accountGreeting(user).slice(0, 1)}</span>}
+                <span className="truncate">{accountGreeting(user)}</span>
               </Link>
               <button type="button" className="menu-account-out" onClick={() => { setMenu(false); signOut() }}>Sign out</button>
             </div>
@@ -371,7 +316,7 @@ export function Header() {
             <button type="button" className="btn btn-coral" onClick={() => { setMenu(false); setOpen(true) }}>Sign in</button>
           )}
           <AreaKicker />
-          <Link viewTransition={!reduceMotion} to={cityPath('/explore', linkCity)} onClick={() => setMenu(false)} onFocus={() => prefetch('/explore')}>Explore</Link>
+          <Link viewTransition={!reduceMotion} to={cityPath('/explore', linkCity)} onClick={() => setMenu(false)} onFocus={() => prefetch('/explore')}>Map</Link>
           <Link viewTransition={!reduceMotion} to={cityPath('/guides', linkCity)} onClick={() => setMenu(false)}>Guides</Link>
           <Link viewTransition={!reduceMotion} to={cityPath('/tonight', linkCity)} onClick={() => setMenu(false)}>Tonight</Link>
           <Link viewTransition={!reduceMotion} to={cityPath('/feed', linkCity)} onClick={() => setMenu(false)}>Feed</Link>

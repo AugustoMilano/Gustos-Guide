@@ -7,7 +7,7 @@ const mos = JSON.parse(readFileSync('src/content/palouse.json','utf8')).places.f
 const views = { phone: devices['iPhone 13'], ipad: devices['iPad (gen 7)'], desktop: { viewport: { width: 1440, height: 900 } } }
 const routes = [
   ['/', 'Where are you eating?'],
-  ['/vancouver', 'Eat across Vancouver.'], ['/portland', 'Eat across Portland.'], ['/nyc', 'Eat across New York.'], ['/pullman', 'Eat across Pullman.'], ['/moscow', 'Eat across Moscow.'],
+  ['/vancouver', 'Vancouver'], ['/portland', 'Portland'], ['/nyc', 'New York'], ['/pullman', 'Pullman, WA'], ['/moscow', 'Moscow, ID'],
   ['/vancouver/top', 'Top 25 · Vancouver'], ['/nyc/top', 'Top 25 · New York'], ['/portland/top', 'Top 25 · Portland'], ['/pullman/top', 'Top 25 · Pullman, WA'],
   ['/nyc/guides', 'New York guides'], ['/portland/guide/pdx-downtown', 'Downtown'], ['/vancouver/guide/van-granville-island-public-market', 'Granville Island Public Market'], ['/nyc/place/fiore-s-house-of-quality', 'Fiore'],
   ['/nyc/place/' + nyc, null], ['/moscow/place/' + mos, null],
@@ -43,7 +43,7 @@ for (const [ename, engine] of (process.env.ONLY === 'webkit' ? [['webkit', webki
     await page.goto(base + '/#/pullman', { waitUntil: 'load' }); await page.waitForTimeout(2000)
     const sw = page.locator('button.city-switch-btn').filter({ hasText: /Moscow, ID/ }).first()
     let swOk = false
-    if (await sw.isVisible().catch(() => false)) { try { await sw.click({ timeout: 8000 }) } catch (e) { results.push([ename, vname, 'switch click', 'FAIL', String(e).split('\n')[0], '']) }; await page.waitForTimeout(1200); swOk = page.url().includes('/moscow') && await page.getByText('Eat across Moscow.').first().isVisible().catch(() => false) }
+    if (await sw.isVisible().catch(() => false)) { try { await sw.click({ timeout: 8000 }) } catch (e) { results.push([ename, vname, 'switch click', 'FAIL', String(e).split('\n')[0], '']) }; await page.waitForTimeout(1200); swOk = page.url().includes('/moscow') && await page.getByRole('heading', { name: 'Moscow, ID' }).first().isVisible().catch(() => false) }
     results.push([ename, vname, 'pullman->moscow switch', swOk ? 'OK' : 'FAIL', page.url(), ''])
     await ctx.close()
   }

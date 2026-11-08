@@ -34,13 +34,7 @@ export function CitiesPage({ landing = false }: { landing?: boolean } = {}) {
       >
       <p className="area-kicker">Gusto's Guide</p>
       <h1 className="mt-2 font-serif text-6xl italic">{landing ? 'Where are you eating?' : 'Choose a city'}</h1>
-      {landing ? (
-        <p className="mt-3 max-w-xl">Pick a city to open its guide.</p>
-      ) : (
-      <p className="mt-3 max-w-xl">
-        Seattle includes Bellevue, Kirkland, and Redmond, with an Eastside switch once you are inside. San Francisco includes the East Bay, the Peninsula and South Bay, and the North Bay the same way. Los Angeles is its own list. San Diego is its own list too: La Jolla, Coronado, Chula Vista, and North County stay on it, without a second city. Vancouver, Portland, and New York are their own lists. Pullman, WA has a Moscow, ID switch once you are inside. The city you opened last is marked.
-      </p>
-      )}
+      <p className="mt-3 max-w-xl">{landing ? 'Pick a city to open its guide.' : 'Pick a city to explore.'}</p>
       </m.div>
       <div className="mt-6 grid gap-3">
         {REGIONS.map((region, index) => {

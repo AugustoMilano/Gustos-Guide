@@ -23,6 +23,9 @@ function watch(page: Page) {
 test('city picker, Seattle urls, and Los Angeles', async ({ page }) => {
   const issues = watch(page)
   await page.goto('/#/', { waitUntil: 'domcontentloaded' })
+  await expect(page.getByRole('heading', { level: 1 })).toContainText('Where are you eating?')
+  await tap(page.getByRole('button', { name: /Seattle/ }))
+  await expect(page).toHaveURL(/#\/seattle$/)
   await expect(page.getByRole('heading', { level: 1 })).toContainText('Seattle')
   await expect(page.locator('.city-switch')).toBeVisible()
   await expect(page.getByRole('link', { name: 'Browse all guides' })).toBeVisible()
@@ -43,6 +46,8 @@ test('city picker, Seattle urls, and Los Angeles', async ({ page }) => {
   await tap(page.locator('.region-back'))
   await expect(page).toHaveURL(/#\/cities/)
   await expect(page.getByRole('heading', { name: 'Choose a city' })).toBeVisible()
+  await expect(page.getByText('Pick a city to explore.', { exact: true })).toBeVisible()
+  await expect(page.getByText('The city you opened last is marked.')).toHaveCount(0)
   await expect(page.locator('.city-switch')).toHaveCount(0)
   await expect(page.getByRole('button', { name: /Seattle/ })).toBeVisible()
   await expect(page.getByRole('button', { name: /Los Angeles/ })).toBeVisible()

@@ -1,23 +1,15 @@
-// Replaced in dist/sw.js by scripts/stamp-sw.mjs with the git commit.
+// Replaced in dist/sw.js by scripts/stamp-sw.mjs with GUSTO_BUILD_SHA, or git rev-parse HEAD.
 const CACHE = 'gusto-__GUSTO_BUILD__'
-const SHELL = [
-  './',
-  './index.html',
-  './manifest.webmanifest',
-  './icon-192.png',
-  './icon-512.png',
-  './apple-touch-icon.png',
-  './splash-iphone.png',
-]
+
+// True only when this install is replacing a worker that is already controlling a page.
+let replaceOpenClients = false
 
 self.addEventListener('install', (event) => {
-  event.waitUntil(
-    caches
-      .open(CACHE)
-      .then((cache) => cache.addAll(SHELL)),
-  )
-  // A first install has nothing to replace and activates at once. An update waits: the page
-  // asks for it only when it is hidden, so an open page never swaps or reloads under the reader.
+  // Read this before skipWaiting. Fetching the shell here deadlocks install: the previous
+  // worker still owns the page, and the new one never leaves "installing".
+  replaceOpenClients = Boolean(self.registration.active)
+  self.skipWaiting()
+  event.waitUntil(Promise.resolve())
 })
 
 self.addEventListener('message', (event) => {
@@ -40,10 +32,30 @@ self.addEventListener('message', (event) => {
 
 self.addEventListener('activate', (event) => {
   event.waitUntil(
-    caches
-      .keys()
-      .then((keys) => Promise.all(keys.filter((key) => key !== CACHE).map((key) => caches.delete(key))))
-      .then(() => self.clients.claim()),
+    (async () => {
+      const keys = await caches.keys()
+      await Promise.all(keys.filter((key) => key !== CACHE).map((key) => caches.delete(key)))
+      await self.clients.claim()
+      if (replaceOpenClients) {
+        const open = await self.clients.matchAll({ type: 'window' })
+        for (const client of open) {
+          if (typeof client.navigate !== 'function') continue
+          let next
+          try {
+            next = new URL(client.url)
+          } catch {
+            continue
+          }
+          // Same-URL navigate can restore the old document. A one-time query forces a real load
+          // and leaves the hash, so the open guide or place stays put. The page removes the query.
+          // Do not await navigate: the new document cannot finish loading until activate's
+          // waitUntil resolves, and awaiting it here would wait forever.
+          if (next.searchParams.get('gusto-build') === CACHE) continue
+          next.searchParams.set('gusto-build', CACHE)
+          client.navigate(next.href).catch(() => {})
+        }
+      }
+    })(),
   )
 })
 
@@ -51,6 +63,22 @@ function isHashedAsset(url) {
   // Hashed chunks include the place and guide catalogs, so a visit caches them for offline.
   return url.pathname.includes('/assets/')
 }
+
+function mustRevalidate(url, request) {
+  // status.js is the unhashed bootloader. Pages was caching it for four hours, so a reload
+  // kept the previous entry chunk. Bypass the HTTP cache for the document and the boot files.
+  if (request.mode === 'navigate') return true
+  return (
+    url.pathname === '/' ||
+    url.pathname.endsWith('/index.html') ||
+    url.pathname.endsWith('/status.js') ||
+    url.pathname.endsWith('/cfa.js') ||
+    url.pathname.endsWith('/hop.js') ||
+    url.pathname.endsWith('/manifest.webmanifest')
+  )
+}
+
+const RELOAD_MODULE = `try{if(sessionStorage.getItem('gusto-chunk-reload')==='1'){sessionStorage.removeItem('gusto-chunk-reload')}else{sessionStorage.setItem('gusto-chunk-reload','1');location.reload()}}catch(e){}export{}\n`
 
 function isWorkerScript(url) {
   return url.pathname === '/sw.js' || url.pathname.endsWith('/sw.js')
@@ -63,6 +91,16 @@ async function cacheFirst(request) {
   if (response.ok) {
     const copy = response.clone()
     caches.open(CACHE).then((cache) => cache.put(request, copy)).catch(() => {})
+    return response
+  }
+  const url = new URL(request.url)
+  // A shell from the previous deploy asks for a hashed chunk this deploy removed.
+  // Hand back a module that reloads once onto the current build instead of a blank route.
+  if (response.status === 404 && url.pathname.includes('/assets/') && url.pathname.endsWith('.js')) {
+    return new Response(RELOAD_MODULE, {
+      status: 200,
+      headers: { 'Content-Type': 'text/javascript; charset=utf-8', 'Cache-Control': 'no-store' },
+    })
   }
   return response
 }
@@ -75,10 +113,20 @@ async function trimPhotos(cache) {
   await Promise.all(keys.slice(0, keys.length - PHOTO_LIMIT).map((key) => cache.delete(key)))
 }
 
+async function fetchFresh(request) {
+  const url = new URL(request.url)
+  // A new fetch() from this handler is intercepted again and never returns. Pass the original
+  // navigation through. Mark boot scripts so the handler lets those reach the network.
+  if (!mustRevalidate(url, request) || request.mode === 'navigate') return fetch(request)
+  const headers = new Headers()
+  headers.set('x-gusto-fresh', '1')
+  return fetch(request.url, { cache: 'reload', credentials: 'same-origin', redirect: 'follow', headers })
+}
+
 async function networkFirst(request) {
   const cache = await caches.open(CACHE)
   try {
-    const response = await fetch(request)
+    const response = await fetchFresh(request)
     if (response.ok) {
       await cache.put(request, response.clone())
       if (new URL(request.url).pathname.startsWith('/photos/')) trimPhotos(cache).catch(() => {})
@@ -102,6 +150,7 @@ async function networkFirst(request) {
 self.addEventListener('fetch', (event) => {
   const request = event.request
   if (request.method !== 'GET') return
+  if (request.headers.get('x-gusto-fresh') === '1') return
   const url = new URL(request.url)
   if (url.origin !== self.location.origin) return
   if (isWorkerScript(url)) {

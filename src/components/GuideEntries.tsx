@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { useReducedMotion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { cityPath } from '../lib/city.ts'
+import { cuisineLabel } from '../lib/cuisine-label.ts'
 import { PlaceArt } from './PlaceArt.tsx'
 import { PlaceThumb } from './PlaceThumb.tsx'
 import { ThumbImg } from './ThumbImg.tsx'
@@ -85,7 +86,7 @@ export function GuideStrip({
                   </div>
                   <h3 className="mt-2 line-clamp-2 min-h-[2.6rem] font-serif text-xl italic leading-tight">{number != null ? <span className="mr-1.5 text-coral not-italic">{number}</span> : null}{place.name}</h3>
                   <p className="mt-2 line-clamp-2 min-h-[2rem] text-xs font-bold tracking-wide uppercase">
-                    {[place.neighborhood, place.cuisine[0], priceLabel(place.price)].filter(Boolean).join(' · ')}
+                    {[place.neighborhood, cuisineLabel(place.cuisine[0] ?? ''), priceLabel(place.price)].filter(Boolean).join(' · ')}
                   </p>
                   {vibe || place.perfectFor[0] ? <span className={`tag mt-1.5 min-h-6 ${vibe ? 'tag-vibe' : ''}`}>{vibe ?? place.perfectFor[0]}</span> : null}
                 </div>
@@ -159,7 +160,7 @@ function Shot({
       </div>
       <figcaption className="mt-1 px-1 text-xs font-bold">
         {!art && photo?.caption ? `${photo.caption} · ` : null}
-        {art ? 'Illustration' : photo?.credit}
+        {art ? null : photo?.credit}
       </figcaption>
     </figure>
   )
@@ -219,7 +220,7 @@ export function GuideEntryCard({
               onClick={() => setActive(shotIndex)}
               aria-label={`Photo ${shotIndex + 1} of ${place.name}`}
             >
-              {shot.url && !shot.illustration ? <ThumbImg url={shot.url} /> : <span className="text-[10px] font-bold">Art</span>}
+              {shot.url && !shot.illustration ? <ThumbImg url={shot.url} /> : <PlaceArt id={place.id} cuisine={place.cuisine[0] ?? ''} neighborhood={place.neighborhood} />}
             </button>
           ))}
         </div>
@@ -240,18 +241,13 @@ export function GuideEntryCard({
         </span>
       </div>
       <p className="mt-3 text-sm font-bold tracking-wide uppercase">
-        {[place.cuisine.join(' · '), place.neighborhood, priceLabel(place.price), place.closed ? 'Closed' : ''].filter(Boolean).join(' · ')}
+        {[place.cuisine.map((item) => cuisineLabel(item)).join(' · '), place.neighborhood, priceLabel(place.price), place.closed ? 'Closed' : ''].filter(Boolean).join(' · ')}
       </p>
     </div>
   )
   const rest = (
     <div className="min-w-0">
-      {entry.pullQuote ? (
-      <blockquote className={`entry-quote mt-4 ${layout === 1 ? 'border-l-4 border-coral pl-4' : 'glass bg-[#fffaf3] px-4 py-3'}`}>
-        “{entry.pullQuote}”
-      </blockquote>
-      ) : null}
-      {entry.blurb !== entry.pullQuote ? <p className="mt-4 max-w-2xl text-lg leading-relaxed">{entry.blurb}</p> : null}
+      {entry.blurb ? <p className="mt-4 max-w-2xl text-lg leading-relaxed">{entry.blurb}</p> : null}
       <div className="mt-4 flex flex-wrap gap-2">
         {entry.vibe ? <span className="tag tag-vibe">{entry.vibe}</span> : null}
         {place.perfectFor.map((tag) => <span key={tag} className="tag">{tag}</span>)}
@@ -290,18 +286,14 @@ export function GuideEntryCard({
   const compact = (
     <article id={`entry-${place.id}`} className={`guide-entry scroll-mt-24 border-t border-ink/10${hotClass}`} {...point}>
       {title}
-      <div className="mt-3 flex items-start gap-3">
-        <figure className="w-24 shrink-0">
-          <Link to={cityPath(`/place/${place.id}`)} className="block" aria-label={place.name} viewTransition={!reduceMotion}>
-            <div className="h-24 w-24 overflow-hidden soft-media bg-navy [&_.place-art]:aspect-auto [&_.place-art]:h-full">
-              <PlaceArt id={place.id} cuisine={place.cuisine[0] ?? 'Seattle'} neighborhood={place.neighborhood} />
-            </div>
-          </Link>
-          <figcaption className="mt-1 text-[10px] font-bold tracking-wide uppercase">Illustration</figcaption>
-        </figure>
-        {entry.pullQuote ? <blockquote className="entry-quote min-w-0 flex-1 border-l-4 border-coral pl-3">“{entry.pullQuote}”</blockquote> : null}
-      </div>
-      {entry.blurb !== entry.pullQuote ? <p className="mt-4 max-w-2xl text-lg leading-relaxed">{entry.blurb}</p> : null}
+      <figure className="mt-3 w-24">
+        <Link to={cityPath(`/place/${place.id}`)} className="block" aria-label={place.name} viewTransition={!reduceMotion}>
+          <div className="h-24 w-24 overflow-hidden soft-media bg-navy [&_.place-art]:aspect-auto [&_.place-art]:h-full">
+            <PlaceArt id={place.id} cuisine={place.cuisine[0] ?? 'Seattle'} neighborhood={place.neighborhood} />
+          </div>
+        </Link>
+      </figure>
+      {entry.blurb ? <p className="mt-4 max-w-2xl text-lg leading-relaxed">{entry.blurb}</p> : null}
       <div className="mt-4 flex flex-wrap gap-2">
         {entry.vibe ? <span className="tag tag-vibe">{entry.vibe}</span> : null}
         {place.perfectFor.map((tag) => <span key={tag} className="tag">{tag}</span>)}

@@ -10,6 +10,7 @@ import { StoryShareButton } from '../components/StoryShareButton.tsx'
 import { SignInSheet } from '../components/SignInSheet.tsx'
 import { catalog, loadGuide } from '../content/load.ts'
 import { cityPath } from '../lib/city.ts'
+import { cuisineMenuLabel } from '../lib/cuisine-label.ts'
 import { useCityId } from '../lib/use-city.ts'
 import { flagshipAimHint } from '../lib/collections.ts'
 import { countPlaces, pageShareUrl } from '../lib/format.ts'
@@ -84,7 +85,7 @@ export function GuidePage() {
 
   usePageMeta(
     guide ? `${guide.title} · Gusto's Guide` : "Guide · Gusto's Guide",
-    guide?.dek ?? 'A guide from Gusto.',
+    guide ? guide.title : 'A guide from Gusto.',
     guide ? `./og/guides/${guide.slug}.png` : './og/og.png',
     guide ? originCanonical(`/share/guide/${guide.slug}`) : undefined,
   )
@@ -152,7 +153,6 @@ export function GuidePage() {
         <p className="sr-only">Loading</p>
         <p className="text-xs font-bold tracking-[0.14em] uppercase">{summary?.group}</p>
         <h1 className="mt-1 font-serif text-4xl italic leading-none sm:text-5xl">{summary?.title}</h1>
-        <p className="mt-2 max-w-2xl font-serif text-xl italic">{summary?.dek}</p>
         <div className="mt-4 flex gap-3 overflow-hidden" aria-hidden="true">
           {Array.from({ length: 4 }, (_, index) => (
             <div key={index} className="skeleton h-52 w-52 shrink-0 sm:w-60" />
@@ -207,13 +207,6 @@ export function GuidePage() {
             {nearNote ? <p className="mt-2 text-sm" role="status">{nearNote}</p> : null}
         <p className="mt-2 text-sm font-bold">{ordered.length === rows.length ? countPlaces(rows.length) : `${ordered.length} of ${countPlaces(rows.length)}`}</p>
         {user?.isOwner ? <p className="mt-1 text-sm">{flagshipAimHint(rows.length)}</p> : null}
-        {guide.dek ? <p className="mt-2 line-clamp-1 max-w-2xl font-serif text-xl italic">{guide.dek}</p> : null}
-        {guide.intro ? (
-          <details className="guide-note mt-2 max-w-2xl">
-            <summary>About this guide</summary>
-            {guide.intro.split('\n\n').map((paragraph) => <p key={paragraph.slice(0, 24)}>{paragraph}</p>)}
-          </details>
-        ) : null}
         <div className="guide-sticky mt-3 hidden gap-2 lg:grid lg:grid-cols-[repeat(auto-fit,minmax(8.5rem,1fr))]">
           <FilterFields
             neighborhoods={neighborhoods}
@@ -377,7 +370,7 @@ function FilterFields({
       </select>
       <select className="soft-field bg-cream px-2 py-2" value={cuisine} onChange={(event) => setCuisine(event.target.value)} aria-label="Cuisine">
         <option value="">All cuisines</option>
-        {cuisines.map((item) => <option key={item}>{item}</option>)}
+        {cuisines.map((item) => <option key={item} value={item}>{cuisineMenuLabel(item, cuisines)}</option>)}
       </select>
       <select className="soft-field bg-cream px-2 py-2" value={price} onChange={(event) => setPrice(Number(event.target.value))} aria-label="Price">
         <option value={0}>Any price</option>

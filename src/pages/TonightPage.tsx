@@ -119,7 +119,6 @@ export function TonightPage() {
                     <span className="tonight-copy">
                       <span className="block font-serif text-4xl italic leading-none">{pick.name}</span>
                       <span className="mt-2 block text-sm">{[pick.neighborhood, priceLabel(pick.price)].filter(Boolean).join(' · ')}</span>
-                      {pick.oneLiner ? <span className="mt-2 block text-sm italic">{pick.oneLiner}</span> : null}
                     </span>
                   </Link>
                 </m.div>

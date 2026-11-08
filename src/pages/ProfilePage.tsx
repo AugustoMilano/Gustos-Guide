@@ -1,3 +1,4 @@
+import { cuisineMenuLabel } from '../lib/cuisine-label.ts'
 import { isRestaurant } from '../lib/restaurant.ts'
 import { onePerBrand } from '../lib/brand.ts'
 import { Link, useParams } from 'react-router-dom'
@@ -131,7 +132,7 @@ export function ProfilePage() {
       <h2 className="mt-8 font-serif text-3xl italic">Top cuisines</h2>
       {cuisines.length ? (
         <ul className="mt-2 flex flex-wrap gap-2">
-          {cuisines.map((item) => <li key={item.name} className="tag">{item.name} · {item.count}</li>)}
+          {cuisines.map((item) => <li key={item.name} className="tag">{cuisineMenuLabel(item.name, cuisines.map((row) => row.name))} · {item.count}</li>)}
         </ul>
       ) : <p className="mt-2">Mark a few places Been and the cuisines show up here.</p>}
       <h2 className="mt-8 font-serif text-3xl italic">Neighborhoods</h2>

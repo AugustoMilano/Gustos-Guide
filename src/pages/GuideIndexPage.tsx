@@ -1,4 +1,3 @@
-import { formatDay } from '../lib/day.ts'
 import { useMemo, useState } from 'react'
 import { useReducedMotion } from 'framer-motion'
 import { Link } from 'react-router-dom'
@@ -51,24 +50,8 @@ function guideIndexMeta(city: string): string {
   if (city === 'pullman') return 'Pullman, WA guides.'
   if (city === 'moscow') return 'Moscow, ID guides.'
   if (city === 'sandiego') return 'San Diego guides for Little Italy, Coronado, La Jolla, North Park, and East Village.'
-  if (city === 'eastside') return 'Eastside guides for Bellevue, the Kirkland waterfront, Redmond, and Issaquah.'
-  return 'Seattle guides for pizza, neighborhoods, late nights, and the bars worth crossing town for.'
-}
-
-function guideIndexDek(city: string): string {
-  if (city === 'la') return 'Venice, Santa Monica, West Hollywood, Beverly Hills, Downtown, and Hollywood.'
-  if (city === 'sf') return 'Neighborhoods and cuisines from the San Francisco list.'
-  if (city === 'peninsula') return 'Palo Alto, Santa Clara, San Jose, and the other cities on this list.'
-  if (city === 'eastbay') return 'Berkeley, Fremont, and Pleasanton.'
-  if (city === 'northbay') return 'Sausalito, Tiburon, Corte Madera, and Larkspur.'
-  if (city === 'vancouver') return 'Neighborhoods and cuisines from the Vancouver list.'
-  if (city === 'portland') return 'Neighborhoods and cuisines from the Portland list.'
-  if (city === 'nyc') return 'Neighborhoods and cuisines from the New York list.'
-  if (city === 'pullman') return 'From the Pullman list.'
-  if (city === 'moscow') return 'From the Moscow list.'
-  if (city === 'sandiego') return 'Little Italy, Coronado, La Jolla, North Park, and East Village.'
-  if (city === 'eastside') return 'Bellevue, Kirkland, Redmond, and Issaquah.'
-  return `Updated ${formatDay(catalog.updatedAt)}. Pizza, neighborhoods, late nights, and the bars worth crossing town for.`
+  if (city === 'eastside') return 'Eastside guides for Bellevue, Kirkland, Redmond, and Issaquah.'
+  return 'Seattle guides by neighborhood and cuisine.'
 }
 
 export function GuideIndexPage() {
@@ -95,15 +78,14 @@ export function GuideIndexPage() {
     <main id="main" tabIndex={-1} className="mx-auto max-w-6xl px-4 pt-24 pb-16 outline-none">
       <AreaKicker />
       <h1 className="mt-2 font-serif text-6xl italic">{guideIndexTitle(city)}</h1>
-      <p className="mt-3 max-w-2xl">{guideIndexDek(city)}</p>
-      <form className="mt-6" role="search" onSubmit={(event) => event.preventDefault()}>
+      <form className="mt-5" role="search" onSubmit={(event) => event.preventDefault()}>
         <label className="field" htmlFor="guides-search">
           <span>Search these guides</span>
           <input
             id="guides-search"
             value={draft}
             autoComplete="off"
-            placeholder="Date night, brunch, a neighborhood"
+            placeholder="Place or neighborhood"
             onChange={(event) => setDraft(event.target.value)}
           />
         </label>
@@ -132,7 +114,6 @@ export function GuideIndexPage() {
                 >
                   <p className="text-xs font-bold uppercase tracking-[0.14em] tabular-nums">{countPlaces(guide.count)}</p>
                   <h3 className="mt-2 font-serif text-3xl italic">{guide.title}</h3>
-                  {guide.dek ? <p className="mt-2 line-clamp-3 text-sm">{guide.dek}</p> : null}
                 </Link>
               ))}
             </div>

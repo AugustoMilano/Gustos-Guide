@@ -10,6 +10,7 @@ import { ScoreBadge } from './ScoreBadge.tsx'
 import { SignInSheet } from './SignInSheet.tsx'
 import { catalog } from '../content/load.ts'
 import { cityPath } from '../lib/city.ts'
+import { cuisineLabel } from '../lib/cuisine-label.ts'
 import { useCityCatalog } from '../lib/use-city.ts'
 import { isPlaceOpen } from '../lib/hours.ts'
 import { useApp } from '../state/AppState.tsx'
@@ -270,7 +271,7 @@ export function PlanSheet({ open, onClose, seedPlaceId }: { open: boolean; onClo
                       </span>
                       <span className="place-row-copy">
                         <span className="block truncate font-serif text-2xl italic leading-tight">{place.name}</span>
-                        <span className="mt-1 block truncate text-sm">{place.neighborhood} · {place.cuisine[0]}</span>
+                        <span className="mt-1 block truncate text-sm">{place.neighborhood} · {cuisineLabel(place.cuisine[0] ?? '')}</span>
                       </span>
                       <span className="score-col"><ScoreBadge score={app.gustoScore(place.id)} size="sm" /></span>
                       <span className={`pick-check ${on ? 'is-on' : ''}`} aria-hidden="true">✓</span>
@@ -297,7 +298,7 @@ export function PlanSheet({ open, onClose, seedPlaceId }: { open: boolean; onClo
                       aria-pressed={on}
                       onClick={() => setInvited((current) => current.includes(person.id) ? current.filter((id) => id !== person.id) : [...current, person.id])}
                     >
-                      <span className="avatar" style={{ background: AVATAR[index % AVATAR.length] }}>{initials(person.name)}</span>
+                      <span className="avatar" style={{ background: AVATAR[index % AVATAR.length], color: AVATAR[index % AVATAR.length] === '#141f4d' ? '#fffaf3' : '#181818' }}>{initials(person.name)}</span>
                       <span className="truncate text-sm font-bold">{person.name.split(' ')[0]}</span>
                       {demoFriendsEnabled && person.demo ? <span className="text-[0.65rem] font-bold uppercase">Seeded</span> : null}
                     </button>

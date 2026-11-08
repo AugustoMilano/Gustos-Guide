@@ -14,6 +14,7 @@ import { catalog, slimById } from '../content/load.ts'
 import { cityPath, type CityId } from '../lib/city.ts'
 import { useCityCatalog } from '../lib/use-city.ts'
 import { demoFriendsEnabled } from '../lib/demo.ts'
+import { cuisineLabel } from '../lib/cuisine-label.ts'
 import { priceLabel, publicReference } from '../lib/format.ts'
 import { usePageMeta } from '../lib/meta.ts'
 import { useApp } from '../state/AppState.tsx'
@@ -90,7 +91,7 @@ export function PlanDetailPage() {
                 </span>
                 <span className="place-row-copy">
                   <span className="block truncate font-serif text-2xl italic leading-tight">{place.name}</span>
-                  <span className="mt-1 block truncate text-sm">{place.neighborhood} · {place.cuisine[0]}</span>
+                  <span className="mt-1 block truncate text-sm">{place.neighborhood} · {cuisineLabel(place.cuisine[0] ?? '')}</span>
                 </span>
                 <span className="score-col"><ScoreBadge score={app.gustoScore(place.id)} size="sm" /></span>
                 <span className="row-tail">
@@ -326,7 +327,7 @@ export function PlanWizardPage() {
                   aria-pressed={on}
                   onClick={() => setFriends((current) => current.includes(person.id) ? current.filter((id) => id !== person.id) : [...current, person.id])}
                 >
-                  <span className="avatar" style={{ background: AVATAR[index % AVATAR.length] }}>{initials(person.name)}</span>
+                  <span className="avatar" style={{ background: AVATAR[index % AVATAR.length], color: AVATAR[index % AVATAR.length] === '#141f4d' ? '#fffaf3' : '#181818' }}>{initials(person.name)}</span>
                   <span className="font-serif text-2xl italic leading-none">{person.name}</span>
                   <span className="text-xs font-bold uppercase tracking-wide">{demoFriendsEnabled && person.demo ? person.neighborhood : 'Friend'}</span>
                 </button>
@@ -417,7 +418,7 @@ export function PlanWizardPage() {
                       </span>
                       <span className="mt-2 flex items-center gap-1">
                         {fans.map((person, index) => (
-                          <span key={person.id} className="avatar avatar-sm" style={{ background: AVATAR[index % AVATAR.length] }} title={person.name}>{initials(person.name)}</span>
+                          <span key={person.id} className="avatar avatar-sm" style={{ background: AVATAR[index % AVATAR.length], color: AVATAR[index % AVATAR.length] === '#141f4d' ? '#fffaf3' : '#181818' }} title={person.name}>{initials(person.name)}</span>
                         ))}
                         {you ? <span className="avatar avatar-sm" style={{ background: '#181818' }} title="Your vote">You</span> : null}
                         <span className="score-num ml-auto">{tally}</span>

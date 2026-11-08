@@ -32,8 +32,8 @@
     "blurb": "The room at Alebrijes Kitchen is quiet, with only a few tables, but the kitchen is anything but. Tortilla-wrapped dishes fly out at a steady clip and can rescue the dullest weeknight. Start with the fiery orange salsa and build from there."
   },
   "alibi-room": {
-    "pullQuote": "Order the rosemary brown sugar sazerac and a bowl of spicy mac.",
-    "blurb": "Tucked down Post Alley past the gum wall, Alibi Room pours serious cocktails steps from the Market. Any well drink is fair game, but the house specialties are the move, especially a sazerac sweetened with brown sugar and rosemary. Pair it with the spicy mac and cheese."
+    "pullQuote": "Pizza down Post Alley, past the gum wall and steps from the Market.",
+    "blurb": "Alibi Room is a pizza bar down Post Alley, past the gum wall and steps from the Market. Well drinks and house cocktails are poured here too, including a sazerac sweetened with brown sugar and rosemary, and there is spicy mac and cheese."
   },
   "alki-spud-fish-and-chips": {
     "pullQuote": "Pay the extra few bucks for halibut and eat it near the beach.",
@@ -1646,7 +1646,8 @@
     "pullQuote": "Go for the lasagna and the cabaret, and fight for a seat on the deck.",
     "blurb": "Behind an unmarked pink door in Post Alley, The Pink Door has paired Italian-American comfort food with trapeze acts and cabaret for decades. The summer deck looks out over Elliott Bay, and lasagna is the order. It works for a date, a visiting friend, or a late dinner near Pike Place Market.",
     "guideQuotes": {
-      "rooftops": "The deck over the market is the prize, lasagna merely the excuse to sit."
+      "rooftops": "The deck over the market is the prize, lasagna merely the excuse to sit.",
+      "restaurants-with-a-view": "The deck over the market is the prize, lasagna merely the excuse to sit."
     }
   },
   "the-shambles": {

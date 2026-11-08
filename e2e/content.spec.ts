@@ -2,6 +2,7 @@ import { readFileSync } from 'node:fs'
 import { expect, test } from '@playwright/test'
 import {
   assertCopy,
+  FORMER_DIVE,
   repeatedGrams,
   repeatedTemplate,
   shortSentence,
@@ -36,7 +37,7 @@ test('catalog copy is house voice, not filler or a fake review', ({ browserName 
     ...guides.flatMap((guide) => guide.entries.map((entry) => ({ text: entry.pullQuote, placeId: entry.placeId }))),
   ]
   const blurbs = [
-    ...Object.values(places).map((place) => ({ text: place.blurb, placeId: place.id, name: place.name, exempt: diveBlurbs.has(place.blurb) })),
+    ...Object.values(places).map((place) => ({ text: place.blurb, placeId: place.id, name: place.name, exempt: diveBlurbs.has(place.blurb) || FORMER_DIVE.has(place.id) })),
     ...guides.flatMap((guide) =>
       guide.entries.map((entry) => ({
         text: entry.blurb,

@@ -14,6 +14,12 @@ function claim(meta: Record<string, unknown>, key: string): string {
   return typeof value === 'string' ? value.trim() : ''
 }
 
+export function givenNameFromAuth(user: User): string | undefined {
+  const meta = (user.user_metadata ?? {}) as Record<string, unknown>
+  const value = claim(meta, 'given_name') || claim(meta, 'givenName') || claim(meta, 'first_name') || claim(meta, 'firstName')
+  return value || undefined
+}
+
 export function xClaims(user: User): { name: string; handle: string; avatarUrl: string } | null {
   const fromX = user.app_metadata?.provider === 'x' || user.identities?.some((identity) => identity.provider === 'x')
   if (!fromX) return null
@@ -229,6 +235,7 @@ export async function loadAccount(client: SupabaseClient, authUser: User): Promi
     handle: profile.handle,
     isOwner: profile.is_owner,
     avatarUrl: profile.avatar_url || undefined,
+    givenName: givenNameFromAuth(authUser),
   }
 
   const [statusRes, guideRes, itemRes, collabRes, planRes, memberRes, voteRes, activityRes, likeRes, commentRes, noticeRes, rankRes, photoRes, friendRes, house] = await Promise.all([

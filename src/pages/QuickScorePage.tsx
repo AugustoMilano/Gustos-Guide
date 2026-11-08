@@ -7,6 +7,7 @@ import { SignInSheet } from '../components/SignInSheet.tsx'
 import { scoreBand } from '../components/ScoreBadge.tsx'
 import { catalog } from '../content/load.ts'
 import { cityPath } from '../lib/city.ts'
+import { cuisineLabel, cuisineMenuLabel } from '../lib/cuisine-label.ts'
 import { publicReference } from '../lib/format.ts'
 import { usePageMeta } from '../lib/meta.ts'
 import {
@@ -205,7 +206,7 @@ export function QuickScorePage() {
     <main id="main" tabIndex={-1} className="quick-score mx-auto max-w-xl px-4 pt-24 pb-16 outline-none">
       <p className="text-sm font-bold tracking-wide text-navy uppercase">House</p>
       <h1 className="mt-1 font-serif text-4xl italic sm:text-5xl">Quick score</h1>
-      <p className="mt-2 text-sm">{scored} of {total} scored. Seattle with Bellevue, Kirkland, and Redmond; Los Angeles; the Bay Area; San Diego; Vancouver; Portland; New York; and Pullman with Moscow.</p>
+      <p className="mt-2 text-sm">{scored} of {total} scored.</p>
       {app.announcement ? <p className="mt-3 text-sm" role="status">{app.announcement}</p> : null}
       <div
         className="quick-meter mt-3"
@@ -228,8 +229,8 @@ export function QuickScorePage() {
       ) : (
         <>
           <div className="mt-4 flex flex-wrap gap-2">
-            <button type="button" className="btn text-sm" aria-pressed={unscoredOnly} onClick={() => setUnscoredOnly((value) => !value)}>Unscored only</button>
-            <button type="button" className="btn text-sm" aria-pressed={haventOnly} onClick={() => setHaventOnly((value) => !value)}>Haven't been</button>
+            <button type="button" className="btn quick-filter text-sm" aria-pressed={unscoredOnly} onClick={() => setUnscoredOnly((value) => !value)}>Unscored only</button>
+            <button type="button" className="btn quick-filter text-sm" aria-pressed={haventOnly} onClick={() => setHaventOnly((value) => !value)}>Haven't been</button>
             <p className="self-center text-sm">{queue.length} in this pass</p>
           </div>
           <details className="glass mt-3 p-3">
@@ -265,7 +266,7 @@ export function QuickScorePage() {
                 <span>Cuisine</span>
                 <select value={cuisine} onChange={(event) => setCuisine(event.target.value)}>
                   <option value="">Any</option>
-                  {cuisines.map((name) => <option key={name} value={name}>{name}</option>)}
+                  {cuisines.map((name) => <option key={name} value={name}>{cuisineMenuLabel(name, cuisines)}</option>)}
                 </select>
               </label>
             </div>
@@ -308,7 +309,7 @@ export function QuickScorePage() {
                     <h2 className="font-serif text-4xl italic leading-none">
                       <Link to={cityPath(`/place/${place.id}`)}>{place.name}</Link>
                     </h2>
-                    <p className="mt-2 text-sm">{place.neighborhood} · {place.cuisine.join(', ')}</p>
+                    <p className="mt-2 text-sm">{place.neighborhood} · {place.cuisine.map((item) => cuisineLabel(item)).join(', ')}</p>
                     {publicReference(place) ? <p className="public-ref mt-2">{publicReference(place)}</p> : null}
                     <CollectionMembership placeId={place.id} city={place.city ?? 'seattle'} compact />
                     <p className="mt-2 text-sm lg:hidden">Swipe the photo left if you haven't been, right to score.</p>

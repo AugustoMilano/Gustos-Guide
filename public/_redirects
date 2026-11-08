@@ -443,6 +443,7 @@
 /share/place/84-yesler / 301
 
 # Share cards. These placeholders stay above the other dynamic rules.
+# Removed places stay above the :id splat, or the splat serves a share page instead of the redirect.
 /share/place/:id /share/place/:id/index.html 200
 /share/guide/:slug /share/guide/:slug/index.html 200
 /guide/* /hop.htm 200

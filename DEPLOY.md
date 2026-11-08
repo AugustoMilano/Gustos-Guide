@@ -13,7 +13,18 @@ npm run deploy:cf
 
 `deploy:cf` runs `wrangler pages deploy dist --project-name gustos-guide`.
 
-`npm run build` checks copy, writes the Terms and Privacy pages, writes `public/sitemap.xml` and Open Graph cards, typechecks, builds, then stamps `dist/sw.js` with the git commit. The sitemap, canonical URLs, and `robots.txt` use `https://gustosguide.com`. Set `SITE_URL` before the build only if a preview should list a different origin.
+`npm run build` checks copy, writes the Terms and Privacy pages, writes `public/sitemap.xml` and Open Graph cards, typechecks, builds, then stamps `dist/sw.js`. The sitemap, canonical URLs, and `robots.txt` use `https://gustosguide.com`. Set `SITE_URL` before the build only if a preview should list a different origin.
+
+The service-worker cache name is the commit that was built. In a git checkout, `scripts/stamp-sw.mjs` reads `git rev-parse HEAD`. A source archive has no `.git` directory, so set `GUSTO_BUILD_SHA` to that commit's full 40-character hex SHA before `npm run build`. When `GUSTO_BUILD_SHA` is set, git is not called. A blank value falls back to git. A short SHA, `HEAD`, or any other non-hex value stops the build. If the variable is unset and git cannot be read, the build stops. The script does not invent a SHA and does not need a git binary on the archive path.
+
+```bash
+export GUSTO_BUILD_SHA=<40-character commit sha>
+npm ci
+npm run build
+npm run deploy:cf
+```
+
+`node scripts/stamp-sw.test.mjs` checks the env stamp, the git fallback, and that a directory with no git fails closed.
 
 `public/_headers` is copied into `dist`. Files under `/assets/` (content-hashed) use `Cache-Control: public, max-age=31536000, immutable`. `/`, `/index.html`, and `/sw.js` use `Cache-Control: no-cache`, so the next visit revalidates the shell and the worker.
 
@@ -62,6 +73,8 @@ Cursor Cloud Agents treat this repository as the source of truth. Publishing is 
 
 `public/manifest.webmanifest` makes the built site installable. `public/sw.js` is registered only in production, with `updateViaCache: 'none'`, so Vite's dev server is left alone and the browser does not keep an old worker script.
 
-Each production build names the cache `gusto-<commit>`. Install calls `skipWaiting`. Activate deletes every other cache and calls `clients.claim`. A page that was already controlled reloads once when the new worker takes over, so it does not keep running the previous bundle. Returning to the tab also calls `registration.update()`.
+Each production build names the cache `gusto-<commit>`. Install calls `skipWaiting` and does not fetch the shell first: that fetch never finished while the previous worker still owned the page, so the update stayed in `installing`. Activate deletes every other cache, calls `clients.claim`, and loads each already-open window once with a `gusto-build` query so the browser does not restore the frozen document. The page removes that query immediately. The hash route stays, and saved scores stay in local storage. A page that already had a worker also reloads once on `controllerchange`. Returning to the tab calls `registration.update()`.
 
-Hashed `/assets/` responses are cache-first. The HTML shell is network-first, and a failed navigation falls back to the cached `index.html`. `sw.js` itself is always fetched from the network. Saved lists already live in `localStorage`, so they are still there when the shell loads offline.
+`status.js` is the unhashed bootloader: it injects the hashed entry chunk. The build rewrites the document to `status.js?v=<commit>` so a browser that kept the previous `/status.js` for hours does not boot the old bundle. `/status.js` is also `Cache-Control: no-store`. Hashed `/assets/` responses are cache-first. If one of those scripts 404s because the running shell is from the previous deploy, the worker returns a module that reloads once onto this build instead of leaving the route blank. Old chunk filenames do not need to stay on the CDN.
+
+The HTML shell is network-first and bypasses the HTTP cache. A failed navigation falls back to the cached `index.html`. `sw.js` itself is always fetched from the network. Saved lists already live in `localStorage`, so they are still there when the shell loads offline.

@@ -6,6 +6,7 @@ import {
   cleanBlurb,
   cleanTitle,
   collectionSlug,
+  seattleCheapEatsBlocked,
   titleProblem,
   type CollectionsStatus,
   type HouseCollection,
@@ -1211,6 +1212,7 @@ export function AppProvider({ children }: { children: ReactNode }) {
     if (!user?.isOwner) return
     const current = collectionsRef.current.find((row) => row.id === collectionId)
     if (!current) return
+    if (include && seattleCheapEatsBlocked(current.city, current.slug, placeId)) return
     const has = current.placeIds.includes(placeId)
     if (include === has) return
     const placeIds = include ? [...current.placeIds, placeId] : current.placeIds.filter((item) => item !== placeId)
