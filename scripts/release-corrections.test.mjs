@@ -46,6 +46,22 @@ assert.deepEqual(places['alibi-room'].photos.map((photo) => photo.url), [
 assert.equal(places['il-bistro'].gustoScore, null)
 assert.equal(index.places.find((place) => place.id === 'il-bistro').photo.url, '/photos/il-bistro.jpg')
 
+const starbucks = places['starbucks-coffee-company']
+const starbucksBlurb = "Tourists line up at the market's Starbucks Coffee Company for the vintage logo and bragging rights to the first Starbucks. The company opened in 1971 on Western Avenue and moved to this Pike Place shop in 1976. It opens early, so arrive before the crowds if you want the souvenir mug without the wait."
+assert.equal(starbucks.address, '1912 Pike Pl, Seattle, WA  98101')
+assert.equal(starbucks.oneLiner, 'Visit once for the history, then drink your daily coffee somewhere quieter.')
+assert.equal(starbucks.blurb, starbucksBlurb)
+assert.equal(starbucks.gustoScore, null)
+assert.equal(starbucks.photos.some((photo) => photo.url), false)
+assert.equal(index.places.find((place) => place.id === 'starbucks-coffee-company').oneLiner, starbucks.oneLiner)
+for (const guide of guides) {
+  for (const entry of guide.entries) {
+    if (entry.placeId !== 'starbucks-coffee-company') continue
+    assert.equal(entry.blurb, starbucksBlurb, guide.slug)
+    assert.equal(entry.pullQuote, starbucks.oneLiner, guide.slug)
+  }
+}
+
 const cheap = guides.find((guide) => guide.slug === 'cheap-eats')
 assert.equal(cheap.entries.some((entry) => entry.placeId === 'alibi-room'), false)
 for (const slug of ['pike-place', 'best-pizza', 'pike-place-market']) {
