@@ -446,19 +446,39 @@ textarea {
 }
 
 .no-photo {
-  display: grid;
-  place-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.2rem;
   width: 100%;
   height: 100%;
-  min-height: 4.5rem;
+  min-height: 0;
+  box-sizing: border-box;
+  padding: 0.3rem 0.35rem;
+  overflow: hidden;
   background: #e7e1d8;
   color: #6e675f;
+  container-type: size;
+  text-align: center;
 }
 
 .no-photo svg {
-  width: 28%;
-  max-width: 4.5rem;
+  width: auto;
   height: auto;
+  max-width: min(2.25rem, 42cqmin);
+  max-height: 34cqh;
+  flex: none;
+}
+
+.no-photo-caption {
+  color: #514c46;
+  font-size: clamp(8px, min(14cqw, 18cqh), 0.875rem);
+  font-weight: 650;
+  line-height: 1.15;
+  letter-spacing: 0;
+  text-transform: none;
+  max-width: 100%;
 }
 
 .smart-hit {

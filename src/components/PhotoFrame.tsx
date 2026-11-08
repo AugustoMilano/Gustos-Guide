@@ -49,7 +49,7 @@ export function PhotoFrame({
       )}
       <figcaption>
         {!art && photo.caption ? `${photo.caption} · ` : null}
-        {art ? <span className="sr-only">No photo</span> : photo.credit}
+        {art ? null : photo.credit}
         {photo.license ? ` · ${photo.license}` : ''}
         {photo.creditUrl ? (
           <>

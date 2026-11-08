@@ -71,5 +71,6 @@ test('a missing photo uses the neutral mark and a real photo stays a photo', asy
   await expect(page.locator('.explore-card .no-photo').first()).toBeVisible()
   await expect(page.locator('.explore-card img').first()).toBeVisible()
   const mark = page.locator('.explore-card .no-photo').first()
-  await expect(mark).toHaveAttribute('aria-hidden', 'true')
+  await expect(mark).toHaveText('Photo coming soon')
+  await expect(mark.locator('svg')).toHaveAttribute('aria-hidden', 'true')
 })
