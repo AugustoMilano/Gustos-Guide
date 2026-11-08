@@ -165,4 +165,6 @@ export type SessionUser = {
   handle: string
   isOwner: boolean
   avatarUrl?: string
+  /** Display only. Not written to the profile. */
+  givenName?: string
 }

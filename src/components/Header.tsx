@@ -2,6 +2,7 @@ import { useEffect, useLayoutEffect, useRef, useState, type RefObject } from 're
 import { AnimatePresence, m, useReducedMotion } from 'framer-motion'
 import { dragSheet } from '../lib/motion.ts'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
+import { accountAccessibleName, accountGreeting } from '../lib/account-label.ts'
 import { barePath, regionName as areaLabel, areaPhrase, areasFor, CITY_PREFIXES, cityPath, isCityPicker, readRegionMemory, writeRegionMemory } from '../lib/city.ts'
 import { SearchField } from './SearchField.tsx'
 import { useCityId } from '../lib/use-city-id.ts'
@@ -300,9 +301,9 @@ export function Header() {
           </button>
           {user ? (
             <>
-              <Link viewTransition={!reduceMotion} to={cityPath(`/u/${user.handle}`, linkCity)} className="inline-flex max-w-[10rem] items-center gap-2">
+              <Link viewTransition={!reduceMotion} to={cityPath(`/u/${user.handle}`, linkCity)} className="inline-flex max-w-[10rem] items-center gap-2" aria-label={accountAccessibleName(user)}>
                 {user.avatarUrl ? <img src={user.avatarUrl} alt="" width={32} height={32} loading="lazy" decoding="async" referrerPolicy="no-referrer" className="h-8 w-8 shrink-0 rounded-full object-cover" /> : null}
-                <span className="truncate">{user.name}</span>
+                <span className="truncate">{accountGreeting(user)}</span>
               </Link>
               <button type="button" className="btn text-sm" onClick={signOut}>Sign out</button>
             </>
@@ -365,9 +366,9 @@ export function Header() {
           />
           {user ? (
             <div className="menu-account">
-              <Link viewTransition={!reduceMotion} to={cityPath(`/u/${user.handle}`, linkCity)} className="menu-account-link" onClick={() => setMenu(false)}>
-                {user.avatarUrl ? <img src={user.avatarUrl} alt="" width={32} height={32} loading="lazy" decoding="async" referrerPolicy="no-referrer" className="h-8 w-8 rounded-full object-cover" /> : <span className="menu-account-initial" aria-hidden="true">{user.name.slice(0, 1)}</span>}
-                <span className="truncate">{user.name}</span>
+              <Link viewTransition={!reduceMotion} to={cityPath(`/u/${user.handle}`, linkCity)} className="menu-account-link" aria-label={accountAccessibleName(user)} onClick={() => setMenu(false)}>
+                {user.avatarUrl ? <img src={user.avatarUrl} alt="" width={32} height={32} loading="lazy" decoding="async" referrerPolicy="no-referrer" className="h-8 w-8 rounded-full object-cover" /> : <span className="menu-account-initial" aria-hidden="true">{accountGreeting(user).slice(0, 1)}</span>}
+                <span className="truncate">{accountGreeting(user)}</span>
               </Link>
               <button type="button" className="menu-account-out" onClick={() => { setMenu(false); signOut() }}>Sign out</button>
             </div>
