@@ -15,6 +15,20 @@ assert.equal(shown(stepHouseScore(9.9, 1)), '10.0')
 assert.equal(shown(stepHouseScore(1.1, -1)), '1.0')
 assert.equal(shown(stepHouseScore(1.2000000000000002, 1)), '1.3')
 
+function jpegSize(buf) {
+  let offset = 2
+  while (offset < buf.length) {
+    if (buf[offset] !== 0xff) break
+    const marker = buf[offset + 1]
+    const length = buf.readUInt16BE(offset + 2)
+    if (marker >= 0xc0 && marker <= 0xc2) {
+      return { height: buf.readUInt16BE(offset + 5), width: buf.readUInt16BE(offset + 7) }
+    }
+    offset += 2 + length
+  }
+  throw new Error('jpeg size missing')
+}
+
 const places = JSON.parse(readFileSync(new URL('../src/content/places.json', import.meta.url), 'utf8'))
 const guides = JSON.parse(readFileSync(new URL('../src/content/guides.json', import.meta.url), 'utf8'))
 const index = JSON.parse(readFileSync(new URL('../src/content/index.json', import.meta.url), 'utf8'))
@@ -61,6 +75,16 @@ for (const guide of guides) {
     assert.equal(entry.pullQuote, starbucks.oneLiner, guide.slug)
   }
 }
+
+const taurus = places['taurus-ox']
+assert.equal(taurus.photos[0].url, '/photos/taurus-ox.jpg')
+assert.equal(taurus.photos[0].credit, 'Another Believer')
+assert.equal(taurus.gustoScore, null)
+const taurusJpeg = jpegSize(readFileSync(new URL('../public/photos/taurus-ox.jpg', import.meta.url)))
+assert.equal(taurusJpeg.width, 1200)
+assert.equal(taurusJpeg.height, 1600)
+const taurusSizes = JSON.parse(readFileSync(new URL('../src/content/photo-sizes.json', import.meta.url), 'utf8'))['taurus-ox.jpg']
+assert.deepEqual(taurusSizes, { w: 1200, h: 1600, widths: [480, 960, 1200], webp: [200, 400, 720, 960], avif: [200, 400, 720, 960] })
 
 const cheap = guides.find((guide) => guide.slug === 'cheap-eats')
 assert.equal(cheap.entries.some((entry) => entry.placeId === 'alibi-room'), false)

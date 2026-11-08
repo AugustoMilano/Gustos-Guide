@@ -224,3 +224,31 @@ test('Pike Place Starbucks description names the first store and the 1976 move',
   await expect(page.getByText('moved to this Pike Place shop in 1976')).toBeVisible()
   await expect(page.getByText('Photo coming soon').first()).toBeVisible()
 })
+
+test('Taurus Ox photo is upright on the place page and the Capitol Hill card', async ({ page }, info) => {
+  await page.route(/supabase\.co/, (route) => route.abort())
+  for (const [width, height] of [[1440, 900], [390, 844]] as const) {
+    await page.setViewportSize({ width, height })
+    await page.goto('/#/seattle/place/taurus-ox')
+    const hero = page.locator('.photo-stage img').first()
+    await expect(hero).toBeVisible()
+    const box = await hero.evaluate((node) => {
+      const img = node as HTMLImageElement
+      return { w: img.naturalWidth, h: img.naturalHeight, src: img.currentSrc }
+    })
+    expect(box.h, box.src).toBeGreaterThan(box.w)
+    await page.locator('.photo-stage').screenshot({ path: `/opt/cursor/artifacts/taurus-ox-place-${width}.png` })
+    await page.goto('/#/seattle/guide/capitol-hill')
+    const card = page.locator('#entry-taurus-ox').first()
+    await card.scrollIntoViewIfNeeded()
+    const thumb = card.locator('img').first()
+    await expect(thumb).toBeVisible()
+    const thumbBox = await thumb.evaluate((node) => {
+      const img = node as HTMLImageElement
+      return { w: img.naturalWidth, h: img.naturalHeight }
+    })
+    expect(thumbBox.h).toBeGreaterThan(thumbBox.w)
+    await card.screenshot({ path: `/opt/cursor/artifacts/taurus-ox-card-${width}.png` })
+  }
+  expect(info.project.name).toBeTruthy()
+})
