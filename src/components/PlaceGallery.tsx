@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState, type PointerEvent as ReactPointerEvent, type ReactNode } from 'react'
 import { PhotoFrame } from './PhotoFrame.tsx'
+import { PlaceArt } from './PlaceArt.tsx'
 import { ThumbImg } from './ThumbImg.tsx'
 import type { DisplayPhoto } from '../lib/gallery.ts'
 
@@ -105,7 +106,7 @@ export function PlaceGallery({
               aria-label={`Photo ${shotIndex + 1} of ${photos.length}`}
               onClick={() => onChange(shotIndex)}
             >
-              {shot.url && !shot.illustration ? <ThumbImg url={shot.url} sizes="104px" /> : <span>Illustration</span>}
+              {shot.url && !shot.illustration ? <ThumbImg url={shot.url} sizes="104px" /> : <PlaceArt id={shot.placeId} cuisine={shot.cuisine} neighborhood={shot.neighborhood} />}
             </button>
           ))}
         </div>
@@ -162,7 +163,7 @@ function Lightbox({
   }, [])
 
   if (!photo) return null
-  const credit = [photo.illustration ? 'Illustration' : photo.credit, photo.license].filter(Boolean).join(' · ')
+  const credit = [photo.illustration ? '' : photo.credit, photo.license].filter(Boolean).join(' · ')
 
   return (
     <div className="lightbox" role="dialog" aria-modal="true" aria-label={`${photo.alt || 'Photo'} ${index + 1} of ${photos.length}`}>
@@ -175,7 +176,7 @@ function Lightbox({
         {photo.url && !photo.illustration ? (
           <img src={photo.url} alt={photo.alt} decoding="async" draggable={false} />
         ) : (
-          <p className="font-serif text-4xl italic">Illustration</p>
+          <PlaceArt id={photo.placeId} cuisine={photo.cuisine} neighborhood={photo.neighborhood} />
         )}
       </ZoomStage>
       {photos.length > 1 ? (

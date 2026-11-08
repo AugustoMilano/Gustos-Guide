@@ -35,7 +35,7 @@ test.describe('signed-in account label', () => {
       await page.setViewportSize({ width: viewport.width, height: viewport.height })
       await signIn(page, '  Augusto Milano  ')
       await openAccount(page)
-      const account = page.getByRole('link', { name: 'Augusto Milano' })
+      const account = page.getByRole('link', { name: 'Augusto Milano' }).first()
       await expect(account).toBeVisible()
       await expect(account).toContainText('Augusto')
       await expect(account).not.toContainText('Milano')
@@ -43,7 +43,7 @@ test.describe('signed-in account label', () => {
       await page.getByRole('button', { name: 'Sign out' }).click()
       await signIn(page, 'Cher')
       await openAccount(page)
-      await expect(page.getByRole('link', { name: 'Cher' })).toBeVisible()
+      await expect(page.getByRole('link', { name: 'Cher' }).first()).toBeVisible()
     })
   }
 })

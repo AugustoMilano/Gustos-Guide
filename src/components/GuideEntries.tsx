@@ -159,7 +159,7 @@ function Shot({
       </div>
       <figcaption className="mt-1 px-1 text-xs font-bold">
         {!art && photo?.caption ? `${photo.caption} · ` : null}
-        {art ? 'Illustration' : photo?.credit}
+        {art ? <span className="sr-only">No photo</span> : photo?.credit}
       </figcaption>
     </figure>
   )
@@ -219,7 +219,7 @@ export function GuideEntryCard({
               onClick={() => setActive(shotIndex)}
               aria-label={`Photo ${shotIndex + 1} of ${place.name}`}
             >
-              {shot.url && !shot.illustration ? <ThumbImg url={shot.url} /> : <span className="text-[10px] font-bold">Art</span>}
+              {shot.url && !shot.illustration ? <ThumbImg url={shot.url} /> : <PlaceArt id={place.id} cuisine={place.cuisine[0] ?? ''} neighborhood={place.neighborhood} />}
             </button>
           ))}
         </div>
@@ -291,7 +291,7 @@ export function GuideEntryCard({
             <PlaceArt id={place.id} cuisine={place.cuisine[0] ?? 'Seattle'} neighborhood={place.neighborhood} />
           </div>
         </Link>
-        <figcaption className="mt-1 text-[10px] font-bold tracking-wide uppercase">Illustration</figcaption>
+        <figcaption className="sr-only">No photo</figcaption>
       </figure>
       {entry.blurb ? <p className="mt-4 max-w-2xl text-lg leading-relaxed">{entry.blurb}</p> : null}
       <div className="mt-4 flex flex-wrap gap-2">
