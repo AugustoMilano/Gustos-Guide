@@ -342,6 +342,11 @@ function fromFiles() {
     }
   }
   if (banned.length) fail('Permanently excluded place is still in the catalog', banned.slice(0, 12).join(', '))
+  const redirects = readFileSync(join(root, 'public/_redirects'), 'utf8')
+  const missingRedirects = [...exclusionIds()].filter(
+    (id) => !redirects.includes(`/share/place/${id}/ / 301`) || !redirects.includes(`/share/place/${id} / 301`),
+  )
+  if (missingRedirects.length) fail('Permanent exclusion is missing a share redirect home', missingRedirects.join(', '))
   const regional = [...eastside.places, ...la.places, ...sf.places, ...sd.places]
   const regionalTexts = [
     ...regional.map((place) => place.oneLiner),
