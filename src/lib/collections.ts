@@ -5,6 +5,18 @@ import type { SlimPlace } from '../types.ts'
 /** Live collection. A stored cheap-eats row replaces this ranking. */
 export const CHEAP_EATS_SLUG = 'cheap-eats'
 export const CHEAP_EATS_TITLE = 'Cheap eats'
+
+/** Seattle Cheap Eats must not list these places, even if a stored collection still has the id. */
+const SEATTLE_CHEAP_EATS_EXCLUDED = new Set(['alibi-room'])
+
+export function seattleCheapEatsBlocked(city: string, slug: string, placeId: string): boolean {
+  return city === 'seattle' && slug === CHEAP_EATS_SLUG && SEATTLE_CHEAP_EATS_EXCLUDED.has(placeId)
+}
+
+export function omitSeattleCheapEats(city: string, ids: readonly string[]): string[] {
+  if (city !== 'seattle') return [...ids]
+  return ids.filter((id) => !SEATTLE_CHEAP_EATS_EXCLUDED.has(id))
+}
 export const FAVORITES_TITLE = "Gusto's favorites"
 export const FAVORITES_SCORE = 8.5
 
@@ -96,7 +108,7 @@ export function cheapEatsFor(
   score: (id: string) => number | null = () => null,
 ): SlimPlace[] {
   return places
-    .filter((place) => collectionCity(place) === city && isCheapEat(place))
+    .filter((place) => collectionCity(place) === city && isCheapEat(place) && !seattleCheapEatsBlocked(city, CHEAP_EATS_SLUG, place.id))
     .sort((a, b) => {
       const aRaw = score(a.id)
       const bRaw = score(b.id)
@@ -151,10 +163,12 @@ export function orderedMembers(placeIds: readonly string[], places: SlimPlace[])
  */
 export function usableCheapMembers(row: HouseCollection | null, places: SlimPlace[]): SlimPlace[] | null {
   if (!row) return null
-  const ids = renderableIds(row.placeIds)
-  if (!ids) return null
-  if (ids.length === 0) return []
-  const known = ids.some((id) => places.some((place) => place.id === id))
+  const raw = renderableIds(row.placeIds)
+  if (!raw) return null
+  if (raw.length === 0) return []
+  const ids = omitSeattleCheapEats(row.city, raw)
+  if (ids.length === 0) return null
+  const known = raw.some((id) => places.some((place) => place.id === id))
   if (!known) return null
   return orderedMembers(ids, places)
 }

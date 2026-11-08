@@ -2482,6 +2482,7 @@ input[type='time'] {
 .score-step {
   width: 2.75rem;
   height: 2.75rem;
+  min-width: 2.75rem;
   min-height: 2.75rem;
   padding: 0;
   border-radius: 999px;
@@ -2491,16 +2492,17 @@ input[type='time'] {
 
 .score-readout {
   display: flex;
-  min-height: 4.25rem;
-  flex-direction: column;
-  align-items: center;
+  min-height: 2.75rem;
+  flex-direction: row;
+  align-items: baseline;
   justify-content: center;
+  gap: 0.4rem;
   text-align: center;
 }
 
 .score-readout strong {
   font-family: var(--font-sans);
-  font-size: 3.25rem;
+  font-size: 1.75rem;
   font-style: normal;
   font-weight: 650;
   font-variant-numeric: tabular-nums;
@@ -2509,7 +2511,7 @@ input[type='time'] {
 }
 
 .score-readout span {
-  margin-top: 0.2rem;
+  margin-top: 0;
   font-size: 0.75rem;
   font-weight: 650;
   letter-spacing: 0.01em;
@@ -2517,11 +2519,11 @@ input[type='time'] {
 }
 
 .score-pad.is-compact .score-readout {
-  min-height: 3.4rem;
+  min-height: 2.75rem;
 }
 
 .score-pad.is-compact .score-readout strong {
-  font-size: 2.5rem;
+  font-size: 1.5rem;
 }
 
 .plan-tray {
@@ -4846,13 +4848,22 @@ mark {
 .entry-head h3:has(> .rank-slot) {
   display: flex;
   align-items: baseline;
+  min-width: 0;
+}
+
+.entry-head h3:has(> .rank-slot) > a {
+  min-width: 0;
 }
 
 .rank-slot {
-  flex: none;
-  width: 1.1em;
+  flex: 0 0 4ch;
+  width: 4ch;
   margin-right: var(--space-2);
+  font-size: 1.25rem;
+  line-height: 1;
   font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+  text-align: right;
 }
 
 /* Achievements */

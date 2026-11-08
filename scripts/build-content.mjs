@@ -902,6 +902,7 @@ for (const theme of themes) {
     places = sortDraft([...new Map([...places, ...extra].map((place) => [place.id, place])).values()], priority)
   }
   places = flagshipPlaces(slug, diversify(places, FLAGSHIP_AIM, slug === 'pike-place' ? 8 : 6))
+  if (slug === 'cheap-eats') places = places.filter((place) => place.id !== 'alibi-room')
   const angle = angleFor(group, slug)
   addGuide({
     slug,
@@ -924,7 +925,9 @@ for (const sub of themes.find((theme) => theme.sub_guides).sub_guides) {
     members = [...members, ...sodo]
   }
   const slug = slugify(label)
-  const title = label === 'Queen Anne (incl. Lower Queen Anne)' ? 'Queen Anne' : label
+  const title = label === 'Queen Anne (incl. Lower Queen Anne)' ? 'Queen Anne'
+    : label === 'South Lake Union (incl. Denny Triangle)' ? 'South Lake Union'
+    : label
   let places = flagshipPlaces(slug, diversify(sortDraft(resolveMembers(members)), FLAGSHIP_AIM, 3))
   addGuide({
     slug,

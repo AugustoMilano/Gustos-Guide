@@ -15,7 +15,19 @@ test('home featured rows omit Date Night and the breakfast guide keeps its route
     await expect(featured.getByRole('link', { name: title, exact: true })).toHaveCount(0)
   }
   await page.goto('/#/seattle')
-  await expect(page.getByRole('region', { name: 'Featured guides' }).getByRole('link', { name: 'Best Pizza in Seattle' })).toBeVisible()
+  const seattleFeatured = page.getByRole('region', { name: 'Featured guides' })
+  const featuredText = await seattleFeatured.getByRole('link').allInnerTexts()
+  expect(featuredText).toHaveLength(6)
+  expect(featuredText.map((text) => text.replace(/\s+/g, ' ').trim())).toEqual([
+    expect.stringContaining('Pike Place Market Essentials'),
+    expect.stringContaining('Best Bakeries & Pastry'),
+    expect.stringContaining('Best Pizza in Seattle'),
+    expect.stringContaining('Late-Night Eats'),
+    expect.stringContaining('Best Cocktail Bars'),
+    expect.stringContaining('Bring The Parents'),
+  ])
+  expect(featuredText.join('\n')).not.toMatch(/Date Night/)
+  await expect(seattleFeatured.getByRole('link', { name: 'Best Bakeries & Pastry' })).toHaveAttribute('href', /\/seattle\/guide\/best-bakeries$/)
   await page.getByLabel('Search guides and places').fill('date night')
   await expect(page.getByRole('link', { name: /Date Night/ })).toBeVisible()
   await page.goto('/#/seattle/guides')
