@@ -1,3 +1,4 @@
+import { createServer } from 'node:http'
 import { readFileSync } from 'node:fs'
 import { expect, test } from '@playwright/test'
 
@@ -223,4 +224,97 @@ test('Pike Place Starbucks description names the first store and the 1976 move',
   await page.goto('/#/seattle/place/starbucks-coffee-company')
   await expect(page.getByText('moved to this Pike Place shop in 1976')).toBeVisible()
   await expect(page.getByText('Photo coming soon').first()).toBeVisible()
+})
+
+test('a warm cache of the sideways Taurus photo does not win', async ({ page }) => {
+  const oldFiles = [
+    '/photos/taurus-ox.jpg',
+    '/photos/taurus-ox.480.jpg',
+    '/photos/taurus-ox.960.jpg',
+    '/photos/taurus-ox.200.webp',
+    '/photos/taurus-ox.400.webp',
+    '/photos/taurus-ox.720.webp',
+    '/photos/taurus-ox.960.webp',
+    '/photos/taurus-ox.200.avif',
+    '/photos/taurus-ox.400.avif',
+    '/photos/taurus-ox.720.avif',
+    '/photos/taurus-ox.960.avif',
+  ]
+  const uprightSet = [480, 960, 1200].map((width) => (width === 1200 ? `/photos/taurus-ox-upright.jpg ${width}w` : `/photos/taurus-ox-upright.${width}.jpg ${width}w`)).join(', ')
+  const server = createServer((req, res) => {
+    const path = (req.url || '/').split('?')[0]
+    if (path === '/') {
+      res.writeHead(200, { 'content-type': 'text/html; charset=utf-8', 'cache-control': 'no-store' })
+      res.end(`<!doctype html><img id="hero" alt="Taurus Ox" src="/photos/taurus-ox-upright.jpg" srcset="${uprightSet}" sizes="100vw">`)
+      return
+    }
+    if (!path.startsWith('/photos/taurus-ox')) {
+      res.writeHead(404)
+      res.end()
+      return
+    }
+    const body = readFileSync(new URL(`../public${path}`, import.meta.url))
+    const type = path.endsWith('.webp') ? 'image/webp' : path.endsWith('.avif') ? 'image/avif' : 'image/jpeg'
+    res.writeHead(200, { 'content-type': type, 'cache-control': 'public, max-age=31536000', 'content-length': body.length })
+    res.end(body)
+  })
+  await new Promise<void>((resolve) => server.listen(4187, '127.0.0.1', resolve))
+  try {
+    for (const url of oldFiles) {
+      const response = await page.goto(`http://127.0.0.1:4187${url}`)
+      expect(response?.ok(), url).toBeTruthy()
+      expect(response?.headers()['cache-control']).toContain('max-age=31536000')
+    }
+    const cached = await page.evaluate(async (urls) => {
+      const out = []
+      for (const url of urls) {
+        const img = new Image()
+        await new Promise((resolve, reject) => {
+          img.onload = () => resolve(true)
+          img.onerror = () => reject(new Error(url))
+          img.src = url
+        })
+        const timing = performance.getEntriesByType('resource').filter((entry) => entry.name.endsWith(url)).at(-1)
+        out.push({ url, w: img.naturalWidth, h: img.naturalHeight, transfer: timing && 'transferSize' in timing ? timing.transferSize : -1 })
+      }
+      return out
+    }, oldFiles)
+    expect(cached.every((item) => item.w > item.h), JSON.stringify(cached)).toBe(true)
+    expect(cached.every((item) => item.transfer === 0), JSON.stringify(cached)).toBe(true)
+    const requested: string[] = []
+    page.on('request', (request) => {
+      if (request.url().includes('/photos/taurus-ox')) requested.push(new URL(request.url()).pathname)
+    })
+    await page.setViewportSize({ width: 1440, height: 900 })
+    await page.goto('http://127.0.0.1:4187/')
+    const hero = page.locator('#hero')
+    await expect(hero).toBeVisible()
+    const shown = await hero.evaluate((node) => {
+      const img = node as HTMLImageElement
+      return { src: img.currentSrc, w: img.naturalWidth, h: img.naturalHeight }
+    })
+    expect(shown.src).toContain('/photos/taurus-ox-upright')
+    expect(shown.h).toBeGreaterThan(shown.w)
+    expect(requested.some((path) => path.includes('/photos/taurus-ox-upright'))).toBe(true)
+    expect(requested.some((path) => /\/photos\/taurus-ox\.(?!upright)/.test(path))).toBe(false)
+  } finally {
+    await new Promise((resolve) => server.close(resolve))
+  }
+  await page.route(/supabase\.co/, (route) => route.abort())
+  await page.setViewportSize({ width: 1440, height: 900 })
+  await page.goto('/#/seattle/place/taurus-ox')
+  const appHero = page.locator('.photo-stage img').first()
+  await expect(appHero).toBeVisible()
+  const appShown = await appHero.evaluate((node) => ({ src: (node as HTMLImageElement).currentSrc, w: (node as HTMLImageElement).naturalWidth, h: (node as HTMLImageElement).naturalHeight }))
+  expect(appShown.src).toContain('/photos/taurus-ox-upright')
+  expect(appShown.h).toBeGreaterThan(appShown.w)
+  await page.locator('.photo-stage').screenshot({ path: '/opt/cursor/artifacts/taurus-ox-cachebust-1440.png' })
+  await page.setViewportSize({ width: 390, height: 844 })
+  await page.goto('/#/seattle/place/taurus-ox')
+  const phone = page.locator('.photo-stage img').first()
+  await expect(phone).toBeVisible()
+  const phoneBox = await phone.evaluate((node) => ({ src: (node as HTMLImageElement).currentSrc, w: (node as HTMLImageElement).naturalWidth, h: (node as HTMLImageElement).naturalHeight }))
+  expect(phoneBox.src).toContain('/photos/taurus-ox-upright')
+  expect(phoneBox.h).toBeGreaterThan(phoneBox.w)
+  await page.locator('.photo-stage').screenshot({ path: '/opt/cursor/artifacts/taurus-ox-cachebust-390.png' })
 })

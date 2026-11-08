@@ -62,6 +62,48 @@ for (const guide of guides) {
   }
 }
 
+function jpegSize(buf) {
+  let offset = 2
+  while (offset < buf.length) {
+    if (buf[offset] !== 0xff) break
+    const marker = buf[offset + 1]
+    const length = buf.readUInt16BE(offset + 2)
+    if (marker >= 0xc0 && marker <= 0xc2) {
+      return { height: buf.readUInt16BE(offset + 5), width: buf.readUInt16BE(offset + 7) }
+    }
+    offset += 2 + length
+  }
+  throw new Error('jpeg size missing')
+}
+
+const taurus = places['taurus-ox']
+assert.equal(taurus.photos[0].url, '/photos/taurus-ox-upright.jpg')
+assert.equal(taurus.photos[0].credit, 'Another Believer')
+assert.equal(taurus.photos[0].creditUrl, 'https://commons.wikimedia.org/wiki/File:Seattle_in_January_2023_-_080.jpg')
+assert.equal(taurus.gustoScore, null)
+assert.equal(index.places.find((place) => place.id === 'taurus-ox').photo.url, '/photos/taurus-ox-upright.jpg')
+assert.equal(index.places.find((place) => place.id === 'taurus-ox').oneLiner, taurus.oneLiner)
+const upright = jpegSize(readFileSync(new URL('../public/photos/taurus-ox-upright.jpg', import.meta.url)))
+const sideways = jpegSize(readFileSync(new URL('../public/photos/taurus-ox.jpg', import.meta.url)))
+assert.deepEqual(upright, { width: 1200, height: 1600 })
+assert.deepEqual(sideways, { width: 1600, height: 1200 })
+for (const name of ['taurus-ox-upright.480.jpg', 'taurus-ox-upright.960.jpg', 'taurus-ox-upright.200.webp', 'taurus-ox-upright.400.webp', 'taurus-ox-upright.720.webp', 'taurus-ox-upright.960.webp', 'taurus-ox-upright.200.avif', 'taurus-ox-upright.400.avif', 'taurus-ox-upright.720.avif', 'taurus-ox-upright.960.avif']) {
+  assert.equal(readFileSync(new URL(`../public/photos/${name}`, import.meta.url)).length > 0, true, name)
+}
+const taurusSizes = JSON.parse(readFileSync(new URL('../src/content/photo-sizes.json', import.meta.url), 'utf8'))
+assert.deepEqual(taurusSizes['taurus-ox-upright.jpg'], { w: 1200, h: 1600, widths: [480, 960, 1200], webp: [200, 400, 720, 960], avif: [200, 400, 720, 960] })
+const uprightSizes = taurusSizes['taurus-ox-upright.jpg']
+const sets = [
+  '/photos/taurus-ox-upright.jpg',
+  uprightSizes.widths.map((width) => (width === uprightSizes.w ? `/photos/taurus-ox-upright.jpg ${width}w` : `/photos/taurus-ox-upright.${width}.jpg ${width}w`)).join(', '),
+  uprightSizes.webp.map((width) => `/photos/taurus-ox-upright.${width}.webp ${width}w`).join(', '),
+  uprightSizes.avif.map((width) => `/photos/taurus-ox-upright.${width}.avif ${width}w`).join(', '),
+]
+for (const set of sets) {
+  assert.equal(set.includes('/photos/taurus-ox.'), false, set)
+  assert.equal(set.includes('taurus-ox-upright'), true, set)
+}
+
 const cheap = guides.find((guide) => guide.slug === 'cheap-eats')
 assert.equal(cheap.entries.some((entry) => entry.placeId === 'alibi-room'), false)
 for (const slug of ['pike-place', 'best-pizza', 'pike-place-market']) {
