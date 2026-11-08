@@ -48,7 +48,10 @@ function CountUp({ value }: { value: number }) {
   const [shown, setShown] = useState(value)
   useEffect(() => {
     const el = ref.current
-    if (!el || seen.size > 400 || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
+    if (!el || seen.size > 400 || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      setShown(value)
+      return
+    }
     const from = Math.max(0, value - 2)
     let raf = 0
     const io = new IntersectionObserver((entries) => {
