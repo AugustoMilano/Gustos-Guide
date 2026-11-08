@@ -1,3 +1,4 @@
+import { cuisineLabel } from './cuisine-label.ts'
 import { forkSvg, type ForkMetal } from './fork-mark.ts'
 
 const W = 1080
@@ -167,7 +168,7 @@ export async function renderPlaceStory(place: StoryPlace): Promise<Blob> {
     ctx.fillStyle = 'rgba(255, 250, 243, 0.14)'
     ctx.font = `600 180px ${SANS}`
     ctx.textAlign = 'center'
-    const mark = place.cuisine || place.neighborhood || 'Gusto'
+    const mark = (place.cuisine ? cuisineLabel(place.cuisine) : '') || place.neighborhood || 'Gusto'
     ctx.fillText(mark.slice(0, 18), W / 2, y + h / 2)
     ctx.restore()
   }

@@ -10,6 +10,7 @@ import { ScoreBadge } from './ScoreBadge.tsx'
 import { SignInSheet } from './SignInSheet.tsx'
 import { catalog } from '../content/load.ts'
 import { cityPath } from '../lib/city.ts'
+import { cuisineLabel } from '../lib/cuisine-label.ts'
 import { useCityCatalog } from '../lib/use-city.ts'
 import { isPlaceOpen } from '../lib/hours.ts'
 import { useApp } from '../state/AppState.tsx'
@@ -270,7 +271,7 @@ export function PlanSheet({ open, onClose, seedPlaceId }: { open: boolean; onClo
                       </span>
                       <span className="place-row-copy">
                         <span className="block truncate font-serif text-2xl italic leading-tight">{place.name}</span>
-                        <span className="mt-1 block truncate text-sm">{place.neighborhood} · {place.cuisine[0]}</span>
+                        <span className="mt-1 block truncate text-sm">{place.neighborhood} · {cuisineLabel(place.cuisine[0] ?? '')}</span>
                       </span>
                       <span className="score-col"><ScoreBadge score={app.gustoScore(place.id)} size="sm" /></span>
                       <span className={`pick-check ${on ? 'is-on' : ''}`} aria-hidden="true">✓</span>

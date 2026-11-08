@@ -1,4 +1,5 @@
 import { areaName, cityPath, type CityId } from './city.ts'
+import { cuisineLabel } from './cuisine-label.ts'
 import exclusions from '../../data/permanent-exclusions.json'
 import type { GuideGroup, GuideSummary, SlimPlace } from '../types.ts'
 
@@ -385,12 +386,12 @@ function matchTerm(term: Term, item: Prepared, guideHits: Map<string, string>): 
       || (c.price === 'low' && item.place.price === 1)
       || (c.price === 'high' && (item.place.price ?? 0) >= 4)
     if (dish && cuisine) take(T_DISH, 3 + dishes, c.why)
-    else if (cuisine) take(T_CUISINE, 2, item.place.cuisine[0] && entry.cuisine.length ? item.place.cuisine[0] : c.why)
+    else if (cuisine) take(T_CUISINE, 2, item.place.cuisine[0] && entry.cuisine.length ? cuisineLabel(item.place.cuisine[0]) : c.why)
     else if (dish) take(T_LINE, 3 + dishes, c.why)
   }
   // A cuisine word that is not in the concept list still reaches its own cuisine.
-  if (hasPhrase(item.cuisine, word) || hasPhrase(item.type, word)) take(T_CUISINE, 2, item.place.cuisine[0] || item.place.placeType)
-  else if (!word.includes(' ') && item.cuisineTokens.some((token) => fuzzy(word, token))) take(T_CUISINE, 1, item.place.cuisine[0] || 'Cuisine')
+  if (hasPhrase(item.cuisine, word) || hasPhrase(item.type, word)) take(T_CUISINE, 2, item.place.cuisine[0] ? cuisineLabel(item.place.cuisine[0]) : item.place.placeType)
+  else if (!word.includes(' ') && item.cuisineTokens.some((token) => fuzzy(word, token))) take(T_CUISINE, 1, item.place.cuisine[0] ? cuisineLabel(item.place.cuisine[0]) : 'Cuisine')
   if (term.hood && norm(item.place.neighborhood) === norm(term.hood)) take(T_HOOD, 2, item.place.neighborhood)
   else if (hasPhrase(item.hood, word)) take(T_HOOD, 1, item.place.neighborhood)
   if (hasPhrase(item.line, word)) take(T_LINE, 2, 'Description')
@@ -544,7 +545,7 @@ function searchIn(scope: CityId, query: string, current: CityId, places: SlimPla
     kind: 'place',
     id: row.item.place.id,
     title: row.item.place.name,
-    detail: [row.item.place.cuisine[0], row.item.place.neighborhood].filter(Boolean).join(' · '),
+    detail: [row.item.place.cuisine[0] ? cuisineLabel(row.item.place.cuisine[0]) : '', row.item.place.neighborhood].filter(Boolean).join(' · '),
     why: whyFrom(row.why),
     href: cityPath(`/place/${row.item.place.id}`, scope),
     score: pool.length - rank,

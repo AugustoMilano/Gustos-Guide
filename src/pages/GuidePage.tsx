@@ -10,6 +10,7 @@ import { StoryShareButton } from '../components/StoryShareButton.tsx'
 import { SignInSheet } from '../components/SignInSheet.tsx'
 import { catalog, loadGuide } from '../content/load.ts'
 import { cityPath } from '../lib/city.ts'
+import { cuisineMenuLabel } from '../lib/cuisine-label.ts'
 import { useCityId } from '../lib/use-city.ts'
 import { flagshipAimHint } from '../lib/collections.ts'
 import { countPlaces, pageShareUrl } from '../lib/format.ts'
@@ -369,7 +370,7 @@ function FilterFields({
       </select>
       <select className="soft-field bg-cream px-2 py-2" value={cuisine} onChange={(event) => setCuisine(event.target.value)} aria-label="Cuisine">
         <option value="">All cuisines</option>
-        {cuisines.map((item) => <option key={item}>{item}</option>)}
+        {cuisines.map((item) => <option key={item} value={item}>{cuisineMenuLabel(item, cuisines)}</option>)}
       </select>
       <select className="soft-field bg-cream px-2 py-2" value={price} onChange={(event) => setPrice(Number(event.target.value))} aria-label="Price">
         <option value={0}>Any price</option>

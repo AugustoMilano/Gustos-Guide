@@ -7,6 +7,7 @@ import { SignInSheet } from '../components/SignInSheet.tsx'
 import { scoreBand } from '../components/ScoreBadge.tsx'
 import { catalog } from '../content/load.ts'
 import { cityPath } from '../lib/city.ts'
+import { cuisineLabel, cuisineMenuLabel } from '../lib/cuisine-label.ts'
 import { publicReference } from '../lib/format.ts'
 import { usePageMeta } from '../lib/meta.ts'
 import {
@@ -265,7 +266,7 @@ export function QuickScorePage() {
                 <span>Cuisine</span>
                 <select value={cuisine} onChange={(event) => setCuisine(event.target.value)}>
                   <option value="">Any</option>
-                  {cuisines.map((name) => <option key={name} value={name}>{name}</option>)}
+                  {cuisines.map((name) => <option key={name} value={name}>{cuisineMenuLabel(name, cuisines)}</option>)}
                 </select>
               </label>
             </div>
@@ -308,7 +309,7 @@ export function QuickScorePage() {
                     <h2 className="font-serif text-4xl italic leading-none">
                       <Link to={cityPath(`/place/${place.id}`)}>{place.name}</Link>
                     </h2>
-                    <p className="mt-2 text-sm">{place.neighborhood} · {place.cuisine.join(', ')}</p>
+                    <p className="mt-2 text-sm">{place.neighborhood} · {place.cuisine.map((item) => cuisineLabel(item)).join(', ')}</p>
                     {publicReference(place) ? <p className="public-ref mt-2">{publicReference(place)}</p> : null}
                     <CollectionMembership placeId={place.id} city={place.city ?? 'seattle'} compact />
                     <p className="mt-2 text-sm lg:hidden">Swipe the photo left if you haven't been, right to score.</p>

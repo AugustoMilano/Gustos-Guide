@@ -14,6 +14,7 @@ import { catalog, slimById } from '../content/load.ts'
 import { cityPath, type CityId } from '../lib/city.ts'
 import { useCityCatalog } from '../lib/use-city.ts'
 import { demoFriendsEnabled } from '../lib/demo.ts'
+import { cuisineLabel } from '../lib/cuisine-label.ts'
 import { priceLabel, publicReference } from '../lib/format.ts'
 import { usePageMeta } from '../lib/meta.ts'
 import { useApp } from '../state/AppState.tsx'
@@ -90,7 +91,7 @@ export function PlanDetailPage() {
                 </span>
                 <span className="place-row-copy">
                   <span className="block truncate font-serif text-2xl italic leading-tight">{place.name}</span>
-                  <span className="mt-1 block truncate text-sm">{place.neighborhood} · {place.cuisine[0]}</span>
+                  <span className="mt-1 block truncate text-sm">{place.neighborhood} · {cuisineLabel(place.cuisine[0] ?? '')}</span>
                 </span>
                 <span className="score-col"><ScoreBadge score={app.gustoScore(place.id)} size="sm" /></span>
                 <span className="row-tail">

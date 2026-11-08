@@ -17,6 +17,7 @@ import { StoryShareButton } from '../components/StoryShareButton.tsx'
 import { formatPeriods, placeHoursPhrase } from '../lib/hours.ts'
 import { MapLinks } from '../components/MapLinks.tsx'
 import { ShareButton } from '../components/ShareButton.tsx'
+import { cuisineLabel } from '../lib/cuisine-label.ts'
 import { milesBetween, priceLabel, publicReference, shareUrl, yelpBizUrl } from '../lib/format.ts'
 import { renderPlaceStory } from '../lib/story-card.ts'
 import { awardFor } from '../lib/top25.ts'
@@ -165,7 +166,7 @@ export function PlacePage() {
         />
         <div className="place-identity">
           <p className="area-kicker">{areaTitle(placeCity(place))}</p>
-          <p className="mt-2 text-xs font-bold tracking-[0.14em] uppercase">{[place.cuisine.join(' · '), place.neighborhood].filter(Boolean).join(' · ')}</p>
+          <p className="mt-2 text-xs font-bold tracking-[0.14em] uppercase">{[place.cuisine.map((item) => cuisineLabel(item)).join(' · '), place.neighborhood].filter(Boolean).join(' · ')}</p>
           <h1 className="mt-1 font-serif text-5xl italic leading-none sm:text-6xl">{place.name}</h1>
           {place.closed ? <p className="closed-banner mt-3" role="status">Closed.</p> : null}
           <div className="mt-3 flex flex-wrap items-center gap-3">

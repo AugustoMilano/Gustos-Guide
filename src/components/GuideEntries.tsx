@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { useReducedMotion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { cityPath } from '../lib/city.ts'
+import { cuisineLabel } from '../lib/cuisine-label.ts'
 import { PlaceArt } from './PlaceArt.tsx'
 import { PlaceThumb } from './PlaceThumb.tsx'
 import { ThumbImg } from './ThumbImg.tsx'
@@ -85,7 +86,7 @@ export function GuideStrip({
                   </div>
                   <h3 className="mt-2 line-clamp-2 min-h-[2.6rem] font-serif text-xl italic leading-tight">{number != null ? <span className="mr-1.5 text-coral not-italic">{number}</span> : null}{place.name}</h3>
                   <p className="mt-2 line-clamp-2 min-h-[2rem] text-xs font-bold tracking-wide uppercase">
-                    {[place.neighborhood, place.cuisine[0], priceLabel(place.price)].filter(Boolean).join(' · ')}
+                    {[place.neighborhood, cuisineLabel(place.cuisine[0] ?? ''), priceLabel(place.price)].filter(Boolean).join(' · ')}
                   </p>
                   {vibe || place.perfectFor[0] ? <span className={`tag mt-1.5 min-h-6 ${vibe ? 'tag-vibe' : ''}`}>{vibe ?? place.perfectFor[0]}</span> : null}
                 </div>
@@ -240,7 +241,7 @@ export function GuideEntryCard({
         </span>
       </div>
       <p className="mt-3 text-sm font-bold tracking-wide uppercase">
-        {[place.cuisine.join(' · '), place.neighborhood, priceLabel(place.price), place.closed ? 'Closed' : ''].filter(Boolean).join(' · ')}
+        {[place.cuisine.map((item) => cuisineLabel(item)).join(' · '), place.neighborhood, priceLabel(place.price), place.closed ? 'Closed' : ''].filter(Boolean).join(' · ')}
       </p>
     </div>
   )
