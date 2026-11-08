@@ -236,7 +236,7 @@ export function Header() {
           className="site-search ml-auto hidden w-44 shrink-0 xl:block min-[1400px]:w-60"
         />
         <nav className="site-nav hidden items-center gap-1 text-sm font-bold xl:flex" aria-label="Primary">
-          <Link viewTransition={!reduceMotion} to={cityPath('/explore', linkCity)} aria-current={barePath(location.pathname) === '/explore' ? 'page' : undefined} onMouseEnter={() => prefetch('/explore')} onFocus={() => prefetch('/explore')}>Explore</Link>
+          <Link viewTransition={!reduceMotion} to={cityPath('/explore', linkCity)} aria-current={barePath(location.pathname) === '/explore' ? 'page' : undefined} onMouseEnter={() => prefetch('/explore')} onFocus={() => prefetch('/explore')}>Map</Link>
           <Link viewTransition={!reduceMotion} to={cityPath('/guides', linkCity)} aria-current={barePath(location.pathname) === '/guides' || barePath(location.pathname).startsWith('/guide/') ? 'page' : undefined}>Guides</Link>
           <Link viewTransition={!reduceMotion} to={cityPath('/tonight', linkCity)} aria-current={barePath(location.pathname) === '/tonight' ? 'page' : undefined}>Tonight</Link>
           <Link viewTransition={!reduceMotion} to={cityPath('/top', linkCity)} aria-current={barePath(location.pathname) === '/top' ? 'page' : undefined}>Top 25</Link>
@@ -316,7 +316,7 @@ export function Header() {
             <button type="button" className="btn btn-coral" onClick={() => { setMenu(false); setOpen(true) }}>Sign in</button>
           )}
           <AreaKicker />
-          <Link viewTransition={!reduceMotion} to={cityPath('/explore', linkCity)} onClick={() => setMenu(false)} onFocus={() => prefetch('/explore')}>Explore</Link>
+          <Link viewTransition={!reduceMotion} to={cityPath('/explore', linkCity)} onClick={() => setMenu(false)} onFocus={() => prefetch('/explore')}>Map</Link>
           <Link viewTransition={!reduceMotion} to={cityPath('/guides', linkCity)} onClick={() => setMenu(false)}>Guides</Link>
           <Link viewTransition={!reduceMotion} to={cityPath('/tonight', linkCity)} onClick={() => setMenu(false)}>Tonight</Link>
           <Link viewTransition={!reduceMotion} to={cityPath('/feed', linkCity)} onClick={() => setMenu(false)}>Feed</Link>

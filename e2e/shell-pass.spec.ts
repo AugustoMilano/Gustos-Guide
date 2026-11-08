@@ -36,7 +36,7 @@ test('quick score count, unscored pill, and the shorter header', async ({ page }
   const overflow = await bar.evaluate((el) => el.scrollWidth - el.clientWidth)
   expect(overflow).toBeLessThanOrEqual(1)
   const primary = page.getByRole('navigation', { name: 'Primary' })
-  await expect(primary.getByRole('link', { name: 'Explore' })).toBeVisible()
+  await expect(primary.getByRole('link', { name: 'Map', exact: true })).toBeVisible()
   await expect(primary.getByRole('link', { name: 'Feed' })).toHaveCount(0)
   await expect(primary.getByRole('link', { name: 'Quick score' })).toHaveCount(0)
   await page.getByRole('button', { name: 'Menu' }).click()
