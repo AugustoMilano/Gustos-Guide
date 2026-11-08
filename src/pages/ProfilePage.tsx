@@ -6,12 +6,14 @@ import { m, useReducedMotion } from 'framer-motion'
 import { useState } from 'react'
 import { Achievements } from '../components/Achievements.tsx'
 import { PlaceThumb } from '../components/PlaceThumb.tsx'
+import { PriceFilter } from '../components/PriceFilter.tsx'
 import { slimById } from '../content/load.ts'
 import { areaTitle, cityPath, regionOf, REGIONS, type RegionId } from '../lib/city.ts'
 import { placeCity, placesForCity, useCityId } from '../lib/use-city.ts'
 import { usePageMeta } from '../lib/meta.ts'
+import { hasUnknownPrice, matchesPrice } from '../lib/price-filter.ts'
 import { useApp } from '../state/AppState.tsx'
-import type { SlimPlace } from '../types.ts'
+import type { Price, SlimPlace } from '../types.ts'
 
 type Row = { id: string; name: string; score: number }
 
@@ -175,11 +177,23 @@ export function ProfilePage() {
 
 function PlaceGrid({ ids, empty }: { ids: string[]; empty: string }) {
   const app = useApp()
+  const [prices, setPrices] = useState<Price[]>([])
+  const [unknownPrice, setUnknownPrice] = useState(false)
   const places = ids.map((id) => slimById(id)).filter((place): place is SlimPlace => place != null).slice(0, 8)
+  const shown = places.filter((place) => matchesPrice(place, { prices, unknown: unknownPrice }))
   if (!places.length) return <p className="mt-2">{empty}</p>
   return (
-    <ul className="mt-3 grid grid-cols-2 gap-3">
-      {places.map((place) => (
+    <>
+      <div className="mt-3">
+        <PriceFilter
+          choice={{ prices, unknown: unknownPrice }}
+          showUnknown={hasUnknownPrice(places)}
+          onChange={(next) => { setPrices(next.prices); setUnknownPrice(next.unknown) }}
+        />
+      </div>
+      {shown.length === 0 ? <p className="mt-3">Nothing matches that price.</p> : null}
+      <ul className="mt-3 grid grid-cols-2 gap-3">
+      {shown.map((place) => (
         <li key={place.id}>
           <Link to={`/place/${place.id}`} className="hit-card">
             <div className="h-28 overflow-hidden bg-navy [&_.place-art]:aspect-auto [&_.place-art]:h-full">
@@ -193,6 +207,7 @@ function PlaceGrid({ ids, empty }: { ids: string[]; empty: string }) {
         </li>
       ))}
     </ul>
+    </>
   )
 }
 

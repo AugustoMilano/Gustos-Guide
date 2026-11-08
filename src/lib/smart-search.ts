@@ -1,7 +1,7 @@
 import { areaName, cityPath, type CityId } from './city.ts'
 import { cuisineLabel } from './cuisine-label.ts'
 import exclusions from '../../data/permanent-exclusions.json'
-import type { GuideGroup, GuideSummary, SlimPlace } from '../types.ts'
+import type { GuideGroup, GuideSummary, Price, SlimPlace } from '../types.ts'
 
 export type SmartHit = {
   kind: 'guide' | 'place'
@@ -12,6 +12,8 @@ export type SmartHit = {
   href: string
   score: number
   group?: GuideGroup
+  /** Set on place hits. Null means the catalog has no price. */
+  price?: Price | null
 }
 
 export type SmartResult = {
@@ -549,6 +551,7 @@ function searchIn(scope: CityId, query: string, current: CityId, places: SlimPla
     why: whyFrom(row.why),
     href: cityPath(`/place/${row.item.place.id}`, scope),
     score: pool.length - rank,
+    price: (row.item.place.price ?? null) as Price | null,
   }))
 
   guideHits.sort((a, b) => b.score - a.score || a.title.localeCompare(b.title))

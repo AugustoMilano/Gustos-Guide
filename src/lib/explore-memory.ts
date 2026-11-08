@@ -1,3 +1,4 @@
+import type { Price } from '../types.ts'
 import type { Detent } from './use-bottom-sheet.ts'
 
 export type ExploreArea = { south: number; north: number; west: number; east: number }
@@ -6,7 +7,8 @@ export type ExploreCamera = { lat: number; lng: number; zoom: number }
 export type ExploreMemory = {
   cuisine: string
   neighborhood: string
-  price: string
+  prices: Price[]
+  unknown: boolean
   band: string
   visit: string
   detent: Detent
@@ -36,15 +38,24 @@ function camera(value: unknown): ExploreCamera | null {
   return { lat: view.lat, lng: view.lng, zoom: view.zoom }
 }
 
+function savedPrices(raw: Partial<ExploreMemory> & { price?: unknown }): Price[] {
+  if (Array.isArray(raw.prices)) {
+    return raw.prices.filter((item): item is Price => item === 1 || item === 2 || item === 3 || item === 4)
+  }
+  if (raw.price === '1' || raw.price === '2' || raw.price === '3' || raw.price === '4') return [Number(raw.price) as Price]
+  return []
+}
+
 export function readExploreMemory(city: string): ExploreMemory | null {
   try {
-    const raw = JSON.parse(sessionStorage.getItem(key(city)) ?? 'null') as Partial<ExploreMemory> | null
+    const raw = JSON.parse(sessionStorage.getItem(key(city)) ?? 'null') as (Partial<ExploreMemory> & { price?: unknown }) | null
     if (!raw || typeof raw !== 'object') return null
     const detent = DETENTS.includes(raw.detent as Detent) ? (raw.detent as Detent) : 'peek'
     return {
       cuisine: typeof raw.cuisine === 'string' ? raw.cuisine : 'any',
       neighborhood: typeof raw.neighborhood === 'string' ? raw.neighborhood : 'any',
-      price: typeof raw.price === 'string' ? raw.price : 'any',
+      prices: savedPrices(raw),
+      unknown: raw.unknown === true,
       band: typeof raw.band === 'string' ? raw.band : 'any',
       visit: typeof raw.visit === 'string' ? raw.visit : 'any',
       detent,

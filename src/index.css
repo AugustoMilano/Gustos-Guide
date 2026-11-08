@@ -1208,6 +1208,22 @@ main ul.grid > li {
   color: #eee3d6;
 }
 
+.price-filter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  max-width: 100%;
+  grid-column: 1 / -1;
+}
+
+.price-filter .chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  padding-inline: 12px;
+}
+
 #guides,
 #spots {
   scroll-margin-top: 5rem;

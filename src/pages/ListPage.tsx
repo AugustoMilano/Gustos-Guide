@@ -5,10 +5,12 @@ import { PlaceThumb } from '../components/PlaceThumb.tsx'
 import { GoldenFork } from '../components/GoldenFork.tsx'
 import { ScoreBadge } from '../components/ScoreBadge.tsx'
 import { StoryShareButton } from '../components/StoryShareButton.tsx'
+import { PriceFilter } from '../components/PriceFilter.tsx'
 import { SlidingRow } from '../components/SlidingRow.tsx'
 import { slimById } from '../content/load.ts'
 import { demoFriendsEnabled } from '../lib/demo.ts'
 import { countPlaces, milesBetween, priceLabel } from '../lib/format.ts'
+import { hasUnknownPrice, matchesPrice } from '../lib/price-filter.ts'
 import { readPosition } from '../lib/geo.ts'
 import { isPlaceOpen } from '../lib/hours.ts'
 import { listColor, listOgSvg } from '../lib/lists.ts'
@@ -28,6 +30,7 @@ export function ListPage() {
   const [sort, setSort] = useState<SortKey>('order')
   const [openNow, setOpenNow] = useState(false)
   const [prices, setPrices] = useState<Price[]>([])
+  const [unknownPrice, setUnknownPrice] = useState(false)
   const [origin, setOrigin] = useState<{ lat: number; lng: number } | null>(null)
   const [whereError, setWhereError] = useState('')
   const [copied, setCopied] = useState(false)
@@ -49,7 +52,7 @@ export function ListPage() {
       .filter((row): row is { place: SlimPlace; index: number; note: string } => row != null)
     const filtered = places.filter((row) => {
       if (openNow && !isPlaceOpen(row.place)) return false
-      if (prices.length && (row.place.price == null || !prices.includes(row.place.price))) return false
+      if (!matchesPrice(row.place, { prices, unknown: unknownPrice })) return false
       return true
     })
     const scored = filtered.slice()
@@ -65,7 +68,7 @@ export function ListPage() {
       scored.sort((a, b) => a.index - b.index)
     }
     return scored
-  }, [guide, openNow, prices, sort, origin, app])
+  }, [guide, openNow, prices, unknownPrice, sort, origin, app])
 
   if (!guide) {
     return <main id="main" tabIndex={-1} className="mx-auto min-h-dvh max-w-3xl px-4 pt-28 outline-none"><h1 className="font-serif text-5xl italic">That list is not here.</h1></main>
@@ -84,10 +87,6 @@ export function ListPage() {
   }
 
   const cover = slimById(guide.coverPlaceId ?? guide.placeIds[0] ?? '')
-
-  function togglePrice(price: Price) {
-    setPrices((current) => current.includes(price) ? current.filter((item) => item !== price) : [...current, price])
-  }
 
   async function sortByDistance() {
     setWhereError('')
@@ -140,10 +139,14 @@ export function ListPage() {
       <div className="mt-2">
         <SlidingRow label="Filter this list">
           <button type="button" className="chip" aria-pressed={openNow} onClick={() => setOpenNow((value) => !value)}>Open now</button>
-          {([1, 2, 3, 4] as Price[]).map((price) => (
-            <button key={price} type="button" className="chip" aria-pressed={prices.includes(price)} onClick={() => togglePrice(price)}>{priceLabel(price)}</button>
-          ))}
         </SlidingRow>
+      </div>
+      <div className="mt-2">
+        <PriceFilter
+          choice={{ prices, unknown: unknownPrice }}
+          showUnknown={hasUnknownPrice(guide.placeIds.map((id) => slimById(id)).filter((place): place is SlimPlace => place != null))}
+          onChange={(next) => { setPrices(next.prices); setUnknownPrice(next.unknown) }}
+        />
       </div>
       {whereError ? <p className="mt-2 text-sm">{whereError}</p> : null}
       {rows.length === 0 ? <p className="mt-6">Nothing in this list matches. Clear a filter, or add a place from My guides.</p> : null}

@@ -3,6 +3,7 @@ import { m, useReducedMotion } from 'framer-motion'
 import { Link, useParams } from 'react-router-dom'
 const GuideMap = lazy(() => import('../components/GuideMap.tsx').then((module) => ({ default: module.GuideMap })))
 import { GoldenFork } from '../components/GoldenFork.tsx'
+import { PriceFilter } from '../components/PriceFilter.tsx'
 import { MapLinks } from '../components/MapLinks.tsx'
 import { PlaceThumb } from '../components/PlaceThumb.tsx'
 import { ScoreBadge } from '../components/ScoreBadge.tsx'
@@ -10,9 +11,11 @@ import { areaTitle, cityPath } from '../lib/city.ts'
 import { CHEAP_EATS_SLUG, CHEAP_EATS_TITLE, cheapEatsFor, cleanTitle, flagshipAimHint, movedPlaceIds, orderedMembers, renderableIds, usableCheapMembers } from '../lib/collections.ts'
 import { cuisineLabel } from '../lib/cuisine-label.ts'
 import { countPlaces, priceLabel } from '../lib/format.ts'
+import { hasUnknownPrice, matchesPrice } from '../lib/price-filter.ts'
 import { usePageMeta } from '../lib/meta.ts'
 import { useCityCatalog } from '../lib/use-city.ts'
 import { useApp } from '../state/AppState.tsx'
+import type { Price } from '../types.ts'
 
 const SPRING = { type: 'spring' as const, stiffness: 420, damping: 32 }
 
@@ -27,6 +30,8 @@ export function CollectionPage() {
   const [note, setNote] = useState('')
   const [editing, setEditing] = useState(false)
   const [confirmDelete, setConfirmDelete] = useState(false)
+  const [prices, setPrices] = useState<Price[]>([])
+  const [unknownPrice, setUnknownPrice] = useState(false)
   const isCheap = slug === CHEAP_EATS_SLUG
   const stored = app.collections.find((row) => row.city === city && row.slug === slug && (row.published || app.user?.isOwner)) ?? null
   const loading = app.collectionsStatus === 'loading'
@@ -38,6 +43,7 @@ export function CollectionPage() {
       ? orderedMembers(storedIds, places)
       : []
   const usingStored = isCheap ? cheapMembers != null : storedIds != null
+  const shown = members.filter((place) => matchesPrice(place, { prices, unknown: unknownPrice }))
   const heading = stored?.title ?? (isCheap ? CHEAP_EATS_TITLE : 'Collection')
   const blurb = stored?.blurb ?? ''
   const owner = Boolean(app.user?.isOwner && stored && usingStored && storedIds)
@@ -76,7 +82,7 @@ export function CollectionPage() {
           >
             <p className="area-kicker">{areaTitle(city)}</p>
             <h1 className="mt-0.5 font-serif text-3xl italic leading-none">{heading}</h1>
-            <p className="mt-1 text-sm tabular-nums">{countPlaces(members.length)}</p>
+            <p className="mt-1 text-sm tabular-nums">{shown.length === members.length ? countPlaces(members.length) : `${shown.length} of ${countPlaces(members.length)}`}</p>
             {app.user?.isOwner ? (
               <p className="mt-1 text-sm">{flagshipAimHint(usingStored && storedIds ? storedIds.length : members.length)}</p>
             ) : null}
@@ -142,9 +148,19 @@ export function CollectionPage() {
               <button type="submit" className="btn btn-coral text-sm" disabled={!cleanTitle(title)}>Save</button>
             </form>
           ) : null}
+          {members.length ? (
+            <div className="panel-pad pt-3">
+              <PriceFilter
+                choice={{ prices, unknown: unknownPrice }}
+                showUnknown={hasUnknownPrice(members)}
+                onChange={(next) => { setPrices(next.prices); setUnknownPrice(next.unknown) }}
+              />
+            </div>
+          ) : null}
           {members.length === 0 ? <p className="panel-pad font-serif text-2xl italic">No places in this collection.</p> : null}
+          {members.length > 0 && shown.length === 0 ? <p className="panel-pad font-serif text-2xl italic">Nothing matches that price.</p> : null}
           <ul className="panel-pad space-y-3 pb-4">
-            {members.map((place) => (
+            {shown.map((place) => (
               <li
                 key={place.id}
                 id={`collection-${place.id}`}
@@ -211,7 +227,7 @@ export function CollectionPage() {
       <div className="explore-map">
         <Suspense fallback={<div className="map-frame skeleton h-full" aria-hidden="true" />}>
           <GuideMap
-            places={members}
+            places={shown}
             statuses={app.statuses}
             activeId={activeId}
             onHover={setActiveId}
