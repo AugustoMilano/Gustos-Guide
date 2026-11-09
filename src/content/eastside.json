@@ -1943,6 +1943,7 @@
         "Peruvian"
       ],
       "placeType": "restaurant",
+      "price": 3,
       "oneLiner": "Gastón Acurio's cebiche bar, on Main Street in Bellevue.",
       "perfectFor": [],
       "periods": [
@@ -2101,6 +2102,7 @@
         "Steak"
       ],
       "placeType": "steakhouse",
+      "price": 3,
       "oneLiner": "Prime filet on the 21st floor, Bellevue's steakhouse since 1989.",
       "perfectFor": [],
       "periods": [
@@ -2237,6 +2239,7 @@
         "Italian"
       ],
       "placeType": "restaurant",
+      "price": 4,
       "oneLiner": "Il Terrazzo Carmine's veal scaloppine, by Downtown Park.",
       "perfectFor": [],
       "periods": [
@@ -2416,6 +2419,7 @@
         "Seafood"
       ],
       "placeType": "restaurant",
+      "price": 3,
       "oneLiner": "Live Dungeness crab by the pound and a raw bar on Bellevue Way.",
       "perfectFor": [],
       "periods": [
@@ -2484,6 +2488,7 @@
         "Italian"
       ],
       "placeType": "restaurant",
+      "price": 2,
       "oneLiner": "Handmade tagliatelle carbonara on Bellevue's Main Street.",
       "perfectFor": [],
       "periods": [
@@ -2551,6 +2556,7 @@
         "Steak"
       ],
       "placeType": "steakhouse",
+      "price": 4,
       "oneLiner": "Wagyu Lil' Brgs and steak to a DJ set in Lincoln Square.",
       "perfectFor": [],
       "periods": [
@@ -3707,6 +3713,7 @@
         "Thai"
       ],
       "placeType": "restaurant",
+      "price": 3,
       "oneLiner": "Fragrant duck with steamed buns and seven flavor beef at Wild Ginger Bellevue.",
       "perfectFor": [],
       "periods": [
@@ -4716,6 +4723,7 @@
         "Mexican"
       ],
       "placeType": "restaurant",
+      "price": 3,
       "oneLiner": "Durango family recipes and margaritas on Lake Washington.",
       "perfectFor": [],
       "periods": [
@@ -5161,6 +5169,7 @@
         "Indian"
       ],
       "placeType": "restaurant",
+      "price": 2,
       "oneLiner": "Lamb dum biryani with saffron rice and fried onions in quilted Issaquah booths.",
       "perfectFor": [],
       "periods": [
