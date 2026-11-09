@@ -1539,7 +1539,8 @@ main ul.grid > li {
 
 @media (min-width: 768px) {
   .explore-list {
-    width: 22.5rem;
+    /* Wide enough that a name like "Betty Restaurant & Bar" keeps whole words. */
+    width: clamp(30rem, 40vw, 36rem);
     border-right: 2px solid #181818;
   }
 
@@ -4616,7 +4617,17 @@ mark {
 
 .place-row-copy {
   min-width: 0;
-  overflow-wrap: anywhere;
+  overflow-wrap: break-word;
+}
+
+@media (min-width: 768px) {
+  .explore-list .place-row {
+    grid-template-columns: var(--shot) minmax(12rem, 1fr) var(--badge-w);
+  }
+
+  .explore-list .place-row-copy {
+    min-width: 12rem;
+  }
 }
 
 .place-card-body,
@@ -4744,7 +4755,7 @@ mark {
 }
 
 .explore-card {
-  padding: var(--space-2) var(--space-5);
+  padding: var(--space-2) var(--space-3);
 }
 
 .explore-list .panel-pad {
