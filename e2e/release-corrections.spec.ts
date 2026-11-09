@@ -178,9 +178,10 @@ test('Best Breakfast includes Biscuit Bitch and score bands stay readable', asyn
   if (await listButton.isVisible()) await listButton.click()
   const filtersButton = page.getByRole('button', { name: 'Filters', exact: true })
   if (await filtersButton.isVisible()) await filtersButton.click()
-  const scoreFilter = page.locator('#explore-filters select').filter({ hasText: "It's fine" })
+  const scoreFilter = page.getByRole('button', { name: /Gusto's Score/ })
   await expect(scoreFilter).toBeVisible()
-  await scoreFilter.selectOption('good')
+  await scoreFilter.click()
+  await page.getByRole('option', { name: 'Good', exact: true }).click()
   const card = page.locator('#explore-biscuit-bitch')
   await expect(card).toBeVisible()
   const mapBadge = card.locator('.score-badge')
@@ -191,7 +192,8 @@ test('Best Breakfast includes Biscuit Bitch and score bands stay readable', asyn
     color: getComputedStyle(node).color,
   }))
   expect(mapPaint).toEqual({ background: SCORE_COLORS.good, color: 'rgb(24, 24, 24)' })
-  await scoreFilter.selectOption('fine')
+  await scoreFilter.click()
+  await page.getByRole('option', { name: "It's fine", exact: true }).click()
   const fineCard = page.locator('#explore-seattle-biscuit-company')
   await expect(fineCard).toBeVisible()
   const finePaint = await fineCard.locator('.score-badge').evaluate((node) => ({

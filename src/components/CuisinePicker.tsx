@@ -2,18 +2,22 @@ import { useEffect, useId, useLayoutEffect, useMemo, useRef, useState, type Keyb
 import { createPortal } from 'react-dom'
 import { cuisineMenuLabel } from '../lib/cuisine-label.ts'
 
+type Choice = { value: string; label: string }
+
 type Props = {
   labelId: string
   value: string
-  options: readonly string[]
+  options?: readonly string[]
+  /** Full list, including the empty choice. Used when the stored value is not the label. */
+  choices?: readonly Choice[]
   anyValue?: string
   anyLabel?: string
+  searchLabel?: string
+  emptyLabel?: string
   onChange: (value: string) => void
 }
 
-type Choice = { value: string; label: string }
-
-export function CuisinePicker({ labelId, value, options, anyValue = 'any', anyLabel = 'Any', onChange }: Props) {
+export function CuisinePicker({ labelId, value, options = [], choices, anyValue = 'any', anyLabel = 'Any', searchLabel = 'Find a cuisine', emptyLabel = 'No cuisines match.', onChange }: Props) {
   const listId = useId()
   const buttonRef = useRef<HTMLButtonElement>(null)
   const menuRef = useRef<HTMLDivElement>(null)
@@ -21,13 +25,16 @@ export function CuisinePicker({ labelId, value, options, anyValue = 'any', anyLa
   const [open, setOpen] = useState(false)
   const [query, setQuery] = useState('')
   const [active, setActive] = useState(0)
-  const current = value === anyValue ? anyLabel : cuisineMenuLabel(value, options)
-  const choices = useMemo<Choice[]>(() => {
-    const rows = [{ value: anyValue, label: anyLabel }, ...options.map((item) => ({ value: item, label: cuisineMenuLabel(item, options) }))]
+  const rows = useMemo<Choice[]>(() => {
+    if (choices) return [...choices]
+    return [{ value: anyValue, label: anyLabel }, ...options.map((item) => ({ value: item, label: cuisineMenuLabel(item, options) }))]
+  }, [anyLabel, anyValue, choices, options])
+  const current = rows.find((row) => row.value === value)?.label ?? anyLabel
+  const visible = useMemo<Choice[]>(() => {
     const needle = query.trim().toLowerCase()
     if (!needle) return rows
     return rows.filter((row) => row.label.toLowerCase().includes(needle) || row.value.toLowerCase().includes(needle))
-  }, [anyLabel, anyValue, options, query])
+  }, [query, rows])
 
   useEffect(() => {
     if (!open) return
@@ -89,10 +96,10 @@ export function CuisinePicker({ labelId, value, options, anyValue = 'any', anyLa
       window.removeEventListener('resize', place)
       document.removeEventListener('scroll', place, true)
     }
-  }, [open, choices.length])
+  }, [open, visible.length])
 
   function openMenu() {
-    const index = [anyValue, ...options].indexOf(value)
+    const index = rows.findIndex((row) => row.value === value)
     setQuery('')
     setActive(index < 0 ? 0 : index)
     setOpen(true)
@@ -107,7 +114,7 @@ export function CuisinePicker({ labelId, value, options, anyValue = 'any', anyLa
   function onSearchKey(event: ReactKeyboardEvent<HTMLInputElement>) {
     if (event.key === 'ArrowDown') {
       event.preventDefault()
-      setActive((index) => Math.min(choices.length - 1, index + 1))
+      setActive((index) => Math.min(visible.length - 1, index + 1))
     } else if (event.key === 'ArrowUp') {
       event.preventDefault()
       setActive((index) => Math.max(0, index - 1))
@@ -116,10 +123,10 @@ export function CuisinePicker({ labelId, value, options, anyValue = 'any', anyLa
       setActive(0)
     } else if (event.key === 'End') {
       event.preventDefault()
-      setActive(Math.max(0, choices.length - 1))
-    } else if (event.key === 'Enter' && choices[active]) {
+      setActive(Math.max(0, visible.length - 1))
+    } else if (event.key === 'Enter' && visible[active]) {
       event.preventDefault()
-      choose(choices[active].value)
+      choose(visible[active].value)
     }
   }
 
@@ -127,9 +134,9 @@ export function CuisinePicker({ labelId, value, options, anyValue = 'any', anyLa
     if (!open) return
     const node = menuRef.current?.querySelector<HTMLElement>('[data-active="true"]')
     node?.scrollIntoView({ block: 'nearest' })
-  }, [active, open, choices])
+  }, [active, open, visible])
 
-  const activeId = choices.length ? `${listId}-opt-${active}` : undefined
+  const activeId = visible.length ? `${listId}-opt-${active}` : undefined
 
   return (
     <>
@@ -162,8 +169,8 @@ export function CuisinePicker({ labelId, value, options, anyValue = 'any', anyLa
             aria-expanded="true"
             aria-controls={listId}
             aria-activedescendant={activeId}
-            aria-label="Find a cuisine"
-            placeholder="Find a cuisine"
+            aria-label={searchLabel}
+            placeholder={searchLabel}
             autoComplete="off"
             autoCorrect="off"
             spellCheck={false}
@@ -176,7 +183,7 @@ export function CuisinePicker({ labelId, value, options, anyValue = 'any', anyLa
             onKeyDown={onSearchKey}
           />
           <div id={listId} role="listbox" aria-labelledby={labelId}>
-            {choices.length ? choices.map((row, index) => (
+            {visible.length ? visible.map((row, index) => (
               <button
                 key={row.value}
                 id={`${listId}-opt-${index}`}
@@ -190,7 +197,7 @@ export function CuisinePicker({ labelId, value, options, anyValue = 'any', anyLa
               >
                 {row.label}
               </button>
-            )) : <p className="cuisine-menu-empty">No cuisines match.</p>}
+            )) : <p className="cuisine-menu-empty">{emptyLabel}</p>}
           </div>
         </div>,
         document.body,
