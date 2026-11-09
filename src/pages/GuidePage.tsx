@@ -14,6 +14,7 @@ import { cityPath } from '../lib/city.ts'
 import { cuisineMenuLabel } from '../lib/cuisine-label.ts'
 import { useCityId } from '../lib/use-city.ts'
 import { countPlaces, pageShareUrl, priceLabel } from '../lib/format.ts'
+import { resolvedMembers } from '../lib/guide-members.ts'
 import { rankByHouseScore } from '../lib/guide-rank.ts'
 import { hasUnknownPrice, matchesPrice, type PriceChoice } from '../lib/price-filter.ts'
 import { renderGuideStory } from '../lib/story-card.ts'
@@ -96,9 +97,12 @@ export function GuidePage() {
 
   const rows = useMemo(() => {
     if (!guide) return []
-    return guide.entries
-      .map((entry, index) => ({ entry, number: index + 1, place: catalog.places.find((place) => place.id === entry.placeId) }))
-      .filter((row): row is { entry: Guide['entries'][number]; number: number; place: SlimPlace } => Boolean(row.place))
+    const placeIds = new Set(catalog.places.map((place) => place.id))
+    return resolvedMembers(guide.entries, placeIds).map((entry, index) => ({
+      entry,
+      number: index + 1,
+      place: catalog.places.find((place) => place.id === entry.placeId) as SlimPlace,
+    }))
   }, [guide])
 
   const shown = rows.filter(({ place, entry }) => {

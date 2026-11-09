@@ -67,6 +67,19 @@ function placeRow(place) {
   ]
 }
 
+/** Same rule as src/lib/guide-members.ts: known places, once each. */
+export function resolvedCount(entries, placeIds) {
+  const seen = new Set()
+  let count = 0
+  for (const entry of entries ?? []) {
+    const id = entry?.placeId
+    if (!id || seen.has(id) || !placeIds.has(id)) continue
+    seen.add(id)
+    count += 1
+  }
+  return count
+}
+
 function guideRow(guide) {
   return [
     guide.slug,
@@ -75,7 +88,7 @@ function guideRow(guide) {
     guide.group,
     guide.updatedAt,
     guide.ranked ? 1 : 0,
-    guide.count ?? guide.entries.length,
+    guide.count,
     guide.city || '',
   ]
 }
@@ -88,10 +101,14 @@ export function writeSlimCatalog() {
   const sd = read('sd.json')
   const added = ['vancouver.json', 'portland.json', 'nyc.json', 'palouse.json'].map(read)
   const places = index.places.map(placeRow)
-  const guides = index.guides.map(guideRow)
   for (const file of [eastside, la, sf, sd, ...added]) {
     for (const place of file.places) places.push(placeRow(place))
-    for (const guide of file.guides) guides.push(guideRow(guide))
+  }
+  const placeIds = new Set(places.map((row) => row[0]))
+  const seattleEntries = new Map(read('guides.json').map((guide) => [guide.slug, guide.entries]))
+  const guides = index.guides.map((guide) => guideRow({ ...guide, count: resolvedCount(seattleEntries.get(guide.slug), placeIds) }))
+  for (const file of [eastside, la, sf, sd, ...added]) {
+    for (const guide of file.guides) guides.push(guideRow({ ...guide, count: resolvedCount(guide.entries, placeIds) }))
   }
   const sourceIds = [
     ...index.places.map((place) => place.id),
