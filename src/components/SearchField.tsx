@@ -41,6 +41,7 @@ export function SearchField({
     if (places) return
     void import('../content/load.ts').then(async (mod) => {
       await mod.catalogReady
+      await mod.ensureAllCities()
       setPlaces(mod.catalog.places)
       setGuides(mod.catalog.guides)
     })

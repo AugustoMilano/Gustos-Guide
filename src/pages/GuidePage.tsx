@@ -1,7 +1,7 @@
 import { m, useReducedMotion } from 'framer-motion'
 import { formatDay } from '../lib/day.ts'
 import { readPosition } from '../lib/geo.ts'
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useMemo, useState, useSyncExternalStore } from 'react'
 import { Link, Navigate, useParams } from 'react-router-dom'
 import { AreaKicker } from '../components/AreaKicker.tsx'
 import { GuideEntryCard, GuideStrip } from '../components/GuideEntries.tsx'
@@ -9,7 +9,7 @@ import { PriceFilter } from '../components/PriceFilter.tsx'
 import { ShareButton } from '../components/ShareButton.tsx'
 import { StoryShareButton } from '../components/StoryShareButton.tsx'
 import { SignInSheet } from '../components/SignInSheet.tsx'
-import { catalog, loadGuide } from '../content/load.ts'
+import { catalog, catalogPhase, ensureRegion, loadGuide, subscribeCatalog } from '../content/load.ts'
 import { cityPath } from '../lib/city.ts'
 import { cuisineMenuLabel } from '../lib/cuisine-label.ts'
 import { useCityId } from '../lib/use-city.ts'
@@ -35,6 +35,8 @@ export function GuidePage() {
   const reduceMotion = useReducedMotion()
   const { slug = '' } = useParams()
   const urlCity = useCityId()
+  useSyncExternalStore(subscribeCatalog, catalogPhase, catalogPhase)
+  useEffect(() => { void ensureRegion(urlCity) }, [urlCity])
   const { statuses, setStatus, user, photos, friendScore, gustoScore } = useApp()
   const [guide, setGuide] = useState<Guide | null>(null)
   const [missing, setMissing] = useState(false)
@@ -95,6 +97,7 @@ export function GuidePage() {
     guide ? originCanonical(`/share/guide/${guide.slug}`) : undefined,
   )
 
+  const loadedPlaces = catalog.places.length
   const rows = useMemo(() => {
     if (!guide) return []
     const placeIds = new Set(catalog.places.map((place) => place.id))
@@ -103,7 +106,7 @@ export function GuidePage() {
       number: index + 1,
       place: catalog.places.find((place) => place.id === entry.placeId) as SlimPlace,
     }))
-  }, [guide])
+  }, [guide, loadedPlaces])
 
   const shown = rows.filter(({ place, entry }) => {
     if (neighborhood && place.neighborhood !== neighborhood) return false

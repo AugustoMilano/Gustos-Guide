@@ -1,9 +1,9 @@
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { useReducedMotion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { AreaKicker } from '../components/AreaKicker.tsx'
 import { SmartResults } from '../components/SmartResults.tsx'
-import { catalog } from '../content/load.ts'
+import { catalog, ensureAllCities } from '../content/load.ts'
 import { areaName, cityPath, regionOf } from '../lib/city.ts'
 import { countPlaces } from '../lib/format.ts'
 import { usePageMeta } from '../lib/meta.ts'
@@ -62,6 +62,7 @@ export function GuideIndexPage() {
   usePageMeta(`${areaName(city)} guides · Gusto's Guide`, guideIndexMeta(city), `./og/cities/${regionOf(city)}.png`)
   const query = draft.trim()
   const { gustoScore } = useApp()
+  useEffect(() => { if (query.length >= 4) void ensureAllCities() }, [query])
   const result = useMemo(() => {
     if (!query) return null
     const found = smartSearch(query, city, catalog.places, catalog.guides, gustoScore)
@@ -71,7 +72,7 @@ export function GuideIndexPage() {
       guides: found.guides.filter((hit) => hit.group === group),
       suggestions: found.suggestions.filter((hit) => hit.group === group),
     }
-  }, [query, city, group, gustoScore])
+  }, [query, city, group, gustoScore, catalog.places.length])
   const visibleGroups = GROUPS.filter((item) => guides.some((guide) => guide.group === item))
 
   return (

@@ -278,10 +278,21 @@ export function AppProvider({ children }: { children: ReactNode }) {
   }
 
   useEffect(() => {
+    let live = true
+    let stop = () => {}
     void import('../content/load.ts').then(async (mod) => {
       await mod.catalogReady
-      for (const place of mod.catalog.places) placeNames.set(place.id, place.name)
+      if (!live) return
+      const take = () => {
+        for (const place of mod.catalog.places) placeNames.set(place.id, place.name)
+      }
+      take()
+      stop = mod.subscribeCatalog(take)
     })
+    return () => {
+      live = false
+      stop()
+    }
   }, [])
 
   useEffect(() => {

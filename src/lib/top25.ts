@@ -1,6 +1,6 @@
 import { brandKey } from './brand.ts'
 import { isRestaurant } from './restaurant.ts'
-import { catalog } from '../content/load.ts'
+import { catalog, regionReady } from '../content/load.ts'
 import { regionOf, type RegionId } from './city.ts'
 import type { ForkMetal } from './fork-mark.ts'
 import { isListed, placeCity } from './use-city.ts'
@@ -43,7 +43,7 @@ function scoreKey(scoreOf: (placeId: string) => number | null): string {
     const score = scoreOf(place.id)
     if (typeof score === 'number') parts.push(`${place.id}:${score}`)
   }
-  return parts.join('|')
+  return `${catalog.places.length}|${parts.join('|')}`
 }
 
 function build(scoreOf: (placeId: string) => number | null): Cache {
@@ -78,10 +78,15 @@ function ensure(scoreOf: (placeId: string) => number | null): Cache {
 }
 
 /** Owner Gusto's Score only. Personal rankings never enter this list. */
+const emptyBoard = { shown: [] as TopRow[], scored: 0 }
+
 export function regionBoard(region: RegionId, scoreOf: (placeId: string) => number | null) {
+  if (!regionReady(region)) return emptyBoard
   return ensure(scoreOf).boards[region]
 }
 
 export function awardFor(placeId: string, scoreOf: (placeId: string) => number | null): ForkAward | null {
+  const place = catalog.places.find((item) => item.id === placeId)
+  if (!place || !regionReady(regionOf(placeCity(place)))) return null
   return ensure(scoreOf).map.get(placeId) ?? null
 }

@@ -5,7 +5,7 @@ import { CollectionMembership } from '../components/CollectionMembership.tsx'
 import { PlaceThumb } from '../components/PlaceThumb.tsx'
 import { SignInSheet } from '../components/SignInSheet.tsx'
 import { scoreBand } from '../components/ScoreBadge.tsx'
-import { catalog } from '../content/load.ts'
+import { catalog, ensureAllCities } from '../content/load.ts'
 import { cityPath } from '../lib/city.ts'
 import { cuisineLabel, cuisineMenuLabel } from '../lib/cuisine-label.ts'
 import { publicReference } from '../lib/format.ts'
@@ -31,6 +31,7 @@ function tick() {
 
 export function QuickScorePage() {
   const app = useApp()
+  useEffect(() => { void ensureAllCities() }, [])
   const reduce = useReducedMotion()
   const [signIn, setSignIn] = useState(false)
   const [region, setRegion] = useState<QuickRegion>('all')

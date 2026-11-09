@@ -1,17 +1,18 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { AreaKicker } from '../components/AreaKicker.tsx'
 import { FriendEmpty } from '../components/FriendEmpty.tsx'
 import { PullToRefresh } from '../components/PullToRefresh.tsx'
 import { PlaceThumb } from '../components/PlaceThumb.tsx'
 import { SignInSheet } from '../components/SignInSheet.tsx'
-import { catalog } from '../content/load.ts'
+import { catalog, ensureAllCities } from '../content/load.ts'
 import { demoFriendsEnabled } from '../lib/demo.ts'
 import { usePageMeta } from '../lib/meta.ts'
 import { useApp } from '../state/AppState.tsx'
 
 export function FeedPage() {
   const app = useApp()
+  useEffect(() => { void ensureAllCities() }, [])
   const [drafts, setDrafts] = useState<Record<string, string>>({})
   const [signIn, setSignIn] = useState(false)
   usePageMeta(

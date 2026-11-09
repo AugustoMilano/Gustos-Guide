@@ -88,16 +88,21 @@
   // Safety net: the app starts within 2.5 s even if anything below throws.
   setTimeout(startApp, 2500)
   var waitForHero = false
-  var catalogHref = /*CATALOG*/''
-  if (catalogHref && !placeId) {
+  var catalogIndex = /*CATALOG_INDEX*/''
+  var catalogs = /*CATALOGS*/{}
+  var catalogHref = catalogs[cityId] || ''
+  var preloadFetch = function (href) {
+    if (!href || placeId) return
     var pre = document.createElement('link')
     pre.rel = 'preload'
     pre.as = 'fetch'
-    pre.href = catalogHref
+    pre.href = href
     pre.crossOrigin = 'anonymous'
     pre.setAttribute('fetchpriority', 'low')
     document.head.appendChild(pre)
   }
+  preloadFetch(catalogIndex)
+  preloadFetch(catalogHref)
   if (placeId && window.fetch && /^[a-z0-9-]+$/.test(placeId)) {
     var placeRegion = { la: 'la', sandiego: 'sandiego', vancouver: 'vancouver', portland: 'portland', nyc: 'nyc', pullman: 'pullman', moscow: 'pullman', sf: 'sf', eastbay: 'sf', peninsula: 'sf', northbay: 'sf' }[cityId] || 'seattle'
     var root = document.documentElement

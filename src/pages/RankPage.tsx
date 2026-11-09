@@ -1,11 +1,11 @@
 import { bounceMark } from '../lib/motion.ts'
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { AreaKicker } from '../components/AreaKicker.tsx'
 import { PlaceThumb } from '../components/PlaceThumb.tsx'
 import { GoldenFork } from '../components/GoldenFork.tsx'
 import { ScoreBadge } from '../components/ScoreBadge.tsx'
-import { catalog } from '../content/load.ts'
+import { catalog, ensureAllCities } from '../content/load.ts'
 import { cityPath } from '../lib/city.ts'
 import { useCityCatalog } from '../lib/use-city.ts'
 import { BUCKETS } from '../lib/rank.ts'
@@ -15,6 +15,7 @@ import { SignInSheet } from '../components/SignInSheet.tsx'
 
 export function RankPage() {
   const app = useApp()
+  useEffect(() => { void ensureAllCities() }, [])
   const { places } = useCityCatalog()
   const [query, setQuery] = useState('')
   const [signIn, setSignIn] = useState(false)

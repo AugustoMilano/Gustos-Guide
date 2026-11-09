@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { useReducedMotion } from 'framer-motion'
 import { Link, useNavigate, useParams, useSearchParams } from 'react-router-dom'
 import { MapLinks } from '../components/MapLinks.tsx'
@@ -10,7 +10,7 @@ import { SlidingRow } from '../components/SlidingRow.tsx'
 import { GoldenFork } from '../components/GoldenFork.tsx'
 import { ScoreBadge } from '../components/ScoreBadge.tsx'
 import { AreaKicker } from '../components/AreaKicker.tsx'
-import { catalog, slimById } from '../content/load.ts'
+import { catalog, ensureAllCities, slimById } from '../content/load.ts'
 import { cityPath, type CityId } from '../lib/city.ts'
 import { useCityCatalog } from '../lib/use-city.ts'
 import { demoFriendsEnabled } from '../lib/demo.ts'
@@ -22,6 +22,7 @@ import type { Plan, SlimPlace } from '../types.ts'
 
 export function PlansPage() {
   const app = useApp()
+  useEffect(() => { void ensureAllCities() }, [])
   const [params] = useSearchParams()
   const seed = params.get('place') ?? undefined
   const [sheet, setSheet] = useState(Boolean(seed))
@@ -49,6 +50,7 @@ export function PlansPage() {
 export function PlanDetailPage() {
   const { id = '' } = useParams()
   const app = useApp()
+  useEffect(() => { void ensureAllCities() }, [])
   const reduceMotion = useReducedMotion()
   const plan = app.plans.find((item) => item.id === id)
   const [placeId, setPlaceId] = useState(plan?.placeIds[0] ?? '')
