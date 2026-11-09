@@ -363,7 +363,8 @@ test('price chips filter guides, the map, and search', async ({ page }) => {
   if (await filters.isVisible()) await filters.click()
   await expect(page.getByRole('button', { name: 'No price' })).toBeVisible()
   await page.getByRole('group', { name: 'Price' }).getByRole('button', { name: '$', exact: true }).click()
-  await expect(page.getByText('Nothing in this view.')).toBeVisible()
+  await expect(page.locator('#explore-square-diner')).toBeVisible()
+  await expect(page.getByText('Nothing in this view.')).toHaveCount(0)
   await page.screenshot({ path: '/opt/cursor/artifacts/price-filter-nyc-390.png', fullPage: false })
 
   await page.setViewportSize({ width: 1440, height: 900 })
