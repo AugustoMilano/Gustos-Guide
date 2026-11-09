@@ -158,7 +158,12 @@ export function CollectionPage() {
             </div>
           ) : null}
           {members.length === 0 ? <p className="panel-pad font-serif text-2xl italic">No places in this collection.</p> : null}
-          {members.length > 0 && shown.length === 0 ? <p className="panel-pad font-serif text-2xl italic">Nothing matches that price.</p> : null}
+          {members.length > 0 && shown.length === 0 ? (
+            <div className="panel-pad">
+              <p className="font-serif text-2xl italic">Nothing matches that price.</p>
+              <button type="button" className="btn mt-3" onClick={() => { setPrices([]); setUnknownPrice(false) }}>Clear filters</button>
+            </div>
+          ) : null}
           <ul className="panel-pad space-y-3 pb-4">
             {shown.map((place) => (
               <li

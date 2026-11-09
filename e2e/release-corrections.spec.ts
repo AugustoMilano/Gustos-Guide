@@ -374,3 +374,29 @@ test('price chips filter guides, the map, and search', async ({ page }) => {
   await expect(page.getByText('No places at that price.')).toBeVisible()
   await page.screenshot({ path: '/opt/cursor/artifacts/price-filter-search-1440.png', fullPage: false })
 })
+
+test('sideways storefronts are upright and an empty guide can be cleared', async ({ page }) => {
+  await page.route(/supabase\.co/, (route) => route.abort())
+  for (const [id, width, height] of [['2120', 1440, 900], ['honeyhole-sandwiches', 390, 844], ['maiz', 320, 700]] as const) {
+    await page.setViewportSize({ width, height })
+    await page.goto(`/#/seattle/place/${id}`)
+    const hero = page.locator('.photo-stage img').first()
+    await expect(hero).toBeVisible()
+    const box = await hero.evaluate((node) => {
+      const img = node as HTMLImageElement
+      return { src: img.currentSrc, w: img.naturalWidth, h: img.naturalHeight }
+    })
+    expect(box.src).toContain(`/${id}-upright`)
+    expect(box.h).toBeGreaterThan(box.w)
+    await page.locator('.photo-stage').screenshot({ path: `/opt/cursor/artifacts/upright-${id}-${width}.png` })
+  }
+  await page.setViewportSize({ width: 390, height: 844 })
+  await page.goto('/#/seattle/guide/breakfast-before-9')
+  await page.getByRole('button', { name: /^Filters/ }).click()
+  await page.locator('.bottom-sheet').getByRole('button', { name: '$$$$', exact: true }).click()
+  const clear = page.locator('.bottom-sheet').getByRole('button', { name: 'Clear filters' })
+  await expect(clear).toBeVisible()
+  await clear.click()
+  await expect(page.locator('p.mt-2.text-sm.font-bold')).toHaveText('19 places')
+  await page.screenshot({ path: '/opt/cursor/artifacts/guide-clear-filters-390.png', fullPage: false })
+})

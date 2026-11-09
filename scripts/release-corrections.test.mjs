@@ -92,6 +92,14 @@ for (const name of ['taurus-ox-upright.480.jpg', 'taurus-ox-upright.960.jpg', 't
 }
 const taurusSizes = JSON.parse(readFileSync(new URL('../src/content/photo-sizes.json', import.meta.url), 'utf8'))
 assert.deepEqual(taurusSizes['taurus-ox-upright.jpg'], { w: 1200, h: 1600, widths: [480, 960, 1200], webp: [200, 400, 720, 960], avif: [200, 400, 720, 960] })
+for (const stem of ['2120', 'honeyhole-sandwiches', 'seattle-fish-guys', 'matt-s-in-the-market', 'maiz', 'canon', 'sweet-alchemy', 'cinnamon-works', 'la-parisienne-french-bakery', 'd-la-santa']) {
+  assert.equal(places[stem].photos[0].url, `/photos/${stem}-upright.jpg`, stem)
+  assert.equal(index.places.find((place) => place.id === stem).photo.url, `/photos/${stem}-upright.jpg`, stem)
+  assert.equal(places[stem].photos[0].credit, places[stem].photos[0].credit)
+  assert.deepEqual(jpegSize(readFileSync(new URL(`../public/photos/${stem}-upright.jpg`, import.meta.url))), { width: 1200, height: 1600 })
+  assert.deepEqual(jpegSize(readFileSync(new URL(`../public/photos/${stem}.jpg`, import.meta.url))), { width: 1600, height: 1200 })
+  assert.deepEqual(taurusSizes[`${stem}-upright.jpg`], { w: 1200, h: 1600, widths: [480, 960, 1200], webp: [200, 400, 720, 960], avif: [200, 400, 720, 960] })
+}
 const uprightSizes = taurusSizes['taurus-ox-upright.jpg']
 const sets = [
   '/photos/taurus-ox-upright.jpg',
