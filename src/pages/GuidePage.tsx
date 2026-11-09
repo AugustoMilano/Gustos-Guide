@@ -41,6 +41,7 @@ const GUIDE_MOVED: Record<string, string> = {
   'northbay-larkspur': 'north-bay',
   'northbay-tiburon': 'north-bay',
   'northbay-sausalito': 'north-bay',
+  'mos-cafe': 'best-of-moscow-id',
 }
 
 export function GuidePage() {
