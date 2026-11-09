@@ -13,8 +13,8 @@ import { catalog, loadGuide } from '../content/load.ts'
 import { cityPath } from '../lib/city.ts'
 import { cuisineMenuLabel } from '../lib/cuisine-label.ts'
 import { useCityId } from '../lib/use-city.ts'
-import { flagshipAimHint } from '../lib/collections.ts'
 import { countPlaces, pageShareUrl, priceLabel } from '../lib/format.ts'
+import { rankByHouseScore } from '../lib/guide-rank.ts'
 import { hasUnknownPrice, matchesPrice, type PriceChoice } from '../lib/price-filter.ts'
 import { renderGuideStory } from '../lib/story-card.ts'
 import { awardFor } from '../lib/top25.ts'
@@ -46,7 +46,7 @@ export function GuidePage() {
   const [desktop, setDesktop] = useState(() => window.matchMedia('(min-width: 1024px)').matches)
   const [signInOpen, setSignInOpen] = useState(false)
   const [filtersOpen, setFiltersOpen] = useState(false)
-  const [sort, setSort] = useState<'guide' | 'score' | 'near'>('guide')
+  const [sort, setSort] = useState<'guide' | 'score' | 'near'>('score')
   const [here, setHere] = useState<{ lat: number; lng: number } | null>(null)
   const [nearNote, setNearNote] = useState<string | null>(null)
   function sortNear() {
@@ -76,7 +76,7 @@ export function GuidePage() {
     setUnknownPrice(false)
     setTag('')
     setOpenNow(false)
-    setSort('guide')
+    setSort('score')
     void loadGuide(slug).then((next) => {
       if (cancelled) return
       if (!next) setMissing(true)
@@ -109,25 +109,20 @@ export function GuidePage() {
     if (openNow && !isPlaceOpen(place)) return false
     return true
   })
-  const pinned = guide?.pinned === true
-  const ordered = sort === 'near' && here
+  const byDistance = sort === 'near' && here
     ? shown.slice().sort((a, b) => milesBetween(here, a.place) - milesBetween(here, b.place))
-    : pinned || sort === 'guide' ? shown : shown.slice().sort((a, b) => {
-    const left = gustoScore(a.place.id)
-    const right = gustoScore(b.place.id)
-    if (left == null && right == null) return a.number - b.number
-    if (left == null) return 1
-    if (right == null) return -1
-    if (right !== left) return right - left
-    return a.number - b.number
-  })
-
-  const ranked = ordered.filter(({ place }) => gustoScore(place.id) != null)
-  const toVisit = ordered.filter(({ place }) => gustoScore(place.id) == null)
-  const stripRows = [
-    ...ranked.map(({ place, number, entry }) => ({ place, number: number as number | null, score: gustoScore(place.id), vibe: entry.vibe })),
-    ...toVisit.map(({ place, entry }) => ({ place, number: null, score: null, vibe: entry.vibe })),
-  ]
+    : shown
+  const presented = sort === 'score'
+    ? rankByHouseScore(byDistance, gustoScore)
+    : byDistance.map((row) => ({ ...row, rank: null as number | null }))
+  const ranked = presented.filter((row) => row.rank != null)
+  const toVisit = presented.filter((row) => row.rank == null)
+  const stripRows = presented.map(({ place, rank, entry }) => ({
+    place,
+    number: rank,
+    score: gustoScore(place.id),
+    vibe: entry.vibe,
+  }))
   const summary = catalog.guides.find((item) => item.slug === slug)
   const movedSlug = GUIDE_MOVED[slug]
   const moved = movedSlug ? catalog.guides.find((item) => item.slug === movedSlug) : undefined
@@ -211,7 +206,7 @@ export function GuidePage() {
         <p className="mt-2 text-xs font-bold tracking-[0.14em] uppercase">{guide.group} · Updated {formatDay(guide.updatedAt)}</p>
         <h1 className="mt-1 font-serif text-4xl italic leading-none sm:text-5xl">{guide.title}</h1>
         <div className="city-switch sort-seg mt-3" role="group" aria-label="Sort this guide">
-          {([['guide', 'Guide order'], ...(pinned ? [] : [['score', "Gusto's Score"]]), ['near', 'Near me']] as [typeof sort, string][]).map(([id, label]) => (
+          {([['score', "Gusto's Score"], ['guide', 'Guide order'], ['near', 'Near me']] as [typeof sort, string][]).map(([id, label]) => (
             <button key={id} type="button" className="city-switch-btn" aria-pressed={sort === id} onClick={() => (id === 'near' ? sortNear() : setSort(id))}>
               {sort === id ? <m.span layoutId="sort-pill" className="city-switch-glint" transition={reduceMotion ? { duration: 0 } : { type: 'spring', stiffness: 420, damping: 32 }} /> : null}
               <span className="city-switch-label">{label}</span>
@@ -219,9 +214,8 @@ export function GuidePage() {
           ))}
         </div>
             {nearNote ? <p className="mt-2 text-sm" role="status">{nearNote}</p> : null}
-        <p className="mt-2 text-sm font-bold">{ordered.length === rows.length ? countPlaces(rows.length) : `${ordered.length} of ${countPlaces(rows.length)}`}</p>
-        {user?.isOwner ? <p className="mt-1 text-sm">{flagshipAimHint(rows.length)}</p> : null}
-        <div className="guide-sticky mt-3 hidden gap-2 lg:grid lg:grid-cols-[repeat(auto-fit,minmax(8.5rem,1fr))]">
+        <p className="mt-2 text-sm font-bold">{presented.length === rows.length ? countPlaces(rows.length) : `${presented.length} of ${countPlaces(rows.length)}`}</p>
+        <div className="guide-filters guide-sticky mt-3 hidden lg:flex">
           <FilterFields
             neighborhoods={neighborhoods}
             cuisines={cuisines}
@@ -272,7 +266,7 @@ export function GuidePage() {
             <button type="button" className="absolute inset-0 bg-ink/50" aria-label="Close filters" onClick={() => setFiltersOpen(false)} />
             <div className="bottom-sheet relative max-h-[85dvh] w-full overflow-auto border-t border-ink/10 bg-cream p-4">
               <h2 className="font-serif text-3xl italic">Filters</h2>
-              <div className="mt-3 grid gap-2">
+              <div className="guide-filters mt-3">
                 <FilterFields
                   neighborhoods={neighborhoods}
                   cuisines={cuisines}
@@ -291,7 +285,7 @@ export function GuidePage() {
                   setOpenNow={setOpenNow}
                 />
               </div>
-              <button type="button" className="btn btn-coral mt-4 w-full" onClick={() => { if (ordered.length === 0) clearFilters(); setFiltersOpen(false) }}>{ordered.length === 0 ? 'Clear filters' : `Show ${ordered.length}`}</button>
+              <button type="button" className="btn btn-coral mt-4 w-full" onClick={() => { if (presented.length === 0) clearFilters(); setFiltersOpen(false) }}>{presented.length === 0 ? 'Clear filters' : `Show ${presented.length}`}</button>
             </div>
           </div>
         ) : null}
@@ -299,51 +293,51 @@ export function GuidePage() {
           <GuideStrip rows={stripRows} uploads={photos} statuses={statuses} onToggle={onToggle} />
         </div>
         <div className="mt-5 grid gap-8">
-            {ordered.length === 0 ? (
+            {presented.length === 0 ? (
               <div className="border-t border-ink/10 pt-4">
                 <p className="font-serif text-2xl italic">Nothing on this list matches.</p>
                 <button type="button" className="btn mt-3" onClick={clearFilters}>Clear filters</button>
               </div>
             ) : null}
-            {ranked.map(({ entry, place, number }, index) => (
+            {(sort === 'score' ? ranked : presented).map((row, index) => (
               <GuideEntryCard
-                key={place.id}
-                place={place}
-                entry={entry}
+                key={row.place.id}
+                place={row.place}
+                entry={row.entry}
                 index={index}
-                number={number}
+                number={row.rank}
                 uploads={photos}
-                status={statuses[place.id]}
-                friends={friendScore(place.id)}
-                score={gustoScore(place.id)}
+                status={statuses[row.place.id]}
+                friends={friendScore(row.place.id)}
+                score={gustoScore(row.place.id)}
                 signedIn={Boolean(user)}
-                onToggle={(status) => onToggle(place.id, status)}
+                onToggle={(status) => onToggle(row.place.id, status)}
                 onNeedSignIn={() => setSignInOpen(true)}
-                hot={activeId === place.id}
+                hot={activeId === row.place.id}
                 onPoint={setActiveId}
               />
             ))}
-            {toVisit.length > 0 ? (
+            {sort === 'score' && toVisit.length > 0 ? (
               <section aria-labelledby="yet-to-visit" className="yet-to-visit grid gap-8">
                 <div className="yet-head">
                   <h2 id="yet-to-visit" className="font-serif text-3xl italic">Yet to visit</h2>
                   <p className="text-xs font-bold tracking-[0.14em] uppercase">Saved, not scored yet</p>
                 </div>
-                {toVisit.map(({ entry, place }, i) => (
+                {toVisit.map((row, i) => (
                   <GuideEntryCard
-                key={place.id}
-                place={place}
-                entry={entry}
+                key={row.place.id}
+                place={row.place}
+                entry={row.entry}
                 index={ranked.length + i}
                 number={null}
                 uploads={photos}
-                status={statuses[place.id]}
-                friends={friendScore(place.id)}
-                score={gustoScore(place.id)}
+                status={statuses[row.place.id]}
+                friends={friendScore(row.place.id)}
+                score={gustoScore(row.place.id)}
                 signedIn={Boolean(user)}
-                onToggle={(status) => onToggle(place.id, status)}
+                onToggle={(status) => onToggle(row.place.id, status)}
                 onNeedSignIn={() => setSignInOpen(true)}
-                hot={activeId === place.id}
+                hot={activeId === row.place.id}
                 onPoint={setActiveId}
               />
                 ))}
@@ -392,16 +386,16 @@ function FilterFields({
 }) {
   return (
     <>
-      <select className="soft-field bg-cream px-2 py-2" value={neighborhood} onChange={(event) => setNeighborhood(event.target.value)} aria-label="Neighborhood">
+      <select className={`filter-select${neighborhood ? ' is-set' : ''}`} value={neighborhood} onChange={(event) => setNeighborhood(event.target.value)} aria-label="Neighborhood">
         <option value="">All neighborhoods</option>
         {neighborhoods.map((item) => <option key={item}>{item}</option>)}
       </select>
-      <select className="soft-field bg-cream px-2 py-2" value={cuisine} onChange={(event) => setCuisine(event.target.value)} aria-label="Cuisine">
+      <select className={`filter-select${cuisine ? ' is-set' : ''}`} value={cuisine} onChange={(event) => setCuisine(event.target.value)} aria-label="Cuisine">
         <option value="">All cuisines</option>
         {cuisines.map((item) => <option key={item} value={item}>{cuisineMenuLabel(item, cuisines)}</option>)}
       </select>
       <PriceFilter choice={{ prices, unknown: unknownPrice }} showUnknown={showUnknown} onChange={onPrice} />
-      <select className="soft-field bg-cream px-2 py-2" value={tag} onChange={(event) => setTag(event.target.value)} aria-label="Perfect for">
+      <select className={`filter-select${tag ? ' is-set' : ''}`} value={tag} onChange={(event) => setTag(event.target.value)} aria-label="Perfect for">
         <option value="">Perfect for</option>
         {tags.map((item) => <option key={item}>{item}</option>)}
       </select>

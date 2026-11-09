@@ -152,6 +152,10 @@ self.addEventListener('fetch', (event) => {
   if (request.method !== 'GET') return
   if (request.headers.get('x-gusto-fresh') === '1') return
   const url = new URL(request.url)
+  if (url.hostname === 'tiles.openfreemap.org' && (url.pathname === '/planet' || /\/(styles|sprites|fonts)\//.test(url.pathname))) {
+    event.respondWith(cacheFirst(request))
+    return
+  }
   if (url.origin !== self.location.origin) return
   if (isWorkerScript(url)) {
     event.respondWith(fetch(request))
