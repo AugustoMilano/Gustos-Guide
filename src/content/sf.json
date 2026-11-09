@@ -399,7 +399,7 @@
       "appleMapsUrl": "https://maps.apple.com/?daddr=37.5034764,-122.485016&q=Barbara%27s%20Fishtrap",
       "applePlaceUrl": "https://maps.apple.com/place?auid=4965522066514539789",
       "guideSlugs": [
-        "peninsula-half-moon-bay"
+        "peninsula"
       ],
       "muid": "4965522066514539789",
       "hoursLabel": "",
@@ -669,7 +669,7 @@
       "appleMapsUrl": "https://maps.apple.com/?daddr=37.8545948,-122.4791059&q=Angelino%20Restaurant",
       "applePlaceUrl": "https://maps.apple.com/place?auid=17842558546261250729",
       "guideSlugs": [
-        "northbay-sausalito"
+        "north-bay"
       ],
       "muid": "17842558546261250729",
       "hoursLabel": "",
@@ -1105,7 +1105,7 @@
       "appleMapsUrl": "https://maps.apple.com/?daddr=37.3241959,-121.9466758&q=Salt%20%26%20Straw",
       "applePlaceUrl": "https://maps.apple.com/place?auid=3341165687049586034",
       "guideSlugs": [
-        "peninsula-santa-clara"
+        "peninsula"
       ],
       "muid": "3341165687049586034",
       "hoursLabel": "",
@@ -1233,7 +1233,7 @@
       "appleMapsUrl": "https://maps.apple.com/?daddr=37.3433748,-121.9590354&q=Restaurant%20Gish",
       "applePlaceUrl": "https://maps.apple.com/place?auid=8361578438471828125",
       "guideSlugs": [
-        "peninsula-santa-clara"
+        "peninsula"
       ],
       "muid": "8361578438471828125",
       "hoursLabel": "",
@@ -1958,7 +1958,7 @@
       "appleMapsUrl": "https://maps.apple.com/?daddr=37.5971594,-122.5037083&q=Taco%20Bell%20Cantina",
       "applePlaceUrl": "https://maps.apple.com/place?auid=17713247486396092703",
       "guideSlugs": [
-        "peninsula-pacifica"
+        "peninsula"
       ],
       "muid": "17713247486396092703",
       "hoursLabel": "",
@@ -3187,7 +3187,7 @@
       "appleMapsUrl": "https://maps.apple.com/?daddr=37.561725,-122.0111768&q=Billy%20Roy%27s%20Burger%20Co",
       "applePlaceUrl": "https://maps.apple.com/place?auid=16703289396903468520",
       "guideSlugs": [
-        "eastbay-fremont"
+        "east-bay"
       ],
       "muid": "16703289396903468520",
       "hoursLabel": "",
@@ -3800,7 +3800,7 @@
       "appleMapsUrl": "https://maps.apple.com/?daddr=37.8551034,-122.4787844&q=Barrel%20House%20Tavern",
       "applePlaceUrl": "https://maps.apple.com/place?auid=5527082996613001123",
       "guideSlugs": [
-        "northbay-sausalito"
+        "north-bay"
       ],
       "muid": "5527082996613001123",
       "hoursLabel": "",
@@ -3867,7 +3867,7 @@
       "appleMapsUrl": "https://maps.apple.com/?daddr=37.44376,-122.1615712&q=Nobu",
       "applePlaceUrl": "https://maps.apple.com/place?auid=2501507275692828216",
       "guideSlugs": [
-        "peninsula-palo-alto"
+        "peninsula"
       ],
       "muid": "2501507275692828216",
       "hoursLabel": "",
@@ -4037,7 +4037,7 @@
       "appleMapsUrl": "https://maps.apple.com/?daddr=37.6788488,-121.8754256&q=The%20Press%20An%20Artisan%20Cafe",
       "applePlaceUrl": "https://maps.apple.com/place?auid=17479639067037762647",
       "guideSlugs": [
-        "eastbay-pleasanton"
+        "east-bay"
       ],
       "muid": "17479639067037762647",
       "hoursLabel": "",
@@ -4687,7 +4687,7 @@
       "appleMapsUrl": "https://maps.apple.com/?daddr=37.3241428,-121.9468675&q=Mastro%27s%20Steakhouse",
       "applePlaceUrl": "https://maps.apple.com/place?auid=14279936698475236806",
       "guideSlugs": [
-        "peninsula-santa-clara"
+        "peninsula"
       ],
       "muid": "14279936698475236806",
       "hoursLabel": "",
@@ -4951,7 +4951,7 @@
       "appleMapsUrl": "https://maps.apple.com/?daddr=37.8732793,-122.4559441&q=Malibu%20Farm",
       "applePlaceUrl": "https://maps.apple.com/place?auid=11740875836179549426",
       "guideSlugs": [
-        "northbay-tiburon"
+        "north-bay"
       ],
       "muid": "11740875836179549426",
       "hoursLabel": "",
@@ -5153,7 +5153,7 @@
       "appleMapsUrl": "https://maps.apple.com/?daddr=37.9293641,-122.5133429&q=RH%20Rooftop%20Restaurant%20at%20RH%20Marin",
       "applePlaceUrl": "https://maps.apple.com/place?auid=1882353396783663036",
       "guideSlugs": [
-        "northbay-corte-madera"
+        "north-bay"
       ],
       "muid": "1882353396783663036",
       "hoursLabel": "",
@@ -6145,7 +6145,7 @@
       "appleMapsUrl": "https://maps.apple.com/?daddr=37.445466,-122.1607139&q=Ramen%20Nagi",
       "applePlaceUrl": "https://maps.apple.com/place?auid=9834804649646578877",
       "guideSlugs": [
-        "peninsula-palo-alto"
+        "peninsula"
       ],
       "muid": "9834804649646578877",
       "hoursLabel": "",
@@ -6207,7 +6207,7 @@
       "appleMapsUrl": "https://maps.apple.com/?daddr=37.8587564,-122.4782134&q=The%20Spinnaker",
       "applePlaceUrl": "https://maps.apple.com/place?auid=10968916848461667240",
       "guideSlugs": [
-        "northbay-sausalito"
+        "north-bay"
       ],
       "muid": "10968916848461667240",
       "hoursLabel": "",
@@ -6279,7 +6279,7 @@
       "appleMapsUrl": "https://maps.apple.com/?daddr=37.9325519,-122.5357011&q=Perry%27s",
       "applePlaceUrl": "https://maps.apple.com/place?auid=9689535535227902843",
       "guideSlugs": [
-        "northbay-larkspur"
+        "north-bay"
       ],
       "muid": "9689535535227902843",
       "hoursLabel": "",
@@ -6540,7 +6540,7 @@
       "appleMapsUrl": "https://maps.apple.com/?daddr=37.8678186,-122.2597717&q=Yogurt%20Park",
       "applePlaceUrl": "https://maps.apple.com/place?auid=16210367333960477172",
       "guideSlugs": [
-        "eastbay-berkeley"
+        "east-bay"
       ],
       "muid": "16210367333960477172",
       "hoursLabel": "",
@@ -7237,7 +7237,7 @@
       "appleMapsUrl": "https://maps.apple.com/?daddr=37.4422091,-122.1590531&q=Taverna",
       "applePlaceUrl": "https://maps.apple.com/place?auid=11750794391220254369",
       "guideSlugs": [
-        "peninsula-palo-alto"
+        "peninsula"
       ],
       "muid": "11750794391220254369",
       "hoursLabel": "",
@@ -7374,7 +7374,7 @@
       "appleMapsUrl": "https://maps.apple.com/?daddr=37.1740528,-121.823715&q=La%20Foret%20Restaurant",
       "applePlaceUrl": "https://maps.apple.com/place?auid=2472992682674153586",
       "guideSlugs": [
-        "peninsula-san-jose"
+        "peninsula"
       ],
       "muid": "2472992682674153586",
       "hoursLabel": "",
@@ -7768,7 +7768,7 @@
       "appleMapsUrl": "https://maps.apple.com/?daddr=37.6590384,-121.8764738&q=Elia",
       "applePlaceUrl": "https://maps.apple.com/place?auid=9975469316711371018",
       "guideSlugs": [
-        "eastbay-pleasanton"
+        "east-bay"
       ],
       "muid": "9975469316711371018",
       "hoursLabel": "",
@@ -8840,274 +8840,157 @@
       "pinned": true
     },
     {
-      "slug": "eastbay-fremont",
-      "title": "Fremont",
-      "dek": "Billy Roy's Burger Co in Fremont.",
+      "slug": "peninsula",
+      "title": "Peninsula",
+      "dek": "The Peninsula places from the neighborhood lists: Barbara's Fishtrap, Taco Bell Cantina, La Foret Restaurant, Nobu, Ramen Nagi, Taverna, Mastro's Steakhouse, Restaurant Gish, and Salt & Straw.",
       "group": "Neighborhoods",
-      "intro": "Billy Roy's Burger Co at 3909 Thornton Ave in Fremont. Burger.",
-      "updatedAt": "2026-10-22",
+      "intro": "",
+      "updatedAt": "2026-11-09",
       "ranked": false,
-      "city": "eastbay",
-      "entries": [
-        {
-          "placeId": "billy-roy-s-burger-co",
-          "pullQuote": "Billy Roy's Burger Co at 3909 Thornton Ave in Fremont. Burger.",
-          "blurb": "Billy Roy's Burger Co at 3909 Thornton Ave in Fremont. Burger.",
-          "copySource": "draft"
-        }
-      ],
-      "pinned": true
-    },
-    {
-      "slug": "peninsula-half-moon-bay",
-      "title": "Half Moon Bay",
-      "dek": "Barbara's Fishtrap in Half Moon Bay.",
-      "group": "Neighborhoods",
-      "intro": "281 Capistrano Rd in Half Moon Bay is the address for Barbara's Fishtrap. Seafood.",
-      "updatedAt": "2026-10-22",
-      "ranked": false,
+      "pinned": true,
       "city": "peninsula",
       "entries": [
         {
           "placeId": "barbara-s-fishtrap",
-          "pullQuote": "281 Capistrano Rd in Half Moon Bay is the address for Barbara's Fishtrap. Seafood.",
-          "blurb": "281 Capistrano Rd in Half Moon Bay is the address for Barbara's Fishtrap. Seafood.",
+          "pullQuote": "",
+          "blurb": "",
           "copySource": "draft"
-        }
-      ],
-      "pinned": true
-    },
-    {
-      "slug": "peninsula-pacifica",
-      "title": "Pacifica",
-      "dek": "Taco Bell Cantina in Pacifica.",
-      "group": "Neighborhoods",
-      "intro": "Taco Bell Cantina sits at 5200 Coast Hwy. Fast Food, Pacifica.",
-      "updatedAt": "2026-10-22",
-      "ranked": false,
-      "city": "peninsula",
-      "entries": [
+        },
         {
           "placeId": "taco-bell-cantina",
-          "pullQuote": "Taco Bell Cantina sits at 5200 Coast Hwy. Fast Food, Pacifica.",
-          "blurb": "Taco Bell Cantina sits at 5200 Coast Hwy. Fast Food, Pacifica.",
+          "pullQuote": "",
+          "blurb": "",
           "copySource": "draft"
-        }
-      ],
-      "pinned": true
-    },
-    {
-      "slug": "peninsula-palo-alto",
-      "title": "Palo Alto",
-      "dek": "Nobu, Ramen Nagi, and Taverna.",
-      "group": "Neighborhoods",
-      "intro": "Nobu sits at 180 Hamilton Ave. Japanese, Palo Alto. Palo Alto: Ramen Nagi at 541 Bryant St. Ramen. Taverna at 800 Emerson St in Palo Alto. Greek.",
-      "updatedAt": "2026-10-22",
-      "ranked": false,
-      "city": "peninsula",
-      "entries": [
+        },
+        {
+          "placeId": "la-foret-restaurant",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
         {
           "placeId": "nobu-sf",
-          "pullQuote": "Nobu sits at 180 Hamilton Ave. Japanese, Palo Alto.",
-          "blurb": "Nobu sits at 180 Hamilton Ave. Japanese, Palo Alto.",
+          "pullQuote": "",
+          "blurb": "",
           "copySource": "draft"
         },
         {
           "placeId": "ramen-nagi",
-          "pullQuote": "Palo Alto: Ramen Nagi at 541 Bryant St. Ramen.",
-          "blurb": "Palo Alto: Ramen Nagi at 541 Bryant St. Ramen.",
+          "pullQuote": "",
+          "blurb": "",
           "copySource": "draft"
         },
         {
           "placeId": "taverna",
-          "pullQuote": "Taverna at 800 Emerson St in Palo Alto. Greek.",
-          "blurb": "Taverna at 800 Emerson St in Palo Alto. Greek.",
-          "copySource": "draft"
-        }
-      ],
-      "pinned": true
-    },
-    {
-      "slug": "eastbay-pleasanton",
-      "title": "Pleasanton",
-      "dek": "Elia and The Press An Artisan Cafe.",
-      "group": "Neighborhoods",
-      "intro": "Elia at 310 Main St in Pleasanton. Greek. The Press An Artisan Cafe, 1987 Santa Rita Rd. Coffee in Pleasanton.",
-      "updatedAt": "2026-10-22",
-      "ranked": false,
-      "city": "eastbay",
-      "entries": [
-        {
-          "placeId": "elia",
-          "pullQuote": "Elia at 310 Main St in Pleasanton. Greek.",
-          "blurb": "Elia at 310 Main St in Pleasanton. Greek.",
+          "pullQuote": "",
+          "blurb": "",
           "copySource": "draft"
         },
         {
-          "placeId": "the-press-an-artisan-cafe",
-          "pullQuote": "The Press An Artisan Cafe, 1987 Santa Rita Rd. Coffee in Pleasanton.",
-          "blurb": "The Press An Artisan Cafe, 1987 Santa Rita Rd. Coffee in Pleasanton.",
-          "copySource": "draft"
-        }
-      ],
-      "pinned": true
-    },
-    {
-      "slug": "peninsula-san-jose",
-      "title": "San Jose",
-      "dek": "La Foret Restaurant in San Jose.",
-      "group": "Neighborhoods",
-      "intro": "French at La Foret Restaurant, 21747 Bertram Rd, San Jose.",
-      "updatedAt": "2026-10-22",
-      "ranked": false,
-      "city": "peninsula",
-      "entries": [
-        {
-          "placeId": "la-foret-restaurant",
-          "pullQuote": "French at La Foret Restaurant, 21747 Bertram Rd, San Jose.",
-          "blurb": "French at La Foret Restaurant, 21747 Bertram Rd, San Jose.",
-          "copySource": "draft"
-        }
-      ],
-      "pinned": true
-    },
-    {
-      "slug": "peninsula-santa-clara",
-      "title": "Santa Clara",
-      "dek": "Mastro's Steakhouse, Restaurant Gish, and Salt & Straw.",
-      "group": "Neighborhoods",
-      "intro": "Mastro's Steakhouse at 2855 Stevens Creek Blvd in Santa Clara. Steakhouse. Restaurant Gish, 1998 Homestead Rd. Korean in Santa Clara. Ice Cream from Salt & Straw at 2855 Stevens Creek Blvd, Santa Clara.",
-      "updatedAt": "2026-10-22",
-      "ranked": false,
-      "city": "peninsula",
-      "entries": [
-        {
           "placeId": "mastro-s-steakhouse",
-          "pullQuote": "Mastro's Steakhouse at 2855 Stevens Creek Blvd in Santa Clara. Steakhouse.",
-          "blurb": "Mastro's Steakhouse at 2855 Stevens Creek Blvd in Santa Clara. Steakhouse.",
+          "pullQuote": "",
+          "blurb": "",
           "copySource": "draft"
         },
         {
           "placeId": "restaurant-gish",
-          "pullQuote": "Restaurant Gish, 1998 Homestead Rd. Korean in Santa Clara.",
-          "blurb": "Restaurant Gish, 1998 Homestead Rd. Korean in Santa Clara.",
+          "pullQuote": "",
+          "blurb": "",
           "copySource": "draft"
         },
         {
           "placeId": "salt-straw-sf",
-          "pullQuote": "Ice Cream from Salt & Straw at 2855 Stevens Creek Blvd, Santa Clara.",
-          "blurb": "Ice Cream from Salt & Straw at 2855 Stevens Creek Blvd, Santa Clara.",
+          "pullQuote": "",
+          "blurb": "",
           "copySource": "draft"
         }
-      ],
-      "pinned": true
+      ]
     },
     {
-      "slug": "eastbay-berkeley",
-      "title": "Berkeley",
-      "dek": "Yogurt Park in Berkeley.",
+      "slug": "east-bay",
+      "title": "East Bay",
+      "dek": "The East Bay places from the neighborhood lists: Yogurt Park, Billy Roy's Burger Co, Elia, and The Press An Artisan Cafe.",
       "group": "Neighborhoods",
-      "intro": "2433 Durant Ave — Yogurt Park, Ice Cream, Berkeley.",
-      "updatedAt": "2026-10-22",
+      "intro": "",
+      "updatedAt": "2026-11-09",
       "ranked": false,
+      "pinned": true,
       "city": "eastbay",
       "entries": [
         {
           "placeId": "yogurt-park",
-          "pullQuote": "2433 Durant Ave — Yogurt Park, Ice Cream, Berkeley.",
-          "blurb": "2433 Durant Ave — Yogurt Park, Ice Cream, Berkeley.",
-          "copySource": "draft"
-        }
-      ],
-      "pinned": true
-    },
-    {
-      "slug": "northbay-sausalito",
-      "title": "Sausalito",
-      "dek": "Angelino Restaurant, Barrel House Tavern, and The Spinnaker.",
-      "group": "Neighborhoods",
-      "intro": "621 Bridgeway — Angelino Restaurant, Italian, Sausalito.",
-      "updatedAt": "2026-10-22",
-      "ranked": false,
-      "city": "northbay",
-      "entries": [
-        {
-          "placeId": "angelino-restaurant",
-          "pullQuote": "621 Bridgeway — Angelino Restaurant, Italian, Sausalito.",
-          "blurb": "621 Bridgeway — Angelino Restaurant, Italian, Sausalito.",
+          "pullQuote": "",
+          "blurb": "",
           "copySource": "draft"
         },
         {
-          "placeId": "barrel-house-tavern",
-          "pullQuote": "New American at Barrel House Tavern, 660 Bridgeway, Sausalito.",
-          "blurb": "New American at Barrel House Tavern, 660 Bridgeway, Sausalito.",
+          "placeId": "billy-roy-s-burger-co",
+          "pullQuote": "",
+          "blurb": "",
           "copySource": "draft"
         },
         {
-          "placeId": "the-spinnaker",
-          "pullQuote": "The Spinnaker at 100 Spinnaker Dr in Sausalito. Seafood.",
-          "blurb": "The Spinnaker at 100 Spinnaker Dr in Sausalito. Seafood.",
+          "placeId": "elia",
+          "pullQuote": "",
+          "blurb": "",
           "copySource": "draft"
-        }
-      ],
-      "pinned": true
-    },
-    {
-      "slug": "northbay-tiburon",
-      "title": "Tiburon",
-      "dek": "Malibu Farm in Tiburon.",
-      "group": "Neighborhoods",
-      "intro": "American from Malibu Farm at 9 Main St, Tiburon.",
-      "updatedAt": "2026-10-22",
-      "ranked": false,
-      "city": "northbay",
-      "entries": [
+        },
         {
-          "placeId": "malibu-farm",
-          "pullQuote": "American from Malibu Farm at 9 Main St, Tiburon.",
-          "blurb": "American from Malibu Farm at 9 Main St, Tiburon.",
+          "placeId": "the-press-an-artisan-cafe",
+          "pullQuote": "",
+          "blurb": "",
           "copySource": "draft"
         }
-      ],
-      "pinned": true
+      ]
     },
     {
-      "slug": "northbay-corte-madera",
-      "title": "Corte Madera",
-      "dek": "RH Rooftop Restaurant at RH Marin in Corte Madera.",
+      "slug": "north-bay",
+      "title": "North Bay",
+      "dek": "The North Bay places from the neighborhood lists: RH Rooftop Restaurant at RH Marin, Perry's, Malibu Farm, Angelino Restaurant, Barrel House Tavern, and The Spinnaker.",
       "group": "Neighborhoods",
-      "intro": "Corte Madera: RH Rooftop Restaurant at RH Marin at 1618 Redwood Hwy. New American.",
-      "updatedAt": "2026-10-22",
+      "intro": "",
+      "updatedAt": "2026-11-09",
       "ranked": false,
+      "pinned": true,
       "city": "northbay",
       "entries": [
         {
           "placeId": "rh-rooftop-restaurant-at-rh-marin",
-          "pullQuote": "Corte Madera: RH Rooftop Restaurant at RH Marin at 1618 Redwood Hwy. New American.",
-          "blurb": "Corte Madera: RH Rooftop Restaurant at RH Marin at 1618 Redwood Hwy. New American.",
+          "pullQuote": "",
+          "blurb": "",
           "copySource": "draft"
-        }
-      ],
-      "pinned": true
-    },
-    {
-      "slug": "northbay-larkspur",
-      "title": "Larkspur",
-      "dek": "Perry's in Larkspur.",
-      "group": "Neighborhoods",
-      "intro": "American at Perry's, 234 Magnolia Ave, Larkspur.",
-      "updatedAt": "2026-10-22",
-      "ranked": false,
-      "city": "northbay",
-      "entries": [
+        },
         {
           "placeId": "perry-s",
-          "pullQuote": "American at Perry's, 234 Magnolia Ave, Larkspur.",
-          "blurb": "American at Perry's, 234 Magnolia Ave, Larkspur.",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "malibu-farm",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "angelino-restaurant",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "barrel-house-tavern",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "the-spinnaker",
+          "pullQuote": "",
+          "blurb": "",
           "copySource": "draft"
         }
-      ],
-      "pinned": true
+      ]
     }
   ]
 }
