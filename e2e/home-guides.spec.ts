@@ -54,3 +54,17 @@ test('home featured rows omit Date Night and the breakfast guide keeps its route
   await expect(page.getByRole('heading', { level: 1, name: 'Best Breakfast' })).toBeVisible()
   await expect(page.getByRole('heading', { level: 1, name: 'Breakfast Before 9am' })).toHaveCount(0)
 })
+
+test('Drinks is listed before Neighborhoods on every guides index', async ({ page }) => {
+  for (const [path, width] of [['/#/seattle/guides', 1440], ['/#/eastside/guides', 390]] as const) {
+    await page.setViewportSize({ width, height: width < 700 ? 844 : 900 })
+    await page.goto(path)
+    await expect(page.getByRole('heading', { level: 2, name: 'Drinks' })).toBeVisible()
+    const headings = (await page.locator('#main h2').allTextContents()).map((text) => text.trim())
+    expect(headings.indexOf('Neighborhoods')).toBeGreaterThan(headings.indexOf('Drinks'))
+    expect(headings).toEqual(['Best of', 'Cuisines', 'Occasions', 'Drinks', 'Neighborhoods'])
+    const chips = page.getByRole('group', { name: 'Guide categories' })
+    const chipText = await chips.getByRole('button').allTextContents()
+    expect(chipText).toEqual(['All', 'Best of', 'Cuisines', 'Occasions', 'Drinks', 'Neighborhoods'])
+  }
+})
