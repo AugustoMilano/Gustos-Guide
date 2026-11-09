@@ -13,6 +13,7 @@
         "Fine dining"
       ],
       "placeType": "restaurant",
+      "price": 4,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -72,6 +73,7 @@
         "New American"
       ],
       "placeType": "restaurant",
+      "price": 4,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -130,6 +132,7 @@
         "New American"
       ],
       "placeType": "restaurant",
+      "price": 4,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -189,6 +192,7 @@
         "New American"
       ],
       "placeType": "restaurant",
+      "price": 4,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -325,6 +329,7 @@
         "Italian"
       ],
       "placeType": "restaurant",
+      "price": 3,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -934,6 +939,7 @@
         "Mexican"
       ],
       "placeType": "restaurant",
+      "price": 2,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -987,6 +993,7 @@
         "Californian"
       ],
       "placeType": "restaurant",
+      "price": 3,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -1040,6 +1047,7 @@
         "Italian"
       ],
       "placeType": "restaurant",
+      "price": 3,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -1100,6 +1108,7 @@
         "Vegan"
       ],
       "placeType": "restaurant",
+      "price": 2,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -1164,6 +1173,7 @@
         "Californian"
       ],
       "placeType": "restaurant",
+      "price": 3,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -1445,6 +1455,7 @@
         "Steak"
       ],
       "placeType": "restaurant",
+      "price": 4,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -1502,6 +1513,7 @@
         "American"
       ],
       "placeType": "restaurant",
+      "price": 2,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -1689,6 +1701,7 @@
         "Japanese"
       ],
       "placeType": "restaurant",
+      "price": 3,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -1899,6 +1912,7 @@
         "Sushi"
       ],
       "placeType": "restaurant",
+      "price": 2,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -1956,6 +1970,7 @@
         "Mexican"
       ],
       "placeType": "restaurant",
+      "price": 2,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -2097,6 +2112,7 @@
         "Steak"
       ],
       "placeType": "restaurant",
+      "price": 4,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -2383,6 +2399,7 @@
         "Mediterranean"
       ],
       "placeType": "restaurant",
+      "price": 3,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -2645,6 +2662,7 @@
         "French"
       ],
       "placeType": "restaurant",
+      "price": 2,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -2815,6 +2833,7 @@
         "Italian"
       ],
       "placeType": "restaurant",
+      "price": 2,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -2929,6 +2948,7 @@
         "Italian"
       ],
       "placeType": "restaurant",
+      "price": 2,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -2994,6 +3014,7 @@
         "Mediterranean"
       ],
       "placeType": "restaurant",
+      "price": 3,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -3116,6 +3137,7 @@
         "New American"
       ],
       "placeType": "restaurant",
+      "price": 4,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -3221,6 +3243,7 @@
         "Italian"
       ],
       "placeType": "restaurant",
+      "price": 2,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -3361,6 +3384,7 @@
         "New American"
       ],
       "placeType": "restaurant",
+      "price": 3,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -3485,6 +3509,7 @@
         "New American"
       ],
       "placeType": "restaurant",
+      "price": 3,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -3539,6 +3564,7 @@
         "Cocktails"
       ],
       "placeType": "bar",
+      "price": 2,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -3598,6 +3624,7 @@
         "New American"
       ],
       "placeType": "restaurant",
+      "price": 3,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -3657,6 +3684,7 @@
         "New American"
       ],
       "placeType": "restaurant",
+      "price": 3,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -3725,6 +3753,7 @@
         "Japanese"
       ],
       "placeType": "restaurant",
+      "price": 4,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -3785,6 +3814,7 @@
         "Italian"
       ],
       "placeType": "restaurant",
+      "price": 3,
       "oneLiner": "Rotisserie half chicken and handmade pasta in Little Italy.",
       "perfectFor": [],
       "periods": [

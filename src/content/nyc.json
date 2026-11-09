@@ -732,6 +732,7 @@
         "Cocktails"
       ],
       "placeType": "restaurant",
+      "price": 2,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -793,6 +794,7 @@
         "French"
       ],
       "placeType": "restaurant",
+      "price": 3,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -2072,6 +2074,7 @@
         "American"
       ],
       "placeType": "restaurant",
+      "price": 2,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -2126,6 +2129,7 @@
         "Chinese"
       ],
       "placeType": "restaurant",
+      "price": 3,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -2194,6 +2198,7 @@
         "Steak"
       ],
       "placeType": "restaurant",
+      "price": 3,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -3102,6 +3107,7 @@
         "Pizza"
       ],
       "placeType": "restaurant",
+      "price": 2,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -3537,6 +3543,7 @@
         "Seafood"
       ],
       "placeType": "restaurant",
+      "price": 4,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -3589,6 +3596,7 @@
         "Fast food"
       ],
       "placeType": "restaurant",
+      "price": 1,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -3641,6 +3649,7 @@
         "Lounge"
       ],
       "placeType": "restaurant",
+      "price": 3,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -3913,6 +3922,7 @@
         "Lounge"
       ],
       "placeType": "restaurant",
+      "price": 3,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [],
@@ -4066,6 +4076,7 @@
         "Italian"
       ],
       "placeType": "restaurant",
+      "price": 3,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -4352,6 +4363,7 @@
         "Lounge"
       ],
       "placeType": "restaurant",
+      "price": 3,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -5048,6 +5060,7 @@
         "French"
       ],
       "placeType": "restaurant",
+      "price": 3,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -6638,6 +6651,7 @@
         "Wine"
       ],
       "placeType": "restaurant",
+      "price": 3,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -8136,6 +8150,7 @@
         "Colombian"
       ],
       "placeType": "restaurant",
+      "price": 2,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -9284,6 +9299,7 @@
         "Cocktails"
       ],
       "placeType": "restaurant",
+      "price": 3,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -9959,6 +9975,7 @@
         "Beer"
       ],
       "placeType": "restaurant",
+      "price": 1,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -11224,6 +11241,7 @@
         "New American"
       ],
       "placeType": "restaurant",
+      "price": 4,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -12895,6 +12913,7 @@
         "French"
       ],
       "placeType": "restaurant",
+      "price": 3,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [

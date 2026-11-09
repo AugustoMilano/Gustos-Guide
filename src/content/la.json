@@ -1330,6 +1330,7 @@
         "Steak"
       ],
       "placeType": "restaurant",
+      "price": 4,
       "oneLiner": "Mastro's Steakhouse sits at 246 N Canon Dr. Steak, Beverly Hills.",
       "perfectFor": [],
       "periods": [
@@ -1882,6 +1883,7 @@
         "Seafood"
       ],
       "placeType": "restaurant",
+      "price": 3,
       "oneLiner": "Truffle sashimi and the Catch Roll under a retractable roof.",
       "perfectFor": [],
       "periods": [
@@ -2529,6 +2531,7 @@
         "Italian"
       ],
       "placeType": "restaurant",
+      "price": 2,
       "oneLiner": "Osteria La Buca, 5210 Melrose Ave. Italian in Larchmont.",
       "perfectFor": [],
       "periods": [
@@ -2965,6 +2968,7 @@
         "Burgers"
       ],
       "placeType": "restaurant",
+      "price": 2,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -3267,6 +3271,7 @@
         "Deli"
       ],
       "placeType": "deli",
+      "price": 2,
       "oneLiner": "Deli from Ggiata Delicatessen at 5009 Melrose Ave, Hollywood.",
       "perfectFor": [],
       "periods": [
@@ -3825,6 +3830,7 @@
         "Cafe"
       ],
       "placeType": "cafe",
+      "price": 3,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -4757,6 +4763,7 @@
         "Italian"
       ],
       "placeType": "restaurant",
+      "price": 2,
       "oneLiner": "Santa Monica address for North Italia is 1442 Second St, Italian.",
       "perfectFor": [],
       "periods": [
@@ -4941,6 +4948,7 @@
         "Burgers"
       ],
       "placeType": "restaurant",
+      "price": 2,
       "oneLiner": "For The Win, 6221 Franklin Ave. Burgers in Hollywood.",
       "perfectFor": [],
       "periods": [
@@ -5232,6 +5240,7 @@
         "American"
       ],
       "placeType": "restaurant",
+      "price": 3,
       "oneLiner": "American from Si! Mon at 60 N Venice Blvd, Venice.",
       "perfectFor": [],
       "periods": [
@@ -5361,6 +5370,7 @@
         "Ramen"
       ],
       "placeType": "restaurant",
+      "price": 2,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -8220,6 +8230,7 @@
         "Tex-Mex"
       ],
       "placeType": "restaurant",
+      "price": 2,
       "oneLiner": "East Hollywood address for HomeState is 4624 Hollywood Blvd, Tex-Mex.",
       "perfectFor": [],
       "periods": [
@@ -8328,6 +8339,7 @@
         "Italian"
       ],
       "placeType": "restaurant",
+      "price": 2,
       "oneLiner": "Coastal Italian pizzas and pasta on a Santa Monica rooftop.",
       "perfectFor": [],
       "periods": [
@@ -8463,6 +8475,7 @@
         "Coffee"
       ],
       "placeType": "cafe",
+      "price": 2,
       "oneLiner": "Community Goods, 710 N Edinburgh Ave. Coffee in Beverly Grove.",
       "perfectFor": [],
       "periods": [

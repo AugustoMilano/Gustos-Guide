@@ -638,6 +638,7 @@
         "Italian"
       ],
       "placeType": "restaurant",
+      "price": 3,
       "oneLiner": "621 Bridgeway — Angelino Restaurant, Italian, Sausalito.",
       "perfectFor": [],
       "periods": [
@@ -776,6 +777,7 @@
         "Izakaya"
       ],
       "placeType": "restaurant",
+      "price": 3,
       "oneLiner": "Mission District: Rintaro at 82 14th St. Izakaya.",
       "perfectFor": [],
       "periods": [
@@ -1937,6 +1939,7 @@
         "Fast Food"
       ],
       "placeType": "restaurant",
+      "price": 1,
       "oneLiner": "Taco Bell Cantina sits at 5200 Coast Hwy. Fast Food, Pacifica.",
       "perfectFor": [],
       "periods": [
@@ -3104,6 +3107,7 @@
         "Seafood"
       ],
       "placeType": "restaurant",
+      "price": 3,
       "oneLiner": "Pier 39: Fog Harbor Fish House at 39 Pier. Seafood.",
       "perfectFor": [],
       "periods": [
@@ -3833,6 +3837,7 @@
         "Japanese"
       ],
       "placeType": "restaurant",
+      "price": 4,
       "oneLiner": "Nobu sits at 180 Hamilton Ave. Japanese, Palo Alto.",
       "perfectFor": [],
       "periods": [
@@ -3962,6 +3967,7 @@
         "Mexican"
       ],
       "placeType": "restaurant",
+      "price": 2,
       "oneLiner": "Tacos El Patrón at 1500 Van Ness Ave. Mexican, Mission District.",
       "perfectFor": [],
       "periods": [
@@ -4328,6 +4334,7 @@
         "Vegetarian"
       ],
       "placeType": "restaurant",
+      "price": 2,
       "oneLiner": "Wildseed sits at 2000 Union St. Vegetarian, Cow Hollow.",
       "perfectFor": [],
       "periods": [
@@ -4660,6 +4667,7 @@
         "Steakhouse"
       ],
       "placeType": "restaurant",
+      "price": 4,
       "oneLiner": "Mastro's Steakhouse at 2855 Stevens Creek Blvd in Santa Clara. Steakhouse.",
       "perfectFor": [],
       "periods": [
@@ -4912,6 +4920,7 @@
         "American"
       ],
       "placeType": "restaurant",
+      "price": 2,
       "oneLiner": "American from Malibu Farm at 9 Main St, Tiburon.",
       "perfectFor": [],
       "periods": [
@@ -5114,6 +5123,7 @@
         "New American"
       ],
       "placeType": "restaurant",
+      "price": 3,
       "oneLiner": "Corte Madera: RH Rooftop Restaurant at RH Marin at 1618 Redwood Hwy. New American.",
       "perfectFor": [],
       "periods": [
@@ -5516,6 +5526,7 @@
         "Deli"
       ],
       "placeType": "deli",
+      "price": 1,
       "oneLiner": "Stacked Italian deli sandwiches on Sutter Street.",
       "perfectFor": [],
       "periods": [
@@ -6058,6 +6069,7 @@
         "Japanese"
       ],
       "placeType": "restaurant",
+      "price": 4,
       "oneLiner": "Nisei, 2316 Polk St. Japanese in Russian Hill.",
       "perfectFor": [],
       "periods": [
@@ -6180,6 +6192,7 @@
         "Seafood"
       ],
       "placeType": "restaurant",
+      "price": 3,
       "oneLiner": "The Spinnaker at 100 Spinnaker Dr in Sausalito. Seafood.",
       "perfectFor": [],
       "periods": [
@@ -6240,6 +6253,7 @@
         "American"
       ],
       "placeType": "restaurant",
+      "price": 2,
       "oneLiner": "American at Perry's, 234 Magnolia Ave, Larkspur.",
       "perfectFor": [],
       "periods": [
@@ -6942,6 +6956,7 @@
         "Chicken"
       ],
       "placeType": "restaurant",
+      "price": 1,
       "oneLiner": "Chicken from The Bird at 115 New Montgomery St, Financial District South.",
       "perfectFor": [],
       "periods": [
@@ -7210,6 +7225,7 @@
         "Greek"
       ],
       "placeType": "restaurant",
+      "price": 3,
       "oneLiner": "Taverna at 800 Emerson St in Palo Alto. Greek.",
       "perfectFor": [],
       "periods": [
@@ -7348,6 +7364,7 @@
         "French"
       ],
       "placeType": "restaurant",
+      "price": 4,
       "oneLiner": "French at La Foret Restaurant, 21747 Bertram Rd, San Jose.",
       "perfectFor": [],
       "periods": [
@@ -7719,6 +7736,7 @@
         "Greek"
       ],
       "placeType": "restaurant",
+      "price": 2,
       "oneLiner": "Elia at 310 Main St in Pleasanton. Greek.",
       "perfectFor": [],
       "periods": [

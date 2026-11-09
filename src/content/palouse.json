@@ -13,6 +13,7 @@
         "Brewery"
       ],
       "placeType": "bar",
+      "price": 2,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -970,6 +971,7 @@
         "Cafe"
       ],
       "placeType": "bakery",
+      "price": 1,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [

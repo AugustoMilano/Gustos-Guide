@@ -900,6 +900,7 @@
         "Brazilian"
       ],
       "placeType": "restaurant",
+      "price": 3,
       "oneLiner": "Tableside-carved picanha and endless churrasco at a Brazilian steakhouse on Bellevue Way.",
       "perfectFor": [],
       "periods": [
@@ -1798,6 +1799,7 @@
         "French"
       ],
       "placeType": "cafe",
+      "price": 2,
       "oneLiner": "French cafe and crepes on 78th, in the Mercer Island town center.",
       "perfectFor": [],
       "periods": [
@@ -5296,6 +5298,7 @@
         "Coffee"
       ],
       "placeType": "cafe",
+      "price": 2,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [

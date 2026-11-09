@@ -530,6 +530,7 @@
         "Dessert"
       ],
       "placeType": "dessert",
+      "price": 1,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -1014,6 +1015,7 @@
         "Cocktails"
       ],
       "placeType": "restaurant",
+      "price": 2,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -3255,6 +3257,7 @@
         "Pizza"
       ],
       "placeType": "restaurant",
+      "price": 2,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -4160,6 +4163,7 @@
         "Diner"
       ],
       "placeType": "restaurant",
+      "price": 1,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -4621,6 +4625,7 @@
         "Japanese"
       ],
       "placeType": "restaurant",
+      "price": 3,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
