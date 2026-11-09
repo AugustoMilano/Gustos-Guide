@@ -4,8 +4,6 @@ import { Link } from 'react-router-dom'
 import type { MapBounds, MapCamera } from '../components/GuideMap.tsx'
 import { readExploreMemory, saveExploreMemory, type ExploreMemory } from '../lib/explore-memory.ts'
 
-void import('../lib/setup-maplibre.ts')
-void import('@maplibre/maplibre-gl-leaflet')
 const GuideMap = lazy(() => import('../components/GuideMap.tsx').then((module) => ({ default: module.GuideMap })))
 import { CuisinePicker } from '../components/CuisinePicker.tsx'
 import { PriceFilter } from '../components/PriceFilter.tsx'

@@ -1,0 +1,40 @@
+/* The canvas and the license line. MapLibre's full stylesheet is the zoom, compass, and globe controls we do not render. */
+.maplibregl-map {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.maplibregl-canvas-container,
+.maplibregl-canvas {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.maplibregl-ctrl-bottom-left,
+.maplibregl-ctrl-bottom-right {
+  position: absolute;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.maplibregl-ctrl-bottom-left { bottom: 0; left: 0; }
+.maplibregl-ctrl-bottom-right { right: 0; bottom: 0; }
+
+.maplibregl-ctrl-attrib {
+  margin: 0 0 4px 4px;
+  padding: 0 6px;
+  background: rgb(255 250 243 / 88%);
+  color: #181818;
+  font-size: 11px;
+  line-height: 18px;
+  pointer-events: auto;
+}
+
+.maplibregl-ctrl-attrib a {
+  color: #141f4d;
+}
