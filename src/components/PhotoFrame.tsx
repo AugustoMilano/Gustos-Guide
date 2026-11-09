@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { PlaceArt } from './PlaceArt.tsx'
 import type { DisplayPhoto } from '../lib/gallery.ts'
+import { portraitClass } from '../lib/portrait-frame.ts'
 import { responsivePhoto } from '../lib/responsivePhoto.ts'
 
 export function PhotoFrame({
@@ -38,7 +39,7 @@ export function PhotoFrame({
             loading={priority ? 'eager' : 'lazy'}
             decoding="async"
             fetchPriority={priority ? 'high' : undefined}
-            className={`place-art object-cover${ready ? '' : ' is-pending'}`}
+            className={`place-art object-cover${portraitClass(picture.width, picture.height)}${ready ? '' : ' is-pending'}`}
             ref={(node) => {
               if (node?.complete && node.naturalWidth > 0) setReadySrc(src)
             }}

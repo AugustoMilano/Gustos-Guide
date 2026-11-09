@@ -393,8 +393,6 @@
       "phone": "+1 (425) 968-5587",
       "appleMapsUrl": "https://maps.apple.com/?daddr=47.6616855,-122.2071866&q=BeachHouse%20Bar%20%2B%20Grill",
       "guideSlugs": [
-        "kirkland-waterfront",
-        "best-of-kirkland",
         "kirkland"
       ],
       "muid": "",
@@ -466,7 +464,6 @@
       "phone": "+1 (425) 889-8601",
       "appleMapsUrl": "https://maps.apple.com/?daddr=47.6762459,-122.205942&q=Ristorante%20Paradiso",
       "guideSlugs": [
-        "best-of-kirkland",
         "kirkland",
         "eastside-date-night"
       ],
@@ -525,7 +522,6 @@
       "phone": "+1 (425) 823-1505",
       "appleMapsUrl": "https://maps.apple.com/?daddr=47.7076316,-122.2123046&q=Cafe%20Juanita",
       "guideSlugs": [
-        "best-of-kirkland",
         "kirkland",
         "eastside-date-night"
       ],
@@ -739,8 +735,7 @@
       "website": "https://www.bellevuebrewing.com",
       "appleMapsUrl": "https://maps.apple.com/?daddr=47.621394,-122.1778158&q=Bellevue%20Brewing%20Company",
       "guideSlugs": [
-        "bellevue",
-        "eastside-breweries"
+        "bellevue"
       ],
       "muid": "",
       "hoursLabel": "",
@@ -814,8 +809,7 @@
       "phone": "+1 (425) 230-3660",
       "appleMapsUrl": "https://maps.apple.com/?daddr=47.6108569,-122.2039409&q=Third%20Culture%20Coffee",
       "guideSlugs": [
-        "bellevue",
-        "eastside-coffee"
+        "bellevue"
       ],
       "muid": "",
       "hoursLabel": "",
@@ -875,7 +869,6 @@
       "website": "https://www.farinecafe.com/",
       "appleMapsUrl": "https://maps.apple.com/?daddr=47.6195371,-122.1913429&q=Farine%20Bakery",
       "guideSlugs": [
-        "eastside-coffee",
         "eastside-brunch"
       ],
       "muid": "",
@@ -1222,7 +1215,6 @@
       "phone": "+1 (425) 484-0787",
       "appleMapsUrl": "https://maps.apple.com/?daddr=47.6568768,-122.2075705&q=Como",
       "guideSlugs": [
-        "kirkland-waterfront",
         "kirkland",
         "eastside-date-night"
       ],
@@ -1580,8 +1572,7 @@
       "website": "https://www.postdocbrewing.com/",
       "appleMapsUrl": "https://maps.apple.com/?daddr=47.6636505,-122.1054223&q=Postdoc%20Brewing",
       "guideSlugs": [
-        "redmond",
-        "eastside-breweries"
+        "redmond"
       ],
       "muid": "",
       "hoursLabel": "",
@@ -1769,9 +1760,7 @@
       "gustoScore": null,
       "website": "https://barrelswinebar.com",
       "appleMapsUrl": "https://maps.apple.com/?daddr=47.586572,-122.236897&q=Barrels%20Wine%20Bar",
-      "guideSlugs": [
-        "mercer-island"
-      ],
+      "guideSlugs": [],
       "muid": "",
       "hoursLabel": "",
       "blurb": "",
@@ -1835,9 +1824,7 @@
       "gustoScore": null,
       "website": "https://lexperienceparis.com/",
       "appleMapsUrl": "https://maps.apple.com/?daddr=47.5832528,-122.2327738&q=L'Experience%20Paris",
-      "guideSlugs": [
-        "mercer-island"
-      ],
+      "guideSlugs": [],
       "muid": "",
       "hoursLabel": "",
       "blurb": "",
@@ -5052,9 +5039,7 @@
       "phone": "+1 (206) 232-3221",
       "appleMapsUrl": "https://maps.apple.com/?daddr=47.5893132,-122.2394872&q=Shawn's%20Cafe%20and%20Bakery",
       "applePlaceUrl": "https://maps.apple.com/place?auid=10290159749305833107",
-      "guideSlugs": [
-        "mercer-island"
-      ],
+      "guideSlugs": [],
       "muid": "10290159749305833107",
       "hoursLabel": "",
       "blurb": "Come for fresh bagels, croissants and pretzel rolls baked from scratch daily. Pre-order the challah, which is ready Fridays after 11.",
@@ -5210,9 +5195,7 @@
       "phone": "+1 (425) 392-4725",
       "appleMapsUrl": "https://maps.apple.com/?daddr=47.5460516,-122.0583859&q=Naan-N-Curry",
       "applePlaceUrl": "https://maps.apple.com/place?auid=907267375096408052",
-      "guideSlugs": [
-        "issaquah"
-      ],
+      "guideSlugs": [],
       "muid": "907267375096408052",
       "hoursLabel": "",
       "blurb": "Order the lamb dum biryani, then malai boti or balti chicken from the Pakistani side of the menu. The biryani is even better as leftovers.",
@@ -5275,9 +5258,7 @@
       "website": "http://www.wearexochi.com",
       "appleMapsUrl": "https://maps.apple.com/?daddr=47.5386841,-122.0382035&q=Xochi",
       "applePlaceUrl": "https://maps.apple.com/place?auid=15416145406464543184",
-      "guideSlugs": [
-        "issaquah"
-      ],
+      "guideSlugs": [],
       "muid": "15416145406464543184",
       "hoursLabel": "",
       "blurb": "Order the chicken tinga and the rajas, poblanos in sour cream. Sandra Diaz stews every filling, and half the board is vegetarian.",
@@ -5772,62 +5753,6 @@
       ]
     },
     {
-      "slug": "kirkland-waterfront",
-      "title": "Kirkland waterfront",
-      "dek": "Kirkland restaurants on the lake.",
-      "group": "Neighborhoods",
-      "intro": "The Slip is at Marina Beach Park. BeachHouse Bar + Grill is in Houghton. Anthony's HomePort is on the marina at the south end of Lake Street, and Como is at Carillon Point.",
-      "updatedAt": "2026-10-20",
-      "ranked": false,
-      "city": "eastside",
-      "entries": [
-        {
-          "placeId": "beachhouse-bar-and-grill",
-          "pullQuote": "",
-          "blurb": "",
-          "copySource": "draft"
-        },
-        {
-          "placeId": "como",
-          "pullQuote": "Lombardy-style Italian at Carillon Point, dinner beside the lake.",
-          "blurb": "Lombardy-style Italian at Carillon Point, dinner beside the lake.",
-          "copySource": "draft"
-        }
-      ],
-      "pinned": true
-    },
-    {
-      "slug": "best-of-kirkland",
-      "title": "Best of Kirkland",
-      "dek": "Kirkland and Juanita restaurants with a published address.",
-      "group": "Best of",
-      "intro": "The Slip and BeachHouse Bar + Grill are on the lake. Ristorante Paradiso is on Park Lane. Cafe Juanita is in Juanita, at 9702 Northeast 120th Place.",
-      "updatedAt": "2026-10-20",
-      "ranked": false,
-      "city": "eastside",
-      "entries": [
-        {
-          "placeId": "beachhouse-bar-and-grill",
-          "pullQuote": "",
-          "blurb": "",
-          "copySource": "draft"
-        },
-        {
-          "placeId": "ristorante-paradiso",
-          "pullQuote": "",
-          "blurb": "",
-          "copySource": "draft"
-        },
-        {
-          "placeId": "cafe-juanita",
-          "pullQuote": "Prix-fixe Northern Italian tasting menus in the Juanita neighborhood.",
-          "blurb": "Prix-fixe Northern Italian tasting menus in the Juanita neighborhood.",
-          "copySource": "draft"
-        }
-      ],
-      "pinned": true
-    },
-    {
       "slug": "redmond",
       "title": "Redmond",
       "dek": "Downtown, Overlake, the Willows, and southeast Redmond.",
@@ -5905,31 +5830,6 @@
           "copySource": "draft"
         }
       ]
-    },
-    {
-      "slug": "issaquah",
-      "title": "Issaquah",
-      "dek": "Front Street and the Issaquah Highlands.",
-      "group": "Neighborhoods",
-      "intro": "JaK's Grill and the other Front Street rooms, plus Amarone up on Park Drive in the Highlands.",
-      "updatedAt": "2026-10-22",
-      "ranked": false,
-      "city": "eastside",
-      "entries": [
-        {
-          "placeId": "naan-n-curry",
-          "pullQuote": "Lamb dum biryani with saffron rice and fried onions in quilted Issaquah booths.",
-          "blurb": "Order the lamb dum biryani, then malai boti or balti chicken from the Pakistani side of the menu. The biryani is even better as leftovers.",
-          "copySource": "draft"
-        },
-        {
-          "placeId": "xochi",
-          "pullQuote": "",
-          "blurb": "",
-          "copySource": "draft"
-        }
-      ],
-      "pinned": true
     },
     {
       "slug": "bellevue",
@@ -6288,62 +6188,6 @@
       ]
     },
     {
-      "slug": "mercer-island",
-      "title": "Mercer Island",
-      "dek": "The town center and the north-end roadhouse.",
-      "group": "Neighborhoods",
-      "intro": "Mercer Island places in the town center, plus the Roanoke Inn on 72nd Avenue Southeast.",
-      "updatedAt": "2026-10-22",
-      "ranked": false,
-      "city": "eastside",
-      "entries": [
-        {
-          "placeId": "shawns-cafe-and-bakery",
-          "pullQuote": "Scratch-made bagels and Friday challah on Mercer Island.",
-          "blurb": "Come for fresh bagels, croissants and pretzel rolls baked from scratch daily. Pre-order the challah, which is ready Fridays after 11.",
-          "copySource": "draft"
-        },
-        {
-          "placeId": "lexperience-paris",
-          "pullQuote": "French cafe and crepes on 78th, in the Mercer Island town center.",
-          "blurb": "French cafe and crepes on 78th, in the Mercer Island town center.",
-          "copySource": "draft"
-        },
-        {
-          "placeId": "barrels-wine-bar",
-          "pullQuote": "Wine bar in the town center, on Southeast 27th Street.",
-          "blurb": "Wine bar in the town center, on Southeast 27th Street.",
-          "copySource": "draft"
-        }
-      ],
-      "pinned": true
-    },
-    {
-      "slug": "eastside-coffee",
-      "title": "Eastside coffee",
-      "dek": "Cafes, a bakery, and bagels.",
-      "group": "Cuisine",
-      "intro": "Third Culture Coffee roasts on 102nd in downtown Bellevue. Farine is a Belgian bakery on Northeast 10th. Boon Boona Coffee is on South 3rd in Renton.",
-      "updatedAt": "2026-10-20",
-      "ranked": false,
-      "city": "eastside",
-      "entries": [
-        {
-          "placeId": "farine-bakery",
-          "pullQuote": "Belgian bakery on Northeast 10th, with kouign-amann in the case.",
-          "blurb": "Belgian bakery on Northeast 10th, with kouign-amann in the case.",
-          "copySource": "draft"
-        },
-        {
-          "placeId": "third-culture-coffee",
-          "pullQuote": "Coffee roaster on 102nd Avenue Northeast in downtown Bellevue.",
-          "blurb": "Coffee roaster on 102nd Avenue Northeast in downtown Bellevue.",
-          "copySource": "draft"
-        }
-      ],
-      "pinned": true
-    },
-    {
       "slug": "eastside-asian",
       "title": "Eastside Asian",
       "dek": "Thai, Chinese, Japanese, Korean, Vietnamese, Sichuan, and Taiwanese.",
@@ -6575,31 +6419,6 @@
           "placeId": "ristorante-paradiso",
           "pullQuote": "",
           "blurb": "",
-          "copySource": "draft"
-        }
-      ],
-      "pinned": true
-    },
-    {
-      "slug": "eastside-breweries",
-      "title": "Eastside breweries",
-      "dek": "Brewpubs that make the beer on site.",
-      "group": "Drinks",
-      "intro": "Beardslee brews on Beardslee Boulevard. Bellevue Brewing is in the Spring District. Black Raven sits on Northeast 95th, Postdoc is east of downtown Redmond, and Watts pours on the Woodinville-Redmond Road.",
-      "updatedAt": "2026-10-20",
-      "ranked": false,
-      "city": "eastside",
-      "entries": [
-        {
-          "placeId": "postdoc-brewing",
-          "pullQuote": "Small brewery taproom on 65th Street, east of downtown Redmond.",
-          "blurb": "Small brewery taproom on 65th Street, east of downtown Redmond.",
-          "copySource": "draft"
-        },
-        {
-          "placeId": "bellevue-brewing",
-          "pullQuote": "A brewpub on Northeast District Way in the Spring District.",
-          "blurb": "A brewpub on Northeast District Way in the Spring District.",
           "copySource": "draft"
         }
       ],

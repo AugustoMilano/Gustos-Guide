@@ -45,7 +45,7 @@ const STATIC = [
   '/seattle/guides',
   '/eastside',
   '/eastside/guides',
-  '/eastside/guide/kirkland-waterfront',
+  '/eastside/guide/kirkland',
   '/eastside/place/cafe-juanita',
   '/plans',
   '/plans/wizard',

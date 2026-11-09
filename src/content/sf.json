@@ -52,8 +52,7 @@
       "applePlaceUrl": "https://maps.apple.com/place?auid=1553632674983169849",
       "guideSlugs": [
         "sf-jackson-square",
-        "sf-japanese",
-        "sf-date-night"
+        "sf-japanese"
       ],
       "muid": "1553632674983169849",
       "hoursLabel": "",
@@ -744,8 +743,7 @@
       "appleMapsUrl": "https://maps.apple.com/?daddr=37.7564722,-122.4190352&q=Foreign%20Cinema",
       "applePlaceUrl": "https://maps.apple.com/place?auid=16334142993927554502",
       "guideSlugs": [
-        "sf-mission-district",
-        "sf-american"
+        "sf-mission-district"
       ],
       "muid": "16334142993927554502",
       "hoursLabel": "",
@@ -4236,8 +4234,7 @@
       "appleMapsUrl": "https://maps.apple.com/?daddr=37.7833731,-122.4085402&q=The%20Melt",
       "applePlaceUrl": "https://maps.apple.com/place?auid=1033602914016843168",
       "guideSlugs": [
-        "sf-soma",
-        "sf-american"
+        "sf-soma"
       ],
       "muid": "1033602914016843168",
       "hoursLabel": "",
@@ -6783,8 +6780,7 @@
       "appleMapsUrl": "https://maps.apple.com/?daddr=37.7913532,-122.4137478&q=Osso%20Steakhouse",
       "applePlaceUrl": "https://maps.apple.com/place?auid=4163609809309499401",
       "guideSlugs": [
-        "sf-steakhouse",
-        "sf-date-night"
+        "sf-steakhouse"
       ],
       "muid": "4163609809309499401",
       "hoursLabel": "",
@@ -8807,31 +8803,6 @@
       "pinned": true
     },
     {
-      "slug": "sf-american",
-      "title": "American",
-      "dek": "Foreign Cinema at 2534 Mission St, and 1 more American stops.",
-      "group": "Cuisine",
-      "intro": "Foreign Cinema is at 2534 Mission St. The Melt is at 925 Market St.",
-      "updatedAt": "2026-10-21",
-      "ranked": false,
-      "city": "sf",
-      "entries": [
-        {
-          "placeId": "foreign-cinema",
-          "pullQuote": "Foreign Cinema, 2534 Mission St. American in Mission District.",
-          "blurb": "Foreign Cinema, 2534 Mission St. American in Mission District.",
-          "copySource": "draft"
-        },
-        {
-          "placeId": "the-melt",
-          "pullQuote": "American at The Melt, 925 Market St, SOMA.",
-          "blurb": "American at The Melt, 925 Market St, SOMA.",
-          "copySource": "draft"
-        }
-      ],
-      "pinned": true
-    },
-    {
       "slug": "sf-sandwich",
       "title": "Sandwich",
       "dek": "Roxie Food Center at 1901 San Jose Ave, and 3 more Sandwich stops.",
@@ -8863,31 +8834,6 @@
           "placeId": "deli-board",
           "pullQuote": "Deli Board, 1058 Folsom St. Sandwich in SOMA.",
           "blurb": "Deli Board, 1058 Folsom St. Sandwich in SOMA.",
-          "copySource": "draft"
-        }
-      ],
-      "pinned": true
-    },
-    {
-      "slug": "sf-date-night",
-      "title": "Date night",
-      "dek": "Rooms marked $$$ or $$$$ on the published price band.",
-      "group": "Occasion",
-      "intro": "Rooms marked $$$ or $$$$ on the published price band.",
-      "updatedAt": "2026-10-21",
-      "ranked": false,
-      "city": "sf",
-      "entries": [
-        {
-          "placeId": "roka-akor",
-          "pullQuote": "Roka Akor sits at 801 Montgomery St. Japanese, Jackson Square.",
-          "blurb": "Roka Akor sits at 801 Montgomery St. Japanese, Jackson Square.",
-          "copySource": "draft"
-        },
-        {
-          "placeId": "osso-steakhouse",
-          "pullQuote": "Steakhouse at Osso Steakhouse, 1177 California St, Downtown.",
-          "blurb": "Steakhouse at Osso Steakhouse, 1177 California St, Downtown.",
           "copySource": "draft"
         }
       ],

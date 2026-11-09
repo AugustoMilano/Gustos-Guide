@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { PlaceArt } from './PlaceArt.tsx'
 import { displayPhotos, type LivePhoto } from '../lib/gallery.ts'
+import { portraitClass } from '../lib/portrait-frame.ts'
 import { responsivePhoto } from '../lib/responsivePhoto.ts'
 import type { SlimPlace } from '../types.ts'
 
@@ -41,7 +42,7 @@ export function PlaceThumb({
         height={picture.height}
         alt=""
         draggable={false}
-        className={`h-full w-full object-cover${ready ? '' : ' is-pending'}`}
+        className={`h-full w-full object-cover${portraitClass(picture.width, picture.height)}${ready ? '' : ' is-pending'}`}
         loading={eager || priority ? 'eager' : 'lazy'}
         decoding="async"
         fetchPriority={priority ? 'high' : undefined}

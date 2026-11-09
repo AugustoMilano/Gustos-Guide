@@ -56,15 +56,38 @@ test('home featured rows omit Date Night and the breakfast guide keeps its route
 })
 
 test('Drinks is listed before Neighborhoods on every guides index', async ({ page }) => {
-  for (const [path, width] of [['/#/seattle/guides', 1440], ['/#/eastside/guides', 390]] as const) {
+  for (const [path, width, drinks] of [
+    ['/#/seattle/guides', 1440, true],
+    ['/#/eastside/guides', 390, false],
+  ] as const) {
     await page.setViewportSize({ width, height: width < 700 ? 844 : 900 })
     await page.goto(path)
-    await expect(page.getByRole('heading', { level: 2, name: 'Drinks' })).toBeVisible()
+    await expect(page.getByRole('heading', { level: 2, name: 'Neighborhoods' })).toBeVisible()
     const headings = (await page.locator('#main h2').allTextContents()).map((text) => text.trim())
-    expect(headings.indexOf('Neighborhoods')).toBeGreaterThan(headings.indexOf('Drinks'))
-    expect(headings).toEqual(['Best of', 'Cuisines', 'Occasions', 'Drinks', 'Neighborhoods'])
-    const chips = page.getByRole('group', { name: 'Guide categories' })
-    const chipText = await chips.getByRole('button').allTextContents()
-    expect(chipText).toEqual(['All', 'Best of', 'Cuisines', 'Occasions', 'Drinks', 'Neighborhoods'])
+    if (drinks) {
+      expect(headings).toEqual(['Best of', 'Cuisines', 'Occasions', 'Drinks', 'Neighborhoods'])
+    } else {
+      expect(headings.indexOf('Neighborhoods')).toBeGreaterThan(headings.indexOf('Occasions'))
+      expect(headings.includes('Drinks')).toBe(false)
+    }
+    const chips = await page.getByRole('group', { name: 'Guide categories' }).getByRole('button').allTextContents()
+    expect(chips.indexOf('Neighborhoods')).toBeGreaterThan(chips.indexOf('Occasions'))
+    if (drinks) expect(chips.indexOf('Neighborhoods')).toBeGreaterThan(chips.indexOf('Drinks'))
   }
+})
+
+test('portrait photos keep the top of the frame and the rank matches the name', async ({ page }) => {
+  await page.addInitScript(() => {
+    localStorage.setItem('gusto.house.v1', JSON.stringify({ 'alibi-room': 8.4, 'serious-pie': 7.2 }))
+  })
+  await page.setViewportSize({ width: 1440, height: 900 })
+  await page.goto('/#/seattle/place/dahlia-bakery')
+  const photo = page.locator('.photo-frame img.is-portrait')
+  await expect(photo).toBeVisible()
+  await expect(photo).toHaveCSS('object-position', '50% 18%')
+  await page.goto('/#/seattle/guide/best-pizza')
+  const rank = page.locator('.guide-entry .rank-slot').first()
+  await expect(rank).toBeVisible()
+  const size = await rank.evaluate((node) => Number.parseFloat(getComputedStyle(node).fontSize))
+  expect(size).toBeGreaterThanOrEqual(34)
 })

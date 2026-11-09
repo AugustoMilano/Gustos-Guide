@@ -1,6 +1,7 @@
 import { readFileSync } from 'node:fs'
 import assert from 'node:assert/strict'
 import { formatHouseScore, stepHouseScore } from '../src/lib/house-score.ts'
+import { portraitClass } from '../src/lib/portrait-frame.ts'
 import { cheapEatsFor, omitSeattleCheapEats, seattleCheapEatsBlocked, usableCheapMembers } from '../src/lib/collections.ts'
 
 const shown = (value) => (value == null ? null : formatHouseScore(value))
@@ -180,6 +181,14 @@ assert.ok(parents.entries.length > 0)
 assert.equal(classics.entries.some((entry) => entry.placeId === 'il-terrazzo-carmine'), true)
 assert.equal(places['ivar-s'].guideSlugs.includes('classics'), false)
 assert.equal(places['ivar-s'].guideSlugs.includes('seafood'), true)
+assert.equal(portraitClass(1200, 1600), ' is-portrait')
+assert.equal(portraitClass(1600, 1200), '')
+
+const bay = JSON.parse(readFileSync(new URL('../src/content/sf.json', import.meta.url), 'utf8'))
+for (const guide of eastside.guides) assert.ok(guide.entries.length >= 4, guide.slug)
+for (const guide of bay.guides.filter((item) => item.city === 'sf')) assert.ok(guide.entries.length >= 4, guide.slug)
+assert.equal(bay.guides.some((guide) => guide.slug === 'eastbay-berkeley'), true)
+assert.equal(eastside.guides.some((guide) => guide.slug === 'kirkland-waterfront'), false)
 
 const row = {
   id: 'c1',
