@@ -29,6 +29,7 @@ import type { Guide, Price, SlimPlace, VisitStatus } from '../types.ts'
 const GUIDE_MOVED: Record<string, string> = {
   'peninsula-fremont': 'eastbay-fremont',
   'peninsula-pleasanton': 'eastbay-pleasanton',
+  'mos-cafe': 'best-of-moscow-id',
 }
 
 export function GuidePage() {
