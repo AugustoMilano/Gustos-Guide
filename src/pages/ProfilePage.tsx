@@ -6,6 +6,7 @@ import { m, useReducedMotion } from 'framer-motion'
 import { useState } from 'react'
 import { Achievements } from '../components/Achievements.tsx'
 import { PlaceThumb } from '../components/PlaceThumb.tsx'
+import { PlaceName } from '../components/PlaceName.tsx'
 import { PriceFilter } from '../components/PriceFilter.tsx'
 import { slimById } from '../content/load.ts'
 import { areaTitle, cityPath, regionOf, REGIONS, type RegionId } from '../lib/city.ts'
@@ -122,7 +123,7 @@ export function ProfilePage() {
                     <Link to={`/place/${id}`} className="block h-28 overflow-hidden bg-navy [&_.place-art]:aspect-auto [&_.place-art]:h-full">
                       <PlaceThumb place={spot} uploads={app.photos} />
                     </Link>
-                    <p className="mt-2 font-serif text-xl italic leading-none">{spot.name}</p>
+                    <PlaceName name={spot.name} className="mt-2 italic leading-none" />
                     <Link className="btn mt-3 text-sm" to={`/plans?place=${id}`}>Go together</Link>
                   </li>
                 )

@@ -7,6 +7,7 @@ import { SignInSheet } from '../components/SignInSheet.tsx'
 import { scoreBand } from '../components/ScoreBadge.tsx'
 import { catalog, ensureAllCities } from '../content/load.ts'
 import { cityPath } from '../lib/city.ts'
+import { placeNameClass } from '../lib/place-name.ts'
 import { cuisineLabel, cuisineMenuLabel } from '../lib/cuisine-label.ts'
 import { publicReference } from '../lib/format.ts'
 import { usePageMeta } from '../lib/meta.ts'
@@ -308,7 +309,7 @@ export function QuickScorePage() {
                   </m.div>
                   <div className="p-4">
                     <h2 className="font-serif text-4xl italic leading-none">
-                      <Link to={cityPath(`/place/${place.id}`)}>{place.name}</Link>
+                      <Link className={placeNameClass(place.name)} to={cityPath(`/place/${place.id}`)}>{place.name}</Link>
                     </h2>
                     <p className="mt-2 text-sm">{place.neighborhood} · {place.cuisine.map((item) => cuisineLabel(item)).join(', ')}</p>
                     {publicReference(place) ? <p className="public-ref mt-2">{publicReference(place)}</p> : null}

@@ -5,6 +5,7 @@ import { AreaKicker } from '../components/AreaKicker.tsx'
 import { ForkMark, GoldenFork } from '../components/GoldenFork.tsx'
 import { ScoreBadge } from '../components/ScoreBadge.tsx'
 import { PlaceThumb } from '../components/PlaceThumb.tsx'
+import { PlaceName } from '../components/PlaceName.tsx'
 import { PriceFilter } from '../components/PriceFilter.tsx'
 import { catalogPhase, ensureRegion, subscribeCatalog } from '../content/load.ts'
 import { cityPath, regionName, regionOf, type RegionId } from '../lib/city.ts'
@@ -126,7 +127,7 @@ export function TopPage() {
                   <span className="top-podium-shot" style={reduce ? undefined : { viewTransitionName: `place-${row.place.id}` }}>
                     <PlaceThumb place={row.place} uploads={app.photos} eager={row.rank === 1} />
                   </span>
-                  <span className="podium-name font-serif text-xl italic leading-tight sm:text-2xl">{row.place.name}</span>
+                  <PlaceName name={row.place.name} className="podium-name italic leading-tight" />
                   <span className="podium-area text-xs font-bold tracking-wide uppercase">{row.place.neighborhood}</span>
                   <span className="podium-score">{row.score.toFixed(1)}</span>
                 </Link>
@@ -150,9 +151,9 @@ export function TopPage() {
                       <PlaceThumb place={row.place} uploads={app.photos} />
                       <GoldenFork placeId={row.place.id} overlay />
                     </span>
-                    <span className="min-w-0">
-                      <span className="block truncate font-serif text-2xl italic leading-tight">{row.place.name}</span>
-                      <span className="mt-1 block truncate text-xs font-bold tracking-wide uppercase">{row.place.neighborhood}</span>
+                    <span className="place-row-copy">
+                      <PlaceName name={row.place.name} className="italic leading-tight" />
+                      <span className="place-meta mt-1 text-xs font-bold tracking-wide uppercase"><span>{row.place.neighborhood}</span></span>
                     </span>
                     <span className="score-col"><ScoreBadge score={row.score} size="sm" /></span>
                   </Link>

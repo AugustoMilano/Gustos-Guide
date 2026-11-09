@@ -6,17 +6,17 @@ import { readExploreMemory, saveExploreMemory, type ExploreMemory } from '../lib
 
 const GuideMap = lazy(() => import('../components/GuideMap.tsx').then((module) => ({ default: module.GuideMap })))
 import { CuisinePicker } from '../components/CuisinePicker.tsx'
+import { PlaceMeta, PlaceName, placeCardMeta } from '../components/PlaceName.tsx'
 import { PriceFilter } from '../components/PriceFilter.tsx'
 import { MapLinks } from '../components/MapLinks.tsx'
 import { PlaceThumb } from '../components/PlaceThumb.tsx'
 import { GoldenFork } from '../components/GoldenFork.tsx'
 import { ScoreBadge, scoreBand } from '../components/ScoreBadge.tsx'
 import { areaName as cityName, areaPhrase, areaTitle, cityPath, regionOf } from '../lib/city.ts'
-import { cuisineLabel } from '../lib/cuisine-label.ts'
 import { useCityCatalog } from '../lib/use-city.ts'
 import { hasHours, isPlaceOpen } from '../lib/hours.ts'
 import { distanceKm, formatDistance, locate, readNearMe, saveNearMe, type Spot } from '../lib/near-me.ts'
-import { countPlaces, priceLabel } from '../lib/format.ts'
+import { countPlaces } from '../lib/format.ts'
 import { hasUnknownPrice, matchesPrice, type PriceChoice } from '../lib/price-filter.ts'
 import { usePageMeta } from '../lib/meta.ts'
 import { useApp } from '../state/AppState.tsx'
@@ -344,10 +344,8 @@ export function ExplorePage() {
                     <GoldenFork placeId={place.id} overlay />
                   </span>
                   <span className="place-row-copy">
-                    <span className="block font-serif text-xl italic leading-tight">{place.name}</span>
-                    <span className="mt-1 block text-xs font-bold tracking-wide uppercase">
-                      {[cuisineLabel(place.cuisine[0] ?? ''), priceLabel(place.price), place.neighborhood].filter(Boolean).join(' · ')}
-                    </span>
+                    <PlaceName name={place.name} className="italic" />
+                    <PlaceMeta parts={placeCardMeta(place)} className="mt-1 text-xs font-bold tracking-wide uppercase" />
                     {near ? <span className="mt-1 block text-sm">{formatDistance(distances.get(place.id) ?? 0, region)} away</span> : null}
                   </span>
                   <span className="score-col">
