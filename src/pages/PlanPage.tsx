@@ -3,6 +3,7 @@ import { useReducedMotion } from 'framer-motion'
 import { Link, useNavigate, useParams, useSearchParams } from 'react-router-dom'
 import { MapLinks } from '../components/MapLinks.tsx'
 import { PlaceThumb } from '../components/PlaceThumb.tsx'
+import { PlaceMeta, PlaceName } from '../components/PlaceName.tsx'
 import { FriendEmpty } from '../components/FriendEmpty.tsx'
 import { PlanCard, PlanSheet } from '../components/PlanSheet.tsx'
 import { SignInSheet } from '../components/SignInSheet.tsx'
@@ -15,6 +16,7 @@ import { cityPath, type CityId } from '../lib/city.ts'
 import { useCityCatalog } from '../lib/use-city.ts'
 import { demoFriendsEnabled } from '../lib/demo.ts'
 import { cuisineLabel } from '../lib/cuisine-label.ts'
+import { placeNameClass } from '../lib/place-name.ts'
 import { priceLabel, publicReference } from '../lib/format.ts'
 import { usePageMeta } from '../lib/meta.ts'
 import { useApp } from '../state/AppState.tsx'
@@ -92,8 +94,8 @@ export function PlanDetailPage() {
                   <PlaceThumb place={place} uploads={app.photos} sizes="64px" />
                 </span>
                 <span className="place-row-copy">
-                  <span className="block truncate font-serif text-2xl italic leading-tight">{place.name}</span>
-                  <span className="mt-1 block truncate text-sm">{place.neighborhood} · {cuisineLabel(place.cuisine[0] ?? '')}</span>
+                  <PlaceName name={place.name} className="italic leading-tight" />
+                  <PlaceMeta parts={[place.neighborhood, cuisineLabel(place.cuisine[0] ?? '')]} className="mt-1 text-sm" />
                 </span>
                 <span className="score-col"><ScoreBadge score={app.gustoScore(place.id)} size="sm" /></span>
                 <span className="row-tail">
@@ -181,7 +183,7 @@ function LockedMaps({ plan }: { plan: Plan }) {
   return (
     <div className="locked-card mt-4">
       <p className="text-xs font-bold uppercase tracking-wide">Go together</p>
-      <p className="font-serif text-3xl italic">{place.name}</p>
+      <p className={placeNameClass(place.name, 'italic')}>{place.name}</p>
       <div className="mt-3 flex flex-wrap gap-2">
         <MapLinks place={place} />
       </div>
@@ -412,7 +414,7 @@ export function PlanWizardPage() {
                       <GoldenFork placeId={place.id} overlay />
                     </span>
                     <span className="place-row-copy">
-                      <span className="block font-serif text-2xl italic leading-tight">{place.name}</span>
+                      <PlaceName name={place.name} className="italic leading-tight" />
                       {reference ? <span className="public-ref mt-1 block">{reference}</span> : null}
                       <span className="mt-2 flex flex-wrap gap-1">
                         {tally > 0 ? <span className="tag">{tally} of you want to go</span> : null}

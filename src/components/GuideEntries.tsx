@@ -12,6 +12,8 @@ import { portraitClass } from '../lib/portrait-frame.ts'
 import { responsivePhoto } from '../lib/responsivePhoto.ts'
 import { ForkMark, GoldenFork } from './GoldenFork.tsx'
 import { ScoreBadge } from './ScoreBadge.tsx'
+import { PlaceMeta } from './PlaceName.tsx'
+import { placeNameClass } from '../lib/place-name.ts'
 import { MapLinks } from './MapLinks.tsx'
 import { demoFriendsEnabled } from '../lib/demo.ts'
 import { countPlaces, priceLabel, publicReference, yelpBizUrl } from '../lib/format.ts'
@@ -85,10 +87,8 @@ export function GuideStrip({
                   <div className="toc-badge">
                     <ScoreBadge score={score} size="sm" />
                   </div>
-                  <h3 className="mt-2 line-clamp-2 min-h-[2.6rem] font-serif text-xl italic leading-tight">{number != null ? <span className="mr-1.5 text-coral not-italic">{number}</span> : null}{place.name}</h3>
-                  <p className="mt-2 line-clamp-2 min-h-[2rem] text-xs font-bold tracking-wide uppercase">
-                    {[place.neighborhood, cuisineLabel(place.cuisine[0] ?? ''), priceLabel(place.price)].filter(Boolean).join(' · ')}
-                  </p>
+                  <h3 className={placeNameClass(place.name, 'mt-2 min-h-[2.6rem] italic leading-tight')}>{number != null ? <span className="mr-1.5 text-coral not-italic">{number}</span> : null}{place.name}</h3>
+                  <PlaceMeta parts={[place.neighborhood, cuisineLabel(place.cuisine[0] ?? ''), priceLabel(place.price)]} className="mt-2 line-clamp-2 min-h-[2rem] text-xs font-bold tracking-wide uppercase" />
                   {vibe || place.perfectFor[0] ? <span className={`tag mt-1.5 min-h-6 ${vibe ? 'tag-vibe' : ''}`}>{vibe ?? place.perfectFor[0]}</span> : null}
                 </div>
               </a>
@@ -228,11 +228,10 @@ export function GuideEntryCard({
       ) : null}
     </div>
   )
-  const splitTitle = !artOnly && layout !== 0
   const title = (
     <div className="min-w-0">
       <div className="entry-head">
-        <h3 className={`max-w-full font-serif italic text-balance leading-[1.15] ${splitTitle ? 'text-3xl sm:text-4xl' : 'text-3xl sm:text-4xl lg:text-5xl'}`}>
+        <h3 className={placeNameClass(place.name, 'max-w-full italic leading-[1.15]')}>
           {number != null ? <span className="rank-slot text-coral not-italic">{number}</span> : null}
           <Link to={cityPath(`/place/${place.id}`)} viewTransition={!reduceMotion}>{place.name}</Link>
         </h3>
@@ -241,9 +240,7 @@ export function GuideEntryCard({
           <GoldenFork placeId={place.id} size="sm" />
         </span>
       </div>
-      <p className="mt-3 text-sm font-bold tracking-wide uppercase">
-        {[place.cuisine.map((item) => cuisineLabel(item)).join(' · '), place.neighborhood, priceLabel(place.price), place.closed ? 'Closed' : ''].filter(Boolean).join(' · ')}
-      </p>
+      <PlaceMeta parts={[...place.cuisine.map((item) => cuisineLabel(item)), place.neighborhood, priceLabel(place.price), place.closed ? 'Closed' : '']} className="mt-3 text-sm font-bold tracking-wide uppercase" />
     </div>
   )
   const rest = (

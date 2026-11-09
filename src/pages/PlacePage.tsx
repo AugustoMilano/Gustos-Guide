@@ -18,6 +18,8 @@ import { formatPeriods, placeHoursPhrase } from '../lib/hours.ts'
 import { MapLinks } from '../components/MapLinks.tsx'
 import { ShareButton } from '../components/ShareButton.tsx'
 import { cuisineLabel } from '../lib/cuisine-label.ts'
+import { placeNameClass } from '../lib/place-name.ts'
+import { PlaceMeta } from '../components/PlaceName.tsx'
 import { milesBetween, priceLabel, publicReference, shareUrl, yelpBizUrl } from '../lib/format.ts'
 import { renderPlaceStory } from '../lib/story-card.ts'
 import { awardFor } from '../lib/top25.ts'
@@ -168,8 +170,8 @@ export function PlacePage() {
         />
         <div className="place-identity">
           <p className="area-kicker">{areaTitle(placeCity(place))}</p>
-          <p className="mt-2 text-xs font-bold tracking-[0.14em] uppercase">{[place.cuisine.map((item) => cuisineLabel(item)).join(' · '), place.neighborhood].filter(Boolean).join(' · ')}</p>
-          <h1 className="mt-1 font-serif text-5xl italic leading-none sm:text-6xl">{place.name}</h1>
+          <PlaceMeta parts={[...place.cuisine.map((item) => cuisineLabel(item)), place.neighborhood]} className="mt-2 text-xs font-bold tracking-[0.14em] uppercase" />
+          <h1 className={placeNameClass(place.name, 'mt-1 italic leading-none')}>{place.name}</h1>
           {place.closed ? <p className="closed-banner mt-3" role="status">Closed.</p> : null}
           <div className="mt-3 flex flex-wrap items-center gap-3">
             <ScoreBadge score={app.gustoScore(place.id)} />
@@ -287,7 +289,7 @@ export function PlacePage() {
                   </div>
                   <div className="place-card-body is-dense">
                     <div className="min-w-0">
-                      <h3 className="font-serif text-xl italic leading-tight">{item.name}</h3>
+                      <h3 className={placeNameClass(item.name, 'italic leading-tight')}>{item.name}</h3>
                       <p className="mt-1 text-xs font-bold tracking-wide uppercase">{item.neighborhood}</p>
                     </div>
                     <span className="score-col"><ScoreBadge score={app.gustoScore(item.id)} size="sm" /></span>

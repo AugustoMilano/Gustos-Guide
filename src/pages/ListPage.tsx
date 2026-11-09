@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState, useSyncExternalStore } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { ListShareCard } from '../components/ListShareCard.tsx'
 import { PlaceThumb } from '../components/PlaceThumb.tsx'
+import { PlaceMeta, PlaceName } from '../components/PlaceName.tsx'
 import { GoldenFork } from '../components/GoldenFork.tsx'
 import { ScoreBadge } from '../components/ScoreBadge.tsx'
 import { StoryShareButton } from '../components/StoryShareButton.tsx'
@@ -166,8 +167,8 @@ export function ListPage() {
               <Link to={`/place/${place.id}`} className="plan-pick place-row min-w-0 flex-1">
                 <span className="place-row-shot"><PlaceThumb place={place} uploads={app.photos} sizes="64px" /><GoldenFork placeId={place.id} overlay /></span>
                 <span className="place-row-copy">
-                  <span className="block font-serif text-2xl italic leading-tight">{index + 1}. {place.name}</span>
-                  <span className="mt-1 block text-sm">{place.neighborhood} · {priceLabel(place.price)}</span>
+                  <PlaceName name={`${index + 1}. ${place.name}`} className="italic leading-tight" />
+                  <PlaceMeta parts={[place.neighborhood, priceLabel(place.price)]} className="mt-1 text-sm" />
                   {note ? <span className="mt-1 block text-sm italic">{note}</span> : null}
                 </span>
                 <span className="score-col"><ScoreBadge score={app.gustoScore(place.id)} size="sm" /></span>
