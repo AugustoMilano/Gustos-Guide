@@ -24,15 +24,31 @@ test('home featured rows omit Date Night and the breakfast guide keeps its route
     expect.stringContaining('Best Pizza in Seattle'),
     expect.stringContaining('Late-Night Eats'),
     expect.stringContaining('Best Cocktail Bars'),
-    expect.stringContaining('Bring The Parents'),
+    expect.stringContaining('Seattle Classics & Institutions'),
   ])
-  expect(featuredText.join('\n')).not.toMatch(/Date Night/)
+  expect(featuredText.join('\n')).not.toMatch(/Date Night|Bring The Parents/)
+  const classics = seattleFeatured.getByRole('link', { name: 'Seattle Classics & Institutions' })
+  await expect(classics).toHaveAttribute('href', /\/seattle\/guide\/classics$/)
   await expect(seattleFeatured.getByRole('link', { name: 'Best Bakeries & Pastry' })).toHaveAttribute('href', /\/seattle\/guide\/best-bakeries$/)
+  await classics.click()
+  await expect(page).toHaveURL(/\/seattle\/guide\/classics$/)
+  await expect(page.getByRole('heading', { level: 1, name: 'Seattle Classics & Institutions' })).toBeVisible()
+  await expect(page.locator('meta[property="og:image"]')).toHaveAttribute('content', /\/og\/guides\/classics\.png/)
+  await page.setViewportSize({ width: 1440, height: 900 })
+  await expect(page.getByRole('combobox', { name: 'Neighborhood' })).toBeVisible()
+  await expect(page.getByText('aim for 25')).toHaveCount(0)
+  await page.screenshot({ path: '/opt/cursor/artifacts/classics-filters-1440.png', fullPage: false })
+  await page.setViewportSize({ width: 390, height: 844 })
+  await page.screenshot({ path: '/opt/cursor/artifacts/classics-rank-390.png', fullPage: false })
+  await page.goto('/#/seattle')
   await page.getByLabel('Search guides and places').fill('date night')
   await expect(page.getByRole('link', { name: /Date Night/ })).toBeVisible()
   await page.goto('/#/seattle/guides')
   await expect(page.getByRole('link', { name: 'Best Breakfast' })).toBeVisible()
   await expect(page.getByRole('link', { name: 'Date Night' })).toBeVisible()
+  await expect(page.getByRole('link', { name: 'Bring The Parents' })).toBeVisible()
+  await page.goto('/#/seattle/guide/bring-the-parents')
+  await expect(page.getByRole('heading', { level: 1, name: 'Bring The Parents' })).toBeVisible()
   await page.goto('/#/seattle/guide/breakfast-before-9')
   await expect(page).toHaveURL(/\/seattle\/guide\/breakfast-before-9$/)
   await expect(page.getByRole('heading', { level: 1, name: 'Best Breakfast' })).toBeVisible()

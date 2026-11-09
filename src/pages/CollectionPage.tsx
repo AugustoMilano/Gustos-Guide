@@ -8,7 +8,7 @@ import { MapLinks } from '../components/MapLinks.tsx'
 import { PlaceThumb } from '../components/PlaceThumb.tsx'
 import { ScoreBadge } from '../components/ScoreBadge.tsx'
 import { areaTitle, cityPath } from '../lib/city.ts'
-import { CHEAP_EATS_SLUG, CHEAP_EATS_TITLE, cheapEatsFor, cleanTitle, flagshipAimHint, movedPlaceIds, orderedMembers, renderableIds, usableCheapMembers } from '../lib/collections.ts'
+import { CHEAP_EATS_SLUG, CHEAP_EATS_TITLE, cheapEatsFor, cleanTitle, movedPlaceIds, orderedMembers, renderableIds, usableCheapMembers } from '../lib/collections.ts'
 import { cuisineLabel } from '../lib/cuisine-label.ts'
 import { countPlaces, priceLabel } from '../lib/format.ts'
 import { hasUnknownPrice, matchesPrice } from '../lib/price-filter.ts'
@@ -83,9 +83,6 @@ export function CollectionPage() {
             <p className="area-kicker">{areaTitle(city)}</p>
             <h1 className="mt-0.5 font-serif text-3xl italic leading-none">{heading}</h1>
             <p className="mt-1 text-sm tabular-nums">{shown.length === members.length ? countPlaces(members.length) : `${shown.length} of ${countPlaces(members.length)}`}</p>
-            {app.user?.isOwner ? (
-              <p className="mt-1 text-sm">{flagshipAimHint(usingStored && storedIds ? storedIds.length : members.length)}</p>
-            ) : null}
           </m.div>
           <button
             type="button"
