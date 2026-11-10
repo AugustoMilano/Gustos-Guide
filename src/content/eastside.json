@@ -55,7 +55,6 @@
       "appleMapsUrl": "https://maps.apple.com/?daddr=47.6100241,-122.2039115&q=Bis%20on%20Main",
       "guideSlugs": [
         "best-of-bellevue",
-        "bellevue",
         "eastside-date-night"
       ],
       "muid": "",
@@ -252,7 +251,6 @@
       "appleMapsUrl": "https://maps.apple.com/?daddr=47.6170951,-122.1919712&q=John%20Howie%20Steak",
       "guideSlugs": [
         "best-of-bellevue",
-        "bellevue",
         "eastside-date-night"
       ],
       "muid": "",
@@ -315,7 +313,6 @@
       "phone": "+1 (425) 454-7500",
       "appleMapsUrl": "https://maps.apple.com/?daddr=47.6165675,-122.202069&q=Tavern%20Hall",
       "guideSlugs": [
-        "bellevue",
         "eastside-drinks"
       ],
       "muid": "",
@@ -737,7 +734,6 @@
       "website": "https://www.bellevuebrewing.com",
       "appleMapsUrl": "https://maps.apple.com/?daddr=47.621394,-122.1778158&q=Bellevue%20Brewing%20Company",
       "guideSlugs": [
-        "bellevue",
         "eastside-drinks"
       ],
       "muid": "",
@@ -811,9 +807,7 @@
       "website": "https://thirdculturecoffee.com",
       "phone": "+1 (425) 230-3660",
       "appleMapsUrl": "https://maps.apple.com/?daddr=47.6108569,-122.2039409&q=Third%20Culture%20Coffee",
-      "guideSlugs": [
-        "bellevue"
-      ],
+      "guideSlugs": [],
       "muid": "",
       "hoursLabel": "",
       "blurb": "",
@@ -1022,8 +1016,8 @@
       "website": "https://www.ginzabellevue.com/",
       "appleMapsUrl": "https://maps.apple.com/?daddr=47.6098826,-122.2043064&q=Ginza",
       "guideSlugs": [
-        "bellevue",
-        "eastside-asian"
+        "eastside-asian",
+        "japanese-food-in-bellevue"
       ],
       "muid": "",
       "hoursLabel": "",
@@ -1159,9 +1153,9 @@
       "phone": "+1 (425) 502-7259",
       "appleMapsUrl": "https://maps.apple.com/?daddr=47.6116763,-122.2012671&q=Takai%20by%20Kashiba",
       "guideSlugs": [
-        "bellevue",
         "eastside-asian",
-        "eastside-date-night"
+        "eastside-date-night",
+        "japanese-food-in-bellevue"
       ],
       "muid": "",
       "hoursLabel": "",
@@ -2369,8 +2363,8 @@
       "appleMapsUrl": "https://maps.apple.com/?daddr=47.61811,-122.1922&q=Minamoto%20Japanese%20Restaurant",
       "applePlaceUrl": "https://maps.apple.com/place?auid=3098962773215072787",
       "guideSlugs": [
-        "bellevue",
-        "eastside-asian"
+        "eastside-asian",
+        "japanese-food-in-bellevue"
       ],
       "muid": "3098962773215072787",
       "hoursLabel": "",
@@ -2653,7 +2647,6 @@
       "appleMapsUrl": "https://maps.apple.com/?daddr=47.6163741,-122.201373&q=Earls%20Kitchen%20%2B%20Bar",
       "applePlaceUrl": "https://maps.apple.com/place?auid=14508377034778846098",
       "guideSlugs": [
-        "bellevue",
         "best-of-bellevue",
         "eastside-drinks"
       ],
@@ -2904,8 +2897,8 @@
       "appleMapsUrl": "https://maps.apple.com/?daddr=47.6113818,-122.202065&q=Hokkaido%20Ramen%20Santouka",
       "applePlaceUrl": "https://maps.apple.com/place?auid=14397719807160244876",
       "guideSlugs": [
-        "bellevue",
-        "eastside-asian"
+        "eastside-asian",
+        "japanese-food-in-bellevue"
       ],
       "muid": "14397719807160244876",
       "hoursLabel": "",
@@ -2974,8 +2967,8 @@
       "appleMapsUrl": "https://maps.apple.com/?daddr=47.6146986,-122.2012691&q=Japonessa%20Sushi%20Cocina",
       "applePlaceUrl": "https://maps.apple.com/place?auid=235237345928053165",
       "guideSlugs": [
-        "bellevue",
-        "eastside-asian"
+        "eastside-asian",
+        "japanese-food-in-bellevue"
       ],
       "muid": "235237345928053165",
       "hoursLabel": "",
@@ -3064,9 +3057,7 @@
       "phone": "+1 (425) 679-6868",
       "appleMapsUrl": "https://maps.apple.com/?daddr=47.6128152,-122.1998672&q=Desi%20Tadka%20Indian%20Grill",
       "applePlaceUrl": "https://maps.apple.com/place?auid=2651018645555388686",
-      "guideSlugs": [
-        "bellevue"
-      ],
+      "guideSlugs": [],
       "muid": "2651018645555388686",
       "hoursLabel": "",
       "blurb": "Order the chole bhature, chickpeas with two puffed fried breads, or a matar paneer thali. The whole menu is vegetarian, with no-onion, no-garlic options.",
@@ -3128,7 +3119,6 @@
       "appleMapsUrl": "https://maps.apple.com/?daddr=47.6103329,-122.202483&q=Dough%20Zone",
       "applePlaceUrl": "https://maps.apple.com/place?auid=10388261190878961191",
       "guideSlugs": [
-        "bellevue",
         "eastside-asian"
       ],
       "muid": "10388261190878961191",
@@ -3209,8 +3199,8 @@
       "appleMapsUrl": "https://maps.apple.com/?daddr=47.6208532,-122.1934872&q=Rolls%20%26%20Rolls%20Plus%20Sushi",
       "applePlaceUrl": "https://maps.apple.com/place?auid=17184319331265813298",
       "guideSlugs": [
-        "bellevue",
-        "eastside-asian"
+        "eastside-asian",
+        "japanese-food-in-bellevue"
       ],
       "muid": "17184319331265813298",
       "hoursLabel": "",
@@ -3282,9 +3272,7 @@
       "phone": "+1 (425) 643-2670",
       "appleMapsUrl": "https://maps.apple.com/?daddr=47.6257619,-122.154732&q=Ezell's%20Famous%20Chicken",
       "applePlaceUrl": "https://maps.apple.com/place?auid=11695178579399116619",
-      "guideSlugs": [
-        "bellevue"
-      ],
+      "guideSlugs": [],
       "muid": "11695178579399116619",
       "hoursLabel": "",
       "blurb": "Get it spicy, with dark meat, the way Oprah orders it, plus the sweet fresh-baked rolls. Ezell's has been frying chicken in Seattle since 1984.",
@@ -3447,7 +3435,7 @@
       "appleMapsUrl": "https://maps.apple.com/?daddr=47.6134912,-122.1968793&q=FOB%20Poke%20Bar",
       "applePlaceUrl": "https://maps.apple.com/place?auid=3517824207168419144",
       "guideSlugs": [
-        "bellevue"
+        "japanese-food-in-bellevue"
       ],
       "muid": "3517824207168419144",
       "hoursLabel": "",
@@ -3514,9 +3502,7 @@
       "phone": "+1 (206) 726-1717",
       "appleMapsUrl": "https://maps.apple.com/?daddr=47.6103973,-122.1984014&q=Pagliacci%20Pizza",
       "applePlaceUrl": "https://maps.apple.com/place?auid=18196189739224874619",
-      "guideSlugs": [
-        "bellevue"
-      ],
+      "guideSlugs": [],
       "muid": "18196189739224874619",
       "hoursLabel": "",
       "blurb": "Order the Brooklyn Bridge, with Cascioppo sausage, mushrooms, olives, peppers and onions. Pagliacci has made pizza in Seattle since 1979.",
@@ -3600,7 +3586,6 @@
       "appleMapsUrl": "https://maps.apple.com/?daddr=47.6154357,-122.2007292&q=Central%20Bar%20%2B%20Restaurant",
       "applePlaceUrl": "https://maps.apple.com/place?auid=17092655385343306061",
       "guideSlugs": [
-        "bellevue",
         "eastside-drinks"
       ],
       "muid": "17092655385343306061",
@@ -3669,9 +3654,7 @@
       "phone": "+1 (425) 646-3474",
       "appleMapsUrl": "https://maps.apple.com/?daddr=47.6105012,-122.1976849&q=Broiler%20Bay%20Hamburgers",
       "applePlaceUrl": "https://maps.apple.com/place?auid=70696049156331835",
-      "guideSlugs": [
-        "bellevue"
-      ],
+      "guideSlugs": [],
       "muid": "70696049156331835",
       "hoursLabel": "",
       "blurb": "Get the bacon cheeseburger on its huge sesame bun, with fry sauce and onion rings. Add a milkshake; the room hasn't changed much since 1989.",
@@ -3890,7 +3873,6 @@
       "appleMapsUrl": "https://maps.apple.com/?daddr=47.614966,-122.200585&q=Civility%20%26%20Unrest",
       "applePlaceUrl": "https://maps.apple.com/place?auid=4431814629018651525",
       "guideSlugs": [
-        "bellevue",
         "eastside-drinks"
       ],
       "muid": "4431814629018651525",
@@ -3975,8 +3957,8 @@
       "appleMapsUrl": "https://maps.apple.com/?daddr=47.6118706,-122.184894&q=Kura%20Revolving%20Sushi%20Bar",
       "applePlaceUrl": "https://maps.apple.com/place?auid=3351618210874800921",
       "guideSlugs": [
-        "bellevue",
-        "eastside-asian"
+        "eastside-asian",
+        "japanese-food-in-bellevue"
       ],
       "muid": "3351618210874800921",
       "hoursLabel": "",
@@ -4047,7 +4029,6 @@
       "appleMapsUrl": "https://maps.apple.com/?daddr=47.6102649,-122.204366&q=520%20Bar%20and%20Grill",
       "applePlaceUrl": "https://maps.apple.com/place?auid=13217783101883786373",
       "guideSlugs": [
-        "bellevue",
         "eastside-drinks"
       ],
       "muid": "13217783101883786373",
@@ -4195,9 +4176,7 @@
       "phone": "+1 (425) 223-5932",
       "appleMapsUrl": "https://maps.apple.com/?daddr=47.611842,-122.200963&q=Semicolon%20Cafe",
       "applePlaceUrl": "https://maps.apple.com/place?auid=17374801430124812803",
-      "guideSlugs": [
-        "bellevue"
-      ],
+      "guideSlugs": [],
       "muid": "17374801430124812803",
       "hoursLabel": "",
       "blurb": "Get the bulgogi sandwich on toasted brioche and a tiramisu latte. Save room for the ube mini cheesecake, made with purple sweet potato.",
@@ -5410,7 +5389,6 @@
       "appleMapsUrl": "https://maps.apple.com/?daddr=47.6171883,-122.2007779&q=Din%20Tai%20Fung",
       "applePlaceUrl": "https://maps.apple.com/place?auid=15528763534139621446",
       "guideSlugs": [
-        "bellevue",
         "eastside-asian"
       ],
       "muid": "15528763534139621446",
@@ -5550,9 +5528,9 @@
       "appleMapsUrl": "https://maps.apple.com/?daddr=47.6287886,-122.1656272&q=Ramen%20Nori",
       "applePlaceUrl": "https://maps.apple.com/place?auid=13611242735207683381",
       "guideSlugs": [
-        "bellevue",
         "eastside-asian",
-        "best-of-bellevue"
+        "best-of-bellevue",
+        "japanese-food-in-bellevue"
       ],
       "muid": "13611242735207683381",
       "hoursLabel": "",
@@ -5610,9 +5588,7 @@
       "phone": "+1 (425) 827-9566",
       "appleMapsUrl": "https://maps.apple.com/?daddr=47.642185,-122.19886&q=Burgermaster",
       "applePlaceUrl": "https://maps.apple.com/place?auid=7205519918905417088",
-      "guideSlugs": [
-        "bellevue"
-      ],
+      "guideSlugs": [],
       "muid": "7205519918905417088",
       "hoursLabel": "",
       "blurb": "Turn on your headlights and a carhop takes your order at the car. The beef is grass-fed, and the tartar sauce is still Phil Jensen's 1952 recipe.",
@@ -5986,11 +5962,11 @@
     },
     {
       "slug": "bellevue",
-      "title": "Bellevue",
-      "dek": "Old Bellevue, downtown, Factoria, Bel-Red, and Lake Bellevue.",
+      "title": "Bellevue Essentials",
+      "dek": "Seventeen Bellevue rooms on the main list.",
       "group": "Neighborhoods",
-      "intro": "Bellevue rooms with a street address, from Main Street out to Factoria, Bel-Red, and the Spring District.",
-      "updatedAt": "2026-10-25",
+      "intro": "The main Bellevue list: Ascend Prime Steak & Sushi, Daniel's Broiler, Water Grill, La Mar, Carmine's, STK Steakhouse, Cantinetta, Cantina Monarca, Baron's Sino Kitchen & Bar, Wild Ginger, Farzi Cafe, Seastar Restaurant & Raw Bar, Castilla, Fern Thai on Main, Joey Bellevue, Monsoon Bellevue, and Fogo de Chão.",
+      "updatedAt": "2026-11-10",
       "ranked": false,
       "pinned": true,
       "city": "eastside",
@@ -6026,21 +6002,9 @@
           "copySource": "draft"
         },
         {
-          "placeId": "din-tai-fung-bellevue",
-          "pullQuote": "",
-          "blurb": "",
-          "copySource": "draft"
-        },
-        {
           "placeId": "stk-bellevue",
           "pullQuote": "Wagyu Lil' Brgs and steak to a DJ set in Lincoln Square.",
           "blurb": "Start with the Lil' Brgs, wagyu sliders with special sauce on sesame buns, then a steak. A DJ plays through dinner.",
-          "copySource": "draft"
-        },
-        {
-          "placeId": "minamoto",
-          "pullQuote": "Seasonal omakase from New York's Iki alumni, in Bellevue.",
-          "blurb": "Book the omakase: 15 to 18 seasonal courses at two seatings, reserved at least three days ahead. The regular menu covers sushi, tempura and wagyu.",
           "copySource": "draft"
         },
         {
@@ -6053,24 +6017,6 @@
           "placeId": "cantina-monarca",
           "pullQuote": "Handmade-tortilla tacos and over 100 tequilas in Bellevue.",
           "blurb": "Get the Baja sea bass taco, battered and fried with apple slaw, and a pork belly taco next to it. The tequila list runs past 100 bottles.",
-          "copySource": "draft"
-        },
-        {
-          "placeId": "earls-kitchen-bar",
-          "pullQuote": "Cajun blackened chicken and sticky Korean ribs in a big Lincoln Square room.",
-          "blurb": "Order the Cajun blackened chicken, the chain's long-running signature, and share the sticky Korean ribs. It's a big room that fits a mixed group.",
-          "copySource": "draft"
-        },
-        {
-          "placeId": "ramen-nori",
-          "pullQuote": "",
-          "blurb": "",
-          "copySource": "draft"
-        },
-        {
-          "placeId": "john-howie-steak",
-          "pullQuote": "Steakhouse in the Bravern. The lunch service is currently closed.",
-          "blurb": "Steakhouse in the Bravern. The lunch service is currently closed.",
           "copySource": "draft"
         },
         {
@@ -6092,93 +6038,9 @@
           "copySource": "draft"
         },
         {
-          "placeId": "semicolon-cafe",
-          "pullQuote": "Bulgogi brioche sandwiches and tiramisu lattes at a calm downtown Bellevue cafe.",
-          "blurb": "Get the bulgogi sandwich on toasted brioche and a tiramisu latte. Save room for the ube mini cheesecake, made with purple sweet potato.",
-          "copySource": "draft"
-        },
-        {
           "placeId": "seastar-restaurant-and-raw-bar",
           "pullQuote": "",
           "blurb": "",
-          "copySource": "draft"
-        },
-        {
-          "placeId": "hokkaido-ramen-santouka",
-          "pullQuote": "",
-          "blurb": "",
-          "copySource": "draft"
-        },
-        {
-          "placeId": "japonessa",
-          "pullQuote": "The Bellevue Roll and jalapeño-lime sushi at Lincoln Square's loud Latin-accented sushi bar.",
-          "blurb": "Start with the Bellevue Roll, eel and shrimp under tobiko, then the Wicked Sensation with its jalapeño-lime glaze. Happy hour runs twice daily.",
-          "copySource": "draft"
-        },
-        {
-          "placeId": "tavern-hall",
-          "pullQuote": "",
-          "blurb": "",
-          "copySource": "draft"
-        },
-        {
-          "placeId": "bellevue-brewing",
-          "pullQuote": "A brewpub on Northeast District Way in the Spring District.",
-          "blurb": "A brewpub on Northeast District Way in the Spring District.",
-          "copySource": "draft"
-        },
-        {
-          "placeId": "desi-tadka",
-          "pullQuote": "",
-          "blurb": "",
-          "copySource": "draft"
-        },
-        {
-          "placeId": "dough-zone-bellevue",
-          "pullQuote": "",
-          "blurb": "",
-          "copySource": "draft"
-        },
-        {
-          "placeId": "ginza",
-          "pullQuote": "A long-running sushi room just south of Main, off 102nd.",
-          "blurb": "A long-running sushi room just south of Main, off 102nd.",
-          "copySource": "draft"
-        },
-        {
-          "placeId": "fob-poke-bar-bellevue",
-          "pullQuote": "",
-          "blurb": "",
-          "copySource": "draft"
-        },
-        {
-          "placeId": "pagliacci-pizza",
-          "pullQuote": "A Brooklyn Bridge pie from Seattle's hometown pizza chain, on Bellevue's Main Street.",
-          "blurb": "Order the Brooklyn Bridge, with Cascioppo sausage, mushrooms, olives, peppers and onions. Pagliacci has made pizza in Seattle since 1979.",
-          "copySource": "draft"
-        },
-        {
-          "placeId": "ezells-famous-chicken",
-          "pullQuote": "",
-          "blurb": "",
-          "copySource": "draft"
-        },
-        {
-          "placeId": "burgermaster",
-          "pullQuote": "",
-          "blurb": "",
-          "copySource": "draft"
-        },
-        {
-          "placeId": "rolls-and-rolls",
-          "pullQuote": "",
-          "blurb": "",
-          "copySource": "draft"
-        },
-        {
-          "placeId": "fern-thai-on-main",
-          "pullQuote": "Crispy garlic chicken and pad Thai at a family-style Thai spot on Main.",
-          "blurb": "Order the crispy garlic chicken and a plate of pad Thai to share. The room on Old Bellevue's Main Street suits an easy weeknight dinner.",
           "copySource": "draft"
         },
         {
@@ -6188,21 +6050,9 @@
           "copySource": "draft"
         },
         {
-          "placeId": "central-bar-restaurant",
-          "pullQuote": "Tempura portobello fries and halibut tacos on a BAM Alley patio in Bellevue.",
-          "blurb": "Start with the portobello fries, the house's signature appetizer, then the seared halibut tacos. Happy hour runs daily from 2 to 5.",
-          "copySource": "draft"
-        },
-        {
-          "placeId": "broiler-bay",
-          "pullQuote": "Charbroiled bacon cheeseburgers and crackly onion rings on Main Street since 1989.",
-          "blurb": "Get the bacon cheeseburger on its huge sesame bun, with fry sauce and onion rings. Add a milkshake; the room hasn't changed much since 1989.",
-          "copySource": "draft"
-        },
-        {
-          "placeId": "third-culture-coffee",
-          "pullQuote": "Coffee roaster on 102nd Avenue Northeast in downtown Bellevue.",
-          "blurb": "Coffee roaster on 102nd Avenue Northeast in downtown Bellevue.",
+          "placeId": "fern-thai-on-main",
+          "pullQuote": "Crispy garlic chicken and pad Thai at a family-style Thai spot on Main.",
+          "blurb": "Order the crispy garlic chicken and a plate of pad Thai to share. The room on Old Bellevue's Main Street suits an easy weeknight dinner.",
           "copySource": "draft"
         },
         {
@@ -6212,45 +6062,15 @@
           "copySource": "draft"
         },
         {
-          "placeId": "kura-revolving-sushi",
-          "pullQuote": "Conveyor-belt sushi and a prize capsule for every 15 plates near Wilburton.",
-          "blurb": "Grab plates off the belt or order on the touchscreen; every 15 plates earns a Bikkura Pon prize. It's a fun pick with kids.",
-          "copySource": "draft"
-        },
-        {
           "placeId": "monsoon-bellevue",
           "pullQuote": "",
           "blurb": "",
           "copySource": "draft"
         },
         {
-          "placeId": "520-bar-and-grill",
-          "pullQuote": "The 520 Burger and big hot wings at an Old Bellevue bar and grill.",
-          "blurb": "Order the 520 Burger, flame-grilled with Swiss or Tillamook cheddar on brioche. Add the hot wings in the house's secret sauce.",
-          "copySource": "draft"
-        },
-        {
-          "placeId": "civility-and-unrest",
-          "pullQuote": "Bartender's-choice cocktails in a dim speakeasy tucked into the W Bellevue.",
-          "blurb": "Name a spirit and let the bartender build you a drink; this bar is known for off-menu cocktails. The back room, Unrest, opens Thursday to Saturday.",
-          "copySource": "draft"
-        },
-        {
           "placeId": "fogo-de-chao",
           "pullQuote": "Brazilian churrasco on Bellevue Way, served rodizio style.",
           "blurb": "Brazilian churrasco on Bellevue Way, served rodizio style.",
-          "copySource": "draft"
-        },
-        {
-          "placeId": "bis-on-main",
-          "pullQuote": "",
-          "blurb": "",
-          "copySource": "draft"
-        },
-        {
-          "placeId": "takai-by-kashiba",
-          "pullQuote": "Shiro Kashiba's sushi counter on Bellevue Way. Book the omakase.",
-          "blurb": "Shiro Kashiba's sushi counter on Bellevue Way. Book the omakase.",
           "copySource": "draft"
         }
       ]
@@ -6658,6 +6478,73 @@
           "placeId": "civility-and-unrest",
           "pullQuote": "",
           "blurb": "",
+          "copySource": "draft"
+        }
+      ]
+    },
+    {
+      "slug": "japanese-food-in-bellevue",
+      "title": "Japanese food in Bellevue",
+      "dek": "Japanese rooms in Bellevue, including FOB Poke Bar.",
+      "group": "Cuisine",
+      "intro": "Japanese food in Bellevue: Minamoto Japanese Restaurant, Ramen Nori, Hokkaido Ramen Santouka, Japonessa Sushi Cocina, Ginza, FOB Poke Bar, Rolls & Rolls Plus Sushi, Kura Revolving Sushi Bar, and Takai by Kashiba.",
+      "updatedAt": "2026-11-10",
+      "ranked": false,
+      "pinned": true,
+      "city": "eastside",
+      "entries": [
+        {
+          "placeId": "minamoto",
+          "pullQuote": "Seasonal omakase from New York's Iki alumni, in Bellevue.",
+          "blurb": "Book the omakase: 15 to 18 seasonal courses at two seatings, reserved at least three days ahead. The regular menu covers sushi, tempura and wagyu.",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "ramen-nori",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "hokkaido-ramen-santouka",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "japonessa",
+          "pullQuote": "The Bellevue Roll and jalapeño-lime sushi at Lincoln Square's loud Latin-accented sushi bar.",
+          "blurb": "Start with the Bellevue Roll, eel and shrimp under tobiko, then the Wicked Sensation with its jalapeño-lime glaze. Happy hour runs twice daily.",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "ginza",
+          "pullQuote": "A long-running sushi room just south of Main, off 102nd.",
+          "blurb": "A long-running sushi room just south of Main, off 102nd.",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "fob-poke-bar-bellevue",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "rolls-and-rolls",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "kura-revolving-sushi",
+          "pullQuote": "Conveyor-belt sushi and a prize capsule for every 15 plates near Wilburton.",
+          "blurb": "Grab plates off the belt or order on the touchscreen; every 15 plates earns a Bikkura Pon prize. It's a fun pick with kids.",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "takai-by-kashiba",
+          "pullQuote": "Shiro Kashiba's sushi counter on Bellevue Way. Book the omakase.",
+          "blurb": "Shiro Kashiba's sushi counter on Bellevue Way. Book the omakase.",
           "copySource": "draft"
         }
       ]
