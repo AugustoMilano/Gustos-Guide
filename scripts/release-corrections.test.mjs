@@ -178,7 +178,27 @@ assert.equal(memberNames.has(named[1]), true)
 assert.equal(memberNames.has(named[2]), true)
 const parents = guides.find((guide) => guide.slug === 'bring-the-parents')
 assert.ok(parents.entries.length > 0)
-assert.equal(classics.entries.some((entry) => entry.placeId === 'il-terrazzo-carmine'), true)
+assert.deepEqual(classics.entries.map((entry) => entry.placeId), [
+  'canlis',
+  'metropolitan-grill',
+  'dick-s-drive-in',
+  'beecher-s-handmade-cheese',
+  'the-pink-door',
+  'paseo',
+  'cafe-campagne',
+  'dog-in-the-park',
+  'taylor-shellfish-farms',
+  'piroshky-piroshky',
+  'shiro-s-sushi-restaurant',
+  'maneki',
+  'the-5-point-cafe',
+  'starbucks-coffee-company',
+  'il-terrazzo-carmine',
+])
+assert.equal(classics.entries.filter((entry) => entry.placeId === 'paseo').length, 1)
+assert.equal(places['luna-park-cafe'].guideSlugs.includes('classics'), false)
+assert.equal(places['luna-park-cafe'].guideSlugs.includes('west-seattle'), true)
+assert.equal(places['dog-in-the-park'].guideSlugs.includes('classics'), true)
 assert.equal(places['ivar-s'].guideSlugs.includes('classics'), false)
 assert.equal(places['ivar-s'].guideSlugs.includes('seafood'), true)
 assert.equal(portraitClass(1200, 1600), ' is-portrait')
