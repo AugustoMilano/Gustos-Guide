@@ -3970,6 +3970,11 @@ img.is-portrait,
   object-position: center 18%;
 }
 
+img.is-portrait.is-portrait-lower,
+.place-art.is-portrait.is-portrait-lower {
+  object-position: center 68%;
+}
+
 @media (min-width: 1024px) {
   .place-grid {
     grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);

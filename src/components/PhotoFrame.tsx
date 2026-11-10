@@ -40,7 +40,7 @@ export function PhotoFrame({
             loading={priority ? 'eager' : 'lazy'}
             decoding="async"
             fetchPriority={priority ? 'high' : undefined}
-            className={`place-art object-cover${portraitClass(picture.width, picture.height)}${ready ? '' : ' is-pending'}`}
+            className={`place-art object-cover${portraitClass(picture.width, picture.height, photo.url)}${ready ? '' : ' is-pending'}`}
             ref={(node) => {
               if (node?.complete && node.naturalWidth > 0) setReadySrc(src)
             }}
