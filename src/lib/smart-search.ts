@@ -1,4 +1,5 @@
 import { areaName, cityPath, type CityId } from './city.ts'
+import { seattleCheapEatsBlocked } from './collections.ts'
 import { cuisineLabel } from './cuisine-label.ts'
 import exclusions from '../../data/permanent-exclusions.json'
 import type { GuideGroup, GuideSummary, Price, SlimPlace } from '../types.ts'
@@ -385,7 +386,7 @@ function matchTerm(term: Term, item: Prepared, guideHits: Map<string, string>): 
     const cuisine = entry.cuisine.some((phrase) => hasPhrase(item.cuisine, phrase))
       || entry.types.some((phrase) => hasPhrase(item.type, phrase))
       || entry.perfect.some((phrase) => hasPhrase(item.perfect, phrase))
-      || (c.price === 'low' && item.place.price === 1)
+      || (c.price === 'low' && item.place.price === 1 && !seattleCheapEatsBlocked(item.place.city || 'seattle', 'cheap-eats', item.place.id))
       || (c.price === 'high' && (item.place.price ?? 0) >= 4)
     if (dish && cuisine) take(T_DISH, 3 + dishes, c.why)
     else if (cuisine) take(T_CUISINE, 2, item.place.cuisine[0] && entry.cuisine.length ? cuisineLabel(item.place.cuisine[0]) : c.why)

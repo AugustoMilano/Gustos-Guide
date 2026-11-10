@@ -377,6 +377,11 @@ function perfectFor(place) {
   if (/restaurant/.test(type) && typeof place.price === 'number' && place.price <= 2) tags.add('Solo')
   if (place.neighborhood === 'Pike Place Market') tags.add('Out-Of-Towners')
   if (/seafood|oyster/.test(cuisine)) tags.add('Out-Of-Towners')
+  // The first Pike Place shop has no tables, and it is not a Cheap eats pick. Price stays $.
+  if (place.id === 'starbucks-coffee-company') {
+    tags.delete('Work From Café')
+    tags.delete('Cheap Eats')
+  }
   const list = [...tags]
   if (list.length < 2 && typeof place.price === 'number') {
     list.push(place.price <= 2 ? 'Weeknight Dinner' : 'Date Night')
@@ -903,7 +908,7 @@ for (const theme of themes) {
   }
   // Classics is a short curated list. Do not freeze the longer published membership.
   if (slug !== 'classics') places = flagshipPlaces(slug, diversify(places, FLAGSHIP_AIM, slug === 'pike-place' ? 8 : 6))
-  if (slug === 'cheap-eats') places = places.filter((place) => place.id !== 'alibi-room')
+  if (slug === 'cheap-eats') places = places.filter((place) => place.id !== 'alibi-room' && place.id !== 'starbucks-coffee-company')
   const angle = angleFor(group, slug)
   addGuide({
     slug,

@@ -1,4 +1,4 @@
-import { readFileSync } from 'node:fs'
+import { existsSync, readFileSync } from 'node:fs'
 import assert from 'node:assert/strict'
 import { formatHouseScore, stepHouseScore } from '../src/lib/house-score.ts'
 import { portraitClass } from '../src/lib/portrait-frame.ts'
@@ -214,5 +214,23 @@ const members = usableCheapMembers(row, catalog)
 assert.deepEqual(members.map((place) => place.id), ['paseo'])
 assert.equal(cheapEatsFor(catalog, 'seattle').some((place) => place.id === 'alibi-room'), false)
 assert.equal(cheapEatsFor(catalog, 'seattle').some((place) => place.id === 'paseo'), true)
+
+const shiro = places['shiro-s-sushi-restaurant']
+assert.equal(shiro.name, "Shiro's Sushi Restaurant")
+assert.equal(shiro.address, '2401 2nd Ave, Seattle, WA  98121')
+assert.equal(shiro.oneLiner, 'Order both the salmon and tuna samplers, plus a baked crab hand roll.')
+assert.deepEqual(shiro.guideSlugs, ['best-sushi', 'splurge', 'classics'])
+assert.equal(shiro.photos.some((photo) => photo.url), false)
+assert.equal(shiro.photos[0].source, 'illustration')
+assert.equal(index.places.find((place) => place.id === 'shiro-s-sushi-restaurant').photo.source, 'illustration')
+assert.equal(existsSync(new URL('../public/photos/shiro-s-sushi-restaurant.jpg', import.meta.url)), true)
+assert.equal(starbucks.price, 1)
+assert.deepEqual(starbucks.perfectFor, ['Walk-Ins', 'Coffee & Pastry', 'Breakfast'])
+assert.equal(index.places.find((place) => place.id === 'starbucks-coffee-company').perfectFor.includes('Work From Café'), false)
+assert.equal(index.places.find((place) => place.id === 'starbucks-coffee-company').perfectFor.includes('Cheap Eats'), false)
+assert.equal(seattleCheapEatsBlocked('seattle', 'cheap-eats', 'starbucks-coffee-company'), true)
+assert.equal(seattleCheapEatsBlocked('seattle', 'best-coffee', 'starbucks-coffee-company'), false)
+assert.equal(cheap.entries.some((entry) => entry.placeId === 'starbucks-coffee-company'), false)
+assert.equal(places['starbucks-coffee-company'].guideSlugs.includes('pike-place'), true)
 
 console.log('release corrections ok')
