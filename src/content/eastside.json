@@ -5056,6 +5056,18 @@
       "updatedAt": "2026-10-22",
       "photos": [
         {
+          "source": "gusto",
+          "url": "/photos/shawns-cafe-and-bakery-gusto-1.jpg",
+          "alt": "Photo of Shawn's Cafe and Bakery by Gusto",
+          "credit": "Photo by Gusto"
+        },
+        {
+          "source": "gusto",
+          "url": "/photos/shawns-cafe-and-bakery-gusto-2.jpg",
+          "alt": "Photo of Shawn's Cafe and Bakery by Gusto",
+          "credit": "Photo by Gusto"
+        },
+        {
           "source": "illustration",
           "isIllustration": true,
           "alt": "Illustration suggesting Bakery at Shawn's Cafe and Bakery",
