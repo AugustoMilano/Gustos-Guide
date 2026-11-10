@@ -18,7 +18,15 @@ const scores = {
   'due-cucina-italiana': 6.9,
   'mamma-melina-ristorante-pizzeria': 6.7,
 }
-assert.deepEqual(HOUSE_SCORE_FALLBACK, scores)
+assert.deepEqual(HOUSE_SCORE_FALLBACK, { ...scores, 'mee-sum-pastry': 8.4 })
+assert.equal(places['mee-sum-pastry'].name, 'Mee Sum Pastry')
+assert.equal(places['mee-sum-pastry'].gustoScore, null)
+assert.equal(index.places.find((place) => place.id === 'mee-sum-pastry').gustoScore, null)
+const pike = guides.find((guide) => guide.slug === 'pike-place')
+const pikeIds = pike.entries.map((entry) => entry.placeId)
+assert.equal(pikeIds[pikeIds.indexOf('storyville-coffee-company') + 1], 'mee-sum-pastry')
+assert.equal(pike.ranked, false)
+assert.equal(pike.pinned, true)
 
 const names = {
   'pasta-casalinga': 'Pasta Casalinga',

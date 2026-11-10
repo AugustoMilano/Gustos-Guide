@@ -75,6 +75,7 @@ assert.equal(HOUSE_SCORE_FALLBACK.cortina, 7.0)
 assert.equal(HOUSE_SCORE_FALLBACK['barolo-ristorante'], 7.1)
 assert.equal(HOUSE_SCORE_FALLBACK['due-cucina-italiana'], 6.9)
 assert.equal(HOUSE_SCORE_FALLBACK['mamma-melina-ristorante-pizzeria'], 6.7)
-assert.equal(Object.keys(HOUSE_SCORE_FALLBACK).length, 7)
+assert.equal(HOUSE_SCORE_FALLBACK['mee-sum-pastry'], 8.4)
+assert.equal(Object.keys(HOUSE_SCORE_FALLBACK).length, 8)
 
 console.log('followup photos ok')

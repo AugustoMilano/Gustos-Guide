@@ -3,6 +3,7 @@
  * already has a score for the same place. These fill the gap until that write.
  */
 export const HOUSE_SCORE_FALLBACK: Record<string, number> = {
+  'mee-sum-pastry': 8.4,
   'pasta-casalinga': 8.0,
   'il-bistro': 7.4,
   'that-s-amore-italian-cafe': 7.3,
