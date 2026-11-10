@@ -133,7 +133,7 @@ export function GuidePage() {
     ? shown.slice().sort((a, b) => milesBetween(here, a.place) - milesBetween(here, b.place))
     : shown
   const presented = sort === 'score'
-    ? rankByHouseScore(byDistance, gustoScore)
+    ? rankByHouseScore(byDistance, gustoScore, guide?.slug === 'eastside-drinks' ? 'guide' : 'name')
     : byDistance.map((row) => ({ ...row, rank: null as number | null }))
   const ranked = presented.filter((row) => row.rank != null)
   const toVisit = presented.filter((row) => row.rank == null)
