@@ -18,7 +18,8 @@ const order = [
   '13-coins',
 ]
 const guide = eastside.guides.find((item) => item.slug === 'best-breakfast-on-the-east-side')
-assert.equal(guide.title, 'Best Breakfast on the East Side')
+assert.equal(guide.title, 'Best Breakfast on the Eastside')
+assert.equal(guide.slug, 'best-breakfast-on-the-east-side')
 assert.equal(guide.group, 'Best of')
 assert.deepEqual(guide.entries.map((entry) => entry.placeId), order)
 assert.equal(eastside.guides.some((item) => item.slug === 'eastside-brunch'), false)
