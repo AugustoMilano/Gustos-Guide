@@ -662,7 +662,7 @@
       "phone": "+1 (425) 455-1313",
       "appleMapsUrl": "https://maps.apple.com/?daddr=47.6182022,-122.2013198&q=13%20Coins",
       "guideSlugs": [
-        "eastside-brunch"
+        "best-breakfast-on-the-east-side"
       ],
       "muid": "",
       "hoursLabel": "",
@@ -807,7 +807,9 @@
       "website": "https://thirdculturecoffee.com",
       "phone": "+1 (425) 230-3660",
       "appleMapsUrl": "https://maps.apple.com/?daddr=47.6108569,-122.2039409&q=Third%20Culture%20Coffee",
-      "guideSlugs": [],
+      "guideSlugs": [
+        "best-breakfast-on-the-east-side"
+      ],
       "muid": "",
       "hoursLabel": "",
       "blurb": "",
@@ -866,7 +868,7 @@
       "website": "https://www.farinecafe.com/",
       "appleMapsUrl": "https://maps.apple.com/?daddr=47.6195371,-122.1913429&q=Farine%20Bakery",
       "guideSlugs": [
-        "eastside-brunch"
+        "best-breakfast-on-the-east-side"
       ],
       "muid": "",
       "hoursLabel": "",
@@ -1371,7 +1373,7 @@
       "appleMapsUrl": "https://maps.apple.com/?daddr=47.7081589,-122.2113834&q=Sparrow",
       "guideSlugs": [
         "kirkland",
-        "eastside-brunch"
+        "best-breakfast-on-the-east-side"
       ],
       "muid": "",
       "hoursLabel": "",
@@ -1434,7 +1436,7 @@
       "appleMapsUrl": "https://maps.apple.com/?daddr=47.6819884,-122.1941403&q=Deru%20Market",
       "guideSlugs": [
         "kirkland",
-        "eastside-brunch"
+        "best-breakfast-on-the-east-side"
       ],
       "muid": "",
       "hoursLabel": "",
@@ -1502,7 +1504,7 @@
       "appleMapsUrl": "https://maps.apple.com/?daddr=47.6759811,-122.1262638&q=The%20British%20Pantry",
       "guideSlugs": [
         "redmond",
-        "eastside-brunch"
+        "best-breakfast-on-the-east-side"
       ],
       "muid": "",
       "hoursLabel": "",
@@ -1825,7 +1827,9 @@
       "gustoScore": null,
       "website": "https://lexperienceparis.com/",
       "appleMapsUrl": "https://maps.apple.com/?daddr=47.5832528,-122.2327738&q=L'Experience%20Paris",
-      "guideSlugs": [],
+      "guideSlugs": [
+        "best-breakfast-on-the-east-side"
+      ],
       "muid": "",
       "hoursLabel": "",
       "blurb": "",
@@ -4176,7 +4180,9 @@
       "phone": "+1 (425) 223-5932",
       "appleMapsUrl": "https://maps.apple.com/?daddr=47.611842,-122.200963&q=Semicolon%20Cafe",
       "applePlaceUrl": "https://maps.apple.com/place?auid=17374801430124812803",
-      "guideSlugs": [],
+      "guideSlugs": [
+        "best-breakfast-on-the-east-side"
+      ],
       "muid": "17374801430124812803",
       "hoursLabel": "",
       "blurb": "Get the bulgogi sandwich on toasted brioche and a tiramisu latte. Save room for the ube mini cheesecake, made with purple sweet potato.",
@@ -5829,6 +5835,215 @@
           "credit": "Illustration"
         }
       ]
+    },
+    {
+      "id": "village-square-cafe",
+      "city": "eastside",
+      "name": "Village Square Cafe",
+      "neighborhood": "Downtown Redmond",
+      "address": "16150 NE 85th St, Redmond, WA 98052",
+      "lat": 47.6788593,
+      "lng": -122.124949,
+      "cuisine": [
+        "Cafe"
+      ],
+      "placeType": "cafe",
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [],
+      "gustoScore": null,
+      "website": "https://villagesquare.cafesinc.com/",
+      "phone": "+1 (425) 885-7287",
+      "appleMapsUrl": "https://maps.apple.com/?daddr=47.6788593,-122.124949&q=Village%20Square%20Cafe",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=5179134362630202663",
+      "guideSlugs": [
+        "best-breakfast-on-the-east-side"
+      ],
+      "muid": "5179134362630202663",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-11-10",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Cafe at Village Square Cafe",
+          "credit": "Illustration"
+        }
+      ]
+    },
+    {
+      "id": "doppio-cafe-and-creperie",
+      "city": "eastside",
+      "name": "Doppio Cafe & Creperie",
+      "neighborhood": "Downtown Redmond",
+      "address": "8296 160th Ave NE, Suite 106, Redmond, WA 98052",
+      "lat": 47.6765588,
+      "lng": -122.1273322,
+      "cuisine": [
+        "Cafe"
+      ],
+      "placeType": "cafe",
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "start": 420,
+          "end": 1020
+        }
+      ],
+      "gustoScore": null,
+      "website": "https://www.doppiocafeandcreperie.com/",
+      "phone": "+1 (425) 376-0106",
+      "appleMapsUrl": "https://maps.apple.com/?daddr=47.6765588,-122.1273322&q=Doppio%20Cafe%20%26%20Creperie",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=848874746731487255",
+      "guideSlugs": [
+        "best-breakfast-on-the-east-side"
+      ],
+      "muid": "848874746731487255",
+      "hoursLabel": "Open daily 7am-5pm.",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-11-10",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Cafe at Doppio Cafe & Creperie",
+          "credit": "Illustration"
+        }
+      ]
+    },
+    {
+      "id": "chaces-pancake-corral",
+      "city": "eastside",
+      "name": "Chace's Pancake Corral",
+      "neighborhood": "Downtown Bellevue",
+      "address": "1606 Bellevue Way SE, Bellevue, WA 98004",
+      "lat": 47.5964017,
+      "lng": -122.1978698,
+      "cuisine": [
+        "American"
+      ],
+      "placeType": "restaurant",
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "start": 420,
+          "end": 840
+        },
+        {
+          "days": [
+            0,
+            6
+          ],
+          "start": 420,
+          "end": 870
+        }
+      ],
+      "gustoScore": null,
+      "website": "https://www.pancakecorral.com/",
+      "phone": "+1 (425) 454-8888",
+      "appleMapsUrl": "https://maps.apple.com/?daddr=47.5964017,-122.1978698&q=Chace%27s%20Pancake%20Corral",
+      "guideSlugs": [
+        "best-breakfast-on-the-east-side"
+      ],
+      "muid": "",
+      "hoursLabel": "Monday-Friday 7am-2pm. Saturday-Sunday 7am-2:30pm.",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-11-10",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting American at Chace's Pancake Corral",
+          "credit": "Illustration"
+        }
+      ]
+    },
+    {
+      "id": "lil-jon-restaurant-and-lounge",
+      "city": "eastside",
+      "name": "Lil' Jon Restaurant & Lounge",
+      "neighborhood": "Eastgate",
+      "address": "3080 148th Ave SE, Suite 201, Bellevue, WA 98007",
+      "lat": 47.5819807,
+      "lng": -122.1387466,
+      "cuisine": [
+        "American"
+      ],
+      "placeType": "restaurant",
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "start": 360,
+          "end": 1320
+        },
+        {
+          "days": [
+            0
+          ],
+          "start": 360,
+          "end": 1260
+        }
+      ],
+      "gustoScore": null,
+      "website": "https://liljonrestaurant.net/",
+      "phone": "+1 (425) 746-4653",
+      "appleMapsUrl": "https://maps.apple.com/?daddr=47.5819807,-122.1387466&q=Lil%27%20Jon%20Restaurant%20%26%20Lounge",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=2648199037916237449",
+      "guideSlugs": [
+        "best-breakfast-on-the-east-side"
+      ],
+      "muid": "2648199037916237449",
+      "hoursLabel": "Monday-Saturday 6am-10pm. Sunday 6am-9pm.",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-11-10",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting American at Lil' Jon Restaurant & Lounge",
+          "credit": "Illustration"
+        }
+      ]
     }
   ],
   "guides": [
@@ -6288,49 +6503,6 @@
       "pinned": true
     },
     {
-      "slug": "eastside-brunch",
-      "title": "Eastside brunch",
-      "dek": "Morning rooms: diner, bakery, bagels, and brunch.",
-      "group": "Occasion",
-      "intro": "Places that open in the morning. 13 Coins starts breakfast on Bellevue Way, Farine opens the bakery case at seven, and Deru Market serves brunch on 9th Avenue in Kirkland.",
-      "updatedAt": "2026-10-20",
-      "ranked": false,
-      "city": "eastside",
-      "entries": [
-        {
-          "placeId": "deru-market",
-          "pullQuote": "Market counter and brunch on 9th Avenue, just uphill from downtown.",
-          "blurb": "Market counter and brunch on 9th Avenue, just uphill from downtown.",
-          "copySource": "draft"
-        },
-        {
-          "placeId": "sparrow",
-          "pullQuote": "Brunch and dinner in Juanita, off Northeast 120th Place.",
-          "blurb": "Brunch and dinner in Juanita, off Northeast 120th Place.",
-          "copySource": "draft"
-        },
-        {
-          "placeId": "farine-bakery",
-          "pullQuote": "Belgian bakery on Northeast 10th, with kouign-amann in the case.",
-          "blurb": "Belgian bakery on Northeast 10th, with kouign-amann in the case.",
-          "copySource": "draft"
-        },
-        {
-          "placeId": "the-british-pantry",
-          "pullQuote": "Tea, pastries, and a British grocery on 161st Avenue.",
-          "blurb": "Tea, pastries, and a British grocery on 161st Avenue.",
-          "copySource": "draft"
-        },
-        {
-          "placeId": "13-coins",
-          "pullQuote": "Bellevue Way diner with breakfast from seven and a late weekend close.",
-          "blurb": "Bellevue Way diner with breakfast from seven and a late weekend close.",
-          "copySource": "draft"
-        }
-      ],
-      "pinned": true
-    },
-    {
       "slug": "eastside-date-night",
       "title": "Eastside date night",
       "dek": "Dinner rooms for a slower night.",
@@ -6545,6 +6717,91 @@
           "placeId": "takai-by-kashiba",
           "pullQuote": "Shiro Kashiba's sushi counter on Bellevue Way. Book the omakase.",
           "blurb": "Shiro Kashiba's sushi counter on Bellevue Way. Book the omakase.",
+          "copySource": "draft"
+        }
+      ]
+    },
+    {
+      "slug": "best-breakfast-on-the-east-side",
+      "title": "Best Breakfast on the East Side",
+      "dek": "Twelve Eastside rooms for breakfast.",
+      "group": "Best of",
+      "intro": "Breakfast on the Eastside: Village Square Cafe, Deru Market, Sparrow, Semicolon Cafe, L'Experience Paris, Doppio Cafe & Creperie, Farine Bakery, Chace's Pancake Corral, Third Culture Coffee, The British Pantry, Lil' Jon Restaurant & Lounge, and 13 Coins.",
+      "updatedAt": "2026-11-10",
+      "ranked": false,
+      "pinned": true,
+      "city": "eastside",
+      "entries": [
+        {
+          "placeId": "village-square-cafe",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "deru-market",
+          "pullQuote": "Market counter and brunch on 9th Avenue, just uphill from downtown.",
+          "blurb": "Market counter and brunch on 9th Avenue, just uphill from downtown.",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "sparrow",
+          "pullQuote": "Brunch and dinner in Juanita, off Northeast 120th Place.",
+          "blurb": "Brunch and dinner in Juanita, off Northeast 120th Place.",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "semicolon-cafe",
+          "pullQuote": "Bulgogi brioche sandwiches and tiramisu lattes at a calm downtown Bellevue cafe.",
+          "blurb": "Get the bulgogi sandwich on toasted brioche and a tiramisu latte. Save room for the ube mini cheesecake, made with purple sweet potato.",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "lexperience-paris",
+          "pullQuote": "French cafe and crepes on 78th, in the Mercer Island town center.",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "doppio-cafe-and-creperie",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "farine-bakery",
+          "pullQuote": "Belgian bakery on Northeast 10th, with kouign-amann in the case.",
+          "blurb": "Belgian bakery on Northeast 10th, with kouign-amann in the case.",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "chaces-pancake-corral",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "third-culture-coffee",
+          "pullQuote": "Coffee roaster on 102nd Avenue Northeast in downtown Bellevue.",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "the-british-pantry",
+          "pullQuote": "Tea, pastries, and a British grocery on 161st Avenue.",
+          "blurb": "Tea, pastries, and a British grocery on 161st Avenue.",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "lil-jon-restaurant-and-lounge",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "13-coins",
+          "pullQuote": "Bellevue Way diner with breakfast from seven and a late weekend close.",
+          "blurb": "Bellevue Way diner with breakfast from seven and a late weekend close.",
           "copySource": "draft"
         }
       ]

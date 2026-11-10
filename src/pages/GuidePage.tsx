@@ -42,6 +42,7 @@ const GUIDE_MOVED: Record<string, string> = {
   'northbay-tiburon': 'north-bay',
   'northbay-sausalito': 'north-bay',
   'mos-cafe': 'best-of-moscow-id',
+  'eastside-brunch': 'best-breakfast-on-the-east-side',
 }
 
 export function GuidePage() {
@@ -133,7 +134,7 @@ export function GuidePage() {
     ? shown.slice().sort((a, b) => milesBetween(here, a.place) - milesBetween(here, b.place))
     : shown
   const presented = sort === 'score'
-    ? rankByHouseScore(byDistance, gustoScore, guide?.slug === 'eastside-drinks' ? 'guide' : 'name')
+    ? rankByHouseScore(byDistance, gustoScore, guide?.slug === 'eastside-drinks' || guide?.slug === 'best-breakfast-on-the-east-side' ? 'guide' : 'name')
     : byDistance.map((row) => ({ ...row, rank: null as number | null }))
   const ranked = presented.filter((row) => row.rank != null)
   const toVisit = presented.filter((row) => row.rank == null)
