@@ -408,6 +408,12 @@
       "updatedAt": "2026-10-20",
       "photos": [
         {
+          "source": "gusto",
+          "url": "/photos/beachhouse-bar-and-grill-gusto-1.jpg",
+          "alt": "Photo of BeachHouse Bar + Grill by Gusto",
+          "credit": "Photo by Gusto"
+        },
+        {
           "source": "illustration",
           "isIllustration": true,
           "alt": "Illustration suggesting American at BeachHouse Bar + Grill",
@@ -4902,6 +4908,12 @@
       "updatedAt": "2026-10-22",
       "photos": [
         {
+          "source": "gusto",
+          "url": "/photos/kobuta-and-ookami-redmond-gusto-1.jpg",
+          "alt": "Photo of Kobuta & Ookami by Gusto",
+          "credit": "Photo by Gusto"
+        },
+        {
           "source": "illustration",
           "isIllustration": true,
           "alt": "Illustration suggesting Japanese at Kobuta & Ookami",
@@ -5270,6 +5282,12 @@
       "copySource": "draft",
       "updatedAt": "2026-10-22",
       "photos": [
+        {
+          "source": "gusto",
+          "url": "/photos/cactus-kirkland-gusto-1.jpg",
+          "alt": "Photo of Cactus by Gusto",
+          "credit": "Photo by Gusto"
+        },
         {
           "source": "illustration",
           "isIllustration": true,
@@ -5711,6 +5729,12 @@
       "copySource": "draft",
       "updatedAt": "2026-10-22",
       "photos": [
+        {
+          "source": "gusto",
+          "url": "/photos/din-tai-fung-bellevue-gusto-1.jpg",
+          "alt": "Photo of Din Tai Fung by Gusto",
+          "credit": "Photo by Gusto"
+        },
         {
           "source": "illustration",
           "isIllustration": true,
