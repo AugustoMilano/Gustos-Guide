@@ -106,11 +106,9 @@ for (const place of sd.places) fullPlaces[place.id] = place
 for (const file of added) for (const place of file.places) fullPlaces[place.id] = place
 
 function catalogImage(place) {
-  // Alibi Room's only listing photos are the two house pizzas. Do not fall back to a Commons file or the generic card.
-  if (place?.id === 'alibi-room') {
-    const gusto = place.photos?.find((photo) => photo.source === 'gusto' && photo.url)
-    if (gusto) return `${site}${gusto.url}`
-  }
+  // A house photo leads. Commons is the fallback when no house shot was published.
+  const gusto = place?.photos?.find((photo) => photo.source === 'gusto' && photo.url)
+  if (gusto) return `${site}${gusto.url}`
   const lead = place?.photos?.find((photo) => (photo.source === 'wikimedia' || photo.source === 'flickr') && photo.url)
   return lead ? `${site}${lead.url}` : `${site}/og/place.png`
 }
