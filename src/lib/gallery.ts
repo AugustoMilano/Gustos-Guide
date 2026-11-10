@@ -105,7 +105,26 @@ export function displayPhotos(
       neighborhood: place.neighborhood,
       placeId: place.id,
     }))
-  const photos = [...owner, ...house, ...friends, ...commons]
+  const commonsFirst = catalog.findIndex((photo) => (photo.source === 'wikimedia' || photo.source === 'flickr') && photo.url)
+  const houseFirst = catalog.findIndex((photo) => photo.source === 'gusto' && photo.url)
+  const keepCatalogOrder = commonsFirst >= 0 && (houseFirst < 0 || commonsFirst < houseFirst)
+  const listed = keepCatalogOrder
+    ? catalog
+        .filter((photo) => photo.url && (photo.source === 'gusto' || photo.source === 'wikimedia' || photo.source === 'flickr'))
+        .map((photo) => ({
+          key: photo.url ?? photo.credit,
+          url: photo.url,
+          alt: photo.alt || `Photo of ${place.name} by Gusto`,
+          credit: photo.source === 'gusto' ? 'Photo by Gusto' : photo.credit,
+          creditUrl: photo.creditUrl,
+          license: photo.license,
+          illustration: false,
+          cuisine: place.cuisine[0] ?? 'Restaurant',
+          neighborhood: place.neighborhood,
+          placeId: place.id,
+        }))
+    : [...house, ...commons]
+  const photos = keepCatalogOrder ? [...owner, ...listed, ...friends] : [...owner, ...house, ...friends, ...commons]
   if (photos.length) return photos
   return [
     {

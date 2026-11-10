@@ -2584,6 +2584,18 @@
       "updatedAt": "2026-10-22",
       "photos": [
         {
+          "source": "gusto",
+          "url": "/photos/minamoto-gusto-1.jpg",
+          "alt": "Photo of Minamoto Japanese Restaurant by Gusto",
+          "credit": "Photo by Gusto"
+        },
+        {
+          "source": "gusto",
+          "url": "/photos/minamoto-gusto-2.jpg",
+          "alt": "Photo of Minamoto Japanese Restaurant by Gusto",
+          "credit": "Photo by Gusto"
+        },
+        {
           "source": "illustration",
           "isIllustration": true,
           "alt": "Illustration suggesting Japanese at Minamoto Japanese Restaurant",
@@ -4551,6 +4563,24 @@
       "copySource": "draft",
       "updatedAt": "2026-10-22",
       "photos": [
+        {
+          "source": "gusto",
+          "url": "/photos/spark-pizza-gusto-1.jpg",
+          "alt": "Photo of Spark Pizza by Gusto",
+          "credit": "Photo by Gusto"
+        },
+        {
+          "source": "gusto",
+          "url": "/photos/spark-pizza-gusto-2.jpg",
+          "alt": "Photo of Spark Pizza by Gusto",
+          "credit": "Photo by Gusto"
+        },
+        {
+          "source": "gusto",
+          "url": "/photos/spark-pizza-gusto-3.jpg",
+          "alt": "Photo of Spark Pizza by Gusto",
+          "credit": "Photo by Gusto"
+        },
         {
           "source": "illustration",
           "isIllustration": true,
