@@ -45,7 +45,7 @@ export function HomePage() {
     [query, city, ready, gustoScore, catalog.places.length],
   )
   const featured = featuredSlugs(city)
-    .filter((slug) => !slug.includes('date-night'))
+    .filter((slug) => slug === 'eastside-date-night' || !slug.includes('date-night'))
     .map((slug) => guides.find((guide) => guide.slug === slug))
     .filter((guide) => guide != null)
     .slice(0, 6)

@@ -17,6 +17,7 @@ import { canonicalUrl } from '../lib/site.ts'
 import { compressToWebp, readPhotos, removePhoto, savePhoto, type StoredPhoto } from '../lib/photos.ts'
 import { rescore } from '../lib/rank.ts'
 import { mergeUploads, type LivePhoto } from '../lib/gallery.ts'
+import { HOUSE_SCORE_FALLBACK } from '../lib/house-score-fallback.ts'
 import type { HouseMark } from '../lib/quick-score.ts'
 import { deleteGuideRemote, importLocalBundle, loadAccount, loadHouseMarks, loadHouseScores, loadNotices, loadOwnerPhotos, loadPlans, saveGuide, savePlan, type FriendLists, type FriendProfile, type FriendRequest } from '../social/account.ts'
 import {
@@ -1389,7 +1390,9 @@ export function AppProvider({ children }: { children: ReactNode }) {
 
   function gustoScore(placeId: string): number | null {
     const value = house[placeId]
-    return typeof value === 'number' ? value : null
+    if (typeof value === 'number') return value
+    const fallback = HOUSE_SCORE_FALLBACK[placeId]
+    return typeof fallback === 'number' ? fallback : null
   }
 
   function tasteMatch(userId: string) {

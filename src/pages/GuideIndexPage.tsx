@@ -5,6 +5,7 @@ import { AreaKicker } from '../components/AreaKicker.tsx'
 import { SmartResults } from '../components/SmartResults.tsx'
 import { catalog, ensureAllCities } from '../content/load.ts'
 import { areaName, cityPath, regionOf } from '../lib/city.ts'
+import { groupEastsideCities } from '../lib/eastside-city.ts'
 import { countPlaces } from '../lib/format.ts'
 import { usePageMeta } from '../lib/meta.ts'
 import { smartSearch } from '../lib/smart-search.ts'
@@ -73,7 +74,7 @@ function guideIndexMeta(city: string): string {
 
 export function GuideIndexPage() {
   const reduceMotion = useReducedMotion()
-  const { city, guides } = useCityCatalog()
+  const { city, guides, places } = useCityCatalog()
   const [draft, setDraft] = useState('')
   const [group, setGroup] = useState<GuideGroup | 'All'>('All')
   usePageMeta(`${areaName(city)} guides · Gusto's Guide`, guideIndexMeta(city), `./og/cities/${regionOf(city)}.png`)
@@ -117,12 +118,36 @@ export function GuideIndexPage() {
         ))}
       </div>
       {result ? <SmartResults query={query} result={result} /> : visibleGroups.filter((item) => group === 'All' || item === group).map((item) => {
+        if (city === 'eastside' && item === 'Neighborhoods') {
+          const eastsideCities = groupEastsideCities(places).cities
+          return (
+            <section key={item} className="mt-10">
+              <h2 className="font-serif text-4xl italic">Cities</h2>
+              <div className="guide-index card-grid mt-4">
+                {eastsideCities.map((row, index) => (
+                  <Link
+                    key={row.slug}
+                    to={cityPath(`/city/${row.slug}`)}
+                    className="guide-card rise-in"
+                    style={reduceMotion ? undefined : { animationDelay: `${Math.min(index, 6) * 40}ms` }}
+                    viewTransition={!reduceMotion}
+                  >
+                    <p className="text-xs font-bold uppercase tracking-[0.14em] tabular-nums">{countPlaces(row.places.length)}</p>
+                    <h3 className="mt-2 font-serif text-3xl italic">{row.name}</h3>
+                  </Link>
+                ))}
+              </div>
+            </section>
+          )
+        }
         const rows = guides.filter((guide) => guide.group === item)
+        const curated = city === 'eastside' && item === 'Best of' ? guides.filter((guide) => guide.group === 'Neighborhoods') : []
+        const cards = [...rows, ...curated]
         return (
           <section key={item} className="mt-10">
             <h2 className="font-serif text-4xl italic">{sectionLabel(city, item)}</h2>
             <div className="guide-index card-grid mt-4">
-              {rows.map((guide, index) => (
+              {cards.map((guide, index) => (
                 <Link
                   key={guide.slug}
                   to={cityPath(`/guide/${guide.slug}`)}
@@ -131,7 +156,7 @@ export function GuideIndexPage() {
                   viewTransition={!reduceMotion}
                 >
                   <p className="text-xs font-bold uppercase tracking-[0.14em] tabular-nums">{countPlaces(guide.count)}</p>
-                  <h3 className="mt-2 font-serif text-3xl italic">{tileLabel(city, guide)}</h3>
+                  <h3 className="mt-2 font-serif text-3xl italic">{curated.includes(guide) ? guide.title : tileLabel(city, guide)}</h3>
                 </Link>
               ))}
             </div>

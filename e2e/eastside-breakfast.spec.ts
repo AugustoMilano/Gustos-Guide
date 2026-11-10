@@ -28,8 +28,10 @@ test('Eastside area tiles say the city, and the guide keeps its title', async ({
   }
   await expect(section.getByRole('heading', { level: 3, name: 'Bellevue Essentials' })).toHaveCount(0)
   await expect(section.getByRole('heading', { level: 3, name: 'Best of Kirkland' })).toHaveCount(0)
-  await section.getByRole('link', { name: /Bellevue/ }).click()
-  await expect(page).toHaveURL(/\/eastside\/guide\/bellevue$/)
+  await section.getByRole('link', { name: /^50 places\s+Bellevue$/ }).click()
+  await expect(page).toHaveURL(/\/eastside\/city\/bellevue$/)
+  await expect(page.getByRole('heading', { level: 1, name: 'Bellevue' })).toBeVisible()
+  await page.goto('/#/eastside/guide/bellevue')
   await expect(page.getByRole('heading', { level: 1, name: 'Bellevue Essentials' })).toBeVisible()
   await page.goto('/#/eastside/guide/kirkland')
   await expect(page.getByRole('heading', { level: 1, name: 'Best of Kirkland' })).toBeVisible()

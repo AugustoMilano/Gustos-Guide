@@ -164,6 +164,7 @@ assert.equal(places['2120'].neighborhood, 'Denny Triangle')
 
 const featuredSource = readFileSync(new URL('../src/components/SmartResults.tsx', import.meta.url), 'utf8')
 assert.match(featuredSource, /seattle: \['pike-place', 'best-bakeries', 'best-pizza', 'late-night', 'cocktail-bars', 'classics'\]/)
+assert.match(featuredSource, /eastside: \['best-of-bellevue', 'bellevue', 'kirkland', 'best-breakfast-on-the-east-side', 'eastside-drinks', 'eastside-date-night'\]/)
 assert.doesNotMatch(featuredSource, /seattle: \[[^\]]*'date-night'/)
 assert.equal(guides.some((guide) => guide.slug === 'date-night'), true)
 assert.equal(guides.some((guide) => guide.slug === 'best-bakeries'), true)

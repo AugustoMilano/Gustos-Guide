@@ -4332,6 +4332,21 @@ mark {
   color: #fffaf3;
 }
 
+/* The navy hero paints every header button cream. These rows sit on a cream
+   sheet, so that color hid the name and the secondary line and left only the
+   pink match chip. Repeat the exclusions so this wins that rule. */
+.site-header.on-hero .search-pop button:not(.btn-coral):not(.btn-leaf):not(.btn-x) {
+  color: #181818;
+  -webkit-text-fill-color: #181818;
+}
+
+.site-header.on-hero .search-pop button.is-active:not(.btn-coral):not(.btn-leaf):not(.btn-x),
+.site-header.on-hero .search-pop button[aria-selected='true']:not(.btn-coral):not(.btn-leaf):not(.btn-x) {
+  background: #141f4d;
+  color: #fffaf3;
+  -webkit-text-fill-color: #fffaf3;
+}
+
 .search-pop button.is-active mark,
 .search-pop button[aria-selected='true'] mark,
 .guide-card.is-active mark,
@@ -4339,6 +4354,7 @@ mark {
 .chip.is-active mark {
   background: transparent;
   color: #ffb4a4;
+  -webkit-text-fill-color: #ffb4a4;
   text-decoration: underline;
 }
 

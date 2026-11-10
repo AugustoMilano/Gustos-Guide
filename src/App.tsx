@@ -19,6 +19,7 @@ import { useApp } from './state/AppState.tsx'
 const GuidePage = lazy(() => import('./pages/GuidePage.tsx').then((module) => ({ default: module.GuidePage })))
 const PlacePage = lazy(() => import('./pages/PlacePage.tsx').then((module) => ({ default: module.PlacePage })))
 const GuideIndexPage = lazy(() => import('./pages/GuideIndexPage.tsx').then((module) => ({ default: module.GuideIndexPage })))
+const EastsideCityPage = lazy(() => import('./pages/EastsideCityPage.tsx').then((module) => ({ default: module.EastsideCityPage })))
 const SearchPage = lazy(() => import('./pages/SearchPage.tsx').then((module) => ({ default: module.SearchPage })))
 const FeedPage = lazy(() => import('./pages/FeedPage.tsx').then((module) => ({ default: module.FeedPage })))
 const PlansPage = lazy(() => import('./pages/PlanPage.tsx').then((module) => ({ default: module.PlansPage })))
@@ -203,6 +204,7 @@ function CatalogRoutes() {
             ...(prefix ? [<Route key={`${prefix}-home`} path={prefix} element={<HomePage />} />] : []),
             <Route key={`${prefix}-explore`} path={`${prefix}/explore`} element={<ExplorePage />} />,
             <Route key={`${prefix}-guides`} path={`${prefix}/guides`} element={<GuideIndexPage />} />,
+            <Route key={`${prefix}-city`} path={`${prefix}/city/:slug`} element={<EastsideCityPage />} />,
             <Route key={`${prefix}-guide`} path={`${prefix}/guide/:slug`} element={<GuidePage />} />,
             <Route key={`${prefix}-collection`} path={`${prefix}/collection/:slug`} element={<CollectionRoute />} />,
             <Route key={`${prefix}-place`} path={`${prefix}/place/:slug`} element={<PlacePage />} />,
