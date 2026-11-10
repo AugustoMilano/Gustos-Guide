@@ -22,6 +22,23 @@ const GROUP_LABEL: Record<GuideGroup, string> = {
   Drinks: 'Drinks',
 }
 
+/** Eastside's area guides are cities. The guide page keeps its own title. */
+const EASTSIDE_CITY_LABEL: Record<string, string> = {
+  bellevue: 'Bellevue',
+  kirkland: 'Kirkland',
+  redmond: 'Redmond',
+}
+
+function sectionLabel(city: string, group: GuideGroup): string {
+  if (city === 'eastside' && group === 'Neighborhoods') return 'Cities'
+  return GROUP_LABEL[group]
+}
+
+function tileLabel(city: string, guide: { slug: string; title: string; group: GuideGroup }): string {
+  if (city === 'eastside' && guide.group === 'Neighborhoods') return EASTSIDE_CITY_LABEL[guide.slug] ?? guide.title
+  return guide.title
+}
+
 function guideIndexTitle(city: string): string {
   if (city === 'la') return 'Los Angeles guides'
   if (city === 'peninsula') return 'Peninsula guides'
@@ -95,7 +112,7 @@ export function GuideIndexPage() {
         <button type="button" className="chip" aria-pressed={group === 'All'} onClick={() => setGroup('All')}>All</button>
         {visibleGroups.map((item) => (
           <button key={item} type="button" className="chip" aria-pressed={group === item} onClick={() => setGroup(item)}>
-            {GROUP_LABEL[item]}
+            {sectionLabel(city, item)}
           </button>
         ))}
       </div>
@@ -103,7 +120,7 @@ export function GuideIndexPage() {
         const rows = guides.filter((guide) => guide.group === item)
         return (
           <section key={item} className="mt-10">
-            <h2 className="font-serif text-4xl italic">{GROUP_LABEL[item]}</h2>
+            <h2 className="font-serif text-4xl italic">{sectionLabel(city, item)}</h2>
             <div className="guide-index card-grid mt-4">
               {rows.map((guide, index) => (
                 <Link
@@ -114,7 +131,7 @@ export function GuideIndexPage() {
                   viewTransition={!reduceMotion}
                 >
                   <p className="text-xs font-bold uppercase tracking-[0.14em] tabular-nums">{countPlaces(guide.count)}</p>
-                  <h3 className="mt-2 font-serif text-3xl italic">{guide.title}</h3>
+                  <h3 className="mt-2 font-serif text-3xl italic">{tileLabel(city, guide)}</h3>
                 </Link>
               ))}
             </div>

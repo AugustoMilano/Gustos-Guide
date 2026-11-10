@@ -87,7 +87,7 @@ export function GuideStrip({
                   <div className="toc-badge">
                     <ScoreBadge score={score} size="sm" />
                   </div>
-                  <h3 className={placeNameClass(place.name, 'mt-2 min-h-[2.6rem] italic leading-tight')}>{number != null ? <span className="mr-1.5 text-coral not-italic">{number}</span> : null}{place.name}</h3>
+                  <h3 className={placeNameClass(place.name, 'toc-title mt-2 min-h-[2.6rem] italic leading-tight')}>{number != null ? <span className="toc-rank text-coral not-italic">{number}</span> : null}{place.name}</h3>
                   <PlaceMeta parts={[place.neighborhood, cuisineLabel(place.cuisine[0] ?? ''), priceLabel(place.price)]} className="mt-2 line-clamp-2 min-h-[2rem] text-xs font-bold tracking-wide uppercase" />
                   {vibe || place.perfectFor[0] ? <span className={`tag mt-1.5 min-h-6 ${vibe ? 'tag-vibe' : ''}`}>{vibe ?? place.perfectFor[0]}</span> : null}
                 </div>

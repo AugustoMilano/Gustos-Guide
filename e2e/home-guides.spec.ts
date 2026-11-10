@@ -62,16 +62,21 @@ test('Drinks is listed before Neighborhoods on every guides index', async ({ pag
   ] as const) {
     await page.setViewportSize({ width, height: width < 700 ? 844 : 900 })
     await page.goto(path)
-    await expect(page.getByRole('heading', { level: 2, name: 'Neighborhoods' })).toBeVisible()
+    const areaHeading = path.includes('eastside') ? 'Cities' : 'Neighborhoods'
+    await expect(page.getByRole('heading', { level: 2, name: areaHeading })).toBeVisible()
     const headings = (await page.locator('#main h2').allTextContents()).map((text) => text.trim())
-    if (drinks) {
+    if (path.includes('eastside')) {
+      expect(headings).toContain('Cities')
+      expect(headings).not.toContain('Neighborhoods')
+      expect(headings.indexOf('Cities')).toBeGreaterThan(headings.indexOf('Occasions'))
+    } else if (drinks) {
       expect(headings).toEqual(['Best of', 'Cuisines', 'Occasions', 'Drinks', 'Neighborhoods'])
     } else {
       expect(headings.indexOf('Neighborhoods')).toBeGreaterThan(headings.indexOf('Occasions'))
       expect(headings.includes('Drinks')).toBe(false)
     }
     const chips = await page.getByRole('group', { name: 'Guide categories' }).getByRole('button').allTextContents()
-    expect(chips.indexOf('Neighborhoods')).toBeGreaterThan(chips.indexOf('Occasions'))
+    expect(chips.indexOf(areaHeading)).toBeGreaterThan(chips.indexOf('Occasions'))
     if (drinks) expect(chips.indexOf('Neighborhoods')).toBeGreaterThan(chips.indexOf('Drinks'))
   }
 })
