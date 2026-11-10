@@ -271,6 +271,12 @@
       "updatedAt": "2026-10-20",
       "photos": [
         {
+          "source": "gusto",
+          "url": "/photos/john-howie-steak-gusto-1.jpg",
+          "alt": "Photo of John Howie Steak by Gusto",
+          "credit": "Photo by Gusto"
+        },
+        {
           "source": "illustration",
           "isIllustration": true,
           "alt": "Illustration suggesting Steak at John Howie Steak",
@@ -614,6 +620,12 @@
       "updatedAt": "2026-10-20",
       "photos": [
         {
+          "source": "gusto",
+          "url": "/photos/woodblock-gusto-1.jpg",
+          "alt": "Photo of Woodblock by Gusto",
+          "credit": "Photo by Gusto"
+        },
+        {
           "source": "illustration",
           "isIllustration": true,
           "alt": "Illustration suggesting American at Woodblock",
@@ -746,6 +758,12 @@
       "copySource": "draft",
       "updatedAt": "2026-10-20",
       "photos": [
+        {
+          "source": "gusto",
+          "url": "/photos/bellevue-brewing-gusto-1.jpg",
+          "alt": "Photo of Bellevue Brewing Company by Gusto",
+          "credit": "Photo by Gusto"
+        },
         {
           "source": "illustration",
           "isIllustration": true,
@@ -1393,6 +1411,36 @@
       "updatedAt": "2026-10-20",
       "photos": [
         {
+          "source": "gusto",
+          "url": "/photos/sparrow-gusto-1.jpg",
+          "alt": "Photo of Sparrow by Gusto",
+          "credit": "Photo by Gusto"
+        },
+        {
+          "source": "gusto",
+          "url": "/photos/sparrow-gusto-2.jpg",
+          "alt": "Photo of Sparrow by Gusto",
+          "credit": "Photo by Gusto"
+        },
+        {
+          "source": "gusto",
+          "url": "/photos/sparrow-gusto-3.jpg",
+          "alt": "Photo of Sparrow by Gusto",
+          "credit": "Photo by Gusto"
+        },
+        {
+          "source": "gusto",
+          "url": "/photos/sparrow-gusto-4.jpg",
+          "alt": "Photo of Sparrow by Gusto",
+          "credit": "Photo by Gusto"
+        },
+        {
+          "source": "gusto",
+          "url": "/photos/sparrow-gusto-5.jpg",
+          "alt": "Photo of Sparrow by Gusto",
+          "credit": "Photo by Gusto"
+        },
+        {
           "source": "illustration",
           "isIllustration": true,
           "alt": "Illustration suggesting American at Sparrow",
@@ -1455,6 +1503,36 @@
       "copySource": "draft",
       "updatedAt": "2026-10-20",
       "photos": [
+        {
+          "source": "gusto",
+          "url": "/photos/deru-market-gusto-1.jpg",
+          "alt": "Photo of Deru Market by Gusto",
+          "credit": "Photo by Gusto"
+        },
+        {
+          "source": "gusto",
+          "url": "/photos/deru-market-gusto-2.jpg",
+          "alt": "Photo of Deru Market by Gusto",
+          "credit": "Photo by Gusto"
+        },
+        {
+          "source": "gusto",
+          "url": "/photos/deru-market-gusto-3.jpg",
+          "alt": "Photo of Deru Market by Gusto",
+          "credit": "Photo by Gusto"
+        },
+        {
+          "source": "gusto",
+          "url": "/photos/deru-market-gusto-4.jpg",
+          "alt": "Photo of Deru Market by Gusto",
+          "credit": "Photo by Gusto"
+        },
+        {
+          "source": "gusto",
+          "url": "/photos/deru-market-gusto-5.jpg",
+          "alt": "Photo of Deru Market by Gusto",
+          "credit": "Photo by Gusto"
+        },
         {
           "source": "illustration",
           "isIllustration": true,
@@ -1584,6 +1662,12 @@
       "copySource": "draft",
       "updatedAt": "2026-10-20",
       "photos": [
+        {
+          "source": "gusto",
+          "url": "/photos/postdoc-brewing-gusto-1.jpg",
+          "alt": "Photo of Postdoc Brewing by Gusto",
+          "credit": "Photo by Gusto"
+        },
         {
           "source": "illustration",
           "isIllustration": true,
@@ -1841,6 +1925,12 @@
       "updatedAt": "2026-10-20",
       "photos": [
         {
+          "source": "gusto",
+          "url": "/photos/lexperience-paris-gusto-1.jpg",
+          "alt": "Photo of L'Experience Paris by Gusto",
+          "credit": "Photo by Gusto"
+        },
+        {
           "source": "illustration",
           "isIllustration": true,
           "alt": "Illustration suggesting French at L'Experience Paris",
@@ -1986,6 +2076,66 @@
       "updatedAt": "2026-10-22",
       "photos": [
         {
+          "source": "gusto",
+          "url": "/photos/la-mar-bellevue-gusto-1.jpg",
+          "alt": "Photo of La Mar by Gusto",
+          "credit": "Photo by Gusto"
+        },
+        {
+          "source": "gusto",
+          "url": "/photos/la-mar-bellevue-gusto-2.jpg",
+          "alt": "Photo of La Mar by Gusto",
+          "credit": "Photo by Gusto"
+        },
+        {
+          "source": "gusto",
+          "url": "/photos/la-mar-bellevue-gusto-3.jpg",
+          "alt": "Photo of La Mar by Gusto",
+          "credit": "Photo by Gusto"
+        },
+        {
+          "source": "gusto",
+          "url": "/photos/la-mar-bellevue-gusto-4.jpg",
+          "alt": "Photo of La Mar by Gusto",
+          "credit": "Photo by Gusto"
+        },
+        {
+          "source": "gusto",
+          "url": "/photos/la-mar-bellevue-gusto-5.jpg",
+          "alt": "Photo of La Mar by Gusto",
+          "credit": "Photo by Gusto"
+        },
+        {
+          "source": "gusto",
+          "url": "/photos/la-mar-bellevue-gusto-6.jpg",
+          "alt": "Photo of La Mar by Gusto",
+          "credit": "Photo by Gusto"
+        },
+        {
+          "source": "gusto",
+          "url": "/photos/la-mar-bellevue-gusto-7.jpg",
+          "alt": "Photo of La Mar by Gusto",
+          "credit": "Photo by Gusto"
+        },
+        {
+          "source": "gusto",
+          "url": "/photos/la-mar-bellevue-gusto-8.jpg",
+          "alt": "Photo of La Mar by Gusto",
+          "credit": "Photo by Gusto"
+        },
+        {
+          "source": "gusto",
+          "url": "/photos/la-mar-bellevue-gusto-9.jpg",
+          "alt": "Photo of La Mar by Gusto",
+          "credit": "Photo by Gusto"
+        },
+        {
+          "source": "gusto",
+          "url": "/photos/la-mar-bellevue-gusto-10.jpg",
+          "alt": "Photo of La Mar by Gusto",
+          "credit": "Photo by Gusto"
+        },
+        {
           "source": "illustration",
           "isIllustration": true,
           "alt": "Illustration suggesting Peruvian at La Mar",
@@ -2074,6 +2224,54 @@
       "copySource": "draft",
       "updatedAt": "2026-10-22",
       "photos": [
+        {
+          "source": "gusto",
+          "url": "/photos/ascend-prime-steak-and-sushi-gusto-1.jpg",
+          "alt": "Photo of Ascend Prime Steak & Sushi by Gusto",
+          "credit": "Photo by Gusto"
+        },
+        {
+          "source": "gusto",
+          "url": "/photos/ascend-prime-steak-and-sushi-gusto-2.jpg",
+          "alt": "Photo of Ascend Prime Steak & Sushi by Gusto",
+          "credit": "Photo by Gusto"
+        },
+        {
+          "source": "gusto",
+          "url": "/photos/ascend-prime-steak-and-sushi-gusto-3.jpg",
+          "alt": "Photo of Ascend Prime Steak & Sushi by Gusto",
+          "credit": "Photo by Gusto"
+        },
+        {
+          "source": "gusto",
+          "url": "/photos/ascend-prime-steak-and-sushi-gusto-4.jpg",
+          "alt": "Photo of Ascend Prime Steak & Sushi by Gusto",
+          "credit": "Photo by Gusto"
+        },
+        {
+          "source": "gusto",
+          "url": "/photos/ascend-prime-steak-and-sushi-gusto-5.jpg",
+          "alt": "Photo of Ascend Prime Steak & Sushi by Gusto",
+          "credit": "Photo by Gusto"
+        },
+        {
+          "source": "gusto",
+          "url": "/photos/ascend-prime-steak-and-sushi-gusto-6.jpg",
+          "alt": "Photo of Ascend Prime Steak & Sushi by Gusto",
+          "credit": "Photo by Gusto"
+        },
+        {
+          "source": "gusto",
+          "url": "/photos/ascend-prime-steak-and-sushi-gusto-7.jpg",
+          "alt": "Photo of Ascend Prime Steak & Sushi by Gusto",
+          "credit": "Photo by Gusto"
+        },
+        {
+          "source": "gusto",
+          "url": "/photos/ascend-prime-steak-and-sushi-gusto-8.jpg",
+          "alt": "Photo of Ascend Prime Steak & Sushi by Gusto",
+          "credit": "Photo by Gusto"
+        },
         {
           "source": "illustration",
           "isIllustration": true,
@@ -2461,6 +2659,12 @@
       "updatedAt": "2026-10-22",
       "photos": [
         {
+          "source": "gusto",
+          "url": "/photos/water-grill-bellevue-gusto-1.jpg",
+          "alt": "Photo of Water Grill by Gusto",
+          "credit": "Photo by Gusto"
+        },
+        {
           "source": "illustration",
           "isIllustration": true,
           "alt": "Illustration suggesting Seafood at Water Grill",
@@ -2674,6 +2878,30 @@
       "updatedAt": "2026-10-22",
       "photos": [
         {
+          "source": "gusto",
+          "url": "/photos/earls-kitchen-bar-gusto-1.jpg",
+          "alt": "Photo of Earls Kitchen + Bar by Gusto",
+          "credit": "Photo by Gusto"
+        },
+        {
+          "source": "gusto",
+          "url": "/photos/earls-kitchen-bar-gusto-2.jpg",
+          "alt": "Photo of Earls Kitchen + Bar by Gusto",
+          "credit": "Photo by Gusto"
+        },
+        {
+          "source": "gusto",
+          "url": "/photos/earls-kitchen-bar-gusto-3.jpg",
+          "alt": "Photo of Earls Kitchen + Bar by Gusto",
+          "credit": "Photo by Gusto"
+        },
+        {
+          "source": "gusto",
+          "url": "/photos/earls-kitchen-bar-gusto-4.jpg",
+          "alt": "Photo of Earls Kitchen + Bar by Gusto",
+          "credit": "Photo by Gusto"
+        },
+        {
           "source": "illustration",
           "isIllustration": true,
           "alt": "Illustration suggesting American at Earls Kitchen + Bar",
@@ -2846,6 +3074,12 @@
       "copySource": "draft",
       "updatedAt": "2026-10-22",
       "photos": [
+        {
+          "source": "gusto",
+          "url": "/photos/farzi-cafe-gusto-1.jpg",
+          "alt": "Photo of Farzi Cafe by Gusto",
+          "credit": "Photo by Gusto"
+        },
         {
           "source": "illustration",
           "isIllustration": true,
@@ -3217,6 +3451,12 @@
       "updatedAt": "2026-10-22",
       "photos": [
         {
+          "source": "gusto",
+          "url": "/photos/rolls-and-rolls-gusto-1.jpg",
+          "alt": "Photo of Rolls & Rolls Plus Sushi by Gusto",
+          "credit": "Photo by Gusto"
+        },
+        {
           "source": "illustration",
           "isIllustration": true,
           "alt": "Illustration suggesting Japanese at Rolls & Rolls Plus Sushi",
@@ -3389,6 +3629,12 @@
       "copySource": "draft",
       "updatedAt": "2026-10-22",
       "photos": [
+        {
+          "source": "gusto",
+          "url": "/photos/fern-thai-on-main-gusto-1.jpg",
+          "alt": "Photo of Fern Thai on Main by Gusto",
+          "credit": "Photo by Gusto"
+        },
         {
           "source": "illustration",
           "isIllustration": true,
@@ -3612,6 +3858,12 @@
       "updatedAt": "2026-10-22",
       "photos": [
         {
+          "source": "gusto",
+          "url": "/photos/central-bar-restaurant-gusto-1.jpg",
+          "alt": "Photo of Central Bar + Restaurant by Gusto",
+          "credit": "Photo by Gusto"
+        },
+        {
           "source": "illustration",
           "isIllustration": true,
           "alt": "Illustration suggesting American at Central Bar + Restaurant",
@@ -3676,6 +3928,12 @@
       "copySource": "draft",
       "updatedAt": "2026-10-22",
       "photos": [
+        {
+          "source": "gusto",
+          "url": "/photos/broiler-bay-gusto-1.jpg",
+          "alt": "Photo of Broiler Bay Hamburgers by Gusto",
+          "credit": "Photo by Gusto"
+        },
         {
           "source": "illustration",
           "isIllustration": true,
@@ -3894,6 +4152,12 @@
       "copySource": "draft",
       "updatedAt": "2026-10-22",
       "photos": [
+        {
+          "source": "gusto",
+          "url": "/photos/civility-and-unrest-gusto-1.jpg",
+          "alt": "Photo of Civility & Unrest by Gusto",
+          "credit": "Photo by Gusto"
+        },
         {
           "source": "illustration",
           "isIllustration": true,
@@ -5559,6 +5823,12 @@
       "updatedAt": "2026-10-22",
       "photos": [
         {
+          "source": "gusto",
+          "url": "/photos/ramen-nori-gusto-1.jpg",
+          "alt": "Photo of Ramen Nori by Gusto",
+          "credit": "Photo by Gusto"
+        },
+        {
           "source": "illustration",
           "isIllustration": true,
           "alt": "Illustration suggesting Japanese at Ramen Nori",
@@ -5697,6 +5967,12 @@
           "source": "gusto",
           "url": "/photos/tendon-kohaku-gusto-1.jpg",
           "alt": "Black truffle carbonara udon with bacon and egg yolk at Tendon Kohaku",
+          "credit": "Photo by Gusto"
+        },
+        {
+          "source": "gusto",
+          "url": "/photos/tendon-kohaku-gusto-2.jpg",
+          "alt": "Photo of Tendon Kohaku by Gusto",
           "credit": "Photo by Gusto"
         },
         {
@@ -5879,6 +6155,12 @@
       "copySource": "draft",
       "updatedAt": "2026-11-10",
       "photos": [
+        {
+          "source": "gusto",
+          "url": "/photos/village-square-cafe-gusto-1.jpg",
+          "alt": "Photo of Village Square Cafe by Gusto",
+          "credit": "Photo by Gusto"
+        },
         {
           "source": "illustration",
           "isIllustration": true,
