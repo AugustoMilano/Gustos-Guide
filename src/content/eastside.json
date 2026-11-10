@@ -315,7 +315,8 @@
       "phone": "+1 (425) 454-7500",
       "appleMapsUrl": "https://maps.apple.com/?daddr=47.6165675,-122.202069&q=Tavern%20Hall",
       "guideSlugs": [
-        "bellevue"
+        "bellevue",
+        "eastside-drinks"
       ],
       "muid": "",
       "hoursLabel": "",
@@ -595,7 +596,8 @@
       "phone": "+1 (425) 285-9416",
       "appleMapsUrl": "https://maps.apple.com/?daddr=47.6736412,-122.1246041&q=Woodblock",
       "guideSlugs": [
-        "redmond"
+        "redmond",
+        "eastside-drinks"
       ],
       "muid": "",
       "hoursLabel": "",
@@ -735,7 +737,8 @@
       "website": "https://www.bellevuebrewing.com",
       "appleMapsUrl": "https://maps.apple.com/?daddr=47.621394,-122.1778158&q=Bellevue%20Brewing%20Company",
       "guideSlugs": [
-        "bellevue"
+        "bellevue",
+        "eastside-drinks"
       ],
       "muid": "",
       "hoursLabel": "",
@@ -1292,7 +1295,8 @@
       "website": "https://mossbayhall.com",
       "appleMapsUrl": "https://maps.apple.com/?daddr=47.6762912,-122.2078125&q=Moss%20Bay%20Hall",
       "guideSlugs": [
-        "kirkland"
+        "kirkland",
+        "eastside-drinks"
       ],
       "muid": "",
       "hoursLabel": "",
@@ -1573,7 +1577,8 @@
       "website": "https://www.postdocbrewing.com/",
       "appleMapsUrl": "https://maps.apple.com/?daddr=47.6636505,-122.1054223&q=Postdoc%20Brewing",
       "guideSlugs": [
-        "redmond"
+        "redmond",
+        "eastside-drinks"
       ],
       "muid": "",
       "hoursLabel": "",
@@ -2649,7 +2654,8 @@
       "applePlaceUrl": "https://maps.apple.com/place?auid=14508377034778846098",
       "guideSlugs": [
         "bellevue",
-        "best-of-bellevue"
+        "best-of-bellevue",
+        "eastside-drinks"
       ],
       "muid": "14508377034778846098",
       "hoursLabel": "",
@@ -3594,7 +3600,8 @@
       "appleMapsUrl": "https://maps.apple.com/?daddr=47.6154357,-122.2007292&q=Central%20Bar%20%2B%20Restaurant",
       "applePlaceUrl": "https://maps.apple.com/place?auid=17092655385343306061",
       "guideSlugs": [
-        "bellevue"
+        "bellevue",
+        "eastside-drinks"
       ],
       "muid": "17092655385343306061",
       "hoursLabel": "",
@@ -3883,7 +3890,8 @@
       "appleMapsUrl": "https://maps.apple.com/?daddr=47.614966,-122.200585&q=Civility%20%26%20Unrest",
       "applePlaceUrl": "https://maps.apple.com/place?auid=4431814629018651525",
       "guideSlugs": [
-        "bellevue"
+        "bellevue",
+        "eastside-drinks"
       ],
       "muid": "4431814629018651525",
       "hoursLabel": "",
@@ -4039,7 +4047,8 @@
       "appleMapsUrl": "https://maps.apple.com/?daddr=47.6102649,-122.204366&q=520%20Bar%20and%20Grill",
       "applePlaceUrl": "https://maps.apple.com/place?auid=13217783101883786373",
       "guideSlugs": [
-        "bellevue"
+        "bellevue",
+        "eastside-drinks"
       ],
       "muid": "13217783101883786373",
       "hoursLabel": "",
@@ -5703,6 +5712,147 @@
           "credit": "Illustration"
         }
       ]
+    },
+    {
+      "id": "palmers-east",
+      "city": "eastside",
+      "name": "Palmer's East",
+      "neighborhood": "Downtown Redmond",
+      "address": "7853 Leary Way NE, Redmond, WA 98052",
+      "lat": 47.6738115,
+      "lng": -122.1231437,
+      "cuisine": [
+        "American"
+      ],
+      "placeType": "bar",
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [],
+      "gustoScore": null,
+      "website": "https://www.facebook.com/PalmersEast",
+      "appleMapsUrl": "https://maps.apple.com/?daddr=47.6738115,-122.1231437&q=Palmer%27s%20East",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=1512320732444284915",
+      "guideSlugs": [
+        "eastside-drinks"
+      ],
+      "muid": "1512320732444284915",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-11-10",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting American at Palmer's East",
+          "credit": "Illustration"
+        }
+      ]
+    },
+    {
+      "id": "central-tavern",
+      "city": "eastside",
+      "name": "Central Tavern",
+      "neighborhood": "Downtown Kirkland",
+      "address": "124 Kirkland Ave, Kirkland, WA 98033",
+      "lat": 47.6756598,
+      "lng": -122.2055489,
+      "cuisine": [
+        "Bar"
+      ],
+      "placeType": "bar",
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "start": 960,
+          "end": 120
+        }
+      ],
+      "gustoScore": null,
+      "website": "https://www.thestedmangroup.com/centraltavern",
+      "appleMapsUrl": "https://maps.apple.com/?daddr=47.6756598,-122.2055489&q=Central%20Tavern",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=464937097248191658",
+      "guideSlugs": [
+        "eastside-drinks"
+      ],
+      "muid": "464937097248191658",
+      "hoursLabel": "Daily 4pm-2am. Happy hour 4-6pm Mon-Fri.",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-11-10",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Bar at Central Tavern",
+          "credit": "Illustration"
+        }
+      ]
+    },
+    {
+      "id": "the-goose-pub",
+      "city": "eastside",
+      "name": "The Goose Pub & Eatery",
+      "neighborhood": "Spring District",
+      "address": "12001 NE 12th Street, Bellevue, WA 98005",
+      "lat": 47.6198092,
+      "lng": -122.1788807,
+      "cuisine": [
+        "American"
+      ],
+      "placeType": "pub",
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "start": 600,
+          "end": 120
+        }
+      ],
+      "gustoScore": null,
+      "website": "https://thegoosepub.com/",
+      "appleMapsUrl": "https://maps.apple.com/?daddr=47.6198092,-122.1788807&q=The%20Goose%20Pub%20%26%20Eatery",
+      "guideSlugs": [
+        "eastside-drinks"
+      ],
+      "muid": "",
+      "hoursLabel": "Daily 10am-2am.",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-11-10",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting American at The Goose Pub & Eatery",
+          "credit": "Illustration"
+        }
+      ]
     }
   ],
   "guides": [
@@ -6426,6 +6576,91 @@
         }
       ],
       "pinned": true
+    },
+    {
+      "slug": "eastside-drinks",
+      "title": "Drinks on the Eastside",
+      "dek": "Bars, brewpubs, and pubs in Bellevue, Kirkland, and Redmond.",
+      "group": "Drinks",
+      "intro": "Twelve Eastside rooms for a drink: Woodblock, Postdoc Brewing, Bellevue Brewing Company, Earls Kitchen + Bar, Tavern Hall, Moss Bay Hall, Central Bar + Restaurant, Palmer's East, Central Tavern, The Goose Pub & Eatery, 520 Bar and Grill, and Civility & Unrest.",
+      "updatedAt": "2026-11-10",
+      "ranked": false,
+      "pinned": true,
+      "city": "eastside",
+      "entries": [
+        {
+          "placeId": "woodblock",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "postdoc-brewing",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "bellevue-brewing",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "earls-kitchen-bar",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "tavern-hall",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "moss-bay-hall",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "central-bar-restaurant",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "palmers-east",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "central-tavern",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "the-goose-pub",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "520-bar-and-grill",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "civility-and-unrest",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        }
+      ]
     }
   ]
 }
