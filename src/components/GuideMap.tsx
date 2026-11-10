@@ -6,6 +6,7 @@ import { readPosition } from '../lib/geo.ts'
 import '../lib/setup-leaflet.ts'
 import 'leaflet.markercluster'
 import { escapeHtml } from '../lib/format.ts'
+import { loadMapLibraries } from '../lib/load-maplibre.ts'
 import { appleDirectionsUrl, applePlaceUrl, googleDirectionsUrl, googleMapsUrl, prefersAppleMaps } from '../lib/maps.ts'
 import type { VisitStatus } from '../types.ts'
 
@@ -52,12 +53,6 @@ export type MapBounds = { south: number; north: number; west: number; east: numb
 export type MapCamera = { lat: number; lng: number; zoom: number }
 
 const BASEMAP_STYLE = 'https://tiles.openfreemap.org/styles/positron'
-
-const basemapLibraries = Promise.all([
-  import('../lib/setup-maplibre.ts'),
-  import('maplibre-gl/dist/maplibre-gl.css'),
-  import('@maplibre/maplibre-gl-leaflet'),
-])
 
 const CITY_CENTER: Record<string, [number, number]> = {
   seattle: [47.6062, -122.3321],
@@ -136,8 +131,7 @@ function Basemap({ onReady }: { onReady?: () => void }) {
 
     void (async () => {
       try {
-      const [, , bridgeModule] = await basemapLibraries
-      const { maplibreGL } = bridgeModule
+      const { maplibreGL } = await loadMapLibraries()
       if (cancelled) return
       const created = maplibreGL({ style: BASEMAP_STYLE, preserveDrawingBuffer: true } as object)
       // The bridge reads the Leaflet zoom inside a frame callback with no map check.

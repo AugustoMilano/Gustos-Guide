@@ -9,6 +9,7 @@ function springTo(value: Animatable, target: number) {
   void import('framer-motion').then(({ animate }) => { animate(value as never, target, SNAP as never) })
 }
 import { barePath, cityPath } from '../lib/city.ts'
+import { loadMapLibraries } from '../lib/load-maplibre.ts'
 import { useApp } from '../state/AppState.tsx'
 
 const ICONS: Record<string, string> = {
@@ -211,6 +212,8 @@ export function TabBar() {
             draggable={false}
             className={`lg-tab${index === lit ? ' is-lit' : ''}${tab.on ? ' is-on' : ''}`}
             viewTransition={!reduce}
+            onMouseEnter={tab.id === 'map' ? () => void loadMapLibraries() : undefined}
+            onFocus={tab.id === 'map' ? () => void loadMapLibraries() : undefined}
             onClick={(event) => {
               // A press already navigated on release; keyboard and assistive clicks come through here.
               if (skipClick.current) event.preventDefault()
