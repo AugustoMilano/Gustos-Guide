@@ -10,8 +10,13 @@ function gusto(record) {
   return record.photos.filter((photo) => photo.source === 'gusto').map((photo) => photo.url)
 }
 
-assert.deepEqual(gusto(places['storyville-coffee-company']), ['/photos/storyville-coffee-company-gusto-1.jpg'])
-assert.equal(sizes['storyville-coffee-company-gusto-1.jpg'].w, 2048)
+assert.deepEqual(gusto(places['storyville-coffee-company']), [
+  '/photos/storyville-coffee-company-gusto-1.jpg',
+  '/photos/storyville-coffee-company-gusto-2.jpg',
+  '/photos/storyville-coffee-company-gusto-3.jpg',
+])
+assert.equal(sizes['storyville-coffee-company-gusto-1.jpg'].w, 480)
+assert.equal(sizes['storyville-coffee-company-gusto-3.jpg'].w, 2048)
 assert.equal(sizes['the-shop-by-porter-gusto-1.jpg'].h > sizes['the-shop-by-porter-gusto-1.jpg'].w, true)
 assert.equal(gusto(places['cafe-flora']).length, 6)
 assert.equal(gusto(places['atoma']).length, 10)
@@ -26,13 +31,20 @@ assert.deepEqual(gusto(east['central-bar-restaurant']), ['/photos/central-bar-re
 assert.equal(gusto(east['central-tavern']).length, 0)
 assert.equal(gusto(places['duke-s-seafood-south-lake-union']).length, 1)
 assert.equal(gusto(places['cafe-hagen']).length, 1)
-assert.equal(gusto(places['von-s-1000spirits']).length, 1)
+assert.deepEqual(gusto(places['von-s-1000spirits']), [
+  '/photos/von-s-1000spirits-gusto-1.jpg',
+  '/photos/von-s-1000spirits-gusto-2.jpg',
+  '/photos/von-s-1000spirits-gusto-3.jpg',
+])
 assert.equal(gusto(places['due-cucina-italiana']).length, 2)
 assert.equal(gusto(east['tendon-kohaku'])[0], '/photos/tendon-kohaku-gusto-1.jpg')
 assert.equal(east['tendon-kohaku'].photos[0].alt.includes('carbonara'), true)
 assert.equal(gusto(east['tendon-kohaku'])[1], '/photos/tendon-kohaku-gusto-2.jpg')
 for (const id of ['cactus', 'din-tai-fung']) assert.equal(gusto(places[id]).length, 0, id)
-for (const id of ['cactus-kirkland', 'din-tai-fung-bellevue', 'kobuta-and-ookami-redmond', 'beachhouse-bar-and-grill']) assert.equal(gusto(east[id]).length, 0, id)
+assert.deepEqual(gusto(east['cactus-kirkland']), ['/photos/cactus-kirkland-gusto-1.jpg'])
+assert.deepEqual(gusto(east['din-tai-fung-bellevue']), ['/photos/din-tai-fung-bellevue-gusto-1.jpg'])
+assert.deepEqual(gusto(east['kobuta-and-ookami-redmond']), ['/photos/kobuta-and-ookami-redmond-gusto-1.jpg'])
+assert.deepEqual(gusto(east['beachhouse-bar-and-grill']), ['/photos/beachhouse-bar-and-grill-gusto-1.jpg'])
 assert.equal(gusto(places['kobuta-and-ookami']).length, 0)
 assert.equal(gusto(places['harry-s-beach-house']).length, 0)
 assert.equal(places['hellenika-cultured-creamery'].photos[0].source, 'wikimedia')

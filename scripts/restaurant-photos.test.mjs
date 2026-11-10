@@ -8,7 +8,11 @@ const sizes = JSON.parse(readFileSync(new URL('../src/content/photo-sizes.json',
 const indexPhoto = Object.fromEntries(index.places.map((place) => [place.id, place.photo]))
 
 const expected = {
-  'storyville-coffee-company': ['/photos/storyville-coffee-company-gusto-1.jpg'],
+  'storyville-coffee-company': [
+    '/photos/storyville-coffee-company-gusto-1.jpg',
+    '/photos/storyville-coffee-company-gusto-2.jpg',
+    '/photos/storyville-coffee-company-gusto-3.jpg',
+  ],
   'ludi-s-restaurant': ['/photos/ludi-s-restaurant-gusto-1.jpg'],
   'beecher-s-handmade-cheese': ['/photos/beecher-s-handmade-cheese-gusto-1.jpg'],
   'charlotte-restaurant-lounge': ['/photos/charlotte-restaurant-lounge-gusto-1.jpg'],
@@ -60,16 +64,39 @@ for (const [id, urls] of Object.entries(expected)) {
   assert.equal(indexPhoto[id].credit, 'Photo by Gusto', id)
   assert.equal(places[id].gustoScore, null, id)
 }
-assert.equal(files, 30)
+assert.equal(files, 32)
 
 const story = places['storyville-coffee-company'].photos
-assert.deepEqual(story.map((photo) => photo.source), ['gusto', 'illustration'])
+assert.deepEqual(story.map((photo) => photo.source), ['gusto', 'gusto', 'gusto', 'illustration'])
 assert.equal(existsSync(new URL('../public/photos/storyville-coffee-company-upright.jpg', import.meta.url)), true)
+assert.equal(sizes['storyville-coffee-company-gusto-3.jpg'].w, 2048)
 assert.equal(places['beecher-s-handmade-cheese'].photos[1].source, 'wikimedia')
-assert.equal(places['hellenika-cultured-creamery'].photos[0].url, '/photos/hellenika-cultured-creamery.jpg')
-assert.equal(places['hellenika-cultured-creamery'].photos.some((photo) => photo.source === 'gusto'), false)
-for (const id of ['pasta-casalinga', 'starbucks-coffee-company', 'piroshky-piroshky', 'the-nest', 'lonely-siren', 'zig-zag-cafe', 'von-s-1000spirits', 'mr-fish-chips-chowder']) {
-  assert.equal(places[id].photos.some((photo) => photo.source === 'gusto'), false, id)
+const hellenika = places['hellenika-cultured-creamery']
+assert.equal(hellenika.photos[0].url, '/photos/hellenika-cultured-creamery.jpg')
+assert.equal(hellenika.photos[0].source, 'wikimedia')
+assert.equal(hellenika.photos[1].url, '/photos/hellenika-cultured-creamery-gusto-2.jpg')
+assert.equal(hellenika.photos.at(-1).source, 'illustration')
+assert.equal(indexPhoto['hellenika-cultured-creamery'].url, '/photos/hellenika-cultured-creamery.jpg')
+const later = {
+  'pasta-casalinga': ['/photos/pasta-casalinga-gusto-1.jpg'],
+  'starbucks-coffee-company': ['/photos/starbucks-coffee-company-gusto-1.jpg', '/photos/starbucks-coffee-company-gusto-2.jpg'],
+  'piroshky-piroshky': ['/photos/piroshky-piroshky-gusto-1.jpg'],
+  'the-nest': ['/photos/the-nest-gusto-1.jpg'],
+  'lonely-siren': ['/photos/lonely-siren-gusto-1.jpg', '/photos/lonely-siren-gusto-2.jpg'],
+  'zig-zag-cafe': ['/photos/zig-zag-cafe-gusto-1.jpg'],
+  'von-s-1000spirits': [
+    '/photos/von-s-1000spirits-gusto-1.jpg',
+    '/photos/von-s-1000spirits-gusto-2.jpg',
+    '/photos/von-s-1000spirits-gusto-3.jpg',
+  ],
+  'mr-fish-chips-chowder': ['/photos/mr-fish-chips-chowder-gusto-1.jpg', '/photos/mr-fish-chips-chowder-gusto-2.jpg'],
+}
+for (const [id, urls] of Object.entries(later)) {
+  const gusto = places[id].photos.filter((photo) => photo.source === 'gusto')
+  assert.deepEqual(gusto.map((photo) => photo.url), urls, id)
+  assert.equal(indexPhoto[id].url, urls[0], id)
+  assert.equal(places[id].photos.at(-1).source, 'illustration', id)
+  assert.equal(places[id].gustoScore, null, id)
 }
 assert.equal(places['maruta'], undefined)
 assert.equal(HOUSE_SCORE_FALLBACK['pasta-casalinga'], 8.0)
