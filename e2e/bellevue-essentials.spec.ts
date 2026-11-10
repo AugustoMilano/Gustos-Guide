@@ -1,8 +1,6 @@
 import { expect, test } from '@playwright/test'
 
 const main = [
-  'Ascend Prime Steak & Sushi',
-  "Daniel's Broiler",
   'Water Grill',
   'La Mar',
   "Carmine's",
@@ -40,8 +38,23 @@ test('the Bellevue URL is Bellevue Essentials and Japanese food is its own guide
   for (const name of main) {
     await expect(page.locator('article.guide-entry').getByRole('heading', { level: 3, name, exact: true })).toBeVisible()
   }
+  await expect(page.locator('#entry-ascend-prime-steak-and-sushi')).toHaveCount(0)
+  await expect(page.locator('#entry-daniels-broiler')).toHaveCount(0)
   await expect(page.locator('#entry-japonessa')).toHaveCount(0)
   await expect(page.locator('#entry-fob-poke-bar-bellevue')).toHaveCount(0)
+  await page.goto('/#/eastside/guide/best-of-bellevue')
+  await expect(page.getByRole('heading', { level: 1, name: 'Best of Bellevue' })).toBeVisible()
+  await expect(page.locator('#entry-daniels-broiler')).toBeVisible()
+  await expect(page.locator('#entry-ascend-prime-steak-and-sushi')).toBeVisible()
+  await expect(page.locator('article.guide-entry')).toHaveCount(7)
+  await page.goto('/#/eastside/guide/eastside-date-night')
+  await expect(page.getByRole('heading', { level: 1, name: 'Eastside date night' })).toBeVisible()
+  await expect(page.locator('#entry-ascend-prime-steak-and-sushi')).toBeVisible()
+  await expect(page.locator('article.guide-entry')).toHaveCount(9)
+  await page.goto('/#/eastside/guide/eastside-asian')
+  await expect(page).toHaveURL(/\/eastside\/guide\/eastside-asian$/)
+  await expect(page.getByRole('heading', { level: 1, name: 'Eastside Asian food' })).toBeVisible()
+  await expect(page.locator('article.guide-entry')).toHaveCount(20)
   await page.goto('/#/eastside/guide/japanese-food-in-bellevue')
   await expect(page.getByRole('heading', { level: 1, name: 'Japanese food in Bellevue' })).toBeVisible()
   await expect(page.locator('article.guide-entry')).toHaveCount(japanese.length)

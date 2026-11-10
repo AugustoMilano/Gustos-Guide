@@ -3,8 +3,6 @@ import { readFileSync } from 'node:fs'
 
 const eastside = JSON.parse(readFileSync(new URL('../src/content/eastside.json', import.meta.url), 'utf8'))
 const main = [
-  'ascend-prime-steak-and-sushi',
-  'daniels-broiler',
   'water-grill-bellevue',
   'la-mar-bellevue',
   'carmines',
@@ -59,6 +57,39 @@ assert.equal(byId.get('fob-poke-bar-bellevue').name, 'FOB Poke Bar')
 const drinks = eastside.guides.find((guide) => guide.slug === 'eastside-drinks')
 assert.equal(drinks.entries.length, 12)
 assert.equal(eastside.guides.find((guide) => guide.slug === 'eastside-brunch').entries.length, 5)
-assert.equal(eastside.guides.find((guide) => guide.slug === 'best-of-bellevue').entries.length, 6)
+const best = eastside.guides.find((guide) => guide.slug === 'best-of-bellevue')
+assert.equal(best.title, 'Best of Bellevue')
+assert.equal(best.entries.filter((entry) => entry.placeId === 'daniels-broiler').length, 1)
+assert.equal(best.entries.filter((entry) => entry.placeId === 'ascend-prime-steak-and-sushi').length, 1)
+assert.equal(best.entries.length, 7)
+assert.equal(byId.get('daniels-broiler').guideSlugs.includes('bellevue'), false)
+assert.equal(byId.get('daniels-broiler').guideSlugs.includes('best-of-bellevue'), true)
+assert.equal(byId.get('ascend-prime-steak-and-sushi').guideSlugs.includes('bellevue'), false)
+assert.equal(byId.get('ascend-prime-steak-and-sushi').guideSlugs.includes('best-of-bellevue'), true)
+const dateNight = eastside.guides.find((guide) => guide.slug === 'eastside-date-night')
+const dateIds = dateNight.entries.map((entry) => entry.placeId)
+assert.deepEqual(dateIds.slice(0, 8), [
+  'john-howie-steak',
+  'seastar-restaurant-and-raw-bar',
+  'como',
+  'fogo-de-chao',
+  'cafe-juanita',
+  'bis-on-main',
+  'takai-by-kashiba',
+  'ristorante-paradiso',
+])
+assert.equal(dateIds.at(-1), 'ascend-prime-steak-and-sushi')
+assert.equal(dateIds.filter((id) => id === 'ascend-prime-steak-and-sushi').length, 1)
+assert.equal(byId.get('ascend-prime-steak-and-sushi').guideSlugs.includes('eastside-date-night'), true)
+assert.deepEqual(byId.get('ascend-prime-steak-and-sushi').guideSlugs, ['best-of-bellevue', 'eastside-date-night'])
+assert.equal(byId.get('ascend-prime-steak-and-sushi').gustoScore, null)
+assert.equal(byId.get('woodblock').blurb.includes('The bartending staff are the best in the business—especially Blake and Cam.'), true)
+assert.equal(byId.get('woodblock').blurb.includes('thousand bottles'), true)
+assert.equal(byId.get('woodblock').oneLiner.includes('whiskey wall'), true)
 assert.equal(eastside.guides.find((guide) => guide.slug === 'kirkland').entries.length, 12)
+const asian = eastside.guides.find((guide) => guide.slug === 'eastside-asian')
+assert.equal(asian.title, 'Eastside Asian food')
+assert.equal(asian.slug, 'eastside-asian')
+assert.equal(asian.entries.length, 20)
+assert.equal(eastside.guides.find((guide) => guide.slug === 'japanese-food-in-bellevue').title, 'Japanese food in Bellevue')
 console.log('bellevue essentials ok')

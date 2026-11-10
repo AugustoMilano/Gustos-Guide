@@ -598,7 +598,7 @@
       ],
       "muid": "",
       "hoursLabel": "",
-      "blurb": "Order the brisket gnocchi, made with slow-roasted brisket and gnocchi rolled by hand almost every day. The bar holds about a thousand bottles.",
+      "blurb": "Order the brisket gnocchi, made with slow-roasted brisket and gnocchi rolled by hand almost every day. The bar holds about a thousand bottles. The bartending staff are the best in the business—especially Blake and Cam.",
       "orderThis": [
         {
           "dish": "Brisket Gnocchi",
@@ -2050,8 +2050,8 @@
       "appleMapsUrl": "https://maps.apple.com/?daddr=47.6140987,-122.2008181&q=Ascend%20Prime%20Steak%20%26%20Sushi",
       "applePlaceUrl": "https://maps.apple.com/place?auid=5316906510073088576",
       "guideSlugs": [
-        "bellevue",
-        "best-of-bellevue"
+        "best-of-bellevue",
+        "eastside-date-night"
       ],
       "muid": "5316906510073088576",
       "hoursLabel": "",
@@ -2114,7 +2114,7 @@
       "appleMapsUrl": "https://maps.apple.com/?daddr=47.6182852,-122.2006595&q=Daniel's%20Broiler",
       "applePlaceUrl": "https://maps.apple.com/place?auid=7146954780601002084",
       "guideSlugs": [
-        "bellevue"
+        "best-of-bellevue"
       ],
       "muid": "7146954780601002084",
       "hoursLabel": "",
@@ -5878,6 +5878,12 @@
           "pullQuote": "",
           "blurb": "",
           "copySource": "draft"
+        },
+        {
+          "placeId": "daniels-broiler",
+          "pullQuote": "Prime filet on the 21st floor, Bellevue's steakhouse since 1989.",
+          "blurb": "Order the Daniel's Cut, a 12-ounce Prime filet under the house steak butter. The decks face the Seattle skyline and the Olympics.",
+          "copySource": "draft"
         }
       ]
     },
@@ -5901,7 +5907,7 @@
         {
           "placeId": "woodblock",
           "pullQuote": "Brisket gnocchi and a thousand-bottle whiskey wall in Redmond.",
-          "blurb": "Order the brisket gnocchi, made with slow-roasted brisket and gnocchi rolled by hand almost every day. The bar holds about a thousand bottles.",
+          "blurb": "Order the brisket gnocchi, made with slow-roasted brisket and gnocchi rolled by hand almost every day. The bar holds about a thousand bottles. The bartending staff are the best in the business—especially Blake and Cam.",
           "copySource": "draft"
         },
         {
@@ -5963,26 +5969,14 @@
     {
       "slug": "bellevue",
       "title": "Bellevue Essentials",
-      "dek": "Seventeen Bellevue rooms on the main list.",
+      "dek": "Fifteen Bellevue rooms on the main list.",
       "group": "Neighborhoods",
-      "intro": "The main Bellevue list: Ascend Prime Steak & Sushi, Daniel's Broiler, Water Grill, La Mar, Carmine's, STK Steakhouse, Cantinetta, Cantina Monarca, Baron's Sino Kitchen & Bar, Wild Ginger, Farzi Cafe, Seastar Restaurant & Raw Bar, Castilla, Fern Thai on Main, Joey Bellevue, Monsoon Bellevue, and Fogo de Chão.",
+      "intro": "The main Bellevue list: Water Grill, La Mar, Carmine's, STK Steakhouse, Cantinetta, Cantina Monarca, Baron's Sino Kitchen & Bar, Wild Ginger, Farzi Cafe, Seastar Restaurant & Raw Bar, Castilla, Fern Thai on Main, Joey Bellevue, Monsoon Bellevue, and Fogo de Chão.",
       "updatedAt": "2026-11-10",
       "ranked": false,
       "pinned": true,
       "city": "eastside",
       "entries": [
-        {
-          "placeId": "ascend-prime-steak-and-sushi",
-          "pullQuote": "A5 wagyu and omakase, 31 floors above Bellevue.",
-          "blurb": "Come for the wagyu: Miyazaki A5 filet by the ounce, or a three-cut tenderloin flight in the lounge. The sushi bar runs a premium omakase.",
-          "copySource": "draft"
-        },
-        {
-          "placeId": "daniels-broiler",
-          "pullQuote": "Prime filet on the 21st floor, Bellevue's steakhouse since 1989.",
-          "blurb": "Order the Daniel's Cut, a 12-ounce Prime filet under the house steak butter. The decks face the Seattle skyline and the Olympics.",
-          "copySource": "draft"
-        },
         {
           "placeId": "water-grill-bellevue",
           "pullQuote": "Live Dungeness crab by the pound and a raw bar on Bellevue Way.",
@@ -6162,7 +6156,7 @@
     },
     {
       "slug": "eastside-asian",
-      "title": "Eastside Asian",
+      "title": "Eastside Asian food",
       "dek": "Thai, Chinese, Japanese, Korean, Vietnamese, Sichuan, and Taiwanese.",
       "group": "Cuisine",
       "intro": "Eastside Asian restaurants from Old Bellevue and downtown Bellevue to Kirkland and Redmond.",
@@ -6392,6 +6386,12 @@
           "placeId": "ristorante-paradiso",
           "pullQuote": "",
           "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "ascend-prime-steak-and-sushi",
+          "pullQuote": "A5 wagyu and omakase, 31 floors above Bellevue.",
+          "blurb": "Come for the wagyu: Miyazaki A5 filet by the ounce, or a three-cut tenderloin flight in the lounge. The sushi bar runs a premium omakase.",
           "copySource": "draft"
         }
       ],
