@@ -26,7 +26,8 @@ test('the guide filter bar hides on the way down and returns on the way up', asy
   const still = await page.locator('article.guide-entry').first().evaluate((node) => node.getBoundingClientRect().top)
   expect(Math.abs(still - parked)).toBeLessThan(2)
   await expect(page.locator('.wordmark')).toBeVisible()
-  await expect(page.locator('.city-switch-bar')).toBeVisible()
+  await expect(page.locator('.header-sub')).toHaveAttribute('data-concealed', 'true')
+  await expect(page.getByRole('button', { name: 'Menu' })).toBeVisible()
   await page.screenshot({ path: `/opt/cursor/artifacts/filters-hidden-${info.project.name}.png`, animations: 'disabled' })
 
   await page.evaluate(() => {
