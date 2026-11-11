@@ -4079,11 +4079,7 @@ img.is-pending,
   max-width: 100%;
 }
 
-img.is-portrait,
-.place-art.is-portrait {
-  object-position: center 18%;
-}
-
+/* Center the crop. Pinning tall photos to the top cut off plates and bowls in the lower half. */
 img.is-portrait.is-portrait-lower,
 .place-art.is-portrait.is-portrait-lower {
   object-position: center 68%;

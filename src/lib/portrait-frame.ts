@@ -1,6 +1,6 @@
 /**
- * Tall photos in a landscape card lose the subject if the crop is centered.
- * The default keeps the top. A few handheld shots carry the subject lower.
+ * Tall photos in a landscape frame. The crop stays centered so a plate in the
+ * lower half is not cut off. A few handheld shots carry the subject lower still.
  */
 const LOWER_SUBJECT = new Set(['piroshky-piroshky-gusto-1.jpg'])
 
