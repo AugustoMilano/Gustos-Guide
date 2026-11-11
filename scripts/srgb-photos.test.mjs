@@ -15,7 +15,10 @@ assert.deepEqual(gusto(places['storyville-coffee-company']), [
   '/photos/storyville-coffee-company-gusto-2.jpg',
   '/photos/storyville-coffee-company-gusto-3.jpg',
 ])
-assert.equal(sizes['storyville-coffee-company-gusto-1.jpg'].w, 480)
+assert.equal(sizes['storyville-coffee-company-gusto-1.jpg'].w, 5712)
+assert.equal(sizes['storyville-coffee-company-gusto-1.jpg'].h, 4284)
+assert.equal(sizes['storyville-coffee-company-gusto-2.jpg'].w, 5712)
+assert.equal(sizes['storyville-coffee-company-gusto-2.jpg'].h, 4284)
 assert.equal(sizes['storyville-coffee-company-gusto-3.jpg'].w, 2048)
 assert.equal(sizes['the-shop-by-porter-gusto-1.jpg'].h > sizes['the-shop-by-porter-gusto-1.jpg'].w, true)
 assert.equal(gusto(places['cafe-flora']).length, 6)
