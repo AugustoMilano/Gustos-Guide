@@ -8,11 +8,14 @@ export function PlaceGallery({
   photos,
   active,
   onChange,
+  known = true,
   transitionName,
 }: {
   photos: DisplayPhoto[]
   active: number
   onChange: (index: number) => void
+  /** False while only the one-photo card is loaded, so the counter is not a false 1/1. */
+  known?: boolean
   transitionName?: string
 }) {
   const [open, setOpen] = useState(false)
@@ -76,7 +79,7 @@ export function PlaceGallery({
       <div
         ref={stage}
         className={`photo-stage${enter ? ` enter-${enter}` : ''}`}
-        key={`stage-${index}`}
+        key={`${photo.placeId}:${photo.url ?? photo.key}:${index}`}
         onPointerDown={onPointerDown}
         onPointerMove={onStageMove}
         onPointerUp={(event) => onPointerUp(event, true)}
@@ -84,17 +87,19 @@ export function PlaceGallery({
         onPointerLeave={() => { if (drag.current) { drag.current = null; release() } }}
       >
         <PhotoFrame photo={photo} priority transitionName={transitionName} />
-        {many ? (
+        {known && many ? (
           <>
             <button type="button" className="photo-nav is-prev" aria-label="Previous photo" onPointerDown={(event) => event.stopPropagation()} onClick={() => step(-1)}>‹</button>
             <button type="button" className="photo-nav is-next" aria-label="Next photo" onPointerDown={(event) => event.stopPropagation()} onClick={() => step(1)}>›</button>
           </>
         ) : null}
-        <button type="button" className="photo-expand" aria-label={`View photo ${index + 1} / ${photos.length}`} onPointerDown={(event) => event.stopPropagation()} onClick={() => setOpen(true)}>
-          {index + 1} / {photos.length}
-        </button>
+        {known ? (
+          <button type="button" className="photo-expand" aria-label={`View photo ${index + 1} / ${photos.length}`} onPointerDown={(event) => event.stopPropagation()} onClick={() => setOpen(true)}>
+            {index + 1} / {photos.length}
+          </button>
+        ) : null}
       </div>
-      {many ? (
+      {known && many ? (
         <div className="photo-strip" role="tablist" aria-label="Photos">
           {photos.map((shot, shotIndex) => (
             <button

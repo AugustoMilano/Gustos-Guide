@@ -18,6 +18,8 @@ html {
   --status-bar: #fffaf3;
   background-color: var(--status-bar);
   scroll-behavior: smooth;
+  /* The subheader collapses on scroll. Anchoring would fight that and pop the page back. */
+  overflow-anchor: none;
   scroll-padding-top: calc(var(--header-offset) + var(--space-2));
   --header-offset: 4.75rem;
 
@@ -567,7 +569,27 @@ main ul.grid > li {
 }
 
 .toc-card {
+  container-type: inline-size;
   transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+/* Strip titles size to the card, not the viewport, so a rank and one long word both fit. */
+.toc-card h3.place-name {
+  font-size: clamp(1rem, 10cqi, 1.35rem);
+  line-height: 1.12;
+  text-wrap: wrap;
+}
+
+.toc-card h3.place-name.is-long {
+  font-size: clamp(0.92rem, 8.5cqi, 1.15rem);
+}
+
+.toc-card h3.place-name.is-longest {
+  font-size: clamp(0.8rem, 7cqi, 1rem);
+}
+
+.toc-rank {
+  margin-right: 0.3rem;
 }
 
 .guide-card:hover,
@@ -1239,6 +1261,14 @@ main ul.grid > li {
   flex-wrap: wrap;
   align-items: center;
   gap: 8px;
+}
+
+/* Unlayered display:flex beats the Tailwind `hidden` utility, so the desktop
+   controls were also sticky on a phone, on top of Filters and Map. */
+@media (max-width: 1023px) {
+  .guide-filter-dock > .guide-filters {
+    display: none;
+  }
 }
 
 .guide-filters .price-filter {
@@ -3092,6 +3122,57 @@ input[type='time'] {
   min-width: 0;
 }
 
+.header-sub {
+  display: flex;
+  min-width: 0;
+  max-height: 14rem;
+  overflow: hidden;
+  transition: max-height 280ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.header-sub-slide {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.45rem 0.55rem;
+  min-width: 0;
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+  transition: opacity 200ms ease, transform 280ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.header-sub.is-concealed {
+  max-height: 0;
+  pointer-events: none;
+}
+
+.header-sub.is-concealed .header-sub-slide {
+  opacity: 0;
+  transform: translate3d(0, -100%, 0);
+}
+
+@media (min-width: 640px) {
+  .header-sub {
+    transition: max-height 280ms cubic-bezier(0.22, 1, 0.36, 1), max-width 280ms cubic-bezier(0.22, 1, 0.36, 1), flex-basis 280ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  /* On the logo row the back control sits inline. Drop its width so Search doesn't keep a hole. */
+  .header-sub.is-concealed {
+    max-width: 0;
+    min-width: 0;
+    flex: 0 0 0px;
+    margin: 0;
+    padding: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .header-sub,
+  .header-sub-slide {
+    transition: none;
+  }
+}
+
 .brand-link {
   display: inline-flex;
   align-items: center;
@@ -3422,8 +3503,30 @@ h2.font-serif,
     white-space: nowrap;
   }
 
+  .header-bar .header-sub {
+    order: 4;
+    flex: 1 0 100%;
+  }
+
+  .header-bar .header-sub-slide {
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: stretch;
+    gap: 0.5rem;
+    width: 100%;
+  }
+
+  /* This basis is a full row of the header. Inside the column it would wrap sideways and clip. */
+  .header-bar .header-sub-slide .city-switch-bar {
+    flex: none;
+    order: 0;
+    width: 100%;
+    max-width: 100%;
+  }
+
   .header-bar .region-back {
     flex: none;
+    align-self: flex-start;
     max-width: 100%;
   }
 
@@ -3484,6 +3587,29 @@ h2.font-serif,
     display: contents;
   }
 
+  html[data-route='explore'] .header-bar .header-sub {
+    display: flex;
+    grid-column: 1 / -1;
+    grid-row: 2;
+    flex-direction: row;
+    align-items: center;
+    order: 0;
+    max-width: 100%;
+  }
+
+  html[data-route='explore'] .header-bar .header-sub-slide {
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    width: 100%;
+  }
+
+  html[data-route='explore'] .header-bar .header-sub.is-concealed {
+    display: flex;
+    max-width: 100%;
+    flex: 1 0 100%;
+  }
+
   html[data-route='explore'] .header-bar .brand-link {
     grid-area: brand;
     min-width: 0;
@@ -3498,15 +3624,13 @@ h2.font-serif,
   }
 
   html[data-route='explore'] .header-bar .region-back {
-    grid-area: back;
     justify-self: start;
     max-width: 100%;
   }
 
   html[data-route='explore'] .header-bar .city-switch-bar {
-    grid-area: switch;
     order: 0;
-    flex: none;
+    flex: 1 1 auto;
     width: auto;
     min-width: 0;
   }
@@ -3915,7 +4039,8 @@ img.is-pending,
   box-shadow: inset 4px 0 0 var(--color-coral), 0 10px 28px rgb(20 31 77 / 8%);
 }
 
-.guide-sticky {
+.guide-sticky,
+.guide-filter-dock {
   position: sticky;
   top: var(--header-offset);
   z-index: 24;
@@ -3923,6 +4048,23 @@ img.is-pending,
   padding: 0.35rem 0.25rem;
   background: rgb(238 227 214 / 92%);
   backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+.guide-filter-dock {
+  transition: transform 280ms cubic-bezier(0.22, 1, 0.36, 1), opacity 200ms ease;
+}
+
+.guide-filter-dock.is-concealed {
+  transform: translate3d(0, calc(-100% - 8px), 0);
+  opacity: 0;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .guide-filter-dock {
+    transition: none;
+  }
 }
 
 .place-grid {
@@ -3945,9 +4087,10 @@ img.is-pending,
   max-width: 100%;
 }
 
-img.is-portrait,
-.place-art.is-portrait {
-  object-position: center 18%;
+/* Center the crop. Pinning tall photos to the top cut off plates and bowls in the lower half. */
+img.is-portrait.is-portrait-lower,
+.place-art.is-portrait.is-portrait-lower {
+  object-position: center 68%;
 }
 
 @media (min-width: 1024px) {
@@ -4277,7 +4420,18 @@ mark {
 
 .search-field {
   position: relative;
+  z-index: 2;
   min-width: 0;
+}
+
+/* In the phone menu the list used to cover Sign in. WebKit then hit the button,
+   which sits later in the sheet at the same layer as the field. Keep the list in flow there. */
+.menu-sheet .search-pop {
+  position: relative;
+  top: auto;
+  right: auto;
+  width: 100%;
+  margin-top: 8px;
 }
 
 .search-pop {
@@ -4312,6 +4466,21 @@ mark {
   color: #fffaf3;
 }
 
+/* The navy hero paints every header button cream. These rows sit on a cream
+   sheet, so that color hid the name and the secondary line and left only the
+   pink match chip. Repeat the exclusions so this wins that rule. */
+.site-header.on-hero .search-pop button:not(.btn-coral):not(.btn-leaf):not(.btn-x) {
+  color: #181818;
+  -webkit-text-fill-color: #181818;
+}
+
+.site-header.on-hero .search-pop button.is-active:not(.btn-coral):not(.btn-leaf):not(.btn-x),
+.site-header.on-hero .search-pop button[aria-selected='true']:not(.btn-coral):not(.btn-leaf):not(.btn-x) {
+  background: #141f4d;
+  color: #fffaf3;
+  -webkit-text-fill-color: #fffaf3;
+}
+
 .search-pop button.is-active mark,
 .search-pop button[aria-selected='true'] mark,
 .guide-card.is-active mark,
@@ -4319,6 +4488,7 @@ mark {
 .chip.is-active mark {
   background: transparent;
   color: #ffb4a4;
+  -webkit-text-fill-color: #ffb4a4;
   text-decoration: underline;
 }
 

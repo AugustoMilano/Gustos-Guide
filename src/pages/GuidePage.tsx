@@ -20,6 +20,7 @@ import { hasUnknownPrice, matchesPrice, type PriceChoice } from '../lib/price-fi
 import { renderGuideStory } from '../lib/story-card.ts'
 import { awardFor } from '../lib/top25.ts'
 import { isPlaceOpen } from '../lib/hours.ts'
+import { useConcealOnScroll } from '../lib/conceal-on-scroll.ts'
 import { usePageMeta } from '../lib/meta.ts'
 import { originCanonical } from '../lib/site.ts'
 import { useApp } from '../state/AppState.tsx'
@@ -42,6 +43,7 @@ const GUIDE_MOVED: Record<string, string> = {
   'northbay-tiburon': 'north-bay',
   'northbay-sausalito': 'north-bay',
   'mos-cafe': 'best-of-moscow-id',
+  'eastside-brunch': 'best-breakfast-on-the-east-side',
 }
 
 export function GuidePage() {
@@ -62,6 +64,7 @@ export function GuidePage() {
   const [desktop, setDesktop] = useState(() => window.matchMedia('(min-width: 1024px)').matches)
   const [signInOpen, setSignInOpen] = useState(false)
   const [filtersOpen, setFiltersOpen] = useState(false)
+  const { dock, concealed } = useConcealOnScroll(filtersOpen)
   const [sort, setSort] = useState<'guide' | 'score' | 'near'>('score')
   const [here, setHere] = useState<{ lat: number; lng: number } | null>(null)
   const [nearNote, setNearNote] = useState<string | null>(null)
@@ -133,7 +136,7 @@ export function GuidePage() {
     ? shown.slice().sort((a, b) => milesBetween(here, a.place) - milesBetween(here, b.place))
     : shown
   const presented = sort === 'score'
-    ? rankByHouseScore(byDistance, gustoScore)
+    ? rankByHouseScore(byDistance, gustoScore, guide?.slug === 'eastside-drinks' || guide?.slug === 'best-breakfast-on-the-east-side' ? 'guide' : 'name')
     : byDistance.map((row) => ({ ...row, rank: null as number | null }))
   const ranked = presented.filter((row) => row.rank != null)
   const toVisit = presented.filter((row) => row.rank == null)
@@ -235,7 +238,8 @@ export function GuidePage() {
         </div>
             {nearNote ? <p className="mt-2 text-sm" role="status">{nearNote}</p> : null}
         <p className="mt-2 text-sm font-bold">{presented.length === rows.length ? countPlaces(rows.length) : `${presented.length} of ${countPlaces(rows.length)}`}</p>
-        <div className="guide-filters guide-sticky mt-3 hidden lg:flex">
+        <div ref={dock} className={`guide-filter-dock${concealed ? ' is-concealed' : ''}`} data-concealed={concealed ? 'true' : 'false'} inert={concealed || undefined}>
+        <div className="guide-filters mt-3 hidden lg:flex">
           <FilterFields
             neighborhoods={neighborhoods}
             cuisines={cuisines}
@@ -254,7 +258,7 @@ export function GuidePage() {
             setOpenNow={setOpenNow}
           />
         </div>
-        <div className="guide-sticky mt-3 flex gap-2 lg:hidden">
+        <div className="mt-3 flex gap-2 lg:hidden">
           <button type="button" className="btn flex-1 text-sm" onClick={() => setFiltersOpen(true)}>
             Filters{activeFilters.length ? ` · ${activeFilters.length}` : ''}
           </button>
@@ -281,6 +285,7 @@ export function GuidePage() {
             ))}
           </div>
         ) : null}
+        </div>
         {filtersOpen ? (
           <div className="fixed inset-0 z-50 flex items-end">
             <button type="button" className="absolute inset-0 bg-ink/50" aria-label="Close filters" onClick={() => setFiltersOpen(false)} />

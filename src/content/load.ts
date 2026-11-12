@@ -211,6 +211,20 @@ type BundleKey = keyof typeof placeLoaders
 
 const placeCache = new Map<BundleKey, Promise<Record<string, Place>>>()
 const guideCache = new Map<BundleKey, Promise<Guide[]>>()
+const fullPlaces = new Map<string, Place>()
+
+function rememberPlace(place: Place | null | undefined) {
+  if (place?.id) fullPlaces.set(place.id, place)
+}
+
+function rememberRecord(record: Record<string, Place>) {
+  for (const place of Object.values(record)) rememberPlace(place)
+}
+
+/** Full place record already loaded for this id, including the deep-linked boot record. */
+export function peekPlace(id: string): Place | undefined {
+  return fullPlaces.get(id) ?? bootPlace(id)
+}
 
 function bundleKey(city: string): BundleKey {
   if (city === 'eastbay' || city === 'peninsula' || city === 'northbay') return 'sf'
@@ -223,7 +237,10 @@ function bundleKey(city: string): BundleKey {
 function loadPlaceBundle(key: BundleKey): Promise<Record<string, Place>> {
   const cached = placeCache.get(key)
   if (cached) return cached
-  const pending = placeLoaders[key]()
+  const pending = placeLoaders[key]().then((record) => {
+    rememberRecord(record)
+    return record
+  })
   placeCache.set(key, pending)
   return pending
 }
@@ -256,7 +273,10 @@ export function loadGuides(): Promise<Guide[]> {
 export async function loadPlace(id: string): Promise<Place | undefined> {
   if (boot && boot.id === id) {
     const own = await boot.data
-    if (own && own.id === id) return own
+    if (own && own.id === id) {
+      rememberPlace(own)
+      return own
+    }
   }
   const slim = placeById.get(id)
   const first = bundleKey(slim?.city || routeCity())

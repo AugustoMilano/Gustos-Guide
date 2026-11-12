@@ -17,6 +17,7 @@ import { canonicalUrl } from '../lib/site.ts'
 import { compressToWebp, readPhotos, removePhoto, savePhoto, type StoredPhoto } from '../lib/photos.ts'
 import { rescore } from '../lib/rank.ts'
 import { mergeUploads, type LivePhoto } from '../lib/gallery.ts'
+import { HOUSE_SCORE_FALLBACK } from '../lib/house-score-fallback.ts'
 import type { HouseMark } from '../lib/quick-score.ts'
 import { deleteGuideRemote, importLocalBundle, loadAccount, loadHouseMarks, loadHouseScores, loadNotices, loadOwnerPhotos, loadPlans, saveGuide, savePlan, type FriendLists, type FriendProfile, type FriendRequest } from '../social/account.ts'
 import {
@@ -127,6 +128,8 @@ type AppValue = {
   friendScore: (placeId: string) => { average: number | null; loved: number; count: number; demo: boolean }
   friendMarks: (placeId: string) => { id: string; name: string; handle: string; score: number }[]
   gustoScore: (placeId: string) => number | null
+  /** False until the house-score read has settled. A missing score is not "unrated" before that. */
+  houseReady: boolean
   houseScores: Record<string, number>
   setHouseScore: (placeId: string, score: number | null) => void
   houseMark: (placeId: string) => HouseMark | null
@@ -206,6 +209,7 @@ export function AppProvider({ children }: { children: ReactNode }) {
   const [announcement, setAnnouncement] = useState('')
   const [authError, setAuthError] = useState<string | null>(() => peekAuthError())
   const [house, setHouse] = useState<Record<string, number>>({})
+  const [houseReady, setHouseReady] = useState(!supabaseConfigured)
   const [marks, setMarks] = useState<Record<string, HouseMark>>({})
   const [collections, setCollections] = useState<HouseCollection[]>([])
   const collectionsRef = useRef<HouseCollection[]>([])
@@ -324,6 +328,8 @@ export function AppProvider({ children }: { children: ReactNode }) {
   }, [])
 
   useEffect(() => {
+    // A configured app waits for house_scores. The device cache is only the score source offline.
+    if (supabaseConfigured) return
     try {
       const raw = localStorage.getItem(HOUSE_KEY)
       if (raw) {
@@ -381,7 +387,14 @@ export function AppProvider({ children }: { children: ReactNode }) {
       setCollectionsMessage(error instanceof Error ? error.message : 'Could not load collections.')
     })
     void loadHouseScores(remote).then((scores) => {
-      if (!cancel && scores) setHouse(scores)
+      if (cancel) return
+      if (scores) {
+        setHouse(scores)
+        try { localStorage.setItem(HOUSE_KEY, JSON.stringify(scores)) } catch { /* private mode */ }
+      }
+      setHouseReady(true)
+    }).catch(() => {
+      if (!cancel) setHouseReady(true)
     })
     void loadOwnerPhotos(remote).then((rows) => {
       if (cancel) return
@@ -1388,8 +1401,12 @@ export function AppProvider({ children }: { children: ReactNode }) {
   }
 
   function gustoScore(placeId: string): number | null {
-    const value = house[placeId]
-    return typeof value === 'number' ? value : null
+    if (houseReady) {
+      const value = house[placeId]
+      if (typeof value === 'number') return value
+    }
+    const fallback = HOUSE_SCORE_FALLBACK[placeId]
+    return typeof fallback === 'number' ? fallback : null
   }
 
   function tasteMatch(userId: string) {
@@ -1481,6 +1498,7 @@ export function AppProvider({ children }: { children: ReactNode }) {
     friendScore,
     friendMarks,
     gustoScore,
+    houseReady,
     houseScores: house,
     setHouseScore,
     houseMark,

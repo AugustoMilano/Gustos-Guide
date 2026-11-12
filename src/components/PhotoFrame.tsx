@@ -15,8 +15,9 @@ export function PhotoFrame({
   compact?: boolean
   transitionName?: string
 }) {
-  const [failed, setFailed] = useState(false)
+  const [brokenUrl, setBrokenUrl] = useState<string | null>(null)
   const [readySrc, setReadySrc] = useState('')
+  const failed = brokenUrl != null && brokenUrl === (photo.url ?? '')
   const art = photo.illustration || !photo.url || failed
   const picture = photo.url && !photo.illustration ? responsivePhoto(photo.url, '(min-width: 1024px) 36rem, calc(100vw - 2rem)') : null
   const src = picture?.src ?? ''
@@ -39,12 +40,12 @@ export function PhotoFrame({
             loading={priority ? 'eager' : 'lazy'}
             decoding="async"
             fetchPriority={priority ? 'high' : undefined}
-            className={`place-art object-cover${portraitClass(picture.width, picture.height)}${ready ? '' : ' is-pending'}`}
+            className={`place-art object-cover${portraitClass(picture.width, picture.height, photo.url)}${ready ? '' : ' is-pending'}`}
             ref={(node) => {
               if (node?.complete && node.naturalWidth > 0) setReadySrc(src)
             }}
             onLoad={() => setReadySrc(src)}
-            onError={() => setFailed(true)}
+            onError={() => setBrokenUrl(photo.url ?? '')}
           />
         </picture>
       )}

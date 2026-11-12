@@ -87,7 +87,7 @@ export function GuideStrip({
                   <div className="toc-badge">
                     <ScoreBadge score={score} size="sm" />
                   </div>
-                  <h3 className={placeNameClass(place.name, 'mt-2 min-h-[2.6rem] italic leading-tight')}>{number != null ? <span className="mr-1.5 text-coral not-italic">{number}</span> : null}{place.name}</h3>
+                  <h3 className={placeNameClass(place.name, 'toc-title mt-2 min-h-[2.6rem] italic leading-tight')}>{number != null ? <span className="toc-rank text-coral not-italic">{number}</span> : null}{place.name}</h3>
                   <PlaceMeta parts={[place.neighborhood, cuisineLabel(place.cuisine[0] ?? ''), priceLabel(place.price)]} className="mt-2 line-clamp-2 min-h-[2rem] text-xs font-bold tracking-wide uppercase" />
                   {vibe || place.perfectFor[0] ? <span className={`tag mt-1.5 min-h-6 ${vibe ? 'tag-vibe' : ''}`}>{vibe ?? place.perfectFor[0]}</span> : null}
                 </div>
@@ -126,7 +126,7 @@ function GuideShotImg({
         width={picture.width}
         height={picture.height}
         alt={alt}
-        className={`h-full w-full object-cover${portraitClass(picture.width, picture.height)}`}
+        className={`h-full w-full object-cover${portraitClass(picture.width, picture.height, url)}`}
         loading={priority ? 'eager' : 'lazy'}
         decoding="async"
         fetchPriority={priority ? 'high' : undefined}
@@ -139,12 +139,10 @@ function GuideShotImg({
 function Shot({
   place,
   photo,
-  tall,
   priority = false,
 }: {
   place: SlimPlace
   photo: DisplayPhoto | undefined
-  tall: boolean
   priority?: boolean
 }) {
   const [failed, setFailed] = useState(false)
@@ -152,7 +150,7 @@ function Shot({
   const art = photo?.illustration || !shotUrl || failed
   return (
     <figure className="min-w-0">
-      <div className={`guide-shot relative overflow-hidden soft-media bg-navy ${tall ? 'h-72 sm:h-96' : 'h-64 sm:h-80'} [&_.place-art]:aspect-auto [&_.place-art]:h-full`}>
+      <div className="guide-shot relative h-64 overflow-hidden soft-media bg-navy sm:h-80 [&_.place-art]:aspect-auto [&_.place-art]:h-full">
         {art || !photo || !shotUrl ? (
           <PlaceArt id={place.id} cuisine={place.cuisine[0] ?? 'Seattle'} neighborhood={place.neighborhood} />
         ) : (
@@ -202,13 +200,12 @@ export function GuideEntryCard({
   const [active, setActive] = useState(0)
   const photo = shots[Math.min(active, shots.length - 1)]
   const artOnly = !photo?.url || photo.illustration
-  const layout = index % 3
   const image = (
     <div className="relative min-w-0">
       <RankMedal number={number} size="md" className="absolute top-3 left-3 z-10" />
       <Link to={cityPath(`/place/${place.id}`)} className="block" aria-label={place.name} viewTransition={!reduceMotion}>
         <span className="block" style={reduceMotion ? undefined : { viewTransitionName: `place-${place.id}` }}>
-          <Shot place={place} photo={photo} tall={layout === 0} priority={index === 0} />
+          <Shot place={place} photo={photo} priority={index === 0} />
         </span>
       </Link>
       {shots.length > 1 ? (
@@ -268,12 +265,6 @@ export function GuideEntryCard({
       </div>
     </div>
   )
-  const copy = (
-    <div className="min-w-0">
-      {title}
-      {rest}
-    </div>
-  )
   const point = {
     onMouseEnter: () => onPoint?.(place.id),
     onMouseLeave: () => onPoint?.(null),
@@ -316,20 +307,11 @@ export function GuideEntryCard({
   )
   const stagger = Math.min(index, 6) * 0.05
   if (artOnly) return index === 0 ? compact : <Reveal delay={stagger}>{compact}</Reveal>
-  const body = layout === 0 ? (
+  const body = (
     <article id={`entry-${place.id}`} className={`guide-entry scroll-mt-24 border-t border-ink/10${hotClass}`} {...point}>
-      {title}
-      <div className="mt-4">{image}</div>
+      {image}
+      <div className="mt-4">{title}</div>
       {rest}
-    </article>
-  ) : (
-    <article
-      id={`entry-${place.id}`}
-      className={`guide-entry scroll-mt-24 grid gap-4 border-t border-ink/10 md:grid-cols-2 md:items-center md:gap-6${hotClass}`}
-      {...point}
-    >
-      {layout === 2 ? copy : image}
-      {layout === 2 ? image : copy}
     </article>
   )
   if (index === 0) return body
