@@ -27,8 +27,20 @@ import type { Guide, Price, SlimPlace, VisitStatus } from '../types.ts'
 
 /** Neighborhood lists that moved when East Bay became its own area. */
 const GUIDE_MOVED: Record<string, string> = {
-  'peninsula-fremont': 'eastbay-fremont',
-  'peninsula-pleasanton': 'eastbay-pleasanton',
+  'peninsula-fremont': 'east-bay',
+  'peninsula-pleasanton': 'east-bay',
+  'eastbay-berkeley': 'east-bay',
+  'eastbay-fremont': 'east-bay',
+  'eastbay-pleasanton': 'east-bay',
+  'peninsula-half-moon-bay': 'peninsula',
+  'peninsula-pacifica': 'peninsula',
+  'peninsula-san-jose': 'peninsula',
+  'peninsula-palo-alto': 'peninsula',
+  'peninsula-santa-clara': 'peninsula',
+  'northbay-corte-madera': 'north-bay',
+  'northbay-larkspur': 'north-bay',
+  'northbay-tiburon': 'north-bay',
+  'northbay-sausalito': 'north-bay',
 }
 
 export function GuidePage() {

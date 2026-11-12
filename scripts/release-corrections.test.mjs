@@ -187,7 +187,10 @@ assert.equal(portraitClass(1600, 1200), '')
 const bay = JSON.parse(readFileSync(new URL('../src/content/sf.json', import.meta.url), 'utf8'))
 for (const guide of eastside.guides) assert.ok(guide.entries.length >= 4, guide.slug)
 for (const guide of bay.guides.filter((item) => item.city === 'sf')) assert.ok(guide.entries.length >= 4, guide.slug)
-assert.equal(bay.guides.some((guide) => guide.slug === 'eastbay-berkeley'), true)
+assert.equal(bay.guides.some((guide) => guide.slug === 'east-bay'), true)
+assert.equal(bay.guides.find((guide) => guide.slug === 'east-bay').entries.length, 4)
+assert.equal(bay.guides.find((guide) => guide.slug === 'peninsula').entries.length, 9)
+assert.equal(bay.guides.find((guide) => guide.slug === 'north-bay').entries.length, 6)
 assert.equal(eastside.guides.some((guide) => guide.slug === 'kirkland-waterfront'), false)
 
 const row = {
