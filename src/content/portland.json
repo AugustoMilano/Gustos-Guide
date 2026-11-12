@@ -174,7 +174,8 @@
         }
       ],
       "phone": "+1 (503) 546-8796",
-      "website": "https://www.lepigeon.com"
+      "website": "https://www.lepigeon.com",
+      "price": 4
     },
     {
       "id": "lechon",
@@ -637,7 +638,8 @@
         }
       ],
       "phone": "+1 (503) 719-4064",
-      "website": "https://www.nimblefishpdx.com"
+      "website": "https://www.nimblefishpdx.com",
+      "price": 4
     },
     {
       "id": "langbaan",
@@ -842,7 +844,8 @@
         }
       ],
       "phone": "+1 (503) 517-9951",
-      "website": "https://kensartisan.com"
+      "website": "https://kensartisan.com",
+      "price": 2
     },
     {
       "id": "pdx-sliders",
@@ -960,7 +963,8 @@
         }
       ],
       "phone": "+1 (503) 282-3681",
-      "website": "https://taste-tickler.com"
+      "website": "https://taste-tickler.com",
+      "price": 1
     },
     {
       "id": "olympia-provisions",
@@ -1159,7 +1163,8 @@
         }
       ],
       "phone": "+1 (971) 295-1645",
-      "website": "https://www.eempdx.com/"
+      "website": "https://www.eempdx.com/",
+      "price": 2
     },
     {
       "id": "salty-s",
@@ -1317,7 +1322,8 @@
         }
       ],
       "phone": "+1 (503) 296-4906",
-      "website": "https://www.deschutesbrewery.com/visit-us/portland-public-house/"
+      "website": "https://www.deschutesbrewery.com/visit-us/portland-public-house/",
+      "price": 2
     },
     {
       "id": "jacqueline",
@@ -1368,7 +1374,8 @@
         }
       ],
       "phone": "+1 (503) 327-8637",
-      "website": "https://jacquelinepdx.com"
+      "website": "https://jacquelinepdx.com",
+      "price": 3
     },
     {
       "id": "lovely-s-fifty-fifty",
@@ -1422,7 +1429,8 @@
         }
       ],
       "phone": "+1 (503) 281-4060",
-      "website": "https://www.lovelys5050.com"
+      "website": "https://www.lovelys5050.com",
+      "price": 2
     },
     {
       "id": "bellpine",
@@ -1545,7 +1553,8 @@
         }
       ],
       "phone": "+1 (503) 702-0290",
-      "website": "https://kannrestaurant.com"
+      "website": "https://kannrestaurant.com",
+      "price": 4
     },
     {
       "id": "q-restaurant-bar",
@@ -1666,7 +1675,8 @@
         }
       ],
       "phone": "+1 (503) 241-4704",
-      "website": "https://www.voodoodoughnut.com"
+      "website": "https://www.voodoodoughnut.com",
+      "price": 1
     },
     {
       "id": "el-gaucho-pdx",
@@ -1783,7 +1793,8 @@
         }
       ],
       "phone": "+1 (503) 208-4177",
-      "website": "http://mauricepdx.com/maison/"
+      "website": "http://mauricepdx.com/maison/",
+      "price": 2
     },
     {
       "id": "terra-mae",
@@ -1847,7 +1858,8 @@
         "count": 180,
         "source": "Yelp"
       },
-      "yelpSlug": "Z7NJmbcZT8fbj2vHR2BFSg"
+      "yelpSlug": "Z7NJmbcZT8fbj2vHR2BFSg",
+      "price": 3
     },
     {
       "id": "stumptown-coffee-roasters",
@@ -1909,7 +1921,8 @@
         "count": 1202,
         "source": "Yelp"
       },
-      "yelpSlug": "3KJ-vK3xNUALksxjOrVPQQ"
+      "yelpSlug": "3KJ-vK3xNUALksxjOrVPQQ",
+      "price": 1
     },
     {
       "id": "coava-coffee-roasters",
@@ -2122,7 +2135,8 @@
         }
       ],
       "phone": "+1 (503) 206-8321",
-      "website": "https://www.nosaintpdx.com"
+      "website": "https://www.nosaintpdx.com",
+      "price": 2
     },
     {
       "id": "campana",
@@ -2310,7 +2324,8 @@
         }
       ],
       "phone": "+1 (503) 234-2427",
-      "website": "https://nostrana.com"
+      "website": "https://nostrana.com",
+      "price": 3
     },
     {
       "id": "mothers-bistro-bar",

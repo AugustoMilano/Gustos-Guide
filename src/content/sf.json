@@ -145,7 +145,8 @@
       ],
       "phone": "+1 (415) 775-8508",
       "website": "http://www.cotognasf.com",
-      "yelpSlug": "cotogna-san-francisco"
+      "yelpSlug": "cotogna-san-francisco",
+      "price": 4
     },
     {
       "id": "international-smoke",
@@ -318,7 +319,8 @@
       ],
       "phone": "+1 (415) 814-8888",
       "website": "https://one65sf.com/concept/o/",
-      "yelpSlug": "o-by-claude-le-tohic-san-francisco-3"
+      "yelpSlug": "o-by-claude-le-tohic-san-francisco-3",
+      "price": 4
     },
     {
       "id": "barbara-s-fishtrap",
@@ -378,7 +380,8 @@
       ],
       "phone": "+1 (650) 728-7049",
       "website": "https://www.barbarasfishtrap.com/",
-      "yelpSlug": "barbaras-fishtrap-half-moon-bay"
+      "yelpSlug": "barbaras-fishtrap-half-moon-bay",
+      "price": 2
     },
     {
       "id": "square-pie-guys",
@@ -438,7 +441,8 @@
       ],
       "phone": "+1 (415) 872-9290",
       "website": "https://www.squarepieguys.com",
-      "yelpSlug": "square-pie-guys-san-francisco-san-francisco"
+      "yelpSlug": "square-pie-guys-san-francisco-san-francisco",
+      "price": 2
     },
     {
       "id": "la-taqueria",
@@ -505,7 +509,8 @@
       ],
       "phone": "+1 (415) 285-7117",
       "website": "https://lataqueriasf.net",
-      "yelpSlug": "la-taqueria-san-francisco-2"
+      "yelpSlug": "la-taqueria-san-francisco-2",
+      "price": 1
     },
     {
       "id": "surisan",
@@ -723,7 +728,8 @@
       ],
       "phone": "+1 (415) 648-7600",
       "website": "https://foreigncinema.com",
-      "yelpSlug": "foreign-cinema-san-francisco"
+      "yelpSlug": "foreign-cinema-san-francisco",
+      "price": 3
     },
     {
       "id": "rintaro",
@@ -899,7 +905,8 @@
       ],
       "phone": "+1 (415) 474-5698",
       "website": "https://saigon-sandwich-sf.com",
-      "yelpSlug": "saigon-sandwich-san-francisco"
+      "yelpSlug": "saigon-sandwich-san-francisco",
+      "price": 1
     },
     {
       "id": "la-mar",
@@ -972,7 +979,8 @@
       ],
       "phone": "+1 (415) 397-8880",
       "website": "https://lamarsf.com",
-      "yelpSlug": "la-mar-san-francisco-4"
+      "yelpSlug": "la-mar-san-francisco-4",
+      "price": 4
     },
     {
       "id": "sotto-mare",
@@ -1032,7 +1040,8 @@
       ],
       "phone": "+1 (415) 398-3181",
       "website": "https://www.sottomaresf.com/",
-      "yelpSlug": "sotto-mare-san-francisco-4"
+      "yelpSlug": "sotto-mare-san-francisco-4",
+      "price": 2
     },
     {
       "id": "salt-straw-sf",
@@ -1285,7 +1294,8 @@
         }
       ],
       "phone": "+1 (415) 944-4600",
-      "website": "https://www.verjuscave.com"
+      "website": "https://www.verjuscave.com",
+      "price": 3
     },
     {
       "id": "scoma-s",
@@ -1345,7 +1355,8 @@
       ],
       "phone": "+1 (415) 771-4383",
       "website": "https://scomas.com",
-      "yelpSlug": "scomas-restaurant-san-francisco-3"
+      "yelpSlug": "scomas-restaurant-san-francisco-3",
+      "price": 3
     },
     {
       "id": "al-carajo-sf",
@@ -1404,7 +1415,8 @@
         }
       ],
       "phone": "+1 (415) 400-4146",
-      "website": "https://alcarajosf.com"
+      "website": "https://alcarajosf.com",
+      "price": 1
     },
     {
       "id": "the-progress",
@@ -1458,7 +1470,8 @@
       ],
       "phone": "+1 (415) 673-1294",
       "website": "https://theprogress-sf.com",
-      "yelpSlug": "the-progress-san-francisco-2"
+      "yelpSlug": "the-progress-san-francisco-2",
+      "price": 4
     },
     {
       "id": "arsicault",
@@ -1512,7 +1525,8 @@
       ],
       "phone": "+1 (415) 926-5155",
       "website": "http://arsicault-bakery.com",
-      "yelpSlug": "arsicault-san-francisco"
+      "yelpSlug": "arsicault-san-francisco",
+      "price": 1
     },
     {
       "id": "butter-crumble",
@@ -1562,7 +1576,8 @@
         }
       ],
       "phone": "+1 (415) 874-9484",
-      "website": "https://www.butterandcrumble.com"
+      "website": "https://www.butterandcrumble.com",
+      "price": 2
     },
     {
       "id": "mijote",
@@ -1614,7 +1629,8 @@
         }
       ],
       "website": "https://www.mijotesf.com",
-      "yelpSlug": "mijot"
+      "yelpSlug": "mijot",
+      "price": 4
     },
     {
       "id": "john-s-grill",
@@ -1668,7 +1684,8 @@
       ],
       "phone": "+1 (415) 986-0069",
       "website": "https://www.johnsgrill.com",
-      "yelpSlug": "johns-grill-san-francisco"
+      "yelpSlug": "johns-grill-san-francisco",
+      "price": 3
     },
     {
       "id": "golden-gate-fortune-cookie-factory",
@@ -1776,7 +1793,8 @@
       ],
       "phone": "+1 (415) 296-9463",
       "website": "https://www.facebook.com/SFAlimento",
-      "yelpSlug": "alimento-san-francisco-3"
+      "yelpSlug": "alimento-san-francisco-3",
+      "price": 1
     },
     {
       "id": "reveille-coffee-co",
@@ -1830,7 +1848,8 @@
       ],
       "phone": "+1 (415) 789-6258",
       "website": "https://www.reveillecoffee.com/pages/2268-chestnut-street-san-francsico-ca",
-      "yelpSlug": "reveille-coffee-san-francisco-11"
+      "yelpSlug": "reveille-coffee-san-francisco-11",
+      "price": 1
     },
     {
       "id": "tartine-bakery",
@@ -1885,7 +1904,8 @@
       ],
       "phone": "+1 (415) 487-2600",
       "website": "https://tartinebakery.com/san-francisco/bakery",
-      "yelpSlug": "tartine-bakery-san-francisco-3"
+      "yelpSlug": "tartine-bakery-san-francisco-3",
+      "price": 1
     },
     {
       "id": "taco-bell-cantina",
@@ -1990,7 +2010,8 @@
       ],
       "phone": "+1 (415) 448-6023",
       "website": "http://www.robinsanfrancisco.com",
-      "yelpSlug": "robin-san-francisco"
+      "yelpSlug": "robin-san-francisco",
+      "price": 4
     },
     {
       "id": "senor-sisig",
@@ -2056,7 +2077,8 @@
       ],
       "phone": "+1 (855) 747-4455",
       "website": "https://www.senorsisig.com/sf-ferry-building",
-      "yelpSlug": "se"
+      "yelpSlug": "se",
+      "price": 1
     },
     {
       "id": "dalida",
@@ -2183,7 +2205,8 @@
       ],
       "phone": "+1 (415) 800-8345",
       "website": "https://mensho.com/location/mensho-tokyo-sf/",
-      "yelpSlug": "mensho-tokyo-san-francisco-4"
+      "yelpSlug": "mensho-tokyo-san-francisco-4",
+      "price": 2
     },
     {
       "id": "la-ciccia",
@@ -2475,7 +2498,8 @@
       ],
       "phone": "+1 (415) 587-2345",
       "website": "https://www.roxiefoodcenter.com",
-      "yelpSlug": "roxie-food-center-san-francisco"
+      "yelpSlug": "roxie-food-center-san-francisco",
+      "price": 1
     },
     {
       "id": "pacific-cocktail-haven",
@@ -2527,7 +2551,8 @@
       ],
       "phone": "+1 (415) 398-0195",
       "website": "https://www.pacificcocktailsf.com",
-      "yelpSlug": "pacific-cocktail-haven-san-francisco-2"
+      "yelpSlug": "pacific-cocktail-haven-san-francisco-2",
+      "price": 2
     },
     {
       "id": "californios",
@@ -2632,7 +2657,8 @@
         }
       ],
       "website": "https://www.facebook.com/people/Ocean-Subs/61564973730492/",
-      "yelpSlug": "ocean-subs-san-francisco"
+      "yelpSlug": "ocean-subs-san-francisco",
+      "price": 1
     },
     {
       "id": "outta-sight-pizza",
@@ -2684,7 +2710,8 @@
       ],
       "phone": "+1 (415) 829-3108",
       "website": "https://www.thatsouttasight.com/",
-      "yelpSlug": "outta-sight-pizza-san-francisco"
+      "yelpSlug": "outta-sight-pizza-san-francisco",
+      "price": 1
     },
     {
       "id": "sons-daughters",
@@ -2736,7 +2763,8 @@
         }
       ],
       "phone": "+1 (415) 994-7933",
-      "website": "https://www.sonsanddaughterssf.com"
+      "website": "https://www.sonsanddaughterssf.com",
+      "price": 4
     },
     {
       "id": "the-vault",
@@ -2930,7 +2958,8 @@
       ],
       "phone": "+1 (415) 824-7877",
       "website": "https://www.facebook.com/p/Taqueria-El-Farolito-100063563409799/",
-      "yelpSlug": "el-farolito-san-francisco-2"
+      "yelpSlug": "el-farolito-san-francisco-2",
+      "price": 1
     },
     {
       "id": "a-mano",
@@ -3118,7 +3147,8 @@
       ],
       "phone": "+1 (510) 714-2226",
       "website": "https://billyroysburgerco.com",
-      "yelpSlug": "billy-roys-burger-fremont-4"
+      "yelpSlug": "billy-roys-burger-fremont-4",
+      "price": 2
     },
     {
       "id": "niku-steakhouse",
@@ -3236,7 +3266,8 @@
       ],
       "phone": "+1 (415) 866-4121",
       "website": "https://el-mil-amores-restaurant.wsite.top/",
-      "yelpSlug": "el-mil-amores-restaurant-san-francisco"
+      "yelpSlug": "el-mil-amores-restaurant-san-francisco",
+      "price": 2
     },
     {
       "id": "sweet-maple",
@@ -3294,7 +3325,8 @@
       ],
       "phone": "+1 (415) 655-9169",
       "website": "http://www.sweetmaplesf.com/",
-      "yelpSlug": "sweet-maple-san-francisco"
+      "yelpSlug": "sweet-maple-san-francisco",
+      "price": 2
     },
     {
       "id": "cultivar",
@@ -3423,7 +3455,8 @@
         }
       ],
       "website": "https://rustyladle.com",
-      "yelpSlug": "rusty-ladle-san-francisco"
+      "yelpSlug": "rusty-ladle-san-francisco",
+      "price": 1
     },
     {
       "id": "true-laurel",
@@ -3500,7 +3533,8 @@
       ],
       "phone": "+1 (415) 341-0020",
       "website": "https://www.truelaurelsf.com",
-      "yelpSlug": "true-laurel-san-francisco-3"
+      "yelpSlug": "true-laurel-san-francisco-3",
+      "price": 2
     },
     {
       "id": "golden-boy-pizza",
@@ -3560,7 +3594,8 @@
       ],
       "phone": "+1 (415) 982-9738",
       "website": "https://www.goldenboypizza.com/northbeach",
-      "yelpSlug": "golden-boy-pizza-san-francisco"
+      "yelpSlug": "golden-boy-pizza-san-francisco",
+      "price": 1
     },
     {
       "id": "the-matterhorn-restaurant-and-bakery",
@@ -3731,7 +3766,8 @@
       ],
       "phone": "+1 (415) 729-9593",
       "website": "https://barrelhousetavern.com",
-      "yelpSlug": "barrel-house-tavern-sausalito"
+      "yelpSlug": "barrel-house-tavern-sausalito",
+      "price": 2
     },
     {
       "id": "nobu-sf",
@@ -4038,7 +4074,8 @@
       ],
       "phone": "+1 (415) 525-4435",
       "website": "http://streettacosf.com",
-      "yelpSlug": "street-taco-san-francisco"
+      "yelpSlug": "street-taco-san-francisco",
+      "price": 1
     },
     {
       "id": "state-bird-provisions",
@@ -4100,7 +4137,8 @@
       ],
       "phone": "+1 (415) 795-1272",
       "website": "https://statebirdsf.com",
-      "yelpSlug": "state-bird-provisions-san-francisco"
+      "yelpSlug": "state-bird-provisions-san-francisco",
+      "price": 4
     },
     {
       "id": "the-melt",
@@ -4167,7 +4205,8 @@
       ],
       "phone": "+1 (415) 689-5879",
       "website": "https://www.themelt.com",
-      "yelpSlug": "the-melt-san-francisco-15"
+      "yelpSlug": "the-melt-san-francisco-15",
+      "price": 1
     },
     {
       "id": "penny-roma",
@@ -4228,7 +4267,8 @@
       ],
       "phone": "+1 (415) 826-7004",
       "website": "https://pennyroma.com",
-      "yelpSlug": "penny-roma-san-francisco"
+      "yelpSlug": "penny-roma-san-francisco",
+      "price": 3
     },
     {
       "id": "wildseed",
@@ -4499,7 +4539,8 @@
       ],
       "phone": "+1 (415) 928-1849",
       "website": "https://boudinbakery.com/location/boudin-bakery-bakers-hall/",
-      "yelpSlug": "boudin-san-francisco-20"
+      "yelpSlug": "boudin-san-francisco-20",
+      "price": 2
     },
     {
       "id": "devil-s-teeth-baking-company",
@@ -4690,7 +4731,8 @@
       ],
       "phone": "+1 (415) 853-0671",
       "website": "https://www.prubechu.com",
-      "yelpSlug": "prubechu-san-francisco"
+      "yelpSlug": "prubechu-san-francisco",
+      "price": 2
     },
     {
       "id": "zuni-cafe",
@@ -4814,7 +4856,8 @@
       ],
       "phone": "+1 (415) 673-1101",
       "website": "https://www.facebook.com/SwanOysterSF",
-      "yelpSlug": "swan-oyster-depot-san-francisco"
+      "yelpSlug": "swan-oyster-depot-san-francisco",
+      "price": 3
     },
     {
       "id": "malibu-farm",
@@ -5017,7 +5060,8 @@
       ],
       "phone": "+1 (415) 896-4281",
       "website": "https://www.romasf.com/marina-location",
-      "yelpSlug": "roma-antica-san-francisco-3"
+      "yelpSlug": "roma-antica-san-francisco-3",
+      "price": 2
     },
     {
       "id": "rh-rooftop-restaurant-at-rh-marin",
@@ -5220,7 +5264,8 @@
       ],
       "phone": "+1 (415) 474-5044",
       "website": "https://www.thebuenavista.com",
-      "yelpSlug": "the-buena-vista-san-francisco"
+      "yelpSlug": "the-buena-vista-san-francisco",
+      "price": 2
     },
     {
       "id": "gary-danko",
@@ -5273,7 +5318,8 @@
       ],
       "phone": "+1 (415) 749-2060",
       "website": "https://www.garydanko.com",
-      "yelpSlug": "gary-danko-san-francisco"
+      "yelpSlug": "gary-danko-san-francisco",
+      "price": 4
     },
     {
       "id": "flores",
@@ -5653,7 +5699,8 @@
       ],
       "phone": "+1 (415) 391-7117",
       "website": "https://hogislandoysters.com/restaurants/san-francisco",
-      "yelpSlug": "hog-island-oyster-san-francisco-3"
+      "yelpSlug": "hog-island-oyster-san-francisco-3",
+      "price": 3
     },
     {
       "id": "dumpling-home",
@@ -5717,7 +5764,8 @@
         }
       ],
       "phone": "+1 (415) 503-1666",
-      "yelpSlug": "dumpling-home-san-francisco"
+      "yelpSlug": "dumpling-home-san-francisco",
+      "price": 2
     },
     {
       "id": "lung-fung-bakery",
@@ -5770,7 +5818,8 @@
       ],
       "phone": "+1 (415) 386-3775",
       "website": "https://lungfungbakery.shop",
-      "yelpSlug": "lung-fung-bakery-san-francisco"
+      "yelpSlug": "lung-fung-bakery-san-francisco",
+      "price": 1
     },
     {
       "id": "showa",
@@ -5822,7 +5871,8 @@
       ],
       "phone": "+1 (415) 470-1107",
       "website": "https://www.showaus.com",
-      "yelpSlug": "showa-le-gourmet-tonkatsu-san-francisco-2"
+      "yelpSlug": "showa-le-gourmet-tonkatsu-san-francisco-2",
+      "price": 4
     },
     {
       "id": "outerlands",
@@ -5900,7 +5950,8 @@
       ],
       "phone": "+1 (415) 661-6140",
       "website": "https://outerlandssf.com",
-      "yelpSlug": "outerlands-san-francisco"
+      "yelpSlug": "outerlands-san-francisco",
+      "price": 2
     },
     {
       "id": "nisei",
@@ -6023,7 +6074,8 @@
       ],
       "phone": "+1 (650) 246-9967",
       "website": "https://ramennagiusa.com",
-      "yelpSlug": "ramen-nagi-palo-alto"
+      "yelpSlug": "ramen-nagi-palo-alto",
+      "price": 2
     },
     {
       "id": "the-spinnaker",
@@ -6232,7 +6284,8 @@
       ],
       "phone": "+1 (415) 775-4877",
       "website": "https://originaljoes.com/north-beach/",
-      "yelpSlug": "original-joes-san-francisco-3"
+      "yelpSlug": "original-joes-san-francisco-3",
+      "price": 2
     },
     {
       "id": "atelier-crenn",
@@ -6488,7 +6541,8 @@
       ],
       "phone": "+1 (415) 885-4605",
       "website": "https://www.houseofprimerib.net",
-      "yelpSlug": "house-of-prime-rib-san-francisco"
+      "yelpSlug": "house-of-prime-rib-san-francisco",
+      "price": 3
     },
     {
       "id": "boulevard",
@@ -6598,7 +6652,8 @@
       ],
       "phone": "+1 (415) 874-9921",
       "website": "https://www.lazybearsf.com",
-      "yelpSlug": "lazy-bear-san-francisco-5"
+      "yelpSlug": "lazy-bear-san-francisco-5",
+      "price": 4
     },
     {
       "id": "osso-steakhouse",
@@ -6719,7 +6774,8 @@
       ],
       "phone": "+1 (415) 321-2170",
       "website": "https://www.mendocinofarms.com/location-directory/norcal/465-california-st-san-francisco-ca-94104",
-      "yelpSlug": "mendocino-farms-san-francisco"
+      "yelpSlug": "mendocino-farms-san-francisco",
+      "price": 1
     },
     {
       "id": "joe-the-juice-sf",
@@ -7056,7 +7112,8 @@
       ],
       "phone": "+1 (415) 801-5927",
       "website": "https://www.cafeokawari.com",
-      "yelpSlug": "cafe-okawari-san-francisco"
+      "yelpSlug": "cafe-okawari-san-francisco",
+      "price": 1
     },
     {
       "id": "taverna",
@@ -7461,7 +7518,8 @@
       ],
       "phone": "+1 (415) 421-2337",
       "website": "https://www.themolinarideli.com",
-      "yelpSlug": "molinari-delicatessen-san-francisco"
+      "yelpSlug": "molinari-delicatessen-san-francisco",
+      "price": 1
     },
     {
       "id": "deli-board",
@@ -7515,7 +7573,8 @@
       ],
       "phone": "+1 (415) 552-7687",
       "website": "https://www.deliboardsf.com/",
-      "yelpSlug": "deli-board-san-francisco"
+      "yelpSlug": "deli-board-san-francisco",
+      "price": 2
     },
     {
       "id": "four-kings",
@@ -7715,7 +7774,8 @@
       ],
       "phone": "+1 (415) 634-7002",
       "website": "https://www.bodegasf.com",
-      "yelpSlug": "bodega-san-francisco-2"
+      "yelpSlug": "bodega-san-francisco-2",
+      "price": 1
     },
     {
       "id": "benu",

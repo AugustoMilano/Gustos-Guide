@@ -2,6 +2,13 @@ import assert from 'node:assert/strict'
 import { readFileSync } from 'node:fs'
 import { rankByHouseScore } from '../src/lib/guide-rank.ts'
 
+// Prices published on Nov 11, 2026 come from data/price-sources-2026-11-11.json; anything else stays unpriced.
+const laterPrices = new Map(
+  JSON.parse(readFileSync(new URL('../data/price-sources-2026-11-11.json', import.meta.url), 'utf8')).places.map((row) => [row.id, row.price]),
+)
+const priceOrLedger = (place) => assert.equal(place.price ?? null, laterPrices.get(place.id) ?? null, place.id)
+
+
 const eastside = JSON.parse(readFileSync(new URL('../src/content/eastside.json', import.meta.url), 'utf8'))
 const order = [
   'village-square-cafe',
@@ -33,10 +40,10 @@ assert.equal(byId.get('sparrow').guideSlugs.includes('kirkland'), true)
 assert.equal(byId.get('the-british-pantry').guideSlugs.includes('redmond'), true)
 assert.equal(byId.get('lexperience-paris').price, 2)
 assert.equal(byId.get('sparrow').price, 3)
-assert.equal(Object.hasOwn(byId.get('village-square-cafe'), 'price'), false)
-assert.equal(Object.hasOwn(byId.get('doppio-cafe-and-creperie'), 'price'), false)
-assert.equal(Object.hasOwn(byId.get('chaces-pancake-corral'), 'price'), false)
-assert.equal(Object.hasOwn(byId.get('lil-jon-restaurant-and-lounge'), 'price'), false)
+priceOrLedger(byId.get('village-square-cafe'))
+priceOrLedger(byId.get('doppio-cafe-and-creperie'))
+priceOrLedger(byId.get('chaces-pancake-corral'))
+priceOrLedger(byId.get('lil-jon-restaurant-and-lounge'))
 assert.equal(byId.get('village-square-cafe').address, '16150 NE 85th St, Redmond, WA 98052')
 assert.equal(byId.get('doppio-cafe-and-creperie').address, '8296 160th Ave NE, Suite 106, Redmond, WA 98052')
 assert.equal(byId.get('chaces-pancake-corral').address, '1606 Bellevue Way SE, Bellevue, WA 98004')

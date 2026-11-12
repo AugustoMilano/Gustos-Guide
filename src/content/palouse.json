@@ -142,7 +142,8 @@
         "count": 11,
         "source": "Yelp"
       },
-      "yelpSlug": "GuRCEraOanOwaxetXuyX2Q"
+      "yelpSlug": "GuRCEraOanOwaxetXuyX2Q",
+      "price": 1
     },
     {
       "id": "panhandle-cone-coffee",
@@ -208,7 +209,8 @@
         }
       ],
       "phone": "+1 (208) 265-8996",
-      "website": "https://www.coneandcoffee.com/moscow"
+      "website": "https://www.coneandcoffee.com/moscow",
+      "price": 1
     },
     {
       "id": "tin-tan-tacos",
@@ -587,7 +589,8 @@
         "count": 89,
         "source": "Yelp"
       },
-      "yelpSlug": "bKj6IGQOB92EFAZYfzvWTw"
+      "yelpSlug": "bKj6IGQOB92EFAZYfzvWTw",
+      "price": 1
     },
     {
       "id": "valhalla-bar-and-grill",
@@ -645,7 +648,8 @@
         }
       ],
       "phone": "+1 (509) 334-7775",
-      "website": "http://www.valhallabarandgrill.com"
+      "website": "http://www.valhallabarandgrill.com",
+      "price": 1
     },
     {
       "id": "the-silos-coffee-social",
@@ -698,7 +702,8 @@
         }
       ],
       "phone": "+1 (916) 796-3595",
-      "website": "https://thesiloscoffee.com"
+      "website": "https://thesiloscoffee.com",
+      "price": 1
     },
     {
       "id": "mela-bangladeshi-cuisine",
@@ -756,7 +761,8 @@
         "count": 35,
         "source": "Yelp"
       },
-      "yelpSlug": "vw2HdOg6fpw6yg-OpY9XLw"
+      "yelpSlug": "vw2HdOg6fpw6yg-OpY9XLw",
+      "price": 2
     },
     {
       "id": "hunga-dunga",
@@ -1160,7 +1166,8 @@
         }
       ],
       "phone": null,
-      "website": "https://pullmanemporium.com"
+      "website": "https://pullmanemporium.com",
+      "price": 1
     },
     {
       "id": "humble-burger",
@@ -1213,7 +1220,8 @@
         }
       ],
       "phone": "+1 (208) 596-0296",
-      "website": "https://humbleburger.com"
+      "website": "https://humbleburger.com",
+      "price": 1
     },
     {
       "id": "porch-light-pizza",
@@ -1552,7 +1560,8 @@
         }
       ],
       "phone": "+1 (509) 715-1331",
-      "website": "https://neillscoffeeandicecream.wordpress.com"
+      "website": "https://neillscoffeeandicecream.wordpress.com",
+      "price": 1
     },
     {
       "id": "ferdinand-s-ice-cream-shoppe",
@@ -1888,7 +1897,8 @@
         }
       ],
       "phone": "+1 (509) 720-8435",
-      "website": "http://www.kneadcp.com"
+      "website": "http://www.kneadcp.com",
+      "price": 1
     },
     {
       "id": "maialina-pizzeria-napoletana",
@@ -2196,7 +2206,8 @@
         "count": 19,
         "source": "Yelp"
       },
-      "yelpSlug": "QM0GSLxL4y8Nr9fRN3ilqQ"
+      "yelpSlug": "QM0GSLxL4y8Nr9fRN3ilqQ",
+      "price": 1
     },
     {
       "id": "pups-cups-cafe",
@@ -2590,7 +2601,8 @@
         }
       ],
       "phone": "+1 (509) 530-1001",
-      "website": "http://www.getdomsdonuts.com"
+      "website": "http://www.getdomsdonuts.com",
+      "price": 1
     },
     {
       "id": "the-land",
@@ -2655,7 +2667,8 @@
         "count": 77,
         "source": "Yelp"
       },
-      "yelpSlug": "-EhtXQONG-hlm2AsvpKuOA"
+      "yelpSlug": "-EhtXQONG-hlm2AsvpKuOA",
+      "price": 1
     }
   ],
   "guides": [
