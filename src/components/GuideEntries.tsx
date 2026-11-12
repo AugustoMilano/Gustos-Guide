@@ -8,6 +8,7 @@ import { PlaceThumb } from './PlaceThumb.tsx'
 import { ThumbImg } from './ThumbImg.tsx'
 import { Reveal } from './Reveal.tsx'
 import { displayPhotos, type DisplayPhoto, type LivePhoto } from '../lib/gallery.ts'
+import { portraitClass } from '../lib/portrait-frame.ts'
 import { responsivePhoto } from '../lib/responsivePhoto.ts'
 import { ForkMark, GoldenFork } from './GoldenFork.tsx'
 import { ScoreBadge } from './ScoreBadge.tsx'
@@ -125,7 +126,7 @@ function GuideShotImg({
         width={picture.width}
         height={picture.height}
         alt={alt}
-        className="h-full w-full object-cover"
+        className={`h-full w-full object-cover${portraitClass(picture.width, picture.height)}`}
         loading={priority ? 'eager' : 'lazy'}
         decoding="async"
         fetchPriority={priority ? 'high' : undefined}
