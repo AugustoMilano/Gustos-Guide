@@ -12,7 +12,7 @@ import { useApp } from '../state/AppState.tsx'
 import { useCityCatalog } from '../lib/use-city.ts'
 import type { GuideGroup } from '../types.ts'
 
-const GROUPS: GuideGroup[] = ['Best of', 'Cuisine', 'Occasion', 'Neighborhoods', 'Drinks']
+const GROUPS: GuideGroup[] = ['Best of', 'Cuisine', 'Occasion', 'Drinks', 'Neighborhoods']
 
 const GROUP_LABEL: Record<GuideGroup, string> = {
   'Best of': 'Best of',

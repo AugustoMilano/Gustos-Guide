@@ -75,7 +75,7 @@ export type Guide = {
   intro: string
   updatedAt: string
   ranked: boolean
-  /** Manual order. Score sort does not reshuffle a pinned guide. */
+  /** Published sequence. The numbered view follows live house scores instead. */
   pinned?: boolean
   /** Omitted guides are Seattle. */
   city?: 'seattle' | 'eastside' | 'la' | 'sf' | 'eastbay' | 'peninsula' | 'northbay' | 'sandiego' | 'vancouver' | 'portland' | 'nyc' | 'pullman' | 'moscow'

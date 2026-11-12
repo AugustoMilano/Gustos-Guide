@@ -38,6 +38,30 @@ test('city picker, Seattle urls, and Los Angeles', async ({ page }) => {
   await page.goto('/#/place/canlis')
   await expect(page.getByRole('heading', { level: 1, name: 'Canlis' })).toBeVisible()
 
+  await page.goto('/#/seattle/guide/classics')
+  await expect(page.getByRole('heading', { level: 1, name: 'Seattle Classics & Institutions' })).toBeVisible()
+  const seattleHome = page.getByRole('button', { name: 'Seattle home' })
+  await expect(seattleHome).toHaveAttribute('aria-current', 'true')
+  await tap(seattleHome)
+  await expect(page).toHaveURL(/#\/seattle$/)
+  await expect(page.getByRole('heading', { level: 1 })).toContainText('Seattle')
+  await expect(page.getByRole('button', { name: 'Seattle home' })).toHaveAttribute('aria-current', 'page')
+
+  await page.goto('/#/seattle/place/canlis')
+  await tap(page.getByRole('button', { name: 'Seattle home' }))
+  await expect(page).toHaveURL(/#\/seattle$/)
+
+  await page.goto('/#/seattle/explore')
+  await tap(page.getByRole('button', { name: 'Eastside' }))
+  await expect(page).toHaveURL(/#\/eastside$/)
+  await expect(page.getByRole('heading', { level: 1 })).toContainText('Eastside')
+
+  await page.setViewportSize({ width: 390, height: 844 })
+  await page.goto('/#/seattle/top')
+  await tap(page.getByRole('button', { name: 'Seattle home' }))
+  await expect(page).toHaveURL(/#\/seattle$/)
+  await expect(page.getByRole('button', { name: 'Seattle home' })).toHaveAttribute('aria-pressed', 'true')
+
   await page.goto('/#/eastside')
   await expect(page.getByRole('heading', { level: 1 })).toContainText('Eastside')
   await expect(page.locator('.city-switch')).toBeVisible()

@@ -286,7 +286,11 @@ export default defineConfig({
     {
       name: 'perf-hints',
       transformIndexHtml(html) {
-        const hints = ['<link rel="preconnect" href="https://tiles.openfreemap.org" crossorigin />']
+        const hints = [
+          '<link rel="preconnect" href="https://tiles.openfreemap.org" crossorigin />',
+          '<link rel="preload" as="fetch" href="https://tiles.openfreemap.org/styles/positron" crossorigin />',
+          '<link rel="preload" as="fetch" href="https://tiles.openfreemap.org/planet" crossorigin />',
+        ]
         const supabase = process.env.VITE_SUPABASE_URL
         if (supabase) {
           try {

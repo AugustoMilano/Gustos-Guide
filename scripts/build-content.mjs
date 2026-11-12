@@ -885,7 +885,7 @@ const themeGuides = [
   ['Ramen, Pho & Noodles', 'noodles', 'Cuisine', false, 'Bowls for gray weather: ramen, phở, and the other noodles.'],
   ['Tacos & Mexican', 'tacos', 'Cuisine', false, 'Tacos first, then the wider Mexican rooms.'],
   ['Steakhouses', 'steakhouses', 'Cuisine', false, 'Steaks, grills, and the rooms that smell like butter.'],
-  ['Seattle Classics & Institutions', 'classics', 'Best of', false, 'The places that already belong to the city.'],
+  ['Seattle Classics & Institutions', 'classics', 'Best of', false, 'The places that already belong to the city.', 'Canlis', "Dick's Drive-In"],
 ]
 
 for (const theme of themes) {
@@ -901,7 +901,8 @@ for (const theme of themes) {
     const extra = launch.filter((place) => /burger/i.test(`${place.name} ${place.cuisine.join(' ')} ${place.placeType}`))
     places = sortDraft([...new Map([...places, ...extra].map((place) => [place.id, place])).values()], priority)
   }
-  places = flagshipPlaces(slug, diversify(places, FLAGSHIP_AIM, slug === 'pike-place' ? 8 : 6))
+  // Classics is a short curated list. Do not freeze the longer published membership.
+  if (slug !== 'classics') places = flagshipPlaces(slug, diversify(places, FLAGSHIP_AIM, slug === 'pike-place' ? 8 : 6))
   if (slug === 'cheap-eats') places = places.filter((place) => place.id !== 'alibi-room')
   const angle = angleFor(group, slug)
   addGuide({

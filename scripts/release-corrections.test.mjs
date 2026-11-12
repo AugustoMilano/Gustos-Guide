@@ -162,10 +162,24 @@ assert.equal(index.guides.find((guide) => guide.slug === slu.slug).title, 'South
 assert.equal(places['2120'].neighborhood, 'Denny Triangle')
 
 const featuredSource = readFileSync(new URL('../src/components/SmartResults.tsx', import.meta.url), 'utf8')
-assert.match(featuredSource, /seattle: \['pike-place', 'best-bakeries', 'best-pizza', 'late-night', 'cocktail-bars', 'bring-the-parents'\]/)
+assert.match(featuredSource, /seattle: \['pike-place', 'best-bakeries', 'best-pizza', 'late-night', 'cocktail-bars', 'classics'\]/)
 assert.doesNotMatch(featuredSource, /seattle: \[[^\]]*'date-night'/)
 assert.equal(guides.some((guide) => guide.slug === 'date-night'), true)
 assert.equal(guides.some((guide) => guide.slug === 'best-bakeries'), true)
+
+const classics = guides.find((guide) => guide.slug === 'classics')
+assert.ok(classics.entries.length >= 12 && classics.entries.length <= 16, `classics has ${classics.entries.length}`)
+assert.equal(index.guides.find((guide) => guide.slug === 'classics').count, classics.entries.length)
+const memberNames = new Set(classics.entries.map((entry) => places[entry.placeId].name))
+const named = classics.intro.match(/\. (.+) and (.+) are the ones to remember/)
+assert.ok(named, classics.intro)
+assert.equal(memberNames.has(named[1]), true)
+assert.equal(memberNames.has(named[2]), true)
+const parents = guides.find((guide) => guide.slug === 'bring-the-parents')
+assert.ok(parents.entries.length > 0)
+assert.equal(classics.entries.some((entry) => entry.placeId === 'il-terrazzo-carmine'), true)
+assert.equal(places['ivar-s'].guideSlugs.includes('classics'), false)
+assert.equal(places['ivar-s'].guideSlugs.includes('seafood'), true)
 
 const row = {
   id: 'c1',
