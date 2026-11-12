@@ -269,46 +269,6 @@
       "yelpSlug": "wayfare-tavern-san-francisco-2"
     },
     {
-      "id": "gio-gelati",
-      "city": "sf",
-      "name": "Gio Gelati",
-      "neighborhood": "Cow Hollow",
-      "address": "1998 Union St, San Francisco, CA 94123",
-      "lat": 37.7976246,
-      "lng": -122.4320913,
-      "cuisine": [
-        "Gelato"
-      ],
-      "placeType": "shop",
-      "oneLiner": "Cow Hollow: Gio Gelati at 1998 Union St. Gelato.",
-      "perfectFor": [],
-      "periods": [],
-      "gustoScore": null,
-      "appleMapsUrl": "https://maps.apple.com/?daddr=37.7976246,-122.4320913&q=Gio%20Gelati",
-      "applePlaceUrl": "https://maps.apple.com/place?auid=6987726671578500964",
-      "guideSlugs": [
-        "sf-cow-hollow"
-      ],
-      "muid": "6987726671578500964",
-      "hoursLabel": "",
-      "blurb": "Cow Hollow: Gio Gelati at 1998 Union St. Gelato.",
-      "orderThis": [],
-      "ids": {},
-      "copySource": "draft",
-      "updatedAt": "2026-10-21",
-      "photos": [
-        {
-          "source": "illustration",
-          "isIllustration": true,
-          "alt": "Illustration suggesting Gelato at Gio Gelati",
-          "credit": "Illustration"
-        }
-      ],
-      "phone": "+1 (415) 910-6498",
-      "website": "https://www.giogelati.com",
-      "yelpSlug": "gio-gelati-san-francisco-san-francisco"
-    },
-    {
       "id": "o-by-claude-le-tohic",
       "city": "sf",
       "name": "O' By Claude Le Tohic",
@@ -2333,58 +2293,6 @@
       "phone": "+1 (415) 355-9085",
       "website": "https://www.richtablesf.com",
       "yelpSlug": "rich-table-san-francisco"
-    },
-    {
-      "id": "leo-s",
-      "city": "sf",
-      "name": "Leo's",
-      "neighborhood": "Financial District",
-      "address": "568 Sacramento St, San Francisco, CA 94111",
-      "lat": 37.7939183,
-      "lng": -122.4025315,
-      "cuisine": [
-        "Oyster Bar"
-      ],
-      "placeType": "bar",
-      "oneLiner": "Oyster Bar at Leo's, 568 Sacramento St, Financial District.",
-      "perfectFor": [],
-      "periods": [
-        {
-          "days": [
-            1,
-            2,
-            3,
-            4,
-            5
-          ],
-          "start": 960,
-          "end": 1320
-        }
-      ],
-      "gustoScore": null,
-      "appleMapsUrl": "https://maps.apple.com/?daddr=37.7939183,-122.4025315&q=Leo%27s",
-      "applePlaceUrl": "https://maps.apple.com/place?auid=8687776950511210136",
-      "guideSlugs": [
-        "sf-financial-district"
-      ],
-      "muid": "8687776950511210136",
-      "hoursLabel": "",
-      "blurb": "Oyster Bar at Leo's, 568 Sacramento St, Financial District.",
-      "orderThis": [],
-      "ids": {},
-      "copySource": "draft",
-      "updatedAt": "2026-10-21",
-      "photos": [
-        {
-          "source": "illustration",
-          "isIllustration": true,
-          "alt": "Illustration suggesting Oyster Bar at Leo's",
-          "credit": "Illustration"
-        }
-      ],
-      "phone": "+1 (209) 306-7233",
-      "website": "https://www.leossf.com",
-      "yelpSlug": "leos-oyster-bar-san-francisco-2"
     },
     {
       "id": "bi-rite-creamery",
@@ -5609,69 +5517,6 @@
       "yelpSlug": "prospect-san-francisco"
     },
     {
-      "id": "san-tung",
-      "city": "sf",
-      "name": "San Tung",
-      "neighborhood": "Inner Sunset",
-      "address": "1031 Irving St, San Francisco, CA 94122",
-      "lat": 37.7638163,
-      "lng": -122.4690093,
-      "cuisine": [
-        "Chinese"
-      ],
-      "placeType": "restaurant",
-      "oneLiner": "Inner Sunset: San Tung at 1031 Irving St. Chinese.",
-      "perfectFor": [],
-      "periods": [
-        {
-          "days": [
-            0,
-            1,
-            4,
-            5,
-            6
-          ],
-          "start": 660,
-          "end": 900
-        },
-        {
-          "days": [
-            0,
-            1,
-            4,
-            5,
-            6
-          ],
-          "start": 990,
-          "end": 1230
-        }
-      ],
-      "gustoScore": null,
-      "appleMapsUrl": "https://maps.apple.com/?daddr=37.7638163,-122.4690093&q=San%20Tung",
-      "applePlaceUrl": "https://maps.apple.com/place?auid=17446518184600737691",
-      "guideSlugs": [],
-      "muid": "17446518184600737691",
-      "hoursLabel": "",
-      "blurb": "Inner Sunset: San Tung at 1031 Irving St. Chinese.",
-      "orderThis": [],
-      "ids": {},
-      "copySource": "draft",
-      "updatedAt": "2026-10-21",
-      "photos": [
-        {
-          "source": "wikimedia",
-          "url": "/photos/san-tung.jpg",
-          "alt": "San Tung in Inner Sunset",
-          "credit": "Weegee010",
-          "creditUrl": "https://commons.wikimedia.org/wiki/File:San_Tung_Chinese_Restaurant,_Sunset_District,_San_Francisco.JPG",
-          "license": "CC BY-SA 4.0"
-        }
-      ],
-      "phone": "+1 (415) 242-0828",
-      "website": "https://www.santungsf.com",
-      "yelpSlug": "san-tung-san-francisco-2"
-    },
-    {
       "id": "liholiho-yacht-club",
       "city": "sf",
       "name": "Liholiho Yacht Club",
@@ -8056,10 +7901,10 @@
     {
       "slug": "sf-financial-district",
       "title": "Financial District",
-      "dek": "Wayfare Tavern at 201 Pine St, and 6 more Financial District stops.",
+      "dek": "Wayfare Tavern at 201 Pine St, and 5 more Financial District stops.",
       "group": "Neighborhoods",
-      "intro": "Wayfare Tavern is at 201 Pine St. Leo's is at 568 Sacramento St.",
-      "updatedAt": "2026-10-21",
+      "intro": "Wayfare Tavern is at 201 Pine St. The Vault is at 555 California St.",
+      "updatedAt": "2026-11-12",
       "ranked": false,
       "city": "sf",
       "entries": [
@@ -8067,12 +7912,6 @@
           "placeId": "wayfare-tavern",
           "pullQuote": "Wayfare Tavern, 201 Pine St. Tavern in Financial District.",
           "blurb": "Wayfare Tavern, 201 Pine St. Tavern in Financial District.",
-          "copySource": "draft"
-        },
-        {
-          "placeId": "leo-s",
-          "pullQuote": "Oyster Bar at Leo's, 568 Sacramento St, Financial District.",
-          "blurb": "Oyster Bar at Leo's, 568 Sacramento St, Financial District.",
           "copySource": "draft"
         },
         {
@@ -8197,19 +8036,13 @@
     {
       "slug": "sf-cow-hollow",
       "title": "Cow Hollow",
-      "dek": "Gio Gelati at 1998 Union St, and 3 more Cow Hollow stops.",
+      "dek": "Wildseed at 2000 Union St, and 2 more Cow Hollow stops.",
       "group": "Neighborhoods",
-      "intro": "Gio Gelati is at 1998 Union St. Wildseed is at 2000 Union St.",
-      "updatedAt": "2026-10-21",
+      "intro": "Wildseed is at 2000 Union St. Flores is at 2030 Union St.",
+      "updatedAt": "2026-11-12",
       "ranked": false,
       "city": "sf",
       "entries": [
-        {
-          "placeId": "gio-gelati",
-          "pullQuote": "Cow Hollow: Gio Gelati at 1998 Union St. Gelato.",
-          "blurb": "Cow Hollow: Gio Gelati at 1998 Union St. Gelato.",
-          "copySource": "draft"
-        },
         {
           "placeId": "wildseed",
           "pullQuote": "Wildseed sits at 2000 Union St. Vegetarian, Cow Hollow.",
