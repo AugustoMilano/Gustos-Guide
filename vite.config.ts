@@ -188,11 +188,19 @@ export default defineConfig({
       closeBundle() {
         const assets = join(process.cwd(), 'dist/assets')
         if (!existsSync(assets)) return
-        const name = readdirSync(assets).find((file) => file.startsWith('slim-catalog-') && file.endsWith('.json'))
-        // status.js adds the preload (low priority) on every route except place deep links (C1).
+        const catalogs: Record<string, string> = {}
+        let indexName = ''
+        for (const file of readdirSync(assets)) {
+          if (file.startsWith('slim-index-') && file.endsWith('.json')) indexName = file
+          const match = /^slim-city-([a-z]+)-.+\.json$/.exec(file)
+          if (match) catalogs[match[1]] = `/assets/${file}`
+        }
+        // status.js preloads the shared index and this city's file, not the other cities (C1 still skips place links).
         const statusPath = join(process.cwd(), 'dist/status.js')
-        if (!name || !existsSync(statusPath)) return
-        writeFileSync(statusPath, readFileSync(statusPath, 'utf8').replace("/*CATALOG*/''", JSON.stringify(`/assets/${name}`)))
+        if (!indexName || Object.keys(catalogs).length < 13 || !existsSync(statusPath)) throw new Error('slim city files missing')
+        writeFileSync(statusPath, readFileSync(statusPath, 'utf8')
+          .replace("/*CATALOG_INDEX*/''", JSON.stringify(`/assets/${indexName}`))
+          .replace('/*CATALOGS*/{}', JSON.stringify(catalogs)))
         // D2: the app script and its modulepreloads move from index.html into status.js, which adds
         // them at once on most routes but lets a place deep link's hero photo finish first, since
         // Cloudflare shares the bandwidth evenly instead of honoring fetchpriority.
@@ -286,7 +294,11 @@ export default defineConfig({
     {
       name: 'perf-hints',
       transformIndexHtml(html) {
-        const hints = ['<link rel="preconnect" href="https://tiles.openfreemap.org" crossorigin />']
+        const hints = [
+          '<link rel="preconnect" href="https://tiles.openfreemap.org" crossorigin />',
+          '<link rel="preload" as="fetch" href="https://tiles.openfreemap.org/styles/positron" crossorigin />',
+          '<link rel="preload" as="fetch" href="https://tiles.openfreemap.org/planet" crossorigin />',
+        ]
         const supabase = process.env.VITE_SUPABASE_URL
         if (supabase) {
           try {
@@ -313,7 +325,12 @@ export default defineConfig({
       },
     },
   ],
-  build: { manifest: true },
+  build: {
+    manifest: true,
+    assetsInlineLimit(filePath) {
+      if (filePath.includes('slim-city-') || filePath.includes('slim-index')) return false
+    },
+  },
   server: {
     host: '127.0.0.1',
     port: 4179,

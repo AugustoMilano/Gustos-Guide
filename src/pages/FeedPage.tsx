@@ -1,17 +1,19 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { AreaKicker } from '../components/AreaKicker.tsx'
 import { FriendEmpty } from '../components/FriendEmpty.tsx'
 import { PullToRefresh } from '../components/PullToRefresh.tsx'
 import { PlaceThumb } from '../components/PlaceThumb.tsx'
+import { PlaceName } from '../components/PlaceName.tsx'
 import { SignInSheet } from '../components/SignInSheet.tsx'
-import { catalog } from '../content/load.ts'
+import { catalog, ensureAllCities } from '../content/load.ts'
 import { demoFriendsEnabled } from '../lib/demo.ts'
 import { usePageMeta } from '../lib/meta.ts'
 import { useApp } from '../state/AppState.tsx'
 
 export function FeedPage() {
   const app = useApp()
+  useEffect(() => { void ensureAllCities() }, [])
   const [drafts, setDrafts] = useState<Record<string, string>>({})
   const [signIn, setSignIn] = useState(false)
   usePageMeta(
@@ -67,7 +69,7 @@ export function FeedPage() {
                     <span className="h-28 w-36 shrink-0 overflow-hidden soft-media bg-navy [&_.place-art]:aspect-auto [&_.place-art]:h-full">
                       <PlaceThumb place={place} uploads={app.photos} />
                     </span>
-                    <span className="font-serif text-2xl italic leading-none">{place.name}</span>
+                    <PlaceName name={place.name} className="italic leading-none" />
                   </Link>
                 ) : null}
                 {activity.score ? <p className="text-sm">Their score {activity.score.toFixed(1)}</p> : null}

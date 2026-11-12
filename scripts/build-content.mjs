@@ -377,6 +377,11 @@ function perfectFor(place) {
   if (/restaurant/.test(type) && typeof place.price === 'number' && place.price <= 2) tags.add('Solo')
   if (place.neighborhood === 'Pike Place Market') tags.add('Out-Of-Towners')
   if (/seafood|oyster/.test(cuisine)) tags.add('Out-Of-Towners')
+  // The first Pike Place shop has no tables, and it is not a Cheap eats pick. Price stays $.
+  if (place.id === 'starbucks-coffee-company') {
+    tags.delete('Work From Café')
+    tags.delete('Cheap Eats')
+  }
   const list = [...tags]
   if (list.length < 2 && typeof place.price === 'number') {
     list.push(place.price <= 2 ? 'Weeknight Dinner' : 'Date Night')
@@ -885,7 +890,7 @@ const themeGuides = [
   ['Ramen, Pho & Noodles', 'noodles', 'Cuisine', false, 'Bowls for gray weather: ramen, phở, and the other noodles.'],
   ['Tacos & Mexican', 'tacos', 'Cuisine', false, 'Tacos first, then the wider Mexican rooms.'],
   ['Steakhouses', 'steakhouses', 'Cuisine', false, 'Steaks, grills, and the rooms that smell like butter.'],
-  ['Seattle Classics & Institutions', 'classics', 'Best of', false, 'The places that already belong to the city.'],
+  ['Seattle Classics & Institutions', 'classics', 'Best of', false, 'The places that already belong to the city.', 'Canlis', "Dick's Drive-In"],
 ]
 
 for (const theme of themes) {
@@ -901,8 +906,9 @@ for (const theme of themes) {
     const extra = launch.filter((place) => /burger/i.test(`${place.name} ${place.cuisine.join(' ')} ${place.placeType}`))
     places = sortDraft([...new Map([...places, ...extra].map((place) => [place.id, place])).values()], priority)
   }
-  places = flagshipPlaces(slug, diversify(places, FLAGSHIP_AIM, slug === 'pike-place' ? 8 : 6))
-  if (slug === 'cheap-eats') places = places.filter((place) => place.id !== 'alibi-room')
+  // Classics is a short curated list. Do not freeze the longer published membership.
+  if (slug !== 'classics') places = flagshipPlaces(slug, diversify(places, FLAGSHIP_AIM, slug === 'pike-place' ? 8 : 6))
+  if (slug === 'cheap-eats') places = places.filter((place) => place.id !== 'alibi-room' && place.id !== 'starbucks-coffee-company')
   const angle = angleFor(group, slug)
   addGuide({
     slug,
@@ -960,6 +966,16 @@ function filterGuide(slug, title, dek, group, ranked, angle, predicate, cap = 24
 }
 
 filterGuide('breakfast-before-9', 'Best Breakfast', 'Open by 9, which is when breakfast still tastes like breakfast.', 'Best of', false, 'breakfast', (place) => place.periods.some((period) => period.start > 0 && period.start <= 9 * 60))
+const breakfast = guides.find((guide) => guide.slug === 'breakfast-before-9')
+const biscuit = launchById.get('biscuit-bitch')
+if (breakfast && biscuit && !breakfast.entries.some((entry) => entry.placeId === 'biscuit-bitch')) {
+  breakfast.entries.push({
+    placeId: biscuit.id,
+    pullQuote: guideQuotes.get(biscuit.id)?.['breakfast-before-9'] || biscuit.oneLiner,
+    blurb: biscuit.blurb,
+    copySource: 'draft',
+  })
+}
 filterGuide('late-night', 'Late-Night Eats', 'Kitchens and bars still going at 11pm or later.', 'Occasion', false, 'late', (place) => place.periods.some((period) => period.end >= 23 * 60 || period.end === 24 * 60))
 filterGuide('dumplings', 'Dumplings & Dim Sum', 'Dumpling houses and dim sum, soup first.', 'Cuisine', false, 'default', (place) => /dumpling|dim sum|gyoza|xiao/i.test(`${place.name} ${place.cuisine.join(' ')} ${place.placeType}`))
 filterGuide('teriyaki', 'Teriyaki & Other Seattle Things', 'Teriyaki, the local weeknight.', 'Cuisine', false, 'default', (place) => /teriyaki/i.test(`${place.name} ${place.cuisine.join(' ')}`))

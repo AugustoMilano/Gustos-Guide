@@ -550,6 +550,13 @@
   <url><loc>https://gustosguide.com/share/place/ramen-nori/</loc></url>
   <url><loc>https://gustosguide.com/share/place/burgermaster/</loc></url>
   <url><loc>https://gustosguide.com/share/place/tendon-kohaku/</loc></url>
+  <url><loc>https://gustosguide.com/share/place/palmers-east/</loc></url>
+  <url><loc>https://gustosguide.com/share/place/central-tavern/</loc></url>
+  <url><loc>https://gustosguide.com/share/place/the-goose-pub/</loc></url>
+  <url><loc>https://gustosguide.com/share/place/village-square-cafe/</loc></url>
+  <url><loc>https://gustosguide.com/share/place/doppio-cafe-and-creperie/</loc></url>
+  <url><loc>https://gustosguide.com/share/place/chaces-pancake-corral/</loc></url>
+  <url><loc>https://gustosguide.com/share/place/lil-jon-restaurant-and-lounge/</loc></url>
   <url><loc>https://gustosguide.com/share/place/katana/</loc></url>
   <url><loc>https://gustosguide.com/share/place/allantico-vinaio/</loc></url>
   <url><loc>https://gustosguide.com/share/place/pizzana/</loc></url>
@@ -1320,18 +1327,14 @@
   <url><loc>https://gustosguide.com/share/guide/fun-dive-bars/</loc></url>
   <url><loc>https://gustosguide.com/share/guide/gustos-25/</loc></url>
   <url><loc>https://gustosguide.com/share/guide/best-of-bellevue/</loc></url>
-  <url><loc>https://gustosguide.com/share/guide/kirkland-waterfront/</loc></url>
-  <url><loc>https://gustosguide.com/share/guide/best-of-kirkland/</loc></url>
   <url><loc>https://gustosguide.com/share/guide/redmond/</loc></url>
-  <url><loc>https://gustosguide.com/share/guide/issaquah/</loc></url>
   <url><loc>https://gustosguide.com/share/guide/bellevue/</loc></url>
   <url><loc>https://gustosguide.com/share/guide/kirkland/</loc></url>
-  <url><loc>https://gustosguide.com/share/guide/mercer-island/</loc></url>
-  <url><loc>https://gustosguide.com/share/guide/eastside-coffee/</loc></url>
   <url><loc>https://gustosguide.com/share/guide/eastside-asian/</loc></url>
-  <url><loc>https://gustosguide.com/share/guide/eastside-brunch/</loc></url>
   <url><loc>https://gustosguide.com/share/guide/eastside-date-night/</loc></url>
-  <url><loc>https://gustosguide.com/share/guide/eastside-breweries/</loc></url>
+  <url><loc>https://gustosguide.com/share/guide/eastside-drinks/</loc></url>
+  <url><loc>https://gustosguide.com/share/guide/japanese-food-in-bellevue/</loc></url>
+  <url><loc>https://gustosguide.com/share/guide/best-breakfast-on-the-east-side/</loc></url>
   <url><loc>https://gustosguide.com/share/guide/santa-monica/</loc></url>
   <url><loc>https://gustosguide.com/share/guide/west-hollywood/</loc></url>
   <url><loc>https://gustosguide.com/share/guide/beverly-hills/</loc></url>
@@ -1363,21 +1366,10 @@
   <url><loc>https://gustosguide.com/share/guide/sf-bakery/</loc></url>
   <url><loc>https://gustosguide.com/share/guide/sf-japanese/</loc></url>
   <url><loc>https://gustosguide.com/share/guide/sf-steakhouse/</loc></url>
-  <url><loc>https://gustosguide.com/share/guide/sf-american/</loc></url>
   <url><loc>https://gustosguide.com/share/guide/sf-sandwich/</loc></url>
-  <url><loc>https://gustosguide.com/share/guide/sf-date-night/</loc></url>
-  <url><loc>https://gustosguide.com/share/guide/eastbay-fremont/</loc></url>
-  <url><loc>https://gustosguide.com/share/guide/peninsula-half-moon-bay/</loc></url>
-  <url><loc>https://gustosguide.com/share/guide/peninsula-pacifica/</loc></url>
-  <url><loc>https://gustosguide.com/share/guide/peninsula-palo-alto/</loc></url>
-  <url><loc>https://gustosguide.com/share/guide/eastbay-pleasanton/</loc></url>
-  <url><loc>https://gustosguide.com/share/guide/peninsula-san-jose/</loc></url>
-  <url><loc>https://gustosguide.com/share/guide/peninsula-santa-clara/</loc></url>
-  <url><loc>https://gustosguide.com/share/guide/eastbay-berkeley/</loc></url>
-  <url><loc>https://gustosguide.com/share/guide/northbay-sausalito/</loc></url>
-  <url><loc>https://gustosguide.com/share/guide/northbay-tiburon/</loc></url>
-  <url><loc>https://gustosguide.com/share/guide/northbay-corte-madera/</loc></url>
-  <url><loc>https://gustosguide.com/share/guide/northbay-larkspur/</loc></url>
+  <url><loc>https://gustosguide.com/share/guide/peninsula/</loc></url>
+  <url><loc>https://gustosguide.com/share/guide/east-bay/</loc></url>
+  <url><loc>https://gustosguide.com/share/guide/north-bay/</loc></url>
   <url><loc>https://gustosguide.com/share/guide/sd-little-italy/</loc></url>
   <url><loc>https://gustosguide.com/share/guide/sd-coronado/</loc></url>
   <url><loc>https://gustosguide.com/share/guide/sd-la-jolla/</loc></url>
@@ -1416,7 +1408,7 @@
   <url><loc>https://gustosguide.com/share/guide/nyc-bakery/</loc></url>
   <url><loc>https://gustosguide.com/share/guide/pul-game-day/</loc></url>
   <url><loc>https://gustosguide.com/share/guide/pul-cafe/</loc></url>
-  <url><loc>https://gustosguide.com/share/guide/mos-cafe/</loc></url>
+  <url><loc>https://gustosguide.com/share/guide/best-of-moscow-id/</loc></url>
   <url><loc>https://gustosguide.com/share/city/seattle/</loc></url>
   <url><loc>https://gustosguide.com/share/top/seattle/</loc></url>
   <url><loc>https://gustosguide.com/share/city/la/</loc></url>

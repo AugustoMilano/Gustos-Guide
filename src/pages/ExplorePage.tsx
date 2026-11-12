@@ -6,20 +6,22 @@ import { readExploreMemory, saveExploreMemory, type ExploreMemory } from '../lib
 
 const GuideMap = lazy(() => import('../components/GuideMap.tsx').then((module) => ({ default: module.GuideMap })))
 import { CuisinePicker } from '../components/CuisinePicker.tsx'
+import { PlaceMeta, PlaceName, placeCardMeta } from '../components/PlaceName.tsx'
+import { PriceFilter } from '../components/PriceFilter.tsx'
 import { MapLinks } from '../components/MapLinks.tsx'
 import { PlaceThumb } from '../components/PlaceThumb.tsx'
 import { GoldenFork } from '../components/GoldenFork.tsx'
 import { ScoreBadge, scoreBand } from '../components/ScoreBadge.tsx'
 import { areaName as cityName, areaPhrase, areaTitle, cityPath, regionOf } from '../lib/city.ts'
-import { cuisineLabel } from '../lib/cuisine-label.ts'
 import { useCityCatalog } from '../lib/use-city.ts'
 import { hasHours, isPlaceOpen } from '../lib/hours.ts'
 import { distanceKm, formatDistance, locate, readNearMe, saveNearMe, type Spot } from '../lib/near-me.ts'
-import { countPlaces, priceLabel } from '../lib/format.ts'
+import { countPlaces } from '../lib/format.ts'
+import { hasUnknownPrice, matchesPrice, type PriceChoice } from '../lib/price-filter.ts'
 import { usePageMeta } from '../lib/meta.ts'
 import { useApp } from '../state/AppState.tsx'
 import { useBottomSheet, type Detent } from '../lib/use-bottom-sheet.ts'
-import type { SlimPlace } from '../types.ts'
+import type { Price, SlimPlace } from '../types.ts'
 
 const BANDS = [
   { id: 'any', label: 'Any score' },
@@ -29,6 +31,13 @@ const BANDS = [
   { id: 'fine', label: "It's fine" },
   { id: 'skip', label: 'Skip' },
   { id: 'unrated', label: 'Not yet rated' },
+] as const
+
+const VISITS = [
+  { value: 'any', label: 'Any' },
+  { value: 'togo', label: 'To go' },
+  { value: 'been', label: 'Been' },
+  { value: 'unmarked', label: 'Unmarked' },
 ] as const
 
 function bandId(score: number | null): string {
@@ -54,7 +63,7 @@ function inside(place: SlimPlace, box: MapBounds): boolean {
 }
 
 export function ExplorePage() {
-  const { city, places } = useCityCatalog()
+  const { city, places, ready } = useCityCatalog()
   const areaName = areaPhrase(city)
   usePageMeta(`Explore ${cityName(city)} · Gusto's Guide`, `Every ${areaName} place on the guide, on one map.`, `./og/cities/${regionOf(city)}.png`)
   const app = useApp()
@@ -74,7 +83,8 @@ export function ExplorePage() {
   const restored = remembered.current
   const [cuisine, setCuisine] = useState(restored?.cuisine ?? 'any')
   const [neighborhood, setNeighborhood] = useState(restored?.neighborhood ?? 'any')
-  const [price, setPrice] = useState(restored?.price ?? 'any')
+  const [prices, setPrices] = useState<Price[]>(restored?.prices ?? [])
+  const [unknownPrice, setUnknownPrice] = useState(restored?.unknown ?? false)
   const [band, setBand] = useState(restored?.band ?? 'any')
   const [visit, setVisit] = useState(restored?.visit ?? 'any')
   const [openNow, setOpenNow] = useState(() => {
@@ -134,6 +144,9 @@ export function ExplorePage() {
   }
   const [filtersOpen, setFiltersOpen] = useState(false)
   const cuisineLabelId = useId()
+  const neighborhoodLabelId = useId()
+  const scoreLabelId = useId()
+  const visitLabelId = useId()
   const sheetEl = useRef<HTMLElement>(null)
   const headEl = useRef<HTMLDivElement>(null)
   const scroller = useRef<HTMLDivElement>(null)
@@ -152,7 +165,8 @@ export function ExplorePage() {
     setBoundCity(city)
     setCuisine(next?.cuisine ?? 'any')
     setNeighborhood(next?.neighborhood ?? 'any')
-    setPrice(next?.price ?? 'any')
+    setPrices(next?.prices ?? [])
+    setUnknownPrice(next?.unknown ?? false)
     setBand(next?.band ?? 'any')
     setVisit(next?.visit ?? 'any')
     setArea(next?.area ?? null)
@@ -167,7 +181,8 @@ export function ExplorePage() {
     saveExploreMemory(city, {
       cuisine,
       neighborhood,
-      price,
+      prices,
+      unknown: unknownPrice,
       band,
       visit,
       detent,
@@ -183,7 +198,7 @@ export function ExplorePage() {
     return () => remember()
     // remember reads the latest sheet scroll and camera from refs.
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [city, cuisine, neighborhood, price, band, visit, detent, pinnedId, area])
+  }, [city, cuisine, neighborhood, prices, unknownPrice, band, visit, detent, pinnedId, area])
 
   useEffect(() => {
     const node = scroller.current
@@ -205,7 +220,7 @@ export function ExplorePage() {
   const pool = places.filter((place) => {
     if (cuisine !== 'any' && !place.cuisine.includes(cuisine)) return false
     if (neighborhood !== 'any' && place.neighborhood !== neighborhood) return false
-    if (price !== 'any' && place.price !== Number(price)) return false
+    if (!matchesPrice(place, { prices, unknown: unknownPrice })) return false
     if (band !== 'any' && bandId(app.gustoScore(place.id)) !== band) return false
     if (visit === 'togo' || visit === 'been') {
       if (app.statuses[place.id] !== visit) return false
@@ -280,35 +295,23 @@ export function ExplorePage() {
               <span id={cuisineLabelId}>Cuisine</span>
               <CuisinePicker labelId={cuisineLabelId} value={cuisine} options={cuisines} onChange={(next) => { setCuisine(next); resetArea() }} />
             </div>
-            <label className="field">
-              <span>Neighborhood</span>
-              <select value={neighborhood} onChange={(event) => { setNeighborhood(event.target.value); resetArea() }}>
-                <option value="any">Any</option>
-                {neighborhoods.map((item) => <option key={item}>{item}</option>)}
-              </select>
-            </label>
-            <label className="field">
-              <span>Price</span>
-              <select value={price} onChange={(event) => { setPrice(event.target.value); resetArea() }}>
-                <option value="any">Any</option>
-                {[1, 2, 3, 4].map((item) => <option key={item} value={item}>{priceLabel(item as 1 | 2 | 3 | 4)}</option>)}
-              </select>
-            </label>
-            <label className="field">
-              <span>Gusto's Score</span>
-              <select value={band} onChange={(event) => { setBand(event.target.value); resetArea() }}>
-                {BANDS.map((item) => <option key={item.id} value={item.id}>{item.label}</option>)}
-              </select>
-            </label>
-            <label className="field">
-              <span>To go / Been</span>
-              <select value={visit} onChange={(event) => { setVisit(event.target.value); resetArea() }}>
-                <option value="any">Any</option>
-                <option value="togo">To go</option>
-                <option value="been">Been</option>
-                <option value="unmarked">Unmarked</option>
-              </select>
-            </label>
+            <div className="field">
+              <span id={neighborhoodLabelId}>Neighborhood</span>
+              <CuisinePicker labelId={neighborhoodLabelId} value={neighborhood} options={neighborhoods} searchLabel="Find a neighborhood" emptyLabel="No neighborhoods match." onChange={(next) => { setNeighborhood(next); resetArea() }} />
+            </div>
+            <PriceFilter
+              choice={{ prices, unknown: unknownPrice }}
+              showUnknown={hasUnknownPrice(places)}
+              onChange={(next: PriceChoice) => { setPrices(next.prices); setUnknownPrice(next.unknown); resetArea() }}
+            />
+            <div className="field">
+              <span id={scoreLabelId}>Gusto's Score</span>
+              <CuisinePicker labelId={scoreLabelId} value={band} choices={BANDS.map((item) => ({ value: item.id, label: item.label }))} searchLabel="Find a score" emptyLabel="No scores match." onChange={(next) => { setBand(next); resetArea() }} />
+            </div>
+            <div className="field">
+              <span id={visitLabelId}>To go / Been</span>
+              <CuisinePicker labelId={visitLabelId} value={visit} choices={VISITS} searchLabel="Find a status" emptyLabel="No statuses match." onChange={(next) => { setVisit(next); resetArea() }} />
+            </div>
           </form>
           {pending && phoneSheet && detent === 'full' ? (
             <p className="px-3 pt-3">
@@ -341,10 +344,8 @@ export function ExplorePage() {
                     <GoldenFork placeId={place.id} overlay />
                   </span>
                   <span className="place-row-copy">
-                    <span className="block font-serif text-xl italic leading-tight">{place.name}</span>
-                    <span className="mt-1 block text-xs font-bold tracking-wide uppercase">
-                      {[cuisineLabel(place.cuisine[0] ?? ''), priceLabel(place.price), place.neighborhood].filter(Boolean).join(' · ')}
-                    </span>
+                    <PlaceName name={place.name} className="italic" />
+                    <PlaceMeta parts={placeCardMeta(place)} className="mt-1 text-xs font-bold tracking-wide uppercase" />
                     {near ? <span className="mt-1 block text-sm">{formatDistance(distances.get(place.id) ?? 0, region)} away</span> : null}
                   </span>
                   <span className="score-col">
@@ -367,7 +368,8 @@ export function ExplorePage() {
                 onClick={() => {
                   setCuisine('any')
                   setNeighborhood('any')
-                  setPrice('any')
+                  setPrices([])
+                  setUnknownPrice(false)
                   setBand('any')
                   setVisit('any')
                   setOpenNow(false)
@@ -391,6 +393,8 @@ export function ExplorePage() {
         <GuideMap
           key={city}
           places={filtered}
+          pending={!ready}
+          city={city}
           statuses={app.statuses}
           activeId={activeId}
           camera={openedAt.current}

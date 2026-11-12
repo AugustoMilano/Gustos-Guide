@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import { m, useReducedMotion } from 'framer-motion'
 import { Modal } from './Modal.tsx'
 import { Medal3D } from './Medal3D.tsx'
-import { catalogReady, loadGuides, slimById } from '../content/load.ts'
+import { catalogReady, ensureAllCities, loadGuides, slimById } from '../content/load.ts'
 import { achievementArt, computeAchievements, type Achievement, type AchievementGroup } from '../lib/achievements.ts'
 import { cityPath } from '../lib/city.ts'
 import { loadSupabase } from '../social/supabase.ts'
@@ -141,7 +141,7 @@ export function Achievements({ been, rated, userId, gustoScore, mine, city, who 
 
   useEffect(() => {
     let live = true
-    void Promise.all([loadGuides(), catalogReady]).then(([list]) => {
+    void Promise.all([loadGuides(), catalogReady, ensureAllCities()]).then(([list]) => {
       if (!live) return
       setGuides(list)
       setCatalogLoaded(true)

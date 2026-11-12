@@ -6,6 +6,7 @@ import { readPosition } from '../lib/geo.ts'
 import '../lib/setup-leaflet.ts'
 import 'leaflet.markercluster'
 import { escapeHtml } from '../lib/format.ts'
+import { loadMapLibraries } from '../lib/load-maplibre.ts'
 import { appleDirectionsUrl, applePlaceUrl, googleDirectionsUrl, googleMapsUrl, prefersAppleMaps } from '../lib/maps.ts'
 import type { VisitStatus } from '../types.ts'
 
@@ -52,6 +53,22 @@ export type MapBounds = { south: number; north: number; west: number; east: numb
 export type MapCamera = { lat: number; lng: number; zoom: number }
 
 const BASEMAP_STYLE = 'https://tiles.openfreemap.org/styles/positron'
+
+const CITY_CENTER: Record<string, [number, number]> = {
+  seattle: [47.6062, -122.3321],
+  eastside: [47.6101, -122.2015],
+  la: [34.0522, -118.2437],
+  sf: [37.7749, -122.4194],
+  eastbay: [37.8044, -122.2712],
+  peninsula: [37.4419, -122.143],
+  northbay: [37.9735, -122.5311],
+  vancouver: [49.2827, -123.1207],
+  portland: [45.5152, -122.6784],
+  nyc: [40.7128, -74.006],
+  pullman: [46.7298, -117.1817],
+  moscow: [46.7324, -117.0002],
+  sandiego: [32.7157, -117.1611],
+}
 
 function ZoomButtons() {
   const map = useMap()
@@ -102,34 +119,19 @@ function ZoomButtons() {
   )
 }
 
-function whenIdle(work: () => void): number {
-  if (typeof window.requestIdleCallback === 'function') return window.requestIdleCallback(work, { timeout: 700 })
-  return window.setTimeout(work, 1)
-}
-
-function cancelIdle(id: number) {
-  if (typeof window.cancelIdleCallback === 'function' && typeof window.requestIdleCallback === 'function') {
-    window.cancelIdleCallback(id)
-    return
-  }
-  window.clearTimeout(id)
-}
-
-function Basemap() {
+function Basemap({ onReady }: { onReady?: () => void }) {
   const map = useMap()
   const [ready, setReady] = useState(false)
+  const readyRef = useRef(onReady)
+  readyRef.current = onReady
 
   useEffect(() => {
     let layer: Layer | null = null
     let cancelled = false
-    let idleId = 0
 
-    const start = () => {
-      void (async () => {
+    void (async () => {
       try {
-      await import('../lib/setup-maplibre.ts')
-      await import('maplibre-gl/dist/maplibre-gl.css')
-      const { maplibreGL } = await import('@maplibre/maplibre-gl-leaflet')
+      const { maplibreGL } = await loadMapLibraries()
       if (cancelled) return
       const created = maplibreGL({ style: BASEMAP_STYLE, preserveDrawingBuffer: true } as object)
       // The bridge reads the Leaflet zoom inside a frame callback with no map check.
@@ -182,7 +184,11 @@ function Basemap() {
           // The map can already be gone when a tile load finishes.
         }
       }
-      const markReady = () => { if (!cancelled) setReady(true) }
+      const markReady = () => {
+        if (cancelled) return
+        setReady(true)
+        readyRef.current?.()
+      }
       gl?.once('load', () => { nudge(); markReady() })
       gl?.once('idle', () => { nudge(); markReady() })
       if (gl?.loaded?.()) markReady()
@@ -190,10 +196,7 @@ function Basemap() {
       } catch {
         // A basemap failure leaves the list up.
       }
-      })()
-    }
-
-    idleId = whenIdle(start)
+    })()
 
     const observer = new ResizeObserver(() => {
       try {
@@ -208,7 +211,6 @@ function Basemap() {
 
     return () => {
       cancelled = true
-      cancelIdle(idleId)
       observer.disconnect()
       if (!layer) return
       try {
@@ -489,6 +491,8 @@ export function GuideMap({
   onSelect,
   camera,
   focus,
+  pending = false,
+  city,
 }: {
   places: MapPlace[]
   statuses: Record<string, VisitStatus>
@@ -499,8 +503,11 @@ export function GuideMap({
   onSelect?: (id: string) => void
   camera?: MapCamera | null
   focus?: MapCamera | null
+  pending?: boolean
+  city?: string
 }) {
-  if (!places.length) {
+  const [based, setBased] = useState(false)
+  if (!pending && !places.length) {
     return (
       <div className="map-frame grid h-full min-h-0 place-items-center p-6 text-center">
         <p className="font-serif text-2xl italic">No pins in this view.</p>
@@ -509,14 +516,15 @@ export function GuideMap({
   }
 
   const first = places[0]
+  const center = first ? [first.lat, first.lng] as [number, number] : CITY_CENTER[city ?? 'seattle'] ?? CITY_CENTER.seattle
   return (
-    <div className="map-frame h-full min-h-0">
+    <div className={`map-frame h-full min-h-0${based ? ' is-based' : ' is-booting'}`}>
       <p className="sr-only">
         Map of {places.length === 1 ? '1 place' : `${places.length} places`}. Pins cluster when zoomed out. Coral means to go, green means been, navy means
         unmarked.
       </p>
       <MapContainer
-        center={[first.lat, first.lng]}
+        center={center}
         zoom={12}
         zoomSnap={0}
         minZoom={1}
@@ -526,7 +534,7 @@ export function GuideMap({
         className="h-full w-full"
       >
         <ZoomButtons />
-        <Basemap />
+        <Basemap onReady={() => setBased(true)} />
         <FitPins places={places} statuses={statuses} activeId={activeId} onHover={onHover} onSelect={onSelect} camera={camera} hold={Boolean(focus)} />
         <FocusSpot spot={focus} />
         <WatchBounds onMoveEnd={onMoveEnd} onCamera={onCamera} />

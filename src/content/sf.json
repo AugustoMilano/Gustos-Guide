@@ -52,8 +52,7 @@
       "applePlaceUrl": "https://maps.apple.com/place?auid=1553632674983169849",
       "guideSlugs": [
         "sf-jackson-square",
-        "sf-japanese",
-        "sf-date-night"
+        "sf-japanese"
       ],
       "muid": "1553632674983169849",
       "hoursLabel": "",
@@ -146,7 +145,8 @@
       ],
       "phone": "+1 (415) 775-8508",
       "website": "http://www.cotognasf.com",
-      "yelpSlug": "cotogna-san-francisco"
+      "yelpSlug": "cotogna-san-francisco",
+      "price": 4
     },
     {
       "id": "international-smoke",
@@ -220,6 +220,7 @@
         "Tavern"
       ],
       "placeType": "bar",
+      "price": 2,
       "oneLiner": "Wayfare Tavern, 201 Pine St. Tavern in Financial District.",
       "perfectFor": [],
       "periods": [
@@ -318,7 +319,8 @@
       ],
       "phone": "+1 (415) 814-8888",
       "website": "https://one65sf.com/concept/o/",
-      "yelpSlug": "o-by-claude-le-tohic-san-francisco-3"
+      "yelpSlug": "o-by-claude-le-tohic-san-francisco-3",
+      "price": 4
     },
     {
       "id": "barbara-s-fishtrap",
@@ -359,7 +361,7 @@
       "appleMapsUrl": "https://maps.apple.com/?daddr=37.5034764,-122.485016&q=Barbara%27s%20Fishtrap",
       "applePlaceUrl": "https://maps.apple.com/place?auid=4965522066514539789",
       "guideSlugs": [
-        "peninsula-half-moon-bay"
+        "peninsula"
       ],
       "muid": "4965522066514539789",
       "hoursLabel": "",
@@ -378,7 +380,8 @@
       ],
       "phone": "+1 (650) 728-7049",
       "website": "https://www.barbarasfishtrap.com/",
-      "yelpSlug": "barbaras-fishtrap-half-moon-bay"
+      "yelpSlug": "barbaras-fishtrap-half-moon-bay",
+      "price": 2
     },
     {
       "id": "square-pie-guys",
@@ -438,7 +441,8 @@
       ],
       "phone": "+1 (415) 872-9290",
       "website": "https://www.squarepieguys.com",
-      "yelpSlug": "square-pie-guys-san-francisco-san-francisco"
+      "yelpSlug": "square-pie-guys-san-francisco-san-francisco",
+      "price": 2
     },
     {
       "id": "la-taqueria",
@@ -505,7 +509,8 @@
       ],
       "phone": "+1 (415) 285-7117",
       "website": "https://lataqueriasf.net",
-      "yelpSlug": "la-taqueria-san-francisco-2"
+      "yelpSlug": "la-taqueria-san-francisco-2",
+      "price": 1
     },
     {
       "id": "surisan",
@@ -598,6 +603,7 @@
         "Italian"
       ],
       "placeType": "restaurant",
+      "price": 3,
       "oneLiner": "621 Bridgeway — Angelino Restaurant, Italian, Sausalito.",
       "perfectFor": [],
       "periods": [
@@ -629,7 +635,7 @@
       "appleMapsUrl": "https://maps.apple.com/?daddr=37.8545948,-122.4791059&q=Angelino%20Restaurant",
       "applePlaceUrl": "https://maps.apple.com/place?auid=17842558546261250729",
       "guideSlugs": [
-        "northbay-sausalito"
+        "north-bay"
       ],
       "muid": "17842558546261250729",
       "hoursLabel": "",
@@ -703,8 +709,7 @@
       "appleMapsUrl": "https://maps.apple.com/?daddr=37.7564722,-122.4190352&q=Foreign%20Cinema",
       "applePlaceUrl": "https://maps.apple.com/place?auid=16334142993927554502",
       "guideSlugs": [
-        "sf-mission-district",
-        "sf-american"
+        "sf-mission-district"
       ],
       "muid": "16334142993927554502",
       "hoursLabel": "",
@@ -723,7 +728,8 @@
       ],
       "phone": "+1 (415) 648-7600",
       "website": "https://foreigncinema.com",
-      "yelpSlug": "foreign-cinema-san-francisco"
+      "yelpSlug": "foreign-cinema-san-francisco",
+      "price": 3
     },
     {
       "id": "rintaro",
@@ -737,6 +743,7 @@
         "Izakaya"
       ],
       "placeType": "restaurant",
+      "price": 3,
       "oneLiner": "Mission District: Rintaro at 82 14th St. Izakaya.",
       "perfectFor": [],
       "periods": [
@@ -898,7 +905,8 @@
       ],
       "phone": "+1 (415) 474-5698",
       "website": "https://saigon-sandwich-sf.com",
-      "yelpSlug": "saigon-sandwich-san-francisco"
+      "yelpSlug": "saigon-sandwich-san-francisco",
+      "price": 1
     },
     {
       "id": "la-mar",
@@ -971,7 +979,8 @@
       ],
       "phone": "+1 (415) 397-8880",
       "website": "https://lamarsf.com",
-      "yelpSlug": "la-mar-san-francisco-4"
+      "yelpSlug": "la-mar-san-francisco-4",
+      "price": 4
     },
     {
       "id": "sotto-mare",
@@ -1031,7 +1040,8 @@
       ],
       "phone": "+1 (415) 398-3181",
       "website": "https://www.sottomaresf.com/",
-      "yelpSlug": "sotto-mare-san-francisco-4"
+      "yelpSlug": "sotto-mare-san-francisco-4",
+      "price": 2
     },
     {
       "id": "salt-straw-sf",
@@ -1066,7 +1076,7 @@
       "appleMapsUrl": "https://maps.apple.com/?daddr=37.3241959,-121.9466758&q=Salt%20%26%20Straw",
       "applePlaceUrl": "https://maps.apple.com/place?auid=3341165687049586034",
       "guideSlugs": [
-        "peninsula-santa-clara"
+        "peninsula"
       ],
       "muid": "3341165687049586034",
       "hoursLabel": "",
@@ -1194,7 +1204,7 @@
       "appleMapsUrl": "https://maps.apple.com/?daddr=37.3433748,-121.9590354&q=Restaurant%20Gish",
       "applePlaceUrl": "https://maps.apple.com/place?auid=8361578438471828125",
       "guideSlugs": [
-        "peninsula-santa-clara"
+        "peninsula"
       ],
       "muid": "8361578438471828125",
       "hoursLabel": "",
@@ -1284,7 +1294,8 @@
         }
       ],
       "phone": "+1 (415) 944-4600",
-      "website": "https://www.verjuscave.com"
+      "website": "https://www.verjuscave.com",
+      "price": 3
     },
     {
       "id": "scoma-s",
@@ -1344,7 +1355,8 @@
       ],
       "phone": "+1 (415) 771-4383",
       "website": "https://scomas.com",
-      "yelpSlug": "scomas-restaurant-san-francisco-3"
+      "yelpSlug": "scomas-restaurant-san-francisco-3",
+      "price": 3
     },
     {
       "id": "al-carajo-sf",
@@ -1403,7 +1415,8 @@
         }
       ],
       "phone": "+1 (415) 400-4146",
-      "website": "https://alcarajosf.com"
+      "website": "https://alcarajosf.com",
+      "price": 1
     },
     {
       "id": "the-progress",
@@ -1457,7 +1470,8 @@
       ],
       "phone": "+1 (415) 673-1294",
       "website": "https://theprogress-sf.com",
-      "yelpSlug": "the-progress-san-francisco-2"
+      "yelpSlug": "the-progress-san-francisco-2",
+      "price": 4
     },
     {
       "id": "arsicault",
@@ -1511,7 +1525,8 @@
       ],
       "phone": "+1 (415) 926-5155",
       "website": "http://arsicault-bakery.com",
-      "yelpSlug": "arsicault-san-francisco"
+      "yelpSlug": "arsicault-san-francisco",
+      "price": 1
     },
     {
       "id": "butter-crumble",
@@ -1561,7 +1576,8 @@
         }
       ],
       "phone": "+1 (415) 874-9484",
-      "website": "https://www.butterandcrumble.com"
+      "website": "https://www.butterandcrumble.com",
+      "price": 2
     },
     {
       "id": "mijote",
@@ -1613,7 +1629,8 @@
         }
       ],
       "website": "https://www.mijotesf.com",
-      "yelpSlug": "mijot"
+      "yelpSlug": "mijot",
+      "price": 4
     },
     {
       "id": "john-s-grill",
@@ -1667,7 +1684,8 @@
       ],
       "phone": "+1 (415) 986-0069",
       "website": "https://www.johnsgrill.com",
-      "yelpSlug": "johns-grill-san-francisco"
+      "yelpSlug": "johns-grill-san-francisco",
+      "price": 3
     },
     {
       "id": "golden-gate-fortune-cookie-factory",
@@ -1775,7 +1793,8 @@
       ],
       "phone": "+1 (415) 296-9463",
       "website": "https://www.facebook.com/SFAlimento",
-      "yelpSlug": "alimento-san-francisco-3"
+      "yelpSlug": "alimento-san-francisco-3",
+      "price": 1
     },
     {
       "id": "reveille-coffee-co",
@@ -1829,7 +1848,8 @@
       ],
       "phone": "+1 (415) 789-6258",
       "website": "https://www.reveillecoffee.com/pages/2268-chestnut-street-san-francsico-ca",
-      "yelpSlug": "reveille-coffee-san-francisco-11"
+      "yelpSlug": "reveille-coffee-san-francisco-11",
+      "price": 1
     },
     {
       "id": "tartine-bakery",
@@ -1884,7 +1904,8 @@
       ],
       "phone": "+1 (415) 487-2600",
       "website": "https://tartinebakery.com/san-francisco/bakery",
-      "yelpSlug": "tartine-bakery-san-francisco-3"
+      "yelpSlug": "tartine-bakery-san-francisco-3",
+      "price": 1
     },
     {
       "id": "taco-bell-cantina",
@@ -1898,6 +1919,7 @@
         "Fast Food"
       ],
       "placeType": "restaurant",
+      "price": 1,
       "oneLiner": "Taco Bell Cantina sits at 5200 Coast Hwy. Fast Food, Pacifica.",
       "perfectFor": [],
       "periods": [
@@ -1919,7 +1941,7 @@
       "appleMapsUrl": "https://maps.apple.com/?daddr=37.5971594,-122.5037083&q=Taco%20Bell%20Cantina",
       "applePlaceUrl": "https://maps.apple.com/place?auid=17713247486396092703",
       "guideSlugs": [
-        "peninsula-pacifica"
+        "peninsula"
       ],
       "muid": "17713247486396092703",
       "hoursLabel": "",
@@ -1988,7 +2010,8 @@
       ],
       "phone": "+1 (415) 448-6023",
       "website": "http://www.robinsanfrancisco.com",
-      "yelpSlug": "robin-san-francisco"
+      "yelpSlug": "robin-san-francisco",
+      "price": 4
     },
     {
       "id": "senor-sisig",
@@ -2054,7 +2077,8 @@
       ],
       "phone": "+1 (855) 747-4455",
       "website": "https://www.senorsisig.com/sf-ferry-building",
-      "yelpSlug": "se"
+      "yelpSlug": "se",
+      "price": 1
     },
     {
       "id": "dalida",
@@ -2068,6 +2092,7 @@
         "East Mediterranean"
       ],
       "placeType": "restaurant",
+      "price": 3,
       "oneLiner": "Dalida at 101 Montgomery St. East Mediterranean, San Francisco.",
       "perfectFor": [],
       "periods": [
@@ -2180,7 +2205,8 @@
       ],
       "phone": "+1 (415) 800-8345",
       "website": "https://mensho.com/location/mensho-tokyo-sf/",
-      "yelpSlug": "mensho-tokyo-san-francisco-4"
+      "yelpSlug": "mensho-tokyo-san-francisco-4",
+      "price": 2
     },
     {
       "id": "la-ciccia",
@@ -2194,6 +2220,7 @@
         "Sardinian"
       ],
       "placeType": "restaurant",
+      "price": 2,
       "oneLiner": "La Ciccia at 291 30th St in Fairmount. Sardinian.",
       "perfectFor": [],
       "periods": [
@@ -2250,6 +2277,7 @@
         "New American"
       ],
       "placeType": "restaurant",
+      "price": 3,
       "oneLiner": "New American at Rich Table, 199 Gough St, Hayes Valley.",
       "perfectFor": [],
       "periods": [
@@ -2358,6 +2386,7 @@
         "Greek"
       ],
       "placeType": "restaurant",
+      "price": 3,
       "oneLiner": "Greek from Kokkari Estiatorio at 200 Jackson St, Embarcadero.",
       "perfectFor": [],
       "periods": [
@@ -2469,7 +2498,8 @@
       ],
       "phone": "+1 (415) 587-2345",
       "website": "https://www.roxiefoodcenter.com",
-      "yelpSlug": "roxie-food-center-san-francisco"
+      "yelpSlug": "roxie-food-center-san-francisco",
+      "price": 1
     },
     {
       "id": "pacific-cocktail-haven",
@@ -2521,7 +2551,8 @@
       ],
       "phone": "+1 (415) 398-0195",
       "website": "https://www.pacificcocktailsf.com",
-      "yelpSlug": "pacific-cocktail-haven-san-francisco-2"
+      "yelpSlug": "pacific-cocktail-haven-san-francisco-2",
+      "price": 2
     },
     {
       "id": "californios",
@@ -2535,6 +2566,7 @@
         "Mexican"
       ],
       "placeType": "restaurant",
+      "price": 4,
       "oneLiner": "SOMA: Californios at 355 11th St. Mexican.",
       "perfectFor": [],
       "periods": [
@@ -2625,7 +2657,8 @@
         }
       ],
       "website": "https://www.facebook.com/people/Ocean-Subs/61564973730492/",
-      "yelpSlug": "ocean-subs-san-francisco"
+      "yelpSlug": "ocean-subs-san-francisco",
+      "price": 1
     },
     {
       "id": "outta-sight-pizza",
@@ -2677,7 +2710,8 @@
       ],
       "phone": "+1 (415) 829-3108",
       "website": "https://www.thatsouttasight.com/",
-      "yelpSlug": "outta-sight-pizza-san-francisco"
+      "yelpSlug": "outta-sight-pizza-san-francisco",
+      "price": 1
     },
     {
       "id": "sons-daughters",
@@ -2729,7 +2763,8 @@
         }
       ],
       "phone": "+1 (415) 994-7933",
-      "website": "https://www.sonsanddaughterssf.com"
+      "website": "https://www.sonsanddaughterssf.com",
+      "price": 4
     },
     {
       "id": "the-vault",
@@ -2743,6 +2778,7 @@
         "New American"
       ],
       "placeType": "restaurant",
+      "price": 3,
       "oneLiner": "The Vault sits at 555 California St. New American, Financial District.",
       "perfectFor": [],
       "periods": [
@@ -2803,6 +2839,7 @@
         "Californian"
       ],
       "placeType": "restaurant",
+      "price": 4,
       "oneLiner": "Californian from Quince at 470 Pacific Ave, Jackson Square.",
       "perfectFor": [],
       "periods": [
@@ -2921,7 +2958,8 @@
       ],
       "phone": "+1 (415) 824-7877",
       "website": "https://www.facebook.com/p/Taqueria-El-Farolito-100063563409799/",
-      "yelpSlug": "el-farolito-san-francisco-2"
+      "yelpSlug": "el-farolito-san-francisco-2",
+      "price": 1
     },
     {
       "id": "a-mano",
@@ -2935,6 +2973,7 @@
         "Cocktail Bar"
       ],
       "placeType": "bar",
+      "price": 2,
       "oneLiner": "a Mano, 450 Hayes St. Cocktail Bar in Hayes Valley.",
       "perfectFor": [],
       "periods": [
@@ -3005,6 +3044,7 @@
         "Seafood"
       ],
       "placeType": "restaurant",
+      "price": 3,
       "oneLiner": "Pier 39: Fog Harbor Fish House at 39 Pier. Seafood.",
       "perfectFor": [],
       "periods": [
@@ -3088,7 +3128,7 @@
       "appleMapsUrl": "https://maps.apple.com/?daddr=37.561725,-122.0111768&q=Billy%20Roy%27s%20Burger%20Co",
       "applePlaceUrl": "https://maps.apple.com/place?auid=16703289396903468520",
       "guideSlugs": [
-        "eastbay-fremont"
+        "east-bay"
       ],
       "muid": "16703289396903468520",
       "hoursLabel": "",
@@ -3107,7 +3147,8 @@
       ],
       "phone": "+1 (510) 714-2226",
       "website": "https://billyroysburgerco.com",
-      "yelpSlug": "billy-roys-burger-fremont-4"
+      "yelpSlug": "billy-roys-burger-fremont-4",
+      "price": 2
     },
     {
       "id": "niku-steakhouse",
@@ -3121,6 +3162,7 @@
         "Steakhouse"
       ],
       "placeType": "restaurant",
+      "price": 4,
       "oneLiner": "Steakhouse at Niku Steakhouse, 61 Division St, Design District.",
       "perfectFor": [],
       "periods": [
@@ -3224,7 +3266,8 @@
       ],
       "phone": "+1 (415) 866-4121",
       "website": "https://el-mil-amores-restaurant.wsite.top/",
-      "yelpSlug": "el-mil-amores-restaurant-san-francisco"
+      "yelpSlug": "el-mil-amores-restaurant-san-francisco",
+      "price": 2
     },
     {
       "id": "sweet-maple",
@@ -3282,7 +3325,8 @@
       ],
       "phone": "+1 (415) 655-9169",
       "website": "http://www.sweetmaplesf.com/",
-      "yelpSlug": "sweet-maple-san-francisco"
+      "yelpSlug": "sweet-maple-san-francisco",
+      "price": 2
     },
     {
       "id": "cultivar",
@@ -3411,7 +3455,8 @@
         }
       ],
       "website": "https://rustyladle.com",
-      "yelpSlug": "rusty-ladle-san-francisco"
+      "yelpSlug": "rusty-ladle-san-francisco",
+      "price": 1
     },
     {
       "id": "true-laurel",
@@ -3488,7 +3533,8 @@
       ],
       "phone": "+1 (415) 341-0020",
       "website": "https://www.truelaurelsf.com",
-      "yelpSlug": "true-laurel-san-francisco-3"
+      "yelpSlug": "true-laurel-san-francisco-3",
+      "price": 2
     },
     {
       "id": "golden-boy-pizza",
@@ -3548,7 +3594,8 @@
       ],
       "phone": "+1 (415) 982-9738",
       "website": "https://www.goldenboypizza.com/northbeach",
-      "yelpSlug": "golden-boy-pizza-san-francisco"
+      "yelpSlug": "golden-boy-pizza-san-francisco",
+      "price": 1
     },
     {
       "id": "the-matterhorn-restaurant-and-bakery",
@@ -3562,6 +3609,7 @@
         "Swiss"
       ],
       "placeType": "restaurant",
+      "price": 3,
       "oneLiner": "The Matterhorn Restaurant and Bakery at 2323 Van Ness Ave in Pacific Heights. Swiss.",
       "perfectFor": [],
       "periods": [
@@ -3619,6 +3667,7 @@
         "Californian"
       ],
       "placeType": "restaurant",
+      "price": 4,
       "oneLiner": "Californian at Saison, 178 Townsend St, South Beach.",
       "perfectFor": [],
       "periods": [
@@ -3698,7 +3747,7 @@
       "appleMapsUrl": "https://maps.apple.com/?daddr=37.8551034,-122.4787844&q=Barrel%20House%20Tavern",
       "applePlaceUrl": "https://maps.apple.com/place?auid=5527082996613001123",
       "guideSlugs": [
-        "northbay-sausalito"
+        "north-bay"
       ],
       "muid": "5527082996613001123",
       "hoursLabel": "",
@@ -3717,7 +3766,8 @@
       ],
       "phone": "+1 (415) 729-9593",
       "website": "https://barrelhousetavern.com",
-      "yelpSlug": "barrel-house-tavern-sausalito"
+      "yelpSlug": "barrel-house-tavern-sausalito",
+      "price": 2
     },
     {
       "id": "nobu-sf",
@@ -3731,6 +3781,7 @@
         "Japanese"
       ],
       "placeType": "restaurant",
+      "price": 4,
       "oneLiner": "Nobu sits at 180 Hamilton Ave. Japanese, Palo Alto.",
       "perfectFor": [],
       "periods": [
@@ -3765,7 +3816,7 @@
       "appleMapsUrl": "https://maps.apple.com/?daddr=37.44376,-122.1615712&q=Nobu",
       "applePlaceUrl": "https://maps.apple.com/place?auid=2501507275692828216",
       "guideSlugs": [
-        "peninsula-palo-alto"
+        "peninsula"
       ],
       "muid": "2501507275692828216",
       "hoursLabel": "",
@@ -3798,6 +3849,7 @@
         "New American"
       ],
       "placeType": "restaurant",
+      "price": 4,
       "oneLiner": "New American from Trestle at 531 Jackson St, Financial District.",
       "perfectFor": [],
       "periods": [
@@ -3859,6 +3911,7 @@
         "Mexican"
       ],
       "placeType": "restaurant",
+      "price": 2,
       "oneLiner": "Tacos El Patrón at 1500 Van Ness Ave. Mexican, Mission District.",
       "perfectFor": [],
       "periods": [
@@ -3934,7 +3987,7 @@
       "appleMapsUrl": "https://maps.apple.com/?daddr=37.6788488,-121.8754256&q=The%20Press%20An%20Artisan%20Cafe",
       "applePlaceUrl": "https://maps.apple.com/place?auid=17479639067037762647",
       "guideSlugs": [
-        "eastbay-pleasanton"
+        "east-bay"
       ],
       "muid": "17479639067037762647",
       "hoursLabel": "",
@@ -4021,7 +4074,8 @@
       ],
       "phone": "+1 (415) 525-4435",
       "website": "http://streettacosf.com",
-      "yelpSlug": "street-taco-san-francisco"
+      "yelpSlug": "street-taco-san-francisco",
+      "price": 1
     },
     {
       "id": "state-bird-provisions",
@@ -4083,7 +4137,8 @@
       ],
       "phone": "+1 (415) 795-1272",
       "website": "https://statebirdsf.com",
-      "yelpSlug": "state-bird-provisions-san-francisco"
+      "yelpSlug": "state-bird-provisions-san-francisco",
+      "price": 4
     },
     {
       "id": "the-melt",
@@ -4131,8 +4186,7 @@
       "appleMapsUrl": "https://maps.apple.com/?daddr=37.7833731,-122.4085402&q=The%20Melt",
       "applePlaceUrl": "https://maps.apple.com/place?auid=1033602914016843168",
       "guideSlugs": [
-        "sf-soma",
-        "sf-american"
+        "sf-soma"
       ],
       "muid": "1033602914016843168",
       "hoursLabel": "",
@@ -4151,7 +4205,8 @@
       ],
       "phone": "+1 (415) 689-5879",
       "website": "https://www.themelt.com",
-      "yelpSlug": "the-melt-san-francisco-15"
+      "yelpSlug": "the-melt-san-francisco-15",
+      "price": 1
     },
     {
       "id": "penny-roma",
@@ -4212,7 +4267,8 @@
       ],
       "phone": "+1 (415) 826-7004",
       "website": "https://pennyroma.com",
-      "yelpSlug": "penny-roma-san-francisco"
+      "yelpSlug": "penny-roma-san-francisco",
+      "price": 3
     },
     {
       "id": "wildseed",
@@ -4226,6 +4282,7 @@
         "Vegetarian"
       ],
       "placeType": "restaurant",
+      "price": 2,
       "oneLiner": "Wildseed sits at 2000 Union St. Vegetarian, Cow Hollow.",
       "perfectFor": [],
       "periods": [
@@ -4298,6 +4355,7 @@
         "New American"
       ],
       "placeType": "restaurant",
+      "price": 3,
       "oneLiner": "New American from Spruce at 3640 Sacramento St, Presidio Heights.",
       "perfectFor": [],
       "periods": [
@@ -4481,7 +4539,8 @@
       ],
       "phone": "+1 (415) 928-1849",
       "website": "https://boudinbakery.com/location/boudin-bakery-bakers-hall/",
-      "yelpSlug": "boudin-san-francisco-20"
+      "yelpSlug": "boudin-san-francisco-20",
+      "price": 2
     },
     {
       "id": "devil-s-teeth-baking-company",
@@ -4557,6 +4616,7 @@
         "Steakhouse"
       ],
       "placeType": "restaurant",
+      "price": 4,
       "oneLiner": "Mastro's Steakhouse at 2855 Stevens Creek Blvd in Santa Clara. Steakhouse.",
       "perfectFor": [],
       "periods": [
@@ -4584,7 +4644,7 @@
       "appleMapsUrl": "https://maps.apple.com/?daddr=37.3241428,-121.9468675&q=Mastro%27s%20Steakhouse",
       "applePlaceUrl": "https://maps.apple.com/place?auid=14279936698475236806",
       "guideSlugs": [
-        "peninsula-santa-clara"
+        "peninsula"
       ],
       "muid": "14279936698475236806",
       "hoursLabel": "",
@@ -4671,7 +4731,8 @@
       ],
       "phone": "+1 (415) 853-0671",
       "website": "https://www.prubechu.com",
-      "yelpSlug": "prubechu-san-francisco"
+      "yelpSlug": "prubechu-san-francisco",
+      "price": 2
     },
     {
       "id": "zuni-cafe",
@@ -4685,6 +4746,7 @@
         "French"
       ],
       "placeType": "restaurant",
+      "price": 3,
       "oneLiner": "French at Zuni Café, 1658 Market St, Van Ness-Civic Center.",
       "perfectFor": [],
       "periods": [
@@ -4794,7 +4856,8 @@
       ],
       "phone": "+1 (415) 673-1101",
       "website": "https://www.facebook.com/SwanOysterSF",
-      "yelpSlug": "swan-oyster-depot-san-francisco"
+      "yelpSlug": "swan-oyster-depot-san-francisco",
+      "price": 3
     },
     {
       "id": "malibu-farm",
@@ -4808,6 +4871,7 @@
         "American"
       ],
       "placeType": "restaurant",
+      "price": 2,
       "oneLiner": "American from Malibu Farm at 9 Main St, Tiburon.",
       "perfectFor": [],
       "periods": [
@@ -4847,7 +4911,7 @@
       "appleMapsUrl": "https://maps.apple.com/?daddr=37.8732793,-122.4559441&q=Malibu%20Farm",
       "applePlaceUrl": "https://maps.apple.com/place?auid=11740875836179549426",
       "guideSlugs": [
-        "northbay-tiburon"
+        "north-bay"
       ],
       "muid": "11740875836179549426",
       "hoursLabel": "",
@@ -4887,6 +4951,7 @@
         "Italian"
       ],
       "placeType": "restaurant",
+      "price": 3,
       "oneLiner": "1896 Hyde St — Seven Hills, Italian, Russian Hill.",
       "perfectFor": [],
       "periods": [
@@ -4995,7 +5060,8 @@
       ],
       "phone": "+1 (415) 896-4281",
       "website": "https://www.romasf.com/marina-location",
-      "yelpSlug": "roma-antica-san-francisco-3"
+      "yelpSlug": "roma-antica-san-francisco-3",
+      "price": 2
     },
     {
       "id": "rh-rooftop-restaurant-at-rh-marin",
@@ -5009,6 +5075,7 @@
         "New American"
       ],
       "placeType": "restaurant",
+      "price": 3,
       "oneLiner": "Corte Madera: RH Rooftop Restaurant at RH Marin at 1618 Redwood Hwy. New American.",
       "perfectFor": [],
       "periods": [
@@ -5048,7 +5115,7 @@
       "appleMapsUrl": "https://maps.apple.com/?daddr=37.9293641,-122.5133429&q=RH%20Rooftop%20Restaurant%20at%20RH%20Marin",
       "applePlaceUrl": "https://maps.apple.com/place?auid=1882353396783663036",
       "guideSlugs": [
-        "northbay-corte-madera"
+        "north-bay"
       ],
       "muid": "1882353396783663036",
       "hoursLabel": "",
@@ -5197,7 +5264,8 @@
       ],
       "phone": "+1 (415) 474-5044",
       "website": "https://www.thebuenavista.com",
-      "yelpSlug": "the-buena-vista-san-francisco"
+      "yelpSlug": "the-buena-vista-san-francisco",
+      "price": 2
     },
     {
       "id": "gary-danko",
@@ -5250,7 +5318,8 @@
       ],
       "phone": "+1 (415) 749-2060",
       "website": "https://www.garydanko.com",
-      "yelpSlug": "gary-danko-san-francisco"
+      "yelpSlug": "gary-danko-san-francisco",
+      "price": 4
     },
     {
       "id": "flores",
@@ -5264,6 +5333,7 @@
         "Mexican"
       ],
       "placeType": "restaurant",
+      "price": 2,
       "oneLiner": "Flores sits at 2030 Union St. Mexican, Cow Hollow.",
       "perfectFor": [],
       "periods": [
@@ -5337,6 +5407,7 @@
         "Italian"
       ],
       "placeType": "restaurant",
+      "price": 3,
       "oneLiner": "Italian from 54 Mint at 16 Mint Plaza, SOMA.",
       "perfectFor": [],
       "periods": [
@@ -5409,6 +5480,7 @@
         "Deli"
       ],
       "placeType": "deli",
+      "price": 1,
       "oneLiner": "Stacked Italian deli sandwiches on Sutter Street.",
       "perfectFor": [],
       "periods": [
@@ -5476,6 +5548,7 @@
         "New American"
       ],
       "placeType": "restaurant",
+      "price": 3,
       "oneLiner": "Prospect, 300 Spear St. New American in South Beach.",
       "perfectFor": [],
       "periods": [
@@ -5528,6 +5601,7 @@
         "Asian"
       ],
       "placeType": "restaurant",
+      "price": 2,
       "oneLiner": "Liholiho Yacht Club at 871 Sutter St in Downtown. Asian.",
       "perfectFor": [],
       "periods": [
@@ -5625,7 +5699,8 @@
       ],
       "phone": "+1 (415) 391-7117",
       "website": "https://hogislandoysters.com/restaurants/san-francisco",
-      "yelpSlug": "hog-island-oyster-san-francisco-3"
+      "yelpSlug": "hog-island-oyster-san-francisco-3",
+      "price": 3
     },
     {
       "id": "dumpling-home",
@@ -5689,7 +5764,8 @@
         }
       ],
       "phone": "+1 (415) 503-1666",
-      "yelpSlug": "dumpling-home-san-francisco"
+      "yelpSlug": "dumpling-home-san-francisco",
+      "price": 2
     },
     {
       "id": "lung-fung-bakery",
@@ -5742,7 +5818,8 @@
       ],
       "phone": "+1 (415) 386-3775",
       "website": "https://lungfungbakery.shop",
-      "yelpSlug": "lung-fung-bakery-san-francisco"
+      "yelpSlug": "lung-fung-bakery-san-francisco",
+      "price": 1
     },
     {
       "id": "showa",
@@ -5794,7 +5871,8 @@
       ],
       "phone": "+1 (415) 470-1107",
       "website": "https://www.showaus.com",
-      "yelpSlug": "showa-le-gourmet-tonkatsu-san-francisco-2"
+      "yelpSlug": "showa-le-gourmet-tonkatsu-san-francisco-2",
+      "price": 4
     },
     {
       "id": "outerlands",
@@ -5872,7 +5950,8 @@
       ],
       "phone": "+1 (415) 661-6140",
       "website": "https://outerlandssf.com",
-      "yelpSlug": "outerlands-san-francisco"
+      "yelpSlug": "outerlands-san-francisco",
+      "price": 2
     },
     {
       "id": "nisei",
@@ -5886,6 +5965,7 @@
         "Japanese"
       ],
       "placeType": "restaurant",
+      "price": 4,
       "oneLiner": "Nisei, 2316 Polk St. Japanese in Russian Hill.",
       "perfectFor": [],
       "periods": [
@@ -5973,7 +6053,7 @@
       "appleMapsUrl": "https://maps.apple.com/?daddr=37.445466,-122.1607139&q=Ramen%20Nagi",
       "applePlaceUrl": "https://maps.apple.com/place?auid=9834804649646578877",
       "guideSlugs": [
-        "peninsula-palo-alto"
+        "peninsula"
       ],
       "muid": "9834804649646578877",
       "hoursLabel": "",
@@ -5994,7 +6074,8 @@
       ],
       "phone": "+1 (650) 246-9967",
       "website": "https://ramennagiusa.com",
-      "yelpSlug": "ramen-nagi-palo-alto"
+      "yelpSlug": "ramen-nagi-palo-alto",
+      "price": 2
     },
     {
       "id": "the-spinnaker",
@@ -6008,6 +6089,7 @@
         "Seafood"
       ],
       "placeType": "restaurant",
+      "price": 3,
       "oneLiner": "The Spinnaker at 100 Spinnaker Dr in Sausalito. Seafood.",
       "perfectFor": [],
       "periods": [
@@ -6035,7 +6117,7 @@
       "appleMapsUrl": "https://maps.apple.com/?daddr=37.8587564,-122.4782134&q=The%20Spinnaker",
       "applePlaceUrl": "https://maps.apple.com/place?auid=10968916848461667240",
       "guideSlugs": [
-        "northbay-sausalito"
+        "north-bay"
       ],
       "muid": "10968916848461667240",
       "hoursLabel": "",
@@ -6068,6 +6150,7 @@
         "American"
       ],
       "placeType": "restaurant",
+      "price": 2,
       "oneLiner": "American at Perry's, 234 Magnolia Ave, Larkspur.",
       "perfectFor": [],
       "periods": [
@@ -6107,7 +6190,7 @@
       "appleMapsUrl": "https://maps.apple.com/?daddr=37.9325519,-122.5357011&q=Perry%27s",
       "applePlaceUrl": "https://maps.apple.com/place?auid=9689535535227902843",
       "guideSlugs": [
-        "northbay-larkspur"
+        "north-bay"
       ],
       "muid": "9689535535227902843",
       "hoursLabel": "",
@@ -6201,7 +6284,8 @@
       ],
       "phone": "+1 (415) 775-4877",
       "website": "https://originaljoes.com/north-beach/",
-      "yelpSlug": "original-joes-san-francisco-3"
+      "yelpSlug": "original-joes-san-francisco-3",
+      "price": 2
     },
     {
       "id": "atelier-crenn",
@@ -6215,6 +6299,7 @@
         "French"
       ],
       "placeType": "restaurant",
+      "price": 4,
       "oneLiner": "Atelier Crenn sits at 3127 Fillmore St. French, Cow Hollow.",
       "perfectFor": [],
       "periods": [
@@ -6276,6 +6361,7 @@
         "Indian"
       ],
       "placeType": "restaurant",
+      "price": 3,
       "oneLiner": "Indian from Rooh at 333 Brannan St, South Beach.",
       "perfectFor": [],
       "periods": [
@@ -6366,7 +6452,7 @@
       "appleMapsUrl": "https://maps.apple.com/?daddr=37.8678186,-122.2597717&q=Yogurt%20Park",
       "applePlaceUrl": "https://maps.apple.com/place?auid=16210367333960477172",
       "guideSlugs": [
-        "eastbay-berkeley"
+        "east-bay"
       ],
       "muid": "16210367333960477172",
       "hoursLabel": "",
@@ -6455,7 +6541,8 @@
       ],
       "phone": "+1 (415) 885-4605",
       "website": "https://www.houseofprimerib.net",
-      "yelpSlug": "house-of-prime-rib-san-francisco"
+      "yelpSlug": "house-of-prime-rib-san-francisco",
+      "price": 3
     },
     {
       "id": "boulevard",
@@ -6469,6 +6556,7 @@
         "New American"
       ],
       "placeType": "restaurant",
+      "price": 4,
       "oneLiner": "Embarcadero: Boulevard at 1 Mission St. New American.",
       "perfectFor": [],
       "periods": [
@@ -6564,7 +6652,8 @@
       ],
       "phone": "+1 (415) 874-9921",
       "website": "https://www.lazybearsf.com",
-      "yelpSlug": "lazy-bear-san-francisco-5"
+      "yelpSlug": "lazy-bear-san-francisco-5",
+      "price": 4
     },
     {
       "id": "osso-steakhouse",
@@ -6605,8 +6694,7 @@
       "appleMapsUrl": "https://maps.apple.com/?daddr=37.7913532,-122.4137478&q=Osso%20Steakhouse",
       "applePlaceUrl": "https://maps.apple.com/place?auid=4163609809309499401",
       "guideSlugs": [
-        "sf-steakhouse",
-        "sf-date-night"
+        "sf-steakhouse"
       ],
       "muid": "4163609809309499401",
       "hoursLabel": "",
@@ -6686,7 +6774,8 @@
       ],
       "phone": "+1 (415) 321-2170",
       "website": "https://www.mendocinofarms.com/location-directory/norcal/465-california-st-san-francisco-ca-94104",
-      "yelpSlug": "mendocino-farms-san-francisco"
+      "yelpSlug": "mendocino-farms-san-francisco",
+      "price": 1
     },
     {
       "id": "joe-the-juice-sf",
@@ -6768,6 +6857,7 @@
         "Chicken"
       ],
       "placeType": "restaurant",
+      "price": 1,
       "oneLiner": "Chicken from The Bird at 115 New Montgomery St, Financial District South.",
       "perfectFor": [],
       "periods": [
@@ -6840,6 +6930,7 @@
         "Breakfast and Brunch"
       ],
       "placeType": "restaurant",
+      "price": 3,
       "oneLiner": "2 New Montgomery St — The Garden Court, Breakfast and Brunch, Financial District South.",
       "perfectFor": [],
       "periods": [
@@ -6914,6 +7005,7 @@
         "Seafood"
       ],
       "placeType": "restaurant",
+      "price": 4,
       "oneLiner": "Angler, 132 The Embarcadero. Seafood in Embarcadero.",
       "perfectFor": [],
       "periods": [
@@ -7020,7 +7112,8 @@
       ],
       "phone": "+1 (415) 801-5927",
       "website": "https://www.cafeokawari.com",
-      "yelpSlug": "cafe-okawari-san-francisco"
+      "yelpSlug": "cafe-okawari-san-francisco",
+      "price": 1
     },
     {
       "id": "taverna",
@@ -7034,6 +7127,7 @@
         "Greek"
       ],
       "placeType": "restaurant",
+      "price": 3,
       "oneLiner": "Taverna at 800 Emerson St in Palo Alto. Greek.",
       "perfectFor": [],
       "periods": [
@@ -7061,7 +7155,7 @@
       "appleMapsUrl": "https://maps.apple.com/?daddr=37.4422091,-122.1590531&q=Taverna",
       "applePlaceUrl": "https://maps.apple.com/place?auid=11750794391220254369",
       "guideSlugs": [
-        "peninsula-palo-alto"
+        "peninsula"
       ],
       "muid": "11750794391220254369",
       "hoursLabel": "",
@@ -7172,6 +7266,7 @@
         "French"
       ],
       "placeType": "restaurant",
+      "price": 4,
       "oneLiner": "French at La Foret Restaurant, 21747 Bertram Rd, San Jose.",
       "perfectFor": [],
       "periods": [
@@ -7198,7 +7293,7 @@
       "appleMapsUrl": "https://maps.apple.com/?daddr=37.1740528,-121.823715&q=La%20Foret%20Restaurant",
       "applePlaceUrl": "https://maps.apple.com/place?auid=2472992682674153586",
       "guideSlugs": [
-        "peninsula-san-jose"
+        "peninsula"
       ],
       "muid": "2472992682674153586",
       "hoursLabel": "",
@@ -7231,6 +7326,7 @@
         "Japanese"
       ],
       "placeType": "restaurant",
+      "price": 4,
       "oneLiner": "Ozumo sits at 161 Steuart St. Japanese, Embarcadero.",
       "perfectFor": [],
       "periods": [
@@ -7303,6 +7399,7 @@
         "Neapolitan Pizza"
       ],
       "placeType": "pizzeria",
+      "price": 3,
       "oneLiner": "2355 Chestnut St — A16, Neapolitan Pizza, Central Marina.",
       "perfectFor": [],
       "periods": [
@@ -7421,7 +7518,8 @@
       ],
       "phone": "+1 (415) 421-2337",
       "website": "https://www.themolinarideli.com",
-      "yelpSlug": "molinari-delicatessen-san-francisco"
+      "yelpSlug": "molinari-delicatessen-san-francisco",
+      "price": 1
     },
     {
       "id": "deli-board",
@@ -7475,7 +7573,8 @@
       ],
       "phone": "+1 (415) 552-7687",
       "website": "https://www.deliboardsf.com/",
-      "yelpSlug": "deli-board-san-francisco"
+      "yelpSlug": "deli-board-san-francisco",
+      "price": 2
     },
     {
       "id": "four-kings",
@@ -7489,6 +7588,7 @@
         "Cantonese"
       ],
       "placeType": "restaurant",
+      "price": 2,
       "oneLiner": "Chinatown: Four Kings at 710 Commercial St. Cantonese.",
       "perfectFor": [],
       "periods": [
@@ -7540,6 +7640,7 @@
         "Greek"
       ],
       "placeType": "restaurant",
+      "price": 2,
       "oneLiner": "Elia at 310 Main St in Pleasanton. Greek.",
       "perfectFor": [],
       "periods": [
@@ -7589,7 +7690,7 @@
       "appleMapsUrl": "https://maps.apple.com/?daddr=37.6590384,-121.8764738&q=Elia",
       "applePlaceUrl": "https://maps.apple.com/place?auid=9975469316711371018",
       "guideSlugs": [
-        "eastbay-pleasanton"
+        "east-bay"
       ],
       "muid": "9975469316711371018",
       "hoursLabel": "",
@@ -7673,7 +7774,8 @@
       ],
       "phone": "+1 (415) 634-7002",
       "website": "https://www.bodegasf.com",
-      "yelpSlug": "bodega-san-francisco-2"
+      "yelpSlug": "bodega-san-francisco-2",
+      "price": 1
     },
     {
       "id": "benu",
@@ -7687,6 +7789,7 @@
         "Asian Fusion"
       ],
       "placeType": "restaurant",
+      "price": 4,
       "oneLiner": "Asian Fusion at Benu, 22 Hawthorne St, Financial District South.",
       "perfectFor": [],
       "periods": [
@@ -8611,31 +8714,6 @@
       "pinned": true
     },
     {
-      "slug": "sf-american",
-      "title": "American",
-      "dek": "Foreign Cinema at 2534 Mission St, and 1 more American stops.",
-      "group": "Cuisine",
-      "intro": "Foreign Cinema is at 2534 Mission St. The Melt is at 925 Market St.",
-      "updatedAt": "2026-10-21",
-      "ranked": false,
-      "city": "sf",
-      "entries": [
-        {
-          "placeId": "foreign-cinema",
-          "pullQuote": "Foreign Cinema, 2534 Mission St. American in Mission District.",
-          "blurb": "Foreign Cinema, 2534 Mission St. American in Mission District.",
-          "copySource": "draft"
-        },
-        {
-          "placeId": "the-melt",
-          "pullQuote": "American at The Melt, 925 Market St, SOMA.",
-          "blurb": "American at The Melt, 925 Market St, SOMA.",
-          "copySource": "draft"
-        }
-      ],
-      "pinned": true
-    },
-    {
       "slug": "sf-sandwich",
       "title": "Sandwich",
       "dek": "Roxie Food Center at 1901 San Jose Ave, and 3 more Sandwich stops.",
@@ -8673,299 +8751,157 @@
       "pinned": true
     },
     {
-      "slug": "sf-date-night",
-      "title": "Date night",
-      "dek": "Rooms marked $$$ or $$$$ on the published price band.",
-      "group": "Occasion",
-      "intro": "Rooms marked $$$ or $$$$ on the published price band.",
-      "updatedAt": "2026-10-21",
-      "ranked": false,
-      "city": "sf",
-      "entries": [
-        {
-          "placeId": "roka-akor",
-          "pullQuote": "Roka Akor sits at 801 Montgomery St. Japanese, Jackson Square.",
-          "blurb": "Roka Akor sits at 801 Montgomery St. Japanese, Jackson Square.",
-          "copySource": "draft"
-        },
-        {
-          "placeId": "osso-steakhouse",
-          "pullQuote": "Steakhouse at Osso Steakhouse, 1177 California St, Downtown.",
-          "blurb": "Steakhouse at Osso Steakhouse, 1177 California St, Downtown.",
-          "copySource": "draft"
-        }
-      ],
-      "pinned": true
-    },
-    {
-      "slug": "eastbay-fremont",
-      "title": "Fremont",
-      "dek": "Billy Roy's Burger Co in Fremont.",
+      "slug": "peninsula",
+      "title": "Peninsula",
+      "dek": "The Peninsula places from the neighborhood lists: Barbara's Fishtrap, Taco Bell Cantina, La Foret Restaurant, Nobu, Ramen Nagi, Taverna, Mastro's Steakhouse, Restaurant Gish, and Salt & Straw.",
       "group": "Neighborhoods",
-      "intro": "Billy Roy's Burger Co at 3909 Thornton Ave in Fremont. Burger.",
-      "updatedAt": "2026-10-22",
+      "intro": "",
+      "updatedAt": "2026-11-09",
       "ranked": false,
-      "city": "eastbay",
-      "entries": [
-        {
-          "placeId": "billy-roy-s-burger-co",
-          "pullQuote": "Billy Roy's Burger Co at 3909 Thornton Ave in Fremont. Burger.",
-          "blurb": "Billy Roy's Burger Co at 3909 Thornton Ave in Fremont. Burger.",
-          "copySource": "draft"
-        }
-      ],
-      "pinned": true
-    },
-    {
-      "slug": "peninsula-half-moon-bay",
-      "title": "Half Moon Bay",
-      "dek": "Barbara's Fishtrap in Half Moon Bay.",
-      "group": "Neighborhoods",
-      "intro": "281 Capistrano Rd in Half Moon Bay is the address for Barbara's Fishtrap. Seafood.",
-      "updatedAt": "2026-10-22",
-      "ranked": false,
+      "pinned": true,
       "city": "peninsula",
       "entries": [
         {
           "placeId": "barbara-s-fishtrap",
-          "pullQuote": "281 Capistrano Rd in Half Moon Bay is the address for Barbara's Fishtrap. Seafood.",
-          "blurb": "281 Capistrano Rd in Half Moon Bay is the address for Barbara's Fishtrap. Seafood.",
+          "pullQuote": "",
+          "blurb": "",
           "copySource": "draft"
-        }
-      ],
-      "pinned": true
-    },
-    {
-      "slug": "peninsula-pacifica",
-      "title": "Pacifica",
-      "dek": "Taco Bell Cantina in Pacifica.",
-      "group": "Neighborhoods",
-      "intro": "Taco Bell Cantina sits at 5200 Coast Hwy. Fast Food, Pacifica.",
-      "updatedAt": "2026-10-22",
-      "ranked": false,
-      "city": "peninsula",
-      "entries": [
+        },
         {
           "placeId": "taco-bell-cantina",
-          "pullQuote": "Taco Bell Cantina sits at 5200 Coast Hwy. Fast Food, Pacifica.",
-          "blurb": "Taco Bell Cantina sits at 5200 Coast Hwy. Fast Food, Pacifica.",
+          "pullQuote": "",
+          "blurb": "",
           "copySource": "draft"
-        }
-      ],
-      "pinned": true
-    },
-    {
-      "slug": "peninsula-palo-alto",
-      "title": "Palo Alto",
-      "dek": "Nobu, Ramen Nagi, and Taverna.",
-      "group": "Neighborhoods",
-      "intro": "Nobu sits at 180 Hamilton Ave. Japanese, Palo Alto. Palo Alto: Ramen Nagi at 541 Bryant St. Ramen. Taverna at 800 Emerson St in Palo Alto. Greek.",
-      "updatedAt": "2026-10-22",
-      "ranked": false,
-      "city": "peninsula",
-      "entries": [
+        },
+        {
+          "placeId": "la-foret-restaurant",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
         {
           "placeId": "nobu-sf",
-          "pullQuote": "Nobu sits at 180 Hamilton Ave. Japanese, Palo Alto.",
-          "blurb": "Nobu sits at 180 Hamilton Ave. Japanese, Palo Alto.",
+          "pullQuote": "",
+          "blurb": "",
           "copySource": "draft"
         },
         {
           "placeId": "ramen-nagi",
-          "pullQuote": "Palo Alto: Ramen Nagi at 541 Bryant St. Ramen.",
-          "blurb": "Palo Alto: Ramen Nagi at 541 Bryant St. Ramen.",
+          "pullQuote": "",
+          "blurb": "",
           "copySource": "draft"
         },
         {
           "placeId": "taverna",
-          "pullQuote": "Taverna at 800 Emerson St in Palo Alto. Greek.",
-          "blurb": "Taverna at 800 Emerson St in Palo Alto. Greek.",
-          "copySource": "draft"
-        }
-      ],
-      "pinned": true
-    },
-    {
-      "slug": "eastbay-pleasanton",
-      "title": "Pleasanton",
-      "dek": "Elia and The Press An Artisan Cafe.",
-      "group": "Neighborhoods",
-      "intro": "Elia at 310 Main St in Pleasanton. Greek. The Press An Artisan Cafe, 1987 Santa Rita Rd. Coffee in Pleasanton.",
-      "updatedAt": "2026-10-22",
-      "ranked": false,
-      "city": "eastbay",
-      "entries": [
-        {
-          "placeId": "elia",
-          "pullQuote": "Elia at 310 Main St in Pleasanton. Greek.",
-          "blurb": "Elia at 310 Main St in Pleasanton. Greek.",
+          "pullQuote": "",
+          "blurb": "",
           "copySource": "draft"
         },
         {
-          "placeId": "the-press-an-artisan-cafe",
-          "pullQuote": "The Press An Artisan Cafe, 1987 Santa Rita Rd. Coffee in Pleasanton.",
-          "blurb": "The Press An Artisan Cafe, 1987 Santa Rita Rd. Coffee in Pleasanton.",
-          "copySource": "draft"
-        }
-      ],
-      "pinned": true
-    },
-    {
-      "slug": "peninsula-san-jose",
-      "title": "San Jose",
-      "dek": "La Foret Restaurant in San Jose.",
-      "group": "Neighborhoods",
-      "intro": "French at La Foret Restaurant, 21747 Bertram Rd, San Jose.",
-      "updatedAt": "2026-10-22",
-      "ranked": false,
-      "city": "peninsula",
-      "entries": [
-        {
-          "placeId": "la-foret-restaurant",
-          "pullQuote": "French at La Foret Restaurant, 21747 Bertram Rd, San Jose.",
-          "blurb": "French at La Foret Restaurant, 21747 Bertram Rd, San Jose.",
-          "copySource": "draft"
-        }
-      ],
-      "pinned": true
-    },
-    {
-      "slug": "peninsula-santa-clara",
-      "title": "Santa Clara",
-      "dek": "Mastro's Steakhouse, Restaurant Gish, and Salt & Straw.",
-      "group": "Neighborhoods",
-      "intro": "Mastro's Steakhouse at 2855 Stevens Creek Blvd in Santa Clara. Steakhouse. Restaurant Gish, 1998 Homestead Rd. Korean in Santa Clara. Ice Cream from Salt & Straw at 2855 Stevens Creek Blvd, Santa Clara.",
-      "updatedAt": "2026-10-22",
-      "ranked": false,
-      "city": "peninsula",
-      "entries": [
-        {
           "placeId": "mastro-s-steakhouse",
-          "pullQuote": "Mastro's Steakhouse at 2855 Stevens Creek Blvd in Santa Clara. Steakhouse.",
-          "blurb": "Mastro's Steakhouse at 2855 Stevens Creek Blvd in Santa Clara. Steakhouse.",
+          "pullQuote": "",
+          "blurb": "",
           "copySource": "draft"
         },
         {
           "placeId": "restaurant-gish",
-          "pullQuote": "Restaurant Gish, 1998 Homestead Rd. Korean in Santa Clara.",
-          "blurb": "Restaurant Gish, 1998 Homestead Rd. Korean in Santa Clara.",
+          "pullQuote": "",
+          "blurb": "",
           "copySource": "draft"
         },
         {
           "placeId": "salt-straw-sf",
-          "pullQuote": "Ice Cream from Salt & Straw at 2855 Stevens Creek Blvd, Santa Clara.",
-          "blurb": "Ice Cream from Salt & Straw at 2855 Stevens Creek Blvd, Santa Clara.",
+          "pullQuote": "",
+          "blurb": "",
           "copySource": "draft"
         }
-      ],
-      "pinned": true
+      ]
     },
     {
-      "slug": "eastbay-berkeley",
-      "title": "Berkeley",
-      "dek": "Yogurt Park in Berkeley.",
+      "slug": "east-bay",
+      "title": "East Bay",
+      "dek": "The East Bay places from the neighborhood lists: Yogurt Park, Billy Roy's Burger Co, Elia, and The Press An Artisan Cafe.",
       "group": "Neighborhoods",
-      "intro": "2433 Durant Ave — Yogurt Park, Ice Cream, Berkeley.",
-      "updatedAt": "2026-10-22",
+      "intro": "",
+      "updatedAt": "2026-11-09",
       "ranked": false,
+      "pinned": true,
       "city": "eastbay",
       "entries": [
         {
           "placeId": "yogurt-park",
-          "pullQuote": "2433 Durant Ave — Yogurt Park, Ice Cream, Berkeley.",
-          "blurb": "2433 Durant Ave — Yogurt Park, Ice Cream, Berkeley.",
-          "copySource": "draft"
-        }
-      ],
-      "pinned": true
-    },
-    {
-      "slug": "northbay-sausalito",
-      "title": "Sausalito",
-      "dek": "Angelino Restaurant, Barrel House Tavern, and The Spinnaker.",
-      "group": "Neighborhoods",
-      "intro": "621 Bridgeway — Angelino Restaurant, Italian, Sausalito.",
-      "updatedAt": "2026-10-22",
-      "ranked": false,
-      "city": "northbay",
-      "entries": [
-        {
-          "placeId": "angelino-restaurant",
-          "pullQuote": "621 Bridgeway — Angelino Restaurant, Italian, Sausalito.",
-          "blurb": "621 Bridgeway — Angelino Restaurant, Italian, Sausalito.",
+          "pullQuote": "",
+          "blurb": "",
           "copySource": "draft"
         },
         {
-          "placeId": "barrel-house-tavern",
-          "pullQuote": "New American at Barrel House Tavern, 660 Bridgeway, Sausalito.",
-          "blurb": "New American at Barrel House Tavern, 660 Bridgeway, Sausalito.",
+          "placeId": "billy-roy-s-burger-co",
+          "pullQuote": "",
+          "blurb": "",
           "copySource": "draft"
         },
         {
-          "placeId": "the-spinnaker",
-          "pullQuote": "The Spinnaker at 100 Spinnaker Dr in Sausalito. Seafood.",
-          "blurb": "The Spinnaker at 100 Spinnaker Dr in Sausalito. Seafood.",
+          "placeId": "elia",
+          "pullQuote": "",
+          "blurb": "",
           "copySource": "draft"
-        }
-      ],
-      "pinned": true
-    },
-    {
-      "slug": "northbay-tiburon",
-      "title": "Tiburon",
-      "dek": "Malibu Farm in Tiburon.",
-      "group": "Neighborhoods",
-      "intro": "American from Malibu Farm at 9 Main St, Tiburon.",
-      "updatedAt": "2026-10-22",
-      "ranked": false,
-      "city": "northbay",
-      "entries": [
+        },
         {
-          "placeId": "malibu-farm",
-          "pullQuote": "American from Malibu Farm at 9 Main St, Tiburon.",
-          "blurb": "American from Malibu Farm at 9 Main St, Tiburon.",
+          "placeId": "the-press-an-artisan-cafe",
+          "pullQuote": "",
+          "blurb": "",
           "copySource": "draft"
         }
-      ],
-      "pinned": true
+      ]
     },
     {
-      "slug": "northbay-corte-madera",
-      "title": "Corte Madera",
-      "dek": "RH Rooftop Restaurant at RH Marin in Corte Madera.",
+      "slug": "north-bay",
+      "title": "North Bay",
+      "dek": "The North Bay places from the neighborhood lists: RH Rooftop Restaurant at RH Marin, Perry's, Malibu Farm, Angelino Restaurant, Barrel House Tavern, and The Spinnaker.",
       "group": "Neighborhoods",
-      "intro": "Corte Madera: RH Rooftop Restaurant at RH Marin at 1618 Redwood Hwy. New American.",
-      "updatedAt": "2026-10-22",
+      "intro": "",
+      "updatedAt": "2026-11-09",
       "ranked": false,
+      "pinned": true,
       "city": "northbay",
       "entries": [
         {
           "placeId": "rh-rooftop-restaurant-at-rh-marin",
-          "pullQuote": "Corte Madera: RH Rooftop Restaurant at RH Marin at 1618 Redwood Hwy. New American.",
-          "blurb": "Corte Madera: RH Rooftop Restaurant at RH Marin at 1618 Redwood Hwy. New American.",
+          "pullQuote": "",
+          "blurb": "",
           "copySource": "draft"
-        }
-      ],
-      "pinned": true
-    },
-    {
-      "slug": "northbay-larkspur",
-      "title": "Larkspur",
-      "dek": "Perry's in Larkspur.",
-      "group": "Neighborhoods",
-      "intro": "American at Perry's, 234 Magnolia Ave, Larkspur.",
-      "updatedAt": "2026-10-22",
-      "ranked": false,
-      "city": "northbay",
-      "entries": [
+        },
         {
           "placeId": "perry-s",
-          "pullQuote": "American at Perry's, 234 Magnolia Ave, Larkspur.",
-          "blurb": "American at Perry's, 234 Magnolia Ave, Larkspur.",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "malibu-farm",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "angelino-restaurant",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "barrel-house-tavern",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "the-spinnaker",
+          "pullQuote": "",
+          "blurb": "",
           "copySource": "draft"
         }
-      ],
-      "pinned": true
+      ]
     }
   ]
 }

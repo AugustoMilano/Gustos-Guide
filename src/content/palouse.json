@@ -13,6 +13,7 @@
         "Brewery"
       ],
       "placeType": "bar",
+      "price": 2,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -141,7 +142,8 @@
         "count": 11,
         "source": "Yelp"
       },
-      "yelpSlug": "GuRCEraOanOwaxetXuyX2Q"
+      "yelpSlug": "GuRCEraOanOwaxetXuyX2Q",
+      "price": 1
     },
     {
       "id": "panhandle-cone-coffee",
@@ -188,7 +190,9 @@
       "gustoScore": 8.7,
       "appleMapsUrl": "https://maps.apple.com/?daddr=46.7308382,-117.0017783&q=Panhandle%20Cone%20&%20Coffee",
       "applePlaceUrl": "https://maps.apple.com/place?auid=4218196156805509511",
-      "guideSlugs": [],
+      "guideSlugs": [
+        "best-of-moscow-id"
+      ],
       "muid": "4218196156805509511",
       "hoursLabel": "",
       "blurb": "",
@@ -205,7 +209,8 @@
         }
       ],
       "phone": "+1 (208) 265-8996",
-      "website": "https://www.coneandcoffee.com/moscow"
+      "website": "https://www.coneandcoffee.com/moscow",
+      "price": 1
     },
     {
       "id": "tin-tan-tacos",
@@ -219,6 +224,7 @@
         "Mexican"
       ],
       "placeType": "restaurant",
+      "price": 1,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -291,6 +297,7 @@
         "Japanese"
       ],
       "placeType": "restaurant",
+      "price": 2,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -362,6 +369,7 @@
         "Brunch"
       ],
       "placeType": "restaurant",
+      "price": 2,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -394,7 +402,9 @@
       "gustoScore": 8.6,
       "appleMapsUrl": "https://maps.apple.com/?daddr=46.7310882,-117.0017713&q=The%20Breakfast%20Club",
       "applePlaceUrl": "https://maps.apple.com/place?auid=12064262271023543703",
-      "guideSlugs": [],
+      "guideSlugs": [
+        "best-of-moscow-id"
+      ],
       "muid": "12064262271023543703",
       "hoursLabel": "",
       "blurb": "",
@@ -434,6 +444,7 @@
         "Japanese"
       ],
       "placeType": "restaurant",
+      "price": 1,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -466,7 +477,9 @@
       "gustoScore": 6.8,
       "appleMapsUrl": "https://maps.apple.com/?daddr=46.7334706,-117.0009866&q=Mingles%20Bar%20and%20Grill",
       "applePlaceUrl": "https://maps.apple.com/place?auid=9668533751918497385",
-      "guideSlugs": [],
+      "guideSlugs": [
+        "best-of-moscow-id"
+      ],
       "muid": "9668533751918497385",
       "hoursLabel": "",
       "blurb": "",
@@ -550,7 +563,7 @@
       "appleMapsUrl": "https://maps.apple.com/?daddr=46.733988,-117.027848&q=Paradise%20Grill%20and%20Cafe",
       "applePlaceUrl": "https://maps.apple.com/place?auid=16898603066479363683",
       "guideSlugs": [
-        "mos-cafe"
+        "best-of-moscow-id"
       ],
       "muid": "16898603066479363683",
       "hoursLabel": "",
@@ -576,7 +589,8 @@
         "count": 89,
         "source": "Yelp"
       },
-      "yelpSlug": "bKj6IGQOB92EFAZYfzvWTw"
+      "yelpSlug": "bKj6IGQOB92EFAZYfzvWTw",
+      "price": 1
     },
     {
       "id": "valhalla-bar-and-grill",
@@ -634,7 +648,8 @@
         }
       ],
       "phone": "+1 (509) 334-7775",
-      "website": "http://www.valhallabarandgrill.com"
+      "website": "http://www.valhallabarandgrill.com",
+      "price": 1
     },
     {
       "id": "the-silos-coffee-social",
@@ -669,7 +684,7 @@
       "appleMapsUrl": "https://maps.apple.com/?daddr=46.7293674,-117.0031339&q=The%20Silos%20Coffee%20&%20Social",
       "applePlaceUrl": "https://maps.apple.com/place?auid=2014626627637937380",
       "guideSlugs": [
-        "mos-cafe"
+        "best-of-moscow-id"
       ],
       "muid": "2014626627637937380",
       "hoursLabel": "",
@@ -687,7 +702,8 @@
         }
       ],
       "phone": "+1 (916) 796-3595",
-      "website": "https://thesiloscoffee.com"
+      "website": "https://thesiloscoffee.com",
+      "price": 1
     },
     {
       "id": "mela-bangladeshi-cuisine",
@@ -745,7 +761,8 @@
         "count": 35,
         "source": "Yelp"
       },
-      "yelpSlug": "vw2HdOg6fpw6yg-OpY9XLw"
+      "yelpSlug": "vw2HdOg6fpw6yg-OpY9XLw",
+      "price": 2
     },
     {
       "id": "hunga-dunga",
@@ -759,6 +776,7 @@
         "Brewery"
       ],
       "placeType": "bar",
+      "price": 2,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -784,7 +802,9 @@
       "gustoScore": 6.3,
       "appleMapsUrl": "https://maps.apple.com/?daddr=46.7370574,-117.0033751&q=Hunga%20Dunga",
       "applePlaceUrl": "https://maps.apple.com/place?auid=3490234399220097258",
-      "guideSlugs": [],
+      "guideSlugs": [
+        "best-of-moscow-id"
+      ],
       "muid": "3490234399220097258",
       "hoursLabel": "",
       "blurb": "",
@@ -824,6 +844,7 @@
         "Cafe"
       ],
       "placeType": "bakery",
+      "price": 1,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -903,6 +924,7 @@
         "Pub"
       ],
       "placeType": "restaurant",
+      "price": 2,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -923,7 +945,9 @@
       "gustoScore": null,
       "appleMapsUrl": "https://maps.apple.com/?daddr=46.7302337,-117.0037427&q=Moscow%20Alehouse",
       "applePlaceUrl": "https://maps.apple.com/place?auid=17325931091337098049",
-      "guideSlugs": [],
+      "guideSlugs": [
+        "best-of-moscow-id"
+      ],
       "muid": "17325931091337098049",
       "hoursLabel": "",
       "blurb": "",
@@ -963,6 +987,7 @@
         "Cafe"
       ],
       "placeType": "bakery",
+      "price": 1,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -1030,6 +1055,7 @@
         "Deli"
       ],
       "placeType": "deli",
+      "price": 1,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -1140,7 +1166,8 @@
         }
       ],
       "phone": null,
-      "website": "https://pullmanemporium.com"
+      "website": "https://pullmanemporium.com",
+      "price": 1
     },
     {
       "id": "humble-burger",
@@ -1174,7 +1201,9 @@
       "gustoScore": 7.4,
       "appleMapsUrl": "https://maps.apple.com/?daddr=46.7308863,-117.0017864&q=Humble%20Burger",
       "applePlaceUrl": "https://maps.apple.com/place?auid=231909169002595043",
-      "guideSlugs": [],
+      "guideSlugs": [
+        "best-of-moscow-id"
+      ],
       "muid": "231909169002595043",
       "hoursLabel": "",
       "blurb": "",
@@ -1191,7 +1220,8 @@
         }
       ],
       "phone": "+1 (208) 596-0296",
-      "website": "https://humbleburger.com"
+      "website": "https://humbleburger.com",
+      "price": 1
     },
     {
       "id": "porch-light-pizza",
@@ -1206,6 +1236,7 @@
         "Health food"
       ],
       "placeType": "restaurant",
+      "price": 1,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -1280,6 +1311,7 @@
         "Cafe"
       ],
       "placeType": "restaurant",
+      "price": 1,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -1301,7 +1333,7 @@
       "appleMapsUrl": "https://maps.apple.com/?daddr=46.7302358,-117.0017923&q=One%20World%20Cafe",
       "applePlaceUrl": "https://maps.apple.com/place?auid=3380696865842125155",
       "guideSlugs": [
-        "mos-cafe"
+        "best-of-moscow-id"
       ],
       "muid": "3380696865842125155",
       "hoursLabel": "",
@@ -1341,6 +1373,7 @@
         "American"
       ],
       "placeType": "restaurant",
+      "price": 1,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -1409,6 +1442,7 @@
         "Diner"
       ],
       "placeType": "restaurant",
+      "price": 2,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -1526,7 +1560,8 @@
         }
       ],
       "phone": "+1 (509) 715-1331",
-      "website": "https://neillscoffeeandicecream.wordpress.com"
+      "website": "https://neillscoffeeandicecream.wordpress.com",
+      "price": 1
     },
     {
       "id": "ferdinand-s-ice-cream-shoppe",
@@ -1541,6 +1576,7 @@
         "Dessert"
       ],
       "placeType": "dessert",
+      "price": 1,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -1598,6 +1634,7 @@
         "Pub"
       ],
       "placeType": "restaurant",
+      "price": 2,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -1664,6 +1701,7 @@
         "Mediterranean"
       ],
       "placeType": "restaurant",
+      "price": 2,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -1729,6 +1767,7 @@
         "Sandwiches"
       ],
       "placeType": "restaurant",
+      "price": 2,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -1858,7 +1897,8 @@
         }
       ],
       "phone": "+1 (509) 720-8435",
-      "website": "http://www.kneadcp.com"
+      "website": "http://www.kneadcp.com",
+      "price": 1
     },
     {
       "id": "maialina-pizzeria-napoletana",
@@ -1873,6 +1913,7 @@
         "Pizza"
       ],
       "placeType": "restaurant",
+      "price": 2,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -1899,7 +1940,9 @@
       "gustoScore": 7.8,
       "appleMapsUrl": "https://maps.apple.com/?daddr=46.7298923,-117.0009245&q=Maialina%20Pizzeria%20Napoletana",
       "applePlaceUrl": "https://maps.apple.com/place?auid=978935025687332971",
-      "guideSlugs": [],
+      "guideSlugs": [
+        "best-of-moscow-id"
+      ],
       "muid": "978935025687332971",
       "hoursLabel": "",
       "blurb": "",
@@ -1938,6 +1981,7 @@
         "Mexican"
       ],
       "placeType": "restaurant",
+      "price": 3,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -1956,7 +2000,9 @@
       "gustoScore": 8.5,
       "appleMapsUrl": "https://maps.apple.com/?daddr=46.7311802,-117.0017767&q=La%20Casa%20Lopez",
       "applePlaceUrl": "https://maps.apple.com/place?auid=13110543016487082152",
-      "guideSlugs": [],
+      "guideSlugs": [
+        "best-of-moscow-id"
+      ],
       "muid": "13110543016487082152",
       "hoursLabel": "",
       "blurb": "",
@@ -1988,6 +2034,7 @@
         "Pub"
       ],
       "placeType": "bar",
+      "price": 2,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -2007,7 +2054,9 @@
       "gustoScore": null,
       "appleMapsUrl": "https://maps.apple.com/?daddr=46.7326693,-117.0008594&q=Tapped",
       "applePlaceUrl": "https://maps.apple.com/place?auid=1562106274404755350",
-      "guideSlugs": [],
+      "guideSlugs": [
+        "best-of-moscow-id"
+      ],
       "muid": "1562106274404755350",
       "hoursLabel": "",
       "blurb": "",
@@ -2046,6 +2095,7 @@
         "Restaurant"
       ],
       "placeType": "bar",
+      "price": 2,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -2156,7 +2206,8 @@
         "count": 19,
         "source": "Yelp"
       },
-      "yelpSlug": "QM0GSLxL4y8Nr9fRN3ilqQ"
+      "yelpSlug": "QM0GSLxL4y8Nr9fRN3ilqQ",
+      "price": 1
     },
     {
       "id": "pups-cups-cafe",
@@ -2171,6 +2222,7 @@
         "Cafe"
       ],
       "placeType": "cafe",
+      "price": 2,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -2298,6 +2350,7 @@
         "Lounge"
       ],
       "placeType": "restaurant",
+      "price": 2,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -2322,7 +2375,9 @@
       "gustoScore": null,
       "appleMapsUrl": "https://maps.apple.com/?daddr=46.729941,-117.0018625&q=Nectar",
       "applePlaceUrl": "https://maps.apple.com/place?auid=14592318664151368001",
-      "guideSlugs": [],
+      "guideSlugs": [
+        "best-of-moscow-id"
+      ],
       "muid": "14592318664151368001",
       "hoursLabel": "",
       "blurb": "",
@@ -2361,6 +2416,7 @@
         "American"
       ],
       "placeType": "restaurant",
+      "price": 2,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -2385,7 +2441,9 @@
       "gustoScore": 7.3,
       "appleMapsUrl": "https://maps.apple.com/?daddr=46.733873,-117.001177&q=Lodgepole",
       "applePlaceUrl": "https://maps.apple.com/place?auid=5908288002654641489",
-      "guideSlugs": [],
+      "guideSlugs": [
+        "best-of-moscow-id"
+      ],
       "muid": "5908288002654641489",
       "hoursLabel": "",
       "blurb": "",
@@ -2425,6 +2483,7 @@
         "Sandwiches"
       ],
       "placeType": "bakery",
+      "price": 1,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -2457,7 +2516,9 @@
       "gustoScore": 8.2,
       "appleMapsUrl": "https://maps.apple.com/?daddr=46.7320076,-117.0010402&q=Moscow%20Bagel%20and%20Deli",
       "applePlaceUrl": "https://maps.apple.com/place?auid=11705112118182705428",
-      "guideSlugs": [],
+      "guideSlugs": [
+        "best-of-moscow-id"
+      ],
       "muid": "11705112118182705428",
       "hoursLabel": "",
       "blurb": "",
@@ -2540,7 +2601,8 @@
         }
       ],
       "phone": "+1 (509) 530-1001",
-      "website": "http://www.getdomsdonuts.com"
+      "website": "http://www.getdomsdonuts.com",
+      "price": 1
     },
     {
       "id": "the-land",
@@ -2605,7 +2667,8 @@
         "count": 77,
         "source": "Yelp"
       },
-      "yelpSlug": "-EhtXQONG-hlm2AsvpKuOA"
+      "yelpSlug": "-EhtXQONG-hlm2AsvpKuOA",
+      "price": 1
     }
   ],
   "guides": [
@@ -2738,12 +2801,12 @@
       "pinned": true
     },
     {
-      "slug": "mos-cafe",
-      "title": "Cafe",
-      "dek": "Three across the border in Moscow: One World Cafe, The Silos Coffee & Social, and Paradise Grill and Cafe.",
-      "group": "Cuisine",
+      "slug": "best-of-moscow-id",
+      "title": "Best of Moscow, ID",
+      "dek": "The Moscow, ID places on the guide: Paradise Grill and Cafe, The Silos Coffee & Social, One World Cafe, Panhandle Cone & Coffee, The Breakfast Club, Mingles Bar and Grill, Hunga Dunga, Moscow Alehouse, Humble Burger, Maialina Pizzeria Napoletana, La Casa Lopez, Tapped, Nectar, Lodgepole, and Moscow Bagel and Deli.",
+      "group": "Best of",
       "intro": "",
-      "updatedAt": "2026-11-03",
+      "updatedAt": "2026-11-09",
       "ranked": false,
       "city": "moscow",
       "entries": [
@@ -2761,6 +2824,78 @@
         },
         {
           "placeId": "one-world-cafe",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "panhandle-cone-coffee",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "the-breakfast-club",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "mingles-bar-and-grill",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "hunga-dunga",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "moscow-alehouse",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "humble-burger",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "maialina-pizzeria-napoletana",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "la-casa-lopez",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "tapped",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "nectar",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "lodgepole",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "moscow-bagel-and-deli",
           "pullQuote": "",
           "blurb": "",
           "copySource": "draft"

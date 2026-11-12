@@ -14,6 +14,7 @@
         "African"
       ],
       "placeType": "restaurant",
+      "price": 2,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -82,6 +83,7 @@
         "French"
       ],
       "placeType": "restaurant",
+      "price": 4,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -144,6 +146,7 @@
         "Comfort food"
       ],
       "placeType": "restaurant",
+      "price": 2,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -206,6 +209,7 @@
         "Pizza"
       ],
       "placeType": "restaurant",
+      "price": 3,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -266,6 +270,7 @@
         "Cafe"
       ],
       "placeType": "restaurant",
+      "price": 3,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -334,6 +339,7 @@
         "Mexican"
       ],
       "placeType": "restaurant",
+      "price": 2,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -448,7 +454,8 @@
         }
       ],
       "phone": "+1 (778) 924-8899",
-      "website": "https://www.cactusclubcafe.com/locations/coal-harbour/"
+      "website": "https://www.cactusclubcafe.com/locations/coal-harbour/",
+      "price": 2
     },
     {
       "id": "atlas-steak-fish",
@@ -463,6 +470,7 @@
         "Seafood"
       ],
       "placeType": "restaurant",
+      "price": 3,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -523,6 +531,7 @@
         "Dessert"
       ],
       "placeType": "dessert",
+      "price": 1,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -621,7 +630,8 @@
         }
       ],
       "phone": "+1 (604) 679-6328",
-      "website": "https://mortadella915.com/"
+      "website": "https://mortadella915.com/",
+      "price": 1
     },
     {
       "id": "japadog",
@@ -636,6 +646,7 @@
         "Street food"
       ],
       "placeType": "restaurant",
+      "price": 2,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -703,6 +714,7 @@
         "Wine"
       ],
       "placeType": "restaurant",
+      "price": 3,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -816,7 +828,8 @@
         }
       ],
       "phone": "+1 (604) 605-8282",
-      "website": "https://www.gothamsteakhouse.com"
+      "website": "https://www.gothamsteakhouse.com",
+      "price": 4
     },
     {
       "id": "gary-s",
@@ -868,7 +881,8 @@
         }
       ],
       "phone": "+1 (604) 245-3800",
-      "website": "https://www.garysrestaurant.ca"
+      "website": "https://www.garysrestaurant.ca",
+      "price": 4
     },
     {
       "id": "east-is-east",
@@ -883,6 +897,7 @@
         "Indian"
       ],
       "placeType": "restaurant",
+      "price": 2,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -941,6 +956,7 @@
         "Tempura"
       ],
       "placeType": "restaurant",
+      "price": 2,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -1003,6 +1019,7 @@
         "Cocktails"
       ],
       "placeType": "restaurant",
+      "price": 2,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -1126,7 +1143,8 @@
         "count": 20,
         "source": "Yelp"
       },
-      "yelpSlug": "EZeVAQllPDJlYnec9YxzgQ"
+      "yelpSlug": "EZeVAQllPDJlYnec9YxzgQ",
+      "price": 2
     },
     {
       "id": "nat-s-new-york-pizzeria",
@@ -1140,6 +1158,7 @@
         "Pizza"
       ],
       "placeType": "restaurant",
+      "price": 1,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -1198,6 +1217,7 @@
         "Cocktails"
       ],
       "placeType": "restaurant",
+      "price": 4,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -1249,6 +1269,7 @@
         "Pop-Up"
       ],
       "placeType": "restaurant",
+      "price": 3,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -1361,7 +1382,8 @@
         }
       ],
       "phone": "+1 (604) 669-7666",
-      "website": "https://www.vancouverdine.com"
+      "website": "https://www.vancouverdine.com",
+      "price": 2
     },
     {
       "id": "dinesty",
@@ -1376,6 +1398,7 @@
         "Cafe"
       ],
       "placeType": "restaurant",
+      "price": 2,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -1450,6 +1473,7 @@
         "Cocktails"
       ],
       "placeType": "restaurant",
+      "price": 2,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -1512,6 +1536,7 @@
         "Dessert"
       ],
       "placeType": "dessert",
+      "price": 2,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -1623,7 +1648,8 @@
         }
       ],
       "phone": "+1 (604) 879-3114",
-      "website": "http://www.medinacafe.com/"
+      "website": "http://www.medinacafe.com/",
+      "price": 2
     },
     {
       "id": "1927-lobby-lounge",
@@ -1638,6 +1664,7 @@
         "Cocktails"
       ],
       "placeType": "bar",
+      "price": 3,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -1746,7 +1773,8 @@
         }
       ],
       "phone": "+1 (604) 430-3343",
-      "website": "http://maruhachi.ca"
+      "website": "http://maruhachi.ca",
+      "price": 1
     },
     {
       "id": "chocolats-favoris",
@@ -1839,6 +1867,7 @@
         "Pastry"
       ],
       "placeType": "bakery",
+      "price": 1,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -1914,6 +1943,7 @@
         "Bakery"
       ],
       "placeType": "dessert",
+      "price": 2,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -1988,6 +2018,7 @@
         "Italian"
       ],
       "placeType": "restaurant",
+      "price": 3,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -2061,6 +2092,7 @@
         "Beer"
       ],
       "placeType": "restaurant",
+      "price": 2,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -2126,6 +2158,7 @@
         "Canadian"
       ],
       "placeType": "restaurant",
+      "price": 3,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -2190,6 +2223,7 @@
         "Seafood"
       ],
       "placeType": "restaurant",
+      "price": 3,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -2246,6 +2280,7 @@
         "Cafe"
       ],
       "placeType": "bakery",
+      "price": 2,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -2308,6 +2343,7 @@
         "Wine"
       ],
       "placeType": "restaurant",
+      "price": 3,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -2371,6 +2407,7 @@
         "Dessert"
       ],
       "placeType": "dessert",
+      "price": 2,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -2483,7 +2520,8 @@
         }
       ],
       "phone": "+1 (604) 253-0705",
-      "website": "http://www.themackenzieroom.com"
+      "website": "http://www.themackenzieroom.com",
+      "price": 4
     },
     {
       "id": "nemesis",
@@ -2498,6 +2536,7 @@
         "Cafe"
       ],
       "placeType": "cafe",
+      "price": 2,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -2637,6 +2676,7 @@
         "Cafe"
       ],
       "placeType": "cafe",
+      "price": 2,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -2710,6 +2750,7 @@
         "Dessert"
       ],
       "placeType": "dessert",
+      "price": 1,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -2769,6 +2810,7 @@
         "Canadian"
       ],
       "placeType": "restaurant",
+      "price": 4,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -2872,6 +2914,7 @@
         "Cafe"
       ],
       "placeType": "bakery",
+      "price": 2,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -2934,6 +2977,7 @@
         "Brunch"
       ],
       "placeType": "restaurant",
+      "price": 3,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -2993,6 +3037,7 @@
         "Italian"
       ],
       "placeType": "restaurant",
+      "price": 3,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -3136,7 +3181,8 @@
         }
       ],
       "phone": "+1 (604) 688-1961",
-      "website": "https://www.thekeeferbar.com"
+      "website": "https://www.thekeeferbar.com",
+      "price": 2
     },
     {
       "id": "ignite-pizzeria",
@@ -3150,6 +3196,7 @@
         "Pizza"
       ],
       "placeType": "restaurant",
+      "price": 2,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -3218,6 +3265,7 @@
         "Japanese"
       ],
       "placeType": "restaurant",
+      "price": 3,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -3280,6 +3328,7 @@
         "Nightclub"
       ],
       "placeType": "bar",
+      "price": 2,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -3360,6 +3409,7 @@
         "Dessert"
       ],
       "placeType": "dessert",
+      "price": 3,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -3490,7 +3540,8 @@
         }
       ],
       "phone": "+1 (604) 861-0032",
-      "website": "https://www.mott32.com"
+      "website": "https://www.mott32.com",
+      "price": 4
     },
     {
       "id": "teahouse-in-stanley-park",
@@ -3504,6 +3555,7 @@
         "Seafood"
       ],
       "placeType": "restaurant",
+      "price": 3,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -3580,6 +3632,7 @@
         "Seafood"
       ],
       "placeType": "restaurant",
+      "price": 4,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -3634,6 +3687,7 @@
         "Cocktails"
       ],
       "placeType": "bar",
+      "price": 3,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -3779,7 +3833,8 @@
         }
       ],
       "phone": "+1 (604) 559-5938",
-      "website": "https://thelunchlady.com/"
+      "website": "https://thelunchlady.com/",
+      "price": 2
     },
     {
       "id": "a-bread-affair",
@@ -3854,7 +3909,8 @@
         "count": 132,
         "source": "Yelp"
       },
-      "yelpSlug": "RxiPusKlkh92t6pmhHf99Q"
+      "yelpSlug": "RxiPusKlkh92t6pmhHf99Q",
+      "price": 2
     },
     {
       "id": "mello",
@@ -3869,6 +3925,7 @@
         "Bakery"
       ],
       "placeType": "dessert",
+      "price": 1,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -3932,6 +3989,7 @@
         "Italian"
       ],
       "placeType": "restaurant",
+      "price": 3,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -4032,7 +4090,8 @@
         }
       ],
       "phone": "+1 (604) 362-5443",
-      "website": "https://elisasteak.com"
+      "website": "https://elisasteak.com",
+      "price": 4
     },
     {
       "id": "botanist",
@@ -4047,6 +4106,7 @@
         "Diner"
       ],
       "placeType": "restaurant",
+      "price": 1,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -4138,6 +4198,7 @@
         "Small plates"
       ],
       "placeType": "restaurant",
+      "price": 4,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -4190,6 +4251,7 @@
         "Cocktails"
       ],
       "placeType": "restaurant",
+      "price": 3,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -4256,6 +4318,7 @@
         "Wine"
       ],
       "placeType": "restaurant",
+      "price": 3,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -4326,6 +4389,7 @@
         "Wine"
       ],
       "placeType": "restaurant",
+      "price": 3,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -4396,6 +4460,7 @@
         "Cafe"
       ],
       "placeType": "cafe",
+      "price": 2,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -4448,6 +4513,7 @@
         "Health food"
       ],
       "placeType": "restaurant",
+      "price": 2,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -4502,6 +4568,7 @@
         "Japanese"
       ],
       "placeType": "restaurant",
+      "price": 3,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -4556,6 +4623,7 @@
         "Wine"
       ],
       "placeType": "restaurant",
+      "price": 3,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -4618,6 +4686,7 @@
         "Italian"
       ],
       "placeType": "restaurant",
+      "price": 3,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -4721,6 +4790,7 @@
         "Seafood"
       ],
       "placeType": "restaurant",
+      "price": 4,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -4787,6 +4857,7 @@
         "Wine"
       ],
       "placeType": "restaurant",
+      "price": 3,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -4891,7 +4962,8 @@
         }
       ],
       "phone": "+1 (604) 568-3900",
-      "website": "http://www.mikurestaurant.com"
+      "website": "http://www.mikurestaurant.com",
+      "price": 3
     },
     {
       "id": "como-taperia",
@@ -4943,7 +5015,8 @@
         }
       ],
       "phone": "+1 (604) 879-3100",
-      "website": "https://www.comotaperia.com/"
+      "website": "https://www.comotaperia.com/",
+      "price": 3
     },
     {
       "id": "glowbal-restaurant",
@@ -4958,6 +5031,7 @@
         "New American"
       ],
       "placeType": "restaurant",
+      "price": 3,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -5030,6 +5104,7 @@
         "Cafe"
       ],
       "placeType": "bakery",
+      "price": 2,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -5139,7 +5214,8 @@
         }
       ],
       "phone": "+1 (604) 559-0900",
-      "website": "https://www.breka.ca/"
+      "website": "https://www.breka.ca/",
+      "price": 2
     },
     {
       "id": "granville-island-brewing",
@@ -5153,6 +5229,7 @@
         "Brewery"
       ],
       "placeType": "bar",
+      "price": 2,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -5218,6 +5295,7 @@
         "Lounge"
       ],
       "placeType": "restaurant",
+      "price": 3,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -5278,6 +5356,7 @@
         "Cocktails"
       ],
       "placeType": "restaurant",
+      "price": 4,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -5332,6 +5411,7 @@
         "Pub"
       ],
       "placeType": "bar",
+      "price": 2,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -5446,7 +5526,8 @@
         }
       ],
       "phone": "+1 (604) 568-1701",
-      "website": "https://www.labattoir.ca"
+      "website": "https://www.labattoir.ca",
+      "price": 4
     },
     {
       "id": "fiorino-italian-street-food",
@@ -5460,6 +5541,7 @@
         "Italian"
       ],
       "placeType": "restaurant",
+      "price": 2,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -5527,6 +5609,7 @@
         "Thai"
       ],
       "placeType": "restaurant",
+      "price": 2,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -5643,7 +5726,8 @@
         }
       ],
       "phone": "+1 (778) 379-4052",
-      "website": "https://www.annalena.ca"
+      "website": "https://www.annalena.ca",
+      "price": 4
     },
     {
       "id": "guu-with-garlic",
@@ -5658,6 +5742,7 @@
         "Small plates"
       ],
       "placeType": "restaurant",
+      "price": 2,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -5819,7 +5904,8 @@
         "count": 49,
         "source": "Yelp"
       },
-      "yelpSlug": "1sqnY52m11uWJFLzD-s5BA"
+      "yelpSlug": "1sqnY52m11uWJFLzD-s5BA",
+      "price": 2
     },
     {
       "id": "the-flying-pig",
@@ -5834,6 +5920,7 @@
         "Bistro"
       ],
       "placeType": "restaurant",
+      "price": 2,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -5973,7 +6060,8 @@
         "count": 28,
         "source": "Yelp"
       },
-      "yelpSlug": "T3HuPUChhSudCPGppG7zGw"
+      "yelpSlug": "T3HuPUChhSudCPGppG7zGw",
+      "price": 2
     },
     {
       "id": "brix-mortar",
@@ -5987,6 +6075,7 @@
         "Canadian"
       ],
       "placeType": "restaurant",
+      "price": 3,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -6060,6 +6149,7 @@
         "Japanese"
       ],
       "placeType": "restaurant",
+      "price": 4,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -6175,7 +6265,8 @@
         }
       ],
       "phone": "+1 (604) 416-5169",
-      "website": "https://burgercrush.ca"
+      "website": "https://burgercrush.ca",
+      "price": 1
     },
     {
       "id": "kissa-tanto",
@@ -6242,7 +6333,8 @@
         }
       ],
       "phone": "+1 (778) 379-8078",
-      "website": "https://www.kissatanto.com"
+      "website": "https://www.kissatanto.com",
+      "price": 4
     },
     {
       "id": "siegel-s-bagels",
@@ -6257,6 +6349,7 @@
         "Sandwiches"
       ],
       "placeType": "bakery",
+      "price": 1,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -6419,7 +6512,8 @@
         "count": 50,
         "source": "Yelp"
       },
-      "yelpSlug": "3jyz605NGvJV6uId5tjf9Q"
+      "yelpSlug": "3jyz605NGvJV6uId5tjf9Q",
+      "price": 2
     },
     {
       "id": "dockside-restaurant",
@@ -6433,6 +6527,7 @@
         "Seafood"
       ],
       "placeType": "restaurant",
+      "price": 3,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -6599,7 +6694,8 @@
         }
       ],
       "phone": null,
-      "website": "https://www.between2bunsburgers.ca"
+      "website": "https://www.between2bunsburgers.ca",
+      "price": 2
     },
     {
       "id": "homer-st-cafe-bar",
@@ -6702,7 +6798,8 @@
         }
       ],
       "phone": "+1 (604) 428-4299",
-      "website": "http://www.homerstreetcafebar.com"
+      "website": "http://www.homerstreetcafebar.com",
+      "price": 2
     },
     {
       "id": "le-crocodile",
@@ -6716,6 +6813,7 @@
         "French"
       ],
       "placeType": "restaurant",
+      "price": 4,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -6775,6 +6873,7 @@
         "Small plates"
       ],
       "placeType": "restaurant",
+      "price": 3,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -6847,6 +6946,7 @@
         "Restaurant"
       ],
       "placeType": "bar",
+      "price": 3,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -6918,6 +7018,7 @@
         "Brunch"
       ],
       "placeType": "restaurant",
+      "price": 2,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -7032,7 +7133,8 @@
         }
       ],
       "phone": "+1 (778) 379-1992",
-      "website": "http://jamcafes.com"
+      "website": "http://jamcafes.com",
+      "price": 2
     },
     {
       "id": "the-red-accordion",
@@ -7047,6 +7149,7 @@
         "Small plates"
       ],
       "placeType": "restaurant",
+      "price": 2,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -7107,6 +7210,7 @@
         "Seafood"
       ],
       "placeType": "restaurant",
+      "price": 3,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -7179,6 +7283,7 @@
         "Bakery"
       ],
       "placeType": "bakery",
+      "price": 2,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -7253,6 +7358,7 @@
         "Japanese"
       ],
       "placeType": "restaurant",
+      "price": 2,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -7338,6 +7444,7 @@
         "Comfort food"
       ],
       "placeType": "restaurant",
+      "price": 2,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -7410,6 +7517,7 @@
         "Cafe"
       ],
       "placeType": "cafe",
+      "price": 1,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -7469,6 +7577,7 @@
         "French"
       ],
       "placeType": "restaurant",
+      "price": 3,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -7573,6 +7682,7 @@
         "Mediterranean"
       ],
       "placeType": "restaurant",
+      "price": 2,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -7642,6 +7752,7 @@
         "Indian"
       ],
       "placeType": "restaurant",
+      "price": 3,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -7694,6 +7805,7 @@
         "Japanese"
       ],
       "placeType": "restaurant",
+      "price": 4,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -7774,6 +7886,7 @@
         "Steak"
       ],
       "placeType": "restaurant",
+      "price": 3,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -7854,6 +7967,7 @@
         "Lounge"
       ],
       "placeType": "restaurant",
+      "price": 2,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -7934,6 +8048,7 @@
         "Japanese"
       ],
       "placeType": "restaurant",
+      "price": 2,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [

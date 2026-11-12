@@ -5,8 +5,9 @@ import { CollectionMembership } from '../components/CollectionMembership.tsx'
 import { PlaceThumb } from '../components/PlaceThumb.tsx'
 import { SignInSheet } from '../components/SignInSheet.tsx'
 import { scoreBand } from '../components/ScoreBadge.tsx'
-import { catalog } from '../content/load.ts'
+import { catalog, ensureAllCities } from '../content/load.ts'
 import { cityPath } from '../lib/city.ts'
+import { placeNameClass } from '../lib/place-name.ts'
 import { cuisineLabel, cuisineMenuLabel } from '../lib/cuisine-label.ts'
 import { publicReference } from '../lib/format.ts'
 import { usePageMeta } from '../lib/meta.ts'
@@ -31,6 +32,7 @@ function tick() {
 
 export function QuickScorePage() {
   const app = useApp()
+  useEffect(() => { void ensureAllCities() }, [])
   const reduce = useReducedMotion()
   const [signIn, setSignIn] = useState(false)
   const [region, setRegion] = useState<QuickRegion>('all')
@@ -307,7 +309,7 @@ export function QuickScorePage() {
                   </m.div>
                   <div className="p-4">
                     <h2 className="font-serif text-4xl italic leading-none">
-                      <Link to={cityPath(`/place/${place.id}`)}>{place.name}</Link>
+                      <Link className={placeNameClass(place.name)} to={cityPath(`/place/${place.id}`)}>{place.name}</Link>
                     </h2>
                     <p className="mt-2 text-sm">{place.neighborhood} · {place.cuisine.map((item) => cuisineLabel(item)).join(', ')}</p>
                     {publicReference(place) ? <p className="public-ref mt-2">{publicReference(place)}</p> : null}

@@ -1,0 +1,6333 @@
+{
+  "checkedAt": "2026-11-09",
+  "method": "Read the Apple Maps place page for each unpriced listing. Used the page PRICE_RANGE score (1–4, shown as $, $$, $$$, $$$$). Where that page had no price range, used the place's own website only when its schema.org priceRange was exactly $, $$, $$$, or $$$$. Left the listing unpriced when neither source published a tier. No estimates.",
+  "places": [
+    {
+      "id": "520-bar-and-grill",
+      "name": "520 Bar and Grill",
+      "city": "eastside",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=13217783101883786373",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "a-ma-chicken-rice",
+      "name": "A Ma Chicken Rice",
+      "city": "eastside",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=12451992952103954038",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "ascend-prime-steak-and-sushi",
+      "name": "Ascend Prime Steak & Sushi",
+      "city": "eastside",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=5316906510073088576",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "barrels-wine-bar",
+      "name": "Barrels Wine Bar",
+      "city": "eastside",
+      "price": null,
+      "source": "Apple Maps",
+      "url": null,
+      "evidence": "No Apple Maps place id on the listing"
+    },
+    {
+      "id": "broiler-bay",
+      "name": "Broiler Bay Hamburgers",
+      "city": "eastside",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=70696049156331835",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "burgermaster",
+      "name": "Burgermaster",
+      "city": "eastside",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=7205519918905417088",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "cantina-monarca",
+      "name": "Cantina Monarca",
+      "city": "eastside",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=11273114961645947120",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "cantinetta-bellevue",
+      "name": "Cantinetta",
+      "city": "eastside",
+      "price": 2,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=13305845763669911672",
+      "evidence": "Apple Maps PRICE_RANGE score 2 of 4"
+    },
+    {
+      "id": "carmines",
+      "name": "Carmine's",
+      "city": "eastside",
+      "price": 4,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=2529173839404394188",
+      "evidence": "Apple Maps PRICE_RANGE score 4 of 4"
+    },
+    {
+      "id": "daniels-broiler",
+      "name": "Daniel's Broiler",
+      "city": "eastside",
+      "price": 3,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=7146954780601002084",
+      "evidence": "Apple Maps PRICE_RANGE score 3 of 4"
+    },
+    {
+      "id": "deru-market",
+      "name": "Deru Market",
+      "city": "eastside",
+      "price": null,
+      "source": "Apple Maps",
+      "url": null,
+      "evidence": "No Apple Maps place id on the listing"
+    },
+    {
+      "id": "desi-tadka",
+      "name": "Desi Tadka Indian Grill",
+      "city": "eastside",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=2651018645555388686",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "din-tai-fung-bellevue",
+      "name": "Din Tai Fung",
+      "city": "eastside",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=15528763534139621446",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "el-encanto",
+      "name": "El Encanto",
+      "city": "eastside",
+      "price": 3,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=13336795398944121119",
+      "evidence": "Apple Maps PRICE_RANGE score 3 of 4"
+    },
+    {
+      "id": "ezells-famous-chicken",
+      "name": "Ezell's Famous Chicken",
+      "city": "eastside",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=11695178579399116619",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "falafel-fresh",
+      "name": "Falafel Fresh",
+      "city": "eastside",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=5857915667564025131",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "farine-bakery",
+      "name": "Farine Bakery",
+      "city": "eastside",
+      "price": null,
+      "source": "Apple Maps",
+      "url": null,
+      "evidence": "No Apple Maps place id on the listing"
+    },
+    {
+      "id": "farzi-cafe",
+      "name": "Farzi Cafe",
+      "city": "eastside",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=9320440476220755053",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "fogo-de-chao",
+      "name": "Fogo de Chão",
+      "city": "eastside",
+      "price": 3,
+      "source": "Official site",
+      "url": "https://fogodechao.com/location/bellevue/",
+      "evidence": "Official site schema.org priceRange \"$$$\""
+    },
+    {
+      "id": "hokkaido-ramen-santouka",
+      "name": "Hokkaido Ramen Santouka",
+      "city": "eastside",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=14397719807160244876",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "kobuta-and-ookami-redmond",
+      "name": "Kobuta & Ookami",
+      "city": "eastside",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=13848089538661986467",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "kura-revolving-sushi",
+      "name": "Kura Revolving Sushi Bar",
+      "city": "eastside",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=3351618210874800921",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "lexperience-paris",
+      "name": "L'Experience Paris",
+      "city": "eastside",
+      "price": 2,
+      "source": "Official site",
+      "url": "https://lexperienceparis.com/",
+      "evidence": "Official site schema.org priceRange \"$$\""
+    },
+    {
+      "id": "la-mar-bellevue",
+      "name": "La Mar",
+      "city": "eastside",
+      "price": 3,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=3069510952369669870",
+      "evidence": "Apple Maps PRICE_RANGE score 3 of 4"
+    },
+    {
+      "id": "mowood",
+      "name": "MOWOOD",
+      "city": "eastside",
+      "price": 2,
+      "source": "Official site",
+      "url": "http://www.mowoodcoffee.com",
+      "evidence": "Official site schema.org priceRange \"$$\""
+    },
+    {
+      "id": "naan-n-curry",
+      "name": "Naan-N-Curry",
+      "city": "eastside",
+      "price": 2,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=907267375096408052",
+      "evidence": "Apple Maps PRICE_RANGE score 2 of 4"
+    },
+    {
+      "id": "paparepas",
+      "name": "Paparepas",
+      "city": "eastside",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=2020282391247799612",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "postdoc-brewing",
+      "name": "Postdoc Brewing",
+      "city": "eastside",
+      "price": null,
+      "source": "Apple Maps",
+      "url": null,
+      "evidence": "No Apple Maps place id on the listing"
+    },
+    {
+      "id": "ramen-nori",
+      "name": "Ramen Nori",
+      "city": "eastside",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=13611242735207683381",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "spark-pizza",
+      "name": "Spark Pizza",
+      "city": "eastside",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=17099670497557362085",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "stk-bellevue",
+      "name": "STK Steakhouse",
+      "city": "eastside",
+      "price": 4,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=4976013561576575976",
+      "evidence": "Apple Maps PRICE_RANGE score 4 of 4"
+    },
+    {
+      "id": "takai-by-kashiba",
+      "name": "Takai by Kashiba",
+      "city": "eastside",
+      "price": null,
+      "source": "Apple Maps",
+      "url": null,
+      "evidence": "No Apple Maps place id on the listing"
+    },
+    {
+      "id": "tendon-kohaku",
+      "name": "Tendon Kohaku",
+      "city": "eastside",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=4888838625112793601",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "the-british-pantry",
+      "name": "The British Pantry",
+      "city": "eastside",
+      "price": null,
+      "source": "Apple Maps",
+      "url": null,
+      "evidence": "No Apple Maps place id on the listing"
+    },
+    {
+      "id": "water-grill-bellevue",
+      "name": "Water Grill",
+      "city": "eastside",
+      "price": 3,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=7691577076781214141",
+      "evidence": "Apple Maps PRICE_RANGE score 3 of 4"
+    },
+    {
+      "id": "wild-ginger",
+      "name": "Wild Ginger",
+      "city": "eastside",
+      "price": 3,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=14795579837206651278",
+      "evidence": "Apple Maps PRICE_RANGE score 3 of 4"
+    },
+    {
+      "id": "xochi",
+      "name": "Xochi",
+      "city": "eastside",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=15416145406464543184",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "1212-santa-monica",
+      "name": "1212 Santa Monica",
+      "city": "la",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=12982074060336376439",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "71above",
+      "name": "71Above",
+      "city": "la",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=5292451151065930215",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "a-o-c",
+      "name": "A.O.C",
+      "city": "la",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=14608567967945747274",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "allantico-vinaio",
+      "name": "All'Antico Vinaio",
+      "city": "la",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=17213954995878959249",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "amboy",
+      "name": "Amboy",
+      "city": "la",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=5721574677267921018",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "angels-tijuana-tacos",
+      "name": "Angel’s Tijuana Tacos",
+      "city": "la",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=9847032698611023768",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "apollonias-pizzeria",
+      "name": "Apollonia's Pizzeria",
+      "city": "la",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=9320160300432406362",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "bacio-di-latte",
+      "name": "Bacio di Latte",
+      "city": "la",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=10823268603273805561",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "bavel",
+      "name": "Bavel",
+      "city": "la",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=14515670741806465051",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "bay-cities-italian-deli-bakery",
+      "name": "Bay Cities Italian Deli & Bakery",
+      "city": "la",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=9916349203473467968",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "bestia",
+      "name": "Bestia",
+      "city": "la",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=17788622162648530058",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "blue-plate-taco",
+      "name": "Blue Plate Taco",
+      "city": "la",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=7662694107813530179",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "broad-street-oyster-co",
+      "name": "Broad Street Oyster Co.",
+      "city": "la",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=1300897253166863364",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "burger-she-wrote",
+      "name": "Burger She Wrote",
+      "city": "la",
+      "price": 2,
+      "source": "Official site",
+      "url": "https://burgershewrote.com",
+      "evidence": "Official site schema.org priceRange \"$$\""
+    },
+    {
+      "id": "calabra",
+      "name": "Calabra",
+      "city": "la",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=18115691757460131767",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "casa-madera",
+      "name": "Casa Madera",
+      "city": "la",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=4715824154083720959",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "catch",
+      "name": "CATCH",
+      "city": "la",
+      "price": 3,
+      "source": "Official site",
+      "url": "https://www.catchrestaurants.com/location/catch-la/",
+      "evidence": "Official site schema.org priceRange \"$$$\""
+    },
+    {
+      "id": "colapasta",
+      "name": "Colapasta",
+      "city": "la",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=5871833613612873604",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "community-goods",
+      "name": "Community Goods",
+      "city": "la",
+      "price": 2,
+      "source": "Official site",
+      "url": "https://communitygoodsmenu.us",
+      "evidence": "Official site schema.org priceRange \"$$\""
+    },
+    {
+      "id": "daves-hot-chicken",
+      "name": "Dave's Hot Chicken",
+      "city": "la",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=14119141921696136180",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "doans-bakery",
+      "name": "Doan's Bakery",
+      "city": "la",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=9581126517621282189",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "donnas",
+      "name": "Donna's",
+      "city": "la",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=7165126712822869478",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "dudley-market",
+      "name": "Dudley Market",
+      "city": "la",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=10746832749576658709",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "dunsmoor",
+      "name": "Dunsmoor",
+      "city": "la",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=11007361803630537660",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "easy-street-burgers",
+      "name": "Easy Street Burgers",
+      "city": "la",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=7669782249312720561",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "felix",
+      "name": "Felix",
+      "city": "la",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=5158498586116816639",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "fondry",
+      "name": "Fondry",
+      "city": "la",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=1995357176465319122",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "for-the-win",
+      "name": "For The Win",
+      "city": "la",
+      "price": 2,
+      "source": "Official site",
+      "url": "https://www.forthewinla.com",
+      "evidence": "Official site schema.org priceRange \"$$\""
+    },
+    {
+      "id": "freddo",
+      "name": "Freddo",
+      "city": "la",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=8917729014893679634",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "ggiata-delicatessen",
+      "name": "Ggiata Delicatessen",
+      "city": "la",
+      "price": 2,
+      "source": "Official site",
+      "url": "https://www.ggiata.com/location/ggiata-deli/",
+      "evidence": "Official site schema.org priceRange \"$$\""
+    },
+    {
+      "id": "girl-the-goat",
+      "name": "Girl & the Goat",
+      "city": "la",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=225099429036345113",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "gjelina",
+      "name": "Gjelina",
+      "city": "la",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=14908294122256484544",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "gjusta",
+      "name": "Gjusta",
+      "city": "la",
+      "price": 3,
+      "source": "Official site",
+      "url": "https://www.gjusta.com",
+      "evidence": "Official site schema.org priceRange \"$$$\""
+    },
+    {
+      "id": "gracias-madre",
+      "name": "Gracias Madre",
+      "city": "la",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=6582176149852745183",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "grand-central-market",
+      "name": "Grand Central Market",
+      "city": "la",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=2143180312017747974",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "guisados",
+      "name": "Guisados",
+      "city": "la",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=4896783866963781125",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "gwen",
+      "name": "Gwen",
+      "city": "la",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=17360734586213288599",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "hayato",
+      "name": "Hayato",
+      "city": "la",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=9331242589471548178",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "heavy-handed",
+      "name": "Heavy Handed",
+      "city": "la",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=16057293261797551039",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "holbox",
+      "name": "Holbox",
+      "city": "la",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=16387212558569596875",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "homestate",
+      "name": "HomeState",
+      "city": "la",
+      "price": 2,
+      "source": "Official site",
+      "url": "https://www.myhomestate.com/hollywood-blvd-los-angeles/",
+      "evidence": "Official site schema.org priceRange \"$$\""
+    },
+    {
+      "id": "howlin-rays",
+      "name": "Howlin' Ray's",
+      "city": "la",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=14771692706178254942",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "il-pastaio",
+      "name": "Il Pastaio",
+      "city": "la",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=14836097158112391120",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "in-n-out-burger",
+      "name": "In-N-Out Burger",
+      "city": "la",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=17538321074774721827",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "javiers",
+      "name": "Javier's",
+      "city": "la",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=12125344309633564653",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "joey-dtla",
+      "name": "JOEY DTLA",
+      "city": "la",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=1797106135358182043",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "jon-vinnys",
+      "name": "Jon & Vinny's",
+      "city": "la",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=11412134156890109169",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "kazunori",
+      "name": "KazuNori",
+      "city": "la",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=2968243941286676141",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "langers",
+      "name": "Langer's",
+      "city": "la",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=16203098712328364112",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "layla-bagels-coffee",
+      "name": "Layla Bagels & Coffee",
+      "city": "la",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=15206899794803451319",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "le-coupe",
+      "name": "Le Coupe",
+      "city": "la",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=17392490187698710822",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "levain-bakery",
+      "name": "Levain Bakery",
+      "city": "la",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=17622490193033595065",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "lantica-pizzeria-da-michele",
+      "name": "L’antica Pizzeria da Michele",
+      "city": "la",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=13200986640520312659",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "magnolia-bakery",
+      "name": "Magnolia Bakery",
+      "city": "la",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=7040119901737117764",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "mamie",
+      "name": "Mamie",
+      "city": "la",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=16166686475079566009",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "marmalade-cafe",
+      "name": "Marmalade Cafe",
+      "city": "la",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=2035593264181625167",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "mastros-steakhouse",
+      "name": "Mastro's Steakhouse",
+      "city": "la",
+      "price": 4,
+      "source": "Official site",
+      "url": "https://www.mastrosrestaurants.com/Locations/CA/Beverly-Hills-Steakhouse/",
+      "evidence": "Official site schema.org priceRange \"$$$$\""
+    },
+    {
+      "id": "matsuhisa",
+      "name": "Matsuhisa",
+      "city": "la",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=16936081344767703960",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "mercado-buenos-aires",
+      "name": "Mercado Buenos Aires",
+      "city": "la",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=16105311770119504754",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "n-naka",
+      "name": "N/Naka",
+      "city": "la",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=16245299877826722218",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "nobu",
+      "name": "Nobu",
+      "city": "la",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=4101720365124382815",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "north-italia",
+      "name": "North Italia",
+      "city": "la",
+      "price": 2,
+      "source": "Official site",
+      "url": "https://www.northitalia.com/locations/santa-monica-ca/",
+      "evidence": "Official site schema.org priceRange \"$$\""
+    },
+    {
+      "id": "osteria-la-buca",
+      "name": "Osteria La Buca",
+      "city": "la",
+      "price": 2,
+      "source": "Official site",
+      "url": "https://www.osterialabuca.com",
+      "evidence": "Official site schema.org priceRange \"$$\""
+    },
+    {
+      "id": "parakeet-cafe",
+      "name": "Parakeet Cafe",
+      "city": "la",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=11096398158534463700",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "pasjoli",
+      "name": "Pasjoli",
+      "city": "la",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=6199525490235425231",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "pasta-bar",
+      "name": "Pasta | Bar",
+      "city": "la",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=36465240602833643",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "philippe-the-original",
+      "name": "Philippe The Original",
+      "city": "la",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=13915039241500418185",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "pinks-hot-dogs",
+      "name": "Pink's Hot Dogs",
+      "city": "la",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=10421890852224123321",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "pizzana",
+      "name": "Pizzana",
+      "city": "la",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=9283550553371159031",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "polo-lounge",
+      "name": "Polo Lounge",
+      "city": "la",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=4209144687248591942",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "poppy-rose",
+      "name": "Poppy + Rose",
+      "city": "la",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=2852396643153037360",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "randys-donuts",
+      "name": "Randy's Donuts",
+      "city": "la",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=15480945145038141127",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "rustic-canyon",
+      "name": "Rustic Canyon",
+      "city": "la",
+      "price": 4,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=3912025984250358736",
+      "evidence": "Apple Maps PRICE_RANGE score 4 of 4"
+    },
+    {
+      "id": "republique",
+      "name": "République",
+      "city": "la",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=1889472255676531377",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "sabys-cafe",
+      "name": "Saby's Cafe",
+      "city": "la",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=11123673120530541346",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "saddle-ranch-chop-house",
+      "name": "Saddle Ranch Chop House",
+      "city": "la",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=5766827653271295867",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "saffron-rose-persian-ice-cream",
+      "name": "Saffron & Rose Persian Ice Cream",
+      "city": "la",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=7541377683441488243",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "saffys",
+      "name": "Saffy's",
+      "city": "la",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=7490538627245055835",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "si-mon",
+      "name": "Si! Mon",
+      "city": "la",
+      "price": 3,
+      "source": "Official site",
+      "url": "https://www.si-mon.la",
+      "evidence": "Official site schema.org priceRange \"$$$\""
+    },
+    {
+      "id": "somni",
+      "name": "Somni",
+      "city": "la",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=8193583353821229261",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "tar-roses",
+      "name": "Tar & Roses",
+      "city": "la",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=1285366995442176774",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "tatsu-ramen",
+      "name": "Tatsu Ramen",
+      "city": "la",
+      "price": 2,
+      "source": "Official site",
+      "url": "https://tatsuramen.com/tatsu-ramen-sawtelle/",
+      "evidence": "Official site schema.org priceRange \"$$\""
+    },
+    {
+      "id": "tesla-diner",
+      "name": "Tesla Diner",
+      "city": "la",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=601598107099309397",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "the-bungalow",
+      "name": "The Bungalow",
+      "city": "la",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=14632014226627398732",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "the-butcher-the-baker-the-cappuccino-maker",
+      "name": "The Butcher, The Baker, The Cappuccino Maker",
+      "city": "la",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=12164379657695553269",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "the-cheese-store",
+      "name": "The Cheese Store",
+      "city": "la",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=11976510404887575303",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "the-donut-man",
+      "name": "The Donut Man",
+      "city": "la",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=8560916942563961714",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "the-musso-frank-grill",
+      "name": "The Musso & Frank Grill",
+      "city": "la",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=744780621808735901",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "the-terrace",
+      "name": "The Terrace",
+      "city": "la",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=2656200861479243320",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "tiki-ti",
+      "name": "Tiki-Ti",
+      "city": "la",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=7543398827279997618",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "uovo-pasta",
+      "name": "UOVO Pasta",
+      "city": "la",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=1319429278146149472",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "urth-caffe",
+      "name": "Urth Caffé",
+      "city": "la",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=6358349288316434289",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "vin-folk",
+      "name": "Vin Folk",
+      "city": "la",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=4942090681225394535",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "ysabel",
+      "name": "Ysabel",
+      "city": "la",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=12997504008630969425",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "elephante",
+      "name": "Élephante",
+      "city": "la",
+      "price": 2,
+      "source": "Official site",
+      "url": "https://www.elephanterestaurants.com/location/elephante-hours/",
+      "evidence": "Official site schema.org priceRange \"$$\""
+    },
+    {
+      "id": "humble-burger",
+      "name": "Humble Burger",
+      "city": "moscow",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=231909169002595043",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "hunga-dunga",
+      "name": "Hunga Dunga",
+      "city": "moscow",
+      "price": 2,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=3490234399220097258",
+      "evidence": "Apple Maps PRICE_RANGE score 2 of 4"
+    },
+    {
+      "id": "la-casa-lopez",
+      "name": "La Casa Lopez",
+      "city": "moscow",
+      "price": 3,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=13110543016487082152",
+      "evidence": "Apple Maps PRICE_RANGE score 3 of 4"
+    },
+    {
+      "id": "lodgepole",
+      "name": "Lodgepole",
+      "city": "moscow",
+      "price": 2,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=5908288002654641489",
+      "evidence": "Apple Maps PRICE_RANGE score 2 of 4"
+    },
+    {
+      "id": "maialina-pizzeria-napoletana",
+      "name": "Maialina Pizzeria Napoletana",
+      "city": "moscow",
+      "price": 2,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=978935025687332971",
+      "evidence": "Apple Maps PRICE_RANGE score 2 of 4"
+    },
+    {
+      "id": "mingles-bar-and-grill",
+      "name": "Mingles Bar and Grill",
+      "city": "moscow",
+      "price": 1,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=9668533751918497385",
+      "evidence": "Apple Maps PRICE_RANGE score 1 of 4"
+    },
+    {
+      "id": "moscow-alehouse",
+      "name": "Moscow Alehouse",
+      "city": "moscow",
+      "price": 2,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=17325931091337098049",
+      "evidence": "Apple Maps PRICE_RANGE score 2 of 4"
+    },
+    {
+      "id": "moscow-bagel-and-deli",
+      "name": "Moscow Bagel and Deli",
+      "city": "moscow",
+      "price": 1,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=11705112118182705428",
+      "evidence": "Apple Maps PRICE_RANGE score 1 of 4"
+    },
+    {
+      "id": "nectar",
+      "name": "Nectar",
+      "city": "moscow",
+      "price": 2,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=14592318664151368001",
+      "evidence": "Apple Maps PRICE_RANGE score 2 of 4"
+    },
+    {
+      "id": "one-world-cafe",
+      "name": "One World Cafe",
+      "city": "moscow",
+      "price": 1,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=3380696865842125155",
+      "evidence": "Apple Maps PRICE_RANGE score 1 of 4"
+    },
+    {
+      "id": "panhandle-cone-coffee",
+      "name": "Panhandle Cone & Coffee",
+      "city": "moscow",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=4218196156805509511",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "paradise-grill-and-cafe",
+      "name": "Paradise Grill and Cafe",
+      "city": "moscow",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=16898603066479363683",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "tapped",
+      "name": "Tapped",
+      "city": "moscow",
+      "price": 2,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=1562106274404755350",
+      "evidence": "Apple Maps PRICE_RANGE score 2 of 4"
+    },
+    {
+      "id": "the-breakfast-club",
+      "name": "The Breakfast Club",
+      "city": "moscow",
+      "price": 2,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=12064262271023543703",
+      "evidence": "Apple Maps PRICE_RANGE score 2 of 4"
+    },
+    {
+      "id": "the-silos-coffee-social",
+      "name": "The Silos Coffee & Social",
+      "city": "moscow",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=2014626627637937380",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "4-charles-prime-rib",
+      "name": "4 Charles Prime Rib",
+      "city": "nyc",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=11391577440975666315",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "8282",
+      "name": "8282",
+      "city": "nyc",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=12247189332341506774",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "abc-kitchen",
+      "name": "abc kitchen",
+      "city": "nyc",
+      "price": 3,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=15022581935299691136",
+      "evidence": "Apple Maps PRICE_RANGE score 3 of 4"
+    },
+    {
+      "id": "ai-fiori",
+      "name": "Ai Fiori",
+      "city": "nyc",
+      "price": 4,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=42801657675265509",
+      "evidence": "Apple Maps PRICE_RANGE score 4 of 4"
+    },
+    {
+      "id": "all-antico-vinaio",
+      "name": "All'Antico Vinaio",
+      "city": "nyc",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=14872267714943903067",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "angelina",
+      "name": "Angelina",
+      "city": "nyc",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=10281241222798637853",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "aska",
+      "name": "Aska",
+      "city": "nyc",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=8734101662059430914",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "atera",
+      "name": "Atera",
+      "city": "nyc",
+      "price": 4,
+      "source": "Official site",
+      "url": "http://ateranyc.com",
+      "evidence": "Official site schema.org priceRange \"$$$$\""
+    },
+    {
+      "id": "atomix",
+      "name": "Atomix",
+      "city": "nyc",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=6858315526146745913",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "au-cheval",
+      "name": "Au Cheval",
+      "city": "nyc",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=4736566344125658602",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "aubi-ramsa",
+      "name": "Aubi & Ramsa",
+      "city": "nyc",
+      "price": 2,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=10802180843217007144",
+      "evidence": "Apple Maps PRICE_RANGE score 2 of 4"
+    },
+    {
+      "id": "balthazar",
+      "name": "Balthazar",
+      "city": "nyc",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=4547646464441169209",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "banzarbar",
+      "name": "Banzarbar",
+      "city": "nyc",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=14154873497715784030",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "beauty-essex",
+      "name": "Beauty & Essex",
+      "city": "nyc",
+      "price": 3,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=7566912300564321810",
+      "evidence": "Apple Maps PRICE_RANGE score 3 of 4"
+    },
+    {
+      "id": "bg-restaurant",
+      "name": "BG Restaurant",
+      "city": "nyc",
+      "price": 4,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=6274324086494679175",
+      "evidence": "Apple Maps PRICE_RANGE score 4 of 4"
+    },
+    {
+      "id": "blue-bottle-coffee",
+      "name": "Blue Bottle Coffee",
+      "city": "nyc",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=15528263842036584303",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "blue-hill",
+      "name": "Blue Hill",
+      "city": "nyc",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=6957786162646211019",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "blue-ribbon",
+      "name": "Blue Ribbon",
+      "city": "nyc",
+      "price": 2,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=12330771280182319118",
+      "evidence": "Apple Maps PRICE_RANGE score 2 of 4"
+    },
+    {
+      "id": "bondst",
+      "name": "Bondst",
+      "city": "nyc",
+      "price": 4,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=10517680185959122916",
+      "evidence": "Apple Maps PRICE_RANGE score 4 of 4"
+    },
+    {
+      "id": "boucherie",
+      "name": "Boucherie",
+      "city": "nyc",
+      "price": 3,
+      "source": "Official site",
+      "url": "https://www.boucherieus.com/location/boucherie-west-village/",
+      "evidence": "Official site schema.org priceRange \"$$$\""
+    },
+    {
+      "id": "brickyard",
+      "name": "Brickyard",
+      "city": "nyc",
+      "price": 2,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=7883954217512443158",
+      "evidence": "Apple Maps PRICE_RANGE score 2 of 4"
+    },
+    {
+      "id": "bubby-s",
+      "name": "Bubby's",
+      "city": "nyc",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=15204792410417222990",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "buddakan",
+      "name": "Buddakan",
+      "city": "nyc",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=6051842143196186820",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "buenos-aires-restaurant",
+      "name": "Buenos Aires Restaurant",
+      "city": "nyc",
+      "price": 3,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=12753110249030016304",
+      "evidence": "Apple Maps PRICE_RANGE score 3 of 4"
+    },
+    {
+      "id": "bustan",
+      "name": "Bustan",
+      "city": "nyc",
+      "price": 3,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=16021914220243237207",
+      "evidence": "Apple Maps PRICE_RANGE score 3 of 4"
+    },
+    {
+      "id": "buvette",
+      "name": "Buvette",
+      "city": "nyc",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=13458858654304833043",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "banh-anh-em",
+      "name": "Bánh Anh Em",
+      "city": "nyc",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=11933739351268654643",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "cafe-lyria",
+      "name": "Café Lyria",
+      "city": "nyc",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=3603742772535168370",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "campagnola",
+      "name": "Campagnola",
+      "city": "nyc",
+      "price": 4,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=596390261660142321",
+      "evidence": "Apple Maps PRICE_RANGE score 4 of 4"
+    },
+    {
+      "id": "carbone",
+      "name": "Carbone",
+      "city": "nyc",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=10806151902931464840",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "carne-mare",
+      "name": "Carne Mare",
+      "city": "nyc",
+      "price": 3,
+      "source": "Official site",
+      "url": "https://www.carnemare.com/",
+      "evidence": "Official site schema.org priceRange \"$$$\""
+    },
+    {
+      "id": "carnitas-ramirez",
+      "name": "Carnitas Ramirez",
+      "city": "nyc",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=3945685451732885134",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "casa-della-mozzarella",
+      "name": "Casa Della Mozzarella",
+      "city": "nyc",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=7749236357872823203",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "casa-mono-and-bar-jamon",
+      "name": "Casa Mono and Bar Jamón",
+      "city": "nyc",
+      "price": 4,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=6980402852756155656",
+      "evidence": "Apple Maps PRICE_RANGE score 4 of 4"
+    },
+    {
+      "id": "catch-nyc",
+      "name": "CATCH",
+      "city": "nyc",
+      "price": 3,
+      "source": "Official site",
+      "url": "https://www.catchrestaurants.com/location/catch-nyc/",
+      "evidence": "Official site schema.org priceRange \"$$$\""
+    },
+    {
+      "id": "centurion-new-york",
+      "name": "Centurion New York",
+      "city": "nyc",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=5662215329020588",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "ceres",
+      "name": "Ceres",
+      "city": "nyc",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=4527785175679975090",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "cervo-s",
+      "name": "Cervo's",
+      "city": "nyc",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=8435367028495241158",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "chambers",
+      "name": "Chambers",
+      "city": "nyc",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=9451996304712366871",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "chef-s-table-at-brooklyn-fare",
+      "name": "Chef's Table at Brooklyn Fare",
+      "city": "nyc",
+      "price": 4,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=13364716212864502537",
+      "evidence": "Apple Maps PRICE_RANGE score 4 of 4"
+    },
+    {
+      "id": "chobani",
+      "name": "Chobani",
+      "city": "nyc",
+      "price": 1,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=1692210652182942051",
+      "evidence": "Apple Maps PRICE_RANGE score 1 of 4"
+    },
+    {
+      "id": "ci-siamo",
+      "name": "Ci Siamo",
+      "city": "nyc",
+      "price": 4,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=4747863160828616158",
+      "evidence": "Apple Maps PRICE_RANGE score 4 of 4"
+    },
+    {
+      "id": "cipriani-downtown",
+      "name": "Cipriani Downtown",
+      "city": "nyc",
+      "price": 4,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=6392688434377789690",
+      "evidence": "Apple Maps PRICE_RANGE score 4 of 4"
+    },
+    {
+      "id": "coqodaq",
+      "name": "COQODAQ",
+      "city": "nyc",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=17915590120052815012",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "cote",
+      "name": "COTE",
+      "city": "nyc",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=5602251184589293287",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "cut-nyc",
+      "name": "CUT",
+      "city": "nyc",
+      "price": 4,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=7628724760503678236",
+      "evidence": "Apple Maps PRICE_RANGE score 4 of 4"
+    },
+    {
+      "id": "da-andrea",
+      "name": "Da Andrea",
+      "city": "nyc",
+      "price": 2,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=5708703696781978924",
+      "evidence": "Apple Maps PRICE_RANGE score 2 of 4"
+    },
+    {
+      "id": "dagon",
+      "name": "Dagon",
+      "city": "nyc",
+      "price": 2,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=7790391897826581342",
+      "evidence": "Apple Maps PRICE_RANGE score 2 of 4"
+    },
+    {
+      "id": "daniel",
+      "name": "Daniel",
+      "city": "nyc",
+      "price": 4,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=11630805417823312999",
+      "evidence": "Apple Maps PRICE_RANGE score 4 of 4"
+    },
+    {
+      "id": "dante",
+      "name": "Dante",
+      "city": "nyc",
+      "price": 2,
+      "source": "Official site",
+      "url": "https://www.dante-nyc.com",
+      "evidence": "Official site schema.org priceRange \"$$\""
+    },
+    {
+      "id": "decoy",
+      "name": "Decoy",
+      "city": "nyc",
+      "price": 3,
+      "source": "Official site",
+      "url": "https://decoynyc.com",
+      "evidence": "Official site schema.org priceRange \"$$$\""
+    },
+    {
+      "id": "delmonico-s",
+      "name": "Delmonico's",
+      "city": "nyc",
+      "price": 4,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=5348032897497926049",
+      "evidence": "Apple Maps PRICE_RANGE score 4 of 4"
+    },
+    {
+      "id": "dirt-candy",
+      "name": "Dirt Candy",
+      "city": "nyc",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=15049278895188037563",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "dominique-ansel-bakery",
+      "name": "Dominique Ansel Bakery",
+      "city": "nyc",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=4788934779681030027",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "don-angie",
+      "name": "Don Angie",
+      "city": "nyc",
+      "price": 3,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=2603392900745031799",
+      "evidence": "Apple Maps PRICE_RANGE score 3 of 4"
+    },
+    {
+      "id": "dos-caminos",
+      "name": "Dos Caminos",
+      "city": "nyc",
+      "price": 2,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=12694298006130496692",
+      "evidence": "Apple Maps PRICE_RANGE score 2 of 4"
+    },
+    {
+      "id": "double-chicken-please",
+      "name": "Double Chicken Please",
+      "city": "nyc",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=15410560614769909595",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "eleven-madison-park",
+      "name": "Eleven Madison Park",
+      "city": "nyc",
+      "price": 4,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=5502567425932049691",
+      "evidence": "Apple Maps PRICE_RANGE score 4 of 4"
+    },
+    {
+      "id": "elea",
+      "name": "Eléa",
+      "city": "nyc",
+      "price": 4,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=15511168376753007968",
+      "evidence": "Apple Maps PRICE_RANGE score 4 of 4"
+    },
+    {
+      "id": "emilios-ballato",
+      "name": "Emilios Ballato",
+      "city": "nyc",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=7676379371516689585",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "empanada-mama",
+      "name": "Empanada Mama",
+      "city": "nyc",
+      "price": 2,
+      "source": "Official site",
+      "url": "https://www.empanadamama.com/lower-east-side-location",
+      "evidence": "Official site schema.org priceRange \"$$\""
+    },
+    {
+      "id": "empellon",
+      "name": "Empellón",
+      "city": "nyc",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=13511827905063665645",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "fanelli-cafe",
+      "name": "Fanelli Cafe",
+      "city": "nyc",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=13139064233194156313",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "farra",
+      "name": "Farra",
+      "city": "nyc",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=15781849080096930340",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "felice",
+      "name": "Felice",
+      "city": "nyc",
+      "price": 3,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=6457125630782745055",
+      "evidence": "Apple Maps PRICE_RANGE score 3 of 4"
+    },
+    {
+      "id": "fiore-s-house-of-quality",
+      "name": "Fiore's House of Quality",
+      "city": "nyc",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=6580480476855610677",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "flippers",
+      "name": "Flipper’s",
+      "city": "nyc",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=3095182451177276805",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "fonda",
+      "name": "Fonda",
+      "city": "nyc",
+      "price": 3,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=11714241800614255032",
+      "evidence": "Apple Maps PRICE_RANGE score 3 of 4"
+    },
+    {
+      "id": "forsythia",
+      "name": "Forsythia",
+      "city": "nyc",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=15053163620831777241",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "frenchette",
+      "name": "Frenchette",
+      "city": "nyc",
+      "price": 3,
+      "source": "Official site",
+      "url": "https://www.frenchettenyc.com",
+      "evidence": "Official site schema.org priceRange \"$$$\""
+    },
+    {
+      "id": "frenchette-bakery",
+      "name": "Frenchette Bakery",
+      "city": "nyc",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=8310591317928415464",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "friend-of-a-farmer",
+      "name": "Friend of a Farmer",
+      "city": "nyc",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=8723899998109288338",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "gabriel-kreuther",
+      "name": "Gabriel Kreuther",
+      "city": "nyc",
+      "price": 4,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=456196079435715840",
+      "evidence": "Apple Maps PRICE_RANGE score 4 of 4"
+    },
+    {
+      "id": "golden-diner",
+      "name": "Golden Diner",
+      "city": "nyc",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=5786925313735741189",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "gran-morsi",
+      "name": "Gran Morsi",
+      "city": "nyc",
+      "price": 3,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=6677757552071588201",
+      "evidence": "Apple Maps PRICE_RANGE score 3 of 4"
+    },
+    {
+      "id": "grandaisy-bakery",
+      "name": "Grandaisy Bakery",
+      "city": "nyc",
+      "price": 1,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=10791805073431857612",
+      "evidence": "Apple Maps PRICE_RANGE score 1 of 4"
+    },
+    {
+      "id": "gray-s-papaya",
+      "name": "Gray's Papaya",
+      "city": "nyc",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=14634135622926990939",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "il-laboratorio-del-gelato",
+      "name": "il laboratorio del gelato",
+      "city": "nyc",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=14742831578238539285",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "il-mulino-new-york",
+      "name": "Il Mulino New York",
+      "city": "nyc",
+      "price": 4,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=1703182825205056079",
+      "evidence": "Apple Maps PRICE_RANGE score 4 of 4"
+    },
+    {
+      "id": "interlude-coffee-tea",
+      "name": "Interlude Coffee & Tea",
+      "city": "nyc",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=2356554745546506302",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "ippudo",
+      "name": "Ippudo",
+      "city": "nyc",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=7970269702421001239",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "ito",
+      "name": "ITO",
+      "city": "nyc",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=13906539827821742649",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "jeangeorges",
+      "name": "Jean‑Georges",
+      "city": "nyc",
+      "price": 4,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=16219935009057875873",
+      "evidence": "Apple Maps PRICE_RANGE score 4 of 4"
+    },
+    {
+      "id": "joe-s-pizza",
+      "name": "Joe's Pizza",
+      "city": "nyc",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=915323105016175453",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "jungsik",
+      "name": "Jungsik",
+      "city": "nyc",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=1476684093438980665",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "katz-s-delicatessen",
+      "name": "Katz's Delicatessen",
+      "city": "nyc",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=13496291822278020616",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "keens-steakhouse",
+      "name": "Keens Steakhouse",
+      "city": "nyc",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=9585114142656097069",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "king-cole-bar",
+      "name": "King Cole Bar",
+      "city": "nyc",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=13057218776008835319",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "l-appartement-4f",
+      "name": "L'Appartement 4F",
+      "city": "nyc",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=3741676036921497813",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "l-artusi",
+      "name": "L'Artusi",
+      "city": "nyc",
+      "price": 4,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=17280865865220956473",
+      "evidence": "Apple Maps PRICE_RANGE score 4 of 4"
+    },
+    {
+      "id": "l-industrie-pizzeria",
+      "name": "L'industrie Pizzeria",
+      "city": "nyc",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=4847709690495176951",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "la-goulue-restaurant",
+      "name": "La Goulue Restaurant",
+      "city": "nyc",
+      "price": 4,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=14348588589396170509",
+      "evidence": "Apple Maps PRICE_RANGE score 4 of 4"
+    },
+    {
+      "id": "la-sirene",
+      "name": "La Sirène",
+      "city": "nyc",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=11128585427062565105",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "laser-wolf",
+      "name": "Laser Wolf",
+      "city": "nyc",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=14553048578107344070",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "laughing-man-coffee-tea-co",
+      "name": "Laughing Man Coffee & Tea Co.",
+      "city": "nyc",
+      "price": 2,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=5283835567047557515",
+      "evidence": "Apple Maps PRICE_RANGE score 2 of 4"
+    },
+    {
+      "id": "le-bernardin",
+      "name": "Le Bernardin",
+      "city": "nyc",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=18035317157227025050",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "le-coucou",
+      "name": "Le Coucou",
+      "city": "nyc",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=8026514745998251661",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "le-french-diner",
+      "name": "Le French Diner",
+      "city": "nyc",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=101884766531526839",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "le-pavillon",
+      "name": "Le Pavillon",
+      "city": "nyc",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=5674654308903161964",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "levain-bakery-nyc",
+      "name": "Levain Bakery",
+      "city": "nyc",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=7537330227997765391",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "lexington-candy-shop",
+      "name": "Lexington Candy Shop",
+      "city": "nyc",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=13000656541638286629",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "lilia-ristorante",
+      "name": "Lilia Ristorante",
+      "city": "nyc",
+      "price": 3,
+      "source": "Official site",
+      "url": "https://www.lilianewyork.com",
+      "evidence": "Official site schema.org priceRange \"$$$\""
+    },
+    {
+      "id": "little-owl",
+      "name": "Little Owl",
+      "city": "nyc",
+      "price": 3,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=11592787908340386328",
+      "evidence": "Apple Maps PRICE_RANGE score 3 of 4"
+    },
+    {
+      "id": "locanda-verde",
+      "name": "Locanda Verde",
+      "city": "nyc",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=756745860875407075",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "los-tacos-no-1",
+      "name": "Los Tacos No. 1",
+      "city": "nyc",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=5393695167483505579",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "lucali",
+      "name": "Lucali",
+      "city": "nyc",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=5231570280289323978",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "lucia",
+      "name": "Lucia",
+      "city": "nyc",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=8790935085320139305",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "labeille-a-cote",
+      "name": "L’abeille à Côté",
+      "city": "nyc",
+      "price": 4,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=7402035755497221554",
+      "evidence": "Apple Maps PRICE_RANGE score 4 of 4"
+    },
+    {
+      "id": "magnolia-bakery-nyc",
+      "name": "Magnolia Bakery",
+      "city": "nyc",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=4689048387921980387",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "manhatta",
+      "name": "Manhatta",
+      "city": "nyc",
+      "price": 4,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=5093639955983478862",
+      "evidence": "Apple Maps PRICE_RANGE score 4 of 4"
+    },
+    {
+      "id": "marc-forgione",
+      "name": "Marc Forgione",
+      "city": "nyc",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=11861579756328731424",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "marea",
+      "name": "Marea",
+      "city": "nyc",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=11855579477177503711",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "masa",
+      "name": "Masa",
+      "city": "nyc",
+      "price": 4,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=4861414230057890654",
+      "evidence": "Apple Maps PRICE_RANGE score 4 of 4"
+    },
+    {
+      "id": "milos",
+      "name": "Milos",
+      "city": "nyc",
+      "price": 4,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=13297925705275280408",
+      "evidence": "Apple Maps PRICE_RANGE score 4 of 4"
+    },
+    {
+      "id": "minetta-tavern",
+      "name": "Minetta Tavern",
+      "city": "nyc",
+      "price": 3,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=13894234616900429578",
+      "evidence": "Apple Maps PRICE_RANGE score 3 of 4"
+    },
+    {
+      "id": "monkey-bar",
+      "name": "Monkey Bar",
+      "city": "nyc",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=14216877014744494891",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "nice-matin",
+      "name": "Nice Matin",
+      "city": "nyc",
+      "price": 2,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=8664317208876674774",
+      "evidence": "Apple Maps PRICE_RANGE score 2 of 4"
+    },
+    {
+      "id": "nobu-nyc",
+      "name": "Nobu",
+      "city": "nyc",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=4551819666822528220",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "now-or-never-coffee",
+      "name": "Now or Never Coffee",
+      "city": "nyc",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=9739784708505111017",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "o-hara-s-restaurant-pub",
+      "name": "O'Hara's Restaurant & Pub",
+      "city": "nyc",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=10617155825758439366",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "ocean-prime-nyc",
+      "name": "Ocean Prime",
+      "city": "nyc",
+      "price": 4,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=5539322461883023480",
+      "evidence": "Apple Maps PRICE_RANGE score 4 of 4"
+    },
+    {
+      "id": "odo",
+      "name": "Odo",
+      "city": "nyc",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=3267566857667414435",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "olio-e-piu",
+      "name": "Olio e Più",
+      "city": "nyc",
+      "price": 2,
+      "source": "Official site",
+      "url": "https://www.olioepiu.com/location-nyc-greenwich-village/",
+      "evidence": "Official site schema.org priceRange \"$$\""
+    },
+    {
+      "id": "one-white-street",
+      "name": "One White Street",
+      "city": "nyc",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=6289240177606434848",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "overstory",
+      "name": "Overstory",
+      "city": "nyc",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=12988898501868697842",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "palma",
+      "name": "Palma",
+      "city": "nyc",
+      "price": 4,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=4123824069133409246",
+      "evidence": "Apple Maps PRICE_RANGE score 4 of 4"
+    },
+    {
+      "id": "paros-tribeca",
+      "name": "Paros Tribeca",
+      "city": "nyc",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=3048351600452093418",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "pastis",
+      "name": "Pastis",
+      "city": "nyc",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=5501854346951257365",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "peak-with-priceless",
+      "name": "Peak with Priceless",
+      "city": "nyc",
+      "price": 4,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=5532376074733326824",
+      "evidence": "Apple Maps PRICE_RANGE score 4 of 4"
+    },
+    {
+      "id": "pepolino-ristorante",
+      "name": "Pepolino Ristorante",
+      "city": "nyc",
+      "price": 3,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=8621900554838965690",
+      "evidence": "Apple Maps PRICE_RANGE score 3 of 4"
+    },
+    {
+      "id": "per-se",
+      "name": "Per Se",
+      "city": "nyc",
+      "price": 4,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=3638856259064762595",
+      "evidence": "Apple Maps PRICE_RANGE score 4 of 4"
+    },
+    {
+      "id": "peter-pan-donut-pastry-shop",
+      "name": "Peter Pan Donut & Pastry Shop",
+      "city": "nyc",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=2431531420463266894",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "philippe",
+      "name": "Philippe",
+      "city": "nyc",
+      "price": 3,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=6663724140644940002",
+      "evidence": "Apple Maps PRICE_RANGE score 3 of 4"
+    },
+    {
+      "id": "piccola-cucina",
+      "name": "Piccola Cucina",
+      "city": "nyc",
+      "price": 3,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=667711464616252009",
+      "evidence": "Apple Maps PRICE_RANGE score 3 of 4"
+    },
+    {
+      "id": "please-don-t-tell",
+      "name": "Please Don't Tell",
+      "city": "nyc",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=14108077917291735098",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "pylos",
+      "name": "Pylos",
+      "city": "nyc",
+      "price": 3,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=13775632993666477281",
+      "evidence": "Apple Maps PRICE_RANGE score 3 of 4"
+    },
+    {
+      "id": "quality-bistro",
+      "name": "Quality Bistro",
+      "city": "nyc",
+      "price": 3,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=18380441493530251799",
+      "evidence": "Apple Maps PRICE_RANGE score 3 of 4"
+    },
+    {
+      "id": "quality-italian",
+      "name": "Quality Italian",
+      "city": "nyc",
+      "price": 4,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=14178294201386084372",
+      "evidence": "Apple Maps PRICE_RANGE score 4 of 4"
+    },
+    {
+      "id": "ralph-s-coffee",
+      "name": "Ralph's Coffee",
+      "city": "nyc",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=13211872953696273013",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "raoul-s",
+      "name": "Raoul's",
+      "city": "nyc",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=16765351400549653879",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "red-hook-tavern",
+      "name": "Red Hook Tavern",
+      "city": "nyc",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=8427991908074135356",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "regular",
+      "name": "Regular",
+      "city": "nyc",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=13440892302520436540",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "rh-rooftop-restaurant",
+      "name": "RH Rooftop Restaurant",
+      "city": "nyc",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=15177046717813321786",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "rigor-hill-market",
+      "name": "Rigor Hill Market",
+      "city": "nyc",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=5352614951634698621",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "rio-de-la-plata-bakery-pastry-shop",
+      "name": "Rio De La Plata Bakery - Pastry Shop",
+      "city": "nyc",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=12841189381647647917",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "roxy-bar",
+      "name": "Roxy Bar",
+      "city": "nyc",
+      "price": 3,
+      "source": "Official site",
+      "url": "https://www.roxybarnyc.com/",
+      "evidence": "Official site schema.org priceRange \"$$$\""
+    },
+    {
+      "id": "rubirosa",
+      "name": "Rubirosa",
+      "city": "nyc",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=9271622069817422193",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "rudy-s-bar-grill",
+      "name": "Rudy's Bar & Grill",
+      "city": "nyc",
+      "price": 1,
+      "source": "Official site",
+      "url": "https://rudysbarnyc.com",
+      "evidence": "Official site schema.org priceRange \"$\""
+    },
+    {
+      "id": "russ-daughters",
+      "name": "Russ & Daughters",
+      "city": "nyc",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=3542211648984751330",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "saga",
+      "name": "Saga",
+      "city": "nyc",
+      "price": 4,
+      "source": "Official site",
+      "url": "https://www.saga-nyc.com",
+      "evidence": "Official site schema.org priceRange \"$$$$\""
+    },
+    {
+      "id": "salt-hanks",
+      "name": "Salt Hank’s",
+      "city": "nyc",
+      "price": 3,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=2171447187038319147",
+      "evidence": "Apple Maps PRICE_RANGE score 3 of 4"
+    },
+    {
+      "id": "scalini-fedeli",
+      "name": "Scalini Fedeli",
+      "city": "nyc",
+      "price": 4,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=13055600498496601878",
+      "evidence": "Apple Maps PRICE_RANGE score 4 of 4"
+    },
+    {
+      "id": "semma",
+      "name": "Semma",
+      "city": "nyc",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=15303455842491520400",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "serafina-nyc",
+      "name": "Serafina",
+      "city": "nyc",
+      "price": 3,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=2579469050579243476",
+      "evidence": "Apple Maps PRICE_RANGE score 3 of 4"
+    },
+    {
+      "id": "shmone",
+      "name": "Shmoné",
+      "city": "nyc",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=8374138926142333027",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "shuka",
+      "name": "Shuka",
+      "city": "nyc",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=18076098327522134153",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "sixty-three-clinton",
+      "name": "Sixty Three Clinton",
+      "city": "nyc",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=9352672759627237773",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "skirt-steak",
+      "name": "Skirt Steak",
+      "city": "nyc",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=16647457084140043406",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "smith-mills",
+      "name": "Smith & Mills",
+      "city": "nyc",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=11219426105687790900",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "smith-wollensky",
+      "name": "Smith & Wollensky",
+      "city": "nyc",
+      "price": 3,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=5223008459216675935",
+      "evidence": "Apple Maps PRICE_RANGE score 3 of 4"
+    },
+    {
+      "id": "sparks-steak-house",
+      "name": "Sparks Steak House",
+      "city": "nyc",
+      "price": 4,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=5755094517686670218",
+      "evidence": "Apple Maps PRICE_RANGE score 4 of 4"
+    },
+    {
+      "id": "square-diner",
+      "name": "Square Diner",
+      "city": "nyc",
+      "price": 1,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=9762049462282141319",
+      "evidence": "Apple Maps PRICE_RANGE score 1 of 4"
+    },
+    {
+      "id": "starbucks-coffee-company-nyc",
+      "name": "Starbucks Coffee Company",
+      "city": "nyc",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=12154577207867704750",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "starbucks-reserve",
+      "name": "Starbucks Reserve",
+      "city": "nyc",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=795950481512605767",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "starbucks-reserve-roastery",
+      "name": "Starbucks Reserve Roastery",
+      "city": "nyc",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=2594120952793383001",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "sunny-and-annie-s",
+      "name": "Sunny and Annie's",
+      "city": "nyc",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=2226892760355318823",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "sushi-by-scratch-restaurants-nyc",
+      "name": "Sushi by Scratch Restaurants",
+      "city": "nyc",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=15769389382573229949",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "sushi-sho",
+      "name": "Sushi Sho",
+      "city": "nyc",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=10584215001435936517",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "taco-bell-cantina-nyc",
+      "name": "Taco Bell Cantina",
+      "city": "nyc",
+      "price": 1,
+      "source": "Official site",
+      "url": "https://locations.tacobell.com/ny/new-york/976-6th-ave.html",
+      "evidence": "Official site schema.org priceRange \"$\""
+    },
+    {
+      "id": "taiyaki-nyc",
+      "name": "Taiyaki NYC",
+      "city": "nyc",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=685026300178968047",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "tamarind-tribeca",
+      "name": "Tamarind Tribeca",
+      "city": "nyc",
+      "price": 3,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=18031913487881495097",
+      "evidence": "Apple Maps PRICE_RANGE score 3 of 4"
+    },
+    {
+      "id": "tanner-smith-s",
+      "name": "Tanner Smith's",
+      "city": "nyc",
+      "price": 2,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=2045487422637212128",
+      "evidence": "Apple Maps PRICE_RANGE score 2 of 4"
+    },
+    {
+      "id": "tao-downtown",
+      "name": "TAO Downtown",
+      "city": "nyc",
+      "price": 3,
+      "source": "Official site",
+      "url": "https://taogroup.com/venues/tao-downtown-new-york/",
+      "evidence": "Official site schema.org priceRange \"$$$\""
+    },
+    {
+      "id": "tao-uptown",
+      "name": "TAO Uptown",
+      "city": "nyc",
+      "price": 3,
+      "source": "Official site",
+      "url": "https://taorestaurant.com",
+      "evidence": "Official site schema.org priceRange \"$$$\""
+    },
+    {
+      "id": "the-capital-grille-nyc",
+      "name": "The Capital Grille",
+      "city": "nyc",
+      "price": 4,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=15070863513556425563",
+      "evidence": "Apple Maps PRICE_RANGE score 4 of 4"
+    },
+    {
+      "id": "the-champagne-caviar-bar",
+      "name": "The Champagne & Caviar Bar",
+      "city": "nyc",
+      "price": 4,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=12450120003800691327",
+      "evidence": "Apple Maps PRICE_RANGE score 4 of 4"
+    },
+    {
+      "id": "the-corner-store",
+      "name": "The Corner Store",
+      "city": "nyc",
+      "price": 2,
+      "source": "Official site",
+      "url": "https://www.thecornerstoresoho.com",
+      "evidence": "Official site schema.org priceRange \"$$\""
+    },
+    {
+      "id": "the-dead-rabbit",
+      "name": "The Dead Rabbit",
+      "city": "nyc",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=12936475215619016607",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "the-dining-room-at-rh-guesthouse-new-york",
+      "name": "The Dining Room at RH Guesthouse New York",
+      "city": "nyc",
+      "price": 4,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=4245397955340123052",
+      "evidence": "Apple Maps PRICE_RANGE score 4 of 4"
+    },
+    {
+      "id": "the-django",
+      "name": "The Django",
+      "city": "nyc",
+      "price": 3,
+      "source": "Official site",
+      "url": "https://www.thedjangonyc.com/",
+      "evidence": "Official site schema.org priceRange \"$$$\""
+    },
+    {
+      "id": "the-grill",
+      "name": "THE GRILL",
+      "city": "nyc",
+      "price": 4,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=16538446477007783254",
+      "evidence": "Apple Maps PRICE_RANGE score 4 of 4"
+    },
+    {
+      "id": "the-modern",
+      "name": "The Modern",
+      "city": "nyc",
+      "price": 4,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=16630833163422060253",
+      "evidence": "Apple Maps PRICE_RANGE score 4 of 4"
+    },
+    {
+      "id": "the-mulberry",
+      "name": "The Mulberry",
+      "city": "nyc",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=10489882972818986240",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "the-odeon",
+      "name": "The Odeon",
+      "city": "nyc",
+      "price": 3,
+      "source": "Official site",
+      "url": "https://www.theodeonrestaurant.com",
+      "evidence": "Official site schema.org priceRange \"$$$\""
+    },
+    {
+      "id": "the-palm-court",
+      "name": "The Palm Court",
+      "city": "nyc",
+      "price": 4,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=7432680926505186119",
+      "evidence": "Apple Maps PRICE_RANGE score 4 of 4"
+    },
+    {
+      "id": "the-polo-bar",
+      "name": "The Polo Bar",
+      "city": "nyc",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=17113848983272096779",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "the-smith",
+      "name": "The Smith",
+      "city": "nyc",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=12096997297694050037",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "the-waverly-inn-and-garden",
+      "name": "The Waverly Inn and Garden",
+      "city": "nyc",
+      "price": 4,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=13398544761482459577",
+      "evidence": "Apple Maps PRICE_RANGE score 4 of 4"
+    },
+    {
+      "id": "tiny-s-the-bar-upstairs",
+      "name": "Tiny's & The Bar Upstairs",
+      "city": "nyc",
+      "price": 2,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=5021641374053526315",
+      "evidence": "Apple Maps PRICE_RANGE score 2 of 4"
+    },
+    {
+      "id": "titsou-bar",
+      "name": "Titsou Bar",
+      "city": "nyc",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=7690564285803577389",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "tonchin",
+      "name": "Tonchin",
+      "city": "nyc",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=2457861362297195697",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "torrisi",
+      "name": "Torrisi",
+      "city": "nyc",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=10769433491534280071",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "two-hands",
+      "name": "Two Hands",
+      "city": "nyc",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=17894733420243767811",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "una-pizza-napoletana",
+      "name": "Una Pizza Napoletana",
+      "city": "nyc",
+      "price": 3,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=14317615999023401393",
+      "evidence": "Apple Maps PRICE_RANGE score 3 of 4"
+    },
+    {
+      "id": "van-leeuwen-ice-cream",
+      "name": "Van Leeuwen Ice Cream",
+      "city": "nyc",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=14203204829194839602",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "via-carota",
+      "name": "Via Carota",
+      "city": "nyc",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=9447966867050921217",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "vinegar-hill-house",
+      "name": "Vinegar Hill House",
+      "city": "nyc",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=12918880032360903377",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "wolfgang-s-steakhouse",
+      "name": "Wolfgang's Steakhouse",
+      "city": "nyc",
+      "price": 4,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=8252357031873816647",
+      "evidence": "Apple Maps PRICE_RANGE score 4 of 4"
+    },
+    {
+      "id": "zucker-s-bagels-smoked-fish",
+      "name": "Zucker's Bagels & Smoked Fish",
+      "city": "nyc",
+      "price": 2,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=16524722442084132561",
+      "evidence": "Apple Maps PRICE_RANGE score 2 of 4"
+    },
+    {
+      "id": "zuma",
+      "name": "Zuma",
+      "city": "nyc",
+      "price": 4,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=4639471784847318767",
+      "evidence": "Apple Maps PRICE_RANGE score 4 of 4"
+    },
+    {
+      "id": "andina",
+      "name": "Andina",
+      "city": "portland",
+      "price": 4,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=11123007842042683319",
+      "evidence": "Apple Maps PRICE_RANGE score 4 of 4"
+    },
+    {
+      "id": "bellpine",
+      "name": "Bellpine",
+      "city": "portland",
+      "price": 4,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=16424289263118996481",
+      "evidence": "Apple Maps PRICE_RANGE score 4 of 4"
+    },
+    {
+      "id": "campana",
+      "name": "Campana",
+      "city": "portland",
+      "price": 3,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=3433260475372174700",
+      "evidence": "Apple Maps PRICE_RANGE score 3 of 4"
+    },
+    {
+      "id": "coava-coffee-roasters",
+      "name": "Coava Coffee Roasters",
+      "city": "portland",
+      "price": 2,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=3574528002939766542",
+      "evidence": "Apple Maps PRICE_RANGE score 2 of 4"
+    },
+    {
+      "id": "deschutes-brewery",
+      "name": "Deschutes Brewery",
+      "city": "portland",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=13140395182774290328",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "eem",
+      "name": "EEM",
+      "city": "portland",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=1258987577735118436",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "el-gaucho-pdx",
+      "name": "El Gaucho",
+      "city": "portland",
+      "price": 4,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=3691023567733584127",
+      "evidence": "Apple Maps PRICE_RANGE score 4 of 4"
+    },
+    {
+      "id": "elephants-delicatessen",
+      "name": "Elephants Delicatessen",
+      "city": "portland",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=9843744514142069152",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "jacqueline",
+      "name": "Jacqueline",
+      "city": "portland",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=18287004260203738015",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "jake-s-grill",
+      "name": "Jake's Grill",
+      "city": "portland",
+      "price": 2,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=4540416631901434667",
+      "evidence": "Apple Maps PRICE_RANGE score 2 of 4"
+    },
+    {
+      "id": "kachka",
+      "name": "Kachka",
+      "city": "portland",
+      "price": 3,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=8852593154763883613",
+      "evidence": "Apple Maps PRICE_RANGE score 3 of 4"
+    },
+    {
+      "id": "kann",
+      "name": "kann",
+      "city": "portland",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=7221381082698316086",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "ken-s-artisan-bakery",
+      "name": "Ken's Artisan Bakery",
+      "city": "portland",
+      "price": 2,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=15891128271979862352",
+      "evidence": "Apple Maps PRICE_RANGE score 2 of 4"
+    },
+    {
+      "id": "kens-artisan-pizza",
+      "name": "Ken’s Artisan Pizza",
+      "city": "portland",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=17531790366307368782",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "langbaan",
+      "name": "Langbaan",
+      "city": "portland",
+      "price": 4,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=9644357589547853620",
+      "evidence": "Apple Maps PRICE_RANGE score 4 of 4"
+    },
+    {
+      "id": "le-pigeon",
+      "name": "Le Pigeon",
+      "city": "portland",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=13266707657248041117",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "lechon",
+      "name": "LeChon",
+      "city": "portland",
+      "price": 3,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=9159673742032977657",
+      "evidence": "Apple Maps PRICE_RANGE score 3 of 4"
+    },
+    {
+      "id": "lilia-comedor",
+      "name": "Lilia Comedor",
+      "city": "portland",
+      "price": 4,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=12295051703892209323",
+      "evidence": "Apple Maps PRICE_RANGE score 4 of 4"
+    },
+    {
+      "id": "lovely-s-fifty-fifty",
+      "name": "Lovely's Fifty Fifty",
+      "city": "portland",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=2859200553955373906",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "mediterranean-exploration-company",
+      "name": "Mediterranean Exploration Company",
+      "city": "portland",
+      "price": 2,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=13016648021767125641",
+      "evidence": "Apple Maps PRICE_RANGE score 2 of 4"
+    },
+    {
+      "id": "mothers-bistro-bar",
+      "name": "Mother’s Bistro & Bar",
+      "city": "portland",
+      "price": 2,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=10365772272670531060",
+      "evidence": "Apple Maps PRICE_RANGE score 2 of 4"
+    },
+    {
+      "id": "maurice",
+      "name": "MÅURICE",
+      "city": "portland",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=17352611501639059309",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "nimblefish",
+      "name": "Nimblefish",
+      "city": "portland",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=12078530428039598919",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "no-saint",
+      "name": "No Saint",
+      "city": "portland",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=4118590969890160443",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "nostrana",
+      "name": "Nostrana",
+      "city": "portland",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=15522795026117533140",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "olympia-provisions",
+      "name": "Olympia Provisions",
+      "city": "portland",
+      "price": 3,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=10421262631200498125",
+      "evidence": "Apple Maps PRICE_RANGE score 3 of 4"
+    },
+    {
+      "id": "pdx-sliders",
+      "name": "PDX Sliders",
+      "city": "portland",
+      "price": 2,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=6676928413480345993",
+      "evidence": "Apple Maps PRICE_RANGE score 2 of 4"
+    },
+    {
+      "id": "portland-city-grill",
+      "name": "Portland City Grill",
+      "city": "portland",
+      "price": 3,
+      "source": "Official site",
+      "url": "https://www.portlandcitygrill.com/",
+      "evidence": "Official site schema.org priceRange \"$$$\""
+    },
+    {
+      "id": "q-restaurant-bar",
+      "name": "Q Restaurant & Bar",
+      "city": "portland",
+      "price": 3,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=11977983363656035479",
+      "evidence": "Apple Maps PRICE_RANGE score 3 of 4"
+    },
+    {
+      "id": "republica",
+      "name": "Republica",
+      "city": "portland",
+      "price": 2,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=10287164070689481658",
+      "evidence": "Apple Maps PRICE_RANGE score 2 of 4"
+    },
+    {
+      "id": "ruse-brewing-crust-collective",
+      "name": "Ruse Brewing Crust Collective",
+      "city": "portland",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=3766073023727131698",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "salty-s",
+      "name": "Salty's",
+      "city": "portland",
+      "price": 4,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=11600741822171227389",
+      "evidence": "Apple Maps PRICE_RANGE score 4 of 4"
+    },
+    {
+      "id": "screen-door",
+      "name": "Screen Door",
+      "city": "portland",
+      "price": 2,
+      "source": "Official site",
+      "url": "https://screendoorrestaurant.com",
+      "evidence": "Official site schema.org priceRange \"$$\""
+    },
+    {
+      "id": "stumptown-coffee-roasters",
+      "name": "Stumptown Coffee Roasters",
+      "city": "portland",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=12716123553800523399",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "taste-tickler",
+      "name": "Taste Tickler",
+      "city": "portland",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=1303837808594010845",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "terra-mae",
+      "name": "Terra Mae",
+      "city": "portland",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=7929174789552378083",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "urdaneta",
+      "name": "Urdaneta",
+      "city": "portland",
+      "price": 3,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=6858148896689613585",
+      "evidence": "Apple Maps PRICE_RANGE score 3 of 4"
+    },
+    {
+      "id": "voodoo-doughnut-pdx",
+      "name": "Voodoo Doughnut",
+      "city": "portland",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=14138041420961450060",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "barm-wallops",
+      "name": "Barm & Wallops",
+      "city": "pullman",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=12135825698577705128",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "beef-company",
+      "name": "Beef & Company",
+      "city": "pullman",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=7472554607007637239",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "crybaby-cafe",
+      "name": "Crybaby Café",
+      "city": "pullman",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=1253808997164867428",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "doms-donuts",
+      "name": "Dom’s Donuts",
+      "city": "pullman",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=2204827760736469817",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "einstein-bros-bagels",
+      "name": "Einstein Bros. Bagels",
+      "city": "pullman",
+      "price": 1,
+      "source": "Official site",
+      "url": "https://locations.einsteinbros.com/us/wa/pullman/1302-ne-cougar-way",
+      "evidence": "Official site schema.org priceRange \"$\""
+    },
+    {
+      "id": "ferdinand-s-ice-cream-shoppe",
+      "name": "Ferdinand's Ice Cream Shoppe",
+      "city": "pullman",
+      "price": 1,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=14231380430461977548",
+      "evidence": "Apple Maps PRICE_RANGE score 1 of 4"
+    },
+    {
+      "id": "heros-n-sports",
+      "name": "Heros N Sports",
+      "city": "pullman",
+      "price": 1,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=9509074516963244744",
+      "evidence": "Apple Maps PRICE_RANGE score 1 of 4"
+    },
+    {
+      "id": "knead-cafe-patisserie",
+      "name": "Knead Café & Pâtisserie",
+      "city": "pullman",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=10653668693955535457",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "mela-bangladeshi-cuisine",
+      "name": "Mela Bangladeshi Cuisine",
+      "city": "pullman",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=14072794604338846735",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "merry-cellars",
+      "name": "Merry Cellars",
+      "city": "pullman",
+      "price": 2,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=12408159854732297913",
+      "evidence": "Apple Maps PRICE_RANGE score 2 of 4"
+    },
+    {
+      "id": "neill-s-coffee-ice-cream",
+      "name": "Neill's Coffee & Ice Cream",
+      "city": "pullman",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=7272519683407210463",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "paradise-creek-brewery",
+      "name": "Paradise Creek Brewery",
+      "city": "pullman",
+      "price": 2,
+      "source": "Official site",
+      "url": "https://paradisecreekbrewery.com/trailside_taproom/",
+      "evidence": "Official site schema.org priceRange \"$$\""
+    },
+    {
+      "id": "porch-light-pizza",
+      "name": "Porch Light Pizza",
+      "city": "pullman",
+      "price": 1,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=17182734111577381200",
+      "evidence": "Apple Maps PRICE_RANGE score 1 of 4"
+    },
+    {
+      "id": "pups-cups-cafe",
+      "name": "Pups & Cups Cafe",
+      "city": "pullman",
+      "price": 2,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=8112960737034593775",
+      "evidence": "Apple Maps PRICE_RANGE score 2 of 4"
+    },
+    {
+      "id": "rico-s-public-house",
+      "name": "Rico's Public House",
+      "city": "pullman",
+      "price": 2,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=522554912234791954",
+      "evidence": "Apple Maps PRICE_RANGE score 2 of 4"
+    },
+    {
+      "id": "roost-coffee-market",
+      "name": "Roost Coffee & Market",
+      "city": "pullman",
+      "price": 1,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=14667473062907851086",
+      "evidence": "Apple Maps PRICE_RANGE score 1 of 4"
+    },
+    {
+      "id": "south-fork-public-house",
+      "name": "South Fork Public House",
+      "city": "pullman",
+      "price": 2,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=2521332968954205039",
+      "evidence": "Apple Maps PRICE_RANGE score 2 of 4"
+    },
+    {
+      "id": "taqueria-las-torres",
+      "name": "Taqueria Las Torres",
+      "city": "pullman",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=7109778744387596731",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "the-black-cypress",
+      "name": "The Black Cypress",
+      "city": "pullman",
+      "price": 2,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=15795529276367371614",
+      "evidence": "Apple Maps PRICE_RANGE score 2 of 4"
+    },
+    {
+      "id": "the-coug",
+      "name": "The Coug",
+      "city": "pullman",
+      "price": 1,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=17706547699529074065",
+      "evidence": "Apple Maps PRICE_RANGE score 1 of 4"
+    },
+    {
+      "id": "the-emporium",
+      "name": "The Emporium",
+      "city": "pullman",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=3917410467384878183",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "the-land",
+      "name": "The Land",
+      "city": "pullman",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=14464153283423279776",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "the-old-european-restaurant",
+      "name": "The Old European Restaurant",
+      "city": "pullman",
+      "price": 2,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=15841121826330395400",
+      "evidence": "Apple Maps PRICE_RANGE score 2 of 4"
+    },
+    {
+      "id": "tin-tan-tacos",
+      "name": "Tin Tan Tacos",
+      "city": "pullman",
+      "price": 1,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=12834837531320453719",
+      "evidence": "Apple Maps PRICE_RANGE score 1 of 4"
+    },
+    {
+      "id": "tokyo-seoul",
+      "name": "Tokyo Seoul",
+      "city": "pullman",
+      "price": 2,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=7258777359250352486",
+      "evidence": "Apple Maps PRICE_RANGE score 2 of 4"
+    },
+    {
+      "id": "valhalla-bar-and-grill",
+      "name": "Valhalla Bar and Grill",
+      "city": "pullman",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=13071346281824065949",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "54-mint",
+      "name": "54 Mint",
+      "city": "sf",
+      "price": 3,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=2851130030984957108",
+      "evidence": "Apple Maps PRICE_RANGE score 3 of 4"
+    },
+    {
+      "id": "a-mano",
+      "name": "a Mano",
+      "city": "sf",
+      "price": 2,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=18417628785910757491",
+      "evidence": "Apple Maps PRICE_RANGE score 2 of 4"
+    },
+    {
+      "id": "a16",
+      "name": "A16",
+      "city": "sf",
+      "price": 3,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=2567042523326974553",
+      "evidence": "Apple Maps PRICE_RANGE score 3 of 4"
+    },
+    {
+      "id": "al-carajo-sf",
+      "name": "Al Carajo SF",
+      "city": "sf",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=5347451213525262414",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "alimento",
+      "name": "Alimento",
+      "city": "sf",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=14372883362262873825",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "angler",
+      "name": "Angler",
+      "city": "sf",
+      "price": 4,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=3070127829322053842",
+      "evidence": "Apple Maps PRICE_RANGE score 4 of 4"
+    },
+    {
+      "id": "arsicault",
+      "name": "Arsicault",
+      "city": "sf",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=14340123318381247813",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "atelier-crenn",
+      "name": "Atelier Crenn",
+      "city": "sf",
+      "price": 4,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=5616843666542848748",
+      "evidence": "Apple Maps PRICE_RANGE score 4 of 4"
+    },
+    {
+      "id": "b-patisserie",
+      "name": "b. Patisserie",
+      "city": "sf",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=13558125007882162854",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "benu",
+      "name": "Benu",
+      "city": "sf",
+      "price": 4,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=1513415193327762908",
+      "evidence": "Apple Maps PRICE_RANGE score 4 of 4"
+    },
+    {
+      "id": "bi-rite-creamery",
+      "name": "Bi-Rite Creamery",
+      "city": "sf",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=2586746390838662260",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "bodega",
+      "name": "Bodega",
+      "city": "sf",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=13894658748155767644",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "boudin-sf",
+      "name": "Boudin SF",
+      "city": "sf",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=3102954112921435536",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "boulevard",
+      "name": "Boulevard",
+      "city": "sf",
+      "price": 4,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=5811890664693283232",
+      "evidence": "Apple Maps PRICE_RANGE score 4 of 4"
+    },
+    {
+      "id": "butter-crumble",
+      "name": "Butter & Crumble",
+      "city": "sf",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=8017861368406792135",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "cafe-okawari",
+      "name": "Cafe Okawari",
+      "city": "sf",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=8314750913860692297",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "californios",
+      "name": "Californios",
+      "city": "sf",
+      "price": 4,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=8387323042360361259",
+      "evidence": "Apple Maps PRICE_RANGE score 4 of 4"
+    },
+    {
+      "id": "cotogna",
+      "name": "Cotogna",
+      "city": "sf",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=14548619215337879374",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "dalida",
+      "name": "Dalida",
+      "city": "sf",
+      "price": 3,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=4165091373515607325",
+      "evidence": "Apple Maps PRICE_RANGE score 3 of 4"
+    },
+    {
+      "id": "deli-board",
+      "name": "Deli Board",
+      "city": "sf",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=3840098061136161452",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "dumpling-home",
+      "name": "Dumpling Home",
+      "city": "sf",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=4957277951982647391",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "el-farolito",
+      "name": "El Farolito",
+      "city": "sf",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=9728253935957998054",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "el-mil-amores-restaurant",
+      "name": "El Mil Amores Restaurant",
+      "city": "sf",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=17717680492826634344",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "flores",
+      "name": "Flores",
+      "city": "sf",
+      "price": 2,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=14813130949119585599",
+      "evidence": "Apple Maps PRICE_RANGE score 2 of 4"
+    },
+    {
+      "id": "fog-harbor-fish-house",
+      "name": "Fog Harbor Fish House",
+      "city": "sf",
+      "price": 3,
+      "source": "Official site",
+      "url": "https://fogharbor.com",
+      "evidence": "Official site schema.org priceRange \"$$$\""
+    },
+    {
+      "id": "foreign-cinema",
+      "name": "Foreign Cinema",
+      "city": "sf",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=16334142993927554502",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "four-kings",
+      "name": "Four Kings",
+      "city": "sf",
+      "price": 2,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=1445978274450528105",
+      "evidence": "Apple Maps PRICE_RANGE score 2 of 4"
+    },
+    {
+      "id": "gary-danko",
+      "name": "Gary Danko",
+      "city": "sf",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=1498527707321848874",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "gio-gelati",
+      "name": "Gio Gelati",
+      "city": "sf",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=6987726671578500964",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "golden-boy-pizza",
+      "name": "Golden Boy Pizza",
+      "city": "sf",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=10566908426716806088",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "golden-gate-fortune-cookie-factory",
+      "name": "Golden Gate Fortune Cookie Factory",
+      "city": "sf",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=10453682785833914565",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "hog-island-oyster-co",
+      "name": "Hog Island Oyster Co.",
+      "city": "sf",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=15385338360558883058",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "house-of-prime-rib",
+      "name": "House of Prime Rib",
+      "city": "sf",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=3684060918342789620",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "international-smoke",
+      "name": "International Smoke",
+      "city": "sf",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=8599083228278699607",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "john-s-grill",
+      "name": "John's Grill",
+      "city": "sf",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=15674677403351977074",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "kokkari-estiatorio",
+      "name": "Kokkari Estiatorio",
+      "city": "sf",
+      "price": 3,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=18000126463168014592",
+      "evidence": "Apple Maps PRICE_RANGE score 3 of 4"
+    },
+    {
+      "id": "la-ciccia",
+      "name": "La Ciccia",
+      "city": "sf",
+      "price": 2,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=16707900133365487254",
+      "evidence": "Apple Maps PRICE_RANGE score 2 of 4"
+    },
+    {
+      "id": "la-mar",
+      "name": "La Mar",
+      "city": "sf",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=1337146180840237276",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "la-taqueria",
+      "name": "La Taqueria",
+      "city": "sf",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=17588142148226817882",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "lazy-bear",
+      "name": "Lazy Bear",
+      "city": "sf",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=6928800735183554455",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "leo-s",
+      "name": "Leo's",
+      "city": "sf",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=8687776950511210136",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "liholiho-yacht-club",
+      "name": "Liholiho Yacht Club",
+      "city": "sf",
+      "price": 2,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=14242069257101474999",
+      "evidence": "Apple Maps PRICE_RANGE score 2 of 4"
+    },
+    {
+      "id": "limoncello",
+      "name": "Limoncello",
+      "city": "sf",
+      "price": 1,
+      "source": "Official site",
+      "url": "http://www.limoncellostogo.com/",
+      "evidence": "Official site schema.org priceRange \"$\""
+    },
+    {
+      "id": "lung-fung-bakery",
+      "name": "Lung Fung Bakery",
+      "city": "sf",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=13482275664239719675",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "mendocino-farms",
+      "name": "Mendocino Farms",
+      "city": "sf",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=15006714367816625661",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "mensho",
+      "name": "Mensho",
+      "city": "sf",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=7178221325043786535",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "mijote",
+      "name": "Mijoté",
+      "city": "sf",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=13260471759405645431",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "molinari-delicatessen",
+      "name": "Molinari Delicatessen",
+      "city": "sf",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=3273634728092436986",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "niku-steakhouse",
+      "name": "Niku Steakhouse",
+      "city": "sf",
+      "price": 4,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=90522407101865087",
+      "evidence": "Apple Maps PRICE_RANGE score 4 of 4"
+    },
+    {
+      "id": "nisei",
+      "name": "Nisei",
+      "city": "sf",
+      "price": 4,
+      "source": "Official site",
+      "url": "https://www.restaurantnisei.com",
+      "evidence": "Official site schema.org priceRange \"$$$$\""
+    },
+    {
+      "id": "o-by-claude-le-tohic",
+      "name": "O' By Claude Le Tohic",
+      "city": "sf",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=1088411081181748307",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "ocean-subs",
+      "name": "Ocean Subs",
+      "city": "sf",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=15678826511845824662",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "original-joe-s",
+      "name": "Original Joe's",
+      "city": "sf",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=2146571176417990257",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "outerlands",
+      "name": "Outerlands",
+      "city": "sf",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=15261955738358431965",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "outta-sight-pizza",
+      "name": "Outta Sight Pizza",
+      "city": "sf",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=13125487169992078008",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "ozumo",
+      "name": "Ozumo",
+      "city": "sf",
+      "price": 4,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=350165529017547561",
+      "evidence": "Apple Maps PRICE_RANGE score 4 of 4"
+    },
+    {
+      "id": "pacific-cocktail-haven",
+      "name": "Pacific Cocktail Haven",
+      "city": "sf",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=13352500020859831966",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "penny-roma",
+      "name": "Penny Roma",
+      "city": "sf",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=17692384919330050650",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "prospect",
+      "name": "Prospect",
+      "city": "sf",
+      "price": 3,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=12623139924955908488",
+      "evidence": "Apple Maps PRICE_RANGE score 3 of 4"
+    },
+    {
+      "id": "prubechu",
+      "name": "Prubechu",
+      "city": "sf",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=15226478786701452204",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "quince",
+      "name": "Quince",
+      "city": "sf",
+      "price": 4,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=10508294125410440991",
+      "evidence": "Apple Maps PRICE_RANGE score 4 of 4"
+    },
+    {
+      "id": "rich-table",
+      "name": "Rich Table",
+      "city": "sf",
+      "price": 3,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=18445562687597227612",
+      "evidence": "Apple Maps PRICE_RANGE score 3 of 4"
+    },
+    {
+      "id": "rintaro",
+      "name": "Rintaro",
+      "city": "sf",
+      "price": 3,
+      "source": "Official site",
+      "url": "https://www.izakayarintaro.com",
+      "evidence": "Official site schema.org priceRange \"$$$\""
+    },
+    {
+      "id": "robin",
+      "name": "Robin",
+      "city": "sf",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=5810839063079576722",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "roma-antica",
+      "name": "Roma Antica",
+      "city": "sf",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=11143057020324291890",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "rooh",
+      "name": "Rooh",
+      "city": "sf",
+      "price": 3,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=3187185049440084368",
+      "evidence": "Apple Maps PRICE_RANGE score 3 of 4"
+    },
+    {
+      "id": "roxie-food-center",
+      "name": "Roxie Food Center",
+      "city": "sf",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=1356145877792369284",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "rusty-ladle",
+      "name": "Rusty Ladle",
+      "city": "sf",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=14993714764591692609",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "reveille-coffee-co",
+      "name": "Réveille Coffee Co.",
+      "city": "sf",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=7263137558769906003",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "saigon-sandwich",
+      "name": "Saigon Sandwich",
+      "city": "sf",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=16344184348153993135",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "saison",
+      "name": "Saison",
+      "city": "sf",
+      "price": 4,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=11727351608205827421",
+      "evidence": "Apple Maps PRICE_RANGE score 4 of 4"
+    },
+    {
+      "id": "san-tung",
+      "name": "San Tung",
+      "city": "sf",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=17446518184600737691",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "scoma-s",
+      "name": "Scoma's",
+      "city": "sf",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=11298234115227221786",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "seven-hills",
+      "name": "Seven Hills",
+      "city": "sf",
+      "price": 3,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=7667535476558205760",
+      "evidence": "Apple Maps PRICE_RANGE score 3 of 4"
+    },
+    {
+      "id": "senor-sisig",
+      "name": "Señor Sisig",
+      "city": "sf",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=6584381177072610782",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "showa",
+      "name": "SHOWA",
+      "city": "sf",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=12096066343139646662",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "sons-daughters",
+      "name": "Sons & Daughters",
+      "city": "sf",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=8986914294783086612",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "sotto-mare",
+      "name": "Sotto Mare",
+      "city": "sf",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=3857697980922302595",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "spruce",
+      "name": "Spruce",
+      "city": "sf",
+      "price": 3,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=9923936946868485378",
+      "evidence": "Apple Maps PRICE_RANGE score 3 of 4"
+    },
+    {
+      "id": "square-pie-guys",
+      "name": "Square Pie Guys",
+      "city": "sf",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=3018685810607004149",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "state-bird-provisions",
+      "name": "State Bird Provisions",
+      "city": "sf",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=13707051440619686783",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "street-taco",
+      "name": "Street Taco",
+      "city": "sf",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=14871119339802735104",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "swan-oyster-depot",
+      "name": "Swan Oyster Depot",
+      "city": "sf",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=6016766910364708901",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "sweet-maple",
+      "name": "Sweet Maple",
+      "city": "sf",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=9101706223700505135",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "tacos-el-patron",
+      "name": "Tacos El Patrón",
+      "city": "sf",
+      "price": 2,
+      "source": "Official site",
+      "url": "https://tacos-el-patron.com",
+      "evidence": "Official site schema.org priceRange \"$$\""
+    },
+    {
+      "id": "tartine-bakery",
+      "name": "Tartine Bakery",
+      "city": "sf",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=14108311759782687233",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "the-bird",
+      "name": "The Bird",
+      "city": "sf",
+      "price": 1,
+      "source": "Official site",
+      "url": "https://thebirdsf.com",
+      "evidence": "Official site schema.org priceRange \"$\""
+    },
+    {
+      "id": "the-buena-vista",
+      "name": "The Buena Vista",
+      "city": "sf",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=4620088396971266023",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "the-garden-court",
+      "name": "The Garden Court",
+      "city": "sf",
+      "price": 3,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=13941913252745734371",
+      "evidence": "Apple Maps PRICE_RANGE score 3 of 4"
+    },
+    {
+      "id": "the-matterhorn-restaurant-and-bakery",
+      "name": "The Matterhorn Restaurant and Bakery",
+      "city": "sf",
+      "price": 3,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=41598318396885924",
+      "evidence": "Apple Maps PRICE_RANGE score 3 of 4"
+    },
+    {
+      "id": "the-melt",
+      "name": "The Melt",
+      "city": "sf",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=1033602914016843168",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "the-progress",
+      "name": "The Progress",
+      "city": "sf",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=14303362726307823253",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "the-vault",
+      "name": "The Vault",
+      "city": "sf",
+      "price": 3,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=1161859386879868845",
+      "evidence": "Apple Maps PRICE_RANGE score 3 of 4"
+    },
+    {
+      "id": "trestle",
+      "name": "Trestle",
+      "city": "sf",
+      "price": 4,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=11113919084210966256",
+      "evidence": "Apple Maps PRICE_RANGE score 4 of 4"
+    },
+    {
+      "id": "true-laurel",
+      "name": "True Laurel",
+      "city": "sf",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=8604379163866877249",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "verjus",
+      "name": "Verjus",
+      "city": "sf",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=10440067981588867619",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "wayfare-tavern",
+      "name": "Wayfare Tavern",
+      "city": "sf",
+      "price": 2,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=5135615863851368521",
+      "evidence": "Apple Maps PRICE_RANGE score 2 of 4"
+    },
+    {
+      "id": "wildseed",
+      "name": "Wildseed",
+      "city": "sf",
+      "price": 2,
+      "source": "Official site",
+      "url": "https://wildseedsf.com",
+      "evidence": "Official site schema.org priceRange \"$$\""
+    },
+    {
+      "id": "zuni-cafe",
+      "name": "Zuni Café",
+      "city": "sf",
+      "price": 3,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=12016299926610544981",
+      "evidence": "Apple Maps PRICE_RANGE score 3 of 4"
+    },
+    {
+      "id": "1927-lobby-lounge",
+      "name": "1927 Lobby Lounge",
+      "city": "vancouver",
+      "price": 3,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=2847828302030825124",
+      "evidence": "Apple Maps PRICE_RANGE score 3 of 4"
+    },
+    {
+      "id": "a-bread-affair",
+      "name": "A Bread Affair",
+      "city": "vancouver",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=16123008406264485221",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "al-porto-ristorante",
+      "name": "Al Porto Ristorante",
+      "city": "vancouver",
+      "price": 3,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=8020958178777887142",
+      "evidence": "Apple Maps PRICE_RANGE score 3 of 4"
+    },
+    {
+      "id": "alibi-room-van",
+      "name": "Alibi Room",
+      "city": "vancouver",
+      "price": 2,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=2576835751202577940",
+      "evidence": "Apple Maps PRICE_RANGE score 2 of 4"
+    },
+    {
+      "id": "angus-t",
+      "name": "Angus T",
+      "city": "vancouver",
+      "price": 1,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=9023550229707505925",
+      "evidence": "Apple Maps PRICE_RANGE score 1 of 4"
+    },
+    {
+      "id": "annalena",
+      "name": "AnnaLena",
+      "city": "vancouver",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=9288660324789704168",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "arc-restaurant",
+      "name": "ARC RESTAURANT",
+      "city": "vancouver",
+      "price": 3,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=597447504326079728",
+      "evidence": "Apple Maps PRICE_RANGE score 3 of 4"
+    },
+    {
+      "id": "ask-for-luigi",
+      "name": "Ask For Luigi",
+      "city": "vancouver",
+      "price": 3,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=8820745276702648962",
+      "evidence": "Apple Maps PRICE_RANGE score 3 of 4"
+    },
+    {
+      "id": "atlas-steak-fish",
+      "name": "Atlas Steak + Fish",
+      "city": "vancouver",
+      "price": 3,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=4587169031336538066",
+      "evidence": "Apple Maps PRICE_RANGE score 3 of 4"
+    },
+    {
+      "id": "barbara-restaurant",
+      "name": "Barbara Restaurant",
+      "city": "vancouver",
+      "price": 4,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=10970864554340560065",
+      "evidence": "Apple Maps PRICE_RANGE score 4 of 4"
+    },
+    {
+      "id": "beavertails",
+      "name": "BeaverTails",
+      "city": "vancouver",
+      "price": 1,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=17687665304719287713",
+      "evidence": "Apple Maps PRICE_RANGE score 1 of 4"
+    },
+    {
+      "id": "bel-cafe",
+      "name": "Bel Café",
+      "city": "vancouver",
+      "price": 3,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=14872374350837522232",
+      "evidence": "Apple Maps PRICE_RANGE score 3 of 4"
+    },
+    {
+      "id": "bella-gelateria",
+      "name": "Bella Gelateria",
+      "city": "vancouver",
+      "price": 3,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=2145409658764836385",
+      "evidence": "Apple Maps PRICE_RANGE score 3 of 4"
+    },
+    {
+      "id": "between-2-buns",
+      "name": "Between 2 Buns",
+      "city": "vancouver",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=13189104518804446969",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "blue-water-cafe",
+      "name": "Blue Water Cafe",
+      "city": "vancouver",
+      "price": 4,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=4394418548991865961",
+      "evidence": "Apple Maps PRICE_RANGE score 4 of 4"
+    },
+    {
+      "id": "botanist",
+      "name": "Botanist",
+      "city": "vancouver",
+      "price": 1,
+      "source": "Official site",
+      "url": "https://www.botanistrestaurant.com/",
+      "evidence": "Official site schema.org priceRange \"$\""
+    },
+    {
+      "id": "boulevard-van",
+      "name": "Boulevard",
+      "city": "vancouver",
+      "price": 3,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=17172600851465258702",
+      "evidence": "Apple Maps PRICE_RANGE score 3 of 4"
+    },
+    {
+      "id": "breka-bakery-cafe",
+      "name": "Breka Bakery & Cafe",
+      "city": "vancouver",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=2947963108202835909",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "brix-mortar",
+      "name": "Brix & Mortar",
+      "city": "vancouver",
+      "price": 3,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=9744478784155241504",
+      "evidence": "Apple Maps PRICE_RANGE score 3 of 4"
+    },
+    {
+      "id": "burger-crush",
+      "name": "Burger Crush",
+      "city": "vancouver",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=16187597979052673623",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "cactus-club-cafe",
+      "name": "Cactus Club Cafe",
+      "city": "vancouver",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=3862513365938702741",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "cafe-medina",
+      "name": "Café Medina",
+      "city": "vancouver",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=8513550231304265324",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "cardero-s-restaurant",
+      "name": "Cardero's Restaurant",
+      "city": "vancouver",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=12991214639984012297",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "chocolats-favoris",
+      "name": "Chocolats Favoris",
+      "city": "vancouver",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=34415947978340188",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "coast",
+      "name": "Coast",
+      "city": "vancouver",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=4103553013251487696",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "c-prime",
+      "name": "C|Prime",
+      "city": "vancouver",
+      "price": 3,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=13162751807879989436",
+      "evidence": "Apple Maps PRICE_RANGE score 3 of 4"
+    },
+    {
+      "id": "de-dutch",
+      "name": "De Dutch",
+      "city": "vancouver",
+      "price": 2,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=2747093377976830485",
+      "evidence": "Apple Maps PRICE_RANGE score 2 of 4"
+    },
+    {
+      "id": "deville-coffee",
+      "name": "Deville Coffee",
+      "city": "vancouver",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=437551142740876522",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "dinesty",
+      "name": "Dinesty",
+      "city": "vancouver",
+      "price": 2,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=2534708268006013316",
+      "evidence": "Apple Maps PRICE_RANGE score 2 of 4"
+    },
+    {
+      "id": "dockside-restaurant",
+      "name": "Dockside Restaurant",
+      "city": "vancouver",
+      "price": 3,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=5259847347519297482",
+      "evidence": "Apple Maps PRICE_RANGE score 3 of 4"
+    },
+    {
+      "id": "earls-kitchen-bar-van",
+      "name": "Earls Kitchen + Bar",
+      "city": "vancouver",
+      "price": 3,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=3734492057398454593",
+      "evidence": "Apple Maps PRICE_RANGE score 3 of 4"
+    },
+    {
+      "id": "earnest-ice-cream",
+      "name": "Earnest Ice Cream",
+      "city": "vancouver",
+      "price": 2,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=6731516533278751942",
+      "evidence": "Apple Maps PRICE_RANGE score 2 of 4"
+    },
+    {
+      "id": "east-is-east",
+      "name": "East is East",
+      "city": "vancouver",
+      "price": 2,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=13975640240049352292",
+      "evidence": "Apple Maps PRICE_RANGE score 2 of 4"
+    },
+    {
+      "id": "elisa",
+      "name": "Elisa",
+      "city": "vancouver",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=14541668179841867047",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "farmer-s-apprentice",
+      "name": "Farmer's Apprentice",
+      "city": "vancouver",
+      "price": 3,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=15183934641280202322",
+      "evidence": "Apple Maps PRICE_RANGE score 3 of 4"
+    },
+    {
+      "id": "fat-mao",
+      "name": "Fat Mao",
+      "city": "vancouver",
+      "price": 2,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=9090054590406904211",
+      "evidence": "Apple Maps PRICE_RANGE score 2 of 4"
+    },
+    {
+      "id": "fiorino-italian-street-food",
+      "name": "Fiorino Italian Street Food",
+      "city": "vancouver",
+      "price": 2,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=1206924194730073392",
+      "evidence": "Apple Maps PRICE_RANGE score 2 of 4"
+    },
+    {
+      "id": "five-sails-by-alex-kim",
+      "name": "Five Sails by Alex Kim",
+      "city": "vancouver",
+      "price": 4,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=17679213357935988181",
+      "evidence": "Apple Maps PRICE_RANGE score 4 of 4"
+    },
+    {
+      "id": "frying-pan",
+      "name": "Frying Pan",
+      "city": "vancouver",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=8574598788755024795",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "gary-s",
+      "name": "Gary's",
+      "city": "vancouver",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=8907032729415383616",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "glowbal-restaurant",
+      "name": "Glowbal Restaurant",
+      "city": "vancouver",
+      "price": 3,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=16436615542909551647",
+      "evidence": "Apple Maps PRICE_RANGE score 3 of 4"
+    },
+    {
+      "id": "gobo",
+      "name": "Gobo",
+      "city": "vancouver",
+      "price": 3,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=7189681440752167584",
+      "evidence": "Apple Maps PRICE_RANGE score 3 of 4"
+    },
+    {
+      "id": "gotham-steakhouse-bar",
+      "name": "Gotham Steakhouse & Bar",
+      "city": "vancouver",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=12032092645750700698",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "granville-island-brewing",
+      "name": "Granville Island Brewing",
+      "city": "vancouver",
+      "price": 2,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=9407932730311133499",
+      "evidence": "Apple Maps PRICE_RANGE score 2 of 4"
+    },
+    {
+      "id": "guu-with-garlic",
+      "name": "Guu with Garlic",
+      "city": "vancouver",
+      "price": 2,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=16328878124402652475",
+      "evidence": "Apple Maps PRICE_RANGE score 2 of 4"
+    },
+    {
+      "id": "hawksworth-restaurant",
+      "name": "Hawksworth Restaurant",
+      "city": "vancouver",
+      "price": 4,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=3786280759029736603",
+      "evidence": "Apple Maps PRICE_RANGE score 4 of 4"
+    },
+    {
+      "id": "homer-st-cafe-bar",
+      "name": "Homer St. Cafe & Bar",
+      "city": "vancouver",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=11431105607321647349",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "ignite-pizzeria",
+      "name": "Ignite Pizzeria",
+      "city": "vancouver",
+      "price": 2,
+      "source": "Official site",
+      "url": "https://ignitepizzeria.com",
+      "evidence": "Official site schema.org priceRange \"$$\""
+    },
+    {
+      "id": "italian-kitchen",
+      "name": "Italian Kitchen",
+      "city": "vancouver",
+      "price": 3,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=11902388438405333864",
+      "evidence": "Apple Maps PRICE_RANGE score 3 of 4"
+    },
+    {
+      "id": "jam-cafe",
+      "name": "Jam Cafe",
+      "city": "vancouver",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=4840961525186551946",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "japadog",
+      "name": "Japadog",
+      "city": "vancouver",
+      "price": 2,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=18054805749286528827",
+      "evidence": "Apple Maps PRICE_RANGE score 2 of 4"
+    },
+    {
+      "id": "jj-bean-coffee-roasters",
+      "name": "JJ Bean Coffee Roasters",
+      "city": "vancouver",
+      "price": 2,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=12494294310013282055",
+      "evidence": "Apple Maps PRICE_RANGE score 2 of 4"
+    },
+    {
+      "id": "joe-fortes-seafood-chop-house",
+      "name": "Joe Fortes Seafood & Chop House",
+      "city": "vancouver",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=9447609737558514090",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "karma-indian-bistro",
+      "name": "Karma Indian Bistro",
+      "city": "vancouver",
+      "price": 2,
+      "source": "Official site",
+      "url": "https://karmaindianbistro.ca",
+      "evidence": "Official site schema.org priceRange \"$$\""
+    },
+    {
+      "id": "kingyo-izakaya",
+      "name": "Kingyo Izakaya",
+      "city": "vancouver",
+      "price": 3,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=4078173898229527196",
+      "evidence": "Apple Maps PRICE_RANGE score 3 of 4"
+    },
+    {
+      "id": "kissa-tanto",
+      "name": "Kissa Tanto",
+      "city": "vancouver",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=3330229084840223075",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "kosoo",
+      "name": "Kosoo",
+      "city": "vancouver",
+      "price": 2,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=6909594075308291906",
+      "evidence": "Apple Maps PRICE_RANGE score 2 of 4"
+    },
+    {
+      "id": "laowai",
+      "name": "Laowai",
+      "city": "vancouver",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=15924441088927247785",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "le-crocodile",
+      "name": "Le Crocodile",
+      "city": "vancouver",
+      "price": 4,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=8132932895408043028",
+      "evidence": "Apple Maps PRICE_RANGE score 4 of 4"
+    },
+    {
+      "id": "le-petit-belge",
+      "name": "Le Petit Belge",
+      "city": "vancouver",
+      "price": 2,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=16023837586828062930",
+      "evidence": "Apple Maps PRICE_RANGE score 2 of 4"
+    },
+    {
+      "id": "lee-s-donuts",
+      "name": "Lee's Donuts",
+      "city": "vancouver",
+      "price": 2,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=9868710975876914115",
+      "evidence": "Apple Maps PRICE_RANGE score 2 of 4"
+    },
+    {
+      "id": "lift",
+      "name": "LIFT",
+      "city": "vancouver",
+      "price": 3,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=10519171975765560806",
+      "evidence": "Apple Maps PRICE_RANGE score 3 of 4"
+    },
+    {
+      "id": "lunch-lady",
+      "name": "Lunch Lady",
+      "city": "vancouver",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=8449617735446161072",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "lupo-restaurant",
+      "name": "Lupo Restaurant",
+      "city": "vancouver",
+      "price": 3,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=1925555264322842650",
+      "evidence": "Apple Maps PRICE_RANGE score 3 of 4"
+    },
+    {
+      "id": "labattoir",
+      "name": "L’abattoir",
+      "city": "vancouver",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=4240759993419829697",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "lufficio",
+      "name": "L’ufficio",
+      "city": "vancouver",
+      "price": 3,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=965036131043704571",
+      "evidence": "Apple Maps PRICE_RANGE score 3 of 4"
+    },
+    {
+      "id": "magari-by-oca",
+      "name": "Magari by Oca",
+      "city": "vancouver",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=9805173291437608133",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "maruhachi-ra-men",
+      "name": "Maruhachi Ra-men",
+      "city": "vancouver",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=15043503749907614665",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "maxine-s-cafe-bar",
+      "name": "Maxine's Cafe & Bar",
+      "city": "vancouver",
+      "price": 2,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=11912364803861147924",
+      "evidence": "Apple Maps PRICE_RANGE score 2 of 4"
+    },
+    {
+      "id": "mello",
+      "name": "Mello",
+      "city": "vancouver",
+      "price": 1,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=17875216116423023256",
+      "evidence": "Apple Maps PRICE_RANGE score 1 of 4"
+    },
+    {
+      "id": "meo-chinatown",
+      "name": "Meo Chinatown",
+      "city": "vancouver",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=16012460251746202444",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "miku-restaurant",
+      "name": "Miku Restaurant",
+      "city": "vancouver",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=13595795465655789255",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "minami-restaurant",
+      "name": "Minami Restaurant",
+      "city": "vancouver",
+      "price": 3,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=16545751321491762547",
+      "evidence": "Apple Maps PRICE_RANGE score 3 of 4"
+    },
+    {
+      "id": "mortadella",
+      "name": "Mortadella",
+      "city": "vancouver",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=4824745244881234008",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "motoretta-gelato",
+      "name": "Motoretta Gelato",
+      "city": "vancouver",
+      "price": 1,
+      "source": "Official site",
+      "url": "https://www.motorettagelato.com",
+      "evidence": "Official site schema.org priceRange \"$\""
+    },
+    {
+      "id": "mott-32",
+      "name": "Mott 32",
+      "city": "vancouver",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=1020562662301164353",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "nandos",
+      "name": "Nandos",
+      "city": "vancouver",
+      "price": 2,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=4807784238059625107",
+      "evidence": "Apple Maps PRICE_RANGE score 2 of 4"
+    },
+    {
+      "id": "nat-s-new-york-pizzeria",
+      "name": "Nat's New York Pizzeria",
+      "city": "vancouver",
+      "price": 1,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=12683589475211499104",
+      "evidence": "Apple Maps PRICE_RANGE score 1 of 4"
+    },
+    {
+      "id": "nemesis",
+      "name": "Nemesis",
+      "city": "vancouver",
+      "price": 2,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=3556228953542367188",
+      "evidence": "Apple Maps PRICE_RANGE score 2 of 4"
+    },
+    {
+      "id": "nightingale",
+      "name": "Nightingale",
+      "city": "vancouver",
+      "price": 3,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=10520726427367203808",
+      "evidence": "Apple Maps PRICE_RANGE score 3 of 4"
+    },
+    {
+      "id": "notch8",
+      "name": "Notch8",
+      "city": "vancouver",
+      "price": 2,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=17323069085181256203",
+      "evidence": "Apple Maps PRICE_RANGE score 2 of 4"
+    },
+    {
+      "id": "oeb-breakfast",
+      "name": "OEB Breakfast",
+      "city": "vancouver",
+      "price": 2,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=15960386155052680700",
+      "evidence": "Apple Maps PRICE_RANGE score 2 of 4"
+    },
+    {
+      "id": "okeya-kyujiro",
+      "name": "Okeya Kyujiro",
+      "city": "vancouver",
+      "price": 4,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=9527207935967228124",
+      "evidence": "Apple Maps PRICE_RANGE score 4 of 4"
+    },
+    {
+      "id": "parker-rooftop",
+      "name": "Parker Rooftop",
+      "city": "vancouver",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=13369436340112171201",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "paul-bakery-patisserie-cafe-and-restaurant",
+      "name": "PAUL Bakery, Patisserie, Café and Restaurant",
+      "city": "vancouver",
+      "price": 2,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=9211572500771552806",
+      "evidence": "Apple Maps PRICE_RANGE score 2 of 4"
+    },
+    {
+      "id": "pidgin",
+      "name": "PiDGiN",
+      "city": "vancouver",
+      "price": 3,
+      "source": "Official site",
+      "url": "http://www.pidginvancouver.com/",
+      "evidence": "Official site schema.org priceRange \"$$$\""
+    },
+    {
+      "id": "prophecy",
+      "name": "Prophecy",
+      "city": "vancouver",
+      "price": 3,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=13374104090467592629",
+      "evidence": "Apple Maps PRICE_RANGE score 3 of 4"
+    },
+    {
+      "id": "provence-marinaside",
+      "name": "Provence Marinaside",
+      "city": "vancouver",
+      "price": 3,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=7295849601586838380",
+      "evidence": "Apple Maps PRICE_RANGE score 3 of 4"
+    },
+    {
+      "id": "published-on-main",
+      "name": "Published on Main",
+      "city": "vancouver",
+      "price": 4,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=15507545953566308504",
+      "evidence": "Apple Maps PRICE_RANGE score 4 of 4"
+    },
+    {
+      "id": "purebread",
+      "name": "Purebread",
+      "city": "vancouver",
+      "price": 2,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=12636537236028116721",
+      "evidence": "Apple Maps PRICE_RANGE score 2 of 4"
+    },
+    {
+      "id": "rain-or-shine",
+      "name": "Rain or Shine",
+      "city": "vancouver",
+      "price": 2,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=1280796857663154897",
+      "evidence": "Apple Maps PRICE_RANGE score 2 of 4"
+    },
+    {
+      "id": "ramen-danbo-van",
+      "name": "Ramen DANBO",
+      "city": "vancouver",
+      "price": 2,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=17212922452853042057",
+      "evidence": "Apple Maps PRICE_RANGE score 2 of 4"
+    },
+    {
+      "id": "revolver",
+      "name": "Revolver",
+      "city": "vancouver",
+      "price": 1,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=10218514291838089368",
+      "evidence": "Apple Maps PRICE_RANGE score 1 of 4"
+    },
+    {
+      "id": "saku",
+      "name": "Saku",
+      "city": "vancouver",
+      "price": 2,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=5842305392260158452",
+      "evidence": "Apple Maps PRICE_RANGE score 2 of 4"
+    },
+    {
+      "id": "savio-volpe",
+      "name": "Savio Volpe",
+      "city": "vancouver",
+      "price": 3,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=7936088850566026673",
+      "evidence": "Apple Maps PRICE_RANGE score 3 of 4"
+    },
+    {
+      "id": "seasons-in-the-park",
+      "name": "Seasons In the Park",
+      "city": "vancouver",
+      "price": 4,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=15798766284192248121",
+      "evidence": "Apple Maps PRICE_RANGE score 4 of 4"
+    },
+    {
+      "id": "siegel-s-bagels",
+      "name": "Siegel's Bagels",
+      "city": "vancouver",
+      "price": 1,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=5234324338824913260",
+      "evidence": "Apple Maps PRICE_RANGE score 1 of 4"
+    },
+    {
+      "id": "small-victory-bakery",
+      "name": "Small Victory Bakery",
+      "city": "vancouver",
+      "price": 2,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=12531207360991794933",
+      "evidence": "Apple Maps PRICE_RANGE score 2 of 4"
+    },
+    {
+      "id": "song",
+      "name": "Song",
+      "city": "vancouver",
+      "price": 3,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=11789632134623817452",
+      "evidence": "Apple Maps PRICE_RANGE score 3 of 4"
+    },
+    {
+      "id": "st-lawrence",
+      "name": "St. Lawrence",
+      "city": "vancouver",
+      "price": 4,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=2495317967814641860",
+      "evidence": "Apple Maps PRICE_RANGE score 4 of 4"
+    },
+    {
+      "id": "sushi-hil",
+      "name": "Sushi Hil",
+      "city": "vancouver",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=13237402793649472341",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "tableau-bar-bistro",
+      "name": "Tableau Bar Bistro",
+      "city": "vancouver",
+      "price": 3,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=1988607202674615083",
+      "evidence": "Apple Maps PRICE_RANGE score 3 of 4"
+    },
+    {
+      "id": "tacofino",
+      "name": "Tacofino",
+      "city": "vancouver",
+      "price": 2,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=14961933985048724742",
+      "evidence": "Apple Maps PRICE_RANGE score 2 of 4"
+    },
+    {
+      "id": "tap-barrel",
+      "name": "Tap & Barrel",
+      "city": "vancouver",
+      "price": 2,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=5208786592657350061",
+      "evidence": "Apple Maps PRICE_RANGE score 2 of 4"
+    },
+    {
+      "id": "teahouse-in-stanley-park",
+      "name": "Teahouse in Stanley Park",
+      "city": "vancouver",
+      "price": 3,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=11674484421760326994",
+      "evidence": "Apple Maps PRICE_RANGE score 3 of 4"
+    },
+    {
+      "id": "tendon-kohaku-van",
+      "name": "Tendon Kohaku",
+      "city": "vancouver",
+      "price": 2,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=495513886039499204",
+      "evidence": "Apple Maps PRICE_RANGE score 2 of 4"
+    },
+    {
+      "id": "the-beach-house-restaurant",
+      "name": "The Beach House Restaurant",
+      "city": "vancouver",
+      "price": 3,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=15047198628983838716",
+      "evidence": "Apple Maps PRICE_RANGE score 3 of 4"
+    },
+    {
+      "id": "the-flying-pig",
+      "name": "The Flying Pig",
+      "city": "vancouver",
+      "price": 2,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=2964123930392718224",
+      "evidence": "Apple Maps PRICE_RANGE score 2 of 4"
+    },
+    {
+      "id": "the-greek",
+      "name": "The Greek",
+      "city": "vancouver",
+      "price": 2,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=856407735843618962",
+      "evidence": "Apple Maps PRICE_RANGE score 2 of 4"
+    },
+    {
+      "id": "the-keefer-bar",
+      "name": "The Keefer Bar",
+      "city": "vancouver",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=15765014387237028489",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "the-keg-steakhouse-bar",
+      "name": "The Keg Steakhouse + Bar",
+      "city": "vancouver",
+      "price": 3,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=16799056539925063843",
+      "evidence": "Apple Maps PRICE_RANGE score 3 of 4"
+    },
+    {
+      "id": "the-lobby-lounge-and-rawbar",
+      "name": "The Lobby Lounge and RawBar",
+      "city": "vancouver",
+      "price": 3,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=1085998042838375083",
+      "evidence": "Apple Maps PRICE_RANGE score 3 of 4"
+    },
+    {
+      "id": "the-mackenzie-room",
+      "name": "The Mackenzie Room",
+      "city": "vancouver",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=8891907514344505855",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "the-parlour",
+      "name": "The Parlour",
+      "city": "vancouver",
+      "price": 2,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=17873880003304595791",
+      "evidence": "Apple Maps PRICE_RANGE score 2 of 4"
+    },
+    {
+      "id": "the-red-accordion",
+      "name": "The Red Accordion",
+      "city": "vancouver",
+      "price": 2,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=16646539940064592921",
+      "evidence": "Apple Maps PRICE_RANGE score 2 of 4"
+    },
+    {
+      "id": "the-roxy",
+      "name": "The Roxy",
+      "city": "vancouver",
+      "price": 2,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=7728897814015680113",
+      "evidence": "Apple Maps PRICE_RANGE score 2 of 4"
+    },
+    {
+      "id": "the-yale-saloon",
+      "name": "The Yale Saloon",
+      "city": "vancouver",
+      "price": 2,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=8573076857624586486",
+      "evidence": "Apple Maps PRICE_RANGE score 2 of 4"
+    },
+    {
+      "id": "top-of-vancouver-revolving-restaurant",
+      "name": "Top of Vancouver Revolving Restaurant",
+      "city": "vancouver",
+      "price": 4,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=9156909396748655534",
+      "evidence": "Apple Maps PRICE_RANGE score 4 of 4"
+    },
+    {
+      "id": "tutto-restaurant-bar",
+      "name": "Tutto Restaurant & Bar",
+      "city": "vancouver",
+      "price": 3,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=13563465862418534867",
+      "evidence": "Apple Maps PRICE_RANGE score 3 of 4"
+    },
+    {
+      "id": "vijs-restaurant",
+      "name": "Vij’s Restaurant",
+      "city": "vancouver",
+      "price": 3,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=4276920285034613790",
+      "evidence": "Apple Maps PRICE_RANGE score 3 of 4"
+    },
+    {
+      "id": "como-taperia",
+      "name": "¿CóMO? Taperia",
+      "city": "vancouver",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=4414500512726897964",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "angelino-restaurant",
+      "name": "Angelino Restaurant",
+      "city": "northbay",
+      "price": 3,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=17842558546261250729",
+      "evidence": "Apple Maps PRICE_RANGE score 3 of 4"
+    },
+    {
+      "id": "nobu-sf",
+      "name": "Nobu",
+      "city": "peninsula",
+      "price": 4,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=2501507275692828216",
+      "evidence": "Apple Maps PRICE_RANGE score 4 of 4"
+    },
+    {
+      "id": "rh-rooftop-restaurant-at-rh-marin",
+      "name": "RH Rooftop Restaurant at RH Marin",
+      "city": "northbay",
+      "price": 3,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=1882353396783663036",
+      "evidence": "Apple Maps PRICE_RANGE score 3 of 4"
+    },
+    {
+      "id": "the-spinnaker",
+      "name": "The Spinnaker",
+      "city": "northbay",
+      "price": 3,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=10968916848461667240",
+      "evidence": "Apple Maps PRICE_RANGE score 3 of 4"
+    },
+    {
+      "id": "perry-s",
+      "name": "Perry's",
+      "city": "northbay",
+      "price": 2,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=9689535535227902843",
+      "evidence": "Apple Maps PRICE_RANGE score 2 of 4"
+    },
+    {
+      "id": "taverna",
+      "name": "Taverna",
+      "city": "peninsula",
+      "price": 3,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=11750794391220254369",
+      "evidence": "Apple Maps PRICE_RANGE score 3 of 4"
+    },
+    {
+      "id": "la-foret-restaurant",
+      "name": "La Foret Restaurant",
+      "city": "peninsula",
+      "price": 4,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=2472992682674153586",
+      "evidence": "Apple Maps PRICE_RANGE score 4 of 4"
+    },
+    {
+      "id": "elia",
+      "name": "Elia",
+      "city": "eastbay",
+      "price": 2,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=9975469316711371018",
+      "evidence": "Apple Maps PRICE_RANGE score 2 of 4"
+    },
+    {
+      "id": "a-r-valentien",
+      "name": "A.R. Valentien",
+      "city": "sandiego",
+      "price": 4,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=4340113628441536143",
+      "evidence": "Apple Maps PRICE_RANGE score 4 of 4"
+    },
+    {
+      "id": "market-restaurant-bar",
+      "name": "Market Restaurant + Bar",
+      "city": "sandiego",
+      "price": 4,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=2659127510969177030",
+      "evidence": "Apple Maps PRICE_RANGE score 4 of 4"
+    },
+    {
+      "id": "paradisaea",
+      "name": "Paradisaea",
+      "city": "sandiego",
+      "price": 4,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=455037696111828205",
+      "evidence": "Apple Maps PRICE_RANGE score 4 of 4"
+    },
+    {
+      "id": "cowboy-star",
+      "name": "Cowboy Star",
+      "city": "sandiego",
+      "price": 4,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=11470877853509806197",
+      "evidence": "Apple Maps PRICE_RANGE score 4 of 4"
+    },
+    {
+      "id": "marisi",
+      "name": "Marisi",
+      "city": "sandiego",
+      "price": 3,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=7499744486729838598",
+      "evidence": "Apple Maps PRICE_RANGE score 3 of 4"
+    },
+    {
+      "id": "ciccia-osteria",
+      "name": "Ciccia Osteria",
+      "city": "sandiego",
+      "price": 3,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=1075380182506602164",
+      "evidence": "Apple Maps PRICE_RANGE score 3 of 4"
+    },
+    {
+      "id": "the-plot",
+      "name": "The Plot",
+      "city": "sandiego",
+      "price": 2,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=17029299200294595120",
+      "evidence": "Apple Maps PRICE_RANGE score 2 of 4"
+    },
+    {
+      "id": "herb-wood",
+      "name": "Herb & Wood",
+      "city": "sandiego",
+      "price": 3,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=426482982705018864",
+      "evidence": "Apple Maps PRICE_RANGE score 3 of 4"
+    },
+    {
+      "id": "island-prime",
+      "name": "Island Prime",
+      "city": "sandiego",
+      "price": 4,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=16630278860105124920",
+      "evidence": "Apple Maps PRICE_RANGE score 4 of 4"
+    },
+    {
+      "id": "himitsu",
+      "name": "Himitsu",
+      "city": "sandiego",
+      "price": 3,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=11471312987921454573",
+      "evidence": "Apple Maps PRICE_RANGE score 3 of 4"
+    },
+    {
+      "id": "wrench-rodent-seabasstropub",
+      "name": "Wrench & Rodent Seabasstropub",
+      "city": "sandiego",
+      "price": 2,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=2620201967920882553",
+      "evidence": "Apple Maps PRICE_RANGE score 2 of 4"
+    },
+    {
+      "id": "puesto",
+      "name": "Puesto",
+      "city": "sandiego",
+      "price": 2,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=17884982881893772474",
+      "evidence": "Apple Maps PRICE_RANGE score 2 of 4"
+    },
+    {
+      "id": "animae",
+      "name": "Animae",
+      "city": "sandiego",
+      "price": 4,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=10699676153498701983",
+      "evidence": "Apple Maps PRICE_RANGE score 4 of 4"
+    },
+    {
+      "id": "callie",
+      "name": "Callie",
+      "city": "sandiego",
+      "price": 3,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=6594295803942374928",
+      "evidence": "Apple Maps PRICE_RANGE score 3 of 4"
+    },
+    {
+      "id": "little-frenchie",
+      "name": "Little Frenchie",
+      "city": "sandiego",
+      "price": 2,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=16292433040569542246",
+      "evidence": "Apple Maps PRICE_RANGE score 2 of 4"
+    },
+    {
+      "id": "serea",
+      "name": "Serea",
+      "city": "sandiego",
+      "price": 3,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=16459391718052093083",
+      "evidence": "Apple Maps PRICE_RANGE score 3 of 4"
+    },
+    {
+      "id": "addison",
+      "name": "Addison",
+      "city": "sandiego",
+      "price": 4,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=10315991027775599892",
+      "evidence": "Apple Maps PRICE_RANGE score 4 of 4"
+    },
+    {
+      "id": "civico-1845",
+      "name": "Civico 1845",
+      "city": "sandiego",
+      "price": 2,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=15840913257944585125",
+      "evidence": "Apple Maps PRICE_RANGE score 2 of 4"
+    },
+    {
+      "id": "juniper-ivy",
+      "name": "Juniper & Ivy",
+      "city": "sandiego",
+      "price": 3,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=13797004766600831284",
+      "evidence": "Apple Maps PRICE_RANGE score 3 of 4"
+    },
+    {
+      "id": "nine-ten",
+      "name": "NINE-TEN",
+      "city": "sandiego",
+      "price": 3,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=8390643966710498850",
+      "evidence": "Apple Maps PRICE_RANGE score 3 of 4"
+    },
+    {
+      "id": "mothership",
+      "name": "Mothership",
+      "city": "sandiego",
+      "price": 2,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=17194890795595741590",
+      "evidence": "Apple Maps PRICE_RANGE score 2 of 4"
+    },
+    {
+      "id": "artifact-at-mingei",
+      "name": "ARTIFACT at Mingei",
+      "city": "sandiego",
+      "price": 3,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=15012107706854006020",
+      "evidence": "Apple Maps PRICE_RANGE score 3 of 4"
+    },
+    {
+      "id": "kettner-exchange",
+      "name": "Kettner Exchange",
+      "city": "sandiego",
+      "price": 3,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=7653526095111918375",
+      "evidence": "Apple Maps PRICE_RANGE score 3 of 4"
+    },
+    {
+      "id": "nobu-del-coronado",
+      "name": "Nobu Del Coronado",
+      "city": "sandiego",
+      "price": 4,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=5822832654445036112",
+      "evidence": "Apple Maps PRICE_RANGE score 4 of 4"
+    },
+    {
+      "id": "rovino",
+      "name": "RoVino",
+      "city": "sandiego",
+      "price": 3,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=2162492693962336527",
+      "evidence": "Apple Maps PRICE_RANGE score 3 of 4"
+    },
+    {
+      "id": "mastro-s-steakhouse",
+      "name": "Mastro's Steakhouse",
+      "city": "peninsula",
+      "price": 4,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=14279936698475236806",
+      "evidence": "Apple Maps PRICE_RANGE score 4 of 4"
+    },
+    {
+      "id": "quixote",
+      "name": "Quixote",
+      "city": "sandiego",
+      "price": 2,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=9150791872155835725",
+      "evidence": "Apple Maps PRICE_RANGE score 2 of 4"
+    },
+    {
+      "id": "c-level",
+      "name": "C Level",
+      "city": "sandiego",
+      "price": 3,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=13514361044318391395",
+      "evidence": "Apple Maps PRICE_RANGE score 3 of 4"
+    },
+    {
+      "id": "cucina-urbana",
+      "name": "Cucina Urbana",
+      "city": "sandiego",
+      "price": 2,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=7018736579285521735",
+      "evidence": "Apple Maps PRICE_RANGE score 2 of 4"
+    },
+    {
+      "id": "trattoria-cori-pastificio",
+      "name": "Trattoria Cori Pastificio",
+      "city": "sandiego",
+      "price": 2,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=247988518298324781",
+      "evidence": "Apple Maps PRICE_RANGE score 2 of 4"
+    },
+    {
+      "id": "taco-bell-cantina",
+      "name": "Taco Bell Cantina",
+      "city": "peninsula",
+      "price": 1,
+      "source": "Official site",
+      "url": "https://locations.tacobell.com/ca/pacifica/5200-coast-highway.html",
+      "evidence": "Official site schema.org priceRange \"$\""
+    },
+    {
+      "id": "malibu-farm",
+      "name": "Malibu Farm",
+      "city": "northbay",
+      "price": 2,
+      "source": "Official site",
+      "url": "https://www.malibu-farm.com/tiburon/",
+      "evidence": "Official site schema.org priceRange \"$$\""
+    },
+    {
+      "id": "malibu-farm-san-diego",
+      "name": "Malibu Farm San Diego",
+      "city": "sandiego",
+      "price": 2,
+      "source": "Official site",
+      "url": "https://www.malibu-farm.com/seaport-san-diego/",
+      "evidence": "Official site schema.org priceRange \"$$\""
+    },
+    {
+      "id": "barbara-s-fishtrap",
+      "name": "Barbara's Fishtrap",
+      "city": "peninsula",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=4965522066514539789",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "billy-roy-s-burger-co",
+      "name": "Billy Roy's Burger Co",
+      "city": "eastbay",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=16703289396903468520",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "barrel-house-tavern",
+      "name": "Barrel House Tavern",
+      "city": "northbay",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=5527082996613001123",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "ramen-nagi",
+      "name": "Ramen Nagi",
+      "city": "peninsula",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=9834804649646578877",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "raised-by-wolves",
+      "name": "Raised By Wolves",
+      "city": "sandiego",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=5918718280026415320",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "la-perla-cocina-mexicana-3",
+      "name": "La Perla Cocina Mexicana #3",
+      "city": "sandiego",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=11078731675688830723",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "cesarina",
+      "name": "Cesarina",
+      "city": "sandiego",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=14490252183106204634",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "barrio-dogg",
+      "name": "Barrio Dogg",
+      "city": "sandiego",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=2904697606814888126",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "atelier-manna",
+      "name": "Atelier Manna",
+      "city": "sandiego",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=11003965028836290813",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "soichi",
+      "name": "Soichi",
+      "city": "sandiego",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=16177805186096638282",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "mikes-taco-club",
+      "name": "Mike's Taco Club",
+      "city": "sandiego",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=13318992299447292133",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "mabels-gone-fishing",
+      "name": "Mabel’s Gone Fishing",
+      "city": "sandiego",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=16313381790808105428",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "ironside",
+      "name": "Ironside",
+      "city": "sandiego",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=1720518847222796937",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "izola",
+      "name": "Izola",
+      "city": "sandiego",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=8660312458094793134",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "javiers-2",
+      "name": "Javier's",
+      "city": "sandiego",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=7875898337778950364",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "fernandez-restaurant-birrieria",
+      "name": "Fernandez Restaurant Birrieria",
+      "city": "sandiego",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=15586723412606941230",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "morning-glory",
+      "name": "Morning Glory",
+      "city": "sandiego",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=7912336818008713396",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "the-taco-stand",
+      "name": "The Taco Stand",
+      "city": "sandiego",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=6091492745694697608",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "jeune-et-jolie",
+      "name": "Jeune et Jolie",
+      "city": "sandiego",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=11192071225459034709",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "buona-forchetta",
+      "name": "Buona Forchetta",
+      "city": "sandiego",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=5632682297129567454",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "matsu-2",
+      "name": "Matsu",
+      "city": "sandiego",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=17112650180481988281",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "tacos-el-gordo",
+      "name": "Tacos El Gordo",
+      "city": "sandiego",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=7237492061976026130",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "the-mission",
+      "name": "The Mission",
+      "city": "sandiego",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=5580270773849293180",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "lola-55",
+      "name": "Lola 55",
+      "city": "sandiego",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=18331288822718280039",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "born-raised",
+      "name": "Born & Raised",
+      "city": "sandiego",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=1322039371098006462",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "campfire",
+      "name": "Campfire",
+      "city": "sandiego",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=5586468343210624175",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "wayfarer-bread",
+      "name": "Wayfarer Bread",
+      "city": "sandiego",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=13056372261377867150",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "water-grill-2",
+      "name": "Water Grill",
+      "city": "sandiego",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=6460702306996912277",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "wolf-in-the-woods",
+      "name": "Wolf in the Woods",
+      "city": "sandiego",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=8182031294251279452",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "city-tacos",
+      "name": "City Tacos",
+      "city": "sandiego",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=5421634460078555342",
+      "evidence": "Apple Maps place page has no price range"
+    },
+    {
+      "id": "tribute-pizza",
+      "name": "Tribute Pizza",
+      "city": "sandiego",
+      "price": null,
+      "source": "Apple Maps",
+      "url": "https://maps.apple.com/place?auid=9474737386479642698",
+      "evidence": "Apple Maps place page has no price range"
+    }
+  ]
+}

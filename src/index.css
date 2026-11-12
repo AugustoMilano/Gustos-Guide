@@ -18,6 +18,8 @@ html {
   --status-bar: #fffaf3;
   background-color: var(--status-bar);
   scroll-behavior: smooth;
+  /* The subheader collapses on scroll. Anchoring would fight that and pop the page back. */
+  overflow-anchor: none;
   scroll-padding-top: calc(var(--header-offset) + var(--space-2));
   --header-offset: 4.75rem;
 
@@ -74,6 +76,11 @@ html {
 
   --badge-w: 6.25rem;
   --badge-h: 4.35rem;
+  /* Score bands. Good is light green; It's fine keeps the previous Good gold. */
+  --score-good: #b7e39a;
+  --score-good-ink: #181818;
+  --score-fine: #e7b23c;
+  --score-fine-ink: #181818;
   --count-w: 4.75rem;
   --shot: 4rem;
   --score-num-w: 3rem;
@@ -562,7 +569,27 @@ main ul.grid > li {
 }
 
 .toc-card {
+  container-type: inline-size;
   transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+/* Strip titles size to the card, not the viewport, so a rank and one long word both fit. */
+.toc-card h3.place-name {
+  font-size: clamp(1rem, 10cqi, 1.35rem);
+  line-height: 1.12;
+  text-wrap: wrap;
+}
+
+.toc-card h3.place-name.is-long {
+  font-size: clamp(0.92rem, 8.5cqi, 1.15rem);
+}
+
+.toc-card h3.place-name.is-longest {
+  font-size: clamp(0.8rem, 7cqi, 1rem);
+}
+
+.toc-rank {
+  margin-right: 0.3rem;
 }
 
 .guide-card:hover,
@@ -726,13 +753,13 @@ main ul.grid > li {
 }
 
 .score-badge.tone-good {
-  background: #e7b23c;
-  color: #181818;
+  background: var(--score-good);
+  color: var(--score-good-ink);
 }
 
 .score-badge.tone-fine {
-  background: #fff6ea;
-  color: #181818;
+  background: var(--score-fine);
+  color: var(--score-fine-ink);
 }
 
 .score-badge.tone-skip {
@@ -922,6 +949,11 @@ main ul.grid > li {
   min-height: 280px;
 }
 
+.map-frame.is-booting .leaflet-marker-pane,
+.map-frame.is-booting .leaflet-shadow-pane {
+  visibility: hidden;
+}
+
 .leaflet-control-attribution {
   background: rgb(238 227 214 / 92%);
   color: #181818;
@@ -1048,19 +1080,32 @@ main ul.grid > li {
 }
 
 .cuisine-picker-button {
+  box-sizing: border-box;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 0.5rem;
+  height: 44px;
+  min-width: 0;
+  border-radius: 0;
   text-align: left;
+  cursor: pointer;
+}
+
+.cuisine-picker-button svg {
+  flex: none;
 }
 
 .field .cuisine-picker-value {
+  min-width: 0;
+  overflow: hidden;
   font-size: 1rem;
   font-weight: 650;
   letter-spacing: 0;
   line-height: 1.3;
+  text-overflow: ellipsis;
   text-transform: none;
+  white-space: nowrap;
 }
 
 .cuisine-menu {
@@ -1201,6 +1246,81 @@ main ul.grid > li {
 .chip[aria-pressed='true'] {
   background: #141f4d;
   color: #eee3d6;
+}
+
+.price-filter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  max-width: 100%;
+  grid-column: 1 / -1;
+}
+
+.guide-filters {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Unlayered display:flex beats the Tailwind `hidden` utility, so the desktop
+   controls were also sticky on a phone, on top of Filters and Map. */
+@media (max-width: 1023px) {
+  .guide-filter-dock > .guide-filters {
+    display: none;
+  }
+}
+
+.guide-filters .price-filter {
+  display: contents;
+}
+
+.filter-select {
+  box-sizing: border-box;
+  width: max-content;
+  max-width: 100%;
+  min-height: var(--chip-h);
+  margin: 0;
+  padding: 0 2.1rem 0 0.9rem;
+  border: 1px solid rgb(255 255 255 / 72%);
+  border-radius: 999px;
+  background-color: rgb(255 250 243 / 72%);
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'><path fill='none' stroke='%23141f4d' stroke-width='1.6' stroke-linecap='round' d='M1 1.5 6 6.5 11 1.5'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  background-size: 0.7rem;
+  box-shadow: 0 8px 20px rgb(20 31 77 / 8%), inset 0 1px 0 rgb(255 255 255 / 80%);
+  color: #181818;
+  font: inherit;
+  font-weight: 650;
+  line-height: 1;
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+.filter-select.is-set {
+  background-color: #141f4d;
+  color: #eee3d6;
+  border-color: #141f4d;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'><path fill='none' stroke='%23eee3d6' stroke-width='1.6' stroke-linecap='round' d='M1 1.5 6 6.5 11 1.5'/></svg>");
+}
+
+.filter-select:focus {
+  outline: none;
+}
+
+.filter-select:focus-visible {
+  outline: 2px solid #141f4d;
+  outline-offset: 3px;
+}
+
+.price-filter .chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  padding-inline: 12px;
 }
 
 #guides,
@@ -1449,7 +1569,8 @@ main ul.grid > li {
 
 @media (min-width: 768px) {
   .explore-list {
-    width: 22.5rem;
+    /* Wide enough that a name like "Betty Restaurant & Bar" keeps whole words. */
+    width: clamp(30rem, 40vw, 36rem);
     border-right: 2px solid #181818;
   }
 
@@ -3001,6 +3122,57 @@ input[type='time'] {
   min-width: 0;
 }
 
+.header-sub {
+  display: flex;
+  min-width: 0;
+  max-height: 14rem;
+  overflow: hidden;
+  transition: max-height 280ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.header-sub-slide {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.45rem 0.55rem;
+  min-width: 0;
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+  transition: opacity 200ms ease, transform 280ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.header-sub.is-concealed {
+  max-height: 0;
+  pointer-events: none;
+}
+
+.header-sub.is-concealed .header-sub-slide {
+  opacity: 0;
+  transform: translate3d(0, -100%, 0);
+}
+
+@media (min-width: 640px) {
+  .header-sub {
+    transition: max-height 280ms cubic-bezier(0.22, 1, 0.36, 1), max-width 280ms cubic-bezier(0.22, 1, 0.36, 1), flex-basis 280ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  /* On the logo row the back control sits inline. Drop its width so Search doesn't keep a hole. */
+  .header-sub.is-concealed {
+    max-width: 0;
+    min-width: 0;
+    flex: 0 0 0px;
+    margin: 0;
+    padding: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .header-sub,
+  .header-sub-slide {
+    transition: none;
+  }
+}
+
 .brand-link {
   display: inline-flex;
   align-items: center;
@@ -3331,8 +3503,30 @@ h2.font-serif,
     white-space: nowrap;
   }
 
+  .header-bar .header-sub {
+    order: 4;
+    flex: 1 0 100%;
+  }
+
+  .header-bar .header-sub-slide {
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: stretch;
+    gap: 0.5rem;
+    width: 100%;
+  }
+
+  /* This basis is a full row of the header. Inside the column it would wrap sideways and clip. */
+  .header-bar .header-sub-slide .city-switch-bar {
+    flex: none;
+    order: 0;
+    width: 100%;
+    max-width: 100%;
+  }
+
   .header-bar .region-back {
     flex: none;
+    align-self: flex-start;
     max-width: 100%;
   }
 
@@ -3393,6 +3587,29 @@ h2.font-serif,
     display: contents;
   }
 
+  html[data-route='explore'] .header-bar .header-sub {
+    display: flex;
+    grid-column: 1 / -1;
+    grid-row: 2;
+    flex-direction: row;
+    align-items: center;
+    order: 0;
+    max-width: 100%;
+  }
+
+  html[data-route='explore'] .header-bar .header-sub-slide {
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    width: 100%;
+  }
+
+  html[data-route='explore'] .header-bar .header-sub.is-concealed {
+    display: flex;
+    max-width: 100%;
+    flex: 1 0 100%;
+  }
+
   html[data-route='explore'] .header-bar .brand-link {
     grid-area: brand;
     min-width: 0;
@@ -3407,15 +3624,13 @@ h2.font-serif,
   }
 
   html[data-route='explore'] .header-bar .region-back {
-    grid-area: back;
     justify-self: start;
     max-width: 100%;
   }
 
   html[data-route='explore'] .header-bar .city-switch-bar {
-    grid-area: switch;
     order: 0;
-    flex: none;
+    flex: 1 1 auto;
     width: auto;
     min-width: 0;
   }
@@ -3724,7 +3939,9 @@ img.is-pending,
   align-items: center;
   padding: 0.85rem 0.4rem 0.9rem;
   text-align: center;
-  overflow-wrap: break-word;
+  overflow-wrap: normal;
+  word-break: normal;
+  hyphens: none;
 }
 
 .top-podium-card.is-first {
@@ -3822,7 +4039,8 @@ img.is-pending,
   box-shadow: inset 4px 0 0 var(--color-coral), 0 10px 28px rgb(20 31 77 / 8%);
 }
 
-.guide-sticky {
+.guide-sticky,
+.guide-filter-dock {
   position: sticky;
   top: var(--header-offset);
   z-index: 24;
@@ -3830,6 +4048,23 @@ img.is-pending,
   padding: 0.35rem 0.25rem;
   background: rgb(238 227 214 / 92%);
   backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+.guide-filter-dock {
+  transition: transform 280ms cubic-bezier(0.22, 1, 0.36, 1), opacity 200ms ease;
+}
+
+.guide-filter-dock.is-concealed {
+  transform: translate3d(0, calc(-100% - 8px), 0);
+  opacity: 0;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .guide-filter-dock {
+    transition: none;
+  }
 }
 
 .place-grid {
@@ -3850,6 +4085,12 @@ img.is-pending,
 .photo-frame img,
 .place-art {
   max-width: 100%;
+}
+
+/* Center the crop. Pinning tall photos to the top cut off plates and bowls in the lower half. */
+img.is-portrait.is-portrait-lower,
+.place-art.is-portrait.is-portrait-lower {
+  object-position: center 68%;
 }
 
 @media (min-width: 1024px) {
@@ -4179,7 +4420,18 @@ mark {
 
 .search-field {
   position: relative;
+  z-index: 2;
   min-width: 0;
+}
+
+/* In the phone menu the list used to cover Sign in. WebKit then hit the button,
+   which sits later in the sheet at the same layer as the field. Keep the list in flow there. */
+.menu-sheet .search-pop {
+  position: relative;
+  top: auto;
+  right: auto;
+  width: 100%;
+  margin-top: 8px;
 }
 
 .search-pop {
@@ -4214,6 +4466,21 @@ mark {
   color: #fffaf3;
 }
 
+/* The navy hero paints every header button cream. These rows sit on a cream
+   sheet, so that color hid the name and the secondary line and left only the
+   pink match chip. Repeat the exclusions so this wins that rule. */
+.site-header.on-hero .search-pop button:not(.btn-coral):not(.btn-leaf):not(.btn-x) {
+  color: #181818;
+  -webkit-text-fill-color: #181818;
+}
+
+.site-header.on-hero .search-pop button.is-active:not(.btn-coral):not(.btn-leaf):not(.btn-x),
+.site-header.on-hero .search-pop button[aria-selected='true']:not(.btn-coral):not(.btn-leaf):not(.btn-x) {
+  background: #141f4d;
+  color: #fffaf3;
+  -webkit-text-fill-color: #fffaf3;
+}
+
 .search-pop button.is-active mark,
 .search-pop button[aria-selected='true'] mark,
 .guide-card.is-active mark,
@@ -4221,6 +4488,7 @@ mark {
 .chip.is-active mark {
   background: transparent;
   color: #ffb4a4;
+  -webkit-text-fill-color: #ffb4a4;
   text-decoration: underline;
 }
 
@@ -4520,8 +4788,21 @@ mark {
 }
 
 .place-row-copy {
+  flex: 1 1 auto;
   min-width: 0;
-  overflow-wrap: anywhere;
+  overflow-wrap: normal;
+  word-break: normal;
+  hyphens: none;
+}
+
+@media (min-width: 768px) {
+  .explore-list .place-row {
+    grid-template-columns: var(--shot) minmax(12rem, 1fr) var(--badge-w);
+  }
+
+  .explore-list .place-row-copy {
+    min-width: 12rem;
+  }
 }
 
 .place-card-body,
@@ -4649,7 +4930,7 @@ mark {
 }
 
 .explore-card {
-  padding: var(--space-2) var(--space-5);
+  padding: var(--space-2) var(--space-3);
 }
 
 .explore-list .panel-pad {
@@ -4856,11 +5137,13 @@ mark {
 }
 
 .rank-slot {
-  flex: 0 0 4ch;
-  width: 4ch;
-  margin-right: var(--space-2);
-  font-size: 1.25rem;
-  line-height: 1;
+  flex: 0 0 3.6ch;
+  width: 3.6ch;
+  min-width: 3.6ch;
+  margin-right: 0.28em;
+  font-size: clamp(2.15rem, 3.6vw, 2.85rem);
+  font-weight: 800;
+  line-height: 0.85;
   font-variant-numeric: tabular-nums;
   white-space: nowrap;
   text-align: right;
@@ -5843,12 +6126,115 @@ li,
 .chip,
 .glass-chip,
 .city-switch-btn {
-  overflow-wrap: anywhere;
+  overflow-wrap: normal;
+  word-break: normal;
+  hyphens: none;
 }
 
 .wordmark {
   font-weight: 650;
   letter-spacing: -0.03em;
+}
+
+/* Place names never break inside a word. The score box stays narrow so the title can use the row. */
+.place-name {
+  display: -webkit-box;
+  flex: 1 1 auto;
+  min-width: 0;
+  max-width: 100%;
+  overflow: hidden;
+  overflow-wrap: normal;
+  word-break: normal;
+  hyphens: none;
+  text-wrap: balance;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  line-height: 1.15;
+  font-size: clamp(1rem, 4.4vw, 1.25rem);
+}
+
+.place-name.is-long {
+  font-size: clamp(0.92rem, 4vw, 1.15rem);
+}
+
+.place-name.is-longest {
+  font-size: clamp(0.8rem, 3.3vw, 1.05rem);
+}
+
+h1.place-name {
+  font-size: clamp(1.65rem, 7vw, 3.75rem);
+  line-height: 1.08;
+}
+
+h1.place-name.is-long {
+  font-size: clamp(1.45rem, 6vw, 3.25rem);
+}
+
+h1.place-name.is-longest {
+  font-size: clamp(1.25rem, 5vw, 2.6rem);
+}
+
+h3.place-name {
+  font-size: clamp(1.35rem, 5.2vw, 3rem);
+  line-height: 1.15;
+}
+
+h3.place-name.is-long {
+  font-size: clamp(1.2rem, 4.6vw, 2.6rem);
+}
+
+h3.place-name.is-longest {
+  font-size: clamp(1.05rem, 4vw, 2.15rem);
+}
+
+.place-meta {
+  display: block;
+  min-width: 0;
+  overflow-wrap: normal;
+  word-break: normal;
+  hyphens: none;
+}
+
+.place-meta > span {
+  white-space: nowrap;
+}
+
+.place-meta > span:not(:last-child)::after {
+  content: ' · ';
+}
+
+@media (max-width: 767px) {
+  .place-row,
+  .entry-head,
+  .top-row,
+  .score-col,
+  .score-badge-sm {
+    --badge-w: 4.6rem;
+  }
+
+  .place-row {
+    --shot: 3.25rem;
+  }
+
+  .score-badge-sm {
+    width: var(--badge-w);
+    min-width: var(--badge-w);
+    max-width: var(--badge-w);
+    height: auto;
+    min-height: 3.35rem;
+    grid-template-rows: auto auto auto;
+  }
+
+  .score-badge-sm span {
+    max-height: none;
+    overflow: visible;
+    white-space: normal;
+    overflow-wrap: normal;
+    word-break: normal;
+    hyphens: none;
+    font-size: 0.58rem;
+    line-height: 1.05;
+  }
 }
 
 .uppercase,

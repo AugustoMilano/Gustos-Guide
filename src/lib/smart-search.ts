@@ -1,7 +1,8 @@
 import { areaName, cityPath, type CityId } from './city.ts'
+import { seattleCheapEatsBlocked } from './collections.ts'
 import { cuisineLabel } from './cuisine-label.ts'
 import exclusions from '../../data/permanent-exclusions.json'
-import type { GuideGroup, GuideSummary, SlimPlace } from '../types.ts'
+import type { GuideGroup, GuideSummary, Price, SlimPlace } from '../types.ts'
 
 export type SmartHit = {
   kind: 'guide' | 'place'
@@ -12,6 +13,8 @@ export type SmartHit = {
   href: string
   score: number
   group?: GuideGroup
+  /** Set on place hits. Null means the catalog has no price. */
+  price?: Price | null
 }
 
 export type SmartResult = {
@@ -52,8 +55,8 @@ const CONCEPTS: Concept[] = [
   { id: 'noodles', why: 'Noodles', words: ['noodle', 'noodles'], cuisine: ['ramen', 'vietnamese', 'noodles', 'thai', 'chinese', 'lao', 'taiwanese', ...ITALIAN], text: ['noodle', 'ramen', 'pho', 'udon', 'soba', 'pasta', 'lo mein', 'chow mein'], guides: ['noodles'] },
   { id: 'pizza', why: 'Pizza', words: ['pizza', 'pizzeria', 'slice', 'pie', 'margherita'], cuisine: ['pizza'], types: ['pizzeria'], text: ['pizza', 'pizzas', 'pies', 'slice'], guides: ['best-pizza'] },
   { id: 'mexican', why: 'Mexican', words: ['mexican', 'taco', 'tacos', 'burrito', 'quesadilla', 'enchilada', 'tamale', 'mole', 'carnitas', 'birria', 'al pastor', 'taqueria', 'nachos', 'margarita'], cuisine: ['mexican', 'tacos', 'tex mex'], text: ['taco', 'burrito', 'mexican', 'taqueria', 'birria', 'mole'], guides: ['tacos', 'la-mexican', 'sf-mexican', 'sd-mexican'] },
-  { id: 'japanese', why: 'Japanese', words: ['japanese', 'izakaya', 'tonkatsu', 'teriyaki', 'katsu', 'yakitori', 'tempura'], cuisine: ['japanese', 'sushi', 'ramen', 'izakaya', 'tonkatsu', 'teriyaki'], text: ['japanese', 'izakaya', 'yakitori'], guides: ['sf-japanese', 'sd-japanese', 'eastside-asian'] },
-  { id: 'sushi', why: 'Sushi', words: ['sushi', 'omakase', 'nigiri', 'sashimi', 'maki', 'hand roll'], cuisine: ['sushi'], text: ['sushi', 'omakase', 'nigiri'], guides: ['best-sushi', 'la-sushi', 'sf-japanese', 'sd-japanese'] },
+  { id: 'japanese', why: 'Japanese', words: ['japanese', 'izakaya', 'tonkatsu', 'teriyaki', 'katsu', 'yakitori', 'tempura'], cuisine: ['japanese', 'sushi', 'ramen', 'izakaya', 'tonkatsu', 'teriyaki'], text: ['japanese', 'izakaya', 'yakitori'], guides: ['sf-japanese', 'sd-japanese', 'eastside-asian', 'japanese-food-in-bellevue'] },
+  { id: 'sushi', why: 'Sushi', words: ['sushi', 'omakase', 'nigiri', 'sashimi', 'maki', 'hand roll'], cuisine: ['sushi'], text: ['sushi', 'omakase', 'nigiri'], guides: ['best-sushi', 'la-sushi', 'sf-japanese', 'sd-japanese', 'japanese-food-in-bellevue'] },
   { id: 'ramen', why: 'Ramen', words: ['ramen', 'udon', 'soba', 'tonkotsu'], cuisine: ['ramen'], text: ['ramen', 'udon', 'soba', 'tonkotsu'], guides: ['noodles'] },
   { id: 'pho', why: 'Vietnamese', words: ['pho', 'vietnamese', 'banh mi', 'bun bo hue', 'vermicelli'], cuisine: ['vietnamese', 'banh mi'], text: ['pho', 'banh mi', 'vietnamese'], guides: ['noodles'] },
   { id: 'chinese', why: 'Chinese', words: ['chinese', 'dim sum', 'dumpling', 'dumplings', 'xiao long bao', 'soup dumpling', 'bao', 'sichuan', 'szechuan', 'cantonese', 'congee', 'hot pot', 'taiwanese'], cuisine: ['chinese', 'dim sum', 'dumpling', 'sichuan', 'cantonese', 'taiwanese', 'congee'], text: ['dumpling', 'dim sum', 'xiao long bao', 'bao', 'chinese', 'sichuan'], guides: ['eastside-asian', 'chinatown-international-district'] },
@@ -76,29 +79,29 @@ const CONCEPTS: Concept[] = [
   { id: 'sandwich', why: 'Sandwiches', words: ['sandwich', 'sandwiches', 'sub', 'hoagie', 'deli', 'hero', 'panini', 'cheesesteak'], cuisine: ['sandwich', 'deli'], types: ['deli'], text: ['sandwich', 'sub', 'hoagie'], guides: ['sandwiches', 'sf-sandwich'] },
   { id: 'chicken', why: 'Chicken', words: ['chicken', 'fried chicken', 'wings', 'rotisserie', 'hot chicken'], cuisine: ['chicken', 'wings'], text: ['chicken', 'wings'] },
   { id: 'hotdog', why: 'Hot dogs', words: ['hot dog', 'hot dogs', 'hotdog', 'sausage'], cuisine: ['hot dog'], text: ['hot dog', 'sausage'] },
-  { id: 'brunch', why: 'Brunch', words: ['brunch', 'breakfast', 'pancake', 'pancakes', 'waffle', 'waffles', 'eggs', 'benedict', 'french toast', 'bagel', 'bagels', 'diner', 'morning'], cuisine: ['brunch', 'breakfast', 'diner', 'bagel'], perfect: ['breakfast', 'brunch'], text: ['brunch', 'breakfast', 'pancake', 'waffle', 'benedict', 'bagel'], guides: ['brunch', 'breakfast-before-9', 'eastside-brunch', 'donuts-bagels'] },
-  { id: 'coffee', why: 'Coffee', words: ['coffee', 'espresso', 'latte', 'cappuccino', 'cafe', 'pour over', 'cold brew', 'work from cafe'], cuisine: ['coffee', 'cafe'], types: ['coffee shop', 'cafe'], perfect: ['coffee and pastry', 'work from cafe'], text: ['coffee', 'espresso', 'latte'], guides: ['best-coffee', 'eastside-coffee', 'la-coffee-bakeries'] },
+  { id: 'brunch', why: 'Brunch', words: ['brunch', 'breakfast', 'pancake', 'pancakes', 'waffle', 'waffles', 'eggs', 'benedict', 'french toast', 'bagel', 'bagels', 'diner', 'morning'], cuisine: ['brunch', 'breakfast', 'diner', 'bagel'], perfect: ['breakfast', 'brunch'], text: ['brunch', 'breakfast', 'pancake', 'waffle', 'benedict', 'bagel'], guides: ['brunch', 'breakfast-before-9', 'best-breakfast-on-the-east-side', 'donuts-bagels'] },
+  { id: 'coffee', why: 'Coffee', words: ['coffee', 'espresso', 'latte', 'cappuccino', 'cafe', 'pour over', 'cold brew', 'work from cafe'], cuisine: ['coffee', 'cafe'], types: ['coffee shop', 'cafe'], perfect: ['coffee and pastry', 'work from cafe'], text: ['coffee', 'espresso', 'latte'], guides: ['best-coffee', 'la-coffee-bakeries'] },
   { id: 'tea', why: 'Tea', words: ['tea', 'afternoon tea', 'boba', 'matcha'], cuisine: ['afternoon tea', 'tea'], types: ['tea room'], text: ['tea', 'boba', 'matcha'] },
   { id: 'juice', why: 'Juice', words: ['juice', 'smoothie', 'healthy', 'health food', 'salad'], cuisine: ['juice', 'health food'], text: ['juice', 'smoothie', 'salad'] },
-  { id: 'cocktails', why: 'Cocktails', words: ['cocktail', 'cocktails', 'martini', 'drinks', 'drink', 'bar', 'bars', 'mixology', 'speakeasy', 'happy hour', 'tiki', 'nightcap', 'nightlife'], cuisine: ['cocktail', 'bar', 'tiki', 'nightlife'], types: ['bar', 'cocktail bar', 'rooftop bar', 'dive bar', 'listening bar', 'sports bar'], perfect: ['cocktails'], text: ['cocktail', 'martini', 'speakeasy'], guides: ['cocktail-bars', 'the-bar-list', 'happy-hour', 'fun-dive-bars', 'rooftops'] },
+  { id: 'cocktails', why: 'Cocktails', words: ['cocktail', 'cocktails', 'martini', 'drinks', 'drink', 'bar', 'bars', 'mixology', 'speakeasy', 'happy hour', 'tiki', 'nightcap', 'nightlife'], cuisine: ['cocktail', 'bar', 'tiki', 'nightlife'], types: ['bar', 'cocktail bar', 'rooftop bar', 'dive bar', 'listening bar', 'sports bar'], perfect: ['cocktails'], text: ['cocktail', 'martini', 'speakeasy'], guides: ['cocktail-bars', 'the-bar-list', 'happy-hour', 'fun-dive-bars', 'rooftops', 'eastside-drinks'] },
   { id: 'wine', why: 'Wine', words: ['wine', 'wines', 'vino', 'natural wine', 'winery', 'tasting room', 'sommelier'], cuisine: ['wine'], types: ['wine bar'], perfect: ['wine'], text: ['wine'], guides: ['wine-bars', 'woodinville'] },
-  { id: 'beer', why: 'Beer', words: ['beer', 'beers', 'brewery', 'breweries', 'ipa', 'pub', 'taproom', 'brewpub', 'pint', 'gastropub', 'dive bar', 'dive'], cuisine: ['beer', 'gastropub', 'tavern', 'bar food'], types: ['brewery', 'pub', 'beer bar', 'dive bar', 'sports bar'], perfect: ['beer'], text: ['beer', 'brewery', 'taproom'], guides: ['beer', 'eastside-breweries', 'fun-dive-bars'] },
+  { id: 'beer', why: 'Beer', words: ['beer', 'beers', 'brewery', 'breweries', 'ipa', 'pub', 'taproom', 'brewpub', 'pint', 'gastropub', 'dive bar', 'dive'], cuisine: ['beer', 'gastropub', 'tavern', 'bar food'], types: ['brewery', 'pub', 'beer bar', 'dive bar', 'sports bar'], perfect: ['beer'], text: ['beer', 'brewery', 'taproom'], guides: ['beer', 'fun-dive-bars', 'eastside-drinks'] },
   { id: 'dessert', why: 'Dessert', words: ['dessert', 'desserts', 'sweet', 'sweets', 'ice cream', 'gelato', 'cake', 'cookie', 'cookies', 'donut', 'donuts', 'doughnut', 'chocolate', 'frozen yogurt', 'froyo', 'soft serve', 'pie'], cuisine: ['dessert', 'ice cream', 'gelato', 'bakery', 'donut', 'cookie', 'chocolate', 'frozen yogurt', 'pastry', 'patisserie'], types: ['dessert'], text: ['dessert', 'ice cream', 'gelato', 'cake', 'cookie', 'donut'], guides: ['ice-cream', 'donuts-bagels', 'best-bakeries'] },
   { id: 'bakery', why: 'Bakery', words: ['bakery', 'bakeries', 'bread', 'pastry', 'pastries', 'croissant', 'croissants', 'patisserie', 'kouign amann', 'crumpet', 'bagel'], cuisine: ['bakery', 'pastry', 'patisserie', 'bagel', 'crumpet'], types: ['bakery'], perfect: ['coffee and pastry'], text: ['pastry', 'croissant', 'bread', 'bakery'], guides: ['best-bakeries', 'la-coffee-bakeries', 'sf-bakery', 'donuts-bagels'] },
   { id: 'vegan', why: 'Vegetarian', words: ['vegan', 'vegetarian', 'veggie', 'plant based', 'meatless', 'gluten free'], cuisine: ['vegan', 'vegetarian', 'health food', 'gluten free'], text: ['vegan', 'vegetarian', 'plant based', 'veggie'] },
   { id: 'cheap', why: 'Cheap eats', words: ['cheap', 'cheap eats', 'budget', 'affordable', 'inexpensive', 'casual', 'quick', 'fast'], perfect: ['cheap eats'], price: 'low', guides: ['cheap-eats'] },
   { id: 'fancy', why: 'Special occasion', words: ['fancy', 'upscale', 'splurge', 'special occasion', 'fine dining', 'tasting menu', 'celebration', 'birthday', 'anniversary', 'elegant', 'expensive', 'luxury'], cuisine: ['fine dining'], perfect: ['special occasion'], price: 'high', guides: ['splurge'] },
-  { id: 'date', why: 'Date night', words: ['date', 'date night', 'romantic', 'romance', 'anniversary', 'intimate'], perfect: ['date night'], guides: ['date-night', 'eastside-date-night', 'la-date-night', 'sf-date-night'] },
+  { id: 'date', why: 'Date night', words: ['date', 'date night', 'romantic', 'romance', 'anniversary', 'intimate'], perfect: ['date night'], guides: ['date-night', 'eastside-date-night', 'la-date-night', 'sf-new-american'] },
   { id: 'kids', why: 'Family friendly', words: ['kids', 'kid', 'family', 'families', 'children', 'child', 'kid friendly', 'family friendly', 'parents', 'parent', 'mom', 'dad'], text: ['kids', 'family', 'families', 'children'], guides: ['bring-the-parents', 'big-group'] },
   { id: 'group', why: 'Big group', words: ['big group', 'group', 'groups', 'group dinner', 'party', 'large party'], guides: ['big-group'] },
   { id: 'late', why: 'Late night', words: ['late', 'late night', 'after hours', 'midnight', 'open late'], perfect: ['late night'], guides: ['late-night'] },
-  { id: 'view', why: 'View or patio', words: ['view', 'views', 'patio', 'outdoor', 'outside', 'deck', 'waterfront', 'water', 'by the water', 'rooftop', 'rooftops', 'skyline', 'sunset', 'terrace'], types: ['rooftop bar'], perfect: ['view', 'waterfront'], text: ['view', 'patio', 'rooftop', 'waterfront', 'deck', 'sound', 'lake'], guides: ['rooftops', 'restaurants-with-a-view', 'kirkland-waterfront'] },
+  { id: 'view', why: 'View or patio', words: ['view', 'views', 'patio', 'outdoor', 'outside', 'deck', 'waterfront', 'water', 'by the water', 'rooftop', 'rooftops', 'skyline', 'sunset', 'terrace'], types: ['rooftop bar'], perfect: ['view', 'waterfront'], text: ['view', 'patio', 'rooftop', 'waterfront', 'deck', 'sound', 'lake'], guides: ['rooftops', 'restaurants-with-a-view', 'kirkland'] },
   { id: 'walkin', why: 'Walk-in', words: ['walk in', 'walk ins', 'walkin', 'no reservation', 'no reservations'], perfect: ['walk ins'], guides: ['walk-in'] },
   { id: 'lunch', why: 'Lunch', words: ['lunch', 'midday'], perfect: ['lunch'] },
   { id: 'solo', why: 'Solo', words: ['solo', 'alone', 'counter', 'bar seat'], perfect: ['solo'] },
   { id: 'weeknight', why: 'Weeknight dinner', words: ['weeknight', 'dinner', 'tonight'], perfect: ['weeknight dinner'] },
   { id: 'visitors', why: 'Out-of-towners', words: ['tourist', 'tourists', 'visitor', 'visitors', 'out of towners', 'out of town', 'classic', 'classics', 'iconic'], perfect: ['out of towners'], guides: ['classics', 'pike-place'] },
-  { id: 'american', why: 'American', words: ['american', 'new american', 'comfort food', 'pnw', 'pacific northwest', 'northwest', 'californian'], cuisine: ['american', 'pacific northwest', 'pnw', 'californian', 'diner'], guides: ['sf-american', 'sf-new-american', 'sd-new-american'] },
+  { id: 'american', why: 'American', words: ['american', 'new american', 'comfort food', 'pnw', 'pacific northwest', 'northwest', 'californian'], cuisine: ['american', 'pacific northwest', 'pnw', 'californian', 'diner'], guides: ['sf-new-american', 'sd-new-american'] },
 ]
 
 const AREA_WORDS: { phrase: string; city: CityId }[] = [
@@ -383,7 +386,7 @@ function matchTerm(term: Term, item: Prepared, guideHits: Map<string, string>): 
     const cuisine = entry.cuisine.some((phrase) => hasPhrase(item.cuisine, phrase))
       || entry.types.some((phrase) => hasPhrase(item.type, phrase))
       || entry.perfect.some((phrase) => hasPhrase(item.perfect, phrase))
-      || (c.price === 'low' && item.place.price === 1)
+      || (c.price === 'low' && item.place.price === 1 && !seattleCheapEatsBlocked(item.place.city || 'seattle', 'cheap-eats', item.place.id))
       || (c.price === 'high' && (item.place.price ?? 0) >= 4)
     if (dish && cuisine) take(T_DISH, 3 + dishes, c.why)
     else if (cuisine) take(T_CUISINE, 2, item.place.cuisine[0] && entry.cuisine.length ? cuisineLabel(item.place.cuisine[0]) : c.why)
@@ -398,31 +401,13 @@ function matchTerm(term: Term, item: Prepared, guideHits: Map<string, string>): 
   return best
 }
 
-function detectScope(query: string, current: CityId): CityId {
-  const text = ` ${norm(query)} `
-  const sorted = AREA_WORDS.slice().sort((a, b) => b.phrase.length - a.phrase.length)
-  for (const area of sorted) {
-    if (text.includes(` ${norm(area.phrase)} `)) return area.city
-  }
-  return current
-}
-
 function whyFrom(parts: string[]): string {
   return [...new Set(parts.filter(Boolean))].slice(0, 2).join(' · ') || 'Match'
 }
 
+/** Matches stay in the open city. A typo or a leftover query must not pull another city's catalog. */
 export function smartSearch(query: string, current: CityId, places: SlimPlace[], guides: GuideSummary[], scoreOf?: ScoreOf): SmartResult {
-  const result = searchIn(detectScope(query, current), query, current, places, guides, scoreOf)
-  if (result.guides.length || result.places.length) return result
-  // Nothing here: a place name from another area (e.g. a Seattle spot searched on the Eastside) switches scope.
-  const whole = stemText(query)
-  if (whole.length < 4) return result
-  const { prepared } = buildIndex(places)
-  const named = prepared.find((item) => item.place.closed !== true && (item.name.startsWith(whole) || item.nameTokens.some((token) => fuzzy(whole, token)) || fuzzy(whole, item.name)))
-  const other = named ? ((named.place.city ?? 'seattle') as CityId) : null
-  if (!other || other === result.scope) return result
-  const moved = searchIn(other, query, current, places, guides, scoreOf)
-  return moved.places.length || moved.guides.length ? moved : result
+  return searchIn(current, query, current, places, guides, scoreOf)
 }
 
 function searchIn(scope: CityId, query: string, current: CityId, places: SlimPlace[], guides: GuideSummary[], scoreOf?: ScoreOf): SmartResult {
@@ -549,6 +534,7 @@ function searchIn(scope: CityId, query: string, current: CityId, places: SlimPla
     why: whyFrom(row.why),
     href: cityPath(`/place/${row.item.place.id}`, scope),
     score: pool.length - rank,
+    price: (row.item.place.price ?? null) as Price | null,
   }))
 
   guideHits.sort((a, b) => b.score - a.score || a.title.localeCompare(b.title))

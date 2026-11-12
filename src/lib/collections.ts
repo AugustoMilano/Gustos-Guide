@@ -7,7 +7,7 @@ export const CHEAP_EATS_SLUG = 'cheap-eats'
 export const CHEAP_EATS_TITLE = 'Cheap eats'
 
 /** Seattle Cheap Eats must not list these places, even if a stored collection still has the id. */
-const SEATTLE_CHEAP_EATS_EXCLUDED = new Set(['alibi-room'])
+const SEATTLE_CHEAP_EATS_EXCLUDED = new Set(['alibi-room', 'starbucks-coffee-company'])
 
 export function seattleCheapEatsBlocked(city: string, slug: string, placeId: string): boolean {
   return city === 'seattle' && slug === CHEAP_EATS_SLUG && SEATTLE_CHEAP_EATS_EXCLUDED.has(placeId)

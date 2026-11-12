@@ -4,7 +4,7 @@ import { Link, Navigate, useLocation, useNavigate, useParams } from 'react-route
 import { PlaceGallery } from '../components/PlaceGallery.tsx'
 import { PlaceThumb } from '../components/PlaceThumb.tsx'
 import { SignInSheet } from '../components/SignInSheet.tsx'
-import { bootPlace, catalog, catalogPhase, loadPlace, slimById, subscribeCatalog } from '../content/load.ts'
+import { catalog, catalogPhase, ensureRegion, loadPlace, peekPlace, slimById, subscribeCatalog } from '../content/load.ts'
 import { areaTitle, cityPath } from '../lib/city.ts'
 import { placeCity, placesForCity, useCityId } from '../lib/use-city.ts'
 import { demoFriendsEnabled } from '../lib/demo.ts'
@@ -18,6 +18,8 @@ import { formatPeriods, placeHoursPhrase } from '../lib/hours.ts'
 import { MapLinks } from '../components/MapLinks.tsx'
 import { ShareButton } from '../components/ShareButton.tsx'
 import { cuisineLabel } from '../lib/cuisine-label.ts'
+import { placeNameClass } from '../lib/place-name.ts'
+import { PlaceMeta } from '../components/PlaceName.tsx'
 import { milesBetween, priceLabel, publicReference, shareUrl, yelpBizUrl } from '../lib/format.ts'
 import { renderPlaceStory } from '../lib/story-card.ts'
 import { awardFor } from '../lib/top25.ts'
@@ -38,14 +40,22 @@ export function PlacePage() {
   // Re-render when the deferred catalog lands so guides, awards and nearby places fill in.
   useSyncExternalStore(subscribeCatalog, catalogPhase, catalogPhase)
   const slim = slimById(slug)
-  const [full, setFull] = useState<Place | null>(() => bootPlace(slug) ?? null)
-  const [active, setActive] = useState(0)
+  const [nav, setNav] = useState(() => ({ slug, active: 0, full: peekPlace(slug) ?? null as Place | null }))
+  // One update, and the render that sees the new slug already uses photo 0 of that place.
+  if (nav.slug !== slug) setNav({ slug, active: 0, full: peekPlace(slug) ?? null })
+  const active = nav.slug === slug ? nav.active : 0
+  const full = nav.slug === slug ? nav.full : (peekPlace(slug) ?? null)
+  function choose(index: number) {
+    setNav((current) => (current.slug === slug ? { ...current, active: index } : current))
+  }
   const [error, setError] = useState('')
   const [signIn, setSignIn] = useState(false)
   const [busy, setBusy] = useState(false)
   const reduceMotion = useReducedMotion()
 
   // index.html may have painted this place's hero before the app (C1); React's gallery has replaced it.
+  useEffect(() => { void ensureRegion(urlCity) }, [urlCity])
+
   useEffect(() => {
     const root = document.documentElement
     if (root.dataset.prerender === 'place') delete root.dataset.prerender
@@ -54,18 +64,18 @@ export function PlacePage() {
 
   useEffect(() => {
     let cancelled = false
-    setFull(bootPlace(slug) ?? null)
-    setActive(0)
     void loadPlace(slug).then((next) => {
-      if (!cancelled && next) setFull(next)
+      if (!cancelled && next) {
+        setNav((current) => (current.slug === slug && current.full !== next ? { ...current, full: next } : current))
+      }
     })
     return () => {
       cancelled = true
     }
   }, [slug])
 
-  // After a client-side hop to another place, `full` still holds the previous one until the effect runs.
-  const place = (full && full.id === slug ? full : null) ?? slim
+  const loaded = (full && full.id === slug ? full : null) ?? peekPlace(slug) ?? null
+  const place = loaded ?? slim
 
   const photos = useMemo(() => (place ? displayPhotos(place, app.photos) : []), [place, app.photos])
   const ownerImage = photos.find((photo) => photo.shareUrl)?.shareUrl
@@ -135,7 +145,7 @@ export function PlacePage() {
     setError('')
     try {
       await app.uploadPhoto(place!.id, file)
-      setActive(0)
+      choose(0)
     } catch (reason) {
       setError(reason instanceof Error ? reason.message : 'Could not add that photo.')
     } finally {
@@ -159,15 +169,17 @@ export function PlacePage() {
       </p>
       <div className="place-grid">
         <PlaceGallery
+          key={place.id}
           photos={photos}
           active={active}
-          onChange={setActive}
+          onChange={choose}
+          known={loaded !== null}
           transitionName={reduceMotion ? undefined : `place-${place.id}`}
         />
         <div className="place-identity">
           <p className="area-kicker">{areaTitle(placeCity(place))}</p>
-          <p className="mt-2 text-xs font-bold tracking-[0.14em] uppercase">{[place.cuisine.map((item) => cuisineLabel(item)).join(' · '), place.neighborhood].filter(Boolean).join(' · ')}</p>
-          <h1 className="mt-1 font-serif text-5xl italic leading-none sm:text-6xl">{place.name}</h1>
+          <PlaceMeta parts={[...place.cuisine.map((item) => cuisineLabel(item)), place.neighborhood]} className="mt-2 text-xs font-bold tracking-[0.14em] uppercase" />
+          <h1 className={placeNameClass(place.name, 'mt-1 italic leading-none')}>{place.name}</h1>
           {place.closed ? <p className="closed-banner mt-3" role="status">Closed.</p> : null}
           <div className="mt-3 flex flex-wrap items-center gap-3">
             <ScoreBadge score={app.gustoScore(place.id)} />
@@ -285,7 +297,7 @@ export function PlacePage() {
                   </div>
                   <div className="place-card-body is-dense">
                     <div className="min-w-0">
-                      <h3 className="font-serif text-xl italic leading-tight">{item.name}</h3>
+                      <h3 className={placeNameClass(item.name, 'italic leading-tight')}>{item.name}</h3>
                       <p className="mt-1 text-xs font-bold tracking-wide uppercase">{item.neighborhood}</p>
                     </div>
                     <span className="score-col"><ScoreBadge score={app.gustoScore(item.id)} size="sm" /></span>

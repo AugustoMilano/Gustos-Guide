@@ -14,6 +14,7 @@
         "French"
       ],
       "placeType": "restaurant",
+      "price": 3,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -111,7 +112,8 @@
         }
       ],
       "phone": null,
-      "website": null
+      "website": null,
+      "price": 1
     },
     {
       "id": "jungsik",
@@ -169,7 +171,8 @@
         }
       ],
       "phone": "+1 (212) 219-0900",
-      "website": "http://jungsik.com"
+      "website": "http://jungsik.com",
+      "price": 4
     },
     {
       "id": "palma",
@@ -184,6 +187,7 @@
         "Cocktails"
       ],
       "placeType": "restaurant",
+      "price": 4,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -341,7 +345,8 @@
         }
       ],
       "phone": "+1 (917) 966-6094",
-      "website": "https://www.redhooktavern.com"
+      "website": "https://www.redhooktavern.com",
+      "price": 2
     },
     {
       "id": "frenchette-bakery",
@@ -407,7 +412,8 @@
         }
       ],
       "phone": "+1 (212) 227-1787",
-      "website": "https://www.frenchettebakery.com"
+      "website": "https://www.frenchettebakery.com",
+      "price": 1
     },
     {
       "id": "gran-morsi",
@@ -421,6 +427,7 @@
         "Italian"
       ],
       "placeType": "restaurant",
+      "price": 3,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -547,7 +554,8 @@
         "count": 87,
         "source": "Yelp"
       },
-      "yelpSlug": "fPjivOc2AVE5Pvqetv-row"
+      "yelpSlug": "fPjivOc2AVE5Pvqetv-row",
+      "price": 4
     },
     {
       "id": "ralph-s-coffee",
@@ -605,7 +613,8 @@
         }
       ],
       "phone": "+1 (212) 434-8000",
-      "website": "https://www.facebook.com/RalphsCoffeeMadisonAve/"
+      "website": "https://www.facebook.com/RalphsCoffeeMadisonAve/",
+      "price": 1
     },
     {
       "id": "levain-bakery-nyc",
@@ -659,7 +668,8 @@
         }
       ],
       "phone": "+1 (917) 464-3769",
-      "website": "https://levainbakery.com/pages/west-74th-street"
+      "website": "https://levainbakery.com/pages/west-74th-street",
+      "price": 1
     },
     {
       "id": "rubirosa",
@@ -714,7 +724,8 @@
         }
       ],
       "phone": "+1 (212) 965-0500",
-      "website": "https://www.rubirosanyc.com"
+      "website": "https://www.rubirosanyc.com",
+      "price": 2
     },
     {
       "id": "dante",
@@ -729,6 +740,7 @@
         "Cocktails"
       ],
       "placeType": "restaurant",
+      "price": 2,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -790,6 +802,7 @@
         "French"
       ],
       "placeType": "restaurant",
+      "price": 3,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -933,7 +946,8 @@
         }
       ],
       "phone": "+1 (212) 510-7453",
-      "website": "https://www.parosnyc.com"
+      "website": "https://www.parosnyc.com",
+      "price": 4
     },
     {
       "id": "farra",
@@ -992,7 +1006,8 @@
         }
       ],
       "phone": "+1 (917) 576-2242",
-      "website": "http://farranyc.com"
+      "website": "http://farranyc.com",
+      "price": 4
     },
     {
       "id": "buvette",
@@ -1046,7 +1061,8 @@
         }
       ],
       "phone": "+1 (212) 255-3590",
-      "website": "https://ilovebuvette.com/eat-drink-newyork-location"
+      "website": "https://ilovebuvette.com/eat-drink-newyork-location",
+      "price": 2
     },
     {
       "id": "bustan",
@@ -1060,6 +1076,7 @@
         "Mediterranean"
       ],
       "placeType": "restaurant",
+      "price": 3,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -1195,7 +1212,8 @@
         }
       ],
       "phone": "+1 (212) 582-5100",
-      "website": "https://www.marearestaurant.com/new-york"
+      "website": "https://www.marearestaurant.com/new-york",
+      "price": 4
     },
     {
       "id": "the-champagne-caviar-bar",
@@ -1209,6 +1227,7 @@
         "Wine"
       ],
       "placeType": "restaurant",
+      "price": 4,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -1305,7 +1324,8 @@
         }
       ],
       "phone": "+1 (646) 590-0609",
-      "website": "https://www.forsythianyc.com"
+      "website": "https://www.forsythianyc.com",
+      "price": 4
     },
     {
       "id": "los-tacos-no-1",
@@ -1364,7 +1384,8 @@
         }
       ],
       "phone": null,
-      "website": "https://www.lostacos1.com/location/tribeca/"
+      "website": "https://www.lostacos1.com/location/tribeca/",
+      "price": 1
     },
     {
       "id": "scalini-fedeli",
@@ -1379,6 +1400,7 @@
         "Dessert"
       ],
       "placeType": "dessert",
+      "price": 4,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -1445,6 +1467,7 @@
         "Seafood"
       ],
       "placeType": "restaurant",
+      "price": 3,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -1582,7 +1605,8 @@
         }
       ],
       "phone": "+1 (510) 653-3394",
-      "website": "https://bluebottlecoffee.com/us/eng/cafes/greenwich-street"
+      "website": "https://bluebottlecoffee.com/us/eng/cafes/greenwich-street",
+      "price": 1
     },
     {
       "id": "cut-nyc",
@@ -1596,6 +1620,7 @@
         "New American"
       ],
       "placeType": "restaurant",
+      "price": 4,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -1701,7 +1726,8 @@
         }
       ],
       "phone": "+1 (917) 965-2900",
-      "website": "https://lucia.pizza/"
+      "website": "https://lucia.pizza/",
+      "price": 1
     },
     {
       "id": "carbone",
@@ -1784,7 +1810,8 @@
         }
       ],
       "phone": "+1 (212) 254-3000",
-      "website": "https://carbonenewyork.com"
+      "website": "https://carbonenewyork.com",
+      "price": 4
     },
     {
       "id": "dagon",
@@ -1798,6 +1825,7 @@
         "Mediterranean"
       ],
       "placeType": "restaurant",
+      "price": 2,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -1987,7 +2015,8 @@
         }
       ],
       "phone": "+1 (212) 271-4252",
-      "website": "https://lecoucou.com"
+      "website": "https://lecoucou.com",
+      "price": 4
     },
     {
       "id": "the-mulberry",
@@ -2049,7 +2078,8 @@
         }
       ],
       "phone": "+1 (646) 627-7330",
-      "website": "https://www.themulberrybar.com"
+      "website": "https://www.themulberrybar.com",
+      "price": 2
     },
     {
       "id": "the-corner-store",
@@ -2063,6 +2093,7 @@
         "American"
       ],
       "placeType": "restaurant",
+      "price": 2,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -2117,6 +2148,7 @@
         "Chinese"
       ],
       "placeType": "restaurant",
+      "price": 3,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -2185,6 +2217,7 @@
         "Steak"
       ],
       "placeType": "restaurant",
+      "price": 3,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -2250,6 +2283,7 @@
         "Italian"
       ],
       "placeType": "restaurant",
+      "price": 4,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -2371,7 +2405,8 @@
         }
       ],
       "phone": "+1 (212) 989-6699",
-      "website": "http://www.buddakannyc.com"
+      "website": "http://www.buddakannyc.com",
+      "price": 4
     },
     {
       "id": "russ-daughters",
@@ -2425,7 +2460,8 @@
         }
       ],
       "phone": "+121247548801",
-      "website": "https://shop.russanddaughters.com"
+      "website": "https://shop.russanddaughters.com",
+      "price": 1
     },
     {
       "id": "banzarbar",
@@ -2482,7 +2518,8 @@
         }
       ],
       "phone": "+1 (212) 420-0012",
-      "website": "https://www.banzarbar.com"
+      "website": "https://www.banzarbar.com",
+      "price": 2
     },
     {
       "id": "monkey-bar",
@@ -2541,7 +2578,8 @@
         }
       ],
       "phone": "+1 (212) 404-0365",
-      "website": "https://www.nycmonkeybar.com"
+      "website": "https://www.nycmonkeybar.com",
+      "price": 4
     },
     {
       "id": "aubi-ramsa",
@@ -2556,6 +2594,7 @@
         "Dessert"
       ],
       "placeType": "dessert",
+      "price": 2,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -2673,7 +2712,8 @@
         }
       ],
       "phone": "+1 (917) 540-5228",
-      "website": "https://thedeadrabbit.com/"
+      "website": "https://thedeadrabbit.com/",
+      "price": 2
     },
     {
       "id": "aska",
@@ -2729,7 +2769,8 @@
         }
       ],
       "phone": "+1 (929) 337-6792",
-      "website": "https://www.askanyc.com"
+      "website": "https://www.askanyc.com",
+      "price": 4
     },
     {
       "id": "wolfgang-s-steakhouse",
@@ -2743,6 +2784,7 @@
         "Steak"
       ],
       "placeType": "restaurant",
+      "price": 4,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -2816,6 +2858,7 @@
         "Seafood"
       ],
       "placeType": "restaurant",
+      "price": 4,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -2875,6 +2918,7 @@
         "New American"
       ],
       "placeType": "restaurant",
+      "price": 4,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -2929,6 +2973,7 @@
         "New American"
       ],
       "placeType": "restaurant",
+      "price": 3,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -3072,7 +3117,8 @@
         }
       ],
       "phone": null,
-      "website": "https://www.doublechickenplease.com"
+      "website": "https://www.doublechickenplease.com",
+      "price": 2
     },
     {
       "id": "olio-e-piu",
@@ -3087,6 +3133,7 @@
         "Pizza"
       ],
       "placeType": "restaurant",
+      "price": 2,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -3209,7 +3256,8 @@
         }
       ],
       "phone": "+1 (212) 496-5700",
-      "website": "https://thesmithrestaurant.com/location/lincoln-square/"
+      "website": "https://thesmithrestaurant.com/location/lincoln-square/",
+      "price": 2
     },
     {
       "id": "laser-wolf",
@@ -3299,7 +3347,8 @@
         }
       ],
       "phone": "+1 (718) 215-7150",
-      "website": "https://www.laserwolfbrooklyn.com"
+      "website": "https://www.laserwolfbrooklyn.com",
+      "price": 3
     },
     {
       "id": "beauty-essex",
@@ -3314,6 +3363,7 @@
         "Nightclub"
       ],
       "placeType": "restaurant",
+      "price": 3,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -3439,7 +3489,8 @@
         }
       ],
       "phone": "+1 (212) 691-0531",
-      "website": "https://www.starbucksreserve.com/locations/new-york-roastery"
+      "website": "https://www.starbucksreserve.com/locations/new-york-roastery",
+      "price": 1
     },
     {
       "id": "raoul-s",
@@ -3506,7 +3557,8 @@
         }
       ],
       "phone": "+1 (212) 966-3518",
-      "website": "https://raouls.com"
+      "website": "https://raouls.com",
+      "price": 3
     },
     {
       "id": "saga",
@@ -3521,6 +3573,7 @@
         "Seafood"
       ],
       "placeType": "restaurant",
+      "price": 4,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -3573,6 +3626,7 @@
         "Fast food"
       ],
       "placeType": "restaurant",
+      "price": 1,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -3625,6 +3679,7 @@
         "Lounge"
       ],
       "placeType": "restaurant",
+      "price": 3,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -3758,7 +3813,8 @@
         }
       ],
       "phone": "+1 (347) 599-0006",
-      "website": "https://lappartement4f.com"
+      "website": "https://lappartement4f.com",
+      "price": 1
     },
     {
       "id": "la-sirene",
@@ -3819,7 +3875,8 @@
         }
       ],
       "phone": "+1 (212) 925-3061",
-      "website": "http://www.lasirenenyc.com/"
+      "website": "http://www.lasirenenyc.com/",
+      "price": 3
     },
     {
       "id": "please-don-t-tell",
@@ -3882,7 +3939,8 @@
         }
       ],
       "phone": "+1 (212) 614-0386",
-      "website": "https://www.pdtnyc.com"
+      "website": "https://www.pdtnyc.com",
+      "price": 2
     },
     {
       "id": "the-django",
@@ -3897,6 +3955,7 @@
         "Lounge"
       ],
       "placeType": "restaurant",
+      "price": 3,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [],
@@ -3937,6 +3996,7 @@
         "Cafe"
       ],
       "placeType": "restaurant",
+      "price": 1,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -4034,7 +4094,8 @@
         }
       ],
       "phone": "+1 (646) 476-7217",
-      "website": "https://www.atomixnyc.com"
+      "website": "https://www.atomixnyc.com",
+      "price": 4
     },
     {
       "id": "carne-mare",
@@ -4049,6 +4110,7 @@
         "Italian"
       ],
       "placeType": "restaurant",
+      "price": 3,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -4247,7 +4309,8 @@
         }
       ],
       "phone": "+1 (646) 863-2023",
-      "website": "https://www.exploretock.com/sushi-sho-nyc"
+      "website": "https://www.exploretock.com/sushi-sho-nyc",
+      "price": 4
     },
     {
       "id": "pastis",
@@ -4320,7 +4383,8 @@
         }
       ],
       "phone": "+1 (212) 929-4844",
-      "website": "https://pastisnyc.com"
+      "website": "https://pastisnyc.com",
+      "price": 2
     },
     {
       "id": "tao-downtown",
@@ -4335,6 +4399,7 @@
         "Lounge"
       ],
       "placeType": "restaurant",
+      "price": 3,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -4437,7 +4502,8 @@
         }
       ],
       "phone": "+1 (718) 599-0002",
-      "website": "https://www.lindustriebk.com"
+      "website": "https://www.lindustriebk.com",
+      "price": 1
     },
     {
       "id": "brickyard",
@@ -4451,6 +4517,7 @@
         "American"
       ],
       "placeType": "restaurant",
+      "price": 2,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -4619,7 +4686,8 @@
         }
       ],
       "phone": "+1 (212) 777-1577",
-      "website": "https://www.facebook.com/lefrenchdiner"
+      "website": "https://www.facebook.com/lefrenchdiner",
+      "price": 4
     },
     {
       "id": "fiore-s-house-of-quality",
@@ -4669,7 +4737,8 @@
         }
       ],
       "phone": "+1 (201) 420-1248",
-      "website": "https://www.yelp.com/biz/fiores-house-of-quality-hoboken-2"
+      "website": "https://www.yelp.com/biz/fiores-house-of-quality-hoboken-2",
+      "price": 1
     },
     {
       "id": "ai-fiori",
@@ -4684,6 +4753,7 @@
         "French"
       ],
       "placeType": "restaurant",
+      "price": 4,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -4851,6 +4921,7 @@
         "Japanese"
       ],
       "placeType": "restaurant",
+      "price": 4,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -5013,7 +5084,8 @@
         }
       ],
       "phone": "+1 (212) 254-2246",
-      "website": "https://katzsdelicatessen.com"
+      "website": "https://katzsdelicatessen.com",
+      "price": 2
     },
     {
       "id": "the-odeon",
@@ -5028,6 +5100,7 @@
         "French"
       ],
       "placeType": "restaurant",
+      "price": 3,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -5100,6 +5173,7 @@
         "French"
       ],
       "placeType": "restaurant",
+      "price": 4,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -5179,6 +5253,7 @@
         "Cafe"
       ],
       "placeType": "restaurant",
+      "price": 4,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -5326,6 +5401,7 @@
         "Sandwiches"
       ],
       "placeType": "restaurant",
+      "price": 3,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -5384,6 +5460,7 @@
         "French"
       ],
       "placeType": "restaurant",
+      "price": 4,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -5447,6 +5524,7 @@
         "Sicilian"
       ],
       "placeType": "restaurant",
+      "price": 3,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -5501,6 +5579,7 @@
         "Italian"
       ],
       "placeType": "restaurant",
+      "price": 2,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -5629,7 +5708,8 @@
         }
       ],
       "phone": "+1 (212) 267-0860",
-      "website": "https://www.joespizzanyc.com"
+      "website": "https://www.joespizzanyc.com",
+      "price": 1
     },
     {
       "id": "manhatta",
@@ -5644,6 +5724,7 @@
         "Fine dining"
       ],
       "placeType": "restaurant",
+      "price": 4,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -5723,6 +5804,7 @@
         "Seafood"
       ],
       "placeType": "restaurant",
+      "price": 4,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -5789,6 +5871,7 @@
         "Indian"
       ],
       "placeType": "restaurant",
+      "price": 3,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -5855,6 +5938,7 @@
         "New American"
       ],
       "placeType": "restaurant",
+      "price": 4,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -5966,7 +6050,8 @@
         }
       ],
       "phone": "+1 (929) 837-0360",
-      "website": "http://eightwoeightwo.com"
+      "website": "http://eightwoeightwo.com",
+      "price": 3
     },
     {
       "id": "zucker-s-bagels-smoked-fish",
@@ -5981,6 +6066,7 @@
         "Sandwiches"
       ],
       "placeType": "bakery",
+      "price": 2,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -6097,7 +6183,8 @@
         }
       ],
       "phone": "+1 (646) 360-4438",
-      "website": "https://www.odo.nyc"
+      "website": "https://www.odo.nyc",
+      "price": 4
     },
     {
       "id": "cipriani-downtown",
@@ -6111,6 +6198,7 @@
         "Italian"
       ],
       "placeType": "restaurant",
+      "price": 4,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -6166,6 +6254,7 @@
         "Spanish"
       ],
       "placeType": "restaurant",
+      "price": 4,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -6283,7 +6372,8 @@
         }
       ],
       "phone": "+1 (212) 539-1776",
-      "website": "https://bluehillfarm.com/family-meal"
+      "website": "https://bluehillfarm.com/family-meal",
+      "price": 4
     },
     {
       "id": "cervo-s",
@@ -6336,7 +6426,8 @@
         }
       ],
       "phone": "+1 (212) 226-2545",
-      "website": "http://www.cervosnyc.com"
+      "website": "http://www.cervosnyc.com",
+      "price": 3
     },
     {
       "id": "square-diner",
@@ -6350,6 +6441,7 @@
         "Diner"
       ],
       "placeType": "restaurant",
+      "price": 1,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -6416,6 +6508,7 @@
         "Tuscan"
       ],
       "placeType": "restaurant",
+      "price": 3,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -6527,7 +6620,8 @@
         }
       ],
       "phone": "+1 (855) 446-7379",
-      "website": "https://www.cotekoreansteakhouse.com/locations/cotenycflatiron"
+      "website": "https://www.cotekoreansteakhouse.com/locations/cotenycflatiron",
+      "price": 4
     },
     {
       "id": "zuma",
@@ -6542,6 +6636,7 @@
         "Japanese"
       ],
       "placeType": "restaurant",
+      "price": 4,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -6602,6 +6697,7 @@
         "Wine"
       ],
       "placeType": "restaurant",
+      "price": 3,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -6767,7 +6863,8 @@
         }
       ],
       "phone": "+1 (212) 925-3797",
-      "website": "https://www.andrewcarmellini.com"
+      "website": "https://www.andrewcarmellini.com",
+      "price": 4
     },
     {
       "id": "dos-caminos",
@@ -6781,6 +6878,7 @@
         "Mexican"
       ],
       "placeType": "restaurant",
+      "price": 2,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -6910,7 +7008,8 @@
         }
       ],
       "phone": "+1 (718) 522-1018",
-      "website": "https://www.vinegarhillhouse.com"
+      "website": "https://www.vinegarhillhouse.com",
+      "price": 2
     },
     {
       "id": "king-cole-bar",
@@ -6964,7 +7063,8 @@
         }
       ],
       "phone": "+1 (212) 339-6857",
-      "website": "https://www.marriott.com/en-us/hotels/nycxr-the-st-regis-new-york/dining/"
+      "website": "https://www.marriott.com/en-us/hotels/nycxr-the-st-regis-new-york/dining/",
+      "price": 2
     },
     {
       "id": "peter-pan-donut-pastry-shop",
@@ -7036,7 +7136,8 @@
         }
       ],
       "phone": "+1 (718) 389-3676",
-      "website": "http://peterpandonuts.com"
+      "website": "http://peterpandonuts.com",
+      "price": 1
     },
     {
       "id": "bubby-s",
@@ -7090,7 +7191,8 @@
         }
       ],
       "phone": "+1 (212) 219-0666",
-      "website": "https://www.bubbys.com"
+      "website": "https://www.bubbys.com",
+      "price": 2
     },
     {
       "id": "sixty-three-clinton",
@@ -7143,7 +7245,8 @@
         }
       ],
       "phone": "+1 (917) 663-6223",
-      "website": "http://www.63clinton.com"
+      "website": "http://www.63clinton.com",
+      "price": 4
     },
     {
       "id": "balthazar",
@@ -7324,7 +7427,8 @@
         }
       ],
       "phone": "+1 (212) 274-8881",
-      "website": "https://emiliosballato.shop"
+      "website": "https://emiliosballato.shop",
+      "price": 4
     },
     {
       "id": "ci-siamo",
@@ -7339,6 +7443,7 @@
         "Pizza"
       ],
       "placeType": "restaurant",
+      "price": 4,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -7458,7 +7563,8 @@
         }
       ],
       "phone": "+1 (347) 556-8312",
-      "website": "https://www.nowornevercoffee.com"
+      "website": "https://www.nowornevercoffee.com",
+      "price": 1
     },
     {
       "id": "titsou-bar",
@@ -7526,6 +7632,7 @@
         "Sushi"
       ],
       "placeType": "restaurant",
+      "price": 4,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -7628,7 +7735,8 @@
         }
       ],
       "phone": null,
-      "website": "https://www.semma.nyc"
+      "website": "https://www.semma.nyc",
+      "price": 4
     },
     {
       "id": "chambers",
@@ -7683,7 +7791,8 @@
         }
       ],
       "phone": "+1 (212) 580-3572",
-      "website": "https://chambers.nyc"
+      "website": "https://chambers.nyc",
+      "price": 4
     },
     {
       "id": "cafe-lyria",
@@ -7735,7 +7844,8 @@
         }
       ],
       "phone": null,
-      "website": "https://cafelyria.com"
+      "website": "https://cafelyria.com",
+      "price": 1
     },
     {
       "id": "ito",
@@ -7798,7 +7908,8 @@
         }
       ],
       "phone": null,
-      "website": "https://itotribeca.com"
+      "website": "https://itotribeca.com",
+      "price": 4
     },
     {
       "id": "pylos",
@@ -7813,6 +7924,7 @@
         "Mediterranean"
       ],
       "placeType": "restaurant",
+      "price": 3,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -7957,7 +8069,8 @@
         }
       ],
       "phone": "+1 (212) 254-3000",
-      "website": "https://www.torrisinyc.com/"
+      "website": "https://www.torrisinyc.com/",
+      "price": 4
     },
     {
       "id": "daniel",
@@ -7972,6 +8085,7 @@
         "New American"
       ],
       "placeType": "restaurant",
+      "price": 4,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -8080,7 +8194,8 @@
         }
       ],
       "phone": "+1 (212) 462-2572",
-      "website": "https://www.magnoliabakery.com/blogs/stores/bleecker-street"
+      "website": "https://www.magnoliabakery.com/blogs/stores/bleecker-street",
+      "price": 1
     },
     {
       "id": "empanada-mama",
@@ -8095,6 +8210,7 @@
         "Colombian"
       ],
       "placeType": "restaurant",
+      "price": 2,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -8149,6 +8265,7 @@
         "Japanese"
       ],
       "placeType": "restaurant",
+      "price": 4,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -8250,7 +8367,8 @@
         }
       ],
       "phone": "+1 (212) 226-9412",
-      "website": "https://fanellicafe.nyc"
+      "website": "https://fanellicafe.nyc",
+      "price": 2
     },
     {
       "id": "all-antico-vinaio",
@@ -8307,7 +8425,8 @@
         }
       ],
       "phone": "+1 (917) 970-0033",
-      "website": "https://www.allanticovinaiousa.com/location/8th-avenue/"
+      "website": "https://www.allanticovinaiousa.com/location/8th-avenue/",
+      "price": 2
     },
     {
       "id": "milos",
@@ -8322,6 +8441,7 @@
         "Mediterranean"
       ],
       "placeType": "restaurant",
+      "price": 4,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -8411,6 +8531,7 @@
         "Brunch"
       ],
       "placeType": "restaurant",
+      "price": 3,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -8514,6 +8635,7 @@
         "Steak"
       ],
       "placeType": "restaurant",
+      "price": 4,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -8579,6 +8701,7 @@
         "American"
       ],
       "placeType": "restaurant",
+      "price": 2,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -8674,7 +8797,8 @@
         }
       ],
       "phone": "+1 (718) 858-4086",
-      "website": "https://www.lucali.com"
+      "website": "https://www.lucali.com",
+      "price": 2
     },
     {
       "id": "angelina",
@@ -8740,7 +8864,8 @@
         }
       ],
       "phone": "+1 (585) 438-5347",
-      "website": "https://www.angelinaparisusa.com"
+      "website": "https://www.angelinaparisusa.com",
+      "price": 2
     },
     {
       "id": "starbucks-coffee-company-nyc",
@@ -8794,7 +8919,8 @@
         }
       ],
       "phone": "+1 (646) 914-9717",
-      "website": "https://www.starbucks.com"
+      "website": "https://www.starbucks.com",
+      "price": 1
     },
     {
       "id": "au-cheval",
@@ -8872,7 +8998,8 @@
         }
       ],
       "phone": "+1 (646) 350-2429",
-      "website": "https://www.auchevaldiner.com/nyc/home"
+      "website": "https://www.auchevaldiner.com/nyc/home",
+      "price": 3
     },
     {
       "id": "tonchin",
@@ -8924,7 +9051,8 @@
         }
       ],
       "phone": "+1 (646) 692-9912",
-      "website": "https://www.tonchinus.com/hoursandlocations-midtown"
+      "website": "https://www.tonchinus.com/hoursandlocations-midtown",
+      "price": 2
     },
     {
       "id": "keens-steakhouse",
@@ -8990,7 +9118,8 @@
         }
       ],
       "phone": "+1 (212) 947-3636",
-      "website": "http://www.keens.com"
+      "website": "http://www.keens.com",
+      "price": 4
     },
     {
       "id": "fonda",
@@ -9004,6 +9133,7 @@
         "Mexican"
       ],
       "placeType": "restaurant",
+      "price": 3,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -9069,6 +9199,7 @@
         "Argentinian"
       ],
       "placeType": "restaurant",
+      "price": 3,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -9170,7 +9301,8 @@
         }
       ],
       "phone": "+1 (212) 288-0057",
-      "website": "http://www.lexingtoncandyshop.net"
+      "website": "http://www.lexingtoncandyshop.net",
+      "price": 1
     },
     {
       "id": "gray-s-papaya",
@@ -9221,7 +9353,8 @@
         }
       ],
       "phone": "+1 (212) 799-0243",
-      "website": "https://grayspapaya.nyc"
+      "website": "https://grayspapaya.nyc",
+      "price": 1
     },
     {
       "id": "lilia-ristorante",
@@ -9236,6 +9369,7 @@
         "Cocktails"
       ],
       "placeType": "restaurant",
+      "price": 3,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -9302,6 +9436,7 @@
         "Health food"
       ],
       "placeType": "restaurant",
+      "price": 4,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -9425,7 +9560,8 @@
         }
       ],
       "phone": "+1 (212) 677-3131",
-      "website": "https://www.yelp.com/biz/sunny-and-annies-new-york"
+      "website": "https://www.yelp.com/biz/sunny-and-annies-new-york",
+      "price": 1
     },
     {
       "id": "elea",
@@ -9440,6 +9576,7 @@
         "Mediterranean"
       ],
       "placeType": "restaurant",
+      "price": 4,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -9524,6 +9661,7 @@
         "Fine dining"
       ],
       "placeType": "restaurant",
+      "price": 4,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -9579,6 +9717,7 @@
         "New American"
       ],
       "placeType": "restaurant",
+      "price": 3,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -9700,7 +9839,8 @@
         }
       ],
       "phone": "+1 (212) 207-8562",
-      "website": "https://www.facebook.com/THEPOLOBARNEWYORK/"
+      "website": "https://www.facebook.com/THEPOLOBARNEWYORK/",
+      "price": 4
     },
     {
       "id": "golden-diner",
@@ -9751,7 +9891,8 @@
         }
       ],
       "phone": "+1 (917) 472-7800",
-      "website": "https://goldendinerny.com"
+      "website": "https://goldendinerny.com",
+      "price": 2
     },
     {
       "id": "regular",
@@ -9815,7 +9956,8 @@
         }
       ],
       "phone": "+1 (917) 261-2090",
-      "website": "http://www.regular.nyc"
+      "website": "http://www.regular.nyc",
+      "price": 2
     },
     {
       "id": "tanner-smith-s",
@@ -9830,6 +9972,7 @@
         "Pub"
       ],
       "placeType": "bar",
+      "price": 2,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -9906,6 +10049,7 @@
         "Beer"
       ],
       "placeType": "restaurant",
+      "price": 1,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -10009,7 +10153,8 @@
         "count": 12,
         "source": "Yelp"
       },
-      "yelpSlug": "a51CXBvHd2V0c1Kst3-4cg"
+      "yelpSlug": "a51CXBvHd2V0c1Kst3-4cg",
+      "price": 4
     },
     {
       "id": "le-pavillon",
@@ -10068,7 +10213,8 @@
         }
       ],
       "phone": "+1 (212) 662-1000",
-      "website": "https://www.lepavillonnyc.com"
+      "website": "https://www.lepavillonnyc.com",
+      "price": 4
     },
     {
       "id": "grandaisy-bakery",
@@ -10083,6 +10229,7 @@
         "Cafe"
       ],
       "placeType": "bakery",
+      "price": 1,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -10157,6 +10304,7 @@
         "New American"
       ],
       "placeType": "restaurant",
+      "price": 4,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -10279,7 +10427,8 @@
         }
       ],
       "phone": "+1 (212) 219-2067",
-      "website": "http://interludenyc.com"
+      "website": "http://interludenyc.com",
+      "price": 1
     },
     {
       "id": "serafina-nyc",
@@ -10293,6 +10442,7 @@
         "Italian"
       ],
       "placeType": "restaurant",
+      "price": 3,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -10427,7 +10577,8 @@
         }
       ],
       "phone": "+1 (646) 490-5099",
-      "website": "https://www.coqodaq.com"
+      "website": "https://www.coqodaq.com",
+      "price": 4
     },
     {
       "id": "dirt-candy",
@@ -10479,7 +10630,8 @@
         }
       ],
       "phone": "+1 (212) 228-7732",
-      "website": "http://www.dirtcandynyc.com"
+      "website": "http://www.dirtcandynyc.com",
+      "price": 4
     },
     {
       "id": "l-artusi",
@@ -10493,6 +10645,7 @@
         "Italian"
       ],
       "placeType": "restaurant",
+      "price": 4,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -10640,7 +10793,8 @@
         }
       ],
       "phone": "+1 (718) 364-3867",
-      "website": "https://casa-della-mozzarella.weeblyte.com"
+      "website": "https://casa-della-mozzarella.weeblyte.com",
+      "price": 1
     },
     {
       "id": "gabriel-kreuther",
@@ -10655,6 +10809,7 @@
         "Health food"
       ],
       "placeType": "restaurant",
+      "price": 4,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -10741,6 +10896,7 @@
         "French"
       ],
       "placeType": "restaurant",
+      "price": 2,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -10861,7 +11017,8 @@
         }
       ],
       "phone": "+1 (646) 858-1433",
-      "website": "http://www.smithandmills.com"
+      "website": "http://www.smithandmills.com",
+      "price": 2
     },
     {
       "id": "flippers",
@@ -10927,7 +11084,8 @@
         }
       ],
       "phone": "+1 (917) 265-8292",
-      "website": "https://www.flippersus.com"
+      "website": "https://www.flippersus.com",
+      "price": 2
     },
     {
       "id": "pepolino-ristorante",
@@ -10942,6 +11100,7 @@
         "Italian"
       ],
       "placeType": "restaurant",
+      "price": 3,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -11072,7 +11231,8 @@
         }
       ],
       "phone": "+1 (212) 554-1515",
-      "website": "https://www.le-bernardin.com"
+      "website": "https://www.le-bernardin.com",
+      "price": 4
     },
     {
       "id": "banh-anh-em",
@@ -11150,7 +11310,8 @@
         }
       ],
       "phone": "+1 (833) 674-5878",
-      "website": "https://www.banhanhem.com"
+      "website": "https://www.banhanhem.com",
+      "price": 2
     },
     {
       "id": "atera",
@@ -11164,6 +11325,7 @@
         "New American"
       ],
       "placeType": "restaurant",
+      "price": 4,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -11236,6 +11398,7 @@
         "Pizza"
       ],
       "placeType": "restaurant",
+      "price": 3,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -11326,7 +11489,8 @@
         }
       ],
       "phone": null,
-      "website": "https://www.rigorhillmarket.com"
+      "website": "https://www.rigorhillmarket.com",
+      "price": 1
     },
     {
       "id": "philippe",
@@ -11340,6 +11504,7 @@
         "Chinese"
       ],
       "placeType": "restaurant",
+      "price": 3,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -11449,7 +11614,8 @@
         }
       ],
       "phone": "+1 (212) 388-0088",
-      "website": "https://ippudous.com"
+      "website": "https://ippudous.com",
+      "price": 2
     },
     {
       "id": "via-carota",
@@ -11517,7 +11683,8 @@
         }
       ],
       "phone": "+1 (212) 255-1962",
-      "website": "https://www.viacarota.com"
+      "website": "https://www.viacarota.com",
+      "price": 3
     },
     {
       "id": "shuka",
@@ -11620,7 +11787,8 @@
         }
       ],
       "phone": "+1 (212) 475-7500",
-      "website": "https://www.shukanewyork.com"
+      "website": "https://www.shukanewyork.com",
+      "price": 2
     },
     {
       "id": "the-dining-room-at-rh-guesthouse-new-york",
@@ -11634,6 +11802,7 @@
         "New American"
       ],
       "placeType": "restaurant",
+      "price": 4,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -11751,7 +11920,8 @@
         }
       ],
       "phone": "+1 (212) 941-9401",
-      "website": "https://www.marcforgione.com/"
+      "website": "https://www.marcforgione.com/",
+      "price": 4
     },
     {
       "id": "one-white-street",
@@ -11812,7 +11982,8 @@
         }
       ],
       "phone": "+1 (646) 398-7679",
-      "website": "https://www.onewhitestreetnyc.com"
+      "website": "https://www.onewhitestreetnyc.com",
+      "price": 4
     },
     {
       "id": "quality-italian",
@@ -11827,6 +11998,7 @@
         "Steak"
       ],
       "placeType": "restaurant",
+      "price": 4,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -11971,7 +12143,8 @@
         }
       ],
       "phone": "+1 (212) 267-3032",
-      "website": "https://www.oharasnyc.com"
+      "website": "https://www.oharasnyc.com",
+      "price": 2
     },
     {
       "id": "campagnola",
@@ -11986,6 +12159,7 @@
         "Italian"
       ],
       "placeType": "restaurant",
+      "price": 4,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -12086,7 +12260,8 @@
         }
       ],
       "phone": "+1 (212) 219-2773",
-      "website": "https://www.dominiqueanselny.com"
+      "website": "https://www.dominiqueanselny.com",
+      "price": 1
     },
     {
       "id": "carnitas-ramirez",
@@ -12148,7 +12323,8 @@
         }
       ],
       "phone": "+1 (929) 364-3634",
-      "website": "https://www.carnitasramirez.com"
+      "website": "https://www.carnitasramirez.com",
+      "price": 1
     },
     {
       "id": "van-leeuwen-ice-cream",
@@ -12222,6 +12398,7 @@
         "New American"
       ],
       "placeType": "restaurant",
+      "price": 4,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -12327,7 +12504,8 @@
         "count": 184,
         "source": "Yelp"
       },
-      "yelpSlug": "_Jgmhw0ywyoGyglPwB1xGA"
+      "yelpSlug": "_Jgmhw0ywyoGyglPwB1xGA",
+      "price": 2
     },
     {
       "id": "skirt-steak",
@@ -12394,7 +12572,8 @@
         }
       ],
       "phone": "+1 (332) 290-8778",
-      "website": "https://www.skirtsteaknyc.com/"
+      "website": "https://www.skirtsteaknyc.com/",
+      "price": 3
     },
     {
       "id": "minetta-tavern",
@@ -12409,6 +12588,7 @@
         "Pub"
       ],
       "placeType": "restaurant",
+      "price": 3,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -12504,6 +12684,7 @@
         "Lounge"
       ],
       "placeType": "restaurant",
+      "price": 4,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -12652,7 +12833,8 @@
         }
       ],
       "phone": "+1 (718) 271-5422",
-      "website": null
+      "website": null,
+      "price": 1
     },
     {
       "id": "chef-s-table-at-brooklyn-fare",
@@ -12667,6 +12849,7 @@
         "Seafood"
       ],
       "placeType": "restaurant",
+      "price": 4,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -12762,7 +12945,8 @@
         }
       ],
       "phone": "+1 (646) 718-5619",
-      "website": "https://www.twohandshospitality.com/"
+      "website": "https://www.twohandshospitality.com/",
+      "price": 2
     },
     {
       "id": "shmone",
@@ -12812,7 +12996,8 @@
         }
       ],
       "phone": "+1 (646) 438-9815",
-      "website": "https://www.shmonenyc.com"
+      "website": "https://www.shmonenyc.com",
+      "price": 4
     },
     {
       "id": "boucherie",
@@ -12826,6 +13011,7 @@
         "French"
       ],
       "placeType": "restaurant",
+      "price": 3,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -12960,7 +13146,8 @@
         }
       ],
       "phone": "+1 (212) 380-1215",
-      "website": "https://www.empellon.com/restaurants/empellon/"
+      "website": "https://www.empellon.com/restaurants/empellon/",
+      "price": 3
     },
     {
       "id": "laughing-man-coffee-tea-co",
@@ -12975,6 +13162,7 @@
         "Cafe"
       ],
       "placeType": "cafe",
+      "price": 2,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -13036,6 +13224,7 @@
         "Steak"
       ],
       "placeType": "restaurant",
+      "price": 4,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -13152,7 +13341,8 @@
         }
       ],
       "phone": "+1 (800) 888-8888",
-      "website": "https://www.facebook.com/ceres.nyc/"
+      "website": "https://www.facebook.com/ceres.nyc/",
+      "price": 2
     },
     {
       "id": "4-charles-prime-rib",
@@ -13224,7 +13414,8 @@
         }
       ],
       "phone": "+1 (212) 561-5992",
-      "website": "https://nycprimerib.com/"
+      "website": "https://nycprimerib.com/",
+      "price": 4
     },
     {
       "id": "tiny-s-the-bar-upstairs",
@@ -13238,6 +13429,7 @@
         "New American"
       ],
       "placeType": "restaurant",
+      "price": 2,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [

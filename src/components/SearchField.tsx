@@ -6,8 +6,18 @@ import { useApp } from '../state/AppState.tsx'
 import { useCityId } from '../lib/use-city-id.ts'
 import type { GuideSummary, SlimPlace } from '../types.ts'
 import { MatchText } from './MatchText.tsx'
+import { placeNameClass } from '../lib/place-name.ts'
 
 type Hit = { key: string; label: string; detail: string; href: string }
+
+const GENERIC_WHY = new Set(['Place name', 'Guide title', 'Match'])
+
+/** Neighborhood and cuisine are the useful line. "Place name" is the match reason, not a label for the row. */
+function suggestionNote(hit: { kind: string; detail: string; why: string }): string {
+  if (hit.kind === 'place') return hit.detail
+  if (GENERIC_WHY.has(hit.why)) return hit.detail
+  return hit.why || hit.detail
+}
 
 export function SearchField({
   id,
@@ -41,6 +51,7 @@ export function SearchField({
     if (places) return
     void import('../content/load.ts').then(async (mod) => {
       await mod.catalogReady
+      await mod.ensureAllCities()
       setPlaces(mod.catalog.places)
       setGuides(mod.catalog.guides)
     })
@@ -54,7 +65,7 @@ export function SearchField({
     return rows.map((hit) => ({
       key: `${hit.kind}-${hit.id}`,
       label: hit.title,
-      detail: hit.why,
+      detail: suggestionNote(hit),
       href: hit.href,
     }))
   }, [gustoScore, query, places, guides, city])
@@ -155,7 +166,7 @@ export function SearchField({
                 onMouseDown={(event) => event.preventDefault()}
                 onClick={() => choose(index)}
               >
-                <span className="block truncate font-serif text-xl italic leading-tight"><MatchText text={hit.label} query={query} /></span>
+                <span className={placeNameClass(hit.label, 'italic leading-tight')}><MatchText text={hit.label} query={query} /></span>
                 <span className="block truncate text-xs font-bold tracking-wide uppercase">{hit.detail}</span>
               </button>
             ))}

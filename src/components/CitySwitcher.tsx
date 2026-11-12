@@ -26,15 +26,22 @@ export function CitySwitcher({ inline = false }: { inline?: boolean } = {}) {
     <div ref={bar} className={inline ? 'city-switch city-switch-inline' : 'city-switch city-switch-bar'} role="group" aria-label={inline ? `Top 10 area, ${areaTitle(city)} selected` : `Area, ${areaTitle(city)} selected`}>
       {areasFor(city).filter((item) => item.ready).map((item) => {
         const on = item.id === city
+        const home = cityPath('/', item.id)
+        const here = (pathname.replace(/\/$/, '') || '/') === home
         return (
           <button
             key={item.id}
             type="button"
             className="city-switch-btn"
             aria-pressed={on}
-            aria-current={on ? 'true' : undefined}
+            aria-current={on ? (here ? 'page' : 'true') : undefined}
+            aria-label={on ? `${item.name} home` : undefined}
             onClick={() => {
-              if (!on) navigate(cityPath(profile ?? '/', item.id), inline ? { replace: true, state: { keepScroll: true } } : undefined)
+              if (on) {
+                navigate(home)
+                return
+              }
+              navigate(cityPath(profile ?? '/', item.id), inline ? { replace: true, state: { keepScroll: true } } : undefined)
             }}
           >
             {on ? (

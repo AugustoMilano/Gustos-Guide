@@ -67,6 +67,19 @@ function placeRow(place) {
   ]
 }
 
+/** Same rule as src/lib/guide-members.ts: known places, once each. */
+export function resolvedCount(entries, placeIds) {
+  const seen = new Set()
+  let count = 0
+  for (const entry of entries ?? []) {
+    const id = entry?.placeId
+    if (!id || seen.has(id) || !placeIds.has(id)) continue
+    seen.add(id)
+    count += 1
+  }
+  return count
+}
+
 function guideRow(guide) {
   return [
     guide.slug,
@@ -75,12 +88,22 @@ function guideRow(guide) {
     guide.group,
     guide.updatedAt,
     guide.ranked ? 1 : 0,
-    guide.count ?? guide.entries.length,
+    guide.count,
     guide.city || '',
   ]
 }
 
-export function writeSlimCatalog() {
+const CITY_ORDER = ['seattle', 'eastside', 'la', 'sf', 'eastbay', 'peninsula', 'northbay', 'sandiego', 'vancouver', 'portland', 'nyc', 'pullman', 'moscow']
+
+function cityOfPlace(row) {
+  return row[3] || 'seattle'
+}
+
+function cityOfGuide(row) {
+  return row[7] || 'seattle'
+}
+
+export function buildSlimParts() {
   const index = read('index.json')
   const eastside = read('eastside.json')
   const la = read('la.json')
@@ -88,10 +111,14 @@ export function writeSlimCatalog() {
   const sd = read('sd.json')
   const added = ['vancouver.json', 'portland.json', 'nyc.json', 'palouse.json'].map(read)
   const places = index.places.map(placeRow)
-  const guides = index.guides.map(guideRow)
   for (const file of [eastside, la, sf, sd, ...added]) {
     for (const place of file.places) places.push(placeRow(place))
-    for (const guide of file.guides) guides.push(guideRow(guide))
+  }
+  const placeIds = new Set(places.map((row) => row[0]))
+  const seattleEntries = new Map(read('guides.json').map((guide) => [guide.slug, guide.entries]))
+  const guides = index.guides.map((guide) => guideRow({ ...guide, count: resolvedCount(seattleEntries.get(guide.slug), placeIds) }))
+  for (const file of [eastside, la, sf, sd, ...added]) {
+    for (const guide of file.guides) guides.push(guideRow({ ...guide, count: resolvedCount(guide.entries, placeIds) }))
   }
   const sourceIds = [
     ...index.places.map((place) => place.id),
@@ -111,9 +138,33 @@ export function writeSlimCatalog() {
   ]
   if (places.map((row) => row[0]).join('\n') !== sourceIds.join('\n')) throw new Error('place order changed')
   if (guides.map((row) => row[0]).join('\n') !== sourceGuides.join('\n')) throw new Error('guide order changed')
-  const doc = { u: index.updatedAt, h: index.hiddenCount, g: guides, p: places }
+  const combined = { u: index.updatedAt, h: index.hiddenCount, g: guides, p: places }
+  const byCity = {}
+  for (const id of CITY_ORDER) byCity[id] = { u: index.updatedAt, h: index.hiddenCount, g: [], p: [] }
+  for (const row of places) {
+    const id = cityOfPlace(row)
+    if (!byCity[id]) throw new Error(`unknown place city ${id}`)
+    byCity[id].p.push(row)
+  }
+  for (const row of guides) {
+    const id = cityOfGuide(row)
+    if (!byCity[id]) throw new Error(`unknown guide city ${id}`)
+    byCity[id].g.push(row)
+  }
+  const summary = {
+    u: index.updatedAt,
+    h: index.hiddenCount,
+    cities: CITY_ORDER.map((id) => ({ id, places: byCity[id].p.length, guides: byCity[id].g.length })),
+  }
+  return { combined, byCity, summary }
+}
+
+export function writeSlimCatalog() {
+  const { combined, byCity, summary } = buildSlimParts()
   const out = join(content, 'slim-catalog.json')
-  writeFileSync(out, JSON.stringify(doc))
+  writeFileSync(out, JSON.stringify(combined))
+  writeFileSync(join(content, 'slim-index.json'), JSON.stringify(summary))
+  for (const [id, doc] of Object.entries(byCity)) writeFileSync(join(content, `slim-city-${id}.json`), JSON.stringify(doc))
   return out
 }
 
