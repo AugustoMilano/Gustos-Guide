@@ -14,6 +14,7 @@
         "African"
       ],
       "placeType": "restaurant",
+      "price": 2,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -82,6 +83,7 @@
         "French"
       ],
       "placeType": "restaurant",
+      "price": 4,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -144,6 +146,7 @@
         "Comfort food"
       ],
       "placeType": "restaurant",
+      "price": 2,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -206,6 +209,7 @@
         "Pizza"
       ],
       "placeType": "restaurant",
+      "price": 3,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -266,6 +270,7 @@
         "Cafe"
       ],
       "placeType": "restaurant",
+      "price": 3,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -334,6 +339,7 @@
         "Mexican"
       ],
       "placeType": "restaurant",
+      "price": 2,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -463,6 +469,7 @@
         "Seafood"
       ],
       "placeType": "restaurant",
+      "price": 3,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -636,6 +643,7 @@
         "Street food"
       ],
       "placeType": "restaurant",
+      "price": 2,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -703,6 +711,7 @@
         "Wine"
       ],
       "placeType": "restaurant",
+      "price": 3,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -883,6 +892,7 @@
         "Indian"
       ],
       "placeType": "restaurant",
+      "price": 2,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -941,6 +951,7 @@
         "Tempura"
       ],
       "placeType": "restaurant",
+      "price": 2,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -1140,6 +1151,7 @@
         "Pizza"
       ],
       "placeType": "restaurant",
+      "price": 1,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -1198,6 +1210,7 @@
         "Cocktails"
       ],
       "placeType": "restaurant",
+      "price": 4,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -1249,6 +1262,7 @@
         "Pop-Up"
       ],
       "placeType": "restaurant",
+      "price": 3,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -1376,6 +1390,7 @@
         "Cafe"
       ],
       "placeType": "restaurant",
+      "price": 2,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -1450,6 +1465,7 @@
         "Cocktails"
       ],
       "placeType": "restaurant",
+      "price": 2,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -1512,6 +1528,7 @@
         "Dessert"
       ],
       "placeType": "dessert",
+      "price": 2,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -1638,6 +1655,7 @@
         "Cocktails"
       ],
       "placeType": "bar",
+      "price": 3,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -1910,6 +1928,7 @@
         "Pastry"
       ],
       "placeType": "bakery",
+      "price": 1,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -1985,6 +2004,7 @@
         "Bakery"
       ],
       "placeType": "dessert",
+      "price": 2,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -2059,6 +2079,7 @@
         "Italian"
       ],
       "placeType": "restaurant",
+      "price": 3,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -2132,6 +2153,7 @@
         "Beer"
       ],
       "placeType": "restaurant",
+      "price": 2,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -2197,6 +2219,7 @@
         "Canadian"
       ],
       "placeType": "restaurant",
+      "price": 3,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -2261,6 +2284,7 @@
         "Seafood"
       ],
       "placeType": "restaurant",
+      "price": 3,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -2317,6 +2341,7 @@
         "Cafe"
       ],
       "placeType": "bakery",
+      "price": 2,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -2379,6 +2404,7 @@
         "Wine"
       ],
       "placeType": "restaurant",
+      "price": 3,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -2442,6 +2468,7 @@
         "Dessert"
       ],
       "placeType": "dessert",
+      "price": 2,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -2569,6 +2596,7 @@
         "Cafe"
       ],
       "placeType": "cafe",
+      "price": 2,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -2708,6 +2736,7 @@
         "Cafe"
       ],
       "placeType": "cafe",
+      "price": 2,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -2781,6 +2810,7 @@
         "Dessert"
       ],
       "placeType": "dessert",
+      "price": 1,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -2840,6 +2870,7 @@
         "Canadian"
       ],
       "placeType": "restaurant",
+      "price": 4,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -2943,6 +2974,7 @@
         "Cafe"
       ],
       "placeType": "bakery",
+      "price": 2,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -3005,6 +3037,7 @@
         "Brunch"
       ],
       "placeType": "restaurant",
+      "price": 3,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -3064,6 +3097,7 @@
         "Italian"
       ],
       "placeType": "restaurant",
+      "price": 3,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -3289,6 +3323,7 @@
         "Japanese"
       ],
       "placeType": "restaurant",
+      "price": 3,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -3351,6 +3386,7 @@
         "Nightclub"
       ],
       "placeType": "bar",
+      "price": 2,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -3431,6 +3467,7 @@
         "Dessert"
       ],
       "placeType": "dessert",
+      "price": 3,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -3575,6 +3612,7 @@
         "Seafood"
       ],
       "placeType": "restaurant",
+      "price": 3,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -3651,6 +3689,7 @@
         "Seafood"
       ],
       "placeType": "restaurant",
+      "price": 4,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -3705,6 +3744,7 @@
         "Cocktails"
       ],
       "placeType": "bar",
+      "price": 3,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -3940,6 +3980,7 @@
         "Bakery"
       ],
       "placeType": "dessert",
+      "price": 1,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -4003,6 +4044,7 @@
         "Italian"
       ],
       "placeType": "restaurant",
+      "price": 3,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -4209,6 +4251,7 @@
         "Small plates"
       ],
       "placeType": "restaurant",
+      "price": 4,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -4261,6 +4304,7 @@
         "Cocktails"
       ],
       "placeType": "restaurant",
+      "price": 3,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -4327,6 +4371,7 @@
         "Wine"
       ],
       "placeType": "restaurant",
+      "price": 3,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -4397,6 +4442,7 @@
         "Wine"
       ],
       "placeType": "restaurant",
+      "price": 3,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -4467,6 +4513,7 @@
         "Cafe"
       ],
       "placeType": "cafe",
+      "price": 2,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -4519,6 +4566,7 @@
         "Health food"
       ],
       "placeType": "restaurant",
+      "price": 2,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -4627,6 +4675,7 @@
         "Wine"
       ],
       "placeType": "restaurant",
+      "price": 3,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -4689,6 +4738,7 @@
         "Italian"
       ],
       "placeType": "restaurant",
+      "price": 3,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -4792,6 +4842,7 @@
         "Seafood"
       ],
       "placeType": "restaurant",
+      "price": 4,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -4858,6 +4909,7 @@
         "Wine"
       ],
       "placeType": "restaurant",
+      "price": 3,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -5029,6 +5081,7 @@
         "New American"
       ],
       "placeType": "restaurant",
+      "price": 3,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -5101,6 +5154,7 @@
         "Cafe"
       ],
       "placeType": "bakery",
+      "price": 2,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -5224,6 +5278,7 @@
         "Brewery"
       ],
       "placeType": "bar",
+      "price": 2,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -5289,6 +5344,7 @@
         "Lounge"
       ],
       "placeType": "restaurant",
+      "price": 3,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -5349,6 +5405,7 @@
         "Cocktails"
       ],
       "placeType": "restaurant",
+      "price": 4,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -5403,6 +5460,7 @@
         "Pub"
       ],
       "placeType": "bar",
+      "price": 2,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -5531,6 +5589,7 @@
         "Italian"
       ],
       "placeType": "restaurant",
+      "price": 2,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -5598,6 +5657,7 @@
         "Thai"
       ],
       "placeType": "restaurant",
+      "price": 2,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -5729,6 +5789,7 @@
         "Small plates"
       ],
       "placeType": "restaurant",
+      "price": 2,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -5905,6 +5966,7 @@
         "Bistro"
       ],
       "placeType": "restaurant",
+      "price": 2,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -6058,6 +6120,7 @@
         "Canadian"
       ],
       "placeType": "restaurant",
+      "price": 3,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -6131,6 +6194,7 @@
         "Japanese"
       ],
       "placeType": "restaurant",
+      "price": 4,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -6328,6 +6392,7 @@
         "Sandwiches"
       ],
       "placeType": "bakery",
+      "price": 1,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -6504,6 +6569,7 @@
         "Seafood"
       ],
       "placeType": "restaurant",
+      "price": 3,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -6787,6 +6853,7 @@
         "French"
       ],
       "placeType": "restaurant",
+      "price": 4,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -6846,6 +6913,7 @@
         "Small plates"
       ],
       "placeType": "restaurant",
+      "price": 3,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -6918,6 +6986,7 @@
         "Restaurant"
       ],
       "placeType": "bar",
+      "price": 3,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -6989,6 +7058,7 @@
         "Brunch"
       ],
       "placeType": "restaurant",
+      "price": 2,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -7118,6 +7188,7 @@
         "Small plates"
       ],
       "placeType": "restaurant",
+      "price": 2,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -7178,6 +7249,7 @@
         "Seafood"
       ],
       "placeType": "restaurant",
+      "price": 3,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -7250,6 +7322,7 @@
         "Bakery"
       ],
       "placeType": "bakery",
+      "price": 2,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -7324,6 +7397,7 @@
         "Japanese"
       ],
       "placeType": "restaurant",
+      "price": 2,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -7409,6 +7483,7 @@
         "Comfort food"
       ],
       "placeType": "restaurant",
+      "price": 2,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -7481,6 +7556,7 @@
         "Cafe"
       ],
       "placeType": "cafe",
+      "price": 1,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -7540,6 +7616,7 @@
         "French"
       ],
       "placeType": "restaurant",
+      "price": 3,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -7644,6 +7721,7 @@
         "Mediterranean"
       ],
       "placeType": "restaurant",
+      "price": 2,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -7713,6 +7791,7 @@
         "Indian"
       ],
       "placeType": "restaurant",
+      "price": 3,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -7765,6 +7844,7 @@
         "Japanese"
       ],
       "placeType": "restaurant",
+      "price": 4,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -7845,6 +7925,7 @@
         "Steak"
       ],
       "placeType": "restaurant",
+      "price": 3,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -7925,6 +8006,7 @@
         "Lounge"
       ],
       "placeType": "restaurant",
+      "price": 2,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [
@@ -8005,6 +8087,7 @@
         "Japanese"
       ],
       "placeType": "restaurant",
+      "price": 2,
       "oneLiner": "",
       "perfectFor": [],
       "periods": [

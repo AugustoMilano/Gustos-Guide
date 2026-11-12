@@ -98,7 +98,12 @@ export function TopPage() {
           {board.scored < 25 ? (
             <p className="glass mt-5 px-4 py-3 text-sm font-bold">{board.scored} of 25 scored. More coming.</p>
           ) : null}
-          {shown.length === 0 ? <p className="mt-5 font-serif text-2xl italic">Nothing in the Top 25 matches that price.</p> : (
+          {shown.length === 0 ? (
+            <div className="mt-5">
+              <p className="font-serif text-2xl italic">Nothing in the Top 25 matches that price.</p>
+              <button type="button" className="btn mt-3" onClick={() => { setPrices([]); setUnknownPrice(false) }}>Clear filters</button>
+            </div>
+          ) : (
           <div className={`top-podium mt-5${podium.length < 3 ? ' is-short' : ''}`} style={{ ['--podium' as string]: String(podium.length) }}>
             {podium.map((row) => (
               <m.div

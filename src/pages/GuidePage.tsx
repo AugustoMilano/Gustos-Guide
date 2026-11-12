@@ -138,6 +138,15 @@ export function GuidePage() {
     return <Navigate to={cityPath(`/guide/${summary.slug}`, summary.city)} replace />
   }
 
+  function clearFilters() {
+    setNeighborhood('')
+    setCuisine('')
+    setPrices([])
+    setUnknownPrice(false)
+    setTag('')
+    setOpenNow(false)
+  }
+
   function onToggle(placeId: string, status: VisitStatus) {
     if (!user) setSignInOpen(true)
     else setStatus(placeId, status)
@@ -282,7 +291,7 @@ export function GuidePage() {
                   setOpenNow={setOpenNow}
                 />
               </div>
-              <button type="button" className="btn btn-coral mt-4 w-full" onClick={() => setFiltersOpen(false)}>Show {shown.length}</button>
+              <button type="button" className="btn btn-coral mt-4 w-full" onClick={() => { if (ordered.length === 0) clearFilters(); setFiltersOpen(false) }}>{ordered.length === 0 ? 'Clear filters' : `Show ${ordered.length}`}</button>
             </div>
           </div>
         ) : null}
@@ -290,7 +299,12 @@ export function GuidePage() {
           <GuideStrip rows={stripRows} uploads={photos} statuses={statuses} onToggle={onToggle} />
         </div>
         <div className="mt-5 grid gap-8">
-            {ordered.length === 0 ? <p className="border-t border-ink/10 pt-4 font-serif text-2xl italic">Nothing on this list matches. Loosen a filter.</p> : null}
+            {ordered.length === 0 ? (
+              <div className="border-t border-ink/10 pt-4">
+                <p className="font-serif text-2xl italic">Nothing on this list matches.</p>
+                <button type="button" className="btn mt-3" onClick={clearFilters}>Clear filters</button>
+              </div>
+            ) : null}
             {ranked.map(({ entry, place, number }, index) => (
               <GuideEntryCard
                 key={place.id}

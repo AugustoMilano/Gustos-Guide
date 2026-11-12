@@ -149,7 +149,12 @@ export function ListPage() {
         />
       </div>
       {whereError ? <p className="mt-2 text-sm">{whereError}</p> : null}
-      {rows.length === 0 ? <p className="mt-6">Nothing in this list matches. Clear a filter, or add a place from My guides.</p> : null}
+      {rows.length === 0 ? (
+        <div className="mt-6">
+          <p>Nothing in this list matches.</p>
+          <button type="button" className="btn mt-3" onClick={() => { setPrices([]); setUnknownPrice(false); setOpenNow(false) }}>Clear filters</button>
+        </div>
+      ) : null}
       <ol className="mt-6 space-y-3">
         {rows.map(({ place, note }, index) => {
           const editable = (owner || collab) && sort === 'order'

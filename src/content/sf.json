@@ -220,6 +220,7 @@
         "Tavern"
       ],
       "placeType": "bar",
+      "price": 2,
       "oneLiner": "Wayfare Tavern, 201 Pine St. Tavern in Financial District.",
       "perfectFor": [],
       "periods": [
@@ -2108,6 +2109,7 @@
         "East Mediterranean"
       ],
       "placeType": "restaurant",
+      "price": 3,
       "oneLiner": "Dalida at 101 Montgomery St. East Mediterranean, San Francisco.",
       "perfectFor": [],
       "periods": [
@@ -2234,6 +2236,7 @@
         "Sardinian"
       ],
       "placeType": "restaurant",
+      "price": 2,
       "oneLiner": "La Ciccia at 291 30th St in Fairmount. Sardinian.",
       "perfectFor": [],
       "periods": [
@@ -2290,6 +2293,7 @@
         "New American"
       ],
       "placeType": "restaurant",
+      "price": 3,
       "oneLiner": "New American at Rich Table, 199 Gough St, Hayes Valley.",
       "perfectFor": [],
       "periods": [
@@ -2450,6 +2454,7 @@
         "Greek"
       ],
       "placeType": "restaurant",
+      "price": 3,
       "oneLiner": "Greek from Kokkari Estiatorio at 200 Jackson St, Embarcadero.",
       "perfectFor": [],
       "periods": [
@@ -2627,6 +2632,7 @@
         "Mexican"
       ],
       "placeType": "restaurant",
+      "price": 4,
       "oneLiner": "SOMA: Californios at 355 11th St. Mexican.",
       "perfectFor": [],
       "periods": [
@@ -2835,6 +2841,7 @@
         "New American"
       ],
       "placeType": "restaurant",
+      "price": 3,
       "oneLiner": "The Vault sits at 555 California St. New American, Financial District.",
       "perfectFor": [],
       "periods": [
@@ -2895,6 +2902,7 @@
         "Californian"
       ],
       "placeType": "restaurant",
+      "price": 4,
       "oneLiner": "Californian from Quince at 470 Pacific Ave, Jackson Square.",
       "perfectFor": [],
       "periods": [
@@ -3027,6 +3035,7 @@
         "Cocktail Bar"
       ],
       "placeType": "bar",
+      "price": 2,
       "oneLiner": "a Mano, 450 Hayes St. Cocktail Bar in Hayes Valley.",
       "perfectFor": [],
       "periods": [
@@ -3213,6 +3222,7 @@
         "Steakhouse"
       ],
       "placeType": "restaurant",
+      "price": 4,
       "oneLiner": "Steakhouse at Niku Steakhouse, 61 Division St, Design District.",
       "perfectFor": [],
       "periods": [
@@ -3654,6 +3664,7 @@
         "Swiss"
       ],
       "placeType": "restaurant",
+      "price": 3,
       "oneLiner": "The Matterhorn Restaurant and Bakery at 2323 Van Ness Ave in Pacific Heights. Swiss.",
       "perfectFor": [],
       "periods": [
@@ -3711,6 +3722,7 @@
         "Californian"
       ],
       "placeType": "restaurant",
+      "price": 4,
       "oneLiner": "Californian at Saison, 178 Townsend St, South Beach.",
       "perfectFor": [],
       "periods": [
@@ -3890,6 +3902,7 @@
         "New American"
       ],
       "placeType": "restaurant",
+      "price": 4,
       "oneLiner": "New American from Trestle at 531 Jackson St, Financial District.",
       "perfectFor": [],
       "periods": [
@@ -4390,6 +4403,7 @@
         "New American"
       ],
       "placeType": "restaurant",
+      "price": 3,
       "oneLiner": "New American from Spruce at 3640 Sacramento St, Presidio Heights.",
       "perfectFor": [],
       "periods": [
@@ -4777,6 +4791,7 @@
         "French"
       ],
       "placeType": "restaurant",
+      "price": 3,
       "oneLiner": "French at Zuni Café, 1658 Market St, Van Ness-Civic Center.",
       "perfectFor": [],
       "periods": [
@@ -4979,6 +4994,7 @@
         "Italian"
       ],
       "placeType": "restaurant",
+      "price": 3,
       "oneLiner": "1896 Hyde St — Seven Hills, Italian, Russian Hill.",
       "perfectFor": [],
       "periods": [
@@ -5356,6 +5372,7 @@
         "Mexican"
       ],
       "placeType": "restaurant",
+      "price": 2,
       "oneLiner": "Flores sits at 2030 Union St. Mexican, Cow Hollow.",
       "perfectFor": [],
       "periods": [
@@ -5429,6 +5446,7 @@
         "Italian"
       ],
       "placeType": "restaurant",
+      "price": 3,
       "oneLiner": "Italian from 54 Mint at 16 Mint Plaza, SOMA.",
       "perfectFor": [],
       "periods": [
@@ -5568,6 +5586,7 @@
         "New American"
       ],
       "placeType": "restaurant",
+      "price": 3,
       "oneLiner": "Prospect, 300 Spear St. New American in South Beach.",
       "perfectFor": [],
       "periods": [
@@ -5683,6 +5702,7 @@
         "Asian"
       ],
       "placeType": "restaurant",
+      "price": 2,
       "oneLiner": "Liholiho Yacht Club at 871 Sutter St in Downtown. Asian.",
       "perfectFor": [],
       "periods": [
@@ -6370,6 +6390,7 @@
         "French"
       ],
       "placeType": "restaurant",
+      "price": 4,
       "oneLiner": "Atelier Crenn sits at 3127 Fillmore St. French, Cow Hollow.",
       "perfectFor": [],
       "periods": [
@@ -6431,6 +6452,7 @@
         "Indian"
       ],
       "placeType": "restaurant",
+      "price": 3,
       "oneLiner": "Indian from Rooh at 333 Brannan St, South Beach.",
       "perfectFor": [],
       "periods": [
@@ -6624,6 +6646,7 @@
         "New American"
       ],
       "placeType": "restaurant",
+      "price": 4,
       "oneLiner": "Embarcadero: Boulevard at 1 Mission St. New American.",
       "perfectFor": [],
       "periods": [
@@ -6995,6 +7018,7 @@
         "Breakfast and Brunch"
       ],
       "placeType": "restaurant",
+      "price": 3,
       "oneLiner": "2 New Montgomery St — The Garden Court, Breakfast and Brunch, Financial District South.",
       "perfectFor": [],
       "periods": [
@@ -7069,6 +7093,7 @@
         "Seafood"
       ],
       "placeType": "restaurant",
+      "price": 4,
       "oneLiner": "Angler, 132 The Embarcadero. Seafood in Embarcadero.",
       "perfectFor": [],
       "periods": [
@@ -7386,6 +7411,7 @@
         "Japanese"
       ],
       "placeType": "restaurant",
+      "price": 4,
       "oneLiner": "Ozumo sits at 161 Steuart St. Japanese, Embarcadero.",
       "perfectFor": [],
       "periods": [
@@ -7458,6 +7484,7 @@
         "Neapolitan Pizza"
       ],
       "placeType": "pizzeria",
+      "price": 3,
       "oneLiner": "2355 Chestnut St — A16, Neapolitan Pizza, Central Marina.",
       "perfectFor": [],
       "periods": [
@@ -7644,6 +7671,7 @@
         "Cantonese"
       ],
       "placeType": "restaurant",
+      "price": 2,
       "oneLiner": "Chinatown: Four Kings at 710 Commercial St. Cantonese.",
       "perfectFor": [],
       "periods": [
@@ -7842,6 +7870,7 @@
         "Asian Fusion"
       ],
       "placeType": "restaurant",
+      "price": 4,
       "oneLiner": "Asian Fusion at Benu, 22 Hawthorne St, Financial District South.",
       "perfectFor": [],
       "periods": [
