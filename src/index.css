@@ -1263,6 +1263,14 @@ main ul.grid > li {
   gap: 8px;
 }
 
+/* Unlayered display:flex beats the Tailwind `hidden` utility, so the desktop
+   controls were also sticky on a phone, on top of Filters and Map. */
+@media (max-width: 1023px) {
+  .guide-filter-dock > .guide-filters {
+    display: none;
+  }
+}
+
 .guide-filters .price-filter {
   display: contents;
 }
@@ -4412,7 +4420,18 @@ mark {
 
 .search-field {
   position: relative;
+  z-index: 2;
   min-width: 0;
+}
+
+/* In the phone menu the list used to cover Sign in. WebKit then hit the button,
+   which sits later in the sheet at the same layer as the field. Keep the list in flow there. */
+.menu-sheet .search-pop {
+  position: relative;
+  top: auto;
+  right: auto;
+  width: 100%;
+  margin-top: 8px;
 }
 
 .search-pop {
