@@ -55,7 +55,6 @@
       "appleMapsUrl": "https://maps.apple.com/?daddr=47.6100241,-122.2039115&q=Bis%20on%20Main",
       "guideSlugs": [
         "best-of-bellevue",
-        "bellevue",
         "eastside-date-night"
       ],
       "muid": "",
@@ -252,7 +251,6 @@
       "appleMapsUrl": "https://maps.apple.com/?daddr=47.6170951,-122.1919712&q=John%20Howie%20Steak",
       "guideSlugs": [
         "best-of-bellevue",
-        "bellevue",
         "eastside-date-night"
       ],
       "muid": "",
@@ -272,6 +270,12 @@
       "copySource": "draft",
       "updatedAt": "2026-10-20",
       "photos": [
+        {
+          "source": "gusto",
+          "url": "/photos/john-howie-steak-gusto-1.jpg",
+          "alt": "Photo of John Howie Steak by Gusto",
+          "credit": "Photo by Gusto"
+        },
         {
           "source": "illustration",
           "isIllustration": true,
@@ -315,7 +319,7 @@
       "phone": "+1 (425) 454-7500",
       "appleMapsUrl": "https://maps.apple.com/?daddr=47.6165675,-122.202069&q=Tavern%20Hall",
       "guideSlugs": [
-        "bellevue"
+        "eastside-drinks"
       ],
       "muid": "",
       "hoursLabel": "",
@@ -403,6 +407,12 @@
       "copySource": "draft",
       "updatedAt": "2026-10-20",
       "photos": [
+        {
+          "source": "gusto",
+          "url": "/photos/beachhouse-bar-and-grill-gusto-1.jpg",
+          "alt": "Photo of BeachHouse Bar + Grill by Gusto",
+          "credit": "Photo by Gusto"
+        },
         {
           "source": "illustration",
           "isIllustration": true,
@@ -595,11 +605,12 @@
       "phone": "+1 (425) 285-9416",
       "appleMapsUrl": "https://maps.apple.com/?daddr=47.6736412,-122.1246041&q=Woodblock",
       "guideSlugs": [
-        "redmond"
+        "redmond",
+        "eastside-drinks"
       ],
       "muid": "",
       "hoursLabel": "",
-      "blurb": "Order the brisket gnocchi, made with slow-roasted brisket and gnocchi rolled by hand almost every day. The bar holds about a thousand bottles.",
+      "blurb": "Order the brisket gnocchi, made with slow-roasted brisket and gnocchi rolled by hand almost every day. The bar holds about a thousand bottles. The bartending staff are the best in the business—especially Blake and Cam.",
       "orderThis": [
         {
           "dish": "Brisket Gnocchi",
@@ -614,6 +625,12 @@
       "copySource": "draft",
       "updatedAt": "2026-10-20",
       "photos": [
+        {
+          "source": "gusto",
+          "url": "/photos/woodblock-gusto-1.jpg",
+          "alt": "Photo of Woodblock by Gusto",
+          "credit": "Photo by Gusto"
+        },
         {
           "source": "illustration",
           "isIllustration": true,
@@ -663,7 +680,7 @@
       "phone": "+1 (425) 455-1313",
       "appleMapsUrl": "https://maps.apple.com/?daddr=47.6182022,-122.2013198&q=13%20Coins",
       "guideSlugs": [
-        "eastside-brunch"
+        "best-breakfast-on-the-east-side"
       ],
       "muid": "",
       "hoursLabel": "",
@@ -735,7 +752,7 @@
       "website": "https://www.bellevuebrewing.com",
       "appleMapsUrl": "https://maps.apple.com/?daddr=47.621394,-122.1778158&q=Bellevue%20Brewing%20Company",
       "guideSlugs": [
-        "bellevue"
+        "eastside-drinks"
       ],
       "muid": "",
       "hoursLabel": "",
@@ -747,6 +764,12 @@
       "copySource": "draft",
       "updatedAt": "2026-10-20",
       "photos": [
+        {
+          "source": "gusto",
+          "url": "/photos/bellevue-brewing-gusto-1.jpg",
+          "alt": "Photo of Bellevue Brewing Company by Gusto",
+          "credit": "Photo by Gusto"
+        },
         {
           "source": "illustration",
           "isIllustration": true,
@@ -809,7 +832,7 @@
       "phone": "+1 (425) 230-3660",
       "appleMapsUrl": "https://maps.apple.com/?daddr=47.6108569,-122.2039409&q=Third%20Culture%20Coffee",
       "guideSlugs": [
-        "bellevue"
+        "best-breakfast-on-the-east-side"
       ],
       "muid": "",
       "hoursLabel": "",
@@ -869,7 +892,7 @@
       "website": "https://www.farinecafe.com/",
       "appleMapsUrl": "https://maps.apple.com/?daddr=47.6195371,-122.1913429&q=Farine%20Bakery",
       "guideSlugs": [
-        "eastside-brunch"
+        "best-breakfast-on-the-east-side"
       ],
       "muid": "",
       "hoursLabel": "",
@@ -1019,8 +1042,8 @@
       "website": "https://www.ginzabellevue.com/",
       "appleMapsUrl": "https://maps.apple.com/?daddr=47.6098826,-122.2043064&q=Ginza",
       "guideSlugs": [
-        "bellevue",
-        "eastside-asian"
+        "eastside-asian",
+        "japanese-food-in-bellevue"
       ],
       "muid": "",
       "hoursLabel": "",
@@ -1156,9 +1179,9 @@
       "phone": "+1 (425) 502-7259",
       "appleMapsUrl": "https://maps.apple.com/?daddr=47.6116763,-122.2012671&q=Takai%20by%20Kashiba",
       "guideSlugs": [
-        "bellevue",
         "eastside-asian",
-        "eastside-date-night"
+        "eastside-date-night",
+        "japanese-food-in-bellevue"
       ],
       "muid": "",
       "hoursLabel": "",
@@ -1292,7 +1315,8 @@
       "website": "https://mossbayhall.com",
       "appleMapsUrl": "https://maps.apple.com/?daddr=47.6762912,-122.2078125&q=Moss%20Bay%20Hall",
       "guideSlugs": [
-        "kirkland"
+        "kirkland",
+        "eastside-drinks"
       ],
       "muid": "",
       "hoursLabel": "",
@@ -1373,7 +1397,7 @@
       "appleMapsUrl": "https://maps.apple.com/?daddr=47.7081589,-122.2113834&q=Sparrow",
       "guideSlugs": [
         "kirkland",
-        "eastside-brunch"
+        "best-breakfast-on-the-east-side"
       ],
       "muid": "",
       "hoursLabel": "",
@@ -1392,6 +1416,36 @@
       "copySource": "draft",
       "updatedAt": "2026-10-20",
       "photos": [
+        {
+          "source": "gusto",
+          "url": "/photos/sparrow-gusto-1.jpg",
+          "alt": "Photo of Sparrow by Gusto",
+          "credit": "Photo by Gusto"
+        },
+        {
+          "source": "gusto",
+          "url": "/photos/sparrow-gusto-2.jpg",
+          "alt": "Photo of Sparrow by Gusto",
+          "credit": "Photo by Gusto"
+        },
+        {
+          "source": "gusto",
+          "url": "/photos/sparrow-gusto-3.jpg",
+          "alt": "Photo of Sparrow by Gusto",
+          "credit": "Photo by Gusto"
+        },
+        {
+          "source": "gusto",
+          "url": "/photos/sparrow-gusto-4.jpg",
+          "alt": "Photo of Sparrow by Gusto",
+          "credit": "Photo by Gusto"
+        },
+        {
+          "source": "gusto",
+          "url": "/photos/sparrow-gusto-5.jpg",
+          "alt": "Photo of Sparrow by Gusto",
+          "credit": "Photo by Gusto"
+        },
         {
           "source": "illustration",
           "isIllustration": true,
@@ -1436,7 +1490,7 @@
       "appleMapsUrl": "https://maps.apple.com/?daddr=47.6819884,-122.1941403&q=Deru%20Market",
       "guideSlugs": [
         "kirkland",
-        "eastside-brunch"
+        "best-breakfast-on-the-east-side"
       ],
       "muid": "",
       "hoursLabel": "",
@@ -1455,6 +1509,36 @@
       "copySource": "draft",
       "updatedAt": "2026-10-20",
       "photos": [
+        {
+          "source": "gusto",
+          "url": "/photos/deru-market-gusto-1.jpg",
+          "alt": "Photo of Deru Market by Gusto",
+          "credit": "Photo by Gusto"
+        },
+        {
+          "source": "gusto",
+          "url": "/photos/deru-market-gusto-2.jpg",
+          "alt": "Photo of Deru Market by Gusto",
+          "credit": "Photo by Gusto"
+        },
+        {
+          "source": "gusto",
+          "url": "/photos/deru-market-gusto-3.jpg",
+          "alt": "Photo of Deru Market by Gusto",
+          "credit": "Photo by Gusto"
+        },
+        {
+          "source": "gusto",
+          "url": "/photos/deru-market-gusto-4.jpg",
+          "alt": "Photo of Deru Market by Gusto",
+          "credit": "Photo by Gusto"
+        },
+        {
+          "source": "gusto",
+          "url": "/photos/deru-market-gusto-5.jpg",
+          "alt": "Photo of Deru Market by Gusto",
+          "credit": "Photo by Gusto"
+        },
         {
           "source": "illustration",
           "isIllustration": true,
@@ -1504,7 +1588,7 @@
       "appleMapsUrl": "https://maps.apple.com/?daddr=47.6759811,-122.1262638&q=The%20British%20Pantry",
       "guideSlugs": [
         "redmond",
-        "eastside-brunch"
+        "best-breakfast-on-the-east-side"
       ],
       "muid": "",
       "hoursLabel": "",
@@ -1573,7 +1657,8 @@
       "website": "https://www.postdocbrewing.com/",
       "appleMapsUrl": "https://maps.apple.com/?daddr=47.6636505,-122.1054223&q=Postdoc%20Brewing",
       "guideSlugs": [
-        "redmond"
+        "redmond",
+        "eastside-drinks"
       ],
       "muid": "",
       "hoursLabel": "",
@@ -1583,6 +1668,12 @@
       "copySource": "draft",
       "updatedAt": "2026-10-20",
       "photos": [
+        {
+          "source": "gusto",
+          "url": "/photos/postdoc-brewing-gusto-1.jpg",
+          "alt": "Photo of Postdoc Brewing by Gusto",
+          "credit": "Photo by Gusto"
+        },
         {
           "source": "illustration",
           "isIllustration": true,
@@ -1826,7 +1917,9 @@
       "gustoScore": null,
       "website": "https://lexperienceparis.com/",
       "appleMapsUrl": "https://maps.apple.com/?daddr=47.5832528,-122.2327738&q=L'Experience%20Paris",
-      "guideSlugs": [],
+      "guideSlugs": [
+        "best-breakfast-on-the-east-side"
+      ],
       "muid": "",
       "hoursLabel": "",
       "blurb": "",
@@ -1837,6 +1930,12 @@
       "copySource": "draft",
       "updatedAt": "2026-10-20",
       "photos": [
+        {
+          "source": "gusto",
+          "url": "/photos/lexperience-paris-gusto-1.jpg",
+          "alt": "Photo of L'Experience Paris by Gusto",
+          "credit": "Photo by Gusto"
+        },
         {
           "source": "illustration",
           "isIllustration": true,
@@ -1983,6 +2082,66 @@
       "updatedAt": "2026-10-22",
       "photos": [
         {
+          "source": "gusto",
+          "url": "/photos/la-mar-bellevue-gusto-1.jpg",
+          "alt": "Photo of La Mar by Gusto",
+          "credit": "Photo by Gusto"
+        },
+        {
+          "source": "gusto",
+          "url": "/photos/la-mar-bellevue-gusto-2.jpg",
+          "alt": "Photo of La Mar by Gusto",
+          "credit": "Photo by Gusto"
+        },
+        {
+          "source": "gusto",
+          "url": "/photos/la-mar-bellevue-gusto-3.jpg",
+          "alt": "Photo of La Mar by Gusto",
+          "credit": "Photo by Gusto"
+        },
+        {
+          "source": "gusto",
+          "url": "/photos/la-mar-bellevue-gusto-4.jpg",
+          "alt": "Photo of La Mar by Gusto",
+          "credit": "Photo by Gusto"
+        },
+        {
+          "source": "gusto",
+          "url": "/photos/la-mar-bellevue-gusto-5.jpg",
+          "alt": "Photo of La Mar by Gusto",
+          "credit": "Photo by Gusto"
+        },
+        {
+          "source": "gusto",
+          "url": "/photos/la-mar-bellevue-gusto-6.jpg",
+          "alt": "Photo of La Mar by Gusto",
+          "credit": "Photo by Gusto"
+        },
+        {
+          "source": "gusto",
+          "url": "/photos/la-mar-bellevue-gusto-7.jpg",
+          "alt": "Photo of La Mar by Gusto",
+          "credit": "Photo by Gusto"
+        },
+        {
+          "source": "gusto",
+          "url": "/photos/la-mar-bellevue-gusto-8.jpg",
+          "alt": "Photo of La Mar by Gusto",
+          "credit": "Photo by Gusto"
+        },
+        {
+          "source": "gusto",
+          "url": "/photos/la-mar-bellevue-gusto-9.jpg",
+          "alt": "Photo of La Mar by Gusto",
+          "credit": "Photo by Gusto"
+        },
+        {
+          "source": "gusto",
+          "url": "/photos/la-mar-bellevue-gusto-10.jpg",
+          "alt": "Photo of La Mar by Gusto",
+          "credit": "Photo by Gusto"
+        },
+        {
           "source": "illustration",
           "isIllustration": true,
           "alt": "Illustration suggesting Peruvian at La Mar",
@@ -2051,8 +2210,8 @@
       "appleMapsUrl": "https://maps.apple.com/?daddr=47.6140987,-122.2008181&q=Ascend%20Prime%20Steak%20%26%20Sushi",
       "applePlaceUrl": "https://maps.apple.com/place?auid=5316906510073088576",
       "guideSlugs": [
-        "bellevue",
-        "best-of-bellevue"
+        "best-of-bellevue",
+        "eastside-date-night"
       ],
       "muid": "5316906510073088576",
       "hoursLabel": "",
@@ -2071,6 +2230,54 @@
       "copySource": "draft",
       "updatedAt": "2026-10-22",
       "photos": [
+        {
+          "source": "gusto",
+          "url": "/photos/ascend-prime-steak-and-sushi-gusto-1.jpg",
+          "alt": "Photo of Ascend Prime Steak & Sushi by Gusto",
+          "credit": "Photo by Gusto"
+        },
+        {
+          "source": "gusto",
+          "url": "/photos/ascend-prime-steak-and-sushi-gusto-2.jpg",
+          "alt": "Photo of Ascend Prime Steak & Sushi by Gusto",
+          "credit": "Photo by Gusto"
+        },
+        {
+          "source": "gusto",
+          "url": "/photos/ascend-prime-steak-and-sushi-gusto-3.jpg",
+          "alt": "Photo of Ascend Prime Steak & Sushi by Gusto",
+          "credit": "Photo by Gusto"
+        },
+        {
+          "source": "gusto",
+          "url": "/photos/ascend-prime-steak-and-sushi-gusto-4.jpg",
+          "alt": "Photo of Ascend Prime Steak & Sushi by Gusto",
+          "credit": "Photo by Gusto"
+        },
+        {
+          "source": "gusto",
+          "url": "/photos/ascend-prime-steak-and-sushi-gusto-5.jpg",
+          "alt": "Photo of Ascend Prime Steak & Sushi by Gusto",
+          "credit": "Photo by Gusto"
+        },
+        {
+          "source": "gusto",
+          "url": "/photos/ascend-prime-steak-and-sushi-gusto-6.jpg",
+          "alt": "Photo of Ascend Prime Steak & Sushi by Gusto",
+          "credit": "Photo by Gusto"
+        },
+        {
+          "source": "gusto",
+          "url": "/photos/ascend-prime-steak-and-sushi-gusto-7.jpg",
+          "alt": "Photo of Ascend Prime Steak & Sushi by Gusto",
+          "credit": "Photo by Gusto"
+        },
+        {
+          "source": "gusto",
+          "url": "/photos/ascend-prime-steak-and-sushi-gusto-8.jpg",
+          "alt": "Photo of Ascend Prime Steak & Sushi by Gusto",
+          "credit": "Photo by Gusto"
+        },
         {
           "source": "illustration",
           "isIllustration": true,
@@ -2115,7 +2322,7 @@
       "appleMapsUrl": "https://maps.apple.com/?daddr=47.6182852,-122.2006595&q=Daniel's%20Broiler",
       "applePlaceUrl": "https://maps.apple.com/place?auid=7146954780601002084",
       "guideSlugs": [
-        "bellevue"
+        "best-of-bellevue"
       ],
       "muid": "7146954780601002084",
       "hoursLabel": "",
@@ -2364,8 +2571,8 @@
       "appleMapsUrl": "https://maps.apple.com/?daddr=47.61811,-122.1922&q=Minamoto%20Japanese%20Restaurant",
       "applePlaceUrl": "https://maps.apple.com/place?auid=3098962773215072787",
       "guideSlugs": [
-        "bellevue",
-        "eastside-asian"
+        "eastside-asian",
+        "japanese-food-in-bellevue"
       ],
       "muid": "3098962773215072787",
       "hoursLabel": "",
@@ -2382,6 +2589,18 @@
       "copySource": "draft",
       "updatedAt": "2026-10-22",
       "photos": [
+        {
+          "source": "gusto",
+          "url": "/photos/minamoto-gusto-1.jpg",
+          "alt": "Photo of Minamoto Japanese Restaurant by Gusto",
+          "credit": "Photo by Gusto"
+        },
+        {
+          "source": "gusto",
+          "url": "/photos/minamoto-gusto-2.jpg",
+          "alt": "Photo of Minamoto Japanese Restaurant by Gusto",
+          "credit": "Photo by Gusto"
+        },
         {
           "source": "illustration",
           "isIllustration": true,
@@ -2457,6 +2676,12 @@
       "copySource": "draft",
       "updatedAt": "2026-10-22",
       "photos": [
+        {
+          "source": "gusto",
+          "url": "/photos/water-grill-bellevue-gusto-1.jpg",
+          "alt": "Photo of Water Grill by Gusto",
+          "credit": "Photo by Gusto"
+        },
         {
           "source": "illustration",
           "isIllustration": true,
@@ -2648,8 +2873,8 @@
       "appleMapsUrl": "https://maps.apple.com/?daddr=47.6163741,-122.201373&q=Earls%20Kitchen%20%2B%20Bar",
       "applePlaceUrl": "https://maps.apple.com/place?auid=14508377034778846098",
       "guideSlugs": [
-        "bellevue",
-        "best-of-bellevue"
+        "best-of-bellevue",
+        "eastside-drinks"
       ],
       "muid": "14508377034778846098",
       "hoursLabel": "",
@@ -2670,6 +2895,30 @@
       "copySource": "draft",
       "updatedAt": "2026-10-22",
       "photos": [
+        {
+          "source": "gusto",
+          "url": "/photos/earls-kitchen-bar-gusto-1.jpg",
+          "alt": "Photo of Earls Kitchen + Bar by Gusto",
+          "credit": "Photo by Gusto"
+        },
+        {
+          "source": "gusto",
+          "url": "/photos/earls-kitchen-bar-gusto-2.jpg",
+          "alt": "Photo of Earls Kitchen + Bar by Gusto",
+          "credit": "Photo by Gusto"
+        },
+        {
+          "source": "gusto",
+          "url": "/photos/earls-kitchen-bar-gusto-3.jpg",
+          "alt": "Photo of Earls Kitchen + Bar by Gusto",
+          "credit": "Photo by Gusto"
+        },
+        {
+          "source": "gusto",
+          "url": "/photos/earls-kitchen-bar-gusto-4.jpg",
+          "alt": "Photo of Earls Kitchen + Bar by Gusto",
+          "credit": "Photo by Gusto"
+        },
         {
           "source": "illustration",
           "isIllustration": true,
@@ -2844,6 +3093,12 @@
       "updatedAt": "2026-10-22",
       "photos": [
         {
+          "source": "gusto",
+          "url": "/photos/farzi-cafe-gusto-1.jpg",
+          "alt": "Photo of Farzi Cafe by Gusto",
+          "credit": "Photo by Gusto"
+        },
+        {
           "source": "illustration",
           "isIllustration": true,
           "alt": "Illustration suggesting Indian at Farzi Cafe",
@@ -2898,8 +3153,8 @@
       "appleMapsUrl": "https://maps.apple.com/?daddr=47.6113818,-122.202065&q=Hokkaido%20Ramen%20Santouka",
       "applePlaceUrl": "https://maps.apple.com/place?auid=14397719807160244876",
       "guideSlugs": [
-        "bellevue",
-        "eastside-asian"
+        "eastside-asian",
+        "japanese-food-in-bellevue"
       ],
       "muid": "14397719807160244876",
       "hoursLabel": "",
@@ -2968,8 +3223,8 @@
       "appleMapsUrl": "https://maps.apple.com/?daddr=47.6146986,-122.2012691&q=Japonessa%20Sushi%20Cocina",
       "applePlaceUrl": "https://maps.apple.com/place?auid=235237345928053165",
       "guideSlugs": [
-        "bellevue",
-        "eastside-asian"
+        "eastside-asian",
+        "japanese-food-in-bellevue"
       ],
       "muid": "235237345928053165",
       "hoursLabel": "",
@@ -3058,9 +3313,7 @@
       "phone": "+1 (425) 679-6868",
       "appleMapsUrl": "https://maps.apple.com/?daddr=47.6128152,-122.1998672&q=Desi%20Tadka%20Indian%20Grill",
       "applePlaceUrl": "https://maps.apple.com/place?auid=2651018645555388686",
-      "guideSlugs": [
-        "bellevue"
-      ],
+      "guideSlugs": [],
       "muid": "2651018645555388686",
       "hoursLabel": "",
       "blurb": "Order the chole bhature, chickpeas with two puffed fried breads, or a matar paneer thali. The whole menu is vegetarian, with no-onion, no-garlic options.",
@@ -3122,7 +3375,6 @@
       "appleMapsUrl": "https://maps.apple.com/?daddr=47.6103329,-122.202483&q=Dough%20Zone",
       "applePlaceUrl": "https://maps.apple.com/place?auid=10388261190878961191",
       "guideSlugs": [
-        "bellevue",
         "eastside-asian"
       ],
       "muid": "10388261190878961191",
@@ -3203,8 +3455,8 @@
       "appleMapsUrl": "https://maps.apple.com/?daddr=47.6208532,-122.1934872&q=Rolls%20%26%20Rolls%20Plus%20Sushi",
       "applePlaceUrl": "https://maps.apple.com/place?auid=17184319331265813298",
       "guideSlugs": [
-        "bellevue",
-        "eastside-asian"
+        "eastside-asian",
+        "japanese-food-in-bellevue"
       ],
       "muid": "17184319331265813298",
       "hoursLabel": "",
@@ -3216,6 +3468,12 @@
       "copySource": "draft",
       "updatedAt": "2026-10-22",
       "photos": [
+        {
+          "source": "gusto",
+          "url": "/photos/rolls-and-rolls-gusto-1.jpg",
+          "alt": "Photo of Rolls & Rolls Plus Sushi by Gusto",
+          "credit": "Photo by Gusto"
+        },
         {
           "source": "illustration",
           "isIllustration": true,
@@ -3276,9 +3534,7 @@
       "phone": "+1 (425) 643-2670",
       "appleMapsUrl": "https://maps.apple.com/?daddr=47.6257619,-122.154732&q=Ezell's%20Famous%20Chicken",
       "applePlaceUrl": "https://maps.apple.com/place?auid=11695178579399116619",
-      "guideSlugs": [
-        "bellevue"
-      ],
+      "guideSlugs": [],
       "muid": "11695178579399116619",
       "hoursLabel": "",
       "blurb": "Get it spicy, with dark meat, the way Oprah orders it, plus the sweet fresh-baked rolls. Ezell's has been frying chicken in Seattle since 1984.",
@@ -3392,6 +3648,12 @@
       "updatedAt": "2026-10-22",
       "photos": [
         {
+          "source": "gusto",
+          "url": "/photos/fern-thai-on-main-gusto-1.jpg",
+          "alt": "Photo of Fern Thai on Main by Gusto",
+          "credit": "Photo by Gusto"
+        },
+        {
           "source": "illustration",
           "isIllustration": true,
           "alt": "Illustration suggesting Thai at Fern Thai on Main",
@@ -3441,7 +3703,7 @@
       "appleMapsUrl": "https://maps.apple.com/?daddr=47.6134912,-122.1968793&q=FOB%20Poke%20Bar",
       "applePlaceUrl": "https://maps.apple.com/place?auid=3517824207168419144",
       "guideSlugs": [
-        "bellevue"
+        "japanese-food-in-bellevue"
       ],
       "muid": "3517824207168419144",
       "hoursLabel": "",
@@ -3508,9 +3770,7 @@
       "phone": "+1 (206) 726-1717",
       "appleMapsUrl": "https://maps.apple.com/?daddr=47.6103973,-122.1984014&q=Pagliacci%20Pizza",
       "applePlaceUrl": "https://maps.apple.com/place?auid=18196189739224874619",
-      "guideSlugs": [
-        "bellevue"
-      ],
+      "guideSlugs": [],
       "muid": "18196189739224874619",
       "hoursLabel": "",
       "blurb": "Order the Brooklyn Bridge, with Cascioppo sausage, mushrooms, olives, peppers and onions. Pagliacci has made pizza in Seattle since 1979.",
@@ -3594,7 +3854,7 @@
       "appleMapsUrl": "https://maps.apple.com/?daddr=47.6154357,-122.2007292&q=Central%20Bar%20%2B%20Restaurant",
       "applePlaceUrl": "https://maps.apple.com/place?auid=17092655385343306061",
       "guideSlugs": [
-        "bellevue"
+        "eastside-drinks"
       ],
       "muid": "17092655385343306061",
       "hoursLabel": "",
@@ -3615,6 +3875,12 @@
       "copySource": "draft",
       "updatedAt": "2026-10-22",
       "photos": [
+        {
+          "source": "gusto",
+          "url": "/photos/central-bar-restaurant-gusto-1.jpg",
+          "alt": "Photo of Central Bar + Restaurant by Gusto",
+          "credit": "Photo by Gusto"
+        },
         {
           "source": "illustration",
           "isIllustration": true,
@@ -3662,9 +3928,7 @@
       "phone": "+1 (425) 646-3474",
       "appleMapsUrl": "https://maps.apple.com/?daddr=47.6105012,-122.1976849&q=Broiler%20Bay%20Hamburgers",
       "applePlaceUrl": "https://maps.apple.com/place?auid=70696049156331835",
-      "guideSlugs": [
-        "bellevue"
-      ],
+      "guideSlugs": [],
       "muid": "70696049156331835",
       "hoursLabel": "",
       "blurb": "Get the bacon cheeseburger on its huge sesame bun, with fry sauce and onion rings. Add a milkshake; the room hasn't changed much since 1989.",
@@ -3682,6 +3946,12 @@
       "copySource": "draft",
       "updatedAt": "2026-10-22",
       "photos": [
+        {
+          "source": "gusto",
+          "url": "/photos/broiler-bay-gusto-1.jpg",
+          "alt": "Photo of Broiler Bay Hamburgers by Gusto",
+          "credit": "Photo by Gusto"
+        },
         {
           "source": "illustration",
           "isIllustration": true,
@@ -3883,7 +4153,7 @@
       "appleMapsUrl": "https://maps.apple.com/?daddr=47.614966,-122.200585&q=Civility%20%26%20Unrest",
       "applePlaceUrl": "https://maps.apple.com/place?auid=4431814629018651525",
       "guideSlugs": [
-        "bellevue"
+        "eastside-drinks"
       ],
       "muid": "4431814629018651525",
       "hoursLabel": "",
@@ -3900,6 +4170,12 @@
       "copySource": "draft",
       "updatedAt": "2026-10-22",
       "photos": [
+        {
+          "source": "gusto",
+          "url": "/photos/civility-and-unrest-gusto-1.jpg",
+          "alt": "Photo of Civility & Unrest by Gusto",
+          "credit": "Photo by Gusto"
+        },
         {
           "source": "illustration",
           "isIllustration": true,
@@ -3967,8 +4243,8 @@
       "appleMapsUrl": "https://maps.apple.com/?daddr=47.6118706,-122.184894&q=Kura%20Revolving%20Sushi%20Bar",
       "applePlaceUrl": "https://maps.apple.com/place?auid=3351618210874800921",
       "guideSlugs": [
-        "bellevue",
-        "eastside-asian"
+        "eastside-asian",
+        "japanese-food-in-bellevue"
       ],
       "muid": "3351618210874800921",
       "hoursLabel": "",
@@ -4039,7 +4315,7 @@
       "appleMapsUrl": "https://maps.apple.com/?daddr=47.6102649,-122.204366&q=520%20Bar%20and%20Grill",
       "applePlaceUrl": "https://maps.apple.com/place?auid=13217783101883786373",
       "guideSlugs": [
-        "bellevue"
+        "eastside-drinks"
       ],
       "muid": "13217783101883786373",
       "hoursLabel": "",
@@ -4187,7 +4463,7 @@
       "appleMapsUrl": "https://maps.apple.com/?daddr=47.611842,-122.200963&q=Semicolon%20Cafe",
       "applePlaceUrl": "https://maps.apple.com/place?auid=17374801430124812803",
       "guideSlugs": [
-        "bellevue"
+        "best-breakfast-on-the-east-side"
       ],
       "muid": "17374801430124812803",
       "hoursLabel": "",
@@ -4293,6 +4569,24 @@
       "copySource": "draft",
       "updatedAt": "2026-10-22",
       "photos": [
+        {
+          "source": "gusto",
+          "url": "/photos/spark-pizza-gusto-1.jpg",
+          "alt": "Photo of Spark Pizza by Gusto",
+          "credit": "Photo by Gusto"
+        },
+        {
+          "source": "gusto",
+          "url": "/photos/spark-pizza-gusto-2.jpg",
+          "alt": "Photo of Spark Pizza by Gusto",
+          "credit": "Photo by Gusto"
+        },
+        {
+          "source": "gusto",
+          "url": "/photos/spark-pizza-gusto-3.jpg",
+          "alt": "Photo of Spark Pizza by Gusto",
+          "credit": "Photo by Gusto"
+        },
         {
           "source": "illustration",
           "isIllustration": true,
@@ -4613,6 +4907,12 @@
       "copySource": "draft",
       "updatedAt": "2026-10-22",
       "photos": [
+        {
+          "source": "gusto",
+          "url": "/photos/kobuta-and-ookami-redmond-gusto-1.jpg",
+          "alt": "Photo of Kobuta & Ookami by Gusto",
+          "credit": "Photo by Gusto"
+        },
         {
           "source": "illustration",
           "isIllustration": true,
@@ -4983,6 +5283,12 @@
       "updatedAt": "2026-10-22",
       "photos": [
         {
+          "source": "gusto",
+          "url": "/photos/cactus-kirkland-gusto-1.jpg",
+          "alt": "Photo of Cactus by Gusto",
+          "credit": "Photo by Gusto"
+        },
+        {
           "source": "illustration",
           "isIllustration": true,
           "alt": "Illustration suggesting Mexican at Cactus",
@@ -5061,6 +5367,18 @@
       "copySource": "draft",
       "updatedAt": "2026-10-22",
       "photos": [
+        {
+          "source": "gusto",
+          "url": "/photos/shawns-cafe-and-bakery-gusto-1.jpg",
+          "alt": "Photo of Shawn's Cafe and Bakery by Gusto",
+          "credit": "Photo by Gusto"
+        },
+        {
+          "source": "gusto",
+          "url": "/photos/shawns-cafe-and-bakery-gusto-2.jpg",
+          "alt": "Photo of Shawn's Cafe and Bakery by Gusto",
+          "credit": "Photo by Gusto"
+        },
         {
           "source": "illustration",
           "isIllustration": true,
@@ -5401,7 +5719,6 @@
       "appleMapsUrl": "https://maps.apple.com/?daddr=47.6171883,-122.2007779&q=Din%20Tai%20Fung",
       "applePlaceUrl": "https://maps.apple.com/place?auid=15528763534139621446",
       "guideSlugs": [
-        "bellevue",
         "eastside-asian"
       ],
       "muid": "15528763534139621446",
@@ -5412,6 +5729,12 @@
       "copySource": "draft",
       "updatedAt": "2026-10-22",
       "photos": [
+        {
+          "source": "gusto",
+          "url": "/photos/din-tai-fung-bellevue-gusto-1.jpg",
+          "alt": "Photo of Din Tai Fung by Gusto",
+          "credit": "Photo by Gusto"
+        },
         {
           "source": "illustration",
           "isIllustration": true,
@@ -5541,9 +5864,9 @@
       "appleMapsUrl": "https://maps.apple.com/?daddr=47.6287886,-122.1656272&q=Ramen%20Nori",
       "applePlaceUrl": "https://maps.apple.com/place?auid=13611242735207683381",
       "guideSlugs": [
-        "bellevue",
         "eastside-asian",
-        "best-of-bellevue"
+        "best-of-bellevue",
+        "japanese-food-in-bellevue"
       ],
       "muid": "13611242735207683381",
       "hoursLabel": "",
@@ -5553,6 +5876,12 @@
       "copySource": "draft",
       "updatedAt": "2026-10-22",
       "photos": [
+        {
+          "source": "gusto",
+          "url": "/photos/ramen-nori-gusto-1.jpg",
+          "alt": "Photo of Ramen Nori by Gusto",
+          "credit": "Photo by Gusto"
+        },
         {
           "source": "illustration",
           "isIllustration": true,
@@ -5601,9 +5930,7 @@
       "phone": "+1 (425) 827-9566",
       "appleMapsUrl": "https://maps.apple.com/?daddr=47.642185,-122.19886&q=Burgermaster",
       "applePlaceUrl": "https://maps.apple.com/place?auid=7205519918905417088",
-      "guideSlugs": [
-        "bellevue"
-      ],
+      "guideSlugs": [],
       "muid": "7205519918905417088",
       "hoursLabel": "",
       "blurb": "Turn on your headlights and a carhop takes your order at the car. The beef is grass-fed, and the tartar sauce is still Phil Jensen's 1952 recipe.",
@@ -5697,9 +6024,371 @@
           "credit": "Photo by Gusto"
         },
         {
+          "source": "gusto",
+          "url": "/photos/tendon-kohaku-gusto-2.jpg",
+          "alt": "Photo of Tendon Kohaku by Gusto",
+          "credit": "Photo by Gusto"
+        },
+        {
           "source": "illustration",
           "isIllustration": true,
           "alt": "Illustration suggesting Japanese at Tendon Kohaku",
+          "credit": "Illustration"
+        }
+      ]
+    },
+    {
+      "id": "palmers-east",
+      "city": "eastside",
+      "name": "Palmer's East",
+      "neighborhood": "Downtown Redmond",
+      "address": "7853 Leary Way NE, Redmond, WA 98052",
+      "lat": 47.6738115,
+      "lng": -122.1231437,
+      "cuisine": [
+        "American"
+      ],
+      "placeType": "bar",
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [],
+      "gustoScore": null,
+      "website": "https://www.facebook.com/PalmersEast",
+      "appleMapsUrl": "https://maps.apple.com/?daddr=47.6738115,-122.1231437&q=Palmer%27s%20East",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=1512320732444284915",
+      "guideSlugs": [
+        "eastside-drinks"
+      ],
+      "muid": "1512320732444284915",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-11-10",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting American at Palmer's East",
+          "credit": "Illustration"
+        }
+      ]
+    },
+    {
+      "id": "central-tavern",
+      "city": "eastside",
+      "name": "Central Tavern",
+      "neighborhood": "Downtown Kirkland",
+      "address": "124 Kirkland Ave, Kirkland, WA 98033",
+      "lat": 47.6756598,
+      "lng": -122.2055489,
+      "cuisine": [
+        "Bar"
+      ],
+      "placeType": "bar",
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "start": 960,
+          "end": 120
+        }
+      ],
+      "gustoScore": null,
+      "website": "https://www.thestedmangroup.com/centraltavern",
+      "appleMapsUrl": "https://maps.apple.com/?daddr=47.6756598,-122.2055489&q=Central%20Tavern",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=464937097248191658",
+      "guideSlugs": [
+        "eastside-drinks"
+      ],
+      "muid": "464937097248191658",
+      "hoursLabel": "Daily 4pm-2am. Happy hour 4-6pm Mon-Fri.",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-11-10",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Bar at Central Tavern",
+          "credit": "Illustration"
+        }
+      ]
+    },
+    {
+      "id": "the-goose-pub",
+      "city": "eastside",
+      "name": "The Goose Pub & Eatery",
+      "neighborhood": "Spring District",
+      "address": "12001 NE 12th Street, Bellevue, WA 98005",
+      "lat": 47.6198092,
+      "lng": -122.1788807,
+      "cuisine": [
+        "American"
+      ],
+      "placeType": "pub",
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "start": 600,
+          "end": 120
+        }
+      ],
+      "gustoScore": null,
+      "website": "https://thegoosepub.com/",
+      "appleMapsUrl": "https://maps.apple.com/?daddr=47.6198092,-122.1788807&q=The%20Goose%20Pub%20%26%20Eatery",
+      "guideSlugs": [
+        "eastside-drinks"
+      ],
+      "muid": "",
+      "hoursLabel": "Daily 10am-2am.",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-11-10",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting American at The Goose Pub & Eatery",
+          "credit": "Illustration"
+        }
+      ]
+    },
+    {
+      "id": "village-square-cafe",
+      "city": "eastside",
+      "name": "Village Square Cafe",
+      "neighborhood": "Downtown Redmond",
+      "address": "16150 NE 85th St, Redmond, WA 98052",
+      "lat": 47.6788593,
+      "lng": -122.124949,
+      "cuisine": [
+        "Cafe"
+      ],
+      "placeType": "cafe",
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [],
+      "gustoScore": null,
+      "website": "https://villagesquare.cafesinc.com/",
+      "phone": "+1 (425) 885-7287",
+      "appleMapsUrl": "https://maps.apple.com/?daddr=47.6788593,-122.124949&q=Village%20Square%20Cafe",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=5179134362630202663",
+      "guideSlugs": [
+        "best-breakfast-on-the-east-side"
+      ],
+      "muid": "5179134362630202663",
+      "hoursLabel": "",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-11-10",
+      "photos": [
+        {
+          "source": "gusto",
+          "url": "/photos/village-square-cafe-gusto-1.jpg",
+          "alt": "Photo of Village Square Cafe by Gusto",
+          "credit": "Photo by Gusto"
+        },
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Cafe at Village Square Cafe",
+          "credit": "Illustration"
+        }
+      ]
+    },
+    {
+      "id": "doppio-cafe-and-creperie",
+      "city": "eastside",
+      "name": "Doppio Cafe & Creperie",
+      "neighborhood": "Downtown Redmond",
+      "address": "8296 160th Ave NE, Suite 106, Redmond, WA 98052",
+      "lat": 47.6765588,
+      "lng": -122.1273322,
+      "cuisine": [
+        "Cafe"
+      ],
+      "placeType": "cafe",
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "start": 420,
+          "end": 1020
+        }
+      ],
+      "gustoScore": null,
+      "website": "https://www.doppiocafeandcreperie.com/",
+      "phone": "+1 (425) 376-0106",
+      "appleMapsUrl": "https://maps.apple.com/?daddr=47.6765588,-122.1273322&q=Doppio%20Cafe%20%26%20Creperie",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=848874746731487255",
+      "guideSlugs": [
+        "best-breakfast-on-the-east-side"
+      ],
+      "muid": "848874746731487255",
+      "hoursLabel": "Open daily 7am-5pm.",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-11-10",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting Cafe at Doppio Cafe & Creperie",
+          "credit": "Illustration"
+        }
+      ]
+    },
+    {
+      "id": "chaces-pancake-corral",
+      "city": "eastside",
+      "name": "Chace's Pancake Corral",
+      "neighborhood": "Downtown Bellevue",
+      "address": "1606 Bellevue Way SE, Bellevue, WA 98004",
+      "lat": 47.5964017,
+      "lng": -122.1978698,
+      "cuisine": [
+        "American"
+      ],
+      "placeType": "restaurant",
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "start": 420,
+          "end": 840
+        },
+        {
+          "days": [
+            0,
+            6
+          ],
+          "start": 420,
+          "end": 870
+        }
+      ],
+      "gustoScore": null,
+      "website": "https://www.pancakecorral.com/",
+      "phone": "+1 (425) 454-8888",
+      "appleMapsUrl": "https://maps.apple.com/?daddr=47.5964017,-122.1978698&q=Chace%27s%20Pancake%20Corral",
+      "guideSlugs": [
+        "best-breakfast-on-the-east-side"
+      ],
+      "muid": "",
+      "hoursLabel": "Monday-Friday 7am-2pm. Saturday-Sunday 7am-2:30pm.",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-11-10",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting American at Chace's Pancake Corral",
+          "credit": "Illustration"
+        }
+      ]
+    },
+    {
+      "id": "lil-jon-restaurant-and-lounge",
+      "city": "eastside",
+      "name": "Lil' Jon Restaurant & Lounge",
+      "neighborhood": "Eastgate",
+      "address": "3080 148th Ave SE, Suite 201, Bellevue, WA 98007",
+      "lat": 47.5819807,
+      "lng": -122.1387466,
+      "cuisine": [
+        "American"
+      ],
+      "placeType": "restaurant",
+      "oneLiner": "",
+      "perfectFor": [],
+      "periods": [
+        {
+          "days": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "start": 360,
+          "end": 1320
+        },
+        {
+          "days": [
+            0
+          ],
+          "start": 360,
+          "end": 1260
+        }
+      ],
+      "gustoScore": null,
+      "website": "https://liljonrestaurant.net/",
+      "phone": "+1 (425) 746-4653",
+      "appleMapsUrl": "https://maps.apple.com/?daddr=47.5819807,-122.1387466&q=Lil%27%20Jon%20Restaurant%20%26%20Lounge",
+      "applePlaceUrl": "https://maps.apple.com/place?auid=2648199037916237449",
+      "guideSlugs": [
+        "best-breakfast-on-the-east-side"
+      ],
+      "muid": "2648199037916237449",
+      "hoursLabel": "Monday-Saturday 6am-10pm. Sunday 6am-9pm.",
+      "blurb": "",
+      "orderThis": [],
+      "ids": {},
+      "copySource": "draft",
+      "updatedAt": "2026-11-10",
+      "photos": [
+        {
+          "source": "illustration",
+          "isIllustration": true,
+          "alt": "Illustration suggesting American at Lil' Jon Restaurant & Lounge",
           "credit": "Illustration"
         }
       ]
@@ -5752,6 +6441,12 @@
           "pullQuote": "",
           "blurb": "",
           "copySource": "draft"
+        },
+        {
+          "placeId": "daniels-broiler",
+          "pullQuote": "Prime filet on the 21st floor, Bellevue's steakhouse since 1989.",
+          "blurb": "Order the Daniel's Cut, a 12-ounce Prime filet under the house steak butter. The decks face the Seattle skyline and the Olympics.",
+          "copySource": "draft"
         }
       ]
     },
@@ -5775,7 +6470,7 @@
         {
           "placeId": "woodblock",
           "pullQuote": "Brisket gnocchi and a thousand-bottle whiskey wall in Redmond.",
-          "blurb": "Order the brisket gnocchi, made with slow-roasted brisket and gnocchi rolled by hand almost every day. The bar holds about a thousand bottles.",
+          "blurb": "Order the brisket gnocchi, made with slow-roasted brisket and gnocchi rolled by hand almost every day. The bar holds about a thousand bottles. The bartending staff are the best in the business—especially Blake and Cam.",
           "copySource": "draft"
         },
         {
@@ -5836,27 +6531,15 @@
     },
     {
       "slug": "bellevue",
-      "title": "Bellevue",
-      "dek": "Old Bellevue, downtown, Factoria, Bel-Red, and Lake Bellevue.",
+      "title": "Bellevue Essentials",
+      "dek": "Fifteen Bellevue rooms on the main list.",
       "group": "Neighborhoods",
-      "intro": "Bellevue rooms with a street address, from Main Street out to Factoria, Bel-Red, and the Spring District.",
-      "updatedAt": "2026-10-25",
+      "intro": "The main Bellevue list: Water Grill, La Mar, Carmine's, STK Steakhouse, Cantinetta, Cantina Monarca, Baron's Sino Kitchen & Bar, Wild Ginger, Farzi Cafe, Seastar Restaurant & Raw Bar, Castilla, Fern Thai on Main, Joey Bellevue, Monsoon Bellevue, and Fogo de Chão.",
+      "updatedAt": "2026-11-10",
       "ranked": false,
       "pinned": true,
       "city": "eastside",
       "entries": [
-        {
-          "placeId": "ascend-prime-steak-and-sushi",
-          "pullQuote": "A5 wagyu and omakase, 31 floors above Bellevue.",
-          "blurb": "Come for the wagyu: Miyazaki A5 filet by the ounce, or a three-cut tenderloin flight in the lounge. The sushi bar runs a premium omakase.",
-          "copySource": "draft"
-        },
-        {
-          "placeId": "daniels-broiler",
-          "pullQuote": "Prime filet on the 21st floor, Bellevue's steakhouse since 1989.",
-          "blurb": "Order the Daniel's Cut, a 12-ounce Prime filet under the house steak butter. The decks face the Seattle skyline and the Olympics.",
-          "copySource": "draft"
-        },
         {
           "placeId": "water-grill-bellevue",
           "pullQuote": "Live Dungeness crab by the pound and a raw bar on Bellevue Way.",
@@ -5876,21 +6559,9 @@
           "copySource": "draft"
         },
         {
-          "placeId": "din-tai-fung-bellevue",
-          "pullQuote": "",
-          "blurb": "",
-          "copySource": "draft"
-        },
-        {
           "placeId": "stk-bellevue",
           "pullQuote": "Wagyu Lil' Brgs and steak to a DJ set in Lincoln Square.",
           "blurb": "Start with the Lil' Brgs, wagyu sliders with special sauce on sesame buns, then a steak. A DJ plays through dinner.",
-          "copySource": "draft"
-        },
-        {
-          "placeId": "minamoto",
-          "pullQuote": "Seasonal omakase from New York's Iki alumni, in Bellevue.",
-          "blurb": "Book the omakase: 15 to 18 seasonal courses at two seatings, reserved at least three days ahead. The regular menu covers sushi, tempura and wagyu.",
           "copySource": "draft"
         },
         {
@@ -5903,24 +6574,6 @@
           "placeId": "cantina-monarca",
           "pullQuote": "Handmade-tortilla tacos and over 100 tequilas in Bellevue.",
           "blurb": "Get the Baja sea bass taco, battered and fried with apple slaw, and a pork belly taco next to it. The tequila list runs past 100 bottles.",
-          "copySource": "draft"
-        },
-        {
-          "placeId": "earls-kitchen-bar",
-          "pullQuote": "Cajun blackened chicken and sticky Korean ribs in a big Lincoln Square room.",
-          "blurb": "Order the Cajun blackened chicken, the chain's long-running signature, and share the sticky Korean ribs. It's a big room that fits a mixed group.",
-          "copySource": "draft"
-        },
-        {
-          "placeId": "ramen-nori",
-          "pullQuote": "",
-          "blurb": "",
-          "copySource": "draft"
-        },
-        {
-          "placeId": "john-howie-steak",
-          "pullQuote": "Steakhouse in the Bravern. The lunch service is currently closed.",
-          "blurb": "Steakhouse in the Bravern. The lunch service is currently closed.",
           "copySource": "draft"
         },
         {
@@ -5942,93 +6595,9 @@
           "copySource": "draft"
         },
         {
-          "placeId": "semicolon-cafe",
-          "pullQuote": "Bulgogi brioche sandwiches and tiramisu lattes at a calm downtown Bellevue cafe.",
-          "blurb": "Get the bulgogi sandwich on toasted brioche and a tiramisu latte. Save room for the ube mini cheesecake, made with purple sweet potato.",
-          "copySource": "draft"
-        },
-        {
           "placeId": "seastar-restaurant-and-raw-bar",
           "pullQuote": "",
           "blurb": "",
-          "copySource": "draft"
-        },
-        {
-          "placeId": "hokkaido-ramen-santouka",
-          "pullQuote": "",
-          "blurb": "",
-          "copySource": "draft"
-        },
-        {
-          "placeId": "japonessa",
-          "pullQuote": "The Bellevue Roll and jalapeño-lime sushi at Lincoln Square's loud Latin-accented sushi bar.",
-          "blurb": "Start with the Bellevue Roll, eel and shrimp under tobiko, then the Wicked Sensation with its jalapeño-lime glaze. Happy hour runs twice daily.",
-          "copySource": "draft"
-        },
-        {
-          "placeId": "tavern-hall",
-          "pullQuote": "",
-          "blurb": "",
-          "copySource": "draft"
-        },
-        {
-          "placeId": "bellevue-brewing",
-          "pullQuote": "A brewpub on Northeast District Way in the Spring District.",
-          "blurb": "A brewpub on Northeast District Way in the Spring District.",
-          "copySource": "draft"
-        },
-        {
-          "placeId": "desi-tadka",
-          "pullQuote": "",
-          "blurb": "",
-          "copySource": "draft"
-        },
-        {
-          "placeId": "dough-zone-bellevue",
-          "pullQuote": "",
-          "blurb": "",
-          "copySource": "draft"
-        },
-        {
-          "placeId": "ginza",
-          "pullQuote": "A long-running sushi room just south of Main, off 102nd.",
-          "blurb": "A long-running sushi room just south of Main, off 102nd.",
-          "copySource": "draft"
-        },
-        {
-          "placeId": "fob-poke-bar-bellevue",
-          "pullQuote": "",
-          "blurb": "",
-          "copySource": "draft"
-        },
-        {
-          "placeId": "pagliacci-pizza",
-          "pullQuote": "A Brooklyn Bridge pie from Seattle's hometown pizza chain, on Bellevue's Main Street.",
-          "blurb": "Order the Brooklyn Bridge, with Cascioppo sausage, mushrooms, olives, peppers and onions. Pagliacci has made pizza in Seattle since 1979.",
-          "copySource": "draft"
-        },
-        {
-          "placeId": "ezells-famous-chicken",
-          "pullQuote": "",
-          "blurb": "",
-          "copySource": "draft"
-        },
-        {
-          "placeId": "burgermaster",
-          "pullQuote": "",
-          "blurb": "",
-          "copySource": "draft"
-        },
-        {
-          "placeId": "rolls-and-rolls",
-          "pullQuote": "",
-          "blurb": "",
-          "copySource": "draft"
-        },
-        {
-          "placeId": "fern-thai-on-main",
-          "pullQuote": "Crispy garlic chicken and pad Thai at a family-style Thai spot on Main.",
-          "blurb": "Order the crispy garlic chicken and a plate of pad Thai to share. The room on Old Bellevue's Main Street suits an easy weeknight dinner.",
           "copySource": "draft"
         },
         {
@@ -6038,21 +6607,9 @@
           "copySource": "draft"
         },
         {
-          "placeId": "central-bar-restaurant",
-          "pullQuote": "Tempura portobello fries and halibut tacos on a BAM Alley patio in Bellevue.",
-          "blurb": "Start with the portobello fries, the house's signature appetizer, then the seared halibut tacos. Happy hour runs daily from 2 to 5.",
-          "copySource": "draft"
-        },
-        {
-          "placeId": "broiler-bay",
-          "pullQuote": "Charbroiled bacon cheeseburgers and crackly onion rings on Main Street since 1989.",
-          "blurb": "Get the bacon cheeseburger on its huge sesame bun, with fry sauce and onion rings. Add a milkshake; the room hasn't changed much since 1989.",
-          "copySource": "draft"
-        },
-        {
-          "placeId": "third-culture-coffee",
-          "pullQuote": "Coffee roaster on 102nd Avenue Northeast in downtown Bellevue.",
-          "blurb": "Coffee roaster on 102nd Avenue Northeast in downtown Bellevue.",
+          "placeId": "fern-thai-on-main",
+          "pullQuote": "Crispy garlic chicken and pad Thai at a family-style Thai spot on Main.",
+          "blurb": "Order the crispy garlic chicken and a plate of pad Thai to share. The room on Old Bellevue's Main Street suits an easy weeknight dinner.",
           "copySource": "draft"
         },
         {
@@ -6062,27 +6619,9 @@
           "copySource": "draft"
         },
         {
-          "placeId": "kura-revolving-sushi",
-          "pullQuote": "Conveyor-belt sushi and a prize capsule for every 15 plates near Wilburton.",
-          "blurb": "Grab plates off the belt or order on the touchscreen; every 15 plates earns a Bikkura Pon prize. It's a fun pick with kids.",
-          "copySource": "draft"
-        },
-        {
           "placeId": "monsoon-bellevue",
           "pullQuote": "",
           "blurb": "",
-          "copySource": "draft"
-        },
-        {
-          "placeId": "520-bar-and-grill",
-          "pullQuote": "The 520 Burger and big hot wings at an Old Bellevue bar and grill.",
-          "blurb": "Order the 520 Burger, flame-grilled with Swiss or Tillamook cheddar on brioche. Add the hot wings in the house's secret sauce.",
-          "copySource": "draft"
-        },
-        {
-          "placeId": "civility-and-unrest",
-          "pullQuote": "Bartender's-choice cocktails in a dim speakeasy tucked into the W Bellevue.",
-          "blurb": "Name a spirit and let the bartender build you a drink; this bar is known for off-menu cocktails. The back room, Unrest, opens Thursday to Saturday.",
           "copySource": "draft"
         },
         {
@@ -6090,24 +6629,12 @@
           "pullQuote": "Brazilian churrasco on Bellevue Way, served rodizio style.",
           "blurb": "Brazilian churrasco on Bellevue Way, served rodizio style.",
           "copySource": "draft"
-        },
-        {
-          "placeId": "bis-on-main",
-          "pullQuote": "",
-          "blurb": "",
-          "copySource": "draft"
-        },
-        {
-          "placeId": "takai-by-kashiba",
-          "pullQuote": "Shiro Kashiba's sushi counter on Bellevue Way. Book the omakase.",
-          "blurb": "Shiro Kashiba's sushi counter on Bellevue Way. Book the omakase.",
-          "copySource": "draft"
         }
       ]
     },
     {
       "slug": "kirkland",
-      "title": "Kirkland",
+      "title": "Best of Kirkland",
       "dek": "Downtown, the marina, Juanita, Carillon Point, and Totem Lake.",
       "group": "Neighborhoods",
       "intro": "Kirkland restaurants with a published address, from Lake Street and Carillon Point out to Juanita and Totem Lake.",
@@ -6192,7 +6719,7 @@
     },
     {
       "slug": "eastside-asian",
-      "title": "Eastside Asian",
+      "title": "Eastside Asian food",
       "dek": "Thai, Chinese, Japanese, Korean, Vietnamese, Sichuan, and Taiwanese.",
       "group": "Cuisine",
       "intro": "Eastside Asian restaurants from Old Bellevue and downtown Bellevue to Kirkland and Redmond.",
@@ -6324,49 +6851,6 @@
       "pinned": true
     },
     {
-      "slug": "eastside-brunch",
-      "title": "Eastside brunch",
-      "dek": "Morning rooms: diner, bakery, bagels, and brunch.",
-      "group": "Occasion",
-      "intro": "Places that open in the morning. 13 Coins starts breakfast on Bellevue Way, Farine opens the bakery case at seven, and Deru Market serves brunch on 9th Avenue in Kirkland.",
-      "updatedAt": "2026-10-20",
-      "ranked": false,
-      "city": "eastside",
-      "entries": [
-        {
-          "placeId": "deru-market",
-          "pullQuote": "Market counter and brunch on 9th Avenue, just uphill from downtown.",
-          "blurb": "Market counter and brunch on 9th Avenue, just uphill from downtown.",
-          "copySource": "draft"
-        },
-        {
-          "placeId": "sparrow",
-          "pullQuote": "Brunch and dinner in Juanita, off Northeast 120th Place.",
-          "blurb": "Brunch and dinner in Juanita, off Northeast 120th Place.",
-          "copySource": "draft"
-        },
-        {
-          "placeId": "farine-bakery",
-          "pullQuote": "Belgian bakery on Northeast 10th, with kouign-amann in the case.",
-          "blurb": "Belgian bakery on Northeast 10th, with kouign-amann in the case.",
-          "copySource": "draft"
-        },
-        {
-          "placeId": "the-british-pantry",
-          "pullQuote": "Tea, pastries, and a British grocery on 161st Avenue.",
-          "blurb": "Tea, pastries, and a British grocery on 161st Avenue.",
-          "copySource": "draft"
-        },
-        {
-          "placeId": "13-coins",
-          "pullQuote": "Bellevue Way diner with breakfast from seven and a late weekend close.",
-          "blurb": "Bellevue Way diner with breakfast from seven and a late weekend close.",
-          "copySource": "draft"
-        }
-      ],
-      "pinned": true
-    },
-    {
       "slug": "eastside-date-night",
       "title": "Eastside date night",
       "dek": "Dinner rooms for a slower night.",
@@ -6423,9 +6907,252 @@
           "pullQuote": "",
           "blurb": "",
           "copySource": "draft"
+        },
+        {
+          "placeId": "ascend-prime-steak-and-sushi",
+          "pullQuote": "A5 wagyu and omakase, 31 floors above Bellevue.",
+          "blurb": "Come for the wagyu: Miyazaki A5 filet by the ounce, or a three-cut tenderloin flight in the lounge. The sushi bar runs a premium omakase.",
+          "copySource": "draft"
         }
       ],
       "pinned": true
+    },
+    {
+      "slug": "eastside-drinks",
+      "title": "Drinks on the Eastside",
+      "dek": "Bars, brewpubs, and pubs in Bellevue, Kirkland, and Redmond.",
+      "group": "Drinks",
+      "intro": "Twelve Eastside rooms for a drink: Woodblock, Postdoc Brewing, Bellevue Brewing Company, Earls Kitchen + Bar, Tavern Hall, Moss Bay Hall, Central Bar + Restaurant, Palmer's East, Central Tavern, The Goose Pub & Eatery, 520 Bar and Grill, and Civility & Unrest.",
+      "updatedAt": "2026-11-10",
+      "ranked": false,
+      "pinned": true,
+      "city": "eastside",
+      "entries": [
+        {
+          "placeId": "woodblock",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "postdoc-brewing",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "bellevue-brewing",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "earls-kitchen-bar",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "tavern-hall",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "moss-bay-hall",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "central-bar-restaurant",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "palmers-east",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "central-tavern",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "the-goose-pub",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "520-bar-and-grill",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "civility-and-unrest",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        }
+      ]
+    },
+    {
+      "slug": "japanese-food-in-bellevue",
+      "title": "Japanese food in Bellevue",
+      "dek": "Japanese rooms in Bellevue, including FOB Poke Bar.",
+      "group": "Cuisine",
+      "intro": "Japanese food in Bellevue: Minamoto Japanese Restaurant, Ramen Nori, Hokkaido Ramen Santouka, Japonessa Sushi Cocina, Ginza, FOB Poke Bar, Rolls & Rolls Plus Sushi, Kura Revolving Sushi Bar, and Takai by Kashiba.",
+      "updatedAt": "2026-11-10",
+      "ranked": false,
+      "pinned": true,
+      "city": "eastside",
+      "entries": [
+        {
+          "placeId": "minamoto",
+          "pullQuote": "Seasonal omakase from New York's Iki alumni, in Bellevue.",
+          "blurb": "Book the omakase: 15 to 18 seasonal courses at two seatings, reserved at least three days ahead. The regular menu covers sushi, tempura and wagyu.",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "ramen-nori",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "hokkaido-ramen-santouka",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "japonessa",
+          "pullQuote": "The Bellevue Roll and jalapeño-lime sushi at Lincoln Square's loud Latin-accented sushi bar.",
+          "blurb": "Start with the Bellevue Roll, eel and shrimp under tobiko, then the Wicked Sensation with its jalapeño-lime glaze. Happy hour runs twice daily.",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "ginza",
+          "pullQuote": "A long-running sushi room just south of Main, off 102nd.",
+          "blurb": "A long-running sushi room just south of Main, off 102nd.",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "fob-poke-bar-bellevue",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "rolls-and-rolls",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "kura-revolving-sushi",
+          "pullQuote": "Conveyor-belt sushi and a prize capsule for every 15 plates near Wilburton.",
+          "blurb": "Grab plates off the belt or order on the touchscreen; every 15 plates earns a Bikkura Pon prize. It's a fun pick with kids.",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "takai-by-kashiba",
+          "pullQuote": "Shiro Kashiba's sushi counter on Bellevue Way. Book the omakase.",
+          "blurb": "Shiro Kashiba's sushi counter on Bellevue Way. Book the omakase.",
+          "copySource": "draft"
+        }
+      ]
+    },
+    {
+      "slug": "best-breakfast-on-the-east-side",
+      "title": "Best Breakfast on the Eastside",
+      "dek": "Twelve Eastside rooms for breakfast.",
+      "group": "Best of",
+      "intro": "Breakfast on the Eastside: Village Square Cafe, Deru Market, Sparrow, Semicolon Cafe, L'Experience Paris, Doppio Cafe & Creperie, Farine Bakery, Chace's Pancake Corral, Third Culture Coffee, The British Pantry, Lil' Jon Restaurant & Lounge, and 13 Coins.",
+      "updatedAt": "2026-11-10",
+      "ranked": false,
+      "pinned": true,
+      "city": "eastside",
+      "entries": [
+        {
+          "placeId": "village-square-cafe",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "deru-market",
+          "pullQuote": "Market counter and brunch on 9th Avenue, just uphill from downtown.",
+          "blurb": "Market counter and brunch on 9th Avenue, just uphill from downtown.",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "sparrow",
+          "pullQuote": "Brunch and dinner in Juanita, off Northeast 120th Place.",
+          "blurb": "Brunch and dinner in Juanita, off Northeast 120th Place.",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "semicolon-cafe",
+          "pullQuote": "Bulgogi brioche sandwiches and tiramisu lattes at a calm downtown Bellevue cafe.",
+          "blurb": "Get the bulgogi sandwich on toasted brioche and a tiramisu latte. Save room for the ube mini cheesecake, made with purple sweet potato.",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "lexperience-paris",
+          "pullQuote": "French cafe and crepes on 78th, in the Mercer Island town center.",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "doppio-cafe-and-creperie",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "farine-bakery",
+          "pullQuote": "Belgian bakery on Northeast 10th, with kouign-amann in the case.",
+          "blurb": "Belgian bakery on Northeast 10th, with kouign-amann in the case.",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "chaces-pancake-corral",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "third-culture-coffee",
+          "pullQuote": "Coffee roaster on 102nd Avenue Northeast in downtown Bellevue.",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "the-british-pantry",
+          "pullQuote": "Tea, pastries, and a British grocery on 161st Avenue.",
+          "blurb": "Tea, pastries, and a British grocery on 161st Avenue.",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "lil-jon-restaurant-and-lounge",
+          "pullQuote": "",
+          "blurb": "",
+          "copySource": "draft"
+        },
+        {
+          "placeId": "13-coins",
+          "pullQuote": "Bellevue Way diner with breakfast from seven and a late weekend close.",
+          "blurb": "Bellevue Way diner with breakfast from seven and a late weekend close.",
+          "copySource": "draft"
+        }
+      ]
     }
   ]
 }

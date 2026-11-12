@@ -106,12 +106,8 @@ for (const place of sd.places) fullPlaces[place.id] = place
 for (const file of added) for (const place of file.places) fullPlaces[place.id] = place
 
 function catalogImage(place) {
-  // Alibi Room's only listing photos are the two house pizzas. Do not fall back to a Commons file or the generic card.
-  if (place?.id === 'alibi-room') {
-    const gusto = place.photos?.find((photo) => photo.source === 'gusto' && photo.url)
-    if (gusto) return `${site}${gusto.url}`
-  }
-  const lead = place?.photos?.find((photo) => (photo.source === 'wikimedia' || photo.source === 'flickr') && photo.url)
+  // The first real catalog photo leads, so a place that keeps an older shot first stays that way.
+  const lead = place?.photos?.find((photo) => photo.url && (photo.source === 'gusto' || photo.source === 'wikimedia' || photo.source === 'flickr'))
   return lead ? `${site}${lead.url}` : `${site}/og/place.png`
 }
 

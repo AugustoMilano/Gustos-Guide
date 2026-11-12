@@ -42,7 +42,7 @@ export function PlaceThumb({
         height={picture.height}
         alt=""
         draggable={false}
-        className={`h-full w-full object-cover${portraitClass(picture.width, picture.height)}${ready ? '' : ' is-pending'}`}
+        className={`h-full w-full object-cover${portraitClass(picture.width, picture.height, photo.url)}${ready ? '' : ' is-pending'}`}
         loading={eager || priority ? 'eager' : 'lazy'}
         decoding="async"
         fetchPriority={priority ? 'high' : undefined}

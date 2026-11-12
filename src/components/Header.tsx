@@ -3,7 +3,7 @@ import { AnimatePresence, m, useReducedMotion } from 'framer-motion'
 import { dragSheet } from '../lib/motion.ts'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { accountAccessibleName, accountGreeting } from '../lib/account-label.ts'
-import { barePath, regionName as areaLabel, areaPhrase, areasFor, CITY_PREFIXES, cityPath, isCityPicker, readRegionMemory, writeRegionMemory } from '../lib/city.ts'
+import { barePath, regionName as areaLabel, areaPhrase, areasFor, CITY_PREFIXES, cityPath, isCityPicker, readRegionMemory, writeRegionMemory, type CityId } from '../lib/city.ts'
 import { SearchField } from './SearchField.tsx'
 import { useCityId } from '../lib/use-city-id.ts'
 import { AreaKicker } from './AreaKicker.tsx'
@@ -12,6 +12,7 @@ import { LogoMark } from './LogoMark.tsx'
 import { SignInSheet } from './SignInSheet.tsx'
 import { setStatusBar, watchThemeColor } from '../lib/status-bar.ts'
 import { loadMapLibraries } from '../lib/load-maplibre.ts'
+import { useConcealOnScroll } from '../lib/conceal-on-scroll.ts'
 import { useApp } from '../state/AppState.tsx'
 
 function prefetch(path: string) {
@@ -88,7 +89,7 @@ function BellIcon() {
 export function Header() {
   const { user, signOut, notices, markNoticesRead } = useApp()
   const [open, setOpen] = useState(false)
-  const [query, setQuery] = useState('')
+  const [queries, setQueries] = useState<Partial<Record<CityId, string>>>({})
   const [menu, setMenu] = useState(false)
   const [bell, setBell] = useState(false)
   const unread = notices.filter((notice) => !notice.read).length
@@ -96,6 +97,8 @@ export function Header() {
   const navigate = useNavigate()
   const location = useLocation()
   const city = useCityId()
+  const query = queries[city] ?? ''
+  const setQuery = (value: string) => setQueries((current) => ({ ...current, [city]: value }))
   const picker = isCityPicker(location.pathname)
   const linkCity = picker ? readRegionMemory().area : city
   const areaName = areaPhrase(linkCity)
@@ -112,6 +115,7 @@ export function Header() {
   const [scrolled, setScrolled] = useState(false)
   const [onHero, setOnHero] = useState(() => HOME_PATHS.has(location.pathname))
   const route = `${location.pathname}${location.search}`
+  const { dock: subheader, concealed: subheaderConcealed } = useConcealOnScroll(menu || bell, route)
 
   useLayoutEffect(() => {
     const mode = picker ? 'picker' : showAreas ? 'areas' : 'single'
@@ -125,19 +129,31 @@ export function Header() {
   useLayoutEffect(() => {
     const bar = document.querySelector('.site-header')
     if (!bar) return
+    let frame = 0
+    let frames = 0
     const apply = () => {
       const height = Math.ceil(bar.getBoundingClientRect().height)
-      document.documentElement.style.setProperty('--header-offset', `${height}px`)
+      const next = `${height}px`
+      if (document.documentElement.style.getPropertyValue('--header-offset') !== next) {
+        document.documentElement.style.setProperty('--header-offset', next)
+      }
+    }
+    // The subheader's height animates. Sample through the slide so main's padding
+    // follows the header and the page underneath does not leave a gap or jump.
+    const track = () => {
+      apply()
+      frames += 1
+      if (frames < 24) frame = requestAnimationFrame(track)
     }
     apply()
-    const frame = requestAnimationFrame(apply)
+    frame = requestAnimationFrame(track)
     const observer = new ResizeObserver(apply)
     observer.observe(bar)
     return () => {
       cancelAnimationFrame(frame)
       observer.disconnect()
     }
-  }, [location.pathname, picker, showAreas])
+  }, [location.pathname, picker, showAreas, subheaderConcealed])
 
   useEffect(() => {
     const onScroll = () => {
@@ -194,7 +210,15 @@ export function Header() {
             <LogoMark />
             <span className="wordmark font-serif text-2xl italic leading-none sm:text-3xl">Gusto's Guide</span>
           </Link>
-          {picker ? null : (
+        </div>
+        {picker ? null : (
+          <div
+            ref={subheader}
+            className={`header-sub${subheaderConcealed ? ' is-concealed' : ''}`}
+            data-concealed={subheaderConcealed ? 'true' : 'false'}
+            inert={subheaderConcealed || undefined}
+          >
+            <div className="header-sub-slide">
             <CityButton
               to="/cities"
               className="region-back"
@@ -225,9 +249,10 @@ export function Header() {
               </m.span>
               {areaLabel(city)}
             </CityButton>
-          )}
-        </div>
-        {showAreas ? <CitySwitcher /> : null}
+            {showAreas ? <CitySwitcher /> : null}
+            </div>
+          </div>
+        )}
         <SearchField
           id="site-search"
           label={`Search ${areaName}`}

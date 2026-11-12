@@ -2,7 +2,7 @@ import { useEffect, useMemo, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { SmartResults, featuredSlugs } from '../components/SmartResults.tsx'
 import { catalog, ensureAllCities, ensureRegion } from '../content/load.ts'
-import { areaName, cityPath, regionOf } from '../lib/city.ts'
+import { areaName, cityPath, regionOf, type CityId } from '../lib/city.ts'
 import { countPlaces } from '../lib/format.ts'
 import { isPlaceOpen } from '../lib/hours.ts'
 import { regionBoard } from '../lib/top25.ts'
@@ -30,7 +30,9 @@ function Chevron() {
 
 export function HomePage() {
   const { city, guides, places, ready, failed } = useCityCatalog()
-  const [draft, setDraft] = useState('')
+  const [drafts, setDrafts] = useState<Partial<Record<CityId, string>>>({})
+  const draft = drafts[city] ?? ''
+  const setDraft = (value: string) => setDrafts((current) => ({ ...current, [city]: value }))
   // Per-city title and share card (C5); sub-areas use their region's card.
   usePageMeta(`${areaName(city)} · Gusto's Guide`, `${areaName(city)} restaurants and places.`, `./og/cities/${regionOf(city)}.png`)
   const query = draft.trim()
@@ -45,7 +47,7 @@ export function HomePage() {
     [query, city, ready, gustoScore, catalog.places.length],
   )
   const featured = featuredSlugs(city)
-    .filter((slug) => !slug.includes('date-night'))
+    .filter((slug) => slug === 'eastside-date-night' || !slug.includes('date-night'))
     .map((slug) => guides.find((guide) => guide.slug === slug))
     .filter((guide) => guide != null)
     .slice(0, 6)
