@@ -451,64 +451,6 @@
       "yelpSlug": "ebGugp8agaFInNwIiTwA4g"
     },
     {
-      "id": "tar-roses",
-      "city": "la",
-      "name": "Tar & Roses",
-      "neighborhood": "Santa Monica",
-      "address": "602 Santa Monica Blvd, Santa Monica, CA 90401",
-      "lat": 34.0179449,
-      "lng": -118.4929669,
-      "cuisine": [
-        "Californian"
-      ],
-      "placeType": "restaurant",
-      "oneLiner": "Californian from Tar & Roses at 602 Santa Monica Blvd, Santa Monica.",
-      "perfectFor": [],
-      "periods": [
-        {
-          "days": [
-            2,
-            3,
-            4
-          ],
-          "start": 1050,
-          "end": 1260
-        },
-        {
-          "days": [
-            5,
-            6
-          ],
-          "start": 1050,
-          "end": 1290
-        }
-      ],
-      "gustoScore": null,
-      "appleMapsUrl": "https://maps.apple.com/?daddr=34.0179449,-118.4929669&q=Tar%20%26%20Roses",
-      "applePlaceUrl": "https://maps.apple.com/place?auid=1285366995442176774",
-      "guideSlugs": [
-        "santa-monica"
-      ],
-      "muid": "1285366995442176774",
-      "hoursLabel": "",
-      "blurb": "Californian from Tar & Roses at 602 Santa Monica Blvd, Santa Monica.",
-      "orderThis": [],
-      "ids": {},
-      "copySource": "draft",
-      "updatedAt": "2026-10-20",
-      "photos": [
-        {
-          "source": "illustration",
-          "isIllustration": true,
-          "alt": "Illustration suggesting Californian at Tar & Roses",
-          "credit": "Illustration"
-        }
-      ],
-      "phone": "+1 (310) 587-0700",
-      "website": "http://www.tarandroses.com",
-      "yelpSlug": "tar-and-roses-santa-monica"
-    },
-    {
       "id": "the-musso-frank-grill",
       "city": "la",
       "name": "The Musso & Frank Grill",
@@ -8644,53 +8586,16 @@
           "credit": "Illustration"
         }
       ]
-    },
-    {
-      "id": "marmalade-cafe",
-      "city": "la",
-      "name": "Marmalade Cafe",
-      "neighborhood": "Calabasas",
-      "address": "4783 Commons Way, Unit E, Calabasas, CA 91302",
-      "lat": 34.1531568,
-      "lng": -118.6462549,
-      "cuisine": [
-        "New American"
-      ],
-      "placeType": "restaurant",
-      "oneLiner": "",
-      "perfectFor": [],
-      "periods": [],
-      "gustoScore": null,
-      "website": "https://marmaladecafe.com",
-      "phone": "+1 (818) 225-9092",
-      "appleMapsUrl": "https://maps.apple.com/?daddr=34.1531568,-118.6462549&q=Marmalade%20Cafe",
-      "applePlaceUrl": "https://maps.apple.com/place?auid=2035593264181625167",
-      "guideSlugs": [],
-      "muid": "2035593264181625167",
-      "hoursLabel": "",
-      "blurb": "",
-      "orderThis": [],
-      "ids": {},
-      "copySource": "draft",
-      "updatedAt": "2026-10-22",
-      "photos": [
-        {
-          "source": "illustration",
-          "isIllustration": true,
-          "alt": "Illustration suggesting New American at Marmalade Cafe",
-          "credit": "Illustration"
-        }
-      ]
     }
   ],
   "guides": [
     {
       "slug": "santa-monica",
       "title": "Santa Monica",
-      "dek": "Tar & Roses at 602 Santa Monica Blvd, and 22 more Santa Monica stops.",
+      "dek": "Heavy Handed at 2912 Main St, and 21 more Santa Monica stops.",
       "group": "Neighborhoods",
-      "intro": "Tar & Roses is at 602 Santa Monica Blvd. Paderia Bakehouse is at 3032 Wilshire Blvd.",
-      "updatedAt": "2026-10-20",
+      "intro": "Heavy Handed is at 2912 Main St. Élephante is at 1332 2nd Street.",
+      "updatedAt": "2026-11-12",
       "ranked": false,
       "city": "la",
       "entries": [
@@ -8710,12 +8615,6 @@
           "placeId": "blue-plate-taco",
           "pullQuote": "Blue Plate Taco sits at 1515 Ocean Ave. Tacos, Santa Monica.",
           "blurb": "Blue Plate Taco sits at 1515 Ocean Ave. Tacos, Santa Monica.",
-          "copySource": "draft"
-        },
-        {
-          "placeId": "tar-roses",
-          "pullQuote": "Californian from Tar & Roses at 602 Santa Monica Blvd, Santa Monica.",
-          "blurb": "Californian from Tar & Roses at 602 Santa Monica Blvd, Santa Monica.",
           "copySource": "draft"
         },
         {

@@ -1,0 +1,674 @@
+{
+  "note": "Rooms taken off the live catalogs on 2026-11-12 because Google Places reported them closed (six permanently, four temporarily). The live site does not load this file. Put place back in sourceFile and reattach guideEntries to restore a room. Photo files and published scores were left where they were.",
+  "removedAt": "2026-11-12",
+  "places": [
+    {
+      "id": "tar-roses",
+      "name": "Tar & Roses",
+      "city": "la",
+      "neighborhood": "Santa Monica",
+      "address": "602 Santa Monica Blvd, Santa Monica, CA 90401",
+      "sourceFile": "src/content/la.json",
+      "reason": "google_places_closed",
+      "guideEntries": [
+        {
+          "file": "la.json",
+          "slug": "santa-monica",
+          "entry": {
+            "placeId": "tar-roses",
+            "pullQuote": "Californian from Tar & Roses at 602 Santa Monica Blvd, Santa Monica.",
+            "blurb": "Californian from Tar & Roses at 602 Santa Monica Blvd, Santa Monica.",
+            "copySource": "draft"
+          }
+        }
+      ],
+      "place": {
+        "id": "tar-roses",
+        "city": "la",
+        "name": "Tar & Roses",
+        "neighborhood": "Santa Monica",
+        "address": "602 Santa Monica Blvd, Santa Monica, CA 90401",
+        "lat": 34.0179449,
+        "lng": -118.4929669,
+        "cuisine": [
+          "Californian"
+        ],
+        "placeType": "restaurant",
+        "oneLiner": "Californian from Tar & Roses at 602 Santa Monica Blvd, Santa Monica.",
+        "perfectFor": [],
+        "periods": [
+          {
+            "days": [
+              2,
+              3,
+              4
+            ],
+            "start": 1050,
+            "end": 1260
+          },
+          {
+            "days": [
+              5,
+              6
+            ],
+            "start": 1050,
+            "end": 1290
+          }
+        ],
+        "gustoScore": null,
+        "appleMapsUrl": "https://maps.apple.com/?daddr=34.0179449,-118.4929669&q=Tar%20%26%20Roses",
+        "applePlaceUrl": "https://maps.apple.com/place?auid=1285366995442176774",
+        "guideSlugs": [
+          "santa-monica"
+        ],
+        "muid": "1285366995442176774",
+        "hoursLabel": "",
+        "blurb": "Californian from Tar & Roses at 602 Santa Monica Blvd, Santa Monica.",
+        "orderThis": [],
+        "ids": {},
+        "copySource": "draft",
+        "updatedAt": "2026-10-20",
+        "photos": [
+          {
+            "source": "illustration",
+            "isIllustration": true,
+            "alt": "Illustration suggesting Californian at Tar & Roses",
+            "credit": "Illustration"
+          }
+        ],
+        "phone": "+1 (310) 587-0700",
+        "website": "http://www.tarandroses.com",
+        "yelpSlug": "tar-and-roses-santa-monica"
+      }
+    },
+    {
+      "id": "marmalade-cafe",
+      "name": "Marmalade Cafe",
+      "city": "la",
+      "neighborhood": "Calabasas",
+      "address": "4783 Commons Way, Unit E, Calabasas, CA 91302",
+      "sourceFile": "src/content/la.json",
+      "reason": "google_places_closed",
+      "guideEntries": [],
+      "place": {
+        "id": "marmalade-cafe",
+        "city": "la",
+        "name": "Marmalade Cafe",
+        "neighborhood": "Calabasas",
+        "address": "4783 Commons Way, Unit E, Calabasas, CA 91302",
+        "lat": 34.1531568,
+        "lng": -118.6462549,
+        "cuisine": [
+          "New American"
+        ],
+        "placeType": "restaurant",
+        "oneLiner": "",
+        "perfectFor": [],
+        "periods": [],
+        "gustoScore": null,
+        "website": "https://marmaladecafe.com",
+        "phone": "+1 (818) 225-9092",
+        "appleMapsUrl": "https://maps.apple.com/?daddr=34.1531568,-118.6462549&q=Marmalade%20Cafe",
+        "applePlaceUrl": "https://maps.apple.com/place?auid=2035593264181625167",
+        "guideSlugs": [],
+        "muid": "2035593264181625167",
+        "hoursLabel": "",
+        "blurb": "",
+        "orderThis": [],
+        "ids": {},
+        "copySource": "draft",
+        "updatedAt": "2026-10-22",
+        "photos": [
+          {
+            "source": "illustration",
+            "isIllustration": true,
+            "alt": "Illustration suggesting New American at Marmalade Cafe",
+            "credit": "Illustration"
+          }
+        ]
+      }
+    },
+    {
+      "id": "barm-wallops",
+      "name": "Barm & Wallops",
+      "city": "pullman",
+      "neighborhood": "Pullman",
+      "address": "1195 SE Bishop Blvd, Ste 1, Pullman, WA 99163",
+      "sourceFile": "src/content/palouse.json",
+      "reason": "google_places_closed",
+      "guideEntries": [],
+      "place": {
+        "id": "barm-wallops",
+        "city": "pullman",
+        "name": "Barm & Wallops",
+        "neighborhood": "Pullman",
+        "address": "1195 SE Bishop Blvd, Ste 1, Pullman, WA 99163",
+        "lat": 46.716374,
+        "lng": -117.1650582,
+        "cuisine": [
+          "Beer",
+          "Small plates"
+        ],
+        "placeType": "restaurant",
+        "oneLiner": "",
+        "perfectFor": [],
+        "periods": [
+          {
+            "days": [
+              2,
+              3,
+              4,
+              5
+            ],
+            "start": 690,
+            "end": 840
+          },
+          {
+            "days": [
+              2,
+              3,
+              4,
+              5
+            ],
+            "start": 960,
+            "end": 1200
+          },
+          {
+            "days": [
+              6
+            ],
+            "start": 720,
+            "end": 1200
+          }
+        ],
+        "gustoScore": null,
+        "appleMapsUrl": "https://maps.apple.com/?daddr=46.716374,-117.1650582&q=Barm%20&%20Wallops",
+        "applePlaceUrl": "https://maps.apple.com/place?auid=12135825698577705128",
+        "guideSlugs": [],
+        "muid": "12135825698577705128",
+        "hoursLabel": "",
+        "blurb": "",
+        "orderThis": [],
+        "ids": {
+          "yelp": "Vy-8Gai6hwg5M3Vj_wYTuw"
+        },
+        "copySource": "draft",
+        "updatedAt": "2026-11-03",
+        "photos": [
+          {
+            "source": "illustration",
+            "isIllustration": true,
+            "alt": "Illustration suggesting Beer at Barm & Wallops",
+            "credit": "Illustration"
+          }
+        ],
+        "phone": "+1 (509) 339-6075",
+        "website": "https://www.yelp.com/biz/barm-and-wallops-pullman",
+        "publicRating": {
+          "value": 4.9,
+          "count": 14,
+          "source": "Yelp"
+        },
+        "yelpSlug": "Vy-8Gai6hwg5M3Vj_wYTuw"
+      }
+    },
+    {
+      "id": "barrio-dogg",
+      "name": "Barrio Dogg",
+      "city": "sandiego",
+      "neighborhood": "Barrio Logan",
+      "address": "2234 Logan Ave, San Diego, CA 92113",
+      "sourceFile": "src/content/sd.json",
+      "reason": "google_places_closed",
+      "guideEntries": [],
+      "place": {
+        "id": "barrio-dogg",
+        "city": "sandiego",
+        "name": "Barrio Dogg",
+        "neighborhood": "Barrio Logan",
+        "address": "2234 Logan Ave, San Diego, CA 92113",
+        "lat": 32.6977281,
+        "lng": -117.1385801,
+        "cuisine": [
+          "Hot dogs"
+        ],
+        "placeType": "restaurant",
+        "oneLiner": "",
+        "perfectFor": [],
+        "periods": [],
+        "gustoScore": null,
+        "appleMapsUrl": "https://maps.apple.com/?daddr=32.6977281,-117.1385801&q=Barrio%20Dogg",
+        "applePlaceUrl": "https://maps.apple.com/place?auid=2904697606814888126",
+        "guideSlugs": [],
+        "muid": "2904697606814888126",
+        "hoursLabel": "",
+        "blurb": "",
+        "orderThis": [],
+        "ids": {},
+        "copySource": "draft",
+        "updatedAt": "2026-10-22",
+        "photos": [
+          {
+            "source": "illustration",
+            "isIllustration": true,
+            "alt": "Illustration suggesting Hot dogs at Barrio Dogg",
+            "credit": "Illustration"
+          }
+        ],
+        "phone": "+1 (619) 546-7889",
+        "website": "https://barriodogg.com/"
+      }
+    },
+    {
+      "id": "matsu-2",
+      "name": "Matsu",
+      "city": "sandiego",
+      "neighborhood": "Oceanside",
+      "address": "626 S Tremont St, Oceanside, CA 92054",
+      "sourceFile": "src/content/sd.json",
+      "reason": "google_places_closed",
+      "guideEntries": [
+        {
+          "file": "sd.json",
+          "slug": "sd-japanese",
+          "entry": {
+            "placeId": "matsu-2",
+            "pullQuote": "",
+            "blurb": "",
+            "copySource": "draft"
+          }
+        }
+      ],
+      "place": {
+        "id": "matsu-2",
+        "city": "sandiego",
+        "name": "Matsu",
+        "neighborhood": "Oceanside",
+        "address": "626 S Tremont St, Oceanside, CA 92054",
+        "lat": 33.1884729,
+        "lng": -117.3741853,
+        "cuisine": [
+          "Japanese"
+        ],
+        "placeType": "restaurant",
+        "oneLiner": "",
+        "perfectFor": [],
+        "periods": [],
+        "gustoScore": null,
+        "appleMapsUrl": "https://maps.apple.com/?daddr=33.1884729,-117.3741853&q=Matsu",
+        "applePlaceUrl": "https://maps.apple.com/place?auid=17112650180481988281",
+        "guideSlugs": [
+          "sd-japanese"
+        ],
+        "muid": "17112650180481988281",
+        "hoursLabel": "",
+        "blurb": "",
+        "orderThis": [],
+        "ids": {},
+        "copySource": "draft",
+        "updatedAt": "2026-10-22",
+        "photos": [
+          {
+            "source": "illustration",
+            "isIllustration": true,
+            "alt": "Illustration suggesting Japanese at Matsu",
+            "credit": "Illustration"
+          }
+        ],
+        "phone": "+1 (760) 681-6152",
+        "website": "https://www.facebook.com/EatMatsu/"
+      }
+    },
+    {
+      "id": "leo-s",
+      "name": "Leo's",
+      "city": "sf",
+      "neighborhood": "Financial District",
+      "address": "568 Sacramento St, San Francisco, CA 94111",
+      "sourceFile": "src/content/sf.json",
+      "reason": "google_places_closed",
+      "guideEntries": [
+        {
+          "file": "sf.json",
+          "slug": "sf-financial-district",
+          "entry": {
+            "placeId": "leo-s",
+            "pullQuote": "Oyster Bar at Leo's, 568 Sacramento St, Financial District.",
+            "blurb": "Oyster Bar at Leo's, 568 Sacramento St, Financial District.",
+            "copySource": "draft"
+          }
+        }
+      ],
+      "place": {
+        "id": "leo-s",
+        "city": "sf",
+        "name": "Leo's",
+        "neighborhood": "Financial District",
+        "address": "568 Sacramento St, San Francisco, CA 94111",
+        "lat": 37.7939183,
+        "lng": -122.4025315,
+        "cuisine": [
+          "Oyster Bar"
+        ],
+        "placeType": "bar",
+        "oneLiner": "Oyster Bar at Leo's, 568 Sacramento St, Financial District.",
+        "perfectFor": [],
+        "periods": [
+          {
+            "days": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ],
+            "start": 960,
+            "end": 1320
+          }
+        ],
+        "gustoScore": null,
+        "appleMapsUrl": "https://maps.apple.com/?daddr=37.7939183,-122.4025315&q=Leo%27s",
+        "applePlaceUrl": "https://maps.apple.com/place?auid=8687776950511210136",
+        "guideSlugs": [
+          "sf-financial-district"
+        ],
+        "muid": "8687776950511210136",
+        "hoursLabel": "",
+        "blurb": "Oyster Bar at Leo's, 568 Sacramento St, Financial District.",
+        "orderThis": [],
+        "ids": {},
+        "copySource": "draft",
+        "updatedAt": "2026-10-21",
+        "photos": [
+          {
+            "source": "illustration",
+            "isIllustration": true,
+            "alt": "Illustration suggesting Oyster Bar at Leo's",
+            "credit": "Illustration"
+          }
+        ],
+        "phone": "+1 (209) 306-7233",
+        "website": "https://www.leossf.com",
+        "yelpSlug": "leos-oyster-bar-san-francisco-2"
+      }
+    },
+    {
+      "id": "elephants-delicatessen",
+      "name": "Elephants Delicatessen",
+      "city": "portland",
+      "neighborhood": "Portland",
+      "address": "115 NW 22nd Ave, Portland, OR 97210",
+      "sourceFile": "src/content/portland.json",
+      "reason": "google_places_closed",
+      "guideEntries": [
+        {
+          "file": "portland.json",
+          "slug": "pdx-pizza",
+          "entry": {
+            "placeId": "elephants-delicatessen",
+            "pullQuote": "",
+            "blurb": "",
+            "copySource": "draft"
+          }
+        }
+      ],
+      "place": {
+        "id": "elephants-delicatessen",
+        "city": "portland",
+        "name": "Elephants Delicatessen",
+        "neighborhood": "Portland",
+        "address": "115 NW 22nd Ave, Portland, OR 97210",
+        "lat": 45.5238651,
+        "lng": -122.6965516,
+        "cuisine": [
+          "Deli",
+          "Pizza"
+        ],
+        "placeType": "deli",
+        "oneLiner": "",
+        "perfectFor": [],
+        "periods": [],
+        "gustoScore": null,
+        "appleMapsUrl": "https://maps.apple.com/?daddr=45.5238651,-122.6965516&q=Elephants%20Delicatessen",
+        "applePlaceUrl": "https://maps.apple.com/place?auid=9843744514142069152",
+        "guideSlugs": [
+          "pdx-pizza"
+        ],
+        "muid": "9843744514142069152",
+        "hoursLabel": "",
+        "blurb": "",
+        "orderThis": [],
+        "ids": {},
+        "copySource": "draft",
+        "updatedAt": "2026-11-03",
+        "photos": [
+          {
+            "source": "wikimedia",
+            "url": "/photos/elephants-delicatessen.jpg",
+            "alt": "Elephants Delicatessen in Portland",
+            "credit": "Another Believer",
+            "creditUrl": "https://commons.wikimedia.org/wiki/File:Elephants_Delicatessen,_Northwest_District,_Portland,_Oregon,_2022.jpg",
+            "license": "CC BY-SA 4.0"
+          }
+        ],
+        "phone": "+1 (503) 299-6304",
+        "website": "https://www.elephantsdeli.com/locations/nw-22nd/"
+      }
+    },
+    {
+      "id": "gio-gelati",
+      "name": "Gio Gelati",
+      "city": "sf",
+      "neighborhood": "Cow Hollow",
+      "address": "1998 Union St, San Francisco, CA 94123",
+      "sourceFile": "src/content/sf.json",
+      "reason": "google_places_closed",
+      "guideEntries": [
+        {
+          "file": "sf.json",
+          "slug": "sf-cow-hollow",
+          "entry": {
+            "placeId": "gio-gelati",
+            "pullQuote": "Cow Hollow: Gio Gelati at 1998 Union St. Gelato.",
+            "blurb": "Cow Hollow: Gio Gelati at 1998 Union St. Gelato.",
+            "copySource": "draft"
+          }
+        }
+      ],
+      "place": {
+        "id": "gio-gelati",
+        "city": "sf",
+        "name": "Gio Gelati",
+        "neighborhood": "Cow Hollow",
+        "address": "1998 Union St, San Francisco, CA 94123",
+        "lat": 37.7976246,
+        "lng": -122.4320913,
+        "cuisine": [
+          "Gelato"
+        ],
+        "placeType": "shop",
+        "oneLiner": "Cow Hollow: Gio Gelati at 1998 Union St. Gelato.",
+        "perfectFor": [],
+        "periods": [],
+        "gustoScore": null,
+        "appleMapsUrl": "https://maps.apple.com/?daddr=37.7976246,-122.4320913&q=Gio%20Gelati",
+        "applePlaceUrl": "https://maps.apple.com/place?auid=6987726671578500964",
+        "guideSlugs": [
+          "sf-cow-hollow"
+        ],
+        "muid": "6987726671578500964",
+        "hoursLabel": "",
+        "blurb": "Cow Hollow: Gio Gelati at 1998 Union St. Gelato.",
+        "orderThis": [],
+        "ids": {},
+        "copySource": "draft",
+        "updatedAt": "2026-10-21",
+        "photos": [
+          {
+            "source": "illustration",
+            "isIllustration": true,
+            "alt": "Illustration suggesting Gelato at Gio Gelati",
+            "credit": "Illustration"
+          }
+        ],
+        "phone": "+1 (415) 910-6498",
+        "website": "https://www.giogelati.com",
+        "yelpSlug": "gio-gelati-san-francisco-san-francisco"
+      }
+    },
+    {
+      "id": "san-tung",
+      "name": "San Tung",
+      "city": "sf",
+      "neighborhood": "Inner Sunset",
+      "address": "1031 Irving St, San Francisco, CA 94122",
+      "sourceFile": "src/content/sf.json",
+      "reason": "google_places_closed",
+      "guideEntries": [],
+      "place": {
+        "id": "san-tung",
+        "city": "sf",
+        "name": "San Tung",
+        "neighborhood": "Inner Sunset",
+        "address": "1031 Irving St, San Francisco, CA 94122",
+        "lat": 37.7638163,
+        "lng": -122.4690093,
+        "cuisine": [
+          "Chinese"
+        ],
+        "placeType": "restaurant",
+        "oneLiner": "Inner Sunset: San Tung at 1031 Irving St. Chinese.",
+        "perfectFor": [],
+        "periods": [
+          {
+            "days": [
+              0,
+              1,
+              4,
+              5,
+              6
+            ],
+            "start": 660,
+            "end": 900
+          },
+          {
+            "days": [
+              0,
+              1,
+              4,
+              5,
+              6
+            ],
+            "start": 990,
+            "end": 1230
+          }
+        ],
+        "gustoScore": null,
+        "appleMapsUrl": "https://maps.apple.com/?daddr=37.7638163,-122.4690093&q=San%20Tung",
+        "applePlaceUrl": "https://maps.apple.com/place?auid=17446518184600737691",
+        "guideSlugs": [],
+        "muid": "17446518184600737691",
+        "hoursLabel": "",
+        "blurb": "Inner Sunset: San Tung at 1031 Irving St. Chinese.",
+        "orderThis": [],
+        "ids": {},
+        "copySource": "draft",
+        "updatedAt": "2026-10-21",
+        "photos": [
+          {
+            "source": "wikimedia",
+            "url": "/photos/san-tung.jpg",
+            "alt": "San Tung in Inner Sunset",
+            "credit": "Weegee010",
+            "creditUrl": "https://commons.wikimedia.org/wiki/File:San_Tung_Chinese_Restaurant,_Sunset_District,_San_Francisco.JPG",
+            "license": "CC BY-SA 4.0"
+          }
+        ],
+        "phone": "+1 (415) 242-0828",
+        "website": "https://www.santungsf.com",
+        "yelpSlug": "san-tung-san-francisco-2"
+      }
+    },
+    {
+      "id": "frying-pan",
+      "name": "Frying Pan",
+      "city": "vancouver",
+      "neighborhood": "English Bay",
+      "address": "1101 Denman St, Vancouver BC V6G 2M7",
+      "sourceFile": "src/content/vancouver.json",
+      "reason": "google_places_closed",
+      "guideEntries": [],
+      "place": {
+        "id": "frying-pan",
+        "city": "vancouver",
+        "name": "Frying Pan",
+        "neighborhood": "English Bay",
+        "address": "1101 Denman St, Vancouver BC V6G 2M7",
+        "lat": 49.288344,
+        "lng": -123.140591,
+        "cuisine": [
+          "Chicken",
+          "Street food"
+        ],
+        "placeType": "restaurant",
+        "oneLiner": "",
+        "perfectFor": [],
+        "periods": [
+          {
+            "days": [
+              0
+            ],
+            "start": 690,
+            "end": 1290
+          },
+          {
+            "days": [
+              2,
+              3,
+              4
+            ],
+            "start": 690,
+            "end": 1290
+          },
+          {
+            "days": [
+              5,
+              6
+            ],
+            "start": 690,
+            "end": 1320
+          }
+        ],
+        "gustoScore": null,
+        "appleMapsUrl": "https://maps.apple.com/?daddr=49.288344,-123.140591&q=Frying%20Pan",
+        "applePlaceUrl": "https://maps.apple.com/place?auid=8574598788755024795",
+        "guideSlugs": [],
+        "muid": "8574598788755024795",
+        "hoursLabel": "",
+        "blurb": "",
+        "orderThis": [],
+        "ids": {
+          "yelp": "g6F_Mdi63zQM5QBVygmJmg"
+        },
+        "copySource": "draft",
+        "updatedAt": "2026-11-03",
+        "photos": [
+          {
+            "source": "illustration",
+            "isIllustration": true,
+            "alt": "Illustration suggesting Chicken at Frying Pan",
+            "credit": "Illustration"
+          }
+        ],
+        "phone": "+1 (236) 466-0261",
+        "website": "https://thefryingpan604.com/",
+        "publicRating": {
+          "value": 4.4,
+          "count": 50,
+          "source": "Yelp"
+        },
+        "yelpSlug": "g6F_Mdi63zQM5QBVygmJmg"
+      }
+    }
+  ]
+}

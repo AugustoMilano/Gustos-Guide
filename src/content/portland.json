@@ -588,48 +588,6 @@
       "website": "https://www.portlandcitygrill.com/"
     },
     {
-      "id": "elephants-delicatessen",
-      "city": "portland",
-      "name": "Elephants Delicatessen",
-      "neighborhood": "Portland",
-      "address": "115 NW 22nd Ave, Portland, OR 97210",
-      "lat": 45.5238651,
-      "lng": -122.6965516,
-      "cuisine": [
-        "Deli",
-        "Pizza"
-      ],
-      "placeType": "deli",
-      "oneLiner": "",
-      "perfectFor": [],
-      "periods": [],
-      "gustoScore": null,
-      "appleMapsUrl": "https://maps.apple.com/?daddr=45.5238651,-122.6965516&q=Elephants%20Delicatessen",
-      "applePlaceUrl": "https://maps.apple.com/place?auid=9843744514142069152",
-      "guideSlugs": [
-        "pdx-pizza"
-      ],
-      "muid": "9843744514142069152",
-      "hoursLabel": "",
-      "blurb": "",
-      "orderThis": [],
-      "ids": {},
-      "copySource": "draft",
-      "updatedAt": "2026-11-03",
-      "photos": [
-        {
-          "source": "wikimedia",
-          "url": "/photos/elephants-delicatessen.jpg",
-          "alt": "Elephants Delicatessen in Portland",
-          "credit": "Another Believer",
-          "creditUrl": "https://commons.wikimedia.org/wiki/File:Elephants_Delicatessen,_Northwest_District,_Portland,_Oregon,_2022.jpg",
-          "license": "CC BY-SA 4.0"
-        }
-      ],
-      "phone": "+1 (503) 299-6304",
-      "website": "https://www.elephantsdeli.com/locations/nw-22nd/"
-    },
-    {
       "id": "nimblefish",
       "city": "portland",
       "name": "Nimblefish",
@@ -2602,19 +2560,13 @@
     {
       "slug": "pdx-pizza",
       "title": "Pizza",
-      "dek": "Five for pizza: Ken's Artisan Pizza in Kerns, Lovely's Fifty Fifty on Mississippi, Ruse Brewing Crust Collective in Nob Hill, No Saint in Vernon, and Elephants Delicatessen.",
+      "dek": "Four for pizza: Ken's Artisan Pizza in Kerns, Lovely's Fifty Fifty on Mississippi, Ruse Brewing Crust Collective in Nob Hill, and No Saint in Vernon.",
       "group": "Cuisine",
       "intro": "",
-      "updatedAt": "2026-11-03",
+      "updatedAt": "2026-11-12",
       "ranked": false,
       "city": "portland",
       "entries": [
-        {
-          "placeId": "elephants-delicatessen",
-          "pullQuote": "",
-          "blurb": "",
-          "copySource": "draft"
-        },
         {
           "placeId": "kens-artisan-pizza",
           "pullQuote": "",

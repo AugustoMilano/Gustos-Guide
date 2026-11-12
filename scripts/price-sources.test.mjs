@@ -29,12 +29,17 @@ for (const file of Object.values(catalogs)) {
   }
 }
 
+const archived = new Set(
+  JSON.parse(readFileSync(new URL('../data/closed-archive.json', import.meta.url), 'utf8')).places.map((row) => row.id),
+)
+
 const added = { vancouver: 0, portland: 0, nyc: 0, pullman: 0, moscow: 0, eastside: 0, la: 0, sf: 0, peninsula: 0, northbay: 0, eastbay: 0, sandiego: 0 }
 const tiers = { 1: 0, 2: 0, 3: 0, 4: 0 }
 assert.equal(ledger.places.length, 703)
 
 for (const row of ledger.places) {
   const place = byId.get(row.id)
+  if (!place && archived.has(row.id)) continue
   assert.ok(place, row.id)
   assert.equal(place.city, row.city)
   assert.equal(place.name, row.name)
