@@ -1,15 +1,18 @@
 import { m, useReducedMotion } from 'framer-motion'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { AreaKicker } from '../components/AreaKicker.tsx'
 import { ForkMark, GoldenFork } from '../components/GoldenFork.tsx'
 import { ScoreBadge } from '../components/ScoreBadge.tsx'
 import { PlaceThumb } from '../components/PlaceThumb.tsx'
+import { PriceFilter } from '../components/PriceFilter.tsx'
 import { cityPath, regionName, regionOf, type RegionId } from '../lib/city.ts'
 import { usePageMeta } from '../lib/meta.ts'
 import { regionBoard, type TopRow } from '../lib/top25.ts'
 import { placeCity, useCityId } from '../lib/use-city.ts'
+import { hasUnknownPrice, matchesPrice } from '../lib/price-filter.ts'
 import { useApp } from '../state/AppState.tsx'
+import type { Price } from '../types.ts'
 
 const TOP_REGIONS = ['seattle', 'la', 'sf', 'sandiego', 'vancouver', 'portland', 'nyc', 'pullman'] as const satisfies readonly RegionId[]
 const TOP_LABEL: Record<RegionId, string> = { seattle: 'Seattle', la: 'Los Angeles', sf: 'San Francisco', sandiego: 'San Diego', vancouver: 'Vancouver', portland: 'Portland', nyc: 'New York', pullman: 'Pullman, WA' }
@@ -31,11 +34,14 @@ export function TopPage() {
   const city = useCityId()
   const region = regionOf(city)
   const board = regionBoard(region, app.gustoScore)
+  const [prices, setPrices] = useState<Price[]>([])
+  const [unknownPrice, setUnknownPrice] = useState(false)
+  const shown = board.shown.filter((row) => matchesPrice(row.place, { prices, unknown: unknownPrice }))
   const reduce = useReducedMotion()
   const name = regionName(city)
   const others = TOP_REGIONS.filter((item) => item !== region)
-  const podium = podiumOrder(board.shown)
-  const rest = board.shown.slice(Math.min(3, board.shown.length))
+  const podium = podiumOrder(shown)
+  const rest = shown.slice(Math.min(3, shown.length))
   // index.html painted a static copy of this intro (fix77); React's identical markup has replaced it.
   useEffect(() => {
     if (document.documentElement.dataset.prerender === 'top') delete document.documentElement.dataset.prerender
@@ -64,6 +70,15 @@ export function TopPage() {
                 : TOP_INTRO[region]}
         {' '}Restaurants only, one per brand. Owner scores only; a place with no score stays off the list.
       </p>
+      {board.scored > 0 ? (
+        <div className="mt-4">
+          <PriceFilter
+            choice={{ prices, unknown: unknownPrice }}
+            showUnknown={hasUnknownPrice(board.shown.map((row) => row.place))}
+            onChange={(next) => { setPrices(next.prices); setUnknownPrice(next.unknown) }}
+          />
+        </div>
+      ) : null}
       <div className="mt-4 flex flex-wrap gap-2">
         <Link className="btn text-sm" to={cityPath('/rank')}>Rank a place</Link>
         {others.map((item) => (
@@ -83,6 +98,7 @@ export function TopPage() {
           {board.scored < 25 ? (
             <p className="glass mt-5 px-4 py-3 text-sm font-bold">{board.scored} of 25 scored. More coming.</p>
           ) : null}
+          {shown.length === 0 ? <p className="mt-5 font-serif text-2xl italic">Nothing in the Top 25 matches that price.</p> : (
           <div className={`top-podium mt-5${podium.length < 3 ? ' is-short' : ''}`} style={{ ['--podium' as string]: String(podium.length) }}>
             {podium.map((row) => (
               <m.div
@@ -110,6 +126,7 @@ export function TopPage() {
               </m.div>
             ))}
           </div>
+          )}
           {rest.length ? (
             <ol className="mt-6 space-y-3">
               {rest.map((row, index) => (

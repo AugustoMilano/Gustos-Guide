@@ -4,9 +4,11 @@ import { Link } from 'react-router-dom'
 import { AreaKicker } from '../components/AreaKicker.tsx'
 import { PlaceThumb } from '../components/PlaceThumb.tsx'
 import { SignInSheet } from '../components/SignInSheet.tsx'
+import { PriceFilter } from '../components/PriceFilter.tsx'
 import { SlidingRow } from '../components/SlidingRow.tsx'
 import { useCityCatalog } from '../lib/use-city.ts'
 import { milesBetween, priceLabel } from '../lib/format.ts'
+import { hasUnknownPrice, matchesPrice } from '../lib/price-filter.ts'
 import { readPosition } from '../lib/geo.ts'
 import { isPlaceOpen } from '../lib/hours.ts'
 import { usePageMeta } from '../lib/meta.ts'
@@ -20,6 +22,7 @@ export function TonightPage() {
   const [signIn, setSignIn] = useState(false)
   const [vibe, setVibe] = useState('')
   const [prices, setPrices] = useState<Price[]>([])
+  const [unknownPrice, setUnknownPrice] = useState(false)
   const [origin, setOrigin] = useState<{ lat: number; lng: number } | null>(null)
   const [whereError, setWhereError] = useState('')
   const [pick, setPick] = useState<SlimPlace | null>(null)
@@ -28,12 +31,12 @@ export function TonightPage() {
 
   const pool = useMemo(() => {
     const togo = places.filter((place) => app.statuses[place.id] === 'togo' && isPlaceOpen(place))
-    const priced = prices.length ? togo.filter((place) => place.price != null && prices.includes(place.price)) : togo
+    const priced = togo.filter((place) => matchesPrice(place, { prices, unknown: unknownPrice }))
     const vibed = vibe ? priced.filter((place) => place.perfectFor.includes(vibe)) : priced
     const located = origin ? vibed.slice().sort((a, b) => milesBetween(origin, a) - milesBetween(origin, b)) : vibed
     const near = origin ? located.filter((place) => milesBetween(origin, place) <= 8) : located
     return near.length ? near : located
-  }, [places, app.statuses, prices, vibe, origin])
+  }, [places, app.statuses, prices, unknownPrice, vibe, origin])
 
   const vibes = useMemo(() => {
     const counts = new Map<string, number>()
@@ -43,10 +46,6 @@ export function TonightPage() {
     }
     return [...counts.entries()].sort((a, b) => b[1] - a[1]).slice(0, 8).map(([name]) => name)
   }, [places, app.statuses])
-
-  function togglePrice(price: Price) {
-    setPrices((current) => current.includes(price) ? current.filter((item) => item !== price) : [...current, price])
-  }
 
   async function locate() {
     setWhereError('')
@@ -95,13 +94,17 @@ export function TonightPage() {
             </SlidingRow>
           </div>
           <div className="mt-2">
-            <SlidingRow label="Price">
+            <SlidingRow label="Where">
               <button type="button" className="chip" aria-pressed={!origin} onClick={() => { setOrigin(null); setWhereError('') }}>Anywhere</button>
               <button type="button" className="chip" aria-pressed={Boolean(origin)} onClick={() => void locate()}>Nearby</button>
-              {([1, 2, 3, 4] as Price[]).map((price) => (
-                <button key={price} type="button" className="chip" aria-pressed={prices.includes(price)} onClick={() => togglePrice(price)}>{priceLabel(price)}</button>
-              ))}
             </SlidingRow>
+          </div>
+          <div className="mt-2">
+            <PriceFilter
+              choice={{ prices, unknown: unknownPrice }}
+              showUnknown={hasUnknownPrice(places.filter((place) => app.statuses[place.id] === 'togo'))}
+              onChange={(next) => { setPrices(next.prices); setUnknownPrice(next.unknown) }}
+            />
           </div>
           {whereError ? <p className="mt-2 text-sm">{whereError}</p> : null}
           <div className="tonight-stage mt-5">

@@ -5,6 +5,7 @@ import { useEffect, useMemo, useState } from 'react'
 import { Link, Navigate, useParams } from 'react-router-dom'
 import { AreaKicker } from '../components/AreaKicker.tsx'
 import { GuideEntryCard, GuideStrip } from '../components/GuideEntries.tsx'
+import { PriceFilter } from '../components/PriceFilter.tsx'
 import { ShareButton } from '../components/ShareButton.tsx'
 import { StoryShareButton } from '../components/StoryShareButton.tsx'
 import { SignInSheet } from '../components/SignInSheet.tsx'
@@ -13,14 +14,15 @@ import { cityPath } from '../lib/city.ts'
 import { cuisineMenuLabel } from '../lib/cuisine-label.ts'
 import { useCityId } from '../lib/use-city.ts'
 import { flagshipAimHint } from '../lib/collections.ts'
-import { countPlaces, pageShareUrl } from '../lib/format.ts'
+import { countPlaces, pageShareUrl, priceLabel } from '../lib/format.ts'
+import { hasUnknownPrice, matchesPrice, type PriceChoice } from '../lib/price-filter.ts'
 import { renderGuideStory } from '../lib/story-card.ts'
 import { awardFor } from '../lib/top25.ts'
 import { isPlaceOpen } from '../lib/hours.ts'
 import { usePageMeta } from '../lib/meta.ts'
 import { originCanonical } from '../lib/site.ts'
 import { useApp } from '../state/AppState.tsx'
-import type { Guide, SlimPlace, VisitStatus } from '../types.ts'
+import type { Guide, Price, SlimPlace, VisitStatus } from '../types.ts'
 
 /** Neighborhood lists that moved when East Bay became its own area. */
 const GUIDE_MOVED: Record<string, string> = {
@@ -37,7 +39,8 @@ export function GuidePage() {
   const [missing, setMissing] = useState(false)
   const [neighborhood, setNeighborhood] = useState('')
   const [cuisine, setCuisine] = useState('')
-  const [price, setPrice] = useState(0)
+  const [prices, setPrices] = useState<Price[]>([])
+  const [unknownPrice, setUnknownPrice] = useState(false)
   const [tag, setTag] = useState('')
   const [openNow, setOpenNow] = useState(false)
   const [desktop, setDesktop] = useState(() => window.matchMedia('(min-width: 1024px)').matches)
@@ -69,7 +72,8 @@ export function GuidePage() {
     setMissing(false)
     setNeighborhood('')
     setCuisine('')
-    setPrice(0)
+    setPrices([])
+    setUnknownPrice(false)
     setTag('')
     setOpenNow(false)
     setSort('guide')
@@ -100,7 +104,7 @@ export function GuidePage() {
   const shown = rows.filter(({ place, entry }) => {
     if (neighborhood && place.neighborhood !== neighborhood) return false
     if (cuisine && !place.cuisine.includes(cuisine)) return false
-    if (price && place.price !== price) return false
+    if (!matchesPrice(place, { prices, unknown: unknownPrice })) return false
     if (tag && !place.perfectFor.includes(tag) && entry.vibe !== tag) return false
     if (openNow && !isPlaceOpen(place)) return false
     return true
@@ -168,7 +172,8 @@ export function GuidePage() {
   const activeFilters = [
     neighborhood,
     cuisine,
-    price ? '$'.repeat(price) : '',
+    ...prices.map((item) => priceLabel(item)),
+    unknownPrice ? 'No price' : '',
     tag,
     openNow ? 'Open now' : '',
   ].filter(Boolean)
@@ -214,12 +219,14 @@ export function GuidePage() {
             tags={tags}
             neighborhood={neighborhood}
             cuisine={cuisine}
-            price={price}
+            prices={prices}
+            unknownPrice={unknownPrice}
+            showUnknown={hasUnknownPrice(rows.map((row) => row.place))}
             tag={tag}
             openNow={openNow}
             setNeighborhood={setNeighborhood}
             setCuisine={setCuisine}
-            setPrice={setPrice}
+            onPrice={(next) => { setPrices(next.prices); setUnknownPrice(next.unknown) }}
             setTag={setTag}
             setOpenNow={setOpenNow}
           />
@@ -242,7 +249,8 @@ export function GuidePage() {
                   else if (item === cuisine) setCuisine('')
                   else if (item === tag) setTag('')
                   else if (item === 'Open now') setOpenNow(false)
-                  else setPrice(0)
+                  else if (item === 'No price') setUnknownPrice(false)
+                  else setPrices((current) => current.filter((price) => priceLabel(price) !== item))
                 }}
               >
                 {item} ×
@@ -262,12 +270,14 @@ export function GuidePage() {
                   tags={tags}
                   neighborhood={neighborhood}
                   cuisine={cuisine}
-                  price={price}
+                  prices={prices}
+                  unknownPrice={unknownPrice}
+                  showUnknown={hasUnknownPrice(rows.map((row) => row.place))}
                   tag={tag}
                   openNow={openNow}
                   setNeighborhood={setNeighborhood}
                   setCuisine={setCuisine}
-                  setPrice={setPrice}
+                  onPrice={(next) => { setPrices(next.prices); setUnknownPrice(next.unknown) }}
                   setTag={setTag}
                   setOpenNow={setOpenNow}
                 />
@@ -339,12 +349,14 @@ function FilterFields({
   tags,
   neighborhood,
   cuisine,
-  price,
+  prices,
+  unknownPrice,
+  showUnknown,
   tag,
   openNow,
   setNeighborhood,
   setCuisine,
-  setPrice,
+  onPrice,
   setTag,
   setOpenNow,
 }: {
@@ -353,12 +365,14 @@ function FilterFields({
   tags: string[]
   neighborhood: string
   cuisine: string
-  price: number
+  prices: Price[]
+  unknownPrice: boolean
+  showUnknown: boolean
   tag: string
   openNow: boolean
   setNeighborhood: (value: string) => void
   setCuisine: (value: string) => void
-  setPrice: (value: number) => void
+  onPrice: (next: PriceChoice) => void
   setTag: (value: string) => void
   setOpenNow: (value: boolean | ((current: boolean) => boolean)) => void
 }) {
@@ -372,13 +386,7 @@ function FilterFields({
         <option value="">All cuisines</option>
         {cuisines.map((item) => <option key={item} value={item}>{cuisineMenuLabel(item, cuisines)}</option>)}
       </select>
-      <select className="soft-field bg-cream px-2 py-2" value={price} onChange={(event) => setPrice(Number(event.target.value))} aria-label="Price">
-        <option value={0}>Any price</option>
-        <option value={1}>$</option>
-        <option value={2}>$$</option>
-        <option value={3}>$$$</option>
-        <option value={4}>$$$$</option>
-      </select>
+      <PriceFilter choice={{ prices, unknown: unknownPrice }} showUnknown={showUnknown} onChange={onPrice} />
       <select className="soft-field bg-cream px-2 py-2" value={tag} onChange={(event) => setTag(event.target.value)} aria-label="Perfect for">
         <option value="">Perfect for</option>
         {tags.map((item) => <option key={item}>{item}</option>)}

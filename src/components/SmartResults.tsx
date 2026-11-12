@@ -1,6 +1,10 @@
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
+import { PriceFilter } from './PriceFilter.tsx'
 import { cityPath, type CityId } from '../lib/city.ts'
+import { hasUnknownPrice, matchesPrice } from '../lib/price-filter.ts'
 import type { SmartResult } from '../lib/smart-search.ts'
+import type { Price } from '../types.ts'
 
 function ResultList({ title, hits, onPick }: { title: string; hits: SmartResult['guides']; onPick?: () => void }) {
   if (!hits.length) return null
@@ -34,10 +38,30 @@ export function SmartResults({
   /** Called when a result is opened, so the page can remember the search. */
   onPick?: () => void
 }) {
+  const [prices, setPrices] = useState<Price[]>([])
+  const [unknownPrice, setUnknownPrice] = useState(false)
+  const [forQuery, setForQuery] = useState(query)
+  if (query !== forQuery) {
+    setForQuery(query)
+    setPrices([])
+    setUnknownPrice(false)
+  }
+  const choice = { prices, unknown: unknownPrice }
+  const places = result.places.filter((hit) => matchesPrice({ price: hit.price ?? undefined }, choice))
   const empty = result.guides.length === 0 && result.places.length === 0
+  const pricedOut = !empty && result.places.length > 0 && places.length === 0
   return (
     <div>
       {result.switched ? <p className="mt-4 text-sm font-bold">Showing {result.scopeLabel}.</p> : null}
+      {result.places.length ? (
+        <div className="mt-4">
+          <PriceFilter
+            choice={choice}
+            showUnknown={hasUnknownPrice(result.places.map((hit) => ({ price: hit.price ?? undefined })))}
+            onChange={(next) => { setPrices(next.prices); setUnknownPrice(next.unknown) }}
+          />
+        </div>
+      ) : null}
       {empty ? (
         <div className="mt-4" role="status">
           <p className="font-bold">Nothing matches “{query}”.</p>
@@ -45,7 +69,8 @@ export function SmartResults({
         </div>
       ) : null}
       <ResultList title="Guides" hits={result.guides} onPick={onPick} />
-      <ResultList title="Places" hits={result.places} onPick={onPick} />
+      <ResultList title="Places" hits={places} onPick={onPick} />
+      {pricedOut ? <p className="mt-4" role="status">No places at that price.</p> : null}
       {empty ? <ResultList title="Close guides" hits={result.suggestions} onPick={onPick} /> : null}
       {empty ? (
         <p className="mt-4">
