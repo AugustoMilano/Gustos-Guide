@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import { AreaKicker } from '../components/AreaKicker.tsx'
 import { SmartResults } from '../components/SmartResults.tsx'
 import { catalog, ensureAllCities } from '../content/load.ts'
-import { areaName, cityPath, regionOf } from '../lib/city.ts'
+import { areaName, cityPath, regionOf, type CityId } from '../lib/city.ts'
 import { groupEastsideCities } from '../lib/eastside-city.ts'
 import { countPlaces } from '../lib/format.ts'
 import { usePageMeta } from '../lib/meta.ts'
@@ -75,7 +75,9 @@ function guideIndexMeta(city: string): string {
 export function GuideIndexPage() {
   const reduceMotion = useReducedMotion()
   const { city, guides, places } = useCityCatalog()
-  const [draft, setDraft] = useState('')
+  const [drafts, setDrafts] = useState<Partial<Record<CityId, string>>>({})
+  const draft = drafts[city] ?? ''
+  const setDraft = (value: string) => setDrafts((current) => ({ ...current, [city]: value }))
   const [group, setGroup] = useState<GuideGroup | 'All'>('All')
   usePageMeta(`${areaName(city)} guides · Gusto's Guide`, guideIndexMeta(city), `./og/cities/${regionOf(city)}.png`)
   const query = draft.trim()

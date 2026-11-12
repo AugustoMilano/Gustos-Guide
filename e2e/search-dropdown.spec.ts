@@ -51,7 +51,7 @@ test('Eastside header suggestions keep the full label readable', async ({ page }
   const detail = row.locator('span.uppercase')
   const marks = row.locator('mark')
   await expect(name).toContainText("Baron's Sino Kitchen & Bar")
-  await expect(detail).toHaveText('Place name')
+  await expect(detail).toHaveText('Chinese · Downtown Bellevue')
   await expect(marks).toHaveText(['Ba', 'Ba'])
 
   for (const locator of [name, detail, marks.nth(0), marks.nth(1)]) {
@@ -73,6 +73,27 @@ test('Eastside header suggestions keep the full label readable', async ({ page }
 
   await row.click()
   await expect(page).toHaveURL(/\/place\//)
+})
+
+test('a city tab clears the query and does not show the other city', async ({ page }) => {
+  const narrow = page.viewportSize()!.width < 700
+  await page.goto('/#/seattle')
+  await page.locator('#home-search').fill('canlis')
+  await expect(page.getByRole('link', { name: 'Canlis' })).toBeVisible()
+  await page.getByRole('button', { name: 'Eastside', exact: true }).click()
+  await expect(page).toHaveURL(/\/eastside/)
+  await expect(page.locator('#home-search')).toHaveValue('')
+  await expect(page.getByRole('link', { name: 'Canlis' })).toHaveCount(0)
+  await expect(page.getByText('Showing Seattle')).toHaveCount(0)
+  await page.locator('#home-search').fill('kanlis')
+  await expect(page.getByRole('link', { name: 'Canlis' })).toHaveCount(0)
+  await expect(page.getByText(/Canlis/)).toHaveCount(0)
+
+  if (narrow) await page.getByRole('button', { name: 'Menu' }).click()
+  const input = page.locator(narrow ? '#menu-search' : '#site-search')
+  await expect(input).toHaveValue('')
+  await input.fill('canlis')
+  await expect(page.getByRole('option', { name: /Canlis/ })).toHaveCount(0)
 })
 
 test('suggestions stay readable after the header leaves the hero', async ({ page }) => {

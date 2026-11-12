@@ -3,7 +3,7 @@ import { AnimatePresence, m, useReducedMotion } from 'framer-motion'
 import { dragSheet } from '../lib/motion.ts'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { accountAccessibleName, accountGreeting } from '../lib/account-label.ts'
-import { barePath, regionName as areaLabel, areaPhrase, areasFor, CITY_PREFIXES, cityPath, isCityPicker, readRegionMemory, writeRegionMemory } from '../lib/city.ts'
+import { barePath, regionName as areaLabel, areaPhrase, areasFor, CITY_PREFIXES, cityPath, isCityPicker, readRegionMemory, writeRegionMemory, type CityId } from '../lib/city.ts'
 import { SearchField } from './SearchField.tsx'
 import { useCityId } from '../lib/use-city-id.ts'
 import { AreaKicker } from './AreaKicker.tsx'
@@ -89,7 +89,7 @@ function BellIcon() {
 export function Header() {
   const { user, signOut, notices, markNoticesRead } = useApp()
   const [open, setOpen] = useState(false)
-  const [query, setQuery] = useState('')
+  const [queries, setQueries] = useState<Partial<Record<CityId, string>>>({})
   const [menu, setMenu] = useState(false)
   const [bell, setBell] = useState(false)
   const unread = notices.filter((notice) => !notice.read).length
@@ -97,6 +97,8 @@ export function Header() {
   const navigate = useNavigate()
   const location = useLocation()
   const city = useCityId()
+  const query = queries[city] ?? ''
+  const setQuery = (value: string) => setQueries((current) => ({ ...current, [city]: value }))
   const picker = isCityPicker(location.pathname)
   const linkCity = picker ? readRegionMemory().area : city
   const areaName = areaPhrase(linkCity)

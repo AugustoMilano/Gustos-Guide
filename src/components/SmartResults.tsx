@@ -18,7 +18,7 @@ function ResultList({ title, hits, onPick }: { title: string; hits: SmartResult[
             <Link to={hit.href} className="smart-hit" onClick={onPick}>
               <span className="place-row-copy">
                 <span className={hit.kind === 'place' ? placeNameClass(hit.title, 'italic leading-tight') : 'block font-serif text-2xl italic leading-tight'}>{hit.title}</span>
-                <span className="mt-1 block text-sm">{hit.why}</span>
+                {hit.why === 'Place name' || hit.why === 'Guide title' ? null : <span className="mt-1 block text-sm">{hit.why}</span>}
               </span>
               <span className="smart-hit-meta">{hit.detail}</span>
             </Link>

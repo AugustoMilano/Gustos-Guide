@@ -401,31 +401,13 @@ function matchTerm(term: Term, item: Prepared, guideHits: Map<string, string>): 
   return best
 }
 
-function detectScope(query: string, current: CityId): CityId {
-  const text = ` ${norm(query)} `
-  const sorted = AREA_WORDS.slice().sort((a, b) => b.phrase.length - a.phrase.length)
-  for (const area of sorted) {
-    if (text.includes(` ${norm(area.phrase)} `)) return area.city
-  }
-  return current
-}
-
 function whyFrom(parts: string[]): string {
   return [...new Set(parts.filter(Boolean))].slice(0, 2).join(' · ') || 'Match'
 }
 
+/** Matches stay in the open city. A typo or a leftover query must not pull another city's catalog. */
 export function smartSearch(query: string, current: CityId, places: SlimPlace[], guides: GuideSummary[], scoreOf?: ScoreOf): SmartResult {
-  const result = searchIn(detectScope(query, current), query, current, places, guides, scoreOf)
-  if (result.guides.length || result.places.length) return result
-  // Nothing here: a place name from another area (e.g. a Seattle spot searched on the Eastside) switches scope.
-  const whole = stemText(query)
-  if (whole.length < 4) return result
-  const { prepared } = buildIndex(places)
-  const named = prepared.find((item) => item.place.closed !== true && (item.name.startsWith(whole) || item.nameTokens.some((token) => fuzzy(whole, token)) || fuzzy(whole, item.name)))
-  const other = named ? ((named.place.city ?? 'seattle') as CityId) : null
-  if (!other || other === result.scope) return result
-  const moved = searchIn(other, query, current, places, guides, scoreOf)
-  return moved.places.length || moved.guides.length ? moved : result
+  return searchIn(current, query, current, places, guides, scoreOf)
 }
 
 function searchIn(scope: CityId, query: string, current: CityId, places: SlimPlace[], guides: GuideSummary[], scoreOf?: ScoreOf): SmartResult {
