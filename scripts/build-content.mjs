@@ -960,6 +960,16 @@ function filterGuide(slug, title, dek, group, ranked, angle, predicate, cap = 24
 }
 
 filterGuide('breakfast-before-9', 'Best Breakfast', 'Open by 9, which is when breakfast still tastes like breakfast.', 'Best of', false, 'breakfast', (place) => place.periods.some((period) => period.start > 0 && period.start <= 9 * 60))
+const breakfast = guides.find((guide) => guide.slug === 'breakfast-before-9')
+const biscuit = launchById.get('biscuit-bitch')
+if (breakfast && biscuit && !breakfast.entries.some((entry) => entry.placeId === 'biscuit-bitch')) {
+  breakfast.entries.push({
+    placeId: biscuit.id,
+    pullQuote: guideQuotes.get(biscuit.id)?.['breakfast-before-9'] || biscuit.oneLiner,
+    blurb: biscuit.blurb,
+    copySource: 'draft',
+  })
+}
 filterGuide('late-night', 'Late-Night Eats', 'Kitchens and bars still going at 11pm or later.', 'Occasion', false, 'late', (place) => place.periods.some((period) => period.end >= 23 * 60 || period.end === 24 * 60))
 filterGuide('dumplings', 'Dumplings & Dim Sum', 'Dumpling houses and dim sum, soup first.', 'Cuisine', false, 'default', (place) => /dumpling|dim sum|gyoza|xiao/i.test(`${place.name} ${place.cuisine.join(' ')} ${place.placeType}`))
 filterGuide('teriyaki', 'Teriyaki & Other Seattle Things', 'Teriyaki, the local weeknight.', 'Cuisine', false, 'default', (place) => /teriyaki/i.test(`${place.name} ${place.cuisine.join(' ')}`))

@@ -74,6 +74,11 @@ html {
 
   --badge-w: 6.25rem;
   --badge-h: 4.35rem;
+  /* Score bands. Good is light green; It's fine keeps the previous Good gold. */
+  --score-good: #b7e39a;
+  --score-good-ink: #181818;
+  --score-fine: #e7b23c;
+  --score-fine-ink: #181818;
   --count-w: 4.75rem;
   --shot: 4rem;
   --score-num-w: 3rem;
@@ -726,13 +731,13 @@ main ul.grid > li {
 }
 
 .score-badge.tone-good {
-  background: #e7b23c;
-  color: #181818;
+  background: var(--score-good);
+  color: var(--score-good-ink);
 }
 
 .score-badge.tone-fine {
-  background: #fff6ea;
-  color: #181818;
+  background: var(--score-fine);
+  color: var(--score-fine-ink);
 }
 
 .score-badge.tone-skip {

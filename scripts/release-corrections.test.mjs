@@ -46,11 +46,61 @@ assert.deepEqual(places['alibi-room'].photos.map((photo) => photo.url), [
 assert.equal(places['il-bistro'].gustoScore, null)
 assert.equal(index.places.find((place) => place.id === 'il-bistro').photo.url, '/photos/il-bistro.jpg')
 
+const starbucks = places['starbucks-coffee-company']
+const starbucksBlurb = "Tourists line up at the market's Starbucks Coffee Company for the vintage logo and bragging rights to the first Starbucks. The company opened in 1971 on Western Avenue and moved to this Pike Place shop in 1976. It opens early, so arrive before the crowds if you want the souvenir mug without the wait."
+assert.equal(starbucks.address, '1912 Pike Pl, Seattle, WA  98101')
+assert.equal(starbucks.oneLiner, 'Visit once for the history, then drink your daily coffee somewhere quieter.')
+assert.equal(starbucks.blurb, starbucksBlurb)
+assert.equal(starbucks.gustoScore, null)
+assert.equal(starbucks.photos.some((photo) => photo.url), false)
+assert.equal(index.places.find((place) => place.id === 'starbucks-coffee-company').oneLiner, starbucks.oneLiner)
+for (const guide of guides) {
+  for (const entry of guide.entries) {
+    if (entry.placeId !== 'starbucks-coffee-company') continue
+    assert.equal(entry.blurb, starbucksBlurb, guide.slug)
+    assert.equal(entry.pullQuote, starbucks.oneLiner, guide.slug)
+  }
+}
+
 const cheap = guides.find((guide) => guide.slug === 'cheap-eats')
 assert.equal(cheap.entries.some((entry) => entry.placeId === 'alibi-room'), false)
 for (const slug of ['pike-place', 'best-pizza', 'pike-place-market']) {
   assert.equal(guides.find((guide) => guide.slug === slug).entries.some((entry) => entry.placeId === 'alibi-room'), true, slug)
 }
+
+const breakfast = guides.find((guide) => guide.slug === 'breakfast-before-9')
+assert.equal(breakfast.title, 'Best Breakfast')
+assert.equal(breakfast.ranked, false)
+assert.equal(breakfast.entries.at(-1).placeId, 'biscuit-bitch')
+assert.equal(breakfast.entries.filter((entry) => entry.placeId === 'biscuit-bitch').length, 1)
+assert.equal(index.guides.find((guide) => guide.slug === 'breakfast-before-9').count, breakfast.entries.length)
+for (const slug of ['pike-place', 'brunch', 'pike-place-market', 'belltown']) {
+  assert.equal(places['biscuit-bitch'].guideSlugs.includes(slug), true, slug)
+  assert.equal(index.places.find((place) => place.id === 'biscuit-bitch').guideSlugs.includes(slug), true, slug)
+}
+assert.equal(places['biscuit-bitch'].guideSlugs.includes('breakfast-before-9'), true)
+assert.equal(index.places.find((place) => place.id === 'biscuit-bitch').guideSlugs.includes('breakfast-before-9'), true)
+assert.equal(places['matsu'].name, 'Matsu')
+assert.equal(places['matsu'].gustoScore, null)
+assert.equal(places['stampede-cocktail-club'].gustoScore, null)
+assert.equal(places['the-doctor-s-office'].gustoScore, null)
+const eastside = JSON.parse(readFileSync(new URL('../src/content/eastside.json', import.meta.url), 'utf8'))
+const earls = eastside.places.find((place) => place.id === 'earls-kitchen-bar')
+assert.equal(earls.name, 'Earls Kitchen + Bar')
+assert.equal(earls.gustoScore ?? null, null)
+
+const badgeCss = readFileSync(new URL('../src/index.css', import.meta.url), 'utf8')
+assert.match(badgeCss, /--score-good:\s*#b7e39a/)
+assert.match(badgeCss, /--score-fine:\s*#e7b23c/)
+assert.match(badgeCss, /\.score-badge\.tone-good\s*\{[^}]*background:\s*var\(--score-good\)/)
+assert.match(badgeCss, /\.score-badge\.tone-fine\s*\{[^}]*background:\s*var\(--score-fine\)/)
+assert.match(badgeCss, /\.score-badge\.tone-best\s*\{[^}]*background:\s*#0f6b28/)
+assert.match(badgeCss, /\.score-badge\.tone-great\s*\{[^}]*background:\s*#38ba46/)
+const bands = readFileSync(new URL('../src/components/ScoreBadge.tsx', import.meta.url), 'utf8')
+assert.match(bands, /score >= 9[\s\S]*Best of the best/)
+assert.match(bands, /score >= 8[\s\S]*Great/)
+assert.match(bands, /score >= 7[\s\S]*Good/)
+assert.match(bands, /score >= 6[\s\S]*It's fine/)
 
 const slu = guides.find((guide) => guide.slug === 'south-lake-union-incl-denny-triangle')
 assert.equal(slu.title, 'South Lake Union')
