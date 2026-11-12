@@ -1,10 +1,11 @@
 import { useEffect, useRef, useState } from 'react'
 import { MapContainer, useMap } from 'react-leaflet'
 import 'leaflet/dist/leaflet.css'
-import { circleMarker, divIcon, latLngBounds, marker, type Layer, type CircleMarker, type MarkerClusterGroup } from 'leaflet'
+import { circleMarker, divIcon, latLngBounds, marker, polyline, type Layer, type CircleMarker, type MarkerClusterGroup } from 'leaflet'
 import { readPosition } from '../lib/geo.ts'
 import '../lib/setup-leaflet.ts'
 import 'leaflet.markercluster'
+import { cityPath } from '../lib/city.ts'
 import { escapeHtml } from '../lib/format.ts'
 import { appleDirectionsUrl, applePlaceUrl, googleDirectionsUrl, googleMapsUrl, prefersAppleMaps } from '../lib/maps.ts'
 import type { VisitStatus } from '../types.ts'
@@ -542,6 +543,138 @@ export function GuideMap({
           <i style={{ background: COLORS.none }} aria-hidden="true" /> Unmarked
         </span>
       </div>
+    </div>
+  )
+}
+
+function numberIcon(n: number, hot: boolean) {
+  return divIcon({
+    className: 'night-pin-wrap',
+    html: `<span class="night-pin${hot ? ' is-hot' : ''}">${n}</span>`,
+    iconSize: [36, 36],
+    iconAnchor: [18, 18],
+  })
+}
+
+function stopPopup(place: MapPlace, index: number): string {
+  const href = `#${cityPath(`/place/${place.id}`)}`
+  return `<strong>${index}. ${escapeHtml(place.name)}</strong><br/><span>${escapeHtml(place.neighborhood)}</span><br/><a href="${href}">Open ${escapeHtml(place.name)}</a>`
+}
+
+function NumberedPins({
+  places,
+  activeId,
+  onSelect,
+}: {
+  places: MapPlace[]
+  activeId?: string | null
+  onSelect?: (id: string) => void
+}) {
+  const map = useMap()
+  const markers = useRef(new Map<string, ReturnType<typeof marker>>())
+  const selectRef = useRef(onSelect)
+  const skipFly = useRef(true)
+  selectRef.current = onSelect
+  const idKey = places.map((place) => place.id).join('|')
+
+  useEffect(() => {
+    const finite = places.filter((place) => Number.isFinite(place.lat) && Number.isFinite(place.lng))
+    const pins = finite.map((place, index) => {
+      const pin = marker([place.lat, place.lng], {
+        icon: numberIcon(index + 1, place.id === activeId),
+        title: `${index + 1}. ${place.name}`,
+        keyboard: true,
+        alt: `${index + 1}. ${place.name}`,
+        zIndexOffset: place.id === activeId ? 1000 : index,
+      })
+      pin.bindPopup(stopPopup(place, index + 1))
+      pin.on('click', () => selectRef.current?.(place.id))
+      pin.addTo(map)
+      return pin
+    })
+    markers.current = new Map(finite.map((place, index) => [place.id, pins[index]]))
+    const line = finite.length > 1
+      ? polyline(finite.map((place) => [place.lat, place.lng]), { color: '#ff5330', weight: 3, opacity: 0.9 }).addTo(map)
+      : null
+    const fit = () => {
+      try {
+        map.invalidateSize()
+        if (finite.length === 1) map.setView([finite[0].lat, finite[0].lng], 15, { animate: false })
+        else if (finite.length > 1) {
+          map.fitBounds(latLngBounds(finite.map((place) => [place.lat, place.lng])), { padding: [42, 42], maxZoom: 16, animate: false })
+        }
+      } catch {
+        // Leaflet throws when the map is removed mid-fit.
+      }
+    }
+    const frame = window.requestAnimationFrame(fit)
+    const timer = window.setTimeout(fit, 350)
+    return () => {
+      window.cancelAnimationFrame(frame)
+      window.clearTimeout(timer)
+      markers.current.clear()
+      for (const pin of pins) pin.remove()
+      line?.remove()
+    }
+    // The active pin is restyled below so a hover does not refit the map.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [map, idKey])
+
+  useEffect(() => {
+    for (const [id, pin] of markers.current) {
+      const index = places.findIndex((place) => place.id === id)
+      pin.setIcon(numberIcon(index + 1, id === activeId))
+      pin.setZIndexOffset(id === activeId ? 1200 : index)
+    }
+    if (skipFly.current) {
+      skipFly.current = false
+      return
+    }
+    const pin = activeId ? markers.current.get(activeId) : undefined
+    if (!pin) return
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    try {
+      const zoom = Math.max(map.getZoom(), 15)
+      if (reduce) map.setView(pin.getLatLng(), zoom, { animate: false })
+      else map.flyTo(pin.getLatLng(), zoom, { duration: 0.45 })
+    } catch {
+      // The map can unmount while a pin is still active.
+    }
+  }, [activeId, map, places])
+
+  return null
+}
+
+/** Numbered stops for a night plan. The explore map's status pins and clusters stay as they are. */
+export function ItineraryMap({
+  places,
+  activeId,
+  onSelect,
+}: {
+  places: MapPlace[]
+  activeId?: string | null
+  onSelect?: (id: string) => void
+}) {
+  if (!places.length) return null
+  const first = places[0]
+  const list = places.map((place, index) => `${index + 1}. ${place.name}`).join(', ')
+  return (
+    <div className="map-frame h-full min-h-0">
+      <p className="sr-only">Map of the stops in order: {list}.</p>
+      <MapContainer
+        center={[first.lat, first.lng]}
+        zoom={14}
+        zoomSnap={0}
+        minZoom={1}
+        maxZoom={18}
+        zoomControl={false}
+        scrollWheelZoom
+        className="h-full w-full"
+      >
+        <ZoomButtons />
+        <Basemap />
+        <NumberedPins places={places} activeId={activeId} onSelect={onSelect} />
+      </MapContainer>
     </div>
   )
 }

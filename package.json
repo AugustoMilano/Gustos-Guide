@@ -10,6 +10,7 @@
     "lint": "oxlint && node scripts/lint-copy.mjs",
     "test:e2e": "playwright test",
     "test:stamp": "node scripts/stamp-sw.test.mjs",
+    "test:night": "node --experimental-strip-types scripts/night-plan.test.ts",
     "content": "node scripts/build-content.mjs",
     "photos": "node scripts/fetch-photos.mjs",
     "wikimedia": "node scripts/fetch-wikimedia.mjs",

@@ -239,6 +239,7 @@ export function Header() {
           <Link viewTransition={!reduceMotion} to={cityPath('/explore', linkCity)} aria-current={barePath(location.pathname) === '/explore' ? 'page' : undefined} onMouseEnter={() => prefetch('/explore')} onFocus={() => prefetch('/explore')}>Map</Link>
           <Link viewTransition={!reduceMotion} to={cityPath('/guides', linkCity)} aria-current={barePath(location.pathname) === '/guides' || barePath(location.pathname).startsWith('/guide/') ? 'page' : undefined}>Guides</Link>
           <Link viewTransition={!reduceMotion} to={cityPath('/tonight', linkCity)} aria-current={barePath(location.pathname) === '/tonight' ? 'page' : undefined}>Tonight</Link>
+          <Link className="nav-wide" viewTransition={!reduceMotion} to={cityPath('/night', linkCity)} aria-current={barePath(location.pathname) === '/night' ? 'page' : undefined}>Night</Link>
           <Link viewTransition={!reduceMotion} to={cityPath('/top', linkCity)} aria-current={barePath(location.pathname) === '/top' ? 'page' : undefined}>Top 25</Link>
           {user ? (
             <>
@@ -319,6 +320,7 @@ export function Header() {
           <Link viewTransition={!reduceMotion} to={cityPath('/explore', linkCity)} onClick={() => setMenu(false)} onFocus={() => prefetch('/explore')}>Map</Link>
           <Link viewTransition={!reduceMotion} to={cityPath('/guides', linkCity)} onClick={() => setMenu(false)}>Guides</Link>
           <Link viewTransition={!reduceMotion} to={cityPath('/tonight', linkCity)} onClick={() => setMenu(false)}>Tonight</Link>
+          <Link viewTransition={!reduceMotion} to={cityPath('/night', linkCity)} onClick={() => setMenu(false)}>Plan my night</Link>
           <Link viewTransition={!reduceMotion} to={cityPath('/feed', linkCity)} onClick={() => setMenu(false)}>Feed</Link>
           <Link viewTransition={!reduceMotion} to={cityPath('/plans', linkCity)} onClick={() => setMenu(false)}>Plans</Link>
           <Link viewTransition={!reduceMotion} to={cityPath('/rank', linkCity)} onClick={() => setMenu(false)}>Rank</Link>

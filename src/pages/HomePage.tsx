@@ -1,5 +1,6 @@
 import { useMemo, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import { NightBox } from '../components/NightBox.tsx'
 import { SmartResults, featuredSlugs } from '../components/SmartResults.tsx'
 import { catalog } from '../content/load.ts'
 import { areaName, cityPath, regionOf } from '../lib/city.ts'
@@ -7,6 +8,7 @@ import { countPlaces } from '../lib/format.ts'
 import { isPlaceOpen } from '../lib/hours.ts'
 import { regionBoard } from '../lib/top25.ts'
 import { usePageMeta } from '../lib/meta.ts'
+import { nightExamples } from '../lib/night-plan.ts'
 import { smartSearch } from '../lib/smart-search.ts'
 import { useApp } from '../state/AppState.tsx'
 import { useCityCatalog } from '../lib/use-city.ts'
@@ -30,7 +32,10 @@ function Chevron() {
 
 export function HomePage() {
   const { city, guides, places, ready, failed } = useCityCatalog()
+  const navigate = useNavigate()
   const [draft, setDraft] = useState('')
+  const [night, setNight] = useState('')
+  const examples = nightExamples(city)
   // Per-city title and share card (C5); sub-areas use their region's card.
   usePageMeta(`${areaName(city)} · Gusto's Guide`, `${areaName(city)} restaurants and places.`, `./og/cities/${regionOf(city)}.png`)
   const query = draft.trim()
@@ -77,7 +82,25 @@ export function HomePage() {
           </div>
         ) : result ? <SmartResults query={query} result={result} /> : (
           <>
-            <section aria-labelledby="featured-guides">
+            <section aria-labelledby="plan-night">
+              <h2 id="plan-night" className="font-serif text-4xl italic">Plan my night</h2>
+              <p className="mt-2 max-w-xl text-sm">Say what you want, or the stops in order. Picks stay inside this guide.</p>
+              <div className="mt-4 max-w-xl">
+                <NightBox
+                  id="home-night"
+                  value={night}
+                  onChange={setNight}
+                  examples={examples}
+                  placeholder={examples[1]?.query ?? 'drinks, then dinner, then dessert'}
+                  onSubmit={(value) => {
+                    const next = value.trim()
+                    if (!next) return
+                    navigate(cityPath(`/night?q=${encodeURIComponent(next)}`))
+                  }}
+                />
+              </div>
+            </section>
+            <section className="mt-8" aria-labelledby="featured-guides">
               <h2 id="featured-guides" className="font-serif text-4xl italic">Featured guides</h2>
               {failed ? <p className="mt-4">The guide list didn't load. <button type="button" className="btn" onClick={() => window.location.reload()}>Try again</button></p> : null}
               <div className="home-featured mt-4">
