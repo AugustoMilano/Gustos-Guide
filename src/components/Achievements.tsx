@@ -316,7 +316,8 @@ function AchievementSheet({ a, date, celebrate, onClose, who }: { a: Achievement
             <span style={{ width: `${(a.have / a.goal) * 100}%` }} />
           </div>
         ) : null}
-        <div className="mt-6 grid gap-2 sm:grid-cols-2">
+        {/* A milestone has only Done. Two equal columns would still reserve an empty track, and that track shifts the button left of center. */}
+        <div className={a.guide ? 'mt-6 grid gap-2 sm:grid-cols-2' : 'mt-6 flex justify-center self-stretch'}>
           {a.guide ? <Link className="btn btn-coral" to={cityPath(`/guide/${a.guide.slug}`, a.guide.city)} onClick={onClose}>Open the guide</Link> : null}
           <button type="button" className="btn" onClick={onClose}>Done</button>
         </div>
