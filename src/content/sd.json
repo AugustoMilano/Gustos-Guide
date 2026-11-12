@@ -315,7 +315,8 @@
         }
       ],
       "phone": "+1 (619) 629-0243",
-      "website": "https://raisedxwolves.com"
+      "website": "https://raisedxwolves.com",
+      "price": 2
     },
     {
       "id": "marisi",
@@ -529,7 +530,8 @@
         }
       ],
       "phone": "+1 (619) 795-0063",
-      "website": "https://www.facebook.com/people/La-Perla-Cocina-Mexicana-3/100054619801594/"
+      "website": "https://www.facebook.com/people/La-Perla-Cocina-Mexicana-3/100054619801594/",
+      "price": 1
     },
     {
       "id": "cesarina",
@@ -604,44 +606,8 @@
         }
       ],
       "phone": "+1 (619) 226-6222",
-      "website": "https://cesarinarestaurant.com"
-    },
-    {
-      "id": "barrio-dogg",
-      "city": "sandiego",
-      "name": "Barrio Dogg",
-      "neighborhood": "Barrio Logan",
-      "address": "2234 Logan Ave, San Diego, CA 92113",
-      "lat": 32.6977281,
-      "lng": -117.1385801,
-      "cuisine": [
-        "Hot dogs"
-      ],
-      "placeType": "restaurant",
-      "oneLiner": "",
-      "perfectFor": [],
-      "periods": [],
-      "gustoScore": null,
-      "appleMapsUrl": "https://maps.apple.com/?daddr=32.6977281,-117.1385801&q=Barrio%20Dogg",
-      "applePlaceUrl": "https://maps.apple.com/place?auid=2904697606814888126",
-      "guideSlugs": [],
-      "muid": "2904697606814888126",
-      "hoursLabel": "",
-      "blurb": "",
-      "orderThis": [],
-      "ids": {},
-      "copySource": "draft",
-      "updatedAt": "2026-10-22",
-      "photos": [
-        {
-          "source": "illustration",
-          "isIllustration": true,
-          "alt": "Illustration suggesting Hot dogs at Barrio Dogg",
-          "credit": "Illustration"
-        }
-      ],
-      "phone": "+1 (619) 546-7889",
-      "website": "https://barriodogg.com/"
+      "website": "https://cesarinarestaurant.com",
+      "price": 2
     },
     {
       "id": "atelier-manna",
@@ -690,7 +656,8 @@
         }
       ],
       "phone": "+1 (760) 230-1237",
-      "website": "https://www.atelier-manna.com/"
+      "website": "https://www.atelier-manna.com/",
+      "price": 2
     },
     {
       "id": "soichi",
@@ -741,7 +708,8 @@
         }
       ],
       "phone": "+1 (619) 677-2220",
-      "website": "https://www.soichisushi.com"
+      "website": "https://www.soichisushi.com",
+      "price": 4
     },
     {
       "id": "mikes-taco-club",
@@ -800,7 +768,8 @@
         }
       ],
       "phone": "+1 (619) 223-3540",
-      "website": "http://www.mikestacoclub.com"
+      "website": "http://www.mikestacoclub.com",
+      "price": 1
     },
     {
       "id": "mabels-gone-fishing",
@@ -1272,7 +1241,8 @@
         }
       ],
       "phone": "+1 (619) 289-8358",
-      "website": "https://www.izolabakery.com"
+      "website": "https://www.izolabakery.com",
+      "price": 1
     },
     {
       "id": "javiers-2",
@@ -1331,7 +1301,8 @@
         }
       ],
       "phone": "+1 (858) 200-2222",
-      "website": "https://www.javiersfinestfoods.com/la-jolla"
+      "website": "https://www.javiersfinestfoods.com/la-jolla",
+      "price": 3
     },
     {
       "id": "fernandez-restaurant-birrieria",
@@ -1382,7 +1353,8 @@
         }
       ],
       "phone": "+1 (619) 628-8235",
-      "website": "https://www.edfernandezbirrieria.com/"
+      "website": "https://www.edfernandezbirrieria.com/",
+      "price": 1
     },
     {
       "id": "morning-glory",
@@ -1441,7 +1413,8 @@
         }
       ],
       "phone": "+1 (619) 629-0302",
-      "website": "https://morningglorybreakfast.com"
+      "website": "https://morningglorybreakfast.com",
+      "price": 2
     },
     {
       "id": "island-prime",
@@ -1632,7 +1605,8 @@
         }
       ],
       "phone": "+1 (619) 546-0570",
-      "website": "https://www.letstaco.com/location/san-diego-downtown"
+      "website": "https://www.letstaco.com/location/san-diego-downtown",
+      "price": 1
     },
     {
       "id": "jeune-et-jolie",
@@ -1687,7 +1661,8 @@
         }
       ],
       "phone": "+1 (760) 637-5266",
-      "website": "https://www.jeune-jolie.com"
+      "website": "https://www.jeune-jolie.com",
+      "price": 4
     },
     {
       "id": "himitsu",
@@ -2098,7 +2073,8 @@
         }
       ],
       "phone": "+1 (619) 381-4844",
-      "website": "https://buonaforchettasd.com/buona-forchetta-south-park/"
+      "website": "https://buonaforchettasd.com/buona-forchetta-south-park/",
+      "price": 2
     },
     {
       "id": "animae",
@@ -2157,45 +2133,6 @@
       ],
       "phone": "+1 (619) 432-1225",
       "website": "https://www.animaesd.com"
-    },
-    {
-      "id": "matsu-2",
-      "city": "sandiego",
-      "name": "Matsu",
-      "neighborhood": "Oceanside",
-      "address": "626 S Tremont St, Oceanside, CA 92054",
-      "lat": 33.1884729,
-      "lng": -117.3741853,
-      "cuisine": [
-        "Japanese"
-      ],
-      "placeType": "restaurant",
-      "oneLiner": "",
-      "perfectFor": [],
-      "periods": [],
-      "gustoScore": null,
-      "appleMapsUrl": "https://maps.apple.com/?daddr=33.1884729,-117.3741853&q=Matsu",
-      "applePlaceUrl": "https://maps.apple.com/place?auid=17112650180481988281",
-      "guideSlugs": [
-        "sd-japanese"
-      ],
-      "muid": "17112650180481988281",
-      "hoursLabel": "",
-      "blurb": "",
-      "orderThis": [],
-      "ids": {},
-      "copySource": "draft",
-      "updatedAt": "2026-10-22",
-      "photos": [
-        {
-          "source": "illustration",
-          "isIllustration": true,
-          "alt": "Illustration suggesting Japanese at Matsu",
-          "credit": "Illustration"
-        }
-      ],
-      "phone": "+1 (760) 681-6152",
-      "website": "https://www.facebook.com/EatMatsu/"
     },
     {
       "id": "tacos-el-gordo",
@@ -2267,7 +2204,8 @@
         }
       ],
       "phone": "+1 (619) 271-7222",
-      "website": "http://tacoselgordobc.com"
+      "website": "http://tacoselgordobc.com",
+      "price": 1
     },
     {
       "id": "the-mission",
@@ -2320,7 +2258,8 @@
         }
       ],
       "phone": "+1 (619) 232-7662",
-      "website": "https://themissionsd.com/"
+      "website": "https://themissionsd.com/",
+      "price": 2
     },
     {
       "id": "lola-55",
@@ -2385,7 +2324,8 @@
         }
       ],
       "phone": "+1 (619) 542-9155",
-      "website": "https://www.lola55.com"
+      "website": "https://www.lola55.com",
+      "price": 2
     },
     {
       "id": "callie",
@@ -2583,7 +2523,8 @@
         }
       ],
       "phone": "+1 (619) 202-4577",
-      "website": "https://bornandraisedsteak.com"
+      "website": "https://bornandraisedsteak.com",
+      "price": 4
     },
     {
       "id": "campfire",
@@ -2648,7 +2589,8 @@
         }
       ],
       "phone": "+1 (760) 637-5121",
-      "website": "https://thisiscampfire.com"
+      "website": "https://thisiscampfire.com",
+      "price": 3
     },
     {
       "id": "little-frenchie",
@@ -2760,7 +2702,8 @@
         }
       ],
       "phone": "+1 (858) 454-1924",
-      "website": "https://www.wayfarerbread.com"
+      "website": "https://www.wayfarerbread.com",
+      "price": 1
     },
     {
       "id": "water-grill-2",
@@ -2819,7 +2762,8 @@
         }
       ],
       "phone": "+1 (619) 717-6992",
-      "website": "https://www.watergrill.com/"
+      "website": "https://www.watergrill.com/",
+      "price": 3
     },
     {
       "id": "cucina-urbana",
@@ -2934,7 +2878,8 @@
         }
       ],
       "phone": "+1 (619) 234-2597",
-      "website": "https://www.thewolfinthewoods.com"
+      "website": "https://www.thewolfinthewoods.com",
+      "price": 3
     },
     {
       "id": "trattoria-cori-pastificio",
@@ -3229,7 +3174,8 @@
         }
       ],
       "phone": "+1 (619) 296-2303",
-      "website": "https://citytacossd.com/locations-north-park/"
+      "website": "https://citytacossd.com/locations-north-park/",
+      "price": 1
     },
     {
       "id": "civico-1845",
@@ -3495,7 +3441,8 @@
         }
       ],
       "phone": "+1 (619) 450-4505",
-      "website": "https://tributepizza.com"
+      "website": "https://tributepizza.com",
+      "price": 2
     },
     {
       "id": "nine-ten",
@@ -4260,10 +4207,10 @@
     {
       "slug": "sd-japanese",
       "title": "Japanese",
-      "dek": "Sushi and Japanese from University Heights to Oceanside: Soichi, Himitsu in La Jolla, Wrench & Rodent Seabasstropub, Matsu, and Nobu Del Coronado.",
+      "dek": "Sushi and Japanese from University Heights to Oceanside: Soichi, Himitsu in La Jolla, Wrench & Rodent Seabasstropub, and Nobu Del Coronado.",
       "group": "Cuisine",
       "intro": "",
-      "updatedAt": "2026-10-22",
+      "updatedAt": "2026-11-12",
       "ranked": false,
       "city": "sandiego",
       "entries": [
@@ -4281,12 +4228,6 @@
         },
         {
           "placeId": "wrench-rodent-seabasstropub",
-          "pullQuote": "",
-          "blurb": "",
-          "copySource": "draft"
-        },
-        {
-          "placeId": "matsu-2",
           "pullQuote": "",
           "blurb": "",
           "copySource": "draft"

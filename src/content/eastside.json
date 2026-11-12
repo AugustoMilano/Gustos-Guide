@@ -909,7 +909,8 @@
           "credit": "Illustration"
         }
       ],
-      "phone": "+1 (425) 502-7265"
+      "phone": "+1 (425) 502-7265",
+      "price": 2
     },
     {
       "id": "fogo-de-chao",
@@ -1197,7 +1198,8 @@
           "alt": "Illustration suggesting Japanese at Takai by Kashiba",
           "credit": "Illustration"
         }
-      ]
+      ],
+      "price": 4
     },
     {
       "id": "como",
@@ -1545,7 +1547,8 @@
           "alt": "Illustration suggesting American at Deru Market",
           "credit": "Illustration"
         }
-      ]
+      ],
+      "price": 2
     },
     {
       "id": "the-british-pantry",
@@ -1604,7 +1607,8 @@
           "alt": "Illustration suggesting British at The British Pantry",
           "credit": "Illustration"
         }
-      ]
+      ],
+      "price": 2
     },
     {
       "id": "postdoc-brewing",
@@ -1681,7 +1685,8 @@
           "credit": "Illustration"
         }
       ],
-      "phone": "+1 (425) 658-4963"
+      "phone": "+1 (425) 658-4963",
+      "price": 2
     },
     {
       "id": "ooba-tooba",
@@ -1876,7 +1881,8 @@
         "source": "Yelp"
       },
       "yelpSlug": "W6OeoxIyWt4jv57pB3kQ8A",
-      "phone": "+1 (206) 268-0588"
+      "phone": "+1 (206) 268-0588",
+      "price": 2
     },
     {
       "id": "lexperience-paris",
@@ -2284,7 +2290,8 @@
           "alt": "Illustration suggesting Steak at Ascend Prime Steak & Sushi",
           "credit": "Illustration"
         }
-      ]
+      ],
+      "price": 4
     },
     {
       "id": "daniels-broiler",
@@ -2421,7 +2428,8 @@
           "alt": "Illustration suggesting Mexican at Cantina Monarca",
           "credit": "Illustration"
         }
-      ]
+      ],
+      "price": 2
     },
     {
       "id": "carmines",
@@ -3110,7 +3118,8 @@
         "count": 369,
         "source": "Yelp"
       },
-      "yelpSlug": "rsLN4EKGuZZklUmsd5N0wA"
+      "yelpSlug": "rsLN4EKGuZZklUmsd5N0wA",
+      "price": 3
     },
     {
       "id": "hokkaido-ramen-santouka",
@@ -3179,7 +3188,8 @@
           "alt": "Illustration suggesting Japanese at Hokkaido Ramen Santouka",
           "credit": "Illustration"
         }
-      ]
+      ],
+      "price": 2
     },
     {
       "id": "japonessa",
@@ -3337,7 +3347,8 @@
           "alt": "Illustration suggesting Indian at Desi Tadka Indian Grill",
           "credit": "Illustration"
         }
-      ]
+      ],
+      "price": 2
     },
     {
       "id": "dough-zone-bellevue",
@@ -3558,7 +3569,8 @@
           "alt": "Illustration suggesting Chicken at Ezell's Famous Chicken",
           "credit": "Illustration"
         }
-      ]
+      ],
+      "price": 1
     },
     {
       "id": "fern-thai-on-main",
@@ -3958,7 +3970,8 @@
           "alt": "Illustration suggesting Burgers at Broiler Bay Hamburgers",
           "credit": "Illustration"
         }
-      ]
+      ],
+      "price": 1
     },
     {
       "id": "wild-ginger",
@@ -4260,7 +4273,8 @@
           "alt": "Illustration suggesting Japanese at Kura Revolving Sushi Bar",
           "credit": "Illustration"
         }
-      ]
+      ],
+      "price": 2
     },
     {
       "id": "520-bar-and-grill",
@@ -4340,7 +4354,8 @@
           "alt": "Illustration suggesting American at 520 Bar and Grill",
           "credit": "Illustration"
         }
-      ]
+      ],
+      "price": 2
     },
     {
       "id": "joey-bellevue",
@@ -4593,7 +4608,8 @@
           "alt": "Illustration suggesting Pizza at Spark Pizza",
           "credit": "Illustration"
         }
-      ]
+      ],
+      "price": 2
     },
     {
       "id": "a-ma-chicken-rice",
@@ -4661,7 +4677,8 @@
           "alt": "Illustration suggesting Chinese at A Ma Chicken Rice",
           "credit": "Illustration"
         }
-      ]
+      ],
+      "price": 2
     },
     {
       "id": "jacks-bbq",
@@ -4919,7 +4936,8 @@
           "alt": "Illustration suggesting Japanese at Kobuta & Ookami",
           "credit": "Illustration"
         }
-      ]
+      ],
+      "price": 2
     },
     {
       "id": "matador-redmond",
@@ -5460,7 +5478,8 @@
         "count": 75,
         "source": "Yelp"
       },
-      "yelpSlug": "xqp6xGjEDR3lgpl54v9JWQ"
+      "yelpSlug": "xqp6xGjEDR3lgpl54v9JWQ",
+      "price": 2
     },
     {
       "id": "naan-n-curry",
@@ -5602,7 +5621,8 @@
           "alt": "Illustration suggesting Mexican at Xochi",
           "credit": "Illustration"
         }
-      ]
+      ],
+      "price": 1
     },
     {
       "id": "mowood",
@@ -5741,7 +5761,8 @@
           "alt": "Illustration suggesting Chinese at Din Tai Fung",
           "credit": "Illustration"
         }
-      ]
+      ],
+      "price": 2
     },
     {
       "id": "falafel-fresh",
@@ -5802,7 +5823,8 @@
         "count": 94,
         "source": "Yelp"
       },
-      "yelpSlug": "sY676lHoVhQnEkqihEdoiQ"
+      "yelpSlug": "sY676lHoVhQnEkqihEdoiQ",
+      "price": 1
     },
     {
       "id": "ramen-nori",
@@ -5888,7 +5910,8 @@
           "alt": "Illustration suggesting Japanese at Ramen Nori",
           "credit": "Illustration"
         }
-      ]
+      ],
+      "price": 2
     },
     {
       "id": "burgermaster",
@@ -5945,7 +5968,8 @@
           "alt": "Illustration suggesting Burgers at Burgermaster",
           "credit": "Illustration"
         }
-      ]
+      ],
+      "price": 1
     },
     {
       "id": "tendon-kohaku",
@@ -6035,7 +6059,8 @@
           "alt": "Illustration suggesting Japanese at Tendon Kohaku",
           "credit": "Illustration"
         }
-      ]
+      ],
+      "price": 2
     },
     {
       "id": "palmers-east",
@@ -6073,7 +6098,8 @@
           "alt": "Illustration suggesting American at Palmer's East",
           "credit": "Illustration"
         }
-      ]
+      ],
+      "price": 2
     },
     {
       "id": "central-tavern",
@@ -6125,7 +6151,8 @@
           "alt": "Illustration suggesting Bar at Central Tavern",
           "credit": "Illustration"
         }
-      ]
+      ],
+      "price": 2
     },
     {
       "id": "the-goose-pub",
@@ -6176,7 +6203,8 @@
           "alt": "Illustration suggesting American at The Goose Pub & Eatery",
           "credit": "Illustration"
         }
-      ]
+      ],
+      "price": 2
     },
     {
       "id": "village-square-cafe",
@@ -6221,7 +6249,8 @@
           "alt": "Illustration suggesting Cafe at Village Square Cafe",
           "credit": "Illustration"
         }
-      ]
+      ],
+      "price": 2
     },
     {
       "id": "doppio-cafe-and-creperie",
@@ -6274,7 +6303,8 @@
           "alt": "Illustration suggesting Cafe at Doppio Cafe & Creperie",
           "credit": "Illustration"
         }
-      ]
+      ],
+      "price": 1
     },
     {
       "id": "chaces-pancake-corral",
@@ -6332,7 +6362,8 @@
           "alt": "Illustration suggesting American at Chace's Pancake Corral",
           "credit": "Illustration"
         }
-      ]
+      ],
+      "price": 2
     },
     {
       "id": "lil-jon-restaurant-and-lounge",
@@ -6391,7 +6422,8 @@
           "alt": "Illustration suggesting American at Lil' Jon Restaurant & Lounge",
           "credit": "Illustration"
         }
-      ]
+      ],
+      "price": 1
     }
   ],
   "guides": [

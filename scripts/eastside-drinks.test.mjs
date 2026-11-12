@@ -1,6 +1,13 @@
 import assert from 'node:assert/strict'
 import { readFileSync } from 'node:fs'
 
+// Prices published on Nov 11, 2026 come from data/price-sources-2026-11-11.json; anything else stays unpriced.
+const laterPrices = new Map(
+  JSON.parse(readFileSync(new URL('../data/price-sources-2026-11-11.json', import.meta.url), 'utf8')).places.map((row) => [row.id, row.price]),
+)
+const priceOrLedger = (place) => assert.equal(place.price ?? null, laterPrices.get(place.id) ?? null, place.id)
+
+
 const eastside = JSON.parse(readFileSync(new URL('../src/content/eastside.json', import.meta.url), 'utf8'))
 const order = [
   'woodblock',
@@ -31,10 +38,10 @@ for (const id of order) {
 assert.equal(byId.get('barrels-wine-bar').guideSlugs.includes('eastside-drinks'), false)
 assert.equal(byId.get('woodblock').price, 2)
 assert.equal(byId.get('moss-bay-hall').price, 2)
-assert.equal(Object.hasOwn(byId.get('postdoc-brewing'), 'price'), false)
+priceOrLedger(byId.get('postdoc-brewing'))
 for (const id of ['palmers-east', 'central-tavern', 'the-goose-pub']) {
   const place = byId.get(id)
-  assert.equal(Object.hasOwn(place, 'price'), false, id)
+  priceOrLedger(place)
   assert.equal(place.gustoScore, null)
   assert.equal(place.photos[0].source, 'illustration')
   assert.equal(place.photos[0].credit, 'Illustration')

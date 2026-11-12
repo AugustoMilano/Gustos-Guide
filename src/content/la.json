@@ -135,7 +135,8 @@
         }
       ],
       "phone": "+1 (310) 310-3747",
-      "website": "https://www.allanticovinaiousa.com/location/venice-ca/"
+      "website": "https://www.allanticovinaiousa.com/location/venice-ca/",
+      "price": 2
     },
     {
       "id": "pizzana",
@@ -208,7 +209,8 @@
       ],
       "phone": "+1 (310) 657-4662",
       "website": "https://pizzana.com/pages/pizzana-west-hollywood",
-      "yelpSlug": "pizzana-west-hollywood-west-hollywood-3"
+      "yelpSlug": "pizzana-west-hollywood-west-hollywood-3",
+      "price": 2
     },
     {
       "id": "bestia",
@@ -265,7 +267,8 @@
       ],
       "phone": "+1 (213) 514-5724",
       "website": "https://bestiala.com",
-      "yelpSlug": "bestia-los-angeles"
+      "yelpSlug": "bestia-los-angeles",
+      "price": 4
     },
     {
       "id": "venice-flake",
@@ -387,7 +390,8 @@
       ],
       "phone": "+1 (310) 836-6252",
       "website": "https://www.n-naka.com",
-      "yelpSlug": "n-naka-los-angeles"
+      "yelpSlug": "n-naka-los-angeles",
+      "price": 4
     },
     {
       "id": "freddo",
@@ -451,64 +455,6 @@
       "yelpSlug": "ebGugp8agaFInNwIiTwA4g"
     },
     {
-      "id": "tar-roses",
-      "city": "la",
-      "name": "Tar & Roses",
-      "neighborhood": "Santa Monica",
-      "address": "602 Santa Monica Blvd, Santa Monica, CA 90401",
-      "lat": 34.0179449,
-      "lng": -118.4929669,
-      "cuisine": [
-        "Californian"
-      ],
-      "placeType": "restaurant",
-      "oneLiner": "Californian from Tar & Roses at 602 Santa Monica Blvd, Santa Monica.",
-      "perfectFor": [],
-      "periods": [
-        {
-          "days": [
-            2,
-            3,
-            4
-          ],
-          "start": 1050,
-          "end": 1260
-        },
-        {
-          "days": [
-            5,
-            6
-          ],
-          "start": 1050,
-          "end": 1290
-        }
-      ],
-      "gustoScore": null,
-      "appleMapsUrl": "https://maps.apple.com/?daddr=34.0179449,-118.4929669&q=Tar%20%26%20Roses",
-      "applePlaceUrl": "https://maps.apple.com/place?auid=1285366995442176774",
-      "guideSlugs": [
-        "santa-monica"
-      ],
-      "muid": "1285366995442176774",
-      "hoursLabel": "",
-      "blurb": "Californian from Tar & Roses at 602 Santa Monica Blvd, Santa Monica.",
-      "orderThis": [],
-      "ids": {},
-      "copySource": "draft",
-      "updatedAt": "2026-10-20",
-      "photos": [
-        {
-          "source": "illustration",
-          "isIllustration": true,
-          "alt": "Illustration suggesting Californian at Tar & Roses",
-          "credit": "Illustration"
-        }
-      ],
-      "phone": "+1 (310) 587-0700",
-      "website": "http://www.tarandroses.com",
-      "yelpSlug": "tar-and-roses-santa-monica"
-    },
-    {
       "id": "the-musso-frank-grill",
       "city": "la",
       "name": "The Musso & Frank Grill",
@@ -567,7 +513,8 @@
       ],
       "phone": "+1 (323) 467-7788",
       "website": "https://mussoandfrank.com",
-      "yelpSlug": "musso-and-frank-grill-hollywood"
+      "yelpSlug": "musso-and-frank-grill-hollywood",
+      "price": 4
     },
     {
       "id": "the-butcher-the-baker-the-cappuccino-maker",
@@ -621,7 +568,8 @@
       ],
       "phone": "+1 (310) 360-6900",
       "website": "https://bbcmcafe.com",
-      "yelpSlug": "the-butcher-the-baker-the-cappuccino-maker-west-hollywood-2"
+      "yelpSlug": "the-butcher-the-baker-the-cappuccino-maker-west-hollywood-2",
+      "price": 2
     },
     {
       "id": "saffron-rose-persian-ice-cream",
@@ -742,7 +690,8 @@
         "count": 213,
         "source": "Yelp"
       },
-      "yelpSlug": "v_fePD8Nl3U81cxg4_ow4g"
+      "yelpSlug": "v_fePD8Nl3U81cxg4_ow4g",
+      "price": 2
     },
     {
       "id": "blinkies-donuts",
@@ -865,7 +814,8 @@
       ],
       "phone": "+1 (323) 848-4894",
       "website": "https://www.mamiekitchen.com",
-      "yelpSlug": "mamie-west-hollywood-2"
+      "yelpSlug": "mamie-west-hollywood-2",
+      "price": 2
     },
     {
       "id": "urth-caffe",
@@ -926,7 +876,8 @@
       ],
       "phone": "+1 (310) 205-9311",
       "website": "https://www.urthcaffe.com/beverly-hills",
-      "_n": 1
+      "_n": 1,
+      "price": 2
     },
     {
       "id": "girl-the-goat",
@@ -994,7 +945,8 @@
       ],
       "phone": "+1 (213) 799-4628",
       "website": "https://girlandthegoat.com/los-angeles",
-      "yelpSlug": "girl-and-the-goat-los-angeles-2"
+      "yelpSlug": "girl-and-the-goat-los-angeles-2",
+      "price": 3
     },
     {
       "id": "langers",
@@ -1047,7 +999,8 @@
       ],
       "phone": "+1 (213) 483-8050",
       "website": "https://www.langersdeli.com",
-      "yelpSlug": "langers-delicatessen-los-angeles-2"
+      "yelpSlug": "langers-delicatessen-los-angeles-2",
+      "price": 2
     },
     {
       "id": "angels-tijuana-tacos",
@@ -1107,7 +1060,8 @@
         }
       ],
       "website": "https://www.instagram.com/angelstijuanatacos",
-      "yelpSlug": "angels-tijuana-tacos-los-angeles-2"
+      "yelpSlug": "angels-tijuana-tacos-los-angeles-2",
+      "price": 1
     },
     {
       "id": "fat-sals",
@@ -1259,7 +1213,8 @@
       ],
       "phone": "+1 (424) 390-0737",
       "website": "https://www.properhotel.com/santa-monica/restaurants-bars/calabra/",
-      "yelpSlug": "calabra-santa-monica"
+      "yelpSlug": "calabra-santa-monica",
+      "price": 2
     },
     {
       "id": "sugarfish",
@@ -1444,7 +1399,8 @@
       ],
       "phone": "+1 (310) 576-9996",
       "website": "http://www.1212santamonica.com",
-      "yelpSlug": "1212-santa-monica-santa-monica-5"
+      "yelpSlug": "1212-santa-monica-santa-monica-5",
+      "price": 2
     },
     {
       "id": "capo",
@@ -1555,7 +1511,8 @@
       ],
       "phone": "+1 (213) 232-4966",
       "website": "https://baveldtla.com",
-      "yelpSlug": "bavel-los-angeles-3"
+      "yelpSlug": "bavel-los-angeles-3",
+      "price": 4
     },
     {
       "id": "the-ivy",
@@ -1751,7 +1708,8 @@
       ],
       "phone": "+1 (424) 999-4594",
       "website": "https://www.kazunorisushi.com/locations/santa-monica/",
-      "yelpSlug": "kazunori-santa-monica-santa-monica-3"
+      "yelpSlug": "kazunori-santa-monica-santa-monica-3",
+      "price": 2
     },
     {
       "id": "layla-bagels-coffee",
@@ -1806,7 +1764,8 @@
       ],
       "phone": "+1 (424) 268-4921",
       "website": "http://laylabagels.com",
-      "yelpSlug": "layla-bagels-and-coffee-santa-monica-2"
+      "yelpSlug": "layla-bagels-and-coffee-santa-monica-2",
+      "price": 1
     },
     {
       "id": "kreation-organic-juicery",
@@ -2014,7 +1973,8 @@
       ],
       "phone": "+1 (323) 951-0636",
       "website": "https://www.magnoliabakery.com/locations/los-angeles/",
-      "yelpSlug": "magnolia-bakery-los-angeles-2"
+      "yelpSlug": "magnolia-bakery-los-angeles-2",
+      "price": 1
     },
     {
       "id": "heavy-handed",
@@ -2077,7 +2037,8 @@
       ],
       "phone": "+1 (818) 299-0326",
       "website": "https://heavyhanded.la",
-      "yelpSlug": "heavy-handed-santa-monica"
+      "yelpSlug": "heavy-handed-santa-monica",
+      "price": 1
     },
     {
       "id": "the-whaler",
@@ -2206,7 +2167,8 @@
       ],
       "phone": "+1 (213) 935-8399",
       "website": "https://howlinrays.com",
-      "yelpSlug": "howlin-rays-los-angeles-7"
+      "yelpSlug": "howlin-rays-los-angeles-7",
+      "price": 1
     },
     {
       "id": "saffys",
@@ -2257,7 +2219,8 @@
         }
       ],
       "phone": "+1 (424) 699-4845",
-      "website": "https://www.saffysla.com"
+      "website": "https://www.saffysla.com",
+      "price": 3
     },
     {
       "id": "uovo-pasta",
@@ -2432,7 +2395,8 @@
       ],
       "phone": "+1 (818) 786-0522",
       "website": "https://www.mercadobuenosairesusa.com",
-      "yelpSlug": "mercado-buenos-aires-van-nuys"
+      "yelpSlug": "mercado-buenos-aires-van-nuys",
+      "price": 2
     },
     {
       "id": "gjelina",
@@ -2517,7 +2481,8 @@
       "phone": "+1 (310) 450-1429",
       "website": "https://gjelina.getbento.com",
       "_n": 1,
-      "yelpSlug": "gjelina-venice-2"
+      "yelpSlug": "gjelina-venice-2",
+      "price": 3
     },
     {
       "id": "osteria-la-buca",
@@ -2637,7 +2602,8 @@
       ],
       "phone": "+1 (323) 380-7019",
       "website": "https://www.lecoupefriedchicken.com/",
-      "yelpSlug": "le-coupe-los-angeles-5"
+      "yelpSlug": "le-coupe-los-angeles-5",
+      "price": 2
     },
     {
       "id": "cut",
@@ -2821,7 +2787,8 @@
       ],
       "phone": "+1 (818) 208-1805",
       "website": "https://www.scratchrestaurants.com",
-      "yelpSlug": "pasta-bar-los-angeles-4"
+      "yelpSlug": "pasta-bar-los-angeles-4",
+      "price": 4
     },
     {
       "id": "piccolo-santa-monica",
@@ -2954,7 +2921,8 @@
       "phone": "+1 (213) 372-5335",
       "website": "https://joeyrestaurants.com/location/joey-dtla",
       "_n": 1,
-      "yelpSlug": "joey-dtla-los-angeles-4"
+      "yelpSlug": "joey-dtla-los-angeles-4",
+      "price": 3
     },
     {
       "id": "burger-she-wrote",
@@ -3134,7 +3102,8 @@
       ],
       "phone": "+1 (213) 278-0453",
       "website": "https://www.poppyandrose.com",
-      "yelpSlug": "poppy-rose-los-angeles"
+      "yelpSlug": "poppy-rose-los-angeles",
+      "price": 2
     },
     {
       "id": "hayato",
@@ -3187,7 +3156,8 @@
       ],
       "phone": "+1 (213) 395-0607",
       "website": "https://hayatorestaurant.com",
-      "yelpSlug": "hayato-los-angeles-3"
+      "yelpSlug": "hayato-los-angeles-3",
+      "price": 4
     },
     {
       "id": "boa-steakhouse",
@@ -3378,7 +3348,8 @@
       ],
       "phone": "+1 (310) 205-5444",
       "website": "https://www.ilpastaiobeverlyhills.com",
-      "yelpSlug": "il-pastaio-beverly-hills"
+      "yelpSlug": "il-pastaio-beverly-hills",
+      "price": 3
     },
     {
       "id": "gwen",
@@ -3444,7 +3415,8 @@
         }
       ],
       "phone": "+1 (323) 946-7500",
-      "website": "https://www.gwenla.com/restaurant"
+      "website": "https://www.gwenla.com/restaurant",
+      "price": 4
     },
     {
       "id": "ardor",
@@ -3563,7 +3535,8 @@
       ],
       "phone": "+1 (310) 392-0825",
       "website": "http://www.dudleymarketvenice.com",
-      "yelpSlug": "dudley-market-venice-3"
+      "yelpSlug": "dudley-market-venice-3",
+      "price": 3
     },
     {
       "id": "the-penthouse",
@@ -4017,7 +3990,8 @@
       ],
       "phone": "+1 (323) 978-2170",
       "website": "http://www.graciasmadre.com",
-      "yelpSlug": "gracias-madre-west-hollywood-3"
+      "yelpSlug": "gracias-madre-west-hollywood-3",
+      "price": 2
     },
     {
       "id": "vespertine",
@@ -4152,7 +4126,8 @@
       "phone": "+1 (323) 366-2940",
       "_n": 2,
       "website": "https://www.ysabel.la/",
-      "yelpSlug": "ysabel-west-hollywood"
+      "yelpSlug": "ysabel-west-hollywood",
+      "price": 3
     },
     {
       "id": "malibu-farm-restaurant",
@@ -4289,7 +4264,8 @@
       ],
       "phone": "+1 (213) 986-9972",
       "website": "https://www.holboxla.com",
-      "yelpSlug": "holbox-los-angeles-2"
+      "yelpSlug": "holbox-los-angeles-2",
+      "price": 2
     },
     {
       "id": "nobu",
@@ -4349,7 +4325,8 @@
         }
       ],
       "phone": "+1 (310) 317-9140",
-      "website": "https://www.noburestaurants.com/malibu/nobu-malibu-japanese-restaurant-bar-and-lounge"
+      "website": "https://www.noburestaurants.com/malibu/nobu-malibu-japanese-restaurant-bar-and-lounge",
+      "price": 4
     },
     {
       "id": "71above",
@@ -4409,7 +4386,8 @@
       ],
       "phone": "+1 (213) 712-2683",
       "website": "https://71above.com",
-      "_n": 1
+      "_n": 1,
+      "price": 4
     },
     {
       "id": "the-bungalow",
@@ -4468,7 +4446,8 @@
       ],
       "phone": "+1 (310) 899-8530",
       "website": "https://www.thebungalow.com/santa-monica/",
-      "yelpSlug": "the-bungalow-santa-monica-3"
+      "yelpSlug": "the-bungalow-santa-monica-3",
+      "price": 2
     },
     {
       "id": "delilah",
@@ -4611,7 +4590,8 @@
       ],
       "phone": "+1 (323) 931-4223",
       "website": "https://www.pinkshollywood.com",
-      "yelpSlug": "pinks-hot-dogs-los-angeles-4"
+      "yelpSlug": "pinks-hot-dogs-los-angeles-4",
+      "price": 1
     },
     {
       "id": "the-rooftop-beverly-hills",
@@ -4934,7 +4914,8 @@
         }
       ],
       "phone": "+1 (323) 334-3369",
-      "website": "https://www.jonandvinnys.com/"
+      "website": "https://www.jonandvinnys.com/",
+      "price": 2
     },
     {
       "id": "for-the-win",
@@ -5163,7 +5144,8 @@
       ],
       "phone": "+1 (424) 473-5909",
       "website": "http://www.vin-folk.com",
-      "yelpSlug": "vin-folk-hermosa-beach"
+      "yelpSlug": "vin-folk-hermosa-beach",
+      "price": 4
     },
     {
       "id": "apollonias-pizzeria",
@@ -5226,7 +5208,8 @@
       ],
       "phone": "+1 (323) 937-2823",
       "website": "https://www.apolloniaspizzeria.com/wilshiremiraclemile.html",
-      "yelpSlug": "apollonias-pizzeria-los-angeles-2"
+      "yelpSlug": "apollonias-pizzeria-los-angeles-2",
+      "price": 1
     },
     {
       "id": "si-mon",
@@ -5356,7 +5339,8 @@
         }
       ],
       "phone": "+1 (213) 359-6007",
-      "website": "https://grandcentralmarket.com"
+      "website": "https://grandcentralmarket.com",
+      "price": 1
     },
     {
       "id": "tatsu-ramen",
@@ -5546,7 +5530,8 @@
       ],
       "phone": "+1 (424) 330-0020",
       "website": "https://www.pasjoli.com",
-      "yelpSlug": "pasjoli-santa-monica"
+      "yelpSlug": "pasjoli-santa-monica",
+      "price": 4
     },
     {
       "id": "broad-street-oyster-co",
@@ -5600,7 +5585,8 @@
       ],
       "phone": "+1 (424) 644-0131",
       "website": "https://www.broadstreetoyster.com",
-      "yelpSlug": "broad-street-oyster-company-malibu-2"
+      "yelpSlug": "broad-street-oyster-company-malibu-2",
+      "price": 2
     },
     {
       "id": "colapasta",
@@ -5662,7 +5648,8 @@
       ],
       "phone": "+1 (310) 310-8336",
       "website": "https://www.colapasta.com",
-      "yelpSlug": "colapasta-restaurant-santa-monica-2"
+      "yelpSlug": "colapasta-restaurant-santa-monica-2",
+      "price": 2
     },
     {
       "id": "guisados",
@@ -5730,7 +5717,8 @@
       ],
       "phone": "+1 (213) 250-7600",
       "website": "http://www.guisados.co",
-      "yelpSlug": "guisados-los-angeles-3"
+      "yelpSlug": "guisados-los-angeles-3",
+      "price": 1
     },
     {
       "id": "republique",
@@ -5806,7 +5794,8 @@
       ],
       "phone": "+1 (310) 362-6115",
       "website": "https://republiquela.com",
-      "yelpSlug": "republique-los-angeles-6"
+      "yelpSlug": "republique-los-angeles-6",
+      "price": 2
     },
     {
       "id": "matsuhisa",
@@ -5867,7 +5856,8 @@
       ],
       "phone": "+1 (310) 659-9639",
       "website": "https://matsuhisabeverlyhills.com",
-      "yelpSlug": "matsuhisa-beverly-hills"
+      "yelpSlug": "matsuhisa-beverly-hills",
+      "price": 4
     },
     {
       "id": "providence",
@@ -5979,7 +5969,8 @@
         }
       ],
       "phone": "+1 (818) 591-9236",
-      "website": "http://doansbakery.com"
+      "website": "http://doansbakery.com",
+      "price": 1
     },
     {
       "id": "the-terrace",
@@ -6090,7 +6081,8 @@
         }
       ],
       "website": "https://www.somnirestaurant.com",
-      "yelpSlug": "somni-west-hollywood-2"
+      "yelpSlug": "somni-west-hollywood-2",
+      "price": 4
     },
     {
       "id": "jean-georges-beverly-hills",
@@ -6317,7 +6309,8 @@
         }
       ],
       "phone": "+1 (310) 395-8279",
-      "website": "https://www.baycitiesitaliandeli.com"
+      "website": "https://www.baycitiesitaliandeli.com",
+      "price": 1
     },
     {
       "id": "meat-on-ocean",
@@ -6453,7 +6446,8 @@
       ],
       "phone": "+1 (323) 656-2007",
       "website": "http://www.thesaddleranch.com/locations/sunset-strip",
-      "yelpSlug": "saddle-ranch-chop-house-west-hollywood"
+      "yelpSlug": "saddle-ranch-chop-house-west-hollywood",
+      "price": 2
     },
     {
       "id": "calamigos-beach-club",
@@ -6650,7 +6644,8 @@
       ],
       "phone": "+1 (310) 878-0814",
       "website": "https://www.thecasamadera.com/locations/toronto-ontario",
-      "yelpSlug": "casa-madera-west-hollywood-west-hollywood-2"
+      "yelpSlug": "casa-madera-west-hollywood-west-hollywood-2",
+      "price": 4
     },
     {
       "id": "barans-2239",
@@ -6800,7 +6795,8 @@
       "phone": "+1 (310) 887-2777",
       "website": "https://www.dorchestercollection.com/en/los-angeles/the-beverly-hills-hotel/restaurants-bars/the-polo-lounge/",
       "_n": 2,
-      "yelpSlug": "polo-lounge-beverly-hills-2"
+      "yelpSlug": "polo-lounge-beverly-hills-2",
+      "price": 4
     },
     {
       "id": "randys-donuts",
@@ -6856,7 +6852,8 @@
       ],
       "phone": "+1 (310) 645-4707",
       "website": "https://randysdonuts.com/locations/test-location/",
-      "yelpSlug": "randys-donuts-inglewood"
+      "yelpSlug": "randys-donuts-inglewood",
+      "price": 1
     },
     {
       "id": "blue-plate-taco",
@@ -6920,7 +6917,8 @@
       "phone": "+1 (310) 458-2985",
       "website": "https://www.blueplatetaco.com",
       "_n": 1,
-      "yelpSlug": "blue-plate-taco-santa-monica"
+      "yelpSlug": "blue-plate-taco-santa-monica",
+      "price": 2
     },
     {
       "id": "lalas-argentine-grill",
@@ -7119,7 +7117,8 @@
       ],
       "phone": "+1 (877) 798-3752",
       "website": "https://www.tesla.com/tesla-diner",
-      "yelpSlug": "tesla-diner-west-hollywood"
+      "yelpSlug": "tesla-diner-west-hollywood",
+      "price": 2
     },
     {
       "id": "melisse",
@@ -7227,7 +7226,8 @@
       ],
       "phone": "+1 (213) 265-7834",
       "website": "https://www.thedonutmanca.com",
-      "yelpSlug": "the-donut-man-los-angeles"
+      "yelpSlug": "the-donut-man-los-angeles",
+      "price": 1
     },
     {
       "id": "felix",
@@ -7294,7 +7294,8 @@
       ],
       "phone": "+1 (424) 387-8622",
       "website": "http://www.felixla.com",
-      "yelpSlug": "felix-trattoria-los-angeles-2"
+      "yelpSlug": "felix-trattoria-los-angeles-2",
+      "price": 4
     },
     {
       "id": "in-n-out-burger",
@@ -7365,7 +7366,8 @@
       ],
       "phone": "+1 (800) 786-1000",
       "website": "https://locations.in-n-out.com/117",
-      "yelpSlug": "in-n-out-burger-los-angeles-2"
+      "yelpSlug": "in-n-out-burger-los-angeles-2",
+      "price": 1
     },
     {
       "id": "levain-bakery",
@@ -7489,7 +7491,8 @@
         }
       ],
       "phone": "+1 (213) 266-8132",
-      "website": "https://www.donnasla.com/"
+      "website": "https://www.donnasla.com/",
+      "price": 2
     },
     {
       "id": "a-o-c",
@@ -7562,7 +7565,8 @@
         }
       ],
       "phone": "+1 (310) 859-9859",
-      "website": "https://www.aocwinebar.com"
+      "website": "https://www.aocwinebar.com",
+      "price": 4
     },
     {
       "id": "the-cheese-store",
@@ -7889,7 +7893,8 @@
       ],
       "phone": "+1 (213) 628-3781",
       "website": "https://www.philippes.com",
-      "yelpSlug": "philippe-the-original-los-angeles-4"
+      "yelpSlug": "philippe-the-original-los-angeles-4",
+      "price": 1
     },
     {
       "id": "lantica-pizzeria-da-michele",
@@ -7955,7 +7960,8 @@
         }
       ],
       "phone": "+1 (323) 366-2408",
-      "website": "https://damicheleusa.com/hollywood/"
+      "website": "https://damicheleusa.com/hollywood/",
+      "price": 2
     },
     {
       "id": "spago",
@@ -8092,7 +8098,8 @@
       ],
       "phone": "+1 (323) 669-9381",
       "website": "https://tiki-ti.com",
-      "yelpSlug": "tiki-ti-cocktail-lounge-los-angeles"
+      "yelpSlug": "tiki-ti-cocktail-lounge-los-angeles",
+      "price": 2
     },
     {
       "id": "eggslut-2",
@@ -8325,7 +8332,8 @@
       ],
       "phone": "+1 (213) 935-8188",
       "website": "https://amboyqmdb.square.site/?location=CA95XQF6N4AMA",
-      "yelpSlug": "amboy-los-angeles"
+      "yelpSlug": "amboy-los-angeles",
+      "price": 1
     },
     {
       "id": "elephante",
@@ -8461,7 +8469,8 @@
       ],
       "phone": "+1 (323) 686-6027",
       "website": "https://www.dunsmoor.la",
-      "yelpSlug": "dunsmoor-los-angeles"
+      "yelpSlug": "dunsmoor-los-angeles",
+      "price": 4
     },
     {
       "id": "community-goods",
@@ -8583,7 +8592,8 @@
           "alt": "Illustration suggesting Burgers at Easy Street Burgers",
           "credit": "Illustration"
         }
-      ]
+      ],
+      "price": 1
     },
     {
       "id": "daves-hot-chicken",
@@ -8643,54 +8653,18 @@
           "alt": "Illustration suggesting Chicken at Dave's Hot Chicken",
           "credit": "Illustration"
         }
-      ]
-    },
-    {
-      "id": "marmalade-cafe",
-      "city": "la",
-      "name": "Marmalade Cafe",
-      "neighborhood": "Calabasas",
-      "address": "4783 Commons Way, Unit E, Calabasas, CA 91302",
-      "lat": 34.1531568,
-      "lng": -118.6462549,
-      "cuisine": [
-        "New American"
       ],
-      "placeType": "restaurant",
-      "oneLiner": "",
-      "perfectFor": [],
-      "periods": [],
-      "gustoScore": null,
-      "website": "https://marmaladecafe.com",
-      "phone": "+1 (818) 225-9092",
-      "appleMapsUrl": "https://maps.apple.com/?daddr=34.1531568,-118.6462549&q=Marmalade%20Cafe",
-      "applePlaceUrl": "https://maps.apple.com/place?auid=2035593264181625167",
-      "guideSlugs": [],
-      "muid": "2035593264181625167",
-      "hoursLabel": "",
-      "blurb": "",
-      "orderThis": [],
-      "ids": {},
-      "copySource": "draft",
-      "updatedAt": "2026-10-22",
-      "photos": [
-        {
-          "source": "illustration",
-          "isIllustration": true,
-          "alt": "Illustration suggesting New American at Marmalade Cafe",
-          "credit": "Illustration"
-        }
-      ]
+      "price": 1
     }
   ],
   "guides": [
     {
       "slug": "santa-monica",
       "title": "Santa Monica",
-      "dek": "Tar & Roses at 602 Santa Monica Blvd, and 22 more Santa Monica stops.",
+      "dek": "Heavy Handed at 2912 Main St, and 21 more Santa Monica stops.",
       "group": "Neighborhoods",
-      "intro": "Tar & Roses is at 602 Santa Monica Blvd. Paderia Bakehouse is at 3032 Wilshire Blvd.",
-      "updatedAt": "2026-10-20",
+      "intro": "Heavy Handed is at 2912 Main St. Élephante is at 1332 2nd Street.",
+      "updatedAt": "2026-11-12",
       "ranked": false,
       "city": "la",
       "entries": [
@@ -8710,12 +8684,6 @@
           "placeId": "blue-plate-taco",
           "pullQuote": "Blue Plate Taco sits at 1515 Ocean Ave. Tacos, Santa Monica.",
           "blurb": "Blue Plate Taco sits at 1515 Ocean Ave. Tacos, Santa Monica.",
-          "copySource": "draft"
-        },
-        {
-          "placeId": "tar-roses",
-          "pullQuote": "Californian from Tar & Roses at 602 Santa Monica Blvd, Santa Monica.",
-          "blurb": "Californian from Tar & Roses at 602 Santa Monica Blvd, Santa Monica.",
           "copySource": "draft"
         },
         {

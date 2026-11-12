@@ -1,0 +1,3075 @@
+{
+  "checkedAt": "2026-11-11",
+  "method": "Google Places API (New) searchText priceLevel for each unpriced listing, matched on name and address, high or medium confidence only, mapped PRICE_LEVEL_INEXPENSIVE=$, MODERATE=$$, EXPENSIVE=$$$, VERY_EXPENSIVE=$$$$. Places Google reports closed, low-confidence or rejected matches, and places with no priceLevel stay unpriced. Owner-supplied tiers are recorded with source Augusto; Google per-person price lines use Augusto's rule (under $20 $, $20-50 $$, $50-100 $$$, $100+ $$$$). No estimates.",
+  "places": [
+    {
+      "id": "billy-roy-s-burger-co",
+      "name": "Billy Roy's Burger Co",
+      "city": "eastbay",
+      "price": 2,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJs7tJU-e_j4ARAiZuzErsdJI",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_MODERATE, price range $20–$30"
+    },
+    {
+      "id": "farine-bakery",
+      "name": "Farine Bakery",
+      "city": "eastside",
+      "price": 2,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJ0VK45YltkFQReLM7YdHwu2M",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_MODERATE, price range $20–$30"
+    },
+    {
+      "id": "takai-by-kashiba",
+      "name": "Takai by Kashiba",
+      "city": "eastside",
+      "price": 4,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJB8PPeYdskFQRKkBJfiZLuXE",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_VERY_EXPENSIVE, price range $100"
+    },
+    {
+      "id": "deru-market",
+      "name": "Deru Market",
+      "city": "eastside",
+      "price": 2,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJ9SkOAusSkFQRH1ho03tioGs",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_MODERATE, price range $20–$30"
+    },
+    {
+      "id": "the-british-pantry",
+      "name": "The British Pantry",
+      "city": "eastside",
+      "price": 2,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJ4StugLJykFQRr7OT1s35E5M",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_MODERATE, price range $20–$30"
+    },
+    {
+      "id": "barrels-wine-bar",
+      "name": "Barrels Wine Bar",
+      "city": "eastside",
+      "price": 2,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJyd4iGlBrkFQRNNPauljvFlI",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_MODERATE, price range $20–$30"
+    },
+    {
+      "id": "ascend-prime-steak-and-sushi",
+      "name": "Ascend Prime Steak & Sushi",
+      "city": "eastside",
+      "price": 4,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJN6EN0whtkFQR1lYGeflDEFc",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_VERY_EXPENSIVE, price range $100"
+    },
+    {
+      "id": "cantina-monarca",
+      "name": "Cantina Monarca",
+      "city": "eastside",
+      "price": 2,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJ-_xduBBtkFQRbiAn-xoqh9k",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_MODERATE, price range $30–$50"
+    },
+    {
+      "id": "farzi-cafe",
+      "name": "Farzi Cafe",
+      "city": "eastside",
+      "price": 3,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJfYkCkGttkFQRv4gGvJhIT7I",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_EXPENSIVE, price range $50–$100"
+    },
+    {
+      "id": "hokkaido-ramen-santouka",
+      "name": "Hokkaido Ramen Santouka",
+      "city": "eastside",
+      "price": 2,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJTaRy231skFQRF8u2jBrpyl4",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_MODERATE, price range $20–$30"
+    },
+    {
+      "id": "desi-tadka",
+      "name": "Desi Tadka Indian Grill",
+      "city": "eastside",
+      "price": 2,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJ3y0GZ71tkFQRmK2dgqcWIOI",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_MODERATE, price range $20–$30"
+    },
+    {
+      "id": "ezells-famous-chicken",
+      "name": "Ezell's Famous Chicken",
+      "city": "eastside",
+      "price": 1,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJ9whcCgBtkFQRZ1bxdvm3Uyk",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_INEXPENSIVE, price range $10–$20"
+    },
+    {
+      "id": "broiler-bay",
+      "name": "Broiler Bay Hamburgers",
+      "city": "eastside",
+      "price": 1,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJW2QhBn1skFQRB-lZVQkoVL4",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_INEXPENSIVE, price range $10–$20"
+    },
+    {
+      "id": "kura-revolving-sushi",
+      "name": "Kura Revolving Sushi Bar",
+      "city": "eastside",
+      "price": 2,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJa-kOxDltkFQRg7A5nJLZM5w",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_MODERATE, price range $20–$50"
+    },
+    {
+      "id": "520-bar-and-grill",
+      "name": "520 Bar and Grill",
+      "city": "eastside",
+      "price": 2,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJhY1xAn5skFQR740cPn2c5Kc",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_MODERATE, price range $20–$30"
+    },
+    {
+      "id": "spark-pizza",
+      "name": "Spark Pizza",
+      "city": "eastside",
+      "price": 2,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJ1Tq0SWVzkFQR6Ie6Ct-DHYM",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_MODERATE, price range $20–$30"
+    },
+    {
+      "id": "a-ma-chicken-rice",
+      "name": "A Ma Chicken Rice",
+      "city": "eastside",
+      "price": 2,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJ0RLT0QlzkFQRMB32v1FpjCU",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_MODERATE, price range $20–$30"
+    },
+    {
+      "id": "kobuta-and-ookami-redmond",
+      "name": "Kobuta & Ookami",
+      "city": "eastside",
+      "price": 2,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJ4WXRYhhzkFQRP-wn3PYXo7k",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_MODERATE, price range $20–$30"
+    },
+    {
+      "id": "paparepas",
+      "name": "Paparepas",
+      "city": "eastside",
+      "price": 2,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJO-To52VdkFQRy3UTP12pzts",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_MODERATE, price range $20–$30"
+    },
+    {
+      "id": "xochi",
+      "name": "Xochi",
+      "city": "eastside",
+      "price": 1,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJ1bCrf4NvkFQRvGxn0x9S7CQ",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_INEXPENSIVE, price range $10–$20"
+    },
+    {
+      "id": "din-tai-fung-bellevue",
+      "name": "Din Tai Fung",
+      "city": "eastside",
+      "price": 2,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJrcrho4dskFQROHfX02ZeENg",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_MODERATE, price range $20–$70"
+    },
+    {
+      "id": "falafel-fresh",
+      "name": "Falafel Fresh",
+      "city": "eastside",
+      "price": 1,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJ__-Ujt0SkFQRu6hzhReFG0A",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_INEXPENSIVE, price range $10–$20"
+    },
+    {
+      "id": "ramen-nori",
+      "name": "Ramen Nori",
+      "city": "eastside",
+      "price": 2,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJuUA3NI5tkFQRTx_4QUqxey4",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_MODERATE, price range $20–$30"
+    },
+    {
+      "id": "burgermaster",
+      "name": "Burgermaster",
+      "city": "eastside",
+      "price": 1,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJN6aOHsVskFQRl4seUuJTbwo",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_INEXPENSIVE, price range $10–$20"
+    },
+    {
+      "id": "tendon-kohaku",
+      "name": "Tendon Kohaku",
+      "city": "eastside",
+      "price": 2,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJ6R7bJwBtkFQR-XiMLLqDGME",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_MODERATE, price range $20–$40"
+    },
+    {
+      "id": "palmers-east",
+      "name": "Palmer's East",
+      "city": "eastside",
+      "price": 2,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJYSMLAa5ykFQRA-yTZvsBFDY",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_MODERATE, price range $20–$30"
+    },
+    {
+      "id": "central-tavern",
+      "name": "Central Tavern",
+      "city": "eastside",
+      "price": 2,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJL8aKLwATkFQRcMGSKvCUsbg",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_MODERATE, price range $20–$30"
+    },
+    {
+      "id": "the-goose-pub",
+      "name": "The Goose Pub & Eatery",
+      "city": "eastside",
+      "price": 2,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJBeN62_VskFQRolgeXT5Ho5k",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_MODERATE, price range $10–$40"
+    },
+    {
+      "id": "village-square-cafe",
+      "name": "Village Square Cafe",
+      "city": "eastside",
+      "price": 2,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJfT0fK7NykFQRCYUuUvXZYZQ",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_MODERATE, price range $20–$30"
+    },
+    {
+      "id": "doppio-cafe-and-creperie",
+      "name": "Doppio Cafe & Creperie",
+      "city": "eastside",
+      "price": 1,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJlZZH8PZzkFQRt9SbOf9OeAw",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_INEXPENSIVE, price range $10–$20"
+    },
+    {
+      "id": "chaces-pancake-corral",
+      "name": "Chace's Pancake Corral",
+      "city": "eastside",
+      "price": 2,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJK8euIIprkFQR4XptQYRXY6k",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_MODERATE, price range $20–$30"
+    },
+    {
+      "id": "lil-jon-restaurant-and-lounge",
+      "name": "Lil' Jon Restaurant & Lounge",
+      "city": "eastside",
+      "price": 1,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJ3Qo6-KFukFQRWX4b5tOu1Gw",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_INEXPENSIVE, price range $10–$20"
+    },
+    {
+      "id": "allantico-vinaio",
+      "name": "All'Antico Vinaio",
+      "city": "la",
+      "price": 2,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJJ9zShn-7woARPj-lRWLLmO4",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_MODERATE, price range $20–$30"
+    },
+    {
+      "id": "pizzana",
+      "name": "Pizzana",
+      "city": "la",
+      "price": 2,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJi7_zshu_woAR9OCPmnqQ5LA",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_MODERATE, price range $20–$50"
+    },
+    {
+      "id": "n-naka",
+      "name": "N/Naka",
+      "city": "la",
+      "price": 4,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJb7GeyDS6woAROVvLEUiLZEk",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_VERY_EXPENSIVE, price range $100"
+    },
+    {
+      "id": "the-musso-frank-grill",
+      "name": "The Musso & Frank Grill",
+      "city": "la",
+      "price": 4,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJaZ3OWSO_woARSF1VduqxGgY",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_VERY_EXPENSIVE, price range $100"
+    },
+    {
+      "id": "the-butcher-the-baker-the-cappuccino-maker",
+      "name": "The Butcher, The Baker, The Cappuccino Maker",
+      "city": "la",
+      "price": 2,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJOd2I0Ly-woAR_hEFYtqTFiQ",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_MODERATE, price range $20–$40"
+    },
+    {
+      "id": "parakeet-cafe",
+      "name": "Parakeet Cafe",
+      "city": "la",
+      "price": 2,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJr9SWMDW7woARGitRiPolsT8",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_MODERATE, price range $20–$30"
+    },
+    {
+      "id": "mamie",
+      "name": "Mamie",
+      "city": "la",
+      "price": 2,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJieLTdES_woARcimvkZ5k2cM",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_MODERATE, price range $20–$30"
+    },
+    {
+      "id": "urth-caffe",
+      "name": "Urth Caffé",
+      "city": "la",
+      "price": 2,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJX8auh_u7woAReoxFMFR4cCc",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_MODERATE, price range $20–$30"
+    },
+    {
+      "id": "girl-the-goat",
+      "name": "Girl & the Goat",
+      "city": "la",
+      "price": 3,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJXVodUFfHwoARe63Z7LSuUnY",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_EXPENSIVE, price range $50–$100"
+    },
+    {
+      "id": "langers",
+      "name": "Langer's",
+      "city": "la",
+      "price": 2,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJP1rAZZ_HwoARAcX96y-BrjY",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_MODERATE, price range $20–$30"
+    },
+    {
+      "id": "angels-tijuana-tacos",
+      "name": "Angel’s Tijuana Tacos",
+      "city": "la",
+      "price": 1,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJHXHIEw7HwoARt3OUL_rouB0",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_INEXPENSIVE, price range $10–$20"
+    },
+    {
+      "id": "calabra",
+      "name": "Calabra",
+      "city": "la",
+      "price": 2,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJud2bfmelwoARt5YCxfvNDCs",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_MODERATE, price range $20–$70"
+    },
+    {
+      "id": "1212-santa-monica",
+      "name": "1212 Santa Monica",
+      "city": "la",
+      "price": 2,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJq7OSk8WkwoARIhDrvzps_Cs",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_MODERATE, price range $20–$70"
+    },
+    {
+      "id": "bavel",
+      "name": "Bavel",
+      "city": "la",
+      "price": 4,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJAQDw5jzGwoARJ0ddsqWyCAQ",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_VERY_EXPENSIVE, price range $100"
+    },
+    {
+      "id": "kazunori",
+      "name": "KazuNori",
+      "city": "la",
+      "price": 2,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJN1tfUNCkwoARaYhj1p2_nac",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_MODERATE, price range $30–$40"
+    },
+    {
+      "id": "layla-bagels-coffee",
+      "name": "Layla Bagels & Coffee",
+      "city": "la",
+      "price": 1,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJlYoMhgu7woARUGyxlPVFlfQ",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_INEXPENSIVE, price range $10–$20"
+    },
+    {
+      "id": "magnolia-bakery",
+      "name": "Magnolia Bakery",
+      "city": "la",
+      "price": 1,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJW28ksUu5woARJbCF6lg02EQ",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_INEXPENSIVE, price range $10–$20"
+    },
+    {
+      "id": "heavy-handed",
+      "name": "Heavy Handed",
+      "city": "la",
+      "price": 1,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJy5dj4v67woARgIEvLD_SDPI",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_INEXPENSIVE, price range $10–$20"
+    },
+    {
+      "id": "howlin-rays",
+      "name": "Howlin' Ray's",
+      "city": "la",
+      "price": 1,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJsTjh9VrGwoAR0AENjgs5swY",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_INEXPENSIVE, price range $10–$20"
+    },
+    {
+      "id": "saffys",
+      "name": "Saffy's",
+      "city": "la",
+      "price": 3,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJ76vC4DDHwoARI-yS3q4bNwI",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_EXPENSIVE, price range $50–$100"
+    },
+    {
+      "id": "mercado-buenos-aires",
+      "name": "Mercado Buenos Aires",
+      "city": "la",
+      "price": 2,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJO6kvi0iXwoARFDFP6vwuwUI",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_MODERATE, price range $20–$30"
+    },
+    {
+      "id": "gjelina",
+      "name": "Gjelina",
+      "city": "la",
+      "price": 3,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJGU5p6ri7woARaCOqe4haSl0",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_EXPENSIVE, price range $50–$100"
+    },
+    {
+      "id": "le-coupe",
+      "name": "Le Coupe",
+      "city": "la",
+      "price": 2,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJx8N5kJjHwoARQQPQjMT1Z4k",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_MODERATE, price range $20–$30"
+    },
+    {
+      "id": "pasta-bar",
+      "name": "Pasta | Bar",
+      "city": "la",
+      "price": 4,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJO84WyaaXwoARGH9mHWHN5mw",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_VERY_EXPENSIVE, price range $100"
+    },
+    {
+      "id": "poppy-rose",
+      "name": "Poppy + Rose",
+      "city": "la",
+      "price": 2,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJkzEreTPGwoARZNbfgT-c4Sw",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_MODERATE, price range $20–$30"
+    },
+    {
+      "id": "hayato",
+      "name": "Hayato",
+      "city": "la",
+      "price": 4,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJt1RlQi_GwoARja7mYeFk2YI",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_VERY_EXPENSIVE, price range $100"
+    },
+    {
+      "id": "il-pastaio",
+      "name": "Il Pastaio",
+      "city": "la",
+      "price": 3,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJHyxdbQe8woARxadFSuW4Ok4",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_EXPENSIVE, price range $40–$100"
+    },
+    {
+      "id": "gwen",
+      "name": "Gwen",
+      "city": "la",
+      "price": 4,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJLz5MuTq_woARNr7ORKQW7-4",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_VERY_EXPENSIVE, price range $100"
+    },
+    {
+      "id": "dudley-market",
+      "name": "Dudley Market",
+      "city": "la",
+      "price": 3,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJZ_afsM66woARNjQ8STDWIhs",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_EXPENSIVE, price range $40–$100"
+    },
+    {
+      "id": "gracias-madre",
+      "name": "Gracias Madre",
+      "city": "la",
+      "price": 2,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJxYyaKq--woARHpeKzYN9mt4",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_MODERATE, price range $20–$80"
+    },
+    {
+      "id": "ysabel",
+      "name": "Ysabel",
+      "city": "la",
+      "price": 3,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJ_TO2bc--woARqf50pCXKnNI",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_EXPENSIVE, price range $40–$100"
+    },
+    {
+      "id": "holbox",
+      "name": "Holbox",
+      "city": "la",
+      "price": 2,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJMc9-jgrIwoARvFaE32ZlJzA",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_MODERATE, price range $20–$60"
+    },
+    {
+      "id": "nobu",
+      "name": "Nobu",
+      "city": "la",
+      "price": 4,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJewC2XzIe6IARgQhofffh6fE",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_VERY_EXPENSIVE, price range $100"
+    },
+    {
+      "id": "71above",
+      "name": "71Above",
+      "city": "la",
+      "price": 4,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJg4Tqa7PHwoARrWA-2kwYfDE",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_VERY_EXPENSIVE, price range $100"
+    },
+    {
+      "id": "the-bungalow",
+      "name": "The Bungalow",
+      "city": "la",
+      "price": 2,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJHRAmNsSkwoARWsE8WVQPhcw",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_MODERATE, price range $20–$30"
+    },
+    {
+      "id": "pinks-hot-dogs",
+      "name": "Pink's Hot Dogs",
+      "city": "la",
+      "price": 1,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJVwjfzCq_woAR4FjKokeruig",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_INEXPENSIVE, price range $10–$20"
+    },
+    {
+      "id": "jon-vinnys",
+      "name": "Jon & Vinny's",
+      "city": "la",
+      "price": 2,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJA2LuJDO5woARuhCFGBZy40o",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_MODERATE, price range $20–$60"
+    },
+    {
+      "id": "vin-folk",
+      "name": "Vin Folk",
+      "city": "la",
+      "price": 4,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJaQ7b8R-zwoARYMTDhwUoHWc",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_VERY_EXPENSIVE, price range $100"
+    },
+    {
+      "id": "apollonias-pizzeria",
+      "name": "Apollonia's Pizzeria",
+      "city": "la",
+      "price": 1,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJFzzs8-C4woARNzCxl2jnmag",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_INEXPENSIVE, price range $10–$20"
+    },
+    {
+      "id": "grand-central-market",
+      "name": "Grand Central Market",
+      "city": "la",
+      "price": 1,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJlc5Oiu3HwoAR4BBYmdyWeU0",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_INEXPENSIVE, price range $10–$20"
+    },
+    {
+      "id": "pasjoli",
+      "name": "Pasjoli",
+      "city": "la",
+      "price": 4,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJpTjP4G-7woARDdfT19BYG28",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_VERY_EXPENSIVE, price range $100"
+    },
+    {
+      "id": "broad-street-oyster-co",
+      "name": "Broad Street Oyster Co.",
+      "city": "la",
+      "price": 2,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJ5Xt4VUwf6IARDDRfjQ6HZTA",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_MODERATE, price range $20–$60"
+    },
+    {
+      "id": "colapasta",
+      "name": "Colapasta",
+      "city": "la",
+      "price": 2,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJbWaqjXOlwoAR5wGv80g7xng",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_MODERATE, price range $20–$30"
+    },
+    {
+      "id": "guisados",
+      "name": "Guisados",
+      "city": "la",
+      "price": 1,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJ9xaRZ_7GwoAR2654oYfw5cg",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_INEXPENSIVE, price range $10–$20"
+    },
+    {
+      "id": "republique",
+      "name": "République",
+      "city": "la",
+      "price": 2,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJqaA5zt-4woARHGIEp3XlsZo",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_MODERATE, price range $20–$70"
+    },
+    {
+      "id": "matsuhisa",
+      "name": "Matsuhisa",
+      "city": "la",
+      "price": 4,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJ7yr_2065woARrbIIMpW8ZWk",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_VERY_EXPENSIVE, price range $100"
+    },
+    {
+      "id": "doans-bakery",
+      "name": "Doan's Bakery",
+      "city": "la",
+      "price": 1,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJ_0Jggo-ewoAR-IuLtFlvFeE",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_INEXPENSIVE, price range $10–$20"
+    },
+    {
+      "id": "somni",
+      "name": "Somni",
+      "city": "la",
+      "price": 4,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJVa5jok65woARLJWEqmHTCp8",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_VERY_EXPENSIVE, price range $100"
+    },
+    {
+      "id": "bay-cities-italian-deli-bakery",
+      "name": "Bay Cities Italian Deli & Bakery",
+      "city": "la",
+      "price": 1,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJVyASdc2kwoARat3uRCRLee8",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_INEXPENSIVE, price range $10–$20"
+    },
+    {
+      "id": "saddle-ranch-chop-house",
+      "name": "Saddle Ranch Chop House",
+      "city": "la",
+      "price": 2,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJiftIsr--woARw4fa6Thiv-Q",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_MODERATE, price range $20–$70"
+    },
+    {
+      "id": "casa-madera",
+      "name": "Casa Madera",
+      "city": "la",
+      "price": 4,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJrePHfIi_woARW5YDN0rL9zY",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_VERY_EXPENSIVE, price range $100"
+    },
+    {
+      "id": "polo-lounge",
+      "name": "Polo Lounge",
+      "city": "la",
+      "price": 4,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJy6BKexO8woARnyytEf7g64A",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_VERY_EXPENSIVE, price range $100"
+    },
+    {
+      "id": "randys-donuts",
+      "name": "Randy's Donuts",
+      "city": "la",
+      "price": 1,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJG7NUYyK3woARkzkAKinOJBs",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_INEXPENSIVE, price range $1–$10"
+    },
+    {
+      "id": "blue-plate-taco",
+      "name": "Blue Plate Taco",
+      "city": "la",
+      "price": 2,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJZdv9V9CkwoARtCFEbwzP2G8",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_MODERATE, price range $20–$30"
+    },
+    {
+      "id": "tesla-diner",
+      "name": "Tesla Diner",
+      "city": "la",
+      "price": 2,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJ__9vFSm_woARoLZcb_QrVAE",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_MODERATE, price range $20–$30"
+    },
+    {
+      "id": "the-donut-man",
+      "name": "The Donut Man",
+      "city": "la",
+      "price": 1,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJFVUYJfPHwoARMk8wOOW1Cz4",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_INEXPENSIVE, price range $1–$10"
+    },
+    {
+      "id": "felix",
+      "name": "Felix",
+      "city": "la",
+      "price": 4,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJeTzip8e6woAR_2fYjEWwLII",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_VERY_EXPENSIVE, price range $100"
+    },
+    {
+      "id": "in-n-out-burger",
+      "name": "In-N-Out Burger",
+      "city": "la",
+      "price": 1,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJ5xHkkNOwwoARfN2_9LZe2qc",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_INEXPENSIVE, price range $10–$20"
+    },
+    {
+      "id": "donnas",
+      "name": "Donna's",
+      "city": "la",
+      "price": 2,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJhyFWHlPHwoARElRKU5zEEsw",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_MODERATE, price range $30–$80"
+    },
+    {
+      "id": "a-o-c",
+      "name": "A.O.C",
+      "city": "la",
+      "price": 4,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJX6WyxTa5woARZPdVFVEVAKU",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_VERY_EXPENSIVE, price range $100"
+    },
+    {
+      "id": "philippe-the-original",
+      "name": "Philippe The Original",
+      "city": "la",
+      "price": 1,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJd9NcMVvGwoARpVcjtJfZBQo",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_INEXPENSIVE, price range $10–$20"
+    },
+    {
+      "id": "lantica-pizzeria-da-michele",
+      "name": "L’antica Pizzeria da Michele",
+      "city": "la",
+      "price": 2,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJm_JlplW_woARfUC7uDz1_OA",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_MODERATE, price range $20–$70"
+    },
+    {
+      "id": "tiki-ti",
+      "name": "Tiki-Ti",
+      "city": "la",
+      "price": 2,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJOw7tO03HwoARpYVvqyQzimI",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_MODERATE, price range $20–$30"
+    },
+    {
+      "id": "amboy",
+      "name": "Amboy",
+      "city": "la",
+      "price": 1,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJLU-yFOTHwoARas1rwue29Zc",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_INEXPENSIVE, price range $10–$30"
+    },
+    {
+      "id": "dunsmoor",
+      "name": "Dunsmoor",
+      "city": "la",
+      "price": 4,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJQxbwUsHBwoARqt0NKxponhU",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_VERY_EXPENSIVE, price range $100"
+    },
+    {
+      "id": "easy-street-burgers",
+      "name": "Easy Street Burgers",
+      "city": "la",
+      "price": 1,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJCYpzR-y5woAR_pkgoPUBZw0",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_INEXPENSIVE, price range $10–$20"
+    },
+    {
+      "id": "daves-hot-chicken",
+      "name": "Dave's Hot Chicken",
+      "city": "la",
+      "price": 1,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJHTWi2q24woAREaMBs_kSKCs",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_INEXPENSIVE, price range $10–$20"
+    },
+    {
+      "id": "paradise-grill-and-cafe",
+      "name": "Paradise Grill and Cafe",
+      "city": "moscow",
+      "price": 1,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJvwI1OSaIn1QRQvB1NVd_5hI",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_INEXPENSIVE, price range $10–$20"
+    },
+    {
+      "id": "the-silos-coffee-social",
+      "name": "The Silos Coffee & Social",
+      "city": "moscow",
+      "price": 1,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJS0mDda6Jn1QRRIDo7QJJH_A",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_INEXPENSIVE, price range $1–$10"
+    },
+    {
+      "id": "humble-burger",
+      "name": "Humble Burger",
+      "city": "moscow",
+      "price": 1,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJhdSvnX4noFQRhtMbSuLXvHA",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_INEXPENSIVE, price range $10–$20"
+    },
+    {
+      "id": "barrel-house-tavern",
+      "name": "Barrel House Tavern",
+      "city": "northbay",
+      "price": 2,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJQ2BquUWEhYARns0bpzwPQUw",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_MODERATE, price range $30–$70"
+    },
+    {
+      "id": "starbucks-reserve",
+      "name": "Starbucks Reserve",
+      "city": "nyc",
+      "price": 1,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJH8lOG5RZwokRudLoONro88Q",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_INEXPENSIVE, price range $10–$20"
+    },
+    {
+      "id": "jungsik",
+      "name": "Jungsik",
+      "city": "nyc",
+      "price": 4,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJpSTN0R9awokRI29rK_SfbeA",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_VERY_EXPENSIVE, price range $100"
+    },
+    {
+      "id": "red-hook-tavern",
+      "name": "Red Hook Tavern",
+      "city": "nyc",
+      "price": 2,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJv0LelZRbwokRrUvqWn_7o98",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_MODERATE, price range $30–$80"
+    },
+    {
+      "id": "frenchette-bakery",
+      "name": "Frenchette Bakery",
+      "city": "nyc",
+      "price": 1,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJQSuTOU9bwokRUZJTdOh1ec4",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_INEXPENSIVE, price range $10–$20"
+    },
+    {
+      "id": "centurion-new-york",
+      "name": "Centurion New York",
+      "city": "nyc",
+      "price": 4,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJmxOl6dpZwokRCxD86jCgBfk",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_VERY_EXPENSIVE, price range $100"
+    },
+    {
+      "id": "ralph-s-coffee",
+      "name": "Ralph's Coffee",
+      "city": "nyc",
+      "price": 1,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJLx2u_exZwokRRATuJZ5qHJQ",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_INEXPENSIVE, price range $10–$20"
+    },
+    {
+      "id": "levain-bakery-nyc",
+      "name": "Levain Bakery",
+      "city": "nyc",
+      "price": 1,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJ6SmehIlYwokRaO14xlmbWZU",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_INEXPENSIVE, price range $1–$10"
+    },
+    {
+      "id": "rubirosa",
+      "name": "Rubirosa",
+      "city": "nyc",
+      "price": 2,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJs8MdNo9ZwokRTPUHiArLC-o",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_MODERATE, price range $20–$70"
+    },
+    {
+      "id": "paros-tribeca",
+      "name": "Paros Tribeca",
+      "city": "nyc",
+      "price": 4,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJW36sYEpZwokRS9MbIsZ_Hnk",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_VERY_EXPENSIVE, price range $100"
+    },
+    {
+      "id": "farra",
+      "name": "Farra",
+      "city": "nyc",
+      "price": 4,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJYw5z8rhbwokRvlPiJa21fuI",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_VERY_EXPENSIVE, price range $100"
+    },
+    {
+      "id": "buvette",
+      "name": "Buvette",
+      "city": "nyc",
+      "price": 2,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJEwHZcZNZwokR810IgyQhoZM",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_MODERATE, price range $20–$60"
+    },
+    {
+      "id": "marea",
+      "name": "Marea",
+      "city": "nyc",
+      "price": 4,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJvWSDS_ZYwokRiG9D395loxo",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_VERY_EXPENSIVE, price range $100"
+    },
+    {
+      "id": "forsythia",
+      "name": "Forsythia",
+      "city": "nyc",
+      "price": 4,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJ6Xa02cFZwokRv_5HQ3fHoHk",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_VERY_EXPENSIVE, price range $100"
+    },
+    {
+      "id": "los-tacos-no-1",
+      "name": "Los Tacos No. 1",
+      "city": "nyc",
+      "price": 1,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJsdNONuFbwokRLM-yuifjb8k",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_INEXPENSIVE, price range $10–$20"
+    },
+    {
+      "id": "blue-bottle-coffee",
+      "name": "Blue Bottle Coffee",
+      "city": "nyc",
+      "price": 1,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJI543h_RZwokRHVio-95cF8k",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_INEXPENSIVE, price range $1–$10"
+    },
+    {
+      "id": "lucia",
+      "name": "Lucia",
+      "city": "nyc",
+      "price": 1,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJt2LXGrlZwokRCEWTvpTyp5k",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_INEXPENSIVE, price range $10–$20"
+    },
+    {
+      "id": "carbone",
+      "name": "Carbone",
+      "city": "nyc",
+      "price": 4,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJmSvG_ZFZwokRTOFeiLXzkmA",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_VERY_EXPENSIVE, price range $100"
+    },
+    {
+      "id": "le-coucou",
+      "name": "Le Coucou",
+      "city": "nyc",
+      "price": 4,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJyw5j84lZwokRnUI_UknPSNA",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_VERY_EXPENSIVE, price range $100"
+    },
+    {
+      "id": "the-mulberry",
+      "name": "The Mulberry",
+      "city": "nyc",
+      "price": 2,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJXXCcUrlZwokR_HadYXDChmY",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_MODERATE, price range $20–$50"
+    },
+    {
+      "id": "buddakan",
+      "name": "Buddakan",
+      "city": "nyc",
+      "price": 4,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJCwZXPr9ZwokR5m9eTycIFk8",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_VERY_EXPENSIVE, price range $100"
+    },
+    {
+      "id": "russ-daughters",
+      "name": "Russ & Daughters",
+      "city": "nyc",
+      "price": 1,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJ7VEEjYNZwokRS0bdsXA3uyg",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_INEXPENSIVE, price range $10–$20"
+    },
+    {
+      "id": "banzarbar",
+      "name": "Banzarbar",
+      "city": "nyc",
+      "price": 2,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJU74O14VZwokRQ-wPmjfTERE",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_MODERATE, price range $20–$30"
+    },
+    {
+      "id": "monkey-bar",
+      "name": "Monkey Bar",
+      "city": "nyc",
+      "price": 4,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJm9ZmFPtYwokR4GjMlk_y7Fg",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_VERY_EXPENSIVE, price range $100"
+    },
+    {
+      "id": "the-dead-rabbit",
+      "name": "The Dead Rabbit",
+      "city": "nyc",
+      "price": 2,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJIRiJaRRawokR2KyQ984qa-o",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_MODERATE, price range $20–$60"
+    },
+    {
+      "id": "aska",
+      "name": "Aska",
+      "city": "nyc",
+      "price": 4,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJUwatTl1ZwokRUDXxYoFa-hk",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_VERY_EXPENSIVE, price range $100"
+    },
+    {
+      "id": "double-chicken-please",
+      "name": "Double Chicken Please",
+      "city": "nyc",
+      "price": 2,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJI25hF09ZwokRnmmiXXONRf4",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_MODERATE, price range $30–$90"
+    },
+    {
+      "id": "the-smith",
+      "name": "The Smith",
+      "city": "nyc",
+      "price": 2,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJbd5El_VYwokRFEtA5j2r7Ls",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_MODERATE, price range $20–$70"
+    },
+    {
+      "id": "laser-wolf",
+      "name": "Laser Wolf",
+      "city": "nyc",
+      "price": 3,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJLyS5dYRZwokRlkA0g9eijjs",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_EXPENSIVE, price range $50–$100"
+    },
+    {
+      "id": "starbucks-reserve-roastery",
+      "name": "Starbucks Reserve Roastery",
+      "city": "nyc",
+      "price": 1,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJIQDZbb9ZwokRNRez4RviXGQ",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_INEXPENSIVE, price range $10–$20"
+    },
+    {
+      "id": "raoul-s",
+      "name": "Raoul's",
+      "city": "nyc",
+      "price": 3,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJBUwsto1ZwokRsW3Dy0Y1cO0",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_EXPENSIVE, price range $50–$100"
+    },
+    {
+      "id": "l-appartement-4f",
+      "name": "L'Appartement 4F",
+      "city": "nyc",
+      "price": 1,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJ_xVHVB5bwokRXZSTppGOkK4",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_INEXPENSIVE, price range $10–$20"
+    },
+    {
+      "id": "la-sirene",
+      "name": "La Sirène",
+      "city": "nyc",
+      "price": 3,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJqW6yuoxZwokRHcasV7UhqPU",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_EXPENSIVE, price range $40–$90"
+    },
+    {
+      "id": "please-don-t-tell",
+      "name": "Please Don't Tell",
+      "city": "nyc",
+      "price": 2,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJb67-ZZ1ZwokRRxBYr3GlFp0",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_MODERATE, price range $20–$60"
+    },
+    {
+      "id": "atomix",
+      "name": "Atomix",
+      "city": "nyc",
+      "price": 4,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJ3bmAHghZwokRRXYO57yLuss",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_VERY_EXPENSIVE, price range $100"
+    },
+    {
+      "id": "sushi-sho",
+      "name": "Sushi Sho",
+      "city": "nyc",
+      "price": 4,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJT_JHTgFZwokRXleXHadsVaE",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_VERY_EXPENSIVE, price range $100"
+    },
+    {
+      "id": "pastis",
+      "name": "Pastis",
+      "city": "nyc",
+      "price": 2,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJ8U_F9b9ZwokRTaHyDKWRNSg",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_MODERATE, price range $30–$90"
+    },
+    {
+      "id": "l-industrie-pizzeria",
+      "name": "L'industrie Pizzeria",
+      "city": "nyc",
+      "price": 1,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJQ-hJIuBbwokRRUdquw_5w5U",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_INEXPENSIVE, price range $10–$20"
+    },
+    {
+      "id": "le-french-diner",
+      "name": "Le French Diner",
+      "city": "nyc",
+      "price": 4,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJMa8x7oNZwokR3k3Elyw0VC8",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_VERY_EXPENSIVE, price range $100"
+    },
+    {
+      "id": "fiore-s-house-of-quality",
+      "name": "Fiore's House of Quality",
+      "city": "nyc",
+      "price": 1,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJD6_VVWdXwokRgjN9OY8wfso",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_INEXPENSIVE, price range $10–$20"
+    },
+    {
+      "id": "katz-s-delicatessen",
+      "name": "Katz's Delicatessen",
+      "city": "nyc",
+      "price": 2,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJCar0f49ZwokR6ozLV-dHNTE",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_MODERATE, price range $30–$40"
+    },
+    {
+      "id": "joe-s-pizza",
+      "name": "Joe's Pizza",
+      "city": "nyc",
+      "price": 1,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJqdNaaBVbwokRLTafYrQlZI8",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_INEXPENSIVE, price range $10–$20"
+    },
+    {
+      "id": "8282",
+      "name": "8282",
+      "city": "nyc",
+      "price": 3,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJNaUIchtZwokRHI8Pk3mEz1Y",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_EXPENSIVE, price range $50–$100"
+    },
+    {
+      "id": "odo",
+      "name": "Odo",
+      "city": "nyc",
+      "price": 4,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJlRDB34FZwokRUVAP-qsAoUY",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_VERY_EXPENSIVE, price range $100"
+    },
+    {
+      "id": "blue-hill",
+      "name": "Blue Hill",
+      "city": "nyc",
+      "price": 4,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJi9BURJFZwokRDcqvIgxdXds",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_VERY_EXPENSIVE, price range $100"
+    },
+    {
+      "id": "cervo-s",
+      "name": "Cervo's",
+      "city": "nyc",
+      "price": 3,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJp_UkrilawokRtDAS5sls7jo",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_EXPENSIVE, price range $50–$100"
+    },
+    {
+      "id": "cote",
+      "name": "COTE",
+      "city": "nyc",
+      "price": 4,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJQ1R3hKNZwokRQM4wbIrc00o",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_VERY_EXPENSIVE, price range $100"
+    },
+    {
+      "id": "locanda-verde",
+      "name": "Locanda Verde",
+      "city": "nyc",
+      "price": 4,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJTWkuhfVZwokRS_go-fdp7Vs",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_VERY_EXPENSIVE, price range $100"
+    },
+    {
+      "id": "vinegar-hill-house",
+      "name": "Vinegar Hill House",
+      "city": "nyc",
+      "price": 2,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJ1xNe4cxbwokRnDw-6Rvhxng",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_MODERATE, price range $20–$30"
+    },
+    {
+      "id": "king-cole-bar",
+      "name": "King Cole Bar",
+      "city": "nyc",
+      "price": 2,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJT_kaUvpYwokRvHWcgFVsKZk",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_MODERATE, price range $30–$90"
+    },
+    {
+      "id": "peter-pan-donut-pastry-shop",
+      "name": "Peter Pan Donut & Pastry Shop",
+      "city": "nyc",
+      "price": 1,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJfR8jHkRZwokRgllkzTBqhlM",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_INEXPENSIVE, price range $1–$10"
+    },
+    {
+      "id": "bubby-s",
+      "name": "Bubby's",
+      "city": "nyc",
+      "price": 2,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJETquaPVZwokRVYYGSKrg4E0",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_MODERATE, price range $20–$30"
+    },
+    {
+      "id": "sixty-three-clinton",
+      "name": "Sixty Three Clinton",
+      "city": "nyc",
+      "price": 4,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJ385rlW9ZwokRHTamoLqoosI",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_VERY_EXPENSIVE, price range $100"
+    },
+    {
+      "id": "emilios-ballato",
+      "name": "Emilios Ballato",
+      "city": "nyc",
+      "price": 4,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJRQqJgYVZwokRfJB16sxh1Pg",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_VERY_EXPENSIVE, price range $100"
+    },
+    {
+      "id": "now-or-never-coffee",
+      "name": "Now or Never Coffee",
+      "city": "nyc",
+      "price": 1,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJcQM_C4FZwokR0xEGxV7HeVM",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_INEXPENSIVE, price range $1–$10"
+    },
+    {
+      "id": "semma",
+      "name": "Semma",
+      "city": "nyc",
+      "price": 4,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJxZmzO7hZwokRx2fls4uU4YU",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_VERY_EXPENSIVE, price range $100"
+    },
+    {
+      "id": "chambers",
+      "name": "Chambers",
+      "city": "nyc",
+      "price": 4,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJ43KaxzxbwokRVjbWT05nZ_M",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_VERY_EXPENSIVE, price range $100"
+    },
+    {
+      "id": "cafe-lyria",
+      "name": "Café Lyria",
+      "city": "nyc",
+      "price": 1,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJcVcDbvVZwokRH9wq92JCQBo",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_INEXPENSIVE, price range $1–$10"
+    },
+    {
+      "id": "ito",
+      "name": "ITO",
+      "city": "nyc",
+      "price": 4,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJiW_7kM9bwokR9qMrG4XITL8",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_VERY_EXPENSIVE, price range $100"
+    },
+    {
+      "id": "torrisi",
+      "name": "Torrisi",
+      "city": "nyc",
+      "price": 4,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJWd7fRdZZwokRhru5tn4KsVM",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_VERY_EXPENSIVE, price range $100"
+    },
+    {
+      "id": "magnolia-bakery-nyc",
+      "name": "Magnolia Bakery",
+      "city": "nyc",
+      "price": 1,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJF9Du35RZwokRFGd0oc4diZs",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_INEXPENSIVE, price range $1–$10"
+    },
+    {
+      "id": "fanelli-cafe",
+      "name": "Fanelli Cafe",
+      "city": "nyc",
+      "price": 2,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJ73jk7Y5ZwokR8XknCWHfDKg",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_MODERATE, price range $20–$30"
+    },
+    {
+      "id": "all-antico-vinaio",
+      "name": "All'Antico Vinaio",
+      "city": "nyc",
+      "price": 2,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJgWYylZ1ZwokRN-LB26sUqDw",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_MODERATE, price range $20–$30"
+    },
+    {
+      "id": "lucali",
+      "name": "Lucali",
+      "city": "nyc",
+      "price": 2,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJ395CMVlawokRt2oLH_8zmvI",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_MODERATE, price range $20–$40"
+    },
+    {
+      "id": "angelina",
+      "name": "Angelina",
+      "city": "nyc",
+      "price": 2,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJd19uAMhZwokRmdYBmRJJ08s",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_MODERATE, price range $10–$60"
+    },
+    {
+      "id": "starbucks-coffee-company-nyc",
+      "name": "Starbucks Coffee Company",
+      "city": "nyc",
+      "price": 1,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJpU_RVK5ZwokRmAtTNwJNDyQ",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_INEXPENSIVE, price range $10–$20"
+    },
+    {
+      "id": "au-cheval",
+      "name": "Au Cheval",
+      "city": "nyc",
+      "price": 3,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJt_HATrRbwokREfGhs1PnzwQ",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_EXPENSIVE, price range $40–$100"
+    },
+    {
+      "id": "tonchin",
+      "name": "Tonchin",
+      "city": "nyc",
+      "price": 2,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJBwGziqlZwokRb3MTH3xUt0Y",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_MODERATE, price range $20–$60"
+    },
+    {
+      "id": "keens-steakhouse",
+      "name": "Keens Steakhouse",
+      "city": "nyc",
+      "price": 4,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJ5804KalZwokRzGll2Rm7nag",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_VERY_EXPENSIVE, price range $100"
+    },
+    {
+      "id": "lexington-candy-shop",
+      "name": "Lexington Candy Shop",
+      "city": "nyc",
+      "price": 1,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJ-1GYt71YwokRhPeAgDwgVF4",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_INEXPENSIVE, price range $10–$20"
+    },
+    {
+      "id": "gray-s-papaya",
+      "name": "Gray's Papaya",
+      "city": "nyc",
+      "price": 1,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJlfr4bIpYwokRRazoMFwBzWo",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_INEXPENSIVE, price range $1–$10"
+    },
+    {
+      "id": "sunny-and-annie-s",
+      "name": "Sunny and Annie's",
+      "city": "nyc",
+      "price": 1,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJu4XyF3hZwokR2NUbybMOg6g",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_INEXPENSIVE, price range $10–$20"
+    },
+    {
+      "id": "golden-diner",
+      "name": "Golden Diner",
+      "city": "nyc",
+      "price": 2,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJ1-mW-LhbwokR7Ryv5ha-gzc",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_MODERATE, price range $20–$30"
+    },
+    {
+      "id": "regular",
+      "name": "Regular",
+      "city": "nyc",
+      "price": 2,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJwbmbdGRbwokRpdV5H4afCEc",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_MODERATE, price range $20–$30"
+    },
+    {
+      "id": "sushi-by-scratch-restaurants-nyc",
+      "name": "Sushi by Scratch Restaurants",
+      "city": "nyc",
+      "price": 4,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJIfy2UAtZwokRyPW0VlTG8Hw",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_VERY_EXPENSIVE, price range $100"
+    },
+    {
+      "id": "le-pavillon",
+      "name": "Le Pavillon",
+      "city": "nyc",
+      "price": 4,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJjcAJd-tZwokRJ0GkkJ2Urp0",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_VERY_EXPENSIVE, price range $100"
+    },
+    {
+      "id": "interlude-coffee-tea",
+      "name": "Interlude Coffee & Tea",
+      "city": "nyc",
+      "price": 1,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJnbDrp2pZwokRkdTRs6PILf4",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_INEXPENSIVE, price range $1–$10"
+    },
+    {
+      "id": "coqodaq",
+      "name": "COQODAQ",
+      "city": "nyc",
+      "price": 4,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJp-hnIhNZwokRq1FijMduZrM",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_VERY_EXPENSIVE, price range $100"
+    },
+    {
+      "id": "dirt-candy",
+      "name": "Dirt Candy",
+      "city": "nyc",
+      "price": 4,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJBXlte51ZwokRXzXtdaBG9xM",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_VERY_EXPENSIVE, price range $100"
+    },
+    {
+      "id": "casa-della-mozzarella",
+      "name": "Casa Della Mozzarella",
+      "city": "nyc",
+      "price": 1,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJ-c74yYD0wokRqbdBsNyGRO0",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_INEXPENSIVE, price range $10–$20"
+    },
+    {
+      "id": "smith-mills",
+      "name": "Smith & Mills",
+      "city": "nyc",
+      "price": 2,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJe-B7YGlZwokRF1qMLUO16Yw",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_MODERATE, price range $20–$70"
+    },
+    {
+      "id": "flippers",
+      "name": "Flipper’s",
+      "city": "nyc",
+      "price": 2,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJgx0sRypZwokRuk6Tjic2Q4g",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_MODERATE, price range $20–$30"
+    },
+    {
+      "id": "le-bernardin",
+      "name": "Le Bernardin",
+      "city": "nyc",
+      "price": 4,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJV7QQ6kdZwokRax4615zpSGU",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_VERY_EXPENSIVE, price range $100"
+    },
+    {
+      "id": "banh-anh-em",
+      "name": "Bánh Anh Em",
+      "city": "nyc",
+      "price": 2,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJDyMGAgBZwokRggrgBWarG0o",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_MODERATE, price range $20–$50"
+    },
+    {
+      "id": "rigor-hill-market",
+      "name": "Rigor Hill Market",
+      "city": "nyc",
+      "price": 1,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJm0F0fiFZwokRfuBjDeS7w7U",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_INEXPENSIVE, price range $10–$20"
+    },
+    {
+      "id": "ippudo",
+      "name": "Ippudo",
+      "city": "nyc",
+      "price": 2,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJWUOc55tZwokR9q_g5l051rk",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_MODERATE, price range $20–$40"
+    },
+    {
+      "id": "via-carota",
+      "name": "Via Carota",
+      "city": "nyc",
+      "price": 3,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJr7FOf5NZwokRu3CDYtzVmuQ",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_EXPENSIVE, price range $50–$100"
+    },
+    {
+      "id": "shuka",
+      "name": "Shuka",
+      "city": "nyc",
+      "price": 2,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJ3dbcl41ZwokRouIrXtQ5erk",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_MODERATE, price range $30–$90"
+    },
+    {
+      "id": "marc-forgione",
+      "name": "Marc Forgione",
+      "city": "nyc",
+      "price": 4,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJhSLc_R5awokReYEI4dyODxA",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_VERY_EXPENSIVE, price range $100"
+    },
+    {
+      "id": "one-white-street",
+      "name": "One White Street",
+      "city": "nyc",
+      "price": 4,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJISXTwWJZwokRIok4xyMeb6g",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_VERY_EXPENSIVE, price range $100"
+    },
+    {
+      "id": "o-hara-s-restaurant-pub",
+      "name": "O'Hara's Restaurant & Pub",
+      "city": "nyc",
+      "price": 2,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJueUCrBBawokRiw9LMJFm0_o",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_MODERATE, price range $20–$30"
+    },
+    {
+      "id": "dominique-ansel-bakery",
+      "name": "Dominique Ansel Bakery",
+      "city": "nyc",
+      "price": 1,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJP0KOWoxZwokRmvPiQAIaH1A",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_INEXPENSIVE, price range $10–$20"
+    },
+    {
+      "id": "carnitas-ramirez",
+      "name": "Carnitas Ramirez",
+      "city": "nyc",
+      "price": 1,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJ41HSUABZwokRhbUqk4qDotA",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_INEXPENSIVE, price range $10–$20"
+    },
+    {
+      "id": "friend-of-a-farmer",
+      "name": "Friend of a Farmer",
+      "city": "nyc",
+      "price": 2,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJeQcpsdFZwokRLvcPlPKdYuc",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_MODERATE, price range $20–$60"
+    },
+    {
+      "id": "skirt-steak",
+      "name": "Skirt Steak",
+      "city": "nyc",
+      "price": 3,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJZzeRDkBZwokRODxBJ-bYauA",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_EXPENSIVE, price range $50–$100"
+    },
+    {
+      "id": "rio-de-la-plata-bakery-pastry-shop",
+      "name": "Rio De La Plata Bakery - Pastry Shop",
+      "city": "nyc",
+      "price": 1,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJd636t7VfwokRS6H5513oCc8",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_INEXPENSIVE, price range $10–$20"
+    },
+    {
+      "id": "two-hands",
+      "name": "Two Hands",
+      "city": "nyc",
+      "price": 2,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJ256pFiBawokR-JFcFPAz7Ig",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_MODERATE, price range $20–$30"
+    },
+    {
+      "id": "shmone",
+      "name": "Shmoné",
+      "city": "nyc",
+      "price": 4,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJBdMLKZBZwokRJ0tYbQ6nfZ4",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_VERY_EXPENSIVE, price range $100"
+    },
+    {
+      "id": "empellon",
+      "name": "Empellón",
+      "city": "nyc",
+      "price": 3,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJ8b70m_tYwokRqGwQgnijLEc",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_EXPENSIVE, price range $50–$100"
+    },
+    {
+      "id": "ceres",
+      "name": "Ceres",
+      "city": "nyc",
+      "price": 2,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJb6qAbrNZwokRg4_SLLcih-A",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_MODERATE, price range $20–$70"
+    },
+    {
+      "id": "4-charles-prime-rib",
+      "name": "4 Charles Prime Rib",
+      "city": "nyc",
+      "price": 4,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJ-7AOKpRZwokRMq0XnG_eehU",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_VERY_EXPENSIVE, price range $100"
+    },
+    {
+      "id": "barbara-s-fishtrap",
+      "name": "Barbara's Fishtrap",
+      "city": "peninsula",
+      "price": 2,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJFQfjHrZzj4ARfIzNuCQKVXQ",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_MODERATE, price range $20–$30"
+    },
+    {
+      "id": "ramen-nagi",
+      "name": "Ramen Nagi",
+      "city": "peninsula",
+      "price": 2,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJR1988Qm7j4ARi_KmggVETuc",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_MODERATE, price range $20–$30"
+    },
+    {
+      "id": "le-pigeon",
+      "name": "Le Pigeon",
+      "city": "portland",
+      "price": 4,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJn_5mjKWglVQR94bKSpAYe4s",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_VERY_EXPENSIVE, price range $100"
+    },
+    {
+      "id": "nimblefish",
+      "name": "Nimblefish",
+      "city": "portland",
+      "price": 4,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJIXLSW5mglVQRwgzqGQl2BAM",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_VERY_EXPENSIVE, price range $100"
+    },
+    {
+      "id": "kens-artisan-pizza",
+      "name": "Ken’s Artisan Pizza",
+      "city": "portland",
+      "price": 2,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJyetGFb6glVQRAKXnO6xBLoM",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_MODERATE, price range $20–$30"
+    },
+    {
+      "id": "taste-tickler",
+      "name": "Taste Tickler",
+      "city": "portland",
+      "price": 1,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJ_ZUhOLWglVQR78OvZqFOIqk",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_INEXPENSIVE, price range $10–$20"
+    },
+    {
+      "id": "eem",
+      "name": "EEM",
+      "city": "portland",
+      "price": 2,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJOa08KlqnlVQR_ZZx1jEcTYY",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_MODERATE, price range $20–$30"
+    },
+    {
+      "id": "deschutes-brewery",
+      "name": "Deschutes Brewery",
+      "city": "portland",
+      "price": 2,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJo7T7PAIKlVQRzFN3YCTy1jE",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_MODERATE, price range $20–$30"
+    },
+    {
+      "id": "jacqueline",
+      "name": "Jacqueline",
+      "city": "portland",
+      "price": 3,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJw-7RgXgKlVQRphTjNw7QwvU",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_EXPENSIVE, price range $50–$100"
+    },
+    {
+      "id": "lovely-s-fifty-fifty",
+      "name": "Lovely's Fifty Fifty",
+      "city": "portland",
+      "price": 2,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJT9ZbCWunlVQRIryTTXOWkEw",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_MODERATE, price range $20–$50"
+    },
+    {
+      "id": "kann",
+      "name": "kann",
+      "city": "portland",
+      "price": 4,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJIUdfuzChlVQRepfM4S5jGUQ",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_VERY_EXPENSIVE, price range $100"
+    },
+    {
+      "id": "maurice",
+      "name": "MÅURICE",
+      "city": "portland",
+      "price": 2,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJ58lRwAMKlVQRJrg5ehoccpU",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_MODERATE, price range $20–$70"
+    },
+    {
+      "id": "terra-mae",
+      "name": "Terra Mae",
+      "city": "portland",
+      "price": 3,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJI31R97mnlVQRpBpdsYM4P8U",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_EXPENSIVE, price range $50–$100"
+    },
+    {
+      "id": "stumptown-coffee-roasters",
+      "name": "Stumptown Coffee Roasters",
+      "city": "portland",
+      "price": 1,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJbT5i5AYKlVQRHZOtE8vGAz4",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_INEXPENSIVE, price range $1–$10"
+    },
+    {
+      "id": "no-saint",
+      "name": "No Saint",
+      "city": "portland",
+      "price": 2,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJgx6IvbSnlVQRNAJrRibAZmU",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_MODERATE, price range $20–$60"
+    },
+    {
+      "id": "nostrana",
+      "name": "Nostrana",
+      "city": "portland",
+      "price": 3,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJZVQ1iNGhlVQRhUTkinOjNSQ",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_EXPENSIVE, price range $40–$100"
+    },
+    {
+      "id": "crybaby-cafe",
+      "name": "Crybaby Café",
+      "city": "pullman",
+      "price": 1,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJc36SU0yHn1QRVuT34jb1nNE",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_INEXPENSIVE, price range $10–$20"
+    },
+    {
+      "id": "valhalla-bar-and-grill",
+      "name": "Valhalla Bar and Grill",
+      "city": "pullman",
+      "price": 1,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJyfr9NhyHn1QRKP_FXqYkwA4",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_INEXPENSIVE, price range $10–$20"
+    },
+    {
+      "id": "mela-bangladeshi-cuisine",
+      "name": "Mela Bangladeshi Cuisine",
+      "city": "pullman",
+      "price": 2,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJNavcmXwnoFQRnXkQYU9rF9o",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_MODERATE, price range $20–$30"
+    },
+    {
+      "id": "the-emporium",
+      "name": "The Emporium",
+      "city": "pullman",
+      "price": 1,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJ0Tq54ViHn1QRcenkpAmxhug",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_INEXPENSIVE, price range $10–$20"
+    },
+    {
+      "id": "neill-s-coffee-ice-cream",
+      "name": "Neill's Coffee & Ice Cream",
+      "city": "pullman",
+      "price": 1,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJV7qJ1-KHn1QRnRhEBU30tGY",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_INEXPENSIVE, price range $1–$10"
+    },
+    {
+      "id": "knead-cafe-patisserie",
+      "name": "Knead Café & Pâtisserie",
+      "city": "pullman",
+      "price": 1,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJuUfW1UiHn1QR-nyiKQofyJw",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_INEXPENSIVE, price range $10–$20"
+    },
+    {
+      "id": "beef-company",
+      "name": "Beef & Company",
+      "city": "pullman",
+      "price": 1,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJ88IVm1iHn1QRZ7gahfNZF74",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_INEXPENSIVE, price range $10–$20"
+    },
+    {
+      "id": "doms-donuts",
+      "name": "Dom’s Donuts",
+      "city": "pullman",
+      "price": 1,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJ8_7tFAmHn1QRphFThRA1Vcg",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_INEXPENSIVE, price range $1–$10"
+    },
+    {
+      "id": "the-land",
+      "name": "The Land",
+      "city": "pullman",
+      "price": 1,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJpYl17oaHn1QR8xnGaZZE9WA",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_INEXPENSIVE, price range $10–$20"
+    },
+    {
+      "id": "raised-by-wolves",
+      "name": "Raised By Wolves",
+      "city": "sandiego",
+      "price": 2,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJg0ux9SwH3IARxsA5WlFCLOA",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_MODERATE, price range $20–$30"
+    },
+    {
+      "id": "la-perla-cocina-mexicana-3",
+      "name": "La Perla Cocina Mexicana #3",
+      "city": "sandiego",
+      "price": 1,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJczWUP6Or3oARXLDT8sANsyE",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_INEXPENSIVE, price range $10–$20"
+    },
+    {
+      "id": "cesarina",
+      "name": "Cesarina",
+      "city": "sandiego",
+      "price": 2,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJZxOMsDCq3oARecgeGfU0cIA",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_MODERATE, price range $30–$80"
+    },
+    {
+      "id": "atelier-manna",
+      "name": "Atelier Manna",
+      "city": "sandiego",
+      "price": 2,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJpfz2qyUN3IARcFhv7qOc4ns",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_MODERATE, price range $20–$60"
+    },
+    {
+      "id": "soichi",
+      "name": "Soichi",
+      "city": "sandiego",
+      "price": 4,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJfQEdreJV2YARnieTJoa2pGQ",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_VERY_EXPENSIVE, price range $100"
+    },
+    {
+      "id": "mikes-taco-club",
+      "name": "Mike's Taco Club",
+      "city": "sandiego",
+      "price": 1,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJ9TBxRTqq3oARfDBVt6kOMLE",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_INEXPENSIVE, price range $10–$20"
+    },
+    {
+      "id": "izola",
+      "name": "Izola",
+      "city": "sandiego",
+      "price": 1,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJ61MRFO9T2YARkV2uebOs3js",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_INEXPENSIVE, price range $10–$20"
+    },
+    {
+      "id": "javiers-2",
+      "name": "Javier's",
+      "city": "sandiego",
+      "price": 3,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJ2SvrnBYH3IARJB9O6qFjFD8",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_EXPENSIVE, price range $40–$100"
+    },
+    {
+      "id": "fernandez-restaurant-birrieria",
+      "name": "Fernandez Restaurant Birrieria",
+      "city": "sandiego",
+      "price": 1,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJL_vwrBxM2YARPgkVrSsWjnw",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_INEXPENSIVE, price range $10–$20"
+    },
+    {
+      "id": "morning-glory",
+      "name": "Morning Glory",
+      "city": "sandiego",
+      "price": 2,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJW8ufvdZV2YARKM3_oiB9VJc",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_MODERATE, price range $20–$30"
+    },
+    {
+      "id": "the-taco-stand",
+      "name": "The Taco Stand",
+      "city": "sandiego",
+      "price": 1,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJ47QrAadU2YARyvVzi-kuqkg",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_INEXPENSIVE, price range $10–$20"
+    },
+    {
+      "id": "jeune-et-jolie",
+      "name": "Jeune et Jolie",
+      "city": "sandiego",
+      "price": 4,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJjzQAaqpz3IAREZe5sCZsfGY",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_VERY_EXPENSIVE, price range $100"
+    },
+    {
+      "id": "buona-forchetta",
+      "name": "Buona Forchetta",
+      "city": "sandiego",
+      "price": 2,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJETldMH5T2YARzqDkgneFCCE",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_MODERATE, price range $20–$30"
+    },
+    {
+      "id": "tacos-el-gordo",
+      "name": "Tacos El Gordo",
+      "city": "sandiego",
+      "price": 1,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJt2kEw-hN2YARQ-Sv-UDJnDE",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_INEXPENSIVE, price range $10–$20"
+    },
+    {
+      "id": "the-mission",
+      "name": "The Mission",
+      "city": "sandiego",
+      "price": 2,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJQdxGTVxT2YAReO8FoVt96BA",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_MODERATE, price range $20–$30"
+    },
+    {
+      "id": "lola-55",
+      "name": "Lola 55",
+      "city": "sandiego",
+      "price": 2,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJw5XbtL9T2YARqEzr91y6DaE",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_MODERATE, price range $20–$30"
+    },
+    {
+      "id": "born-raised",
+      "name": "Born & Raised",
+      "city": "sandiego",
+      "price": 4,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJ4yuqF7JU2YARcQmeuzO8iAE",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_VERY_EXPENSIVE, price range $100"
+    },
+    {
+      "id": "campfire",
+      "name": "Campfire",
+      "city": "sandiego",
+      "price": 3,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJ3QVpIwVy3IARt78W46GgGx0",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_EXPENSIVE, price range $40–$100"
+    },
+    {
+      "id": "wayfarer-bread",
+      "name": "Wayfarer Bread",
+      "city": "sandiego",
+      "price": 1,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJ29nQ-9ED3IARViS_yvPl5WY",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_INEXPENSIVE, price range $10–$20"
+    },
+    {
+      "id": "water-grill-2",
+      "name": "Water Grill",
+      "city": "sandiego",
+      "price": 3,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJkVj4MlpT2YARmp5fGnP5h84",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_EXPENSIVE, price range $40–$100"
+    },
+    {
+      "id": "wolf-in-the-woods",
+      "name": "Wolf in the Woods",
+      "city": "sandiego",
+      "price": 3,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJq6rmudeq3oARyQfZSR7FKao",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_EXPENSIVE, price range $40–$100"
+    },
+    {
+      "id": "city-tacos",
+      "name": "City Tacos",
+      "city": "sandiego",
+      "price": 1,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJua6AffZU2YAREXXET49pD8g",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_INEXPENSIVE, price range $10–$20"
+    },
+    {
+      "id": "tribute-pizza",
+      "name": "Tribute Pizza",
+      "city": "sandiego",
+      "price": 2,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJWe0EwPVU2YARoIaq_kstmvw",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_MODERATE, price range $20–$30"
+    },
+    {
+      "id": "cotogna",
+      "name": "Cotogna",
+      "city": "sf",
+      "price": 4,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJA0YvGPWAhYAReXmaDTTdWzU",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_VERY_EXPENSIVE, price range $100"
+    },
+    {
+      "id": "o-by-claude-le-tohic",
+      "name": "O' By Claude Le Tohic",
+      "city": "sf",
+      "price": 4,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJ4SzE19OBhYAR4joNN1MIW-8",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_VERY_EXPENSIVE, price range $100"
+    },
+    {
+      "id": "square-pie-guys",
+      "name": "Square Pie Guys",
+      "city": "sf",
+      "price": 2,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJ8QxpEOiBhYARq5x_exK3Qxk",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_MODERATE, price range $20–$30"
+    },
+    {
+      "id": "la-taqueria",
+      "name": "La Taqueria",
+      "city": "sf",
+      "price": 1,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJrTYB1UZ-j4ARdeRB5Wzp_CE",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_INEXPENSIVE, price range $10–$20"
+    },
+    {
+      "id": "foreign-cinema",
+      "name": "Foreign Cinema",
+      "city": "sf",
+      "price": 3,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJPwvLyD5-j4AR2fM8C0bbVC8",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_EXPENSIVE, price range $50–$100"
+    },
+    {
+      "id": "saigon-sandwich",
+      "name": "Saigon Sandwich",
+      "city": "sf",
+      "price": 1,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJY3rEu5CAhYAR3CjUhJ3qY3A",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_INEXPENSIVE, price range $1–$10"
+    },
+    {
+      "id": "la-mar",
+      "name": "La Mar",
+      "city": "sf",
+      "price": 4,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJURDKN2eAhYARN0AMzUEaiKo",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_VERY_EXPENSIVE, price range $100"
+    },
+    {
+      "id": "sotto-mare",
+      "name": "Sotto Mare",
+      "city": "sf",
+      "price": 2,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJQfYyVvGAhYARJVwoboB1WKQ",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_MODERATE, price range $30–$70"
+    },
+    {
+      "id": "verjus",
+      "name": "Verjus",
+      "city": "sf",
+      "price": 3,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJZR_LgCyBhYARXmmZ-rtBmLE",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_EXPENSIVE, price range $50–$100"
+    },
+    {
+      "id": "scoma-s",
+      "name": "Scoma's",
+      "city": "sf",
+      "price": 3,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJrcYeh_yAhYARNMwNAmHKa5c",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_EXPENSIVE, price range $30–$90"
+    },
+    {
+      "id": "al-carajo-sf",
+      "name": "Al Carajo SF",
+      "city": "sf",
+      "price": 1,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJgxHvsnR_j4ARtr5BoTIWlVc",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_INEXPENSIVE, price range $10–$20"
+    },
+    {
+      "id": "the-progress",
+      "name": "The Progress",
+      "city": "sf",
+      "price": 4,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJ8zXoo7mAhYARtoa-WE3d5NE",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_VERY_EXPENSIVE, price range $100"
+    },
+    {
+      "id": "arsicault",
+      "name": "Arsicault",
+      "city": "sf",
+      "price": 1,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJ90JImRKBhYARXrwUAyZIhqw",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_INEXPENSIVE, price range $10–$20"
+    },
+    {
+      "id": "butter-crumble",
+      "name": "Butter & Crumble",
+      "city": "sf",
+      "price": 2,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJL7Goh8OBhYAR4ldT4kuPbng",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_MODERATE, price range $10–$50"
+    },
+    {
+      "id": "mijote",
+      "name": "Mijoté",
+      "city": "sf",
+      "price": 4,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJ_-LIfy1_j4ARc_ONJ6vcAzQ",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_VERY_EXPENSIVE, price range $100"
+    },
+    {
+      "id": "john-s-grill",
+      "name": "John's Grill",
+      "city": "sf",
+      "price": 3,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJe9MuVY-AhYARb8Su4vUOneY",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_EXPENSIVE, price range $40–$100"
+    },
+    {
+      "id": "alimento",
+      "name": "Alimento",
+      "city": "sf",
+      "price": 1,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJj8LBcPGAhYARz6Fb7CotEzo",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_INEXPENSIVE, price range $10–$20"
+    },
+    {
+      "id": "reveille-coffee-co",
+      "name": "Réveille Coffee Co.",
+      "city": "sf",
+      "price": 1,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJS-O_VbuBhYARJGMN37mEZdE",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_INEXPENSIVE, price range $10–$20"
+    },
+    {
+      "id": "tartine-bakery",
+      "name": "Tartine Bakery",
+      "city": "sf",
+      "price": 1,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJBVY2Bxh-j4ARa2zO8Jd6H2A",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_INEXPENSIVE, price range $10–$20"
+    },
+    {
+      "id": "robin",
+      "name": "Robin",
+      "city": "sf",
+      "price": 4,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJIQxucpiAhYARI--fHT-z_J8",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_VERY_EXPENSIVE, price range $100"
+    },
+    {
+      "id": "senor-sisig",
+      "name": "Señor Sisig",
+      "city": "sf",
+      "price": 1,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJiQol-PWBhYARK0E7vmVhvtw",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_INEXPENSIVE, price range $10–$20"
+    },
+    {
+      "id": "mensho",
+      "name": "Mensho",
+      "city": "sf",
+      "price": 2,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJ86TLv5GAhYARdhd8cNsVbe8",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_MODERATE, price range $20–$30"
+    },
+    {
+      "id": "roxie-food-center",
+      "name": "Roxie Food Center",
+      "city": "sf",
+      "price": 1,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJpWZaroB-j4ARGnCMgKkSqlY",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_INEXPENSIVE, price range $10–$20"
+    },
+    {
+      "id": "pacific-cocktail-haven",
+      "name": "Pacific Cocktail Haven",
+      "city": "sf",
+      "price": 2,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJi2fwgI6AhYARglQgXX2A3WU",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_MODERATE, price range $20–$30"
+    },
+    {
+      "id": "ocean-subs",
+      "name": "Ocean Subs",
+      "city": "sf",
+      "price": 1,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJg5YgRgB_j4ARtsnmhs7iIlA",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_INEXPENSIVE, price range $10–$20"
+    },
+    {
+      "id": "outta-sight-pizza",
+      "name": "Outta Sight Pizza",
+      "city": "sf",
+      "price": 1,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJi2CdSa6BhYARP6xkfxOB8OA",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_INEXPENSIVE, price range $10–$20"
+    },
+    {
+      "id": "sons-daughters",
+      "name": "Sons & Daughters",
+      "city": "sf",
+      "price": 4,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJvXXIOoyAhYARe-ixq3WdmrY",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_VERY_EXPENSIVE, price range $100"
+    },
+    {
+      "id": "el-farolito",
+      "name": "El Farolito",
+      "city": "sf",
+      "price": 1,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJ5WRITUd-j4ARIcl68TeeR8M",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_INEXPENSIVE, price range $10–$20"
+    },
+    {
+      "id": "el-mil-amores-restaurant",
+      "name": "El Mil Amores Restaurant",
+      "city": "sf",
+      "price": 2,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJja4FTCd_j4ARm5A1qM5iEDo",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_MODERATE, price range $20–$30"
+    },
+    {
+      "id": "sweet-maple",
+      "name": "Sweet Maple",
+      "city": "sf",
+      "price": 2,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJMT5TG7iAhYAREDkkUYkUSYg",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_MODERATE, price range $20–$30"
+    },
+    {
+      "id": "rusty-ladle",
+      "name": "Rusty Ladle",
+      "city": "sf",
+      "price": 1,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJB5QoVUuHhYARIp-fqLcznPY",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_INEXPENSIVE, price range $10–$20"
+    },
+    {
+      "id": "true-laurel",
+      "name": "True Laurel",
+      "city": "sf",
+      "price": 2,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJz2enRzd-j4ARkM49V6yDT2U",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_MODERATE, price range $20–$70"
+    },
+    {
+      "id": "golden-boy-pizza",
+      "name": "Golden Boy Pizza",
+      "city": "sf",
+      "price": 1,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJmx3iW_GAhYARrlV9H2vyE-E",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_INEXPENSIVE, price range $1–$10"
+    },
+    {
+      "id": "street-taco",
+      "name": "Street Taco",
+      "city": "sf",
+      "price": 1,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJaakVBVOHhYARFz7VTnf65pU",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_INEXPENSIVE, price range $10–$20"
+    },
+    {
+      "id": "state-bird-provisions",
+      "name": "State Bird Provisions",
+      "city": "sf",
+      "price": 4,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJQ7kGpLmAhYARKeCe2pDobWk",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_VERY_EXPENSIVE, price range $100"
+    },
+    {
+      "id": "the-melt",
+      "name": "The Melt",
+      "city": "sf",
+      "price": 1,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJtbmElXyAhYARbDYABzKFeB0",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_INEXPENSIVE, price range $10–$20"
+    },
+    {
+      "id": "penny-roma",
+      "name": "Penny Roma",
+      "city": "sf",
+      "price": 3,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJr-EMFjd-j4ARHKaF3ehlmgY",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_EXPENSIVE, price range $40–$100"
+    },
+    {
+      "id": "boudin-sf",
+      "name": "Boudin SF",
+      "city": "sf",
+      "price": 2,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJuTDWD-OAhYARHdAhflk13Sc",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_MODERATE, price range $20–$30"
+    },
+    {
+      "id": "prubechu",
+      "name": "Prubechu",
+      "city": "sf",
+      "price": 2,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJxesKArN_j4AR4rL6f1X6iec",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_MODERATE, price range $20–$30"
+    },
+    {
+      "id": "swan-oyster-depot",
+      "name": "Swan Oyster Depot",
+      "city": "sf",
+      "price": 3,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJEdGJjp6AhYAR1LtP-ptLrOg",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_EXPENSIVE, price range $50–$100"
+    },
+    {
+      "id": "roma-antica",
+      "name": "Roma Antica",
+      "city": "sf",
+      "price": 2,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJDRZeoNaAhYARw0Ts88GzCag",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_MODERATE, price range $20–$30"
+    },
+    {
+      "id": "the-buena-vista",
+      "name": "The Buena Vista",
+      "city": "sf",
+      "price": 2,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJ-ZbR8Dd-j4ARw7-UmpB7Ks8",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_MODERATE, price range $20–$30"
+    },
+    {
+      "id": "gary-danko",
+      "name": "Gary Danko",
+      "city": "sf",
+      "price": 4,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJq342JeGAhYARwdtH9tlX7gg",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_VERY_EXPENSIVE, price range $100"
+    },
+    {
+      "id": "hog-island-oyster-co",
+      "name": "Hog Island Oyster Co.",
+      "city": "sf",
+      "price": 3,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJWTGPjmaAhYARgXpiJ-aACYM",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_EXPENSIVE, price range $30–$80"
+    },
+    {
+      "id": "dumpling-home",
+      "name": "Dumpling Home",
+      "city": "sf",
+      "price": 2,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJlYL0Wa-BhYARJi6qr49Ncv0",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_MODERATE, price range $20–$30"
+    },
+    {
+      "id": "lung-fung-bakery",
+      "name": "Lung Fung Bakery",
+      "city": "sf",
+      "price": 1,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJRSq8dhCHhYARE3p3mLTXSBY",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_INEXPENSIVE, price range $1–$10"
+    },
+    {
+      "id": "showa",
+      "name": "SHOWA",
+      "city": "sf",
+      "price": 4,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJTVcnXgB_j4ARErfQqy67z0E",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_VERY_EXPENSIVE, price range $100"
+    },
+    {
+      "id": "outerlands",
+      "name": "Outerlands",
+      "city": "sf",
+      "price": 2,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJf-NCNpeHhYARLeneHNw3WWs",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_MODERATE, price range $20–$70"
+    },
+    {
+      "id": "original-joe-s",
+      "name": "Original Joe's",
+      "city": "sf",
+      "price": 2,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJfSGLEfGAhYARC8Egs7nINzk",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_MODERATE, price range $30–$80"
+    },
+    {
+      "id": "house-of-prime-rib",
+      "name": "House of Prime Rib",
+      "city": "sf",
+      "price": 3,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJg67caeqAhYAR2UQjKb1a8j4",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_EXPENSIVE, price range $50–$100"
+    },
+    {
+      "id": "lazy-bear",
+      "name": "Lazy Bear",
+      "city": "sf",
+      "price": 4,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJk35bizx-j4AREil6UPp7Jn4",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_VERY_EXPENSIVE, price range $100"
+    },
+    {
+      "id": "mendocino-farms",
+      "name": "Mendocino Farms",
+      "city": "sf",
+      "price": 1,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJD6isM2OBhYARnMYMDcW7H4I",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_INEXPENSIVE, price range $10–$20"
+    },
+    {
+      "id": "cafe-okawari",
+      "name": "Cafe Okawari",
+      "city": "sf",
+      "price": 1,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJWQWGdgZ_j4ARdCgvvCEzok0",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_INEXPENSIVE, price range $10–$20"
+    },
+    {
+      "id": "molinari-delicatessen",
+      "name": "Molinari Delicatessen",
+      "city": "sf",
+      "price": 1,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJLQ_v7fOAhYARmIEp06tMtdM",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_INEXPENSIVE, price range $10–$20"
+    },
+    {
+      "id": "deli-board",
+      "name": "Deli Board",
+      "city": "sf",
+      "price": 2,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJg3sUuoOAhYARpkc2SgWT8gc",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_MODERATE, price range $20–$30"
+    },
+    {
+      "id": "bodega",
+      "name": "Bodega",
+      "city": "sf",
+      "price": 1,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJh3LbN_CAhYARCohFNLr0S1E",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_INEXPENSIVE, price range $10–$20"
+    },
+    {
+      "id": "cactus-club-cafe",
+      "name": "Cactus Club Cafe",
+      "city": "vancouver",
+      "price": 2,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJ9efnfINxhlQRKovtjwKKJGA",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_MODERATE, price range 20 CAD–80 CAD"
+    },
+    {
+      "id": "mortadella",
+      "name": "Mortadella",
+      "city": "vancouver",
+      "price": 1,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJRRgLIQBxhlQRW2F3yF-4jMY",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_INEXPENSIVE, price range 10 CAD–20 CAD"
+    },
+    {
+      "id": "gotham-steakhouse-bar",
+      "name": "Gotham Steakhouse & Bar",
+      "city": "vancouver",
+      "price": 4,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJVQQVMn9xhlQRfFSHaGDN_EY",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_VERY_EXPENSIVE, price range 100 CAD"
+    },
+    {
+      "id": "gary-s",
+      "name": "Gary's",
+      "city": "vancouver",
+      "price": 4,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJCcmfQZhzhlQROcU5ZKOypCk",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_VERY_EXPENSIVE, price range 100 CAD"
+    },
+    {
+      "id": "meo-chinatown",
+      "name": "Meo Chinatown",
+      "city": "vancouver",
+      "price": 2,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJRdbvhBhxhlQRJozaEG_mln4",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_MODERATE, price range 30 CAD–90 CAD"
+    },
+    {
+      "id": "cardero-s-restaurant",
+      "name": "Cardero's Restaurant",
+      "city": "vancouver",
+      "price": 2,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJOQXpDoZxhlQRwQ2A6Ulh9-w",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_MODERATE, price range 30 CAD–80 CAD"
+    },
+    {
+      "id": "cafe-medina",
+      "name": "Café Medina",
+      "city": "vancouver",
+      "price": 2,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJEa8g6HtxhlQRa_lcrLrlVQw",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_MODERATE, price range 20 CAD–30 CAD"
+    },
+    {
+      "id": "maruhachi-ra-men",
+      "name": "Maruhachi Ra-men",
+      "city": "vancouver",
+      "price": 1,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJZYi4CohxhlQR_pvqiPGqP9g",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_INEXPENSIVE, price range 10 CAD–20 CAD"
+    },
+    {
+      "id": "the-mackenzie-room",
+      "name": "The Mackenzie Room",
+      "city": "vancouver",
+      "price": 4,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJm4H60nNxhlQR_hsfmwtOHUk",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_VERY_EXPENSIVE, price range 100 CAD"
+    },
+    {
+      "id": "the-keefer-bar",
+      "name": "The Keefer Bar",
+      "city": "vancouver",
+      "price": 2,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJ9dpVvXpxhlQRpw50KX2udjk",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_MODERATE, price range 20 CAD–60 CAD"
+    },
+    {
+      "id": "mott-32",
+      "name": "Mott 32",
+      "city": "vancouver",
+      "price": 4,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJq0XJF4FxhlQRPjqQWB0lHWM",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_VERY_EXPENSIVE, price range 100 CAD"
+    },
+    {
+      "id": "lunch-lady",
+      "name": "Lunch Lady",
+      "city": "vancouver",
+      "price": 2,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJL9D-EKBxhlQRsrmXmBaXfUU",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_MODERATE, price range 20 CAD–70 CAD"
+    },
+    {
+      "id": "a-bread-affair",
+      "name": "A Bread Affair",
+      "city": "vancouver",
+      "price": 2,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJC-dYq89zhlQRYdPuYOSc8qA",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_MODERATE, price range 10 CAD–20 CAD"
+    },
+    {
+      "id": "elisa",
+      "name": "Elisa",
+      "city": "vancouver",
+      "price": 4,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJhcHC8TBzhlQRPsVWKk8ZNJQ",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_VERY_EXPENSIVE, price range 100 CAD"
+    },
+    {
+      "id": "como-taperia",
+      "name": "¿CóMO? Taperia",
+      "city": "vancouver",
+      "price": 3,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJQ5f_MMBxhlQR9R17HcWGvUA",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_EXPENSIVE, price range 40 CAD–100 CAD"
+    },
+    {
+      "id": "breka-bakery-cafe",
+      "name": "Breka Bakery & Cafe",
+      "city": "vancouver",
+      "price": 2,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJX3364W9xhlQR0C3cwipNU5U",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_MODERATE, price range 10 CAD–20 CAD"
+    },
+    {
+      "id": "labattoir",
+      "name": "L’abattoir",
+      "city": "vancouver",
+      "price": 4,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJJy1TTHdxhlQRgQQZgi9ga9o",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_VERY_EXPENSIVE, price range 100 CAD"
+    },
+    {
+      "id": "annalena",
+      "name": "AnnaLena",
+      "city": "vancouver",
+      "price": 4,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJJ_oZQcpzhlQRYmMyGpKp7PA",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_VERY_EXPENSIVE, price range 100 CAD"
+    },
+    {
+      "id": "parker-rooftop",
+      "name": "Parker Rooftop",
+      "city": "vancouver",
+      "price": 2,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJozcsADtzhlQRyZU-sYUvk6w",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_MODERATE, price range 30 CAD–80 CAD"
+    },
+    {
+      "id": "laowai",
+      "name": "Laowai",
+      "city": "vancouver",
+      "price": 2,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJOfGI5m9xhlQRER7HN5UUyhY",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_MODERATE, price range 20 CAD–60 CAD"
+    },
+    {
+      "id": "burger-crush",
+      "name": "Burger Crush",
+      "city": "vancouver",
+      "price": 1,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJf-jSlfFzhlQRTOfOah418is",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_INEXPENSIVE, price range 10 CAD–20 CAD"
+    },
+    {
+      "id": "kissa-tanto",
+      "name": "Kissa Tanto",
+      "city": "vancouver",
+      "price": 4,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJD8oBSnBxhlQRaX3X1supJ0g",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_VERY_EXPENSIVE, price range 100 CAD"
+    },
+    {
+      "id": "deville-coffee",
+      "name": "Deville Coffee",
+      "city": "vancouver",
+      "price": 2,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJ_XlNYeJxhlQRYP-Sb-HGhQU",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_MODERATE, price range 10 CAD–20 CAD"
+    },
+    {
+      "id": "between-2-buns",
+      "name": "Between 2 Buns",
+      "city": "vancouver",
+      "price": 2,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJKRxR6UdxhlQR6jMMAACAi58",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_MODERATE, price range 20 CAD–30 CAD"
+    },
+    {
+      "id": "homer-st-cafe-bar",
+      "name": "Homer St. Cafe & Bar",
+      "city": "vancouver",
+      "price": 2,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJG_9jCH5xhlQRtcDS3SP5k_U",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_MODERATE, price range 20 CAD–70 CAD"
+    },
+    {
+      "id": "jam-cafe",
+      "name": "Jam Cafe",
+      "city": "vancouver",
+      "price": 2,
+      "source": "Google Places",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJUYBL3XtxhlQRrOYhW5_6DYc",
+      "evidence": "Google Places API priceLevel PRICE_LEVEL_MODERATE, price range 20 CAD–30 CAD"
+    },
+    {
+      "id": "postdoc-brewing",
+      "name": "Postdoc Brewing",
+      "city": "eastside",
+      "price": 2,
+      "source": "Augusto",
+      "url": null,
+      "evidence": "Owner-supplied price from Augusto Milano, Nov 11, 2026"
+    },
+    {
+      "id": "joey-dtla",
+      "name": "JOEY DTLA",
+      "city": "la",
+      "price": 3,
+      "source": "Augusto",
+      "url": null,
+      "evidence": "Owner-supplied price from Augusto Milano, Nov 11, 2026 (set to match JOEY Bellevue)"
+    },
+    {
+      "id": "joey-university-village",
+      "name": "JOEY University Village",
+      "city": "seattle",
+      "price": 3,
+      "source": "Augusto",
+      "url": null,
+      "evidence": "Owner-supplied price from Augusto Milano, Nov 11, 2026 (changed from $$)"
+    },
+    {
+      "id": "panhandle-cone-coffee",
+      "name": "Panhandle Cone & Coffee",
+      "city": "moscow",
+      "price": 1,
+      "source": "Augusto",
+      "url": null,
+      "evidence": "Owner-supplied price from Augusto Milano, Nov 11, 2026"
+    },
+    {
+      "id": "voodoo-doughnut-pdx",
+      "name": "Voodoo Doughnut",
+      "city": "portland",
+      "price": 1,
+      "source": "Augusto",
+      "url": null,
+      "evidence": "Owner-supplied price from Augusto Milano, Nov 11, 2026"
+    },
+    {
+      "id": "miku-restaurant",
+      "name": "Miku Restaurant",
+      "city": "vancouver",
+      "price": 3,
+      "source": "Augusto",
+      "url": null,
+      "evidence": "Owner-supplied price from Augusto Milano, Nov 11, 2026"
+    },
+    {
+      "id": "bestia",
+      "name": "Bestia",
+      "city": "la",
+      "price": 4,
+      "source": "Google per person",
+      "url": "https://www.google.com/maps/search/?api=1&query=Bestia%2C%202121%20E%207th%20Pl%2C%20Los%20Angeles%2C%20CA",
+      "evidence": "Google Maps price per person $100+ (93 reports)"
+    },
+    {
+      "id": "the-polo-bar",
+      "name": "The Polo Bar",
+      "city": "nyc",
+      "price": 4,
+      "source": "Google per person",
+      "url": "https://www.google.com/search?q=The+Polo+Bar+New+York",
+      "evidence": "Google price per person $100+ (32 reports)"
+    }
+  ]
+}

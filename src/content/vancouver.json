@@ -454,7 +454,8 @@
         }
       ],
       "phone": "+1 (778) 924-8899",
-      "website": "https://www.cactusclubcafe.com/locations/coal-harbour/"
+      "website": "https://www.cactusclubcafe.com/locations/coal-harbour/",
+      "price": 2
     },
     {
       "id": "atlas-steak-fish",
@@ -629,7 +630,8 @@
         }
       ],
       "phone": "+1 (604) 679-6328",
-      "website": "https://mortadella915.com/"
+      "website": "https://mortadella915.com/",
+      "price": 1
     },
     {
       "id": "japadog",
@@ -826,7 +828,8 @@
         }
       ],
       "phone": "+1 (604) 605-8282",
-      "website": "https://www.gothamsteakhouse.com"
+      "website": "https://www.gothamsteakhouse.com",
+      "price": 4
     },
     {
       "id": "gary-s",
@@ -878,7 +881,8 @@
         }
       ],
       "phone": "+1 (604) 245-3800",
-      "website": "https://www.garysrestaurant.ca"
+      "website": "https://www.garysrestaurant.ca",
+      "price": 4
     },
     {
       "id": "east-is-east",
@@ -1139,7 +1143,8 @@
         "count": 20,
         "source": "Yelp"
       },
-      "yelpSlug": "EZeVAQllPDJlYnec9YxzgQ"
+      "yelpSlug": "EZeVAQllPDJlYnec9YxzgQ",
+      "price": 2
     },
     {
       "id": "nat-s-new-york-pizzeria",
@@ -1377,7 +1382,8 @@
         }
       ],
       "phone": "+1 (604) 669-7666",
-      "website": "https://www.vancouverdine.com"
+      "website": "https://www.vancouverdine.com",
+      "price": 2
     },
     {
       "id": "dinesty",
@@ -1642,7 +1648,8 @@
         }
       ],
       "phone": "+1 (604) 879-3114",
-      "website": "http://www.medinacafe.com/"
+      "website": "http://www.medinacafe.com/",
+      "price": 2
     },
     {
       "id": "1927-lobby-lounge",
@@ -1766,78 +1773,8 @@
         }
       ],
       "phone": "+1 (604) 430-3343",
-      "website": "http://maruhachi.ca"
-    },
-    {
-      "id": "frying-pan",
-      "city": "vancouver",
-      "name": "Frying Pan",
-      "neighborhood": "English Bay",
-      "address": "1101 Denman St, Vancouver BC V6G 2M7",
-      "lat": 49.288344,
-      "lng": -123.140591,
-      "cuisine": [
-        "Chicken",
-        "Street food"
-      ],
-      "placeType": "restaurant",
-      "oneLiner": "",
-      "perfectFor": [],
-      "periods": [
-        {
-          "days": [
-            0
-          ],
-          "start": 690,
-          "end": 1290
-        },
-        {
-          "days": [
-            2,
-            3,
-            4
-          ],
-          "start": 690,
-          "end": 1290
-        },
-        {
-          "days": [
-            5,
-            6
-          ],
-          "start": 690,
-          "end": 1320
-        }
-      ],
-      "gustoScore": null,
-      "appleMapsUrl": "https://maps.apple.com/?daddr=49.288344,-123.140591&q=Frying%20Pan",
-      "applePlaceUrl": "https://maps.apple.com/place?auid=8574598788755024795",
-      "guideSlugs": [],
-      "muid": "8574598788755024795",
-      "hoursLabel": "",
-      "blurb": "",
-      "orderThis": [],
-      "ids": {
-        "yelp": "g6F_Mdi63zQM5QBVygmJmg"
-      },
-      "copySource": "draft",
-      "updatedAt": "2026-11-03",
-      "photos": [
-        {
-          "source": "illustration",
-          "isIllustration": true,
-          "alt": "Illustration suggesting Chicken at Frying Pan",
-          "credit": "Illustration"
-        }
-      ],
-      "phone": "+1 (236) 466-0261",
-      "website": "https://thefryingpan604.com/",
-      "publicRating": {
-        "value": 4.4,
-        "count": 50,
-        "source": "Yelp"
-      },
-      "yelpSlug": "g6F_Mdi63zQM5QBVygmJmg"
+      "website": "http://maruhachi.ca",
+      "price": 1
     },
     {
       "id": "chocolats-favoris",
@@ -2583,7 +2520,8 @@
         }
       ],
       "phone": "+1 (604) 253-0705",
-      "website": "http://www.themackenzieroom.com"
+      "website": "http://www.themackenzieroom.com",
+      "price": 4
     },
     {
       "id": "nemesis",
@@ -3243,7 +3181,8 @@
         }
       ],
       "phone": "+1 (604) 688-1961",
-      "website": "https://www.thekeeferbar.com"
+      "website": "https://www.thekeeferbar.com",
+      "price": 2
     },
     {
       "id": "ignite-pizzeria",
@@ -3601,7 +3540,8 @@
         }
       ],
       "phone": "+1 (604) 861-0032",
-      "website": "https://www.mott32.com"
+      "website": "https://www.mott32.com",
+      "price": 4
     },
     {
       "id": "teahouse-in-stanley-park",
@@ -3893,7 +3833,8 @@
         }
       ],
       "phone": "+1 (604) 559-5938",
-      "website": "https://thelunchlady.com/"
+      "website": "https://thelunchlady.com/",
+      "price": 2
     },
     {
       "id": "a-bread-affair",
@@ -3968,7 +3909,8 @@
         "count": 132,
         "source": "Yelp"
       },
-      "yelpSlug": "RxiPusKlkh92t6pmhHf99Q"
+      "yelpSlug": "RxiPusKlkh92t6pmhHf99Q",
+      "price": 2
     },
     {
       "id": "mello",
@@ -4148,7 +4090,8 @@
         }
       ],
       "phone": "+1 (604) 362-5443",
-      "website": "https://elisasteak.com"
+      "website": "https://elisasteak.com",
+      "price": 4
     },
     {
       "id": "botanist",
@@ -5019,7 +4962,8 @@
         }
       ],
       "phone": "+1 (604) 568-3900",
-      "website": "http://www.mikurestaurant.com"
+      "website": "http://www.mikurestaurant.com",
+      "price": 3
     },
     {
       "id": "como-taperia",
@@ -5071,7 +5015,8 @@
         }
       ],
       "phone": "+1 (604) 879-3100",
-      "website": "https://www.comotaperia.com/"
+      "website": "https://www.comotaperia.com/",
+      "price": 3
     },
     {
       "id": "glowbal-restaurant",
@@ -5269,7 +5214,8 @@
         }
       ],
       "phone": "+1 (604) 559-0900",
-      "website": "https://www.breka.ca/"
+      "website": "https://www.breka.ca/",
+      "price": 2
     },
     {
       "id": "granville-island-brewing",
@@ -5580,7 +5526,8 @@
         }
       ],
       "phone": "+1 (604) 568-1701",
-      "website": "https://www.labattoir.ca"
+      "website": "https://www.labattoir.ca",
+      "price": 4
     },
     {
       "id": "fiorino-italian-street-food",
@@ -5779,7 +5726,8 @@
         }
       ],
       "phone": "+1 (778) 379-4052",
-      "website": "https://www.annalena.ca"
+      "website": "https://www.annalena.ca",
+      "price": 4
     },
     {
       "id": "guu-with-garlic",
@@ -5956,7 +5904,8 @@
         "count": 49,
         "source": "Yelp"
       },
-      "yelpSlug": "1sqnY52m11uWJFLzD-s5BA"
+      "yelpSlug": "1sqnY52m11uWJFLzD-s5BA",
+      "price": 2
     },
     {
       "id": "the-flying-pig",
@@ -6111,7 +6060,8 @@
         "count": 28,
         "source": "Yelp"
       },
-      "yelpSlug": "T3HuPUChhSudCPGppG7zGw"
+      "yelpSlug": "T3HuPUChhSudCPGppG7zGw",
+      "price": 2
     },
     {
       "id": "brix-mortar",
@@ -6315,7 +6265,8 @@
         }
       ],
       "phone": "+1 (604) 416-5169",
-      "website": "https://burgercrush.ca"
+      "website": "https://burgercrush.ca",
+      "price": 1
     },
     {
       "id": "kissa-tanto",
@@ -6382,7 +6333,8 @@
         }
       ],
       "phone": "+1 (778) 379-8078",
-      "website": "https://www.kissatanto.com"
+      "website": "https://www.kissatanto.com",
+      "price": 4
     },
     {
       "id": "siegel-s-bagels",
@@ -6560,7 +6512,8 @@
         "count": 50,
         "source": "Yelp"
       },
-      "yelpSlug": "3jyz605NGvJV6uId5tjf9Q"
+      "yelpSlug": "3jyz605NGvJV6uId5tjf9Q",
+      "price": 2
     },
     {
       "id": "dockside-restaurant",
@@ -6741,7 +6694,8 @@
         }
       ],
       "phone": null,
-      "website": "https://www.between2bunsburgers.ca"
+      "website": "https://www.between2bunsburgers.ca",
+      "price": 2
     },
     {
       "id": "homer-st-cafe-bar",
@@ -6844,7 +6798,8 @@
         }
       ],
       "phone": "+1 (604) 428-4299",
-      "website": "http://www.homerstreetcafebar.com"
+      "website": "http://www.homerstreetcafebar.com",
+      "price": 2
     },
     {
       "id": "le-crocodile",
@@ -7178,7 +7133,8 @@
         }
       ],
       "phone": "+1 (778) 379-1992",
-      "website": "http://jamcafes.com"
+      "website": "http://jamcafes.com",
+      "price": 2
     },
     {
       "id": "the-red-accordion",
