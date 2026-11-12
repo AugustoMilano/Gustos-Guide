@@ -2,7 +2,7 @@ import { useEffect, useMemo, useState } from 'react'
 import { Link, useSearchParams } from 'react-router-dom'
 import { AreaKicker } from '../components/AreaKicker.tsx'
 import { featuredSlugs, SmartResults } from '../components/SmartResults.tsx'
-import { catalog } from '../content/load.ts'
+import { catalog, ensureAllCities } from '../content/load.ts'
 import { areaPhrase, cityPath } from '../lib/city.ts'
 import { milesBetween } from '../lib/format.ts'
 import { readPosition } from '../lib/geo.ts'
@@ -28,9 +28,10 @@ export function SearchPage() {
   }, [q])
 
   const query = draft.trim()
+  useEffect(() => { if (query.length >= 4) void ensureAllCities() }, [query])
   const featured = useMemo(
     () => featuredSlugs(city).map((slug) => catalog.guides.find((guide) => guide.slug === slug)).filter((guide) => guide !== undefined),
-    [city],
+    [city, catalog.guides.length],
   )
   const { gustoScore } = useApp()
   const result = useMemo(() => {
@@ -45,7 +46,7 @@ export function SearchPage() {
       })
       .sort((a, b) => a.score - b.score)
     return { ...found, places }
-  }, [gustoScore, query, city, origin, cityPlaces])
+  }, [gustoScore, query, city, origin, cityPlaces, catalog.places.length])
 
   function type(value: string) {
     setDraft(value)

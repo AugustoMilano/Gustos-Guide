@@ -1,11 +1,12 @@
 import { m, useReducedMotion } from 'framer-motion'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useSyncExternalStore } from 'react'
 import { Link } from 'react-router-dom'
 import { AreaKicker } from '../components/AreaKicker.tsx'
 import { ForkMark, GoldenFork } from '../components/GoldenFork.tsx'
 import { ScoreBadge } from '../components/ScoreBadge.tsx'
 import { PlaceThumb } from '../components/PlaceThumb.tsx'
 import { PriceFilter } from '../components/PriceFilter.tsx'
+import { catalogPhase, ensureRegion, subscribeCatalog } from '../content/load.ts'
 import { cityPath, regionName, regionOf, type RegionId } from '../lib/city.ts'
 import { usePageMeta } from '../lib/meta.ts'
 import { regionBoard, type TopRow } from '../lib/top25.ts'
@@ -32,6 +33,8 @@ function podiumOrder(rows: TopRow[]): TopRow[] {
 export function TopPage() {
   const app = useApp()
   const city = useCityId()
+  useSyncExternalStore(subscribeCatalog, catalogPhase, catalogPhase)
+  useEffect(() => { void ensureRegion(city) }, [city])
   const region = regionOf(city)
   const board = regionBoard(region, app.gustoScore)
   const [prices, setPrices] = useState<Price[]>([])

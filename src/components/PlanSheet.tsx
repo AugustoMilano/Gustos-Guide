@@ -8,7 +8,7 @@ import { demoFriendsEnabled } from '../lib/demo.ts'
 import { PlaceThumb } from './PlaceThumb.tsx'
 import { ScoreBadge } from './ScoreBadge.tsx'
 import { SignInSheet } from './SignInSheet.tsx'
-import { catalog } from '../content/load.ts'
+import { catalog, ensureAllCities } from '../content/load.ts'
 import { cityPath } from '../lib/city.ts'
 import { cuisineLabel } from '../lib/cuisine-label.ts'
 import { useCityCatalog } from '../lib/use-city.ts'
@@ -74,6 +74,7 @@ export function PlanSheet({ open, onClose, seedPlaceId }: { open: boolean; onClo
     if (!open || !seedPlaceId) return
     setPicked((current) => current.includes(seedPlaceId) ? current : [seedPlaceId, ...current].slice(0, 3))
   }, [open, seedPlaceId])
+  useEffect(() => { if (open) void ensureAllCities() }, [open])
 
   const toGo = useMemo(
     () => new Set(Object.entries(app.statuses).filter(([, status]) => status === 'togo').map(([id]) => id)),

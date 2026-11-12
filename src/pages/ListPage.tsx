@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useState, useSyncExternalStore } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { ListShareCard } from '../components/ListShareCard.tsx'
 import { PlaceThumb } from '../components/PlaceThumb.tsx'
@@ -7,7 +7,7 @@ import { ScoreBadge } from '../components/ScoreBadge.tsx'
 import { StoryShareButton } from '../components/StoryShareButton.tsx'
 import { PriceFilter } from '../components/PriceFilter.tsx'
 import { SlidingRow } from '../components/SlidingRow.tsx'
-import { slimById } from '../content/load.ts'
+import { catalogPhase, ensureAllCities, slimById, subscribeCatalog } from '../content/load.ts'
 import { demoFriendsEnabled } from '../lib/demo.ts'
 import { countPlaces, milesBetween, priceLabel } from '../lib/format.ts'
 import { hasUnknownPrice, matchesPrice } from '../lib/price-filter.ts'
@@ -24,6 +24,8 @@ type SortKey = 'order' | 'score' | 'recent' | 'neighborhood' | 'distance'
 
 export function ListPage() {
   const { id = '' } = useParams()
+  useSyncExternalStore(subscribeCatalog, catalogPhase, catalogPhase)
+  useEffect(() => { void ensureAllCities() }, [])
   const app = useApp()
   const guide = app.guides.find((item) => item.id === id)
   const title = guide?.title ?? 'List'

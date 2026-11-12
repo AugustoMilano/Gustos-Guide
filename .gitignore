@@ -12,6 +12,8 @@ node_modules
 dist
 dist-ssr
 /src/content/slim-catalog.json
+/src/content/slim-index.json
+/src/content/slim-city-*.json
 /test-results/
 /public/share/
 /public/og/*.png

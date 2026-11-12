@@ -4,7 +4,7 @@ import { Link, Navigate, useLocation, useNavigate, useParams } from 'react-route
 import { PlaceGallery } from '../components/PlaceGallery.tsx'
 import { PlaceThumb } from '../components/PlaceThumb.tsx'
 import { SignInSheet } from '../components/SignInSheet.tsx'
-import { bootPlace, catalog, catalogPhase, loadPlace, slimById, subscribeCatalog } from '../content/load.ts'
+import { bootPlace, catalog, catalogPhase, ensureRegion, loadPlace, slimById, subscribeCatalog } from '../content/load.ts'
 import { areaTitle, cityPath } from '../lib/city.ts'
 import { placeCity, placesForCity, useCityId } from '../lib/use-city.ts'
 import { demoFriendsEnabled } from '../lib/demo.ts'
@@ -46,6 +46,8 @@ export function PlacePage() {
   const reduceMotion = useReducedMotion()
 
   // index.html may have painted this place's hero before the app (C1); React's gallery has replaced it.
+  useEffect(() => { void ensureRegion(urlCity) }, [urlCity])
+
   useEffect(() => {
     const root = document.documentElement
     if (root.dataset.prerender === 'place') delete root.dataset.prerender
