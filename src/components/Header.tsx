@@ -11,10 +11,14 @@ import { CitySwitcher } from './CitySwitcher.tsx'
 import { LogoMark } from './LogoMark.tsx'
 import { SignInSheet } from './SignInSheet.tsx'
 import { setStatusBar, watchThemeColor } from '../lib/status-bar.ts'
+import { loadMapLibraries } from '../lib/load-maplibre.ts'
 import { useApp } from '../state/AppState.tsx'
 
 function prefetch(path: string) {
-  if (path === '/explore') void import('../pages/ExplorePage.tsx')
+  if (path === '/explore') {
+    void import('../pages/ExplorePage.tsx')
+    void loadMapLibraries()
+  }
   if (path === '/plans/wizard') void import('../pages/PlanPage.tsx')
   if (path.startsWith('/list/')) void import('../pages/ListPage.tsx')
   if (path.startsWith('/join/')) void import('../pages/JoinPage.tsx')
@@ -316,7 +320,7 @@ export function Header() {
             <button type="button" className="btn btn-coral" onClick={() => { setMenu(false); setOpen(true) }}>Sign in</button>
           )}
           <AreaKicker />
-          <Link viewTransition={!reduceMotion} to={cityPath('/explore', linkCity)} onClick={() => setMenu(false)} onFocus={() => prefetch('/explore')}>Map</Link>
+          <Link viewTransition={!reduceMotion} to={cityPath('/explore', linkCity)} onClick={() => setMenu(false)} onMouseEnter={() => prefetch('/explore')} onFocus={() => prefetch('/explore')}>Map</Link>
           <Link viewTransition={!reduceMotion} to={cityPath('/guides', linkCity)} onClick={() => setMenu(false)}>Guides</Link>
           <Link viewTransition={!reduceMotion} to={cityPath('/tonight', linkCity)} onClick={() => setMenu(false)}>Tonight</Link>
           <Link viewTransition={!reduceMotion} to={cityPath('/feed', linkCity)} onClick={() => setMenu(false)}>Feed</Link>

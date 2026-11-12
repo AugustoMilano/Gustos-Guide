@@ -1058,19 +1058,32 @@ main ul.grid > li {
 }
 
 .cuisine-picker-button {
+  box-sizing: border-box;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 0.5rem;
+  height: 44px;
+  min-width: 0;
+  border-radius: 0;
   text-align: left;
+  cursor: pointer;
+}
+
+.cuisine-picker-button svg {
+  flex: none;
 }
 
 .field .cuisine-picker-value {
+  min-width: 0;
+  overflow: hidden;
   font-size: 1rem;
   font-weight: 650;
   letter-spacing: 0;
   line-height: 1.3;
+  text-overflow: ellipsis;
   text-transform: none;
+  white-space: nowrap;
 }
 
 .cuisine-menu {
@@ -1526,7 +1539,8 @@ main ul.grid > li {
 
 @media (min-width: 768px) {
   .explore-list {
-    width: 22.5rem;
+    /* Wide enough that a name like "Betty Restaurant & Bar" keeps whole words. */
+    width: clamp(30rem, 40vw, 36rem);
     border-right: 2px solid #181818;
   }
 
@@ -3801,7 +3815,9 @@ img.is-pending,
   align-items: center;
   padding: 0.85rem 0.4rem 0.9rem;
   text-align: center;
-  overflow-wrap: break-word;
+  overflow-wrap: normal;
+  word-break: normal;
+  hyphens: none;
 }
 
 .top-podium-card.is-first {
@@ -4602,8 +4618,21 @@ mark {
 }
 
 .place-row-copy {
+  flex: 1 1 auto;
   min-width: 0;
-  overflow-wrap: anywhere;
+  overflow-wrap: normal;
+  word-break: normal;
+  hyphens: none;
+}
+
+@media (min-width: 768px) {
+  .explore-list .place-row {
+    grid-template-columns: var(--shot) minmax(12rem, 1fr) var(--badge-w);
+  }
+
+  .explore-list .place-row-copy {
+    min-width: 12rem;
+  }
 }
 
 .place-card-body,
@@ -4731,7 +4760,7 @@ mark {
 }
 
 .explore-card {
-  padding: var(--space-2) var(--space-5);
+  padding: var(--space-2) var(--space-3);
 }
 
 .explore-list .panel-pad {
@@ -5927,12 +5956,115 @@ li,
 .chip,
 .glass-chip,
 .city-switch-btn {
-  overflow-wrap: anywhere;
+  overflow-wrap: normal;
+  word-break: normal;
+  hyphens: none;
 }
 
 .wordmark {
   font-weight: 650;
   letter-spacing: -0.03em;
+}
+
+/* Place names never break inside a word. The score box stays narrow so the title can use the row. */
+.place-name {
+  display: -webkit-box;
+  flex: 1 1 auto;
+  min-width: 0;
+  max-width: 100%;
+  overflow: hidden;
+  overflow-wrap: normal;
+  word-break: normal;
+  hyphens: none;
+  text-wrap: balance;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  line-height: 1.15;
+  font-size: clamp(1rem, 4.4vw, 1.25rem);
+}
+
+.place-name.is-long {
+  font-size: clamp(0.92rem, 4vw, 1.15rem);
+}
+
+.place-name.is-longest {
+  font-size: clamp(0.8rem, 3.3vw, 1.05rem);
+}
+
+h1.place-name {
+  font-size: clamp(1.65rem, 7vw, 3.75rem);
+  line-height: 1.08;
+}
+
+h1.place-name.is-long {
+  font-size: clamp(1.45rem, 6vw, 3.25rem);
+}
+
+h1.place-name.is-longest {
+  font-size: clamp(1.25rem, 5vw, 2.6rem);
+}
+
+h3.place-name {
+  font-size: clamp(1.35rem, 5.2vw, 3rem);
+  line-height: 1.15;
+}
+
+h3.place-name.is-long {
+  font-size: clamp(1.2rem, 4.6vw, 2.6rem);
+}
+
+h3.place-name.is-longest {
+  font-size: clamp(1.05rem, 4vw, 2.15rem);
+}
+
+.place-meta {
+  display: block;
+  min-width: 0;
+  overflow-wrap: normal;
+  word-break: normal;
+  hyphens: none;
+}
+
+.place-meta > span {
+  white-space: nowrap;
+}
+
+.place-meta > span:not(:last-child)::after {
+  content: ' · ';
+}
+
+@media (max-width: 767px) {
+  .place-row,
+  .entry-head,
+  .top-row,
+  .score-col,
+  .score-badge-sm {
+    --badge-w: 4.6rem;
+  }
+
+  .place-row {
+    --shot: 3.25rem;
+  }
+
+  .score-badge-sm {
+    width: var(--badge-w);
+    min-width: var(--badge-w);
+    max-width: var(--badge-w);
+    height: auto;
+    min-height: 3.35rem;
+    grid-template-rows: auto auto auto;
+  }
+
+  .score-badge-sm span {
+    max-height: none;
+    overflow: visible;
+    white-space: normal;
+    overflow-wrap: normal;
+    word-break: normal;
+    hyphens: none;
+    font-size: 0.58rem;
+    line-height: 1.05;
+  }
 }
 
 .uppercase,

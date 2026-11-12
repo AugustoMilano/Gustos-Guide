@@ -31,5 +31,5 @@ assert.equal(bay.guides.find((guide) => guide.slug === 'peninsula').title, 'Peni
 assert.equal(bay.guides.find((guide) => guide.slug === 'north-bay').title, 'North Bay')
 const palouse = JSON.parse(readFileSync(new URL('../src/content/palouse.json', import.meta.url), 'utf8'))
 const moscowGuides = palouse.guides.filter((guide) => guide.city === 'moscow')
-assert.deepEqual(moscowGuides.map((guide) => guide.slug), ['mos-cafe'])
+assert.deepEqual(moscowGuides.map((guide) => [guide.slug, guide.entries.length]), [['best-of-moscow-id', 15]])
 console.log('area guides ok')

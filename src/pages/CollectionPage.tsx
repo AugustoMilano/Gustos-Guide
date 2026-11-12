@@ -7,10 +7,10 @@ import { PriceFilter } from '../components/PriceFilter.tsx'
 import { MapLinks } from '../components/MapLinks.tsx'
 import { PlaceThumb } from '../components/PlaceThumb.tsx'
 import { ScoreBadge } from '../components/ScoreBadge.tsx'
+import { PlaceMeta, PlaceName, placeCardMeta } from '../components/PlaceName.tsx'
 import { areaTitle, cityPath } from '../lib/city.ts'
 import { CHEAP_EATS_SLUG, CHEAP_EATS_TITLE, cheapEatsFor, cleanTitle, movedPlaceIds, orderedMembers, renderableIds, usableCheapMembers } from '../lib/collections.ts'
-import { cuisineLabel } from '../lib/cuisine-label.ts'
-import { countPlaces, priceLabel } from '../lib/format.ts'
+import { countPlaces } from '../lib/format.ts'
 import { hasUnknownPrice, matchesPrice } from '../lib/price-filter.ts'
 import { usePageMeta } from '../lib/meta.ts'
 import { useCityCatalog } from '../lib/use-city.ts'
@@ -176,10 +176,8 @@ export function CollectionPage() {
                     <GoldenFork placeId={place.id} overlay />
                   </span>
                   <span className="place-row-copy">
-                    <span className="block font-serif text-xl italic leading-tight">{place.name}</span>
-                    <span className="mt-1 block text-xs font-bold tracking-wide uppercase">
-                      {[cuisineLabel(place.cuisine?.[0] ?? ''), priceLabel(place.price), place.neighborhood].filter(Boolean).join(' · ')}
-                    </span>
+                    <PlaceName name={place.name} className="italic" />
+                    <PlaceMeta parts={placeCardMeta(place)} className="mt-1 text-xs font-bold tracking-wide uppercase" />
                   </span>
                   <span className="score-col">
                     <ScoreBadge score={app.gustoScore(place.id)} size="sm" />

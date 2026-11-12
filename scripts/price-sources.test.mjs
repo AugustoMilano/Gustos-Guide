@@ -6,6 +6,10 @@ const files = {
   eastside: 'eastside.json',
   la: 'la.json',
   sf: 'sf.json',
+  peninsula: 'sf.json',
+  northbay: 'sf.json',
+  eastbay: 'sf.json',
+  sandiego: 'sd.json',
   vancouver: 'vancouver.json',
   portland: 'portland.json',
   nyc: 'nyc.json',
@@ -25,9 +29,9 @@ for (const file of Object.values(catalogs)) {
   }
 }
 
-const added = { vancouver: 0, portland: 0, nyc: 0, pullman: 0, moscow: 0, eastside: 0, la: 0, sf: 0 }
+const added = { vancouver: 0, portland: 0, nyc: 0, pullman: 0, moscow: 0, eastside: 0, la: 0, sf: 0, peninsula: 0, northbay: 0, eastbay: 0, sandiego: 0 }
 const tiers = { 1: 0, 2: 0, 3: 0, 4: 0 }
-assert.equal(ledger.places.length, 631)
+assert.equal(ledger.places.length, 703)
 
 for (const row of ledger.places) {
   const place = byId.get(row.id)
@@ -40,13 +44,19 @@ for (const row of ledger.places) {
     assert.match(row.evidence, /no price range|No Apple Maps place id/)
   } else {
     assert.equal(place.price, row.price, row.id)
-    assert.match(row.evidence, /^Apple Maps PRICE_RANGE score [1-4] of 4$/)
-    assert.match(row.url, /^https:\/\/maps\.apple\.com\/place\?auid=\d+$/)
+    if (row.source === 'Apple Maps') {
+      assert.match(row.evidence, /^Apple Maps PRICE_RANGE score [1-4] of 4$/)
+      assert.match(row.url, /^https:\/\/maps\.apple\.com\/place\?auid=\d+$/)
+    } else {
+      assert.equal(row.source, 'Official site')
+      assert.match(row.evidence, /^Official site schema\.org priceRange "\${1,4}"$/)
+      assert.equal(row.url, place.website)
+    }
     added[row.city] += 1
     tiers[row.price] += 1
   }
 }
 
-assert.deepEqual(added, { vancouver: 83, portland: 19, nyc: 72, pullman: 13, moscow: 11, eastside: 9, la: 1, sf: 29 })
-assert.deepEqual(tiers, { 1: 18, 2: 74, 3: 78, 4: 67 })
+assert.deepEqual(added, { vancouver: 88, portland: 21, nyc: 91, pullman: 15, moscow: 11, eastside: 12, la: 14, sf: 36, peninsula: 5, northbay: 5, eastbay: 1, sandiego: 30 })
+assert.deepEqual(tiers, { 1: 26, 2: 108, 3: 113, 4: 82 })
 console.log('price sources ok')

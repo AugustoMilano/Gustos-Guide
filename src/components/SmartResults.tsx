@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { PriceFilter } from './PriceFilter.tsx'
 import { cityPath, type CityId } from '../lib/city.ts'
+import { placeNameClass } from '../lib/place-name.ts'
 import { hasUnknownPrice, matchesPrice } from '../lib/price-filter.ts'
 import type { SmartResult } from '../lib/smart-search.ts'
 import type { Price } from '../types.ts'
@@ -15,9 +16,9 @@ function ResultList({ title, hits, onPick }: { title: string; hits: SmartResult[
         {hits.map((hit) => (
           <li key={`${hit.kind}-${hit.id}`}>
             <Link to={hit.href} className="smart-hit" onClick={onPick}>
-              <span className="min-w-0">
-                <span className="block truncate font-serif text-2xl italic leading-tight">{hit.title}</span>
-                <span className="mt-1 block truncate text-sm">{hit.why}</span>
+              <span className="place-row-copy">
+                <span className={hit.kind === 'place' ? placeNameClass(hit.title, 'italic leading-tight') : 'block font-serif text-2xl italic leading-tight'}>{hit.title}</span>
+                <span className="mt-1 block text-sm">{hit.why}</span>
               </span>
               <span className="smart-hit-meta">{hit.detail}</span>
             </Link>
@@ -94,7 +95,7 @@ export function featuredSlugs(city: CityId): string[] {
     portland: ['pdx-downtown', 'pdx-pearl-district', 'pdx-new-american', 'pdx-pizza', 'pdx-health-food'],
     nyc: ['nyc-tribeca', 'nyc-west-village', 'nyc-soho', 'nyc-italian', 'nyc-french', 'nyc-steak'],
     pullman: ['pul-game-day', 'pul-cafe'],
-    moscow: [],
+    moscow: ['best-of-moscow-id'],
     sandiego: ['sd-little-italy', 'sd-coronado', 'sd-la-jolla', 'sd-seafood', 'sd-mexican', 'sd-north-park'],
   }
   return lists[city]

@@ -3,6 +3,7 @@ import { useEffect, useMemo, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { AreaKicker } from '../components/AreaKicker.tsx'
 import { PlaceThumb } from '../components/PlaceThumb.tsx'
+import { PlaceName } from '../components/PlaceName.tsx'
 import { GoldenFork } from '../components/GoldenFork.tsx'
 import { ScoreBadge } from '../components/ScoreBadge.tsx'
 import { catalog, ensureAllCities } from '../content/load.ts'
@@ -51,7 +52,7 @@ export function RankPage() {
                 <GoldenFork placeId={place.id} overlay />
               </span>
               <span className="place-row-copy">
-                <span className="block font-serif text-2xl italic leading-tight">{place.name}</span>
+                <PlaceName name={place.name} className="italic leading-tight" />
                 {app.user && !app.user.isOwner && app.scores[place.id] ? <span className="mt-1 block text-sm">Your score {app.scores[place.id].score.toFixed(1)}</span> : null}
               </span>
               <span className="score-col"><ScoreBadge score={app.gustoScore(place.id)} size="sm" /></span>

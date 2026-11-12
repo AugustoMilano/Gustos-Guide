@@ -6,6 +6,7 @@ import { useApp } from '../state/AppState.tsx'
 import { useCityId } from '../lib/use-city-id.ts'
 import type { GuideSummary, SlimPlace } from '../types.ts'
 import { MatchText } from './MatchText.tsx'
+import { placeNameClass } from '../lib/place-name.ts'
 
 type Hit = { key: string; label: string; detail: string; href: string }
 
@@ -156,7 +157,7 @@ export function SearchField({
                 onMouseDown={(event) => event.preventDefault()}
                 onClick={() => choose(index)}
               >
-                <span className="block truncate font-serif text-xl italic leading-tight"><MatchText text={hit.label} query={query} /></span>
+                <span className={placeNameClass(hit.label, 'italic leading-tight')}><MatchText text={hit.label} query={query} /></span>
                 <span className="block truncate text-xs font-bold tracking-wide uppercase">{hit.detail}</span>
               </button>
             ))}
