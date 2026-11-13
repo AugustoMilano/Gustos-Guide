@@ -33,6 +33,7 @@ const PlanWizardPage = lazy(() => import('./pages/PlanPage.tsx').then((module) =
 const ListPage = lazy(() => import('./pages/ListPage.tsx').then((module) => ({ default: module.ListPage })))
 const JoinPage = lazy(() => import('./pages/JoinPage.tsx').then((module) => ({ default: module.JoinPage })))
 const TonightPage = lazy(() => import('./pages/TonightPage.tsx').then((module) => ({ default: module.TonightPage })))
+const NightPage = lazy(() => import('./pages/NightPage.tsx').then((module) => ({ default: module.NightPage })))
 const ScoreQueuePage = lazy(() => import('./pages/ScoreQueuePage.tsx').then((module) => ({ default: module.ScoreQueuePage })))
 const QuickScorePage = lazy(() => import('./pages/QuickScorePage.tsx').then((module) => ({ default: module.QuickScorePage })))
 const PhotoQueuePage = lazy(() => import('./pages/PhotoQueuePage.tsx').then((module) => ({ default: module.PhotoQueuePage })))
@@ -211,6 +212,7 @@ function CatalogRoutes() {
             <Route key={`${prefix}-search`} path={`${prefix}/search`} element={<SearchPage />} />,
             <Route key={`${prefix}-feed`} path={`${prefix}/feed`} element={<FeedPage />} />,
             <Route key={`${prefix}-tonight`} path={`${prefix}/tonight`} element={<TonightPage />} />,
+            <Route key={`${prefix}-night`} path={`${prefix}/night`} element={<NightPage />} />,
             <Route key={`${prefix}-score`} path={`${prefix}/score`} element={<ScoreQueuePage />} />,
             <Route key={`${prefix}-quick`} path={`${prefix}/score/quick`} element={<QuickScorePage />} />,
             <Route key={`${prefix}-photos`} path={`${prefix}/photos`} element={<PhotoQueuePage />} />,
