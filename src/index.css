@@ -6281,3 +6281,87 @@ html[data-area='pullman'] .btn.btn-coral:disabled,
   border-color: #8a837a;
   box-shadow: none;
 }
+
+.night-page {
+  padding-top: calc(var(--header-offset) + 16px);
+  padding-bottom: calc(7rem + env(safe-area-inset-bottom));
+}
+
+.night-page ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.night-kicker {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 16px 0;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.night-card .place-row {
+  padding: 8px 16px 16px;
+}
+
+.night-leg {
+  margin: 0 0 12px;
+  text-align: center;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: 'tnum' 1;
+}
+
+.night-layout {
+  display: grid;
+  gap: 24px;
+  align-items: start;
+}
+
+.night-map {
+  height: 16rem;
+  min-height: 16rem;
+}
+
+@media (min-width: 960px) {
+  .night-layout {
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+  }
+
+  .night-map {
+    position: sticky;
+    top: calc(var(--header-offset) + 12px);
+    height: 28rem;
+  }
+}
+
+.night-pin-wrap.leaflet-div-icon {
+  background: transparent;
+  border: 0;
+}
+
+.night-pin {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 999px;
+  background: #141f4d;
+  color: #fffaf3;
+  font-size: 14px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  border: 2px solid #fffaf3;
+  box-shadow: 0 8px 20px rgb(20 31 77 / 28%);
+}
+
+.night-pin.is-hot {
+  background: #ff5330;
+  color: #181818;
+}

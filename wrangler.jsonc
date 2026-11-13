@@ -1,0 +1,15 @@
+{
+  "name": "gustos-guide",
+  "pages_build_output_dir": "dist",
+  "compatibility_date": "2026-11-12",
+  "observability": {
+    "enabled": true,
+    "traces": {
+      "enabled": true
+    }
+  },
+  // Workers AI binding for /api/plan-night (Plan my night), used by preview and production deploys.
+  "ai": {
+    "binding": "AI"
+  }
+}

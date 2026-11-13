@@ -13,6 +13,7 @@ import { SignInSheet } from './SignInSheet.tsx'
 import { setStatusBar, watchThemeColor } from '../lib/status-bar.ts'
 import { loadMapLibraries } from '../lib/load-maplibre.ts'
 import { useConcealOnScroll } from '../lib/conceal-on-scroll.ts'
+import { planNavLabel, planTitle } from '../lib/night-plan.ts'
 import { useApp } from '../state/AppState.tsx'
 
 function prefetch(path: string) {
@@ -87,6 +88,8 @@ function BellIcon() {
 }
 
 export function Header() {
+  const nightTitle = planTitle()
+  const nightNav = planNavLabel()
   const { user, signOut, notices, markNoticesRead } = useApp()
   const [open, setOpen] = useState(false)
   const [queries, setQueries] = useState<Partial<Record<CityId, string>>>({})
@@ -268,6 +271,7 @@ export function Header() {
           <Link viewTransition={!reduceMotion} to={cityPath('/explore', linkCity)} aria-current={barePath(location.pathname) === '/explore' ? 'page' : undefined} onMouseEnter={() => prefetch('/explore')} onFocus={() => prefetch('/explore')}>Map</Link>
           <Link viewTransition={!reduceMotion} to={cityPath('/guides', linkCity)} aria-current={barePath(location.pathname) === '/guides' || barePath(location.pathname).startsWith('/guide/') ? 'page' : undefined}>Guides</Link>
           <Link viewTransition={!reduceMotion} to={cityPath('/tonight', linkCity)} aria-current={barePath(location.pathname) === '/tonight' ? 'page' : undefined}>Tonight</Link>
+          <Link className="nav-wide" viewTransition={!reduceMotion} to={cityPath('/night', linkCity)} aria-current={barePath(location.pathname) === '/night' ? 'page' : undefined}>{nightNav}</Link>
           <Link viewTransition={!reduceMotion} to={cityPath('/top', linkCity)} aria-current={barePath(location.pathname) === '/top' ? 'page' : undefined}>Top 25</Link>
           {user ? (
             <>
@@ -348,6 +352,7 @@ export function Header() {
           <Link viewTransition={!reduceMotion} to={cityPath('/explore', linkCity)} onClick={() => setMenu(false)} onMouseEnter={() => prefetch('/explore')} onFocus={() => prefetch('/explore')}>Map</Link>
           <Link viewTransition={!reduceMotion} to={cityPath('/guides', linkCity)} onClick={() => setMenu(false)}>Guides</Link>
           <Link viewTransition={!reduceMotion} to={cityPath('/tonight', linkCity)} onClick={() => setMenu(false)}>Tonight</Link>
+          <Link viewTransition={!reduceMotion} to={cityPath('/night', linkCity)} onClick={() => setMenu(false)}>{nightTitle}</Link>
           <Link viewTransition={!reduceMotion} to={cityPath('/feed', linkCity)} onClick={() => setMenu(false)}>Feed</Link>
           <Link viewTransition={!reduceMotion} to={cityPath('/plans', linkCity)} onClick={() => setMenu(false)}>Plans</Link>
           <Link viewTransition={!reduceMotion} to={cityPath('/rank', linkCity)} onClick={() => setMenu(false)}>Rank</Link>
