@@ -4,6 +4,8 @@ import { readFileSync } from 'node:fs'
 const ledger = JSON.parse(readFileSync(new URL('../data/price-sources.json', import.meta.url), 'utf8'))
 const google = JSON.parse(readFileSync(new URL('../data/price-sources-2026-11-11.json', import.meta.url), 'utf8'))
 const later = new Map(google.places.map((row) => [row.id, row]))
+const nov14 = JSON.parse(readFileSync(new URL('../data/price-sources-2026-11-14.json', import.meta.url), 'utf8'))
+for (const row of nov14.places) later.set(row.id, row)
 const files = {
   eastside: 'eastside.json',
   la: 'la.json',
@@ -96,5 +98,21 @@ for (const row of google.places) {
   laterAdded[row.city] = (laterAdded[row.city] ?? 0) + 1
 }
 assert.equal(google.places.length, 341)
+
+// Nov 14, 2026 batch: Google per-person ranges, official menus, and Yelp price levels, one cited source each.
+assert.equal(nov14.places.length, 15)
+for (const row of nov14.places) {
+  const place = byId.get(row.id)
+  assert.ok(place, row.id)
+  assert.ok(!archived.has(row.id), row.id)
+  assert.equal(place.name, row.name)
+  assert.equal(place.city ?? 'seattle', row.city)
+  assert.equal(place.price, row.price, row.id)
+  assert.ok(!/alibi room/i.test(row.name), row.id)
+  assert.ok(['Google per-person', 'restaurant menu', 'Yelp price level'].includes(row.source), row.id)
+  assert.match(row.url, /^https:\/\//)
+  assert.ok(row.evidence.length > 20, row.id)
+}
+assert.equal(byId.get('maruta-shoten').price, 1)
 assert.equal(byId.get('joey-university-village').price, 3)
 console.log('price sources ok')

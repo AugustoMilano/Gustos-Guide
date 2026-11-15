@@ -1,0 +1,141 @@
+{
+  "checkedAt": "2026-11-14",
+  "method": "Owner-approved Nov 14, 2026 batch. Google per-person price ranges, official restaurant menus, and Yelp price levels, mapped with Augusto's rule (under $20 $, $20-50 $$, $50-100 $$$, $100+ $$$$). One cited source per row. No estimates.",
+  "places": [
+    {
+      "id": "levain-bakery",
+      "name": "Levain Bakery",
+      "city": "la",
+      "price": 1,
+      "source": "Google per-person",
+      "url": "https://maps.google.com/?cid=8674484326901459512",
+      "evidence": "Google Places priceRange $1–$10 for Levain Bakery, 1661 Abbot Kinney Blvd, Venice (looked up Nov 14, 2026). Under $20 = $."
+    },
+    {
+      "id": "uovo-pasta",
+      "name": "UOVO Pasta",
+      "city": "la",
+      "price": 2,
+      "source": "Google per-person",
+      "url": "https://maps.google.com/?cid=1506560181118964370",
+      "evidence": "Google Places priceRange $20–$60 for UOVO Santa Monica, 1320 2nd St Ste A (1 m from the catalog pin, looked up Nov 14, 2026). Mapped from the $20 start to $$; the top of the range reaches the $$$ band."
+    },
+    {
+      "id": "bacio-di-latte",
+      "name": "Bacio di Latte",
+      "city": "la",
+      "price": 1,
+      "source": "restaurant menu",
+      "url": "https://baciodilatte.us/wp-content/uploads/2025/01/menu-qr-code-.pdf",
+      "evidence": "Official Bacio di Latte menu: Classic cup Piccolo (up to 2 flavors) $7.45; Regular (up to 3 flavors) $8.95; Grande $10.75. Kids sugar cone $6.05. Under $20 = $."
+    },
+    {
+      "id": "the-terrace",
+      "name": "The Terrace",
+      "city": "la",
+      "price": 2,
+      "source": "restaurant menu",
+      "url": "https://dxp.maybourne.com/globalassets/our-hotels/maybourne-beverly-hills/restaurants--bars/the-terrace/menus/the-terrace-pre-fixe-lunch-menu-29.12.25.pdf",
+      "evidence": "Official Maybourne menu: “LUNCH PREFIXE MENU $39 per person.” $20–50 = $$. Dinner à la carte entrées on the official dinner menu run $31 (king trumpet mushroom) to $55 (Snake River Farms filet); some dinner checks could reach $$$."
+    },
+    {
+      "id": "overstory",
+      "name": "Overstory",
+      "city": "nyc",
+      "price": 4,
+      "source": "Google per-person",
+      "url": "https://maps.google.com/?cid=15722315841411256608",
+      "evidence": "Google Places priceRange $100+ for Overstory, 70 Pine St 64th Floor (looked up Nov 14, 2026). $100+ = $$$$."
+    },
+    {
+      "id": "nobu-nyc",
+      "name": "Nobu",
+      "city": "nyc",
+      "price": 4,
+      "source": "Google per-person",
+      "url": "https://maps.google.com/?cid=15174361734836065569",
+      "evidence": "Google Places priceRange $100+ for Nobu Downtown, 195 Broadway (looked up Nov 14, 2026). $100+ = $$$$."
+    },
+    {
+      "id": "rh-rooftop-restaurant",
+      "name": "RH Rooftop Restaurant",
+      "city": "nyc",
+      "price": 3,
+      "source": "Google per-person",
+      "url": "https://maps.google.com/?cid=9312603855358623759",
+      "evidence": "Google Places priceRange $50–$100 for RH Rooftop Restaurant at RH New York, 9 9th Ave (looked up Nov 14, 2026). Mapped from the $50 start to $$$; the top of the range reaches the $$$$ band."
+    },
+    {
+      "id": "balthazar",
+      "name": "Balthazar",
+      "city": "nyc",
+      "price": 3,
+      "source": "Yelp price level",
+      "url": "https://www.yelp.com/biz/balthazar-new-york-2",
+      "evidence": "Yelp lists Balthazar as “$$$ French, Breakfast & Brunch.” Official dinner menu (balthazarny.com/menus/dinner-menu/, updated Nov 7, 2026) includes steak frites $53, NY strip au poivre $69, salmon $47, roast chicken $39, Balthazar burger $32, French onion soup 23.00."
+    },
+    {
+      "id": "ruse-brewing-crust-collective",
+      "name": "Ruse Brewing Crust Collective",
+      "city": "portland",
+      "price": 2,
+      "source": "Google per-person",
+      "url": "https://maps.google.com/?cid=6275868216400631229",
+      "evidence": "Google Places priceRange $20–$30 for Ruse Crust Collective Slabtown, 1505 NW 21st Ave (6 m from the catalog pin, looked up Nov 14, 2026). $20–50 = $$."
+    },
+    {
+      "id": "taqueria-las-torres",
+      "name": "Taqueria Las Torres",
+      "city": "pullman",
+      "price": 1,
+      "source": "restaurant menu",
+      "url": "https://taquerialastorreswa.com/taqueria-las-torres/",
+      "evidence": "Official online menu for 110 NE Whitman St, Pullman: 4 tacos $8.31; 3 enchiladas $12.47; 4 tacos & pico de gallo $10.00. Under $20 = $. (Google also had $10–$20, but its pin was 1,029 m away at 505 SE Riverview St; this proposal uses the Whitman Street official menu, which matches the catalog address.)"
+    },
+    {
+      "id": "bi-rite-creamery",
+      "name": "Bi-Rite Creamery",
+      "city": "sf",
+      "price": 1,
+      "source": "restaurant menu",
+      "url": "https://biritemarket.com/creamery/ice-cream/",
+      "evidence": "Official Ice Cream Menu: SMALL $6.50 (1–2 flavors, cup or cone); MEDIUM $8.50; FLIGHT $11; SOFT SERVE $6; SUNDAES $12. Under $20 = $. Note: Yelp’s business page title lists this shop as “$$ Ice Cream & Frozen Yogurt, Desserts”; the proposal follows the official per-person scoop prices, not the Yelp tier."
+    },
+    {
+      "id": "b-patisserie",
+      "name": "b. Patisserie",
+      "city": "sf",
+      "price": 1,
+      "source": "restaurant menu",
+      "url": "https://bpatisserie.com/menu/",
+      "evidence": "Official menu: Kouign Amann Nature 5.25; croissant nature 3.95; chocolate croissant 5.25; individual pastries $8.25; latte S 5 / L 5.50. Under $20 = $."
+    },
+    {
+      "id": "sushi-hil",
+      "name": "Sushi Hil",
+      "city": "vancouver",
+      "price": 3,
+      "source": "restaurant menu",
+      "url": "https://www.sushihil.com/menu",
+      "evidence": "Official menu (CAD): Daily Lunch Set $75; Nigiri Set 8 pcs $65; Chirashi Set $60; Chirashi Royale $98; Maki Set $42; Garden Set $34. The lunch and most dinner sets sit in the $50–100 = $$$ band. Garden and maki sets are $$."
+    },
+    {
+      "id": "joe-fortes-seafood-chop-house",
+      "name": "Joe Fortes Seafood & Chop House",
+      "city": "vancouver",
+      "price": 3,
+      "source": "restaurant menu",
+      "url": "https://www.joefortes.ca/wp-content/uploads/2026/05/156939-CFWC-Joe-Fortes-Dinner-4-May2026-V2-P6.pdf",
+      "evidence": "Official May 2026 dinner menu (CAD, no dollar sign on the page): sirloin 8 oz 49; filet mignon 7 oz 64 / 12 oz 98; New York striploin 12 oz 72 / 16 oz 95; lobster thermidor 69; miso sablefish 56; seafood cioppino 45; seafood linguine 56; fish & chips 32; fennel linguine 31; bone-in rib steak 20 oz 102; bone-in NY 22 oz 119. Most steaks and seafood mains are $50–100 = $$$. Some pasta/fish-and-chips are $$; the largest bone-in steaks are $100+."
+    },
+    {
+      "id": "maruta-shoten",
+      "name": "Maruta Shoten",
+      "city": "seattle",
+      "price": 1,
+      "source": "Yelp price level",
+      "url": "https://www.yelp.com/biz/maruta-shoten-seattle",
+      "evidence": "Yelp lists Maruta Shoten (1024 S Bailey St, Georgetown) as \"$ Delis, International Grocery\" (read Nov 14, 2026). Google Places publishes no priceLevel or priceRange for it. Under $20 = $."
+    }
+  ]
+}
