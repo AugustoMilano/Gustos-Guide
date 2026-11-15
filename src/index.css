@@ -3929,6 +3929,40 @@ img.is-pending,
   filter: drop-shadow(0 1px 2px rgb(20 31 77 / 45%));
 }
 
+.fork-inline {
+  flex-direction: row;
+  align-items: center;
+  gap: 0.3rem;
+  width: auto;
+  max-width: 100%;
+}
+
+.fork-inline .fork-svg,
+.fork-inline .fork-svg svg {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.fork-inline .fork-caption {
+  margin-top: 0;
+  font-size: 0.625rem;
+  letter-spacing: 0.08em;
+}
+
+.place-row-sub {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  column-gap: 0.5rem;
+  row-gap: 0.15rem;
+  margin-top: 0.25rem;
+  min-width: 0;
+}
+
+.place-row-sub:not(:has(*)) {
+  display: none;
+}
+
 .top-podium {
   display: grid;
   grid-template-columns: 1fr 1.08fr 1fr;

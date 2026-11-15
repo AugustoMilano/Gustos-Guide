@@ -293,12 +293,14 @@ export function PlacePage() {
                 <Link key={item.id} to={cityPath(`/place/${item.id}`, placeCity(place))} className="hit-card" viewTransition={!reduceMotion}>
                   <div className="relative h-24 overflow-hidden bg-navy [&_.place-art]:aspect-auto [&_.place-art]:h-full" style={reduceMotion ? undefined : { viewTransitionName: `place-${item.id}` }}>
                     <PlaceThumb place={item} uploads={app.photos} sizes="(min-width: 1024px) 200px, 45vw" />
-                    <GoldenFork placeId={item.id} overlay />
                   </div>
                   <div className="place-card-body is-dense">
                     <div className="min-w-0">
                       <h3 className={placeNameClass(item.name, 'italic leading-tight')}>{item.name}</h3>
-                      <p className="mt-1 text-xs font-bold tracking-wide uppercase">{item.neighborhood}</p>
+                      <span className="place-row-sub">
+                        <p className="text-xs font-bold tracking-wide uppercase">{item.neighborhood}</p>
+                        <GoldenFork placeId={item.id} inline />
+                      </span>
                     </div>
                     <span className="score-col"><ScoreBadge score={app.gustoScore(item.id)} size="sm" /></span>
                   </div>
