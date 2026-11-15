@@ -12,10 +12,10 @@ test('La Loba, Piroshky, Maiz, and Mr. Fish show the new unblurred photos in ord
   await page.route(/supabase\.co/, (route) => route.abort())
   await page.goto('/#/seattle/place/la-loba')
   await expect(page.getByRole('heading', { level: 1, name: 'La Loba' })).toBeVisible()
-  await expect(page.locator('.photo-thumb')).toHaveCount(18)
+  await expect(page.locator('.photo-thumb')).toHaveCount(15)
   expect(await shot(page)).toContain('la-loba-hq-1')
-  await page.getByRole('tab', { name: 'Photo 18 of 18' }).click()
-  expect(await shot(page)).toContain('la-loba-gusto-18')
+  await page.getByRole('tab', { name: 'Photo 15 of 15' }).click()
+  expect(await shot(page)).toContain('la-loba-hq-15')
 
   await page.goto('/#/seattle/place/mr-fish-chips-chowder')
   await expect(page.locator('.photo-thumb')).toHaveCount(2)
