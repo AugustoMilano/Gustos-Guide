@@ -14,6 +14,7 @@ export function ForkMark({
   caption,
   label,
   overlay = false,
+  inline = false,
 }: {
   metal: ForkMetal
   rank?: number
@@ -22,6 +23,7 @@ export function ForkMark({
   caption?: string
   label: string
   overlay?: boolean
+  inline?: boolean
 }) {
   const rawId = useId()
   const id = `fork${rawId.replace(/[^a-zA-Z0-9]/g, '')}`
@@ -29,7 +31,7 @@ export function ForkMark({
   const text = caption ?? (metal === 'navy' ? 'Top 25' : rank ? `#${rank}` : '')
   return (
     <m.span
-      className={`fork-badge fork-${size}${metal === 'navy' ? ' fork-navy' : ''}${overlay ? ' fork-on-photo' : ''}`}
+      className={`fork-badge fork-${size}${metal === 'navy' ? ' fork-navy' : ''}${overlay ? ' fork-on-photo' : ''}${inline ? ' fork-inline' : ''}`}
       role="img"
       aria-label={label}
       initial={reduce ? false : { opacity: 0, scale: 0.86 }}
@@ -46,10 +48,12 @@ export function GoldenFork({
   placeId,
   size = 'sm',
   overlay = false,
+  inline = false,
 }: {
   placeId: string
   size?: 'sm' | 'md' | 'lg'
   overlay?: boolean
+  inline?: boolean
 }) {
   const { gustoScore } = useApp()
   const award = awardFor(placeId, gustoScore)
@@ -66,6 +70,7 @@ export function GoldenFork({
       gem={award.rank === 1}
       label={label}
       overlay={overlay}
+      inline={inline}
     />
   )
 }
