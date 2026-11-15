@@ -149,7 +149,6 @@ export function TopPage() {
                     <span className="top-rank">{row.rank}</span>
                     <span className="top-row-shot" style={reduce ? undefined : { viewTransitionName: `place-${row.place.id}` }}>
                       <PlaceThumb place={row.place} uploads={app.photos} />
-                      <GoldenFork placeId={row.place.id} overlay />
                     </span>
                     <span className="place-row-copy">
                       <PlaceName name={row.place.name} className="italic leading-tight" />

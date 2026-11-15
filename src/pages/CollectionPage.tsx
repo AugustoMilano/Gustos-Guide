@@ -173,11 +173,13 @@ export function CollectionPage() {
                 <Link to={cityPath(`/place/${place.id}`)} className="place-row after:absolute after:inset-0">
                   <span className="place-row-shot">
                     <PlaceThumb place={place} uploads={app.photos} sizes="64px" />
-                    <GoldenFork placeId={place.id} overlay />
                   </span>
                   <span className="place-row-copy">
                     <PlaceName name={place.name} className="italic" />
-                    <PlaceMeta parts={placeCardMeta(place)} className="mt-1 text-xs font-bold tracking-wide uppercase" />
+                    <span className="place-row-sub">
+                      <PlaceMeta parts={placeCardMeta(place)} className="text-xs font-bold tracking-wide uppercase" />
+                      <GoldenFork placeId={place.id} inline />
+                    </span>
                   </span>
                   <span className="score-col">
                     <ScoreBadge score={app.gustoScore(place.id)} size="sm" />
