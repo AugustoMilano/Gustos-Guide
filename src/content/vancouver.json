@@ -2661,7 +2661,8 @@
         }
       ],
       "phone": "+1 (236) 482-9060",
-      "website": "http://www.sushihil.com"
+      "website": "http://www.sushihil.com",
+      "price": 3
     },
     {
       "id": "jj-bean-coffee-roasters",
@@ -6629,7 +6630,8 @@
         }
       ],
       "phone": "+1 (604) 669-1940",
-      "website": "http://www.joefortes.ca"
+      "website": "http://www.joefortes.ca",
+      "price": 3
     },
     {
       "id": "between-2-buns",

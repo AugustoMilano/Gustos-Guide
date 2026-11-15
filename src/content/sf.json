@@ -149,66 +149,6 @@
       "price": 4
     },
     {
-      "id": "international-smoke",
-      "city": "sf",
-      "name": "International Smoke",
-      "neighborhood": "Financial District South",
-      "address": "301 Mission St, San Francisco, CA 94105",
-      "lat": 37.7908285,
-      "lng": -122.3960102,
-      "cuisine": [
-        "BBQ"
-      ],
-      "placeType": "restaurant",
-      "oneLiner": "301 Mission St — International Smoke, BBQ, Financial District South.",
-      "perfectFor": [],
-      "periods": [
-        {
-          "days": [
-            1,
-            2,
-            3,
-            4
-          ],
-          "start": 660,
-          "end": 1260
-        },
-        {
-          "days": [
-            0,
-            5,
-            6
-          ],
-          "start": 960,
-          "end": 1260
-        }
-      ],
-      "gustoScore": null,
-      "appleMapsUrl": "https://maps.apple.com/?daddr=37.7908285,-122.3960102&q=International%20Smoke",
-      "applePlaceUrl": "https://maps.apple.com/place?auid=8599083228278699607",
-      "guideSlugs": [
-        "sf-financial-district-south"
-      ],
-      "muid": "8599083228278699607",
-      "hoursLabel": "",
-      "blurb": "301 Mission St — International Smoke, BBQ, Financial District South.",
-      "orderThis": [],
-      "ids": {},
-      "copySource": "draft",
-      "updatedAt": "2026-10-21",
-      "photos": [
-        {
-          "source": "illustration",
-          "isIllustration": true,
-          "alt": "Illustration suggesting BBQ at International Smoke",
-          "credit": "Illustration"
-        }
-      ],
-      "phone": "+1 (415) 660-2656",
-      "website": "https://internationalsmoke.com/locations/san-francisco/",
-      "yelpSlug": "international-smoke-san-francisco-15"
-    },
-    {
       "id": "wayfare-tavern",
       "city": "sf",
       "name": "Wayfare Tavern",
@@ -2372,7 +2312,8 @@
       ],
       "phone": "+1 (415) 626-5600",
       "website": "https://biritemarket.com/creamery/",
-      "yelpSlug": "bi-rite-creamery-san-francisco"
+      "yelpSlug": "bi-rite-creamery-san-francisco",
+      "price": 1
     },
     {
       "id": "kokkari-estiatorio",
@@ -5190,7 +5131,8 @@
       ],
       "phone": "+1 (415) 440-1700",
       "website": "https://bpatisserie.com",
-      "yelpSlug": "b-patisserie-san-francisco-2"
+      "yelpSlug": "b-patisserie-san-francisco-2",
+      "price": 1
     },
     {
       "id": "the-buena-vista",
@@ -8170,19 +8112,13 @@
     {
       "slug": "sf-financial-district-south",
       "title": "Financial District South",
-      "dek": "International Smoke at 301 Mission St, and 3 more Financial District South stops.",
+      "dek": "The Bird at 115 New Montgomery St, and 2 more Financial District South stops.",
       "group": "Neighborhoods",
-      "intro": "International Smoke is at 301 Mission St. The Bird is at 115 New Montgomery St.",
+      "intro": "The Bird is at 115 New Montgomery St. The Garden Court is at 2 New Montgomery St.",
       "updatedAt": "2026-10-21",
       "ranked": false,
       "city": "sf",
       "entries": [
-        {
-          "placeId": "international-smoke",
-          "pullQuote": "301 Mission St — International Smoke, BBQ, Financial District South.",
-          "blurb": "301 Mission St — International Smoke, BBQ, Financial District South.",
-          "copySource": "draft"
-        },
         {
           "placeId": "the-bird",
           "pullQuote": "Chicken from The Bird at 115 New Montgomery St, Financial District South.",
