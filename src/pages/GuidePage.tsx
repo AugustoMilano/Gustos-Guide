@@ -9,7 +9,7 @@ import { PriceFilter } from '../components/PriceFilter.tsx'
 import { ShareButton } from '../components/ShareButton.tsx'
 import { StoryShareButton } from '../components/StoryShareButton.tsx'
 import { SignInSheet } from '../components/SignInSheet.tsx'
-import { catalog, catalogPhase, ensureRegion, loadGuide, subscribeCatalog } from '../content/load.ts'
+import { catalog, catalogPhase, ensureRegion, loadGuide, peekGuide, subscribeCatalog } from '../content/load.ts'
 import { cityPath } from '../lib/city.ts'
 import { cuisineMenuLabel } from '../lib/cuisine-label.ts'
 import { useCityId } from '../lib/use-city.ts'
@@ -53,7 +53,7 @@ export function GuidePage() {
   useSyncExternalStore(subscribeCatalog, catalogPhase, catalogPhase)
   useEffect(() => { void ensureRegion(urlCity) }, [urlCity])
   const { statuses, setStatus, user, photos, friendScore, gustoScore } = useApp()
-  const [guide, setGuide] = useState<Guide | null>(null)
+  const [guide, setGuide] = useState<Guide | null>(() => peekGuide(slug) ?? null)
   const [missing, setMissing] = useState(false)
   const [neighborhood, setNeighborhood] = useState('')
   const [cuisine, setCuisine] = useState('')
@@ -87,8 +87,12 @@ export function GuidePage() {
 
   useEffect(() => {
     let cancelled = false
-    setGuide(null)
-    setMissing(false)
+    const cached = peekGuide(slug)
+    if (cached) setGuide(cached)
+    else {
+      setGuide(null)
+      setMissing(false)
+    }
     setNeighborhood('')
     setCuisine('')
     setPrices([])
@@ -98,8 +102,10 @@ export function GuidePage() {
     setSort('score')
     void loadGuide(slug).then((next) => {
       if (cancelled) return
-      if (!next) setMissing(true)
-      else setGuide(next)
+      if (!next) {
+        setGuide(null)
+        setMissing(true)
+      } else setGuide(next)
     })
     return () => {
       cancelled = true
