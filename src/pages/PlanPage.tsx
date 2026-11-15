@@ -411,10 +411,12 @@ export function PlanWizardPage() {
                   >
                     <span className="place-row-shot">
                       <PlaceThumb place={place} uploads={app.photos} sizes="64px" />
-                      <GoldenFork placeId={place.id} overlay />
                     </span>
                     <span className="place-row-copy">
                       <PlaceName name={place.name} className="italic leading-tight" />
+                      <span className="place-row-sub">
+                        <GoldenFork placeId={place.id} inline />
+                      </span>
                       {reference ? <span className="public-ref mt-1 block">{reference}</span> : null}
                       <span className="mt-2 flex flex-wrap gap-1">
                         {tally > 0 ? <span className="tag">{tally} of you want to go</span> : null}

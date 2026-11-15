@@ -165,10 +165,13 @@ export function ListPage() {
           return (
             <li key={place.id} className="list-row">
               <Link to={`/place/${place.id}`} className="plan-pick place-row min-w-0 flex-1">
-                <span className="place-row-shot"><PlaceThumb place={place} uploads={app.photos} sizes="64px" /><GoldenFork placeId={place.id} overlay /></span>
+                <span className="place-row-shot"><PlaceThumb place={place} uploads={app.photos} sizes="64px" /></span>
                 <span className="place-row-copy">
                   <PlaceName name={`${index + 1}. ${place.name}`} className="italic leading-tight" />
-                  <PlaceMeta parts={[place.neighborhood, priceLabel(place.price)]} className="mt-1 text-sm" />
+                  <span className="place-row-sub">
+                    <PlaceMeta parts={[place.neighborhood, priceLabel(place.price)]} className="text-sm" />
+                    <GoldenFork placeId={place.id} inline />
+                  </span>
                   {note ? <span className="mt-1 block text-sm italic">{note}</span> : null}
                 </span>
                 <span className="score-col"><ScoreBadge score={app.gustoScore(place.id)} size="sm" /></span>

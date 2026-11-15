@@ -81,14 +81,16 @@ export function GuideStrip({
                 <div className="toc-shot relative h-24 overflow-hidden bg-navy [&_.place-art]:aspect-auto [&_.place-art]:h-full">
                   <PlaceThumb place={place} uploads={uploads} eager={index < 2} sizes="208px" />
                   <RankMedal number={number} size="sm" className="absolute top-2 left-2 z-10" />
-                  <GoldenFork placeId={place.id} overlay />
                 </div>
                 <div className="toc-pad flex flex-1 flex-col">
                   <div className="toc-badge">
                     <ScoreBadge score={score} size="sm" />
                   </div>
                   <h3 className={placeNameClass(place.name, 'toc-title mt-2 min-h-[2.6rem] italic leading-tight')}>{number != null ? <span className="toc-rank text-coral not-italic">{number}</span> : null}{place.name}</h3>
-                  <PlaceMeta parts={[place.neighborhood, cuisineLabel(place.cuisine[0] ?? ''), priceLabel(place.price)]} className="mt-2 line-clamp-2 min-h-[2rem] text-xs font-bold tracking-wide uppercase" />
+                  <span className="place-row-sub mt-2">
+                    <PlaceMeta parts={[place.neighborhood, cuisineLabel(place.cuisine[0] ?? ''), priceLabel(place.price)]} className="line-clamp-2 min-h-[2rem] text-xs font-bold tracking-wide uppercase" />
+                    <GoldenFork placeId={place.id} inline />
+                  </span>
                   {vibe || place.perfectFor[0] ? <span className={`tag mt-1.5 min-h-6 ${vibe ? 'tag-vibe' : ''}`}>{vibe ?? place.perfectFor[0]}</span> : null}
                 </div>
               </a>

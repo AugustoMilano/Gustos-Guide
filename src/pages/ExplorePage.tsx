@@ -341,11 +341,13 @@ export function ExplorePage() {
                 <Link to={cityPath(`/place/${place.id}`)} className="place-row after:absolute after:inset-0" viewTransition={!reduceMotion}>
                   <span className="place-row-shot" style={reduceMotion ? undefined : { viewTransitionName: `place-${place.id}` }}>
                     <PlaceThumb place={place} uploads={app.photos} sizes="64px" />
-                    <GoldenFork placeId={place.id} overlay />
                   </span>
                   <span className="place-row-copy">
                     <PlaceName name={place.name} className="italic" />
-                    <PlaceMeta parts={placeCardMeta(place)} className="mt-1 text-xs font-bold tracking-wide uppercase" />
+                    <span className="place-row-sub">
+                      <PlaceMeta parts={placeCardMeta(place)} className="text-xs font-bold tracking-wide uppercase" />
+                      <GoldenFork placeId={place.id} inline />
+                    </span>
                     {near ? <span className="mt-1 block text-sm">{formatDistance(distances.get(place.id) ?? 0, region)} away</span> : null}
                   </span>
                   <span className="score-col">

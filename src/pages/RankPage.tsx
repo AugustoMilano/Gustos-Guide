@@ -49,10 +49,12 @@ export function RankPage() {
             <Link to={cityPath(`/place/${place.id}`)} className="place-row">
               <span className="place-row-shot">
                 <PlaceThumb place={place} uploads={app.photos} />
-                <GoldenFork placeId={place.id} overlay />
               </span>
               <span className="place-row-copy">
                 <PlaceName name={place.name} className="italic leading-tight" />
+                <span className="place-row-sub">
+                  <GoldenFork placeId={place.id} inline />
+                </span>
                 {app.user && !app.user.isOwner && app.scores[place.id] ? <span className="mt-1 block text-sm">Your score {app.scores[place.id].score.toFixed(1)}</span> : null}
               </span>
               <span className="score-col"><ScoreBadge score={app.gustoScore(place.id)} size="sm" /></span>
