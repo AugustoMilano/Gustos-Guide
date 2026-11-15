@@ -4252,7 +4252,8 @@
         }
       ],
       "phone": "+1 (212) 339-3963",
-      "website": "https://www.overstory-nyc.com"
+      "website": "https://www.overstory-nyc.com",
+      "price": 4
     },
     {
       "id": "sushi-sho",
@@ -4906,7 +4907,8 @@
         }
       ],
       "phone": "+1 (212) 219-0500",
-      "website": "https://www.noburestaurants.com/downtown"
+      "website": "https://www.noburestaurants.com/downtown",
+      "price": 4
     },
     {
       "id": "labeille-a-cote",
@@ -5031,7 +5033,8 @@
         }
       ],
       "phone": "+1 (212) 217-2210",
-      "website": "https://rh.com/us/en/newyork/restaurant"
+      "website": "https://rh.com/us/en/newyork/restaurant",
+      "price": 3
     },
     {
       "id": "katz-s-delicatessen",
@@ -7348,7 +7351,8 @@
         }
       ],
       "phone": "+1 (212) 965-1414",
-      "website": "https://www.balthazarny.com"
+      "website": "https://www.balthazarny.com",
+      "price": 3
     },
     {
       "id": "emilios-ballato",

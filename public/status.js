@@ -48,7 +48,21 @@
   var bare = path.replace(/^\/(seattle|eastside|la|sf|eastbay|peninsula|northbay|sandiego|vancouver|portland|nyc|pullman|moscow)(?=\/|$)/, '') || '/'
   // Place deep links skip chunk preloads: the static hero is the first paint there, and its photo
   // needs the bandwidth more than code the app fetches a moment later anyway (C1).
-  var want = bare === '/top' ? routes.top : null
+  var guideSlug = bare.indexOf('/guide/') === 0 ? bare.slice(7).split('/')[0] : ''
+  var mapRoute = bare === '/explore'
+  var want = bare === '/top' ? routes.top : guideSlug ? routes.guide : null
+  // The map route is the only first paint that needs the tile server, so only it warms that up.
+  if (mapRoute) {
+    var tiles = [['preconnect', 'https://tiles.openfreemap.org'], ['preload', 'https://tiles.openfreemap.org/styles/positron'], ['preload', 'https://tiles.openfreemap.org/planet']]
+    for (var t = 0; t < tiles.length; t++) {
+      var tile = document.createElement('link')
+      tile.rel = tiles[t][0]
+      if (tiles[t][0] === 'preload') tile.as = 'fetch'
+      tile.href = tiles[t][1]
+      tile.crossOrigin = 'anonymous'
+      document.head.appendChild(tile)
+    }
+  }
   if (want) {
     for (var j = 0; j < want.length; j++) {
       var link = document.createElement('link')
@@ -103,6 +117,15 @@
   }
   preloadFetch(catalogIndex)
   preloadFetch(catalogHref)
+  // Guide deep links: the guide's own small file, which the app reads before the region bundle.
+  if (guideSlug && /^[a-z0-9-]+$/.test(guideSlug)) {
+    var gd = document.createElement('link')
+    gd.rel = 'preload'
+    gd.as = 'fetch'
+    gd.href = '/gd/' + guideSlug + '.json'
+    gd.crossOrigin = 'anonymous'
+    document.head.appendChild(gd)
+  }
   if (placeId && window.fetch && /^[a-z0-9-]+$/.test(placeId)) {
     var placeRegion = { la: 'la', sandiego: 'sandiego', vancouver: 'vancouver', portland: 'portland', nyc: 'nyc', pullman: 'pullman', moscow: 'pullman', sf: 'sf', eastbay: 'sf', peninsula: 'sf', northbay: 'sf' }[cityId] || 'seattle'
     var root = document.documentElement

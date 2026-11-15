@@ -2335,7 +2335,8 @@
         }
       ],
       "phone": "+1 (702) 720-7065",
-      "website": null
+      "website": null,
+      "price": 1
     },
     {
       "id": "nectar",

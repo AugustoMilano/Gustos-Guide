@@ -2274,7 +2274,8 @@
         }
       ],
       "phone": "+1 (310) 425-0064",
-      "website": "https://uovo.la/locationsx3/location-santa-monica/"
+      "website": "https://uovo.la/locationsx3/location-santa-monica/",
+      "price": 2
     },
     {
       "id": "starbucks-coffee-company-2",
@@ -3719,7 +3720,8 @@
       "phone": "+1 (310) 272-7800",
       "website": "https://baciodilatte.us",
       "_n": 8,
-      "yelpSlug": "bacio-di-latte-los-angeles-7"
+      "yelpSlug": "bacio-di-latte-los-angeles-7",
+      "price": 1
     },
     {
       "id": "osteria-mozza",
@@ -6030,7 +6032,8 @@
       ],
       "phone": "+1 (310) 860-7886",
       "website": "https://www.maybournebeverlyhills.com/restaurants-bars/the-terrace/",
-      "yelpSlug": "the-terrace-beverly-hills-4"
+      "yelpSlug": "the-terrace-beverly-hills-4",
+      "price": 2
     },
     {
       "id": "somni",
@@ -7438,7 +7441,8 @@
         "count": 156,
         "source": "Yelp"
       },
-      "yelpSlug": "VA24h4dewR5qWMXAZKm0Pg"
+      "yelpSlug": "VA24h4dewR5qWMXAZKm0Pg",
+      "price": 1
     },
     {
       "id": "donnas",

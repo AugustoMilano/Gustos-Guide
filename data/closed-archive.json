@@ -669,6 +669,88 @@
         },
         "yelpSlug": "g6F_Mdi63zQM5QBVygmJmg"
       }
+    },
+    {
+      "id": "international-smoke",
+      "name": "International Smoke",
+      "city": "sf",
+      "neighborhood": "Financial District South",
+      "address": "301 Mission St, San Francisco, CA 94105",
+      "sourceFile": "src/content/sf.json",
+      "reason": "permanently_closed",
+      "closedNote": "Closed permanently in May 2026; removed 2026-11-14 with owner approval.",
+      "guideEntries": [
+        {
+          "file": "sf.json",
+          "slug": "sf-financial-district-south",
+          "entry": {
+            "placeId": "international-smoke",
+            "pullQuote": "301 Mission St — International Smoke, BBQ, Financial District South.",
+            "blurb": "301 Mission St — International Smoke, BBQ, Financial District South.",
+            "copySource": "draft"
+          }
+        }
+      ],
+      "place": {
+        "id": "international-smoke",
+        "city": "sf",
+        "name": "International Smoke",
+        "neighborhood": "Financial District South",
+        "address": "301 Mission St, San Francisco, CA 94105",
+        "lat": 37.7908285,
+        "lng": -122.3960102,
+        "cuisine": [
+          "BBQ"
+        ],
+        "placeType": "restaurant",
+        "oneLiner": "301 Mission St — International Smoke, BBQ, Financial District South.",
+        "perfectFor": [],
+        "periods": [
+          {
+            "days": [
+              1,
+              2,
+              3,
+              4
+            ],
+            "start": 660,
+            "end": 1260
+          },
+          {
+            "days": [
+              0,
+              5,
+              6
+            ],
+            "start": 960,
+            "end": 1260
+          }
+        ],
+        "gustoScore": null,
+        "appleMapsUrl": "https://maps.apple.com/?daddr=37.7908285,-122.3960102&q=International%20Smoke",
+        "applePlaceUrl": "https://maps.apple.com/place?auid=8599083228278699607",
+        "guideSlugs": [
+          "sf-financial-district-south"
+        ],
+        "muid": "8599083228278699607",
+        "hoursLabel": "",
+        "blurb": "301 Mission St — International Smoke, BBQ, Financial District South.",
+        "orderThis": [],
+        "ids": {},
+        "copySource": "draft",
+        "updatedAt": "2026-10-21",
+        "photos": [
+          {
+            "source": "illustration",
+            "isIllustration": true,
+            "alt": "Illustration suggesting BBQ at International Smoke",
+            "credit": "Illustration"
+          }
+        ],
+        "phone": "+1 (415) 660-2656",
+        "website": "https://internationalsmoke.com/locations/san-francisco/",
+        "yelpSlug": "international-smoke-san-francisco-15"
+      }
     }
   ]
 }
