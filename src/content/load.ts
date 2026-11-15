@@ -217,6 +217,17 @@ function rememberPlace(place: Place | null | undefined) {
   if (place?.id) fullPlaces.set(place.id, place)
 }
 
+const fullGuides = new Map<string, Guide>()
+
+function rememberGuide(guide: Guide | null | undefined) {
+  if (guide?.slug) fullGuides.set(guide.slug, guide)
+}
+
+/** A full guide already loaded for this slug, so a remount can skip the skeleton. */
+export function peekGuide(slug: string): Guide | undefined {
+  return fullGuides.get(slug)
+}
+
 function rememberRecord(record: Record<string, Place>) {
   for (const place of Object.values(record)) rememberPlace(place)
 }
@@ -248,7 +259,10 @@ function loadPlaceBundle(key: BundleKey): Promise<Record<string, Place>> {
 function loadGuideBundle(key: BundleKey): Promise<Guide[]> {
   const cached = guideCache.get(key)
   if (cached) return cached
-  const pending = guideLoaders[key]()
+  const pending = guideLoaders[key]().then((guides) => {
+    for (const guide of guides) rememberGuide(guide)
+    return guides
+  })
   guideCache.set(key, pending)
   return pending
 }
@@ -300,6 +314,10 @@ function loadGuideFile(slug: string): Promise<Guide | undefined> {
     ? fetch(`/gd/${slug}.json`, { credentials: 'same-origin' })
       .then((response) => (response.ok ? response.json() as Promise<{ guide?: Guide }> : null))
       .then((file) => (file?.guide?.slug === slug && Array.isArray(file.guide.entries) ? file.guide : undefined))
+      .then((guide) => {
+        if (guide) rememberGuide(guide)
+        return guide
+      })
       .catch(() => undefined)
     : Promise.resolve(undefined)
   guideFiles.set(slug, pending)

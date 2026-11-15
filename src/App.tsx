@@ -13,6 +13,7 @@ import { TabBar } from './components/TabBar.tsx'
 import { InstallHint } from './components/InstallHint.tsx'
 import { bootPending, bootPlace, bootSettled, catalogPhase, subscribeCatalog } from './content/load.ts'
 import { barePath, CITY_PREFIXES } from './lib/city.ts'
+import { applyWindowScroll, captureMark, imagesAffectingScroll, locateInWindow, readScrollMark, readWindowScroll, restoreScrollWhenReady, subscribeToLayout, type ScrollMark } from './lib/scroll-restore.ts'
 import { directLegalSlug } from './lib/site.ts'
 import { useApp } from './state/AppState.tsx'
 
@@ -50,7 +51,7 @@ function CollectionRoute() {
 
 function ScrollManager() {
   const location = useLocation()
-  const positions = useRef(new Map<string, number>())
+  const positions = useRef(new Map<string, ScrollMark>())
   useEffect(() => {
     if ('scrollRestoration' in history) history.scrollRestoration = 'manual'
   }, [])
@@ -58,25 +59,72 @@ function ScrollManager() {
     const key = location.key
     // The profile's Top 10 picker swaps area in place; stay where the reader is.
     const keep = (location.state as { keepScroll?: boolean } | null)?.keepScroll
-    const saved = positions.current.get(key) ?? (keep ? window.scrollY : 0)
+    const saved: ScrollMark = positions.current.get(key) ?? { y: keep ? window.scrollY : 0 }
     let last = saved
-    const root = document.documentElement
-    const previous = root.style.scrollBehavior
-    root.style.scrollBehavior = 'auto'
-    window.scrollTo(0, saved)
-    root.style.scrollBehavior = previous
-    const save = () => {
-      last = window.scrollY
-      positions.current.set(key, last)
+    let left = false
+    let restoring = saved.y > 0 || Boolean(saved.selector)
+    let userMoved = false
+    const onUserMove = () => {
+      userMoved = true
     }
+    const restore = restoreScrollWhenReady({
+      target: saved,
+      read: readWindowScroll,
+      write: applyWindowScroll,
+      locate: locateInWindow,
+      subscribe: subscribeToLayout,
+      shouldCancel: () => userMoved,
+      isBusy: () => imagesAffectingScroll(saved.y),
+      onDone: () => {
+        restoring = false
+      },
+    })
+    let frozen = false
+    const save = () => {
+      if (frozen) return
+      const mark = readScrollMark()
+      if (mark.y > 0) {
+        last = mark
+        positions.current.set(key, last)
+        return
+      }
+      // A jump to 0 during restore or unmount is the browser resetting, not the reader.
+      if (restoring || left) return
+      requestAnimationFrame(() => {
+        if (left || restoring || frozen || window.scrollY > 0) return
+        last = { y: 0 }
+        positions.current.set(key, last)
+      })
+    }
+    const freezeIfLeaving = (event: Event) => {
+      save()
+      const target = event.target
+      if (!(target instanceof Element)) return
+      const href = target.closest('a[href]')?.getAttribute('href') ?? ''
+      // In-page jumps such as #entry- remain on this list; a hash route does not.
+      if (href.includes('#/') || href.includes('/place/')) frozen = true
+    }
+    const layout = typeof ResizeObserver === 'function' ? new ResizeObserver(save) : null
+    layout?.observe(document.documentElement)
     window.addEventListener('scroll', save, { passive: true })
     document.addEventListener('scroll', save, { passive: true })
+    // Record, then freeze, before a place link resets the window offset.
+    document.addEventListener('pointerdown', freezeIfLeaving, true)
+    document.addEventListener('click', freezeIfLeaving, true)
+    window.addEventListener('wheel', onUserMove, { passive: true })
+    window.addEventListener('touchmove', onUserMove, { passive: true })
     return () => {
+      left = true
+      restore.stop()
       // WebKit can jump back to 0 before cleanup, without a scroll event.
-      const y = window.scrollY
-      positions.current.set(key, y > 0 ? y : last)
+      positions.current.set(key, frozen ? last : captureMark(readScrollMark(), last))
+      layout?.disconnect()
       window.removeEventListener('scroll', save)
       document.removeEventListener('scroll', save)
+      document.removeEventListener('pointerdown', freezeIfLeaving, true)
+      document.removeEventListener('click', freezeIfLeaving, true)
+      window.removeEventListener('wheel', onUserMove)
+      window.removeEventListener('touchmove', onUserMove)
     }
   }, [location.key])
   return null
