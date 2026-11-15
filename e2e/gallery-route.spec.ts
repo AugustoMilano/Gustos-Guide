@@ -6,7 +6,7 @@ const stops = [
   { id: 'von-s-1000spirits', name: "Von's 1000Spirits", photo: 'von-s-1000spirits-gusto-1', count: 3, fromPhoto: 3 },
   { id: 'hellenika-cultured-creamery', name: 'HELLENIKA Cultured Creamery', photo: 'hellenika-cultured-creamery', forbid: 'gusto', count: 2, fromPhoto: 3 },
   { id: 'roquette', name: 'Roquette', photo: 'roquette-gusto-1', count: 1, fromPhoto: 0 },
-  { id: 'la-loba', name: 'La Loba', photo: 'la-loba-hq-1', count: 18, fromPhoto: 0 },
+  { id: 'la-loba', name: 'La Loba', photo: 'la-loba-hq-1', count: 15, fromPhoto: 0 },
   { id: 'storyville-coffee-company', name: 'Storyville Coffee Company', photo: 'storyville-coffee-company-gusto-1', count: 3, fromPhoto: 0 },
 ]
 

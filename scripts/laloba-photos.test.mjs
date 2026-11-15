@@ -9,9 +9,9 @@ function gusto(record) {
   return record.photos.filter((photo) => photo.source === 'gusto').map((photo) => photo.url)
 }
 
-// Nov 14, 2026: Augusto's 15 full-quality originals (sRGB, upright, 2048 px) replace the shots they cover.
-// The dining room, the gin and tonic, and the rooftop view were not in the new set and keep their places.
-const LA_LOBA = ['hq-1', 'hq-2', 'hq-3', 'gusto-4', 'gusto-5', ...Array.from({ length: 12 }, (_, index) => `hq-${index + 4}`), 'gusto-18']
+// Nov 15, 2026: Augusto's 15 full-quality originals (sRGB, upright, 2048 px) are the whole gallery.
+// The three leftover low-resolution shots (dining room, gin and tonic, rooftop view) were removed.
+const LA_LOBA = Array.from({ length: 15 }, (_, index) => `hq-${index + 1}`)
 assert.deepEqual(gusto(places['la-loba']), LA_LOBA.map((name) => `/photos/la-loba-${name}.jpg`))
 for (const name of LA_LOBA.filter((item) => item.startsWith('hq-'))) assert.equal(Math.max(sizes[`la-loba-${name}.jpg`].w, sizes[`la-loba-${name}.jpg`].h), 2048)
 assert.deepEqual(gusto(places['piroshky-piroshky']), ['/photos/piroshky-piroshky-gusto-1.jpg'])
