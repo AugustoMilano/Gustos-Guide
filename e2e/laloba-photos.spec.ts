@@ -13,7 +13,7 @@ test('La Loba, Piroshky, Maiz, and Mr. Fish show the new unblurred photos in ord
   await page.goto('/#/seattle/place/la-loba')
   await expect(page.getByRole('heading', { level: 1, name: 'La Loba' })).toBeVisible()
   await expect(page.locator('.photo-thumb')).toHaveCount(18)
-  expect(await shot(page)).toContain('la-loba-gusto-1')
+  expect(await shot(page)).toContain('la-loba-hq-1')
   await page.getByRole('tab', { name: 'Photo 18 of 18' }).click()
   expect(await shot(page)).toContain('la-loba-gusto-18')
 
