@@ -161,15 +161,21 @@ body {
   outline: none;
 }
 
-:focus-visible {
-  outline: 3px solid #141f4d;
-  outline-offset: 2px;
+/* Focus rings sit tight to the control (1px out, or inside for pills and fields)
+   so they never run into a label or the text next to them. See "Focus rings" at the end. */
+:root {
+  --focus-ring: #141f4d;
 }
 
-.hero :focus-visible,
-.site-footer :focus-visible,
-.on-navy :focus-visible {
-  outline-color: #eee3d6;
+:focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 1px;
+}
+
+.hero,
+.site-footer,
+.on-navy {
+  --focus-ring: #eee3d6;
 }
 
 .skip {
@@ -1055,7 +1061,7 @@ main ul.grid > li {
 .field {
   display: flex;
   flex-direction: column;
-  gap: var(--space-1);
+  gap: 6px;
 }
 
 .field span,
@@ -1311,8 +1317,7 @@ main ul.grid > li {
 }
 
 .filter-select:focus-visible {
-  outline: 2px solid #141f4d;
-  outline-offset: 3px;
+  outline: none;
 }
 
 .price-filter .chip {
@@ -2162,8 +2167,13 @@ main ul.grid > li {
   background-color: #141f4d;
 }
 
-.site-header.on-hero :focus-visible {
-  outline-color: #fffaf3;
+.site-header.on-hero {
+  --focus-ring: #fffaf3;
+}
+
+.site-header.on-hero .menu-sheet,
+.site-header.on-hero .more-sheet {
+  --focus-ring: #141f4d;
 }
 
 .site-header.on-hero a,
@@ -3832,8 +3842,8 @@ img.is-pending,
 }
 
 .quick-score .btn.quick-filter:not(.btn-coral):not(.btn-navy):not(.btn-leaf):not(.btn-x):focus-visible {
-  outline: 2px solid #141f4d;
-  outline-offset: 2px;
+  outline: 2px solid var(--focus-ring);
+  outline-offset: -2px;
 }
 
 .quick-score .btn.quick-filter:not(.btn-coral):not(.btn-navy):not(.btn-leaf):not(.btn-x):disabled {
@@ -4500,8 +4510,8 @@ mark {
 .guide-card.is-active,
 .hit-card.is-active,
 .chip.is-active {
-  outline: 3px solid #141f4d;
-  outline-offset: 2px;
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 1px;
 }
 
 .guide-index .guide-card {
@@ -5174,7 +5184,7 @@ mark {
   transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 .ach-tile:active { transform: scale(0.94); }
-.ach-tile:focus-visible { outline: 2px solid #141f4d; outline-offset: 2px; }
+.ach-tile:focus-visible { outline: 2px solid var(--focus-ring); outline-offset: 1px; }
 .ach-badge {
   position: relative;
   display: grid;
@@ -5403,7 +5413,7 @@ mark {
 .tab-link { isolation: isolate; }
 .tab-icon { width: 24px; height: 24px; }
 .tab-link.is-on .tab-icon { color: #9d1c08; }
-.tab-link:focus-visible { outline: 2px solid #141f4d; outline-offset: 2px; }
+.tab-link:focus-visible { outline: 2px solid var(--focus-ring); outline-offset: -2px; }
 
 /* Pull to refresh */
 .ptr { position: relative; }
@@ -5592,7 +5602,7 @@ mark {
 .lg-tab.is-lit .lg-icon { transform: scale(1.1); }
 .lg-bar.is-pressed .lg-tab.is-lit .lg-icon { transform: scale(1.22) translateY(-1px); color: #9d1c08; }
 .lg-bar.is-pressed .lg-tab.is-lit .lg-label { transform: scale(1.08); }
-.lg-tab:focus-visible { outline: 2px solid #141f4d; outline-offset: -2px; }
+.lg-tab:focus-visible { outline: 2px solid var(--focus-ring); outline-offset: -2px; }
 @media (prefers-reduced-motion: reduce) {
   .lg-dock, .lg-icon, .lg-label, .lg-lens { transition: none; }
   .lg-dock.is-mini { transform: none; }
@@ -5688,7 +5698,7 @@ mark {
   background: rgb(255 250 243 / 80%);
   box-shadow: inset 0 1px 2px rgb(20 31 77 / 6%);
 }
-.soft-field:focus-visible { outline: 2px solid #141f4d; outline-offset: 1px; }
+
 .soft-media { border-radius: 14px; }
 .guide-shot { border-radius: 20px; }
 .entry-quote:not(.border-l-4) { border-radius: 16px; }
@@ -6057,8 +6067,8 @@ html[data-area='pullman'] .hero { background: linear-gradient(160deg, #981e32 0%
 html[data-area='pullman'] .explore-chips .glass-chip[aria-pressed='true'] { background: #981e32; }
 .explore-chips .glass-chip[aria-busy='true'] { opacity: 0.7; }
 .explore-chips .glass-chip:focus-visible {
-  outline: 2px solid #141f4d;
-  outline-offset: 2px;
+  outline: 2px solid var(--focus-ring);
+  outline-offset: -2px;
 }
 @media (prefers-reduced-motion: reduce) {
   .explore-chips .glass-chip { transition: none; }
@@ -6364,4 +6374,56 @@ html[data-area='pullman'] .btn.btn-coral:disabled,
 .night-pin.is-hot {
   background: #ff5330;
   color: #181818;
+}
+
+/* Focus rings.
+   Text fields: no outline at all. The border turns navy and a 1px inset line
+   doubles it, so the ring lives inside the field and never reaches the label.
+   Pills, chips, tabs and segmented buttons: the outline is drawn inside the edge.
+   Everything else (cards, links, plain buttons) keeps a 2px ring 1px outside. */
+:root :is(
+  input:not([type='checkbox'], [type='radio'], [type='range'], [type='file'], [type='color'], [type='button'], [type='submit'], [type='reset'], [type='image']),
+  textarea,
+  select,
+  .cuisine-picker-button
+):focus-visible {
+  outline: none;
+  border-color: var(--field-ring, #141f4d);
+  box-shadow:
+    inset 0 0 0 1px var(--field-ring, #141f4d),
+    0 8px 20px rgb(20 31 77 / 8%);
+}
+
+/* Borderless fields (the cuisine menu filter) get the full 2px inside. */
+:root .cuisine-menu input:focus-visible {
+  box-shadow: inset 0 0 0 2px var(--field-ring, #141f4d);
+}
+
+/* Cream fields on a navy section (the home hero search): a navy edge would vanish
+   into the background, so the ring turns coral, like the navy buttons. */
+.hero,
+.on-navy {
+  --field-ring: #ff5330;
+}
+
+/* The header search on the navy hero is translucent with cream text. */
+.site-header.on-hero .site-search .glass-input {
+  --field-ring: #fffaf3;
+}
+
+:is(.btn, .chip, .sort-chip, .glass-chip, .city-switch-btn, .sheet-icon, .glass-icon, .search-clear, .explore-grab):focus-visible,
+.chip.is-active {
+  outline-offset: -2px;
+}
+
+/* Inline text links: hug the words. */
+:is(p, li, .field, footer) a:not([class]):focus-visible {
+  outline-offset: 1px;
+  border-radius: 3px;
+}
+
+/* "Seattle ← Plans": the back link shares a line with the area kicker, so give it
+   room for its focus ring instead of touching the city name. */
+.area-kicker + a {
+  margin-inline-start: 0.75rem;
 }
