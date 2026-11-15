@@ -1,0 +1,358 @@
+name: Import production photos for GitHub sync
+
+on:
+  push:
+    branches:
+      - cursor/sync-prod-1114
+
+permissions:
+  contents: write
+
+jobs:
+  import:
+    if: contains(github.event.head_commit.message, 'Trigger production photo import')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: cursor/sync-prod-1114
+
+      - name: Download and verify production photos, apply deletions
+        run: |
+          set -euo pipefail
+          cat > /tmp/photos.sha256 <<'EOF'
+          afe988f72802651a3fb8847d1b76f8b00425a2f3556a626e117faf73535dee58  public/photos/la-loba-hq-1.200.avif
+          6a8430d94d2652c855e94c5996c75621f06cc9d24b840ecdce2d8b7856ae301c  public/photos/la-loba-hq-1.200.webp
+          ef4674f9242a8473b57ee81dfb0340455da0a0ce3fff5892f0e93ef1d79405fe  public/photos/la-loba-hq-1.400.avif
+          9cad474833981e593871392e4f5de0c763e2080c445d8a2ab5f5c291867b3f56  public/photos/la-loba-hq-1.400.webp
+          e6013b7e154a97785fe08b7ca1398d51d70b4e4e5f2461eb50a1fb9b0f7a4c9d  public/photos/la-loba-hq-1.480.jpg
+          30817118acde11ea830b64aab568566b2ba0d7c36d089b04b35d6caa7d9c29da  public/photos/la-loba-hq-1.720.avif
+          d36672c88862b5dfdd4f617980bf5205f6ebbfb89aaf26a298e9cce5d0158ba3  public/photos/la-loba-hq-1.720.webp
+          68072b60552888bf85204068d2234e60a50f9dc7d74b05a2e47780b7bcf2268a  public/photos/la-loba-hq-1.960.avif
+          14ee0ad34e7e51d5512d1985d0dabbc5551a3d2054f3c65a8dd85a1d8a45b729  public/photos/la-loba-hq-1.960.jpg
+          8e846db97822a41ddd21feaadb1414784b1d2c8f3252aa9b1f8da2943aa23e27  public/photos/la-loba-hq-1.960.webp
+          d223d140fdaa4258facda6fab497859d54e55d94d7e677b9a340cf8f3ebfafab  public/photos/la-loba-hq-1.jpg
+          8aa4f6ee7004f64d264973ff79d41d060fc4dff11f2cb61cc066aa60c5bafeb3  public/photos/la-loba-hq-10.200.avif
+          bbc59f74295a46eb2e1774fec56453fd5f0848377fd4ed9b1e90775799f3ae15  public/photos/la-loba-hq-10.200.webp
+          1b5e9283f7b65e120e0a6b1b304655070d3b636cd75ba6573a8e95a5e4f3b04e  public/photos/la-loba-hq-10.400.avif
+          13b0c410461ee654fb972f8dd231c806339eeae96ae5547a8e1b51d8e2d25282  public/photos/la-loba-hq-10.400.webp
+          4c7eda471fa81cd2939253f034813df9fbd2715195a4353cb273850cd05058a6  public/photos/la-loba-hq-10.480.jpg
+          603dd2ef494a82804b85bd8227945889f173da7f4fcfe1d4fd8ab23cda8c4625  public/photos/la-loba-hq-10.720.avif
+          e5f0d6b4d6462e469aa4f3de63cb77c1b07d234e23357f2e1261e6dabdf5a49b  public/photos/la-loba-hq-10.720.webp
+          f3d1fd210de465af4cc071add9fa05fe7bc9749ea2f1b2252d6d4cabffeaf0bd  public/photos/la-loba-hq-10.960.avif
+          6b08d765926d883534fc31ffb65d1757cb7fc54d5a7fb1f51d89ceea9e5328ee  public/photos/la-loba-hq-10.960.jpg
+          40091c70fbc169bf79205406492f917b092e2694cbca7ca4fcb22976c9b101ca  public/photos/la-loba-hq-10.960.webp
+          d8fd85cb047041555694203c3d6279acc4d94087bc33c5ca8742fc11eaa5906a  public/photos/la-loba-hq-10.jpg
+          f3b6eb2f971c480814b9bd8ed618ab49a7510630c63fb14f4ff3000302c3c088  public/photos/la-loba-hq-11.200.avif
+          214507b5f23d7f66903539811907ba5d929281ed4fbb29e61b4a71a47236066c  public/photos/la-loba-hq-11.200.webp
+          a0b69a815e8fefaad409140392d695ab6ee4c2e3c746c46b832c80034a34c7b2  public/photos/la-loba-hq-11.400.avif
+          f481ad994c5a441ad2d0ae8814cecbc642cfb1bf1b7df2c0a170cfe1f6fe6c71  public/photos/la-loba-hq-11.400.webp
+          c48d38056115def7d5068166086ae1f652a9b39b4bcdb2f887610b4040fa3f04  public/photos/la-loba-hq-11.480.jpg
+          474daa67c2bea2f5838ec2536256dcee373d5a53ec5f7a55b223bca489c1af0a  public/photos/la-loba-hq-11.720.avif
+          4807d6d6cfb009693d4019f0fc4965382e146ba595866022e5545b056a1044ec  public/photos/la-loba-hq-11.720.webp
+          b58b6961025a204ba6a5237e2b31207dab26faaf5b1ceef19feb1549b399be79  public/photos/la-loba-hq-11.960.avif
+          716b2f5c7fd034ea1f52386aae481870e6a46b5a9270100f205aa1c4512e045d  public/photos/la-loba-hq-11.960.jpg
+          aa2866ddc193147a2737d11a5be52ca5b81dd252ec5e1446c2fe5b48e7896d14  public/photos/la-loba-hq-11.960.webp
+          e2bc13339fbc9d4522b5478e3c7f382b99d47e82cec3db27a3b9cfaba213b7ff  public/photos/la-loba-hq-11.jpg
+          26caa65f246d5bef5d7b2fef9e3c34056a6d92273a360f4f72a0bed13bbd9346  public/photos/la-loba-hq-12.200.avif
+          85979cea4f741b74118edd276cf07c84837ad30d55aaa1713e7003e9123295a0  public/photos/la-loba-hq-12.200.webp
+          1684274fc8eb04162bffc3c106d35f81fc87fa37f9f7c798ef68e133ed905c5c  public/photos/la-loba-hq-12.400.avif
+          dbb50d524ab2bd82817b8d48666ff6895fbb68efcef513e0ece2b24e716320bc  public/photos/la-loba-hq-12.400.webp
+          ae4640ccd5b646a937d1f50a2305bed47e6082bbb3d69cea8bb6adc6257a556f  public/photos/la-loba-hq-12.480.jpg
+          eee0cef82386a2022ab028fc9029842045ea25d10976c4d0f07278d9ca378496  public/photos/la-loba-hq-12.720.avif
+          747ef6fe6d79fbdc423fa9b2373fdeae6ee70e14890fb34d69df2fea3515c325  public/photos/la-loba-hq-12.720.webp
+          715e0529e1218235ec9c88e2dbd2202ac8fb6a5560d8baa2095a95b1c1c4911c  public/photos/la-loba-hq-12.960.avif
+          8c7d1060d0d91f4c84a94df5b288788a568428cb8b4ce4efeac9622981530331  public/photos/la-loba-hq-12.960.jpg
+          8f0bc3f7c075a28294f6a9c90d8337b70753584ee0e128e06daef3fff7137342  public/photos/la-loba-hq-12.960.webp
+          0d7a8bbf1a28e73af644b22d5a556c0df84b44024bed71be1b58199e9c5873d8  public/photos/la-loba-hq-12.jpg
+          640f46612bb19731620a20035a781dde5ea8f683cda761824d357f731ba188a1  public/photos/la-loba-hq-13.200.avif
+          dc7670a2d8d7df4b591464f8e4d3017405ce78610dc6b62c59f8eb56bacad691  public/photos/la-loba-hq-13.200.webp
+          5cd4b72b21e18a9578bfb97db1e710d40b3968477ff7a9122117519fe07f55fd  public/photos/la-loba-hq-13.400.avif
+          f3c19b8fc1a19481f6cb756e8bd361573bf5b01fb8396865cf3020e3a3daf296  public/photos/la-loba-hq-13.400.webp
+          458fe821bc2216a8428a5cf7840c27bd0c76bfccadfe88c07e8df44f3cf608af  public/photos/la-loba-hq-13.480.jpg
+          2493b8ce3464d0f3529fd46d407bc7fb66933551de5db8fc80af106cd3e1a5be  public/photos/la-loba-hq-13.720.avif
+          b173ea4f716f29bc01541a9b332d374be90adc79b20c288f45aa9fbbcd7b522d  public/photos/la-loba-hq-13.720.webp
+          d0d04afb8766f04bcc10e22180bc2a58fe7c2412b5e055f4d148957f00e6be60  public/photos/la-loba-hq-13.960.avif
+          88fd30e29f75016752fe2fe3eb0ad23d1400dbf54d5e38eba44382b26134a3a1  public/photos/la-loba-hq-13.960.jpg
+          dc7a299ec76a2033970e9e9eb75c5cf6cafc67e63e04f9f825cecb7b76cbb29b  public/photos/la-loba-hq-13.960.webp
+          451f3212167863298c50e6aaffb70cec45a239dbf1908fa1232af48e8c6906b1  public/photos/la-loba-hq-13.jpg
+          8c2305dddc7cbc8647486858c69d35d7604374d57eaaf1143ef3ace538cd15c4  public/photos/la-loba-hq-14.200.avif
+          7a1dc4ad4d70a431ae864d4c6e7c8ca292d9949a05566561329b11487654ee32  public/photos/la-loba-hq-14.200.webp
+          6507606ade7b047c67a034f1bb537bfabc3806ab281fa97bca811e00de5ce72f  public/photos/la-loba-hq-14.400.avif
+          5810fcd30793ccef7334b0c138174b55128692b77737aea2f14de2ef4aca3982  public/photos/la-loba-hq-14.400.webp
+          ca6c61d550aaead794883c881c9aab8af14f35cd857fe9ccea1aa6d7dc25d284  public/photos/la-loba-hq-14.480.jpg
+          186a6e420f708697885114df398f5c664b73b0e85de63ac5fce573c6aac44aa7  public/photos/la-loba-hq-14.720.avif
+          5c65f8d25ab61f72d9674449afec6dda2c12db62071e818a0c3abc45b156a35b  public/photos/la-loba-hq-14.720.webp
+          2c0d8f4737b7ba5d002c3a9d039325372daf7c17b620c54b15d016ba8a7c9533  public/photos/la-loba-hq-14.960.avif
+          02b93f9e69f346b369ef3b4814ca6941652ad96b5dedef3b76d4bf2ffb5a8fbe  public/photos/la-loba-hq-14.960.jpg
+          7974593d09dc53876a044d320e721824a9d120caa22e2c4131e3818b5974c317  public/photos/la-loba-hq-14.960.webp
+          b0e4100606a936da1c986507332ea83e5acb630ecd9f06fffc19b7853e465c6e  public/photos/la-loba-hq-14.jpg
+          15eee470285823958b9f8b672d18a49cca580636af31a39b2bac6d1499373c10  public/photos/la-loba-hq-15.200.avif
+          1d2f18d6521a5298715cabaafa8a015f3ce286b9b47097cd882356423c010684  public/photos/la-loba-hq-15.200.webp
+          4e75187c22d6d13ca7d0d6e35ec34c846f4a0927b3c2d215e0d3a10c6041f955  public/photos/la-loba-hq-15.400.avif
+          1a73d2d43f3e77114d156d8f298f6156fcc56866890a5a9ca168573a62364059  public/photos/la-loba-hq-15.400.webp
+          f124a8eee4a520251ac7f34b6be6b74707c57be147ad51235968c824181dd481  public/photos/la-loba-hq-15.480.jpg
+          977b9df342fe6b678a946f0242f49a579a22751e8f2c1fce8909626fd8b9a7cc  public/photos/la-loba-hq-15.720.avif
+          c65dae43c973f13e16dc06d4e35091d8b99147501c321eb2aa8a493f7dba5a0a  public/photos/la-loba-hq-15.720.webp
+          7645557c213d05356dce34ce2b5dbd2b06c0c51b689bfb7abda7ab5ef6c5f468  public/photos/la-loba-hq-15.960.avif
+          407aa32d4bdb1a4488a97b444f556b75fb2ac11b97ace3ec0c1cffd53d2b08f3  public/photos/la-loba-hq-15.960.jpg
+          e970681f624ed14eb7b409a031f6783a1390bb25893768a4b23c78d7f793e096  public/photos/la-loba-hq-15.960.webp
+          344044c6345339e68064fc0668096271206eebd3f61a98a18c9305c461f10b38  public/photos/la-loba-hq-15.jpg
+          b4924b57df30b6b7e7392ac7540c45b422b33a0d447f4603966f52f4645285c6  public/photos/la-loba-hq-2.200.avif
+          b0b91c336e3b23639f8f5464ea83d1c42b7b308a8bc170e1f37801aa38d4fa38  public/photos/la-loba-hq-2.200.webp
+          0ad0defc02c766595316817fc10ae99f34d959634ce89da16c64c5a147a433e7  public/photos/la-loba-hq-2.400.avif
+          c8f5085c80d65e1f5f4cb56f8ed80899e278de254a6d1319ff4c5e37f3c90eba  public/photos/la-loba-hq-2.400.webp
+          1ebd7f884be833c9747734c4500082b747fd53d136aa96b248dff8881380eda2  public/photos/la-loba-hq-2.480.jpg
+          d29dc68cb8b7d85b56265a79d2d1f824cfa3a4cb8598c7076e0906ad437579d2  public/photos/la-loba-hq-2.720.avif
+          e9b6ec54770de45e6d85819185294e517d1b3bd9792cea02b5bccb92c5b56acf  public/photos/la-loba-hq-2.720.webp
+          1c0a8d530f77fafdf4f961e3a7f7ee6b07eeb2e2787d105a041166c0069b2461  public/photos/la-loba-hq-2.960.avif
+          5e1ff593d2dc7413d6277bb5f2ca448b58d0b1aef16bf8548612f3f96beff226  public/photos/la-loba-hq-2.960.jpg
+          6808543f08e5e0896bede94acb0eaf564386918a12b1b2e856643f3d96123425  public/photos/la-loba-hq-2.960.webp
+          eb577acf0ddb97914acf0de4ed8b70878a68346544816c193c6205673ac7ccc2  public/photos/la-loba-hq-2.jpg
+          5e2f12d1028a04af0cece194aff36da6f7f33e7c4c5e66e5122ec895ba75ed3b  public/photos/la-loba-hq-3.200.avif
+          a46b70f20689c3a2a6b8803133559cb8e7cf0e532e42fe52ba25001e5936599b  public/photos/la-loba-hq-3.200.webp
+          adc11828e824ade38ca4679c7a2b209e62c9147667b1de6c3de44d1789446bca  public/photos/la-loba-hq-3.400.avif
+          60cfa682b61faf4f07ad417c2d457b67a9eeb5e8b727a9b3b5f3cea923f5f848  public/photos/la-loba-hq-3.400.webp
+          a4eff9fcce025ca7f2a12ff6fc0526141e871312c9af75fbc8fd78d15443129d  public/photos/la-loba-hq-3.480.jpg
+          af1b34c0e1fa3eb6fa1bb480219e762b98c71dd27e1c24cbea618a0ce8b8f1b5  public/photos/la-loba-hq-3.720.avif
+          0cb41c83aaaa3413ade6952c4e42fef931accddbfa15efca4f5ba35d74b7d4a9  public/photos/la-loba-hq-3.720.webp
+          b559a06813e824b5ad136369fd1ca3a3a907947e5b5df5268471f61bee45bfed  public/photos/la-loba-hq-3.960.avif
+          2c721a24b8b898afb803d661aafebcc83d66cec01ad0307a39d59e789f6fb3a5  public/photos/la-loba-hq-3.960.jpg
+          657b1244eaa73eba8ff99efccf5ef985a4c1a228b4252650e3e9c8a963c0103e  public/photos/la-loba-hq-3.960.webp
+          803f36687895054fcf35a64410927f1fa55162cd45a602555b29e35ce6de779b  public/photos/la-loba-hq-3.jpg
+          08c6dc0fa3b3adc285c7578914fb661d5ce2a661363faeda3edc446df5dc8242  public/photos/la-loba-hq-4.200.avif
+          0b9a75108a880ce2bd359cfb303939be69c601209a45452a8e05f33f09fe0d93  public/photos/la-loba-hq-4.200.webp
+          03df96af805584f5776817b1db66b7c374ec4e3975a71cec48f0b40d47cbe490  public/photos/la-loba-hq-4.400.avif
+          cd183cf8a4ebb483c4681b58670bf943d9bda44161a4b3bf3b1e1e39d5b6a2f5  public/photos/la-loba-hq-4.400.webp
+          aa8738d53ee1aa7644d0ad7d09f0289e9c4160e89a5f45cb0a2f91a22610753e  public/photos/la-loba-hq-4.480.jpg
+          2ec77a80a055aa021762c259bae1c51e7513db6396e15e54fe08648a7a8a2ac2  public/photos/la-loba-hq-4.720.avif
+          7a04554ca1597c83807e48df4bfb50a38d092c4e6c8106f143451b3e48d80734  public/photos/la-loba-hq-4.720.webp
+          5ad5eb91c394d7bd73665bd0dcc0a0653212dd90602a6d70ef06640481af5114  public/photos/la-loba-hq-4.960.avif
+          2b631cead51f03ee2ed6cc9abb8a3ba1492a33450fc5da3b815b999254318871  public/photos/la-loba-hq-4.960.jpg
+          98519ac499649a6e7ebddb69169ba7c5f07e733e09414d5b556365bc52a15e81  public/photos/la-loba-hq-4.960.webp
+          a18d98f163c4157f759be50190b83e4b449f479923bf2c039025f35f28b761de  public/photos/la-loba-hq-4.jpg
+          569a620ddd10a13a30353f1b0ae1296a75b42d5d25a5b0d1673fe45bdfafad67  public/photos/la-loba-hq-5.200.avif
+          cee8ea9e189ab5895f1f53048a0df246498771734137e7dfa1b09bfa95c3cc36  public/photos/la-loba-hq-5.200.webp
+          6dade15139635f3df7b9b2c37256406fe424eabbe6f8ecbb3ceac2133f85aad7  public/photos/la-loba-hq-5.400.avif
+          593afec7209b32494c556109f09e1e528913f7a81e4bae2a490606f54e0adaad  public/photos/la-loba-hq-5.400.webp
+          420616f1b578c6d517477de198d90d1c2c4042fe4955c73f7827ac38730c0d33  public/photos/la-loba-hq-5.480.jpg
+          2b4ffa9c545ccdfd6cc58049ace7d6c9ae6cd87919a4bd47aa0b1d25e556934f  public/photos/la-loba-hq-5.720.avif
+          6334602d1d80e6eed43a7970d3d6934293cdcbff4f75e101431c6764c226c148  public/photos/la-loba-hq-5.720.webp
+          5f54a17f2336dd801dce66a010ca0c1759010a2232fc6bfe9ce9571c32395932  public/photos/la-loba-hq-5.960.avif
+          c28966540a40e9ba1e90954b938df74da638ab8b3aac23133514cdbff0e0b5f4  public/photos/la-loba-hq-5.960.jpg
+          a2f0b8ac7c853affb0a0865206fdece365b04566edb53a3981f33821873e28dc  public/photos/la-loba-hq-5.960.webp
+          76d0df685769435bf53d6064ef7918ceff0fab7e6dd8cceaed38104ca9230bb3  public/photos/la-loba-hq-5.jpg
+          539e9fe8a21ff4058e71e42c65d11b30fb1aa5ea91298900fc7cf97eac078d59  public/photos/la-loba-hq-6.200.avif
+          79fc7811815bb97c0989b594467bd1ef37bb3ff0805da83c39e8e9c6fe0fb2fe  public/photos/la-loba-hq-6.200.webp
+          39965db343fe28535f99b2edcf43b2793cdcd691b4d4a505c78e6aa41cbb3162  public/photos/la-loba-hq-6.400.avif
+          d3804bddbb03490ef9fe8ce1c634180f0d2b3db5dae5ecf25330f6f74090a3d6  public/photos/la-loba-hq-6.400.webp
+          31480b3d85cc8320b538830c44fdb99647ae0d04b196c2162a390843470a7703  public/photos/la-loba-hq-6.480.jpg
+          11deaf5afac401d959be8cc68cf31ee76b0550f4680bcc4aec35fde5716b14c3  public/photos/la-loba-hq-6.720.avif
+          6945c0b989890fc74672b07a66ae5910928d775d4d67f2a329f70f04971245b6  public/photos/la-loba-hq-6.720.webp
+          a7f16fb4fb2e49944adf0d620f206ac9a15bf6b06dbb72f0e3f5ad7ce4ee8d87  public/photos/la-loba-hq-6.960.avif
+          1bbfb8e9ee2af13853f71e3e9d523fb8253b56e66c6aaeb85bcd5c4faa4bae5a  public/photos/la-loba-hq-6.960.jpg
+          cdda33e6ff2babf619ba33a8dc8fb5ac96d4a9394f80f6ea5331ce3c1482059a  public/photos/la-loba-hq-6.960.webp
+          f661c11ecebcf01438afbbb372a663dadd4a337905d020427b7f3fa01e1b759f  public/photos/la-loba-hq-6.jpg
+          b932cbc2faef44d134d743463542a0c960c1ef382310d4166d1cc05ca2290945  public/photos/la-loba-hq-7.200.avif
+          2ecffd2cf65e838300d68ec1e90e1a197495cd589514bbae2afc63cc413db707  public/photos/la-loba-hq-7.200.webp
+          04d2be28238741eefad05c1fe01f90210824cfed827e54d63d85513d780af60c  public/photos/la-loba-hq-7.400.avif
+          f23542734edd9e07af2d521cd3c2b4f101eb643c8ac818e2a9b30ffaa28f323f  public/photos/la-loba-hq-7.400.webp
+          16df89a5448ce297c49a8bf6c5ffded4162d5a83983fe73dd9eba2cc349178a6  public/photos/la-loba-hq-7.480.jpg
+          2d0afed8d59e9dada2c6a6283636e96157dcf58ce32eef00af753c11a2f81bf5  public/photos/la-loba-hq-7.720.avif
+          99179fb23efad7b283cd9bc186752b9da67aae80ba9678af884845a49c0c1123  public/photos/la-loba-hq-7.720.webp
+          6706373afb3c92f9ca75d0ca0064798d5bb6bba50e21abd7a51cdb0e69a5ff03  public/photos/la-loba-hq-7.960.avif
+          951d0e6cce1dafbfa29b4886342f80249eac211ad7d71cafa8943c262376fbfe  public/photos/la-loba-hq-7.960.jpg
+          bd1bb1d240a15b5b67ab35941fafed3d576e9039c394f87c175a34afa1f95719  public/photos/la-loba-hq-7.960.webp
+          1894a86e0dbd3960f0fea29bcc2b3619675d91304195181e26ab3fb1b7f48d12  public/photos/la-loba-hq-7.jpg
+          89c87453a242f3617a564f2558ed4b5caf718917d2d4154137add4b470ebddce  public/photos/la-loba-hq-8.200.avif
+          11fd89bb9ae8aa3147b648da2bbd1ffd9840470f3269d3bc1f275326c6ee2572  public/photos/la-loba-hq-8.200.webp
+          21931a10bfca7478dc373ae22a84382de04fbcb36b8675b67bf8a57ec98bdb98  public/photos/la-loba-hq-8.400.avif
+          acf0399305488ce94a92c05a105d39436973bf2f6cd6b17e7bf128b64bd45752  public/photos/la-loba-hq-8.400.webp
+          da778359073331cf01b54f90e0e629a1857de841366c2948e1597cad450f7183  public/photos/la-loba-hq-8.480.jpg
+          d0d4cd7c9cef7f4d0b88f7bc6a05f9fcdffffe7e9c4f703037a87ddef2a64383  public/photos/la-loba-hq-8.720.avif
+          222b7c26529aef3bbc42d041d463f7489253fb9f5553d7e0c2e39bbbfaf2b42a  public/photos/la-loba-hq-8.720.webp
+          09d31ba18f593c996783499c4f5a29e62f44618384c23cf3e58606144f589163  public/photos/la-loba-hq-8.960.avif
+          53b48dac2d85f0f760739082c60dd362aa49003fa2caaed596085a5fc4a7ce45  public/photos/la-loba-hq-8.960.jpg
+          b98ec1aa0d8d6c00ab5599c64d5ee8f1e7cd9376846b44dc36789b01ce67ff3b  public/photos/la-loba-hq-8.960.webp
+          e4be63026428536fc4e8977412372acf28a8ea7cec542dfea55a4fd0ea44f1ee  public/photos/la-loba-hq-8.jpg
+          f4ec78724fdde6e9182ac644b8148401a2c800ea03ccba3d47d5af2f64d46ff9  public/photos/la-loba-hq-9.200.avif
+          1fd75cd8a7daf13039755d774d1f7ed7671c6a1e48658e250adfbd1ef6bd0c96  public/photos/la-loba-hq-9.200.webp
+          35ec65766d55f0ceb2d9fa4d35131ac587a9e1ac65ed473f248967b919087222  public/photos/la-loba-hq-9.400.avif
+          bbb0fe31375c3dee6816dc7b08509c057af9d47d856362e26e97fb86786617ca  public/photos/la-loba-hq-9.400.webp
+          dc31305efcc32f5e7cec5c5c8bcf885e9ace970b1f65b822910da4184fc14ebd  public/photos/la-loba-hq-9.480.jpg
+          c7fa465740ea4db5f8da64d29db565c76fc38aa7e86599aaeb0ec2483fc44d60  public/photos/la-loba-hq-9.720.avif
+          e3d4a1eaa1a0d0ac2f82ee062ece55d183475723408ac0d0735e525b7b763725  public/photos/la-loba-hq-9.720.webp
+          8a1fb6eb523caab1858fb49b9df6927442ab1ed65e0fb744050de230e12ee9e1  public/photos/la-loba-hq-9.960.avif
+          acd18290230de79792e0d4726c235080356aefd478f178de6c297394c28de057  public/photos/la-loba-hq-9.960.jpg
+          ff06ff5b1c4c57ebfd3fd406aa7e1fe0ebcd78788a00940d58e013f536c64076  public/photos/la-loba-hq-9.960.webp
+          95495f53b29fd54d1c6bec3744606426824a69c2b67caee074fb0e9835cd40f0  public/photos/la-loba-hq-9.jpg
+          156fae80812211be28d283fb66116d49a8067ad8b86cd1389943b8b3117c563e  public/photos/maruta-shoten-gusto-1.200.avif
+          e3502f35524435b7f4145cb4841f7e19477d03c705339fec6640610b5c3a33bb  public/photos/maruta-shoten-gusto-1.200.webp
+          c53aee2cb8226ade6f248f43f0a15b040a85d1dc3587aef0f688ca2dd1d22cfe  public/photos/maruta-shoten-gusto-1.400.avif
+          96152fd766e99bdee8cd1e6eac3a111ac14424578108fa577894272f7c3c4a78  public/photos/maruta-shoten-gusto-1.400.webp
+          9bc7cd48095de9605fd4b73d6df07e52f5f8d2efd4fe1d58debf7b2dfd49f9e4  public/photos/maruta-shoten-gusto-1.480.jpg
+          9af099148241c617c7c54a667eecdffcfd90a57e6dafc2c253fa1ed72267aa1e  public/photos/maruta-shoten-gusto-1.720.avif
+          731b1b601ab0f25d9dacaa031f8a7062d77397c7b0781be5d6d80542f4f21d3f  public/photos/maruta-shoten-gusto-1.720.webp
+          62a9e860e1b906ebc217912aa96dfaa68a8f264dcbb428048b982baa948f5908  public/photos/maruta-shoten-gusto-1.960.avif
+          5898b0483959100f90c00a954e63cddb5392ee0555c72a0c2e04096cf80c31f6  public/photos/maruta-shoten-gusto-1.960.jpg
+          3432d9dea41f27b12586a8764a25f7df6b380d476d8b3490fa1376d180c6694a  public/photos/maruta-shoten-gusto-1.960.webp
+          7226fa57daaa1c5201874e442784e30d0a36a94f5a90b645c36c50a0915a6f05  public/photos/maruta-shoten-gusto-1.jpg
+          EOF
+          cat > /tmp/deletes.txt <<'EOF'
+          public/photos/la-loba-gusto-1.200.avif
+          public/photos/la-loba-gusto-1.200.webp
+          public/photos/la-loba-gusto-1.400.avif
+          public/photos/la-loba-gusto-1.400.webp
+          public/photos/la-loba-gusto-1.avif
+          public/photos/la-loba-gusto-1.jpg
+          public/photos/la-loba-gusto-1.webp
+          public/photos/la-loba-gusto-10.200.avif
+          public/photos/la-loba-gusto-10.200.webp
+          public/photos/la-loba-gusto-10.400.avif
+          public/photos/la-loba-gusto-10.400.webp
+          public/photos/la-loba-gusto-10.avif
+          public/photos/la-loba-gusto-10.jpg
+          public/photos/la-loba-gusto-10.webp
+          public/photos/la-loba-gusto-11.200.avif
+          public/photos/la-loba-gusto-11.200.webp
+          public/photos/la-loba-gusto-11.400.avif
+          public/photos/la-loba-gusto-11.400.webp
+          public/photos/la-loba-gusto-11.avif
+          public/photos/la-loba-gusto-11.jpg
+          public/photos/la-loba-gusto-11.webp
+          public/photos/la-loba-gusto-12.200.avif
+          public/photos/la-loba-gusto-12.200.webp
+          public/photos/la-loba-gusto-12.400.avif
+          public/photos/la-loba-gusto-12.400.webp
+          public/photos/la-loba-gusto-12.avif
+          public/photos/la-loba-gusto-12.jpg
+          public/photos/la-loba-gusto-12.webp
+          public/photos/la-loba-gusto-13.200.avif
+          public/photos/la-loba-gusto-13.200.webp
+          public/photos/la-loba-gusto-13.400.avif
+          public/photos/la-loba-gusto-13.400.webp
+          public/photos/la-loba-gusto-13.avif
+          public/photos/la-loba-gusto-13.jpg
+          public/photos/la-loba-gusto-13.webp
+          public/photos/la-loba-gusto-14.200.avif
+          public/photos/la-loba-gusto-14.200.webp
+          public/photos/la-loba-gusto-14.400.avif
+          public/photos/la-loba-gusto-14.400.webp
+          public/photos/la-loba-gusto-14.avif
+          public/photos/la-loba-gusto-14.jpg
+          public/photos/la-loba-gusto-14.webp
+          public/photos/la-loba-gusto-15.200.avif
+          public/photos/la-loba-gusto-15.200.webp
+          public/photos/la-loba-gusto-15.400.avif
+          public/photos/la-loba-gusto-15.400.webp
+          public/photos/la-loba-gusto-15.avif
+          public/photos/la-loba-gusto-15.jpg
+          public/photos/la-loba-gusto-15.webp
+          public/photos/la-loba-gusto-16.200.avif
+          public/photos/la-loba-gusto-16.200.webp
+          public/photos/la-loba-gusto-16.avif
+          public/photos/la-loba-gusto-16.jpg
+          public/photos/la-loba-gusto-16.webp
+          public/photos/la-loba-gusto-17.200.avif
+          public/photos/la-loba-gusto-17.200.webp
+          public/photos/la-loba-gusto-17.400.avif
+          public/photos/la-loba-gusto-17.400.webp
+          public/photos/la-loba-gusto-17.avif
+          public/photos/la-loba-gusto-17.jpg
+          public/photos/la-loba-gusto-17.webp
+          public/photos/la-loba-gusto-2.200.avif
+          public/photos/la-loba-gusto-2.200.webp
+          public/photos/la-loba-gusto-2.400.avif
+          public/photos/la-loba-gusto-2.400.webp
+          public/photos/la-loba-gusto-2.avif
+          public/photos/la-loba-gusto-2.jpg
+          public/photos/la-loba-gusto-2.webp
+          public/photos/la-loba-gusto-3.200.avif
+          public/photos/la-loba-gusto-3.200.webp
+          public/photos/la-loba-gusto-3.400.avif
+          public/photos/la-loba-gusto-3.400.webp
+          public/photos/la-loba-gusto-3.avif
+          public/photos/la-loba-gusto-3.jpg
+          public/photos/la-loba-gusto-3.webp
+          public/photos/la-loba-gusto-6.200.avif
+          public/photos/la-loba-gusto-6.200.webp
+          public/photos/la-loba-gusto-6.400.avif
+          public/photos/la-loba-gusto-6.400.webp
+          public/photos/la-loba-gusto-6.avif
+          public/photos/la-loba-gusto-6.jpg
+          public/photos/la-loba-gusto-6.webp
+          public/photos/la-loba-gusto-7.200.avif
+          public/photos/la-loba-gusto-7.200.webp
+          public/photos/la-loba-gusto-7.avif
+          public/photos/la-loba-gusto-7.jpg
+          public/photos/la-loba-gusto-7.webp
+          public/photos/la-loba-gusto-8.200.avif
+          public/photos/la-loba-gusto-8.200.webp
+          public/photos/la-loba-gusto-8.400.avif
+          public/photos/la-loba-gusto-8.400.webp
+          public/photos/la-loba-gusto-8.avif
+          public/photos/la-loba-gusto-8.jpg
+          public/photos/la-loba-gusto-8.webp
+          public/photos/la-loba-gusto-9.200.avif
+          public/photos/la-loba-gusto-9.200.webp
+          public/photos/la-loba-gusto-9.400.avif
+          public/photos/la-loba-gusto-9.400.webp
+          public/photos/la-loba-gusto-9.avif
+          public/photos/la-loba-gusto-9.jpg
+          public/photos/la-loba-gusto-9.webp
+          qa-v.mjs
+          EOF
+          python3 <<'PY'
+          import hashlib, os, subprocess, sys, time
+          manifest = open("/tmp/photos.sha256").read()
+          deletes = open("/tmp/deletes.txt").read()
+          ua = "GustosGuide-github-sync/1.0"
+          failures = []
+          for line in manifest.strip().splitlines():
+              sha, path = line.split()
+              url = "https://gustosguide.com/" + path[len("public/"):]
+              os.makedirs(os.path.dirname(path), exist_ok=True)
+              downloaded = False
+              last = ""
+              for attempt in range(5):
+                  r = subprocess.run(
+                      ["curl", "-sS", "-A", ua, "-o", path, "-w", "%{http_code}", "--fail-with-body", url],
+                      capture_output=True, text=True,
+                  )
+                  last = f"{r.returncode} {r.stdout} {r.stderr[-200:]}"
+                  if r.returncode == 0 and r.stdout.strip() == "200":
+                      got = hashlib.sha256(open(path, "rb").read()).hexdigest()
+                      if got == sha:
+                          print("ok", path)
+                          downloaded = True
+                          break
+                      failures.append(f"hash mismatch {path}: expected {sha} got {got}")
+                      downloaded = False
+                      break
+                  time.sleep(1 + attempt)
+              if not downloaded and not any(path in f for f in failures):
+                  failures.append(f"download failed {path}: {last}")
+          for path in deletes.strip().splitlines():
+              if os.path.exists(path):
+                  os.remove(path)
+                  print("deleted", path)
+              else:
+                  print("already absent", path)
+          if failures:
+              print("FAILURES:")
+              print("\n".join(failures))
+              sys.exit(1)
+          print("all photos verified")
+          PY
+
+      - name: Commit photos, deletions, and remove this workflow
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git rm -f .github/workflows/sync-prod-photos.yml
+          git add -A
+          git status
+          git commit -m "Add production photos and remove the replaced La Loba files."
+          git push origin HEAD:cursor/sync-prod-1114
+
