@@ -290,8 +290,31 @@ export async function loadPlace(id: string): Promise<Place | undefined> {
   return undefined
 }
 
+const guideFiles = new Map<string, Promise<Guide | undefined>>()
+
+/** The guide's own file (written at build to /gd/<slug>.json). Undefined when it is missing or not JSON (dev server). */
+function loadGuideFile(slug: string): Promise<Guide | undefined> {
+  const cached = guideFiles.get(slug)
+  if (cached) return cached
+  const pending = /^[a-z0-9-]+$/.test(slug) && typeof fetch === 'function'
+    ? fetch(`/gd/${slug}.json`, { credentials: 'same-origin' })
+      .then((response) => (response.ok ? response.json() as Promise<{ guide?: Guide }> : null))
+      .then((file) => (file?.guide?.slug === slug && Array.isArray(file.guide.entries) ? file.guide : undefined))
+      .catch(() => undefined)
+    : Promise.resolve(undefined)
+  guideFiles.set(slug, pending)
+  return pending
+}
+
 export async function loadGuide(slug: string): Promise<Guide | undefined> {
   const summary = catalog.guides.find((guide) => guide.slug === slug)
-  const guides = await loadGuideBundle(bundleKey(summary?.city || routeCity()))
+  const key = bundleKey(summary?.city || routeCity())
+  // A region bundle already in memory answers at once; otherwise the guide's own small file
+  // (about 8 KB) beats downloading every guide in the region (Seattle's bundle is 410 KB).
+  if (!guideCache.has(key)) {
+    const own = await loadGuideFile(slug)
+    if (own) return own
+  }
+  const guides = await loadGuideBundle(key)
   return guides.find((guide) => guide.slug === slug)
 }

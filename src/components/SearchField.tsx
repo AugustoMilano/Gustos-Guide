@@ -7,16 +7,14 @@ import { useCityId } from '../lib/use-city-id.ts'
 import type { GuideSummary, SlimPlace } from '../types.ts'
 import { MatchText } from './MatchText.tsx'
 import { placeNameClass } from '../lib/place-name.ts'
+import { resultNote } from '../lib/result-note.ts'
 
 type Hit = { key: string; label: string; detail: string; href: string }
 
-const GENERIC_WHY = new Set(['Place name', 'Guide title', 'Match'])
-
 /** Neighborhood and cuisine are the useful line. "Place name" is the match reason, not a label for the row. */
-function suggestionNote(hit: { kind: string; detail: string; why: string }): string {
+function suggestionNote(hit: { kind: string; title: string; detail: string; why: string }): string {
   if (hit.kind === 'place') return hit.detail
-  if (GENERIC_WHY.has(hit.why)) return hit.detail
-  return hit.why || hit.detail
+  return resultNote(hit) || hit.detail
 }
 
 export function SearchField({

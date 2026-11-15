@@ -241,7 +241,14 @@ export default defineConfig({
           walk(key)
           return out
         }
-        const routes = { top: files('src/pages/TopPage.tsx'), place: files('src/pages/PlacePage.tsx') }
+        // Guide deep links also start the guide page's own chunks with the entry bundle.
+        // (Tried the same for the map route: preloading its map code slowed the first paint there.)
+        const routes = {
+          top: files('src/pages/TopPage.tsx'),
+          place: files('src/pages/PlacePage.tsx'),
+          guide: files('src/pages/GuidePage.tsx'),
+        }
+        if (!routes.guide.length) throw new Error('route preloads: guide chunks missing')
         const status = readFileSync(statusPath, 'utf8')
         writeFileSync(statusPath, status.replace('/*ROUTE_PRELOADS*/{}', JSON.stringify(routes)))
         rmSync(join(dist, '.vite'), { recursive: true, force: true })
@@ -277,6 +284,21 @@ export default defineConfig({
             writeFileSync(join(pd, `${place.id}.json`), JSON.stringify({ place }))
           }
         }
+        // Guide deep links: one small file per guide (about 8 KB) instead of the region's whole
+        // guide bundle (Seattle's is 410 KB). Same records, unchanged; the app falls back to the bundle.
+        const gd = join(dist, 'gd')
+        mkdirSync(gd, { recursive: true })
+        let guideFiles = 0
+        for (const name of ['guides', 'eastside', 'la', 'sf', 'sd', 'vancouver', 'portland', 'nyc', 'palouse']) {
+          const data = JSON.parse(readFileSync(`src/content/${name}.json`, 'utf8'))
+          const list = (Array.isArray(data) ? data : Array.isArray(data.guides) ? data.guides : []) as { slug?: string }[]
+          for (const guide of list) {
+            if (!guide || typeof guide !== 'object' || !guide.slug || !/^[a-z0-9-]+$/.test(guide.slug)) continue
+            writeFileSync(join(gd, `${guide.slug}.json`), JSON.stringify({ guide }))
+            guideFiles += 1
+          }
+        }
+        if (guideFiles < 100) throw new Error(`guide files: only ${guideFiles}`)
         // Hero srcsets ride in status.js so the photo starts with the first request wave (C1).
         // 1 = the standard /photos/<id>.<w>.webp set at 200/400/720/960.
         const compact: Record<string, 1 | 2 | [string, string]> = {}
@@ -294,11 +316,9 @@ export default defineConfig({
     {
       name: 'perf-hints',
       transformIndexHtml(html) {
-        const hints = [
-          '<link rel="preconnect" href="https://tiles.openfreemap.org" crossorigin />',
-          '<link rel="preload" as="fetch" href="https://tiles.openfreemap.org/styles/positron" crossorigin />',
-          '<link rel="preload" as="fetch" href="https://tiles.openfreemap.org/planet" crossorigin />',
-        ]
+        // Map tile hints moved to status.js, which adds them on the map route only. Every other
+        // first visit was opening a third-party connection and two fetches it never used.
+        const hints: string[] = []
         const supabase = process.env.VITE_SUPABASE_URL
         if (supabase) {
           try {

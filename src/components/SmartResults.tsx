@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { PriceFilter } from './PriceFilter.tsx'
 import { cityPath, type CityId } from '../lib/city.ts'
 import { placeNameClass } from '../lib/place-name.ts'
+import { resultNote } from '../lib/result-note.ts'
 import { hasUnknownPrice, matchesPrice } from '../lib/price-filter.ts'
 import type { SmartResult } from '../lib/smart-search.ts'
 import type { Price } from '../types.ts'
@@ -18,7 +19,7 @@ function ResultList({ title, hits, onPick }: { title: string; hits: SmartResult[
             <Link to={hit.href} className="smart-hit" onClick={onPick}>
               <span className="place-row-copy">
                 <span className={hit.kind === 'place' ? placeNameClass(hit.title, 'italic leading-tight') : 'block font-serif text-2xl italic leading-tight'}>{hit.title}</span>
-                {hit.why === 'Place name' || hit.why === 'Guide title' ? null : <span className="mt-1 block text-sm">{hit.why}</span>}
+                {resultNote(hit) ? <span className="mt-1 block text-sm">{resultNote(hit)}</span> : null}
               </span>
               <span className="smart-hit-meta">{hit.detail}</span>
             </Link>
