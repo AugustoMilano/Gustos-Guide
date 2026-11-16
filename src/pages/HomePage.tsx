@@ -1,7 +1,8 @@
 import { useEffect, useMemo, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { NightBox } from '../components/NightBox.tsx'
-import { SmartResults, featuredSlugs } from '../components/SmartResults.tsx'
+import { SmartResults } from '../components/SmartResults.tsx'
+import { HOME_FEATURED } from '../content/home-featured.ts'
 import { catalog, ensureAllCities, ensureRegion } from '../content/load.ts'
 import { areaName, cityPath, regionOf, type CityId } from '../lib/city.ts'
 import { countPlaces } from '../lib/format.ts'
@@ -31,7 +32,7 @@ function Chevron() {
 }
 
 export function HomePage() {
-  const { city, guides, places, ready, failed } = useCityCatalog()
+  const { city, places, ready, failed } = useCityCatalog()
   const navigate = useNavigate()
   const [drafts, setDrafts] = useState<Partial<Record<CityId, string>>>({})
   const draft = drafts[city] ?? ''
@@ -46,6 +47,9 @@ export function HomePage() {
   const { gustoScore } = useApp()
   useEffect(() => { void ensureRegion(city) }, [city])
   useEffect(() => { if (query.length >= 4) void ensureAllCities() }, [query])
+  useEffect(() => {
+    if (document.documentElement.dataset.prerender === 'home') delete document.documentElement.dataset.prerender
+  }, [city])
   // Same rule as the Tonight page: a place is open when its published hours say so right now.
   const openCount = useMemo(() => (ready ? places.filter((place) => isPlaceOpen(place)).length : 0), [places, ready])
   const topCount = useMemo(() => regionBoard(regionOf(city), gustoScore).shown.length, [city, gustoScore, catalog.places.length])
@@ -53,11 +57,7 @@ export function HomePage() {
     () => (query && ready ? smartSearch(query, city, catalog.places, catalog.guides, gustoScore) : null),
     [query, city, ready, gustoScore, catalog.places.length],
   )
-  const featured = featuredSlugs(city)
-    .filter((slug) => slug === 'eastside-date-night' || !slug.includes('date-night'))
-    .map((slug) => guides.find((guide) => guide.slug === slug))
-    .filter((guide) => guide != null)
-    .slice(0, 6)
+  const featured = HOME_FEATURED[city]
 
   return (
     <main id="main" tabIndex={-1} className="home-main outline-none">
@@ -110,7 +110,6 @@ export function HomePage() {
               <h2 id="featured-guides" className="font-serif text-4xl italic">Featured guides</h2>
               {failed ? <p className="mt-4">The guide list didn't load. <button type="button" className="btn" onClick={() => window.location.reload()}>Try again</button></p> : null}
               <div className="home-featured mt-4">
-                {!ready && !failed ? Array.from({ length: 6 }, (_, index) => <div key={index} className="skeleton" aria-hidden="true" />) : null}
                 {featured.map((guide) => (
                   <Link key={guide.slug} to={cityPath(`/guide/${guide.slug}`)} className="guide-card">
                     <p className="text-xs font-bold uppercase tracking-[0.14em] tabular-nums">{countPlaces(guide.count)}</p>

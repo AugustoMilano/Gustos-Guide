@@ -5,7 +5,9 @@ const ledger = JSON.parse(readFileSync(new URL('../data/price-sources.json', imp
 const google = JSON.parse(readFileSync(new URL('../data/price-sources-2026-11-11.json', import.meta.url), 'utf8'))
 const later = new Map(google.places.map((row) => [row.id, row]))
 const nov14 = JSON.parse(readFileSync(new URL('../data/price-sources-2026-11-14.json', import.meta.url), 'utf8'))
+const nov15 = JSON.parse(readFileSync(new URL('../data/price-sources-2026-11-15.json', import.meta.url), 'utf8'))
 for (const row of nov14.places) later.set(row.id, row)
+for (const row of nov15.places) later.set(row.id, row)
 const files = {
   eastside: 'eastside.json',
   la: 'la.json',
@@ -115,4 +117,24 @@ for (const row of nov14.places) {
 }
 assert.equal(byId.get('maruta-shoten').price, 1)
 assert.equal(byId.get('joey-university-village').price, 3)
+
+// Nov 15, 2026 batch: owner-supplied tiers from Augusto. No third-party lookup.
+assert.equal(nov15.places.length, 16)
+assert.equal(new Set(nov15.places.map((row) => row.id)).size, nov15.places.length)
+for (const row of nov15.places) {
+  const place = byId.get(row.id)
+  assert.ok(place, row.id)
+  assert.ok(!archived.has(row.id), row.id)
+  assert.equal(place.name, row.name)
+  assert.equal(place.city ?? 'seattle', row.city)
+  assert.equal(place.price, row.price, row.id)
+  assert.equal(row.source, 'Augusto')
+  assert.equal(row.url, null)
+  assert.match(row.evidence, /^Owner-supplied price from Augusto Milano, Nov 15, 2026/)
+  assert.ok(!/alibi room/i.test(row.name), row.id)
+}
+assert.equal(byId.get('javiers').price, 4)
+assert.match(nov15.places.find((row) => row.id === 'javiers').evidence, /\$100\+ per person/)
+assert.equal(byId.get('freddo').price, 1)
+assert.equal(byId.get('van-leeuwen-ice-cream').price, 1)
 console.log('price sources ok')

@@ -3,6 +3,8 @@ import { readFileSync } from 'node:fs'
 
 const eastside = JSON.parse(readFileSync(new URL('../src/content/eastside.json', import.meta.url), 'utf8'))
 const main = [
+  'ascend-prime-steak-and-sushi',
+  'daniels-broiler',
   'water-grill-bellevue',
   'la-mar-bellevue',
   'carmines',
@@ -63,9 +65,9 @@ assert.equal(best.title, 'Best of Bellevue')
 assert.equal(best.entries.filter((entry) => entry.placeId === 'daniels-broiler').length, 1)
 assert.equal(best.entries.filter((entry) => entry.placeId === 'ascend-prime-steak-and-sushi').length, 1)
 assert.equal(best.entries.length, 7)
-assert.equal(byId.get('daniels-broiler').guideSlugs.includes('bellevue'), false)
+assert.equal(byId.get('daniels-broiler').guideSlugs.includes('bellevue'), true)
 assert.equal(byId.get('daniels-broiler').guideSlugs.includes('best-of-bellevue'), true)
-assert.equal(byId.get('ascend-prime-steak-and-sushi').guideSlugs.includes('bellevue'), false)
+assert.equal(byId.get('ascend-prime-steak-and-sushi').guideSlugs.includes('bellevue'), true)
 assert.equal(byId.get('ascend-prime-steak-and-sushi').guideSlugs.includes('best-of-bellevue'), true)
 const dateNight = eastside.guides.find((guide) => guide.slug === 'eastside-date-night')
 const dateIds = dateNight.entries.map((entry) => entry.placeId)
@@ -82,7 +84,7 @@ assert.deepEqual(dateIds.slice(0, 8), [
 assert.equal(dateIds.at(-1), 'ascend-prime-steak-and-sushi')
 assert.equal(dateIds.filter((id) => id === 'ascend-prime-steak-and-sushi').length, 1)
 assert.equal(byId.get('ascend-prime-steak-and-sushi').guideSlugs.includes('eastside-date-night'), true)
-assert.deepEqual(byId.get('ascend-prime-steak-and-sushi').guideSlugs, ['best-of-bellevue', 'eastside-date-night'])
+assert.deepEqual(byId.get('ascend-prime-steak-and-sushi').guideSlugs, ['bellevue', 'best-of-bellevue', 'eastside-date-night'])
 assert.equal(byId.get('ascend-prime-steak-and-sushi').gustoScore, null)
 assert.equal(byId.get('woodblock').blurb.includes('The bartending staff are the best in the business—especially Blake and Cam.'), true)
 assert.equal(byId.get('woodblock').blurb.includes('thousand bottles'), true)

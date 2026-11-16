@@ -452,7 +452,8 @@
         "count": 23,
         "source": "Yelp"
       },
-      "yelpSlug": "ebGugp8agaFInNwIiTwA4g"
+      "yelpSlug": "ebGugp8agaFInNwIiTwA4g",
+      "price": 1
     },
     {
       "id": "the-musso-frank-grill",
@@ -629,7 +630,8 @@
       ],
       "phone": "+1 (310) 477-5533",
       "website": "https://saffronrosepersianicecream.com",
-      "yelpSlug": "saffron-and-rose-persian-ice-cream-los-angeles"
+      "yelpSlug": "saffron-and-rose-persian-ice-cream-los-angeles",
+      "price": 1
     },
     {
       "id": "parakeet-cafe",
@@ -3665,7 +3667,8 @@
         }
       ],
       "website": "https://www.instagram.com/fondry_la/",
-      "yelpSlug": "fondry-los-angeles-2"
+      "yelpSlug": "fondry-los-angeles-2",
+      "price": 1
     },
     {
       "id": "bacio-di-latte",
@@ -4854,7 +4857,8 @@
       "phone": "+1 (424) 313-8143",
       "website": "https://www.javiersfinestfoods.com/century-city",
       "_n": 8,
-      "yelpSlug": "javiers-century-city-los-angeles"
+      "yelpSlug": "javiers-century-city-los-angeles",
+      "price": 4
     },
     {
       "id": "jon-vinnys",
@@ -5035,7 +5039,8 @@
       ],
       "phone": "+1 (740) 518-3583",
       "website": "https://sabyscafe.com",
-      "yelpSlug": "sabys-coffee-and-kitchen-los-angeles-4"
+      "yelpSlug": "sabys-coffee-and-kitchen-los-angeles-4",
+      "price": 2
     },
     {
       "id": "carlitos-gardel-argentine-steakhouse",
@@ -7631,7 +7636,8 @@
         }
       ],
       "phone": "+1 (310) 278-2855",
-      "website": "https://www.cheesestorebh.com"
+      "website": "https://www.cheesestorebh.com",
+      "price": 2
     },
     {
       "id": "barrique",

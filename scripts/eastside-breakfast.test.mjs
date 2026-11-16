@@ -58,7 +58,7 @@ assert.equal(byId.get('doppio-cafe-and-creperie').photos[0].credit, 'Illustratio
 assert.equal(byId.get('woodblock').blurb.includes('Blake and Cam'), true)
 assert.equal(eastside.guides.find((item) => item.slug === 'eastside-drinks').entries.length, 12)
 assert.equal(eastside.guides.find((item) => item.slug === 'japanese-food-in-bellevue').entries.length, 9)
-assert.equal(eastside.guides.find((item) => item.slug === 'bellevue').entries.length, 15)
+assert.equal(eastside.guides.find((item) => item.slug === 'bellevue').entries.length, 17)
 assert.equal(eastside.guides.find((item) => item.slug === 'best-of-bellevue').entries.length, 7)
 assert.equal(eastside.guides.find((item) => item.slug === 'eastside-date-night').entries.length, 9)
 assert.equal(eastside.guides.find((item) => item.slug === 'eastside-asian').title, 'Eastside Asian food')
