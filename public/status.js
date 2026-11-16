@@ -9,10 +9,33 @@
   var homes = { '/': 1, '/seattle': 1, '/eastside': 1, '/la': 1, '/sf': 1, '/eastbay': 1, '/peninsula': 1, '/northbay': 1, '/sandiego': 1, '/vancouver': 1, '/portland': 1, '/nyc': 1, '/pullman': 1, '/moscow': 1 }
   var navy = homes[path] === 1
   // The landing heading ships as static HTML in index.html; it only shows on the landing route.
-  if (path === '/') document.documentElement.dataset.prerender = '1'
-  // Top 25 deep links: show the static intro shipped in index.html (fix77) until React replaces it.
   var cityM = path.match(/^\/(seattle|eastside|la|sf|eastbay|peninsula|northbay|sandiego|vancouver|portland|nyc|pullman|moscow)(?=\/|$)/)
   var cityId = cityM ? cityM[1] : 'seattle'
+  if (path === '/') document.documentElement.dataset.prerender = '1'
+  if (homes[path] === 1 && path !== '/') {
+    var homeRegion = { la: 'la', sandiego: 'sandiego', vancouver: 'vancouver', portland: 'portland', nyc: 'nyc', pullman: 'pullman', moscow: 'pullman', sf: 'sf', eastbay: 'sf', peninsula: 'sf', northbay: 'sf' }[cityId] || 'seattle'
+    var home = document.documentElement
+    home.dataset.prerender = 'home'
+    home.dataset.preRegion = homeRegion
+    home.dataset.header = homeRegion === 'la' || homeRegion === 'sandiego' || homeRegion === 'vancouver' || homeRegion === 'portland' || homeRegion === 'nyc' ? 'single' : 'areas'
+    var font = document.createElement('link')
+    font.rel = 'preload'
+    font.as = 'font'
+    font.type = 'font/woff2'
+    font.href = './fonts/instrument-serif-italic.woff2'
+    font.crossOrigin = 'anonymous'
+    document.head.appendChild(font)
+    document.addEventListener('DOMContentLoaded', function () {
+      var hour = new Date().getHours()
+      var title = hour < 11 ? 'Plan my morning' : hour < 17 ? 'Plan my afternoon' : 'Plan my night'
+      var ph = hour < 11 ? 'brunch, then coffee' : hour < 17 ? 'lunch, then a bakery' : 'drinks, then dinner, then dessert'
+      var titles = document.querySelectorAll('.pre-plan-title')
+      for (var p = 0; p < titles.length; p++) titles[p].textContent = title
+      var fields = document.querySelectorAll('.pre-plan-input')
+      for (var q = 0; q < fields.length; q++) fields[q].setAttribute('placeholder', ph)
+    })
+  }
+  // Top 25 deep links: show the static intro shipped in index.html (fix77) until React replaces it.
   if ((path.replace(/^\/[a-z]+(?=\/top$)/, '')) === '/top') {
     var region = { la: 'la', sandiego: 'sandiego', vancouver: 'vancouver', portland: 'portland', nyc: 'nyc', pullman: 'pullman', moscow: 'pullman', sf: 'sf', eastbay: 'sf', peninsula: 'sf', northbay: 'sf' }[cityId] || 'seattle'
     var de = document.documentElement
@@ -163,7 +186,7 @@
       var showHero = function () {
         var img = document.querySelector('.pre-place-img')
         if (!img) {
-          if (++tries < 600 && !document.querySelector('#root [data-reactroot], #root > :not(.pre-landing):not(.pre-top):not(.pre-place)')) setTimeout(showHero, 16)
+          if (++tries < 600 && !document.querySelector('#root [data-reactroot], #root > :not(.pre-landing):not(.pre-top):not(.pre-place):not(.pre-home)')) setTimeout(showHero, 16)
           return
         }
         if (!document.querySelector('#root > main.pre-place')) return
