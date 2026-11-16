@@ -5964,6 +5964,22 @@ html[data-prerender][data-pre-region='pullman'] { --header-offset: 77px; }
    largest paint does not wait for the app. Same boxes as PlaceGallery > PhotoFrame. */
 main.pre-place { display: none; }
 html[data-prerender='place'] main.pre-place { display: block; padding-top: calc(var(--header-offset) + 1rem); }
+main.pre-home, .pre-home-city { display: none; }
+html[data-prerender='home'] main.pre-home { display: block; }
+html[data-prerender='home'][data-area='seattle'] .pre-home-city[data-city='seattle'],
+html[data-prerender='home'][data-area='eastside'] .pre-home-city[data-city='eastside'],
+html[data-prerender='home'][data-area='la'] .pre-home-city[data-city='la'],
+html[data-prerender='home'][data-area='sf'] .pre-home-city[data-city='sf'],
+html[data-prerender='home'][data-area='eastbay'] .pre-home-city[data-city='eastbay'],
+html[data-prerender='home'][data-area='peninsula'] .pre-home-city[data-city='peninsula'],
+html[data-prerender='home'][data-area='northbay'] .pre-home-city[data-city='northbay'],
+html[data-prerender='home'][data-area='sandiego'] .pre-home-city[data-city='sandiego'],
+html[data-prerender='home'][data-area='vancouver'] .pre-home-city[data-city='vancouver'],
+html[data-prerender='home'][data-area='portland'] .pre-home-city[data-city='portland'],
+html[data-prerender='home'][data-area='nyc'] .pre-home-city[data-city='nyc'],
+html[data-prerender='home'][data-area='pullman'] .pre-home-city[data-city='pullman'],
+html[data-prerender='home'][data-area='moscow'] .pre-home-city[data-city='moscow'] { display: block; }
+
 /* LCP sizes the app's gallery image a hair larger than this static copy (paint-rect snapping), so
    the later React paint of the same photo would be reported instead of this first one. One extra CSS
    pixel of width, inside the frame's 2px border, keeps the first, real paint as the measured one. */

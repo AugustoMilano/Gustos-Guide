@@ -1852,7 +1852,8 @@
         "count": 25,
         "source": "Yelp"
       },
-      "yelpSlug": "wq3crYVjwrR6G387Bkx7cw"
+      "yelpSlug": "wq3crYVjwrR6G387Bkx7cw",
+      "price": 1
     },
     {
       "id": "angus-t",
@@ -4777,7 +4778,8 @@
         }
       ],
       "phone": "+1 (672) 999-3309",
-      "website": null
+      "website": null,
+      "price": 2
     },
     {
       "id": "seasons-in-the-park",
@@ -6453,7 +6455,8 @@
         }
       ],
       "phone": "+1 (604) 685-5010",
-      "website": "http://www.coastrestaurant.ca"
+      "website": "http://www.coastrestaurant.ca",
+      "price": 3
     },
     {
       "id": "deville-coffee",
