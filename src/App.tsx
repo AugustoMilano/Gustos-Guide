@@ -38,6 +38,7 @@ const NightPage = lazy(() => import('./pages/NightPage.tsx').then((module) => ({
 const ScoreQueuePage = lazy(() => import('./pages/ScoreQueuePage.tsx').then((module) => ({ default: module.ScoreQueuePage })))
 const QuickScorePage = lazy(() => import('./pages/QuickScorePage.tsx').then((module) => ({ default: module.QuickScorePage })))
 const PhotoQueuePage = lazy(() => import('./pages/PhotoQueuePage.tsx').then((module) => ({ default: module.PhotoQueuePage })))
+const OwnerPage = lazy(() => import('./pages/OwnerPage.tsx').then((module) => ({ default: module.OwnerPage })))
 const CollectionPage = lazy(() => import('./pages/CollectionPage.tsx').then((module) => ({ default: module.CollectionPage })))
 
 function CollectionRoute() {
@@ -274,6 +275,7 @@ function CatalogRoutes() {
             <Route key={`${prefix}-my`} path={`${prefix}/my`} element={<MyGuidesPage />} />,
             <Route key={`${prefix}-profile`} path={`${prefix}/u/:handle`} element={<ProfilePage />} />,
           ])}
+          <Route path="/owner" element={<OwnerPage />} />
           <Route path="/terms" element={<LegalPage slug="terms" />} />
           <Route path="/privacy" element={<LegalPage slug="privacy" />} />
           <Route path="*" element={<NotFoundPage />} />

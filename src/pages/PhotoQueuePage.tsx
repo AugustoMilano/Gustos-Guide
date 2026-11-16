@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { AreaKicker } from '../components/AreaKicker.tsx'
 import { PlaceThumb } from '../components/PlaceThumb.tsx'
 import { SignInSheet } from '../components/SignInSheet.tsx'
+import { OwnerSignInLink } from '../components/OwnerSignInLink.tsx'
 import { loadGuides } from '../content/load.ts'
 import { cityPath } from '../lib/city.ts'
 import { placesForCity, useCityId } from '../lib/use-city.ts'
@@ -54,12 +55,12 @@ export function PhotoQueuePage() {
       <h1 className="mt-2 font-serif text-5xl italic">Needs a photo</h1>
       {!app.user ? (
         <div className="friend-empty mt-4">
-          <p className="font-serif text-2xl italic">Sign in to add house photos.</p>
-          <p className="mt-1 text-sm">These shots show for everyone, ahead of the drawing.</p>
-          <button type="button" className="btn btn-coral mt-3" onClick={() => setSignIn(true)}>Sign in</button>
+          <p className="font-serif text-2xl italic">Owner sign-in</p>
+          <p className="mt-1 text-sm">This page is for the owner.</p>
+          {app.supabase ? <button type="button" className="btn btn-coral mt-3" onClick={() => setSignIn(true)}>Sign in</button> : <OwnerSignInLink />}
         </div>
       ) : !app.user.isOwner ? (
-        <p className="mt-4">House photos stay with the house. A photo you took still belongs on the place page after you mark Been.</p>
+        <p className="mt-4">This page is for the owner. You can add your own photo on a place page after you mark Been.{app.supabase ? null : <> <Link className="underline" to="/owner">Owner sign-in</Link></>}</p>
       ) : !app.photosReady || !guides ? (
         <div className="mt-4 grid gap-3 sm:grid-cols-2" aria-busy="true">
           <p className="sr-only">Loading places that still need a photo.</p>
@@ -69,7 +70,7 @@ export function PhotoQueuePage() {
       ) : queue.length === 0 ? (
         <div className="friend-empty mt-4">
           <p className="font-serif text-2xl italic">Nothing here is still a drawing.</p>
-          <p className="mt-1 text-sm">The busy places already have a house photo or a Wikimedia shot.</p>
+          <p className="mt-1 text-sm">The busy places already have a photo.</p>
         </div>
       ) : (
         <>

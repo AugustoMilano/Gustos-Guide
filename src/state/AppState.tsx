@@ -18,6 +18,7 @@ import { compressToWebp, readPhotos, removePhoto, savePhoto, type StoredPhoto } 
 import { rescore } from '../lib/rank.ts'
 import { mergeUploads, type LivePhoto } from '../lib/gallery.ts'
 import { HOUSE_SCORE_FALLBACK } from '../lib/house-score-fallback.ts'
+import { fetchOwnerSession, hasOwnerHint, ownerLogin, ownerLogout } from '../lib/owner-session.ts'
 import type { HouseMark } from '../lib/quick-score.ts'
 import { deleteGuideRemote, importLocalBundle, loadAccount, loadHouseMarks, loadHouseScores, loadNotices, loadOwnerPhotos, loadPlans, saveGuide, savePlan, type FriendLists, type FriendProfile, type FriendRequest } from '../social/account.ts'
 import {
@@ -73,6 +74,13 @@ type AppValue = {
   sendMagicLink: (email: string) => Promise<void>
   signInProvider: (provider: 'apple' | 'google' | 'x') => Promise<void>
   signOut: () => void
+  /** Owner status checked by the server (/api/owner/session). Local mode only. */
+  ownerSignedIn: boolean
+  ownerChecked: boolean
+  ownerConfigured: boolean
+  ownerSignIn: (password: string) => Promise<void>
+  ownerSignOut: () => Promise<void>
+  checkOwner: () => Promise<void>
   statuses: Record<string, VisitStatus>
   setStatus: (placeId: string, status: VisitStatus) => void
   /** Reload this account from the server (pull-to-refresh). */
@@ -170,11 +178,6 @@ function emptyDoc(): Doc {
   }
 }
 
-function ownerName(name: string): boolean {
-  const key = name.trim().toLowerCase()
-  return key === 'augusto' || key === 'gusto' || key === 'augusto milano'
-}
-
 function handleOf(name: string): string {
   return name.toLowerCase().replace(/[^a-z0-9]+/g, '') || 'guest'
 }
@@ -200,7 +203,18 @@ export function AppProvider({ children }: { children: ReactNode }) {
     return () => { live = false }
   }, [remote])
   const providers = useMemo(() => authProviders(), [])
-  const [user, setUser] = useState<SessionUser | null>(null)
+  const [baseUser, setUser] = useState<SessionUser | null>(null)
+  // Local mode: owner comes only from the server-checked HttpOnly cookie, never from a typed name
+  // or from localStorage. Supabase mode: owner comes from profiles.is_owner (set in SQL, guarded by RLS).
+  const [ownerVerified, setOwnerVerified] = useState(false)
+  const [ownerChecked, setOwnerChecked] = useState(false)
+  const [ownerConfigured, setOwnerConfigured] = useState(false)
+  const user = useMemo<SessionUser | null>(() => {
+    if (!baseUser) return null
+    if (supabaseConfigured) return baseUser
+    const isOwner = ownerVerified
+    return baseUser.isOwner === isOwner ? baseUser : { ...baseUser, isOwner }
+  }, [baseUser, ownerVerified])
   const [doc, setDoc] = useState<Doc>(emptyDoc)
   const [photos, setPhotos] = useState<LivePhoto[]>([])
   const [housePhotos, setHousePhotos] = useState<LivePhoto[]>([])
@@ -330,6 +344,14 @@ export function AppProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
     // A configured app waits for house_scores. The device cache is only the score source offline.
     if (supabaseConfigured) return
+    // On-device house scores and marks are the owner's drafts. Only a server-verified owner sees them,
+    // so a visitor who once typed his name does not keep a fake Gusto's Score in this browser.
+    if (!ownerVerified) {
+      setHouse({})
+      marksRef.current = {}
+      setMarks({})
+      return
+    }
     try {
       const raw = localStorage.getItem(HOUSE_KEY)
       if (raw) {
@@ -354,7 +376,7 @@ export function AppProvider({ children }: { children: ReactNode }) {
       marksRef.current = {}
       setMarks({})
     }
-  }, [])
+  }, [ownerVerified])
 
   useEffect(() => {
     if (!remote) return
@@ -425,10 +447,48 @@ export function AppProvider({ children }: { children: ReactNode }) {
     if (supabaseConfigured) return
     const raw = localStorage.getItem(SESSION_KEY)
     if (!raw) return
-    const session = JSON.parse(raw) as SessionUser
+    try {
+      const session = JSON.parse(raw) as SessionUser
+      if (!session || typeof session.id !== 'string') return
+      setUser({ ...session, isOwner: false })
+      setDoc(loadDoc(session.id))
+    } catch {
+      localStorage.removeItem(SESSION_KEY)
+    }
+  }, [remote])
+
+  const checkOwner = useCallback(async () => {
+    if (supabaseConfigured) return
+    const session = await fetchOwnerSession()
+    setOwnerVerified(session.owner)
+    setOwnerConfigured(session.configured)
+    setOwnerChecked(true)
+  }, [])
+
+  useEffect(() => {
+    // Ordinary visitors never call the endpoint on load; only a browser that signed in as owner before.
+    if (supabaseConfigured || !hasOwnerHint()) return
+    void checkOwner()
+  }, [checkOwner])
+
+  async function ownerSignIn(password: string) {
+    if (supabaseConfigured) throw new Error('Owner sign-in uses your account on this build.')
+    await ownerLogin(password)
+    await checkOwner()
+    // Keep his existing on-device data (it was saved under local-augusto).
+    const session: SessionUser = { id: 'local-augusto', name: 'Augusto', handle: 'augusto', isOwner: false }
+    localStorage.setItem(SESSION_KEY, JSON.stringify(session))
     setUser(session)
     setDoc(loadDoc(session.id))
-  }, [remote])
+    try { localStorage.setItem('gg_owner', '1') } catch { /* storage off */ }
+    setAnnouncement('Signed in as the owner.')
+  }
+
+  async function ownerSignOut() {
+    await ownerLogout()
+    setOwnerVerified(false)
+    setAnnouncement('Owner signed out.')
+  }
 
   useEffect(() => {
     if (!remote) return
@@ -545,7 +605,7 @@ export function AppProvider({ children }: { children: ReactNode }) {
       id: `local-${handleOf(trimmed)}`,
       name: trimmed,
       handle: handleOf(trimmed),
-      isOwner: ownerName(trimmed),
+      isOwner: false,
     }
     localStorage.setItem(SESSION_KEY, JSON.stringify(session))
     setUser(session)
@@ -570,6 +630,7 @@ export function AppProvider({ children }: { children: ReactNode }) {
   function signOut() {
     if (remote) void remote.auth.signOut()
     localStorage.removeItem(SESSION_KEY)
+    if (!supabaseConfigured && ownerVerified) void ownerSignOut()
     setUser(null)
     setDoc(emptyDoc())
     setFriends([])
@@ -1441,6 +1502,12 @@ export function AppProvider({ children }: { children: ReactNode }) {
     sendMagicLink: emailLink,
     signInProvider: providerSignIn,
     signOut,
+    ownerSignedIn: !supabaseConfigured && ownerVerified,
+    ownerChecked,
+    ownerConfigured,
+    ownerSignIn,
+    ownerSignOut,
+    checkOwner,
     statuses: doc.statuses,
     setStatus,
     refresh: async () => {
@@ -1490,7 +1557,8 @@ export function AppProvider({ children }: { children: ReactNode }) {
     compare,
     startRank,
     answerRank,
-    photos: remote ? mergeUploads(housePhotos, photos) : photos,
+    // Local mode: house (owner) uploads on this device only show to the server-verified owner.
+    photos: remote ? mergeUploads(housePhotos, photos) : ownerVerified ? photos : photos.filter((photo) => !photo.owner),
     photosReady,
     uploadPhoto,
     deletePhoto,

@@ -45,7 +45,7 @@ export function SignInSheet({ open, onClose }: { open: boolean; onClose: () => v
             ? xOn
               ? 'Continue with X, or email yourself a sign-in link. It opens back on Gusto’s Guide.'
               : 'We’ll email you a sign-in link. It opens back on Gusto’s Guide.'
-            : 'Your name stays on this phone. Sign in as Augusto for house photos.'}
+            : 'Your name and lists stay on this phone.'}
         </p>
         {xOn ? (
           <button
