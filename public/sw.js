@@ -157,6 +157,8 @@ self.addEventListener('fetch', (event) => {
     return
   }
   if (url.origin !== self.location.origin) return
+  // API answers (owner session, plan-night) are never cached: an owner check must always hit the server.
+  if (url.pathname.startsWith('/api/')) return
   if (isWorkerScript(url)) {
     event.respondWith(fetch(request))
     return
