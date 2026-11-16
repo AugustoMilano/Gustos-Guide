@@ -28,7 +28,7 @@ for (const city of grouped.cities) {
 assert.equal(seen.size, eastside.places.length)
 
 const guideLength = Object.fromEntries(eastside.guides.map((guide) => [guide.slug, guide.entries.length]))
-assert.equal(guideLength.bellevue, 15)
+assert.equal(guideLength.bellevue, 17)
 assert.equal(guideLength.kirkland, 12)
 assert.equal(guideLength.redmond, 11)
 assert.equal(eastside.guides.find((guide) => guide.slug === 'bellevue').title, 'Bellevue Essentials')
