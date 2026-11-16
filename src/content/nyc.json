@@ -4636,7 +4636,8 @@
         }
       ],
       "phone": "+1 (212) 966-2882",
-      "website": "https://taiyakinyc.com"
+      "website": "https://taiyakinyc.com",
+      "price": 1
     },
     {
       "id": "le-french-diner",
@@ -5390,7 +5391,8 @@
         }
       ],
       "phone": "+1 (212) 343-9922",
-      "website": "https://www.laboratoriodelgelato.com"
+      "website": "https://www.laboratoriodelgelato.com",
+      "price": 1
     },
     {
       "id": "salt-hanks",
@@ -7621,7 +7623,8 @@
         }
       ],
       "phone": "+1 (917) 965-2583",
-      "website": "https://www.hotelsbarriere.com/en/collection-fouquets/new-york/restaurants-and-bars/titsou-bar.html"
+      "website": "https://www.hotelsbarriere.com/en/collection-fouquets/new-york/restaurants-and-bars/titsou-bar.html",
+      "price": 3
     },
     {
       "id": "bondst",
@@ -12388,7 +12391,8 @@
         }
       ],
       "phone": "+1 (718) 550-5665",
-      "website": "https://vanleeuwenicecream.com/"
+      "website": "https://vanleeuwenicecream.com/",
+      "price": 1
     },
     {
       "id": "bg-restaurant",

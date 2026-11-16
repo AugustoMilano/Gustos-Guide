@@ -822,7 +822,8 @@
         }
       ],
       "phone": "+1 (619) 228-9851",
-      "website": "https://www.mabelsgonefishing.com/home"
+      "website": "https://www.mabelsgonefishing.com/home",
+      "price": 2
     },
     {
       "id": "ironside",
@@ -894,7 +895,8 @@
         }
       ],
       "phone": "+1 (619) 269-3033",
-      "website": "https://ironsidefishandoyster.com/"
+      "website": "https://ironsidefishandoyster.com/",
+      "price": 2
     },
     {
       "id": "quixote",
