@@ -19,6 +19,8 @@
 /feed/ /hop.htm 200
 /tonight /hop.htm 200
 /tonight/ /hop.htm 200
+/owner /hop.htm 200
+/owner/ /hop.htm 200
 /score /hop.htm 200
 /score/ /hop.htm 200
 /score/quick /hop.htm 200

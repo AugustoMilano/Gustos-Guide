@@ -35,3 +35,7 @@ dist-ssr
 *.sw?
 /public/og/cities/*.png
 /public/og/top/*.png
+
+# Local Pages Function secrets (owner sign-in). Never commit.
+.dev.vars
+.dev.vars.*

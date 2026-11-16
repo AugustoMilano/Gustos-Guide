@@ -42,6 +42,27 @@ Hash routes are not separate documents. Crawlers that ignore the hash will only 
 
 No environment variables are required for the local demo. Lists, ranks, notifications, and Gusto's Score stay in this browser.
 
+## Owner sign-in (local mode)
+
+Without Supabase, the visitor "Sign in" only stores a name and lists in that browser. It never makes anyone the owner. Owner tools (the score and photo queues) unlock only after the server checks the owner password at `/#/owner` (also `https://gustosguide.com/owner`).
+
+- `functions/api/owner/login.ts` checks the password against `OWNER_PASSWORD_HASH` (PBKDF2-SHA256, 100,000 rounds) and sets `__Host-gg_owner`, an HttpOnly, Secure, SameSite=Strict cookie signed with `OWNER_SESSION_SECRET`. It lasts 30 days.
+- `functions/api/owner/session.ts` answers `{ owner, configured }`. The page only asks when this browser signed in as owner before, so visitors make no extra request.
+- `functions/api/owner/logout.ts` clears the cookie.
+- Any future Function that writes owner data must call `requireOwner()` from `functions/_lib/owner-auth.ts`.
+
+Secrets live on the Pages project only, never in the repo or a `VITE_` variable:
+
+```bash
+node scripts/owner-password-hash.mjs            # the owner types the password; prints the hash
+npx wrangler pages secret put OWNER_PASSWORD_HASH --project-name gustos-guide
+openssl rand -base64 48 | npx wrangler pages secret put OWNER_SESSION_SECRET --project-name gustos-guide
+```
+
+Until both are set, `/owner` says sign-in is not set up and nobody is the owner. Rotating `OWNER_SESSION_SECRET` signs the owner out everywhere. Optional: a Cloudflare WAF rate-limit rule on `POST /api/owner/login` (for example 10 per 10 minutes per IP); the Function also brakes repeated tries.
+
+`npm run test:owner` checks the hash, the cookie, cross-site refusal, and that a typed name never grants owner.
+
 ## Supabase
 
 Leave these unset to stay local. Seeded friends are not included unless a dev server is started with `VITE_DEMO_FRIENDS=1`. Production builds ignore that flag:
