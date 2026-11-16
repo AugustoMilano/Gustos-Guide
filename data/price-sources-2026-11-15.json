@@ -1,0 +1,150 @@
+{
+  "checkedAt": "2026-11-15",
+  "method": "Owner-supplied price tiers from Augusto Milano, Nov 15, 2026. Source Augusto; no third-party lookup. Javier's is $$$$ because he said $100+ per person. No estimates.",
+  "places": [
+    {
+      "id": "freddo",
+      "name": "Freddo",
+      "city": "la",
+      "price": 1,
+      "source": "Augusto",
+      "url": null,
+      "evidence": "Owner-supplied price from Augusto Milano, Nov 15, 2026."
+    },
+    {
+      "id": "saffron-rose-persian-ice-cream",
+      "name": "Saffron & Rose Persian Ice Cream",
+      "city": "la",
+      "price": 1,
+      "source": "Augusto",
+      "url": null,
+      "evidence": "Owner-supplied price from Augusto Milano, Nov 15, 2026."
+    },
+    {
+      "id": "fondry",
+      "name": "Fondry",
+      "city": "la",
+      "price": 1,
+      "source": "Augusto",
+      "url": null,
+      "evidence": "Owner-supplied price from Augusto Milano, Nov 15, 2026."
+    },
+    {
+      "id": "javiers",
+      "name": "Javier's",
+      "city": "la",
+      "price": 4,
+      "source": "Augusto",
+      "url": null,
+      "evidence": "Owner-supplied price from Augusto Milano, Nov 15, 2026: $100+ per person."
+    },
+    {
+      "id": "sabys-cafe",
+      "name": "Saby's Cafe",
+      "city": "la",
+      "price": 2,
+      "source": "Augusto",
+      "url": null,
+      "evidence": "Owner-supplied price from Augusto Milano, Nov 15, 2026."
+    },
+    {
+      "id": "the-cheese-store",
+      "name": "The Cheese Store",
+      "city": "la",
+      "price": 2,
+      "source": "Augusto",
+      "url": null,
+      "evidence": "Owner-supplied price from Augusto Milano, Nov 15, 2026."
+    },
+    {
+      "id": "taiyaki-nyc",
+      "name": "Taiyaki NYC",
+      "city": "nyc",
+      "price": 1,
+      "source": "Augusto",
+      "url": null,
+      "evidence": "Owner-supplied price from Augusto Milano, Nov 15, 2026."
+    },
+    {
+      "id": "il-laboratorio-del-gelato",
+      "name": "il laboratorio del gelato",
+      "city": "nyc",
+      "price": 1,
+      "source": "Augusto",
+      "url": null,
+      "evidence": "Owner-supplied price from Augusto Milano, Nov 15, 2026."
+    },
+    {
+      "id": "titsou-bar",
+      "name": "Titsou Bar",
+      "city": "nyc",
+      "price": 3,
+      "source": "Augusto",
+      "url": null,
+      "evidence": "Owner-supplied price from Augusto Milano, Nov 15, 2026."
+    },
+    {
+      "id": "van-leeuwen-ice-cream",
+      "name": "Van Leeuwen Ice Cream",
+      "city": "nyc",
+      "price": 1,
+      "source": "Augusto",
+      "url": null,
+      "evidence": "Owner-supplied price from Augusto Milano, Nov 15, 2026."
+    },
+    {
+      "id": "mabels-gone-fishing",
+      "name": "Mabel’s Gone Fishing",
+      "city": "sandiego",
+      "price": 2,
+      "source": "Augusto",
+      "url": null,
+      "evidence": "Owner-supplied price from Augusto Milano, Nov 15, 2026."
+    },
+    {
+      "id": "ironside",
+      "name": "Ironside",
+      "city": "sandiego",
+      "price": 2,
+      "source": "Augusto",
+      "url": null,
+      "evidence": "Owner-supplied price from Augusto Milano, Nov 15, 2026."
+    },
+    {
+      "id": "golden-gate-fortune-cookie-factory",
+      "name": "Golden Gate Fortune Cookie Factory",
+      "city": "sf",
+      "price": 1,
+      "source": "Augusto",
+      "url": null,
+      "evidence": "Owner-supplied price from Augusto Milano, Nov 15, 2026."
+    },
+    {
+      "id": "chocolats-favoris",
+      "name": "Chocolats Favoris",
+      "city": "vancouver",
+      "price": 1,
+      "source": "Augusto",
+      "url": null,
+      "evidence": "Owner-supplied price from Augusto Milano, Nov 15, 2026."
+    },
+    {
+      "id": "magari-by-oca",
+      "name": "Magari by Oca",
+      "city": "vancouver",
+      "price": 2,
+      "source": "Augusto",
+      "url": null,
+      "evidence": "Owner-supplied price from Augusto Milano, Nov 15, 2026."
+    },
+    {
+      "id": "coast",
+      "name": "Coast",
+      "city": "vancouver",
+      "price": 3,
+      "source": "Augusto",
+      "url": null,
+      "evidence": "Owner-supplied price from Augusto Milano, Nov 15, 2026."
+    }
+  ]
+}
