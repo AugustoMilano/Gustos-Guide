@@ -239,7 +239,7 @@ export function PlacePage() {
       </div>
       <section className="place-upload" aria-labelledby="upload-heading">
             <h2 id="upload-heading" className="font-serif text-3xl italic">Add a photo</h2>
-            <p className="mt-2 text-sm">Been here? Add a photo. House shots are credited Photo by Gusto.</p>
+            <p className="mt-2 text-sm">Been here? Add a photo.</p>
             {!app.user ? (
               <button type="button" className="btn btn-coral mt-3" onClick={() => setSignIn(true)}>Sign in to add a photo</button>
             ) : !been && !app.user.isOwner ? (

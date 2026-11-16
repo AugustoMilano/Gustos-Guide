@@ -4,6 +4,7 @@ import { AreaKicker } from '../components/AreaKicker.tsx'
 import { HouseScorePad } from '../components/HouseScorePad.tsx'
 import { PlaceThumb } from '../components/PlaceThumb.tsx'
 import { SignInSheet } from '../components/SignInSheet.tsx'
+import { OwnerSignInLink } from '../components/OwnerSignInLink.tsx'
 import { cityPath } from '../lib/city.ts'
 import { useCityCatalog } from '../lib/use-city.ts'
 import { usePageMeta } from '../lib/meta.ts'
@@ -33,12 +34,12 @@ export function ScoreQueuePage() {
       ) : null}
       {!app.user ? (
         <div className="friend-empty mt-4">
-          <p className="font-serif text-2xl italic">Sign in to score.</p>
-          <p className="mt-1 text-sm">House scores stay with the house. Nothing here is filled in for you.</p>
-          <button type="button" className="btn btn-coral mt-3" onClick={() => setSignIn(true)}>Sign in</button>
+          <p className="font-serif text-2xl italic">Owner sign-in</p>
+          <p className="mt-1 text-sm">This page is for the owner.</p>
+          {app.supabase ? <button type="button" className="btn btn-coral mt-3" onClick={() => setSignIn(true)}>Sign in</button> : <OwnerSignInLink />}
         </div>
       ) : !app.user.isOwner ? (
-        <p className="mt-4">These scores stay with the house. Your own ranks live on Rank.</p>
+        <p className="mt-4">This page is for the owner. Your own ranks live on Rank.{app.supabase ? null : <> <Link className="underline" to="/owner">Owner sign-in</Link></>}</p>
       ) : queue.length === 0 ? (
         <p className="mt-4">Every place on the guide has a house score.</p>
       ) : (

@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import { CollectionMembership } from '../components/CollectionMembership.tsx'
 import { PlaceThumb } from '../components/PlaceThumb.tsx'
 import { SignInSheet } from '../components/SignInSheet.tsx'
+import { OwnerSignInLink } from '../components/OwnerSignInLink.tsx'
 import { scoreBand } from '../components/ScoreBadge.tsx'
 import { catalog, ensureAllCities } from '../content/load.ts'
 import { cityPath } from '../lib/city.ts'
@@ -222,12 +223,12 @@ export function QuickScorePage() {
       </div>
       {!app.user ? (
         <div className="friend-empty mt-4">
-          <p className="font-serif text-2xl italic">Sign in to score.</p>
-          <p className="mt-1 text-sm">House scores stay with the house.</p>
-          <button type="button" className="btn btn-coral mt-3" onClick={() => setSignIn(true)}>Sign in</button>
+          <p className="font-serif text-2xl italic">Owner sign-in</p>
+          <p className="mt-1 text-sm">This page is for the owner.</p>
+          {app.supabase ? <button type="button" className="btn btn-coral mt-3" onClick={() => setSignIn(true)}>Sign in</button> : <OwnerSignInLink />}
         </div>
       ) : !owner ? (
-        <p className="mt-4">Quick score is only for the house. Your own ranks stay on Rank.</p>
+        <p className="mt-4">This page is for the owner. Your own ranks stay on Rank.{app.supabase ? null : <> <Link className="underline" to="/owner">Owner sign-in</Link></>}</p>
       ) : (
         <>
           <div className="mt-4 flex flex-wrap gap-2">
