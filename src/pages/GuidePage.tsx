@@ -9,6 +9,8 @@ import { PriceFilter } from '../components/PriceFilter.tsx'
 import { ShareButton } from '../components/ShareButton.tsx'
 import { StoryShareButton } from '../components/StoryShareButton.tsx'
 import { SignInSheet } from '../components/SignInSheet.tsx'
+import { MyOrderEditor } from '../components/MyOrderEditor.tsx'
+import { applyOrder, useMyOrder } from '../lib/my-order.ts'
 import { catalog, catalogPhase, ensureRegion, loadGuide, peekGuide, subscribeCatalog } from '../content/load.ts'
 import { cityPath } from '../lib/city.ts'
 import { cuisineMenuLabel } from '../lib/cuisine-label.ts'
@@ -52,7 +54,7 @@ export function GuidePage() {
   const urlCity = useCityId()
   useSyncExternalStore(subscribeCatalog, catalogPhase, catalogPhase)
   useEffect(() => { void ensureRegion(urlCity) }, [urlCity])
-  const { statuses, setStatus, user, photos, friendScore, gustoScore } = useApp()
+  const { statuses, setStatus, user, photos, friendScore, gustoScore, accounts } = useApp()
   const [guide, setGuide] = useState<Guide | null>(() => peekGuide(slug) ?? null)
   const [missing, setMissing] = useState(false)
   const [neighborhood, setNeighborhood] = useState('')
@@ -65,7 +67,18 @@ export function GuidePage() {
   const [signInOpen, setSignInOpen] = useState(false)
   const [filtersOpen, setFiltersOpen] = useState(false)
   const { dock, concealed } = useConcealOnScroll(filtersOpen)
-  const [sort, setSort] = useState<'guide' | 'score' | 'near'>('score')
+  const [sort, setSort] = useState<'guide' | 'score' | 'near' | 'my'>('score')
+  const [editingOrder, setEditingOrder] = useState(false)
+  const [signInReason, setSignInReason] = useState<string | undefined>(undefined)
+  const myOrder = useMyOrder(slug, user?.id ?? null, accounts)
+  function sortMine() {
+    if (!user) {
+      setSignInReason('Sign in to keep your own order for this guide. It is saved to your account, only you see it, and it follows you to any phone or computer.')
+      setSignInOpen(true)
+      return
+    }
+    setSort('my')
+  }
   const [here, setHere] = useState<{ lat: number; lng: number } | null>(null)
   const [nearNote, setNearNote] = useState<string | null>(null)
   function sortNear() {
@@ -100,6 +113,7 @@ export function GuidePage() {
     setTag('')
     setOpenNow(false)
     setSort('score')
+    setEditingOrder(false)
     void loadGuide(slug).then((next) => {
       if (cancelled) return
       if (!next) {
@@ -140,7 +154,10 @@ export function GuidePage() {
   })
   const byDistance = sort === 'near' && here
     ? shown.slice().sort((a, b) => milesBetween(here, a.place) - milesBetween(here, b.place))
-    : shown
+    : sort === 'my'
+      ? applyOrder(shown, (row) => row.place.id, myOrder.order?.ids)
+      : shown
+  const hasMyOrder = Boolean(myOrder.order?.ids.length)
   const presented = sort === 'score'
     ? rankByHouseScore(byDistance, gustoScore, guide?.slug === 'eastside-drinks' || guide?.slug === 'best-breakfast-on-the-east-side' ? 'guide' : 'name')
     : byDistance.map((row) => ({ ...row, rank: null as number | null }))
@@ -235,14 +252,30 @@ export function GuidePage() {
         <p className="mt-2 text-xs font-bold tracking-[0.14em] uppercase">{guide.group} · Updated {formatDay(guide.updatedAt)}</p>
         <h1 className="mt-1 font-serif text-4xl italic leading-none sm:text-5xl">{guide.title}</h1>
         <div className="city-switch sort-seg mt-3" role="group" aria-label="Sort this guide">
-          {([['score', "Gusto's Score"], ['guide', 'Guide order'], ['near', 'Near me']] as [typeof sort, string][]).map(([id, label]) => (
-            <button key={id} type="button" className="city-switch-btn" aria-pressed={sort === id} onClick={() => (id === 'near' ? sortNear() : setSort(id))}>
+          {([['score', "Gusto's Score"], ['guide', 'Guide order'], ['near', 'Near me'], ['my', 'My order']] as [typeof sort, string][]).map(([id, label]) => (
+            <button key={id} type="button" className="city-switch-btn" aria-pressed={sort === id} data-sort={id} onClick={() => { setEditingOrder(false); if (id === 'near') sortNear(); else if (id === 'my') sortMine(); else setSort(id) }}>
               {sort === id ? <m.span layoutId="sort-pill" className="city-switch-glint" transition={reduceMotion ? { duration: 0 } : { type: 'spring', stiffness: 420, damping: 32 }} /> : null}
               <span className="city-switch-label">{label}</span>
             </button>
           ))}
         </div>
             {nearNote ? <p className="mt-2 text-sm" role="status">{nearNote}</p> : null}
+        {sort === 'my' && user ? (
+          <div className="my-order-bar" data-my-order-bar>
+            <p className="my-order-note">
+              {hasMyOrder ? 'Your order. Only you see it.' : 'Starts in guide order. Tap Edit order to make it yours. Only you see it.'}
+              {' '}
+              <span className="my-order-sync" role="status">
+                {myOrder.sync === 'saving' ? 'Saving…' : myOrder.sync === 'account' && hasMyOrder ? 'Saved to your account.' : myOrder.sync === 'device' && hasMyOrder ? 'Saved on this device.' : ''}
+              </span>
+            </p>
+            {!editingOrder ? <button type="button" className="btn text-sm" onClick={() => setEditingOrder(true)} data-edit-order>Edit order</button> : null}
+            {hasMyOrder && !editingOrder ? <button type="button" className="btn text-sm" onClick={myOrder.reset}>Reset to guide order</button> : null}
+            {myOrder.error ? (
+              <p className="save-error w-full text-sm" role="alert">{myOrder.error} <button type="button" className="underline" onClick={myOrder.retry}>Retry</button></p>
+            ) : null}
+          </div>
+        ) : null}
         <p className="mt-2 text-sm font-bold">{presented.length === rows.length ? countPlaces(rows.length) : `${presented.length} of ${countPlaces(rows.length)}`}</p>
         <div ref={dock} className={`guide-filter-dock${concealed ? ' is-concealed' : ''}`} data-concealed={concealed ? 'true' : 'false'} inert={concealed || undefined}>
         <div className="guide-filters mt-3 hidden lg:flex">
@@ -323,7 +356,17 @@ export function GuidePage() {
         <div className="mt-4">
           <GuideStrip rows={stripRows} uploads={photos} statuses={statuses} onToggle={onToggle} />
         </div>
-        <div className="mt-5 grid gap-8">
+        {sort === 'my' && editingOrder ? (
+          <div className="mt-5">
+            <MyOrderEditor
+              key={`${slug}:${myOrder.order?.at ?? 'guide'}`}
+              rows={applyOrder(rows, (row) => row.place.id, myOrder.order?.ids).map((row) => ({ id: row.place.id, name: row.place.name, detail: [row.place.neighborhood, row.place.cuisine[0]].filter(Boolean).join(' · ') }))}
+              onSave={(ids) => { myOrder.save(ids); setEditingOrder(false); window.scrollTo({ top: 0 }) }}
+              onCancel={() => setEditingOrder(false)}
+            />
+          </div>
+        ) : null}
+        <div className={`mt-5 grid gap-8${sort === 'my' && editingOrder ? ' hidden' : ''}`}>
             {presented.length === 0 ? (
               <div className="border-t border-ink/10 pt-4">
                 <p className="font-serif text-2xl italic">Nothing on this list matches.</p>
@@ -343,7 +386,7 @@ export function GuidePage() {
                 score={gustoScore(row.place.id)}
                 signedIn={Boolean(user)}
                 onToggle={(status) => onToggle(row.place.id, status)}
-                onNeedSignIn={() => setSignInOpen(true)}
+                onNeedSignIn={() => { setSignInReason(undefined); setSignInOpen(true) }}
                 hot={activeId === row.place.id}
                 onPoint={setActiveId}
               />
@@ -367,7 +410,7 @@ export function GuidePage() {
                 score={gustoScore(row.place.id)}
                 signedIn={Boolean(user)}
                 onToggle={(status) => onToggle(row.place.id, status)}
-                onNeedSignIn={() => setSignInOpen(true)}
+                onNeedSignIn={() => { setSignInReason(undefined); setSignInOpen(true) }}
                 hot={activeId === row.place.id}
                 onPoint={setActiveId}
               />
@@ -376,7 +419,7 @@ export function GuidePage() {
             ) : null}
         </div>
         <p className="mt-8"><Link className="btn" to={cityPath('/explore')}>Open the map</Link></p>
-        <SignInSheet open={signInOpen} onClose={() => setSignInOpen(false)} />
+        <SignInSheet open={signInOpen} reason={signInReason} onClose={() => { setSignInOpen(false); setSignInReason(undefined) }} />
       </div>
     </main>
   )

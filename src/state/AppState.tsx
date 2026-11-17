@@ -20,7 +20,7 @@ import { mergeUploads, type LivePhoto } from '../lib/gallery.ts'
 import { HOUSE_SCORE_FALLBACK } from '../lib/house-score-fallback.ts'
 import { fetchOwnerSession, hasOwnerHint, ownerLogin, ownerLogout } from '../lib/owner-session.ts'
 import type { HouseMark } from '../lib/quick-score.ts'
-import { deleteGuideRemote, importLocalBundle, loadAccount, loadNotices, loadPlans, saveGuide, savePlan, saveProfile as saveProfileRemote, type FriendLists, type FriendProfile, type FriendRequest } from '../social/account.ts'
+import { clearAvatar, deleteGuideRemote, loadGuideById, importLocalBundle, loadAccount, loadNotices, loadPerson, loadPlans, saveAvatar, saveGuide, savePlan, saveProfile as saveProfileRemote, searchPeople as searchPeopleRemote, suggestPeople as suggestPeopleRemote, type FriendLists, type FriendProfile, type FriendRequest, type PersonView } from '../social/account.ts'
 import {
   addCollectionPlace,
   insertCollection,
@@ -163,6 +163,20 @@ type AppValue = {
   setCollectionPlace: (collectionId: string, placeId: string, include: boolean) => void
   reorderCollection: (collectionId: string, placeIds: string[]) => void
   tasteMatch: (userId: string) => number | null
+  /** Taste match against scores that were loaded for a profile page. */
+  tasteMatchWith: (otherScores: Record<string, number>) => number | null
+  searchPeople: (query: string) => Promise<FriendProfile[]>
+  suggestPeople: () => Promise<FriendProfile[]>
+  loadPerson: (handle: string) => Promise<PersonView | null>
+  /** A list that is not one of yours (a friend's or a public one), read when its page opens. */
+  loadList: (id: string) => Promise<UserGuide | null>
+  setAvatar: (image: { blob: Blob; dataUrl: string } | null) => Promise<void>
+  /** Saves that did not reach the account. Shown on screen with Retry until they go through. */
+  saveFailure: SaveFailure | null
+  retrySaves: () => Promise<void>
+  /** Re-read friends and requests, e.g. after someone accepts on their own phone. Throttled. */
+  refreshFriends: (force?: boolean) => void
+  dismissSaveFailure: () => void
   announcement: string
   authError: string | null
   noteAuthFailure: (message: string) => void
@@ -170,6 +184,23 @@ type AppValue = {
   importOffer: ImportOffer | null
   acceptImport: () => Promise<void>
   dismissImport: () => void
+}
+
+export type SaveFailure = { count: number; what: string; message: string; retrying: boolean }
+
+type FailedSave = { what: string; message: string; run: () => Promise<void> }
+
+/** A Supabase write resolves with { error } instead of throwing. Turn that into a throw. */
+async function settle(write: PromiseLike<{ error: unknown } | void> | Promise<unknown>): Promise<void> {
+  const result = await write
+  if (result && typeof result === 'object' && 'error' in result && (result as { error: unknown }).error) throw (result as { error: unknown }).error
+}
+
+function failureText(error: unknown): string {
+  if (typeof navigator !== 'undefined' && navigator.onLine === false) return 'You look offline.'
+  if (error instanceof Error && error.message) return error.message
+  if (error && typeof error === 'object' && 'message' in error && typeof (error as { message: unknown }).message === 'string') return (error as { message: string }).message
+  return 'The account did not answer.'
 }
 
 const Ctx = createContext<AppValue | null>(null)
@@ -277,6 +308,52 @@ export function AppProvider({ children }: { children: ReactNode }) {
   function remoteError(error: unknown) {
     const message = error instanceof Error ? error.message : 'Could not save that.'
     setAnnouncement(message)
+  }
+
+  // Failed writes, keyed so a later save of the same list/plan/place replaces the older attempt.
+  const failedSaves = useRef(new Map<string, FailedSave>())
+  const [saveFailure, setSaveFailure] = useState<SaveFailure | null>(null)
+
+  function showFailures(retrying = false) {
+    const all = [...failedSaves.current.values()]
+    if (!all.length) {
+      setSaveFailure(null)
+      return
+    }
+    const latest = all[all.length - 1]
+    setSaveFailure({ count: all.length, what: latest.what, message: latest.message, retrying })
+  }
+
+  /** Run an account write. If it fails, keep it and show it on screen with Retry. Never silent. */
+  function track(key: string, what: string, run: () => Promise<void>) {
+    void run().then(() => {
+      if (failedSaves.current.delete(key)) showFailures()
+    }).catch((error: unknown) => {
+      failedSaves.current.delete(key)
+      failedSaves.current.set(key, { what, message: failureText(error), run })
+      setAnnouncement(`Your ${what} did not save.`)
+      showFailures()
+    })
+  }
+
+  async function retrySaves() {
+    const jobs = [...failedSaves.current.entries()]
+    if (!jobs.length) return
+    showFailures(true)
+    for (const [key, job] of jobs) {
+      try {
+        await job.run()
+        if (failedSaves.current.get(key) === job) failedSaves.current.delete(key)
+      } catch (error) {
+        if (failedSaves.current.get(key) === job) failedSaves.current.set(key, { ...job, message: failureText(error) })
+      }
+    }
+    showFailures()
+    if (!failedSaves.current.size) setAnnouncement('Saved.')
+  }
+
+  function dismissSaveFailure() {
+    setSaveFailure(null)
   }
 
   async function hydrate(authUser: User | null) {
@@ -540,6 +617,7 @@ export function AppProvider({ children }: { children: ReactNode }) {
       void loadNotices(remote).then((notices) => {
         if (!cancel) setDoc((current) => ({ ...current, notices }))
       })
+      refreshFriends(true)
     }
     const channel = remote
       .channel(`live-${user.id}`)
@@ -554,6 +632,35 @@ export function AppProvider({ children }: { children: ReactNode }) {
     }
   }, [remote, user])
 
+  const friendsRefreshedAt = useRef(0)
+  function refreshFriends(force = false) {
+    if (!remote || !user) return
+    const now = Date.now()
+    if (!force && now - friendsRefreshedAt.current < 15_000) return
+    friendsRefreshedAt.current = now
+    void remote.auth.getUser().then(({ data }) => {
+      if (!data.user || data.user.id !== user.id) return
+      return loadAccount(remote, data.user).then((snap) => {
+        setFriends(snap.friends)
+        setRequests(snap.requests)
+        setFriendRanks(snap.friendRanks)
+        setFriendLists(snap.friendLists)
+      })
+    }).catch(() => { /* next focus tries again */ })
+  }
+
+  useEffect(() => {
+    if (!remote || !user) return
+    const onShow = () => { if (document.visibilityState === 'visible') refreshFriends() }
+    document.addEventListener('visibilitychange', onShow)
+    window.addEventListener('focus', onShow)
+    return () => {
+      document.removeEventListener('visibilitychange', onShow)
+      window.removeEventListener('focus', onShow)
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [remote, user])
+
   function persist(next: Doc, session = user) {
     setDoc(next)
     if (session) localStorage.setItem(`gusto.doc.v1.${session.id}`, JSON.stringify(next))
@@ -561,18 +668,18 @@ export function AppProvider({ children }: { children: ReactNode }) {
 
   function pushGuide(guide: UserGuide | undefined, session = user) {
     if (!remote || !session || !guide || guide.demo) return
-    void saveGuide(remote, session.id, guide).catch(remoteError)
+    track(`guide:${guide.id}`, 'list', () => saveGuide(remote, session.id, guide))
   }
 
   function pushPlan(plan: Plan | undefined, session = user) {
     if (!remote || !session || !plan || plan.demo) return
-    void savePlan(remote, session.id, plan).catch(remoteError)
+    track(`plan:${plan.id}`, 'plan', () => savePlan(remote, session.id, plan))
   }
 
   function pushActivity(next: Doc, activity: Activity, session: SessionUser) {
     next.activities = [activity, ...next.activities]
     if (!remote) return
-    void remote.from('activities').insert({
+    track(`activity:${activity.id}`, 'feed post', () => settle(remote.from('activities').insert({
       id: activity.id,
       user_id: session.id,
       type: activity.type,
@@ -581,22 +688,18 @@ export function AppProvider({ children }: { children: ReactNode }) {
       list_title: activity.listTitle,
       body: activity.text,
       score: activity.score,
-    }).then(({ error }) => {
-      if (error) remoteError(error)
-    })
+    })))
   }
 
   function pushNotice(notice: Notice, session = user) {
     if (!remote || !session) return
-    void remote.from('notifications').insert({
+    track(`notice:${notice.id}`, 'notification', () => settle(remote.from('notifications').insert({
       id: notice.id,
       user_id: session.id,
       body: notice.text,
       href: notice.href,
       read: notice.read,
-    }).then(({ error }) => {
-      if (error) remoteError(error)
-    })
+    })))
   }
 
   async function signIn(name: string) {
@@ -637,6 +740,16 @@ export function AppProvider({ children }: { children: ReactNode }) {
     setNeedsProfile(false)
     setImported(null)
     setAnnouncement(`Profile saved. You are @${saved.handle}.`)
+  }
+
+  async function setAvatar(image: { blob: Blob; dataUrl: string } | null) {
+    if (!remote || !user || user.id.startsWith('local-')) throw new Error('Sign in first.')
+    const id = user.id
+    let url: string | undefined
+    if (image) url = await saveAvatar(remote, id, image)
+    else await clearAvatar(remote, id)
+    setUser((current) => (current && current.id === id ? { ...current, avatarUrl: url } : current))
+    setAnnouncement(image ? 'Profile photo saved.' : 'Profile photo removed.')
   }
 
   function skipProfile() {
@@ -692,12 +805,10 @@ export function AppProvider({ children }: { children: ReactNode }) {
     )
     persist(next)
     if (remote) {
-      const write = turningOff
-        ? remote.from('place_status').delete().eq('user_id', user.id).eq('place_id', placeId)
-        : remote.from('place_status').upsert({ user_id: user.id, place_id: placeId, status })
-      void write.then(({ error }) => {
-        if (error) remoteError(error)
-      })
+      const userId = user.id
+      track(`status:${placeId}`, turningOff ? 'place mark' : status === 'been' ? 'Been mark' : 'To go save', () => settle(turningOff
+        ? remote.from('place_status').delete().eq('user_id', userId).eq('place_id', placeId)
+        : remote.from('place_status').upsert({ user_id: userId, place_id: placeId, status })))
     }
   }
 
@@ -728,7 +839,7 @@ export function AppProvider({ children }: { children: ReactNode }) {
 
   function deleteGuide(id: string) {
     persist({ ...doc, guides: doc.guides.filter((guide) => guide.id !== id) })
-    if (remote) void deleteGuideRemote(remote, id).catch(remoteError)
+    if (remote) track(`guide:${id}`, 'list delete', () => deleteGuideRemote(remote, id))
   }
 
   function addToGuide(guideId: string, placeId: string) {
@@ -888,14 +999,17 @@ export function AppProvider({ children }: { children: ReactNode }) {
     if (!remote || !user) throw new Error('Sign in first.')
     const { data, error } = await remote.rpc('invite_friend_email', { target_email: email.trim() })
     if (error) throw error
-    await hydrateRef.current((await remote.auth.getUser()).data.user)
-    if (!data) {
-      setAnnouncement('Friend request sent.')
-      return ''
+    // Same answer whether or not that address already has an account, so an invite never tells
+    // anyone who is signed up. Before migration.sql the server returns no token for a member;
+    // a plain friend link stands in so the screen still looks the same.
+    let token = typeof data === 'string' && data ? data : ''
+    if (!token) {
+      const link = await remote.rpc('create_friend_link')
+      token = typeof link.data === 'string' ? link.data : ''
     }
-    const link = canonicalUrl(`#/join/${data}`)
+    await hydrateRef.current((await remote.auth.getUser()).data.user)
     setAnnouncement('Invite link ready.')
-    return link
+    return token ? canonicalUrl(`#/join/${token}`) : ''
   }
 
   async function createFriendLink() {
@@ -929,12 +1043,11 @@ export function AppProvider({ children }: { children: ReactNode }) {
     const likes = doc.likes.includes(activityId) ? doc.likes.filter((id) => id !== activityId) : [...doc.likes, activityId]
     persist({ ...doc, likes })
     if (remote) {
-      const write = likes.includes(activityId)
-        ? remote.from('activity_likes').upsert({ activity_id: activityId, user_id: user.id })
-        : remote.from('activity_likes').delete().eq('activity_id', activityId).eq('user_id', user.id)
-      void write.then(({ error }) => {
-        if (error) remoteError(error)
-      })
+      const userId = user.id
+      const liked = likes.includes(activityId)
+      track(`like:${activityId}`, 'like', () => settle(liked
+        ? remote.from('activity_likes').upsert({ activity_id: activityId, user_id: userId })
+        : remote.from('activity_likes').delete().eq('activity_id', activityId).eq('user_id', userId)))
     }
   }
 
@@ -951,9 +1064,8 @@ export function AppProvider({ children }: { children: ReactNode }) {
     persist({ ...doc, comments: [...doc.comments, comment], notices: [notice, ...doc.notices].slice(0, 40) })
     pushNotice(notice)
     if (remote) {
-      void remote.from('comments').insert({ id: comment.id, activity_id: activityId, user_id: user.id, body: comment.text }).then(({ error }) => {
-        if (error) remoteError(error)
-      })
+      const userId = user.id
+      track(`comment:${comment.id}`, 'comment', () => settle(remote.from('comments').insert({ id: comment.id, activity_id: activityId, user_id: userId, body: comment.text })))
     }
   }
 
@@ -1104,9 +1216,8 @@ export function AppProvider({ children }: { children: ReactNode }) {
     }
     setCompare(null)
     if (remote && bucketScores[placeId]) {
-      void remote.from('rankings').upsert({ user_id: user.id, place_id: placeId, bucket, score: bucketScores[placeId].score }).then(({ error }) => {
-        if (error) remoteError(error)
-      })
+      const row = { user_id: user.id, place_id: placeId, bucket, score: bucketScores[placeId].score }
+      track(`rank:${placeId}`, 'rating', () => settle(remote.from('rankings').upsert(row)))
     }
   }
 
@@ -1469,6 +1580,10 @@ export function AppProvider({ children }: { children: ReactNode }) {
 
   function tasteMatch(userId: string) {
     const otherScores = remote || !demoFriendsEnabled ? friendRanks[userId] : demo.users.find((person) => person.id === userId)?.scores
+    return tasteMatchWith(otherScores ?? null)
+  }
+
+  function tasteMatchWith(otherScores: Record<string, number> | null) {
     if (!otherScores) return null
     const keys = Object.keys(doc.scores).filter((id) => otherScores[id] !== undefined)
     if (keys.length < 3) return null
@@ -1586,6 +1701,31 @@ export function AppProvider({ children }: { children: ReactNode }) {
     setCollectionPlace,
     reorderCollection,
     tasteMatch,
+    tasteMatchWith: (other: Record<string, number>) => tasteMatchWith(other),
+    searchPeople: async (query: string) => {
+      if (!remote || !user || user.id.startsWith('local-')) return []
+      return searchPeopleRemote(remote, query, user.id)
+    },
+    suggestPeople: async () => {
+      if (!remote || !user || user.id.startsWith('local-')) return []
+      const skip = [...friends.map((person) => person.id)]
+      return suggestPeopleRemote(remote, user.id, skip)
+    },
+    loadPerson: async (handle: string) => {
+      const client = remote ?? await loadSupabase()
+      if (!client) return null
+      return loadPerson(client, handle)
+    },
+    loadList: async (id: string) => {
+      const client = remote ?? await loadSupabase()
+      if (!client) return null
+      return loadGuideById(client, id)
+    },
+    setAvatar,
+    saveFailure,
+    retrySaves,
+    refreshFriends,
+    dismissSaveFailure,
     announcement,
     authError,
     noteAuthFailure,
