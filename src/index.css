@@ -3136,7 +3136,11 @@ input[type='time'] {
   display: flex;
   min-width: 0;
   max-height: 14rem;
-  overflow: hidden;
+  /* Visible while open so the back pill and city switch can keep their rounded
+     shadows. overflow: hidden clipped those 8px/20px shadows (and the glass blur)
+     into a hard rectangular box on the cream header, most obvious on the map
+     in light mode. Hide-on-scroll still clips once the row is concealed. */
+  overflow: visible;
   transition: max-height 280ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
@@ -3153,6 +3157,7 @@ input[type='time'] {
 
 .header-sub.is-concealed {
   max-height: 0;
+  overflow: hidden;
   pointer-events: none;
 }
 
@@ -4076,6 +4081,14 @@ img.is-pending,
 .guide-entry {
   scroll-margin-top: calc(var(--header-offset) + 0.75rem);
   padding: var(--space-5);
+  min-width: 0;
+  max-width: 100%;
+}
+
+/* Grid min-width:auto was expanding to a card's unbreakable place-meta line. */
+.yet-to-visit {
+  min-width: 0;
+  max-width: 100%;
 }
 
 .guide-entry.is-hot,
@@ -6250,12 +6263,18 @@ h3.place-name.is-longest {
 .place-meta {
   display: block;
   min-width: 0;
+  max-width: 100%;
   overflow-wrap: normal;
   word-break: normal;
   hyphens: none;
 }
 
+/* inline-block lets the line wrap at the dots. nowrap spans with the
+   separator in ::after and no space between tags have no break opportunity,
+   so a long "Cuisine · Chinatown-International District · $" line was
+   one unbreakable min-content width and pushed guide pages to 414px. */
 .place-meta > span {
+  display: inline-block;
   white-space: nowrap;
 }
 
