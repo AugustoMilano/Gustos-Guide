@@ -1,17 +1,17 @@
 import { useState } from 'react'
 import { useApp } from '../state/AppState.tsx'
+import { PeopleSearch } from './PeopleSearch.tsx'
 
 export function FriendEmpty({
   onSignIn,
   title = 'No friends yet',
-  line = 'Search a username, or email an invite. Only people you add show up here.',
+  line = 'Search by name or username, or email an invite. Only people you add show up here.',
 }: {
   onSignIn: () => void
   title?: string
   line?: string
 }) {
   const app = useApp()
-  const [handle, setHandle] = useState('')
   const [email, setEmail] = useState('')
   const [note, setNote] = useState('')
   const [error, setError] = useState('')
@@ -26,22 +26,6 @@ export function FriendEmpty({
     )
   }
 
-  async function addFriend() {
-    setError('')
-    setNote('')
-    if (!app.supabase) {
-      setError('Friend search runs on the live account.')
-      return
-    }
-    try {
-      await app.requestFriend(handle)
-      setHandle('')
-      setNote('Request sent.')
-    } catch (reason) {
-      setError(reason instanceof Error ? reason.message : 'Could not send that.')
-    }
-  }
-
   async function invite() {
     setError('')
     setNote('')
@@ -52,7 +36,8 @@ export function FriendEmpty({
     try {
       const link = await app.inviteByEmail(email)
       setEmail('')
-      setNote(link ? link : 'Invite sent.')
+      // The same words whether or not that address already has an account.
+      setNote(link ? `Invite ready. Send them this link: ${link}` : 'Invite ready.')
     } catch (reason) {
       setError(reason instanceof Error ? reason.message : 'Could not send that.')
     }
@@ -69,16 +54,12 @@ export function FriendEmpty({
       >
       <p className="font-serif text-2xl italic">{title}</p>
       <p className="mt-1 text-sm">{line}</p>
+      {app.supabase ? <PeopleSearch /> : <p className="mt-3 text-sm">Friend search runs on the live account.</p>}
       <label className="field mt-3">
-        <span>Username</span>
-        <input value={handle} onChange={(event) => setHandle(event.target.value)} placeholder="their handle" autoCapitalize="none" />
-      </label>
-      <label className="field mt-3">
-        <span>Or email</span>
+        <span>Invite by email</span>
         <input type="email" value={email} onChange={(event) => setEmail(event.target.value)} placeholder="name@email.com" />
       </label>
       <div className="mt-3 flex flex-wrap gap-2">
-        <button type="button" className="btn btn-coral" disabled={!handle.trim()} onClick={() => void addFriend()}>Add friends</button>
         <button type="button" className="btn" disabled={!email.trim()} onClick={() => void invite()}>Invite a friend</button>
         <button
           type="button"

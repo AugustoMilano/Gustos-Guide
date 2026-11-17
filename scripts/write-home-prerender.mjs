@@ -99,8 +99,9 @@ function cityShell(city, name, featured) {
   return `<div class="pre-home-city" data-city="${city}"><section class="hero on-navy relative overflow-hidden"><div class="hero-copy relative mx-auto max-w-6xl px-4 pt-28 pb-8 sm:pt-32"><h1 class="max-w-3xl font-serif text-5xl italic leading-[1.05] text-cream sm:text-6xl">${escapeHtml(name)}</h1><form class="mt-5" role="search" action="#/${city}"><label class="field home-search" for="pre-home-search-${city}"><span class="text-cream">Search guides and places</span><input id="pre-home-search-${city}" class="glass-input w-full" autocomplete="off" placeholder="Place or neighborhood" /></label></form></div></section><div class="mx-auto max-w-6xl px-4 pt-8 pb-16"><section aria-labelledby="pre-plan-${city}"><h2 id="pre-plan-${city}" class="font-serif text-4xl italic pre-plan-title">Plan my night</h2><p class="mt-2 max-w-xl text-sm">Say what you want, or the stops in order. Picks stay inside this guide.</p><div class="mt-4 max-w-xl"><form action="#/${city}/night"><label class="field" for="pre-home-night-${city}"><span>What sounds good?</span><textarea id="pre-home-night-${city}" class="pre-plan-input" rows="3" autocomplete="off" maxlength="400" placeholder="drinks, then dinner, then dessert"></textarea></label><button type="submit" class="btn btn-coral mt-3">Plan it</button></form></div></section><section class="mt-8" aria-labelledby="pre-featured-${city}"><h2 id="pre-featured-${city}" class="font-serif text-4xl italic">Featured guides</h2><div class="home-featured mt-4">${cards}</div></section><section class="home-shortcuts mt-6" aria-label="Tonight and Top 25"><a href="#/${city}/tonight" class="guide-card home-shortcut"><span class="home-shortcut-copy"><p class="text-xs font-bold uppercase tracking-[0.14em]">Open now</p><h2 class="mt-2 font-serif text-3xl italic">Tonight</h2></span>${CHEVRON}</a><a href="#/${city}/top" class="guide-card home-shortcut"><span class="home-shortcut-copy"><p class="text-xs font-bold uppercase tracking-[0.14em]">Ranked</p><h2 class="mt-2 font-serif text-3xl italic">Top 25</h2></span>${CHEVRON}</a></section><p class="mt-8"><a href="#/${city}/guides" class="btn btn-coral">Browse all guides</a></p></div></div>`
 }
 
-const CRITICAL_CSS = `/* City-home first paint: enough color and type to show the hero before the main stylesheet. */
-@font-face{font-family:Instrument Serif;font-style:italic;font-weight:400;font-display:swap;src:url("./fonts/instrument-serif-italic.woff2") format("woff2")}
+const CRITICAL_CSS = `/* City-home first paint: enough color and type to show the hero before the main stylesheet.
+   Same system type as the app (index.css --font-serif), so the React page that replaces this paints
+   the same sizes: no font swap, no larger text block, and no late Largest Contentful Paint. */
 html[data-prerender]{--color-cream:#eee3d6;--color-navy:#141f4d;--color-ink:#181818;--color-coral:#ff5330;--color-card:#fffaf3;--gutter:12px;--card-pad:16px;--icon-md:24px;--hit:44px;--header-offset:4.75rem}
 html[data-prerender] body{margin:0;background:var(--status-bar,#141f4d);color:var(--color-ink);font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif}
 main.pre-landing,main.pre-top,main.pre-place,main.pre-home,.pre-home-city,.pre-top-r{display:none}
@@ -123,9 +124,9 @@ html[data-prerender='home'][data-area='pullman'] .pre-home-city[data-city='pullm
 html[data-prerender='home'][data-area='moscow'] .pre-home-city[data-city='moscow']{display:block}
 html[data-prerender='home'] .hero{background:#141f4d;color:#fffaf3}
 html[data-prerender='home'] .hero-copy{padding-top:calc(var(--header-offset) + 1.15rem)}
-html[data-prerender='home'] .font-serif,html[data-prerender='home'] h1,html[data-prerender='home'] h2,html[data-prerender='home'] h3{font-family:"Instrument Serif",Georgia,"Palatino Linotype",Palatino,serif;font-style:italic;font-weight:400}
+html[data-prerender='home'] .font-serif,html[data-prerender='home'] h1,html[data-prerender='home'] h2,html[data-prerender='home'] h3{font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif;font-style:normal;font-weight:600;letter-spacing:-.022em;line-height:1.12;margin:0}
 html[data-prerender='home'] .text-cream{color:#fffaf3}
-html[data-prerender='home'] .text-5xl{font-size:3rem;line-height:1.05}
+html[data-prerender='home'] .text-5xl{font-size:3rem;line-height:1.12}
 html[data-prerender='home'] .text-6xl{font-size:3.75rem}
 html[data-prerender='home'] .text-4xl{font-size:2.25rem}
 html[data-prerender='home'] .text-3xl{font-size:1.875rem}
@@ -133,7 +134,6 @@ html[data-prerender='home'] .text-xs{font-size:.75rem}
 html[data-prerender='home'] .text-sm{font-size:.875rem}
 html[data-prerender='home'] .font-bold{font-weight:700}
 html[data-prerender='home'] .uppercase{text-transform:uppercase}
-html[data-prerender='home'] .italic{font-style:italic}
 html[data-prerender='home'] .tracking-\\[0\\.14em\\]{letter-spacing:.14em}
 html[data-prerender='home'] .mx-auto{margin-left:auto;margin-right:auto}
 html[data-prerender='home'] .max-w-6xl{max-width:72rem}
