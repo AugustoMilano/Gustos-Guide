@@ -36,10 +36,10 @@ export function ScoreQueuePage() {
         <div className="friend-empty mt-4">
           <p className="font-serif text-2xl italic">Owner sign-in</p>
           <p className="mt-1 text-sm">This page is for the owner.</p>
-          {app.supabase ? <button type="button" className="btn btn-coral mt-3" onClick={() => setSignIn(true)}>Sign in</button> : <OwnerSignInLink />}
+          <OwnerSignInLink />
         </div>
       ) : !app.user.isOwner ? (
-        <p className="mt-4">This page is for the owner. Your own ranks live on Rank.{app.supabase ? null : <> <Link className="underline" to="/owner">Owner sign-in</Link></>}</p>
+        <p className="mt-4">This page is for the owner. Your own ranks live on Rank.{' '}<Link className="underline" to="/owner">Owner sign-in</Link></p>
       ) : queue.length === 0 ? (
         <p className="mt-4">Every place on the guide has a house score.</p>
       ) : (
