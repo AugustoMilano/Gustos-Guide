@@ -3,6 +3,7 @@ import { AnimatePresence, m, useReducedMotion } from 'framer-motion'
 import { dragSheet } from '../lib/motion.ts'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { accountAccessibleName, accountGreeting } from '../lib/account-label.ts'
+import { Avatar } from './Avatar.tsx'
 import { barePath, regionName as areaLabel, areaPhrase, areasFor, CITY_PREFIXES, cityPath, isCityPicker, readRegionMemory, writeRegionMemory, type CityId } from '../lib/city.ts'
 import { SearchField } from './SearchField.tsx'
 import { useCityId } from '../lib/use-city-id.ts'
@@ -276,7 +277,7 @@ export function Header() {
           {user ? (
             <>
               <Link viewTransition={!reduceMotion} to={cityPath(`/u/${user.handle}`, linkCity)} className="inline-flex max-w-[10rem] items-center gap-2" aria-label={accountAccessibleName(user)}>
-                {user.avatarUrl ? <img src={user.avatarUrl} alt="" width={32} height={32} loading="lazy" decoding="async" referrerPolicy="no-referrer" className="h-8 w-8 shrink-0 rounded-full object-cover" /> : null}
+                <Avatar name={user.name} url={user.avatarUrl} size={32} />
                 <span className="truncate">{accountGreeting(user)}</span>
               </Link>
             </>

@@ -142,11 +142,22 @@ function missingListColumn(error: { message?: string } | null): boolean {
   return /emoji|accent|note|added_at/i.test(error.message) && /column|schema cache/i.test(error.message)
 }
 
-async function selectGuidesRaw(client: SupabaseClient, withToken: boolean) {
+/**
+ * Lists this account owns or edits. Public lists from everyone else are not read at sign-in; a
+ * profile page loads that person's lists when it opens (loadPerson).
+ */
+function scopeGuides<T extends { or: (filter: string) => T }>(query: T, scope: GuideScope): T {
+  const ids = scope.extraIds.filter((id) => /^[0-9a-f-]{36}$/i.test(id))
+  return query.or(ids.length ? `owner_id.eq.${scope.ownerId},id.in.(${ids.join(',')})` : `owner_id.eq.${scope.ownerId}`)
+}
+
+type GuideScope = { ownerId: string; extraIds: string[] }
+
+async function selectGuidesRaw(client: SupabaseClient, withToken: boolean, scope: GuideScope) {
   const token = withToken ? ', invite_token' : ''
-  const rich = await client.from('guides').select(`id, owner_id, title, visibility, cover_place_id${token}, emoji, accent`)
+  const rich = await scopeGuides(client.from('guides').select(`id, owner_id, title, visibility, cover_place_id${token}, emoji, accent`), scope)
   if (!rich.error || !missingListColumn(rich.error)) return rich
-  return client.from('guides').select(`id, owner_id, title, visibility, cover_place_id${token}`)
+  return scopeGuides(client.from('guides').select(`id, owner_id, title, visibility, cover_place_id${token}`), scope)
 }
 
 /**
@@ -154,10 +165,10 @@ async function selectGuidesRaw(client: SupabaseClient, withToken: boolean) {
  * edit). my_guide_invites() returns tokens only for guides this person owns or edits. Before the
  * migration that function does not exist, so the old column read is used.
  */
-async function selectGuides(client: SupabaseClient) {
+async function selectGuides(client: SupabaseClient, scope: GuideScope) {
   const invites = await client.rpc('my_guide_invites')
-  if (invites.error) return selectGuidesRaw(client, true)
-  const res = await selectGuidesRaw(client, false)
+  if (invites.error) return selectGuidesRaw(client, true, scope)
+  const res = await selectGuidesRaw(client, false, scope)
   if (res.error || !res.data) return res
   const tokens = new Map<string, string>()
   for (const row of (invites.data ?? []) as { guide_id: string; invite_token: string | null }[]) {
@@ -166,10 +177,11 @@ async function selectGuides(client: SupabaseClient) {
   return { ...res, data: (res.data as unknown as GuideRow[]).map((row) => ({ ...row, invite_token: tokens.get(row.id) ?? null })) }
 }
 
-async function selectGuideItems(client: SupabaseClient) {
-  const rich = await client.from('guide_items').select('guide_id, place_id, position, note, added_at')
+async function selectGuideItems(client: SupabaseClient, guideIds: string[]) {
+  if (!guideIds.length) return { data: [] as ItemRow[], error: null }
+  const rich = await client.from('guide_items').select('guide_id, place_id, position, note, added_at').in('guide_id', guideIds)
   if (!rich.error || !missingListColumn(rich.error)) return rich
-  return client.from('guide_items').select('guide_id, place_id, position')
+  return client.from('guide_items').select('guide_id, place_id, position').in('guide_id', guideIds)
 }
 
 const buckets: Bucket[] = ['loved', 'liked', 'fine', 'didnt']
@@ -275,11 +287,20 @@ export async function loadAccount(client: SupabaseClient, authUser: User): Promi
     givenName: givenNameFromAuth(authUser),
   }
 
-  const [statusRes, guideRes, itemRes, collabRes, planRes, memberRes, voteRes, activityRes, likeRes, commentRes, noticeRes, rankRes, photoRes, friendRes] = await Promise.all([
+  // Only lists this account owns or edits. Everyone's public lists used to come down here at every
+  // sign-in; a profile page now loads one person's lists when it opens.
+  const myCollabs = await client.from('guide_collaborators').select('guide_id').eq('user_id', user.id)
+  const hintedCollab = schemaHint(myCollabs.error)
+  if (hintedCollab) throw hintedCollab
+  const scope: GuideScope = { ownerId: user.id, extraIds: [...new Set((myCollabs.data ?? []).map((row) => String(row.guide_id)))] }
+  const guideRes = await selectGuides(client, scope)
+  const hintedGuides = schemaHint(guideRes.error)
+  if (hintedGuides) throw hintedGuides
+  const guideIds = ((guideRes.data ?? []) as GuideRow[]).map((row) => row.id)
+  const [statusRes, itemRes, collabRes, planRes, memberRes, voteRes, activityRes, likeRes, commentRes, noticeRes, rankRes, photoRes, friendRes] = await Promise.all([
     client.from('place_status').select('place_id, status').eq('user_id', user.id),
-    selectGuides(client),
-    selectGuideItems(client),
-    client.from('guide_collaborators').select('guide_id, user_id'),
+    selectGuideItems(client, guideIds),
+    guideIds.length ? client.from('guide_collaborators').select('guide_id, user_id').in('guide_id', guideIds) : Promise.resolve({ data: [] as { guide_id: string; user_id: string }[], error: null }),
     client.from('plans').select('id, host_id, title, place_ids, dates, locked, vibe, invite_token'),
     client.from('plan_members').select('plan_id, user_id, rsvp'),
     client.from('plan_votes').select('plan_id, user_id, place_id, vote_date, vote_time'),
@@ -294,7 +315,7 @@ export async function loadAccount(client: SupabaseClient, authUser: User): Promi
   ])
   const house = null
 
-  for (const result of [statusRes, guideRes, itemRes, collabRes, planRes, memberRes, voteRes, activityRes, likeRes, commentRes, noticeRes, rankRes, photoRes, friendRes]) {
+  for (const result of [statusRes, itemRes, collabRes, planRes, memberRes, voteRes, activityRes, likeRes, commentRes, noticeRes, rankRes, photoRes, friendRes]) {
     const hintedResult = schemaHint(result.error)
     if (hintedResult) throw hintedResult
   }
@@ -429,8 +450,8 @@ export async function loadAccount(client: SupabaseClient, authUser: User): Promi
   for (const row of photoRows) otherIds.add(row.user_id)
   const nameById = new Map<string, FriendProfile>()
   if (otherIds.size) {
-    const { data: people } = await client.from('profiles').select('id, name, handle').in('id', [...otherIds])
-    for (const person of people ?? []) nameById.set(person.id, person)
+    const { data: people } = await client.from('profiles').select('id, name, handle, avatar_url').in('id', [...otherIds])
+    for (const person of (people ?? []) as PersonRow[]) nameById.set(person.id, asFriend(person))
   }
 
   const friends: FriendProfile[] = []
@@ -792,4 +813,204 @@ async function uploadImportedPhoto(client: SupabaseClient, user: SessionUser, ph
     height: photo.height,
   })
   if (error && error.code !== '23505') throw error
+}
+
+// ---------------------------------------------------------------------------
+// People: search, suggestions, and one person's profile
+// ---------------------------------------------------------------------------
+
+type PersonRow = { id: string; name: string; handle: string; avatar_url?: string | null; is_owner?: boolean | null }
+
+function asFriend(row: PersonRow): FriendProfile {
+  return { id: row.id, name: row.name, handle: row.handle, avatarUrl: row.avatar_url || undefined }
+}
+
+/**
+ * Letters, digits, spaces, and a few name characters. Anything that could change a PostgREST filter
+ * (commas, parentheses, wildcards, backslashes) is dropped before it reaches the query.
+ */
+export function cleanPeopleQuery(raw: string): string {
+  return raw.trim().replace(/^@/, '').replace(/[^\p{L}\p{N} _.'-]/gu, '').replace(/\s+/g, ' ').slice(0, 40)
+}
+
+/** Partial, case-insensitive match on username or display name. Profiles hold no email, so none is exposed. */
+export async function searchPeople(client: SupabaseClient, raw: string, meId: string): Promise<FriendProfile[]> {
+  const query = cleanPeopleQuery(raw)
+  if (query.length < 2) return []
+  const like = `*${query.replace(/_/g, '\\_')}*`
+  const run = (columns: string) => client
+    .from('profiles')
+    .select(columns)
+    .or(`handle.ilike.${like},name.ilike.${like}`)
+    .neq('id', meId)
+    .order('handle', { ascending: true })
+    .limit(12)
+  let res = await run('id, name, handle, avatar_url')
+  if (res.error && /avatar_url|schema cache/i.test(res.error.message)) res = await run('id, name, handle')
+  if (res.error) throw new Error('Search is not answering. Try again.')
+  const rows = (res.data ?? []) as unknown as PersonRow[]
+  const lower = query.toLowerCase()
+  // Usernames that start with the query first, then names that do, then everything else.
+  const rank = (row: PersonRow) => (row.handle.startsWith(lower) ? 0 : row.name.toLowerCase().startsWith(lower) ? 1 : 2)
+  return rows.sort((a, b) => rank(a) - rank(b) || a.handle.localeCompare(b.handle)).map(asFriend)
+}
+
+/** People to add when someone has no friends yet: the house account first, then the newest members. */
+export async function suggestPeople(client: SupabaseClient, meId: string, skip: string[]): Promise<FriendProfile[]> {
+  let res = await client.from('profiles').select('id, name, handle, avatar_url, is_owner').order('created_at', { ascending: false }).limit(24)
+  if (res.error && /avatar_url|created_at|schema cache/i.test(res.error.message)) {
+    res = await client.from('profiles').select('id, name, handle, is_owner').limit(24) as typeof res
+  }
+  if (res.error) return []
+  const hidden = new Set([meId, ...skip])
+  const rows = ((res.data ?? []) as PersonRow[]).filter((row) => !hidden.has(row.id) && row.name !== 'New member')
+  rows.sort((a, b) => Number(Boolean(b.is_owner)) - Number(Boolean(a.is_owner)))
+  return rows.slice(0, 6).map(asFriend)
+}
+
+export type PersonList = { id: string; title: string; visibility: GuideVisibility; placeIds: string[]; emoji?: string; color?: string }
+
+export type PersonView = {
+  profile: FriendProfile
+  /** Their ranks. The database only returns these to friends (and to the person themself). */
+  scores: Record<string, number>
+  been: string[]
+  togo: string[]
+  /** Lists the viewer may see: public ones, plus friends-only ones when you are friends. */
+  lists: PersonList[]
+  /** True when you and they are friends right now (read fresh, so a request accepted elsewhere counts). */
+  friend: boolean
+}
+
+/** One person's profile, read when the page opens. Privacy is the database's row rules; nothing here widens them. */
+export async function loadPerson(client: SupabaseClient, handle: string): Promise<PersonView | null> {
+  const clean = cleanHandle(handle)
+  if (!HANDLE_RULE.test(clean) && !/^[a-z0-9_]{1,30}$/.test(clean)) return null
+  let found = await client.from('profiles').select('id, name, handle, avatar_url').eq('handle', clean).maybeSingle()
+  if (found.error && /avatar_url|schema cache/i.test(found.error.message)) {
+    found = await client.from('profiles').select('id, name, handle').eq('handle', clean).maybeSingle() as typeof found
+  }
+  if (found.error) throw new Error('Could not open that profile. Try again.')
+  if (!found.data) return null
+  const person = found.data as PersonRow
+  const me = (await client.auth.getSession()).data.session?.user.id ?? ''
+  const [rankRes, statusRes, guideRes, friendRes] = await Promise.all([
+    client.from('rankings').select('place_id, score').eq('user_id', person.id),
+    client.from('place_status').select('place_id, status').eq('user_id', person.id),
+    (async () => {
+      const rich = await client.from('guides').select('id, title, visibility, emoji, accent').eq('owner_id', person.id).neq('visibility', 'private')
+      if (!rich.error || !missingListColumn(rich.error)) return rich
+      return client.from('guides').select('id, title, visibility').eq('owner_id', person.id).neq('visibility', 'private')
+    })(),
+    me && me !== person.id
+      ? client.from('friendships').select('id').eq('status', 'accepted')
+        .or(`and(requester_id.eq.${me},addressee_id.eq.${person.id}),and(requester_id.eq.${person.id},addressee_id.eq.${me})`).limit(1)
+      : Promise.resolve({ data: [] as { id: string }[], error: null }),
+  ])
+  const scores: Record<string, number> = {}
+  for (const row of rankRes.data ?? []) scores[row.place_id] = Number(row.score)
+  const been: string[] = []
+  const togo: string[] = []
+  for (const row of statusRes.data ?? []) {
+    if (row.status === 'been') been.push(row.place_id)
+    else if (row.status === 'togo') togo.push(row.place_id)
+  }
+  const guideRows = (guideRes.data ?? []) as { id: string; title: string; visibility: GuideVisibility; emoji?: string | null; accent?: string | null }[]
+  const items = await selectGuideItems(client, guideRows.map((row) => row.id))
+  const byGuide = new Map<string, ItemRow[]>()
+  for (const row of (items.data ?? []) as ItemRow[]) {
+    const list = byGuide.get(row.guide_id) ?? []
+    list.push(row)
+    byGuide.set(row.guide_id, list)
+  }
+  const lists: PersonList[] = guideRows.map((row) => ({
+    id: row.id,
+    title: row.title,
+    visibility: row.visibility,
+    placeIds: (byGuide.get(row.id) ?? []).sort((a, b) => a.position - b.position).map((item) => item.place_id),
+    emoji: row.emoji || undefined,
+    color: row.accent || undefined,
+  }))
+  return { profile: asFriend(person), scores, been, togo, lists, friend: (friendRes.data ?? []).length > 0 }
+}
+
+// ---------------------------------------------------------------------------
+// Profile photo
+// ---------------------------------------------------------------------------
+
+const AVATAR_BUCKET = 'avatars'
+
+/**
+ * Saves a profile photo that the browser already shrank to a small square WebP.
+ * Uses the public `avatars` bucket (migration.sql). Until that bucket exists, the small image is kept
+ * inline on the profile row so the photo still shows everywhere; after the migration new uploads go
+ * to Storage.
+ */
+export async function saveAvatar(client: SupabaseClient, userId: string, image: { blob: Blob; dataUrl: string }): Promise<string> {
+  const path = `${userId}/avatar-${Date.now()}.webp`
+  const uploaded = await client.storage.from(AVATAR_BUCKET).upload(path, image.blob, { contentType: 'image/webp', upsert: true, cacheControl: '31536000' })
+  if (uploaded.error) {
+    const message = String((uploaded.error as { message?: unknown }).message ?? '')
+    throw new Error(message ? `Could not upload that photo: ${message}` : 'Could not upload that photo.')
+  }
+  const url = client.storage.from(AVATAR_BUCKET).getPublicUrl(path).data.publicUrl
+  const { error } = await client.from('profiles').update({ avatar_url: url }).eq('id', userId)
+  if (error) {
+    void client.storage.from(AVATAR_BUCKET).remove([path])
+    throw new Error(error.message || 'Could not save your photo.')
+  }
+  void removeOldAvatars(client, userId, path)
+  return url
+}
+
+/** Older photos in your own avatars folder. Best effort: a leftover file is harmless. */
+async function removeOldAvatars(client: SupabaseClient, userId: string, keep: string | null) {
+  try {
+    const listed = await client.storage.from(AVATAR_BUCKET).list(userId, { limit: 100 })
+    const stale = (listed.data ?? []).map((file) => `${userId}/${file.name}`).filter((name) => name !== keep)
+    if (stale.length) await client.storage.from(AVATAR_BUCKET).remove(stale)
+  } catch {
+    // leave it
+  }
+}
+
+export async function clearAvatar(client: SupabaseClient, userId: string): Promise<void> {
+  const { error } = await client.from('profiles').update({ avatar_url: null }).eq('id', userId)
+  if (error) throw new Error(error.message || 'Could not remove your photo.')
+  void removeOldAvatars(client, userId, null)
+}
+
+/** One list by id, for a list page opened from a link or a profile. Row rules decide whether it comes back. */
+export async function loadGuideById(client: SupabaseClient, id: string): Promise<UserGuide | null> {
+  if (!/^[0-9a-f-]{36}$/i.test(id)) return null
+  let res = await client.from('guides').select('id, owner_id, title, visibility, cover_place_id, emoji, accent').eq('id', id).maybeSingle()
+  if (res.error && missingListColumn(res.error)) {
+    res = await client.from('guides').select('id, owner_id, title, visibility, cover_place_id').eq('id', id).maybeSingle() as typeof res
+  }
+  if (res.error) throw new Error('Could not open that list. Try again.')
+  if (!res.data) return null
+  const row = res.data as GuideRow
+  const items = await selectGuideItems(client, [row.id])
+  const sorted = ((items.data ?? []) as ItemRow[]).slice().sort((a, b) => a.position - b.position)
+  const notes: Record<string, string> = {}
+  const addedAt: Record<string, string> = {}
+  for (const item of sorted) {
+    if (item.note) notes[item.place_id] = item.note
+    if (item.added_at) addedAt[item.place_id] = item.added_at
+  }
+  return {
+    id: row.id,
+    title: row.title,
+    placeIds: sorted.map((item) => item.place_id),
+    shared: row.visibility !== 'private',
+    collaboratorIds: [],
+    ownerId: row.owner_id,
+    isPublic: row.visibility === 'public',
+    visibility: row.visibility,
+    coverPlaceId: row.cover_place_id ?? undefined,
+    emoji: row.emoji || undefined,
+    color: row.accent || undefined,
+    notes,
+    addedAt,
+  }
 }

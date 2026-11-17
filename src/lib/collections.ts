@@ -8,13 +8,36 @@ export const CHEAP_EATS_TITLE = 'Cheap eats'
 
 /** Seattle Cheap Eats must not list these places, even if a stored collection still has the id. */
 const SEATTLE_CHEAP_EATS_EXCLUDED = new Set(['alibi-room', 'starbucks-coffee-company'])
+/** Never in Cheap eats in any city (Augusto's rule). */
+const CHEAP_EATS_NEVER = new Set(['alibi-room'])
 
 export function seattleCheapEatsBlocked(city: string, slug: string, placeId: string): boolean {
-  return city === 'seattle' && slug === CHEAP_EATS_SLUG && SEATTLE_CHEAP_EATS_EXCLUDED.has(placeId)
+  if (slug !== CHEAP_EATS_SLUG) return false
+  if (CHEAP_EATS_NEVER.has(placeId)) return true
+  return city === 'seattle' && SEATTLE_CHEAP_EATS_EXCLUDED.has(placeId)
 }
 
+/**
+ * Places Augusto priced $ himself (source "Augusto" in data/price-sources-2026-11-11.json and
+ * data/price-sources-2026-11-15.json). An unscored one used to fall past the 25 cap (Van Leeuwen in
+ * NYC). These always make the computed Cheap eats list when they are open and $ in the catalog.
+ * scripts/cheap-eats.test.mjs checks this set against those files.
+ */
+export const OWNER_PRICED_CHEAP = new Set([
+  'panhandle-cone-coffee',
+  'voodoo-doughnut-pdx',
+  'freddo',
+  'saffron-rose-persian-ice-cream',
+  'fondry',
+  'taiyaki-nyc',
+  'il-laboratorio-del-gelato',
+  'van-leeuwen-ice-cream',
+  'golden-gate-fortune-cookie-factory',
+  'chocolats-favoris',
+])
+
 export function omitSeattleCheapEats(city: string, ids: readonly string[]): string[] {
-  if (city !== 'seattle') return [...ids]
+  if (city !== 'seattle') return ids.filter((id) => !CHEAP_EATS_NEVER.has(id))
   return ids.filter((id) => !SEATTLE_CHEAP_EATS_EXCLUDED.has(id))
 }
 export const FAVORITES_TITLE = "Gusto's favorites"
@@ -101,13 +124,15 @@ export function compareCheapEats(
  * Top 25 open $ places when no stored list is usable.
  * Gusto's Score descending. Unscored places stay after scored ones.
  * Ties keep the catalog order this list was filtered from.
+ * The 25 cap never drops a place Augusto priced $ himself: any past the cap are added at the end,
+ * so the list can run a little over 25 (NYC: 26, with Van Leeuwen last).
  */
 export function cheapEatsFor(
   places: SlimPlace[],
   city: CityId,
   score: (id: string) => number | null = () => null,
 ): SlimPlace[] {
-  return places
+  const sorted = places
     .filter((place) => collectionCity(place) === city && isCheapEat(place) && !seattleCheapEatsBlocked(city, CHEAP_EATS_SLUG, place.id))
     .sort((a, b) => {
       const aRaw = score(a.id)
@@ -119,7 +144,9 @@ export function cheapEatsFor(
       if (aHouse != null && bHouse != null && aHouse !== bHouse) return bHouse - aHouse
       return 0
     })
-    .slice(0, FLAGSHIP_AIM)
+  const top = sorted.slice(0, FLAGSHIP_AIM)
+  const kept = sorted.slice(FLAGSHIP_AIM).filter((place) => OWNER_PRICED_CHEAP.has(place.id))
+  return kept.length ? [...top, ...kept] : top
 }
 
 export function storedCheapEats(collections: HouseCollection[], city: CityId, owner = false): HouseCollection | null {

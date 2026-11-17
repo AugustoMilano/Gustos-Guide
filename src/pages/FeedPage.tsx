@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { AreaKicker } from '../components/AreaKicker.tsx'
 import { FriendEmpty } from '../components/FriendEmpty.tsx'
+import { Avatar } from '../components/Avatar.tsx'
+import { NewcomerFeed } from '../components/NewcomerFeed.tsx'
 import { PullToRefresh } from '../components/PullToRefresh.tsx'
 import { PlaceThumb } from '../components/PlaceThumb.tsx'
 import { PlaceName } from '../components/PlaceName.tsx'
@@ -38,7 +40,7 @@ export function FeedPage() {
         <p className="mt-2 text-xs font-bold tracking-[0.14em] uppercase">Friends only</p>
         <h1 className="font-serif text-5xl italic">The feed</h1>
         <ul className="mt-6 space-y-4">
-          {app.activities.length === 0 ? (
+          {app.activities.length === 0 && (!app.user || app.friends.length > 0) ? (
             <li className="feed-card">
               {app.user ? (
                 <>
@@ -109,6 +111,7 @@ export function FeedPage() {
             )
           })}
         </ul>
+        {app.user && app.friends.length === 0 && app.demoUsers.length === 0 ? <NewcomerFeed /> : null}
       </div>
       <aside>
         <h2 className="font-serif text-3xl italic">Leaderboard</h2>
@@ -139,7 +142,7 @@ export function FeedPage() {
           ))}
           {app.friends.map((user) => (
             <li key={user.id}>
-              <Link to={`/u/${user.handle}`} className="font-bold">{user.name}</Link>
+              <Link to={`/u/${user.handle}`} className="inline-flex items-center gap-2 font-bold"><Avatar name={user.name} url={user.avatarUrl} size={28} />{user.name}</Link>
               <span className="text-sm"> · @{user.handle}</span>
             </li>
           ))}

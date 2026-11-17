@@ -1,6 +1,8 @@
 import { useRef, useState } from 'react'
 import { Modal } from './Modal.tsx'
 import { useApp, type ImportedNote } from '../state/AppState.tsx'
+import { Avatar } from './Avatar.tsx'
+import { prepareAvatar, type AvatarImage } from '../lib/avatar-image.ts'
 
 function suggestHandle(name: string): string {
   return name.toLowerCase().replace(/[^a-z0-9_]+/g, '').slice(0, 24)
@@ -74,6 +76,7 @@ export function ProfileSheet({ mode, onClose }: { mode: 'welcome' | 'edit'; onCl
             : 'Friends find you by your username.'}
         </p>
         {mode === 'welcome' && app.imported ? <p className="mt-3 text-sm font-bold" role="status">{movedLine(app.imported)}</p> : null}
+        <AvatarPicker name={name || user.name} />
         <label className="field mt-4">
           <span>Display name</span>
           <input
@@ -111,5 +114,72 @@ export function ProfileSheet({ mode, onClose }: { mode: 'welcome' | 'edit'; onCl
         </div>
       </form>
     </Modal>
+  )
+}
+
+/** Choose, change, or remove a profile photo. Shrunk in the browser; a failed upload says so and offers Try again. */
+function AvatarPicker({ name }: { name: string }) {
+  const app = useApp()
+  const input = useRef<HTMLInputElement>(null)
+  const [busy, setBusy] = useState(false)
+  const [error, setError] = useState('')
+  const [pending, setPending] = useState<AvatarImage | null>(null)
+  const [done, setDone] = useState('')
+  const url = app.user?.avatarUrl
+  if (!app.user || app.user.id.startsWith('local-')) return null
+
+  async function save(image: AvatarImage | null) {
+    setBusy(true)
+    setError('')
+    setDone('')
+    try {
+      await app.setAvatar(image)
+      setPending(null)
+      setDone(image ? 'Photo saved.' : 'Photo removed.')
+    } catch (reason) {
+      setPending(image)
+      setError(reason instanceof Error ? reason.message : 'Could not save your photo.')
+    } finally {
+      setBusy(false)
+    }
+  }
+
+  return (
+    <div className="avatar-picker mt-4 flex items-center gap-3">
+      <Avatar name={name} url={url} size={64} />
+      <div className="min-w-0">
+        <div className="flex flex-wrap gap-2">
+          <button type="button" className="btn text-sm" disabled={busy} onClick={() => input.current?.click()}>
+            {busy ? 'Saving…' : url ? 'Change photo' : 'Add a photo'}
+          </button>
+          {url && !busy ? <button type="button" className="btn text-sm" onClick={() => void save(null)}>Remove</button> : null}
+        </div>
+        <input
+          ref={input}
+          type="file"
+          accept="image/*"
+          className="sr-only"
+          tabIndex={-1}
+          aria-label="Profile photo"
+          onChange={(event) => {
+            const file = event.target.files?.[0]
+            event.target.value = ''
+            if (!file) return
+            setBusy(true)
+            setError('')
+            void prepareAvatar(file).then((image) => save(image)).catch((reason: unknown) => {
+              setBusy(false)
+              setError(reason instanceof Error ? reason.message : 'Could not read that photo.')
+            })
+          }}
+        />
+        {error ? (
+          <p className="mt-1 text-sm save-error" role="alert">
+            {error}{' '}
+            {pending ? <button type="button" className="underline font-bold" onClick={() => void save(pending)}>Try again</button> : null}
+          </p>
+        ) : done ? <p className="mt-1 text-xs" role="status">{done}</p> : <p className="mt-1 text-xs">Friends see this next to your name.</p>}
+      </div>
+    </div>
   )
 }

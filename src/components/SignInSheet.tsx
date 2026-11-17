@@ -13,7 +13,7 @@ function XLogo() {
   )
 }
 
-export function SignInSheet({ open, onClose }: { open: boolean; onClose: () => void }) {
+export function SignInSheet({ open, onClose, reason }: { open: boolean; onClose: () => void; reason?: string }) {
   const { signIn, sendMagicLink, verifyEmailCode, signInProvider, accounts, authProviders } = useApp()
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
@@ -93,9 +93,9 @@ export function SignInSheet({ open, onClose }: { open: boolean; onClose: () => v
       >
         <h2 className="font-serif text-4xl italic">Sign in</h2>
         <p className="mt-2 text-sm">
-          {accounts
+          {reason ?? (accounts
             ? 'Your profile, lists, and ranks are saved to your account, so they are there on any phone or computer. No password needed.'
-            : 'Your name and lists stay on this phone.'}
+            : 'Your name and lists stay on this phone.')}
         </p>
         {xOn ? (
           <button

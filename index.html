@@ -27,8 +27,9 @@
     <meta name="theme-color" content="#141F4D" media="(prefers-color-scheme: dark)" />
     <script src="./status.js"></script>
     <!--home-critical-css-start-->
-    <style id="pre-home-css">/* City-home first paint: enough color and type to show the hero before the main stylesheet. */
-@font-face{font-family:Instrument Serif;font-style:italic;font-weight:400;font-display:swap;src:url("./fonts/instrument-serif-italic.woff2") format("woff2")}
+    <style id="pre-home-css">/* City-home first paint: enough color and type to show the hero before the main stylesheet.
+   Same system type as the app (index.css --font-serif), so the React page that replaces this paints
+   the same sizes: no font swap, no larger text block, and no late Largest Contentful Paint. */
 html[data-prerender]{--color-cream:#eee3d6;--color-navy:#141f4d;--color-ink:#181818;--color-coral:#ff5330;--color-card:#fffaf3;--gutter:12px;--card-pad:16px;--icon-md:24px;--hit:44px;--header-offset:4.75rem}
 html[data-prerender] body{margin:0;background:var(--status-bar,#141f4d);color:var(--color-ink);font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif}
 main.pre-landing,main.pre-top,main.pre-place,main.pre-home,.pre-home-city,.pre-top-r{display:none}
@@ -51,9 +52,9 @@ html[data-prerender='home'][data-area='pullman'] .pre-home-city[data-city='pullm
 html[data-prerender='home'][data-area='moscow'] .pre-home-city[data-city='moscow']{display:block}
 html[data-prerender='home'] .hero{background:#141f4d;color:#fffaf3}
 html[data-prerender='home'] .hero-copy{padding-top:calc(var(--header-offset) + 1.15rem)}
-html[data-prerender='home'] .font-serif,html[data-prerender='home'] h1,html[data-prerender='home'] h2,html[data-prerender='home'] h3{font-family:"Instrument Serif",Georgia,"Palatino Linotype",Palatino,serif;font-style:italic;font-weight:400}
+html[data-prerender='home'] .font-serif,html[data-prerender='home'] h1,html[data-prerender='home'] h2,html[data-prerender='home'] h3{font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif;font-style:normal;font-weight:600;letter-spacing:-.022em;line-height:1.12;margin:0}
 html[data-prerender='home'] .text-cream{color:#fffaf3}
-html[data-prerender='home'] .text-5xl{font-size:3rem;line-height:1.05}
+html[data-prerender='home'] .text-5xl{font-size:3rem;line-height:1.12}
 html[data-prerender='home'] .text-6xl{font-size:3.75rem}
 html[data-prerender='home'] .text-4xl{font-size:2.25rem}
 html[data-prerender='home'] .text-3xl{font-size:1.875rem}
@@ -61,7 +62,6 @@ html[data-prerender='home'] .text-xs{font-size:.75rem}
 html[data-prerender='home'] .text-sm{font-size:.875rem}
 html[data-prerender='home'] .font-bold{font-weight:700}
 html[data-prerender='home'] .uppercase{text-transform:uppercase}
-html[data-prerender='home'] .italic{font-style:italic}
 html[data-prerender='home'] .tracking-\[0\.14em\]{letter-spacing:.14em}
 html[data-prerender='home'] .mx-auto{margin-left:auto;margin-right:auto}
 html[data-prerender='home'] .max-w-6xl{max-width:72rem}
