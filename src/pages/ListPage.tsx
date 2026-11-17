@@ -19,7 +19,7 @@ import { renderGuideStory } from '../lib/story-card.ts'
 import { awardFor } from '../lib/top25.ts'
 import { usePageMeta } from '../lib/meta.ts'
 import { useApp } from '../state/AppState.tsx'
-import type { Price, SlimPlace } from '../types.ts'
+import type { Price, SlimPlace, UserGuide } from '../types.ts'
 
 type SortKey = 'order' | 'score' | 'recent' | 'neighborhood' | 'distance'
 
@@ -28,7 +28,20 @@ export function ListPage() {
   useSyncExternalStore(subscribeCatalog, catalogPhase, catalogPhase)
   useEffect(() => { void ensureAllCities() }, [])
   const app = useApp()
-  const guide = app.guides.find((item) => item.id === id)
+  const own = app.guides.find((item) => item.id === id)
+  // Someone else's list is no longer preloaded at sign-in. Read it when this page opens.
+  const [remoteList, setRemoteList] = useState<{ id: string; guide: UserGuide | null; failed?: boolean } | null>(null)
+  const [attempt, setAttempt] = useState(0)
+  useEffect(() => {
+    if (own || !id) return
+    let live = true
+    void app.loadList(id).then((found) => { if (live) setRemoteList({ id, guide: found }) }).catch(() => { if (live) setRemoteList({ id, guide: null, failed: true }) })
+    return () => { live = false }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [id, own, app.user?.id, attempt])
+  const fetched = remoteList?.id === id ? remoteList : null
+  const guide = own ?? fetched?.guide ?? undefined
+  const listLoading = !own && !fetched && app.supabase
   const title = guide?.title ?? 'List'
   const [sort, setSort] = useState<SortKey>('order')
   const [openNow, setOpenNow] = useState(false)
@@ -73,8 +86,11 @@ export function ListPage() {
     return scored
   }, [guide, openNow, prices, unknownPrice, sort, origin, app])
 
+  if (!guide && listLoading) {
+    return <main id="main" tabIndex={-1} className="mx-auto min-h-dvh max-w-3xl px-4 pt-28 outline-none" aria-busy="true"><p className="sr-only">Loading</p><div className="skeleton h-12 w-48" /></main>
+  }
   if (!guide) {
-    return <main id="main" tabIndex={-1} className="mx-auto min-h-dvh max-w-3xl px-4 pt-28 outline-none"><h1 className="font-serif text-5xl italic">That list is not here.</h1></main>
+    return <main id="main" tabIndex={-1} className="mx-auto min-h-dvh max-w-3xl px-4 pt-28 outline-none"><h1 className="font-serif text-5xl italic">{fetched?.failed ? 'That list did not load.' : 'That list is not here.'}</h1>{fetched?.failed ? <button type="button" className="btn mt-4" onClick={() => { setRemoteList(null); setAttempt((n) => n + 1) }}>Try again</button> : null}</main>
   }
   const visibility = guide.visibility ?? (guide.isPublic === false ? 'private' : 'public')
   const owner = Boolean(app.user && guide.ownerId === app.user.id)

@@ -1,4 +1,4 @@
-import { lazy, Suspense, useState } from 'react'
+import { lazy, Suspense, useRef, useState } from 'react'
 import { m, useReducedMotion } from 'framer-motion'
 import { Link, useParams } from 'react-router-dom'
 const GuideMap = lazy(() => import('../components/GuideMap.tsx').then((module) => ({ default: module.GuideMap })))
@@ -14,6 +14,7 @@ import { countPlaces } from '../lib/format.ts'
 import { hasUnknownPrice, matchesPrice } from '../lib/price-filter.ts'
 import { usePageMeta } from '../lib/meta.ts'
 import { useCityCatalog } from '../lib/use-city.ts'
+import { useElementScrollRestore } from '../lib/use-element-scroll.ts'
 import { useApp } from '../state/AppState.tsx'
 import type { Price } from '../types.ts'
 
@@ -32,6 +33,7 @@ export function CollectionPage() {
   const [confirmDelete, setConfirmDelete] = useState(false)
   const [prices, setPrices] = useState<Price[]>([])
   const [unknownPrice, setUnknownPrice] = useState(false)
+  const scroller = useRef<HTMLDivElement>(null)
   const isCheap = slug === CHEAP_EATS_SLUG
   const stored = app.collections.find((row) => row.city === city && row.slug === slug && (row.published || app.user?.isOwner)) ?? null
   const loading = app.collectionsStatus === 'loading'
@@ -47,6 +49,7 @@ export function CollectionPage() {
   const heading = stored?.title ?? (isCheap ? CHEAP_EATS_TITLE : 'Collection')
   const blurb = stored?.blurb ?? ''
   const owner = Boolean(app.user?.isOwner && stored && usingStored && storedIds)
+  useElementScrollRestore(scroller, !loading && members.length > 0)
   usePageMeta(
     `${heading} · Gusto's Guide`,
     blurb || `${countPlaces(members.length)} · ${areaTitle(city)}`,
@@ -73,7 +76,8 @@ export function CollectionPage() {
 
   return (
     <main id="main" tabIndex={-1} className="explore-shell outline-none">
-      <section className={`explore-list ${sheet ? '' : 'is-peek'}`} aria-label={heading}>
+      <section className={`explore-list ${sheet ? 'is-open' : 'is-peek'}`} aria-label={heading}>
+        <div className="explore-head">
         <div className="explore-bar panel-pad flex items-end justify-between gap-3 border-b border-ink/10">
           <m.div
             initial={reduce ? false : { opacity: 0, y: 10 }}
@@ -93,7 +97,9 @@ export function CollectionPage() {
             {sheet ? 'Map' : 'List'}
           </button>
         </div>
-        <div className={sheet ? '' : 'max-md:hidden'}>
+        </div>
+        {/* The list scrolls here, not the window, so Back restores this offset (useElementScrollRestore). */}
+        <div ref={scroller} className={`explore-scroll ${sheet ? '' : 'max-md:hidden'}`} data-collection-scroll>
           {stored && !stored.published ? <p className="panel-pad text-sm" role="status">Not published.</p> : null}
           {blurb ? <p className="glass mx-3 mt-3 p-3 text-sm">{blurb}</p> : null}
           {owner && stored ? (
