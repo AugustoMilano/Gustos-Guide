@@ -4,6 +4,7 @@ import { CollectionErrorBoundary } from './components/CollectionErrorBoundary.ts
 import { Footer } from './components/Footer.tsx'
 import { Header } from './components/Header.tsx'
 import { ImportLocalSheet } from './components/ImportLocalSheet.tsx'
+import { SaveFailureBar } from './components/SaveFailureBar.tsx'
 import { ProfileSheet } from './components/ProfileSheet.tsx'
 import { Modal } from './components/Modal.tsx'
 import { CitiesPage } from './pages/CitiesPage.tsx'
@@ -318,6 +319,7 @@ function Shell() {
       {importOffer ? <ImportLocalSheet offer={importOffer} onAccept={() => void acceptImport()} onDismiss={dismissImport} /> : null}
       {needsProfile ? <ProfileSheet mode="welcome" onClose={skipProfile} /> : null}
       <AuthErrorSheet />
+      <SaveFailureBar />
       <div className="sr-only" aria-live="polite">{announcement}</div>
     </>
   )
