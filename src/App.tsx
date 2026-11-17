@@ -4,6 +4,7 @@ import { CollectionErrorBoundary } from './components/CollectionErrorBoundary.ts
 import { Footer } from './components/Footer.tsx'
 import { Header } from './components/Header.tsx'
 import { ImportLocalSheet } from './components/ImportLocalSheet.tsx'
+import { ProfileSheet } from './components/ProfileSheet.tsx'
 import { Modal } from './components/Modal.tsx'
 import { CitiesPage } from './pages/CitiesPage.tsx'
 import { HomePage } from './pages/HomePage.tsx'
@@ -284,7 +285,7 @@ function CatalogRoutes() {
 }
 
 function Shell() {
-  const { announcement, importOffer, acceptImport, dismissImport } = useApp()
+  const { announcement, importOffer, acceptImport, dismissImport, needsProfile, skipProfile } = useApp()
   const { pathname } = useLocation()
   const legal = directLegalSlug()
   return (
@@ -315,6 +316,7 @@ function Shell() {
       <BackToTop />
       <TabBar />
       {importOffer ? <ImportLocalSheet offer={importOffer} onAccept={() => void acceptImport()} onDismiss={dismissImport} /> : null}
+      {needsProfile ? <ProfileSheet mode="welcome" onClose={skipProfile} /> : null}
       <AuthErrorSheet />
       <div className="sr-only" aria-live="polite">{announcement}</div>
     </>
