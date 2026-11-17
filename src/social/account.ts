@@ -71,6 +71,24 @@ async function applyXProfile(client: SupabaseClient, authUser: User, profile: Ow
   if (patch.handle) profile.handle = patch.handle
   if (patch.avatar_url) profile.avatar_url = patch.avatar_url
 }
+export const HANDLE_RULE = /^[a-z0-9_]{3,24}$/
+
+export function cleanHandle(raw: string): string {
+  return raw.trim().replace(/^@/, '').toLowerCase()
+}
+
+/** Name and username from the welcome sheet or Edit profile. Only these columns are writable. */
+export async function saveProfile(client: SupabaseClient, id: string, rawName: string, rawHandle: string): Promise<{ name: string; handle: string }> {
+  const name = rawName.trim().replace(/\s+/g, ' ').slice(0, 80)
+  const handle = cleanHandle(rawHandle)
+  if (!name) throw new Error('Add a display name.')
+  if (!HANDLE_RULE.test(handle)) throw new Error('Usernames are 3 to 24 letters, numbers, or underscores.')
+  const { error } = await client.from('profiles').update({ name, handle }).eq('id', id)
+  if (error?.code === '23505') throw new Error(`@${handle} is taken. Try another.`)
+  if (error) throw new Error(error.message || 'Could not save your profile.')
+  return { name, handle }
+}
+
 export type FriendRequest = { id: string; direction: 'in' | 'out'; name: string; handle: string }
 
 export type AccountDoc = {
@@ -124,10 +142,28 @@ function missingListColumn(error: { message?: string } | null): boolean {
   return /emoji|accent|note|added_at/i.test(error.message) && /column|schema cache/i.test(error.message)
 }
 
-async function selectGuides(client: SupabaseClient) {
-  const rich = await client.from('guides').select('id, owner_id, title, visibility, cover_place_id, invite_token, emoji, accent')
+async function selectGuidesRaw(client: SupabaseClient, withToken: boolean) {
+  const token = withToken ? ', invite_token' : ''
+  const rich = await client.from('guides').select(`id, owner_id, title, visibility, cover_place_id${token}, emoji, accent`)
   if (!rich.error || !missingListColumn(rich.error)) return rich
-  return client.from('guides').select('id, owner_id, title, visibility, cover_place_id, invite_token')
+  return client.from('guides').select(`id, owner_id, title, visibility, cover_place_id${token}`)
+}
+
+/**
+ * After migration.sql, invite tokens are no longer readable on public guides (anyone holding one can
+ * edit). my_guide_invites() returns tokens only for guides this person owns or edits. Before the
+ * migration that function does not exist, so the old column read is used.
+ */
+async function selectGuides(client: SupabaseClient) {
+  const invites = await client.rpc('my_guide_invites')
+  if (invites.error) return selectGuidesRaw(client, true)
+  const res = await selectGuidesRaw(client, false)
+  if (res.error || !res.data) return res
+  const tokens = new Map<string, string>()
+  for (const row of (invites.data ?? []) as { guide_id: string; invite_token: string | null }[]) {
+    if (row.invite_token) tokens.set(row.guide_id, row.invite_token)
+  }
+  return { ...res, data: (res.data as unknown as GuideRow[]).map((row) => ({ ...row, invite_token: tokens.get(row.id) ?? null })) }
 }
 
 async function selectGuideItems(client: SupabaseClient) {
@@ -233,12 +269,13 @@ export async function loadAccount(client: SupabaseClient, authUser: User): Promi
     id: profile.id,
     name: profile.name,
     handle: profile.handle,
-    isOwner: profile.is_owner,
+    // Owner rights never come from an account on this build; see AppState (password cookie only).
+    isOwner: false,
     avatarUrl: profile.avatar_url || undefined,
     givenName: givenNameFromAuth(authUser),
   }
 
-  const [statusRes, guideRes, itemRes, collabRes, planRes, memberRes, voteRes, activityRes, likeRes, commentRes, noticeRes, rankRes, photoRes, friendRes, house] = await Promise.all([
+  const [statusRes, guideRes, itemRes, collabRes, planRes, memberRes, voteRes, activityRes, likeRes, commentRes, noticeRes, rankRes, photoRes, friendRes] = await Promise.all([
     client.from('place_status').select('place_id, status').eq('user_id', user.id),
     selectGuides(client),
     selectGuideItems(client),
@@ -251,10 +288,11 @@ export async function loadAccount(client: SupabaseClient, authUser: User): Promi
     client.from('comments').select('id, activity_id, user_id, body, created_at'),
     client.from('notifications').select('id, body, href, read, created_at').order('created_at', { ascending: false }).limit(40),
     client.from('rankings').select('user_id, place_id, bucket, score'),
-    client.from('place_photos').select('id, place_id, user_id, is_owner, storage_path, width, height'),
+    // House (owner) photos ship with the site; accounts only carry their own and friends' photos.
+    client.from('place_photos').select('id, place_id, user_id, is_owner, storage_path, width, height').eq('is_owner', false),
     client.from('friendships').select('id, requester_id, addressee_id, status, invite_email, invite_token'),
-    loadHouseScores(client),
   ])
+  const house = null
 
   for (const result of [statusRes, guideRes, itemRes, collabRes, planRes, memberRes, voteRes, activityRes, likeRes, commentRes, noticeRes, rankRes, photoRes, friendRes]) {
     const hintedResult = schemaHint(result.error)
@@ -468,7 +506,7 @@ export async function loadAccount(client: SupabaseClient, authUser: User): Promi
     requests,
     friendRanks,
     friendLists,
-    counts: { places: Object.keys(statuses).length, guides: guides.filter((guide) => guide.ownerId === user.id).length, photos: photoRows.length },
+    counts: { places: Object.keys(statuses).length, guides: guides.filter((guide) => guide.ownerId === user.id).length, photos: photoRows.filter((row) => row.user_id === user.id).length },
   }
 }
 
@@ -517,6 +555,19 @@ export async function loadNotices(client: SupabaseClient): Promise<Notice[]> {
   return data.map((row) => ({ id: row.id, text: row.body, href: row.href, read: row.read, createdAt: row.created_at }))
 }
 
+/**
+ * Insert, or update when the row already exists. Not upsert: on an upsert Postgres also checks the
+ * new row against the SELECT policy, and guides/plans/lists decide visibility with functions that
+ * cannot see a row that is still being inserted, so every first save of a list or plan was refused.
+ * A plain insert with no returned row only checks the INSERT policy.
+ */
+async function insertOrUpdate(client: SupabaseClient, table: string, row: Record<string, unknown> & { id: string }) {
+  const inserted = await client.from(table).insert(row)
+  if (inserted.error?.code !== '23505') return inserted
+  const { id, ...patch } = row
+  return client.from(table).update(patch).eq('id', id)
+}
+
 async function mirrorList(client: SupabaseClient, userId: string, guide: UserGuide): Promise<void> {
   const visibility = guideVisibility(guide)
   const shared = visibility !== 'private' || guide.collaboratorIds.length > 0
@@ -524,7 +575,7 @@ async function mirrorList(client: SupabaseClient, userId: string, guide: UserGui
     await client.from('lists').delete().eq('id', guide.id).eq('owner_id', userId)
     return
   }
-  const { error } = await client.from('lists').upsert({
+  const { error } = await insertOrUpdate(client, 'lists', {
     id: guide.id,
     owner_id: userId,
     title: guide.title,
@@ -563,10 +614,10 @@ export async function saveGuide(client: SupabaseClient, userId: string, guide: U
       emoji: guide.emoji ?? null,
       accent: guide.color ?? null,
     }
-    let { error } = await client.from('guides').upsert(row)
+    let { error } = await insertOrUpdate(client, 'guides', row)
     if (error && missingListColumn(error)) {
       const { emoji: _emoji, accent: _accent, ...plain } = row
-      const retry = await client.from('guides').upsert(plain)
+      const retry = await insertOrUpdate(client, 'guides', plain)
       error = retry.error
     }
     if (error) throw error
@@ -607,7 +658,7 @@ export async function deleteGuideRemote(client: SupabaseClient, guideId: string)
 export async function savePlan(client: SupabaseClient, userId: string, plan: Plan): Promise<void> {
   const hostId = plan.hostId || userId
   if (hostId === userId) {
-    const { error } = await client.from('plans').upsert({
+    const { error } = await insertOrUpdate(client, 'plans', {
       id: plan.id,
       host_id: userId,
       title: plan.title,
@@ -640,15 +691,40 @@ export async function savePlan(client: SupabaseClient, userId: string, plan: Pla
   }
 }
 
-export async function importLocalBundle(client: SupabaseClient, user: SessionUser, bundle: LocalBundle): Promise<void> {
-  for (const [placeId, status] of Object.entries(bundle.statuses)) {
-    const { error } = await client.from('place_status').upsert({ user_id: user.id, place_id: placeId, status })
-    if (error) throw error
+/** Same account + same phone item always maps to the same row id, so a resumed move never duplicates. */
+async function stableId(userId: string, localId: string): Promise<string> {
+  const bytes = new Uint8Array(await crypto.subtle.digest('SHA-256', new TextEncoder().encode(`gusto-import:${userId}:${localId}`))).slice(0, 16)
+  bytes[6] = (bytes[6] & 0x0f) | 0x50
+  bytes[8] = (bytes[8] & 0x3f) | 0x80
+  const hex = [...bytes].map((byte) => byte.toString(16).padStart(2, '0')).join('')
+  return `${hex.slice(0, 8)}-${hex.slice(8, 12)}-${hex.slice(12, 16)}-${hex.slice(16, 20)}-${hex.slice(20)}`
+}
+
+function importProgress(userId: string): Set<string> {
+  try {
+    return new Set(JSON.parse(localStorage.getItem(`gusto.import.items.v1.${userId}`) || '[]') as string[])
+  } catch {
+    return new Set()
   }
+}
+
+function markImported(userId: string, done: Set<string>, key: string) {
+  done.add(key)
+  try { localStorage.setItem(`gusto.import.items.v1.${userId}`, JSON.stringify([...done])) } catch { /* storage off */ }
+}
+
+/**
+ * Moves what the old name-only sign-in kept on this phone into the account. Safe to run again after
+ * a failure: places and ranks are upserts, and each list, plan, and photo is remembered once moved.
+ */
+export async function importLocalBundle(client: SupabaseClient, user: SessionUser, bundle: LocalBundle): Promise<{ places: number; guides: number; photos: number; ranks: number; plans: number }> {
+  const done = importProgress(user.id)
   for (const guide of bundle.guides) {
+    const key = `guide:${guide.id}`
+    if (done.has(key)) continue
     const next: UserGuide = {
       ...guide,
-      id: crypto.randomUUID(),
+      id: await stableId(user.id, `guide:${guide.id}`),
       ownerId: user.id,
       demo: false,
       collaboratorIds: [],
@@ -658,24 +734,62 @@ export async function importLocalBundle(client: SupabaseClient, user: SessionUse
       isPublic: guide.visibility === 'public' || guide.isPublic === true,
     }
     await saveGuide(client, user.id, next)
+    markImported(user.id, done, key)
+  }
+  const statusRows = Object.entries(bundle.statuses).map(([placeId, status]) => ({ user_id: user.id, place_id: placeId, status }))
+  if (statusRows.length) {
+    const { error } = await client.from('place_status').upsert(statusRows)
+    if (error) throw error
+  }
+  const rankRows = Object.entries(bundle.scores).map(([placeId, rank]) => ({ user_id: user.id, place_id: placeId, bucket: rank.bucket, score: Math.max(0, Math.min(10, rank.score)) }))
+  if (rankRows.length) {
+    const { error } = await client.from('rankings').upsert(rankRows)
+    if (error) throw error
+  }
+  for (const plan of bundle.plans) {
+    const key = `plan:${plan.id}`
+    if (done.has(key)) continue
+    const mine = plan.votes[plan.hostId]
+    await savePlan(client, user.id, {
+      ...plan,
+      id: await stableId(user.id, `plan:${plan.id}`),
+      hostId: user.id,
+      demo: false,
+      // Name-only friends had no accounts, so nobody else can be carried over.
+      inviteIds: [],
+      votes: mine ? { [user.id]: mine } : {},
+      rsvps: plan.rsvps[plan.hostId] ? { [user.id]: plan.rsvps[plan.hostId] } : {},
+      inviteToken: crypto.randomUUID().slice(0, 8),
+    })
+    markImported(user.id, done, key)
   }
   for (const photo of bundle.photos) {
+    const key = `photo:${photo.id}`
+    if (done.has(key)) continue
     await uploadImportedPhoto(client, user, photo)
+    markImported(user.id, done, key)
   }
+  return { places: statusRows.length, guides: bundle.guides.length, photos: bundle.photos.length, ranks: rankRows.length, plans: bundle.plans.length }
 }
 
 async function uploadImportedPhoto(client: SupabaseClient, user: SessionUser, photo: StoredPhoto): Promise<void> {
-  const id = crypto.randomUUID()
+  const id = await stableId(user.id, `photo:${photo.id}`)
   const path = `${user.id}/${photo.placeId}/${id}.webp`
-  await savePlacePhoto(client, photo.blob, path, user.isOwner)
+  try {
+    await savePlacePhoto(client, photo.blob, path, false)
+  } catch (error) {
+    // A resumed move: the file went up last time.
+    const message = error && typeof error === 'object' && 'message' in error ? String((error as { message: unknown }).message) : ''
+    if (!/exists|duplicate/i.test(message)) throw error
+  }
   const { error } = await client.from('place_photos').insert({
     id,
     place_id: photo.placeId,
     user_id: user.id,
-    is_owner: photo.owner,
+    is_owner: false,
     storage_path: path,
     width: photo.width,
     height: photo.height,
   })
-  if (error) throw error
+  if (error && error.code !== '23505') throw error
 }

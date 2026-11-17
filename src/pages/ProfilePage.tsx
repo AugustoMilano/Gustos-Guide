@@ -6,6 +6,7 @@ import { m, useReducedMotion } from 'framer-motion'
 import { useState } from 'react'
 import { Achievements } from '../components/Achievements.tsx'
 import { PlaceThumb } from '../components/PlaceThumb.tsx'
+import { ProfileSheet } from '../components/ProfileSheet.tsx'
 import { PlaceName } from '../components/PlaceName.tsx'
 import { PriceFilter } from '../components/PriceFilter.tsx'
 import { slimById } from '../content/load.ts'
@@ -30,6 +31,7 @@ export function ProfilePage() {
   const reduce = useReducedMotion()
   // Top 10 area, picked right at the list. Starts on the city being browsed.
   const [topRegion, setTopRegion] = useState<RegionId>(() => regionOf(city))
+  const [editing, setEditing] = useState(false)
   const region = REGIONS.find((item) => item.id === topRegion) ?? REGIONS[0]
   const area = areaTitle(city)
   usePageMeta(
@@ -76,8 +78,12 @@ export function ProfilePage() {
       <h1 className="font-serif text-5xl italic">{mine ? app.user?.name : person?.name ?? friend?.name}</h1>
       {mine && app.user?.avatarUrl ? <img src={app.user.avatarUrl} alt="" width={64} height={64} referrerPolicy="no-referrer" className="mt-4 h-16 w-16 rounded-full border-2 border-white shadow-sm object-cover" /> : null}
       {mine && app.user?.handle ? <p className="mt-2 text-sm font-bold">Signed in as @{app.user.handle}</p> : null}
+      {mine && app.accounts && app.user && !app.user.id.startsWith('local-') ? (
+        <button type="button" className="btn mt-3" onClick={() => setEditing(true)}>Edit profile</button>
+      ) : null}
+      {editing ? <ProfileSheet mode="edit" onClose={() => setEditing(false)} /> : null}
       <p className="mt-2">
-        {mine ? (app.supabase ? 'Signed in' : 'Signed in on this browser') : person ? `${person.neighborhood} · streak ${person.streak} weeks` : `@${friend?.handle ?? handle}`}
+        {mine ? (app.accounts && app.user && !app.user.id.startsWith('local-') ? 'Signed in' : 'Signed in on this browser') : person ? `${person.neighborhood} · streak ${person.streak} weeks` : `@${friend?.handle ?? handle}`}
         {' '}· {beenPlaces.length} been
       </p>
       {mine ? (

@@ -14,12 +14,21 @@
               <td style="padding:0 0 12px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:28px;font-style:normal;font-weight:650;letter-spacing:-0.03em;line-height:1.1;color:#181818;">Gusto's Guide</td>
             </tr>
             <tr>
-              <td style="padding:0 0 24px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:18px;line-height:1.4;color:#181818;">Use this link to sign in.</td>
+              <td style="padding:0 0 24px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:18px;line-height:1.4;color:#181818;">Tap the button to sign in. It works best in the browser where you asked for it.</td>
             </tr>
             <tr>
               <td>
                 <a href="{{ .ConfirmationURL }}" style="display:inline-block;background:#FF5330;color:#181818;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:18px;line-height:1;text-decoration:none;padding:14px 22px;border-radius:999px;">Sign in</a>
               </td>
+            </tr>
+            <tr>
+              <td style="padding:24px 0 6px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:16px;line-height:1.4;color:#181818;">Or type this code on Gusto's Guide:</td>
+            </tr>
+            <tr>
+              <td style="padding:0 0 8px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:32px;font-weight:700;letter-spacing:0.18em;color:#181818;">{{ .Token }}</td>
+            </tr>
+            <tr>
+              <td style="padding:0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:13px;line-height:1.4;color:#555555;">The link and the code work once and expire soon. If you did not ask to sign in, ignore this email.</td>
             </tr>
           </table>
         </td>

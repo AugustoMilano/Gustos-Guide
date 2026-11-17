@@ -39,10 +39,15 @@ export function AuthRouterGate({ children }: { children: ReactNode }) {
       window.clearTimeout(timer)
       const pending = takeAuthPending()
       if (data?.session) return finish(null)
-      if (pending && error && !cancel) {
+      if (pending && !cancel) {
+        // A sign-in link carries a one-time code that only the browser which asked for it can use.
+        // Opened from a mail app's own browser, or on another device, it lands here with no session.
         cancel = true
         releaseAuthCallback()
-        setFailed(error.message || 'Could not finish sign-in.')
+        const crossBrowser = !error || /verifier|code_verifier|pkce|both auth code/i.test(error.message)
+        setFailed(crossBrowser
+          ? 'This link was opened in a different browser or app than the one that asked for it. Ask for a new link from this browser, or type the code from the email where you asked for it.'
+          : error.message || 'Could not finish sign-in.')
         return
       }
       finish(null)
