@@ -14,37 +14,87 @@ function XLogo() {
 }
 
 export function SignInSheet({ open, onClose }: { open: boolean; onClose: () => void }) {
-  const { signIn, sendMagicLink, signInProvider, supabase, authProviders } = useApp()
+  const { signIn, sendMagicLink, verifyEmailCode, signInProvider, accounts, authProviders } = useApp()
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
+  const [code, setCode] = useState('')
   const [error, setError] = useState('')
   const [sent, setSent] = useState(false)
+  const [busy, setBusy] = useState(false)
   const xFocus = useRef<HTMLButtonElement>(null)
   const fieldFocus = useRef<HTMLInputElement>(null)
-  const xOn = supabase && authProviders.includes('x')
+  const xOn = accounts && authProviders.includes('x')
   if (!open) return null
-  const fail = (reason: unknown) => setError(reason instanceof Error ? reason.message : 'Could not sign in.')
+  const fail = (reason: unknown) => {
+    setBusy(false)
+    setError(reason instanceof Error ? reason.message : 'Could not sign in.')
+  }
+  const send = () => {
+    setError('')
+    setBusy(true)
+    void sendMagicLink(email).then(() => {
+      setBusy(false)
+      setSent(true)
+    }).catch(fail)
+  }
+  if (accounts && sent) {
+    return (
+      <Modal onClose={onClose} label="Check your email" initialFocusRef={fieldFocus as RefObject<HTMLElement | null>}>
+        <form
+          className="p-5"
+          data-auth="code"
+          onSubmit={(event) => {
+            event.preventDefault()
+            setError('')
+            setBusy(true)
+            void verifyEmailCode(email, code).then(onClose).catch(fail)
+          }}
+        >
+          <h2 className="font-serif text-4xl italic">Check your email</h2>
+          <p className="mt-2 text-sm" role="status">
+            We sent a sign-in link and a code to <strong>{email.trim()}</strong>. Tap the link, or type the code here.
+          </p>
+          <label className="field mt-4">
+            <span>Code</span>
+            <input
+              ref={fieldFocus}
+              inputMode="numeric"
+              autoComplete="one-time-code"
+              pattern="[0-9 ]*"
+              value={code}
+              onChange={(event) => setCode(event.target.value)}
+              required
+            />
+          </label>
+          {error ? <p className="mt-3 text-sm" role="alert">{error}</p> : null}
+          <button type="submit" className="btn btn-coral mt-4" disabled={busy}>Sign in</button>
+          <p className="mt-4 flex flex-wrap gap-4 text-sm">
+            <button type="button" className="underline" disabled={busy} onClick={send}>Send again</button>
+            <button type="button" className="underline" onClick={() => { setSent(false); setCode(''); setError('') }}>Use another email</button>
+          </p>
+        </form>
+      </Modal>
+    )
+  }
   return (
     <Modal onClose={onClose} label="Sign in" initialFocusRef={(xOn ? xFocus : fieldFocus) as RefObject<HTMLElement | null>}>
       <form
         className="p-5"
-        data-auth={supabase ? 'magic' : 'local'}
+        data-auth={accounts ? 'magic' : 'local'}
         onSubmit={(event) => {
           event.preventDefault()
           setError('')
-          if (!supabase) {
+          if (!accounts) {
             void signIn(name).then(onClose).catch(fail)
             return
           }
-          void sendMagicLink(email).then(() => setSent(true)).catch(fail)
+          send()
         }}
       >
         <h2 className="font-serif text-4xl italic">Sign in</h2>
         <p className="mt-2 text-sm">
-          {supabase
-            ? xOn
-              ? 'Continue with X, or email yourself a sign-in link. It opens back on Gusto’s Guide.'
-              : 'We’ll email you a sign-in link. It opens back on Gusto’s Guide.'
+          {accounts
+            ? 'Your profile, lists, and ranks are saved to your account, so they are there on any phone or computer. No password needed.'
             : 'Your name and lists stay on this phone.'}
         </p>
         {xOn ? (
@@ -61,8 +111,8 @@ export function SignInSheet({ open, onClose }: { open: boolean; onClose: () => v
             Continue with X
           </button>
         ) : null}
-        {supabase ? (
-          <label className={`field ${xOn ? 'mt-4' : 'mt-4'}`}>
+        {accounts ? (
+          <label className="field mt-4">
             <span>{xOn ? 'Or email' : 'Email'}</span>
             <input ref={xOn ? undefined : fieldFocus} type="email" autoComplete="email" value={email} onChange={(event) => setEmail(event.target.value)} required />
           </label>
@@ -72,11 +122,11 @@ export function SignInSheet({ open, onClose }: { open: boolean; onClose: () => v
             <input ref={fieldFocus} value={name} onChange={(event) => setName(event.target.value)} required />
           </label>
         )}
-        {sent ? <p className="mt-3 text-sm" role="status">Check your email for a sign-in link. It opens back on this guide.</p> : null}
         {error ? <p className="mt-3 text-sm" role="alert">{error}</p> : null}
-        <button type="submit" className="btn btn-coral mt-4">
-          {supabase ? 'Email me a link' : 'Sign in'}
+        <button type="submit" className="btn btn-coral mt-4" disabled={busy}>
+          {accounts ? 'Email me a sign-in link' : 'Sign in'}
         </button>
+        {accounts ? <p className="mt-3 text-xs">Anything you saved on this phone before moves into your account.</p> : null}
         {authProviders.includes('google') ? (
           <button type="button" className="btn mt-3" onClick={() => void signInProvider('google').catch(fail)}>
             Sign in with Google

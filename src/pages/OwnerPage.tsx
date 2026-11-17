@@ -17,8 +17,8 @@ export function OwnerPage() {
   const { checkOwner } = app
 
   useEffect(() => {
-    if (!app.supabase) void checkOwner()
-  }, [app.supabase, checkOwner])
+    void checkOwner()
+  }, [checkOwner])
 
   useEffect(() => {
     // Keep this page out of search results.
@@ -28,15 +28,6 @@ export function OwnerPage() {
     document.head.appendChild(meta)
     return () => meta.remove()
   }, [])
-
-  if (app.supabase) {
-    return (
-      <main id="main" tabIndex={-1} className="mx-auto max-w-md px-4 pt-28 pb-16 outline-none">
-        <h1 className="font-serif text-5xl italic">Owner</h1>
-        <p className="mt-3 text-sm">On this build the owner signs in with his account. Owner rights come from the server, not from this page.</p>
-      </main>
-    )
-  }
 
   if (!app.ownerChecked) {
     return (
