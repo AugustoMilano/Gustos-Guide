@@ -124,6 +124,14 @@ export async function sendMagicLink(client: SupabaseClient, email: string): Prom
   if (error) throw error
 }
 
+/** The 6-digit code from the same email. Works when the link would open in another browser or app. */
+export async function verifyEmailCode(client: SupabaseClient, email: string, code: string): Promise<void> {
+  const token = code.replace(/\s+/g, '')
+  if (!/^\d{6,10}$/.test(token)) throw new Error('Enter the code from the email.')
+  const { error } = await client.auth.verifyOtp({ email: email.trim(), token, type: 'email' })
+  if (error) throw new Error(/expired|invalid/i.test(error.message) ? 'That code is wrong or expired. Send a new one.' : error.message)
+}
+
 export async function signInWithProvider(client: SupabaseClient, provider: AuthProviderName): Promise<void> {
   rememberAuthReturn()
   const { error } = await client.auth.signInWithOAuth({

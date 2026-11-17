@@ -20,10 +20,9 @@ import { mergeUploads, type LivePhoto } from '../lib/gallery.ts'
 import { HOUSE_SCORE_FALLBACK } from '../lib/house-score-fallback.ts'
 import { fetchOwnerSession, hasOwnerHint, ownerLogin, ownerLogout } from '../lib/owner-session.ts'
 import type { HouseMark } from '../lib/quick-score.ts'
-import { deleteGuideRemote, importLocalBundle, loadAccount, loadHouseMarks, loadHouseScores, loadNotices, loadOwnerPhotos, loadPlans, saveGuide, savePlan, type FriendLists, type FriendProfile, type FriendRequest } from '../social/account.ts'
+import { deleteGuideRemote, importLocalBundle, loadAccount, loadNotices, loadPlans, saveGuide, savePlan, saveProfile as saveProfileRemote, type FriendLists, type FriendProfile, type FriendRequest } from '../social/account.ts'
 import {
   addCollectionPlace,
-  fetchCollections,
   insertCollection,
   orderCollectionPlaces,
   patchCollection,
@@ -32,7 +31,7 @@ import {
   unpublishedNote,
 } from '../social/collection-store.ts'
 import { scanLocalBundle, type LocalBundle } from '../social/importLocal.ts'
-import { authProviders, loadSupabase, removePlacePhoto, savePlacePhoto, sendMagicLink, signInWithProvider, supabaseClient, supabaseConfigured } from '../social/supabase.ts'
+import { authProviders, loadSupabase, removePlacePhoto, savePlacePhoto, sendMagicLink, signInWithProvider, supabaseClient, supabaseConfigured, verifyEmailCode } from '../social/supabase.ts'
 import type { Activity, Bucket, Comment, GuideVisibility, Notice, Plan, RankScore, SessionUser, UserGuide, VisitStatus } from '../types.ts'
 
 // Augusto's Supabase user id. A session for it marks this device so cfa.js skips analytics.
@@ -50,6 +49,11 @@ function placeName(id: string) {
 export type { LivePhoto }
 
 export type ImportOffer = { places: number; guides: number; photos: number }
+
+/** What moved from this phone's old name-only sign-in into the account, shown once on the welcome sheet. */
+export type ImportedNote = { places: number; guides: number; photos: number; ranks: number; plans: number }
+
+const OWNER_LOCAL_ID = 'local-augusto'
 
 type Doc = {
   statuses: Record<string, VisitStatus>
@@ -74,7 +78,15 @@ type AppValue = {
   sendMagicLink: (email: string) => Promise<void>
   signInProvider: (provider: 'apple' | 'google' | 'x') => Promise<void>
   signOut: () => void
-  /** Owner status checked by the server (/api/owner/session). Local mode only. */
+  /** True when this build has real accounts (Supabase URL and key were set at build time). */
+  accounts: boolean
+  verifyEmailCode: (email: string, code: string) => Promise<void>
+  /** A new account still has to pick its display name and username. */
+  needsProfile: boolean
+  imported: ImportedNote | null
+  saveProfile: (name: string, handle: string) => Promise<void>
+  skipProfile: () => void
+  /** Owner status checked by the server (/api/owner/session). Never comes from an account. */
   ownerSignedIn: boolean
   ownerChecked: boolean
   ownerConfigured: boolean
@@ -178,6 +190,23 @@ function emptyDoc(): Doc {
   }
 }
 
+/** House data is not read from or written to Supabase on this build. */
+function houseRemote(): SupabaseClient | null {
+  return null
+}
+
+/** The owner's on-device session from the password sign-in, if this browser has one. */
+function ownerLocalSession(): SessionUser | null {
+  if (!hasOwnerHint()) return null
+  try {
+    const session = JSON.parse(localStorage.getItem(SESSION_KEY) || 'null') as SessionUser | null
+    if (session && session.id === OWNER_LOCAL_ID) return { ...session, isOwner: false }
+  } catch {
+    /* empty */
+  }
+  return null
+}
+
 function handleOf(name: string): string {
   return name.toLowerCase().replace(/[^a-z0-9]+/g, '') || 'guest'
 }
@@ -204,30 +233,33 @@ export function AppProvider({ children }: { children: ReactNode }) {
   }, [remote])
   const providers = useMemo(() => authProviders(), [])
   const [baseUser, setUser] = useState<SessionUser | null>(null)
-  // Local mode: owner comes only from the server-checked HttpOnly cookie, never from a typed name
-  // or from localStorage. Supabase mode: owner comes from profiles.is_owner (set in SQL, guarded by RLS).
+  // Owner comes only from the server-checked HttpOnly cookie, never from a typed name, localStorage,
+  // or an account. Accounts (Supabase) are for visitors' own lists, ranks, friends, and plans.
   const [ownerVerified, setOwnerVerified] = useState(false)
   const [ownerChecked, setOwnerChecked] = useState(false)
   const [ownerConfigured, setOwnerConfigured] = useState(false)
   const user = useMemo<SessionUser | null>(() => {
     if (!baseUser) return null
-    if (supabaseConfigured) return baseUser
+    // Owner rights come only from the HttpOnly cookie set by /api/owner/login. An account's
+    // profiles.is_owner is ignored here, so no visitor account can become the owner.
     const isOwner = ownerVerified
     return baseUser.isOwner === isOwner ? baseUser : { ...baseUser, isOwner }
   }, [baseUser, ownerVerified])
   const [doc, setDoc] = useState<Doc>(emptyDoc)
   const [photos, setPhotos] = useState<LivePhoto[]>([])
-  const [housePhotos, setHousePhotos] = useState<LivePhoto[]>([])
+  const [devicePhotos, setDevicePhotos] = useState<LivePhoto[]>([])
   const [photosReady, setPhotosReady] = useState(false)
   const [compare, setCompare] = useState<Compare | null>(null)
   const [announcement, setAnnouncement] = useState('')
   const [authError, setAuthError] = useState<string | null>(() => peekAuthError())
   const [house, setHouse] = useState<Record<string, number>>({})
-  const [houseReady, setHouseReady] = useState(!supabaseConfigured)
+  const [houseReady] = useState(true)
   const [marks, setMarks] = useState<Record<string, HouseMark>>({})
   const [collections, setCollections] = useState<HouseCollection[]>([])
   const collectionsRef = useRef<HouseCollection[]>([])
-  const [collectionsStatus, setCollectionsStatus] = useState<CollectionsStatus>(supabaseConfigured ? 'loading' : 'offline')
+  // House data (scores, marks, collections, owner photos) stays exactly as the local build: shipped
+  // with the site plus the verified owner's drafts on his device. Accounts never read or write it.
+  const [collectionsStatus, setCollectionsStatus] = useState<CollectionsStatus>('offline')
   const collectionsStatusRef = useRef(collectionsStatus)
   const [collectionsMessage, setCollectionsMessage] = useState('')
   const marksRef = useRef(marks)
@@ -236,6 +268,8 @@ export function AppProvider({ children }: { children: ReactNode }) {
   const [friendRanks, setFriendRanks] = useState<Record<string, Record<string, number>>>({})
   const [friendLists, setFriendLists] = useState<FriendLists>({})
   const [importOffer, setImportOffer] = useState<ImportOffer | null>(null)
+  const [needsProfile, setNeedsProfile] = useState(false)
+  const [imported, setImported] = useState<ImportedNote | null>(null)
   const importBundle = useRef<LocalBundle | null>(null)
   const generation = useRef(0)
   const hydrateRef = useRef<(authUser: User | null) => Promise<void>>(async () => {})
@@ -245,17 +279,15 @@ export function AppProvider({ children }: { children: ReactNode }) {
     setAnnouncement(message)
   }
 
-  function markTableMissing(error: unknown): boolean {
-    const record = error as { code?: string; message?: string }
-    return record?.code === '42P01' || /house_marks|schema cache|could not find the table/i.test(record?.message ?? '')
-  }
-
   async function hydrate(authUser: User | null) {
     if (!remote) return
     const ticket = ++generation.current
     if (!authUser) {
-      setUser(null)
-      setDoc(emptyDoc())
+      // Signed out of an account. The owner's on-device session (password sign-in) still applies.
+      const owner = ownerLocalSession()
+      setUser(owner)
+      setDoc(owner ? loadDoc(owner.id) : emptyDoc())
+      setNeedsProfile(false)
       setPhotos([])
       setFriends([])
       setRequests([])
@@ -266,21 +298,43 @@ export function AppProvider({ children }: { children: ReactNode }) {
       return
     }
     try {
-      const snap = await loadAccount(remote, authUser)
+      let snap = await loadAccount(remote, authUser)
       if (ticket !== generation.current) return
+      // First sign-in on a phone that used the old name-only sign-in: move everything into the
+      // account right away, so nobody loses lists. Runs once per account per browser; a failed move
+      // picks up where it stopped on the next load.
+      const bundle = await scanLocalBundle(snap.user.id)
+      if (ticket !== generation.current) return
+      if (bundle) {
+        const flag = `gusto.import.v1.${snap.user.id}`
+        localStorage.setItem(flag, `running:${Date.now()}`)
+        try {
+          const note = await importLocalBundle(remote, snap.user, bundle)
+          localStorage.setItem(flag, 'done')
+          setImported(note)
+          setAnnouncement('Moved what this phone had saved into your account.')
+          snap = await loadAccount(remote, authUser)
+          if (ticket !== generation.current) return
+        } catch (error) {
+          // Leave the phone's copy untouched and try again on the next sign-in.
+          localStorage.removeItem(flag)
+          remoteError(error)
+        }
+      }
       setUser(snap.user)
       setDoc(snap.doc)
-      if (snap.house) setHouse(snap.house)
       setPhotos(snap.photos)
       setFriends(snap.friends)
       setRequests(snap.requests)
       setFriendRanks(snap.friendRanks)
       setFriendLists(snap.friendLists)
       localStorage.setItem(`gusto.doc.v1.${snap.user.id}`, JSON.stringify(snap.doc))
-      const bundle = snap.counts.places || snap.counts.guides || snap.counts.photos ? null : await scanLocalBundle(snap.user.id)
-      if (ticket !== generation.current) return
-      importBundle.current = bundle
-      setImportOffer(bundle ? { places: Object.keys(bundle.statuses).length, guides: bundle.guides.length, photos: bundle.photos.length } : null)
+      importBundle.current = null
+      setImportOffer(null)
+      const meta = (authUser.user_metadata ?? {}) as Record<string, unknown>
+      let skipped = false
+      try { skipped = sessionStorage.getItem(`gusto.profile.skip.${snap.user.id}`) === '1' } catch { /* storage off */ }
+      setNeedsProfile(meta.profile_set !== true && !skipped)
     } catch (error) {
       if (ticket !== generation.current) return
       const fallback: SessionUser = {
@@ -342,8 +396,6 @@ export function AppProvider({ children }: { children: ReactNode }) {
   }, [])
 
   useEffect(() => {
-    // A configured app waits for house_scores. The device cache is only the score source offline.
-    if (supabaseConfigured) return
     // On-device house scores and marks are the owner's drafts. Only a server-verified owner sees them,
     // so a visitor who once typed his name does not keep a fake Gusto's Score in this browser.
     if (!ownerVerified) {
@@ -379,72 +431,17 @@ export function AppProvider({ children }: { children: ReactNode }) {
   }, [ownerVerified])
 
   useEffect(() => {
-    if (!remote) return
-    let cancel = false
-    void fetchCollections(remote).then((result) => {
-      if (cancel) return
-      if (result.ok) {
-        setCollections((current) => {
-          const serverIds = new Set(result.rows.map((row) => row.id))
-          const extras = current.filter((row) => row.published && !serverIds.has(row.id))
-          const drafts = current.filter((row) => !row.published)
-          const next = [...result.rows, ...extras, ...drafts]
-          collectionsRef.current = next
-          return next
-        })
-        setCollectionsStatus('ready')
-        setCollectionsMessage('')
-        return
+    if (supabaseConfigured) {
+      // Accounts build: the old name-only session is not a sign-in any more (its lists move into the
+      // account on first email sign-in). Only the owner's password session keeps its device data.
+      if (baseUser) return
+      const owner = ownerLocalSession()
+      if (owner) {
+        setUser(owner)
+        setDoc(loadDoc(owner.id))
       }
-      if (result.missing) {
-        setCollectionsStatus('missing')
-        setCollectionsMessage(unpublishedNote(true))
-        return
-      }
-      setCollectionsStatus('error')
-      setCollectionsMessage(result.message)
-    }).catch((error: unknown) => {
-      if (cancel) return
-      setCollectionsStatus('error')
-      setCollectionsMessage(error instanceof Error ? error.message : 'Could not load collections.')
-    })
-    void loadHouseScores(remote).then((scores) => {
-      if (cancel) return
-      if (scores) {
-        setHouse(scores)
-        try { localStorage.setItem(HOUSE_KEY, JSON.stringify(scores)) } catch { /* private mode */ }
-      }
-      setHouseReady(true)
-    }).catch(() => {
-      if (!cancel) setHouseReady(true)
-    })
-    void loadOwnerPhotos(remote).then((rows) => {
-      if (cancel) return
-      setHousePhotos(rows)
-      setPhotosReady(true)
-    }).catch(() => {
-      if (!cancel) setPhotosReady(true)
-    })
-    return () => {
-      cancel = true
+      return
     }
-  }, [remote])
-
-  useEffect(() => {
-    if (!remote || !user?.isOwner) return
-    let cancel = false
-    void loadHouseMarks(remote).then((rows) => {
-      if (cancel || !rows) return
-      marksRef.current = rows
-      setMarks(rows)
-    })
-    return () => {
-      cancel = true
-    }
-  }, [remote, user?.isOwner])
-
-  useEffect(() => {
-    if (supabaseConfigured) return
     const raw = localStorage.getItem(SESSION_KEY)
     if (!raw) return
     try {
@@ -455,10 +452,10 @@ export function AppProvider({ children }: { children: ReactNode }) {
     } catch {
       localStorage.removeItem(SESSION_KEY)
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [remote])
 
   const checkOwner = useCallback(async () => {
-    if (supabaseConfigured) return
     const session = await fetchOwnerSession()
     setOwnerVerified(session.owner)
     setOwnerConfigured(session.configured)
@@ -467,20 +464,24 @@ export function AppProvider({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     // Ordinary visitors never call the endpoint on load; only a browser that signed in as owner before.
-    if (supabaseConfigured || !hasOwnerHint()) return
+    if (!hasOwnerHint()) return
     void checkOwner()
   }, [checkOwner])
 
   async function ownerSignIn(password: string) {
-    if (supabaseConfigured) throw new Error('Owner sign-in uses your account on this build.')
     await ownerLogin(password)
     await checkOwner()
+    try { localStorage.setItem('gg_owner', '1') } catch { /* storage off */ }
+    // Signed in to an account too: keep it. Owner rights ride on the cookie either way.
+    if (baseUser && !baseUser.id.startsWith('local-')) {
+      setAnnouncement('Signed in as the owner.')
+      return
+    }
     // Keep his existing on-device data (it was saved under local-augusto).
-    const session: SessionUser = { id: 'local-augusto', name: 'Augusto', handle: 'augusto', isOwner: false }
+    const session: SessionUser = { id: OWNER_LOCAL_ID, name: 'Augusto', handle: 'augusto', isOwner: false }
     localStorage.setItem(SESSION_KEY, JSON.stringify(session))
     setUser(session)
     setDoc(loadDoc(session.id))
-    try { localStorage.setItem('gg_owner', '1') } catch { /* storage off */ }
     setAnnouncement('Signed in as the owner.')
   }
 
@@ -505,18 +506,18 @@ export function AppProvider({ children }: { children: ReactNode }) {
   }, [remote])
 
   useEffect(() => {
-    if (supabaseConfigured) return
+    // Photos saved on this device (the owner's house shots, and visitors' photos from before accounts).
     let cancelled = false
     const urls: string[] = []
     void readPhotos().then((rows) => {
       if (cancelled) return
-      setPhotos(
-        rows.map((row) => {
-          const url = URL.createObjectURL(row.blob)
-          urls.push(url)
-          return { ...row, url }
-        }),
-      )
+      const live = rows.map((row) => {
+        const url = URL.createObjectURL(row.blob)
+        urls.push(url)
+        return { ...row, url }
+      })
+      if (supabaseConfigured) setDevicePhotos(live)
+      else setPhotos(live)
       setPhotosReady(true)
     }).catch(() => {
       if (!cancelled) setPhotosReady(true)
@@ -600,7 +601,7 @@ export function AppProvider({ children }: { children: ReactNode }) {
 
   async function signIn(name: string) {
     const trimmed = name.trim()
-    if (!trimmed || remote) return
+    if (!trimmed || remote || supabaseConfigured) return
     const session: SessionUser = {
       id: `local-${handleOf(trimmed)}`,
       name: trimmed,
@@ -620,6 +621,32 @@ export function AppProvider({ children }: { children: ReactNode }) {
     setAnnouncement('Check your email for a sign-in link.')
   }
 
+  async function emailCode(email: string, code: string) {
+    const client = remote ?? await loadSupabase()
+    if (!client) throw new Error('Sign-in is not available right now.')
+    await verifyEmailCode(client, email, code)
+    setAnnouncement('Signed in.')
+  }
+
+  async function saveProfile(name: string, handle: string) {
+    if (!remote || !user || user.id.startsWith('local-')) throw new Error('Sign in first.')
+    const saved = await saveProfileRemote(remote, user.id, name, handle)
+    const { error } = await remote.auth.updateUser({ data: { profile_set: true } })
+    if (error) throw error
+    setUser((current) => (current && current.id === user.id ? { ...current, name: saved.name, handle: saved.handle } : current))
+    setNeedsProfile(false)
+    setImported(null)
+    setAnnouncement(`Profile saved. You are @${saved.handle}.`)
+  }
+
+  function skipProfile() {
+    if (user) {
+      try { sessionStorage.setItem(`gusto.profile.skip.${user.id}`, '1') } catch { /* storage off */ }
+    }
+    setNeedsProfile(false)
+    setImported(null)
+  }
+
   async function providerSignIn(provider: 'apple' | 'google' | 'x') {
     const client = remote ?? await loadSupabase()
     if (!client) throw new Error('Supabase is not configured.')
@@ -630,9 +657,11 @@ export function AppProvider({ children }: { children: ReactNode }) {
   function signOut() {
     if (remote) void remote.auth.signOut()
     localStorage.removeItem(SESSION_KEY)
-    if (!supabaseConfigured && ownerVerified) void ownerSignOut()
+    if (ownerVerified) void ownerSignOut()
     setUser(null)
     setDoc(emptyDoc())
+    setNeedsProfile(false)
+    setImported(null)
     setFriends([])
     setRequests([])
     setFriendRanks({})
@@ -1072,14 +1101,6 @@ export function AppProvider({ children }: { children: ReactNode }) {
       }
       localStorage.setItem(HOUSE_KEY, JSON.stringify(published))
       setHouse(published)
-      if (remote) {
-        const rows = Object.entries(published).map(([place_id, score]) => ({ place_id, score, updated_by: user.id }))
-        if (rows.length) {
-          void remote.from('house_scores').upsert(rows).then(({ error }) => {
-            if (error) remoteError(error)
-          })
-        }
-      }
     }
     setCompare(null)
     if (remote && bucketScores[placeId]) {
@@ -1157,19 +1178,6 @@ export function AppProvider({ children }: { children: ReactNode }) {
       const cleared = { ...marksRef.current }
       delete cleared[placeId]
       rememberMarks(cleared)
-      if (remote) {
-        void remote.from('house_marks').delete().eq('place_id', placeId).then(({ error }) => {
-          if (error && !markTableMissing(error)) remoteError(error)
-        })
-      }
-    }
-    if (remote) {
-      const write = value == null
-        ? remote.from('house_scores').delete().eq('place_id', placeId)
-        : remote.from('house_scores').upsert({ place_id: placeId, score: value, updated_by: user.id })
-      void write.then(({ error }) => {
-        if (error) remoteError(error)
-      })
     }
   }
 
@@ -1179,18 +1187,6 @@ export function AppProvider({ children }: { children: ReactNode }) {
     if (status == null) delete next[placeId]
     else next[placeId] = status
     rememberMarks(next)
-    if (!remote) return
-    const write = status == null
-      ? remote.from('house_marks').delete().eq('place_id', placeId)
-      : remote.from('house_marks').upsert({ place_id: placeId, status, updated_by: user.id })
-    void write.then(({ error }) => {
-      if (!error) return
-      if (markTableMissing(error)) {
-        setAnnouncement("Haven't-been marks are saved on this device. Apply supabase/migrations/20261021013000_house_marks.sql so they stick to the account.")
-        return
-      }
-      remoteError(error)
-    })
   }
 
   function houseMark(placeId: string): HouseMark | null {
@@ -1201,6 +1197,9 @@ export function AppProvider({ children }: { children: ReactNode }) {
     collectionsRef.current = next
     setCollections(next)
   }
+
+  // House collections never write through an account (see collectionsStatus above).
+  const houseClient = houseRemote()
 
   async function createCollection(city: CityId, title: string, blurb: string, placeIds: string[] = []): Promise<string | null> {
     if (!user?.isOwner) return null
@@ -1226,11 +1225,11 @@ export function AppProvider({ children }: { children: ReactNode }) {
     }
     rememberCollections([...collectionsRef.current, draft])
     const status = collectionsStatusRef.current
-    if (!remote || status === 'missing' || status === 'offline') {
+    if (!houseClient || status === 'missing' || status === 'offline') {
       setAnnouncement(unpublishedNote(status === 'missing'))
       return tempId
     }
-    const result = await insertCollection(remote, user.id, draft)
+    const result = await insertCollection(houseClient, user.id, draft)
     if (!result.ok) {
       if (result.missing) {
         setCollectionsStatus('missing')
@@ -1262,8 +1261,8 @@ export function AppProvider({ children }: { children: ReactNode }) {
       return false
     }
     rememberCollections(collectionsRef.current.map((row) => (row.id === id ? { ...row, title: nextTitle, blurb: nextBlurb } : row)))
-    if (!remote || !current.published) return true
-    const result = await patchCollection(remote, user.id, id, { title: nextTitle, blurb: nextBlurb })
+    if (!houseClient || !current.published) return true
+    const result = await patchCollection(houseClient, user.id, id, { title: nextTitle, blurb: nextBlurb })
     if (result.ok) return true
     if (result.missing) {
       setCollectionsStatus('missing')
@@ -1281,8 +1280,8 @@ export function AppProvider({ children }: { children: ReactNode }) {
     const current = collectionsRef.current.find((row) => row.id === id)
     if (!current) return
     rememberCollections(collectionsRef.current.filter((row) => row.id !== id))
-    if (!remote || !current.published) return
-    const result = await removeCollection(remote, id)
+    if (!houseClient || !current.published) return
+    const result = await removeCollection(houseClient, id)
     if (result.ok) return
     rememberCollections([...collectionsRef.current, current])
     if (result.missing) {
@@ -1303,10 +1302,10 @@ export function AppProvider({ children }: { children: ReactNode }) {
     const placeIds = include ? [...current.placeIds, placeId] : current.placeIds.filter((item) => item !== placeId)
     const previous = current.placeIds
     rememberCollections(collectionsRef.current.map((row) => (row.id === collectionId ? { ...row, placeIds } : row)))
-    if (!remote || !current.published) return
+    if (!houseClient || !current.published) return
     const write = include
-      ? addCollectionPlace(remote, user.id, collectionId, placeId, Math.max(0, placeIds.length - 1))
-      : removeCollectionPlace(remote, collectionId, placeId)
+      ? addCollectionPlace(houseClient, user.id, collectionId, placeId, Math.max(0, placeIds.length - 1))
+      : removeCollectionPlace(houseClient, collectionId, placeId)
     void write.then((result) => {
       if (result.ok) return
       if (result.missing) {
@@ -1326,8 +1325,8 @@ export function AppProvider({ children }: { children: ReactNode }) {
     if (!current) return
     const previous = current.placeIds
     rememberCollections(collectionsRef.current.map((row) => (row.id === collectionId ? { ...row, placeIds } : row)))
-    if (!remote || !current.published) return
-    void orderCollectionPlaces(remote, user.id, collectionId, placeIds).then((result) => {
+    if (!houseClient || !current.published) return
+    void orderCollectionPlaces(houseClient, user.id, collectionId, placeIds).then((result) => {
       if (result.ok) return
       if (result.missing) {
         setCollectionsStatus('missing')
@@ -1358,14 +1357,16 @@ export function AppProvider({ children }: { children: ReactNode }) {
     }
     let url = ''
     let storagePath: string | undefined
-    if (remote) {
+    // House (owner) shots stay on this device exactly as before; only visitor accounts upload.
+    const toAccount = Boolean(remote) && !user.isOwner && !user.id.startsWith('local-')
+    if (remote && toAccount) {
       storagePath = `${user.id}/${placeId}/${id}.webp`
-      url = await savePlacePhoto(remote, image.blob, storagePath, user.isOwner)
+      url = await savePlacePhoto(remote, image.blob, storagePath, false)
       const { error } = await remote.from('place_photos').insert({
         id,
         place_id: placeId,
         user_id: user.id,
-        is_owner: user.isOwner,
+        is_owner: false,
         storage_path: storagePath,
         width: image.width,
         height: image.height,
@@ -1375,23 +1376,19 @@ export function AppProvider({ children }: { children: ReactNode }) {
       await savePhoto(record)
       url = URL.createObjectURL(image.blob)
     }
-    const publicOwner = url.includes('/object/public/owner-photos/')
-    const live: LivePhoto = { ...record, url, storagePath, shareUrl: publicOwner ? url : undefined }
-    if (remote && publicOwner) {
-      setHousePhotos((current) => [live, ...current.filter((item) => item.id !== live.id)])
-    } else {
-      setPhotos((current) => [live, ...current])
-    }
+    const live: LivePhoto = { ...record, url, storagePath }
+    if (supabaseConfigured && !toAccount) setDevicePhotos((current) => [live, ...current])
+    else setPhotos((current) => [live, ...current])
     const next = { ...doc }
     pushActivity(next, { id: crypto.randomUUID(), userId: user.id, type: 'photo', placeId, text: `Added a photo of ${placeName(placeId) ?? 'a place'}.`, createdAt: new Date().toISOString() }, user)
     persist(next)
   }
 
   async function deletePhoto(id: string) {
-    const photo = photos.find((item) => item.id === id) ?? housePhotos.find((item) => item.id === id)
+    const photo = photos.find((item) => item.id === id) ?? devicePhotos.find((item) => item.id === id)
     await removePhoto(id)
     setPhotos((current) => current.filter((item) => item.id !== id))
-    setHousePhotos((current) => current.filter((item) => item.id !== id))
+    setDevicePhotos((current) => current.filter((item) => item.id !== id))
     if (remote && photo?.storagePath) {
       await removePlacePhoto(remote, photo.storagePath, Boolean(photo.owner))
       await remote.from('place_photos').delete().eq('id', id)
@@ -1502,7 +1499,13 @@ export function AppProvider({ children }: { children: ReactNode }) {
     sendMagicLink: emailLink,
     signInProvider: providerSignIn,
     signOut,
-    ownerSignedIn: !supabaseConfigured && ownerVerified,
+    accounts: supabaseConfigured,
+    verifyEmailCode: emailCode,
+    needsProfile,
+    imported,
+    saveProfile,
+    skipProfile,
+    ownerSignedIn: ownerVerified,
     ownerChecked,
     ownerConfigured,
     ownerSignIn,
@@ -1558,7 +1561,10 @@ export function AppProvider({ children }: { children: ReactNode }) {
     startRank,
     answerRank,
     // Local mode: house (owner) uploads on this device only show to the server-verified owner.
-    photos: remote ? mergeUploads(housePhotos, photos) : ownerVerified ? photos : photos.filter((photo) => !photo.owner),
+    // House (owner) uploads saved on this device only show to the server-verified owner.
+    photos: supabaseConfigured
+      ? mergeUploads(ownerVerified ? devicePhotos.filter((photo) => photo.owner) : [], photos)
+      : ownerVerified ? photos : photos.filter((photo) => !photo.owner),
     photosReady,
     uploadPhoto,
     deletePhoto,
