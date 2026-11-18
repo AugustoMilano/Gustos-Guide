@@ -78,7 +78,7 @@ export function PhotoQueuePage() {
           <ul className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2">
             {visible.map(({ place, reason }) => (
               <li key={place.id} className="feed-card">
-                <Link to={cityPath(`/place/${place.id}`)} className="block h-36 overflow-hidden bg-navy [&_.place-art]:aspect-auto [&_.place-art]:h-full" aria-label={place.name}>
+                <Link to={cityPath(`/place/${place.id}`)} className="card-shot block overflow-hidden bg-navy [&_.place-art]:aspect-auto [&_.place-art]:h-full" aria-label={place.name}>
                   <PlaceThumb place={place} uploads={app.photos} />
                 </Link>
                 <h2 className="mt-2 font-serif text-2xl italic leading-none">{place.name}</h2>

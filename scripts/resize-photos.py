@@ -27,7 +27,7 @@ for path in sorted(photos.iterdir()):
             if width <= target + 40:
                 continue
             dest = path.with_name(f'{path.stem}.{target}.jpg')
-            if not dest.exists():
+            if not dest.exists() or dest.stat().st_size == 0:
                 resized = image.resize((target, max(1, round(height * target / width))), Image.Resampling.LANCZOS)
                 resized.save(dest, 'JPEG', quality=72, optimize=True, progressive=True)
             widths.append(target)
@@ -36,20 +36,20 @@ for path in sorted(photos.iterdir()):
             if width <= target + 40:
                 continue
             dest = path.with_name(f'{path.stem}.{target}.webp')
-            if not dest.exists():
+            if not dest.exists() or dest.stat().st_size == 0:
                 resized = image.resize((target, max(1, round(height * target / width))), Image.Resampling.LANCZOS)
                 resized.save(dest, 'WEBP', quality=68, method=4)
             webp.append(target)
         if width <= 960:
             dest = path.with_suffix('.webp')
-            if not dest.exists():
+            if not dest.exists() or dest.stat().st_size == 0:
                 image.save(dest, 'WEBP', quality=68, method=4)
             webp.append(width)
         # AVIF (D2): same widths as WebP, new files, so the year-long photo cache never serves a stale copy.
         avif = []
         for target in sorted(set(webp)):
             dest = path.with_name(f'{path.stem}.avif') if target == width else path.with_name(f'{path.stem}.{target}.avif')
-            if not dest.exists():
+            if not dest.exists() or dest.stat().st_size == 0:
                 resized = image if target == width else image.resize((target, max(1, round(height * target / width))), Image.Resampling.LANCZOS)
                 resized.save(dest, 'AVIF', quality=AVIF_QUALITY.get(path.stem, 50), speed=6)
             avif.append(target)

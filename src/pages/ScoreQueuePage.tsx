@@ -51,7 +51,7 @@ export function ScoreQueuePage() {
           <ul className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2">
             {visible.map((place) => (
               <li key={place.id} className="feed-card">
-                <Link to={cityPath(`/place/${place.id}`)} className="block h-36 overflow-hidden bg-navy [&_.place-art]:aspect-auto [&_.place-art]:h-full">
+                <Link to={cityPath(`/place/${place.id}`)} className="card-shot block overflow-hidden bg-navy [&_.place-art]:aspect-auto [&_.place-art]:h-full">
                   <PlaceThumb place={place} uploads={app.photos} sizes="(min-width: 640px) 320px, 100vw" />
                 </Link>
                 <h2 className="mt-2 font-serif text-2xl italic leading-none">{place.name}</h2>

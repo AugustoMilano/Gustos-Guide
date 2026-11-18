@@ -78,7 +78,7 @@ export function GuideStrip({
                   scrollToEntry(place.id)
                 }}
               >
-                <div className="toc-shot relative h-24 overflow-hidden bg-navy [&_.place-art]:aspect-auto [&_.place-art]:h-full">
+                <div className="toc-shot card-shot is-small relative overflow-hidden bg-navy [&_.place-art]:aspect-auto [&_.place-art]:h-full">
                   <PlaceThumb place={place} uploads={uploads} eager={index < 2} sizes="208px" />
                   <RankMedal number={number} size="sm" className="absolute top-2 left-2 z-10" />
                 </div>
@@ -152,7 +152,7 @@ function Shot({
   const art = photo?.illustration || !shotUrl || failed
   return (
     <figure className="min-w-0">
-      <div className="guide-shot relative h-64 overflow-hidden soft-media bg-navy sm:h-80 [&_.place-art]:aspect-auto [&_.place-art]:h-full">
+      <div className="guide-shot card-shot relative overflow-hidden soft-media bg-navy [&_.place-art]:aspect-auto [&_.place-art]:h-full">
         {art || !photo || !shotUrl ? (
           <PlaceArt id={place.id} cuisine={place.cuisine[0] ?? 'Seattle'} neighborhood={place.neighborhood} />
         ) : (
@@ -203,7 +203,7 @@ export function GuideEntryCard({
   const photo = shots[Math.min(active, shots.length - 1)]
   const artOnly = !photo?.url || photo.illustration
   const image = (
-    <div className="relative min-w-0">
+    <div className="guide-shot-wrap relative min-w-0">
       <RankMedal number={number} size="md" className="absolute top-3 left-3 z-10" />
       <Link to={cityPath(`/place/${place.id}`)} className="block" aria-label={place.name} viewTransition={!reduceMotion}>
         <span className="block" style={reduceMotion ? undefined : { viewTransitionName: `place-${place.id}` }}>
@@ -311,9 +311,15 @@ export function GuideEntryCard({
   if (artOnly) return index === 0 ? compact : <Reveal delay={stagger}>{compact}</Reveal>
   const body = (
     <article id={`entry-${place.id}`} className={`guide-entry scroll-mt-24 border-t border-ink/10${hotClass}`} {...point}>
-      {image}
-      <div className="mt-4">{title}</div>
-      {rest}
+      <div className="guide-entry-frame">
+        <div className="guide-entry-layout">
+          {image}
+          <div className="guide-entry-text min-w-0">
+            <div className="mt-4">{title}</div>
+            {rest}
+          </div>
+        </div>
+      </div>
     </article>
   )
   if (index === 0) return body

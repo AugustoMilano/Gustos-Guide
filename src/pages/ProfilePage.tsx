@@ -207,7 +207,7 @@ export function ProfilePage() {
                 if (!spot) return null
                 return (
                   <li key={id} className="feed-card">
-                    <Link to={`/place/${id}`} className="block h-28 overflow-hidden bg-navy [&_.place-art]:aspect-auto [&_.place-art]:h-full">
+                    <Link to={`/place/${id}`} className="card-shot is-small block overflow-hidden bg-navy [&_.place-art]:aspect-auto [&_.place-art]:h-full">
                       <PlaceThumb place={spot} uploads={app.photos} />
                     </Link>
                     <PlaceName name={spot.name} className="mt-2 italic leading-none" />
@@ -329,7 +329,7 @@ function PlaceGrid({ ids, empty }: { ids: string[]; empty: string }) {
       {shown.map((place) => (
         <li key={place.id}>
           <Link to={`/place/${place.id}`} className="hit-card">
-            <div className="h-28 overflow-hidden bg-navy [&_.place-art]:aspect-auto [&_.place-art]:h-full">
+            <div className="card-shot is-small overflow-hidden bg-navy [&_.place-art]:aspect-auto [&_.place-art]:h-full">
               <PlaceThumb place={place} uploads={app.photos} />
             </div>
             <div className="p-2">

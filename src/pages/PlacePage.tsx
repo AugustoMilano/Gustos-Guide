@@ -291,7 +291,7 @@ export function PlacePage() {
             <div className="mt-3 grid grid-cols-2 gap-3">
               {similar.map((item) => (
                 <Link key={item.id} to={cityPath(`/place/${item.id}`, placeCity(place))} className="hit-card" viewTransition={!reduceMotion}>
-                  <div className="relative h-24 overflow-hidden bg-navy [&_.place-art]:aspect-auto [&_.place-art]:h-full" style={reduceMotion ? undefined : { viewTransitionName: `place-${item.id}` }}>
+                  <div className="card-shot is-small relative overflow-hidden bg-navy [&_.place-art]:aspect-auto [&_.place-art]:h-full" style={reduceMotion ? undefined : { viewTransitionName: `place-${item.id}` }}>
                     <PlaceThumb place={item} uploads={app.photos} sizes="(min-width: 1024px) 200px, 45vw" />
                   </div>
                   <div className="place-card-body is-dense">
