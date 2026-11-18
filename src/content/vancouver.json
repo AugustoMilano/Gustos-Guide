@@ -445,6 +445,24 @@
       "updatedAt": "2026-11-03",
       "photos": [
         {
+          "source": "gusto",
+          "url": "/photos/cactus-club-cafe-gusto-1.jpg",
+          "alt": "Photo of Cactus Club Cafe by Gusto",
+          "credit": "Photo by Gusto"
+        },
+        {
+          "source": "gusto",
+          "url": "/photos/cactus-club-cafe-gusto-2.jpg",
+          "alt": "Photo of Cactus Club Cafe by Gusto",
+          "credit": "Photo by Gusto"
+        },
+        {
+          "source": "gusto",
+          "url": "/photos/cactus-club-cafe-gusto-3.jpg",
+          "alt": "Photo of Cactus Club Cafe by Gusto",
+          "credit": "Photo by Gusto"
+        },
+        {
           "source": "wikimedia",
           "url": "/photos/cactus-club-cafe.jpg",
           "alt": "Cactus Club Cafe in Coal Harbour",

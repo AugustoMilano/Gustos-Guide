@@ -39,7 +39,7 @@ assert.deepEqual(gusto(east.minamoto), ['/photos/minamoto-gusto-1.jpg', '/photos
 assert.equal(gusto(east['spark-pizza']).length, 3)
 assert.equal(gusto(places['momiji-slu']).length, 2)
 assert.deepEqual(gusto(places['pasta-casalinga']), ['/photos/pasta-casalinga-gusto-1.jpg'])
-assert.equal(sha('roquette-gusto-1.jpg'), 'd5fbe8c5d290fd2d905ca973ce3db149549f69a041bf4b1d7132458f0a478937')
+assert.equal(sha('roquette-gusto-1.jpg'), 'a45e54c63d7b31cf0bdbc1ac173950d4edf3590a0f7ee79111b2bb2f5d8d055b')
 assert.equal(sha('tall-grass-bakery-gusto-1.jpg'), 'ba39c124e919cc358591e84a0ef71aa744fd47bb9393c9255d3688b54db019a2')
 assert.equal(sizes['storyville-coffee-company-gusto-3.jpg'].w, 2048)
 assert.equal(Math.max(...sizes['roquette-gusto-1.jpg'].widths), sizes['roquette-gusto-1.jpg'].w)

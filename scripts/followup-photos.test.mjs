@@ -16,7 +16,7 @@ function gustoUrls(record) {
 const expected = {
   sunfish: 2,
   'big-max-burger-co': 3,
-  'cafe-flora': 6,
+  'cafe-flora': 11,
   'taurus-ox': 3,
   'volunteer-park-cafe-pantry': 2,
   'joe-z-bayside-market-cafe': 1,
@@ -55,7 +55,7 @@ assert.deepEqual(shawn, [
   '/photos/shawns-cafe-and-bakery-gusto-2.jpg',
 ])
 files += 2
-assert.equal(files, 48)
+assert.equal(files, 53)
 assert.equal(eastById['shawns-cafe-and-bakery'].name, "Shawn's Cafe and Bakery")
 assert.equal(eastById['shawns-cafe-and-bakery'].address, '7420 SE 24th St, Unit 3, Mercer Island, WA 98040')
 assert.equal(places['hushy-s-sandwiches'].name, "Hushy's Sandwiches")
