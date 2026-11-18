@@ -178,19 +178,41 @@ function Lightbox({
         <p>{index + 1} / {photos.length}</p>
         <button ref={closeRef} type="button" className="btn" onClick={onClose}>Close</button>
       </div>
-      <ZoomStage key={photo.url ?? index} onPointerDown={onPointerDown} onPointerUp={onPointerUp}>
-        {photo.url && !photo.illustration ? (
-          <img src={photo.url} alt={photo.alt} decoding="async" draggable={false} />
-        ) : (
-          <PlaceArt id={photo.placeId} cuisine={photo.cuisine} neighborhood={photo.neighborhood} />
-        )}
-      </ZoomStage>
-      {photos.length > 1 ? (
-        <div className="lightbox-nav">
-          <button type="button" className="btn" onClick={() => onStep(-1)}>Previous</button>
-          <button type="button" className="btn" onClick={() => onStep(1)}>Next</button>
-        </div>
-      ) : null}
+      <div className="lightbox-view">
+        <ZoomStage key={photo.url ?? index} onPointerDown={onPointerDown} onPointerUp={onPointerUp}>
+          {photo.url && !photo.illustration ? (
+            <img src={photo.url} alt={photo.alt} decoding="async" draggable={false} />
+          ) : (
+            <PlaceArt id={photo.placeId} cuisine={photo.cuisine} neighborhood={photo.neighborhood} />
+          )}
+        </ZoomStage>
+        {photos.length > 1 ? (
+          <>
+            <button
+              type="button"
+              className="lightbox-arrow is-prev"
+              aria-label="Previous photo"
+              onPointerDown={(event) => event.stopPropagation()}
+              onClick={() => onStep(-1)}
+            >
+              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path d="M15 5 8 12l7 7" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </button>
+            <button
+              type="button"
+              className="lightbox-arrow is-next"
+              aria-label="Next photo"
+              onPointerDown={(event) => event.stopPropagation()}
+              onClick={() => onStep(1)}
+            >
+              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </button>
+          </>
+        ) : null}
+      </div>
       {credit ? <p className="lightbox-credit">{credit}{photo.creditUrl ? <> · <a href={photo.creditUrl}>Source</a></> : null}</p> : null}
     </div>
   )

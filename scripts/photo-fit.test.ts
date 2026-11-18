@@ -43,6 +43,17 @@ test('lightbox CSS letterboxes the photo instead of cropping it', () => {
   assert.match(gallery, /onWheel/)
 })
 
+test('full-screen viewer uses edge chevron arrows, not Previous/Next text', () => {
+  assert.match(gallery, /className="lightbox-arrow is-prev"/)
+  assert.match(gallery, /className="lightbox-arrow is-next"/)
+  assert.match(gallery, /aria-label="Previous photo"/)
+  assert.match(gallery, /aria-label="Next photo"/)
+  assert.doesNotMatch(gallery, />Previous</)
+  assert.doesNotMatch(gallery, />Next</)
+  assert.match(css, /\.lightbox-arrow \{/)
+  assert.match(css, /min-width: 44px|width: 44px/)
+})
+
 test('card photos use a 4:3 / 3:2 frame with a max height, not a fixed-height strip', () => {
   assert.match(css, /\.card-shot \{\s*height: auto;\s*aspect-ratio: 4 \/ 3;\s*max-height: 26rem;/)
   assert.match(css, /@media \(min-width: 640px\) \{\s*\.card-shot \{ aspect-ratio: 3 \/ 2; \}/)
