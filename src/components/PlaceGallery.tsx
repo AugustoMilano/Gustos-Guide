@@ -3,6 +3,7 @@ import { PhotoFrame } from './PhotoFrame.tsx'
 import { PlaceArt } from './PlaceArt.tsx'
 import { ThumbImg } from './ThumbImg.tsx'
 import type { DisplayPhoto } from '../lib/gallery.ts'
+import { clampView, containSize, tapZoom } from '../lib/zoom-fit.ts'
 
 export function PlaceGallery({
   photos,
@@ -196,8 +197,9 @@ function Lightbox({
 }
 
 /**
- * Pinch, double-tap and wheel zoom for the lightbox photo (1x to 4x), with pan while zoomed.
- * At 1x, swipes still step photos through the parent handlers.
+ * Full-screen photo stage. At 1x the whole photo shows (object-fit: contain, letterboxed) and
+ * swipes still step photos through the parent handlers. Double-tap or pinch on touch, click or
+ * wheel with a mouse, zoom in (1x to 5x); drag, or scroll with a mouse, pans to every edge.
  */
 function ZoomStage({
   children,
@@ -213,9 +215,17 @@ function ZoomStage({
   const points = useRef(new Map<number, { x: number; y: number }>())
   const pinch = useRef<{ dist: number; scale: number } | null>(null)
   const pan = useRef<{ x: number; y: number; vx: number; vy: number } | null>(null)
+  const down = useRef<{ x: number; y: number; moved: boolean } | null>(null)
   const lastTap = useRef(0)
+  const lastClick = useRef(0)
   const [zoomed, setZoomed] = useState(false)
 
+  const measure = () => {
+    const r = box.current?.getBoundingClientRect()
+    const img = box.current?.querySelector('img')
+    const boxSize = { w: r?.width ?? 0, h: r?.height ?? 0 }
+    return { r, boxSize, picture: containSize(boxSize.w, boxSize.h, img?.naturalWidth ?? 0, img?.naturalHeight ?? 0) }
+  }
   const apply = (animate: boolean) => {
     const img = box.current?.firstElementChild as HTMLElement | null
     if (!img) return
@@ -226,18 +236,11 @@ function ZoomStage({
     setZoomed(scale > 1.01)
   }
   const clamp = () => {
-    const v = view.current
-    v.scale = Math.min(4, Math.max(1, v.scale))
-    if (v.scale <= 1.01) { v.scale = 1; v.x = 0; v.y = 0; return }
-    const r = box.current?.getBoundingClientRect()
-    if (!r) return
-    const mx = (r.width * (v.scale - 1)) / 2
-    const my = (r.height * (v.scale - 1)) / 2
-    v.x = Math.min(mx, Math.max(-mx, v.x))
-    v.y = Math.min(my, Math.max(-my, v.y))
+    const { boxSize, picture } = measure()
+    view.current = clampView(view.current, boxSize, picture)
   }
   const zoomAt = (clientX: number, clientY: number, scale: number) => {
-    const r = box.current?.getBoundingClientRect()
+    const { r } = measure()
     if (!r) return
     const v = view.current
     const cx = clientX - (r.left + r.width / 2)
@@ -248,27 +251,36 @@ function ZoomStage({
     v.scale = scale
     clamp()
   }
+  const toggleAt = (clientX: number, clientY: number) => {
+    const { boxSize, picture } = measure()
+    zoomAt(clientX, clientY, view.current.scale > 1 ? 1 : tapZoom(boxSize, picture))
+    apply(true)
+  }
 
   return (
     <div
       ref={box}
       className={`lightbox-stage${zoomed ? ' is-zoomed' : ''}`}
+      data-zoom={zoomed ? 'in' : 'fit'}
       onPointerDown={(event) => {
         points.current.set(event.pointerId, { x: event.clientX, y: event.clientY })
+        down.current = { x: event.clientX, y: event.clientY, moved: false }
         if (points.current.size === 2) {
           const [a, b] = [...points.current.values()]
           pinch.current = { dist: Math.hypot(a.x - b.x, a.y - b.y), scale: view.current.scale }
           pan.current = null
           return
         }
-        const now = Date.now()
-        if (now - lastTap.current < 300) {
-          zoomAt(event.clientX, event.clientY, view.current.scale > 1 ? 1 : 2.5)
-          apply(true)
-          lastTap.current = 0
-          return
+        if (event.pointerType !== 'mouse') {
+          const now = Date.now()
+          if (now - lastTap.current < 300) {
+            toggleAt(event.clientX, event.clientY)
+            lastTap.current = 0
+            down.current = null
+            return
+          }
+          lastTap.current = now
         }
-        lastTap.current = now
         if (view.current.scale > 1) {
           pan.current = { x: event.clientX, y: event.clientY, vx: view.current.x, vy: view.current.y }
           event.currentTarget.setPointerCapture?.(event.pointerId)
@@ -277,6 +289,7 @@ function ZoomStage({
       onPointerMove={(event) => {
         if (!points.current.has(event.pointerId)) return
         points.current.set(event.pointerId, { x: event.clientX, y: event.clientY })
+        if (down.current && Math.hypot(event.clientX - down.current.x, event.clientY - down.current.y) > 6) down.current.moved = true
         if (pinch.current && points.current.size >= 2) {
           const [a, b] = [...points.current.values()]
           const dist = Math.hypot(a.x - b.x, a.y - b.y)
@@ -291,13 +304,31 @@ function ZoomStage({
       }}
       onPointerUp={(event) => {
         points.current.delete(event.pointerId)
+        const wasPinch = pinch.current != null
         if (points.current.size < 2) pinch.current = null
+        const click = event.pointerType === 'mouse' && down.current && !down.current.moved && !wasPinch
+        down.current = null
+        if (click) {
+          pan.current = null
+          // A double-click is two clicks: the second must not undo the first.
+          const now = Date.now()
+          if (now - lastClick.current > 350) toggleAt(event.clientX, event.clientY)
+          lastClick.current = now
+          return
+        }
         if (pan.current) { pan.current = null; return }
         if (view.current.scale === 1 && points.current.size === 0) onPointerUp(event)
         else apply(true)
       }}
-      onPointerCancel={(event) => { points.current.delete(event.pointerId); pinch.current = null; pan.current = null }}
+      onPointerCancel={(event) => { points.current.delete(event.pointerId); pinch.current = null; pan.current = null; down.current = null }}
       onWheel={(event) => {
+        if (!event.ctrlKey && view.current.scale > 1) {
+          view.current.x -= event.deltaX
+          view.current.y -= event.deltaY
+          clamp()
+          apply(false)
+          return
+        }
         if (!event.ctrlKey && Math.abs(event.deltaY) < 4) return
         zoomAt(event.clientX, event.clientY, view.current.scale * Math.exp(-event.deltaY / 300))
         apply(false)

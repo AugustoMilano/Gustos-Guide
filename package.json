@@ -12,6 +12,8 @@
     "test:stamp": "node scripts/stamp-sw.test.mjs",
     "test:owner": "node --experimental-strip-types scripts/owner-auth.test.ts",
     "test:night": "node --experimental-strip-types scripts/night-plan.test.ts",
+    "test:photo-fit": "node --experimental-strip-types scripts/photo-fit.test.ts",
+    "test:photo-files": "node scripts/photo-files.test.mjs",
     "content": "node scripts/build-content.mjs",
     "photos": "node scripts/fetch-photos.mjs",
     "wikimedia": "node scripts/fetch-wikimedia.mjs",
