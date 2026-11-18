@@ -310,6 +310,8 @@ function ZoomStage({
         down.current = null
         if (click) {
           pan.current = null
+          // A 1x pointerdown armed the gallery swipe. Release it here; this click never reaches the handler below.
+          if (view.current.scale === 1 && points.current.size === 0) onPointerUp(event)
           // A double-click is two clicks: the second must not undo the first.
           const now = Date.now()
           if (now - lastClick.current > 350) toggleAt(event.clientX, event.clientY)
