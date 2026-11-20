@@ -20,6 +20,7 @@ test('published scores are a public read; accounts still do not write house_scor
 
 test("gustoScore prefers the owner's local draft, then the published table, then the shipped fallback", () => {
   assert.match(app, /const live = published\[placeId\]/)
+  assert.match(app, /if \(!houseReady\) return null/)
   assert.match(app, /HOUSE_SCORE_FALLBACK\[placeId\]/)
   assert.match(app, /if \(ownerVerified\) \{\s*const draft = house\[placeId\]/)
 })

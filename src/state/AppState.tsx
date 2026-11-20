@@ -1594,6 +1594,9 @@ export function AppProvider({ children }: { children: ReactNode }) {
     }
     const live = published[placeId]
     if (typeof live === 'number') return live
+    // A shipped number is not a live score until the public read settles, or the
+    // board ranks those few fallbacks and then jumps when published scores arrive.
+    if (!houseReady) return null
     const fallback = HOUSE_SCORE_FALLBACK[placeId]
     return typeof fallback === 'number' ? fallback : null
   }
