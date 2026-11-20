@@ -23,6 +23,7 @@ import type { HouseMark } from '../lib/quick-score.ts'
 import { clearAvatar, deleteGuideRemote, loadGuideById, importLocalBundle, loadAccount, loadHouseScores, loadNotices, loadPerson, loadPlans, saveAvatar, saveGuide, savePlan, saveProfile as saveProfileRemote, searchPeople as searchPeopleRemote, suggestPeople as suggestPeopleRemote, type FriendLists, type FriendProfile, type FriendRequest, type PersonView } from '../social/account.ts'
 import {
   addCollectionPlace,
+  fetchCollections,
   insertCollection,
   orderCollectionPlaces,
   patchCollection,
@@ -290,8 +291,11 @@ export function AppProvider({ children }: { children: ReactNode }) {
   const [collections, setCollections] = useState<HouseCollection[]>([])
   const collectionsRef = useRef<HouseCollection[]>([])
   // Published Gusto's Scores are read from the public house_scores table so every visitor sees them.
+  // Curated collections (Cheap eats order) are read from the public tables the same way.
   // Owner drafts stay on this device. Accounts never write house scores, marks, or collections.
-  const [collectionsStatus, setCollectionsStatus] = useState<CollectionsStatus>('offline')
+  const [collectionsStatus, setCollectionsStatus] = useState<CollectionsStatus>(supabaseConfigured ? 'loading' : 'offline')
+  const collectionsStatusRef = useRef(collectionsStatus)
+  const [collectionsMessage, setCollectionsMessage] = useState('')
 
   useEffect(() => {
     if (!remote) {
@@ -306,11 +310,36 @@ export function AppProvider({ children }: { children: ReactNode }) {
     }).catch(() => {
       if (!cancel) setHouseReady(true)
     })
+    void fetchCollections(remote).then((result) => {
+      if (cancel) return
+      if (result.ok) {
+        setCollections((current) => {
+          const serverIds = new Set(result.rows.map((row) => row.id))
+          const extras = current.filter((row) => row.published && !serverIds.has(row.id))
+          const drafts = current.filter((row) => !row.published)
+          const next = [...result.rows, ...extras, ...drafts]
+          collectionsRef.current = next
+          return next
+        })
+        setCollectionsStatus('ready')
+        setCollectionsMessage('')
+        return
+      }
+      if (result.missing) {
+        setCollectionsStatus('missing')
+        setCollectionsMessage(unpublishedNote(true))
+        return
+      }
+      setCollectionsStatus('error')
+      setCollectionsMessage(result.message)
+    }).catch((error: unknown) => {
+      if (cancel) return
+      setCollectionsStatus('error')
+      setCollectionsMessage(error instanceof Error ? error.message : 'Could not load collections.')
+    })
     return () => { cancel = true }
   }, [remote])
 
-  const collectionsStatusRef = useRef(collectionsStatus)
-  const [collectionsMessage, setCollectionsMessage] = useState('')
   const marksRef = useRef(marks)
   const [friends, setFriends] = useState<FriendProfile[]>([])
   const [requests, setRequests] = useState<FriendRequest[]>([])
