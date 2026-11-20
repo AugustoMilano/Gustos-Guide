@@ -20,7 +20,7 @@ import { mergeUploads, type LivePhoto } from '../lib/gallery.ts'
 import { HOUSE_SCORE_FALLBACK } from '../lib/house-score-fallback.ts'
 import { fetchOwnerSession, hasOwnerHint, ownerLogin, ownerLogout } from '../lib/owner-session.ts'
 import type { HouseMark } from '../lib/quick-score.ts'
-import { clearAvatar, deleteGuideRemote, loadGuideById, importLocalBundle, loadAccount, loadNotices, loadPerson, loadPlans, saveAvatar, saveGuide, savePlan, saveProfile as saveProfileRemote, searchPeople as searchPeopleRemote, suggestPeople as suggestPeopleRemote, type FriendLists, type FriendProfile, type FriendRequest, type PersonView } from '../social/account.ts'
+import { clearAvatar, deleteGuideRemote, loadGuideById, importLocalBundle, loadAccount, loadHouseScores, loadNotices, loadPerson, loadPlans, saveAvatar, saveGuide, savePlan, saveProfile as saveProfileRemote, searchPeople as searchPeopleRemote, suggestPeople as suggestPeopleRemote, type FriendLists, type FriendProfile, type FriendRequest, type PersonView } from '../social/account.ts'
 import {
   addCollectionPlace,
   insertCollection,
@@ -284,13 +284,31 @@ export function AppProvider({ children }: { children: ReactNode }) {
   const [announcement, setAnnouncement] = useState('')
   const [authError, setAuthError] = useState<string | null>(() => peekAuthError())
   const [house, setHouse] = useState<Record<string, number>>({})
-  const [houseReady] = useState(true)
+  const [published, setPublished] = useState<Record<string, number>>({})
+  const [houseReady, setHouseReady] = useState(!supabaseConfigured)
   const [marks, setMarks] = useState<Record<string, HouseMark>>({})
   const [collections, setCollections] = useState<HouseCollection[]>([])
   const collectionsRef = useRef<HouseCollection[]>([])
-  // House data (scores, marks, collections, owner photos) stays exactly as the local build: shipped
-  // with the site plus the verified owner's drafts on his device. Accounts never read or write it.
+  // Published Gusto's Scores are read from the public house_scores table so every visitor sees them.
+  // Owner drafts stay on this device. Accounts never write house scores, marks, or collections.
   const [collectionsStatus, setCollectionsStatus] = useState<CollectionsStatus>('offline')
+
+  useEffect(() => {
+    if (!remote) {
+      if (!supabaseConfigured) setHouseReady(true)
+      return
+    }
+    let cancel = false
+    void loadHouseScores(remote).then((scores) => {
+      if (cancel) return
+      if (scores) setPublished(scores)
+      setHouseReady(true)
+    }).catch(() => {
+      if (!cancel) setHouseReady(true)
+    })
+    return () => { cancel = true }
+  }, [remote])
+
   const collectionsStatusRef = useRef(collectionsStatus)
   const [collectionsMessage, setCollectionsMessage] = useState('')
   const marksRef = useRef(marks)
@@ -1570,10 +1588,12 @@ export function AppProvider({ children }: { children: ReactNode }) {
   }
 
   function gustoScore(placeId: string): number | null {
-    if (houseReady) {
-      const value = house[placeId]
-      if (typeof value === 'number') return value
+    if (ownerVerified) {
+      const draft = house[placeId]
+      if (typeof draft === 'number') return draft
     }
+    const live = published[placeId]
+    if (typeof live === 'number') return live
     const fallback = HOUSE_SCORE_FALLBACK[placeId]
     return typeof fallback === 'number' ? fallback : null
   }
@@ -1688,7 +1708,7 @@ export function AppProvider({ children }: { children: ReactNode }) {
     friendMarks,
     gustoScore,
     houseReady,
-    houseScores: house,
+    houseScores: ownerVerified ? { ...published, ...house } : published,
     setHouseScore,
     houseMark,
     setHouseMark,
