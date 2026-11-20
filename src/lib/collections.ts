@@ -46,6 +46,9 @@ export const FAVORITES_SCORE = 8.5
 /** Target length for his published guides and house collections. Not a limit. */
 export const FLAGSHIP_AIM = 25
 
+/** Use a stored Cheap eats list only when at least this many members exist in the catalog. */
+export const CURATED_CHEAP_EATS_MIN = 5
+
 export function flagshipAimHint(count: number): string {
   const noun = count === 1 ? 'place' : 'places'
   return `${count} ${noun}, aim for ${FLAGSHIP_AIM}`
@@ -185,19 +188,21 @@ export function orderedMembers(placeIds: readonly string[], places: SlimPlace[])
 
 /**
  * Places for a stored Cheap eats row.
- * Null means the row is missing or unusable, and the caller should use the computed list.
- * An empty array is a real stored list with nothing left to show.
+ * Null means the row is missing, unusable, or shorter than CURATED_CHEAP_EATS_MIN
+ * catalog members, and the caller should use the computed automatic list.
  */
 export function usableCheapMembers(row: HouseCollection | null, places: SlimPlace[]): SlimPlace[] | null {
   if (!row) return null
   const raw = renderableIds(row.placeIds)
   if (!raw) return null
-  if (raw.length === 0) return []
+  if (raw.length === 0) return null
   const ids = omitSeattleCheapEats(row.city, raw)
   if (ids.length === 0) return null
   const known = raw.some((id) => places.some((place) => place.id === id))
   if (!known) return null
-  return orderedMembers(ids, places)
+  const members = orderedMembers(ids, places)
+  if (members.length < CURATED_CHEAP_EATS_MIN) return null
+  return members
 }
 
 export function movedPlaceIds(placeIds: string[], visibleIds: string[], placeId: string, direction: -1 | 1): string[] | null {

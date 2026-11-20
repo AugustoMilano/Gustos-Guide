@@ -254,7 +254,7 @@ assert.equal(seattleCheapEatsBlocked('seattle', 'cheap-eats', 'alibi-room'), tru
 assert.equal(seattleCheapEatsBlocked('seattle', 'pike-place', 'alibi-room'), false)
 assert.deepEqual(omitSeattleCheapEats('seattle', row.placeIds), ['paseo'])
 const members = usableCheapMembers(row, catalog)
-assert.deepEqual(members.map((place) => place.id), ['paseo'])
+assert.equal(members, null)
 assert.equal(cheapEatsFor(catalog, 'seattle').some((place) => place.id === 'alibi-room'), false)
 assert.equal(cheapEatsFor(catalog, 'seattle').some((place) => place.id === 'paseo'), true)
 
