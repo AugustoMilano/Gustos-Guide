@@ -40,9 +40,8 @@ assert.deepEqual(gusto(places['von-s-1000spirits']), [
   '/photos/von-s-1000spirits-gusto-3.jpg',
 ])
 assert.equal(gusto(places['due-cucina-italiana']).length, 2)
-assert.equal(gusto(east['tendon-kohaku'])[0], '/photos/tendon-kohaku-gusto-1.jpg')
+assert.deepEqual(gusto(east['tendon-kohaku']), ['/photos/tendon-kohaku-gusto-1.jpg'])
 assert.equal(east['tendon-kohaku'].photos[0].alt.includes('carbonara'), true)
-assert.equal(gusto(east['tendon-kohaku'])[1], '/photos/tendon-kohaku-gusto-2.jpg')
 for (const id of ['cactus', 'din-tai-fung']) assert.equal(gusto(places[id]).length, 0, id)
 assert.deepEqual(gusto(east['cactus-kirkland']), ['/photos/cactus-kirkland-gusto-1.jpg'])
 assert.deepEqual(gusto(east['din-tai-fung-bellevue']), ['/photos/din-tai-fung-bellevue-gusto-1.jpg'])
