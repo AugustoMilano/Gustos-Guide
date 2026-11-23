@@ -17,7 +17,7 @@ import { cuisineMenuLabel } from '../lib/cuisine-label.ts'
 import { useCityId } from '../lib/use-city.ts'
 import { countPlaces, pageShareUrl, priceLabel } from '../lib/format.ts'
 import { resolvedMembers } from '../lib/guide-members.ts'
-import { rankByHouseScore } from '../lib/guide-rank.ts'
+import { rankByGuideOrder, rankByHouseScore } from '../lib/guide-rank.ts'
 import { hasUnknownPrice, matchesPrice, type PriceChoice } from '../lib/price-filter.ts'
 import { renderGuideStory } from '../lib/story-card.ts'
 import { awardFor } from '../lib/top25.ts'
@@ -160,7 +160,9 @@ export function GuidePage() {
   const hasMyOrder = Boolean(myOrder.order?.ids.length)
   const presented = sort === 'score'
     ? rankByHouseScore(byDistance, gustoScore, guide?.slug === 'eastside-drinks' || guide?.slug === 'best-breakfast-on-the-east-side' ? 'guide' : 'name')
-    : byDistance.map((row) => ({ ...row, rank: null as number | null }))
+    : sort === 'guide'
+      ? rankByGuideOrder(byDistance)
+      : byDistance.map((row) => ({ ...row, rank: null as number | null }))
   const ranked = presented.filter((row) => row.rank != null)
   const toVisit = presented.filter((row) => row.rank == null)
   const stripRows = presented.map(({ place, rank, entry }) => ({

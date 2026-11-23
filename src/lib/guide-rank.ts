@@ -22,3 +22,9 @@ export function rankByHouseScore<T extends { place: ScoredPlace }>(
     ...unscored.map((item) => ({ ...item.row, rank: null })),
   ]
 }
+
+/** Curated guide order, first to last. Every listed place gets a number, including unscored ones. */
+export function rankByGuideOrder<T>(rows: readonly T[]): (T & { rank: number })[] {
+  return rows.map((row, index) => ({ ...row, rank: index + 1 }))
+}
+
