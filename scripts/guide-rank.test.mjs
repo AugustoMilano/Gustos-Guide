@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict'
 import { readFileSync } from 'node:fs'
-import { rankByHouseScore } from '../src/lib/guide-rank.ts'
+import { rankByGuideOrder, rankByHouseScore } from '../src/lib/guide-rank.ts'
 
 const rows = [
   { place: { id: 'carmine', name: 'Il Terrazzo Carmine' } },
@@ -48,4 +48,21 @@ const byName = rankByHouseScore(drinkRows, (id) => drinkScores[id] ?? null)
 const nameOrder = byName.map((row) => row.place.id)
 assert.ok(nameOrder.indexOf('central-tavern') < nameOrder.indexOf('palmers-east'))
 assert.deepEqual(nameOrder.slice(2, 5), ['bellevue-brewing', 'earls-kitchen-bar', 'tavern-hall'])
+const guideOrder = rankByGuideOrder(rows)
+assert.deepEqual(guideOrder.map((row) => [row.place.id, row.rank]), [
+  ['carmine', 1],
+  ['pink', 2],
+  ['quiet', 3],
+  ['tie-b', 4],
+  ['tie-a', 5],
+])
+
+const page = readFileSync(new URL('../src/pages/GuidePage.tsx', import.meta.url), 'utf8')
+assert.match(page, /sort === 'guide'\s*\?\s*rankByGuideOrder\(byDistance\)/)
+assert.match(page, /import \{ rankByGuideOrder, rankByHouseScore \}/)
+// Near me and My order still have no rank numbers.
+assert.match(page, /sort === 'my'/)
+assert.match(page, /byDistance\.map\(\(row\) => \(\{ \.\.\.row, rank: null/)
+
 console.log('guide rank ok')
+
